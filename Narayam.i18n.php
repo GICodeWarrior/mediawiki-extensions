@@ -481,6 +481,7 @@ $messages['de'] = array(
 	'narayam-gu' => 'Gujarati (Transliteration)',
 	'narayam-gu-inscript' => 'Gujarati (InScript)',
 	'narayam-ru-standard' => 'Russisch (Standard)',
+	'narayam-sah-standard' => 'Jakutisch (Standard)',
 );
 
 /** Greek (Ελληνικά)
@@ -628,6 +629,7 @@ $messages['fr'] = array(
 	'narayam-as-avro' => 'Avro assamais',
 	'narayam-as-bornona' => 'Bornora assamais',
 	'narayam-as-inscript' => 'InScript assamais',
+	'narayam-ber-tfng' => 'Traduction tifinagh',
 	'narayam-brx-inscript' => 'InScript Bodo',
 	'narayam-eo' => 'Espéranto',
 	'narayam-hi' => 'Traduction en hindi',
@@ -660,6 +662,8 @@ $messages['fr'] = array(
 	'narayam-de' => 'Allemand',
 	'narayam-gu' => 'Traduction en gujarati',
 	'narayam-gu-inscript' => 'InScript gujarati',
+	'narayam-ru-standard' => 'Norme russe',
+	'narayam-sah-standard' => 'Norme sakha',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -722,6 +726,7 @@ $messages['gl'] = array(
 	'narayam-as-avro' => 'Avro para asamés',
 	'narayam-as-bornona' => 'Bornona para asamés',
 	'narayam-as-inscript' => 'InScript para asamés',
+	'narayam-ber-tfng' => 'Transliteración para tifinagh',
 	'narayam-brx-inscript' => 'InScript para bodo',
 	'narayam-eo' => 'Esperanto',
 	'narayam-hi' => 'Transliteración para hindi',
@@ -754,6 +759,7 @@ $messages['gl'] = array(
 	'narayam-de' => 'Alemán',
 	'narayam-gu' => 'Transliteración para maratí gujarati',
 	'narayam-gu-inscript' => 'InScript para maratí gujarati',
+	'narayam-ru-standard' => 'Ruso estándar',
 );
 
 /** Swiss German (Alemannisch)
@@ -796,6 +802,59 @@ $messages['gsw'] = array(
 	'narayam-bn-avro' => 'Bengalisch (Avro)',
 	'narayam-bn-inscript' => 'Bengalisch (InScript)',
 	'narayam-bn-nkb' => 'Bengalisch (NKB)',
+);
+
+/** Gujarati (ગુજરાતી)
+ * @author Ankit
+ * @author Sweta
+ */
+$messages['gu'] = array(
+	'narayam-desc' => 'લખાણ ક્ષેત્રો માટે વિવિધ લેખન પદ્ધતિઓ ઉમેરવાની પરવાનગી આપે છે',
+	'narayam-toggle-ime' => 'સક્રિય ($1)',
+	'narayam-menu' => 'લેખન પદ્ધતિ',
+	'narayam-help' => 'મદદ',
+	'narayam-checkbox-tooltip' => 'લેખન પદ્ધતિ ચાલુ અને બંધ કરવા માટે',
+	'narayam-disable-preference' => 'Narayam Input Method Editor (IME) નિષ્ક્રિય કરો',
+	'narayam-more-imes' => 'વધુ લેખન પદ્ધતિઓ',
+	'narayam-am' => 'અમ્હારીક ટ્રાન્સલીટરેશન',
+	'narayam-as' => 'આસામી ટ્રાન્સલીટરેશન',
+	'narayam-as-avro' => 'આસામી આવરો',
+	'narayam-as-bornona' => 'આસામી બોરનોના',
+	'narayam-as-inscript' => 'આસામી ઇનસ્ક્રિપ્ટ',
+	'narayam-brx-inscript' => 'બોડો ઇનસ્ક્રિપ્ટ',
+	'narayam-eo' => 'એસ્પરેન્ટો',
+	'narayam-hi' => 'હિંદી ટ્રાન્સલીટરેશન',
+	'narayam-hi-inscript' => 'હિંદી ઇનસ્ક્રિપ્ટ',
+	'narayam-kn' => 'કન્નડા ટ્રાન્સલીટરેશન',
+	'narayam-kn-inscript' => 'કન્નડ ઇનસ્ક્રિપ્ટ',
+	'narayam-ml' => 'મલયાલન ટ્રાન્સલિટરેશન',
+	'narayam-ml-inscript' => 'મલયાલમ ઇનસ્ક્રિપ્ટ',
+	'narayam-mr' => 'મરાઠી ટ્રાન્સલિટરેશન',
+	'narayam-mr-inscript' => 'મરાઠી ઇનસ્ક્રિપ્ટ',
+	'narayam-ne' => 'નેપાળી ટ્રાન્સલિટરેશન',
+	'narayam-ne-inscript' => 'નેપાળી ઇનસ્ક્રિપ્ટ',
+	'narayam-or' => 'ઓડિયા ટ્રાન્સલિટરેશન',
+	'narayam-or-lekhani' => 'ઓડિયા લેખાની',
+	'narayam-or-inscript' => 'ઓડિયા ઇનસ્ક્રિપ્ટ',
+	'narayam-pa-phonetic' => 'ગુરુમુખી પંજાબી ફોનેટીક',
+	'narayam-pa-inscript' => 'ગુરુમુખી પંજાબી ઇનસ્ક્રિપ્ટ',
+	'narayam-sa' => 'સંસ્કૃત ટ્રાન્સલિટરેશન',
+	'narayam-sa-inscript' => 'સંસ્કૃત ઇનસ્ક્રિપ્ટ',
+	'narayam-si-singlish' => 'સિંહાલા સિંગ્લીશન',
+	'narayam-si-wijesekara' => 'સિંહાલા વિજેસેકરા',
+	'narayam-ta-99' => 'તમિલ૯૯',
+	'narayam-ta' => 'તમિલ ટ્રાન્સલિટરેશન',
+	'narayam-ta-bamini' => 'તમિલ બામિની',
+	'narayam-te-inscript' => 'તેલુગુ ઇનસ્ક્રિપ્ટ',
+	'narayam-bn-avro' => 'બંગાળી આવરો',
+	'narayam-bn-inscript' => 'બંગાળી ઇનસ્ક્રિપ્ટ',
+	'narayam-bn-nkb' => 'બંગાળી એનકેબી',
+	'narayam-ur' => 'ઉર્દુ સ્ટાન્ડર્ડ',
+	'narayam-de' => 'જર્મન',
+	'narayam-gu' => 'ગુજરાતી ટ્રાન્સલિટરેશન',
+	'narayam-gu-inscript' => 'ગુજરાતી ઇનસ્ક્રિપ્ટ',
+	'narayam-ru-standard' => 'રશિયાઇ સ્ટાન્ડર્ડ',
+	'narayam-sah-standard' => 'મૂળ સાખા',
 );
 
 /** Hebrew (עברית)
@@ -906,6 +965,7 @@ $messages['ia'] = array(
 	'narayam-as-avro' => 'Assamese Avro',
 	'narayam-as-bornona' => 'Assamese Bornona',
 	'narayam-as-inscript' => 'Assamese InScript',
+	'narayam-ber-tfng' => 'Translitteration in tifinagh',
 	'narayam-brx-inscript' => 'Bodo InScript',
 	'narayam-eo' => 'Esperanto',
 	'narayam-hi' => 'Translitteration in hindi',
@@ -938,6 +998,8 @@ $messages['ia'] = array(
 	'narayam-de' => 'Germano',
 	'narayam-gu' => 'Translitteration in gujarati',
 	'narayam-gu-inscript' => 'Gujarati InScript',
+	'narayam-ru-standard' => 'Russo standard',
+	'narayam-sah-standard' => 'Sakha standard',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1173,7 +1235,8 @@ $messages['mk'] = array(
 	'narayam-de' => 'германски',
 	'narayam-gu' => 'Транслитерација на Гуџарати',
 	'narayam-gu-inscript' => 'Гуџарати - InScript',
-	'narayam-ru-standard' => 'Руски (стандардно)',
+	'narayam-ru-standard' => 'руски (стандардно)',
+	'narayam-sah-standard' => 'јакутски (стандардно)',
 );
 
 /** Malayalam (മലയാളം)
@@ -1776,6 +1839,7 @@ $messages['sl'] = array(
 	'narayam-as-avro' => 'Avro za asamščino',
 	'narayam-as-bornona' => 'Bornora za asamščino',
 	'narayam-as-inscript' => 'InScript za asamščino',
+	'narayam-ber-tfng' => 'Prečrkovanje tifinagh',
 	'narayam-brx-inscript' => 'InScript za bodo',
 	'narayam-eo' => 'Esperanto',
 	'narayam-hi' => 'Prečrkovanje hindujščine',
@@ -1808,6 +1872,8 @@ $messages['sl'] = array(
 	'narayam-de' => 'nemščina',
 	'narayam-gu' => 'Prečrkovanje gudžaratščine',
 	'narayam-gu-inscript' => 'InScript za gudžaratščino',
+	'narayam-ru-standard' => 'Standardna ruščina',
+	'narayam-sah-standard' => 'standardna sakha',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
@@ -1971,13 +2037,17 @@ $messages['vi'] = array(
 	'narayam-as-avro' => 'Avro Assam',
 	'narayam-as-bornona' => 'Bornona Assam',
 	'narayam-as-inscript' => 'InScript Assam',
+	'narayam-ber-tfng' => 'Chuyển tự Tifinagh',
+	'narayam-brx-inscript' => 'InScript tiếng Bodo',
 	'narayam-eo' => 'Quốc tế ngữ',
+	'narayam-hi' => 'Chuyển tự tiếng Hindi',
 	'narayam-hi-inscript' => 'InScript Hindi',
 	'narayam-kn' => 'Chuyển tự tiếng Kannada',
 	'narayam-kn-inscript' => 'InScript Kannada',
 	'narayam-ml' => 'Chuyển tự tiếng Malayalam',
 	'narayam-ml-inscript' => 'InScript Malayalam',
 	'narayam-mr' => 'Chuyển tự tiếng Marathi',
+	'narayam-mr-inscript' => 'InScript tiếng Marathi',
 	'narayam-ne' => 'Chuyển tự tiếng Nepal',
 	'narayam-ne-inscript' => 'InScript Nepal',
 	'narayam-or' => 'Chuyển tự tiếng Oriya',
@@ -1995,6 +2065,10 @@ $messages['vi'] = array(
 	'narayam-bn-inscript' => 'InScript Bengal',
 	'narayam-bn-nkb' => 'NKB Bengal',
 	'narayam-ur' => 'Tiếng Urdu chuẩn',
+	'narayam-de' => 'Tiếng Đức',
+	'narayam-gu' => 'Chuyển tự tiếng Gujarat',
+	'narayam-gu-inscript' => 'InScript Gujarati',
+	'narayam-ru-standard' => 'Tiếng Nga chuyển',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
