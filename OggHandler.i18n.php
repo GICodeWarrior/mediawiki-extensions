@@ -63,6 +63,7 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
  * @author Mormegil
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'ogg-desc' => '{{desc}}',
@@ -79,11 +80,15 @@ Parameters are:
 	'ogg-player-videoElement' => 'Message used in JavaScript. 
 
 For definition of "native support" see [http://en.wiktionary.org/wiki/native_support Wiktionary].',
+	'ogg-player-cortado' => '{{optional}}',
 	'ogg-player-vlc-mozilla' => '{{optional}}',
+	'ogg-player-vlc-activex' => '{{optional}}',
 	'ogg-player-quicktime-mozilla' => '{{optional}}',
+	'ogg-player-quicktime-activex' => '{{optional}}',
 	'ogg-player-totem' => '{{optional}}',
 	'ogg-player-kmplayer' => '{{optional}}',
 	'ogg-player-kaffeine' => '{{optional}}',
+	'ogg-player-mplayerplug-in' => '{{optional}}',
 	'ogg-more' => '{{Identical|More...}}',
 	'ogg-dismiss' => '{{Identical|Close}}',
 	'ogg-download' => '{{Identical|Download}}',
