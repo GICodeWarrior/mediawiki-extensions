@@ -29,6 +29,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'ts-kml-on-ol-options' => '{{Identical|Options}}',
@@ -36,6 +37,8 @@ $messages['qqq'] = array(
 	'ts-kml-on-ol-thumbnails' => '{{Identical|Thumbnail}}',
 	'ts-kml-on-ol-help' => '{{Identical|Help}}',
 	'ts-kml-on-ol-all' => '{{Identical|All}}',
+	'ts-kml-on-ol-openstreetmap' => '{{optional}}',
+	'ts-kml-on-ol-wikipedia' => '{{optional}}',
 );
 
 /** Afrikaans (Afrikaans)

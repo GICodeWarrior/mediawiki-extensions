@@ -62,11 +62,13 @@ If you followed a link from somewhere, please <a href="$1">report a bug</a>.
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Umherirrender
  * @author X!
  */
 $messages['qqq'] = array(
 	'toolbase-header-title' => 'Name of entire tool suite, used in titles and headers',
 	'toolbase-header-bugs' => 'Text shown in link to bug reporter',
+	'toolbase-header-twitter' => '{{optional}}',
 	'toolbase-header-sitenotice' => 'Text shown when a global Toolserver sitenotice is issued',
 	'toolbase-replag' => 'Text shown when there is server lag',
 	'toolbase-footer-exectime' => 'Text shown in the footer. Used to show how many seconds were used in the loading of the page',
@@ -78,6 +80,7 @@ $messages['qqq'] = array(
 {{Identical|Navigation}}',
 	'toolbase-navigation-homepage' => 'Text shown in the nagivation link to the homepage
 {{Identical|Homepage}}',
+	'toolbase-navigation-api' => '{{optional}}',
 	'toolbase-navigation-user_id' => 'Text shown in the nagivation link to the user_id tool',
 	'toolbase-userid-submit' => 'Text on the submit button for the user_id tool',
 	'toolbase-userid-title' => 'Header on the user_id tool',
