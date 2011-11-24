@@ -158,10 +158,13 @@ To save a poll, submit it while not answering to any proposal questions.',
  * @author Purodha
  * @author Raymond
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'pollresults' => 'Special page name in [[Special:SpecialPages]]',
 	'qpollwebinstall' => 'Special page name in [[Special:SpecialPages]]',
+	'qp_parentheses' => '{{optional}}',
+	'qp_full_category_name' => '{{optional}}',
 	'qp_desc' => '{{desc}} Important notice: Categories can be grouped into category groups, which are internally referred as "spans". Such grouped categories become "subcategories". While the extension evolved, these groups were consequentially called as "spans", "metacategories", "category groups". Please read the on-line documentation carefully before translating.',
 	'qp_desc-sp' => "Description of extension's special page at Special:Version page.",
 	'qp_result_NA' => '{{Identical|Not answered}}',
@@ -204,6 +207,9 @@ $messages['qqq'] = array(
 * $1 is a link to the [[Special:Pollresults]] which displays either the list of users which participated in current poll, or the list of users that participated in another polls but this one
 * $2 is a link to the page title where the poll is defined
 * $3 is the poll name (poll identifier) in plain text',
+	'qp_results_line_qpul' => '{{optional}}',
+	'qp_header_line_qucl' => '{{optional}}',
+	'qp_results_line_qucl' => '{{optional}}',
 	'qp_results_submit_attempts' => 'Parameters:
 * $1 is the number of submit attempts',
 	'qp_results_interpretation_header' => 'Since v0.8.0 polls may have interpretation scripts defined at separate wiki pages, which allows to use the extension for quizes. Interpretation scripts return the following types of interpretation results: global error message, proposal error, proposal/category error, short interpretation, long interpretation, structured interpretation.  This message is the header of the block of these results displayed both to end-user and to poll admin at [[Special:Pollresults]] page.',
@@ -875,6 +881,7 @@ Um die Abstimmung zu speichern, übermittle sie ohne dabei auf eine Frage zu ant
 	'qp_error_too_long_category_options_values' => 'Die Werte der Kategorieoptionen sind zu lang, um in der Datenbank gespeichert werden zu können.',
 	'qp_error_too_long_proposal_text' => 'Der vorgeschlagene Text ist zu lang, um in der Datenbank gespeichert werden zu können.',
 	'qp_error_too_long_proposal_name' => 'Der vorgeschlagene Name ist zu lang, um in der Datenbank gespeichert werden zu können.',
+	'qp_error_invalid_proposal_name' => 'Der vorgeschlagene Name darf nicht ausschließlich aus Zahlen bestehen.',
 	'qp_error_too_few_categories' => 'Es müssen mindestens zwei Kategorien festgelegt werden.',
 	'qp_error_too_few_spans' => 'Jede Kategoriengruppe muss mindestens zwei Unterkategorien enthalten.',
 	'qp_error_no_answer' => 'Unbeantworteter Vorschlag',
@@ -1197,6 +1204,7 @@ Pour enregistrer un sondage, soumettez-le en ne répondant à aucune question de
 	'qp_error_too_long_category_options_values' => 'Les valeurs des options catégorie sont trop longues pour être stockées dans la base de données.',
 	'qp_error_too_long_proposal_text' => 'Le texte de la proposition est trop long pour être enregistré dans la base de données',
 	'qp_error_too_long_proposal_name' => 'Le nom de la proposition est trop long pour être stocké dans la base de données.',
+	'qp_error_invalid_proposal_name' => 'Le nom de la proposition ne peut pas être numérique.',
 	'qp_error_too_few_categories' => 'Au moins deux catégories doivent être définies',
 	'qp_error_too_few_spans' => 'Toute classe de catégorie nécessite au moins deux réponses possibles définies',
 	'qp_error_no_answer' => 'Proposition sans réponse',
@@ -1348,6 +1356,7 @@ Para gardar unha enquisa, envíea sen responder a ningunha pregunta.',
 	'qp_error_too_long_category_options_values' => 'Os valores das opcións da categoría son longos de máis para almacenalos na base de datos.',
 	'qp_error_too_long_proposal_text' => 'O texto da proposta é longo de máis para almacenalo na base de datos.',
 	'qp_error_too_long_proposal_name' => 'O nome da proposta é longo de máis para almacenalo na base de datos.',
+	'qp_error_invalid_proposal_name' => 'O nome da proposta non pode ser numérico.',
 	'qp_error_too_few_categories' => 'Débense definir, polo menos, dúas categorías.',
 	'qp_error_too_few_spans' => 'Cada clase de categoría necesita definidas, polo menos, dúas respostas posibles.',
 	'qp_error_no_answer' => 'Proposta sen resposta.',
@@ -1746,6 +1755,7 @@ Pro salveguardar un sondage, submitte lo sin responder a alcun question de propo
 	'qp_error_too_long_category_options_values' => 'Le valores del optiones de categoria es troppo longe pro esser immagazinate in le base de datos.',
 	'qp_error_too_long_proposal_text' => 'Le texto del proposition es troppo longe pro poter esser immagazinate in le base de datos',
 	'qp_error_too_long_proposal_name' => 'Le nomine del proposition es troppo longe pro poter esser immagazinate in le base de datos.',
+	'qp_error_invalid_proposal_name' => 'Le nomine del proposition non pote esser numeric.',
 	'qp_error_too_few_categories' => 'Al minus duo categorias debe esser definite',
 	'qp_error_too_few_spans' => 'Cata classe de categoria require le definition de al minus duo responsas possibile',
 	'qp_error_no_answer' => 'Proposition sin responsa',
@@ -2136,6 +2146,7 @@ $messages['mk'] = array(
 	'qp_error_too_long_category_options_values' => 'Можностите за категоријата се предолги за да можат да се зачуваат во базата.',
 	'qp_error_too_long_proposal_text' => 'Текстот на предлогот е предолг за да може да се складира во базата',
 	'qp_error_too_long_proposal_name' => 'Името на предлогот е предолго за да се зачува во базата.',
+	'qp_error_invalid_proposal_name' => 'Името на предлогот не може да биде број.',
 	'qp_error_too_few_categories' => 'Мора да определите барем две категории',
 	'qp_error_too_few_spans' => 'Секоја класа на категории бара да определите барем два можни одговора',
 	'qp_error_no_answer' => 'Неодговорен предлог',
@@ -2252,6 +2263,7 @@ Sla een peiling op door deze op te slaan zonder dat enig voorstel is beantwoord.
 	'qp_error_too_long_category_options_values' => 'De categorie-optiewaarden zijn te lang om opgeslagen te kunnen worden in de database.',
 	'qp_error_too_long_proposal_text' => 'Het tekstvoorstel is te lang om opgeslagen te kunnen worden in de database.',
 	'qp_error_too_long_proposal_name' => 'De voorstelnaam is te lang om te worden opgeslagen in de database.',
+	'qp_error_invalid_proposal_name' => 'De naam van het voorstel mag niet numeriek zijn.',
 	'qp_error_too_few_categories' => 'Er moeten tenminste twee categorieën gedefinieerd worden.',
 	'qp_error_too_few_spans' => 'Voor iedere categorieklasse dienen tenminste twee mogelijk antwoorden gedefinieerd te zijn',
 	'qp_error_no_answer' => 'Onbeantwoord voorstel',
