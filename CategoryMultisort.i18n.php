@@ -337,8 +337,10 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Dj
  */
 $messages['hu'] = array(
+	'categorymultisort-desc' => 'Lehetővé teszi a kategóriák különböző rendezési kulcs alapján történő rendezésben történő megjelenítését',
 	'categorymultisort-defaultsortkey-name' => 'Alapértelmezett',
 	'categorymultisort-sortkey' => 'Rendezési kulcs:',
 	'categorymultisort-go' => 'Menj',
