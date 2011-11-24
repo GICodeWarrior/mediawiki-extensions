@@ -286,7 +286,7 @@ class Review extends ReviewsDBObject {
 	 * @return string
 	 */
 	public function getHTML() {
-		$html = '<table>';
+		$html = '<table class="review-table">';
 		
 		$html .= '<tr><th colspan="2">' . htmlspecialchars( $this->getField( 'title' ) ) . '</th></tr>';
 		

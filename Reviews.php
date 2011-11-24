@@ -163,6 +163,15 @@ $wgResourceModules['jquery.ui.stars'] = $moduleTemplate + array(
 	),
 );
 
+$wgResourceModules['ext.reviews.tag'] = $moduleTemplate + array(
+	'scripts' => array(
+		'reviews.tag.js',
+	),
+	'styles' => array(
+		'reviews.tag.css',
+	),
+);
+
 unset( $moduleTemplate );
 
 $egReviewsSettings = array();
@@ -172,4 +181,4 @@ $wgDefaultUserOptions['reviews_showtoplink'] = false;
 
 $wgDefaultUserOptions['reviews_showcontrol'] = true;
 
-$wgDefaultUserOptions['reviews_showedit'] = true;
+$wgDefaultUserOptions['reviews_showedit'] = false;
