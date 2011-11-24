@@ -91,6 +91,7 @@ Please change or upgrade your browser, if possible.',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author QuestPC
+ * @author Umherirrender
  * @author Yekrats
  */
 $messages['qqq'] = array(
@@ -101,6 +102,7 @@ For more information, see http://www.mediawiki.org/wiki/Extension:CategoryBrowse
 	'cb_has_pages' => '{{Identical|Page}}',
 	'cb_has_files' => '{{Identical|File}}',
 	'cb_previous_items_link' => '{{Identical|Previous}}',
+	'cb_previous_items_stats' => '{{optional}}',
 	'cb_next_items_link' => '{{Identical|Next}}',
 	'cb_cat_pages' => '{{Identical|Pages}}',
 	'cb_cat_files' => '{{Identical|File}}',
@@ -148,9 +150,12 @@ $messages['an'] = array(
  * @author روخو
  */
 $messages['ar'] = array(
+	'cb_has_pages' => '{{PLURAL:$1|لا صفحات|صفحة واحدة|صفحتان|$1 صفحات|$1 صفحة}}',
+	'cb_has_files' => '{{PLURAL:$1|لا ملفات|ملف واحد|ملفان|$1 ملفات|$1 ملفًا|$1 ملف}}',
 	'cb_previous_items_link' => 'السابق',
 	'cb_next_items_link' => 'التالي',
 	'cb_next_items_stats' => ' (من $1)',
+	'cb_cat_subcats' => 'تصنيفات فرعية',
 	'cb_cat_pages' => 'الصفحات',
 	'cb_cat_files' => 'ملفات',
 	'cb_apply_button' => 'طبّق',
