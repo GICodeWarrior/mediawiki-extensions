@@ -257,8 +257,24 @@ $messages['en'] = array(
  * @author EugeneZelenko
  * @author Jeroen De Dauw
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'right-contestadmin' => '{{doc-right|contestadmin}}',
+	'right-contestant' => '{{doc-right|contestant}}',
+	'right-contestjudge' => '{{doc-right|contestjudge}}',
+	'action-contestadmin' => '{{doc-action|contestadmin}}',
+	'action-contestant' => '{{doc-action|contestant}}',
+	'action-contestjudge' => '{{doc-action|contestjudge}}',
+	'group-contestadmin' => '{{doc-group|contestadmin}}',
+	'group-contestadmin-member' => '{{doc-group|contestadmin|member}}',
+	'grouppage-contestadmin' => '{{doc-group|contestadmin|page}}',
+	'group-contestant' => '{{doc-group|contestant}}',
+	'group-contestant-member' => '{{doc-group|contestant|member}}',
+	'grouppage-contestant' => '{{doc-group|contestant|page}}',
+	'group-contestjudge' => '{{doc-group|contestjudge}}',
+	'group-contestjudge-member' => '{{doc-group|contestjudge|member}}',
+	'grouppage-contestjudge' => '{{doc-group|contestjudge|page}}',
 	'contest-special-name' => 'Table column header.
 {{Identical|Name}}',
 	'contest-special-status' => 'Table column header.
@@ -518,6 +534,9 @@ $messages['be-tarask'] = array(
 	'contest-edit-confirm-delete' => 'Вы ўпэўнены, што жадаеце выдаліць гэтую мэту?',
 	'contest-edit-challenge-title' => 'Назва мэты',
 	'contest-edit-challenge-text' => 'Тэкст мэты',
+	'contest-edit-challenge-oneline' => 'Кароткае апісаньне',
+	'contest-welcome-unknown' => 'Няма конкурсу з пададзенай назвай.',
+	'contest-welcome-rules' => 'Каб прыняць удзел, Вам неабходна пагадзіцца з [[$1|правіламі конкурсу]].',
 );
 
 /** Breton (Brezhoneg)
