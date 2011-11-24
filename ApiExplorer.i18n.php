@@ -174,6 +174,14 @@ $messages['nl'] = array(
 	'apiexplorer-loading' => 'Bezig met het laden van functies...',
 );
 
+/** Polish (Polski)
+ * @author Woytecr
+ */
+$messages['pl'] = array(
+	'apiexplorer' => 'Eksplorator API',
+	'apiexplorer-loading' => 'Ładowanie funkcji...',
+);
+
 /** Russian (Русский)
  * @author Engineering
  */
