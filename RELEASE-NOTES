@@ -17,6 +17,7 @@
       + See 1.4 alpha for previous changes
     - If 'Regex Fun' extension is installed, '#arraysearcharray' can use Regex Funs 'e' flag feature
       for transforming the result and at the same time parsing them after each back-reference inclusion.
+    - 1.4 alpha bug solved, '#arraysearcharray' with empty string as start index was interpreted as 0
 
 
  * November 20, 2001 -- Version 1.4 alpha (r103716)

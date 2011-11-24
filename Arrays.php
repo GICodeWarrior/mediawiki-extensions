@@ -472,7 +472,7 @@ class ExtArrays {
 			$arrayId = null,
 			$needle = '/^(\s*)$/',
 			$index = 0,
-			$limit = -1,
+			$limit = '',
 			$transform = ''
 	) {
 		$store = self::get( $parser );
@@ -496,8 +496,8 @@ class ExtArrays {
 			return '';
 		}
 		
-		// non-numeric limit will be set to 0
-		$limit = (int)$limit;
+		// non-numeric limit will be set to 0, except limit was omitted ('')
+		$limit = $limit === '' ? -1 : (int)$limit;
 		if( $limit === 0 ) {
 			return '';
 		}
