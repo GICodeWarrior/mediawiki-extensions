@@ -135,3 +135,10 @@ $messages['ru'] = array(
 	'editsectionclearerlink-desc' => 'Улучшает юзабилити ссылок на правку разделов, добавляет меню действий при наведении курсора',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'editsectionclearerlink-desc' => 'Förbättrar användbarheten av avsnittsredigeringslänkar med avsnitt och åtgärder för länkhovring',
+);
+
