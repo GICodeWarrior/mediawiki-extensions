@@ -686,6 +686,7 @@ $messages['id'] = array(
  */
 $messages['ja'] = array(
 	'collabwatchlisttools-delete' => '削除',
+	'collabwatchlistedit-raw-titles' => 'カテゴリー:',
 	'collabwatchlistdelete-submit' => '削除',
 );
 
