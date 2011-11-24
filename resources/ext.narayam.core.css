@@ -78,10 +78,12 @@ div#narayam-menu ul {
 	list-style: none;
 	list-style-image: none;
 	list-style-type: none;
-	padding: 0;
+	padding: 10px; /* Space for scrollbars etc. */
 	margin: 0;
 	margin-left: -1px;
 	text-align: left;
+	max-height: 360px;
+	overflow-y: auto;
 }
 /* Fixes old versions of FireFox */
 div#narayam-menu ul,
