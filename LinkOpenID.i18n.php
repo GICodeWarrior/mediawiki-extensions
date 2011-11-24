@@ -30,10 +30,12 @@ This allows you to use your userpage as an OpenID as well.',
  * @author Purodha
  * @author Raymond
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'linkopenid-desc' => '{{desc}}',
 	'linkopenid-prefs' => '{{Optional}}',
+	'linkopenid-prefstext-xrdsurl' => '{{optional}}',
 );
 
 /** Gheg Albanian (Gegë)
