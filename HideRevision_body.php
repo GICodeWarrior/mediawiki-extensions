@@ -538,10 +538,11 @@ class SpecialOversight extends SpecialPage {
 			$info = $this->listRow( $row );
 			$list = $this->revisionInfo( $row );
 			$rev = new Revision( $row );
-			$rev->mTitle = Title::makeTitle( $row->page_namespace, $row->page_title );
-			$prevId = $rev->mTitle->getPreviousRevisionID( $row->rev_id );
+			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+			$rev->setTitle( $title );
+			$prevId = $title->getPreviousRevisionID( $row->rev_id );
 			if ( $prevId ) {
-				$prev = Revision::newFromTitle( $rev->mTitle, $prevId );
+				$prev = Revision::newFromTitle( $title, $prevId );
 				if( $prev ) {
 					$otext = strval( $prev->getText( Revision::FOR_THIS_USER ) );
 				} else {
@@ -558,7 +559,7 @@ class SpecialOversight extends SpecialPage {
 			}
 			$ntext = strval( $rev->getText( Revision::FOR_THIS_USER ) );
 
-			$diffEngine = new DifferenceEngine( $rev->mTitle );
+			$diffEngine = new DifferenceEngine( $title );
 			$diffEngine->showDiffStyle();
 			$wgOut->addHTML(
 				"<ul>" .
