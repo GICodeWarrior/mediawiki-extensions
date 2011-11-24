@@ -1,5 +1,5 @@
 /**
- * Transliteration rules table for standard Russian keyboard
+ * Transliteration rules table for standard Sakha keyboard
  * @author Amir (Алексей) Aharoni ([[User:Amire80]])
  * @date 2011-11-21
  * License: GPLv3, CC-BY-SA 3.0
@@ -75,21 +75,28 @@ var rules = [
 ['\\.', '', 'ю'],
 ['/', '', '.'],
 
-['`', '', 'ё'],
-['~', '', 'Ё'],
+['`', '', '"'],
+['~', '', '№'],
 
-// ! is the same                    // 1
-['@', '', '"'],                     // 2
-['#', '', '№'],                     // 3
-['\\$', '', ';'],                   // 4
-// '%' is the same                  // 5
-['^', '', ':'],                     // 6
-['&', '', '?'],                     // 7
-// '*', '(' and ')' are the same    // 8, 9, 0
+['1', '', '!'],                     // 1
+['!', '', '?'],                     // 1
+// 2, 3 - ?
+['4', '', 'ҥ'],                     // 4
+['\\$', '', 'Ҥ'],                   // 4
+['5', '', 'ҕ'],                     // 5
+['#', '', 'Ҕ'],                     // 5
+['6', '', 'ө'],                     // 6
+['\\^', '', 'Ө'],                   // 6
+['7', '', 'һ'],                     // 7
+['&', '', 'Һ'],                     // 7
+['8', '', 'ү'],                     // 8
+['\\*', '', 'Ү'],                   // 8
+['9', '', ';'],                     // 9
+['0', '', ':'],                     // 0
 ];
 
-jQuery.narayam.addScheme( 'ru-standard', {
-	'namemsg': 'narayam-ru-standard',
+jQuery.narayam.addScheme( 'sah-standard', {
+	'namemsg': 'narayam-sah-standard',
 	'extended_keyboard': false,
 	'lookbackLength': 0,
 	'keyBufferLength': 0,
