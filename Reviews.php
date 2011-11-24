@@ -59,6 +59,7 @@ $wgAutoloadClasses['ReviewControl'] 			= dirname( __FILE__ ) . '/includes/Review
 $wgAutoloadClasses['ReviewPager'] 				= dirname( __FILE__ ) . '/includes/ReviewPager.php';
 $wgAutoloadClasses['ReviewRating'] 				= dirname( __FILE__ ) . '/includes/ReviewRating.php';
 $wgAutoloadClasses['ReviewsDBObject'] 			= dirname( __FILE__ ) . '/includes/ReviewsDBObject.php';
+$wgAutoloadClasses['ReviewsTag'] 				= dirname( __FILE__ ) . '/includes/ReviewsTag.php';
 
 $wgAutoloadClasses['SpecialMyReviews'] 			= dirname( __FILE__ ) . '/specials/SpecialMyReviews.php';
 $wgAutoloadClasses['SpecialReviews'] 			= dirname( __FILE__ ) . '/specials/SpecialReviews.php';
@@ -81,6 +82,7 @@ $wgHooks['UnitTestsList'][] 					= 'ReviewsHooks::registerUnitTests';
 $wgHooks['PersonalUrls'][] 						= 'ReviewsHooks::onPersonalUrls';
 $wgHooks['GetPreferences'][] 					= 'ReviewsHooks::onGetPreferences';
 $wgHooks['BeforePageDisplay'][] 				= 'ReviewsHooks::onBeforePageDisplay';
+$wgHooks['ParserFirstCallInit'][] 				= 'ReviewsHooks::onParserFirstCallInit';
 
 // Rights
 $wgAvailableRights[] = 'reviewsadmin';

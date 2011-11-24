@@ -67,7 +67,12 @@ class SpecialReviews extends SpecialPage {
 			}
 			else {
 				$this->getOutput()->addWikiMsg( 'reviews-reviews-editheader' );
-				$this->displayEditControl( $review );
+				
+				$this->displaySummary( $review );
+				
+				$this->getOutput()->addHTML( $review->getHTML() );
+				
+				$this->displayAdminControls( $review );
 			}
 		}
 	}
@@ -78,7 +83,7 @@ class SpecialReviews extends SpecialPage {
 	 * @since 0.1
 	 */
 	protected function displayReviewList() {
-		$reviewPager = new ReviewPager( array() );
+		$reviewPager = new ReviewPager( array(), $this->getName() );
 
 		if ( $reviewPager->getNumRows() ) {
 			$this->getOutput()->addHTML(
@@ -90,6 +95,26 @@ class SpecialReviews extends SpecialPage {
 		else {
 			$this->getOutput()->addWikiMsg( 'reviews-pager-no-results' );
 		}
+	}
+	
+	/**
+	 * Display a summary of the review.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Review $review
+	 */
+	protected function displaySummary( Review $review ) {
+	}
+	
+	/**
+	 * Display a summary of the review.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Review $review
+	 */
+	protected function displayAdminControls( Review $review ) {
 	}
 
 }

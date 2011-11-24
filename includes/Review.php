@@ -19,7 +19,7 @@ class Review extends ReviewsDBObject {
 	const STATUS_REVIEWED = 2;
 
 	/**
-	 * 
+	 * The ratings that are part of this review.
 	 *
 	 * @since 0.1
 	 * @var array of ReviewRating
@@ -276,6 +276,37 @@ class Review extends ReviewsDBObject {
 		);
 		
 		return wfMsg( 'reviews-state-' . $map[$state] );
+	}
+	
+	/**
+	 * Get HTML to represent the review.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return string
+	 */
+	public function getHTML() {
+		$html = '<table>';
+		
+		$html .= '<tr><th colspan="2">' . htmlspecialchars( $this->getField( 'title' ) ) . '</th></tr>';
+		
+		$html .= '<tr>';
+		
+		$html .= '<td>...</td>';
+		
+		$html .= Html::element( 'td', array(), $this->getField( 'text' ) );
+		
+		$html .= '</tr>';
+		
+		$html .= '</table>';
+		
+		return Html::openElement(
+			'div',
+			array(
+				'class' => 'reviews-review',
+				'id' => 'reviews-review-' . $this->getId()
+			)
+		) . $html . '</div>';
 	}
 
 }
