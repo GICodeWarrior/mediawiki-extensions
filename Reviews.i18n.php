@@ -76,6 +76,7 @@ $messages['en'] = array(
 	'reviews-pager-title' => 'Title',
 	'reviews-pager-user' => 'User',
 	'reviews-pager-page' => 'For page',
+	'reviews-pager-rating' => 'Rating',
 );
 
 /** Message documentation (Message documentation)

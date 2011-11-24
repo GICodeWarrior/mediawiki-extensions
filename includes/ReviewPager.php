@@ -82,6 +82,7 @@ class ReviewPager extends TablePager {
 			}
 			
 			$headers['review_state'] = 'reviews-pager-state';
+			$headers['review_rating'] = 'reviews-pager-rating';
 
 			$headers = array_map( 'wfMsg', $headers );
 		}
@@ -135,6 +136,10 @@ class ReviewPager extends TablePager {
 					);
 				}
 				break;
+			case 'review_rating':
+				// TODO: might want to display stars here as well.
+				$value = $this->getLang()->formatNum( $value );
+				break;
 		}
 
 		return $value;
@@ -150,6 +155,7 @@ class ReviewPager extends TablePager {
 				'review_title',
 				'review_user_id',
 				'review_page_id',
+				'review_rating',
 			),
 			'conds' => $this->conds,
 		);
@@ -173,6 +179,7 @@ class ReviewPager extends TablePager {
 			array(
 				'review_post_time',
 				'review_state',
+				'review_rating',
 			)
 		);
 	}
