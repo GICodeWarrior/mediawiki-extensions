@@ -176,8 +176,10 @@ See also:
 {{Identical|What is this}}',
 	'moodbar-what-collapsed' => '{{optional}}
 This should normally only be changed for right-to-left (RTL) languages like Arabic and Hebrew, to change it into an arrow in the other direction: ◄ (equals <code>& #x25C4;</code>, without the whitespace).',
-	'moodbar-respond-collapsed' => 'Special character for response form collapsed',
-	'moodbar-respond-expanded' => 'Special character for response form expanded',
+	'moodbar-respond-collapsed' => '{{optional}}
+Special character for response form collapsed',
+	'moodbar-respond-expanded' => '{{optional}}
+Special character for response form expanded',
 	'moodbar-respond-text' => 'Text for Response toggle',
 	'moodbar-response-add' => 'Text for Response heading',
 	'moodbar-response-nosig' => 'Text explaining signature is not required',
@@ -246,8 +248,10 @@ See also:
 * $3 {{msg-mw|moodbar-response-cc}}
 * $4 {{msg-mw|moodbar-response-gfdl}}',
 	'moodbar-response-terms-of-use' => 'Terms of Use Text',
-	'moodbar-response-cc' => 'Creative Commons Text',
-	'moodbar-response-gfdl' => 'GFDL Text',
+	'moodbar-response-cc' => '{{optional}}
+Creative Commons Text',
+	'moodbar-response-gfdl' => '{{optional}}
+GFDL Text',
 	'feedbackresponse-success' => 'Text for successful feedback response',
 );
 
@@ -1072,6 +1076,10 @@ $messages['fr'] = array(
 	'moodbar-type-confused-title' => 'Confus',
 	'tooltip-moodbar-what' => 'En savoir plus sur cette fonctionnalité',
 	'moodbar-what-label' => "Qu'est-ce que c'est?",
+	'moodbar-respond-text' => 'Répondre à cela',
+	'moodbar-response-add' => 'Ajouter une réponse',
+	'moodbar-response-nosig' => 'signature non requise',
+	'moodbar-response-btn' => 'Envoyer la réponse',
 	'moodbar-what-content' => "Cette fonctionnalité est conçue pour aider la communauté à comprendre le ressenti des personnes éditant le site.
 Pour plus d'information, consultez la $1.",
 	'moodbar-what-link' => 'page décrivant la fonction',
@@ -1110,6 +1118,7 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-header-namespace' => 'Espace de noms',
 	'moodbar-header-own-talk' => 'Page de discussion personnelle',
 	'moodbar-feedback-title' => 'Tableau de bord des ressentis',
+	'moodbar-feedback-response-title' => "Réponse d'avis du tableau de bord",
 	'moodbar-feedback-view-link' => '(Voir les commentaires)',
 	'moodbar-feedback-filters' => 'Filtres',
 	'moodbar-feedback-filters-type' => 'Humeur:',
@@ -1131,6 +1140,8 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-comment-hidden' => '(Commentaire caché par mesure administrative)',
 	'moodbar-feedback-show' => 'afficher les commentaires cachés',
 	'moodbar-feedback-hide' => 'masquer les commentaires',
+	'moodbar-feedback-action-confirm' => 'Confirmer',
+	'moodbar-feedback-action-cancel' => 'Annuler',
 	'moodbar-hidden-footer' => 'Avis caché de $1 sur $2, motif: $3 $4',
 	'moodbar-hidden-footer-without-log' => 'Commentaire caché $1',
 	'moodbar-feedback-restore' => 'restaurer les commentaires cachés',
@@ -1151,6 +1162,10 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-log-header' => 'Ceci est le journal des actions prises sur les commentaires listés sur [[Special:FeedbackDashboard|tableau de bord de commentaires]].',
 	'moodbar-log-hide' => 'a caché [[$1]]',
 	'moodbar-log-restore' => 'a restauré la visibilité de [[$1]]',
+	'moodbar-response-ula' => 'En cliquant sur le bouton "$1", vous vous engagez à $2, et vous acceptez de mettre votre contribution de façon irrévocable sous la licence $3 et $4 .
+Vous acceptez qu\'une URL ou un lien hypertexte est une attribution suffisante sous la licence Creative Commons.',
+	'moodbar-response-terms-of-use' => "Conditions d'utilisation",
+	'feedbackresponse-success' => "Merci. Votre réponse a été ajoutée à la page de discussion de l'utilisateur.",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1255,6 +1270,10 @@ $messages['gl'] = array(
 	'moodbar-type-confused-title' => 'Confuso',
 	'tooltip-moodbar-what' => 'Máis información sobre esta característica',
 	'moodbar-what-label' => 'Que é isto?',
+	'moodbar-respond-text' => 'Responder a isto',
+	'moodbar-response-add' => 'Engadir unha resposta',
+	'moodbar-response-nosig' => 'a sinatura non é necesaria',
+	'moodbar-response-btn' => 'Enviar a resposta',
 	'moodbar-what-content' => 'Esta característica está deseñada para axudar á comunidade a entender a experiencia da xente á hora de editar o sitio.
 Para obter máis información, bótelle unha ollada á $1 .',
 	'moodbar-what-link' => 'páxina da característica',
@@ -1292,7 +1311,8 @@ Para obter máis información, bótelle unha ollada á $1 .',
 	'moodbar-header-user-editcount' => 'Número de edición do usuario',
 	'moodbar-header-namespace' => 'Espazo de nomes',
 	'moodbar-header-own-talk' => 'Páxina de conversa propia',
-	'moodbar-feedback-title' => 'Comentarios sobre o taboleiro',
+	'moodbar-feedback-title' => 'Taboleiro de comentarios',
+	'moodbar-feedback-response-title' => 'Respostas aos comentarios do taboleiro',
 	'moodbar-feedback-view-link' => '(Ollar os comentarios)',
 	'moodbar-feedback-filters' => 'Filtros',
 	'moodbar-feedback-filters-type' => 'Humor:',
@@ -1314,6 +1334,8 @@ Para obter máis información, bótelle unha ollada á $1 .',
 	'moodbar-comment-hidden' => '(Comentario agochado por un administrador)',
 	'moodbar-feedback-show' => 'mostrar o comentario agochado',
 	'moodbar-feedback-hide' => 'agochar o comentario',
+	'moodbar-feedback-action-confirm' => 'Confirmar',
+	'moodbar-feedback-action-cancel' => 'Cancelar',
 	'moodbar-hidden-footer' => 'Comentario agochado por $1 o $2 ás $3; motivo: $4 $5',
 	'moodbar-hidden-footer-without-log' => 'Comentario agochado $1',
 	'moodbar-feedback-restore' => 'restaurar o comentario agochado',
@@ -1334,6 +1356,10 @@ Para obter máis información, bótelle unha ollada á $1 .',
 	'moodbar-log-header' => 'Este é o rexistro das accións levadas a cabo nos elementos de valoración listados no [[Special:FeedbackDashboard|taboleiro de comentarios]].',
 	'moodbar-log-hide' => 'agochou "[[$1]]"',
 	'moodbar-log-restore' => 'restaurou a visibilidade de "[[$1]]"',
+	'moodbar-response-ula' => 'Ao premer no botón "$1" acepta os $2 e acepta liberar irrevogablemente a súa contribución baixo a licenza $3 e a $4.
+Acepta que unha hiperligazón ou URL é recoñecemento abondo baixo a licenza Creative Commons.',
+	'moodbar-response-terms-of-use' => 'Termos de uso',
+	'feedbackresponse-success' => 'Grazas. A súa resposta engadiuse á páxina de conversa do usuario.',
 );
 
 /** Swiss German (Alemannisch)
@@ -1528,6 +1554,10 @@ $messages['ia'] = array(
 	'moodbar-type-confused-title' => 'Confuse',
 	'tooltip-moodbar-what' => 'Lege plus a proposito de iste function',
 	'moodbar-what-label' => 'Que es isto?',
+	'moodbar-respond-text' => 'Responder a isto',
+	'moodbar-response-add' => 'Adder un responsa',
+	'moodbar-response-nosig' => 'signatura non obligatori',
+	'moodbar-response-btn' => 'Inviar responsa',
 	'moodbar-what-content' => 'Iste function es concipite pro adjutar le communitate a comprender le experientia del personas qui modifica le sito.
 Pro ulterior information, per favor visita le $1.',
 	'moodbar-what-link' => 'pagina de function',
@@ -1566,6 +1596,8 @@ Pro ulterior information, per favor visita le $1.',
 	'moodbar-header-namespace' => 'Spatio de nomines',
 	'moodbar-header-own-talk' => 'Pagina de discussion proprie',
 	'moodbar-feedback-title' => 'Pannello de retroaction',
+	'moodbar-feedback-response-title' => 'Responsa de pannello de retroaction',
+	'moodbar-feedback-view-link' => '(Vider le commentario)',
 	'moodbar-feedback-filters' => 'Filtros',
 	'moodbar-feedback-filters-type' => 'Humor:',
 	'moodbar-feedback-filters-type-happy' => 'Felice',
@@ -1586,6 +1618,8 @@ Pro ulterior information, per favor visita le $1.',
 	'moodbar-comment-hidden' => '(Commentario celate per action administrative)',
 	'moodbar-feedback-show' => 'monstrar commentario celate',
 	'moodbar-feedback-hide' => 'celar commentario',
+	'moodbar-feedback-action-confirm' => 'Confirmar',
+	'moodbar-feedback-action-cancel' => 'Cancellar',
 	'moodbar-hidden-footer' => 'Commentario celate scribite per $1 le $2 a $3, motivo: $4 $5',
 	'moodbar-hidden-footer-without-log' => 'Commentario celate $1',
 	'moodbar-feedback-restore' => 'restaurar commentario celate',
@@ -1606,6 +1640,10 @@ Pro ulterior information, per favor visita le $1.',
 	'moodbar-log-header' => 'Isto es le registro de actiones prendite sur elementos de retroaction listate in le [[Special:FeedbackDashboard|pannello de retroaction]].',
 	'moodbar-log-hide' => 'celava [[$1]]',
 	'moodbar-log-restore' => 'restaurava le visibilitate de [[$1]]',
+	'moodbar-response-ula' => 'Per cliccar sur le button "$1", tu accepta le $2, e tu consenti irrevocabilemente al publication de tu contribution sub le licentia $3 e sub le $4.
+Tu accepta que un hyperligamine o URL suffice como attribution sub le licentia $3.',
+	'moodbar-response-terms-of-use' => 'conditiones de uso',
+	'feedbackresponse-success' => 'Gratias. Tu responsa ha essite addite al pagina de discussion del usator.',
 );
 
 /** Khowar (کھوار) */
@@ -2126,6 +2164,8 @@ Ga naar de $1 voor mee informatie.',
 	'moodbar-log-header' => 'Dit is een logboek met uitgevoerde handelingen op items uit het [[Special:FeedbackDashboard|terugkoppelingsdashboard]].',
 	'moodbar-log-hide' => 'heeft [[$1]] verborgen',
 	'moodbar-log-restore' => 'heeft [[$1]] weer zichtbaar gemaakt',
+	'moodbar-response-ula' => 'Door op de knop "$1" te klikken, gaat u akkoord met de $2 en gaat u onherroepelijk akkoord met het vrijgeven van uw bijdragen onder de licentie $3 en $4.
+U stemt ermee in dat een hyperlink of URL voldoende naamsvermelding is onder de Creative Commons-licentie.',
 	'moodbar-response-terms-of-use' => 'Gebruiksvoorwaarden',
 	'feedbackresponse-success' => 'Dank u wel. Uw reactie is toegevoegd aan de overlegpagina van de gebruiker.',
 );
@@ -2789,6 +2829,10 @@ $messages['sl'] = array(
 	'moodbar-type-confused-title' => 'Zmeden',
 	'tooltip-moodbar-what' => 'Več informacij o tej funkciji',
 	'moodbar-what-label' => 'Kaj je to?',
+	'moodbar-respond-text' => 'Odgovori na to',
+	'moodbar-response-add' => 'Dodaj odgovor',
+	'moodbar-response-nosig' => 'podpis ni potreben',
+	'moodbar-response-btn' => 'Pošlji odgovor',
 	'moodbar-what-content' => 'Funkcija je oblikovana kot pomoč skupnosti pri razumevanju izkušnje ljudi, ki urejajo stran.
 Za več informacij obiščite $1.',
 	'moodbar-what-link' => 'stran z opisom',
@@ -2849,6 +2893,8 @@ Za več informacij obiščite $1.',
 	'moodbar-comment-hidden' => '(Povratno informacijo je skril ukrep administratorja)',
 	'moodbar-feedback-show' => 'prikaži skrito povratno informacijo',
 	'moodbar-feedback-hide' => 'skrij povratno informacijo',
+	'moodbar-feedback-action-confirm' => 'Potrdi',
+	'moodbar-feedback-action-cancel' => 'Prekliči',
 	'moodbar-hidden-footer' => 'Skrita povratna informacija $1 dne $2 $3, razlog: $4 $5',
 	'moodbar-hidden-footer-without-log' => 'Skrita povratna informacija $1',
 	'moodbar-feedback-restore' => 'obnovi skrito povratno informacijo',
@@ -2869,6 +2915,10 @@ Za več informacij obiščite $1.',
 	'moodbar-log-header' => 'To je dnevnik dejanj, izvedenih na predmetih povratnih informacij, navedenih na [[Special:FeedbackDashboard|pregledni plošči povratnih informacij]].',
 	'moodbar-log-hide' => 'je skril(-a) [[$1]]',
 	'moodbar-log-restore' => 'je obnovil(-a) vidljivost [[$1]]',
+	'moodbar-response-ula' => 'S klikom na gumb »$1« se strinjate s $2 in se nepreklicno strinjate z objavo vašega prispevka pod dovoljenjema $3 in $4.
+Strinjate se, da je hiperpovezava ali URL zadostna navedba avtorja pod dovoljenjem Creative Commons.',
+	'moodbar-response-terms-of-use' => 'Pogoji uporabe',
+	'feedbackresponse-success' => 'Hvala. Vaš odgovor smo dodali na uporabnikovo pogovorno stran.',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
@@ -3141,6 +3191,7 @@ $messages['vi'] = array(
 	'moodbar-log-header' => 'Nhật trình này liệt kê các tác vụ được thực hiện do các khoản mục phản hồi trên [[Special:FeedbackDashboard|bảng điều khiển phản hồi]].',
 	'moodbar-log-hide' => 'đã ẩn [[$1]]',
 	'moodbar-log-restore' => 'đã phục hồi mức hiển thị của [[$1]]',
+	'moodbar-response-terms-of-use' => 'Điều khoản sử dụng',
 );
 
 /** Yiddish (ייִדיש)
