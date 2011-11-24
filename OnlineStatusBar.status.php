@@ -15,10 +15,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 
 class OnlineStatusBar_StatusCheck {
-
 	private static function getCacheKey( $user, $type ) {
 		// get a key for cache
-		return wfMemcKey( 'onlinestatusbarcache_' . $type . "_" . $user );
+		return wfMemcKey( 'onlinestatusbar_cache', $type, $user );
 	}
 
 	/**
