@@ -15,6 +15,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 
 class OnlineStatusBar_StatusCheck {
+	/**
+	 * Return cache key
+	 * @param $user String
+	 * @param $type String
+	 */
 	private static function getCacheKey( $user, $type ) {
 		// get a key for cache
 		return wfMemcKey( 'onlinestatusbar_cache', $type, $user );
@@ -22,7 +27,9 @@ class OnlineStatusBar_StatusCheck {
 
 	/**
 	 * Create a cache
-	 * return true
+	 * @param $user
+	 * @param $values
+	 * @return true
 	 */
 	public static function setCache( $user, $values, $type ) {
 		global $wgOnlineStatusBarWriteTime, $wgMemc;
@@ -32,6 +39,9 @@ class OnlineStatusBar_StatusCheck {
 		return true;
 	}
 
+	/**
+	 * Return cache value
+	 */
 	public static function getCache( $user, $type ) {
 		global $wgMemc;
 		// get a key
