@@ -470,7 +470,7 @@ class LocalisationUpdate {
 					// Update the counter.
 					$updates++;
 				}
-			} else if ( isset( $forbiddenKeys[$key] ) && isset( $compare_messages[$key] ) ) {
+			} elseif ( isset( $forbiddenKeys[$key] ) && isset( $compare_messages[$key] ) ) {
 				// The message was changed in English, but a previous translation still exists in the cache.
 				// Use that previous translation rather than falling back to the .i18n.php file
 				$new_messages[$key] = $compare_messages[$key];
