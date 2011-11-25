@@ -66,6 +66,8 @@ class SpecialReviews extends SpecialPage {
 				$this->displayReviewList();
 			}
 			else {
+				$this->getOutput()->addModules( 'ext.reviews.special.reviews' );
+				
 				$this->getOutput()->addWikiMsg( 'reviews-reviews-editheader' );
 				
 				$this->displaySummary( $review );
@@ -105,6 +107,59 @@ class SpecialReviews extends SpecialPage {
 	 * @param Review $review
 	 */
 	protected function displaySummary( Review $review ) {
+		$out = $this->getOutput();
+
+		$out->addHTML( Html::openElement( 'table', array( 'class' => 'wikitable review-summary' ) ) );
+
+		foreach ( $this->getSummaryData( $review ) as $stat => $value ) {
+			$out->addHTML( '<tr>' );
+
+			$out->addHTML( Html::element(
+				'th',
+				array( 'class' => 'review-summary-name' ),
+				wfMsg( 'reviews-reviews-header-' . $stat )
+			) );
+
+			$out->addHTML( Html::rawElement(
+				'td',
+				array( 'class' => 'review-summary-value' ),
+				$value
+			) );
+
+			$out->addHTML( '</tr>' );
+		}
+
+		$out->addHTML( Html::closeElement( 'table' ) );
+	}
+	
+	/**
+	 * Gets the summary data.
+	 * Values are escaped.
+	 *
+	 * @since 0.1
+	 *
+	 * @param Review $review
+	 *
+	 * @return array
+	 */
+	protected function getSummaryData( Review $review ) {
+		$stats = array();
+
+		$stats['title'] = htmlspecialchars( $review->getField( 'title' ) );
+		$stats['page'] = Linker::link( $review->getTitle() );
+		$stats['posted'] = htmlspecialchars( $this->getLang()->timeanddate( $review->getField( 'post_time' ), true ) );
+		$stats['edited'] = htmlspecialchars( $this->getLang()->timeanddate( $review->getField( 'edit_time' ), true ) );
+		
+		$user = $review->getUser();
+		$stats['user'] = Linker::userLink( $user->getId(), $user->getName() ) .
+							Linker::userToolLinks( $user->getId(), $user->getName() );
+						
+		$stats['state'] = $review->getStateControl( $this->getUser() );
+		
+		// TODO: might want to display stars here as well.
+		$stats['rating'] = htmlspecialchars( $this->getLang()->formatNum( $review->getField( 'rating' ) ) );
+
+		return $stats;
 	}
 	
 	/**

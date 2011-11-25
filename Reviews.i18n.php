@@ -76,6 +76,14 @@ $messages['en'] = array(
 	'reviews-reviews-nosuchreview' => 'You do not have a review with the provided ID, it might have been deleted. All reviews are listed below.',
 	'reviews-reviews-editheader' => 'On this page you can manage this review. You can also view a list of [[Special:Reviews|all reviews]].',
 
+	'reviews-reviews-header-title' => 'Review title',
+	'reviews-reviews-header-page' => 'For page',
+	'reviews-reviews-header-posted' => 'Posted on',
+	'reviews-reviews-header-edited' => 'Last edited on',
+	'reviews-reviews-header-user' => 'User',
+	'reviews-reviews-header-state' => 'Review state',
+	'reviews-reviews-header-rating' => 'Main rating',
+
 	// Review pager
 	'reviews-pager-no-results' => 'There are no reviews to list.',
 	'reviews-pager-post-time' => 'Post time',
@@ -152,4 +160,12 @@ $messages['qqq'] = array(
 	'reviews-pager-confirm-new' => 'Confirmation dialog message',
 	'reviews-pager-confirm-reviewed' => 'Confirmation dialog message',
 	'reviews-pager-updating' => 'Message indicating the status is being updated',
+
+	'reviews-reviews-header-title' => 'Table row header value',
+	'reviews-reviews-header-page' => 'Table row header value',
+	'reviews-reviews-header-posted' => 'Table row header value',
+	'reviews-reviews-header-edited' => 'Table row header value',
+	'reviews-reviews-header-user' => 'Table row header value',
+	'reviews-reviews-header-state' => 'Table row header value',
+	'reviews-reviews-header-rating' => 'Table row header value',
 );

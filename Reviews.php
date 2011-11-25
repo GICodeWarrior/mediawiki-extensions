@@ -222,6 +222,15 @@ $wgResourceModules['jquery.reviewState'] = $moduleTemplate + array(
 	),
 );
 
+$wgResourceModules['ext.reviews.special.reviews'] = $moduleTemplate + array(
+	'scripts' => array(
+		'reviews.special.js',
+	),
+	'dependencies' => array(
+		'jquery.reviewState'
+	),
+);
+
 unset( $moduleTemplate );
 
 $egReviewsSettings = array();

@@ -33,6 +33,24 @@ class Review extends ReviewsDBObject {
 	protected $ratings = false;
 
 	/**
+	 * The user this review belongs to.
+	 * This field is used for caching the return value of getUser.
+	 * 
+	 * @since 0.1
+	 * @var User|false
+	 */
+	protected $user = false;
+	
+	/**
+	 * The title of the page this review belongs to.
+	 * This field is used for caching the return value of getTitle.
+	 * 
+	 * @since 0.1
+	 * @var Title|false
+	 */
+	protected $title = false;
+	
+	/**
 	 * @see parent::getFieldTypes
 	 *
 	 * @since 0.1
@@ -331,6 +349,55 @@ class Review extends ReviewsDBObject {
 				'id' => 'reviews-review-' . $this->getId()
 			)
 		) . $html . '</div>';
+	}
+	
+	/**
+	 * Returns the user the review belongs to.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return User|false
+	 */
+	public function getUser() {
+		if ( $this->user === false ) {
+			$this->user = $this->hasField( 'user_id' ) ? User::newFromId( $this->getField( 'user_id' ) ) : false;
+		}
+		
+		return $this->user;
+	}
+	
+	
+	/**
+	 * Returns the Title of the page the review belongs to.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return Title|false
+	 */
+	public function getTitle() {
+		if ( $this->title === false ) {
+			$this->title = $this->hasField( 'page_id' ) ? Title::newFromID( $this->getField( 'page_id' ) ) : false;
+		}
+		
+		return $this->title;
+	}
+	
+	public function getStateControl( User $user ) {
+		$state = htmlspecialchars( self::getStateMessage( $this->getField( 'state' ) ) );
+		
+		if ( $user->isAllowed( 'reviewsadmin' ) ) {
+			$state = Html::element(
+				'div',
+				array(
+					'class' => 'reviews-state-controls',
+					'data-review-id' => $this->getId(),
+					'data-review-state' => self::getStateString( $this->getField( 'state' ) ),
+				),
+				$state
+			);
+		}
+		
+		return $state;
 	}
 
 }
