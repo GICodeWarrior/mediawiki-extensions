@@ -36,7 +36,7 @@ class OnlineStatusBar_StatusCheck {
 		// get a key
 		$cache_key = self::getCacheKey( $user, $type );
 		if ( $time === null ) {
-			$time = $wgOnlineStatusBarWriteTime );
+			$time = $wgOnlineStatusBarWriteTime;
 		}
 		$wgMemc->set( $cache_key, $values, $time );
 		return true;
