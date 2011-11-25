@@ -199,6 +199,15 @@ $wgResourceModules['ext.reviews.pager'] = $moduleTemplate + array(
 	'scripts' => array(
 		'reviews.pager.js',
 	),
+	'dependencies' => array(
+		'jquery.reviewState'
+	),
+);
+
+$wgResourceModules['jquery.reviewState'] = $moduleTemplate + array(
+	'scripts' => array(
+		'jquery.reviewState.js',
+	),
 	'messages' => array(
 		'reviews-pager-change-new',
 		'reviews-pager-change-flagged',
