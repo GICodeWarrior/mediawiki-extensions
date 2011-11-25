@@ -151,7 +151,7 @@ class ContributionTrackingProcessor {
 
 	/**
 	 * Effectively changes the name of a key in an array. If the key does not
-	 * exist, no change is made. 
+	 * exist, no change is made.
 	 * @param array $array The array to rekey (by reference)
 	 * @param string $oldkey The key to change
 	 * @param string $newkey The new value for the key
@@ -169,7 +169,7 @@ class ContributionTrackingProcessor {
 	 * table.
 	 * For these values, if the key exists (and is not explicit false), it is
 	 * received as "true". Therefore, the rekey'd value should be false.
-	 * However, the old key not existing isn't exactly conclusive. 
+	 * However, the old key not existing isn't exactly conclusive.
 	 * @param array $array The array to rekey (by reference)
 	 * @param string $oldkey The key to change
 	 * @param string $invertedkey The key meant to contain the inverted boolean
@@ -255,12 +255,12 @@ class ContributionTrackingProcessor {
 			'notify_url' => '',
 			'item_name' => '',
 			'address1' => '',
-			'city' => '',			
+			'city' => '',
 			'state' => '',
 			'zip' => '',
 			'country' => 'US',
 			'address_override' => '0'
-			
+
 		);
 	}
 
@@ -390,7 +390,7 @@ class ContributionTrackingProcessor {
 				$repost['fields']['notify_url'] = $input['notify_url'];
 				$repost['fields']['item_name'] = $input['item_name'];
 			}
-		} else if ( $input['gateway'] == 'moneybookers' ) {
+		} elseif ( $input['gateway'] == 'moneybookers' ) {
 			$repost['action'] = 'https://www.moneybookers.com/app/payment.pl';
 
 			// Tracking
