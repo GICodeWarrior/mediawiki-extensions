@@ -38,6 +38,8 @@ class ReviewPager extends TablePager {
 
 		// when MW 1.19 becomes min, we want to pass an IContextSource $context here.
 		parent::__construct();
+		
+		$this->getOutput()->addModules( 'ext.reviews.pager' );
 	}
 
 	/**
@@ -121,10 +123,17 @@ class ReviewPager extends TablePager {
 				$value = $this->getLang()->timeanddate( $value, true );
 				break;
 			case 'review_state':
-				$value = Review::getStateMessage( $value );
+				$value = htmlspecialchars( Review::getStateMessage( $value ) );
 				if ( $this->getUser()->isAllowed( 'reviewsadmin' ) ) {
-					$action = $this->mCurrentRow->review_state == Review::STATUS_FLAGGED ? 'unflag' : 'flag';
-					$value .= ' (' . wfMsgHtml( 'reviews-pager-' . $action ) . ')';
+					$value = Html::element(
+						'div',
+						array(
+							'class' => 'reviews-state-controls',
+							'data-review-id' => $this->mCurrentRow->review_id,
+							'data-review-state' => Review::getStateString( $this->mCurrentRow->review_state ),
+						),
+						$value
+					);
 				}
 				break;
 			case 'review_page_id':

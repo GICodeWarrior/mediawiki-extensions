@@ -46,7 +46,7 @@ $messages['en'] = array(
 	// Review states
 	'reviews-state-new' => 'New',
 	'reviews-state-flagged' => 'Flagged',
-	'reviews-state-reviewed' => 'Reviewed',
+	'reviews-state-reviewed' => 'Approved',
 
 	// Preferences
 	'prefs-reviews' => 'Reviews',
@@ -85,8 +85,13 @@ $messages['en'] = array(
 	'reviews-pager-page' => 'For page',
 	'reviews-pager-rating' => 'Rating',
 	'reviews-pager-deleted' => 'The page was deleted',
-	'reviews-pager-flag' => 'Flag',
-	'reviews-pager-unflag' => 'Unflag',
+	'reviews-pager-change-new' => 'Unflag',
+	'reviews-pager-change-flagged' => 'Flag',
+	'reviews-pager-change-reviewed' => 'Approve',
+	'reviews-pager-confirm-flagged' => 'Are you sure you want to flag this review?',
+	'reviews-pager-confirm-new' => 'Are you sure you want to unflag this review?',
+	'reviews-pager-confirm-reviewed' => 'Are you sure you want to mark this review as reviewed?',
+	'reviews-pager-updating' => 'Updating...',
 );
 
 /** Message documentation (Message documentation)
@@ -142,4 +147,7 @@ $messages['qqq'] = array(
 	'reviews-pager-deleted' => 'Informs the user a page was deleted',
 	'reviews-pager-flag' => 'Link text to flag a review',
 	'reviews-pager-unflag' => 'Link text to unflag a review',
+	'reviews-pager-confirm-flag' => 'Confirmation dialog message',
+	'reviews-pager-confirm-unflag' => 'Confirmation dialog message',
+	'reviews-pager-updating' => 'Message indicating the status is being updated',
 );

@@ -1,38 +1,42 @@
 <?php
 
 /**
- * API module to delete reviews.
+ * API module to flag reviews.
  *
  * @since 0.1
  *
- * @file ApiDeleteReviews.php
+ * @file ApiFlagReviews.php
  * @ingroup Reviews
  * @ingroup API
  *
  * @licence GNU GPL v3+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ApiDeleteReviews extends ApiBase {
+class ApiFlagReviews extends ApiBase {
 
 	public function execute() {
 
-		if ( !$this->getUser()->isAllowed( 'reviewadmin' ) || $this->getUser()->isBlocked() ) {
+		if ( $this->getUser()->isBlocked() ) {
 			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
-
+		
 		$params = $this->extractRequestParams();
-
-		$everythingOk = true;
-
-		foreach ( $params['ids'] as $id ) {
-			$review = new Review( array( 'id' => $id ) );
-			$everythingOk = $review->removeAllFromDB() && $everythingOk;
+		
+		$state = Review::getStateForString( $params['state'] );
+		
+		if ( $state == Review::STATUS_FLAGGED && !$this->getUser()->isAllowed( 'flagreview' ) ) {
+			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
-
+		
+		if ( in_array( $state, array( Review::STATUS_REVIEWED, Review::STATUS_NEW ) ) 
+			&& !$this->getUser()->isAllowed( 'reviewreview' ) ) {
+			$this->dieUsageMsg( array( 'badaccess-groups' ) );
+		}
+		
 		$this->getResult()->addValue(
 			null,
 			'success',
-			$everythingOk
+			Review::update( array( 'state' => $state ), array( 'id' => $params['ids'] ) )
 		);
 	}
 
@@ -83,6 +87,7 @@ class ApiDeleteReviews extends ApiBase {
 			'api.php?action=flagreview&ids=42',
 			'api.php?action=flagreview&ids=4|2',
 			'api.php?action=flagreview&ids=42&state=reviewed',
+			'api.php?action=flagreview&ids=4|2&state=new',
 		);
 	}
 

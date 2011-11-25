@@ -195,6 +195,24 @@ $wgResourceModules['ext.reviews.tag'] = $moduleTemplate + array(
 	),
 );
 
+$wgResourceModules['ext.reviews.pager'] = $moduleTemplate + array(
+	'scripts' => array(
+		'reviews.pager.js',
+	),
+	'messages' => array(
+		'reviews-pager-change-new',
+		'reviews-pager-change-flagged',
+		'reviews-pager-change-reviewed',
+		'reviews-pager-confirm-flagged',
+		'reviews-pager-confirm-new',
+		'reviews-pager-confirm-reviewed',
+		'reviews-pager-updating',
+		'reviews-state-new',
+		'reviews-state-flagged' ,
+		'reviews-state-reviewed',
+	),
+);
+
 unset( $moduleTemplate );
 
 $egReviewsSettings = array();

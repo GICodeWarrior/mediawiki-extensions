@@ -18,6 +18,12 @@ class Review extends ReviewsDBObject {
 	const STATUS_FLAGGED = 1;
 	const STATUS_REVIEWED = 2;
 
+	protected static $stateStringMap = array(
+		self::STATUS_NEW => 'new',
+		self::STATUS_FLAGGED => 'flagged',
+		self::STATUS_REVIEWED => 'reviewed',
+	);
+	
 	/**
 	 * The ratings that are part of this review.
 	 *
@@ -269,13 +275,31 @@ class Review extends ReviewsDBObject {
 	 * @return string
 	 */
 	public static function getStateMessage( $state ) {
-		$map = array(
-			self::STATUS_NEW => 'new',
-			self::STATUS_FLAGGED => 'flagged',
-			self::STATUS_REVIEWED => 'reviewed',
-		);
+		return wfMsg( 'reviews-state-' . self::getStateString( $state ) );
+	}
+	
+	/**
+	 * Get a string constant for the state, rather then it's usual
+	 * integer value.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param Review::STATE_ $state
+	 * 
+	 * @return string
+	 */
+	public static function getStateString( $state ) {
+		return self::$stateStringMap[$state];
+	}
+	
+	public static function getStateForString( $string ) {
+		static $map = false;
 		
-		return wfMsg( 'reviews-state-' . $map[$state] );
+		if ( $map === false ) {
+			$map = array_flip( self::$stateStringMap );
+		}
+		
+		return $map[$string];
 	}
 	
 	/**
