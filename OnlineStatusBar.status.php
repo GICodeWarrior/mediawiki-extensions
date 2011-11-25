@@ -31,11 +31,14 @@ class OnlineStatusBar_StatusCheck {
 	 * @param $values
 	 * @return true
 	 */
-	public static function setCache( $user, $values, $type ) {
+	public static function setCache( $user, $values, $type, $time = null ) {
 		global $wgOnlineStatusBarWriteTime, $wgMemc;
 		// get a key
 		$cache_key = self::getCacheKey( $user, $type );
-		$wgMemc->set( $cache_key, $values, $wgOnlineStatusBarWriteTime );
+		if ( $time === null ) {
+			$time = $wgOnlineStatusBarWriteTime );
+		}
+		$wgMemc->set( $cache_key, $values, $time );
 		return true;
 	}
 
@@ -188,6 +191,9 @@ class OnlineStatusBar_StatusCheck {
 		if ( !$wgOnlineStatusBarAutoDelete ) {
 			return 0;
 		}
+		if ( self::getCache( 'null', 'delete' ) == 'true' ) {
+			return 0;
+		}
 		$dbw = wfGetDB( DB_MASTER );
 		$t_time = OnlineStatusBar::getTimeoutDate();
 		$result = $dbw->selectField( 'online_status', 'timestamp', array( "timestamp < " . $dbw->addQuotes( $dbw->timestamp( $t_time ) ) ),
@@ -200,6 +206,7 @@ class OnlineStatusBar_StatusCheck {
 		// calculate time and convert it back to mediawiki format
 		$time = OnlineStatusBar::getTimeoutDate();
 		$dbw->delete( 'online_status', array( "timestamp < " . $dbw->addQuotes( $dbw->timestamp( $time ) ) ), __METHOD__ );
+		self::setCache( 'null', 'true', 'delete', 3600 ); // remember we deleted it for 1 hour so that we avoid calling this too many times
 		return 0;
 	}
 }
