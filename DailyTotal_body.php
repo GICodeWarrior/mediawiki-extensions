@@ -134,4 +134,8 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 		header( "Content-type: $wgJsMimeType; charset=utf-8" );
 		header( "Cache-Control: public, s-maxage=$this->sharedMaxAge, max-age=$this->maxAge" );
 	}
+
+	public function isListed(){
+		return false;
+	}
 }
