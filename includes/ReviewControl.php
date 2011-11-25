@@ -19,8 +19,8 @@ class ReviewControl {
 			'class' => 'review-control',
 		);
 		
-		$pageId = is_null( $this->review ) ? $context->getTitle()->getArticleID() : $this->review->getField( 'page_id' );
-		$types = ReviewRating::getTypesForPageID( $pageId );
+		$title = is_null( $this->review ) ? $context->getTitle() : Title::newFromID( $this->review->getField( 'page_id' ) );
+		$types = is_null( $title ) ? array() : ReviewRating::getTypesForTitleText( $title->getFullText() );
 		
 		if ( is_null( $this->review ) ) {
 			$ratings = array();
@@ -30,7 +30,7 @@ class ReviewControl {
 			}
 			
 			$review = array(
-				'page_id' => $pageId,
+				'page_id' => $title->getArticleID(),
 				'title' => '',
 				'text' => '',
 				'rating' => 0,

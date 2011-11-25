@@ -69,11 +69,11 @@ class ReviewRating extends ReviewsDBObject {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param integer $pageId
+	 * @param string $titleText
 	 * 
 	 * @return array
 	 */
-	public static function getTypesForPageID( $pageId ) {
+	public static function getTypesForTitleText( $titleText ) {
 		$ratingsPerCat = ReviewsSettings::get( 'categoryRatings' );
 		$ratings = array();
 		
@@ -81,7 +81,7 @@ class ReviewRating extends ReviewsDBObject {
 			'action' => 'query',
 			'format' => 'json',
 			'prop' => 'categories',
-			'titles' => Title::newFromID( $pageId )->getFullText(),
+			'titles' => $titleText,
 		), true ), true );
 		
 		$api->execute();
@@ -92,11 +92,13 @@ class ReviewRating extends ReviewsDBObject {
 		}
 		
 		foreach ( $result['query']['pages'] as $page ) {
-			foreach ( $page['categories'] as $cat ) {
-				$cat = explode( ':', $cat['title'], 2 );
-				$cat = $cat[1];
-				if ( array_key_exists( $cat, $ratingsPerCat ) ) {
-					$ratings = array_merge( $ratings, $ratingsPerCat[$cat] );
+			if ( array_key_exists( 'categories', $page ) ) {
+				foreach ( $page['categories'] as $cat ) {
+					$cat = explode( ':', $cat['title'], 2 );
+					$cat = $cat[1];
+					if ( array_key_exists( $cat, $ratingsPerCat ) ) {
+						$ratings = array_merge( $ratings, $ratingsPerCat[$cat] );
+					}
 				}
 			}
 		}

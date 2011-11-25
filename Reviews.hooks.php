@@ -135,7 +135,7 @@ final class ReviewsHooks {
 		/* User */ $user = $skin->getUser();
 		
 		if ( $user->isLoggedIn() && $user->isAllowed( 'postreview' ) && $user->getOption( 'reviews_showcontrol' )
-			&& $out->isArticle()
+			&& $out->isArticle() && $skin->getTitle()->exists()
 			&& $skin->getRequest()->getText( 'action' ) !== 'edit' ) {
 			
 			$review = Review::selectRow( null, array(
