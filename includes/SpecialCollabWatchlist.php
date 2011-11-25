@@ -21,7 +21,7 @@
  * @ingroup SpecialPage CollabWatchlist
  */
 class SpecialCollabWatchlist extends SpecialWatchlist {
-	
+
 	/**
 	 * Constructor
 	 */
@@ -447,7 +447,7 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 		$dbr->freeResult( $res );
 		$wgOut->addHTML( $s );
 	}
-	
+
 	/**
 	 * Returns html
 	 *
@@ -498,7 +498,7 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 	/**
 	 * Constructs the filter SQL clause for the given collaborative watchlist ids.
 	 * It filters entries which are not relevant for the given watchlists. I.e.
-	 * entries which don't belong to a category and are not listed explicitly as a 
+	 * entries which don't belong to a category and are not listed explicitly as a
 	 * page for one of the given watchlists.
 	 * @param $cw_ids Array: A list of collaborative watchlist ids
 	 * @param $catNameCol String: The name of the column containing category names
@@ -530,7 +530,7 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 				$includedPageIds[$row->cat_page_id] = $row->page_title;
 			}
 		}
-		
+
 		if ( $wgCollabWatchlistRecursiveCatScan && $includedCatPageIds ) {
 			$catTree = new CategoryTreeManip();
 			$catTree->setMaxDepth($wgCollabWatchlistRecursiveCatScan);
@@ -544,12 +544,12 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 				$collabWatchlistClause .= ' OR ' . $pageIdCol . ' IN (' . implode( ',', $this->addQuotes( $dbr, array_keys( $includedPageIds ) ) ) . ')';
 			}
 			$collabWatchlistClause .= ')';
-		} else if ( !empty( $includedPageIds ) ) {
+		} elseif ( !empty( $includedPageIds ) ) {
 			$collabWatchlistClause = $pageIdCol . ' IN (' . implode( ',', $this->addQuotes( $dbr, array_keys( $includedPageIds ) ) ) . ')';
 		}
 		return $collabWatchlistClause;
 	}
-	
+
 	/**
 	 * Constructs the user filter SQL clause for the given collaborative watchlist ids.
 	 * It filters entries from the users of the given watchlists.
@@ -573,7 +573,7 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 		}
 		return $clause;
 	}
-	
+
 	//XXX SpecialWatchlist should let us pass the page title
 	public function showHideLink( $options, $message, $name, $value ) {
 		global $wgUser;
@@ -594,7 +594,7 @@ class SpecialCollabWatchlist extends SpecialWatchlist {
 	 * @param $db Database: The db object to use
 	 * @param $strings Array: A list of strings to quote
 	 * @return Array: The $strings quoted by $db->addQuotes()
-	 */	
+	 */
 	public static function addQuotes( $db, $strings ) {
 		$result = array();
 		foreach ( $strings as $string ) {

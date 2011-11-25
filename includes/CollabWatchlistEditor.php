@@ -264,7 +264,7 @@ class CollabWatchlistEditor {
 	private function checkToken( $request, $user, $rlId, $memberTypes = NULL ) {
 		if ( is_null($member_types) )
 			$member_types = array( CollabWatchlist::$USER_OWNER );
-		
+
 		$tokenOk = $user->matchEditToken( $request->getVal( 'token' ), 'watchlistedit' ) && $request->getVal( 'collabwatchlist' ) !== 0;
 		if ( $tokenOk === false )
 			return $tokenOk;
@@ -274,7 +274,7 @@ class CollabWatchlistEditor {
 	private function checkPermissions( $user, $rlId, $memberTypes = NULL ) {
 		if ( is_null($member_types) )
 			$member_types = array( CollabWatchlist::$USER_OWNER );
-		
+
 		// Check permissions
 		$dbr = wfGetDB( DB_MASTER );
 		$res = $dbr->select( 'collabwatchlistuser',
@@ -327,11 +327,11 @@ class CollabWatchlistEditor {
 			$type = CollabWatchlist::$USER_OWNER;
 			$typeText = CollabWatchlist::$USER_OWNER_TEXT;
 			$titleText = trim( substr( $text, strlen( CollabWatchlist::$USER_OWNER_TEXT . ' ' ) ) );
-		} else if ( stripos( $text, CollabWatchlist::$USER_USER_TEXT . ' ' ) === 0 ) {
+		} elseif ( stripos( $text, CollabWatchlist::$USER_USER_TEXT . ' ' ) === 0 ) {
 			$type = CollabWatchlist::$USER_USER;
 			$typeText = CollabWatchlist::$USER_USER_TEXT;
 			$titleText = trim( substr( $text, strlen( CollabWatchlist::$USER_USER_TEXT . ' ' ) ) );
-		} else if ( stripos( $text, CollabWatchlist::$USER_TRUSTED_EDITOR_TEXT . ' ' ) === 0 ) {
+		} elseif ( stripos( $text, CollabWatchlist::$USER_TRUSTED_EDITOR_TEXT . ' ' ) === 0 ) {
 			$type = CollabWatchlist::$USER_TRUSTED_EDITOR;
 			$typeText = CollabWatchlist::$USER_TRUSTED_EDITOR_TEXT;
 			$titleText = trim( substr( $text, strlen( CollabWatchlist::$USER_TRUSTED_EDITOR_TEXT . ' ' ) ) );
