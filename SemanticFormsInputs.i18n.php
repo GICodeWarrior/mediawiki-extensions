@@ -63,6 +63,34 @@ $messages['qqq'] = array(
 
 {{doc-important|This is an ''optional'' message. Do not translate it, if it would remain unchanged in your language. }}",
 	'semanticformsinputs-firstdayofweek' => '0 - sunday, 1 - monday...',
+
+	'semanticformsinputs-datepicker-dateformat' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-weekstart' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-firstdate' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-lastdate' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-disabledaysofweek' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-highlightdaysofweek' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-disabledates' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-highlightdates' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-showweeknumbers' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-enableinputfield' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-showresetbutton' => 'This is a help text for the Special:CreateForm page.',
+	
+	'semanticformsinputs-timepicker-mintime' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-timepicker-maxtime' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-timepicker-interval' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-timepicker-enableinputfield' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-timepicker-showresetbutton' => 'This is a help text for the Special:CreateForm page.',
+	
+	'semanticformsinputs-regexp-regexp' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-regexp-basetype' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-regexp-baseprefix' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-regexp-orchar' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-regexp-inverse' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-regexp-message' => 'This is a help text for the Special:CreateForm page.',
+
+	'semanticformsinputs-menuselect-structure' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-menuselect-enableinputfield' => 'This is a help text for the Special:CreateForm page.',
 );
 
 /** Message documentation (Message documentation)

@@ -157,7 +157,7 @@ class SFITimePicker extends SFFormInput {
 			$html .= Xml::element( "input", array(
 					'id' => "input_{$this->mInputNumber}",
 					'type' => 'hidden',
-					'name' => $input_name,
+					'name' => $this->mInputName,
 					'value' => $this->mCurrentValue
 				) );
 		}
