@@ -24,13 +24,13 @@
  * @package    WURFL_Handlers_Matcher
  */
 class WURFL_Handlers_Matcher_RISMatcher implements WURFL_Handlers_Matcher_Interface {
-	
+
 	/**
 	 * Instance of WURFL_Handlers_Matcher_LDMatcher
 	 * @var WURFL_Handlers_Matcher_LDMatcher
 	 */
 	private static $instance;
-	
+
 	/**
 	 * Returns an instance of the RISMatcher singleton
 	 * @return WURFL_Handlers_RISMatcher
@@ -41,7 +41,7 @@ class WURFL_Handlers_Matcher_RISMatcher implements WURFL_Handlers_Matcher_Interf
 		}
 		return self::$instance;
 	}
-	
+
 	public function match(&$collection, $needle, $tolerance) {
 		$match = NULL;
 		$bestDistance = 0;
@@ -57,18 +57,18 @@ class WURFL_Handlers_Matcher_RISMatcher implements WURFL_Handlers_Matcher_Interf
 				$match = $find;
 				$bestDistance = $distance;
 			}
-			
+
 			$cmp = strcmp ( $find, $needle );
 			if ($cmp < 0) {
 				$low = $mid + 1;
-			} else if ($cmp > 0) {
+			} elseif ($cmp > 0) {
 				$high = $mid - 1;
-			
+
 			} else {
 				break;
 			}
 		}
-		
+
 		if ($bestDistance < $tolerance) {
 			return NULL;
 		}
@@ -77,29 +77,29 @@ class WURFL_Handlers_Matcher_RISMatcher implements WURFL_Handlers_Matcher_Interf
 		}
 		return $this->firstOfTheBests ( $collection, $needle, $bestIndex, $bestDistance );
 	}
-	
+
 	private function firstOfTheBests($collection, $needle, $bestIndex, $bestDistance) {
-		
+
 		while($bestIndex > 0 && $this->longestCommonPrefixLength ( $collection [$bestIndex-1], $needle ) == $bestDistance) {
 			$bestIndex = $bestIndex - 1;
 		}
 		return $collection [$bestIndex];
 	}
-	
+
 	private function longestCommonPrefixLength($s, $t) {
 		$length = min ( strlen ( $s ), strlen ( $t ) );
-		
+
 		$i = 0;
 		while ( $i < $length ) {
 			if ($s [$i] !== $t [$i]) {
 				break;
 			}
 			$i ++;
-		
+
 		}
-		
+
 		return $i;
-	
+
 	}
 }
 
