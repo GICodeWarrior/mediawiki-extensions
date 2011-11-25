@@ -66,7 +66,7 @@ abstract class MoodBarFormatter {
 				$user = $data->getProperty('user');
 				if ( $data->getProperty('anonymize') ) {
 					$outData = 'anonymized';
-				} else if ( $user->isAnon() ) {
+				} elseif ( $user->isAnon() ) {
 					$outData = 'ip';
 				} else {
 					$outData = 'user';
