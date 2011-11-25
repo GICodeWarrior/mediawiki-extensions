@@ -31,7 +31,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Narayam',
 	'version' => 0.1,
-	'author' => array( 'Junaid P V (http://junaidpv.in)', 'Roan Kattouw' ),
+	'author' => array( '[http://junaidpv.in Junaid P V]', 'Roan Kattouw' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Narayam',
 	'descriptionmsg' => 'narayam-desc'
 );
