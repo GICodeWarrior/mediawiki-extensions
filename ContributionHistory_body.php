@@ -65,14 +65,14 @@ class ContributionHistory extends SpecialPage {
 				array(
 					'href' => $title->getFullURL( 'offset=' . $newer ),
 				),
-				$this->msg( 'contrib-hist-previous' )
+				$this->chMsg( 'contrib-hist-previous' )
 			);
 		}
 		$pagingLinks[] = Xml::element( 'a',
 			array(
 				'href' => $title->getFullURL( 'offset=' . $older ),
 			),
-			$this->msg( 'contrib-hist-next' )
+			$this->chMsg( 'contrib-hist-next' )
 		);
 		$pagingDiv = Xml::openElement( 'div',
 				array( 'align' => 'right', 'style' => 'padding-bottom:20px' ) ) .
@@ -82,9 +82,9 @@ class ContributionHistory extends SpecialPage {
 
 		$output .= '<table style="width: 100%">';
 		$output .= '<tr>';
-		$output .= '<th width="60%">' . $this->msg( 'contrib-hist-name' ) . '</th>';
-		$output .= '<th width="25%">' . $this->msg( 'contrib-hist-date' ) . '</th>';
-		$output .= '<th width="15%" align="right">' . $this->msg( 'contrib-hist-amount' ) . '</th>';
+		$output .= '<th width="60%">' . $this->chMsg( 'contrib-hist-name' ) . '</th>';
+		$output .= '<th width="25%">' . $this->chMsg( 'contrib-hist-date' ) . '</th>';
+		$output .= '<th width="15%" align="right">' . $this->chMsg( 'contrib-hist-amount' ) . '</th>';
 		$output .= '</tr>';
 
 		if ( $offset == null ) {
@@ -142,19 +142,19 @@ class ContributionHistory extends SpecialPage {
 
 		header( 'Cache-Control: max-age=300,s-maxage=300' );
 		$wgOut->addWikiText( '{{2009/Donate-header/' . $language . '}}' );
-		$wgOut->addHTML( '<h1>' . $this->msg( 'contrib-hist-header' ) . '</h1>' );
+		$wgOut->addHTML( '<h1>' . $this->chMsg( 'contrib-hist-header' ) . '</h1>' );
 		$wgOut->addWikiText( '<strong>{{2008/Contribution history introduction/' . $language . '}}</strong>' );
 		$wgOut->addHTML( $output );
 	}
 
-	function msg( $key ) {
+	function chMsg( $key ) {
 		return wfMsgExt( $key, array( 'escape', 'language' => $this->lang ) );
 	}
 
 	function formatName( $row ) {
 		$name = htmlspecialchars( $row['name'] );
 		if( !$name ) {
-			$name = $this->msg( 'contrib-hist-anonymous' );
+			$name = $this->chMsg( 'contrib-hist-anonymous' );
 		}
 		$name = '<strong>' . $name . '</strong>';
 
