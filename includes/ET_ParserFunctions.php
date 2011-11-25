@@ -102,7 +102,7 @@ class ETParserFunctions {
 					$tabs[$var[0]] = array(
 						'title' => $t, 'type' => 'html', 'html' => $html_id );
 				}
-			} else if ( strtolower( trim( $var[1] ) ) == 'option' ) {
+			} elseif ( strtolower( trim( $var[1] ) ) == 'option' ) {
 				$options = array();
 				foreach ( explode( ';', $t ) as $opt ) {
 					$nv = explode( ':', $opt );
@@ -117,7 +117,7 @@ class ETParserFunctions {
 			$txt = 'title: "' . str_replace( '"', '\"', $t['title'] ) . '",';
 			if ( $t['type'] == 'html' ) {
 				$txt .= 'contentEl:"' . $t['html'] . '"';
-			} else if ( $t['type'] == 'internal' ) {
+			} elseif ( $t['type'] == 'internal' ) {
 				$txt .= 'autoLoad: {url: "", params: "action=ajax&rs=smwf_et_Access&&rsargs[]=internalLoad&rsargs[]=' . ( $smwgIQRunningNumber++ ) . ',' . $t['html'] . '"}';
 			}
 
