@@ -75,6 +75,11 @@ $messages['en'] = array(
 	'reviews-reviews-header' => 'This page lists all reviews posted on this wiki',
 	'reviews-reviews-nosuchreview' => 'You do not have a review with the provided ID, it might have been deleted. All reviews are listed below.',
 	'reviews-reviews-editheader' => 'On this page you can manage this review. You can also view a list of [[Special:Reviews|all reviews]].',
+	'reviews-reviews-deleted' => 'The review was deleted successfully',
+	'reviews-reviews-reviewtext' => 'Review text',
+	'reviews-reviews-controls' => 'Administration controls',
+	'reviews-reviews-delete' => 'Remove this review',
+	'reviews-reviews-delete-confirm' => 'Are you sure you want to delete this review?',
 
 	'reviews-reviews-header-title' => 'Review title',
 	'reviews-reviews-header-page' => 'For page',
@@ -144,6 +149,11 @@ $messages['qqq'] = array(
 	'reviews-reviews-header' => "Line on top of a page explaining it's function",
 	'reviews-reviews-nosuchreview' => "Line on top of a page explaining it's function",
 	'reviews-reviews-editheader' => "Line on top of a page explaining it's function",
+	'reviews-reviews-deleted' => 'Message indicating that a review was succesfully deleted.',
+	'reviews-reviews-reviewtext' => 'Level 3 header',
+	'reviews-reviews-controls' => 'Level 3 header',
+	'reviews-reviews-delete' => 'Delete button text',
+	'reviews-reviews-delete-confirm' => 'Message asking for confirmation of deletion shown in a confirmation dialog',
 
 	'reviews-pager-no-results' => 'Informs the user that there are no results',
 	'reviews-pager-post-time' => 'Tabele column header',

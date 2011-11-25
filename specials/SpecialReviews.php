@@ -54,25 +54,38 @@ class SpecialReviews extends SpecialPage {
 			return false;
 		}
 
+		$out = $this->getOutput();
+		
+		if ( $this->getRequest()->getInt( 'deleted' ) === 1 ) {
+			$out->addHTML(
+				'<div class="successbox"><strong><p>'
+					. wfMsgExt( 'reviews-reviews-deleted', array( 'parseinline' ) )
+				. '</p></strong></div><hr style="display: block; clear: both; visibility: hidden;" />'
+			);
+		}
+		
 		if ( $subPage === '' ) {
-			$this->getOutput()->addWikiMsg( 'reviews-reviews-header' );
+			$out->addWikiMsg( 'reviews-reviews-header' );
 			$this->displayReviewList();
 		}
 		else {
 			$review = Review::selectRow( null, array( 'id' => $subPage ) );
 			
 			if ( $review === false ) {
-				$this->getOutput()->addWikiMsg( 'reviews-reviews-nosuchreview' );
+				$out->addWikiMsg( 'reviews-reviews-nosuchreview' );
 				$this->displayReviewList();
 			}
 			else {
-				$this->getOutput()->addModules( 'ext.reviews.special.reviews' );
+				$out->addModules( 'ext.reviews.special.reviews' );
 				
-				$this->getOutput()->addWikiMsg( 'reviews-reviews-editheader' );
+				$out->addWikiMsg( 'reviews-reviews-editheader' );
 				
 				$this->displaySummary( $review );
 				
-				$this->getOutput()->addHTML( $review->getHTML() );
+				$out->addHTML(
+					Html::element( 'h3', array(), wfMsg( 'reviews-reviews-reviewtext' ) ) . 
+					'<div class="review-text-content"><p>' . htmlspecialchars( $review->getField( 'text' ) ) . '</p></div>'
+				);
 				
 				$this->displayAdminControls( $review );
 			}
@@ -170,6 +183,22 @@ class SpecialReviews extends SpecialPage {
 	 * @param Review $review
 	 */
 	protected function displayAdminControls( Review $review ) {
+		$out = $this->getOutput();
+		
+		$out->addHTML( Html::element( 'h3', array(), wfMsg( 'reviews-reviews-controls' ) ) );
+		
+		if ( ReviewsSettings::get( 'reviewDeletionEnabled' ) ) {
+			$out->addHTML( Html::element(
+				'button',
+				array(
+					'class' => 'reviews-delete-button',
+					'data-review-id' => $review->getId(),
+					// TODO: might want to add invalidation sign here so master db can be used on target page and we don't get rep lag ghosts.
+					'data-completion-url' => $this->getTitle()->getLocalURL( array( 'deleted' => 1 ) )
+				),
+				wfMsg( 'reviews-reviews-delete' )
+			) );
+		}
 	}
 
 }

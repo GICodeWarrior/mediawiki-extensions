@@ -227,7 +227,10 @@ $wgResourceModules['ext.reviews.special.reviews'] = $moduleTemplate + array(
 		'reviews.special.js',
 	),
 	'dependencies' => array(
-		'jquery.reviewState'
+		'jquery.reviewState', 'jquery.ui.button', 'ext.reviews'
+	),
+	'messages' => array(
+		'reviews-reviews-delete-confirm'
 	),
 );
 

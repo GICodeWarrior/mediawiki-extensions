@@ -18,7 +18,7 @@
 		};
 		
 		this.save = function( callback ) {
-			requestArgs = {
+			var requestArgs = {
 				'action': 'submitreview',
 				'format': 'json',
 				'token': mw.user.tokens.get( 'editToken' ),
@@ -47,6 +47,23 @@
 	
 	reviews.Review.prototype = {
 		
+		remove: function( callback ) {
+			var requestArgs = {
+				'action': 'deletereviews',
+				'format': 'json',
+				'token': mw.user.tokens.get( 'editToken' ),
+				'ids': this.fields.id
+			};
+			
+			$.post(
+				wgScriptPath + '/api.php',
+				requestArgs,
+				function( data ) {
+					callback( data.hasOwnProperty( 'success' ) && data.success );
+				}	
+			);	
+		}
+			
 	};
 	
 })( window.jQuery, window.mediaWiki, window.reviews );

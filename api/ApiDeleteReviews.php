@@ -19,7 +19,7 @@ class ApiDeleteReviews extends ApiBase {
 			$this->dieUsage( 'Review deletion is disabled', 'reviewdeletiondisabled' );
 		}
 
-		if ( !$this->getUser()->isAllowed( 'reviewadmin' ) || $this->getUser()->isBlocked() ) {
+		if ( !$this->getUser()->isAllowed( 'reviewsadmin' ) || $this->getUser()->isBlocked() ) {
 			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
 
@@ -43,11 +43,6 @@ class ApiDeleteReviews extends ApiBase {
 		return true;
 	}
 
-	public function getTokenSalt() {
-		$params = $this->extractRequestParams();
-		return 'deletereview' . implode( '|', $params['ids'] );
-	}
-
 	public function mustBePosted() {
 		return true;
 	}
@@ -66,7 +61,7 @@ class ApiDeleteReviews extends ApiBase {
 	public function getParamDescription() {
 		return array(
 			'ids' => 'The IDs of the reviews to delete',
-			'token' => 'Edit token, salted with the review ids',
+			'token' => 'Edit token. You can get one of these through prop=info.',
 		);
 	}
 
