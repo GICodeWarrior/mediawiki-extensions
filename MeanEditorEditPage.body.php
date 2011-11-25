@@ -14,7 +14,7 @@ class MeanEditorEditPage extends EditPage {
 	var $userWantsTraditionalEditor = false;
 
 	/**
-	 * Replace entire edit method, need to convert HTML -> wikitext before saving 
+	 * Replace entire edit method, need to convert HTML -> wikitext before saving
 	 *
 	 * Perhaps one of the new hooks could do we need? But what about the interaction
 	 * with other extensions?
@@ -68,9 +68,9 @@ class MeanEditorEditPage extends EditPage {
 		} else {
 			if ( $this->save ) {
 				$this->formtype = 'save';
-			} else if ( $this->preview ) {
+			} elseif ( $this->preview ) {
 				$this->formtype = 'preview';
-			} else if ( $this->diff ) {
+			} elseif ( $this->diff ) {
 				$this->formtype = 'diff';
 			} else { # First time through
 				$this->firsttime = true;
@@ -217,7 +217,7 @@ class MeanEditorEditPage extends EditPage {
 			parent::showContentForm();
 	        }
 	}
-	
+
 	# We need to set the correct value for our checkbox
 	function showStandardInputs( &$tabindex = 2 ) {
 		global $wgOut, $wgUser;
@@ -232,7 +232,7 @@ class MeanEditorEditPage extends EditPage {
 		$checkboxes = $this->getCheckboxes( $tabindex, //$wgUser->getSkin(),
 			array( 'minor' => $this->minoredit, 'watch' => $this->watchthis,
 			 'want_traditional_editor' => $this->userWantsTraditionalEditor) );
-			
+
 		$wgOut->addHTML( "<div class='editCheckboxes'>" . implode( $checkboxes, "\n" ) . "</div>\n" );
 		$wgOut->addHTML( "<div class='editButtons'>\n" );
 		$wgOut->addHTML( implode( $this->getEditButtons( $tabindex ), "\n" ) . "\n" );
@@ -297,7 +297,7 @@ class MeanEditorEditPage extends EditPage {
 		while (preg_match('/\[\[Image:(.*?)\]\]/', $text, $matches)) {
 			$img = $matches[1];
 			$hash = md5($img);
-			$folder = substr($hash, 0, 1) . 
+			$folder = substr($hash, 0, 1) .
 				'/' . substr($hash, 0, 2);
 			$tag = '<img alt="' . $img . '" src="' . $wgUploadPath .
 				'/' . $folder . '/' . $img . '" />';
@@ -319,11 +319,11 @@ class MeanEditorEditPage extends EditPage {
 	static function wiki2html($article, $user, &$edit_context, &$wiki_text) {
 		global $wgUploadPath, $wgArticlePath;
 		$meaneditor_page_src = str_replace('$1', '', $wgArticlePath);
-	
+
 		# Detect code sections (lines beginning with whitespace)
 		if (preg_match('/^[ \t]/m',$wiki_text))
 			return self::deny_visual_because_of(wfMsg('reason_whitespace'), $edit_context);
-		
+
 		# Detect custom tags: only <br />, super/sub-scripts and references are supported at the moment
 		# TODO: expand the safe list
 		# Especially problematic tags (do not even think about supporting them):
@@ -350,16 +350,16 @@ class MeanEditorEditPage extends EditPage {
 		$wiki_text=str_replace('__TEMP__TEMP__csub','</sub>',$wiki_text);
 		$wiki_text=str_replace('__TEMP__TEMP__ref','<ref>',$wiki_text);
 		$wiki_text=str_replace('__TEMP__TEMP__cref','</ref>',$wiki_text);
-	
+
 		# This characters are problematic only at line beginning
 		$unwanted_chars_at_beginning = array(':', ';');
 		foreach ($unwanted_chars_at_beginning as $uc)
 			if (preg_match('/^'.$uc.'/m',$wiki_text))
 				return self::deny_visual_because_of(wfMsg('reason_indent', $uc), $edit_context);
-	
+
 		# <hr>, from Parser.php... TODO: other regexps can be directly stolen from there
 		$wiki_text=preg_replace('/(^|\n)-----*/', '\\1<hr />', $wiki_text);
-	
+
 		#Collapse multiple newlines
 		# TODO: Compare Wikipedia:Don't_use_line_breaks
 		$wiki_text=preg_replace("/\n\n+/","\n\n",$wiki_text);
@@ -376,7 +376,7 @@ class MeanEditorEditPage extends EditPage {
 
 		#Substitute ===
 		$wiki_text=preg_replace('/(?:<p>|)\s*===(.*?)===\s*(?:<\/p>|)/','<h3>\1</h3>',$wiki_text);
-	
+
 		#Substitute ==
 		$wiki_text=preg_replace('/(?:<p>|)\s*==(.*?)==\s*(?:<\/p>|)/','<h2>\1</h2>',$wiki_text);
 
@@ -408,7 +408,7 @@ class MeanEditorEditPage extends EditPage {
 		#Create [a b] syntax for every link
 		#(must be here, so that internal links have already been replaced)
 		$wiki_text=preg_replace('/\[([^| ]*?)\]/','[\1 _autonumber_]',$wiki_text);
-	
+
 		#Substitute [ syntax (external links)
 		$wiki_text=preg_replace('/\[(.*?) (.*?)\]/','<a href="\1">\2</a>',$wiki_text);
 
@@ -424,7 +424,7 @@ class MeanEditorEditPage extends EditPage {
 
 		# Allow numbered entities, these occur far too often and should be innocous
 		$wiki_text=str_replace('&#','__TEMP__MEAN__nument',$wiki_text);
-	
+
 		$unwanted_chars = array('[', ']', '|', '{', '}', '#', '*');
 		foreach ($unwanted_chars as $uc)
 			if (!($unwanted_match = strpos($wiki_text, $uc) === FALSE))
@@ -444,12 +444,12 @@ class MeanEditorEditPage extends EditPage {
 			$wiki_text);
 		$refs_div='<div class="ref">'.$refs_div."</div>";
 
-	
+
 		# We saved #section links from the sacred detection fury, now restore them
 		$wiki_text=str_replace("__TEMP_MEAN_hash","#",$wiki_text);
 
 		$wiki_text=$wiki_text.$refs_div;
-	
+
 		return false;
 	}
 
@@ -474,7 +474,7 @@ class MeanEditorEditPage extends EditPage {
 		# 1) Extract references block
 		global $html_refs;
 		$html_text=preg_replace_callback('/<div class="ref">(.*?)<\/div>/',
-			create_function('$matches', 'global $html_refs; $html_refs=$matches[1]; 
+			create_function('$matches', 'global $html_refs; $html_refs=$matches[1];
 				return "";'),
 			$html_text);
 		# 2) Put each reference in place
@@ -485,7 +485,7 @@ class MeanEditorEditPage extends EditPage {
 		$html_text=preg_replace('/<\/p>/',"\n\n",$html_text);
 
 		$html_text=preg_replace('/<a href="(.*?)">(.*?)<\/a>/','[\1 \2]',$html_text);
-	
+
 		$html_text=preg_replace_callback('/<img alt="(.*?)" src="(.*?)" \/>/',create_function('$matches',
 			'return "[[Image:".$matches[1]."]]";'
 		),$html_text);
@@ -525,10 +525,10 @@ class MeanEditorEditPage extends EditPage {
 		$wgOut->addScriptFile('../../extensions/MeanEditor/wymeditor/wymeditor/jquery.wymeditor.pack.js');
 		$wgOut->addScriptFile('../../extensions/MeanEditor/wymeditor/wymeditor/plugins/resizable/jquery.wymeditor.resizable.js');
 		$wgOut->addExtensionStyle('../extensions/MeanEditor/fix_meaneditor.css');
-	
+
 		# For now, it looks better in IE8 standards mode, even though IE support is very messy
 		#$wgOut->addMeta('X-UA-Compatible', 'IE=7');
-	
+
 		$wgOut->addInlineScript('
 			Array.prototype.wym_remove = function(from, to) {
 				// From a suggestion at forum.wymeditor.org
@@ -665,9 +665,9 @@ class MeanEditorEditPage extends EditPage {
 								wdm.close();
 							}
 							else wikipage = wikipage.slice(' . strlen($wiki_path) . ');
-						} else if (wym._iframe.contentWindow.getSelection) {
+						} elseif (wym._iframe.contentWindow.getSelection) {
 							wikipage = wym._iframe.contentWindow.getSelection().toString();
-						} else if (wym._iframe.contentWindow.document.selection && wym._iframe.contentWindow.document.selection.createRange) {
+						} elseif (wym._iframe.contentWindow.document.selection && wym._iframe.contentWindow.document.selection.createRange) {
 							var range = wym._iframe.contentWindow.document.selection.createRange();
 							wikipage = range.text;
 						}
