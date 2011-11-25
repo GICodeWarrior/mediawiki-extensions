@@ -71,7 +71,7 @@ class SpecialMyContests extends SpecialContestPage {
 		if ( $contestantCount == 0 ) {
 			$this->getOutput()->addWikiMsg( 'contest-mycontests-no-contests' );
 		}
-		else if ( $contestantCount == 1 ) {
+		elseif ( $contestantCount == 1 ) {
 
 			/**
 			 * @var $contest Contest
@@ -112,7 +112,7 @@ class SpecialMyContests extends SpecialContestPage {
 			if ( $contest->getField( 'status' ) == Contest::STATUS_ACTIVE ) {
 				$running[] = $contestant;
 			}
-			else if ( $contest->getField( 'status' ) == Contest::STATUS_FINISHED ) {
+			elseif ( $contest->getField( 'status' ) == Contest::STATUS_FINISHED ) {
 				$passed[] = $contestant;
 			}
 
@@ -278,13 +278,13 @@ class SpecialMyContests extends SpecialContestPage {
 		if ( $request->getCheck( 'new' ) ) {
 			$this->showSuccess( 'contest-mycontests-signup-success', $contest->getField( 'name' ) );
 		}
-		else if ( $request->getCheck( 'added' ) ) {
+		elseif ( $request->getCheck( 'added' ) ) {
 			$this->showSuccess( 'contest-mycontests-addition-success' );
 		}
-		else if ( $request->getCheck( 'updated' ) ) {
+		elseif ( $request->getCheck( 'updated' ) ) {
 			$this->showSuccess( 'contest-mycontests-updated-success' );
 		}
-		else if ( $request->wasPosted()
+		elseif ( $request->wasPosted()
 			&& !$this->getUser()->matchEditToken( $request->getVal( 'wpEditToken' ) ) ) {
 			$this->showError( 'contest-mycontests-sessionfail' );
 		}
@@ -336,13 +336,13 @@ class SpecialMyContests extends SpecialContestPage {
 		$user = $this->getUser();
 
 		$oldEmail = $user->getEmail();
-		
+
 		if ( $oldEmail !== $data['contestant-email'] ) {
 			$user->setEmail( $data['contestant-email'] );
 			$user->invalidateEmail();
 			$user->sendConfirmationMail( $oldEmail == '' ? 'set' : 'changed' );
 		}
-		
+
 		$user->setRealName( $data['contestant-realname'] );
 		$user->saveSettings();
 
@@ -440,7 +440,7 @@ class SpecialMyContests extends SpecialContestPage {
 			'required' => true,
 			'validation-callback' => array( __CLASS__, 'validateChallengeField' )
 		);
-		
+
 		$fields['contestant-volunteer'] = array(
 			'type' => 'check',
 			'default' => $contestant->getField( 'volunteer' ),
@@ -464,7 +464,7 @@ class SpecialMyContests extends SpecialContestPage {
 
 		return $fields;
 	}
-	
+
 	/**
 	 * Gets a list of contests that can be fed directly to the options field of
 	 * an HTMLForm radio input.
@@ -483,7 +483,7 @@ class SpecialMyContests extends SpecialContestPage {
 			array( 'id', 'title' ),
 			array( 'contest_id' => $contestant->getField( 'contest_id' ) )
 		);
-		
+
 		foreach ( $challenges as /* ContestChallenge */ $challenge ) {
 			$list[$challenge->getField( 'title' )] = $challenge->getId();
 		}
@@ -580,7 +580,7 @@ class SpecialMyContests extends SpecialContestPage {
 
 		return wfMsg( 'contest-submission-invalid-url' );
 	}
-	
+
 	/**
 	 * HTMLForm field validation-callback for challenge field.
 	 *
