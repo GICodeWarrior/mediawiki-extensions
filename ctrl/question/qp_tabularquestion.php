@@ -10,7 +10,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_TabularQuestion extends qp_StubQuestion {
 
-	# required count of single proposal categories that should be filled by user
+	## default proposal attributes
+	# do not allow empty text fields submission / storage by default
+	var $mEmptyText = false;
+	# required count of current proposal's categories that should be filled by user
 	var $mCatReq = 1;
 
 	/**
@@ -283,9 +286,8 @@ class qp_TabularQuestion extends qp_StubQuestion {
 		# set static view state for the future qp_TabularQuestionProposalView instances
 		qp_TabularQuestionProposalView::applyViewState( $this->view );
 		$prop_attrs = qp_Setup::$propAttrs;
-		foreach ( $this->raws as $raw ) {
-			# get proposal attributes
-			$prop_attrs->getFromSource( $raw );
+		$prop_attrs->setQuestion( $this );
+		while ( $prop_attrs->iterate() ) {
 			if ( !preg_match( $this->mProposalPattern, $prop_attrs->cpdef, $matches ) ) {
 				continue;
 			}
@@ -366,18 +368,14 @@ class qp_TabularQuestion extends qp_StubQuestion {
 				$pview->setErrorMessage( wfMsg( 'qp_error_proposal_text_empty' ), 'error' );
 				$pview->addCellsClass( 'error' );
 			}
-			## Check for unanswered categories.
-			if ( ( $catreq = $prop_attrs->catreq ) === null ) {
-				$catreq = $this->mCatReq;
-			}
-			if ( $inputType === 'radio' && $catreq > 1 ) {
+			if ( $inputType === 'radio' && $prop_attrs->catreq > 1 ) {
 				# radio buttons row always require not more than one category,
 				# otherwise the poll will be impossible to submit sucessfully.
-				$catreq = 1;
+				$prop_attrs->catreq = 1;
 			}
 			# If the proposal was submitted but unanswered
 			if ( $this->poll->mBeingCorrected &&
-					$this->hasMissingCategories( $proposalId, $catreq, count( $this->mCategories ) ) ) {
+					$prop_attrs->hasMissingCategories( $proposalId, count( $this->mCategories ) ) ) {
 				# if there was no previous errors, hightlight the whole row
 				if ( $this->getState() == '' ) {
 					$pview->addCellsClass( 'error' );

@@ -194,8 +194,12 @@ class qp_TextQuestionOptions {
  */
 class qp_TextQuestion extends qp_StubQuestion {
 
-	# required count of single proposal categories that should be filled by user
+	## default proposal attributes
+	# do not allow empty text fields submission / storage by default
+	var $mEmptyText = false;
+	# required count of current proposal's categories that should be filled by user
 	var $mCatReq = 'all';
+
 	# regexp for separation of proposal line tokens
 	var $propCatPattern;
 
@@ -259,7 +263,7 @@ class qp_TextQuestion extends qp_StubQuestion {
 	 */ 
 	function applyAttributes( array $paramkeys ) {
 		parent::applyAttributes( $paramkeys );
-		# commented out, because now the 'catreq' attribute is set per proposal row, thus
+		# commented out, because now the "catreq" attribute can be set per proposal row, thus
 		# it is unpractical to disable radiobuttons for all proposals of the question.
 		# todo: disable radiobuttons per proposal, when current catreq=0 ?
 		/*
@@ -311,7 +315,7 @@ class qp_TextQuestion extends qp_StubQuestion {
 					# pack select multiple values
 					$ta = implode( qp_Setup::SELECT_MULTIPLE_VALUES_SEPARATOR, array_map( 'trim', $ta ) );
 				}
-				if ( $ta != '' ) {
+				if ( qp_Setup::$propAttrs->emptytext || $ta != '' ) {
 					$answered = true;
 					if ( strlen( $ta ) > qp_Setup::$field_max_len['text_answer'] ) {
 						$text_answer = $wgContLang->truncate( $ta, qp_Setup::$field_max_len['text_answer'] , '' );
@@ -469,11 +473,11 @@ class qp_TextQuestion extends qp_StubQuestion {
 		# set static view state for the future qp_TextQuestionProposalView instances
 		qp_TextQuestionProposalView::applyViewState( $this->view );
 		$prop_attrs = qp_Setup::$propAttrs;
-		foreach ( $this->raws as $raw ) {
+		$prop_attrs->setQuestion( $this );
+		while ( $prop_attrs->iterate() ) {
 			$opt->reset();
 			$this->propview = new qp_TextQuestionProposalView( $proposalId, $this );
 			# get proposal name and optional attributes (if any)
-			$prop_attrs->getFromSource( $raw );
 			if ( $prop_attrs->error === qp_Setup::ERROR_TOO_LONG_PROPNAME ) {
 				$this->propview->prependErrorToken( wfMsg( 'qp_error_too_long_proposal_name' ), 'error' );
 			} elseif ( $prop_attrs->error === qp_Setup::ERROR_NUMERIC_PROPNAME ) {
@@ -568,13 +572,10 @@ class qp_TextQuestion extends qp_StubQuestion {
 			if ( $prop_attrs->name !== '' ) {
 				$this->mProposalNames[$proposalId] = $prop_attrs->name;
 			}
-			if ( ( $catreq = $prop_attrs->catreq ) === null ) {
-				$catreq = $this->mCatReq;
-			}
-			$this->propview->catreq = $catreq;
+			$this->propview->catreq = $prop_attrs->catreq;
 			## Check for unanswered categories.
 			if ( $this->poll->mBeingCorrected &&
-					$this->hasMissingCategories( $proposalId, $catreq, $catId ) ) {
+					$prop_attrs->hasMissingCategories( $proposalId, $catId ) ) {
 				$prev_state = $this->getState();
 				$this->propview->prependErrorToken( wfMsg( 'qp_error_no_answer' ), 'NA' );
 			}

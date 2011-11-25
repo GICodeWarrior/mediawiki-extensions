@@ -70,38 +70,6 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 		return array_search( $proposalName, $this->mProposalNames, true );
 	}
 
-	/**
-	 * Checks, whether current proposal has not enough of user-answered categories,
-	 * according to current qp_Setup::$propAttrs.
-	 * @param  $proposalId  integer
-	 *   id of existing question's proposal
-	 * @param  $catreq  mixed
-	 *   value of catreq attribute
-	 *   string   'all'
-	 *   integer count of required categories
-	 * @param  $prop_cats_count
-	 *   integer  total amount of categories in current proposal
-	 * @return  boolean
-	 *   true  not enough of categories are filled
-	 *   false otherwise
-	 */
-	function hasMissingCategories( $proposal_id, $catreq, $prop_cats_count ) {
-		# How many categories has to be answered,
-		# all defined in row or the amount specified by 'catreq' attribute?
-		# total amount of categories in current proposal
-		$prop_cats_count = count( $this->mCategories );
-		$countRequired = ($catreq === 'all') ? $prop_cats_count : $catreq;
-		if ( $countRequired > $prop_cats_count ) {
-			# do not require to fill more categories
-			# than is available in current proposal row
-			$countRequired = $prop_cats_count;
-		}
-		$answered_cat_count = array_key_exists( $proposal_id, $this->mProposalCategoryId ) ?
-			count( $this->mProposalCategoryId[$proposal_id] ) :
-			0;
-		return $answered_cat_count < $countRequired;
-	}
-
 	# load some question fields from qp_QuestionData given
 	# (usually qp_QuestionData is an array property of qp_PollStore instance)
 	# @param   $qdata - an instance of qp_QuestionData
@@ -176,7 +144,10 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 		parent::applyAttributes( $paramkeys );
 		if ( $paramkeys['catreq'] !== null ) {
 			$this->mCatReq = qp_PropAttrs::getSaneCatReq( $paramkeys['catreq'] );
-		} 
+		}
+		if ( $paramkeys['emptytext'] !== null ) {
+			$this->mEmptyText = qp_PropAttrs::getSaneEmptyText( $paramkeys['emptytext'] );
+		}
 	}
 
 	/**

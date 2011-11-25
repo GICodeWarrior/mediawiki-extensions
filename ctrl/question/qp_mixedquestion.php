@@ -25,9 +25,8 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 		# set static view state for the future qp_TabularQuestionProposalView instances
 		qp_TabularQuestionProposalView::applyViewState( $this->view );
 		$prop_attrs = qp_Setup::$propAttrs;
-		foreach ( $this->raws as $raw ) {
-			# get proposal attributes
-			$prop_attrs->getFromSource( $raw );
+		$prop_attrs->setQuestion( $this );
+		while ( $prop_attrs->iterate() ) {
 			# new proposal view
 			$pview = new qp_TabularQuestionProposalView( $proposalId + 1, $this );
 			# get the list of categories ($matches)
@@ -87,7 +86,7 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 						if ( strlen( $text_answer ) > qp_Setup::$field_max_len['text_answer'] ) {
 							$text_answer = $wgContLang->truncate( $text_answer, qp_Setup::$field_max_len['text_answer'] , '' );
 						}
-						if ( $text_answer != '' ) {
+						if ( $prop_attrs->emptytext || $text_answer != '' ) {
 							$input_checked = true;
 						}
 					} else {
@@ -137,12 +136,8 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 					$pview->setErrorMessage( wfMsg( 'qp_error_proposal_text_empty' ), 'error' );
 					throw new Exception( 'qp_error' );
 				}
-				## Check for unanswered categories.
-				if ( ( $catreq = $prop_attrs->catreq ) === null ) {
-					$catreq = $this->mCatReq;
-				}
 				if ( $this->poll->mBeingCorrected &&
-						$this->hasMissingCategories( $proposalId, $catreq, count( $this->mCategories ) ) ) {
+						$prop_attrs->hasMissingCategories( $proposalId, count( $this->mCategories ) ) ) {
 					# the proposal was submitted but has not enough answered categories
 					$pview->prependErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' );
 					# if there was no previous errors, hightlight the whole row

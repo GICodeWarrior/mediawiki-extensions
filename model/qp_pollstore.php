@@ -959,10 +959,6 @@ class qp_PollStore {
 						$proposals[$catkey] = $qdata->ProposalCategoryText[ $propkey ][ $id_key ];
 					}
 				}
-				if ( count( $proposals ) === 0 ) {
-					# 'catreq' = 0, pass one single empty cat to the interpretation script
-					$proposals[0] = '';
-				}
 				if ( isset( $qdata->ProposalNames[$propkey] ) ) {
 					$questions[$qdata->ProposalNames[$propkey]] = $proposals;
 				} else {

@@ -5,21 +5,33 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Get attributes from source (raw) proposal line or from DB field.
+ * Iterates through the raw proposals of current question.
+ * Parses attributes from source (raw) proposal line or from DB field.
  * Build raw proposal line from existing attributes.
  */
 class qp_PropAttrs {
 
+	# associated instance of qp_StubQuestion
+	# it is unavailable when calling $this->getFromDB()
+	protected $question = null;
+	# array with keys of $question->raws (when available)
+	protected $rawkeys;
+	# index of $this->rawkeys (when available)
+	protected $rawidx;
 	# code of error after getting attributes
 	# 0 means there is no error
 	public $error;
 	# proposal name (for interpretation scripts);
 	# '' means there is no name
 	public $name;
-	# count of required categories for question type="text";
-	# null means there is no 'catreq' attribute defined
-	# (will use question/poll default)
+	# minimal required count of answered categories for current proposal
+	# null means there is no "catreq" attribute defined
+	# (will use question/poll default value)
 	public $catreq;
+	# whether the current proposal allows empty text fields submission / storage
+	# null means there is no 'emptytext' attribute defined
+	# (will use question/poll default value)
+	public $emptytext;
 	# qpoll tag source text of proposal:
 	#   * with source cat_parts / prop_parts
 	#   * without proposal attributes
@@ -30,7 +42,32 @@ class qp_PropAttrs {
 	#   * does not contain parsed cat_parts for another types of questions
 	public $dbText;
 
+	/**
+	 * Set parent instance
+	 */
+	public function setQuestion( qp_StubQuestion $question ) {
+		$this->question = $question;
+		$this->rawkeys = array_keys( $question->raws );
+		$this->rawidx = 0;
+	}
+
+	/**
+	 * Iterates through question raws array.
+	 * @return  boolean
+	 *   true  $this properties are populated
+	 *   false there are no more raws available
+	 */
+	public function iterate() {
+		if ( $this->rawidx >= count( $this->rawkeys ) ) {
+			return false;
+		}
+		$this->getFromSource( $this->question->raws[$this->rawkeys[$this->rawidx++]] );
+		$this->applyDefaultAttrs();
+		return true;
+	}
+
 	public function getFromDB( $proposal_text ) {
+		$this->question = null;
 		$this->getFromSource( $proposal_text );
 		$this->dbText = $this->cpdef;
 		$this->cpdef = null;
@@ -49,6 +86,7 @@ class qp_PropAttrs {
 		$this->name = '';
 		$this->dbText =
 		$this->catreq = null;
+		$this->emptytext = null;
 		$this->cpdef = $proposal_text;
 		$matches = array();
 		# try to match the raw proposal name (without specific attributes)
@@ -64,13 +102,16 @@ class qp_PropAttrs {
 			return;
 		}
 		# try to get xml-like attributes;
-		$paramkeys = qp_Setup::getXmlLikeAttributes( $this->name, array( 'name', 'catreq' ) );
+		$paramkeys = qp_Setup::getXmlLikeAttributes( $this->name, array( 'name', 'catreq', 'emptytext' ) );
 		if ( $paramkeys['name'] !== null ) {
 			# name attribute found
 			$this->name = trim( $paramkeys['name'] );
 		}
 		if ( $paramkeys['catreq'] !== null ) {
 			$this->catreq = self::getSaneCatReq( $paramkeys['catreq'] );
+		}
+		if ( $paramkeys['emptytext'] !== null ) {
+			$this->emptytext = self::getSaneEmptyText( $paramkeys['emptytext'] );
 		}
 		if ( is_numeric( $this->name ) ) {
 				$this->setError( qp_Setup::ERROR_NUMERIC_PROPNAME );
@@ -81,7 +122,25 @@ class qp_PropAttrs {
 	}
 
 	/**
-	 * Get sanitized 'catreq' attribute value.
+	 * Applies default attribute values from question, when current proposal
+	 * attributes are undefined.
+	 * note: this cannot be integrated into $this->getFromSource(), because
+	 *   $this->getFromSource() is also called from $this->getFromDB().
+	 */
+	public function applyDefaultAttrs() {
+		if ( $this->catreq === null ) {
+			$this->catreq = $this->question->mCatReq;
+		}
+		if ( $this->emptytext === null ) {
+			$this->emptytext = $this->question->mEmptyText;
+		}
+	}
+
+	/**
+	 * Get sanitized "catreq" attribute value.
+	 * @return  mixed
+	 *   string 'all' require all categories to be filled
+	 *   integer  count of categories to be filled
 	 */
 	public static function getSaneCatReq( $attr_val ) {
 		$attr_val = trim( $attr_val );
@@ -91,6 +150,16 @@ class qp_PropAttrs {
 		}
 		# require all categories to be filled
 		return 'all';
+	}
+
+	/**
+	 * Get sanitized 'emptytext' attribute value
+	 * @return  boolean
+	 *   true  empty text fields will be allowed
+	 *   false otherwise
+	 */
+	public static function getSaneEmptyText( $attr_val ) {
+		return trim( $attr_val ) !== 'no';
 	}
 
 	/**
@@ -108,25 +177,45 @@ class qp_PropAttrs {
 	 * Return attributes part of raw proposal line.
 	 */
 	public function getAttrDef() {
-		# we do not store 'catreq' attribute because:
-		# 1. it's not used in qp_QuestionData
-		# 2. we do not store poll's/question's catreq anyway
+		# we do not store "catreq" and "emptytext" attributes because:
+		# 1. they are not used in qp_QuestionData
+		# 2. we do not store poll's/question's "catreq" / "emptytext" anyway
 		return ( $this->name === '' ) ? '' : ":|{$this->name}|";
 		/*
-		if ( $this->catreq === null ) {
-			if ( $this->name === '' ) {
-				return '';
-			} else {
-				return ":|{$this->name}|";
-			}
-		} else {
-			if ( $this->name === '' ) {
-				return ":|catreq=\"{$this->catreq}\"|";
-			} else {
-				return ":|name=\"{$this->name}\" catreq=\"{$this->catreq}\"|";
-			}
-		}
+			return ":|name=\"{$this->name}\" catreq=\"{$this->catreq}\" emptytext=\"" .
+				( ( $this->emptytext !== 'no' ) ?
+					'yes' :
+					'no'
+				) .
+				"\"|";
 		*/
+	}
+
+	/**
+	 * Checks, whether current proposal has not enough of user-answered categories,
+	 * according to current question instance.
+	 * @param  $proposal_id  integer
+	 *   id of existing question's proposal
+	 * @param  $prop_cats_count
+	 *   integer  total amount of categories in current proposal
+	 * @return  boolean
+	 *   true  not enough of categories are filled
+	 *   false otherwise
+	 */
+	function hasMissingCategories( $proposal_id, $prop_cats_count ) {
+		# How many categories has to be answered,
+		# all defined in row or the amount specified by "catreq" attribute?
+		# total amount of categories in current proposal
+		$countRequired = ($this->catreq === 'all') ? $prop_cats_count : $this->catreq;
+		if ( $countRequired > $prop_cats_count ) {
+			# do not require to fill more categories
+			# than is available in current proposal row
+			$countRequired = $prop_cats_count;
+		}
+		$answered_cat_count = array_key_exists( $proposal_id, $this->question->mProposalCategoryId ) ?
+			count( $this->question->mProposalCategoryId[$proposal_id] ) :
+			0;
+		return $answered_cat_count < $countRequired;
 	}
 
 	/**
