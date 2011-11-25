@@ -30,7 +30,7 @@ class LocalisationUpdate {
 				// the nonexistent cache file for en a couple hundred times
 				continue;
 			}
-			
+
 			$cache['messages'] = array_merge(
 				$cache['messages'],
 				self::readFile( $code )
@@ -455,7 +455,7 @@ class LocalisationUpdate {
 		//foreach ( $changedStrings as $key => $value ) {
 		// HACK for r103763 CR: store all messages, even unchanged ones
 		// TODO this file is a mess and needs to be rewritten
-		foreach ( array_merge( array_keys( $base_messages, $compare_messages ) as $key ) {
+		foreach ( array_merge( array_keys( $base_messages ), $compare_messages ) as $key ) {
 			// Only update the translation if this message wasn't changed in English
 			if ( !isset( $forbiddenKeys[$key] ) && isset( $base_messages[$key] ) ) {
 				$new_messages[$key] = $base_messages[$key];
