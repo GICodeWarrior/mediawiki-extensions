@@ -51,7 +51,7 @@ HTML;
 		if ( $wgOnlineStatusBarTrackIpUsers == false ) {
 			return false;
 		}
-	
+
 		// checks ns
 		if ( $title->getNamespace() != NS_USER && $title->getNamespace() != NS_USER_TALK ) {
 			return false;
@@ -108,7 +108,7 @@ HTML;
 		// if so let's create new object
 		if (  $user_type instanceof User  ) {
 			$user = $user_type;
-		} else if ( is_string( $user_type ) ){
+		} elseif ( is_string( $user_type ) ){
 			$user = User::newFromName( $user_type );
 		} else {
 			return false;
@@ -137,7 +137,7 @@ HTML;
 		if ($delayed) {
 			return wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_WriteTime;
 		}
-		
+
 		return wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_LogoutTime;
 	}
 
