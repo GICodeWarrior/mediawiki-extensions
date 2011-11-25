@@ -52,7 +52,7 @@ class HideRevisionHooks {
 		global $wgUser;
 		if( $wgUser->isAllowed( 'oversight' ) ) {
 			$title = SpecialPage::getTitleFor( 'Oversight' );
-			$tools[] = $wgUser->getSkin()->makeKnownLinkObj( $title, wfMsgHtml( 'hiderevision-link' ), 'author=' . $nt->getPartialUrl() );
+			$tools[] = Linker::makeKnownLinkObj( $title, wfMsgHtml( 'hiderevision-link' ), 'author=' . $nt->getPartialUrl() );
 		}
 		return true;
 	}
