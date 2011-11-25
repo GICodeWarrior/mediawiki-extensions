@@ -29,6 +29,10 @@
 			for ( rating in ratings ) {
 				if ( ratings.hasOwnProperty( rating ) ) {
 					$tr.append( $( '<td>' ).append(
+						$( '<label>' ).attr( {
+							'for': this.fieldName( 'ratingdiv' + rating ),
+							'class': 'review-ratings-label'
+						} ).text( rating ),
 						$( '<div>' )
 							.attr( {
 								'id': this.fieldName( 'ratingdiv' + rating ),
@@ -43,10 +47,7 @@
 									'id': this.fieldName( 'rating' + rating ),
 									'class': 'review-specificratinginput'
 								}
-							) ).prepend(  $( '<label>' ).attr( {
-								'for': this.fieldName( 'ratingdiv' + rating ),
-								'class': 'review-ratings-label'
-							} ).text( rating ) )
+							) )
 						)
 					);
 				}
@@ -105,10 +106,11 @@
 			).append( '<br>' );
 			
 			$this.append(
-				this.ratingInput.prepend( $( '<label>' ).attr( {
+				$( '<label>' ).attr( {
 					'for': this.fieldName( 'rating' ),
 					'class': 'review-rating-label'
-				} ).text( mw.msg( 'reviews-submission-rating' ) ) )
+				} ).text( mw.msg( 'reviews-submission-rating' ) ),
+				this.ratingInput
 			);
 			
 			$this.append( this.ratingsInput );

@@ -10,7 +10,9 @@
 
 	$( document ).ready( function() {
 		
-		$( '.reviews-state-controls' ).reviewState();
+		$.each( $( '.reviews-state-controls' ), function( i, e ) { 
+			$( e ).reviewState();
+		} );
 		
 	} );
 	
