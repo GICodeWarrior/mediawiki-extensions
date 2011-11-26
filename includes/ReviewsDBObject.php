@@ -576,10 +576,28 @@ abstract class ReviewsDBObject {
 		);
 	}
 	
+	/**
+	 * Takes a field name with prefix and returns the unprefixed equivalent.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $fieldName
+	 * 
+	 * @return string
+	 */
 	public static function unprefixFieldName( $fieldName ) {
 		return substr( $fieldName, strlen( static::getFieldPrefix() ) );
 	}
 	
+	/**
+	 * Takes an array of field names with prefix and returns the unprefixed equivalent.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $fieldNames
+	 * 
+	 * @return array
+	 */
 	public static function unprefixFieldNames( array $fieldNames ) {
 		return array_map( 'static::unprefixFieldName', $fieldNames );
 	}
