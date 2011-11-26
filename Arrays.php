@@ -15,7 +15,7 @@
  * @author Li Ding < lidingpku@gmail.com >
  * @author Jie Bao
  * @author Daniel Werner < danweetz@web.de > (since version 1.3)
- * 
+ *
  * @ToDo:
  * use $egArrayExtensionCompatbilityMode to finally get rid of unlogic behavior of certain functions
  * who create a new array from the data of one or more old arrays. In case only the new array name is
@@ -46,9 +46,9 @@ $wgHooks['ParserClearState'   ][] = 'ExtArrays::onParserClearState';
  * Full compatbility to versions before 1.4.
  * Set to true by default since version 2.0.
  * Regretable, this one has a speclling error...
- * 
+ *
  * @since 1.4 alpha
- * 
+ *
  * @var boolean
  */
 $egArrayExtensionCompatbilityMode = false;
@@ -57,32 +57,32 @@ $egArrayExtensionCompatbilityMode = false;
 /**
  * Extension class with all the array functionality, also serves as store for arrays per
  * Parser object and offers public accessors for interaction with the 'Arrays' extension.
- * 
+ *
  * @since 2.0 ('ArrayExtension' before and one global instance, also non-static parser functions)
  */
 class ExtArrays {
 
 	/**
 	 * Version of the 'Arrays' extension.
-	 * 
+	 *
 	 * @since 2.0 (before in 'Arrays' class since 1.3.2)
 	 */
 	const VERSION = '2.0 alpha';
 
 	/**
 	 * Store for arrays.
-	 * 
+	 *
 	 * @var array
 	 * @private
 	 */
-    var $mArrays = array();
+	var $mArrays = array();
 
 	/**
 	 * Sets up parser functions
-	 * 
+	 *
 	 * @since 2.0
 	 */
-	public static function init( Parser &$parser ) {		
+	public static function init( Parser &$parser ) {
 		/*
 		 * store for arrays per Parser object. This will solve several bugs related to
 		 * 'ParserClearState' hook clearing all variables early in combination with certain
@@ -94,8 +94,8 @@ class ExtArrays {
 		self::initFunction( $parser, 'arraydefine' );
 		self::initFunction( $parser, 'arrayprint', SFH_OBJECT_ARGS );
 		self::initFunction( $parser, 'arrayindex', SFH_OBJECT_ARGS );
-		self::initFunction( $parser, 'arraysize' );		
-		self::initFunction( $parser, 'arraysearch', SFH_OBJECT_ARGS );		
+		self::initFunction( $parser, 'arraysize' );
+		self::initFunction( $parser, 'arraysearch', SFH_OBJECT_ARGS );
 		self::initFunction( $parser, 'arraysearcharray' );
 		self::initFunction( $parser, 'arrayslice' );
 		self::initFunction( $parser, 'arrayreset', SFH_OBJECT_ARGS );
@@ -105,22 +105,22 @@ class ExtArrays {
 		self::initFunction( $parser, 'arrayunion', SFH_OBJECT_ARGS );
 		self::initFunction( $parser, 'arraydiff', SFH_OBJECT_ARGS );
 		self::initFunction( $parser, 'arrayintersect', SFH_OBJECT_ARGS );
-		
+
 		return true;
 	}
-	private static function initFunction( Parser &$parser, $name, $flags = 0 ) {		
+	private static function initFunction( Parser &$parser, $name, $flags = 0 ) {
 		// all parser functions with prefix:
-		$prefix = ( $flags & SFH_OBJECT_ARGS ) ? 'pfObj_' : 'pf_';		
+		$prefix = ( $flags & SFH_OBJECT_ARGS ) ? 'pfObj_' : 'pf_';
 		$functionCallback = array( __CLASS__, $prefix . $name );
-				
-		$parser->setFunctionHook( $name, $functionCallback, $flags );		
-	}	
-	
+
+		$parser->setFunctionHook( $name, $functionCallback, $flags );
+	}
+
 	/**
 	 * Returns the extensions base installation directory.
 	 *
 	 * @since 2.0
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public static function getDir() {
@@ -130,8 +130,8 @@ class ExtArrays {
 		}
 		return $dir;
 	}
-		
-	
+
+
 	####################
 	# Parser Functions #
 	####################
@@ -149,31 +149,31 @@ class ExtArrays {
 	* http://us2.php.net/manual/en/book.pcre.php
 	* see also: http://us2.php.net/manual/en/function.preg-split.php
 	*/
-    static function pf_arraydefine(
+	static function pf_arraydefine(
 			Parser &$parser,
 			$arrayId,
 			$value = null,
 			$delimiter = '/\s*,\s*/',
 			$options = ''
 	) {
-        if ( !isset( $arrayId ) ) {
-        	return '';
-        }
-		
+		if ( !isset( $arrayId ) ) {
+			return '';
+		}
+
 		$out = '';
 		$array = array();
 		$trimDone = false; // whether or not we can be sure that all array elements are trimmed
-		
-        // normalize        
-        $delimiter = trim( $delimiter );
 
-        if( $value === null ) {
+		// normalize
+		$delimiter = trim( $delimiter );
+
+		if( $value === null ) {
 			// no element set, not even an empty one
-            $array = array();
-        }
+			$array = array();
+		}
 		else {
 			$value = trim( $value ); // just in case...
-			
+
 			// fill array with user input:
 			if( $delimiter === '' ) {
 				// whole input one element, also takes care of special case empty '' value and 'unique' option set
@@ -188,21 +188,21 @@ class ExtArrays {
 				}
 				$array = preg_split( $delimiter, $value );
 			}
-			
+
 			// trim all values before unique if still necessary, otherwise unique might not work correctly
 			if( ! $trimDone ) {
 				$array = self::sanitizeArray( $array );
 			}
 
-            // now parse the options, and do posterior process on the created array
-            $arrayOptions = self::parse_options( $options );
-			
-            // make it unique if option is set
-            if( array_key_exists( 'unique', $arrayOptions ) ) {
+			// now parse the options, and do posterior process on the created array
+			$arrayOptions = self::parse_options( $options );
+
+			// make it unique if option is set
+			if( array_key_exists( 'unique', $arrayOptions ) ) {
 				// unique like the parser function would do it
 				$array = self::array_unique( $array );
-            }
-			
+			}
+
 			/**
 			 * @ToDo:
 			 * The 'empty' option was introduced in r81676 but actually breaks old functionality since it will remove
@@ -213,19 +213,19 @@ class ExtArrays {
 			 */
 			/*
 			// remove all empty '' elements if option is NOT set
-            if( ! array_key_exists( 'empty', $arrayOptions ) ) {
+			if( ! array_key_exists( 'empty', $arrayOptions ) ) {
 				$values = array(); // temp array so we won't have gaps (don't use unset!)
-				foreach ( $array as $key => $value ) {					
-            		if( $value !== '' ) {
-            			$values[] = $elem;
-            		}
-            	}
+				foreach ( $array as $key => $value ) {
+					if( $value !== '' ) {
+						$values[] = $elem;
+					}
+				}
 				$array = $values;
 				unset( $values );
-            }
+			}
 			 */
 
-            // sort array if the option is set
+			// sort array if the option is set
 			if( array_key_exists( 'sort', $arrayOptions ) ) {
 				$array = self::arraySort( $array, self::array_value( $arrayOptions, 'sort' ) );
 			}
@@ -238,11 +238,11 @@ class ExtArrays {
 					break;
 			}
 		}
-		
+
 		self::get( $parser )->setArray( $arrayId, $array );
 
 		return $out;
-    }
+	}
 
 
 	///////////////////////////////////////////////////////////
@@ -265,21 +265,21 @@ class ExtArrays {
 	*    {{#arrayprint:b|<br/>|@@@|{{f.tag{{f.print.vbar}}prop{{f.print.vbar}}@@@}} }}   -- embed template function
 	*    {{#arrayprint:b|<br/>|@@@|[[name::@@@]]}}   -- make SMW links
 	*/
-    static function pfObj_arrayprint( Parser &$parser, $frame, $args ) {		
-        // Get Parameters
-        $arrayId   = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
-        $delimiter = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : ', ';
+	static function pfObj_arrayprint( Parser &$parser, $frame, $args ) {
+		// Get Parameters
+		$arrayId   = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
+		$delimiter = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : ', ';
 		/*
 		 * PPFrame::NO_ARGS and PPFrame::NO_TEMPLATES for expansion make a lot of sense here since the patterns getting replaced
 		 * in $subject before $subject is being parsed. So any template or argument influence in the patterns wouldn't make any
 		 * sense in any sane scenario.
 		 */
-        $search  = isset( $args[2] ) ? trim( $frame->expand( $args[2], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
-        $subject = isset( $args[3] ) ? trim( $frame->expand( $args[3], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
-				
+		$search  = isset( $args[2] ) ? trim( $frame->expand( $args[2], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
+		$subject = isset( $args[3] ) ? trim( $frame->expand( $args[3], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
+
 		// get array, null if non-existant:
 		$array = self::get( $parser )->getArray( $arrayId );
-		
+
 		if( $array === null ) {
 			// array we want to print doesn't exist!
 			global $egArrayExtensionCompatbilityMode;
@@ -292,11 +292,11 @@ class ExtArrays {
 		}
 
 		$rendered_values = array();
-				
+
 		foreach( $array as $val ) {
 			// replace place holder with current value:
 			$rawResult = str_replace( $search, $val, $subject );
-			
+
 			/*
 			 * $subjectd still is un-expanded (this allows to use some parser functions like
 			 * {{FULLPAGENAME:@@@@}} directly without getting parsed before @@@@ is replaced.
@@ -307,8 +307,8 @@ class ExtArrays {
 
 			$rendered_values[] = $rawResult;
 		}
-		
-		$output = implode( $delimiter, $rendered_values );		
+
+		$output = implode( $delimiter, $rendered_values );
 		$noparse = false;
 
 		/*
@@ -319,10 +319,10 @@ class ExtArrays {
 
 		$output = $parser->preprocessToDom( $output, $frame->isTemplate() ? Parser::PTD_FOR_INCLUSION : 0 );
 		$output = trim( $frame->expand( $output ) );
-		
+
 		return $output;
-	}	
-	
+	}
+
 	/**
 	* print the value of an array (identified by arrayid)  by the index, invalid index results in the default value  being printed. note the index is 0-based.
 	* usage:
@@ -330,26 +330,26 @@ class ExtArrays {
 	*/
 	static function pfObj_arrayindex( Parser &$parser, PPFrame $frame, $args ) {
 		global $egArrayExtensionCompatbilityMode;
-		
+
 		// Get Parameters
-		$arrayId    = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';		
+		$arrayId    = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
 		$rawOptions = isset( $args[2] ) ? $args[2] : '';
-		
+
 		if( ! isset( $args[1] ) ) {
 			return '';
 		}
 		$index = trim( $frame->expand( $args[1] ) );
-		
+
 		// get value or null if it doesn't exist. Takes care of negative index as well
 		$val = self::get( $parser )->getArrayValue( $arrayId, $index );
-				
-        if( $val === null || ( $val === '' && !$egArrayExtensionCompatbilityMode ) ) {
-			// index doesn't exist, return default (parameter 3)!			
+
+		if( $val === null || ( $val === '' && !$egArrayExtensionCompatbilityMode ) ) {
+			// index doesn't exist, return default (parameter 3)!
 			// without compatibility, also return default in case of empty string ''
-			
+
 			// only expand default when needed
 			$defaultOrOptions = trim( $frame->expand( $rawOptions ) );
-			
+
 			if( $egArrayExtensionCompatbilityMode ) {
 				// COMPATIBILITY-MODE
 				// now parse the options, and do posterior process on the created array
@@ -358,13 +358,13 @@ class ExtArrays {
 			} else {
 				$default = $defaultOrOptions;
 			}
-			
+
 			return $default;
-        }
-		
+		}
+
 		return $val;
-    }
-	
+	}
+
 	/**
 	* returns the size of an array.
 	* Print the size (number of elements) in the specified array and '' if array doesn't exist
@@ -373,17 +373,17 @@ class ExtArrays {
 	*
 	*   See: http://www.php.net/manual/en/function.count.php
 	*/
-    static function pf_arraysize( Parser &$parser, $arrayId ) {
+	static function pf_arraysize( Parser &$parser, $arrayId ) {
 		$store = self::get( $parser );
-		
-        if( ! $store->arrayExists( $arrayId ) ) {
-           return '';
-        }
-		
-        return count( $store->getArray( $arrayId ) );
-    }
 
-	
+		if( ! $store->arrayExists( $arrayId ) ) {
+		   return '';
+		}
+
+		return count( $store->getArray( $arrayId ) );
+	}
+
+
 	/**
 	* locate the index of the first occurence of an element starting from the 'index'
 	*    - print "-1" (not found) or index (found) to show the index of the first occurence of 'value' in the array identified by arrayid
@@ -396,25 +396,25 @@ class ExtArrays {
 	*   note it is extended to support regular expression match and index
 	*/
 	static function pfObj_arraysearch( Parser &$parser, PPFrame $frame, $args ) {
-		
+
 		$arrayId = trim( $frame->expand( $args[0] ) );
 		$index = isset( $args[2] ) ? trim( $frame->expand( $args[2] ) ) : 0;
-		
+
 		$store = self::get( $parser );
-		
-        if( $store->arrayExists( $arrayId )
-			&& $store->validate_array_index( $arrayId, $index, false )				
+
+		if( $store->arrayExists( $arrayId )
+			&& $store->validate_array_index( $arrayId, $index, false )
 		) {
 			$array = $store->getArray( $arrayId );
-			
+
 			// validate/build search regex:
 			if( isset( $args[1] ) ) {
-				
+
 				$needle = trim( $frame->expand( $args[1] ) );
-				
+
 				if ( ! self::isValidRegEx( $needle ) ) {
 					$needle = '/^\s*' . preg_quote( trim( $needle ), '/' ) . '\s*$/';
-				}				
+				}
 			}
 			else {
 				$needle = '/^\s*$/';
@@ -428,7 +428,7 @@ class ExtArrays {
 				if ( preg_match( $needle, $value ) ) {
 					// found!
 					if ( isset( $args[3] ) ) {
-						// Expand only when needed!						
+						// Expand only when needed!
 						return trim( $frame->expand( $args[3] ) );
 					}
 					else {
@@ -438,15 +438,15 @@ class ExtArrays {
 				}
 			}
 		}
-		
+
 		global $egArrayExtensionCompatbilityMode;
-		
+
 		// no match! (Expand only when needed!)
 		$no = isset( $args[4] )
-		      ? trim( $frame->expand( $args[4] ) )
-		      : $egArrayExtensionCompatbilityMode ? '-1' : ''; // COMPATIBILITY-MODE
-        return $no;
-    }
+			  ? trim( $frame->expand( $args[4] ) )
+			  : $egArrayExtensionCompatbilityMode ? '-1' : ''; // COMPATIBILITY-MODE
+		return $no;
+	}
 
 	/**
 	* search an array and create a new array with all the results. Transforming the new entries before storing them is possible too.
@@ -466,47 +466,47 @@ class ExtArrays {
 			$transform = ''
 	) {
 		$store = self::get( $parser );
-		
+
 		if( $arrayId === null ) {
 			global $egArrayExtensionCompatbilityMode;
 			if( ! $egArrayExtensionCompatbilityMode ) { // COMPATIBILITY-MODE
 				$store->setArray( $arrayId_new );
 			}
 			return '';
-		}		
+		}
 		// also takes care of negative index by calculating start index:
 		$validIndex = $store->validate_array_index( $arrayId, $index, false );
-		
+
 		// make sure at least empty array exists but don't overwrite data
 		// we still need in case new array ID same as target array ID
 		$array = $store->getArray( $arrayId );
 		$store->setArray( $arrayId_new );
-		
-        if( $array === null || !$validIndex ) {
+
+		if( $array === null || !$validIndex ) {
 			return '';
 		}
-		
+
 		// non-numeric limit will be set to 0, except limit was omitted ('')
 		$limit = $limit === '' ? -1 : (int)$limit;
 		if( $limit === 0 ) {
 			return '';
 		}
-						
-		$newArr = array();		
-		
+
+		$newArr = array();
+
 		$regexFunSupport = self::hasRegexFunSupport();
-        if( ! self::isValidRegEx( $needle, $regexFunSupport ) ) {
+		if( ! self::isValidRegEx( $needle, $regexFunSupport ) ) {
 			$needle = '/^\s*(' . preg_quote( $needle, '/' ) . ')\s*$/';
 		}
 
 		// search the array for all matches and put them in the new array
 		$total = count( $array );
-        for( $i = $index; $i < $total; $i++ ) {
-			
+		for( $i = $index; $i < $total; $i++ ) {
+
 			$value = $array[ $i ];
 
 			if( preg_match( $needle, $value ) ) {
-				// Found something!				
+				// Found something!
 				if( $transform !== '' ) {
 					// Transform the found string. Can we use 'Regex Fun' ?
 					if( $regexFunSupport ) {
@@ -526,19 +526,19 @@ class ExtArrays {
 					}
 				}
 				$newArr[] = trim( $value );
-				
+
 				// stop if limit is reached, limit -1 means no limit
 				if( --$limit === 0 ) {
 					break;
 				}
 			}
-        }
-		
+		}
+
 		// set new array:
 		$store->setArray( $arrayId_new, $newArr );
 		return '';
 	}
-	
+
 	/**
 	* extract a slice from an array
 	* usage:
@@ -561,7 +561,7 @@ class ExtArrays {
 
 		// make sure at least an empty array exists if we return early
 		$store->setArray( $arrayId_new );
-		
+
 		if( $array === null
 			|| ! is_numeric( $offset ) // don't ignore invalid offset
 		) {
@@ -571,15 +571,15 @@ class ExtArrays {
 		if( ! is_numeric( $length ) ) {
 			$length = null; // ignore invalid input, slice till end
 		}
-		
-		// array_slice will re-organize keys		
+
+		// array_slice will re-organize keys
 		$newArray = array_slice( $array, $offset, $length );
 		$store->setArray( $arrayId_new, $newArray );
-		
+
 		return '';
 	}
-	
-		
+
+
 	///////////////////////////////////////////////////////////
 	// PART 3. Array Alteration
 	///////////////////////////////////////////////////////////
@@ -592,7 +592,7 @@ class ExtArrays {
 	*/
 	static function pfObj_arrayreset( Parser &$parser, PPFrame $frame, $args) {
 		global $egArrayExtensionCompatbilityMode;
-				
+
 		if( $egArrayExtensionCompatbilityMode && count( $args ) == 1 ) {
 			/*
 			 * COMPATIBILITY-MODE: before arrays were separated by ';' which is an bad idea since
@@ -600,9 +600,9 @@ class ExtArrays {
 			 */
 			$args = preg_split( '/\s*,\s*/', trim( $frame->expand( $args[0] ) ) );
 		}
-		
+
 		$store = self::get( $parser );
-		
+
 		// reset all hash tables if no specific tables are given:
 		if( ! isset( $args[0] ) || ( $args[0] === '' && count( $args ) == 1 ) ) {
 			// reset ALL arrays!
@@ -612,12 +612,12 @@ class ExtArrays {
 			// reset specific hash tables:
 			foreach( $args as $arg ) {
 				$arrayId = trim( $frame->expand( $arg ) );
-				$store->unsetArray( $arrayId );				
+				$store->unsetArray( $arrayId );
 			}
 		}
 		return '';
-    }
-	
+	}
+
 
 	/**
 	 * convert an array to a set
@@ -628,16 +628,16 @@ class ExtArrays {
 	 *
 	 *   see: http://www.php.net/manual/en/function.array-unique.php
 	 */
-    static function pf_arrayunique( Parser &$parser, $arrayId ) {
+	static function pf_arrayunique( Parser &$parser, $arrayId ) {
 		$store = self::get( $parser );
-		
-        if( $store->arrayExists( $arrayId ) ) {
+
+		if( $store->arrayExists( $arrayId ) ) {
 		   $array = $store->getArray( $arrayId );
 		   $array = self::array_unique( $array );
 		   $store->setArray( $arrayId, $array );
-        }
-		return '';		
-    }
+		}
+		return '';
+	}
 
 
 	/**
@@ -653,32 +653,32 @@ class ExtArrays {
 	 *   see: http://www.php.net/manual/en/function.sort.php
 	 *        http://www.php.net/manual/en/function.rsort.php
 	 *        http://www.php.net/manual/en/function.shuffle.php
- 	 *        http://us3.php.net/manual/en/function.array-reverse.php
+	 *        http://us3.php.net/manual/en/function.array-reverse.php
 	 */
-    static function pf_arraysort( Parser &$parser, $arrayId , $sort = 'none' ) {        
+	static function pf_arraysort( Parser &$parser, $arrayId , $sort = 'none' ) {
 		$store = self::get( $parser );
-		
+
 		$array = $store->getArray( $arrayId );
-		
-        if( $array === null ) {
-           return '';
-        }
-		
+
+		if( $array === null ) {
+		   return '';
+		}
+
 		// sort array and store it
 		$array = self::arraySort( $array, $sort );
 		$store->setArray( $arrayId, $array );
 		return '';
-    }
+	}
 
 
 	///////////////////////////////////////////////////////////
 	// PART 4. Array Interaction
 	///////////////////////////////////////////////////////////
-	
+
 	/**
 	 * Merge values two arrayes identified by arrayid1 and arrayid2 into a new array identified by arrayid_new.
 	 * This merge differs from array_merge of php because it merges values.
-	 * 
+	 *
 	 * Usage:
 	 *    {{#arraymerge:arrayid_new |array1 |array2 |... |array n}}
 	 *    See: http://www.php.net/manual/en/function.array-merge.php
@@ -691,12 +691,12 @@ class ExtArrays {
 		// keys will not be re-organized
 		return array_merge( $array1, $array2 );
 	}
-	
-	/**	 
+
+	/**
 	 * Usage:
 	 *    {{#arrayunion:arrayid_new|arrayid1|arrayid2}}
-	 * 
-     *    Set operation, {red, white} = {red, white} union {red}
+	 *
+	 *    Set operation, {red, white} = {red, white} union {red}
 	 *    Similar to arraymerge but with unique values. This union works on values.
 	 */
 	static function pfObj_arrayunion( &$parser, $frame, $args) {
@@ -707,11 +707,11 @@ class ExtArrays {
 		// keys will not be re-organized
 		return array_unique( array_merge( $array1, $array2 ) );
 	}
-	
+
 	/**
 	 * Usage:
 	 *    {{#arrayintersect:arrayid_new |array1 |array2 |... |array n}}
-	 * 
+	 *
 	 *    Set operation, {red} = {red, white} intersect {red,black}
 	 *    See: http://www.php.net/manual/en/function.array-intersect.php
 	 */
@@ -740,22 +740,22 @@ class ExtArrays {
 		// keys will be preserved!
 		return array_diff( $array1, $array2 );
 	}
-	
-	
+
+
 	##################
 	# Private helper #
 	##################
-	
+
 	/**
 	 * Base function for operations with multiple arrays given thru n parameters
 	 * $operationFunc expects a function name prefix (suffix 'multi_') with two parameters
 	 * $array1 and $array2 which will perform an action between $array1 and $array2 which
 	 * will result into a new $array1. There can be 1 to n $hash2 in the whole process.
-	 * 
+	 *
 	 * Note: This function is similar to that of Extension:HashTables.
-	 * 
+	 *
 	 * @since 2.0
-	 * 
+	 *
 	 * @param $frame PPFrame
 	 * @param $args array
 	 * @param $operationFunc string name of the function calling this. There must be a counterpart
@@ -769,7 +769,7 @@ class ExtArrays {
 		$operationRan = false;
 		$finalArrayId = trim( $frame->expand( $args[0] ) );
 		$operationFunc = 'multi_' . preg_replace( '/^pfObj_/', '', $operationFunc );
-		
+
 		// For all arrays given in parameters 2 to n (ignore 1 because this is the name of the new array)
 		for( $i = 1; $i < count( $args ); $i++ ) {
 			// just make sure we don't fall into gaps of given arguments:
@@ -777,10 +777,10 @@ class ExtArrays {
 				continue;
 			}
 			$argArrayId = trim( $frame->expand( $args[ $i ] ) );
-			
+
 			// ignore all tables which do not exist
 			if( $this->arrayExists( $argArrayId ) ) {
-				$argArray = $this->getArray( $argArrayId );				
+				$argArray = $this->getArray( $argArrayId );
 				if( $lastArray === null ) {
 					// first valid array, process together with second...
 					$lastArray = $argArray;
@@ -792,14 +792,14 @@ class ExtArrays {
 				}
 			}
 		}
-		
+
 		// in case no array was given at all:
 		if( $lastArray === null ) {
 			$lastArray = array();
 		}
-		
+
 		global $egArrayExtensionCompatbilityMode;
-		
+
 		if( ! $operationRan && $egArrayExtensionCompatbilityMode
 			&& $operationFunc !== 'multi_arraymerge' // only exception was 'arraymerge'
 		) {
@@ -810,33 +810,33 @@ class ExtArrays {
 			 */
 			return '';
 		}
-		
+
 		// if the operation didn't run because there was only one or no array:
 		if( ! $operationRan && $runFuncOnSingleArray ) {
 			$lastArray = $this->{ $operationFunc }( $lastArray );
 		}
-		
+
 		// re-organize all keys since some 'multi_' functions will preserve keys!
 		$lastArray = array_merge( $lastArray );
-		
-		$this->setArray( $finalArrayId, $lastArray );
-	}	
 
-    /**
+		$this->setArray( $finalArrayId, $lastArray );
+	}
+
+	/**
 	 * Validates an index for an array and returns true in case the index is a valid index within
 	 * the array. This also changes the index value, which is given by reference, in case it is
 	 * set to a negative value. In case $strictIndex is set to false, further transforming of
 	 * $index might be done - in the same cases normally the function would return false.
-	 * 
+	 *
 	 * @param string  $arrayId
 	 * @param mixed  &$index
 	 * @param bool    $strictIndex Whether non-numeric indexes and negative indexes which would
 	 *                end up out of range, below 0, should be set to 0 automatically.
-	 * 
+	 *
 	 * @return boolean
 	 */
-    protected function validate_array_index( $arrayId, &$index, $strictIndex = false ) {
-        if( ! is_numeric( $index ) ) {
+	protected function validate_array_index( $arrayId, &$index, $strictIndex = false ) {
+		if( ! is_numeric( $index ) ) {
 			if( $strictIndex ) {
 				return false;
 			} else {
@@ -844,13 +844,13 @@ class ExtArrays {
 			}
 		}
 		$index = (int)$index;
-		
+
 		if( ! array_key_exists( $arrayId, $this->mArrays ) ) {
 			return false;
 		}
-		
+
 		$array = $this->mArrays[ $arrayId ];
-		
+
 		// calculate start index for negative start indexes:
 		if( $index < 0 ) {
 			$index = count( $array ) + $index;
@@ -858,22 +858,22 @@ class ExtArrays {
 				$index = 0;
 			}
 		}
-		
-        if( ! isset( $array ) ) {
+
+		if( ! isset( $array ) ) {
 			return false;
 		}
-        if( ! array_key_exists( $index, $array ) ) {
+		if( ! array_key_exists( $index, $array ) ) {
 			return false;
 		}
-        return true;
-    }
-	
+		return true;
+	}
+
 	/**
 	 * private function for validating array by name
 	 * @ToDo: get rid of this!
 	 * @deprecated
 	 */
-    protected function validate_array_by_arrayId( $arrayId ) {
+	protected function validate_array_by_arrayId( $arrayId ) {
 		if( ! isset( $arrayId ) ) {
 			return '';
 		}
@@ -890,27 +890,27 @@ class ExtArrays {
 		}
 
 		return true;
-    }
-	
+	}
+
 	/**
 	 * Convenience function to get a value from an array. Returns '' in case the
 	 * value doesn't exist or no array was given
-	 * 
+	 *
 	 * @return string
 	 */
-    protected static function array_value( $array, $field ) {
- 		if ( is_array( $array ) && array_key_exists( $field, $array ) ) {
+	protected static function array_value( $array, $field ) {
+		if ( is_array( $array ) && array_key_exists( $field, $array ) ) {
 			return $array[ $field ];
 		}
 		return '';
-    }
-	
+	}
+
 	/**
 	 * Parses a string of options separated by ','. Options can be just certain key-words or
 	 * key-value pairs separated by '='. Options are case-insensitive and spacing between
 	 * separators will be ignored.
 	 */
-    protected static function parse_options( $options ) {
+	protected static function parse_options( $options ) {
 		if( ! isset( $options ) ) {
 			return array();
 		}
@@ -918,25 +918,25 @@ class ExtArrays {
 		// now parse the options, and do posterior process on the created array
 		$options = preg_split( '/\s*,\s*/', strtolower( $options ) );
 
-		$ret = array();        
+		$ret = array();
 		foreach( $options as $option ) {
 			$optPair = preg_split( '/\s*\=\s*/', $option, 2 );
-			if( sizeof( $optPair ) == 1 ) {					
+			if( sizeof( $optPair ) == 1 ) {
 				$ret[ $optPair[0] ] = true;
 			} else {
 				$ret[ $optPair[0] ] = $optPair[1];
 			}
 		}
 		return $ret;
-    }
-	
+	}
+
 	/**
 	 * same as self::arrayUnique() but without sanitazation, only for internal use.
 	 */
 	protected static function array_unique( array $array ) {
 		// delete duplicate values
 		$array = array_unique( $array );
-		
+
 		$values = array();
 		foreach( $array as $key => $val ) {
 			// don't put emty elements into the array
@@ -944,7 +944,7 @@ class ExtArrays {
 				$values[] = $val;
 			}
 		}
-		
+
 		return $values;
 	}
 
@@ -952,7 +952,7 @@ class ExtArrays {
 	##############
 	# Used Hooks #
 	##############
-	
+
 	static function onParserClearState( Parser &$parser ) {
 		// remove all arrays to avoid conflicts with job queue or Special:Import or SMW semantic updates
 		$parser->mExtArrays = new self();
@@ -968,43 +968,43 @@ class ExtArrays {
 	# other extensions doing interactive stuff
 	# with the Array extension.
 	#
-	
+
 	/**
 	 * Convenience function to return the 'Arrays' extensions array store connected
 	 * to a certain Parser object. Each parser has its own store which will be reset after
 	 * a parsing process [Parser::parse()] has finished.
-	 * 
+	 *
 	 * @since 2.0
-	 * 
+	 *
 	 * @param Parser &$parser
-	 * 
+	 *
 	 * @return ExtArrays by reference so we still have the right object after 'ParserClearState'
 	 */
 	public static function &get( Parser &$parser ) {
 		return $parser->mExtArrays;
 	}
-	
+
 	/**
 	 * Returns an array identified by $arrayId. If it doesn't exist, null will be returned.
-	 * 
+	 *
 	 * @since 2.0
-	 * 
+	 *
 	 * @param string $arrayId
-	 * 
+	 *
 	 * @return array|null
 	 */
-    function getArray( $arrayId ) {
+	function getArray( $arrayId ) {
 		$arrayId = trim( $arrayId );
 		if( $this->arrayExists( $arrayId ) ) {
 			return $this->mArrays[ $arrayId ];
 		}
 		return null;
-    }
-	
+	}
+
 	/**
 	 * This will add a new array or overwrite an existing one. Values should be delliverd as array
 	 * values in form of a string. The array will be sanitized internally.
-	 * 
+	 *
 	 * @param string $arrayId
 	 * @param array  $array
 	 */
@@ -1012,64 +1012,64 @@ class ExtArrays {
 		$array = self::sanitizeArray( $array );
 		$this->mArrays[ trim( $arrayId ) ] = $array;
 	}
-	
+
 	/**
 	 * Same as the public function createArray() but without sanitizing the array automatically.
 	 * This is save and faster for internal usage, just be sure your array doesn't have un-trimmed
 	 * values or non-numeric or negative array keys and no gaps between keys.
-	 * 
+	 *
 	 * @param type $arrayId
-	 * @param type $array 
+	 * @param type $array
 	 */
 	protected function setArray( $arrayId, $array = array() ) {
 		$this->mArrays[ trim( $arrayId ) ] = $array;
 	}
-	
+
 	/**
 	 * Returns whether a certain array is defined within the page scope.
-	 * 
+	 *
 	 * @param string $arrayId
-	 * 
+	 *
 	 * @return boolean
 	 */
 	function arrayExists( $arrayId ) {
 		return array_key_exists( trim( $arrayId ), $this->mArrays );
 	}
-	
+
 	/**
 	 * Returns a value within an array. If key or array do not exist, this will return null
 	 * or another predefined default. $index can also be a negative value, in this case the
 	 * value that far from the end of the array will be returned.
-	 * 
+	 *
 	 * @since 2.0
-	 * 
+	 *
 	 * @param string $arrayId
 	 * @param string $index
 	 * @param mixed  $default value to return in case the value doesn't exist. null by default.
-	 * 
+	 *
 	 * @return string|null
 	 */
-    function getArrayValue( $arrayId, $index, $default = null ) {
-		$arrayId = trim( $arrayId );		
+	function getArrayValue( $arrayId, $index, $default = null ) {
+		$arrayId = trim( $arrayId );
 		if( $this->arrayExists( $arrayId )
 			&& $this->validate_array_index( $arrayId, $index, true )
-			&& array_key_exists( $index, $this->mArrays[ $arrayId ] )			
+			&& array_key_exists( $index, $this->mArrays[ $arrayId ] )
 		) {
 			return $this->mArrays[ $arrayId ][ $index ];
 		}
 		else {
 			return $default;
 		}
-    }
+	}
 
 
 	/**
 	 * Removes an existing array. If array didn't exist this will return false, otherwise true.
-	 * 
+	 *
 	 * @since 2.0
-	 * 
+	 *
 	 * @param string $arrayId
-	 * 
+	 *
 	 * @return boolean whether the array existed and has been removed
 	 */
 	public function unsetArray( $arrayId ) {
@@ -1084,9 +1084,9 @@ class ExtArrays {
 	/**
 	 * Rebuild the array and reorganize all keys, trim all values.
 	 * All gaps between array items will be closed.
-	 * 
+	 *
 	 * @since 2.0
-	 * 
+	 *
 	 * @param array $arr array to be reorganized
 	 * @return array
 	 */
@@ -1097,36 +1097,36 @@ class ExtArrays {
 		}
 		return $newArray;
 	}
-	
+
 	/**
 	 * Removes duplicate values and all empty elements from an array just like the
 	 * '#arrayunique' parser function would do it. The array will be sanitized internally.
-	 * 
+	 *
 	 * @since 2.0
-	 * 
+	 *
 	 * @param array $array
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function arrayUnique( array $array ) {
 		$arr = $this->sanitizeArray( $arr );
 		$array = self::array_unique( $array );
 	}
-	
+
 	/**
 	 * Sorts an array just like parser function '#arraysort' would do it and allows the
 	 * same sort modes.
-	 * 
+	 *
 	 * @since 2.0
-	 * 
+	 *
 	 * @param array $array
 	 * @param string $sortMode
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function arraySort( array $array, $sortMode ) {
 		// do the requested sorting of the given array:
-        switch( $sortMode ) {
+		switch( $sortMode ) {
 			case 'asc':
 			case 'asce':
 			case 'ascending':
@@ -1153,19 +1153,19 @@ class ExtArrays {
 	/**
 	 * Decides for the given $pattern whether its a valid regular expression acceptable for
 	 * Arrays parser functions or not.
-	 * 
+	 *
 	 * @param string $pattern regular expression including delimiters and optional flags
 	 * @param bool   $forRegexFun whether the regular expression is inteded to be used with 'Regex Fun'
 	 *               if supported by the wikis infrastructure. In case 'Regex Fun' is not available,
 	 *               the default validation will be used.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	static function isValidRegEx( $pattern, $forRegexFun = false ) {
 		if( $forRegexFun && self::hasRegexFunSupport() ) {
 			return ExtRegexFun::validateRegex( $pattern );
 		}
-		
+
 		if( ! preg_match( '/^([\\/\\|%]).*\\1[imsSuUx]*$/', $pattern ) ) {
 			return false;
 		}
@@ -1174,7 +1174,7 @@ class ExtArrays {
 		wfRestoreWarnings();
 		return $isValid;
 	}
-	
+
 	/**
 	 * Whether 'Regex Fun' extension is available in this wiki to take over preg_replace handling
 	 * for '#arraysearcharray' function.
