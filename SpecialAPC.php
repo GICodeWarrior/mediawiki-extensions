@@ -100,9 +100,7 @@ class SpecialAPC extends SpecialPage {
 			}
 		}
 
-		$wgOut->addLink( array( 'rel' => 'stylesheet', 'type' => 'text/css',
-			'href' => "$wgScriptPath/extensions/APC/apc.css?$wgStyleVersion", )
-		);
+		$wgOut->addModuleStyles( 'ext.apc' );
 
 		$this->getLogo();
 		$this->mainMenu();

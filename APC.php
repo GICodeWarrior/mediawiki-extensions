@@ -32,3 +32,9 @@ $wgSpecialPages['APC'] = 'SpecialAPC';
 $wgSpecialPageGroups['APC'] = 'wiki';
 
 $wgAvailableRights[] = 'apc';
+
+$wgResourceModules['ext.apc'] = array(
+	'styles' => 'apc.css',
+	'localBasePath' => dirname(__FILE__),
+	'remoteExtPath' => 'APC'
+);
