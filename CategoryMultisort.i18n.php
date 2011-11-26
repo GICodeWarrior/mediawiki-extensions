@@ -503,7 +503,7 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'categorymultisort-desc' => 'Membolehkan pemaparan kategori dengan pelbagai kunci isih',
-	'categorymultisort-defaultsortkey-name' => 'Tersedia',
+	'categorymultisort-defaultsortkey-name' => 'Asali',
 	'categorymultisort-sortkey' => 'Kunci isih:',
 	'categorymultisort-go' => 'Pergi',
 	'categorymultisort-default-sortkey' => 'Kunci isih utama:',
