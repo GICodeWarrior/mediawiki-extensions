@@ -17,14 +17,12 @@
  *
  * @ToDo:
  * ======
- * - binding one hash tables instance per initialized parser instead of having one global one.
  * Thinking about:
  * - Sort function
  * - Search function
- *
  */
  
-if ( ! defined( 'MEDIAWIKI' ) ) { die(); }
+if( ! defined( 'MEDIAWIKI' ) ) { die(); }
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
@@ -120,8 +118,7 @@ class ExtHashTables {
 	 * @return boolean
 	 */
 	public static function getDir() {
-		static $dir = null;
-		
+		static $dir = null;		
 		if( $dir === null ) {
 			$dir = dirname( __FILE__ );
 		}
@@ -149,17 +146,17 @@ class ExtHashTables {
 		
         if( $value !== '' ) {
 			// Build delimiters:
-            if ( ! self::isValidRegEx($itemsDelimiter,'/') ) {
+            if( ! self::isValidRegEx($itemsDelimiter,'/') ) {
                 $itemsDelimiter = '/\s*' . preg_quote( $itemsDelimiter, '/' ) . '\s*/';
 			}
 			
-            if ( ! self::isValidRegEx($innerDelimiter,'/') ) {
+            if( ! self::isValidRegEx($innerDelimiter,'/') ) {
                 $innerDelimiter = '/\s*' . preg_quote( $innerDelimiter, '/' ) . '\s*/';
 			}
 			
 			$items = preg_split( $itemsDelimiter, $value ); // All hash Items
 			
-			foreach ( $items as $item ) {
+			foreach( $items as $item ) {
 				$hashPair = preg_split( $innerDelimiter, $item, 2 );
 				
 				if( count($hashPair) < 2 ) {
@@ -250,7 +247,10 @@ class ExtHashTables {
 		
 		// parameter validation:
 		
-        $seperator = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : ', ';
+		global $wgLang;
+        $seperator = isset( $args[1] )
+				? trim( $frame->expand( $args[1] ) )
+				: $wgLang->getMessageFromDB( 'comma-separator' ); // use local languages default, for English ', '
 		/*
 		 * PPFrame::NO_ARGS and PPFrame::NO_TEMPLATES for expansion make a lot of sense here since the patterns getting replaced
 		 * in $subject before $subject is being parsed. So any template or argument influence in the patterns wouldn't make any
@@ -333,7 +333,7 @@ class ExtHashTables {
 
 		$templateArgs = $frame->getArguments();
 
-		foreach ( $templateArgs as $argName => $argVal ) {
+		foreach( $templateArgs as $argName => $argVal ) {
 			// one hash value for each parameter
 			$store->setHashValue( $hashId, $argName, $argVal );
 		}

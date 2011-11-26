@@ -9,6 +9,7 @@
    - Inclusion of special pages in the middle of the page won't reset all defined hash tables anymore.
    - arrayprint will handle <includeonly>/<noinclude> correct in case it's used in a template.
    - '#hashvalue' will only expand its default when required.
+   - '#hashprint' will use the languages default comma separator instead of hard-coded ', ' as default.
 
 
  * November 4, 2011 -- Version 0.7
