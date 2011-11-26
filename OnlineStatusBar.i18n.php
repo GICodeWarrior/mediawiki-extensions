@@ -21,7 +21,7 @@ $messages['en'] = array(
 	// Message in config asking user if they want to enable it
 	'onlinestatusbar-used' => 'Display your online status on your user pages',
 	// Message in config for amount of time after which user is away
-	'onlinestatusbar-away-time' => 'How much time to wait until you are marked as away, in minutes:',
+	'onlinestatusbar-away-time' => 'How many minutes until you are marked as away:',
 	// Message in config asking what status they want to use
 	'onlinestatusbar-status' => 'What is the default status you wish to use:',
 	// Message in config about away time
