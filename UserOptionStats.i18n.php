@@ -530,7 +530,7 @@ $messages['mn'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
-	'uos-unknown' => '* Tersedia',
+	'uos-unknown' => '*Asali',
 );
 
 /** Dutch (Nederlands)
