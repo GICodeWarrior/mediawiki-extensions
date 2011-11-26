@@ -154,11 +154,7 @@ class ExtArrays {
 			$arrayId,
 			$value = null,
 			$delimiter = '/\s*,\s*/',
-			$options = '',
-			$delimiter2 = ', ',
-			$search = '@@@@',
-			$subject = '@@@@',
-			$frame = null
+			$options = ''
 	) {
         if ( !isset( $arrayId ) ) {
         	return '';
@@ -230,16 +226,16 @@ class ExtArrays {
 			 */
 
             // sort array if the option is set
-            self::pf_arraysort( $parser, $arrayId, self::array_value( $arrayOptions, 'sort' ) );
+			if( array_key_exists( 'sort', $arrayOptions ) ) {
+				$array = self::arraySort( $array, self::array_value( $arrayOptions, 'sort' ) );
+			}
 
 			// print the array upon request
 			switch( self::array_value( $arrayOptions, 'print' ) ) {
 				case 'list':
-					$out = self::pf_arrayprint( $parser, $arrayId );
-					break;
-				
-				case 'print':
-					$out = self::pf_arrayprint( $parser, $arrayId,  $delimiter2, $search, $subject, $frame );
+					global $wgLang;
+					// simple list output
+					$out = implode( ', ', $array );
 					break;
 			}
 		}
@@ -668,32 +664,16 @@ class ExtArrays {
     static function pf_arraysort( Parser &$parser, $arrayId , $sort = 'none' ) {        
 		$store = self::get( $parser );
 		
-        if( ! $store->arrayExists( $arrayId ) ) {
+		$array = $store->getArray( $arrayId );
+		
+        if( $array === null ) {
            return '';
         }
 		
-		// do the requested sorting of the given array:
-        switch( $sort ) {
-                case 'asc':
-                case 'asce':
-                case 'ascending':
-					sort( $store->mArrays[ $arrayId ] );
-					break;
-				
-                case 'desc':
-                case 'descending':
-					rsort( $store->mArrays[ $arrayId ] );
-					break;
-
-                case 'random':
-					shuffle( $store->mArrays[ $arrayId ] );
-					break;
-
-                case 'reverse':
-					$reverse = array_reverse( $store->getArray( $arrayId ) );
-					$store->setArray( $arrayId, $reverse );
-					break;
-            } ;
+		// sort array and store it
+		$array = self::arraySort( $array, $sort );
+		$store->setArray( $arrayId, $array );
+		return '';
     }
 
 
@@ -921,9 +901,11 @@ class ExtArrays {
 	/**
 	 * Convenience function to get a value from an array. Returns '' in case the
 	 * value doesn't exist or no array was given
+	 * 
+	 * @return string
 	 */
     protected static function array_value( $array, $field ) {
-		if ( is_array( $array ) && array_key_exists( $field, $array ) ) {
+ 		if ( is_array( $array ) && array_key_exists( $field, $array ) ) {
 			return $array[ $field ];
 		}
 		return '';
@@ -1124,7 +1106,7 @@ class ExtArrays {
 	
 	/**
 	 * Removes duplicate values and all empty elements from an array just like the
-	 * arrayunique parser function would do it. The array will be sanitized internally.
+	 * '#arrayunique' parser function would do it. The array will be sanitized internally.
 	 * 
 	 * @since 2.0
 	 * 
@@ -1135,6 +1117,43 @@ class ExtArrays {
 	public static function arrayUnique( array $array ) {
 		$arr = $this->sanitizeArray( $arr );
 		$array = self::array_unique( $array );
+	}
+	
+	/**
+	 * Sorts an array just like parser function '#arraysort' would do it and allows the
+	 * same sort modes.
+	 * 
+	 * @since 2.0
+	 * 
+	 * @param array $array
+	 * @param string $sortMode
+	 * 
+	 * @return array
+	 */
+	public static function arraySort( array $array, $sortMode ) {
+		// do the requested sorting of the given array:
+        switch( $sortMode ) {
+			case 'asc':
+			case 'asce':
+			case 'ascending':
+				sort( $array );
+				break;
+
+			case 'desc':
+			case 'descending':
+				rsort( $array );
+				break;
+
+			case 'rand':
+			case 'random':
+				shuffle( $array );
+				break;
+
+			case 'reverse':
+				$array = array_reverse( $array );
+				break;
+		} ;
+		return $array;
 	}
 
 	/**
