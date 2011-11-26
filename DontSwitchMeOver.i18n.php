@@ -359,8 +359,8 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
-	'dontswitchmeover-desc' => 'Keutamaan untuk pengguna menentukan sama ada untuk mengekalkan tetapan kulit mereka apabila kulit sediakala berubah.',
-	'dontswitchmeover-pref' => 'Jangan benarkan kulit saya berubah apabila kulit sediakala berubah',
+	'dontswitchmeover-desc' => 'Keutamaan untuk pengguna menentukan sama ada untuk mengekalkan tetapan kulit mereka apabila kulit asali berubah.',
+	'dontswitchmeover-pref' => 'Jangan benarkan kulit saya berubah apabila kulit asali berubah',
 );
 
 /** Dutch (Nederlands)
