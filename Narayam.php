@@ -61,14 +61,18 @@ $wgNarayamSchemes = array(
 		'bn-inscript' => 'ext.narayam.rules.bn-inscript',
 		'bn-nkb' => 'ext.narayam.rules.bn-nkb',
 	),
-	'de' => array(
-		'de' => 'ext.narayam.rules.de',
-	),
 	'brx' => array(
 		'brx-inscript' => 'ext.narayam.rules.brx-inscript',
 	),
+	'de' => array(
+		'de' => 'ext.narayam.rules.de',
+	),
 	'eo' => array(
 		'eo' => 'ext.narayam.rules.eo',
+	),
+	'gom-deva' => array(
+		'mr' => 'ext.narayam.rules.mr',
+		'mr-inscript' => 'ext.narayam.rules.mr',
 	),
 	'hi' => array(
 		'hi' => 'ext.narayam.rules.hi',
