@@ -68,8 +68,8 @@ class ReviewPager extends TablePager {
 	 *
 	 * @return Language
 	 */
-	public function getLang() {
-		return version_compare( $GLOBALS['wgVersion'], '1.18', '>' ) ? parent::getLang() : $GLOBALS['wgLang'];
+	public function getLanguage() {
+		return version_compare( $GLOBALS['wgVersion'], '1.18', '>' ) ? parent::getLanguage() : $GLOBALS['wgLang'];
 	}
 	
 	/**
@@ -81,7 +81,7 @@ class ReviewPager extends TablePager {
 	 * @return User
 	 */
 	public function getUser() {
-		return version_compare( $GLOBALS['wgUser'], '1.18', '>' ) ? parent::getLang() : $GLOBALS['wgUser'];
+		return version_compare( $GLOBALS['wgUser'], '1.18', '>' ) ? parent::getUser() : $GLOBALS['wgUser'];
 	}
 
 	/**
@@ -135,7 +135,7 @@ class ReviewPager extends TablePager {
 	public function formatValue( $name, $value ) {
 		switch ( $name ) {
 			case 'review_post_time':
-				$value = $this->getLang()->timeanddate( $value, true );
+				$value = $this->getLanguage()->timeanddate( $value, true );
 				break;
 			case 'review_state':
 				$value = $this->currentReview->getStateControl( $this->getUser() );
@@ -159,7 +159,7 @@ class ReviewPager extends TablePager {
 				break;
 			case 'review_rating':
 				// TODO: might want to display stars here as well.
-				$value = $this->getLang()->formatNum( $value );
+				$value = $this->getLanguage()->formatNum( $value );
 				break;
 		}
 

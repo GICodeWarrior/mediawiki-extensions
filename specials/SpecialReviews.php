@@ -160,8 +160,8 @@ class SpecialReviews extends SpecialPage {
 
 		$stats['title'] = htmlspecialchars( $review->getField( 'title' ) );
 		$stats['page'] = Linker::link( $review->getTitle() );
-		$stats['posted'] = htmlspecialchars( $this->getLang()->timeanddate( $review->getField( 'post_time' ), true ) );
-		$stats['edited'] = htmlspecialchars( $this->getLang()->timeanddate( $review->getField( 'edit_time' ), true ) );
+		$stats['posted'] = htmlspecialchars( $this->getLanguage()->timeanddate( $review->getField( 'post_time' ), true ) );
+		$stats['edited'] = htmlspecialchars( $this->getLanguage()->timeanddate( $review->getField( 'edit_time' ), true ) );
 		
 		$user = $review->getUser();
 		$stats['user'] = Linker::userLink( $user->getId(), $user->getName() ) .
@@ -170,7 +170,7 @@ class SpecialReviews extends SpecialPage {
 		$stats['state'] = $review->getStateControl( $this->getUser() );
 		
 		// TODO: might want to display stars here as well.
-		$stats['rating'] = htmlspecialchars( $this->getLang()->formatNum( $review->getField( 'rating' ) ) );
+		$stats['rating'] = htmlspecialchars( $this->getLanguage()->formatNum( $review->getField( 'rating' ) ) );
 
 		return $stats;
 	}
