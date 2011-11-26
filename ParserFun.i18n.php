@@ -48,6 +48,13 @@ $messages['gl'] = array(
 	'parserfun-desc' => 'Engade unha función analítica <code>#parse</code> para analizar texto wiki e introduce o prefixo <code>THIS:</code> para as páxinas de información relacionadas coas variables máxicas',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'parserfun-desc' => 'Přidawa parserowu funkciju <code>#parse</code> za parsowanje wikiteksta a zawjeduje prefiks <code>THIS:</code> za magiske wariable, kotrež informacije stronow wotwołuja',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
