@@ -505,6 +505,36 @@ $messages['ru'] = array(
 	'right-admanager' => '[[Special:AdManager|Управление конфигурацией рекламы]]',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'admanager' => 'Annonshanterare',
+	'admanagerzones' => 'Annonshanterar-zoner',
+	'admanager-desc' => 'Ger en [[Special:AdManager|specialsida]] som låter systemoperatör ställa in zonen för sidor eller kategorier',
+	'admanager_docu' => 'För att lägga till eller ta bort annonszonen av en sida eller en hel kategori, lägg till eller ta bort rubriken nedan.',
+	'admanagerzones_docu' => 'Ange varje annonszon-nummer på en egen rad.',
+	'admanager_invalidtargetpage' => 'Ingen sida hittades med titeln "$1".',
+	'admanager_invalidtargetcategory' => 'Ingen kategori hittades med titeln "$1".',
+	'admanager_notable' => 'Fel! En nödvändig databastabell hittades inte! Kör update.php först.',
+	'admanager_noAdManagerZones' => 'Fel! Du måste lägga till några annonszoner. Skriv in dem i [[Special:AdManagerZones|Annonshanterarzoner]].',
+	'admanager_labelPage' => 'Sidtitel',
+	'admanager_labelCategory' => 'Kategorinamn',
+	'admanager_submit' => 'Skicka',
+	'admanager_noads' => 'Visa inga annonser',
+	'admanager_Page' => 'Sidor',
+	'admanager_Category' => 'Kategorier',
+	'admanager_added' => 'Dina ändringar har sparats',
+	'admanager_noadsset' => '$1 har ställts in för att inte visa några annonser',
+	'admanager_addedzone' => 'Lade till zon',
+	'admanager_zonenum' => 'Zon #: $1',
+	'admanager_zonenotnumber' => 'Fel! $1 är inte ett tal.',
+	'admanager_return' => 'Återgå till [[Special:AdManager|Annonshanteraren]]',
+	'admanager_gotoads' => '[[Special:AdManager|Redigera annonsplacering]]',
+	'admanager_gotozones' => '[[Special:AdManagerZones|Redigera annonszoner]]',
+	'right-admanager' => '[[Special:AdManager|Hantera annonskonfigurering]]',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
