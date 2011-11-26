@@ -6,7 +6,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'mwe-loading' => 'Loading ...',
+	'mwe-loading' => 'Loading...',
 	'mwe-size-gigabytes' => '$1 GB',
 	'mwe-size-megabytes' => '$1 MB',
 	'mwe-size-kilobytes' => '$1 K',
