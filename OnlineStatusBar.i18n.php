@@ -22,6 +22,8 @@ $messages['en'] = array(
 	'onlinestatusbar-used' => 'Display your online status on your user pages',
 	// Message in config asking what status they want to use
 	'onlinestatusbar-status' => 'What is the default status you wish to use:',
+	// Message in config about away time
+	'onlinestatusbar-away' => 'Treat as away automaticaly after $1 minutes',
 	// Message in config asking if user wants to purge the user page
 	'onlinestatusbar-purge' => 'Purge user page everytime when you login or logout',
 	// Section for config
@@ -51,6 +53,7 @@ $messages['qqq'] = array(
 	'onlinestatusbar-purge' => 'Option to purge user page everytime they login so that magic word is updated',
 	'prefs-onlinestatus' => 'Section for config, located in preferences - misc',
 	'onlinestatusbar-hide' => 'Ask user if they want to hide status bar this is useful when they are using custom template but need to check if they are online',
+	'onlinestatusbar-away' => 'Time in minutes how long to wait until user is flagged as away',
 	'onlinestatusbar-status-online' => 'Status for users who mark themselves as active',
 	'onlinestatusbar-status-busy' => 'Status for users who mark themselves as busy',
 	'onlinestatusbar-status-away' => 'Status for users who mark themselves as away',

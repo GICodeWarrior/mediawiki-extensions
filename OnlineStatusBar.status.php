@@ -98,6 +98,10 @@ class OnlineStatusBar_StatusCheck {
 					if ( $result < wfTimestamp( TS_MW, $w_time ) ) {
 						$status = 'write';
 					}
+				} else if ( $user->getOption( 'OnlineStatusBar_away', true ) == true ) {
+					if ( $result < wfTimestamp( TS_MW, OnlineStatusBar::getTimeoutDate( false, true ) ) ) {
+						$status = 'away';
+					}
 				}
 			} else {
 				$status = $wgOnlineStatusBarDefaultOnline;

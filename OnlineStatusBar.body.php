@@ -131,8 +131,12 @@ HTML;
 	/**
 	 * @return timestamp
 	 */
-	public static function getTimeoutDate( $delayed = false ) {
-		global $wgOnlineStatusBar_WriteTime, $wgOnlineStatusBar_LogoutTime;
+	public static function getTimeoutDate( $delayed = false, $away = false ) {
+		global $wgOnlineStatusBar_AwayTime, $wgOnlineStatusBar_WriteTime, $wgOnlineStatusBar_LogoutTime;
+
+		if ($away) {
+			return wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_AwayTime;
+		}
 
 		if ($delayed) {
 			return wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_WriteTime;

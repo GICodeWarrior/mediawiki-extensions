@@ -109,6 +109,8 @@ $wgOnlineStatusBarDefaultOffline = "offline";
 $wgOnlineStatusBarDefaultEnabled = false;
 // how long to wait until user is considered as offline
 $wgOnlineStatusBar_LogoutTime = 3600;
+// time to wait until we consider user away
+$wgOnlineStatusBar_AwayTime = 20 * 60; // 20 minutes
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'OnlineStatusBarHooks::ckSchema';
 $wgHooks['UserLogoutComplete'][] = 'OnlineStatusBarHooks::logout';
