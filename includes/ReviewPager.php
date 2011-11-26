@@ -26,6 +26,12 @@ class ReviewPager extends TablePager {
 	protected $editPage;
 	
 	/**
+	 * Review object of $this->currentRow.
+	 * @var Review
+	 */
+	protected $currentReview;
+	
+	/**
 	 * Constructor.
 	 *
 	 * @param array $conds
@@ -111,6 +117,15 @@ class ReviewPager extends TablePager {
 	function getRowClass( $row ) {
 		return 'review-row';
 	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see TablePager::formatRow()
+	 */
+	function formatRow( $row ) {
+		$this->currentReview = Review::newFromDBResult( $row );
+		return parent::formatRow( $row );
+	}
 
 	/**
 	 * @param $name
@@ -123,18 +138,7 @@ class ReviewPager extends TablePager {
 				$value = $this->getLang()->timeanddate( $value, true );
 				break;
 			case 'review_state':
-				$value = htmlspecialchars( Review::getStateMessage( $value ) );
-				if ( $this->getUser()->isAllowed( 'reviewsadmin' ) ) {
-					$value = Html::element(
-						'div',
-						array(
-							'class' => 'reviews-state-controls',
-							'data-review-id' => $this->mCurrentRow->review_id,
-							'data-review-state' => Review::getStateString( $this->mCurrentRow->review_state ),
-						),
-						$value
-					);
-				}
+				$value = $this->currentReview->getStateControl( $this->getUser() );
 				break;
 			case 'review_page_id':
 				$title = Title::newFromID( $value );
@@ -147,9 +151,8 @@ class ReviewPager extends TablePager {
 				break;
 			case 'review_title':
 				if ( $this->editPage !== false ) {
-					$value = Html::element(
-						'a',
-						array( 'href' => SpecialPage::getTitleFor( $this->editPage, $this->mCurrentRow->review_id )->getLocalURL() ),
+					$value = Linker::linkKnown(
+						SpecialPage::getTitleFor( $this->editPage, $this->mCurrentRow->review_id ),
 						$value
 					);
 				}

@@ -9,48 +9,45 @@
 (function( $, mw ) { $.fn.reviewState = function() {
 
 	var _this = this;
+	var $this = $( _this );
 	
-	this.updateStateLinks = function( $container, id, state ) {
-		$container.text( '' );
+	this.linksForState = null;
+	
+	this.updateStateLinks = function( id, state ) {
+		$this.text( '' );
 		
-		$container.attr( {
+		$this.attr( {
 			'data-review-state': state
 		} );
 		
-		var linksForState = {
-			'new': ['flagged', 'reviewed'],
-			'flagged': ['new', 'reviewed'],
-			'reviewed': ['flagged']
-		};
-		
-		for ( i in linksForState[state] ) {
-			if ( linksForState[state].hasOwnProperty( i ) ) {
-				var targetState = linksForState[state][i];
-				var isFirst = $container.text() === '';
+		for ( i in this.linksForState[state] ) {
+			if ( this.linksForState[state].hasOwnProperty( i ) ) {
+				var targetState = this.linksForState[state][i];
+				var isFirst = $this.text() === '';
 				
 				if ( isFirst ) {
-					$container.append( mw.msg( 'reviews-state-' + state ), ' (' );
+					$this.append( mw.msg( 'reviews-state-' + state ), ' (' );
 				}
 				else {
-					$container.append( ' | ' );
+					$this.append( ' | ' );
 				}
 				
-				$container.append( $( '<a>' ).attr( {
+				$this.append( $( '<a>' ).attr( {
 					'class': 'review-flag-link',
 					'data-target': targetState
-				} ).text( mw.msg( 'reviews-pager-change-' + targetState ) ).click( _this.onLinkClick ) );
+				} ).text( mw.msg( 'reviews-pager-change-' + targetState ) ).click( this.onLinkClick ) );
 			}
 		}
 		
-		$container.append( ')' );
+		if ( this.linksForState[state].length > 0 ) {
+			$this.append( ')' );
+		}
 	};
 	
 	this.onLinkClick = function() {
-		var $this = $( this );
-		var $container = $this.closest( 'div' );
-		var state = $container.attr( 'data-review-state' );
-		var targetState = $this.attr( 'data-target' );
-		var id = $container.attr( 'data-review-id' );
+		var state = $this.attr( 'data-review-state' );
+		var id = $this.attr( 'data-review-id' );
+		var targetState = $( this ).attr( 'data-target' );
 		
 		if ( confirm( mw.msg( 'reviews-pager-confirm-' + targetState ) ) ) {
 			var requestArgs = {
@@ -61,20 +58,20 @@
 				'ids': id
 			};
 			
-			$container.text( mw.msg( 'reviews-pager-updating' ) );
+			$this.text( mw.msg( 'reviews-pager-updating' ) );
 			
 			$.post(
 				wgScriptPath + '/api.php',
 				requestArgs,
 				function( data ) {
 					if ( data.hasOwnProperty( 'success' ) && data.success ) {
-						_this.updateStateLinks( $container, id, targetState );
+						_this.updateStateLinks( id, targetState );
 					}
 					else {
 						// TODO
 						alert( 'Could not change the state of the review' );
 						
-						_this.updateStateLinks( $container, id, state );
+						_this.updateStateLinks( id, state );
 					}
 				}
 			);
@@ -82,10 +79,9 @@
 	};
 	
 	this.setup = function() {
-		var $this = $( _this );
+		this.linksForState = $.parseJSON( $this.attr( 'data-review-states' ) );
 		
-		_this.updateStateLinks(
-			$this,
+		this.updateStateLinks(
 			$this.attr( 'data-review-id' ),
 			$this.attr( 'data-review-state' )
 		);

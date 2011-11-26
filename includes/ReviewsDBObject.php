@@ -103,7 +103,7 @@ abstract class ReviewsDBObject {
 	 * @param array|null $fields
 	 * @param boolean $loadDefaults
 	 */
-	public function __construct( $fields, $loadDefaults = false ) {
+	public function __construct( $fields = null, $loadDefaults = false ) {
 		if ( !is_array( $fields ) ) {
 			$fields = array();
 		}
@@ -415,6 +415,7 @@ abstract class ReviewsDBObject {
 	 *
 	 * @param string $name
 	 * @param mixed $value
+	 * @param boolean $haxPrefix
 	 *
 	 * @throws MWException
 	 */
@@ -467,7 +468,7 @@ abstract class ReviewsDBObject {
 	public static function newFromArray( array $data, $loadDefaults = false ) {
 		return new static( $data, $loadDefaults );
 	}
-
+	
 	/**
 	 * Get the database type used for read operations.
 	 *
@@ -567,16 +568,20 @@ abstract class ReviewsDBObject {
 	 *
 	 * @return array
 	 */
-	protected static function getFieldsFromDBResult( $result ) {
+	public static function getFieldsFromDBResult( $result ) {
 		$result = (array)$result;
-		$data = array();
-		$idFieldLength = strlen( static::getFieldPrefix() );
-
-		foreach ( $result as $name => $value ) {
-			$data[substr( $name, $idFieldLength )] = $value;
-		}
-
-		return $data;
+		return array_combine(
+			static::unprefixFieldNames( array_keys( $result ) ),
+			array_values( $result )
+		);
+	}
+	
+	public static function unprefixFieldName( $fieldName ) {
+		return substr( $fieldName, strlen( static::getFieldPrefix() ) );
+	}
+	
+	public static function unprefixFieldNames( array $fieldNames ) {
+		return array_map( 'static::unprefixFieldName', $fieldNames );
 	}
 
 	/**

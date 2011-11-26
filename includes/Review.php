@@ -382,22 +382,53 @@ class Review extends ReviewsDBObject {
 		return $this->title;
 	}
 	
+	/**
+	 * Get a set of links to control the state of the review.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param User $user
+	 * 
+	 * @return string
+	 */
 	public function getStateControl( User $user ) {
-		$state = htmlspecialchars( self::getStateMessage( $this->getField( 'state' ) ) );
+		$control = htmlspecialchars( self::getStateMessage( $this->getField( 'state' ) ) );
+		
+		$states = array(
+			'new' => array(),
+			'flagged' => array(),
+			'reviewed' => array(),
+		);
 		
 		if ( $user->isAllowed( 'reviewsadmin' ) ) {
-			$state = Html::element(
-				'div',
-				array(
-					'class' => 'reviews-state-controls',
-					'data-review-id' => $this->getId(),
-					'data-review-state' => self::getStateString( $this->getField( 'state' ) ),
-				),
-				$state
-			);
+			$states['new'] = array( 'flagged', 'reviewed' );
+			$states['flagged'] = array( 'new', 'reviewed' );
+			$states['reviewed'] = array( 'flagged' );
+		}
+		else {
+			if ( $user->isAllowed( 'reviewreview' ) ) {
+				$states['flagged'] = array( 'new', 'reviewed' );
+			}
+			
+			if ( $user->isAllowed( 'flagreview' ) ) {
+				$states['reviewed'] = array( 'flagged' );
+				$states['new'][] = 'flagged';
+				$states['new'] = array_unique( $states['new'] );
+			}
 		}
 		
-		return $state;
+		$control = Html::element(
+			'div',
+			array(
+				'class' => 'reviews-state-controls',
+				'data-review-id' => $this->getId(),
+				'data-review-state' => self::getStateString( $this->getField( 'state' ) ),
+				'data-review-states' => FormatJson::encode( $states ),
+			),
+			$control
+		);
+		
+		return $control;
 	}
 
 }
