@@ -1,4 +1,4 @@
-<?
+<?php
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo "This is a part of mediawiki and can't be started separately";
 	die();
