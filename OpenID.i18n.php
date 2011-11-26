@@ -32,7 +32,7 @@ $messages = array();
  * @author Thomas Gries
  */
 $messages['en'] = array(
-	'openid-desc' => 'Let users log in to the wiki with an [http://openid.net/ OpenID]. If this is enabled on the wiki, they can also use their user account URL of this wiki as OpenID to log in to other OpenID-aware web sites',
+	'openid-desc' => 'Let users log in to the wiki with an [//openid.net/ OpenID]. If this is enabled on the wiki, they can also use their user account URL of this wiki as OpenID to log in to other OpenID-aware web sites',
 	'openidlogin' => 'Log in / create account with OpenID',
 	'openidserver' => 'OpenID server',
 	'openidxrds' => 'Yadis file',
@@ -95,10 +95,10 @@ You can manage (view, delete, add further) OpenIDs in the [[Special:Preferences#
 If not, try the "Continue" button.',
 	'openidclientonlytext' => 'You cannot use accounts from this wiki as OpenIDs on another site.',
 	'openidloginlabel' => 'OpenID URL',
-	'openidlogininstructions' => '{{SITENAME}} supports the [http://openid.net/ OpenID] standard for single sign-on between websites.
+	'openidlogininstructions' => '{{SITENAME}} supports the [//openid.net/ OpenID] standard for single sign-on between websites.
 OpenID lets you log in to many different websites without using a different password for each.
-(See [http://en.wikipedia.org/wiki/OpenID Wikipedia\'s OpenID article] for more information.)
-There are many [http://openid.net/get/ OpenID providers], and you may already have an OpenID-enabled account on another service.',
+(See [//en.wikipedia.org/wiki/OpenID Wikipedia\'s OpenID article] for more information.)
+There are many [//openid.net/get/ OpenID providers], and you may already have an OpenID-enabled account on another service.',
 	'openidlogininstructions-openidloginonly' => "{{SITENAME}} ''only'' allows you to log in with OpenID.",
 	'openidlogininstructions-passwordloginallowed' => 'If you already have an account on {{SITENAME}}, you can [[Special:UserLogin|log in]] with your username and password as usual.
 To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you have logged in normally.',
@@ -116,7 +116,7 @@ You would not able to log in without an OpenID.',
         'openid-openids-were-not-merged' => 'OpenID(s) were not merged when merging the user accounts.',
 
 	'prefs-openid' => 'OpenID',
-	'openid-prefstext' => '[http://openid.net/ OpenID] preferences',
+	'openid-prefstext' => '[//openid.net/ OpenID] preferences',
 	'openid-pref-hide' => 'Hide your OpenID URL on your user page, if you log in with OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Update the following information from OpenID persona every time I log in:',
 	'openid-urls-desc' => 'OpenIDs associated with your account:',
