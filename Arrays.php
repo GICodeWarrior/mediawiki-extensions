@@ -233,7 +233,6 @@ class ExtArrays {
 			// print the array upon request
 			switch( self::array_value( $arrayOptions, 'print' ) ) {
 				case 'list':
-					global $wgLang;
 					// simple list output
 					$out = implode( ', ', $array );
 					break;
@@ -266,7 +265,18 @@ class ExtArrays {
 	*    {{#arrayprint:b|<br/>|@@@|{{f.tag{{f.print.vbar}}prop{{f.print.vbar}}@@@}} }}   -- embed template function
 	*    {{#arrayprint:b|<br/>|@@@|[[name::@@@]]}}   -- make SMW links
 	*/
-    static function pf_arrayprint( Parser &$parser, $arrayId , $delimiter = ', ', $search = '@@@@', $subject = '@@@@', $frame = null ) {
+    static function pfObj_arrayprint( Parser &$parser, $frame, $args ) {		
+        // Get Parameters
+        $arrayId   = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
+        $delimiter = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : ', ';
+		/*
+		 * PPFrame::NO_ARGS and PPFrame::NO_TEMPLATES for expansion make a lot of sense here since the patterns getting replaced
+		 * in $subject before $subject is being parsed. So any template or argument influence in the patterns wouldn't make any
+		 * sense in any sane scenario.
+		 */
+        $search  = isset( $args[2] ) ? trim( $frame->expand( $args[2], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
+        $subject = isset( $args[3] ) ? trim( $frame->expand( $args[3], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
+				
 		// get array, null if non-existant:
 		$array = self::get( $parser )->getArray( $arrayId );
 		
@@ -311,23 +321,7 @@ class ExtArrays {
 		$output = trim( $frame->expand( $output ) );
 		
 		return $output;
-	}
-	
-    static function pfObj_arrayprint( Parser &$parser, $frame, $args ) {
-        // Get Parameters
-        $arrayId   = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
-        $delimiter = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : ', ';
-		/*
-		 * PPFrame::NO_ARGS and PPFrame::NO_TEMPLATES for expansion make a lot of sense here since the patterns getting replaced
-		 * in $subject before $subject is being parsed. So any template or argument influence in the patterns wouldn't make any
-		 * sense in any sane scenario.
-		 */
-        $search  = isset( $args[2] ) ? trim( $frame->expand( $args[2], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
-        $subject = isset( $args[3] ) ? trim( $frame->expand( $args[3], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
-
-        return self::pf_arrayprint( $parser, $arrayId, $delimiter, $search, $subject, $frame );
-    }
-	
+	}	
 	
 	/**
 	* print the value of an array (identified by arrayid)  by the index, invalid index results in the default value  being printed. note the index is 0-based.
