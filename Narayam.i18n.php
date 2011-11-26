@@ -911,6 +911,7 @@ $messages['he'] = array(
 	'narayam-gu' => 'גוג׳ראטית תעתיק',
 	'narayam-gu-inscript' => 'גוג׳ראטית InScript',
 	'narayam-ru-standard' => 'רוסית תקנית',
+	'narayam-sah-standard' => 'סאחה תקנית',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1261,6 +1262,8 @@ $messages['ml'] = array(
 	'narayam-as-avro' => 'ആസാമീസ് ആവ്റോ',
 	'narayam-as-bornona' => 'ആസാമീസ് ബൊർണോന',
 	'narayam-as-inscript' => 'ആസാമീസ് ഇൻസ്ക്രിപ്റ്റ്',
+	'narayam-ber-tfng' => 'ടിഫിനാഫ് ലിപ്യന്തരണം',
+	'narayam-brx-inscript' => 'ബോഡോ ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-eo' => 'എസ്പെരാന്റോ',
 	'narayam-hi' => 'ഹിന്ദി ലിപ്യന്തരണം',
 	'narayam-hi-inscript' => 'ഹിന്ദി ഇൻസ്ക്രിപ്റ്റ്',
@@ -1293,6 +1296,7 @@ $messages['ml'] = array(
 	'narayam-gu' => 'ഗുജറാത്തി ലിപ്യന്തരണം',
 	'narayam-gu-inscript' => 'ഗുജറാത്തി ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-ru-standard' => 'റഷ്യൻ മാനകരൂപം',
+	'narayam-sah-standard' => 'സാഖാ മാനകരൂപം',
 );
 
 /** Marathi (मराठी)
