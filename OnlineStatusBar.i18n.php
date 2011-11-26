@@ -50,10 +50,10 @@ $messages['qqq'] = array(
 * $3 a status, it will appear in title bar of their user space pages',
 	'onlinestatusbar-used' => 'Message in config asking user if they want to enable it, checkbox',
 	'onlinestatusbar-status' => 'Message in config asking what status they want to use, option box',
+	'onlinestatusbar-away' => 'Time in minutes how long to wait until user is flagged as away',
 	'onlinestatusbar-purge' => 'Option to purge user page everytime they login so that magic word is updated',
 	'prefs-onlinestatus' => 'Section for config, located in preferences - misc',
 	'onlinestatusbar-hide' => 'Ask user if they want to hide status bar this is useful when they are using custom template but need to check if they are online',
-	'onlinestatusbar-away' => 'Time in minutes how long to wait until user is flagged as away',
 	'onlinestatusbar-status-online' => 'Status for users who mark themselves as active',
 	'onlinestatusbar-status-busy' => 'Status for users who mark themselves as busy',
 	'onlinestatusbar-status-away' => 'Status for users who mark themselves as away',
@@ -80,11 +80,12 @@ $messages['br'] = array(
 $messages['de'] = array(
 	'onlinestatusbar-desc' => 'Ermöglicht, abhängig von der Benutzereinstellung, die Anzeige des Onlinestatus eines Benutzers auf dessen Benutzerseite',
 	'onlinestatusbar-line' => '$1 ist gerade $3 $2',
-	'onlinestatusbar-used' => 'Möchtest du, dass andere Benutzer deinen Onlinestatus sehen?',
+	'onlinestatusbar-used' => 'Deinen Online-Status auf deiner Benutzerseite anzeigen',
 	'onlinestatusbar-status' => 'Welchen Status möchtest du standardmäßig nutzen:',
+	'onlinestatusbar-away' => 'Nach {{PLURAL:$1|einer Minute|$1 Minuten}} automatisch als „abwesend“ einstufen',
 	'onlinestatusbar-purge' => 'Den Cache der Benutzerseite jedes Mal leeren, wenn du dich an- oder abmeldest',
 	'prefs-onlinestatus' => 'Onlinestatus',
-	'onlinestatusbar-hide' => "Möchtest du die Statusleiste ausblenden, um stattdessen lediglich das ''Magic Word'' zu nutzen? (Für Fortgeschrittene)",
+	'onlinestatusbar-hide' => "Möchtest du die Statusleiste ausblenden, um stattdessen lediglich das ''magische Wort'' zu nutzen? (Für Fortgeschrittene)",
 	'onlinestatusbar-status-online' => 'Online',
 	'onlinestatusbar-status-busy' => 'Beschäftigt',
 	'onlinestatusbar-status-away' => 'Abwesend',
@@ -96,10 +97,10 @@ $messages['de'] = array(
  * @author Kghbln
  */
 $messages['de-formal'] = array(
-	'onlinestatusbar-used' => 'Möchten Sie, dass andere Benutzer Ihren Onlinestatus sehen?',
+	'onlinestatusbar-used' => 'Ihren Online-Status auf Ihrer Benutzerseite anzeigen',
 	'onlinestatusbar-status' => 'Welchen Status möchten Sie standardmäßig nutzen:',
 	'onlinestatusbar-purge' => 'Den Cache der Benutzerseite jedes Mal leeren, wenn Sie sich an- oder abmelden',
-	'onlinestatusbar-hide' => "Möchten Sie die Statusleiste ausblenden, um stattdessen lediglich das ''Magic Word'' zu nutzen? (Für Fortgeschrittene)",
+	'onlinestatusbar-hide' => "Möchten Sie die Statusleiste ausblenden, um stattdessen lediglich das ''magische Wort'' zu nutzen? (Für Fortgeschrittene)",
 );
 
 /** French (Français)
@@ -223,7 +224,7 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'onlinestatusbar-desc' => 'Статусник што прикажува дали корисникот е на линија, зависно од нагодувањата на корисничката страница',
 	'onlinestatusbar-line' => '$1 сега е $2 $3',
-	'onlinestatusbar-used' => 'Дали сакате другите да знаат кога сте на линија?',
+	'onlinestatusbar-used' => 'Прикажувај на моите кориснички страници кога сум на линија',
 	'onlinestatusbar-status' => 'Вашиот статус по основно:',
 	'onlinestatusbar-purge' => 'Пречисти го кешот на корисничката страница секојпат кога ќе се најавам или одјавам',
 	'prefs-onlinestatus' => 'Вклученост',
@@ -260,8 +261,9 @@ $messages['ms'] = array(
 $messages['nl'] = array(
 	'onlinestatusbar-desc' => 'Statusbalk die weergeeft of een gebruiker online is, op basis van voorkeuren, op zijn/haar gebruikerspagina',
 	'onlinestatusbar-line' => '$1 is nu $2 $3',
-	'onlinestatusbar-used' => 'Wilt u andere gebruikers laten zien dat u online bent?',
+	'onlinestatusbar-used' => "Uw onlinestatus weergeven op uw gebruikerspagina's",
 	'onlinestatusbar-status' => 'Welke standaard status wilt u gebruiken:',
+	'onlinestatusbar-away' => 'Automatisch als weg markeren na {{PLURAL:$1|één minuut|$1 minuten}}',
 	'onlinestatusbar-purge' => 'Uw gebruikerspagina bij aanmelden en afmelden uit de cache verwijderen',
 	'prefs-onlinestatus' => 'Onlinestatus',
 	'onlinestatusbar-hide' => 'Wilt u de statusbalk verbergen en alleen het magische woord gebruiken (voor gevorderde gebruikers)?',
