@@ -35,19 +35,21 @@ $wgExtensionCredits['other'][] = array(
 
 $wgExtensionMessagesFiles['NamespacePaths'] = dirname( __FILE__ ) . '/NamespacePaths.i18n.php';
 
-$wgHooks['WebRequestGetPathInfoRequestURI'][] = 'efNamepacePathsGetPathInfo';
+$wgHooks['WebRequestPathInfoRouter'][] = 'efNamepacePathRouter';
 $wgHooks['GetLocalURL::Article'][] = 'efNamepacePathsGetURL';
 
-function efNamepacePathsGetPathInfo( $path, &$matches ) {
+function efNamepacePathRouter( $router ) {
 	global $wgNamespacePaths;
-	if ( !$matches && $wgNamespacePaths ) {
-		$matches = WebRequest::extractTitle( $path, $wgNamespacePaths, ' namespace' );
-		if ( $matches ) {
-			$matches['title'] = MWNamespace::getCanonicalName( $matches[' namespace'] ) . ':' . $matches['title'];
-			unset($matches[' namespace']);
-		}
-	}
-	return !$matches;
+	$router->add( $wgNamespacePaths,
+		array( 'data:page_title' => '$1', 'data:ns' => '$key' ),
+		array( 'callback' => 'efNamespacePathCallback' )
+	);
+	return true;
+}
+
+function efNamespacePathCallback( &$matches, $data ) {
+	$nstext = MWNamespace::getCanonicalName( intval( $data['ns'] ) );
+	$matches['title'] = $nstext . ':' . $data['page_title'];
 }
 
 function efNamepacePathsGetURL( $title, &$url ) {
