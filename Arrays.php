@@ -1109,8 +1109,7 @@ class ExtArrays {
 	 * @return array
 	 */
 	public static function arrayUnique( array $array ) {
-		$arr = $this->sanitizeArray( $arr );
-		$array = self::array_unique( $array );
+		return self::array_unique( self::sanitizeArray( $array ) );
 	}
 
 	/**
