@@ -114,6 +114,7 @@ class OnlineStatusBarHooks {
 				wfMessage( 'onlinestatusbar-status-hidden' )->escaped() => 'hidden'
 			),
 		);
+		$preferences['OnlineStatusBar_awaytime'] = array( 'type' => 'text', 'label-message' => 'onlinestatusbar-away-time', 'section' => 'misc/onlinestatus' );
 		return true;
 	}
 
@@ -122,13 +123,14 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function setDefaultOptions( &$defaultOptions ) {
-		global $wgOnlineStatusBarDefaultOnline, $wgOnlineStatusBarDefaultEnabled;
+		global $wgOnlineStatusBar_AwayTime, $wgOnlineStatusBarDefaultOnline ,$wgOnlineStatusBarDefaultEnabled;
 		// set defaults
 		$defaultOptions['OnlineStatusBar_autoupdate'] = false;
 		$defaultOptions['OnlineStatusBar_status'] = $wgOnlineStatusBarDefaultOnline;
 		$defaultOptions['OnlineStatusBar_away'] = true;
 		$defaultOptions['OnlineStatusBar_active'] = $wgOnlineStatusBarDefaultEnabled;
 		$defaultOptions['OnlineStatusBar_hide'] = false;
+		$defaultOptions['OnlineStatusBar_awaytime'] = $wgOnlineStatusBar_AwayTime;
 		// quit
 		return true;
 	}

@@ -99,7 +99,7 @@ class OnlineStatusBar_StatusCheck {
 						$status = 'write';
 					}
 				} else if ( $user->getOption( 'OnlineStatusBar_away', true ) == true ) {
-					if ( $result < wfTimestamp( TS_MW, OnlineStatusBar::getTimeoutDate( false, true ) ) ) {
+					if ( $result < wfTimestamp( TS_MW, OnlineStatusBar::getTimeoutDate( false, true, $user ) ) ) {
 						$status = 'away';
 					}
 				}
