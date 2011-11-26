@@ -1048,7 +1048,7 @@ $messages['mk'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
-	'imstatus_default' => 'Tersedia',
+	'imstatus_default' => 'Asali',
 	'imstatus_or' => 'atau',
 );
 
