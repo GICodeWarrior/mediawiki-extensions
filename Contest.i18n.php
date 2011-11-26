@@ -537,6 +537,10 @@ $messages['be-tarask'] = array(
 	'contest-edit-challenge-oneline' => 'Кароткае апісаньне',
 	'contest-welcome-unknown' => 'Няма конкурсу з пададзенай назвай.',
 	'contest-welcome-rules' => 'Каб прыняць удзел, Вам неабходна пагадзіцца з [[$1|правіламі конкурсу]].',
+	'contest-welcome-signup' => 'Прыняць удзел зараз',
+	'contest-welcome-js-off' => 'Інтэрфэйс карыстальніка конкурсу выкарыстоўвае JavaScript. Ваш браўзэр не падтрымлівае JavaScript ці ён забаронены.',
+	'contest-welcome-accept-challenge' => 'Мэта прынятая',
+	'contest-welcome-select-header' => 'Выберыце Вашую мэту:',
 );
 
 /** Breton (Brezhoneg)
