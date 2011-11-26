@@ -130,8 +130,8 @@ For more information, please visit the $1.',
 	'moodbar-log-hide' => 'hid [[$1]]',
 	'moodbar-log-restore' => 'restored the visibility for [[$1]]',
         //Feedback Response
-	'moodbar-response-ula' => 'By clicking the "$1" button, you agree to the $2, and you irrevocably agree to release your contribution under the under the $3 license and the $4.
-You agree that a hyperlink or URL is sufficient attribution under the Creative Commons license.',
+	'moodbar-response-ula' => 'By clicking the "$1" button, you agree to the $2, and you irrevocably agree to release your contribution under the $3 license and the $4.
+You agree that a hyperlink or URL is sufficient attribution under the $3 license.',
 	'moodbar-response-terms-of-use' => 'Terms of use',
 	'moodbar-response-terms-of-use-link' => '#',
 	'moodbar-response-cc' => 'Creative Commons',
