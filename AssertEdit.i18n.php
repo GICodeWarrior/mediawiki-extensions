@@ -590,6 +590,13 @@ $messages['nds-nl'] = array(
 	'assert_edit_message' => 'De evreugen bevestiging ($1) is mislokt.',
 );
 
+/** Nepali (नेपाली)
+ * @author Bhawani Gautam
+ */
+$messages['ne'] = array(
+	'assert_edit_title' => 'विफल भएको हो भनी जोर दिने',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
