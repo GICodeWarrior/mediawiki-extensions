@@ -1942,7 +1942,7 @@ Tatarajahkan $wgPrefStatsTrackPrefs untuk menjejaki keutamaan-keutamaan.',
 	'prefstats-factor-week' => 'minggu',
 	'prefstats-factor-twoweeks' => 'dua minggu',
 	'prefstats-factor-fourweeks' => 'empat minggu',
-	'prefstats-factor-default' => 'kembali ke skala sediakala',
+	'prefstats-factor-default' => 'kembali ke skala asali',
 	'prefstats-legend-out' => 'Berhenti',
 	'prefstats-legend-in' => 'Menyertai',
 );
