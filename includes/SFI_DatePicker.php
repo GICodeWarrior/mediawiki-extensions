@@ -153,13 +153,11 @@ class SFIDatePicker extends SFFormInput {
 	 */
 	protected function setupJsInitAttribs() {
 
-		global $sfgFormPrinter, $sfigSettings;
+		global $sfigSettings;
 		global $wgAmericanDates;
 
 		// store user class(es) for use with buttons
-		if ( array_key_exists( 'class', $this->mOtherArgs ) ) {
-			$userClasses = $this->mOtherArgs['class'];
-		} else $userClasses = "";
+		$userClasses = array_key_exists( 'class', $this->mOtherArgs ) ? $this->mOtherArgs['class'] : '';
 
 		// set up attributes required for both enabled and disabled datepickers
 		$jsattribs = array(
@@ -463,7 +461,7 @@ class SFIDatePicker extends SFFormInput {
 		}
 
 		// build JS code from attributes array
-		return Xml::encodeJsVar( $jsattribs );
+		return json_encode( $jsattribs );
 		
 	}
 
@@ -676,8 +674,7 @@ class SFIDatePicker extends SFFormInput {
 	 *
 	 */
 	public function getHtmlText() {
-		global $wgOut, $wgLang, $wgAmericanDates;  // MW variables
-		global $sfgFieldNum, $sfgScriptPath, $sfgTabIndex;  // SF variables
+		
 		global $sfigSettings; // SFI variables
 
 		// should the input field be disabled?
@@ -686,29 +683,17 @@ class SFIDatePicker extends SFFormInput {
 			|| ( !array_key_exists( 'enable input field', $this->mOtherArgs ) && $sfigSettings->datePickerDisableInputField )
 			|| $this->mIsDisabled	;
 
-
 		// assemble HTML code
-
-		// start with the displayed input and append the real, but hidden
-		// input that gets sent to SF; it will be filled by the datepicker
-		$html = SFIUtils::textHTML( $this->mCurrentValue, '', array_key_exists( 'mandatory', $this->mOtherArgs ), $inputFieldDisabled,
-					$this->mOtherArgs, "input_{$sfgFieldNum}_dp_show", null, "createboxInput" );
+		$html = SFIUtils::textHTML( $this->mCurrentValue, $this->mInputName, $inputFieldDisabled, $this->mOtherArgs, 'input_' . $this->mInputNumber );
 
 		if ( ! array_key_exists( 'part of dtp', $this->mOtherArgs ) ) {
-
-			$html .= Xml::element( "input",
-					array(
-						"id" => "input_{$sfgFieldNum}",
-						"name" => $this->mInputName,
-						"type" => "hidden",
-						"value" => $this->mCurrentValue
-					) );
-
+			
 			// wrap in span (e.g. used for mandatory inputs)
-			$html = '<span class="inputSpan' . ( array_key_exists( 'mandatory', $this->mOtherArgs ) ? ' mandatoryFieldSpan' : '') . '">' .$html . '</span>';
+			$class = array_key_exists( 'mandatory', $this->mOtherArgs ) ? 'inputSpan mandatoryFieldSpan' : 'inputSpan';
+			$html = Xml::tags('span', array('class'=>  $class ), $html );
+			
 		}
 
-		//return array( $html, "", "initInput$sfgFieldNum" );
 		return $html;
 	}
 

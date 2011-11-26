@@ -99,7 +99,7 @@ class SFIMenuSelect extends SFFormInput {
 
 		// second: assemble HTML
 		// create visible input field (for display) and invisible field (for data)
-		$html = SFIUtils::textHTML( $this->mCurrentValue, '', array_key_exists( 'mandatory', $this->mOtherArgs ), $inputFieldDisabled, $this->mOtherArgs, "input_{$this->mInputNumber}_show", null, "createboxInput" )
+		$html = SFIUtils::textHTML( $this->mCurrentValue, '', $inputFieldDisabled, $this->mOtherArgs, "input_{$this->mInputNumber}_show", null, "createboxInput" )
 				. Xml::element( "input", array(
 					'id' => "input_{$this->mInputNumber}",
 					'type' => 'hidden',

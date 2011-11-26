@@ -21,66 +21,62 @@ class SFIUtils {
 	 * The parameters are the standard parameters set by Semantic Forms'
 	 * InputTypeHook plus some optional.
 	 *
-	 * @param string $cur_value
-	 * @param string $input_name
-	 * @param boolean $is_mandatory
-	 * @param boolean $is_disabled
-	 * @param array $other_args
-	 * @param string $input_id (optional)
-	 * @param int $tabindex (optional)
+	 * @param string $currentValue
+	 * @param string $inputName
+	 * @param boolean $isDisabled
+	 * @param array $otherArgs
+	 * @param string $inputId (optional)
+	 * @param int $tabIndex (optional)
 	 * @param string $class
 	 * @return string the html text of an input element
 	 */
-	static function textHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args, $input_id = null, $tabindex = null, $class = "" ) {
+	static function textHTML ( $currentValue, $inputName, $isDisabled, $otherArgs, $inputId = null, $tabIndex = null, $class = '' ) {
 
-		global $sfgFieldNum, $sfgTabIndex;
+		global $sfgTabIndex;
 
 		// array of attributes to pass to the input field
 		$attribs = array(
-				"name" => $input_name,
-				"class" => $class,
-				"value" => $cur_value,
-				"type" => "text"
+				'name'  => $inputName,
+				'class' => $class,
+				'value' => $currentValue,
+				'type'  => 'text'
 		);
 
 		// set size attrib
-		if ( array_key_exists( 'size', $other_args ) ) {
-			$attribs['size'] = $other_args['size'];
+		if ( array_key_exists( 'size', $otherArgs ) ) {
+			$attribs['size'] = $otherArgs['size'];
 		}
 
 		// set maxlength attrib
-		if ( array_key_exists( 'maxlength', $other_args ) ) {
-			$attribs['maxlength'] = $other_args['maxlength'];
+		if ( array_key_exists( 'maxlength', $otherArgs ) ) {
+			$attribs['maxlength'] = $otherArgs['maxlength'];
 		}
 
 		// modify class attribute for mandatory form fields
-		if ( $is_mandatory ) {
-			$attribs["class"] .= ' mandatoryField';
+		if ( array_key_exists( 'mandatory', $otherArgs ) ) {
+			$attribs['class'] .= ' mandatoryField';
 		}
 
 		// add user class(es) to class attribute of input field
-		if ( array_key_exists( 'class', $other_args ) ) {
-			$attribs["class"] .= ' ' . $other_args['class'];
+		if ( array_key_exists( 'class', $otherArgs ) ) {
+			$attribs['class'] .= ' ' . $otherArgs['class'];
 		}
 
 		// set readonly attrib
-		if ( $is_disabled ) {
-			$attribs["readonly"] = "1";
+		if ( $isDisabled ) {
+			$attribs['readonly'] = '1';
 		}
 
 		// if no special input id is specified set the Semantic Forms standard
-		if ( $input_id == null ) {
-			$attribs[ 'id' ] = "input_" . $sfgFieldNum;
-		} else {
-			$attribs[ 'id' ] = $input_id;
+		if ( $inputId !== null ) {
+			$attribs[ 'id' ] = $inputId;
 		}
 
 
-		if ( $tabindex == null ) $attribs[ 'tabindex' ] = $sfgTabIndex;
-		else $attribs[ 'tabindex' ] = $tabindex;
+		if ( $tabIndex == null ) $attribs[ 'tabindex' ] = $sfgTabIndex;
+		else $attribs[ 'tabindex' ] = $tabIndex;
 
-		// $html = Html::element( "input", $attribs );
-		$html = Xml::element( "input", $attribs );
+		$html = Xml::element( 'input', $attribs );
 
 		return $html;
 

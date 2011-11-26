@@ -35,59 +35,16 @@ class SFITimePicker extends SFFormInput {
 	 */
 	public function __construct( $input_number, $cur_value, $input_name, $disabled, $other_args ) {
 		
-		global $sfigSettings;
-		
 		parent::__construct( $input_number, $cur_value, $input_name, $disabled, $other_args );
 		
 		// third: if the timepicker is not disabled set up JS attributes ans assemble JS call
 		if ( !$this->mIsDisabled ) {
 
 			self::setup();
-
-			// set min time if valid, else use default
-			if ( array_key_exists( 'mintime', $other_args )
-					&& ( preg_match( '/^\d+:\d\d$/', trim( $other_args['mintime'] ) ) == 1 ) ) {
-					$minTime = trim( $other_args[ 'mintime' ] );
-			} elseif ( $sfigSettings->timePickerMinTime != null ) {
-				$minTime = $sfigSettings->timePickerMinTime	;
-			} else {
-				$minTime = '00:00';
-			}
-
-			// set max time if valid, else use default
-			if ( array_key_exists( 'maxtime', $other_args )
-					&& ( preg_match( '/^\d+:\d\d$/', trim( $other_args['maxtime'] ) ) == 1 ) ) {
-					$maxTime = trim( $other_args[ 'maxtime' ] );
-			} elseif ( $sfigSettings->timePickerMaxTime != null ) {
-				$maxTime = $sfigSettings->timePickerMaxTime	;
-			} else {
-				$maxTime = '23:59';
-			}
-
-			// set interval if valid, else use default
-			if ( array_key_exists( 'interval', $other_args )
-					&& preg_match( '/^\d+$/', trim( $other_args['interval'] ) ) == 1 ) {
-					$interval = trim( $other_args[ 'interval' ] );
-			} else {
-				$interval = '15';
-			}
-
-			// build JS code from attributes array
-			$jsattribs = array(
-				"minTime" => $minTime,
-				"maxTime" => $maxTime,
-				"interval" => $interval,
-				"format" => "hh:mm"
-			);
-
-			if ( array_key_exists( 'part of dtp', $other_args ) ) {
-				$jsattribs['partOfDTP'] = $other_args['part of dtp'];
-			}
-
-			$jstext = Xml::encodeJsVar( $jsattribs );
-
-			$this->addJsInitFunctionData( 'SFI_TP_init', $jstext );
 		}
+		
+		$this->addJsInitFunctionData( 'SFI_TP_init', $this->setupJsInitAttribs() );
+			
 	}
 
 	/**
@@ -124,6 +81,88 @@ class SFITimePicker extends SFFormInput {
 	}
 	
 	/**
+	 * Set up JS attributes
+	 * 
+	 * @return String
+	 */
+	protected function setupJsInitAttribs() {
+
+		global $sfigSettings;
+
+		// store user class(es) for use with buttons
+		$userClasses = array_key_exists( 'class', $this->mOtherArgs ) ? $this->mOtherArgs['class'] : '';
+
+		// set min time if valid, else use default
+		if ( array_key_exists( 'mintime', $this->mOtherArgs )
+			&& ( preg_match( '/^\d+:\d\d$/', trim( $this->mOtherArgs['mintime'] ) ) == 1 ) ) {
+			$minTime = trim( $this->mOtherArgs['mintime'] );
+		} elseif ( $sfigSettings->timePickerMinTime != null ) {
+			$minTime = $sfigSettings->timePickerMinTime;
+		} else {
+			$minTime = '00:00';
+		}
+
+		// set max time if valid, else use default
+		if ( array_key_exists( 'maxtime', $this->mOtherArgs )
+			&& ( preg_match( '/^\d+:\d\d$/', trim( $this->mOtherArgs['maxtime'] ) ) == 1 ) ) {
+			$maxTime = trim( $this->mOtherArgs['maxtime'] );
+		} elseif ( $sfigSettings->timePickerMaxTime != null ) {
+			$maxTime = $sfigSettings->timePickerMaxTime;
+		} else {
+			$maxTime = '23:59';
+		}
+
+		// set interval if valid, else use default
+		if ( array_key_exists( 'interval', $this->mOtherArgs )
+			&& preg_match( '/^\d+$/', trim( $this->mOtherArgs['interval'] ) ) == 1 ) {
+			$interval = trim( $this->mOtherArgs['interval'] );
+		} else {
+			$interval = '15';
+		}
+
+		// build JS code from attributes array
+		$jsattribs = array(
+			'minTime'   => $minTime,
+			'maxTime'   => $maxTime,
+			'interval'  => $interval,
+			'format'    => 'hh:mm',
+			'currValue' => $this->mCurrentValue,
+			'disabled'  => $this->mIsDisabled,
+			'userClasses' => $userClasses
+		);
+
+		if ( array_key_exists( 'part of dtp', $this->mOtherArgs ) ) {
+			$jsattribs['partOfDTP'] = $this->mOtherArgs['part of dtp'];
+		}
+
+		// setup attributes required only for either disabled or enabled datepickers
+		if ( $this->mIsDisabled ) {
+
+			$jsattribs['buttonImage'] = $sfigSettings->scriptPath . '/images/TimePickerButtonDisabled.gif';
+
+			if ( array_key_exists( 'show reset button', $this->mOtherArgs ) ||
+				( !array_key_exists( 'hide reset button', $this->mOtherArgs ) && $sfigSettings->timePickerShowResetButton ) ) {
+
+				$jsattribs['resetButtonImage'] = $sfigSettings->scriptPath . '/images/TimePickerResetButtonDisabled.gif';
+
+			}
+
+		} else {
+
+			$jsattribs['buttonImage'] = $sfigSettings->scriptPath . '/images/TimePickerButton.gif';
+
+			if ( array_key_exists( 'show reset button', $this->mOtherArgs ) ||
+				( !array_key_exists( 'hide reset button', $this->mOtherArgs ) && $sfigSettings->timePickerShowResetButton ) ) {
+
+				$jsattribs['resetButtonImage'] = $sfigSettings->scriptPath . '/images/TimePickerResetButton.gif';
+
+			}
+		}
+		
+		return json_encode( $jsattribs );
+	}
+
+	/**
 	 * Returns the HTML code to be included in the output page for this input.
 	 *
 	 * Ideally this HTML code should provide a basic functionality even if the
@@ -146,116 +185,16 @@ class SFITimePicker extends SFFormInput {
 			|| ( !array_key_exists( 'enable input field', $this->mOtherArgs ) && $sfigSettings->timePickerDisableInputField )
 			|| $this->mIsDisabled	;
 
-		if ( array_key_exists( 'class', $this->mOtherArgs ) ) $userClasses = $this->mOtherArgs['class'];
-		else $userClasses = "";
-
 		// second: assemble HTML
 		// create visible input field (for display) and invisible field (for data)
-		$html = SFIUtils::textHTML( $this->mCurrentValue, '', array_key_exists('mandatory', $this->mOtherArgs ), $inputFieldDisabled, $this->mOtherArgs, "input_{$this->mInputNumber}_tp_show", null, "createboxInput" );
-
-		if ( ! array_key_exists( 'part of dtp', $this->mOtherArgs ) ) {
-			$html .= Xml::element( "input", array(
-					'id' => "input_{$this->mInputNumber}",
-					'type' => 'hidden',
-					'name' => $this->mInputName,
-					'value' => $this->mCurrentValue
-				) );
-		}
-
-		// append time picker button
-		if ( $this->mIsDisabled ) {
-
-			$html .= Xml::openElement(
-					"button",
-					array(
-					'type' => 'button',
-					'class' => 'createboxInput ' . $userClasses,
-					'disabled' => '1',
-					'id' => "input_{$this->mInputNumber}_button"
-					) )
-
-					. Xml::element(
-					"image",
-					array( 'src' => $sfigSettings->scriptPath . '/images/TimePickerButtonDisabled.gif'	)
-					)
-
-					. Xml::closeElement( "button" );
-
-		} else {
-
-			$html .= "<button "
-					. Xml::expandAttributes ( array(
-					'type' => 'button',
-					'class' => 'createboxInput ' . $userClasses,
-					'name' => "button",
-					) )
-					. " onclick=\"document.getElementById(this.id.replace('_button','_tp_show')).focus();\""
-					. ">"
-
-					. Xml::element(
-					"image",
-					array( 'src' => $sfigSettings->scriptPath . '/images/TimePickerButton.gif'	)
-					)
-
-					. Xml::closeElement( "button" );
-
-		}
-
-		// append reset button (if selected)
-		if ( ! array_key_exists( 'part of dtp', $this->mOtherArgs ) &&
-				( array_key_exists( 'show reset button', $this->mOtherArgs ) ||
-					$sfigSettings->timePickerShowResetButton && !array_key_exists( 'hide reset button', $this->mOtherArgs )
-				)
-			)  {
-
-			if ( $this->mIsDisabled ) {
-
-				$html .= Xml::openElement(
-						"button",
-						array(
-						'type' => 'button',
-						'class' => 'createboxInput ' . $userClasses,
-						'disabled' => '1',
-						'id' => "input_{$this->mInputNumber}_resetbutton"
-						) )
-
-						. Xml::element(
-						"image",
-						array( 'src' => $sfigSettings->scriptPath . '/images/TimePickerResetButtonDisabled.gif'	)
-
-						)
-						. Xml::closeElement( "button" );
-
-			} else {
-
-				$html .= "<button "
-						. Xml::expandAttributes ( array(
-						'type' => 'button',
-						'class' => 'createboxInput ' . $userClasses,
-						'name' => "resetbutton",
-						) )
-						. " onclick=\"document.getElementById(this.id.replace('_resetbutton','')).value='';"
-						. "document.getElementById(this.id.replace('_resetbutton','_tp_show')).value='';\""
-						. ">"
-
-						. Xml::element(
-						"image",
-						array( 'src' => $sfigSettings->scriptPath . '/images/TimePickerResetButton.gif'	)
-
-						)
-						. Xml::closeElement( "button" );
-
-			}
-		}
+		$html = SFIUtils::textHTML( $this->mCurrentValue, $this->mInputName, $inputFieldDisabled, $this->mOtherArgs, 'input_' . $this->mInputNumber );
 
 		// wrap in span (e.g. used for mandatory inputs)
 		if ( ! array_key_exists( 'part of dtp', $this->mOtherArgs ) ) {
 			$html = '<span class="inputSpan' . ( array_key_exists( 'mandatory', $this->mOtherArgs )? ' mandatoryFieldSpan' : '') . '">' .$html . '</span>';
 		}
 
-
 		return $html;
-
 	}
 
 	/**

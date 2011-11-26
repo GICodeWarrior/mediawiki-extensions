@@ -42,9 +42,6 @@ class SFIDateTimePicker extends SFFormInput {
 		
 		self::setup();
 
-		// add JS data
-		$this->addJsInitFunctionData( 'SFI_DTP_init', $this->setupJsInitAttribs() );
-		
 		// prepare sub-inputs
 		
 		$this->mOtherArgs["part of dtp"] = true;
@@ -80,8 +77,12 @@ class SFIDateTimePicker extends SFFormInput {
 			$dateString = $dateTimeString;
 		}
 
-		$this->mDatePicker = new SFIDatePicker( $this->mInputNumber, $dateString, $this->mInputName, $this->mIsDisabled, $this->mOtherArgs );
-		$this->mTimePicker = new SFITimePicker( $this->mInputNumber, $timeString, $this->mInputName, $this->mIsDisabled, $this->mOtherArgs );
+		$this->mDatePicker = new SFIDatePicker( $this->mInputNumber . '_dp', $dateString, $this->mInputName, $this->mIsDisabled, $this->mOtherArgs );
+		$this->mTimePicker = new SFITimePicker( $this->mInputNumber . '_tp', $timeString, $this->mInputName, $this->mIsDisabled, $this->mOtherArgs );
+		
+		// add JS data
+		$this->addJsInitFunctionData( 'SFI_DTP_init', $this->setupJsInitAttribs() );
+		
 	}
 
 	/**
@@ -124,9 +125,7 @@ class SFIDateTimePicker extends SFFormInput {
 
 		// if we have to show a reset button
 		if ( array_key_exists( 'show reset button', $this->mOtherArgs ) ||
-				( !array_key_exists( 'hide reset button', $this->mOtherArgs ) && $sfigSettings->datetimePickerShowResetButton ) ) {
-
-			// some values must be available to the init function
+			( !array_key_exists( 'hide reset button', $this->mOtherArgs ) && $sfigSettings->datetimePickerShowResetButton ) ) {
 
 			// is the button disabled?
 			$jsattribs['disabled'] = $this->mIsDisabled;
@@ -139,11 +138,22 @@ class SFIDateTimePicker extends SFFormInput {
 			}
 
 			// set user classes
-			if ( array_key_exists( 'class', $this->mOtherArgs ) ) $jsattribs[ 'userClasses' ] = $this->mOtherArgs['class'];
-			else $jsattribs[ 'userClasses' ] = '';
-
+			if ( array_key_exists( 'class', $this->mOtherArgs ) ) {
+				$jsattribs['userClasses'] = $this->mOtherArgs['class'];
+			} else {
+				$jsattribs['userClasses'] = '';
+			}
 		}
 		
+		$jsattribs['subinputs'] = 
+				$this->mDatePicker->getHtmlText() . " " .
+				$this->mTimePicker->getHtmlText();
+		
+		$jsattribs['subinputsInitData'] = array(
+			'input_' . $this->mInputNumber . '_dp' => $this->mDatePicker->getJsInitFunctionData(),
+			'input_' . $this->mInputNumber . '_tp' => $this->mTimePicker->getJsInitFunctionData()
+		);
+
 		// build JS code from attributes array
 		return Xml::encodeJsVar( $jsattribs );
 	}
@@ -158,19 +168,17 @@ class SFIDateTimePicker extends SFFormInput {
 	 */
 	public function getHtmlText(){
 
-		global $wgOut, $sfgFieldNum, $sfigSettings;
+		global $sfigSettings;
+
+		// should the input field be disabled?
+		$inputFieldDisabled =
+			array_key_exists( 'disable input field', $this->mOtherArgs )
+			|| ( !array_key_exists( 'enable input field', $this->mOtherArgs ) && $sfigSettings->datePickerDisableInputField )
+			|| $this->mIsDisabled	;
 
 		$html = '<span class="inputSpan' . ( array_key_exists( 'mandatory', $this->mOtherArgs) ? ' mandatoryFieldSpan' : '') . '">' .
-				$this->mDatePicker->getHtmlText() . " " .
-				$this->mTimePicker->getHtmlText() . 
-				Xml::element("input",
-						array(
-							"id" => "input_{$this->mInputNumber}",
-							"name" => $this->mInputName,
-							"type" => "hidden",
-							"value" => $this->mCurrentValue
-						))
-				. '</span>';
+				SFIUtils::textHTML( $this->mCurrentValue, $this->mInputName, $inputFieldDisabled, $this->mOtherArgs, 'input_' . $this->mInputNumber ) .
+				'</span>';
 
 		return $html;
 
@@ -204,18 +212,6 @@ class SFIDateTimePicker extends SFFormInput {
 			'description' => wfMsg( 'semanticformsinputs-menuselect-enableinputfield' ),
 		);
 		return $params;
-	}
-
-	/**
-	 * Returns the name and parameters for the initialization JavaScript
-	 * function for this input type, if any.
-	 */
-	public function getJsInitFunctionData() {
-		return array_merge(
-			$this->mJsInitFunctionData,
-			$this->mDatePicker->getJsInitFunctionData(),
-			$this->mTimePicker->getJsInitFunctionData()
-			);
 	}
 
 	/**
