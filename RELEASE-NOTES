@@ -4,7 +4,6 @@
  * (trunk) -- Version 2.0
    This release is built upon 1.4 alpha. See changes of 1.4 alpha as well.
    'ArrayExtension' is now simply called 'Arrays'. Therefore you have to adjust your LocalSettings.php.
-    - class 'ArrayExtension' renamed to 'ExtArrays'
     - '#arrayindex' will only expand options/default when required.
     - '#arraymerge', '#arrayunion', '#arraydiff' and '#arrayintersect' can handle multiple arrays now.
     - Compatibility mode variable '$egArrayExtensionCompatbilityMode' is set to false by default. See
@@ -14,12 +13,17 @@
         makes the function consistent with Variables '#var' and hash tables '#hashvalue'.
       + '#arraymerge', '#arrayunion', '#arraydiff' and '#arrayintersect' with only one array for
         the operation will make a copy of that array instead of creating no array at all.
+      + Default separator for '#arrayprint' now is the languages default separator instead of ', '.
       + See 1.4 alpha for previous changes
     - '#arraydefine' option 'print' no longer supports 'print=print' and parameters beyond options.
       This functionality never worked reliably anyways. 'print=list' still works.
+    - '#arrayprint' now has a new parameter for options. Option 'print=pretty' will print a list where
+      the last two strings are chained with an ' and ' or the local languages equivalent. 'print=pretty'
+      also can be used as option within '#arraydefine'.
     - If 'Regex Fun' extension is installed, '#arraysearcharray' can use Regex Funs 'e' flag feature
       for transforming the result and at the same time parsing them after each back-reference inclusion.
     - 1.4 alpha bug solved, '#arraysearcharray' with empty string as start index was interpreted as 0
+    - class 'ArrayExtension' renamed to 'ExtArrays'
 
 
  * November 20, 2001 -- Version 1.4 alpha (r103716)

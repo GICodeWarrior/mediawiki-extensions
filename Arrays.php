@@ -76,6 +76,16 @@ class ExtArrays {
 	 * @private
 	 */
 	var $mArrays = array();
+	
+	/**
+	 * Default separator for '#arrayprint'. Might be ', ' in compatibility-mode or
+	 * by default since Arrays 2.0 the languages comma separator.
+	 * 
+	 * @since 2.0
+	 * 
+	 * @var type 
+	 */
+	static $mDefaultSep;
 
 	/**
 	 * Sets up parser functions
@@ -83,12 +93,25 @@ class ExtArrays {
 	 * @since 2.0
 	 */
 	public static function init( Parser &$parser ) {
+		global $egArrayExtensionCompatbilityMode;
 		/*
 		 * store for arrays per Parser object. This will solve several bugs related to
 		 * 'ParserClearState' hook clearing all variables early in combination with certain
 		 * other extensions. (since v2.0)
 		 */
 		$parser->mExtArrays = new self();
+		
+		// initialize default separator for '#arrayprint'
+		if( $egArrayExtensionCompatbilityMode ) {
+			// COMPATIBILITY-MODE
+			self::$mDefaultSep = ', ';
+		}
+		else {
+			// since 2.0 the default separator for arrayprint is set to the languages default
+			global $wgLang;
+			$wgLang->getMessageFromDB( 'comma-separator' );
+			self::$mDefaultSep = $wgLang->getMessageFromDB( 'comma-separator' );
+		}
 
 		// SFH_OBJECT_ARGS available since MW 1.12
 		self::initFunction( $parser, 'arraydefine' );
@@ -225,7 +248,7 @@ class ExtArrays {
 			}
 			 */
 
-			// sort array if the option is set
+            // sort array if the option is set
 			if( array_key_exists( 'sort', $arrayOptions ) ) {
 				$array = self::arraySort( $array, self::array_value( $arrayOptions, 'sort' ) );
 			}
@@ -234,11 +257,15 @@ class ExtArrays {
 			switch( self::array_value( $arrayOptions, 'print' ) ) {
 				case 'list':
 					// simple list output
-					$out = implode( ', ', $array );
+					$out = implode( self::$mDefaultSep, $array );
+					break;
+				case 'pretty':
+					global $wgLang;
+					$out = $wgLang->listToText( $array );
 					break;
 			}
 		}
-
+		
 		self::get( $parser )->setArray( $arrayId, $array );
 
 		return $out;
@@ -256,7 +283,7 @@ class ExtArrays {
 	* and each element print-out is deliminated by 'delimiter'
 	* The subject can embed parser functions; wiki links; and templates.
 	* usage:
-	*      {{#arrayprint:arrayid|delimiter|search|subject}}
+	*      {{#arrayprint:arrayid|delimiter|search|subject|options}}
 	* examples:
 	*    {{#arrayprint:b}}    -- simple
 	*    {{#arrayprint:b|<br/>}}    -- add change line
@@ -268,14 +295,19 @@ class ExtArrays {
 	static function pfObj_arrayprint( Parser &$parser, $frame, $args ) {
 		// Get Parameters
 		$arrayId   = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
-		$delimiter = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : ', ';
+		$delimiter = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : self::$mDefaultSep;
 		/*
 		 * PPFrame::NO_ARGS and PPFrame::NO_TEMPLATES for expansion make a lot of sense here since the patterns getting replaced
 		 * in $subject before $subject is being parsed. So any template or argument influence in the patterns wouldn't make any
 		 * sense in any sane scenario.
 		 */
 		$search  = isset( $args[2] ) ? trim( $frame->expand( $args[2], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
-		$subject = isset( $args[3] ) ? trim( $frame->expand( $args[3], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
+		$subject = isset( $args[3] ) ? trim( $frame->expand( $args[3], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';		
+		// options array:
+		$options = isset( $args[4] )
+				? self::parse_options( $frame->expand( $args[4] ) )
+				: array();
+
 
 		// get array, null if non-existant:
 		$array = self::get( $parser )->getArray( $arrayId );
@@ -308,15 +340,28 @@ class ExtArrays {
 			$rendered_values[] = $rawResult;
 		}
 
-		$output = implode( $delimiter, $rendered_values );
-		$noparse = false;
+		// follow special print options:
+		switch( self::array_value( $options, 'print' ) ) {
+			case 'pretty':
+				// pretty list print with ' and ' connecting the last two items
+				if( $delimiter === '' ) {
+					// '' as delimiter isn't pretty, so in this case we take the (languages) default					
+					$output = self::arrayToText( $rendered_values );
+				} else {
+					$output = self::arrayToText( $rendered_values, $delimiter );
+				}
+				break;
+
+			default:
+				// normal print with one delimiter, might be the languages default
+				$output = implode( $delimiter, $rendered_values );
+				break;
+		}
 
 		/*
 		 * don't leave the final parse to Parser::braceSubstitution() since there are some special cases where it
 		 * would produce unexpected output (it uses a new child frame and ignores whether the frame is a template!)
 		 */
-		$noparse = true;
-
 		$output = $parser->preprocessToDom( $output, $frame->isTemplate() ? Parser::PTD_FOR_INCLUSION : 0 );
 		$output = trim( $frame->expand( $output ) );
 
@@ -916,7 +961,7 @@ class ExtArrays {
 		}
 
 		// now parse the options, and do posterior process on the created array
-		$options = preg_split( '/\s*,\s*/', strtolower( $options ) );
+		$options = preg_split( '/\s*,\s*/', strtolower( trim( $options ) ) );
 
 		$ret = array();
 		foreach( $options as $option ) {
@@ -1147,6 +1192,36 @@ class ExtArrays {
 				break;
 		} ;
 		return $array;
+	}
+	
+	/**
+	 * Pretty much the same as Language::listToText() but allows us to set a custom comma separator.
+	 * 
+	 * @since 2.0
+	 * 
+	 * @param Array  $array
+	 * @param string $commaSep
+	 * @return string
+	 */
+	public static function arrayToText( $array, $commaSep = null ) {
+		global $wgLang;
+		$commaSep = $commaSep === null ? self::$mDefaultSep : $commaSep;
+		$s = '';
+		$m = count( $array ) - 1;
+		if ( $m == 1 ) {
+			return $array[0] . $wgLang->getMessageFromDB( 'and' ) . $wgLang->getMessageFromDB( 'word-separator' ) . $array[1];
+		} else {
+			for ( $i = $m; $i >= 0; $i-- ) {
+				if ( $i == $m ) {
+					$s = $array[$i];
+				} else if ( $i == $m - 1 ) {
+					$s = $array[$i] . $wgLang->getMessageFromDB( 'and' ) . $wgLang->getMessageFromDB( 'word-separator' ) . $s;
+				} else {
+					$s = $array[$i] . $commaSep . $s;
+				}
+			}
+			return $s;
+		}
 	}
 
 	/**
