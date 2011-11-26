@@ -33,6 +33,29 @@ require_once( $dir . 'OmegaWiki/Wikidata.php' );
 $wgAPIModules['wikidata'] = 'ApiWikiData';
 $wgExtensionMessagesFiles['Wikidata'] = $dir . 'Wikidata.i18n.php';
 
+
+// Resource modules
+
+$resourcePathArray = array(
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteExtPath' => 'Wikidata'
+);
+
+$wgResourceModules['ext.Wikidata'] = $resourcePathArray + array(
+	'scripts' => 'OmegaWiki/resources/omegawiki-ajax.js',
+	'styles' => array( 'OmegaWiki/resources/suggest.css', 'OmegaWiki/resources/tables.css' )
+);
+
+$wgResourceModules['ext.Wikidata.rtl'] = $resourcePathArray + array(
+	'scripts' => 'OmegaWiki/resources/omegawiki-ajax.js',
+	'styles' => array( 'OmegaWiki/resources/suggest-rtl.css', 'OmegaWiki/resources/tables-rtl.css' )
+);
+
+$wgResourceModules['ext.Wikidata.edit'] = $resourcePathArray + array(
+	'scripts' => array( 'OmegaWiki/resources/suggest.js', 'OmegaWiki/resources/omegawiki-edit.js' )
+);
+
+
 $wgAutoloadClasses['WikidataHooks'] = $dir . 'Wikidata.hooks.php';
 
 $wgAutoloadClasses['WikidataArticle'      ] = $dir . 'includes/WikidataArticle.php';

@@ -2,19 +2,18 @@
 
 class WikidataHooks {
 
-	public static function onBeforePageDisplay( &$out, &$skin ) {
-		global $wgLang, $wgScriptPath, $wgRequest;
+	public static function onBeforePageDisplay( $out, $skin ) {
+		global $wgLang, $wgScriptPath, $wgRequest, $wgResourceModules;
 
-		$out->addScriptFile ( "{$wgScriptPath}/extensions/Wikidata/OmegaWiki/omegawiki-ajax.js");
-		if ( $wgRequest->getText( 'action' )=='edit' ) {
-			$out->addScriptFile ( "{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.js");
-			$out->addScriptFile ( "{$wgScriptPath}/extensions/Wikidata/OmegaWiki/omegawiki-edit.js");
+		if ( $wgLang->isRTL() ) {
+			$out->addModules( 'ext.Wikidata-rtl' );
+		} else {
+			$out->addModules( 'ext.Wikidata' );
 		}
-		$rtl = '' ;
-		if ( $wgLang->isRTL() ) $rtl = '-rtl';
 
-		$out->addStyle("{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest{$rtl}.css", 'screen');
-		$out->addStyle("{$wgScriptPath}/extensions/Wikidata/OmegaWiki/tables{$rtl}.css", 'screen');
+		if ( $wgRequest->getText( 'action' )=='edit' ) {
+			$out->addModules( 'ext.Wikidata.edit' );
+		}
 
 		return true;
 	}
