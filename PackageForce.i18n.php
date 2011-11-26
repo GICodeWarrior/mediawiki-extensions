@@ -603,7 +603,7 @@ $messages['ml'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
-	'pf-admin-menu-default' => 'Tersedia',
+	'pf-admin-menu-default' => 'Asali',
 	'pf-header-documentation' => 'Dokumentasi',
 	'pf-header-page_title' => 'Tajuk',
 	'pf-header-approve' => 'Luluskan',
