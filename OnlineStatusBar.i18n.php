@@ -19,7 +19,7 @@ $messages['en'] = array(
 	// Status bar text line (User is now Offline) etc.
 	'onlinestatusbar-line' => '$1 is now $2 $3',
 	// Message in config asking user if they want to enable it
-	'onlinestatusbar-used' => 'Do you want to let others see if you are online?',
+	'onlinestatusbar-used' => 'Display your online status on your user pages',
 	// Message in config asking what status they want to use
 	'onlinestatusbar-status' => 'What is the default status you wish to use:',
 	// Message in config asking if user wants to purge the user page

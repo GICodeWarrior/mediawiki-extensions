@@ -78,15 +78,14 @@ class OnlineStatusBar_StatusCheck {
 		}
 		else {
 			$result = self::getCache( $user->getName(), "d" );
-
 			if ( $result == '' ) {
 				$dbr = wfGetDB( DB_SLAVE );
 				$result = $dbr->selectField( 'online_status', 'timestamp', array( 'username' => $user->getName() ),
 					__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
-					$w_time = OnlineStatusBar::getTimeoutDate( true );
 				// cache it
 				self::setCache( $user->getName(), $result, "d" );
 			}
+			$w_time = OnlineStatusBar::getTimeoutDate( true );
 		}
 
 		if ( $result === false ) {
