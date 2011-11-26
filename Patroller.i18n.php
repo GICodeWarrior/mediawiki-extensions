@@ -786,7 +786,7 @@ $messages['frp'] = array(
  */
 $messages['frr'] = array(
 	'group-patroller' => 'Kontrolöören',
-	'group-patroller-member' => 'Kontrolöör',
+	'group-patroller-member' => '{{GENDER:$1|kontrolöör}}',
 );
 
 /** Western Frisian (Frysk)
