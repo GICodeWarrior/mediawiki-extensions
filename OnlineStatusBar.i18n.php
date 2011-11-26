@@ -25,7 +25,7 @@ $messages['en'] = array(
 	// Message in config asking what status they want to use
 	'onlinestatusbar-status' => 'What is the default status you wish to use:',
 	// Message in config about away time
-	'onlinestatusbar-away' => 'Treat as away automatically after {{PLURAL:$1|one minute|$1 minutes}}',
+	'onlinestatusbar-away' => 'Treat as away automatically after defined interval',
 	// Message in config asking if user wants to purge the user page
 	'onlinestatusbar-purge' => 'Purge user page everytime when you login or logout',
 	// Section for config
