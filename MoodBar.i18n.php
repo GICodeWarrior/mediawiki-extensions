@@ -1423,6 +1423,10 @@ $messages['he'] = array(
 	'tooltip-moodbar-what' => 'מידע נוסף על התכונה הזאת',
 	'moodbar-what-label' => 'מה זה?',
 	'moodbar-what-collapsed' => '◄',
+	'moodbar-respond-text' => 'להשיב לזה',
+	'moodbar-response-add' => 'להוסיף תשובה',
+	'moodbar-response-nosig' => 'אין צורך בחתימה',
+	'moodbar-response-btn' => 'שליחת תגובה',
 	'moodbar-what-content' => 'התכונה הזאת נועדה לעזור לקהילה להבין את החוויה של האנשים שעורכים את האתר.
 למידע נוסף, בקרו בדף $1.',
 	'moodbar-what-link' => 'דף תכונה',
@@ -1461,6 +1465,7 @@ $messages['he'] = array(
 	'moodbar-header-namespace' => 'מרחב שם',
 	'moodbar-header-own-talk' => 'דף שיחה של עצמי',
 	'moodbar-feedback-title' => 'לוח בקרה של משובים',
+	'moodbar-feedback-response-title' => 'תגובה מלוח הבקרה של המשוב',
 	'moodbar-feedback-filters' => 'מסננים',
 	'moodbar-feedback-filters-type' => 'מצב רוח:',
 	'moodbar-feedback-filters-type-happy' => 'שמחה',
@@ -1481,9 +1486,13 @@ $messages['he'] = array(
 	'moodbar-comment-hidden' => '(המשוב הוסתר על־ידי פעולת מנהל)',
 	'moodbar-feedback-show' => 'הצגת משוב מוסתר',
 	'moodbar-feedback-hide' => 'הסתרת משוב',
+	'moodbar-feedback-action-confirm' => 'אישור',
+	'moodbar-feedback-action-cancel' => 'ביטול',
 	'moodbar-hidden-footer' => 'משוב מוסתר $1 מ־$2 $3, סיבה: $4&rlm; $5',
 	'moodbar-feedback-restore' => 'שחזור משוב מוסתר',
 	'moodbar-action-item' => 'פריט משוב:',
+	'moodbar-action-reason' => 'סיבה:',
+	'moodbar-action-reason-required' => 'נא להזין סיבה.',
 	'moodbar-hide-header' => 'הסתרת הפריט הזה מהתצוגה',
 	'moodbar-restore-header' => 'שחזור הנראוּת של הפריט הזה',
 	'moodbar-invalid-item' => 'המערכת לא הצליחה למצא את פריט המשוב הנכון.',
@@ -1498,6 +1507,8 @@ $messages['he'] = array(
 	'moodbar-log-header' => 'זהו יומן של פעולות שנעשו על פריטי משוב שרשומים ב[[Special:FeedbackDashboard|לוח הבקרה של המשוב]].',
 	'moodbar-log-hide' => 'הסתיר את [[$1]]',
 	'moodbar-log-restore' => 'שחזר את הנראוּת של [[$1]]',
+	'moodbar-response-terms-of-use' => 'תנאי שימוש',
+	'feedbackresponse-success' => 'תודה. תשובתך הוספה לדף שיחת המשתמש.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1898,7 +1909,7 @@ $messages['ml'] = array(
 	'moodbar-what-content' => 'വിജ്ഞാനകോശം തിരുത്തുന്നവരുടെ അനുഭവങ്ങൾ വിക്കിപീഡിയ സമൂഹത്തിനു മനസ്സിലാക്കാനായാണ് ഈ സൗകര്യം രൂപകല്പന ചെയ്തിരിക്കുന്നത്.
 കൂടുതൽ വിവരങ്ങൾക്ക് ദയവായി $1 സന്ദർശിക്കുക.',
 	'moodbar-what-link' => 'സവിശേഷതാ താൾ',
-	'moodbar-privacy' => 'സമർപ്പിക്കുമ്പോൾ, $1 പ്രകാരമുള്ള സുതാര്യത താങ്കൾ അംഗീകരിക്കുന്നതായി കരുതപ്പെടുന്നതാണ്.',
+	'moodbar-privacy' => 'സമർപ്പിക്കുമ്പോൾ, $1 പ്രകാരമുള്ള സുതാര്യത താങ്കൾ അംഗീകരിക്കുന്നതാണ്.',
 	'moodbar-privacy-link' => 'നിബന്ധനകൾ',
 	'moodbar-disable-link' => 'എനിക്കു താത്പര്യമില്ല. ദയവായി ഈ സൗകര്യം വേണ്ട.',
 	'moodbar-form-title' => 'കാരണം...',
@@ -1946,6 +1957,7 @@ $messages['ml'] = array(
 	'moodbar-user-anonymized' => 'അജ്ഞാതവത്കരിച്ചു',
 	'moodbar-user-ip' => 'ഐ.പി. വിലാസം',
 	'moodbar-user-user' => 'അംഗത്വമെടുത്ത ഉപയോക്താവ്',
+	'feedbackresponse-success' => 'നന്ദി. താങ്കളുടെ പ്രതികരണം ഉപയോക്താവിന്റെ സംവാദം താളിൽ ചേർത്തിട്ടുണ്ട്.',
 );
 
 /** Malay (Bahasa Melayu)
