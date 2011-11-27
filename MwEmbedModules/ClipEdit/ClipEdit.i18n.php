@@ -100,6 +100,40 @@ $messages['arc'] = array(
 	'mwe-clipedit-edit-tools' => 'ܡܐܢ̈ܐ ܕܫܘܚܠܦܐ',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'mwe-clipedit-crop' => 'Recortar la imaxe',
+	'mwe-clipedit-apply_crop' => 'Aplicar el recorte a la imaxe',
+	'mwe-clipedit-reset_crop' => 'Reaniciar el recorte',
+	'mwe-clipedit-insert_image_page' => 'Inxertar na páxina',
+	'mwe-clipedit-insert_into_sequence' => 'Inxertar na secuencia',
+	'mwe-clipedit-preview_insert' => 'Vista previa del inxertu',
+	'mwe-clipedit-cancel_image_insert' => "Encaboxar l'inxertu",
+	'mwe-clipedit-sc_attributes' => 'Editar detalle del clip',
+	'mwe-clipedit-sc_inoutpoints' => "Definir puntos d'entrada y de salida",
+	'mwe-clipedit-sc_overlays' => 'Superposiciones',
+	'mwe-clipedit-sc_audio' => 'Control de soníu',
+	'mwe-clipedit-sc_duration' => 'Duración',
+	'mwe-clipedit-template_properties' => 'Propiedaes de plantía',
+	'mwe-clipedit-custom_title' => 'Títulu personalizáu',
+	'mwe-clipedit-edit_properties' => 'Editar les propiedaes',
+	'mwe-clipedit-other_properties' => 'Otres propiedaes',
+	'mwe-clipedit-resource_page' => 'Páxina de recursos:',
+	'mwe-clipedit-set_in_out_points' => "Definir puntos d'entrada y de salida",
+	'mwe-clipedit-start_time' => "Hora d'aniciu",
+	'mwe-clipedit-end_time' => 'Hora de fin',
+	'mwe-clipedit-preview_inout' => "Vista previa de los puntos d'entrada y salida",
+	'mwe-clipedit-edit-tools' => "Ferramientes d'edición",
+	'mwe-clipedit-inline-description' => 'Lleenda',
+	'mwe-clipedit-edit-video-tools' => "Ferramientes d'edición de videu:",
+	'mwe-clipedit-duration' => 'Duración:',
+	'mwe-clipedit-layout' => 'Diseñu',
+	'mwe-clipedit-layout_right' => 'Diseñu del llau drechu de la imaxe',
+	'mwe-clipedit-layout_left' => 'Diseñu del llau izquierdu de la imaxe',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Vago
  */
