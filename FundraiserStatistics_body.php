@@ -299,7 +299,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 						'max(converted_amount)',
 					),
 					$conditions,
-					__METHOD__,
+					__METHOD__ . '-dailyTotals',
 					array(
 						'ORDER BY' => 'received',
 						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
@@ -316,7 +316,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				$result = $dbr->selectField( 'public_reporting',
 					array( 'sum(converted_amount) as sum' ),
 					$conditions,
-					__METHOD__,
+					__METHOD__ . '-dailyTotalMax',
 					array(
 						'ORDER BY' => 'sum DESC',
 						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
@@ -327,14 +327,14 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				$result = $dbr->selectField( 'public_reporting',
 					array( 'sum(converted_amount) as sum' ),
 					$conditions,
-					__METHOD__
+					__METHOD__ . '-yearlyTotalMax'
 				);
 				break;
 			case 'contributionsMax':
 				$result = $dbr->selectField( 'public_reporting',
 					array( 'count(converted_amount) as sum' ),
 					$conditions,
-					__METHOD__,
+					__METHOD__ . '-contributionsMax',
 					array(
 						'ORDER BY' => 'sum DESC',
 						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
@@ -345,7 +345,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				$result = $dbr->selectField( 'public_reporting',
 					array( 'avg(converted_amount) as sum' ),
 					$conditions,
-					__METHOD__,
+					__METHOD__ . '-averagesMax',
 					array(
 						'ORDER BY' => 'sum DESC',
 						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
@@ -356,7 +356,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				$result = $dbr->selectField( 'public_reporting',
 					array( 'max(converted_amount) as sum' ),
 					$conditions,
-					__METHOD__,
+					__METHOD__ . '-maximumsMax',
 					array(
 						'ORDER BY' => 'sum DESC',
 						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
