@@ -3127,7 +3127,7 @@ $messages['ko'] = array(
 	'contributionreporting-desc' => '위키미디어 모금 현황',
 	'contributiontotal' => '기부 총액',
 	'contributionhistory' => '기부 역사',
-	'contrib-hist-header' => '전세계 기부자들의 실시간 한 마디',
+	'contrib-hist-header' => '전세계 기부자들의 한 마디',
 	'contrib-hist-name' => '이름',
 	'contrib-hist-date' => '날짜와 시각',
 	'contrib-hist-amount' => '금액',
@@ -3190,6 +3190,7 @@ $messages['ko'] = array(
 	'fundraiserstats-tab-averages' => '평균 (USD)',
 	'fundraiserstats-tab-maximums' => '최댓값 (USD)',
 	'fundraiserstats-tab-ytd' => '연간 누계 (USD)',
+	'fundraiserstats-time-zone' => '시간대:',
 );
 
 /** Colognian (Ripoarisch)
