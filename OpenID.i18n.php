@@ -1925,13 +1925,9 @@ Voit valita omasi alla olevista vaihtoehdoista.',
 Muussa tapauksessa valitse <code>Continue</code> (Jatka).',
 	'openidclientonlytext' => 'Et voi käyttää tämän wikin käyttäjätunnuksia OpenID-tunnuksina muilla sivustoilla.',
 	'openidloginlabel' => 'OpenID-URL',
-	'openidlogininstructions' => '{{SITENAME}} tukee [//openid.net/ OpenID]-standardia yhden tunnuksen käyttämiseksi eri Web-sivustoilla.
-OpenID antaa sinun kirjautua useille eri Web-sivustoille tarvitsematta eri salasanaa jokaiseen.
+	'openidlogininstructions' => '{{SITENAME}} tukee [//openid.net/ OpenID]-standardia yhden tunnuksen käyttämiseksi eri sivustoilla.
+OpenID mahdollistaa kirjautumisen useille eri sivustoille tarvitsematta eri salasanaa jokaiseen.
 (Katso [//en.wikipedia.org/wiki/OpenID Wikipedian OpenID-artikkeli] saadaksesi lisätietoja.)
-
-Jos sinulla on jo tunnus {{SITENAME}}, voit [[Special:UserLogin|kirjautua sisään]] käyttäjätunnuksellasi ja salasanallasi kuten normaalistikin.
-Käyttääksesi tulevaisuudessa OpenID:tä, voit [[Special:OpenIDConvert|muuntaa tilisi OpenID:een]] normaalin sisäänkirjautumisen jälkeen.
-
 Tarjolla on monia eri [//openid.net/get/ OpenID-tarjoajia], ja sinulla saattaa jo olla OpenID:tä tarjoava tunnus toisessa palvelussa.',
 	'openidupdateuserinfo' => 'Päivitä henkilökohtaiset tietoni:',
 	'openiddelete' => 'Poista OpenID',
