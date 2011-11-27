@@ -1060,6 +1060,7 @@ $messages['fi'] = array(
  * @author Gomoko
  * @author Hashar
  * @author IAlex
+ * @author McDutchie
  * @author Tpt
  */
 $messages['fr'] = array(
@@ -1163,7 +1164,7 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-log-hide' => 'a caché [[$1]]',
 	'moodbar-log-restore' => 'a restauré la visibilité de [[$1]]',
 	'moodbar-response-ula' => 'En cliquant sur le bouton "$1", vous vous engagez à $2, et vous acceptez de mettre votre contribution de façon irrévocable sous la licence $3 et $4 .
-Vous acceptez qu\'une URL ou un lien hypertexte est une attribution suffisante sous la licence Creative Commons.',
+Vous acceptez qu\'une URL ou un lien hypertexte est une attribution suffisante sous la licence $3.',
 	'moodbar-response-terms-of-use' => "Conditions d'utilisation",
 	'feedbackresponse-success' => "Merci. Votre réponse a été ajoutée à la page de discussion de l'utilisateur.",
 );
@@ -1254,6 +1255,7 @@ Por més d’enformacions, volyéd visitar la $1.',
 );
 
 /** Galician (Galego)
+ * @author McDutchie
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -1357,7 +1359,7 @@ Para obter máis información, bótelle unha ollada á $1 .',
 	'moodbar-log-hide' => 'agochou "[[$1]]"',
 	'moodbar-log-restore' => 'restaurou a visibilidade de "[[$1]]"',
 	'moodbar-response-ula' => 'Ao premer no botón "$1" acepta os $2 e acepta liberar irrevogablemente a súa contribución baixo a licenza $3 e a $4.
-Acepta que unha hiperligazón ou URL é recoñecemento abondo baixo a licenza Creative Commons.',
+Acepta que unha hiperligazón ou URL é recoñecemento abondo baixo a licenza $3.',
 	'moodbar-response-terms-of-use' => 'Termos de uso',
 	'feedbackresponse-success' => 'Grazas. A súa resposta engadiuse á páxina de conversa do usuario.',
 );
@@ -1734,8 +1736,11 @@ Fir méi Informatiounen, gitt w.e.g. op d'$1.",
 	'moodbar-user-hidden' => '(Benotzer verstoppt)',
 	'moodbar-feedback-show' => 'verstoppte Feedback weisen',
 	'moodbar-feedback-hide' => 'Feedback verstoppen',
+	'moodbar-feedback-action-confirm' => 'Confirméieren',
+	'moodbar-feedback-action-cancel' => 'Ofbriechen',
 	'moodbar-hidden-footer' => 'Vum $1 den $2 ëm $3 verstoppte Feedback, Grond: $4 $5',
 	'moodbar-action-reason' => 'Grond:',
+	'moodbar-action-reason-required' => 'Gitt w.e.g. e Grond un.',
 	'moodbar-type-happy' => 'Glécklech',
 	'moodbar-type-sad' => 'Traureg',
 	'moodbar-type-confused' => 'Duercherneen',
@@ -1782,6 +1787,7 @@ $messages['lt'] = array(
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
+ * @author McDutchie
  */
 $messages['mk'] = array(
 	'moodbar-desc' => 'Им овозможува на одредени корисници да даваат мислење за уредувањето',
@@ -1884,7 +1890,7 @@ $messages['mk'] = array(
 	'moodbar-log-hide' => 'скриено [[$1]]',
 	'moodbar-log-restore' => 'вратена видливоста на [[$1]]',
 	'moodbar-response-ula' => 'Стискајќи на копчето „$1“ се согласувате со $2, и неотповикливо прифаќате да го објавите придонесеното под лиценците $3 и $4.
-Се согласувате дека хиперврска или URL-адреса претставува достатно признание за авторство под лиценцата на Криејтив комонс.',
+Се согласувате дека хиперврска или URL-адреса претставува достатно признание за авторство под лиценцата на $3.',
 	'moodbar-response-terms-of-use' => 'Условите на употреба',
 	'moodbar-response-cc' => 'Криејтив комонс',
 	'moodbar-response-gfdl' => 'ГЛСД',
@@ -1962,6 +1968,7 @@ $messages['ml'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
+ * @author McDutchie
  */
 $messages['ms'] = array(
 	'moodbar-desc' => 'Membolehkan pengguna tertentu menghantar maklum balas mereka kepada pengendali tapak',
@@ -2064,7 +2071,7 @@ Untuk maklumat lanjut, sila layari $1.',
 	'moodbar-log-hide' => 'menyorokkan [[$1]]',
 	'moodbar-log-restore' => 'memperlihatkan semula [[$1]]',
 	'moodbar-response-ula' => 'Dengan mengklik butang "$1", anda bersetuju dengan $2, dan anda bersetuju tanpa tertarik balik untuk melepaskan sumbangan-sumbangan anda di bawah Lesen $3 dan $4.
-Anda bersetuju bahawa pautan hiper atau URL merupakan atribusi yang memadai di bawah lesen Creative Commons.',
+Anda bersetuju bahawa pautan hiper atau URL merupakan atribusi yang memadai di bawah lesen $3.',
 	'moodbar-response-terms-of-use' => 'Syarat-syarat penggunaan',
 	'moodbar-response-cc' => 'Creative Commons',
 	'moodbar-response-gfdl' => 'GFDL',
@@ -2072,6 +2079,7 @@ Anda bersetuju bahawa pautan hiper atau URL merupakan atribusi yang memadai di b
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author SPQRobin
  * @author Saruman
  * @author Siebrand
@@ -2179,7 +2187,7 @@ Ga naar de $1 voor mee informatie.',
 	'moodbar-log-hide' => 'heeft [[$1]] verborgen',
 	'moodbar-log-restore' => 'heeft [[$1]] weer zichtbaar gemaakt',
 	'moodbar-response-ula' => 'Door op de knop "$1" te klikken, gaat u akkoord met de $2 en gaat u onherroepelijk akkoord met het vrijgeven van uw bijdragen onder de licentie $3 en $4.
-U stemt ermee in dat een hyperlink of URL voldoende naamsvermelding is onder de Creative Commons-licentie.',
+U stemt ermee in dat een hyperlink of URL voldoende naamsvermelding is onder de $3-licentie.',
 	'moodbar-response-terms-of-use' => 'Gebruiksvoorwaarden',
 	'feedbackresponse-success' => 'Dank u wel. Uw reactie is toegevoegd aan de overlegpagina van de gebruiker.',
 );
@@ -2828,6 +2836,7 @@ $messages['si'] = array(
 
 /** Slovenian (Slovenščina)
  * @author Dbc334
+ * @author McDutchie
  */
 $messages['sl'] = array(
 	'moodbar-desc' => 'Omogoča določenim uporabnikom pošiljanje povratne informacije o svoji urejevalski izkušnji',
@@ -2930,7 +2939,7 @@ Za več informacij obiščite $1.',
 	'moodbar-log-hide' => 'je skril(-a) [[$1]]',
 	'moodbar-log-restore' => 'je obnovil(-a) vidljivost [[$1]]',
 	'moodbar-response-ula' => 'S klikom na gumb »$1« se strinjate s $2 in se nepreklicno strinjate z objavo vašega prispevka pod dovoljenjema $3 in $4.
-Strinjate se, da je hiperpovezava ali URL zadostna navedba avtorja pod dovoljenjem Creative Commons.',
+Strinjate se, da je hiperpovezava ali URL zadostna navedba avtorja pod dovoljenjem $3.',
 	'moodbar-response-terms-of-use' => 'Pogoji uporabe',
 	'feedbackresponse-success' => 'Hvala. Vaš odgovor smo dodali na uporabnikovo pogovorno stran.',
 );
