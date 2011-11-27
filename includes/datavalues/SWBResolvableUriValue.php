@@ -8,10 +8,8 @@
  * This datavalue implements URL/URI/ANNURI/PHONE/EMAIL datavalues suitable for
  * defining the respective types of properties.
  *
- * @author Nikolas Iwan
- * @author Markus Krötzsch
- * @ingroup SMWDataValues
- * @bug Correctly create safe HTML and Wiki text.
+ * @author Anna Kantorovitch
+ * @author Benedikt Kämpgen
  */
 class SWBResolvableUriValue extends SMWDataValue {
 
@@ -28,7 +26,8 @@ class SWBResolvableUriValue extends SMWDataValue {
 	private $m_mode;
 
 	protected function parseUserValue( $value ) {
-	
+		// echo "parseUserValue";
+
 		smwfLoadExtensionMessages( 'SemanticMediaWiki' );
 		$value = trim( $value );
 		$this->m_wikitext = $value;
@@ -85,7 +84,8 @@ class SWBResolvableUriValue extends SMWDataValue {
 
 		// Now create the URI data item:
 		try {
-			$this->m_dataitem = new SMWDIUri( $scheme, $hierpart, $query, $fragment, $this->m_typeid);
+			SWBSpecialBrowseWiki:: debug( $this->m_typeid, "typeid" );
+			$this->m_dataitem = new SMWDIUri( $scheme, $hierpart, $query, $fragment, $this->m_typeid );
 		} catch ( SMWDataItemException $e ) {
 			$this->addError( wfMsgForContent( 'smw_baduri', $this->m_wikitext ) );
 			$this->m_dataitem = new SMWDIUri( 'http', '//example.com', '', '', $this->m_typeid ); // define data item to have some value
@@ -108,7 +108,7 @@ class SWBResolvableUriValue extends SMWDataValue {
 	 * @return boolean
 	 */
 	protected function loadDataItem( SMWDataItem $dataItem ) {
-		echo "loadItem";
+		SWBSpecialBrowseWiki:: debug( "loadItem" );
 		if ( $dataItem->getDIType() == SMWDataItem::TYPE_URI ) {
 			$this->m_dataitem = $dataItem;
 			if ( $this->m_mode == SMW_URI_MODE_EMAIL ) {
@@ -126,7 +126,7 @@ class SWBResolvableUriValue extends SMWDataValue {
 	}
 
 	public function getShortWikiText( $linked = null ) {
-		echo "shortWiki";
+		SWBSpecialBrowseWiki:: debug( "shortWiki" );
 		$url = $this->getURL();
 		if ( ( $linked === null ) || ( $linked === false ) || ( $this->m_outformat == '-' ) || ( $url == '' ) || ( $this->m_caption == '' ) ) {
 			return $this->m_caption;
@@ -136,7 +136,7 @@ class SWBResolvableUriValue extends SMWDataValue {
 	}
 
 	public function getShortHTMLText( $linker = null ) {
-		echo "shortHTML";
+		SWBSpecialBrowseWiki:: debug( "shortHTML" );
 		$url = $this->getURL();
 		if ( ( $linker === null ) || ( !$this->isValid() ) || ( $this->m_outformat == '-' ) || ( $url == '' ) || ( $this->m_caption == '' ) ) {
 			return $this->m_caption;
@@ -146,7 +146,7 @@ class SWBResolvableUriValue extends SMWDataValue {
 	}
 
 	public function getLongWikiText( $linked = null ) {
-		echo "longWiki";
+		SWBSpecialBrowseWiki:: debug( "longWiki" );
 		if ( !$this->isValid() ) {
 			return $this->getErrorText();
 		}
@@ -159,7 +159,7 @@ class SWBResolvableUriValue extends SMWDataValue {
 	}
 
 	public function getLongHTMLText( $linker = null ) {
-		echo "longHTML";
+		SWBSpecialBrowseWiki:: debug( "longHTML" );
 		if ( !$this->isValid() ) {
 			return $this->getErrorText();
 		}
@@ -176,7 +176,7 @@ class SWBResolvableUriValue extends SMWDataValue {
 	}
 
 	public function getURI() {
-		echo "uri";
+		SWBSpecialBrowseWiki:: debug( "uri" );
 		return $this->m_dataitem->getURI();
 	}
 
@@ -193,7 +193,7 @@ class SWBResolvableUriValue extends SMWDataValue {
 	 * @return string
 	 */
 	public function getURL() {
-		echo "getURL";
+		SWBSpecialBrowseWiki:: debug( "getURL" );
 		global $wgUrlProtocols;
 		foreach ( $wgUrlProtocols as $prot ) {
 			if ( ( $prot == $this->m_dataitem->getScheme() . ':' ) || ( $prot == $this->m_dataitem->getScheme() . '://' ) ) {
