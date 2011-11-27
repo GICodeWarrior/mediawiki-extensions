@@ -2253,6 +2253,13 @@ $messages['wuu'] = array(
 	'todo-list-cancel' => '取消',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'todo-form-details' => 'פרטים:',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Liangent
