@@ -56,6 +56,15 @@ $messages['arz'] = array(
 	'categorystepper-start' => '(بداية التصنيف)',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'categorystepper-desc' => "Amuesa una tabla de pasos de categoría que permiten navegar p'alantre y p'atrás n'orde alfabéticu al traviés d'una o más categoríes nes que ta la páxina",
+	'categorystepper-end' => '(Fin de categoría)',
+	'categorystepper-start' => '(Principiu de categoría)',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
