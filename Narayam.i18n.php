@@ -410,6 +410,7 @@ $messages['da'] = array(
 	'narayam-as' => 'Assamesisk translitteration',
 	'narayam-as-inscript' => 'Assamesisk InScript',
 	'narayam-eo' => 'Esperanto',
+	'narayam-hi' => 'Hindi translitteration',
 	'narayam-hi-inscript' => 'Hindi InScript',
 	'narayam-kn' => 'Kannada translitteration',
 	'narayam-kn-inscript' => 'Kannada InScript',
@@ -424,6 +425,8 @@ $messages['da'] = array(
 	'narayam-ta-99' => 'Tamil99',
 	'narayam-ta' => 'Tamilsk translitteration',
 	'narayam-bn-inscript' => 'Bengali InScript',
+	'narayam-de' => 'Tysk',
+	'narayam-ru-standard' => 'Russisk standard',
 );
 
 /** German (Deutsch)
@@ -1161,6 +1164,8 @@ $messages['lb'] = array(
 	'narayam-sa-inscript' => 'Sanskrit (InScript)',
 	'narayam-ta-99' => 'Tamil99',
 	'narayam-ta' => 'Tamil-Transliteratioun',
+	'narayam-de' => 'Däitsch',
+	'narayam-ru-standard' => 'Russesch (Standard)',
 );
 
 /** Lithuanian (Lietuvių)
