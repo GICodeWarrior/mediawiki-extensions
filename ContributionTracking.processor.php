@@ -331,7 +331,7 @@ class ContributionTrackingProcessor {
 			if ( $returnTitle ) {
 				$returnto = wfExpandUrl( $returnTitle->getFullUrl(), PROTO_CURRENT );
 			} else {
-				$returnto = $wgContributionTrackingReturnToURLDefault . "/$language";
+				$returnto = $wgContributionTrackingReturnToURLDefault . "/$language"; // FIXME: $language is undefined
 			}
 			$repost['fields']['return'] = $returnto;
 			$repost['fields']['currency_code'] = $input['currency_code'];

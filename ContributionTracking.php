@@ -109,7 +109,7 @@ function efContributionTrackingLoadUpdates( $updater = null ){
 	} else {
 		global $wgContributionTrackingDBname;
 
-		if($updater->getDB()->getDBName() === $wgContributionTrackingDBname) {
+		if( $updater->getDB()->getDBname() === $wgContributionTrackingDBname ) {
 			$updater->addExtensionTable( 'contribution_tracking', $dir . 'ContributionTracking.sql' );
 			$updater->addExtensionTable( 'contribution_tracking_owa_ref', $dir . 'ContributionTracking_OWA_ref.sql' );
 			$updater->addExtensionUpdate( array( 'addField', 'contribution_tracking', 'owa_session',
