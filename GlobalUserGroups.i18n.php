@@ -126,3 +126,10 @@ $messages['pms'] = array(
 	'globalusergroups-desc' => "A përmëtt ëd dovré dle partìe d'utent definì locaj com dle partìe globaj",
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Pedroca cerebral
+ */
+$messages['pt-br'] = array(
+	'globalusergroups-desc' => 'Permite o uso de grupos de usuários locais definidos como grupos globais',
+);
+
