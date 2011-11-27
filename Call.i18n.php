@@ -94,6 +94,31 @@ $messages['arz'] = array(
 	'call-save-failed' => 'النص التالى لم يتم حفظه لصفحة <big>[[$1]]</big> لأن هذه الصفحة موجودة بالفعل.',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'call' => 'Llamada',
+	'call-desc' => 'Crea un hiperenllaz a una plantía (o páxina wiki normal) pasando parámetros.
+Se pue usar na llinia de comandu del restolador o dientro del testu wiki.',
+	'call-text' => "La estensión Call espera una páxina wiki y parámetros opcionales pa esa páxina como argumentos.
+
+Exemplu 1: &nbsp; <tt>[[{{#special:call}}/Mio plantía,parám1=valor1]]</tt><br />
+Exemplu 2: &nbsp; <tt>[[{{#special:call}}/Talk:Mio alderique,parám1=valor1]]</tt><br />
+Exemplu 3: &nbsp; <tt>[[{{#special:call}}/:Mio páxina,parám1=valor1,parám2=valor2]]</tt><br />
+Exemplu 4 (URL del restolador): &nbsp; <tt>http://miodominiu/miowiki/index.php?{{#special:call}}/:Mio Páxina,parám1=valor1</tt>
+
+La <i>estensión Call</i> llamará a la páxina dada y pasará-y los parámetros.<br />
+Verás el conteníu de la páxina llamada y el so títulu, pero la so \"triba\" será la de páxina especial, esto ye, esa páxina nun se pue editar.<br />El conteníu visible pue variar dependiendo del valor de los parámetros que pases.<br /><br />
+
+La <i>estensión Call</i> ye afayadiza pa construir aplicaciones interactives con MediaWiki.<br />
+Pa ver un exemplu, visita <a href='http://semeb.com/dpldemo/Template:Catlist'>la GUI DPL</a>...<br />
+En casu d'haber dalgún problema pues probar con <b>{{#special:call}}/DebuG</b>",
+	'call-save' => "A salida d'esta llamada se guardaría n'una páxina llamada ''$1''.",
+	'call-save-success' => 'El testu darréu se guardó na páxina <big>[[$1]]</big>.',
+	'call-save-failed' => 'El testu darréu NUN se guardó na páxina <big>[[$1]]</big> porque la páxina yá esiste.',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Vago
  */
