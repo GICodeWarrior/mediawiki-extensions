@@ -306,6 +306,7 @@ $messages['qqq'] = array(
 	'contest-edit-challenge-oneline' => 'Form field label',
 	'contest-welcome-active-contests' => 'Message shown above a list of contests',
 	'contest-welcome-no-contests-active' => 'Indicates that there arte no active contests',
+	'contest-signup-submit' => '{{Identical|Sign up}}',
 	'contest-signup-emailwarn' => "Warning message shown above an email input when the user starts changing it's value",
 	'contest-contest-title' => 'Page title',
 	'contest-contest-no-results' => 'Message displayed instead of a table when there are no contests',
@@ -541,6 +542,11 @@ $messages['be-tarask'] = array(
 	'contest-welcome-js-off' => 'Інтэрфэйс карыстальніка конкурсу выкарыстоўвае JavaScript. Ваш браўзэр не падтрымлівае JavaScript ці ён забаронены.',
 	'contest-welcome-accept-challenge' => 'Мэта прынятая',
 	'contest-welcome-select-header' => 'Выберыце Вашую мэту:',
+	'contest-welcome-active-contests' => 'У цяперашні час актыўная наступныя конкурсы:',
+	'contest-welcome-no-contests-active' => 'У цяперашні час няма актыўных конкурсаў.',
+	'contest-signup-unknown' => 'Няма конкурсу з пададзенай назвай.',
+	'contest-signup-submit' => 'Зарэгіструйцеся',
+	'contest-signup-header' => 'Калі ласка, запоўніце форму, каб скончыць Вашую рэгістрацыю ў $1.',
 );
 
 /** Breton (Brezhoneg)
@@ -730,7 +736,7 @@ $messages['de'] = array(
 	'right-contestjudge' => 'Wettbewerbsbeiträge beurteilen',
 	'action-contestadmin' => 'Wettbewerbe verwalten',
 	'action-contestant' => 'An Wettbewerben teilnehmen',
-	'action-contestjudge' => 'Wettbewerbsbeiträge beurteilen',
+	'action-contestjudge' => 'Wettbewerbsbeiträge beurteilen zu können',
 	'group-contestadmin' => 'Wettbewerbsadministratoren',
 	'group-contestadmin-member' => '{{GENDER:$1|Wettbewerbsadministrator|Wettbewerbsadministratorin}}',
 	'grouppage-contestadmin' => 'Project:Wettbewerbsadministratoren',
@@ -2218,6 +2224,7 @@ $messages['lb'] = array(
 	'contest-mycontests-header-challenge' => 'Erausfuerderung',
 	'contest-submission-unknown' => 'Et gëtt kee Concours mam Numm deen ugi gouf.',
 	'contest-submission-finished' => 'Dëse Concours ass eriwwer. Merci datt Dir matgemaach hutt!',
+	'contest-submission-invalid-url' => 'Dës URL entsprécht kengem vun den erlaabte Formaten.',
 	'contest-submission-challenge-description' => "'''Aktuell Erausfuerderung: $1''' -- $2",
 );
 
