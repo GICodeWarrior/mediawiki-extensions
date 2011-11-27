@@ -50,12 +50,12 @@ $messages['qqq'] = array(
 * $2 is a picture of status (small icon in color of status)
 * $3 a status, it will appear in title bar of their user space pages',
 	'onlinestatusbar-used' => 'Message in config asking user if they want to enable it, checkbox',
+	'onlinestatusbar-away-time' => 'Question in preferences asking user how many minutes to wait until he would be flagged as away',
 	'onlinestatusbar-status' => 'Message in config asking what status they want to use, option box',
 	'onlinestatusbar-away' => 'Time in minutes how long to wait until user is flagged as away',
 	'onlinestatusbar-purge' => 'Option to purge user page everytime they login so that magic word is updated',
 	'prefs-onlinestatus' => 'Section for config, located in preferences - misc',
 	'onlinestatusbar-hide' => 'Ask user if they want to hide status bar this is useful when they are using custom template but need to check if they are online',
-	'onlinestatusbar-away-time' => 'Question in preferences asking user how many minutes to wait until he would be flagged as away',
 	'onlinestatusbar-status-online' => 'Status for users who mark themselves as active',
 	'onlinestatusbar-status-busy' => 'Status for users who mark themselves as busy',
 	'onlinestatusbar-status-away' => 'Status for users who mark themselves as away',
@@ -83,8 +83,9 @@ $messages['de'] = array(
 	'onlinestatusbar-desc' => 'Ermöglicht, abhängig von der Benutzereinstellung, die Anzeige des Onlinestatus eines Benutzers auf dessen Benutzerseite',
 	'onlinestatusbar-line' => '$1 ist gerade $3 $2',
 	'onlinestatusbar-used' => 'Deinen Online-Status auf deiner Benutzerseite anzeigen',
+	'onlinestatusbar-away-time' => 'Minuten, die vergehen sollen, um als „abwesend“ eingestuft zu werden:',
 	'onlinestatusbar-status' => 'Welchen Status möchtest du standardmäßig nutzen:',
-	'onlinestatusbar-away' => 'Nach {{PLURAL:$1|einer Minute|$1 Minuten}} automatisch als „abwesend“ einstufen',
+	'onlinestatusbar-away' => 'Nach einem festgelegten Zeitraum automatisch als „abwesend“ einstufen',
 	'onlinestatusbar-purge' => 'Den Cache der Benutzerseite jedes Mal leeren, wenn du dich an- oder abmeldest',
 	'prefs-onlinestatus' => 'Onlinestatus',
 	'onlinestatusbar-hide' => "Möchtest du die Statusleiste ausblenden, um stattdessen lediglich das ''magische Wort'' zu nutzen? (Für Fortgeschrittene)",
@@ -108,12 +109,15 @@ $messages['de-formal'] = array(
 /** French (Français)
  * @author DavidL
  * @author Gomoko
+ * @author Zebulon84
  */
 $messages['fr'] = array(
 	'onlinestatusbar-desc' => "Barre d'état montrant si un utilisateur est en ligne, basé sur les préférences, sur leur page utilisateur",
 	'onlinestatusbar-line' => '$1 est maintenant $2 $3',
-	'onlinestatusbar-used' => 'Voulez-vous permettre que les autres voient si vous êtes en ligne ?',
+	'onlinestatusbar-used' => 'Afficher votre statut en ligne sur vos pages utilisateur',
+	'onlinestatusbar-away-time' => 'Combien minutes avant de changer le status en "absent" :',
 	'onlinestatusbar-status' => 'Quel est le statut par défaut que vous souhaitez utiliser :',
+	'onlinestatusbar-away' => 'Status "absent" automatique',
 	'onlinestatusbar-purge' => 'Vider la page utilisateur chaque vous que vous vous connectez ou vous déconnectez',
 	'prefs-onlinestatus' => 'État en ligne',
 	'onlinestatusbar-hide' => "Voulez-vous masquer la barre d'état afin d'utiliser le mot magique seulement ? (Pour les utilisateurs avancés)",
@@ -143,8 +147,10 @@ $messages['frp'] = array(
 $messages['gl'] = array(
 	'onlinestatusbar-desc' => 'Barra de estado que mostra na páxina de usuario se un usuario está conectado',
 	'onlinestatusbar-line' => '$1 está $2 $3 nestes intres',
-	'onlinestatusbar-used' => 'Quere deixar que os outros poidan ver se está conectado?',
-	'onlinestatusbar-status' => 'Cal é o estado por defecto que quere usar:',
+	'onlinestatusbar-used' => 'Mostrar se está conectado nas súas páxinas de usuario',
+	'onlinestatusbar-away-time' => 'Os minutos que deben pasar ata considerar que marchou:',
+	'onlinestatusbar-status' => 'O estado por defecto que quere usar:',
+	'onlinestatusbar-away' => 'Considerar automaticamente que marchou despois do intervalo definido',
 	'onlinestatusbar-purge' => 'Purgar a páxina de usuario cada vez que se identifique ou saia do sistema',
 	'prefs-onlinestatus' => 'Conectado',
 	'onlinestatusbar-hide' => 'Quere agochar a barra de estado para usar unicamente a palabra máxica? (Para usuarios avanzados)',
@@ -197,8 +203,9 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'onlinestatusbar-desc' => 'Barra de stato que monstra si un usator es in linea, dependente de su preferentias, in su pagina de usator',
 	'onlinestatusbar-line' => '$1 es ora $2 $3',
-	'onlinestatusbar-used' => 'Vole tu permitter que alteres vide si tu es in linea?',
+	'onlinestatusbar-used' => 'Monstrar si tu es in linea in tu pagina de usator',
 	'onlinestatusbar-status' => 'Qual es le stato predefinite que tu vole usar:',
+	'onlinestatusbar-away' => 'Tractar automaticamente como absente post {{PLURAL:$1|un minuta|$1 minutas}}',
 	'onlinestatusbar-purge' => 'Purgar le pagina de usator cata vice que tu aperi o claude session',
 	'prefs-onlinestatus' => 'Stato in linea',
 	'onlinestatusbar-hide' => 'Vole tu celar le barra de stato pro usar solmente le parola magic? (Pro usatores avantiate)',
@@ -227,7 +234,9 @@ $messages['mk'] = array(
 	'onlinestatusbar-desc' => 'Статусник што прикажува дали корисникот е на линија, зависно од нагодувањата на корисничката страница',
 	'onlinestatusbar-line' => '$1 сега е $2 $3',
 	'onlinestatusbar-used' => 'Прикажувај на моите кориснички страници кога сум на линија',
+	'onlinestatusbar-away-time' => 'По колку минути да се прикаже „отсутен“:',
 	'onlinestatusbar-status' => 'Вашиот статус по основно:',
+	'onlinestatusbar-away' => 'Сметај ме за отсутен по извесно зададено време',
 	'onlinestatusbar-purge' => 'Пречисти го кешот на корисничката страница секојпат кога ќе се најавам или одјавам',
 	'prefs-onlinestatus' => 'Вклученост',
 	'onlinestatusbar-hide' => 'Дали би сакале да го скриете статусникот за да го користите само волшебниот збор (за напредни корисници)',
