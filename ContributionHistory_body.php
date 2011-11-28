@@ -24,11 +24,7 @@ class ContributionHistory extends SpecialPage {
 
 		$db = efContributionReportingConnection();
 
-		$output = '<style type="text/css">';
-		$output .= 'td.left {padding-right: 10px;}';
-		$output .= 'td.right {padding-left: 10px; text-align: right;}';
-		$output .= 'td.alt {background-color: #DDDDDD;}';
-		$output .= '</style>';
+		$wgOut->addModules( 'ext.fundraiserstatistics.table' );
 
 		// Paging controls
 		$newer = $db->selectField( 'public_reporting', 'received',

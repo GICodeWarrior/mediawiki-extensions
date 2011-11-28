@@ -110,6 +110,20 @@ $egFundraiserStatisticsCacheTimeout = 900; // 15 minutes
 
 $wgContributionTrackingStatisticsViewWeeks = 3;
 
+$commonModuleInfo = array(
+	'localBasePath' => dirname( __FILE__ ) . '/modules',
+	'remoteExtPath' => 'ContributionReporting/modules',
+);
+
+$wgResourceModules['ext.fundraiserstatistics.table'] = array(
+	'styles' => 'ext.fundraiserstatistics.table.css',
+) + $commonModuleInfo;
+
+$wgResourceModules['ext.fundraiserstatistics'] = array(
+	'scripts' => 'ext.fundraiserstatistics.edit.js',
+	'styles' => 'ext.fundraiserstatistics.css',
+) + $commonModuleInfo;
+
 $wgHooks['ParserFirstCallInit'][] = 'efContributionReportingSetup';
 $wgHooks['LanguageGetMagic'][] = 'efContributionReportingTotal_Magic';
 
