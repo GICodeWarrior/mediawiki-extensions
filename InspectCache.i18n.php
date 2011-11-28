@@ -63,6 +63,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  * @author روخو
  */
 $messages['ar'] = array(
@@ -72,7 +73,7 @@ $messages['ar'] = array(
 	'inspectcache-parser' => 'كاش المحلل',
 	'inspectcache-message' => 'كاش الرسائل',
 	'inspectcache-get' => 'تنفيذ',
-	'inspectcache-delete' => 'حذف',
+	'inspectcache-delete' => 'احذف',
 	'inspectcache-deleted' => 'الكاش المحذوف',
 	'inspectcache-list' => 'عرض',
 	'right-inspectcache' => 'عرض وحذف إدخالات ذاكرة التخزين المؤقت',
