@@ -2106,7 +2106,7 @@ $messages['frp'] = array(
 	'openidchoosemanual' => 'Un nom de voutron chouèx :',
 	'openidchooseexisting' => 'Un compto ègzistent sur ceti vouiqui',
 	'openidchooseusername' => 'Nom d’utilisator :',
-	'openidchoosepassword' => 'Mot de pâssa :',
+	'openidchoosepassword' => 'Contresegno :',
 	'openidnousername' => 'Nion nom d’utilisator at étâ spècefiâ.',
 	'openidbadusername' => 'Un crouyo nom d’utilisator at étâ spècefiâ.',
 	'openidloginlabel' => 'Adrèce OpenID',
@@ -2197,7 +2197,7 @@ Pode xestionar (ollar, borrar, engadir) os OpenID na [[Special:Preferences#prefs
 	'openidautosubmit' => 'Esta páxina inclúe un formulario que debería ser enviado automaticamente se ten o JavaScript activado.
 Se non é así, probe a premer no botón "Continue" (Continuar).',
 	'openidclientonlytext' => 'Non pode usar contas deste wiki como OpenIDs noutro sitio.',
-	'openidloginlabel' => 'Dirección URL do OpenID',
+	'openidloginlabel' => 'Enderezo URL do OpenID',
 	'openidlogininstructions' => '{{SITENAME}} soporta o [//openid.net/ OpenID] estándar para unha soa sinatura entre os sitios web.
 OpenID permítelle rexistrarse en diferentes sitios web sen usar un contrasinal diferente para cada un.
 (Consulte o [//en.wikipedia.org/wiki/OpenID artigo sobre o OpenID na Wikipedia en inglés] para obter máis información.)
@@ -2729,12 +2729,13 @@ Ty njemóhł so bjez OpenID přizjewić.',
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Dj
  * @author Glanthor Reviol
  * @author Tgr
  */
 $messages['hu'] = array(
 	'openid-desc' => 'Bejelentkezés [//openid.net/ OpenID] azonosítóval, és más OpenID-kompatibilis weboldalak használata a wikis azonosítóval',
-	'openidlogin' => 'Bejelentkezés OpenID-vel',
+	'openidlogin' => 'Bejelentkezés / fiók létrehozása OpenID-vel',
 	'openidserver' => 'OpenID szerver',
 	'openidxrds' => 'Yadis fájl',
 	'openidconvert' => 'OpenID konverter',
@@ -2764,7 +2765,7 @@ Lépj kapcsolatba egy [[Special:ListUsers/sysop|adminisztrátorral]].',
 	'openidemail' => 'E-mail cím:',
 	'openidlanguage' => 'Nyelv',
 	'openidtimezone' => 'Időzóna',
-	'openidchooselegend' => 'Felhasználónév választás',
+	'openidchooselegend' => 'Felhasználónév és fiók választás',
 	'openidchooseinstructions' => 'Mindenkinek választania kell egy felhasználónevet; választhatsz egyet az alábbi opciókból.',
 	'openidchoosenick' => 'A nickneved ($1)',
 	'openidchoosefull' => 'A teljes neved ($1)',
@@ -2794,6 +2795,7 @@ A OpenID lehetővé teszi, hogy számos különböző weboldalra jelentkezz be �
 Ha már regisztráltál korábban, [[Special:UserLogin|bejelentkezhetsz]] a felhasználóneveddel és a jelszavaddal, ahogy eddig is. Ha a továbbiakban OpenID-t szeretnél használni, [[Special:OpenIDConvert|állítsd át a felhasználói fiókodat OpenID-re]] miután bejelentkeztél.
 
 Számos [//openid.net/get/ OpenID szolgáltató] van, lehetséges, hogy van már OpenID-fiókod egy másik weboldalon.',
+	'openidlogininstructions-openidloginonly' => "{{SITENAME}} ''csak'' OpenID-s bejelentkezést engedélyez.",
 	'openidupdateuserinfo' => 'Személyes információk frissítése:',
 	'openiddelete' => 'OpenID törlése',
 	'openiddelete-text' => 'A {{int:openiddelete-button}} gomb megnyomásakor eltávolítod a következő OpenID-t a felhasználói fiókodból: $1.
@@ -2810,6 +2812,7 @@ Nem tudnál bejelentkezni OpenID nélkül.',
 	'openid-pref-update-userinfo-on-login' => 'A következő információ frissítése az OpenID fiókom alapján minden bejelentkezéskor:',
 	'openid-urls-desc' => 'A felhasználói fiókodhoz kapcsolt OpenID-k:',
 	'openid-urls-action' => 'Művelet',
+	'openid-urls-registration' => 'Regisztráció ideje',
 	'openid-urls-delete' => 'Törlés',
 	'openid-add-url' => 'Új OpenID hozzáadása',
 	'openid-login-or-create-account' => 'Bejelentkezés vagy új felhasználói fiók létrehozása',
@@ -2818,6 +2821,8 @@ Nem tudnál bejelentkezni OpenID nélkül.',
 	'openid-provider-label-yahoo' => 'Bejelentkezés a Yahoo felhasználói fiókoddal',
 	'openid-provider-label-aol' => 'Add meg az AOL felhasználóneved',
 	'openid-provider-label-other-username' => 'Add meg a(z) $1 felhasználóneved',
+	'openid-dashboard-number-openids-in-database' => 'OpenID-k száma (összes)',
+	'openid-dashboard-number-users-without-openid' => 'OpenID nélküli felhasználók száma',
 );
 
 /** Interlingua (Interlingua)
