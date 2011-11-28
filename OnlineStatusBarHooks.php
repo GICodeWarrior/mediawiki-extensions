@@ -24,9 +24,7 @@ class OnlineStatusBarHooks {
 	/**
 	 * Called everytime when user logout
 	 * @param $user User
-	 * @param $inject_html string
-	 * @param $old_name string
-	 * @return bool
+	 * @return true
 	 */
 	public static function logout( &$user ) {
 		global $wgOnlineStatusBarDefaultEnabled;

@@ -19,6 +19,7 @@ class OnlineStatusBar {
 	/**
 	 * Create a html bar
 	 * @param $text
+	 * return HTML
 	 **/
 	public static function getStatusBarHtml( $text ) {
 		return <<<HTML

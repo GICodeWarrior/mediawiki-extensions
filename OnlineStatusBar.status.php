@@ -59,6 +59,7 @@ class OnlineStatusBar_StatusCheck {
 	/**
 	 * Status check
 	 * @param $user User
+	 * @param $delayed_check Boolean
 	 * @return String
 	 */
 	public static function getStatus( $user, $delayed_check = false ) {
