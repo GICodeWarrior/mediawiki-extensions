@@ -92,7 +92,7 @@ function wfHelpCommonsLoad( $article ) {
  * @param $fields
  * @return bool
  */
-function wfHelpCommonsRedirectTalks( $article, $fields ) {
+function wfHelpCommonsRedirectTalks( &$article, &$outputDone, &$pcache ) {
 	global $wgTitle, $wgOut, $wgContLang, $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
 
 	if ( $wgTitle->getNamespace() != NS_HELP_TALK ) {
@@ -201,7 +201,6 @@ function fnProtectHelpCommons( &$title, &$user, $action, &$result) {
 	global $wgHelpCommonsFetchingWikis, $wgDBname;
 
 	foreach ( $wgHelpCommonsFetchingWikis as $urls ) {
-		// FIXME: don't use global esk variable names for non globals
 		foreach ( $urls as $url => $helpwiki ) {
 			// only protect Help pages on non-help-pages-fetching wikis
 			if( $wgDBname != $helpwiki ) {
