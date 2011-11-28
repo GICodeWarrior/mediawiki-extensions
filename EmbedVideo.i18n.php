@@ -239,6 +239,7 @@ $messages['lb'] = array(
 	'embedvideo-missing-params' => 'Et feelt een obligatoresche Parameter fir EmbedVideo',
 	'embedvideo-bad-params' => 'EmbedVideo huet e falsche Parameter kritt.',
 	'embedvideo-unparsable-param-string' => 'EmbedVideo huet d\'Zeecheketten  "<code>$1</code>" kritt déi net konnt benotzt ginn.',
+	'embedvideo-unrecognized-service' => 'EmbedVideo erkennt de Video-Service "<code>$1</code>" net.',
 );
 
 /** Macedonian (Македонски)
