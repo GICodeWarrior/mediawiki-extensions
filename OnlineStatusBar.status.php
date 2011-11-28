@@ -27,8 +27,10 @@ class OnlineStatusBar_StatusCheck {
 
 	/**
 	 * Create a cache
-	 * @param $user
-	 * @param $values
+	 * @param $user String
+	 * @param $values String
+	 * @param $type String
+	 * @param $time Integer
 	 * @return true
 	 */
 	private static function setCache( $user, $values, $type, $time = null ) {
@@ -68,7 +70,7 @@ class OnlineStatusBar_StatusCheck {
 		if ( !$delayed_check ) {
 			$t_time = OnlineStatusBar::getTimeoutDate();
 			// first try to use cache
-			$result = self::getCache( $user->getName(), "n" );
+			$result = self::getCache( $user->getName(), ONLINESTATUSBAR_NORMAL_CACHE );
 			
 			if ( $result == '' ) {
 				$dbr = wfGetDB( DB_SLAVE );
@@ -76,17 +78,16 @@ class OnlineStatusBar_StatusCheck {
 					'timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $t_time ) ) ),
 					__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
 				// cache it
-				self::setCache( $user->getName(), $result, "n" );
+				self::setCache( $user->getName(), $result, ONLINESTATUSBAR_NORMAL_CACHE );
 			}
-		}
-		else {
-			$result = self::getCache( $user->getName(), "d" );
+		} else {
+			$result = self::getCache( $user->getName(), ONLINESTATUSBAR_DELAYED_CACHE );
 			if ( $result == '' ) {
 				$dbr = wfGetDB( DB_SLAVE );
 				$result = $dbr->selectField( 'online_status', 'timestamp', array( 'username' => $user->getName() ),
 					__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
 				// cache it
-				self::setCache( $user->getName(), $result, "d" );
+				self::setCache( $user->getName(), $result, ONLINESTATUSBAR_DELAYED_CACHE );
 			}
 			$w_time = OnlineStatusBar::getTimeoutDate( true );
 		}
@@ -147,8 +148,8 @@ class OnlineStatusBar_StatusCheck {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'online_status', array( 'username' => $userName ), __METHOD__ ); // delete user
 		// remove from cache
-		self::setCache( $userName, '', 'd' );
-		self::setCache( $userName, '', 'n' );
+		self::setCache( $userName, '', ONLINESTATUSBAR_NORMAL_CACHE );
+		self::setCache( $userName, '', ONLINESTATUSBAR_DELAYED_CACHE );
 		return true;
 	}
 

@@ -95,6 +95,9 @@ $wgOnlineStatusBarIcon = array(
 	'offline' => 'statusred.png',
 );
 
+define( 'ONLINESTATUSBAR_DELAYED_CACHE', 'd' );
+define( 'ONLINESTATUSBAR_NORMAL_CACHE', 'n' );
+
 // default for anonymous and uknown users
 $wgOnlineStatusBarTrackIpUsers = false;
 // it's better to cron this for performance reasons
