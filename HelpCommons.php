@@ -30,9 +30,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['HelpCommons'] = $dir . 'HelpCommons.i18n.php';
 
 // Help wiki(s) where the help namespace is fetched from
-if( !isset($wgHelpCommonsFetchingWikis) ) {
-	$wgHelpCommonsFetchingWikis = array();
-}
+$wgHelpCommonsFetchingWikis = array();
 
 // Hooks
 $wgHooks['ShowMissingArticle'][] = 'wfHelpCommonsLoad';
@@ -41,87 +39,106 @@ $wgHooks['LinkBegin'][] = 'efHelpCommonsMakeBlueLinks';
 $wgHooks['DoEditSectionLink'][] = 'wfHelpCommonsChangeEditSectionLink';
 $wgHooks['getUserPermissionsErrors'][] = 'fnProtectHelpCommons';
 
-
+/**
+ * @param $article Article
+ * @return bool
+ */
 function wfHelpCommonsLoad( $article ) {
 	global $wgTitle, $wgOut, $wgContLang, $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
 
-	if ( $wgTitle->getNamespace() == NS_HELP ) {
-
-		$replacewhitespace = str_replace( ' ', '_', $wgOut->getTitle() );
-		$title = str_replace( $wgContLang->namespaceNames[NS_HELP].':', '', $replacewhitespace );
-
-		foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
-			foreach ( $urls as $url => $wgHelpCommonsFetchingWiki ) {
-				if ( $wgLanguageCode == "$language" && $wgDBname != $wgHelpCommonsFetchingWiki ) {
-					$dbr = wfGetDB( DB_SLAVE, array(), $wgHelpCommonsFetchingWiki );
-					$page = $dbr->query( 'SELECT page_title, page_namespace, page_latest FROM page WHERE page_namespace = 12 AND page_title = '.$dbr->addQuotes($title) );
-					$page = $dbr->fetchObject( $page );
-				}
-			}
-		}
-		if ( !empty($page->page_title) ) {
-			$rev = $dbr->select( 'revision',
-					array( 'rev_id', 'rev_text_id' ),
-					'rev_id = '.$dbr->addQuotes($page->page_latest),
-					__METHOD__ );
-					$rev = $dbr->fetchObject( $rev );
-		} else {
-			return false;
-		}
-		$text = $dbr->select( 'text',
-				array( 'old_id', 'old_text' ),
-				'old_id = '.$dbr->addQuotes($rev->rev_text_id),
-				__METHOD__ );
-				$text = $dbr->fetchObject( $text );
-
-		if ( !empty($text->old_text) ) {
-			echo $wgOut->addWikiText( $text->old_text );
-			return true;
-		} else {
-			return false;
-		}
-
-		} else {
-			return false;
+	if ( $wgTitle->getNamespace() != NS_HELP ) {
+		return false;
 	}
 
-}
+	$replacewhitespace = str_replace( ' ', '_', $wgOut->getTitle() );
+	$title = str_replace( $wgContLang->namespaceNames[NS_HELP].':', '', $replacewhitespace );
 
-
-function wfHelpCommonsRedirectTalks( &$article, &$outputDone, &$pcache ) {
-	global $wgTitle, $wgOut, $wgContLang, $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
-
-	if ( $wgTitle->getNamespace() == NS_HELP_TALK ) {
-
-		$replacewhitespace = str_replace( ' ', '_', $wgOut->getTitle() );
-		$title = str_replace( $wgContLang->namespaceNames[NS_HELP_TALK].':', '', $replacewhitespace );
-
-		foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
-			foreach ( $urls as $url => $wgHelpCommonsFetchingWiki ) {
-				if ( $wgLanguageCode == "$language" && $wgDBname != $wgHelpCommonsFetchingWiki ) {
-					$dbr = wfGetDB( DB_SLAVE, array(), $wgHelpCommonsFetchingWiki );
-					$page = $dbr->query( 'SELECT page_title, page_namespace, page_latest FROM page WHERE page_namespace = 12 AND page_title = '.$dbr->addQuotes($title) );
-					$page = $dbr->fetchObject( $page );
-				}
-				if ( !empty($page->page_title) ) {
-					if ( $page->page_title == $title && !$wgTitle->exists() ) {
-						$HelpCommonsRedirectTalk = Title::newFromText( $url . '/index.php?title=' . str_replace( ' ', '_', $wgOut->getTitle() ) );
-						$redirectTalkPage = $HelpCommonsRedirectTalk->getFullText();
-						$wgOut->redirect( $redirectTalkPage );
-						return true;
-					} else {
-						return false;
-					}
-				}
+	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
+		foreach ( $urls as $helpwiki ) {
+			if ( $wgLanguageCode == "$language" && $wgDBname != $helpwiki ) {
+				$dbr = wfGetDB( DB_SLAVE, array(), $helpwiki );
+				$page = $dbr->query( 'SELECT page_title, page_namespace, page_latest FROM page WHERE page_namespace = 12 AND page_title = '.$dbr->addQuotes($title) );
+				$page = $dbr->fetchObject( $page );
 			}
 		}
+	}
+	if ( !empty( $page->page_title ) ) {
+		$rev = $dbr->select( 'revision',
+			array( 'rev_id', 'rev_text_id' ),
+			array( 'rev_id' => $page->page_latest ),
+			__METHOD__
+		);
+		$rev = $dbr->fetchObject( $rev );
+	} else {
+		return false;
+	}
+	$text = $dbr->select( 'text',
+		array( 'old_id', 'old_text' ),
+		array( 'old_id' => $rev->rev_text_id ),
+		__METHOD__
+	);
+	$text = $dbr->fetchObject( $text );
+
+	if ( !empty( $text->old_text ) ) {
+		$wgOut->addWikiText( $text->old_text );
 		return true;
 	} else {
 		return false;
 	}
 }
 
+/**
+ * @param $article
+ * @param $fields
+ * @return bool
+ */
+function wfHelpCommonsRedirectTalks( $article, $fields ) {
+	global $wgTitle, $wgOut, $wgContLang, $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
 
+	if ( $wgTitle->getNamespace() != NS_HELP_TALK ) {
+		return false;
+	}
+
+	$replacewhitespace = str_replace( ' ', '_', $wgOut->getTitle() );
+	$title = str_replace( $wgContLang->namespaceNames[NS_HELP_TALK].':', '', $replacewhitespace );
+
+	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
+		foreach ( $urls as $url => $helpwiki ) {
+			if ( $wgLanguageCode == "$language" && $wgDBname != $helpwiki ) {
+				$dbr = wfGetDB( DB_SLAVE, array(), $helpwiki );
+				$page = $dbr->select(
+					'page',
+					array( 'page_title', 'page_namespace', 'page_latest' ),
+					array( 'page_namespace' => 12, 'page_title' => $title ),
+					__METHOD__
+				);
+				$page = $dbr->fetchObject( $page );
+			}
+			if ( !empty( $page->page_title ) ) {
+				if ( $page->page_title == $title && !$wgTitle->exists() ) {
+					$helpCommonsRedirectTalk = Title::newFromText( $url . '/index.php?title=' . str_replace( ' ', '_', $wgOut->getTitle() ) );
+					$redirectTalkPage = $helpCommonsRedirectTalk->getFullText();
+					$wgOut->redirect( $redirectTalkPage );
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+	}
+	return true;
+}
+
+/**
+ * @param $skin
+ * @param $target Title
+ * @param $text
+ * @param $customAttribs
+ * @param $query
+ * @param $options array
+ * @param $ret
+ * @return bool
+ */
 function efHelpCommonsMakeBlueLinks( $skin, $target, &$text, &$customAttribs, &$query, &$options, &$ret ) {
 
 	if ( is_null( $target ) ) {
@@ -145,60 +162,78 @@ function efHelpCommonsMakeBlueLinks( $skin, $target, &$text, &$customAttribs, &$
 	return true;
 }
 
-
+/**
+ * @param $skin
+ * @param $title Title
+ * @param $section
+ * @param $tooltip
+ * @param $result
+ * @param bool $lang
+ * @return bool
+ */
 function wfHelpCommonsChangeEditSectionLink( $skin, $title, $section, $tooltip, $result, $lang = false ) {
 	global $wgTitle, $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
 
-	if ( $wgTitle->getNamespace() == NS_HELP ) {
-		foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
-			foreach ( $urls as $url => $wgHelpCommonsFetchingWiki ) {
-				if ( $wgLanguageCode == "$language" && $wgDBname != $wgHelpCommonsFetchingWiki ) {
-					$result = '<span class="editsection">[<a href="'.$url.'/index.php?title='.str_replace( ' ', '_', $title ).'&amp;action=edit&amp;section='.$section.'" title="'.wfMsg( 'editsectionhint', $tooltip ).'">'.wfMsg( 'editsection' ).'</a>]</span>';
+	if ( $wgTitle->getNamespace() != NS_HELP ) {
+		return false;
+	}
+	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
+		foreach ( $urls as $url => $helpwiki ) {
+			if ( $wgLanguageCode == "$language" && $wgDBname != $helpwiki ) {
+				// FIXME: $result is unused
+				$result = '<span class="editsection">[<a href="' . $url . '/index.php?title=' .
+						str_replace( ' ', '_', $title ) . '&amp;action=edit&amp;section=' . $section .
+						'" title="' . wfMsg( 'editsectionhint', $tooltip ) . '">' . wfMsg( 'editsection' ) . '</a>]</span>';
+			}
+		}
+	}
+	return true;
+}
+
+/**
+ * @param $title Title
+ * @param $user User
+ * @param $action
+ * @param $result
+ * @return bool
+ */
+function fnProtectHelpCommons( &$title, &$user, $action, &$result) {
+	global $wgHelpCommonsFetchingWikis, $wgDBname;
+
+	foreach ( $wgHelpCommonsFetchingWikis as $urls ) {
+		// FIXME: don't use global esk variable names for non globals
+		foreach ( $urls as $url => $helpwiki ) {
+			// only protect Help pages on non-help-pages-fetching wikis
+			if( $wgDBname != $helpwiki ) {
+				// block actions 'edit' and 'create'
+				if( $action != 'edit' && $action != 'create' ) {
+					return true;
+				}
+
+				$dbr = wfGetDB( DB_SLAVE, array(), $helpwiki );
+				$res = $dbr->select(
+					'page',
+					array( 'page_title', 'page_namespace', 'page_latest' ),
+					array( 'page_namespace' => 12, 'page_title' => str_replace( ' ', '_', $title->getText() ) ),
+					__METHOD__
+				);
+
+				if ( $dbr->numRows( $res ) < 1 ) {
+					return true;
+				}
+
+				$ns = $title->getNamespace();
+
+				// check namespaces
+				if( $ns == 12 || $ns == 13 ) {
+					// error message if action is blocked
+					$result = array( 'protectedpagetext' );
+
+					// bail, and stop the request
+					return false;
 				}
 			}
 		}
-		return true;
-	} else {
-		return false;
 	}
-
-}
-
-
-function fnProtectHelpCommons( &$title, &$user, $action, &$result) {
-	global $wgHelpCommonsFetchingWikis, $wgDBname;
-	
-	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
-		foreach ( $urls as $url => $wgHelpCommonsFetchingWiki ) {
-	// only protect Help pages on non-help-pages-fetching wikis
-	if( $wgDBname != $wgHelpCommonsFetchingWiki ) {
-
-			// block actions 'edit' and 'create'
-			if( $action != 'edit' && $action != 'create' ) {
-				return true;
-			}
-
-			$dbr = wfGetDB(DB_SLAVE, array(), $wgHelpCommonsFetchingWiki);
-			$res = $dbr->query( 'SELECT page_title, page_namespace FROM page WHERE page_namespace = 12 AND page_title = '.$dbr->addQuotes(str_replace( ' ', '_', $title->getText())) );
-
-			if ( $dbr->numRows($res) < 1 ) {
-				return true;
-			}
-
-	$ns = $title->getNamespace();
-
-	// check namespaces
-	if( $ns == 12 || $ns == 13 ) {
-
-		// error message if action is blocked
-		$result = array( 'protectedpagetext' );
-
-		// bail, and stop the request
-		return false;
-	}
-		}
-	}
-	}
-
 	return true;
 }
