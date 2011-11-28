@@ -82,7 +82,6 @@ class SpecialFundraiserStatistics extends SpecialPage {
 
 		$this->setHeaders();
 		$wgOut->addModules( 'ext.fundraiserstatistics' );
-		$wgOut->addScriptFile( $wgScriptPath . '/extensions/ContributionReporting/FundraiserStatistics.js' );
 
 		/* Display */
 
