@@ -547,6 +547,11 @@ $messages['be-tarask'] = array(
 	'contest-signup-unknown' => 'Няма конкурсу з пададзенай назвай.',
 	'contest-signup-submit' => 'Зарэгіструйцеся',
 	'contest-signup-header' => 'Калі ласка, запоўніце форму, каб скончыць Вашую рэгістрацыю ў $1.',
+	'contest-signup-email' => 'Ваш адрас электроннай пошты',
+	'contest-signup-realname' => 'Ваша сапраўднае імя',
+	'contest-signup-volunteer' => 'Мне цікава атрымліваць электронныя лісты пра магчымасьці для валянтэраў',
+	'contest-signup-wmf' => 'Мне цікава ведаць пра магчымасьці працы ў фундацыі «Вікімэдыя»',
+	'contest-signup-cv' => 'Спасылка на Вашае рэзюмэ',
 );
 
 /** Breton (Brezhoneg)
