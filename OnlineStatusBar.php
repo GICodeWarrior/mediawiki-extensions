@@ -113,7 +113,7 @@ $wgOnlineStatusBar_LogoutTime = 3600;
 $wgOnlineStatusBar_AwayTime = 15;
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'OnlineStatusBarHooks::ckSchema';
-$wgHooks['UserLogoutComplete'][] = 'OnlineStatusBarHooks::logout';
+$wgHooks['UserLogout'][] = 'OnlineStatusBarHooks::logout';
 $wgHooks['ArticleViewHeader'][] = 'OnlineStatusBarHooks::renderBar';
 $wgHooks['UserLoginComplete'][] = 'OnlineStatusBarHooks::updateStatus';
 $wgHooks['GetPreferences'][] = 'OnlineStatusBarHooks::preferencesHook';

@@ -28,15 +28,13 @@ class OnlineStatusBarHooks {
 	 * @param $old_name string
 	 * @return bool
 	 */
-	public static function logout( &$user, &$inject_html, $old_name ) {
+	public static function logout( &$user ) {
 		global $wgOnlineStatusBarDefaultEnabled;
 		// check if user had enabled this feature before we write to db
-		$olduser = User::newFromName( $old_name );
-		if ( $olduser instanceof User ) {
-			if ( $olduser->getOption( 'OnlineStatusBar_active', $wgOnlineStatusBarDefaultEnabled ) ) {
-				OnlineStatusBar::purge( $old_name );
-				OnlineStatusBar_StatusCheck::deleteStatus( $old_name );
-			}
+		if ( $user->getOption( 'OnlineStatusBar_active', $wgOnlineStatusBarDefaultEnabled ) ) {
+			$userName->getName();
+			OnlineStatusBar::purge( $userName );
+			OnlineStatusBar_StatusCheck::deleteStatus( $userName );
 		}
 		return true;
 	}
