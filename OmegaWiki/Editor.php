@@ -624,13 +624,15 @@ class RecordSetTableEditor extends RecordSetEditor {
 			if ( $childEditor instanceof RecordTableCellEditor ) {
 				$type = $this->getTableStructureShowingData( $viewOrEdit, $childEditor, $idPath, $value, $attributePath );
 				
-				if ( count( $type->getAttributes() ) > 0 )
+				if ( count( $type->getAttributes() ) > 0 ) {
 					$attributes[] = new Attribute( $childAttribute->id, $childAttribute->name, $type );
+				}
 			}
-			else if ( ( $viewOrEdit == "view" && $this->columnShowsData( $childEditor, $value, $attributePath ) ) ||
-					 ( $viewOrEdit == "edit" ) && $childEditor->showEditField( $idPath ) )
+			elseif ( ( $viewOrEdit == "view" && $this->columnShowsData( $childEditor, $value, $attributePath ) ) ||
+					 ( $viewOrEdit == "edit" ) && $childEditor->showEditField( $idPath ) ) {
 				$attributes[] = new Attribute( $childAttribute->id, $childAttribute->name, 'short-text' );
-				
+			}
+
 			array_pop( $attributePath );
 		}
 
@@ -640,9 +642,10 @@ class RecordSetTableEditor extends RecordSetEditor {
 	public function viewHeader( IdStack $idPath, Structure $visibleStructure ) {
 		$result = '<table id="' . $idPath->getId() . '" class="wiki-data-table">';
 
-		foreach ( getStructureAsTableHeaderRows( $visibleStructure, 0, $idPath ) as $headerRow )
+		foreach ( getStructureAsTableHeaderRows( $visibleStructure, 0, $idPath ) as $headerRow ) {
 			$result .= '<tr>' . $headerRow . '</tr>' . EOL;
-			
+		}
+
 		return $result;
 	}
 	
@@ -671,10 +674,11 @@ class RecordSetTableEditor extends RecordSetEditor {
 	}
 	
 	public function getTableStructureForView( IdStack $idPath, RecordSet $value ) {
-		if ( $this->hideEmptyColumns )
+		if ( $this->hideEmptyColumns ) {
 			return $this->getTableStructureShowingData( "view", $this, $idPath, $value );
-		else
+		} else {
 			return $this->getTableStructure( $this );
+		}
 	}
 	
 	public function getTableStructureForEdit( IdStack $idPath, RecordSet $value ) {

@@ -26,16 +26,17 @@ class SpecialOWStatistics extends SpecialPage {
 
 		$wgOut->addHTML( $headerText ) ;
 
-		if ( $showstat == 'dm' )
+		if ( $showstat == 'dm' ) {
 			$wgOut->addHTML( $this->getDefinedMeaningPerLanguage () );
-		else if ( $showstat == 'def' )
+		} elseif ( $showstat == 'def' ) {
 			$wgOut->addHTML( $this->getDefinitionPerLanguage () );
-		else if ( $showstat == 'syntrans' )
+		} elseif ( $showstat == 'syntrans' ) {
 			$wgOut->addHTML( $this->getSyntransPerLanguage () );
-		else if ( $showstat == 'exp' )
+		} elseif ( $showstat == 'exp' ) {
 			$wgOut->addHTML ( $this->getExpressionPerLanguage () ) ;
-		else if ( $showstat == 'annot' )
+		} elseif ( $showstat == 'annot' ) {
 			$wgOut->addHTML ( $this->getAnnotationStats () ) ;
+		}
 	}
 
 	function linkHeader ( $text, $val , $showstat ) {

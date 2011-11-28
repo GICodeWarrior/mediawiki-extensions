@@ -124,14 +124,16 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 					$attribute->type->getAttributes(),
 					$this->filterStructuresOnAttribute( $structures, $attribute )
 				);
-				
-				if ( count( $filteredAttributes ) > 0 )
+
+				if ( count( $filteredAttributes ) > 0 ) {
 					$result[] = new Attribute( $attribute->id, $attribute->name, new Structure( $filteredAttributes ) );
+				}
 			}
-			else if ( $this->attributeInStructures( $attribute, $structures ) )
+			elseif ( $this->attributeInStructures( $attribute, $structures ) ) {
 				$result[] = $attribute;
+			}
 		}
-		
+
 		return $result;
 	}
 	
@@ -141,8 +143,9 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 		foreach ( $this->getEditors() as $editor ) {
 			$visibleStructure = $editor->getTableStructureForView( $idPath, $value->getAttributeValue( $editor->getAttribute() ) );
 			
-			if ( count( $visibleStructure->getAttributes() ) > 0 )
+			if ( count( $visibleStructure->getAttributes() ) > 0 ) {
 				$visibleStructures[] = $visibleStructure;
+			}
 		}
 
 		return $this->filterAttributesByStructures(
@@ -159,18 +162,20 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 		$leadingAttributes = array();
 		$childEditors = $editor->getEditors();
 		
-		for ( $i = $showPropertyColumn ? 0 : 1; $i < 2; $i++ )
+		for ( $i = $showPropertyColumn ? 0 : 1; $i < 2; $i++ ) {
 			$leadingAttributes[] = $childEditors[$i]->getAttribute();
-			
+		}
+
 		return new Structure( array_merge( $leadingAttributes, $suffixAttributes ) );
 	}
 
 	public function view( IdStack $idPath, $value ) {
 		$visibleAttributes = array();
 
-		if ( $this->showPropertyColumn )
+		if ( $this->showPropertyColumn ) {
 			$visibleAttributes[] = $this->propertyAttribute;
-			
+		}
+
 		$visibleAttributes[] = $this->valueAttribute;
 
 		$idPath->pushAnnotationAttribute( $this->getAttribute() );
@@ -657,9 +662,9 @@ function getLinkAttributeValuesEditor( ViewInformation $viewInformation, UpdateC
 	$editor = new RecordSetTableEditor( $o->linkAttributeValues, new SimplePermissionController( true ), $showEditFieldChecker, new AllowAddController( true ), true, false, $controller );
 	$editor->addEditor( new LinkAttributeEditor( $o->linkAttribute, new SimplePermissionController( false ), true, $attributeIDFilter, $levelDefinedMeaningName ) );
 	
-	if ( $viewInformation->viewOrEdit == "view" )
+	if ( $viewInformation->viewOrEdit == "view" ) {
 		$linkEditor = new LinkEditor( $o->link, new SimplePermissionController( true ), true );
-	else {
+	} else {
 		$linkEditor = new RecordTableCellEditor( $o->link );
 		$linkEditor->addEditor( new ShortTextEditor( $o->linkURL, new SimplePermissionController( true ), true ) );
 		$linkEditor->addEditor( new ShortTextEditor( $o->linkLabel, new SimplePermissionController( true ), true ) );

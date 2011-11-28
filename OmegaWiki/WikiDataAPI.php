@@ -344,7 +344,9 @@ function getRelationDefinedMeanings( $relationTypeId = null, $lhs = null, $rhs =
 	$dbr = wfGetDB( DB_SLAVE );
 	if ( $relationTypeId == null ) {
 		if ( $lhs == null ) {
-			if ( $rhs == null ) return $result;
+			if ( $rhs == null ) {
+				return $result;
+			}
 			$query = "SELECT rel.relationtype_mid FROM {$dc}_meaning_relations rel " .
 				"INNER JOIN {$dc}_defined_meaning dm ON rel.relationtype_mid=dm.defined_meaning_id " .
 				"WHERE rel.meaning2_mid={$rhs} " .
@@ -352,7 +354,7 @@ function getRelationDefinedMeanings( $relationTypeId = null, $lhs = null, $rhs =
 				"AND" . getLatestTransactionRestriction( 'dm' ) .
 				"GROUP BY rel.relationtype_mid";
 		}
-		else if ( $rhs == null ) {
+		elseif ( $rhs == null ) {
 			$query = "SELECT rel.relationtype_mid FROM {$dc}_meaning_relations rel " .
 				"INNER JOIN {$dc}_defined_meaning dm ON rel.relationtype_mid=dm.defined_meaning_id " .
 				"WHERE rel.meaning1_mid={$lhs} " .
@@ -368,8 +370,10 @@ function getRelationDefinedMeanings( $relationTypeId = null, $lhs = null, $rhs =
 				"AND" . getLatestTransactionRestriction( 'dm' );
 		}
 	}
-	else if ( $lhs == null ) {
-		if ( $rhs == null ) return $result;
+	elseif ( $lhs == null ) {
+		if ( $rhs == null ) {
+			return $result;
+		}
 		$query = "SELECT rel.meaning1_mid FROM {$dc}_meaning_relations rel " .
 			"INNER JOIN {$dc}_defined_meaning dm ON rel.meaning1_mid=dm.defined_meaning_id " .
 			"WHERE rel.meaning2_mid={$rhs} AND rel.relationtype_mid={$relationTypeId} " .
@@ -395,8 +399,9 @@ function getRelationDefinedMeanings( $relationTypeId = null, $lhs = null, $rhs =
 }
 
 function addClassAttribute( $classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType ) {
-	if ( !classAttributeExists( $classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType ) )
+	if ( !classAttributeExists( $classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType ) ) {
 		createClassAttribute( $classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType );
+	}
 }
 
 function classAttributeExists( $classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType ) {
@@ -414,8 +419,9 @@ function createClassAttribute( $classMeaningId, $levelMeaningId, $attributeMeani
 	
 	$dc = wdGetDataSetContext();
 
-	if ( $objectId == 0 )
+	if ( $objectId == 0 ) {
 		$objectId = newObjectId( "{$dc}_class_attributes" );
+	}
 		
 	$dbw = wfGetDB( DB_MASTER );
 	$sql = "INSERT INTO {$dc}_class_attributes(object_id, class_mid, level_mid, attribute_mid, attribute_type, add_transaction_id) " .
@@ -429,10 +435,11 @@ function getClassAttributeId( $classMeaningId, $levelMeaningId, $attributeMeanin
 	$queryResult = $dbr->query( "SELECT object_id FROM {$dc}_class_attributes " .
 								"WHERE class_mid=$classMeaningId AND level_mid =$levelMeaningId AND attribute_mid=$attributeMeaningId AND attribute_type = " . $dbr->addQuotes( $attributeType ) );
 
-	if ( $classAttribute = $dbr->fetchObject( $queryResult ) )
+	if ( $classAttribute = $dbr->fetchObject( $queryResult ) ) {
 		return $classAttribute->object_id;
-	else
+	} else {
 		return 0;
+	}
 }
 
 function removeClassAttributeWithId( $classAttributeId ) {
@@ -449,18 +456,20 @@ function getClassMembershipId( $classMemberId, $classId ) {
 	$queryResult = $dbr->query( "SELECT class_membership_id FROM {$dc}_class_membership " .
 								"WHERE class_mid=$classId AND class_member_mid=$classMemberId LIMIT 1" );
 
-	if ( $classMembership = $dbr->fetchObject( $queryResult ) )
+	if ( $classMembership = $dbr->fetchObject( $queryResult ) ) {
 		return $classMembership->class_membership_id;
-	else
+	} else {
 		return 0;
+	}
 }
 
 function createClassMembership( $classMemberId, $classId ) {
 	$dc = wdGetDataSetContext();
 	$classMembershipId = getClassMembershipId( $classMemberId, $classId );
 	
-	if ( $classMembershipId == 0 )
+	if ( $classMembershipId == 0 ) {
 		$classMembershipId = newObjectId( "{$dc}_class_membership" );
+	}
 
 	$dbw = wfGetDB( DB_MASTER );
 	$sql = "INSERT INTO {$dc}_class_membership(class_membership_id, class_mid, class_member_mid, add_transaction_id) " .
@@ -479,8 +488,9 @@ function classMembershipExists( $classMemberId, $classId ) {
 }
 
 function addClassMembership( $classMemberId, $classId ) {
-	if ( !classMembershipExists( $classMemberId, $classId ) )
+	if ( !classMembershipExists( $classMemberId, $classId ) ) {
 		createClassMembership( $classMemberId, $classId );
+	}
 }
 
 function removeClassMembership( $classMemberId, $classId ) {
@@ -526,24 +536,27 @@ function updateSynonymOrTranslationWithId( $syntransId, $identicalMeaning ) {
 								" FROM {$dc}_syntrans" .
 								" WHERE syntrans_sid=$syntransId AND remove_transaction_id IS NULL LIMIT 1" );
 				
-	if ( $syntrans = $dbr->fetchObject( $queryResult ) )
+	if ( $syntrans = $dbr->fetchObject( $queryResult ) ) {
 		updateSynonymOrTranslation( $syntrans->defined_meaning_id, $syntrans->expression_id, $identicalMeaning );
+	}
 }
 
 function updateDefinedMeaningDefinition( $definedMeaningId, $languageId, $text ) {
 	$definitionId = getDefinedMeaningDefinitionId( $definedMeaningId );
 	
-	if ( $definitionId != 0 )
+	if ( $definitionId != 0 ) {
 		updateTranslatedText( $definitionId, $languageId, $text );
+	}
 }
 
 function updateOrAddDefinedMeaningDefinition( $definedMeaningId, $languageId, $text ) {
 	$definitionId = getDefinedMeaningDefinitionId( $definedMeaningId );
 	
-	if ( $definitionId != 0 )
+	if ( $definitionId != 0 ) {
 		updateTranslatedText( $definitionId, $languageId, $text );
-	else
+	} else {
 		addDefinedMeaningDefiningDefinition( $definedMeaningId, $languageId, $text );
+	}
 }
 
 function updateTranslatedText( $setId, $languageId, $text ) {
@@ -574,10 +587,12 @@ function createTranslatedContent( $translatedContentId, $languageId, $textId ) {
 function translatedTextExists( $textId, $languageId ) {
 	$dc = wdGetDataSetContext();
 
-	if ( is_null( $textId ) )
+	if ( is_null( $textId ) ) {
 		throw new Exception( "textId is null" );
-	if ( is_null( $languageId ) )
+	}
+	if ( is_null( $languageId ) ) {
 		throw new Exception( "languageId is null" );
+	}
 
 	$dbr = wfGetDB( DB_SLAVE );
 	$queryResult = $dbr->query(
@@ -631,10 +646,11 @@ function addDefinedMeaningDefiningDefinition( $definedMeaningId, $languageId, $t
 function addDefinedMeaningDefinition( $definedMeaningId, $languageId, $text ) {
 	$definitionId = getDefinedMeaningDefinitionId( $definedMeaningId );
 	
-	if ( $definitionId == 0 )
+	if ( $definitionId == 0 ) {
 		addDefinedMeaningDefiningDefinition( $definedMeaningId, $languageId, $text );
-	else
+	} else {
 		addTranslatedTextIfNotPresent( $definitionId, $languageId, $text );
+	}
 }
 
 function createDefinedMeaningAlternativeDefinition( $definedMeaningId, $translatedContentId, $sourceMeaningId ) {
@@ -704,8 +720,9 @@ function addDefinedMeaningToCollection( $definedMeaningId, $collectionId, $inter
 }
 
 function addDefinedMeaningToCollectionIfNotPresent( $definedMeaningId, $collectionId, $internalId ) {
-	if ( !definedMeaningInCollection( $definedMeaningId, $collectionId ) )
+	if ( !definedMeaningInCollection( $definedMeaningId, $collectionId ) ) {
 		addDefinedMeaningToCollection( $definedMeaningId, $collectionId, $internalId );
+	}
 }
 
 function getDefinedMeaningFromCollection( $collectionId, $internalMemberId ) {
@@ -714,10 +731,11 @@ function getDefinedMeaningFromCollection( $collectionId, $internalMemberId ) {
 	$query = "SELECT member_mid FROM {$dc}_collection_contents WHERE collection_id=$collectionId AND internal_member_id=" . $dbr->addQuotes( $internalMemberId ) . " AND " . getLatestTransactionRestriction( "{$dc}_collection_contents" ) . " LIMIT 1" ;
 	$queryResult = $dbr->query( $query );
 	
-	if ( $definedMeaningObject = $dbr->fetchObject( $queryResult ) )
+	if ( $definedMeaningObject = $dbr->fetchObject( $queryResult ) ) {
 		return $definedMeaningObject->member_mid;
-	else
+	} else {
 		return null;
+	}
 }
 
 function removeDefinedMeaningFromCollection( $definedMeaningId, $collectionId ) {
@@ -938,8 +956,9 @@ function optionAttributeValueExists( $objectId, $optionId ) {
 }
 
 function addOptionAttributeValue( $objectId, $optionId ) {
-	if ( !optionAttributeValueExists( $objectId, $optionId ) )
+	if ( !optionAttributeValueExists( $objectId, $optionId ) ) {
 		createOptionAttributeValue( $objectId, $optionId );
+	}
 }
 
 function createOptionAttributeValue( $objectId, $optionId ) {
@@ -977,8 +996,9 @@ function optionAttributeOptionExists( $attributeId, $optionMeaningId, $languageI
 }
 
 function addOptionAttributeOption( $attributeId, $optionMeaningId, $languageId ) {
-	if ( !optionAttributeOptionExists( $attributeId, $optionMeaningId, $languageId ) )
+	if ( !optionAttributeOptionExists( $attributeId, $optionMeaningId, $languageId ) ) {
 		createOptionAttributeOption( $attributeId, $optionMeaningId, $languageId );
+	}
 }
 
 function createOptionAttributeOption( $attributeId, $optionMeaningId, $languageId ) {
@@ -1047,10 +1067,11 @@ function getDefinedMeaningDefinitionForLanguage( $definedMeaningId, $languageId,
 								" AND  dm.meaning_text_tcid=tc.translated_content_id AND tc.language_id=$languageId " .
 								" AND  t.text_id=tc.text_id LIMIT 1" );
 	
-	if ( $definition = $dbr->fetchObject( $queryResult ) )
+	if ( $definition = $dbr->fetchObject( $queryResult ) ) {
 		return $definition->text_text;
-	else
+	} else {
 		return "";
+	}
 }
 
 /**
@@ -1068,10 +1089,11 @@ function getDefinedMeaningDefinitionForAnyLanguage( $definedMeaningId ) {
 								" AND dm.meaning_text_tcid=tc.translated_content_id " .
 								" AND t.text_id=tc.text_id LIMIT 1" );
 	
-	if ( $definition = $dbr->fetchObject( $queryResult ) )
+	if ( $definition = $dbr->fetchObject( $queryResult ) ) {
 		return $definition->text_text;
-	else
+	} else {
 		return "";
+	}
 }
 
 /**
@@ -1083,16 +1105,17 @@ function getDefinedMeaningDefinition( $definedMeaningId ) {
 	global $wgLang;
 	$userLanguageId = getLanguageIdForCode( $wgLang->getCode() ) ;
 	
-	if ( $userLanguageId > 0 )
+	if ( $userLanguageId > 0 ) {
 		$result = getDefinedMeaningDefinitionForLanguage( $definedMeaningId, $userLanguageId );
-	else
+	} else {
 		$result = "";
-	
+	}
 	if ( $result == "" ) {
 		$result = getDefinedMeaningDefinitionForLanguage( $definedMeaningId, 85 );
 		
-		if ( $result == "" )
+		if ( $result == "" ) {
 			$result = getDefinedMeaningDefinitionForAnyLanguage( $definedMeaningId );
+		}
 	}
 	return $result;
 }
@@ -1118,7 +1141,9 @@ function getSpellingForLanguage( $definedMeaningId, $languageCode, $fallbackLang
 	
 		$res = $dbr->query( $actual_query );
 		$row = $dbr->fetchObject( $res );
-		if ( isset( $row->spelling ) ) return $row->spelling;
+		if ( isset( $row->spelling ) ) {
+			return $row->spelling;
+		}
 	}
 
 	$fallbackLanguageId = $dbr->addQuotes( $fallbackLanguageId );
@@ -1126,13 +1151,17 @@ function getSpellingForLanguage( $definedMeaningId, $languageCode, $fallbackLang
 
 	$res = $dbr->query( $fallback_query );
 	$row = $dbr->fetchObject( $res );
-	if ( isset( $row->spelling ) ) return $row->spelling;
+	if ( isset( $row->spelling ) ) {
+		return $row->spelling;
+	}
 
 	$final_fallback = "select spelling from {$dc}_syntrans,{$dc}_expression where {$dc}_syntrans.defined_meaning_id=$definedMeaningId and {$dc}_expression.expression_id={$dc}_syntrans.expression_id and {$dc}_expression.remove_transaction_id is NULL LIMIT 1";
 
 	$res = $dbr->query( $final_fallback );
 	$row = $dbr->fetchObject( $res );
-	if ( isset( $row->spelling ) ) return $row->spelling;
+	if ( isset( $row->spelling ) ) {
+		return $row->spelling;
+	}
 	return null;
 
 }
@@ -1168,10 +1197,11 @@ function findCollection( $name ) {
              "(SELECT expression_id FROM {$dc}_expression WHERE spelling LIKE " . $dbr->addQuotes( $name ) . " limit 1) limit 1)";
 	$queryResult = $dbr->query( $query );
 	
-	if ( $collectionObject = $dbr->fetchObject( $queryResult ) )
+	if ( $collectionObject = $dbr->fetchObject( $queryResult ) ) {
 		return $collectionObject->collection_id;
-	else
+	} else {
 		return null;
+	}
 }
 
 function getCollectionContents( $collectionId ) {
@@ -1189,8 +1219,9 @@ function getCollectionContents( $collectionId ) {
 	
 	$collectionContents = array();
 	
-	while ( $collectionEntry = $dbr->fetchObject( $queryResult ) )
+	while ( $collectionEntry = $dbr->fetchObject( $queryResult ) ) {
 		$collectionContents[$collectionEntry->internal_member_id] = $collectionEntry->member_mid;
+	}
 	
 	return $collectionContents;
 }
@@ -1219,37 +1250,39 @@ function getCollectionMembers( $collectionId, $dc = null ) {
 }
 
 function getCollectionMemberId( $collectionId, $sourceIdentifier ) {
-    $dc = wdGetDataSetContext();
-    $dbr = & wfGetDB( DB_SLAVE );
-    $queryResult = $dbr->query(
+	$dc = wdGetDataSetContext();
+	$dbr = & wfGetDB( DB_SLAVE );
+	$queryResult = $dbr->query(
 		"SELECT member_mid" .
 		" FROM {$dc}_collection_contents " .
-        " WHERE collection_id=$collectionId" .
-        " AND internal_member_id=" . $dbr->addQuotes( $sourceIdentifier ) .
-        " AND " . getLatestTransactionRestriction( "{$dc}_collection_contents" ) . " LIMIT 1"
-    );
+		" WHERE collection_id=$collectionId" .
+		" AND internal_member_id=" . $dbr->addQuotes( $sourceIdentifier ) .
+		" AND " . getLatestTransactionRestriction( "{$dc}_collection_contents" ) . " LIMIT 1"
+	);
 
-    if ( $collectionEntry = $dbr->fetchObject( $queryResult ) )
-        return $collectionEntry->member_mid;
-    else
-        return 0;
+	if ( $collectionEntry = $dbr->fetchObject( $queryResult ) ) {
+		return $collectionEntry->member_mid;
+	} else {
+		return 0;
+	}
 }
 
 function getAnyDefinedMeaningWithSourceIdentifier( $sourceIdentifier ) {
-    $dc = wdGetDataSetContext();
-    $dbr = & wfGetDB( DB_SLAVE );
-    $queryResult = $dbr->query(
+	$dc = wdGetDataSetContext();
+	$dbr = & wfGetDB( DB_SLAVE );
+	$queryResult = $dbr->query(
 		"SELECT member_mid" .
 		" FROM {$dc}_collection_contents " .
-        " WHERE internal_member_id=" . $dbr->addQuotes( $sourceIdentifier ) .
-        " AND " . getLatestTransactionRestriction( "{$dc}_collection_contents" ) .
-        " LIMIT 1"
-    );
+		" WHERE internal_member_id=" . $dbr->addQuotes( $sourceIdentifier ) .
+		" AND " . getLatestTransactionRestriction( "{$dc}_collection_contents" ) .
+		" LIMIT 1"
+	);
 
-    if ( $collectionEntry = $dbr->fetchObject( $queryResult ) )
-        return $collectionEntry->member_mid;
-    else
-        return 0;
+	if ( $collectionEntry = $dbr->fetchObject( $queryResult ) ) {
+		return $collectionEntry->member_mid;
+	} else {
+		return 0;
+	}
 }
 
 function getExpressionMeaningIds( $spelling, $dc = null ) {
@@ -1550,10 +1583,11 @@ function definedMeaningExpressionForLanguage( $definedMeaningId, $languageId ) {
 		" LIMIT 1"
 	);
 
-	if ( $expression = $dbr->fetchObject( $queryResult ) )
+	if ( $expression = $dbr->fetchObject( $queryResult ) ) {
 		return $expression->spelling;
-	else
+	} else {
 		return "";
+	}
 }
 
 /**
@@ -1573,10 +1607,11 @@ function definedMeaningExpressionForAnyLanguage( $definedMeaningId ) {
 		" AND " . getLatestTransactionRestriction( "{$dc}_expression" ) .
 		" LIMIT 1" );
 
-	if ( $expression = $dbr->fetchObject( $queryResult ) )
+	if ( $expression = $dbr->fetchObject( $queryResult ) ) {
 		return $expression->spelling;
-	else
+	} else {
 		return "";
+	}
 }
 
 /**
@@ -1593,11 +1628,11 @@ function definedMeaningExpression( $definedMeaningId ) {
 	
 	list( $definingExpressionId, $definingExpression, $definingExpressionLanguage ) = definingExpressionRow( $definedMeaningId );
 	
-	if ( $userLanguageId > 0 )
+	if ( $userLanguageId > 0 ) {
 		$result = definedMeaningExpressionForLanguage( $definedMeaningId, $userLanguageId );
-	else
+	} else {
 		$result = "";
-
+	}
 	if ( $result == "" ) {
 		// if no expression exists for the specified language : look for an expression in English
 		$result = definedMeaningExpressionForLanguage( $definedMeaningId, 85 );
@@ -1605,8 +1640,9 @@ function definedMeaningExpression( $definedMeaningId ) {
 		if ( $result == "" ) {
 			$result = definedMeaningExpressionForAnyLanguage( $definedMeaningId );
 			
-			if ( $result == "" )
+			if ( $result == "" ) {
 				$result = $definingExpression;
+			}
 		}
 	}
 
@@ -1699,10 +1735,11 @@ function getDefinitionsAndTranslationsForLanguages( $dmid, $languages, $dc = nul
 		if ( in_array( $row['language_id'], $languages ) ) {
 			// $key becomes something like trans_23
 			$key = 'trans_' . $row['language_id'];
-			if ( !isset( $data[$key] ) )
+			if ( !isset( $data[$key] ) ) {
 				$data[$key] = $row['spelling'];
-			else
+			} else {
 				$data[$key] = $data[$key] . '|' . $row['spelling'];
+			}
 		}
 	}
 	$dbr->freeResult( $translations );
@@ -1764,26 +1801,29 @@ class ClassAttributes {
 			$this->classAttributes[] = $classAttribute;
 		}
 	}
-	
+
 	public function filterClassAttributesOnLevelAndType( $levelName, $type ) {
 		$result = array();
 		
-		foreach ( $this->classAttributes as $classAttribute )
-			if ( $classAttribute->levelName == $levelName && $classAttribute->type == $type )
+		foreach ( $this->classAttributes as $classAttribute ) {
+			if ( $classAttribute->levelName == $levelName && $classAttribute->type == $type ) {
 				$result[] = $classAttribute->attributeId;
+			}
+		}
 		
 		return $result;
 	}
-	
+
 	public function filterClassAttributesOnLevel( $levelName ) {
 		$result = array();
 		
-		foreach ( $this->classAttributes as $classAttribute )
-			if ( $classAttribute->levelName == $levelName )
+		foreach ( $this->classAttributes as $classAttribute ) {
+			if ( $classAttribute->levelName == $levelName ) {
 				$result[] = $classAttribute->attributeId;
+			}
+		}
 		
 		return $result;
 	}
-	
 }
 

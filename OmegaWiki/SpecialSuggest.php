@@ -103,35 +103,44 @@ class SpecialSuggest extends SpecialPage {
 		}
 
 		if ( $search != '' ) {
-			if ( $query == 'transaction' )
+			if ( $query == 'transaction' ) {
 				$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes( "%$search%" );
-			else if ( $query == 'class' )
+			}
+			elseif ( $query == 'class' ) {
 				$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes( "$search%" );
-			else if ( $query == "$wgDefinedMeaningAttributes" or // should be 'relation-type' in html, there is a bug I cannot find
+			}
+			elseif ( $query == "$wgDefinedMeaningAttributes" or // should be 'relation-type' in html, there is a bug I cannot find
 				$query == "$wgLinkAttribute" or
 				$query == "$wgOptionAttribute" or
 				$query == 'translated-text-attribute' or
 				$query == 'text-attribute' )
+			{
 				$searchCondition = " HAVING $rowText LIKE " . $dbr->addQuotes( "$search%" );
-			else if ( $query == 'language' )
+			}
+			elseif ( $query == 'language' ) {
 				$searchCondition = " HAVING $rowText LIKE " . $dbr->addQuotes( "%$search%" );
-			else if ( $query == 'relation-type' ) // not sure in which case 'relation-type' happens...
+			}
+			elseif ( $query == 'relation-type' ) { // not sure in which case 'relation-type' happens...
 				$searchCondition = " WHERE $rowText LIKE " . $dbr->addQuotes( "$search%" );
-			else
+			}
+			else {
 				$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes( "$search%" );
-		}
-		else
+			}
+		} else {
 			$searchCondition = "";
+		}
 	
-		if ( $query == 'transaction' )
+		if ( $query == 'transaction' ) {
 			$orderBy = 'transaction_id DESC';
-		else
+		} else {
 			$orderBy = $rowText;
+		}
 	
 		$sql .= $searchCondition . " ORDER BY $orderBy LIMIT ";
 	
-		if ( $offset > 0 )
+		if ( $offset > 0 ) {
 			$sql .= " $offset, ";
+		}
 
 		// print only 10 results
 		$sql .= "10";
@@ -184,8 +193,7 @@ class SpecialSuggest extends SpecialPage {
 
 		$dbr->freeResult( $queryResult );
 		$output = $editor->view( new IdStack( $prefix . 'table' ), $recordSet );
-		// $output="<table><tr><td>HELLO ERIK!</td></tr></table>";
-		// wfDebug($output);
+
 		echo $output;
 	}
 

@@ -1354,14 +1354,16 @@ function rollBackTranslatedContent( $idStack, $rollBackAction, $translatedConten
 
 		$version = (int) $_POST[$idStack->getId()];
 		
-		if ( $version > 0 )
+		if ( $version > 0 ) {
 			rollBackTranslatedContentToVersion( $translatedContentId, $languageId, $version );
+		}
 		
 		$idStack->popAttribute();
 		$idStack->popAttribute();
 	}
-	else if ( $rollBackAction == 'remove' )
+	elseif ( $rollBackAction == 'remove' ) {
 		removeTranslatedText( $translatedContentId, $languageId );
+	}
 }
 
 function getTranslatedContentFromHistory( $translatedContentId, $languageId, $addTransactionId ) {
@@ -1427,10 +1429,12 @@ function shouldRestore( $rollBackAction, $operation ) {
 }
 
 function rollBackRelation( $rollBackAction, $relationId, $firstMeaningId, $relationTypeId, $secondMeaningId, $operation ) {
-	if ( shouldRemove( $rollBackAction, $operation ) )
+	if ( shouldRemove( $rollBackAction, $operation ) ) {
 		removeRelationWithId( $relationId );
-	else if ( shouldRestore( $rollBackAction, $operation ) )
+	}
+	elseif ( shouldRestore( $rollBackAction, $operation ) ) {
 		addRelation( $firstMeaningId, $relationTypeId, $secondMeaningId );
+	}
 }
 
 function rollBackClassMemberships( $idStack, $classMemberships ) {
@@ -1462,10 +1466,12 @@ function rollBackClassMemberships( $idStack, $classMemberships ) {
 }
 
 function rollBackClassMembership( $rollBackAction, $classMembershipId, $classId, $classMemberId, $operation ) {
-	if ( shouldRemove( $rollBackAction, $operation ) )
+	if ( shouldRemove( $rollBackAction, $operation ) ) {
 		removeClassMembershipWithId( $classMembershipId );
-	else if ( shouldRestore( $rollBackAction, $operation ) )
+	}
+	elseif ( shouldRestore( $rollBackAction, $operation ) ) {
 		addClassMembership( $classMemberId, $classId );
+	}
 }
 
 function rollBackClassAttributes( $idStack, $classAttributes ) {
@@ -1499,10 +1505,12 @@ function rollBackClassAttributes( $idStack, $classAttributes ) {
 }
 
 function rollBackClassAttribute( $rollBackAction, $classAttributeId, $classId, $levelId, $attributeId, $type, $operation ) {
-	if ( shouldRemove( $rollBackAction, $operation ) )
+	if ( shouldRemove( $rollBackAction, $operation ) ) {
 		removeClassAttributeWithId( $classAttributeId );
-	else if ( shouldRestore( $rollBackAction, $operation ) )
+	}
+	elseif ( shouldRestore( $rollBackAction, $operation ) ) {
 		addClassAttribute( $classId, $levelId, $attributeId, $type );
+	}
 }
 
 function rollBackTranslatedTextProperties( $idStack, $translatedTextProperties ) {
@@ -1535,10 +1543,12 @@ function rollBackTranslatedTextProperties( $idStack, $translatedTextProperties )
 }
 
 function rollBackTranslatedTextProperty( $rollBackAction, $valueId, $objectId, $attributeId, $translatedContentId, $operation ) {
-	if ( shouldRemove( $rollBackAction, $operation ) )
+	if ( shouldRemove( $rollBackAction, $operation ) ) {
 		removeTranslatedTextAttributeValue( $valueId );
-	else if ( shouldRestore( $rollBackAction, $operation ) )
+	}
+	elseif ( shouldRestore( $rollBackAction, $operation ) ) {
 		createTranslatedTextAttributeValue( $valueId, $objectId, $attributeId, $translatedContentId );
+	}
 }
 
 function rollBackLinkAttributes( $idStack, $linkAttributes ) {
@@ -1573,10 +1583,12 @@ function rollBackLinkAttributes( $idStack, $linkAttributes ) {
 }
 
 function rollBackLinkAttribute( $rollBackAction, $valueId, $objectId, $attributeId, $url, $label, $operation ) {
-	if ( shouldRemove( $rollBackAction, $operation ) )
+	if ( shouldRemove( $rollBackAction, $operation ) ) {
 		removeLinkAttributeValue( $valueId );
-	else if ( shouldRestore( $rollBackAction, $operation ) )
+	}
+	elseif ( shouldRestore( $rollBackAction, $operation ) ) {
 		createLinkAttributeValue( $valueId, $objectId, $attributeId, $url, $label );
+	}
 }
 
 function rollBackTextAttributes( $idStack, $textAttributes ) {
@@ -1609,10 +1621,12 @@ function rollBackTextAttributes( $idStack, $textAttributes ) {
 }
 
 function rollBackTextAttribute( $rollBackAction, $valueId, $objectId, $attributeId, $text, $operation ) {
-	if ( shouldRemove( $rollBackAction, $operation ) )
+	if ( shouldRemove( $rollBackAction, $operation ) ) {
 		removeTextAttributeValue( $valueId );
-	else if ( shouldRestore( $rollBackAction, $operation ) )
+	}
+	elseif ( shouldRestore( $rollBackAction, $operation ) ) {
 		createTextAttributeValue( $valueId, $objectId, $attributeId, $text );
+	}
 }
 
 function rollBackSyntranses( $idStack, $syntranses ) {
@@ -1645,10 +1659,12 @@ function rollBackSyntranses( $idStack, $syntranses ) {
 }
 
 function rollBackSyntrans( $rollBackAction, $syntransId, $definedMeaningId, $expressionId, $identicalMeaning, $operation ) {
-	if ( shouldRemove( $rollBackAction, $operation ) )
+	if ( shouldRemove( $rollBackAction, $operation ) ) {
 		removeSynonymOrTranslationWithId( $syntransId );
-	else if ( shouldRestore( $rollBackAction, $operation ) )
+	}
+	elseif ( shouldRestore( $rollBackAction, $operation ) ) {
 		createSynonymOrTranslation( $definedMeaningId, $expressionId, $identicalMeaning );
+	}
 }
 
 function rollBackAlternativeDefinitionTexts( $idStack, $alternativeDefinitionTexts ) {
@@ -1710,10 +1726,12 @@ function rollBackAlternativeDefinitions( $idStack, $alternativeDefinitions ) {
 }
 
 function rollBackAlternativeDefinition( $rollBackAction, $definedMeaningId, $translatedContentId, $sourceId, $operation ) {
-	if ( shouldRemove( $rollBackAction, $operation ) )
+	if ( shouldRemove( $rollBackAction, $operation ) ) {
 		removeDefinedMeaningAlternativeDefinition( $definedMeaningId, $translatedContentId );
-	else if ( shouldRestore( $rollBackAction, $operation ) )
+	}
+	elseif ( shouldRestore( $rollBackAction, $operation ) ) {
 		createDefinedMeaningAlternativeDefinition( $definedMeaningId, $translatedContentId, $sourceId );
+	}
 }
 
 function rollBackCollectionMemberships( $idStack, $collectionMemberships ) {
@@ -1746,10 +1764,12 @@ function rollBackCollectionMemberships( $idStack, $collectionMemberships ) {
 }
 
 function rollBackCollectionMembership( $rollBackAction, $collectionId, $collectionMemberId, $sourceIdentifier, $operation ) {
-	if ( shouldRemove( $rollBackAction, $operation ) )
+	if ( shouldRemove( $rollBackAction, $operation ) ) {
 		removeDefinedMeaningFromCollection( $collectionMemberId, $collectionId );
-	else if ( shouldRestore( $rollBackAction, $operation ) )
+	}
+	elseif ( shouldRestore( $rollBackAction, $operation ) ) {
 		addDefinedMeaningToCollection( $collectionMemberId, $collectionId, $sourceIdentifier );
+	}
 }
 
 

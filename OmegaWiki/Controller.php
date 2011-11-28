@@ -111,12 +111,14 @@ class DefinedMeaningAlternativeDefinitionsController extends DefaultUpdateContro
 				$languageId = $definitionRecord->language;
 				$text = $definitionRecord->text;
 	
-				if ( $languageId != 0 && $text != '' )
+				if ( $languageId != 0 && $text != '' ) {
 					addDefinedMeaningAlternativeDefinition( $definedMeaningId, $languageId, $text, $sourceId );
+				}
 			}
 		}
-		else if ( $alternativeDefinition != '' )
+		elseif ( $alternativeDefinition != '' ) {
 			addDefinedMeaningAlternativeDefinition( $definedMeaningId, $this->filterLanguageId, $alternativeDefinition, $sourceId );
+		}
 	}
 
 	public function remove( $keyPath ) {
@@ -286,12 +288,14 @@ class ExpressionMeaningController extends DefaultUpdateController {
 				$text = $definitionRecord->text;
 				$languageId = $definitionRecord->language;
 	
-				if ( $languageId != 0 && $text != "" )
+				if ( $languageId != 0 && $text != "" ) {
 					createNewDefinedMeaning( $expressionId, $languageId, $text );
+				}
 			}
 		}
-		else if ( $translatedContent != "" )
+		elseif ( $translatedContent != "" ) {
 			createNewDefinedMeaning( $expressionId, $this->filterLanguageId, $translatedContent );
+		}
 	}
 }
 
@@ -331,7 +335,7 @@ class ExpressionController extends DefaultUpdateController {
 					}
 				}
 			}
-			else if ( $translatedContent != "" ) {
+			elseif ( $translatedContent != "" ) {
 				$expression = findOrCreateExpression( $this->spelling, $expressionLanguageId );
 				createNewDefinedMeaning( $expression->id, $this->filterLanguageId, $translatedContent );
 			}
@@ -463,12 +467,14 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 					$languageId = $textValueRecord->language;
 					$text = $textValueRecord->text;
 					
-					if ( $languageId != 0 && $text != '' )
+					if ( $languageId != 0 && $text != '' ) {
 						addTranslatedTextAttributeValue( $objectId, $textAttributeId, $languageId, $text );
+					}
 				}
 			}
-			else if ( $textValue != '' )
+			elseif ( $textValue != '' ) {
 				addTranslatedTextAttributeValue( $objectId, $textAttributeId, $this->filterLanguageId, $textValue );
+			}
 		}
 	}
 
