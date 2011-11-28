@@ -5,7 +5,7 @@
 
 ( function ( $ ) {
 
-	config = {
+	var config = {
 		fonts: {
 			"Iranian Sans": {
 				eot: "Arab/IranianSans.eot",
