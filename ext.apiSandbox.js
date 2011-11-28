@@ -26,8 +26,9 @@ jQuery( function( $ ) {
 				var param = this.params[i],
 					name = this.prefix + param.name;
 
-				s += '<tr><td class="api-sandbox-label"><label for="param-' + name + '">' + name + '=</label></td>'
-					+ '<td class="api-sandbox-value">' + this.input( param, name )
+				s += '<tr><td class="api-sandbox-label">'
+					+ mw.html.element( 'label', { 'for': 'param-' + name }, name + '=' )
+					+ '</td><td class="api-sandbox-value">' + this.input( param, name )
 					+ '</td><td>' + smartEscape( param.description ) + '</td></tr>';
 			}
 			s += '\n</tbody>\n</table>\n';
@@ -42,7 +43,7 @@ jQuery( function( $ ) {
 			var desc = smartEscape( this.info.description );
 			if ( isset( this.info.helpurls ) && isset( this.info.helpurls[0] ) && this.info.helpurls[0] ) {
 				desc = desc.replace( /^([^\r\n\.]*)/,
-					'<a target="_blank" href="' + mw.html.escape( this.info.helpurls[0] ) + '">$1</a>'
+					mw.html.element( 'a', { 'target': '_blank', 'href': this.info.helpurls[0] }, '$1' )
 				);
 			}
 			$container.html( desc );
@@ -58,12 +59,12 @@ jQuery( function( $ ) {
 				case 'timestamp':
 				case 'integer':
 				case 'string':
-					s = '<input class="api-sandbox-input" id="param-' + name + '" value="' + value + '"/>';
+					s = mw.html.element( 'input', { 'class': 'api-sandbox-input', 'id': 'param-' + name, 'value': value } );
 					break;
 				case 'bool':
 					param.type = 'boolean'; // normalisation for later use
 				case 'boolean':
-					s = '<input id="param-' + name + '" type="checkbox"/>';
+					s = mw.html.element( 'input', { 'id': 'param-' + name, 'type': 'checkbox' } );
 					break;
 				case 'namespace':
 					param.type = namespaces;
@@ -78,7 +79,7 @@ jQuery( function( $ ) {
 							s = this.select( param.type, attributes, true );
 						}
 					} else {
-						s = mw.html.element( 'code', [], mw.msg( 'parentheses', param.type ) );
+						s = mw.html.element( 'code', {}, mw.msg( 'parentheses', param.type ) );
 					}
 			}
 			return s;
@@ -127,7 +128,7 @@ jQuery( function( $ ) {
 					if ( $.isArray( value ) ) {
 						value = value.join( '|' );
 					}
-					params += '&' + name + '=' + encodeURIComponent( value );
+					params += '&' + encodeURIComponent( name ) + '=' + encodeURIComponent( value );
 				}
 			}
 			return params;
@@ -357,7 +358,7 @@ jQuery( function( $ ) {
 			return;
 		}
 		query = query.replace( /^.*=/, '' );
-		data = {};
+		var data = {};
 		if (isQuery ) {
 			data.querymodules = query;
 		} else {
@@ -395,8 +396,9 @@ jQuery( function( $ ) {
 	function smartEscape( s ) {
 		s = mw.html.escape( s );
 		if ( s.indexOf( '\n ' ) >= 0 ) {
-			s = s.replace( /^(.*?)((?:\n\s+\*?[^\n]*)+)(.*?)$/m, '$1<ul>$2</ul>$3' );
-			s = s.replace( /\n\s+\*?([^\n]*)/g, '\n<li>$1</li>' );
+			// turns *-bulleted list into a HTML list
+			s = s.replace( /^(.*?)((?:\n\s+\*?[^\n]*)+)(.*?)$/m, '$1<ul>$2</ul>$3' ); // outer tags
+			s = s.replace( /\n\s+\*?([^\n]*)/g, '\n<li>$1</li>' ); // <li> around bulleted lines
 		}
 		s = s.replace( /\n(?!<)/, '\n<br/>' );
 		return s;
