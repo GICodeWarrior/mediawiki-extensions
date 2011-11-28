@@ -5,7 +5,16 @@ class SpecialAPC extends SpecialPage {
 
 	// Stored objects
 
-	protected $opts, $title;
+	/**
+	 * @var FormOptions
+	 */
+	protected $opts;
+
+	/**
+	 * @var Title
+	 */
+	protected $title;
+
 	function __construct() {
 		parent::__construct( 'APC' );
 		$this->title = $this->getTitle();
