@@ -15,17 +15,22 @@ $messages['en'] = array(
 	// ContributionReporting and ContributionTotal
 	'contributionreporting-desc' => 'Live reporting on the Wikimedia fundraiser',
 	'contributiontotal' => 'Contribution total',
+	
+	'contribstats-header' => '',
+	'contribstats-footer' => '',
+	
+	// DisabledNotice
+	'disablednotice' => 'Contribution reporting',
+	'disablednotice-disabled' => 'This page has been temporarily disabled. Please try again later.',
+	
+	// ContributionHistory
 	'contributionhistory' => 'Contribution history',
-
 	'contrib-hist-header' => 'Donor comments from around the world',
-
 	'contrib-hist-name' => 'Name',
 	'contrib-hist-date' => 'Time and date',
 	'contrib-hist-amount' => 'Amount',
-
 	'contrib-hist-next' => 'Earlier donations',
 	'contrib-hist-previous' => 'Newer donations',
-
 	'contrib-hist-anonymous' => 'Anonymous',
 
 	// ContributionStatistics
@@ -53,8 +58,6 @@ $messages['en'] = array(
 	'contribstats-value-under' => 'Under $1',
 	'contribstats-value-from' => 'From $1 - $2',
 	'contribstats-value-over' => 'Over $1',
-	'contribstats-header' => '',
-	'contribstats-footer' => '',
 
 	// Tracking Statistics
 	'contributiontrackingstatistics' => 'Contribution tracking statistics',
