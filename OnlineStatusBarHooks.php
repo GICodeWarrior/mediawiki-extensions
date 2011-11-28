@@ -32,7 +32,7 @@ class OnlineStatusBarHooks {
 		global $wgOnlineStatusBarDefaultEnabled;
 		// check if user had enabled this feature before we write to db
 		if ( $user->getOption( 'OnlineStatusBar_active', $wgOnlineStatusBarDefaultEnabled ) ) {
-			$userName->getName();
+			$userName = $user->getName();
 			OnlineStatusBar::purge( $userName );
 			OnlineStatusBar_StatusCheck::deleteStatus( $userName );
 		}
