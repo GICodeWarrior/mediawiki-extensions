@@ -699,6 +699,7 @@ $messages['ku-latn'] = array(
 $messages['lb'] = array(
 	'livetranslate-desc' => 'Erméiglecht d\'live Iwwersetzen vu Säiteninhalt mam Service "Google Translate"',
 	'right-managetms' => "[[Special:SpecialLiveTranslate|Ännert]] d'Lëscht vun Iwwersetzungen am Späicher",
+	'action-managetms' => 'Den Iwwersetzungsspäicher geréieren',
 	'group-tmxadmin' => 'TMX-Administrateuren',
 	'group-tmxadmin-member' => '{{GENDER:$1|TMX-Administrateur|TMX-Administratrice}}',
 	'grouppage-tmxadmin' => 'Project:TMX-Administrateuren',
