@@ -67,8 +67,8 @@ class SpecialApiSandbox extends SpecialPage {
 		$modules = array_keys( $apiMain->getModules() );
 		sort( $modules );
 		$queryModules = array_merge(
-			$this->getQueryModules( 'prop' ),
 			$this->getQueryModules( 'list' ),
+			$this->getQueryModules( 'prop' ),
 			$this->getQueryModules( 'meta' )
 		);
 
