@@ -85,6 +85,13 @@ $messages['de'] = array(
 	'arrays-desc' => 'Ermöglicht das Speichern und Nutzen definierter Datenreihen (Arrays)',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'arrays-desc' => 'Zmóžnja składowanje a woblicenje pomjenjonych pólowych wariablow',
+);
+
 /** French (Français)
  * @author Wyz
  */
