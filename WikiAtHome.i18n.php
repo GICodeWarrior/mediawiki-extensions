@@ -1007,6 +1007,7 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Anakmalaysia
  * @author Bennylin
  * @author Irwangatot
  * @author IvanLanin
@@ -1018,8 +1019,8 @@ $messages['id'] = array(
 Memungkinkan mendistribusikan pekerjaan video transcoding untuk klien yang menggunakan Firefogg',
 	'wah-user-desc' => 'Wiki@Home memungkinkan anggotan komunitas untuk mendonasikan cadangan CPU untuk membantu beroperasi intensif sumber daya',
 	'wah-short-audio' => '$1 berkas suara, $2',
-	'wah-short-video' => '$1 berkas video, $2',
-	'wah-short-general' => '$1 berkas media, $2',
+	'wah-short-video' => 'Berkas video $1, $2',
+	'wah-short-general' => 'Berkas media $1, $2',
 	'wah-long-audio' => '$1 berkas suara, panjang $2, $3',
 	'wah-long-video' => '$1 berkas video, panjang $2, $4×$5 piksel, $3',
 	'wah-long-multiplexed' => 'Berkas multiplexed audio/video, $1, lama $2, $4x$5 piksel, $3 keseluruhan',
@@ -1248,6 +1249,36 @@ $messages['ms'] = array(
 	'wah-desc' => 'Membolehkan pengedaran tugas-tugas mentranskodkan video kepada klien dengan menggunakan Firefogg',
 	'wah-user-desc' => 'Wiki@Home membolehkanpara  ahli komuniti untuk menderma kitaran cpu ganti untuk membantu operasi intensif sumber',
 	'wah-short-audio' => 'Fail bunyi $1, $2',
+	'wah-short-video' => 'Fail video $1, $2',
+	'wah-short-general' => 'Fail media $1, $2',
+	'wah-long-audio' => 'Fail bunyi $1, jangka masa $2, $3',
+	'wah-long-video' => 'Fail video $1, jangka masa $2, $4×$5 piksel, $3',
+	'wah-long-multiplexed' => 'fail audio/video bermultipleks, $1, jangka masa $2, $4×$5 piksel, $3 keseluruhannya',
+	'wah-long-general' => 'fail media, jangka masa $2, $3',
+	'wah-long-error' => 'ffmpeg tidak dapat membaca fail ini: $1',
+	'wah-transcode-working' => 'Video ini sedang diproses, sila cuba lagi nanti',
+	'wah-transcode-helpout' => 'Anda boleh membantu mentranskodkan video ini dengan mengunjungi [[Special:WikiAtHome|Wiki@Home]].',
+	'wah-transcode-fail' => 'Fail ini tidak dapat ditranskodkan.',
+	'wah-javascript-off' => 'Anda mesti menghidupkan JavaScript untuk menyertai Wiki@Home',
+	'wah-loading' => 'antaramuka Wiki@Home sedang dimuatkan ...',
+	'wah-menu-jobs' => 'Tugas',
+	'wah-menu-stats' => 'Statistik',
+	'wah-menu-pref' => 'Keutamaan',
+	'wah-lookingforjob' => 'Mencari tugas ...',
+	'wah-start-on-visit' => 'Lancarkan Wiki@Home setiap kali saya mengunjungi tapak web ini.',
+	'wah-jobs-while-away' => 'Jalankan tugas hanya sewaktu saya tidak menggunakan pelayar web selama 20 minit.',
+	'wah-nojobfound' => 'Tiada tugas dijumpai. Akan dicuba lagi dalam masa $1.',
+	'wah-notoken-login' => 'Sudahkah anda log masuk? Jika tidak, sila log masuk terlebih dahulu.',
+	'wah-apioff' => 'API Wiki@Home nampaknya dimatikan. Sila hubungi pentadbir wiki.',
+	'wah-doing-job' => 'Tugas: <i>$1</i> pada: <i>$2</i>',
+	'wah-downloading' => 'Fail <i>$1%</i> siap dimuat turun',
+	'wah-encoding' => 'Fail <i>$1%</i> siap dikodkan',
+	'wah-encoding-fail' => 'Pengekodan tidak berjaya. Sila muatkan semula laman ini atau cuba lagi nanti.',
+	'wah-uploading' => 'Fail <i>$1%</i> siap dimuat naik',
+	'wah-uploadfail' => 'Muat naik gagal',
+	'wah-doneuploading' => 'Muat naik selesai. Terima kasih atas sumbangan anda.',
+	'wah-needs-firefogg' => 'Untuk menyertai Wiki@Home, anda perlu memasang <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Terdapat ralat dengan API. Sila cuba lagi nanti.',
 );
 
 /** Dutch (Nederlands)
