@@ -64,7 +64,6 @@ class OnlineStatusBar_StatusCheck {
 	 */
 	public static function getStatus( $user, $delayed_check = false ) {
 		global $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline;
-
 		// instead of delete every time just select the records which are not that old
 		if ( !$delayed_check ) {
 			$t_time = OnlineStatusBar::getTimeoutDate();
@@ -185,7 +184,6 @@ class OnlineStatusBar_StatusCheck {
 			);
 			self::deleteOld();
 		}
-
 		return true;
 	}
 

@@ -60,7 +60,7 @@ class OnlineStatusBarHooks {
 	public static function renderBar( &$article, &$outputDone, &$pcache ) {
 		$context = $article->getContext();
 		
-		// Update status of each user who wants to be tracked
+		// Update status of all users who wants to be tracked
 		OnlineStatusBar_StatusCheck::updateStatus();
 
 		// Performace fix
@@ -73,7 +73,7 @@ class OnlineStatusBarHooks {
 		$result = OnlineStatusBar::getUserInfoFromTitle( $title );
 		// In case that status can't be parsed we check if it isn't anon
 		if ( $result === false && User::isIP ( $title->getBaseText() ) ) {
-			$result = OnlineStatusBar::getAnonFromTitle( $title ); 
+			$result = OnlineStatusBar::getAnonFromTitle( $title );
 		}
 
 		// In case we were unable to get a status let's quit

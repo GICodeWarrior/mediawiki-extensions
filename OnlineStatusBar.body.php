@@ -56,17 +56,16 @@ HTML;
 			return false;
 		}
 
-		// checks ns
-		if ( $title->getNamespace() != NS_USER && $title->getNamespace() != NS_USER_TALK ) {
-			return false;
-		}
-
 		// we need to create temporary user object
 		$user = User::newFromId( 0 );
 		$user->setName( $title->getBaseText() );
 
 		// Check if something wrong didn't happen
 		if ( !($user instanceof User) ) {
+			return false;
+		}
+
+		if ( self::isValid( $user ) != true ) {
 			return false;
 		}
 
@@ -83,10 +82,6 @@ HTML;
 	 * @return array|bool Array containing the status and User object
 	 */
 	public static function getUserInfoFromTitle( Title $title ) {
-		if ( $title->getNamespace() != NS_USER && $title->getNamespace() != NS_USER_TALK ) {
-			return false;
-		}
-
 		// We create an user object using name of user parsed from title
 		$user = User::newFromName( $title->getBaseText() );
 		// Invalid user
