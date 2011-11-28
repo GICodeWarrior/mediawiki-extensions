@@ -32,7 +32,6 @@ div#webfonts-fonts li {
 div.webfontMenu {
 	direction: ltr;
 	float: left;
-	cursor: pointer;
 }
 div.webfontMenuFocus {
 	background-position: -22px 60%;
@@ -108,7 +107,6 @@ div.webfontMenu li a {
 	padding: 0.5em;
 	white-space: nowrap;
 	color: #0645ad;
-	cursor: pointer;
 	font-size: 0.8em;
 }
 /* IGNORED BY IE6 */
@@ -124,4 +122,8 @@ div.webfontMenu a {
 	display: block;
 	padding-left: 5px;
 	padding-right: 5px;
+}
+
+div.webfontMenu label:hover, input:hover {
+	cursor: pointer;
 }
