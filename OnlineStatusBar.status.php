@@ -31,7 +31,7 @@ class OnlineStatusBar_StatusCheck {
 	 * @param $values
 	 * @return true
 	 */
-	public static function setCache( $user, $values, $type, $time = null ) {
+	private static function setCache( $user, $values, $type, $time = null ) {
 		global $wgOnlineStatusBar_WriteTime, $wgMemc;
 		// get a key
 		$cache_key = self::getCacheKey( $user, $type );
@@ -47,7 +47,7 @@ class OnlineStatusBar_StatusCheck {
 	 * @param $user string
 	 * @param $type string
 	 */
-	public static function getCache( $user, $type ) {
+	private static function getCache( $user, $type ) {
 		global $wgMemc;
 		// get a key
 		$cache_key = self::getCacheKey( $user, $type );
@@ -73,7 +73,7 @@ class OnlineStatusBar_StatusCheck {
 			if ( $result == '' ) {
 				$dbr = wfGetDB( DB_SLAVE );
 				$result = $dbr->selectField( 'online_status', 'timestamp', array( 'username' => $user->getName(),
-					"timestamp > " . $dbr->addQuotes( $dbr->timestamp( $t_time ) ) ),
+					'timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $t_time ) ) ),
 					__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
 				// cache it
 				self::setCache( $user->getName(), $result, "n" );
@@ -165,7 +165,7 @@ class OnlineStatusBar_StatusCheck {
 			}
 		}
 		// if user doesn't want to be tracked leave it as well for privacy reasons
-		if ( $wgUser->isLoggedIn() && !$wgUser->getOption ( "OnlineStatusBar_active", $wgOnlineStatusBarDefaultEnabled ) ) {
+		if ( $wgUser->isLoggedIn() && !$wgUser->getOption ( 'OnlineStatusBar_active', $wgOnlineStatusBarDefaultEnabled ) ) {
 			return false;
 		}
 		$user_status = self::getStatus( $wgUser, true );
@@ -204,7 +204,7 @@ class OnlineStatusBar_StatusCheck {
 		// Check if we actually need to delete something before we write to master
 		$dbr = wfGetDB( DB_SLAVE );
 		$time = OnlineStatusBar::getTimeoutDate();
-		$result = $dbr->selectField( 'online_status', 'timestamp', array( "timestamp < " . $dbr->addQuotes( $dbr->timestamp( $time ) ) ),
+		$result = $dbr->selectField( 'online_status', 'timestamp', array( 'timestamp < ' . $dbr->addQuotes( $dbr->timestamp( $time ) ) ),
 			__METHOD__, array( 'LIMIT 1' ) );
 		if ( $result === false ) {
 			// no need for delete
@@ -213,7 +213,7 @@ class OnlineStatusBar_StatusCheck {
 
 		// calculate time and convert it back to mediawiki format
 		$dbw = wfGetDB( DB_MASTER );
-		$dbw->delete( 'online_status', array( "timestamp < " . $dbw->addQuotes( $dbw->timestamp( $time ) ) ), __METHOD__ );
+		$dbw->delete( 'online_status', array( 'timestamp < ' . $dbw->addQuotes( $dbw->timestamp( $time ) ) ), __METHOD__ );
 		self::setCache( 'null', 'true', 'delete', 3600 ); // remember we deleted it for 1 hour so that we avoid calling this too many times
 		return 0;
 	}

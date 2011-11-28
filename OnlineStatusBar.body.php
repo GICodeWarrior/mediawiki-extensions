@@ -171,6 +171,6 @@ HTML;
 		}
 
 		// do we track them
-		return $user->getOption( "OnlineStatusBar_active", $wgOnlineStatusBarDefaultEnabled );
+		return $user->getOption( 'OnlineStatusBar_active', $wgOnlineStatusBarDefaultEnabled );
 	}
 }

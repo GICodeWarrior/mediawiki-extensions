@@ -160,10 +160,10 @@ class OnlineStatusBarHooks {
 			case 'nostalgia':
 			case 'chick':
 			case 'cologneblue':
-				$out->addModules( 'ext.OnlineStatusBar.' . $skin->getSkinName() );
+				$out->addModuleStyles( 'ext.OnlineStatusBar.' . $skin->getSkinName() );
 				break;
 			default:
-				$out->addModules( 'ext.OnlineStatusBar' );
+				$out->addModuleStyles( 'ext.OnlineStatusBar' );
 		}
 		return true;
 	}
