@@ -8,8 +8,8 @@
 
 class SpecialDailyTotal extends IncludableSpecialPage {
 
-	protected $sharedMaxAge = 300; // Cache for 5 minutes on the server side
-	protected $maxAge = 300; // Cache for 5 minutes on the client side
+	protected $sharedMaxAge = 600; // Cache for 10 minutes on the server side
+	protected $maxAge = 600; // Cache for 10 minutes on the client side
 
 	/* Functions */
 
@@ -102,10 +102,14 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 			return $cache;
 		}
 		
+		// We're only interested in donations from the past 2 days at most
+		$recentTime = time() - 60 * 60 * 48;
+		
 		// Use database
 		$dbr = efContributionReportingConnection();
 		#$dbr = wfGetDB( DB_MASTER );
 		$conditions = array(
+			'received > ' . $recentTime;
 			'converted_amount >= ' . $egFundraiserStatisticsMinimum,
 			'converted_amount <= ' . $egFundraiserStatisticsMaximum,
 			"DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$timeZoneOffset'),'%Y-%m-%d') = '$start'"
@@ -116,10 +120,7 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 				'sum(converted_amount)'
 			),
 			$conditions,
-			__METHOD__,
-			array(
-				'ORDER BY' => 'received'
-			)
+			__METHOD__
 		);
 		$row = $dbr->fetchRow( $select );
 		$total = $row['sum(converted_amount)'];
