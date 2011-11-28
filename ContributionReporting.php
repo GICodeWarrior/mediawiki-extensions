@@ -57,8 +57,6 @@ $wgSpecialPageGroups['ContributionStatistics'] = 'contribution';
 $wgSpecialPageGroups['FundraiserStatistics'] = 'contribution';
 $wgSpecialPageGroups['ContributionTrackingStatistics'] = 'contribution';
 
-
-
 // Shortcut to this extension directory
 $dir = dirname( __FILE__ ) . '/';
 
@@ -109,7 +107,6 @@ $egFundraiserStatisticsMaximum = 10000;
 
 // Cache timeout for fundraiser statistics, in seconds
 $egFundraiserStatisticsCacheTimeout = 900; // 15 minutes
-
 
 $wgContributionTrackingStatisticsViewWeeks = 3;
 
@@ -185,7 +182,6 @@ function efContributionTrackingConnection() {
  */
 function efContributionReportingTotal( $start, $fudgeFactor ) {
 	$db = efContributionReportingConnection();
-	#$db = wfGetDB( DB_MASTER );
 
 	$sql = 'SELECT ROUND( SUM(converted_amount) ) AS ttl FROM public_reporting';
 
@@ -216,8 +212,9 @@ function efContributionReportingTotal_Render() {
 	$start = false;
 
 	foreach( $args as $arg ) {
-		if ( strpos($arg,'=') === false )
+		if ( strpos($arg,'=') === false ) {
 			continue;
+		}
 
 		list($key,$value) = explode( '=', trim($arg), 2 );
 
