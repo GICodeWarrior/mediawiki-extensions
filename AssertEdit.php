@@ -33,6 +33,10 @@ $wgHooks['APIEditBeforeSave'][] = 'efAssertApiEditHook';
 $wgHooks['APIGetAllowedParams'][] = 'efAssertApiEditGetAllowedParams';
 $wgHooks['APIGetParamDescription'][] = 'efAssertApiEditGetParamDescription';
 
+/**
+ * @param $editpage EditPage
+ * @return bool
+ */
 function efAssertEditHook( $editpage ) {
 	global $wgOut, $wgRequest;
 
@@ -70,6 +74,12 @@ function efAssertEditHook( $editpage ) {
 	}
 }
 
+/**
+ * @param $editPage EditPage
+ * @param $textBox
+ * @param $result array
+ * @return bool|mixed
+ */
 function efAssertApiEditHook( $editPage, $textBox, &$result ) {
 	global $wgRequest;
 
@@ -93,10 +103,15 @@ function efAssertApiEditHook( $editPage, $textBox, &$result ) {
 			$result['nassert'] = $assertName;
 		}
 	}
-	
+
 	return $pass;
 }
- 
+
+/**
+ * @param $module ApiBase
+ * @param $params array
+ * @return bool
+ */
 function efAssertApiEditGetAllowedParams( &$module, &$params ) {
 	if ( !$module instanceof ApiEditPage ) {
 		return true;
@@ -108,7 +123,12 @@ function efAssertApiEditGetAllowedParams( &$module, &$params ) {
 
 	return true;
 }
- 
+
+/**
+ * @param $module ApiBase
+ * @param $desc array
+ * @return bool
+ */
 function efAssertApiEditGetParamDescription( &$module, &$desc ) {
 	if ( !$module instanceof ApiEditPage ) {
 		return true;
