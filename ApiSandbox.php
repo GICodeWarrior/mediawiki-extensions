@@ -3,8 +3,6 @@
  * API sandbox extension. Initial author Max Semenik, based on idea by Salil P. A.
  * License: WTFPL 2.0
  */
-
-
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'ApiSandbox',
@@ -38,3 +36,26 @@ $wgResourceModules['ext.apiSandbox'] = array(
 		'parentheses',
 	),
 );
+
+$wgHooks['APIGetDescription'][] = 'efASAPIGetDescription';
+
+/**
+ * @param $module ApiBase
+ * @param $desc array
+ * @return bool
+ */
+function efASAPIGetDescription( &$module, &$desc ) {
+	if ( !$module instanceof ApiMain ) {
+		return true;
+	}
+
+	$desc[] = 'The ApiSandbox extension is installed on this wiki, it adds a graphical interface to using the MediaWiki Api.';
+	$desc[] = 'It is helpful for new users, allowing request debugging without any extra tools.';
+	$desc[] = 'See index.php?title=Special:ApiSandbox';
+
+	// Append some more whitespace for ApiMain
+	for ( $i = 0; $i < 3; $i++ ) {
+		$desc[] = '';
+	}
+	return true;
+}
