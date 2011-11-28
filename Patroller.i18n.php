@@ -1151,6 +1151,7 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Whym
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -1174,7 +1175,7 @@ $messages['ja'] = array(
 	'patrol-stopped' => 'あなたは別の編集をパトロールしないよう設定しています。$1',
 	'patrol-resume' => '再開するにはここをクリックしてください。',
 	'group-patroller' => '巡回者',
-	'group-patroller-member' => '巡回者',
+	'group-patroller-member' => '{{GENDER:$1|巡回者}}',
 	'grouppage-patroller' => '{{ns:project}}:パトローラー',
 	'right-patroller' => 'ページをパトロールする',
 );
