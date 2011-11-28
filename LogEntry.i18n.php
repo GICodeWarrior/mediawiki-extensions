@@ -64,6 +64,18 @@ $messages['arz'] = array(
 	'logentry-invalidtoken' => 'نص غير صحيح',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'logentry-append' => 'Amestar',
+	'logentry-parserhook-desc' => "Esta estensión d'etiqueta proporciona un formulariu p'amestar/encabezar a les páxines de rexistru",
+	'logentry-specialpage-desc' => "Esta estensión d'etiqueta proporciona un procesamientu p'amestar a les páxines de rexistru",
+	'logentry' => 'LogEntry',
+	'logentry-invalidpage' => 'Páxina inválida: $1',
+	'logentry-invalidtoken' => 'Token non válidu',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
