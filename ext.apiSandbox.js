@@ -41,7 +41,7 @@ jQuery( function( $ ) {
 		setHelp: function( $container ) {
 			var desc = smartEscape( this.info.description );
 			if ( isset( this.info.helpurls ) && isset( this.info.helpurls[0] ) && this.info.helpurls[0] ) {
-				desc = desc.replace( /^([^\r\n\.]*)/, 
+				desc = desc.replace( /^([^\r\n\.]*)/,
 					'<a target="_blank" href="' + mw.html.escape( this.info.helpurls[0] ) + '">$1</a>'
 				);
 			}
@@ -138,7 +138,7 @@ jQuery( function( $ ) {
 	if ( !$content.length ) {
 		return;
 	}
-	$content.show();	
+	$content.show();
 
 	// page elements
 	var $format = $( '#api-sandbox-format' ),
@@ -205,7 +205,7 @@ jQuery( function( $ ) {
 
 	$action.change( updateUI );
 	$query.change( updateUI );
-	
+
 	$( '#param-generator' ).live( 'change', function() {
 		var generator = $( '#param-generator' ).val();
 		if ( generator == '' ) {
@@ -294,7 +294,7 @@ jQuery( function( $ ) {
 
 	function showLoading( $element ) {
 		$element.html(
-			mw.html.element( 'img', 
+			mw.html.element( 'img',
 				{ src: mw.config.get( 'stylepath' ) + '/common/images/spinner.gif', alt: '' } )
 			+ mw.html.escape( mw.msg( 'apisb-loading' ) ) );
 	}
