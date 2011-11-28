@@ -154,6 +154,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'addmediawizard-desc' => 'Medijowy asistent pśidaś, wuwity w zgromadnem źěle wót Laltury a załožby Wikimedia Foundation',
+	'addmediawizard-loading' => 'Zacytujo se asistent za pśidaśe medijow',
 );
 
 /** Greek (Ελληνικά)
