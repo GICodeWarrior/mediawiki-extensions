@@ -27,6 +27,13 @@ Further description on http://www.mediawiki.org/wiki/Extension:Livelets
 According to that page, the functionality of this extension is not limited to the Main Page but can be used in all pages. ''Therefore, the phrase \"the main page content\" '''should be translated as \"the main content of the page\",''' not as \"the content of the main page\".''",
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'livelets-desc' => 'Permite que les páxines trescluyíes se carguen dempués del conteníu principal de la páxina y que puedan anovase de mou dinámicu con Ajax',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
