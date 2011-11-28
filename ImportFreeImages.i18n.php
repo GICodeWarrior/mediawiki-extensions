@@ -525,7 +525,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'importfreeimages' => 'Importar des émâges abades',
+	'importfreeimages' => 'Importar des émâges libres',
 	'importfreeimages_owner' => 'Ôtor',
 	'importfreeimages_importthis' => 'l’importar',
 	'importfreeimages_next' => '$1 aprés',
