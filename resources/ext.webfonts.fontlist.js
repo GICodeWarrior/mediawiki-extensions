@@ -280,12 +280,6 @@
 				woff: "Taml/TheneeUni.woff"
 			},
 
-			Vaigai:  {
-				eot: "Taml/VaigaiUni.eot",
-				ttf: "Taml/VaigaiUni.ttf",
-				woff: "Taml/VaigaiUni.woff"
-			},
-
 			"Lohit Telugu": {
 				eot: "Telu/LohitTelugu.eot",
 				ttf: "Telu/LohitTelugu.ttf",
@@ -317,7 +311,7 @@
 			or:  [ "Lohit Oriya" , "Utkal" ],
 			sa:  [ "Lohit Devanagari", "Samyak Devanagari" ],
 			saz: [ "Pagul" ],
-			ta:  [ "Lohit Tamil", "Thendral", "Thenee", "Vaigai" ],
+			ta:  [ "Lohit Tamil", "Thendral", "Thenee" ],
 			te:  [ "Lohit Telugu" ],
 			ti:  [ "AbyssinicaSIL" ]
 		}
