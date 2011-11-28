@@ -88,11 +88,11 @@ $wgAutoloadClasses['OnlineStatusBarHooks'] = "$dir/OnlineStatusBarHooks.php";
 // Configuration
 // Those values can be overriden in LocalSettings, do not change it here
 $wgOnlineStatusBarIcon = array(
-	'online' => "statusgreen.png",
-	'busy' => "statusorange.png",
-	'away' => "statusorange.png",
-	'hidden' => "statusred.png",
-	'offline' => "statusred.png",
+	'online' => 'statusgreen.png',
+	'busy' => 'statusorange.png',
+	'away' => 'statusorange.png',
+	'hidden' => 'statusred.png',
+	'offline' => 'statusred.png',
 );
 
 // default for anonymous and uknown users
@@ -102,9 +102,9 @@ $wgOnlineStatusBarAutoDelete = true;
 // delay between db updates
 $wgOnlineStatusBar_WriteTime = 300;
 // default for online
-$wgOnlineStatusBarDefaultOnline = "online";
+$wgOnlineStatusBarDefaultOnline = 'online';
 // default for offline
-$wgOnlineStatusBarDefaultOffline = "offline";
+$wgOnlineStatusBarDefaultOffline = 'offline';
 // if users have this feature enabled by default
 $wgOnlineStatusBarDefaultEnabled = false;
 // how long to wait until user is considered as offline

@@ -32,11 +32,11 @@ class OnlineStatusBar_StatusCheck {
 	 * @return true
 	 */
 	public static function setCache( $user, $values, $type, $time = null ) {
-		global $wgOnlineStatusBarWriteTime, $wgMemc;
+		global $wgOnlineStatusBar_WriteTime, $wgMemc;
 		// get a key
 		$cache_key = self::getCacheKey( $user, $type );
 		if ( $time === null ) {
-			$time = $wgOnlineStatusBarWriteTime;
+			$time = $wgOnlineStatusBar_WriteTime;
 		}
 		$wgMemc->set( $cache_key, $values, $time );
 		return true;
@@ -44,6 +44,8 @@ class OnlineStatusBar_StatusCheck {
 
 	/**
 	 * Return cache value
+	 * @param $user string
+	 * @param $type string
 	 */
 	public static function getCache( $user, $type ) {
 		global $wgMemc;
@@ -55,6 +57,7 @@ class OnlineStatusBar_StatusCheck {
 	
 
 	/**
+	 * Status check
 	 * @param $user User
 	 * @return String
 	 */
@@ -186,7 +189,8 @@ class OnlineStatusBar_StatusCheck {
 	}
 
 	/**
-	 * Delete old records from the table, this function is called frequently too keep it as small as possible
+	 * Delete old records from the table, this function is called frequently to keep the table it as small as possible
+	 * it's also possible to disable this function to set automatic job in cron to do that
 	 * @return int
 	 */
 	public static function deleteOld() {
@@ -197,9 +201,10 @@ class OnlineStatusBar_StatusCheck {
 		if ( self::getCache( 'null', 'delete' ) == 'true' ) {
 			return 0;
 		}
-		$dbw = wfGetDB( DB_MASTER );
-		$t_time = OnlineStatusBar::getTimeoutDate();
-		$result = $dbw->selectField( 'online_status', 'timestamp', array( "timestamp < " . $dbw->addQuotes( $dbw->timestamp( $t_time ) ) ),
+		// Check if we actually need to delete something before we write to master
+		$dbr = wfGetDB( DB_SLAVE );
+		$time = OnlineStatusBar::getTimeoutDate();
+		$result = $dbr->selectField( 'online_status', 'timestamp', array( "timestamp < " . $dbr->addQuotes( $dbr->timestamp( $time ) ) ),
 			__METHOD__, array( 'LIMIT 1' ) );
 		if ( $result === false ) {
 			// no need for delete
@@ -207,7 +212,7 @@ class OnlineStatusBar_StatusCheck {
 		}
 
 		// calculate time and convert it back to mediawiki format
-		$time = OnlineStatusBar::getTimeoutDate();
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'online_status', array( "timestamp < " . $dbw->addQuotes( $dbw->timestamp( $time ) ) ), __METHOD__ );
 		self::setCache( 'null', 'true', 'delete', 3600 ); // remember we deleted it for 1 hour so that we avoid calling this too many times
 		return 0;

@@ -16,7 +16,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 
 class OnlineStatusBar {
-
+	/**
+	 * Create a html bar
+	 * @param $text
+	 **/
 	public static function getStatusBarHtml( $text ) {
 		return <<<HTML
 <div class="onlinestatusbarbody metadata onlinestatusbartop" id="status-top">
@@ -129,6 +132,9 @@ HTML;
 
 
 	/**
+	 * @param $delayed
+	 * @param $away
+	 * @param $user
 	 * @return timestamp
 	 */
 	public static function getTimeoutDate( $delayed = false, $away = false, $user = false ) {
