@@ -121,6 +121,7 @@ $wgNarayamSchemes = array(
 		'ta' => 'ext.narayam.rules.ta',
 		'ta-99' => 'ext.narayam.rules.ta-99',
 		'ta-bamini' => 'ext.narayam.rules.ta-bamini',
+		'ta-inscript' => 'ext.narayam.rules.ta-inscript',
 	),
 	'te' => array(
 		'te-inscript' => 'ext.narayam.rules.te-inscript',
@@ -209,6 +210,7 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-si-singlish',
 		'narayam-si-wijesekara',
 		'narayam-ta-99',
+		'narayam-ta-inscript',
 		'narayam-ta',
 		'narayam-ta-bamini',
 		'narayam-te-inscript',
@@ -357,6 +359,10 @@ $wgResourceModules['ext.narayam.rules.ta'] = $narayamTpl + array(
 );
 $wgResourceModules['ext.narayam.rules.ta-99'] = $narayamTpl + array(
 	'scripts' => 'resources/ext.narayam.rules.ta-99.js',
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.ta-inscript'] = $narayamTpl + array(
+	'scripts' => 'resources/ext.narayam.rules.ta-inscript.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.ta-bamini'] = $narayamTpl + array(
