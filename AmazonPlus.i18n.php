@@ -1865,6 +1865,8 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'amazonplus-nores' => 'גרייז: נישט געטראפן קיין רעזולטאטן',
+	'amazonplus-noidres' => 'גרייז: מען קען נישט טרעפן א פראדוקט ID!',
 	'amazonplus-used' => 'געניצט',
 	'amazonplus-german' => 'דײַטשיש',
 	'amazonplus-french' => 'פֿראַנצויזיש',
