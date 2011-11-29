@@ -284,7 +284,20 @@
 				eot: "Telu/LohitTelugu.eot",
 				ttf: "Telu/LohitTelugu.ttf",
 				woff: "Telu/LohitTelugu.woff"
+			},
+
+			"Lohit Punjabi": {
+				eot: "Guru/Lohit-Punjabi.eot",
+				ttf: "Guru/Lohit-Punjabi.ttf",
+				woff: "Guru/Lohit-Punjabi.woff"
+			},
+
+			"Saab": {
+				eot: "Guru/Saab.eot",
+				ttf: "Guru/Saab.ttf",
+				woff: "Guru/Saab.woff"
 			}
+
 		},
 
 		languages: {
@@ -308,6 +321,7 @@
 			mr:  [ "Lohit Devanagari", "Samyak Devanagari" ],
 			my:  [ "Masterpiece Uni Sans", "Padauk-Regular", "Myanmar3", "Yunghkio" ],
 			or:  [ "Lohit Oriya" , "Utkal" ],
+			pa:  [ "Lohit Punjabi", "Saab" ],
 			sa:  [ "Lohit Devanagari", "Samyak Devanagari" ],
 			saz: [ "Pagul" ],
 			ta:  [ "Lohit Tamil", "Thendral", "Thenee" ],
