@@ -109,7 +109,7 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 		$dbr = efContributionReportingConnection();
 		#$dbr = wfGetDB( DB_MASTER );
 		$conditions = array(
-			'received > ' . $recentTime;
+			'received > ' . $recentTime,
 			'converted_amount >= ' . $egFundraiserStatisticsMinimum,
 			'converted_amount <= ' . $egFundraiserStatisticsMaximum,
 			"DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$timeZoneOffset'),'%Y-%m-%d') = '$start'"
