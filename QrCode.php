@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'QrCode',
-	'version' => '0.10',
+	'version' => '0.11',
 	'author' => array( 'David Raison' ), 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QrCode',
 	'descriptionmsg' => 'qrcode-desc'
@@ -49,6 +49,7 @@ function wfQrCodeLanguageGetMagic( &$magicWords, $langCode = 'en' ) {
 $wgQrCodeECC = 'L';	// L,M,Q,H
 $wgQrCodeSize = 4;	// pixel size of black squares
 $wgQrCodeBoundary = 2;	// margin around qrcode
+$wgQrCodeForceScheme = false;	// use protocol the author uses
 
 // not changeable 
 define('QRCODEBOT','QrCode generator');	// if a user changes this, the name won't be protected anymore
@@ -65,7 +66,7 @@ function newQrCode() {
 	$parser = array_shift($params);	// we'll need the parser later
 
 	// Handling "Undefined variable" notices
-	$margin = $ecc = $size = $label = false;
+	$margin = $ecc = $size = $label = $scheme = false;
 
 	foreach( $params as $pair ) {
 		$firstEqual = strpos( $pair, '=' );
@@ -75,7 +76,7 @@ function newQrCode() {
 		}
 	}
 
-	$newQrCode = new MWQrCode( $parser, $ecc, $size, $margin );
+	$newQrCode = new MWQrCode( $parser, $ecc, $size, $margin, $scheme );
 	return $newQrCode->showCode( $label );
 }
 	
@@ -100,19 +101,21 @@ class MWQrCode {
 	private $_ecc;			// error correction
 	private $_size;			// qrcode size
 	private $_margin;		// qrcode margin
+	private $_scheme;		// force the protocol to be http or https?
 
 	/**
 	 * Set qrcode properties
 	 *
 	 * @param $parser Parser
 	 */
-	public function __construct( $parser, $ecc = false, $size = false, $margin = false ) {
-		global $wgQrCodeECC, $wgQrCodeSize, $wgQrCodeBoundary;
+	public function __construct( $parser, $ecc = false, $size = false, $margin = false, $scheme = false ) {
+		global $wgQrCodeECC, $wgQrCodeSize, $wgQrCodeBoundary, $wgQrCodeForceScheme;
 		$this->_parser = $parser;
 		$this->_title = $parser->getTitle();
 		$this->_ecc = ( $ecc ) ? $ecc : $wgQrCodeECC;
 		$this->_size = ( $size ) ? $size : $wgQrCodeSize;
 		$this->_margin = ( $margin ) ? $margin : $wgQrCodeBoundary;
+		$this->_scheme = ( $scheme ) ? $scheme : $wgQrCodeForceScheme;
 	}
 
 	/**
@@ -121,13 +124,20 @@ class MWQrCode {
 	 */
 	public function showCode( $label = false ){
 
-		// Check for a provided label and use the page URL as default.
+		// Check for a provided label and use the page URL as default (but force protocol if requested)
 		if ( $label ) {
-			$this->_label = $label;	// cannot remember why sanitizing this would make sense
-			//$this->_label = preg_replace("/[^0-9a-zA-Z_]+/", "", $label);
-			$this->_uploadComment = $label;	// should we sanitize this?
+			$this->_label = $label;	// should we sanitize this?
+			$this->_uploadComment = $label;	
 		} else {
-			$this->_label = $this->_title->getFullURL();
+			$url = parse_url($this->_title->getFullURL());
+			$url['scheme'] = ( $this->_scheme ) ? $this->_scheme : $url['scheme'];
+			//$this->_label = http_build_url($url);	// http_build_url is part of pecl_http >= 0.21.0 :(
+			$this->_label = $url['scheme'] . '://' 
+				. $url['host'] 
+				. ( ( isset($url['port']) ) ? $url['port'] : '' )
+				. ( ( isset($url['path']) ) ? $url['path'] : '' )
+				. ( ( isset($url['query']) ) ? '?' . $url['query'] : '' )
+				. ( ( isset($url['fragment']) ) ? '#' . $url['fragment'] : '' );
 			$this->_uploadComment = 'Encoded URL for '.$this->_title->getFullText();
 		}
 
