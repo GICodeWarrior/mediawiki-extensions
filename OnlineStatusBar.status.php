@@ -123,7 +123,7 @@ class OnlineStatusBar_StatusCheck {
 	 * Insert to the database
 	 * @return bool
 	 */
-	public static function updateDb() {
+	public static function updateDB() {
 		global $wgUser;
 		// Skip users we don't track
 		if ( OnlineStatusBar::isValid ( $wgUser ) != true ) {
@@ -160,18 +160,12 @@ class OnlineStatusBar_StatusCheck {
 	public static function updateStatus() {
 		global $wgUser, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarTrackIpUsers, $wgOnlineStatusBarDefaultEnabled;
 		// if anon users are not tracked and user is anon leave it
-		if ( !$wgOnlineStatusBarTrackIpUsers ) {
-			if ( !$wgUser->isLoggedIn() ) {
-				return false;
-			}
-		}
-		// if user doesn't want to be tracked leave it as well for privacy reasons
-		if ( $wgUser->isLoggedIn() && !$wgUser->getOption ( 'OnlineStatusBar_active', $wgOnlineStatusBarDefaultEnabled ) ) {
+		if (!OnlineStatusBar::isValid( $wgUser )) {
 			return false;
 		}
 		$user_status = self::getStatus( $wgUser, true );
 		if ( $user_status == $wgOnlineStatusBarDefaultOffline ) {
-			self::updateDb();
+			self::updateDB();
 			return true;
 		}
 

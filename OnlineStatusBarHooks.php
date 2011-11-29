@@ -1,4 +1,8 @@
 <?php
+if ( !defined( 'MEDIAWIKI' ) ) {
+	echo "This is a part of mediawiki and can't be started separately";
+	die();
+}
 
 /**
  * Hooks for OnlineStatusBar
@@ -43,10 +47,12 @@ class OnlineStatusBarHooks {
 	 */
 	public static function updateStatus() {
 		global $wgUser;
-		// Purge user page (optional)
-		OnlineStatusBar::purge( $wgUser );
-		// Update status
-		OnlineStatusBar_StatusCheck::updateStatus();
+		if ( OnlineStatusBar::isValid( $wgUser ) {
+			// Purge user page (optional)
+			OnlineStatusBar::purge( $wgUser );
+			// Update status
+			OnlineStatusBar_StatusCheck::updateStatus();
+		}
 		return true;
 	}
 
@@ -58,8 +64,6 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function renderBar( &$article, &$outputDone, &$pcache ) {
-		$context = $article->getContext();
-		
 		// Update status of all users who wants to be tracked
 		OnlineStatusBar_StatusCheck::updateStatus();
 
@@ -93,6 +97,7 @@ class OnlineStatusBarHooks {
 		$image = OnlineStatusBar::getImageHtml( $status, $modetext );
 		$text = wfMessage( 'onlinestatusbar-line', $user->getName() )
 				->rawParams( $image )->params( $modetext )->escaped();
+		$context = $article->getContext();
 		$context->getOutput()->addHtml( OnlineStatusBar::getStatusBarHtml( $text ) );
 
 		return true;
