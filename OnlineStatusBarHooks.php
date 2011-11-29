@@ -47,7 +47,7 @@ class OnlineStatusBarHooks {
 	 */
 	public static function updateStatus() {
 		global $wgUser;
-		if ( OnlineStatusBar::isValid( $wgUser ) {
+		if (OnlineStatusBar::isValid( $wgUser )) {
 			// Purge user page (optional)
 			OnlineStatusBar::purge( $wgUser );
 			// Update status
