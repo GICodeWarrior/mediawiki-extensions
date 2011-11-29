@@ -6,7 +6,7 @@ virtual script path (using a tiny bit of mod-rewrite) or by using sub-domains.
 It is also possible to have members of the same farm using either of these
 methods, not all members have to use the same.
 Furthermore, 'Simple Farm' comes with a maintenance script which allows to
-maintain several farm members at the same time, e.g. doing database update
+maintain several farm members at the same time, e.g. doing database updates
 for all or certain farm members by executing just one command.
 
 * Website: http://www.mediawiki.org/wiki/Extension:Simple_Farm

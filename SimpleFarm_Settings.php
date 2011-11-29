@@ -29,8 +29,8 @@
  *   scriptpath  - String (Virtual) script path to the particular wiki directory. Can be used for mod-rewrite
  *                 based wiki farm setup. This will set the $wgScriptPath variable. There should be a
  *                 '.htaccess' file in the parent directory of the farm to redirect all paths to the farm
- *                 directory. Example: 'mw.org/farm1', 'mw.org/farm2'... , 'mw.org/farmX', for the first
- *                 one the value would be '/farm1', for the second '/farm2' and so on.
+ *                 directory. Example: 'mw.org/farm1', 'mw.org/farm2'... , 'mw.org/farmX', where for the first
+ *                 member the value had to be '/farm1', for the second '/farm2' and so on.
  * )
  * 
  * The following keys are optional:
@@ -49,7 +49,7 @@
 $egSimpleFarmMembers = array();
 
 /**
- * Config var database of one of $wgSimpleFarmMembers wikis.
+ * Database name of one of the $wgSimpleFarmMembers wikis.
  * If null, it will be set when SimpleFarm::init() was called. The default value is the first key
  * of $wgSimpleFarmMembers then.
  * This main member is important for maintenance since the generic maintenance script will connect
@@ -68,8 +68,9 @@ $egSimpleFarmMainMemberDB = null;
 $egSimpleFarmIgnoredDomainPrefixes = array( 'www' );
 
 /**
- * Name of the environment variable used to select a wiki via command-line access.
- * The value will be put into constant 'SIMPLEFARM_ENVVAR' before final initialisation.
+ * Name of the environment variable used to select a wiki via command-line access if only one
+ * wiki should be selected directly instead of using the provided maintenace script.
+ * The value will be put into the constant 'SIMPLEFARM_ENVVAR' before final initialisation.
  *
  * @var Strings
  */

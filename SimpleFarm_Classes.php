@@ -20,11 +20,11 @@ class SimpleFarm {
 	 */
 	const MAINTAIN_OFF = false;
 	/**
-	 * Block simple browser acces to the wiki but allow accessing the wiki with 'maintain' url parameter
+	 * Block simple browser access to the wiki but allow accessing the wiki with 'maintain' url parameter
 	 */
 	const MAINTAIN_SIMPLE = 1;
 	/**
-	 * Block all alltemts to acces wiki except for command-line
+	 * Block all attempts to access wiki except for command-line based maintenance
 	 */
 	const MAINTAIN_STRICT = 2;
 	/**
@@ -204,21 +204,19 @@ class SimpleFarm {
 	 *   $wgSitename        = SimpleFarmMember::getName();
 	 *   $wgDBname          = SimpleFarmMember::getDB();
 	 *   $wgScriptPath      = SimpleFarmMember::getScriptPath();
-	 *   $wgLocalInterwiki  = strtolower( $wgSitename );
 	 *   $wgUploadDirectory = "{$IP}/images/images_{$wgDBname}";
 	 *   $wgUploadPath      = "{$wgScriptPath}/images/images_{$wgDBname}";
-	 *   $wgLogo            = "{$wgScriptPath}/images/logo/{$wgDBname}.png";
-	 *   $wgFavicon         = "{$wgScriptPath}/images/logo/{$wgDBname}.ico";
+	 *   $wgLogo            = "{$wgScriptPath}/images/logos/{$wgDBname}.png";
+	 *   $wgFavicon         = "{$wgScriptPath}/images/logos/{$wgDBname}.ico";
 	 * 
 	 * @param $wiki SimpleFarmMember to initialise
 	 */
 	public static function initWiki( SimpleFarmMember $wiki ) {
 		global $IP;
 		// globals to be configured:
-		global $wgScriptPath, $wgSitename, $wgLocalInterwiki, $wgDBname, $wgUploadDirectory, $wgUploadPath, $wgLogo, $wgFavicon;
+		global $wgSitename, $wgDBname, $wgScriptPath, $wgUploadDirectory, $wgUploadPath, $wgLogo, $wgFavicon;
 				
 		$wgSitename = $wiki->getName();
-		$wgLocalInterwiki = strtolower( $wgSitename );
 		
 		// check for maintain mode:
 		if( $wiki->isInMaintainMode() && ! $wiki->userIsMaintaining() )
@@ -233,8 +231,8 @@ class SimpleFarm {
 		if( ! is_dir( $wgUploadDirectory ) )
 			mkdir( $wgUploadDirectory, 0777 );
 				
-		$wgLogo    = "{$wgScriptPath}/images/logo/{$wgDBname}.png";
-		$wgFavicon = "{$wgScriptPath}/images/logo/{$wgDBname}.ico";
+		$wgLogo    = "{$wgScriptPath}/images/logos/{$wgDBname}.png";
+		$wgFavicon = "{$wgScriptPath}/images/logos/{$wgDBname}.ico";
 		
 		/*
 		 * it's no good loading an individual config file here since it wouldn't
@@ -378,7 +376,7 @@ class SimpleFarmMember {
 	 * Whether the wiki is set to maintaining mode right now.
 	 * Returns the maintaining strictness.
 	 * 
-	 * @return Integer
+	 * @return integer
 	 */
 	public function isInMaintainMode() {
 		if( empty( $this->siteOpt['maintain'] ) )
@@ -395,7 +393,7 @@ class SimpleFarmMember {
 	 *        If not set, the information will be returned for the current user.
 	 *        This will only work after 'LocalSettings.php' since $wgUser is undefined ealrier!
 	 * 
-	 * @return Boolean
+	 * @return boolean
 	 */
 	public function userIsMaintaining( User $user = null ) {
 		global $wgUser, $wgCommandLineMode;
@@ -431,7 +429,7 @@ class SimpleFarmMember {
 	/**
 	 * Returns the Database name
 	 * 
-	 * @return String
+	 * @return string
 	 */
 	public function getDB() {
 		return $this->siteOpt['db'];
@@ -440,7 +438,7 @@ class SimpleFarmMember {
 	/**
 	 * Returns the wiki name
 	 * 
-	 * @return String
+	 * @return string
 	 */
 	public function getName() {
 		global $egSimpleFarmMembers;		
@@ -451,7 +449,7 @@ class SimpleFarmMember {
 	 * Returns all domains of the wiki (either from $wgSimpleFarmMembers or in case
 	 * 'scriptpath' is used, from the server directly.
 	 * 
-	 * @return String[] or null in case of command-line access and missing 'address'
+	 * @return string[] or null in case of command-line access and missing 'address'
 	 *         key in $wgSimpleFarmMembers config array.
 	 */
 	public function getAddresses() {
@@ -475,10 +473,21 @@ class SimpleFarmMember {
 	}
 	
 	/**
+	 * Convenience function to just return the first defined address instead of all
+	 * addresses as self::getAddresses() would return it.
+	 *
+	 * @return string
+	 */
+	public function getFirstAddress() {
+		$addr = $this->getAddresses();
+		return $addr[0];
+	}
+	
+	/**
 	 * returns the configured script path if set.
 	 * Otherwise the value of $wgScriptPath
 	 * 
-	 * @return String
+	 * @return string
 	 */
 	public function getScriptPath() {
 		if( isset( $this->siteOpt['scriptpath'] ) ) {
@@ -493,7 +502,7 @@ class SimpleFarmMember {
 	/**
 	 * returns the config mode this farm member uses to be selected as active wiki.
 	 * 
-	 * @return Integer flag self::CFG_MODE_SCRIPTPATH, self::CFG_MODE_ADDRESS or
+	 * @return integer flag self::CFG_MODE_SCRIPTPATH, self::CFG_MODE_ADDRESS or
 	 *         self::CFG_MODE_NONE if not set up properly.
 	 */
 	public function getCfgMode() {
@@ -509,7 +518,7 @@ class SimpleFarmMember {
 	 * Whether or not this member wiki has been declared the main member.
 	 * The main member is important for maintenance reasons only.
 	 * 
-	 * @return Boolean
+	 * @return boolean
 	 */
 	public function isMainMember() {
 		return ( $this->getDB() === SimpleFarm::getMainMember()->getDB() );
@@ -518,7 +527,7 @@ class SimpleFarmMember {
 	/**
 	 * Whether the farm member wiki is the wiki currently accessed in this run.
 	 * 
-	 * @return Boolean
+	 * @return boolean
 	 */
 	public function isActive() {
 		return ( $this->getDB() === SimpleFarm::getActiveMember()->getDB() );
@@ -527,13 +536,13 @@ class SimpleFarmMember {
 	/**
 	 * Returns an value previously set for this object via $wgSimpleFarmMembers configuration.
 	 * 
-	 * @param $name String name of the array key representing an option
+	 * @param $name string name of the array key representing an option
 	 *        within the $wgSimpleFarmMembers sub-array for this object
-	 * @param $default Mixed default value if config key $name was not set for farm member
+	 * @param $default mixed default value if config key $name was not set for farm member
 	 * 
-	 * @return Mixed
+	 * @return mixed
 	 */
-	public function getCfgOption( $name, $default = null ) {
+	public function getCfgOption( $name, $default = false ) {
 		if( array_key_exists( $name, $this->siteOpt ) )
 			return $this->siteOpt[ $name ];
 		else
@@ -542,10 +551,11 @@ class SimpleFarmMember {
 	
 	/**
 	 * Same as SimpleFarmMember::getCfgOption
+	 * This requires PHP 5.3!
 	 * 
-	 * @return Mixed
+	 * @return mixed
 	 */
-	public function __invoke( $name, $default = null ) {
+	public function __invoke( $name, $default = false ) {
 		return $this->getCfgOption( $name, $default );
 	}
 }
