@@ -338,6 +338,15 @@ $messages['es'] = array(
 	'collabwatchlistedit-normal-title' => 'Editar categorías',
 );
 
+/** Persian (فارسی)
+ * @author Reza1615
+ */
+$messages['fa'] = array(
+	'collabwatchlisttools-delete' => 'حذف',
+	'collabwatchlistfiltertags' => 'پنهان کردن برچسب‌ها',
+	'collabwatchlistedit-users-raw-submit' => 'ذخیره',
+);
+
 /** French (Français)
  * @author Gomoko
  * @author Seb35
