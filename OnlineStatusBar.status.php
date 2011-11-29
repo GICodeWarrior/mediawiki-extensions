@@ -68,11 +68,11 @@ class OnlineStatusBar_StatusCheck {
 		global $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarDefaultOnline;
 		// instead of delete every time just select the records which are not that old
 		if ( !$delayed_check ) {
-			$t_time = OnlineStatusBar::getTimeoutDate();
 			// first try to use cache
 			$result = self::getCache( $user->getName(), ONLINESTATUSBAR_NORMAL_CACHE );
 			
 			if ( $result == '' ) {
+				$t_time = OnlineStatusBar::getTimeoutDate();
 				$dbr = wfGetDB( DB_SLAVE );
 				$result = $dbr->selectField( 'online_status', 'timestamp', array( 'username' => $user->getName(),
 					'timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $t_time ) ) ),
@@ -81,6 +81,7 @@ class OnlineStatusBar_StatusCheck {
 				self::setCache( $user->getName(), $result, ONLINESTATUSBAR_NORMAL_CACHE );
 			}
 		} else {
+			// checking only if we need to do write or not
 			$result = self::getCache( $user->getName(), ONLINESTATUSBAR_DELAYED_CACHE );
 			if ( $result == '' ) {
 				$dbr = wfGetDB( DB_SLAVE );
@@ -99,6 +100,7 @@ class OnlineStatusBar_StatusCheck {
 			if ( $user->isLoggedIn() ) {
 				$status = $user->getOption( 'OnlineStatusBar_status', $wgOnlineStatusBarDefaultOnline );
 				if ( $delayed_check ) {
+					// check if it's old or not
 					if ( $result < wfTimestamp( TS_MW, $w_time ) ) {
 						$status = 'write';
 					}
@@ -109,6 +111,11 @@ class OnlineStatusBar_StatusCheck {
 				}
 			} else {
 				$status = $wgOnlineStatusBarDefaultOnline;
+				if ( $delayed_check ) {
+					if ( $result < wfTimestamp( TS_MW, $w_time ) ) {
+						$status = 'write';
+					}
+				}
 			}
 		}
 
