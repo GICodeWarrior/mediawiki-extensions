@@ -2143,6 +2143,7 @@ $messages['fa'] = array(
 	'articlefeedback-survey-title' => 'لطفاً به چند پرسش پاسخ دهید',
 	'articlefeedback-survey-thanks' => 'از این که نظرسنجی را تکمیل کردید متشکریم.',
 	'articlefeedback-survey-disclaimer' => 'برای بهبود این ویژگی، بازخورد شما به طور ناشناس با جامعهٔ {{SITENAME}} به اشتراک گذاشته می‌شود.',
+	'articlefeedback-survey-disclaimerlink' => 'شرایط',
 	'articlefeedback-error' => 'خطایی رخ داده است. لطفا بعداً دوباره سعی کنید.',
 	'articlefeedback-form-switch-label' => 'رای دادن به این صفحه',
 	'articlefeedback-form-panel-title' => 'رای دادن به این صفحه',
