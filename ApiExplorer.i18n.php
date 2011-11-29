@@ -103,8 +103,8 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'apiexplorer' => 'Explorador API',
-	'apiexplorer-desc' => 'Páxina para explorar de xeito interactivo a documentación do API de MediaWiki',
-	'apiexplorer-intro' => 'Esta páxina mostra a documentación para o API do wiki actual. Prema nunha das funcións para ollar máis información sobre os parámetros que se poden usar ​​en cada chamada. Bótelle unha ollada tamén [http://www.mediawiki.org/wiki/API:Main_page á documentación xeral do API de MediaWiki]',
+	'apiexplorer-desc' => 'Páxina para explorar de xeito interactivo a documentación da API de MediaWiki',
+	'apiexplorer-intro' => 'Esta páxina mostra a documentación para a API do wiki actual. Prema nunha das funcións para ollar máis información sobre os parámetros que se poden usar ​​en cada chamada. Bótelle unha ollada tamén [http://www.mediawiki.org/wiki/API:Main_page á documentación xeral da API de MediaWiki]',
 	'apiexplorer-loading' => 'Cargando as funcións...',
 );
 
