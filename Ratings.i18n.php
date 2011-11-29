@@ -331,3 +331,20 @@ $messages['tl'] = array(
 	'ratings-no-votes-yet' => 'Wala pang isang nag-aantas nito.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'ratings-desc' => '允许用户评价页面的不同“属性”',
+	'right-rate' => '评价页面的某个属性',
+	'ratings-starsratings-desc' => '显示简单的星级评价控件以允许用户评价页面的特定属性。
+当用户投票后，用户的当前投票将被显示。',
+	'ratings-par-page' => '评价应用到的页面。',
+	'ratings-par-tag' => '评价标签。此标签指示页面的哪个“属性”被评价。',
+	'ratings-par-showdisabled' => '当用户不能投票时显示评价（在只读模式中）。',
+	'ratings-par-incsummary' => '在评价元素上方显示当前投票的摘要？',
+	'ratings-votesummary-desc' => '显示指定的页面-属性对的投票摘要。',
+	'ratings-current-score' => '当前用户评价：$1（$2次评价）',
+	'ratings-no-votes-yet' => '还没有人为此评价。',
+);
+
