@@ -275,6 +275,7 @@ $messages['be'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'crosswikiblock-desc' => 'Дазваляе блякаваць удзельнікаў у іншых вікі з дапамогай [[Special:Crosswikiblock|спэцыяльнай старонкі]]',
@@ -284,7 +285,7 @@ $messages['be-tarask'] = array(
 	'crosswikiblock-target' => 'IP-адрас альбо імя ўдзельніка і мэтавая вікі:',
 	'crosswikiblock-expiry' => 'Тэрмін:',
 	'crosswikiblock-reason' => 'Прычына:',
-	'crosswikiblock-submit' => 'Заблякаваць гэтага удзельніка',
+	'crosswikiblock-submit' => 'Заблякаваць гэтага ўдзельніка',
 	'crosswikiblock-anononly' => 'Блякаваць толькі ананімаў',
 	'crosswikiblock-nocreate' => 'Забараніць стварэньне рахункаў',
 	'crosswikiblock-autoblock' => 'Аўтаматычна блякаваць апошнія IP-адрасы, якімі карыстаўся гэты ўдзельнік, і любыя іншыя IP-адрасы зь якіх вядзецца спроба рэдагаваньня',
