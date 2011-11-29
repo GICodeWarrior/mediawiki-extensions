@@ -121,7 +121,7 @@ class MassEditRegex extends SpecialPage {
 			Xml::openElement('form', array(
 				'id' => 'masseditregex',
 				'method' => 'post',
-				'action' => $titleObj->escapeLocalURL('action=submit')
+				'action' => $titleObj->getLocalURL('action=submit')
 			)) .
 			Xml::element('p',
 				null, wfMsg( 'masseditregex-pagelisttxt' )
@@ -389,7 +389,7 @@ class MassEditRegex extends SpecialPage {
 	}
 
 	function perform( $bPerformEdits = true ) {
-		global $wgOut, $wgUser, $wgTitle, $wgLang;
+		global $wgRequest, $wgOut, $wgUser, $wgTitle, $wgLang;
 
 		$iMaxPerCriterion = $bPerformEdits ? MER_MAX_EXECUTE_PAGES : MER_MAX_PREVIEW_DIFFS;
 		$aErrors = array();
@@ -405,28 +405,20 @@ class MassEditRegex extends SpecialPage {
 		$diff = new DifferenceEngine();
 		$diff->showDiffStyle(); // send CSS link to the browser for diff colours
 
-		// Save the state until the MW Edit API does it for us
-		if ( $bPerformEdits ) {
-			$o_wgOut = clone $wgOut; // need to do a deep copy here
-			$wgOut->disable(); // not strictly necessary, but might speed things up
-			$o_wgTitle = $wgTitle;
-		} else {
-			// No difference here, but having the same variable name simplifies code
-			$o_wgOut = $wgOut;
-		}
-
-		$o_wgOut->addHTML( '<ul>' );
+		$wgOut->addHTML( '<ul>' );
 
 		if (count($aErrors))
-			$o_wgOut->addHTML( '<li>' . join( '</li><li> ', $aErrors) . '</li>' );
+			$wgOut->addHTML( '<li>' . join( '</li><li> ', $aErrors) . '</li>' );
 
 		$htmlDiff = '';
+
+		$editToken = $wgUser->editToken();
 
 		$iArticleCount = 0;
 		foreach ( $aPages as $p ) {
 			$iArticleCount++;
 			if ( !isset( $p['revisions'] ) ) {
-				$o_wgOut->addHTML( '<li>'
+				$wgOut->addHTML( '<li>'
 					. wfMsg( 'masseditregex-page-not-exists', $p['title'] )
 					. '</li>' );
 				continue; // empty page
@@ -442,32 +434,33 @@ class MassEditRegex extends SpecialPage {
 				else {
 					$strErrorMsg = '<li>' . wfMsg( 'masseditregex-badregex' ) . ' <b>'
 						. htmlspecialchars($strMatch) . '</b></li>';
-					$o_wgOut->addHTML( $strErrorMsg );
+					$wgOut->addHTML( $strErrorMsg );
 					unset($this->aMatch[$i]);
 				}
 			}
 
 			if ( $bPerformEdits ) {
 				// Not in preview mode, make the edits
-				// print_r( $p );
-				$o_wgOut->addHTML( '<li>' . wfMsg( 'masseditregex-num-changes',
+				$wgOut->addHTML( '<li>' . wfMsg( 'masseditregex-num-changes',
 					$p['title'], $iCount ) . '</li>' );
 
-				$req = new FauxRequest( array(
+				$req = new DerivativeRequest( $wgRequest, array(
 					'action' => 'edit',
 					'bot' => true,
-					'token' => $p['edittoken'],
 					'title' => $p['title'],
 					'summary' => $this->strSummary,
 					'text' => $newContent,
-					'basetimestamp' => $p['starttimestamp']
+					'basetimestamp' => $p['starttimestamp'],
+					'watchlist' => 'nochange',
+					'nocreate' => 1,
+					'token' => $editToken,
 				), true );
 				$processor = new ApiMain( $req, true );
 				try {
 					$processor->execute();
 				} catch ( UsageException $e ) {
-					$o_wgOut->addHTML('<li><ul><li>' . wfMsg( 'masseditregex-editfailed')
-						. $e . '</li></ul></li>'
+					$wgOut->addHTML('<li><ul><li>' . wfMsg( 'masseditregex-editfailed')
+						. ' ' . $e . '</li></ul></li>'
 					);
 				}
 			} else {
@@ -489,13 +482,9 @@ class MassEditRegex extends SpecialPage {
 
 		}
 
-		$o_wgOut->addHTML( '</ul>' );
+		$wgOut->addHTML( '</ul>' );
 
 		if ( $bPerformEdits ) {
-			// Restore the state after the Edit API has messed with it
-			$wgTitle = $o_wgTitle;
-			$wgOut = $o_wgOut;
-
 			$wgOut->addWikiMsg( 'masseditregex-num-articles-changed', $iArticleCount );
 			$wgOut->addHTML(
 				$this->sk->makeKnownLinkObj(

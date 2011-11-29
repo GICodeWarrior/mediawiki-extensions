@@ -12,6 +12,7 @@ $messages = array();
  * @author Adam Nielsen
  */
 $messages['en'] = array(
+	'action-masseditregex' => 'perform a bulk edit',
 	'masseditregex' => 'Mass edit using regular expressions',
 	'masseditregex-desc' => 'Use regular expressions to [[Special:MassEditRegex|edit many pages in one operation]]',
 	'masseditregextext' => 'Enter one or more regular expressions (one per line) for matching, and one or more expressions to replace each match with.
