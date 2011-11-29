@@ -302,7 +302,7 @@
 			km:  [ "KhmerOSbattambang", "KhmerOSsiemreap", "KhmerOS", "KhmerOSbokor",
 			       "KhmerOSmuollight", "KhmerOSmuol", "KhmerOSmuolpali",
 			       "KhmerOSfreehand", "KhmerOSfasthand" ],
-			kn:  [ "Lohit Kannada", ‌"Kedage"],
+			kn:  [ "Lohit Kannada", "Kedage"],
 			mai: [ "Lohit Devanagari" ],
 			ml:  [ "AnjaliOldLipi", "Meera", "Rachana", "RaghuMalayalam" ],
 			mr:  [ "Lohit Devanagari", "Samyak Devanagari" ],
