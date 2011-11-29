@@ -3145,6 +3145,10 @@ $messages['vi'] = array(
 	'moodbar-type-confused-title' => 'Bối rối',
 	'tooltip-moodbar-what' => 'Tìm hiểu thêm về tính năng này',
 	'moodbar-what-label' => 'Đây là gì?',
+	'moodbar-respond-text' => 'Hồi đáp cái này',
+	'moodbar-response-add' => 'Thêm hồi đáp',
+	'moodbar-response-nosig' => 'không cần ký tên',
+	'moodbar-response-btn' => 'Gửi hồi đáp',
 	'moodbar-what-content' => 'Tính năng này nhằm mục đích giúp cộng đồng hiểu biết những ấn tượng của người sửa đổi trang này.
 Để biết thêm chi tiết, xin ghé vào $1.',
 	'moodbar-what-link' => 'trang tính năng',
@@ -3183,6 +3187,8 @@ $messages['vi'] = array(
 	'moodbar-header-namespace' => 'Không gian tên',
 	'moodbar-header-own-talk' => 'Trang thảo luận của chính mình',
 	'moodbar-feedback-title' => 'Bảng điều khiển phản hồi',
+	'moodbar-feedback-response-title' => 'Hồi đáp trên bảng điều khiển phản hồi',
+	'moodbar-feedback-view-link' => '(Xem phản hồi)',
 	'moodbar-feedback-filters' => 'Bộ lọc',
 	'moodbar-feedback-filters-type' => 'Tâm trạng:',
 	'moodbar-feedback-filters-type-happy' => 'Hài lòng',
@@ -3198,10 +3204,13 @@ $messages['vi'] = array(
 	'moodbar-feedback-newer' => 'Mới hơn',
 	'moodbar-feedback-older' => 'Cũ hơn',
 	'moodbar-feedback-ajaxerror' => 'Lỗi đã xảy ra khi lấy thêm kết quả.',
+	'moodbar-feedback-load-record-error' => 'Xuất hiện lỗi khi tải một hồ sơ.',
 	'moodbar-user-hidden' => '(Người dùng được ẩn)',
 	'moodbar-comment-hidden' => '(Phản hồi được bảo quản viên ẩn)',
 	'moodbar-feedback-show' => 'hiện phản hồi đã ẩn',
 	'moodbar-feedback-hide' => 'ẩn phản hồi',
+	'moodbar-feedback-action-confirm' => 'Xác nhận',
+	'moodbar-feedback-action-cancel' => 'Hủy bỏ',
 	'moodbar-hidden-footer' => 'Phản hồi ẩn của $1 vào $2 lúc $3 với lý do: $4 $5',
 	'moodbar-hidden-footer-without-log' => 'Phản hồi ẩn $1',
 	'moodbar-feedback-restore' => 'phục hồi phản hồi đã ẩn',
@@ -3222,7 +3231,10 @@ $messages['vi'] = array(
 	'moodbar-log-header' => 'Nhật trình này liệt kê các tác vụ được thực hiện do các khoản mục phản hồi trên [[Special:FeedbackDashboard|bảng điều khiển phản hồi]].',
 	'moodbar-log-hide' => 'đã ẩn [[$1]]',
 	'moodbar-log-restore' => 'đã phục hồi mức hiển thị của [[$1]]',
+	'moodbar-response-ula' => 'Với việc bấm nút “$1”, bạn chấp nhận các $2, và bạn đồng ý phát hành, không thể hủy bỏ, đóng góp của mình theo giấy phép $3 và $4.
+Bạn đồng ý rằng một siêu liên kết hoặc URL thỏa mãn điều kiện ghi công trong giấy phép $3.',
 	'moodbar-response-terms-of-use' => 'Điều khoản sử dụng',
+	'feedbackresponse-success' => 'Cám ơn. Hồi đáp đã được thêm vào trang thảo luận của người dùng.',
 );
 
 /** Yiddish (ייִדיש)
