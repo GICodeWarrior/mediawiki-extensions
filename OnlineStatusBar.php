@@ -95,6 +95,7 @@ $wgOnlineStatusBarIcon = array(
 	'offline' => 'statusred.png',
 );
 
+// For memcached
 define( 'ONLINESTATUSBAR_DELAYED_CACHE', 'd' );
 define( 'ONLINESTATUSBAR_NORMAL_CACHE', 'n' );
 

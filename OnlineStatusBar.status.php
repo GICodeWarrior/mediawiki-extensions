@@ -158,7 +158,7 @@ class OnlineStatusBar_StatusCheck {
 	  * @return bool
 	  */
 	public static function updateStatus() {
-		global $wgUser, $wgOnlineStatusBarDefaultOffline, $wgOnlineStatusBarTrackIpUsers, $wgOnlineStatusBarDefaultEnabled;
+		global $wgUser, $wgOnlineStatusBarDefaultOffline;
 		// if anon users are not tracked and user is anon leave it
 		if (!OnlineStatusBar::isValid( $wgUser )) {
 			return false;
@@ -183,7 +183,7 @@ class OnlineStatusBar_StatusCheck {
 	}
 
 	/**
-	 * Delete old records from the table, this function is called frequently to keep the table it as small as possible
+	 * Delete old records from the table, this function is called frequently to keep the table as small as possible
 	 * it's also possible to disable this function to set automatic job in cron to do that
 	 * @return int
 	 */
