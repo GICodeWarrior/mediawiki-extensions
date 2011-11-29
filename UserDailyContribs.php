@@ -44,25 +44,34 @@ $wgUserDailyContributionsApiCheckAuthPlugin = false;
 /**
  * Get the number of revisions a user has made since a given time
  *
- * @param $time beginning timestamp
- * @param $user User
+ * @param $fromtime: beginning timestamp
+ * @param $user User: (optional) User object to get edit count for
+ * @param $totime: (optional) ending timestamp
  * @return number of revsions this user has made
  */
-function getUserEditCountSince( $time = null, User $user = null ) {
+function getUserEditCountSince( $fromtime = null, User $user = null, $totime = null ) {
 	global $wgUser;
 
 	// Fallback on current user
 	if ( is_null( $user ) ) {
 		$user = $wgUser;
 	}
-	// Round time down to a whole day
-	$time = gmdate( 'Y-m-d', wfTimestamp( TS_UNIX, $time ) );
+
+	// Round times down to a whole day, possibly letting a null value
+	// pass to wfTimestamp which will give us today.
+	$fromtime = gmdate( 'Y-m-d', wfTimestamp( TS_UNIX, $fromtime ) );
+	$totime = gmdate( 'Y-m-d', wfTimestamp( TS_UNIX, $totime ) );
+
 	// Query the user contribs table
 	$dbr = wfGetDB( DB_SLAVE );
 	$edits = $dbr->selectField(
 		'user_daily_contribs',
 		'SUM(contribs)',
-		array( 'user_id' => $user->getId(), 'day >= ' . $dbr->addQuotes( $time ) ),
+		array(
+			'user_id' => $user->getId(),
+			'day >= ' . $dbr->addQuotes( $fromtime ),
+			'day <= ' . $dbr->addQuotes( $totime )
+		),
 		__METHOD__
 	);
 	// Return edit count as an integer

@@ -7,7 +7,8 @@ class ApiUserDailyContribs extends ApiBase {
 		$result = $this->getResult();
 
 		$userName = $params['user'];
-		$days = $params['daysago'];
+		$daysago = $params['daysago'];
+		$basetimestamp = $params['basetimestamp'];
 		$user = User::newFromName( $userName );
 
 		if ( !$user ) {
@@ -19,18 +20,26 @@ class ApiUserDailyContribs extends ApiBase {
 		if ( $wgUserDailyContributionsApiCheckAuthPlugin && !$wgAuth->userExists( $userName ) ) {
 			$this->dieUsage( 'Specified user does not exist', 'bad_user' );
 		}
-		$now = time();
+
+		// Defaults to 'now' if not given
+		$totime = wfTimestamp( TS_UNIX, $basetimestamp );
+
+		$fromtime = $totime - ($daysago * 60 *60 *24);
+
 		$result->addValue( $this->getModuleName() ,
 			'id', $user->getId() );
-		// returns date of registration in YYYYMMDDHHMMSS format
-		$result->addValue( $this->getModuleName() ,
+
+		// Returns date of registration in YYYYMMDDHHMMSS format
+		$result->addValue( $this->getModuleName(),
 			'registration', !$user->getRegistration() ? '0' : $user->getRegistration() );
-		// returns number of edits since daysago param
+
+		// Returns number of edits between daysago date and basetimestamp (or today)
+		$result->addValue( $this->getModuleName(),
+			'timeFrameEdits', getUserEditCountSince( $fromtime, $user, $totime ) );
+
+		// Returns total number of edits
 		$result->addValue( $this->getModuleName() ,
-			'timeFrameEdits', getUserEditCountSince( $now - ($days * 60 *60 *24), $user ) );
-		// returns total number of edits
-		$result->addValue( $this->getModuleName() ,
-			'totalEdits', ($user->getEditCount() == NULL)?0:$user->getEditCount() );
+			'totalEdits', $user->getEditCount() == NULL ? 0 : $user->getEditCount() );
 	}
 
 	public function getAllowedParams() {
@@ -42,6 +51,9 @@ class ApiUserDailyContribs extends ApiBase {
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_MIN => 0,
 			),
+			'basetimestamp' => array(
+				ApiBase::PARAM_TYPE => 'timestamp',
+			),
 		);
 	}
 
@@ -49,6 +61,10 @@ class ApiUserDailyContribs extends ApiBase {
 		return array(
 			'user' => 'Username to query',
 			'daysago' => 'Number of edits since this many days ago',
+			'basetimestamp' => array( 'Date from which daysago will be calculated (instead of "today").',
+				'Count returned in timeFrameEdits will be editcount between this date and the date',
+				'"daysago" from it.'
+			),
 		);
 	}
 
