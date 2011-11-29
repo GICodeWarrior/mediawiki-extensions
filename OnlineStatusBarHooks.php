@@ -35,8 +35,8 @@ class OnlineStatusBarHooks {
 		// check if user had enabled this feature before we write to db
 		if ( $user->getOption( 'OnlineStatusBar_active', $wgOnlineStatusBarDefaultEnabled ) ) {
 			$userName = $user->getName();
-			OnlineStatusBar::purge( $userName );
 			OnlineStatusBar_StatusCheck::deleteStatus( $userName );
+			OnlineStatusBar::purge( $userName );
 		}
 		return true;
 	}
@@ -48,10 +48,10 @@ class OnlineStatusBarHooks {
 	public static function updateStatus() {
 		global $wgUser;
 		if (OnlineStatusBar::isValid( $wgUser )) {
-			// Purge user page (optional)
-			OnlineStatusBar::purge( $wgUser );
 			// Update status
 			OnlineStatusBar_StatusCheck::updateStatus();
+			// Purge user page (optional)
+			OnlineStatusBar::purge( $wgUser );
 		}
 		return true;
 	}
