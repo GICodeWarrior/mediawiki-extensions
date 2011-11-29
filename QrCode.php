@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'QrCode',
-	'version' => '0.09',
+	'version' => '0.10',
 	'author' => array( 'David Raison' ), 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QrCode',
 	'descriptionmsg' => 'qrcode-desc'
@@ -120,8 +120,8 @@ class MWQrCode {
 	 * first generate then publish it.
 	 */
 	public function showCode( $label = false ){
+
 		// Check for a provided label and use the page URL as default.
-		// Also strip all non-alphanumeric characters
 		if ( $label ) {
 			$this->_label = $label;	// cannot remember why sanitizing this would make sense
 			//$this->_label = preg_replace("/[^0-9a-zA-Z_]+/", "", $label);
@@ -140,7 +140,8 @@ class MWQrCode {
 			return $this->_displayImage( $file );
 		} else {
 			wfDebug( "QrCode::showCode: Requested file ".$this->_dstFileName." is new and needs to be generated.\n");
-			return $this->_generate();
+			$this->_generate();
+			return;
 		}
 	}
 	
@@ -181,6 +182,7 @@ class UploadQrCodeJob extends Job {
 
 
 	public function __construct( $title, $params, $id = 0 ) {
+		wfDebug("QrCodeDebug::Creating Job\n");
 		$this->_dstFileName = $params['dstName'];
 		$this->_tmpName = $params['tmpName'];
 		$this->_uploadComment = $params['comment'];
@@ -196,8 +198,11 @@ class UploadQrCodeJob extends Job {
 		global $wgOut;
 
 		$mUpload = new UploadFromFile();
-		$mUpload->initialize( $this->_dstFileName, $this->_tmpName, null );	// we don't know the filesize, how could we?
-
+		
+		wfDebug("QrCodeDebug::".$this->_dstFileName." ".$this->_tmpName."\n");
+		// $mUpload->initialize( $this->_dstFileName, $this->_tmpName, null );	// pre 1.17
+		$mUpload->initializePathInfo( $this->_dstFileName, $this->_tmpName, null );	// we don't know the filesize, how could we?
+		wfDebug("QrCodeDebug:: Intialization finished\n");
 		$pageText = 'QrCode '.$this->_dstFileName.', generated on '.date( "r" )
                         .' by the QrCode Extension for page [['.$this->title->getFullText().']].';
 
