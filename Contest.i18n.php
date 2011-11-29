@@ -552,6 +552,11 @@ $messages['be-tarask'] = array(
 	'contest-signup-volunteer' => 'Мне цікава атрымліваць электронныя лісты пра магчымасьці для валянтэраў',
 	'contest-signup-wmf' => 'Мне цікава ведаць пра магчымасьці працы ў фундацыі «Вікімэдыя»',
 	'contest-signup-cv' => 'Спасылка на Вашае рэзюмэ',
+	'contest-signup-readrules' => 'Я пацьвярджаю, што прачытаў [[$1|правілы конкурсу]] і згодны зь імі',
+	'contest-signup-challenge' => 'Якіх мэтаў Вы жадаеце дасягнуць?',
+	'contest-signup-finished' => 'Гэты конкурс скончыўся. Дзякуй за ўдзел!',
+	'contest-signup-draft' => 'Гэты конкурс яшчэ не пачаўся. Калі ласка, пачакайце.',
+	'contest-signup-country' => 'Вашая краіна',
 );
 
 /** Breton (Brezhoneg)
@@ -956,9 +961,36 @@ $messages['de-formal'] = array(
 
 /** Persian (فارسی)
  * @author Leyth
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'contest-status-draft' => 'پیش نویس (غیر فعال)',
+	'contest-special-delete' => 'حذف',
+	'contest-edit-help' => 'صفحهٔ راهنما',
+	'contest-edit-submit' => 'ثبت',
+	'contest-welcome-signup' => 'هم‌اکنون ثبت‌نام کنید',
+	'contest-signup-submit' => 'ثبت‌نام',
+	'contest-signup-realname' => 'نام واقعی شما',
+	'contest-contest-name' => 'نام',
+	'contest-contest-status' => 'وضعیت',
+	'contest-contest-submissioncount' => 'تعداد شرکت‌کنندگان',
+	'contest-contest-days-ago' => '$1، $2 روز پیش',
+	'contest-contest-days-left' => '$1، در $2 روز',
+	'contest-contest-contestants' => 'شرکت‌کنندگان',
+	'contest-contest-send-reminder' => 'فرستادن یادآور',
+	'contest-contest-go' => 'برو',
+	'contest-contest-yes' => 'بله',
+	'contest-contest-no' => 'خیر',
+	'contest-contest-none' => 'هیچ‌کدام',
+	'contest-contest-some' => 'برخی',
+	'contest-contest-filter-volunteer' => 'داوطلب',
+	'contest-contest-filter-wmf' => 'WMF',
+	'contest-contest-filter-comments' => 'نظرات',
+	'contest-contest-filter-rating_count' => 'آرا',
+	'contest-contest-reminder-preview' => 'پیش‌نمایش رایانامهٔ یادآور:',
+	'contest-contest-reminder-title' => 'رایانامهٔ یادآور',
+	'contest-contest-reminder-send' => 'فرستادن یادآور',
+	'contest-contest-reminder-cancel' => 'لغو',
 );
 
 /** Finnish (Suomi)
