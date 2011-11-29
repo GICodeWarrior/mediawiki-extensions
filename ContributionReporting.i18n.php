@@ -1133,8 +1133,10 @@ $messages['da'] = array(
  * @author Salasar
  */
 $messages['de'] = array(
-	'contributionreporting-desc' => 'Live-Berichterstattung von der Wikimedia-Spendenkampagne',
+	'contributionreporting-desc' => 'Ermöglicht die Live-Berichterstattung zu einer Wikimedia-Spendenkampagne',
 	'contributiontotal' => 'Spenden insgesamt',
+	'disablednotice' => 'Berichterstattung zu Spenden',
+	'disablednotice-disabled' => 'Diese Seite wurde vorübergehend deaktiviert. Bitte versuche es später noch einmal.',
 	'contributionhistory' => 'Spendenverlauf',
 	'contrib-hist-header' => 'Kommentare von Spendern aus der ganzen Welt',
 	'contrib-hist-name' => 'Name',
@@ -1204,6 +1206,13 @@ $messages['de'] = array(
 	'fundraiserstats-show-years' => 'Die folgenden Jahre anzeigen:',
 	'fundraiserstats-time-zone' => 'Zeitzone:',
 	'fundraiserstats-utc' => '(von UTC)',
+);
+
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'disablednotice-disabled' => 'Diese Seite wurde vorübergehend deaktiviert. Bitte versuchen Sie es später noch einmal.',
 );
 
 /** Zazaki (Zazaki)
@@ -2113,6 +2122,8 @@ $messages['fur'] = array(
 $messages['gl'] = array(
 	'contributionreporting-desc' => 'Informe actualizado da recadación da Wikimedia',
 	'contributiontotal' => 'Contribucións totais',
+	'disablednotice' => 'Informe de contribucións',
+	'disablednotice-disabled' => 'Esta páxina está temporalmente desactivada. Inténteo de novo máis tarde.',
 	'contributionhistory' => 'Historial das contribucións',
 	'contrib-hist-header' => 'Comentarios dos doantes de todo o mundo',
 	'contrib-hist-name' => 'Nome',
@@ -2450,6 +2461,8 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'contributionreporting-desc' => 'Dynamiske rozprawjenje wo darjenskej kampani Wikimedije',
 	'contributiontotal' => 'Dary dohromady',
+	'disablednotice' => 'Rozprawjenje wo darach',
+	'disablednotice-disabled' => 'Tuta strona je so nachwilu znjemóžniła. Prošu spytajće pozdźišo hišće raz.',
 	'contributionhistory' => 'Darjenske stawizny',
 	'contrib-hist-header' => 'Komentary darićelow z cyłeho swěta',
 	'contrib-hist-name' => 'Mjeno',
@@ -3552,6 +3565,8 @@ $messages['lv'] = array(
 $messages['mk'] = array(
 	'contributionreporting-desc' => 'Известување во живо за собирањето на средства на Викимедија',
 	'contributiontotal' => 'Вкупен износ на придонесите',
+	'disablednotice' => 'Извештаи за придонесите',
+	'disablednotice-disabled' => 'Оваа страница е привремено оневозможена. Обидете се подоцна.',
 	'contributionhistory' => 'Историја на придонеси',
 	'contrib-hist-header' => 'Коментари од дарители ширум светот',
 	'contrib-hist-name' => 'Име',
@@ -3715,6 +3730,8 @@ $messages['mrj'] = array(
 $messages['ms'] = array(
 	'contributionreporting-desc' => 'Laporan langsung kempen dana Wikimedia',
 	'contributiontotal' => 'Jumlah sumbangan',
+	'disablednotice' => 'Melaporkan sumbangan',
+	'disablednotice-disabled' => 'Laman ini dimatikan buat sementara waktu. Sila cuba lagi nanti.',
 	'contributionhistory' => 'Sejarah sumbangan',
 	'contrib-hist-header' => 'Ulasan penderma dari seluruh dunia',
 	'contrib-hist-name' => 'Nama',
@@ -3866,11 +3883,14 @@ $messages['nds'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Saruman
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'contributionreporting-desc' => 'Liverapportage voor de fondswervingsactie van Wikimedia',
 	'contributiontotal' => 'Totaal donaties',
+	'disablednotice' => 'Bijdragerapportage',
+	'disablednotice-disabled' => 'Deze pagina is tijdelijk uitgeschakeld. Probeer het op een later moment nog een keer.',
 	'contributionhistory' => 'Giftenhistorie',
 	'contrib-hist-header' => 'Opmerkingen van donoren vanuit de hele wereld',
 	'contrib-hist-name' => 'Naam',
@@ -5018,6 +5038,8 @@ $messages['sk'] = array(
 $messages['sl'] = array(
 	'contributionreporting-desc' => 'Živo poročanje zbiranja sredstev za Wikimedio',
 	'contributiontotal' => 'Seštevek prispevkov',
+	'disablednotice' => 'Poročanje o prispevkih',
+	'disablednotice-disabled' => 'Stran je začasno onemogočena. Prosimo, poskusite znova pozneje.',
 	'contributionhistory' => 'Zgodovina prispevkov',
 	'contrib-hist-header' => 'Pripombe donatorjev iz celega sveta',
 	'contrib-hist-name' => 'Ime',
@@ -5923,6 +5945,8 @@ $messages['vep'] = array(
 $messages['vi'] = array(
 	'contributionreporting-desc' => 'Báo cáo tức thời về cuộc vận động gây quỹ Wikimedia',
 	'contributiontotal' => 'Tổng số quyên góp',
+	'disablednotice' => 'Công khai khoản quyên góp',
+	'disablednotice-disabled' => 'Trang này đã bị tắt tạm thời. Xin vui lòng thử lại sau.',
 	'contributionhistory' => 'Lịch sử quyên góp',
 	'contrib-hist-header' => 'Các lời ghi của người quyên góp từ khắp thế giới',
 	'contrib-hist-name' => 'Tên',
