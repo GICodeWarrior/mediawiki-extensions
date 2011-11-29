@@ -4980,8 +4980,12 @@ $messages['gl'] = array(
 	'ow_importtsv_title1' => 'Importar TSV',
 	'ow_importtsv_title2' => 'Importar definicións e traducións',
 	'ow_importtsv_header' => '<p>Importe definicións e traducións dun ficheiro de texto delimitado por unha lapela que pode ter exportado do OpenOffice.org, Excel ou outro software de folla de cálculos.</p>
-<p>O formato do ficheiro debe ser o mesmo có dos ficheiros exportados na páxina Exportar TSV. Se cambiou os nomes das columnas, a importación fallará. Se modificou o ID da expresión de definición ou calquera significado de definición, esa liña será ignorada. Se engadiu columnas, estas deberán ter o formato "definitions_iso" ou "translations_iso", onde "iso" é un código de lingua ISO-639_3.</p>
-<p>Se a caixa "Probar a escritura" está seleccionada, informarase de calquera acción que poida levarse a cabo, pero ningún cambio será gardado. Vostede é responsable de facer unha proba antes dunha importación.</p>',
+<p>O formato do ficheiro debe ser o mesmo ca o dos ficheiros exportados na páxina [[Special:ExportTSV|ExportTSV]].
+Se cambiou os nomes das columnas, a importación fallará.
+Se modificou o ID da expresión de definición ou calquera significado de definición, esa liña será ignorada.
+Se engadiu columnas, estas deberán ter o formato "definitions_iso" ou "translations_iso", onde "iso" é un código de lingua ISO 639-3.</p>
+<p>Se a caixa "Probar a escritura" está seleccionada, informarase de calquera acción que poida levarse a cabo, pero non se gardará cambio ningún.
+Vostede é responsable de facer unha proba antes dunha importación.</p>',
 	'ow_importtsv_not_allowed' => 'Non ten os permisos necesarios para levar a cabo unha importación de TSV.',
 	'ow_importtsv_importing' => 'Importando os datos TSV',
 	'ow_importtsv_import_failed' => 'Fallou a importación',
