@@ -90,7 +90,7 @@ class OnlineStatusBar_StatusCheck {
 				// cache it
 				self::setCache( $user->getName(), $result, ONLINESTATUSBAR_DELAYED_CACHE );
 			}
-			$w_time = OnlineStatusBar::getTimeoutDate( true );
+			$w_time = OnlineStatusBar::getTimeoutDate( ONLINESTATUSBAR_CK_DELAYED );
 		}
 
 		if ( $result === false ) {
@@ -105,7 +105,7 @@ class OnlineStatusBar_StatusCheck {
 						$status = 'write';
 					}
 				} else if ( $user->getOption( 'OnlineStatusBar_away', true ) == true ) {
-					if ( $result < wfTimestamp( TS_MW, OnlineStatusBar::getTimeoutDate( false, true, $user ) ) ) {
+					if ( $result < wfTimestamp( TS_MW, OnlineStatusBar::getTimeoutDate( ONLINESTATUSBAR_CK_AWAY, $user ) ) ) {
 						$status = 'away';
 					}
 				}

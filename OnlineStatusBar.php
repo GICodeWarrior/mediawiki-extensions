@@ -98,6 +98,9 @@ $wgOnlineStatusBarIcon = array(
 // For memcached
 define( 'ONLINESTATUSBAR_DELAYED_CACHE', 'd' );
 define( 'ONLINESTATUSBAR_NORMAL_CACHE', 'n' );
+// Timeout
+define( 'ONLINESTATUSBAR_CK_DELAYED', 1 );
+define( 'ONLINESTATUSBAR_CK_AWAY', 2 );
 
 // default for anonymous and uknown users
 $wgOnlineStatusBarTrackIpUsers = false;

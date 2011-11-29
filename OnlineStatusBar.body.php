@@ -133,22 +133,22 @@ HTML;
 	 * @param $user
 	 * @return timestamp
 	 */
-	public static function getTimeoutDate( $delayed = false, $away = false, $user = false ) {
+	public static function getTimeoutDate( $checkType = false, $user = false ) {
 		global $wgOnlineStatusBar_AwayTime, $wgOnlineStatusBar_WriteTime, $wgOnlineStatusBar_LogoutTime;
 
-		if ($away) {
-			if ( $user === false ) {
-				$time = $wgOnlineStatusBar_AwayTime;
-			}else{
-				$time = $user->getOption( 'OnlineStatusBar_awaytime', $wgOnlineStatusBar_AwayTime );
-			}	
-			return wfTimestamp( TS_UNIX ) - ( $time * 60 );
+		if ($checkType != false) {
+			switch($checkType) {
+				case ONLINESTATUSBAR_CK_DELAYED:
+					return wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_WriteTime;
+				case ONLINESTATUSBAR_CK_AWAY:
+					if ( $user === false ) {
+						$time = $wgOnlineStatusBar_AwayTime;
+					} else {
+						$time = $user->getOption( 'OnlineStatusBar_awaytime', $wgOnlineStatusBar_AwayTime );
+					}	
+					return wfTimestamp( TS_UNIX ) - ( $time * 60 );
+			}
 		}
-
-		if ($delayed) {
-			return wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_WriteTime;
-		}
-
 		return wfTimestamp( TS_UNIX ) - $wgOnlineStatusBar_LogoutTime;
 	}
 
