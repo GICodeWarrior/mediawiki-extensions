@@ -3,7 +3,7 @@
 class ApiFeedbackDashboardResponse extends ApiBase {
 	
 	public function execute() {
-		global $wgRequest, $wgUser, $wgContLang;
+		global $wgRequest, $wgUser, $wgContLang, $wgParser;
 		
 		if ( $wgUser->isAnon() ) {
 			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
@@ -28,16 +28,17 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 		
 		if ( $commenter !== null && $commenter->isAnon() == false ) {
 			$talkPage = $commenter->getTalkPage();
+			 
+			$feedback_link = wfMessage('moodbar-feedback-response-title')->rawParams($wgContLang->getNsText( NS_SPECIAL ) . 
+				         ':FeedbackDashboard/' . $item->getProperty('feedback'))->escaped();
 			
 			$api = new ApiMain( new FauxRequest( array(
 				'action' => 'edit',
 				'title'  => $talkPage->getFullText(),
 				'appendtext' => ( $talkPage->exists() ? "\n\n" : '' ) . 
-						'==' . wfMessage('moodbar-feedback-response-title')->escaped() . '==' . "\n\n" . 
-						'[[' . $wgContLang->getNsText( NS_SPECIAL ) . ':FeedbackDashboard/' . $item->getProperty('feedback') . '|' . 
-						wfMessage('moodbar-feedback-view-link')->escaped() . ']]' . "\n\n". 
-						'[['. $wgUser->getTalkPage()->getFullText()  . '|' . $wgUser->getName() . ']] ' .
-						'<nowiki>' . $params['response'] . '</nowiki>',
+						$feedback_link . "\n" . 
+						'<span id="feedback-dashboard-response-' . $item->getProperty('id') . '"></span>' . "\n\n" . 
+						$wgParser->cleanSigInSig($params['response']) . "\n\n~~~~",
 				'token'  => $params['token'],
 				'summary' => '',
 				'notminor' => true,

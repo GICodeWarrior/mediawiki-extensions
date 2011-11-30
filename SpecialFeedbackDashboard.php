@@ -128,9 +128,10 @@ HTML;
 	 * @param $params An array of flags. Valid flags:
 	 * * admin (user can show/hide feedback items)
 	 * * show-anyway (user has asked to see this hidden item)
+	 * @param $response An array of response for feedback
 	 * @return string HTML
 	 */
-	public static function formatListItem( $row, $params = array() ) {
+	public static function formatListItem( $row, $params = array(), $response = array() ) {
 		global $wgLang, $wgUser;
 		
 		$classes = array('fbd-item');
@@ -142,6 +143,7 @@ HTML;
 			$feedbackItem = MBFeedbackItem::load( $row );
 		}
 		catch (Exception $e) {
+			$classes = Sanitizer::encodeAttribute( implode(' ', $classes) );
 			$error_message = wfMessage('moodbar-feedback-load-record-error')->escaped();
 			return <<<HTML
 			<li class="$classes">
@@ -200,22 +202,10 @@ HTML;
 			
 		}
 		
-		//only show response elements if feedback is not hidden, and user is logged in
-		if ($feedbackItem->getProperty('hidden-state') == false
-			&& !$wgUser->isAnon() ) {
-			$respondToThis = "<span>".wfMessage('moodbar-respond-collapsed')->escaped().'</span> '.wfMessage("moodbar-respond-text")->escaped();
-			$responseElements = <<<HTML
-				<div class="fbd-item-response">
-					<a class="fbd-respond-link">$respondToThis</a>
-				</div>
-HTML;
-		}
+		$responseElements = self::buildResponseElement( $feedbackItem, $response );
 		
 		$classes = Sanitizer::encodeAttribute( implode(' ', $classes) );
 		$toolLinks = implode("\n", $toolLinks );
-		if (!isset($responseElements)) {
-			$responseElements = "";
-		}
 		
 		return <<<HTML
 		<li class="$classes" data-mbccontinue="$continueData">
@@ -230,6 +220,63 @@ HTML;
 			<div style="clear:both"></div>
 		</li>
 HTML;
+	}
+	
+	protected static function buildResponseElement( $feedbackItem, $response ) {
+		global $wgLang, $wgUser;
+		
+		$responseElements = '';
+		
+		$id = $feedbackItem->getProperty('id');
+		
+		$showResponseBox = true;
+		
+		//Do not show response box if there is a response already
+		if ( isset( $response[$id] ) ) {	
+			//for now we only display the latest response
+			foreach ( $response[$id] AS $response_detail ) { 
+				if ( $responder =  User::newFromId( $response_detail->mbfr_user_id ) ) {
+					
+					$now = wfTimestamp( TS_UNIX );
+					$responsetimestamp = wfTimestamp( TS_UNIX, $response_detail->mbfr_timestamp );
+					
+					$responsetime = $wgLang->formatTimePeriod( $now - $responsetimestamp,
+						array( 'avoid' => 'avoidminutes', 'noabbrevs' => true )
+						);
+					
+					$permalinkTitle = $feedbackItem->getProperty('user')->getTalkPage()->getFullText();
+					
+					$individual_response = wfMsgExt('moodbar-feedback-response-summary', array('parse'),  
+						                         $responder->getUserPage()->getFullText(), 
+						                         htmlspecialchars($responder->getName()), 
+						                         $permalinkTitle . '#feedback-dashboard-response-' . $response_detail->mbfr_id,  
+						                         $responsetime);
+					$showResponseBox = false;
+					
+					$responseElements = <<<HTML
+							    	<div class="fbd-item-response">
+							    		$individual_response
+							    	</div>
+HTML;
+					break;
+					
+				}
+			}
+			
+		}
+		//only show response elements if feedback is not hidden, and user is logged in
+		else if ( $showResponseBox && $feedbackItem->getProperty('hidden-state') == false
+			&& !$wgUser->isAnon() ) {
+			$respondToThis = "<span>".wfMessage('moodbar-respond-collapsed')->escaped().'</span> '.wfMessage("moodbar-respond-text")->escaped();
+			$responseElements = <<<HTML
+				<div class="fbd-item-response">
+					<a class="fbd-respond-link">$respondToThis</a>
+				</div>
+HTML;
+		}
+		
+		return $responseElements;
+		
 	}
 	
 	/**
@@ -350,8 +397,10 @@ HTML;
 			}
 		}
 		
+		$response = self::getResponseSummary( $res['rows'] );
+		
 		foreach ( $res['rows'] as $row ) {
-			$list .= self::formatListItem( $row, $params );
+			$list .= self::formatListItem( $row, $params, $response );
 		}
 		
 		if ( $list === '' ) {
@@ -553,6 +602,39 @@ HTML;
 			             __METHOD__,
 			             array( 'LIMIT' => 1, 'ORDER BY' => "log_timestamp DESC" )
 		);
+	}
+	
+	/**
+	 * Get the response summary for a set of feedback 
+	 * @param $res Iterator of Db row with index mbf_id for feedback
+	 * @return array
+	 */
+	public static function getResponseSummary( $res ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		$feedback = array();
+		
+		foreach ( $res as $row ) {
+			$feedback[] = $row->mbf_id;	
+		}
+		
+		$response = array();
+		
+		if ( $feedback = implode( ',', $feedback ) ) {
+			$res = $dbr->select( array( 'moodbar_feedback_response' ),
+					     array( 'mbfr_id', 'mbfr_mbf_id', 'mbfr_user_id', 'mbfr_timestamp' ),
+					     array( 'mbfr_mbf_id IN (' . $feedback . ') AND mbfr_user_id != 0' ),
+					     __METHOD__,
+					     array( 'ORDER BY' => "mbfr_timestamp DESC, mbfr_id DESC" )
+					     );
+			
+	                foreach ( $res AS $row ) {
+	                	$response[$row->mbfr_mbf_id][] = $row;
+	                }
+		}
+		
+		
+		return $response;
 	}
 	
 }

@@ -45,6 +45,9 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 		$res = $this->select( __METHOD__ );
 		$result = $this->getResult();
 		$count = 0;
+		
+		$response = SpecialFeedbackDashboard::getResponseSummary( $res );
+		
 		foreach ( $res as $row ) {
 			if ( ++$count > $params['limit'] ) {
 				// We've reached the one extra which shows that there are additional rows. Stop here
@@ -52,7 +55,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 				break;
 			}
 			
-			$vals = $this->extractRowInfo( $row, $prop );
+			$vals = $this->extractRowInfo( $row, $prop, $response );
 			$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );
 			if ( !$fit ) {
 				$this->setContinueEnumParameter( 'continue', $this->getContinue( $row ) );
@@ -85,7 +88,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 		);
 	}
 	
-	protected function extractRowInfo( $row, $prop ) {
+	protected function extractRowInfo( $row, $prop, $response = array() ) {
 		global $wgUser;
 		
 		$r = array();
@@ -114,7 +117,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 				$params[] = 'show-anyway';
 			}
 			
-			$r['formatted'] = SpecialFeedbackDashboard::formatListItem( $row, $params );
+			$r['formatted'] = SpecialFeedbackDashboard::formatListItem( $row, $params, $response );
 		}
 		
 		if ( $isHidden && !$showHidden ) {
