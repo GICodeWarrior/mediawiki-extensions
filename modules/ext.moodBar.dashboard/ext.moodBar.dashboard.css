@@ -138,6 +138,11 @@
 	position: static;
 }
 
+.mw-ajax-loader {
+	/* Undo padding due to it destroying the layout for inline response */	
+	padding:8px 16px 0px 16px !important;
+}
+
 /* The images here are named -ltr instead of -left and -rtl instead of -right
  * because ResourceLoader flips -ltr and -rtl in URLs, but not -left and -right
  */
@@ -179,7 +184,6 @@
 	position: relative;
 	margin-top:0.5em;
 	margin-bottom:0.5em;
-	
 	padding:0;
 }
 
@@ -211,6 +215,45 @@
 	background-image: url(images/emoticon-sad.png);
 }
 
+.fbd-ajax-response {
+	padding:1.5em 2em;
+}
+
+.fbd-ajax-response div {
+}
+
+.fbd-item-response-icon {
+	float:left;
+	display:block;
+	height:56px;
+	width:56px;
+    background-position: center center;
+    background-repeat: no-repeat;
+	padding:8px 16px;
+    position: relative;
+    top: -16px;
+}
+
+.fbd-item-response-success {
+	background-image: url(images/response-success.png);
+
+}
+ 
+.fbd-item-response-error {
+	background-image: url(images/response-error.png);
+} 
+
+.fbd-ajax-response > div > .fbd-ajax-heading {
+	font-size:1.5em;
+	font-weight:bold;
+	display:block;
+}
+
+.fbd-ajax-response > div > .fbd-ajax-text {
+	color:#262626;
+	display:block;
+}
+
 .fbd-item-userName {
 	font-size: 1.2em;
 	margin: 0;
@@ -231,6 +274,22 @@
 	margin-top: 0.25em;
 	margin-left:81px;
 	min-height:40px;
+}
+
+.fbd-response-text {
+	height:5em;	
+	overflow:hidden;
+}
+
+.fbd-response-preview-spinner {
+	height:32px;
+	line-height:32px;
+}
+
+.fbd-response-wikitext{
+	background-color: #FDFFE7;
+    border: 1px solid #FCEB92;
+    padding:5px;
 }
 
 .fbd-item-permalink,
@@ -263,14 +322,14 @@
 .fbd-response-form b {
 	font-size:1em;
 }
-.fbd-response-form small{
+.fbd-response-form small, .fbd-response-form .small{
 	font-size:0.8em;
 	color:#262626;
 }
 .fbd-response-formNote {
 	float:right;
 }
-.fbd-response-submit {
+.fbd-response-submit, .fbd-response-preview {
 	float:right;
 }
 .center {

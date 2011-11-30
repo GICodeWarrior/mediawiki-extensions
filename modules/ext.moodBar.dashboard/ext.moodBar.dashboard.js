@@ -404,17 +404,17 @@ jQuery(function( $ ) {
 			
 			//ULA	      
 			var ula = mw.msg( 'moodbar-response-ula' )
-				.replace ( /\$1/, mw.msg( 'moodbar-response-btn') )
-				.replace ( /\$2/, termsofuse)
-				.replace ( /\$3/, creativecommons)
-				.replace ( /\$4/, gfdl);
+				.replace ( /\$1/g, mw.msg( 'moodbar-response-btn') )
+				.replace ( /\$2/g, termsofuse)
+				.replace ( /\$3/g, creativecommons)
+				.replace ( /\$4/g, gfdl);
 				
 			//build form
 			var inlineForm = $('<div>').attr( 'class', 'fbd-response-form' )
 				.append(
 					$('<b>').text( mw.msg( 'moodbar-response-add' ) )
 				).append(
-					$('<small>').attr( 'class', 'fbd-text-gray' ).text( ' (' + mw.msg( 'moodbar-response-nosig' ) + ') ' )
+					$('<small>').attr( 'class', 'fbd-text-gray' ).text( ' (' + mw.msg( 'moodbar-response-desc' ) + ') ' )
 				).append(
 					$('<div>').attr( 'class', 'fbd-response-formNote' )
 						.append($('<small>')
@@ -427,10 +427,24 @@ jQuery(function( $ ) {
 				).append(
 					$('<textarea>').attr( { 'class':'fbd-response-text', 'name':'fbd-response-text' } )
 				).append(
-					$('<div>').attr('class', 'ula').html( ula )
+					$('<div />').attr('class', 'fbd-response-preview-spinner')
+						.append($('<span />').attr('class', 'mw-ajax-loader')
+							//hack the .mw-ajax-loader styles beacuse they are horrible for reuse
+							.css({ 'top':'0px','padding':'16px', 'display':'block', 'width':'32px' }).html('&nbsp;')
+						).hide() 
+				).append(
+					$('<div />').attr('class', 'fbd-response-preview-block')
+					.append(
+						$('<div />').attr('class', 'fbd-response-wikitext').hide())
+					.append(
+						$('<div>').attr('class', 'ula small').html( ula ).hide())
 				).append(
 					$('<button>').attr( 'class', 'fbd-response-submit' ).text( mw.msg( 'moodbar-response-btn' ) + ' ' + mw.msg( 'moodbar-respond-collapsed' ) )
-						.attr({'disabled':'true'})
+						.attr( 'disabled', 'true' ).hide()
+				).append(
+					$('<button>').attr('class', 'fbd-response-preview-back').text( mw.msg( 'response-back-text' ) ).hide() 
+				).append(
+					$('<button>').attr( 'class', 'fbd-response-preview').text ( mw.msg( 'response-preview-text' ) ).attr( 'disabled', 'true' )
 				).append(
 					$('<div>').attr( 'style', 'clear:both' )
 				);
@@ -453,72 +467,71 @@ jQuery(function( $ ) {
 				.keyup( function(event) {							
 					validateResponse($item);
 				})
+				.elastic()
 				.end()
-				.find('.fbd-response-submit')
+				.find('.fbd-response-preview')
 				.click (function () {
-					var fbResponse = $item.find('.fbd-response-text').val();
-					if( fbResponse ){
-						var	clientData = $.client.profile(),
-							item_id = $item.data('mbccontinue').split('|')[1],
-							resData = {
-								'action':'feedbackdashboardresponse',
-								'useragent': clientData.name + '/' + clientData.versionNumber,
-								'system': clientData.platform,
-								'token': mw.config.get('mbEditToken'),
-								'response': fbResponse,
-								'feedback': item_id,
-								'format':'json'
-							};
-						$item.find('.fbd-item-response').remove(); //remove feedback response link for duration of request
-						var $spinner = $('<span class="mw-ajax-loader">&nbsp;</span>');
-						$responseForm = $item.find('.fbd-response-form').empty().append( $spinner );
-		
-						//send response
-						$.ajax( {
-							'type': 'POST',
-							'url': mw.util.wikiScript( 'api' ),
-							'data': resData,
-							'success': function (data) {
-									inlineMessage($responseForm, mw.msg( 'feedbackresponse-success' ), function() {
-									closeAllResponders();
-									reloadItem( $item, true );
-								});	
-							},
-							'error': function( jqXHR, textStatus, errorThrown ) {
-								//ajax error
-									inlineMessage($responseForm, mw.msg( 'moodbar-feedback-ajaxerror' ), function() {
-									closeAllResponders();
-									reloadItem( $item, true );
-								});	
-								
-							},
-							'dataType': 'json'
-						} );
-						
-					}
-				})
-				.end();
+					//toggle preview
+					$item = $(this).parent().parent();
+					$item.find('.fbd-response-preview, .fbd-response-text').hide();
+					$item.find('.fbd-response-submit, .fbd-response-preview-back, .ula').show();
+					var wikitext = $item.find('.fbd-response-text').val();
+					wikitext = wikitext.replace(/~{3,5}/g, '') + "\n\n~~~~";  //remove and add signature for 
+					parseWikiText($item, wikitext); 
+				});
 		}		
 		e.preventDefault();
-		
 	}
-	
+
+	function parseWikiText($item, wikitext) {
+		$item.find('.fbd-response-preview-spinner').show();
+		$.ajax({
+			url: mw.util.wikiScript( 'api' ),
+			data: {
+				'action': 'parse',
+				'title': mw.config.get( 'wgPageName' ),
+				'format': 'json',
+				'text': wikitext,
+				'prop': 'text',
+				'pst': true
+			},
+			dataType: 'json',
+			type: 'POST',
+			success: function( data ) {
+				$item
+					.find('.fbd-response-preview-spinner') //fadeout spinner
+					.hide()
+					.end()
+					.find('.fbd-response-wikitext')
+					.html( data.parse.text['*'] )
+					.fadeIn()
+					.end();
+			},
+			error: function() {
+				//handle error
+				//fadeout spinner
+			}
+		});
+	} 
+
 	/**
-	 * Toggle submit button from enabled to disabled
+	 * Toggle submit / preview button from enabled to disabled
 	 * Depends on value of .fbd-response-text
 	 * @param $item jQuery item containing the .fbd-item
+	 * Require at least 1 character and limit to 5000
 	 */
 	function validateResponse($item) {
-		if( $item.find('.fbd-response-text').val() !== "" ) {
-			$item.find( '.fbd-response-submit').removeAttr('disabled');
+		var response = $item.find('.fbd-response-text').val();
+		if( response.length > 0 && response.length <= 5000 ) { 
+			$item.find( '.fbd-response-submit, .fbd-response-preview').removeAttr('disabled');
 		} else {
-			$item.find( '.fbd-response-submit').attr({'disabled':'true'});		
+			$item.find( '.fbd-response-submit, .fbd-response-preview').attr({'disabled':'true'});		
 		}
 	}
 	
 	/**
-	 * Send Message to item in regards with response
-	 * @param $el Element to display message inside of and fadeout
+	 * Generic inline message, with fadeout
+	 * @param $el Element to display message inside
 	 * @param msg text to display
 	 * @callback to execute after fadeOut
 	 */
@@ -528,7 +541,6 @@ jQuery(function( $ ) {
 			.delay(2000)
 			.fadeOut('slow', callback);		
 	}
-	
 	
 	// On-load stuff
 	
@@ -540,6 +552,80 @@ jQuery(function( $ ) {
 	
 	$('.fbd-respond-link').live ('click', showResponseForm );
 	
+	//handle preview back button
+	$('.fbd-response-preview-back').live('click', function(){
+		$item = $(this).parent().parent();
+		$item.find('.fbd-response-submit, .fbd-response-wikitext, .fbd-response-preview-back, .ula').hide();
+		$item.find('.fbd-response-preview, .fbd-response-text').show();
+	});
+
+	//handle response submit
+	$('.fbd-response-submit').live('click', function () {
+			$item = $(this).parent().parent();
+			var fbResponse = $item.find('.fbd-response-text').val();
+			if( fbResponse ){
+				var	clientData = $.client.profile(),
+					item_id = $item.data('mbccontinue').split('|')[1],
+					resData = {
+						'action':'feedbackdashboardresponse',
+						'useragent': clientData.name + '/' + clientData.versionNumber,
+						'system': clientData.platform,
+						'token': mw.config.get('mbEditToken'),
+						'response': fbResponse,
+						'feedback': item_id,
+						'format':'json'
+					};
+				
+				var $responseStatus = $('<div />').attr('class', 'fbd-ajax-response')
+					.append($('<span />').attr('class','mw-ajax-loader fbd-item-response-icon').html('&nbsp;') )
+					.append($('<div />')
+						.append($('<span />').attr('class', 'fbd-ajax-heading').text( mw.msg( 'response-ajax-action-head' ) ) )
+						.append($('<span />').attr('class', 'fbd-ajax-text').text( mw.msg( 'response-ajax-action-body' ) ) )
+				);
+
+				$responseForm = $item.find('.fbd-response-form');
+				$responseForm.empty().append( $responseStatus );
+
+				//send response
+				$.ajax( {
+					'type': 'POST',
+					'url': mw.util.wikiScript( 'api' ),
+					'data': resData,
+					'success': function (data) {
+							$responseForm
+								.find('.mw-ajax-loader')
+								.addClass('fbd-item-response-success')
+								.removeClass('mw-ajax-loader')
+								.end()
+								.find('.fbd-ajax-heading')
+								.text( mw.msg( 'response-ajax-success-head' ) ) 
+								.end()
+								.find('.fbd-ajax-text')
+								.html( mw.msg( 'response-ajax-success-body') )
+								.end();
+								setTimeout(function(){
+									reloadItem($item, true);	
+								}, 5000);
+											
+					},
+					'error': function( jqXHR, textStatus, errorThrown ) {	
+							$responseForm
+								.find('.mw-ajax-loader')
+								.addClass('fbd-item-response-error')
+								.removeClass('mw-ajax-loader')
+								.end()
+								.find('.fbd-ajax-heading') 
+								.text( mw.msg( 'response-ajax-error-head' ) )
+								.end()
+								.find('.fbd-ajax-text')
+								.html( mw.msg( 'response-ajax-error-body' ) );
+					},
+					'dataType': 'json'
+				} );
+				
+			}
+	});				
+
 	$( '#fbd-filters' ).children( 'form' ).submit( function( e ) {
 		e.preventDefault();
 		saveFormState();

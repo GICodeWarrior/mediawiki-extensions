@@ -148,7 +148,8 @@ $wgResourceModules['ext.moodBar.dashboard'] = $mbResourceTemplate + array(
 	'scripts' => 'ext.moodBar.dashboard/ext.moodBar.dashboard.js',
 	'dependencies' => array(
 		'mediawiki.util',
-		'jquery.NobleCount'
+		'jquery.NobleCount',
+		'jquery.elastic'
 	),
 	'messages' => array(
 		'moodbar-feedback-nomore',
@@ -163,7 +164,7 @@ $wgResourceModules['ext.moodBar.dashboard'] = $mbResourceTemplate + array(
 		'moodbar-respond-collapsed',
 		'moodbar-respond-expanded',
 		'moodbar-response-add',
-		'moodbar-response-nosig',
+		'moodbar-response-desc',
 		'moodbar-response-btn',
 		'moodbar-form-note-dynamic',
 		'moodbar-response-ula',
@@ -174,6 +175,15 @@ $wgResourceModules['ext.moodBar.dashboard'] = $mbResourceTemplate + array(
 		'moodbar-response-gfdl',
 		'moodbar-response-gfdl-link',
 		'feedbackresponse-success',
+		'response-back-text',
+		'response-preview-text',
+		'response-preview-text',
+		'response-ajax-action-head', 
+		'response-ajax-action-body',
+		'response-ajax-success-head',
+		'response-ajax-success-body',
+		'response-ajax-error-head', 
+		'response-ajax-error-body',
 	),
 );
 
@@ -186,6 +196,10 @@ $wgResourceModules['jquery.moodBar'] = $mbResourceTemplate + array(
 	'dependencies' => array(
 		'mediawiki.util',
 	),
+);
+
+$wgResourceModules['jquery.elastic'] = $mbResourceTemplate + array(
+	'scripts' => 'jquery.elastic/jquery.elastic.js'
 );
 
 /** Configuration **/

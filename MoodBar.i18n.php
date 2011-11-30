@@ -37,7 +37,7 @@ $messages['en'] = array(
 	'moodbar-respond-expanded' => '▼', // Ignore, do not translate. &#x25BC;
 	'moodbar-respond-text' => 'Respond to this',
 	'moodbar-response-add' => 'Add a response',
-	'moodbar-response-nosig' => 'signature not required',
+	'moodbar-response-desc' => 'Response will reference original comment.  Signature not required.',
 	'moodbar-response-btn' => 'Send response',
 	'moodbar-what-content' => 'This feature is designed to help the community understand the experience of people editing the site.
 For more information, please visit the $1.',
@@ -139,6 +139,16 @@ You agree that a hyperlink or URL is sufficient attribution under the $3 license
 	'moodbar-response-gfdl' => 'GFDL',
 	'moodbar-response-gfdl-link' => 'http://www.gnu.org/copyleft/fdl.html',
 	'feedbackresponse-success' => 'Thank you.  Your response was added to the user\'s talk page.',
+	'response-back-text' => 'Back',
+	'response-preview-text' => 'Preview',
+	'response-ajax-action-head' => 'Responding...',
+	'response-ajax-action-body' => 'Your response is being added.',
+	'response-ajax-success-head' => 'Thanks!',
+	'response-ajax-success-body' => 'Your response has been added.',
+	'response-ajax-error-head' => 'Oops!',
+	'response-ajax-error-body' => 'There was an error adding your response. <br />Please try again later.', 
+
+
 );
 
 /** Message documentation (Message documentation)
@@ -253,6 +263,24 @@ Creative Commons Text',
 	'moodbar-response-gfdl' => '{{optional}}
 GFDL Text',
 	'feedbackresponse-success' => 'Text for successful feedback response',
+	'moodbar-action-reason' => 'Text for Admin action reason', 
+	'moodbar-action-reason-required' => 'Text explaining admin action reason is required',
+	'moodbar-feedback-action-confirm' => 'Text for admin action confirm button',
+	'moodbar-feedback-action-cancel' => 'Text for admin action cancel button',
+	'moodbar-respond-text' => 'Text for Response toggle',
+	'moodbar-respond-collapsed' => 'Special character for response form collapsed',
+	'moodbar-respond-expanded' => 'Special character for response form expanded',
+	'moodbar-response-add' => 'Text for Response heading',
+	'moodbar-response-desc' => 'Text explaining signature is not required, and indicating that the original feedback will be referenced in response',
+	'moodbar-response-btn' => 'Text for Response button',      
+	'response-back-text' => 'Text for response preview back button',
+	'response-preview-text' => 'Text for preview response preview button',
+	'response-ajax-action-head' => 'Text for ajax status heading while request is being made',
+	'response-ajax-action-body' => 'Text for ajax status body while request is being made (can be html)',
+	'response-ajax-success-head' => 'Text for ajax status heading on successful response',
+	'response-ajax-success-body' => 'Text for ajax status body on successful response (can be html)',
+	'response-ajax-error-head' => 'Text for ajax status heading on error',
+	'response-ajax-error-body' => 'Text for ajax status body on error (can be html)', 
 );
 
 /** Afrikaans (Afrikaans)
