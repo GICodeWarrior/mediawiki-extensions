@@ -34,7 +34,7 @@ if ( ! defined( 'SF_VERSION' ) ) {
 	die( '<b>Error:</b> You need to have <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms">Semantic Forms</a> installed in order to use Semantic Image Input.<br />' );
 }
 
-define( 'SII_VERSION', '0.1' );
+define( 'SII_VERSION', '0.2 alpha' );
 
 $wgExtensionCredits['semantic'][] = array(
 	'path' => __FILE__,

@@ -3,6 +3,7 @@
  * 
  * TODO: this was written in a sprint; could be made less evil.
  * 
+ * @licence GNU GPL v3+
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
@@ -31,7 +32,7 @@
 					'action': 'query',
 					'format': 'json',
 					'titles': this.options.imagename,
-					'redirects': 1,
+					'redirects': 1
 				},
 				function( data ) {
 					if ( data.query && data.query.redirects ) {
@@ -192,7 +193,7 @@
 					_this.getRaw( _this.dispReqResult );
 				} );
 			}
-		}
+		};
 		
 		this.init = function() {
 			$.extend( this.options, opts );

@@ -3,6 +3,7 @@
  * 
  * TODO: this was written in a sprint; could be made less evil.
  * 
+ * @licence GNU GPL v3+
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
