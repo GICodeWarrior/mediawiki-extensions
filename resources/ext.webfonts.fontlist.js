@@ -332,6 +332,20 @@
 				version: "2.5.0"
 			},
 
+			"Pothana2000": {
+				eot: "Telu/Pothana2000.eot",
+				ttf: "Telu/Pothana2000.ttf",
+				woff: "Telu/Pothana2000.woff",
+				version: "1.3"
+			},
+
+			"Vemana2000": {
+				eot: "Telu/Vemana2000.eot",
+				ttf: "Telu/Vemana2000.ttf",
+				woff: "Telu/Vemana2000.woff",
+				version: "1.3"
+			},
+
 			"Lohit Punjabi": {
 				eot: "Guru/Lohit-Punjabi.eot",
 				ttf: "Guru/Lohit-Punjabi.ttf",
@@ -373,7 +387,7 @@
 			sa:  [ "Lohit Devanagari", "Samyak Devanagari" ],
 			saz: [ "Pagul" ],
 			ta:  [ "Lohit Tamil", "Thendral", "Thenee" ],
-			te:  [ "Lohit Telugu" ],
+			te:  [ "Lohit Telugu", "Pothana2000", "Vemana2000" ],
 			ti:  [ "AbyssinicaSIL" ]
 		}
 	};
