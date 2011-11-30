@@ -10,168 +10,194 @@
 			"Iranian Sans": {
 				eot: "Arab/IranianSans.eot",
 				ttf: "Arab/IranianSans.ttf",
-				woff: "Arab/IranianSans.woff"
+				woff: "Arab/IranianSans.woff",
+				version: "1.0"
 			},
 
 			"Lohit Bengali": {
 				eot: "Beng/Lohit-Bengali.eot",
 				ttf: "Beng/Lohit-Bengali.ttf",
-				woff: "Beng/Lohit-Bengali.woff"
+				woff: "Beng/Lohit-Bengali.woff",
+				version: "2.5.0"
 			},
 
 			"Lohit Assamese": {
 				eot: "Beng/Lohit-Assamese.eot",
 				ttf: "Beng/Lohit-Assamese.ttf",
-				woff: "Beng/Lohit-Assamese.woff"
+				woff: "Beng/Lohit-Assamese.woff",
+				version: "2.5.0"
 			},
 
 			"Lohit Devanagari": {
 				eot: "Deva/Lohit-Devanagari.eot",
 				ttf: "Deva/Lohit-Devanagari.ttf",
-				woff: "Deva/Lohit-Devanagari.woff"
+				woff: "Deva/Lohit-Devanagari.woff",
+				version: "2.5.0"
 			},
 
 			"Samyak Devanagari": {
 				eot: "Deva/SamyakDevanagari.eot",
 				ttf: "Deva/SamyakDevanagari.ttf",
-				woff: "Deva/SamyakDevanagari.woff"
+				woff: "Deva/SamyakDevanagari.woff",
+				version: "1.0"
 			},
 
 			AbyssinicaSIL: {
 				eot: "Ethi/AbyssinicaSIL-R.eot",
 				ttf: "Ethi/AbyssinicaSIL-R.ttf",
-				woff: "Ethi/AbyssinicaSIL-R.woff"
+				woff: "Ethi/AbyssinicaSIL-R.woff",
+				version: "1.2"
 			},
 
 			"Lohit Gujarati": {
 				eot: "Gujr/Lohit-Gujarati.eot",
 				ttf: "Gujr/Lohit-Gujarati.ttf",
-				woff: "Gujr/Lohit-Gujarati.woff"
+				woff: "Gujr/Lohit-Gujarati.woff",
+				version: "2.5.0"
 			},
 
 			"Samyak Gujarati": {
 				eot: "Gujr/SamyakGujarati.eot",
 				ttf: "Gujr/SamyakGujarati.ttf",
-				woff: "Gujr/SamyakGujarati.woff"
+				woff: "Gujr/SamyakGujarati.woff",
+				version: "1.0"
 			},
 
 			"Miriam CLM": {
 				eot: "Hebr/MiriamCLM-Book.eot",
 				ttf: "Hebr/MiriamCLM-Book.ttf",
-				woff: "Hebr/MiriamCLM-Book.woff"
+				woff: "Hebr/MiriamCLM-Book.woff",
+				version: "0.105"
 			},
 
 			"Taamey Frank CLM": {
 				eot: "Hebr/TaameyFrankCLM.eot",
 				ttf: "Hebr/TaameyFrankCLM.ttf",
 				woff: "Hebr/TaameyFrankCLM.woff",
-				svg: "Hebr/TaameyFrankCLM.svg"
+				svg: "Hebr/TaameyFrankCLM.svg",
+				version: "0.110"
 			},
 
 			KhmerOS: {
 				eot: "Khmr/KhmerOS.eot",
 				ttf: "Khmr/KhmerOS.ttf",
 				woff: "Khmr/KhmerOS.woff",
-				svg:  "Khmr/KhmerOS.svg"
+				svg:  "Khmr/KhmerOS.svg",
+				version: "1.10"
 			},
 
 			KhmerOSbattambang: {
 				eot: "Khmr/KhmerOSbattambang.eot",
 				ttf: "Khmr/KhmerOSbattambang.ttf",
 				woff: "Khmr/KhmerOSbattambang.woff",
-				svg:  "Khmr/KhmerOSbattambang.svg"
+				svg:  "Khmr/KhmerOSbattambang.svg",
+				version: "1.10"
 			},
 
 			KhmerOSbokor: {
 				eot: "Khmr/KhmerOSbokor.eot",
 				ttf: "Khmr/KhmerOSbokor.ttf",
 				woff: "Khmr/KhmerOSbokor.woff",
-				svg:  "Khmr/KhmerOSbokor.svg"
+				svg:  "Khmr/KhmerOSbokor.svg",
+				version: "1.10"
 			},
 
 			KhmerOSfreehand: {
 				eot: "Khmr/KhmerOSfreehand.eot",
 				ttf: "Khmr/KhmerOSfreehand.ttf",
 				woff: "Khmr/KhmerOSfreehand.woff",
-				svg:  "Khmr/KhmerOSfreehand.svg"
+				svg:  "Khmr/KhmerOSfreehand.svg",
+				version: "1.10"
 			},
 
 			KhmerOSfasthand: {
 				eot: "Khmr/KhmerOSfasthand.eot",
 				ttf: "Khmr/KhmerOSfasthand.ttf",
 				woff: "Khmr/KhmerOSfasthand.woff",
-				svg:  "Khmr/KhmerOSfasthand.svg"
+				svg:  "Khmr/KhmerOSfasthand.svg",
+				version: "1.10"
 			},
 
 			KhmerOSmuol: {
 				eot: "Khmr/KhmerOSmuol.eot",
 				ttf: "Khmr/KhmerOSmuol.ttf",
 				woff: "Khmr/KhmerOSmuol.woff",
-				svg:  "Khmr/KhmerOSmuol.svg"
+				svg:  "Khmr/KhmerOSmuol.svg",
+				version: "1.10"
 			},
 
 			KhmerOSmuollight: {
 				eot: "Khmr/KhmerOSmuollight.eot",
 				ttf: "Khmr/KhmerOSmuollight.ttf",
 				woff: "Khmr/KhmerOSmuollight.woff",
-				svg:  "Khmr/KhmerOSmuollight.svg"
+				svg:  "Khmr/KhmerOSmuollight.svg",
+				version: "1.10"
 			},
 
 			KhmerOSmuolpali: {
 				eot: "Khmr/KhmerOSmuolpali.eot",
 				ttf: "Khmr/KhmerOSmuolpali.ttf",
 				woff: "Khmr/KhmerOSmuolpali.woff",
-				svg:  "Khmr/KhmerOSmuolpali.svg"
+				svg:  "Khmr/KhmerOSmuolpali.svg",
+				version: "1.10"
 			},
 
 			KhmerOSsiemreap: {
 				eot: "Khmr/KhmerOSsiemreap.eot",
 				ttf: "Khmr/KhmerOSsiemreap.ttf",
 				woff: "Khmr/KhmerOSsiemreap.woff",
-				svg:  "Khmr/KhmerOSsiemreap.svg"
+				svg:  "Khmr/KhmerOSsiemreap.svg",
+				version: "1.10"
 			},
 
 			Kedage: {
 				eot: "Knda/Kedage.eot",
 				ttf: "Knda/Kedage.ttf",
-				woff: "Knda/Kedage.woff"
+				woff: "Knda/Kedage.woff",
+				version: "1.06"
 			},
 
 			"Lohit Kannada": {
 				eot: "Knda/Lohit-Kannada.eot",
 				ttf: "Knda/Lohit-Kannada.ttf",
-				woff: "Knda/Lohit-Kannada.woff"
+				woff: "Knda/Lohit-Kannada.woff",
+				version: "2.5.0"
 			},
 
 			"Charis SIL": {
 				eot: "Latn/CharisSIL-R.eot",
 				ttf: "Latn/CharisSIL-R.ttf",
-				woff: "Latn/CharisSIL-R.woff"
+				woff: "Latn/CharisSIL-R.woff",
+				version: "4.011"
 			},
 
 			Perizia: {
 				eot: "Latn/Perizia.eot",
 				ttf: "Latn/Perizia.ttf",
-				woff: "Latn/Perizia.woff"
+				woff: "Latn/Perizia.woff",
+				version: "0.1"
 			},
 
 			RufScript: {
 				eot: "Latn/Rufscript.eot",
 				ttf: "Latn/Rufscript.ttf",
-				woff: "Latn/Rufscript.woff"
+				woff: "Latn/Rufscript.woff",
+				version: "0.1"
 			},
 
 			Ubuntu: {
 				eot: "Latn/ubuntu-r-webfont.eot",
 				ttf: "Latn/ubuntu-r.ttf",
 				woff: "Latn/ubuntu-r-webfont.woff",
-				svg: "Latn/ubuntu-r-webfont.svg"
+				svg: "Latn/ubuntu-r-webfont.svg",
+				version: "0.69"
 			},
 
 			AnjaliOldLipi: {
 				eot: "Mlym/AnjaliOldLipi.eot",
 				ttf: "Mlym/AnjaliOldLipi.ttf",
-				woff: "Mlym/AnjaliOldLipi.woff"
+				woff: "Mlym/AnjaliOldLipi.woff",
+				version: "0.730"
 			},
 
 			Meera: {
@@ -187,7 +213,8 @@
 					"ൿ": "ക്‍ ",
 					"ൻ‍റ": "ന്റ",
 					"ന്‍റെ": "ന്റെ"
-				}
+				},
+				version: "4.5"
 			},
 
 			Rachana: {
@@ -203,7 +230,8 @@
 					"ൿ": "ക്‍ ",
 					"ൻ‍റ": "ന്റ",
 					"ന്‍റെ": "ന്റെ"
-				}
+				},
+				version: "4.5"
 			},
 
 			RaghuMalayalam: {
@@ -219,89 +247,103 @@
 					"ൿ": "ക്‍ ",
 					"ൻ‍റ": "ന്റ",
 					"ന്‍റെ": "ന്റെ"
-				}
+				},
+				version: "2.0"
 			},
 
 			"Masterpiece Uni Sans": {
 				eot: "Mymr/MasterpieceUniSans.eot",
 				ttf: "Mymr/MasterpieceUniSans.ttf",
 				woff: "Mymr/MasterpieceUniSans.woff",
-				svg:  "Mymr/MasterpieceUniSans.svg"
+				svg:  "Mymr/MasterpieceUniSans.svg",
+				version: "0.5"
 			},
 
 			Myanmar3: {
 				eot: "Mymr/Myanmar3.eot",
 				ttf: "Mymr/Myanmar3.ttf",
 				woff: "Mymr/Myanmar3.woff",
-				svg:  "Mymr/Myanmar3.svg"
+				svg:  "Mymr/Myanmar3.svg",
+				version: "3.0"
 			},
 
 			"Padauk-Regular": {
 				eot: "Mymr/Padauk-Regular.eot",
 				ttf: "Mymr/Padauk-Regular.ttf",
 				woff: "Mymr/Padauk-Regular.woff",
-				svg:  "Mymr/Padauk-Regular.svg"
+				svg:  "Mymr/Padauk-Regular.svg",
+				version: "2.8"
 			},
 
 			Yunghkio: {
 				eot: "Mymr/Yunghkio.eot",
 				ttf: "Mymr/Yunghkio.ttf",
 				woff: "Mymr/Yunghkio.woff",
-				svg:  "Mymr/Yunghkio.svg"
+				svg:  "Mymr/Yunghkio.svg",
+				version: "1.0"
 			},
 
 			"Lohit Oriya": {
 				eot: "Orya/Lohit-Oriya.eot",
 				ttf: "Orya/Lohit-Oriya.ttf",
-				woff: "Orya/Lohit-Oriya.woff"
+				woff: "Orya/Lohit-Oriya.woff",
+				version: "2.5.0"
 			},
 
 			Utkal: {
 				eot: "Orya/utkal.eot",
 				ttf: "Orya/utkal.ttf",
-				woff: "Orya/utkal.woff"
+				woff: "Orya/utkal.woff",
+				version: "0.13"
 			},
 
 			Pagul: {
 				eot: "Saur/Pagul.eot",
 				ttf: "Saur/Pagul.ttf",
-				woff: "Saur/Pagul.woff"
+				woff: "Saur/Pagul.woff",
+				version: "1.0"
 			},
 
 			"Lohit Tamil": {
 				eot: "Taml/Lohit-Tamil.eot",
 				ttf: "Taml/Lohit-Tamil.ttf",
-				woff: "Taml/Lohit-Tamil.woff"
+				woff: "Taml/Lohit-Tamil.woff",
+				version: "2.5.0"
 			},
 
 			Thendral:  {
 				eot: "Taml/ThendralUni.eot",
 				ttf: "Taml/ThendralUni.ttf",
-				woff: "Taml/ThendralUni.woff"
+				woff: "Taml/ThendralUni.woff",
+				version: "1.0"
 			},
 
 			Thenee:  {
 				eot: "Taml/TheneeUni.eot",
 				ttf: "Taml/TheneeUni.ttf",
-				woff: "Taml/TheneeUni.woff"
+				woff: "Taml/TheneeUni.woff",
+				version: "1.0"
 			},
 
 			"Lohit Telugu": {
 				eot: "Telu/Lohit-Telugu.eot",
 				ttf: "Telu/Lohit-Telugu.ttf",
-				woff: "Telu/Lohit-Telugu.woff"
+				woff: "Telu/Lohit-Telugu.woff",
+				version: "2.5.0"
 			},
 
 			"Lohit Punjabi": {
 				eot: "Guru/Lohit-Punjabi.eot",
 				ttf: "Guru/Lohit-Punjabi.ttf",
-				woff: "Guru/Lohit-Punjabi.woff"
+				woff: "Guru/Lohit-Punjabi.woff",
+				version: "2.5.0"
 			},
 
 			"Saab": {
 				eot: "Guru/Saab.eot",
 				ttf: "Guru/Saab.ttf",
-				woff: "Guru/Saab.woff"
+				woff: "Guru/Saab.woff",
+				version: "0.91"
 			}
 
 		},

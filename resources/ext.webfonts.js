@@ -104,12 +104,17 @@
 			var fontconfig = mw.webfonts.config.fonts[fontFamily];
 			var base = mw.config.get( 'wgExtensionAssetsPath' ) + '/WebFonts/fonts/';
 			var fontFormats = [];
+			var version = "0.0";
+			if ( 'version' in fontconfig ) {
+				version = fontconfig.version;
+			}
+			var versionSuffix = "?version=" + version;
 			var styleString =
 				"<style type='text/css'>\n@font-face {\n"
 				+ "\tfont-family: '"+fontFamily+"';\n";
 
 			if ( 'eot' in fontconfig ) {
-				styleString += "\tsrc: url('"+base+fontconfig.eot+"');\n";
+				styleString += "\tsrc: url('" + base+ fontconfig.eot + versionSuffix+ "');\n";
 			}
 
 			styleString += "\tsrc: ";
@@ -122,15 +127,15 @@
 			}
 			
 			if ( 'woff' in fontconfig ) {
-				fontFormats.push( "\t\turl('"+base+fontconfig.woff+"') format('woff')" );
+				fontFormats.push( "\t\turl('" + base + fontconfig.woff + versionSuffix + "') format('woff')" );
 			}
 
 			if ( 'svg' in fontconfig ) {
-				fontFormats.push( "\t\turl('"+base+fontconfig.svg+"#"+fontFamily+"') format('svg')" );
+				fontFormats.push( "\t\turl('" + base + fontconfig.svg + versionSuffix + "#" + fontFamily + "') format('svg')" );
 			}
 
 			if ( 'ttf' in fontconfig ) {
-				fontFormats.push( "\t\turl('"+base+fontconfig.ttf+"') format('truetype')" );
+				fontFormats.push( "\t\turl('" + base + fontconfig.ttf + versionSuffix + "') format('truetype')" );
 			}
 			
 			styleString += fontFormats.join() + ";\n"
