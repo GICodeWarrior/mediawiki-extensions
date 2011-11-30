@@ -212,7 +212,7 @@ class OnlineStatusBarHooks {
 		}
 
 		// if user is online we need to remove parser cache so that page update when status change
-		if ( $result[0] != 'offline' ) {
+		if ( $result !== false && $result[0] != 'offline' ) {
 			$parser->getOutput()->updateCacheExpiry($wgOnlineStatusBar_LogoutTime);
 		}
 
