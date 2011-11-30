@@ -504,7 +504,7 @@ jQuery(function( $ ) {
 	 * Require at least 1 character and limit to 5000
 	 */
 	function validateResponse($item) {
-		var response = $item.find('.fbd-response-text').val();
+		var response = $.trim( $item.find('.fbd-response-text').val() ); 
 		if( response.length > 0 && response.length <= 5000 ) { 
 			$item.find( '.fbd-response-submit, .fbd-response-preview').removeAttr('disabled');
 		} else {

@@ -208,9 +208,9 @@ $wgMoodBarConfig = array(
 		array(
 			'buckets' =>
 				array(
-					'feedback' => 80,
-					'share' => 10,
-					'editing' => 10,
+					'feedback' => 100,
+					'share' => 0, //disabled
+					'editing' => 0, //disabled
 				),
 			'version' => 3,
 			'expires' => 30,

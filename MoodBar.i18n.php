@@ -142,8 +142,6 @@ For more information, please visit the $1.',
 	'response-ajax-success-body' => 'Your response has been added.',
 	'response-ajax-error-head' => 'Oops!',
 	'response-ajax-error-body' => 'There was an error adding your response. <br />Please try again later.', 
-
-
 );
 
 /** Message documentation (Message documentation)
