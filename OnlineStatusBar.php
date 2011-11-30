@@ -85,16 +85,6 @@ $wgAutoloadClasses['OnlineStatusBar'] = "$dir/OnlineStatusBar.body.php";
 $wgAutoloadClasses['OnlineStatusBar_StatusCheck'] = "$dir/OnlineStatusBar.status.php";
 $wgAutoloadClasses['OnlineStatusBarHooks'] = "$dir/OnlineStatusBarHooks.php";
 
-// Configuration
-// Those values can be overriden in LocalSettings, do not change it here
-$wgOnlineStatusBarIcon = array(
-	'online' => 'statusgreen.png',
-	'busy' => 'statusorange.png',
-	'away' => 'statusorange.png',
-	'hidden' => 'statusred.png',
-	'offline' => 'statusred.png',
-);
-
 // For memcached
 define( 'ONLINESTATUSBAR_DELAYED_CACHE', 'd' );
 define( 'ONLINESTATUSBAR_NORMAL_CACHE', 'n' );
@@ -102,6 +92,9 @@ define( 'ONLINESTATUSBAR_NORMAL_CACHE', 'n' );
 define( 'ONLINESTATUSBAR_CK_DELAYED', 1 );
 define( 'ONLINESTATUSBAR_CK_AWAY', 2 );
 
+
+// Configuration
+// Those values can be overriden in LocalSettings, do not change it here
 // default for anonymous and uknown users
 $wgOnlineStatusBarTrackIpUsers = false;
 // it's better to cron this for performance reasons
@@ -118,6 +111,23 @@ $wgOnlineStatusBarDefaultEnabled = false;
 $wgOnlineStatusBar_LogoutTime = 3600;
 // time to wait until we consider user away
 $wgOnlineStatusBar_AwayTime = 15;
+// Cache
+// default 10 minutes for online
+$wgOnlineStatusBarCacheTime = array(
+	'online' => 10,
+	'busy' => 10,
+	'away' => 10,
+	'offline' => 60,
+);
+// Icons
+$wgOnlineStatusBarIcon = array(
+	'online' => 'statusgreen.png',
+	'busy' => 'statusorange.png',
+	'away' => 'statusorange.png',
+	'hidden' => 'statusred.png',
+	'offline' => 'statusred.png',
+);
+
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'OnlineStatusBarHooks::ckSchema';
 $wgHooks['UserLogout'][] = 'OnlineStatusBarHooks::logout';

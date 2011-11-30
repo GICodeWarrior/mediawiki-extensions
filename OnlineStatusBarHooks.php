@@ -98,6 +98,7 @@ class OnlineStatusBarHooks {
 		$text = wfMessage( 'onlinestatusbar-line', $user->getName() )
 				->rawParams( $image )->params( $modetext )->escaped();
 		$context = $article->getContext();
+		$context->getOutput()->updateCacheExpiry($wgOnlineStatusBarCacheTime[$status] * 60);
 		$context->getOutput()->addHtml( OnlineStatusBar::getStatusBarHtml( $text ) );
 
 		return true;
@@ -194,7 +195,7 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function parserGetVariable( &$parser, &$varCache, &$index, &$ret ) {
-		global $wgOnlineStatusBar_LogoutTime;
+		global $wgOnlineStatusBarCacheTime;
 		if ( $index != 'ISONLINE' ) {
 			return true;
 		}
@@ -211,9 +212,9 @@ class OnlineStatusBarHooks {
 			return true;
 		}
 
-		// if user is online we need to remove parser cache so that page update when status change
-		if ( $result !== false && $result[0] != 'offline' ) {
-			$parser->getOutput()->updateCacheExpiry($wgOnlineStatusBar_LogoutTime);
+		// if user is tracked we need to remove parser cache so that page update when status change
+		if ( $result !== false  ) {
+			$parser->getOutput()->updateCacheExpiry($wgOnlineStatusBarCacheTime[$result[0]] * 60);
 		}
 
 		$ret = $result[0];
