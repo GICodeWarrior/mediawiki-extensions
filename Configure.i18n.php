@@ -3569,6 +3569,7 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Mjbmr
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'configure-desc-group' => 'گروه',
@@ -3596,7 +3597,7 @@ $messages['fa'] = array(
 	'configure-section-images' => 'پرونده‌ها',
 	'configure-section-specialpages' => 'صفحه‌های ویژه',
 	'configure-section-recentchanges' => 'تغییرات اخیر',
-	'configure-section-users' => 'کاربرها',
+	'configure-section-users' => 'کاربران',
 	'configure-view-default' => 'تنظیمات پیش‌فرض',
 	'right-viewconfig' => 'نمایش پیکربندی ویکی',
 	'right-viewconfig-all' => 'نمایش تمام پیکربندی‌های ویکی',
