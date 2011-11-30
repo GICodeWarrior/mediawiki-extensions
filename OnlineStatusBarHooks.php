@@ -64,6 +64,7 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function renderBar( &$article, &$outputDone, &$pcache ) {
+		global $wgOnlineStatusBarCacheTime;
 		// Update status of all users who wants to be tracked
 		OnlineStatusBar_StatusCheck::updateStatus();
 
