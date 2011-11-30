@@ -133,7 +133,7 @@ For more information, please visit the $1.',
         //Feedback Response
 	'moodbar-response-terms' => 'By submitting, you agree to transparency under these $1.',
 	'moodbar-response-link' => 'terms',
-	'moodbar-response-url' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
+	'moodbar-response-url' => '//wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'response-back-text' => 'Back',
 	'response-preview-text' => 'Preview',
 	'response-ajax-action-head' => 'Responding...',
