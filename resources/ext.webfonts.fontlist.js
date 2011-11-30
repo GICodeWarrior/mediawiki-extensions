@@ -14,9 +14,15 @@
 			},
 
 			"Lohit Bengali": {
-				eot: "Beng/LohitBengali.eot",
-				ttf: "Beng/LohitBengali.ttf",
-				woff: "Beng/LohitBengali.woff"
+				eot: "Beng/Lohit-Bengali.eot",
+				ttf: "Beng/Lohit-Bengali.ttf",
+				woff: "Beng/Lohit-Bengali.woff"
+			},
+
+			"Lohit Assamese": {
+				eot: "Beng/Lohit-Assamese.eot",
+				ttf: "Beng/Lohit-Assamese.ttf",
+				woff: "Beng/Lohit-Assamese.woff"
 			},
 
 			"Lohit Devanagari": {
@@ -303,7 +309,7 @@
 		languages: {
 			// en: [ "RufScript", "Perizia", "Ubuntu" ],
 			am:  [ "AbyssinicaSIL" ],
-			as:  [ "Lohit Bengali" ],
+			as:  [ "Lohit Assamese" ],
 			bn:  [ "Lohit Bengali" ],
 			bpy: [ "Lohit Bengali" ],
 			cdo: [ "Charis SIL" ],
