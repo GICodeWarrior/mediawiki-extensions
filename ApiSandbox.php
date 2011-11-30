@@ -51,7 +51,7 @@ function efASAPIGetDescription( &$module, &$desc ) {
 
 	$desc[] = 'The ApiSandbox extension is installed on this wiki, it adds a graphical interface to using the MediaWiki Api.';
 	$desc[] = 'It is helpful for new users, allowing request debugging without any extra tools.';
-	$desc[] = 'See ' . SpecialPage::getTitleFor( 'ApiSandbox' )->getFullUrl();
+	$desc[] = 'See ' . SpecialPage::getTitleFor( 'ApiSandbox' )->getCanonicalURL();
 
 	// Append some more whitespace for ApiMain
 	for ( $i = 0; $i < 3; $i++ ) {
