@@ -144,6 +144,7 @@ class OnlineStatusBar_StatusCheck {
 			'username' => $wgUser->getName(),
 			'timestamp' => $dbw->timestamp(),
 		);
+		self::setCache( $wgUser->getName(), '', ONLINESTATUSBAR_NORMAL_CACHE );
 		$dbw->insert( 'online_status', $row, __METHOD__ );
 		return false;
 	}
@@ -186,6 +187,7 @@ class OnlineStatusBar_StatusCheck {
 				array( 'username' => $wgUser->getName() ),
 				__METHOD__
 			);
+			self::setCache( $wgUser->getName(), '', ONLINESTATUSBAR_NORMAL_CACHE );
 			self::deleteOld();
 		}
 		return true;
