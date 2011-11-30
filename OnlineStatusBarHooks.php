@@ -112,7 +112,7 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function preferencesHook( User $user, array &$preferences ) {
-		global $wgOnlineStatusBarDefaultOnline, $wgOnlineStatusBarDefaultEnabled, $wgOnlineStatusBar_AwayTime, $wgOnlineStatusBarModes;
+		global $wgOnlineStatusBarDefaultOnline, $wgOnlineStatusBarDefaultEnabled, $wgOnlineStatusBar_AwayTime, $wgOnlineStatusBar_LogoutTime, $wgOnlineStatusBarModes;
 		$preferences['OnlineStatusBar_active'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-used', 'section' => 'misc/onlinestatus' );
 		$preferences['OnlineStatusBar_hide'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-hide', 'section' => 'misc/onlinestatus' );
 		$preferences['OnlineStatusBar_away'] = array( 'type' => 'toggle', 'label-message' => 'onlinestatusbar-away', 'section' => 'misc/onlinestatus' );
@@ -125,7 +125,7 @@ class OnlineStatusBarHooks {
 				wfMessage( 'onlinestatusbar-status-hidden' )->escaped() => 'hidden'
 			),
 		);
-		$preferences['OnlineStatusBar_awaytime'] = array( 'type' => 'text', 'label-message' => 'onlinestatusbar-away-time', 'section' => 'misc/onlinestatus' );
+		$preferences['OnlineStatusBar_awaytime'] = array( 'min' => 2, 'max' => $wgOnlineStatusBar_LogoutTime, 'type' => 'int', 'label-message' => 'onlinestatusbar-away-time', 'section' => 'misc/onlinestatus' );
 		return true;
 	}
 
