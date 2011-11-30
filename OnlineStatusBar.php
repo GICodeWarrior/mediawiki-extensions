@@ -27,55 +27,17 @@ $dir = dirname( __FILE__ );
 $wgExtensionMessagesFiles['OnlineStatusBar'] = "$dir/OnlineStatusBar.i18n.php";
 
 $wgResourceModules['ext.OnlineStatusBar'] = array (
-	'styles' => 'OnlineStatusBar.css',
-	'localBasePath' => dirname ( __FILE__ ),
-	'remoteExtPath' => 'OnlineStatusBar',
-);
-
-$wgResourceModules['ext.OnlineStatusBar.vector'] = array (
-	'styles' => 'OnlineStatusBarVector.css',
-	'localBasePath' => dirname ( __FILE__ ),
-	'remoteExtPath' => 'OnlineStatusBar',
-);
-
-$wgResourceModules['ext.OnlineStatusBar.modern'] = array (
-	'styles' => 'OnlineStatusBarModern.css',
-	'localBasePath' => dirname ( __FILE__ ),
-	'remoteExtPath' => 'OnlineStatusBar',
-);
-
-$wgResourceModules['ext.OnlineStatusBar.chick'] = array (
-	'styles' => 'OnlineStatusBarChick.css',
-	'localBasePath' => dirname ( __FILE__ ),
-	'remoteExtPath' => 'OnlineStatusBar',
-);
-
-$wgResourceModules['ext.OnlineStatusBar.standard'] = array (
-	'styles' => 'OnlineStatusBarClassic.css',
-	'localBasePath' => dirname ( __FILE__ ),
-	'remoteExtPath' => 'OnlineStatusBar',
-);
-
-$wgResourceModules['ext.OnlineStatusBar.monobook'] = array (
-	'styles' => 'OnlineStatusBarMono.css',
-	'localBasePath' => dirname ( __FILE__ ),
-	'remoteExtPath' => 'OnlineStatusBar',
-);
-
-$wgResourceModules['ext.OnlineStatusBar.simple'] = array (
-	'styles' => 'OnlineStatusBarSimple.css',
-	'localBasePath' => dirname ( __FILE__ ),
-	'remoteExtPath' => 'OnlineStatusBar',
-);
-
-$wgResourceModules['ext.OnlineStatusBar.cologne'] = array (
-	'styles' => 'OnlineStatusBarCologne.css',
-	'localBasePath' => dirname ( __FILE__ ),
-	'remoteExtPath' => 'OnlineStatusBar',
-);
-
-$wgResourceModules['ext.OnlineStatusBar.nostalgia'] = array (
-	'styles' => 'OnlineStatusBarNostalgia.css',
+	'skinStyles' => array (
+		'default' => array ( 'OnlineStatusBar.css' ),
+		'chick' => array ( 'OnlineStatusBarChick.css' ),
+		'vector' => array ( 'OnlineStatusBarVector.css'),
+		'modern' => array ( 'OnlineStatusBarModern.css' ),
+		'standard' => array ( 'OnlineStatusBarClassic.css' ),
+		'monobook' => array ( 'OnlineStatusBarMono.css' ),
+		'simple' => array ( 'OnlineStatusBarSimple.css' ),
+		'cologne' => array ( 'OnlineStatusBarCologne.css' ),
+		'nostalgia' => array ( 'OnlineStatusBarNostalgia.css' ),
+	),
 	'localBasePath' => dirname ( __FILE__ ),
 	'remoteExtPath' => 'OnlineStatusBar',
 );
