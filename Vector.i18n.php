@@ -1573,6 +1573,7 @@ $messages['scn'] = array(
  * @author Budhajeewa
  * @author Calcey
  * @author තඹරු විජේසේකර
+ * @author පසිඳු කාවින්ද
  * @author බිඟුවා
  */
 $messages['si'] = array(
@@ -1585,6 +1586,7 @@ $messages['si'] = array(
 	'vector-editwarning-preference' => 'මා සංස්කරණ පිටුවක් සුරකිනු නොලැබූ වෙනස්කිරීම් සමඟ අතහැර යන විට අවවාද කරන්න',
 	'vector-simplesearch-search' => 'ගවේශණය කරන්න',
 	'vector-simplesearch-containing' => 'ඇතුළත් වෙමින් පවතී...',
+	'vector-noexperiments-preference' => 'ඉදිරි අත්හදා බැලීම් වලින් මාව බැහැර කරන්න',
 );
 
 /** Slovak (Slovenčina)
