@@ -939,7 +939,7 @@ $messages['gl'] = array(
 	'storyboard-nosuchstory' => 'A historia solicitada non existe.
 Pode ter sido eliminada.',
 	'storyboard-storyunpublished' => 'A historia que solicitou aínda non foi publicada.',
-	'storyboard-nostorytitle' => 'Ten que especificar o título ou a ID da historia que desexa ver.',
+	'storyboard-nostorytitle' => 'Ten que especificar o título ou o ID da historia que desexa ver.',
 	'storyboard-cantedit' => 'Non ten os permisos necesarios para editar historias.',
 	'storyboard-canedit' => 'Pode [$1 editar] e publicar esta historia.',
 	'storyboard-createdandmodified' => 'Creada o $1 ás $2 e modificada por última vez o $3 ás $4',
