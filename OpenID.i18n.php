@@ -4716,12 +4716,8 @@ S'a veul dovré OpenID për intré ant l'avnì, a peul [[Special:OpenIDConvert|c
 Dësnò, ch\'a preuva ël boton "Continua".',
 	'openidclientonlytext' => "A peul pa dovré dij cont da sta wiki-sì com OpenID dzora a n'àutr sit.",
 	'openidloginlabel' => 'Adrëssa OpenID',
-	'openidlogininstructions' => "{{SITENAME}} a sosten lë stàndard [//openid.net/ OpenID] për na signadura sola antra sit ëd l'aragnà. OpenID at përmët ëd rintré an vàire sit diferent an sl'aragnà sensa dovré na ciav diferenta për mincadun. (Varda [//en.wikipedia.org/wiki/OpenID Artìcol OpenID ëd Wikipedia] për savèjne ëd pi).
-
-S'a l'ha già un cont dzora a {{SITENAME}}, a peul [[Special:UserLogin|intré ant ël sistema]] con sò nòm utent e ciav com normal.
-Për dovré OpenID ant l'avnì, a peul [[Special:OpenIDConvert|convertì sò cont a OpenID]] apress ch'a sia intrà normalment.
-
-A-i é già motobin ëd [//openid.net/get/ fornitor d'OpenID], e a podrìa già avèj un cont abilità a OpenID dzora a n'àutr servissi.",
+	'openidlogininstructions' => "{{SITENAME}} a sosten lë stàndard [//openid.net/ OpenID] për na signadura sola antra sit ëd l'aragnà. OpenID a-j përmët ëd rintré an vàire sit diferent an sl'aragnà sensa dovré na ciav diferenta për mincadun. (Ch'a lesa [//en.wikipedia.org/wiki/OpenID Artìcol OpenID ëd Wikipedia] për savèjne ëd pi).
+A-i son già tanti [//openid.net/get/ fornitor d'OpenID], e a podrìa già avèj un cont abilità a OpenID dzora a n'àutr servissi.",
 	'openidupdateuserinfo' => 'Modìfica mie anformassion përsonaj:',
 	'openiddelete' => 'Scancela OpenID',
 	'openiddelete-text' => 'An sgnacand ël boton "{{int:openiddelete-button}}", it gavras l\'OpenID $1 da tò cont.
