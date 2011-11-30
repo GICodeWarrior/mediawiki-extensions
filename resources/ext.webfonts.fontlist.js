@@ -138,9 +138,9 @@
 			},
 
 			"Lohit Kannada": {
-				eot: "Knda/LohitKannada.eot",
-				ttf: "Knda/LohitKannada.ttf",
-				woff: "Knda/LohitKannada.woff"
+				eot: "Knda/Lohit-Kannada.eot",
+				ttf: "Knda/Lohit-Kannada.ttf",
+				woff: "Knda/Lohit-Kannada.woff"
 			},
 
 			"Charis SIL": {
