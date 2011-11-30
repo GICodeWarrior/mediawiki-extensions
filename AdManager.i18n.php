@@ -193,6 +193,17 @@ $messages['de'] = array(
 	'right-admanager' => '[[Special:AdManager|Anzeigen konfigurieren]]',
 );
 
+/** Persian (فارسی)
+ * @author ZxxZxxZ
+ */
+$messages['fa'] = array(
+	'admanager_Page' => 'صفحه‌ها',
+	'admanager_Category' => 'رده‌ها',
+	'admanager_added' => 'تغییرات شما ذخیره شده‌است',
+	'admanager_zonenum' => 'شمارهٔ منطقه: $1',
+	'admanager_zonenotnumber' => 'خطا! $1 عدد نیست.',
+);
+
 /** French (Français)
  * @author Gomoko
  * @author Hashar
