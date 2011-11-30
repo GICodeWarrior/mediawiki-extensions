@@ -2192,11 +2192,13 @@ $messages['eu'] = array(
  * @author Ebraminio
  * @author Mjbmr
  * @author Vahid
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'viewapc-clear-confirm' => 'آیا می خواهید کاشه را خالی کنید؟',
 	'viewapc-mode-stats' => 'مشاهده آمار میزبان',
 	'viewapc-info-general' => 'اطلاعات عمومی',
+	'viewapc-php-version' => 'نسخهٔ پی‌اچ‌پی',
 	'viewapc-shared-memory' => 'حافظه مشترک',
 	'viewapc-start-time' => 'زمان شروع',
 	'viewapc-memory-usage' => 'حافظه استفاده شده',
@@ -2222,6 +2224,7 @@ $messages['fa'] = array(
 	'viewapc-ls-header-size' => 'اندازه',
 	'viewapc-ls-header-created' => 'ایجاد شد',
 	'viewapc-ls-header-deleted' => 'حذف شد',
+	'viewapc-ls-sort-size' => 'اندازه',
 	'viewapc-ls-sort-name' => 'نام',
 	'viewapc-ls-limit-none' => 'همه',
 );
