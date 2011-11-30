@@ -961,16 +961,27 @@ $messages['de-formal'] = array(
 
 /** Persian (فارسی)
  * @author Leyth
+ * @author MehranVB
  * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'contest-status-draft' => 'پیش نویس (غیر فعال)',
+	'contest-nav-contest' => 'خلاصه و شرکت‌کنندگان',
+	'contest-nav-contestwelcome' => 'صفحهٔ فرود',
+	'contest-nav-contestsignup' => 'صفحه ثبت نام',
+	'contest-special-name' => 'نام',
+	'contest-special-status' => 'وضعیت',
+	'contest-special-edit' => 'ویرایش',
 	'contest-special-delete' => 'حذف',
+	'contest-edit-intro' => 'صفحهٔ مقدمه',
+	'contest-edit-rulespage' => 'صفحهٔ قوانین',
 	'contest-edit-help' => 'صفحهٔ راهنما',
 	'contest-edit-submit' => 'ثبت',
 	'contest-welcome-signup' => 'هم‌اکنون ثبت‌نام کنید',
 	'contest-signup-submit' => 'ثبت‌نام',
+	'contest-signup-email' => 'نشانی رایانامهٔ شما',
 	'contest-signup-realname' => 'نام واقعی شما',
+	'contest-signup-country' => 'کشور شما',
 	'contest-contest-name' => 'نام',
 	'contest-contest-status' => 'وضعیت',
 	'contest-contest-submissioncount' => 'تعداد شرکت‌کنندگان',
@@ -991,6 +1002,22 @@ $messages['fa'] = array(
 	'contest-contest-reminder-title' => 'رایانامهٔ یادآور',
 	'contest-contest-reminder-send' => 'فرستادن یادآور',
 	'contest-contest-reminder-cancel' => 'لغو',
+	'contest-contest-reminder-sending' => 'در حال فرستادن...',
+	'contest-contest-reminder-close' => 'بستن',
+	'contest-contest-reminder-subject' => 'موضوع:',
+	'contest-contestant-id' => 'شناسه',
+	'contest-contestant-volunteer' => 'داوطلب',
+	'contest-contestant-wmf' => 'WMF',
+	'contest-contestant-no' => 'خیر',
+	'contest-contestant-yes' => 'بله',
+	'contest-contestant-commentcount' => 'توضیحات',
+	'contest-contestant-overallrating' => 'ارزش‌دهی',
+	'contest-contestant-rating' => '$1 ($2 رأی)',
+	'contest-contestant-header-rating' => 'ارزش‌دهی',
+	'contest-contestant-submit' => 'ذخیره‌کردن تغییرات',
+	'contest-contestant-comment-by' => 'توضیحات $1',
+	'contest-contestant-permalink' => 'پیوند پایدار',
+	'contest-submission-submit' => 'ارسال',
 );
 
 /** Finnish (Suomi)
@@ -2584,6 +2611,7 @@ $messages['ml'] = array(
 	'contest-contestant-comments' => 'അഭിപ്രായങ്ങൾ',
 	'contest-contestant-submit' => 'മാറ്റങ്ങൾ സേവ് ചെയ്യുക',
 	'contest-contestant-comment-by' => 'അഭിപ്രായമിട്ടത് $1',
+	'contest-contestant-rate' => 'ഈ മത്സരത്തിനു നിലവാരമിടുക',
 	'contest-contestant-permalink' => 'സ്ഥിരം കണ്ണി',
 	'contest-mycontests-toplink' => 'എന്റെ മത്സരങ്ങൾ',
 	'contest-mycontests-no-contests' => 'താങ്കൾ ഒരു മത്സരത്തിലും പങ്കെടുക്കുന്നില്ല.',
@@ -3283,6 +3311,13 @@ $messages['ru'] = array(
 	'contest-contest-reminder-sending' => 'Отправка…',
 	'contest-contest-reminder-close' => 'Закрыть',
 	'contest-contest-reminder-retry' => 'Повторить отправку',
+);
+
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'contest-contest-name' => 'නම',
 );
 
 /** Slovenian (Slovenščina)
