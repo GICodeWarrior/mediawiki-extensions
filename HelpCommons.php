@@ -57,7 +57,12 @@ function wfHelpCommonsLoad( $article ) {
 		foreach ( $urls as $helpwiki ) {
 			if ( $wgLanguageCode == "$language" && $wgDBname != $helpwiki ) {
 				$dbr = wfGetDB( DB_SLAVE, array(), $helpwiki );
-				$page = $dbr->query( 'SELECT page_title, page_namespace, page_latest FROM page WHERE page_namespace = 12 AND page_title = '.$dbr->addQuotes($title) );
+				$page = $dbr->select(
+					'page',
+					array( 'page_title', 'page_namespace', 'page_latest' ),
+					array( 'page_namespace' => 12, 'page_title' => $title ),
+					__METHOD__
+				);
 				$page = $dbr->fetchObject( $page );
 			}
 		}
