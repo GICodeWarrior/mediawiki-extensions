@@ -129,6 +129,13 @@ $messages['eu'] = array(
 	'jskit-desc' => 'js-kit tresnak sartzen ditu wiki orrian',
 );
 
+/** Persian (فارسی)
+ * @author ZxxZxxZ
+ */
+$messages['fa'] = array(
+	'jskit-desc' => 'هماهنگ‌سازی ابزارهای js-kit بر روی صفحهٔ ویکی',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */
