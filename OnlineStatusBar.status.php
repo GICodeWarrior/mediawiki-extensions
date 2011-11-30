@@ -83,14 +83,16 @@ class OnlineStatusBar_StatusCheck {
 		} else {
 			// checking only if we need to do write or not
 			$result = self::getCache( $user->getName(), ONLINESTATUSBAR_DELAYED_CACHE );
+			$w_time = OnlineStatusBar::getTimeoutDate( ONLINESTATUSBAR_CK_DELAYED );
 			if ( $result == '' ) {
 				$dbr = wfGetDB( DB_SLAVE );
 				$result = $dbr->selectField( 'online_status', 'timestamp', array( 'username' => $user->getName() ),
 					__METHOD__, array( 'LIMIT 1', 'ORDER BY timestamp DESC' ) );
 				// cache it
-				self::setCache( $user->getName(), $result, ONLINESTATUSBAR_DELAYED_CACHE );
+				if ( $result !== false && $result > wfTimestamp( TS_MW, $w_time ) ) {
+					self::setCache( $user->getName(), $result, ONLINESTATUSBAR_DELAYED_CACHE );
+				}
 			}
-			$w_time = OnlineStatusBar::getTimeoutDate( ONLINESTATUSBAR_CK_DELAYED );
 		}
 
 		if ( $result === false ) {
