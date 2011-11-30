@@ -58,10 +58,12 @@ The replacement values should not be escaped.',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Kghbln
  * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'action-masseditregex' => '{{doc-action|masseditregex}}',
 	'masseditregex-desc' => '{{desc}}',
 	'masseditregextext' => 'Replace <code>/en/</code> in the middle in link <code>http://php.net/manual/en/function.preg-replace.php</code> with your language code between slashes, if that page exists. Otherwise leave it as is to link to the English documentation, or choose an appropriate fallback language code.',
 	'masseditregex-hint-headmatch' => "Noun. This is a column header for the 'match' regexes.",
@@ -400,14 +402,16 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Imre
+ * @author Kghbln
  * @author LWChris
  * @author Pill
  * @author SVG
  * @author Tbleher
  */
 $messages['de'] = array(
-	'masseditregex' => 'Massenbearbeitung mithilfe von regulärem Ausdruck',
-	'masseditregex-desc' => 'Reguläre Ausdrücke benutzen, um [[Special:MassEditRegex|viele Seiten auf einmal zu bearbeiten]]',
+	'action-masseditregex' => 'eine Sammelbearbeitung mithilfe regulärer Ausdrücke durchzuführen',
+	'masseditregex' => 'Sammelbearbeitung mithilfe regulärer Ausdrücke',
+	'masseditregex-desc' => 'Ermöglicht die Nutzung regulärer Ausdrücke zur Sammelbearbeitung [[Special:MassEditRegex|vieler Seiten auf einmal]]',
 	'masseditregextext' => 'Gib einen oder mehrere reguläre Ausdrücke (eine pro Zeile) für die Suche an, und einen oder mehrere Ausdrücke um einen jeweiligen Treffer zu ersetzen. Der erste Such-Ausdruck wird bei Übereinstimmung durch den ersten Ersatz-Ausdruck ersetzt, und so weiter. Siehe [http://php.net/manual/de/function.preg-replace.php die Dokumentation der PHP-Funktion preg_replace ()] für Details.',
 	'masseditregex-pagelisttxt' => 'Zu bearbeitende Seiten (kein Namensraum-Prefix benutzen):',
 	'masseditregex-matchtxt' => 'Suchen nach:',
@@ -646,6 +650,7 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'action-masseditregex' => 'realizar edicións en masa',
 	'masseditregex' => 'Edición en masa usando expresións regulares',
 	'masseditregex-desc' => 'Usa expresións regulares para [[Special:MassEditRegex|editar moitas páxinas nunha única operación]]',
 	'masseditregextext' => 'Insira unha ou máis expresións regulares (un por liña) para facer coincidir, e unha ou máis expresións para substituír cada coincidencia. Se a primeira expresión coincidente é correcta, substituirase pola primeira expresión substituta, e así sucesivamente. Olle a [http://php.net/manual/en/function.preg-replace.php función PHP preg_replace()] para obter máis información.',
@@ -1062,6 +1067,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'action-masseditregex' => 'изврши групно уредување',
 	'masseditregex' => 'Групно уредување со помош на регуларни изрази',
 	'masseditregex-desc' => 'Користете регуларни изрази за да [[Special:MassEditRegex|уредите многу страници во една операција]]',
 	'masseditregextext' => 'Внесете еден или повеќе регуларни изрази (по еден во секој ред) за наоѓање ан совпаѓања, и еден или повеќе изрази кои би го замениле најденото.
@@ -1104,6 +1110,7 @@ $messages['mk'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'action-masseditregex' => "meerdere pagina's tegelijkertijd te bewerken",
 	'masseditregex' => "Meerdere pagina's tegelijk bewerken met reguliere expressies",
 	'masseditregex-desc' => "Reguliere expressies gebruiken om [[Special:MassEditRegex|meerdere pagina's in één handeling te bewerken]]",
 	'masseditregextext' => 'Geef een of meer reguliere expressies op (één per regel) voor de selectie van tekst en een of meer reguliere expressies om de selectie door te vervangen.
