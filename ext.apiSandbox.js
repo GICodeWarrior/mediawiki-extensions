@@ -54,7 +54,7 @@ jQuery( function( $ ) {
 				value = '';
 			switch ( param.type ) {
 				case 'limit':
-					value = 10;
+					value = '10';
 				case 'user':
 				case 'timestamp':
 				case 'integer':
