@@ -181,13 +181,11 @@ See also:
 {{Identical|What is this}}',
 	'moodbar-what-collapsed' => '{{optional}}
 This should normally only be changed for right-to-left (RTL) languages like Arabic and Hebrew, to change it into an arrow in the other direction: ◄ (equals <code>& #x25C4;</code>, without the whitespace).',
-	'moodbar-respond-collapsed' => '{{optional}}
-Special character for response form collapsed',
-	'moodbar-respond-expanded' => '{{optional}}
-Special character for response form expanded',
+	'moodbar-respond-collapsed' => 'Special character for response form collapsed',
+	'moodbar-respond-expanded' => 'Special character for response form expanded',
 	'moodbar-respond-text' => 'Text for Response toggle',
 	'moodbar-response-add' => 'Text for Response heading',
-	'moodbar-response-nosig' => 'Text explaining signature is not required',
+	'moodbar-response-desc' => 'Text explaining signature is not required, and indicating that the original feedback will be referenced in response',
 	'moodbar-response-btn' => 'Text for Response button',
 	'moodbar-what-content' => '$1 is the message {{msg-mw|moodbar-what-link}} which links to the page [[mw:MoodBar|MoodBar]] on MediaWiki.org.',
 	'moodbar-what-link' => 'This is the link embedded as parameter $1 in {{msg-mw|moodbar-what-content}}.',
@@ -252,17 +250,6 @@ See also:
 * $1 {{msg-mw|moodbar-response-link}}',
 	'moodbar-response-link' => 'Terms of Use Text',
 	'moodbar-response-url' => 'Terms of use URL',
-	'feedbackresponse-success' => 'Text for successful feedback response',
-	'moodbar-action-reason' => 'Text for Admin action reason', 
-	'moodbar-action-reason-required' => 'Text explaining admin action reason is required',
-	'moodbar-feedback-action-confirm' => 'Text for admin action confirm button',
-	'moodbar-feedback-action-cancel' => 'Text for admin action cancel button',
-	'moodbar-respond-text' => 'Text for Response toggle',
-	'moodbar-respond-collapsed' => 'Special character for response form collapsed',
-	'moodbar-respond-expanded' => 'Special character for response form expanded',
-	'moodbar-response-add' => 'Text for Response heading',
-	'moodbar-response-desc' => 'Text explaining signature is not required, and indicating that the original feedback will be referenced in response',
-	'moodbar-response-btn' => 'Text for Response button',      
 	'response-back-text' => 'Text for response preview back button',
 	'response-preview-text' => 'Text for preview response preview button',
 	'response-ajax-action-head' => 'Text for ajax status heading while request is being made',
@@ -270,7 +257,7 @@ See also:
 	'response-ajax-success-head' => 'Text for ajax status heading on successful response',
 	'response-ajax-success-body' => 'Text for ajax status body on successful response (can be html)',
 	'response-ajax-error-head' => 'Text for ajax status heading on error',
-	'response-ajax-error-body' => 'Text for ajax status body on error (can be html)', 
+	'response-ajax-error-body' => 'Text for ajax status body on error (can be html)',
 );
 
 /** Afrikaans (Afrikaans)
@@ -686,7 +673,7 @@ $messages['de'] = array(
 	'moodbar-respond-expanded' => '▼',
 	'moodbar-respond-text' => 'Hierauf antworten',
 	'moodbar-response-add' => 'Eine Antwort hinzufügen',
-	'moodbar-response-nosig' => 'Eine Signatur ist nicht erforderlich.',
+	'moodbar-response-desc' => 'Die Antwort wird auf den ursprünglichen Kommentar verweisen. Eine Signatur ist nicht erforderlich.',
 	'moodbar-response-btn' => 'Antwort senden',
 	'moodbar-what-content' => 'Diese Funktion wurde entwickelt, damit man eine Rückmeldung geben kann, wie man sich beim Bearbeiten von Seiten dieser Website fühlt.
 Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
@@ -726,7 +713,7 @@ Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'moodbar-header-namespace' => 'Namensraum',
 	'moodbar-header-own-talk' => 'Eigene Diskussionsseite',
 	'moodbar-feedback-title' => 'Rückmeldungen',
-	'moodbar-feedback-response-title' => 'Administrations- und Übersichtsseite zu Rückmeldungen',
+	'moodbar-feedback-response-title' => '== Antwort auf deine [[$1|Rückmeldung]] ==',
 	'moodbar-feedback-view-link' => '(Rückmeldungen ansehen)',
 	'moodbar-feedback-filters' => 'Filter',
 	'moodbar-feedback-filters-type' => 'Stimmung:',
@@ -760,6 +747,7 @@ Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'moodbar-restore-header' => 'versteckten Teil der Rückmeldung wiederherstellen',
 	'moodbar-invalid-item' => 'Das System konnte den richtigen Teil der Rückmeldung nicht finden.',
 	'moodbar-feedback-action-error' => 'Während des Ausführens dieser Aktion ist ein Fehler aufgetreten.',
+	'moodbar-feedback-response-summary' => '[[$1|$2]] hat vor $4 auf diese Rückmeldung [[$3|geantwortet]]',
 	'moodbar-type-happy' => 'glücklich',
 	'moodbar-type-sad' => 'traurig',
 	'moodbar-type-confused' => 'verwirrt',
@@ -770,12 +758,14 @@ Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'moodbar-log-header' => 'Dies ist das Logbuch der Aktionen zu den Rückmeldungen, die auf der [[Special:FeedbackDashboard|Administrations- und Übersichtsseite]] der Rückmeldungen angezeigt werden.',
 	'moodbar-log-hide' => 'blendete [[$1]] aus',
 	'moodbar-log-restore' => 'blendete [[$1]] wieder ein',
-	'moodbar-response-ula' => 'Durch Klicken auf die Schaltfläche „$1“ stimmst du den $2 zu. Zudem bist du unwiderruflich damit einverstanden, deinen Beitrag gemäß der $3-Lizenz sowie der $4 zu veröffentlichen.
-Du stimmst auch zu, dass ein Hyperlink oder die Angabe einer URL für die Namensnennung gemäß der $3-Lizenz ausreichend ist.',
-	'moodbar-response-terms-of-use' => 'Nutzungsbedingungen',
-	'moodbar-response-cc' => 'Creative-Commons',
-	'moodbar-response-gfdl' => 'GFDL',
-	'feedbackresponse-success' => 'Vielen Dank. Deine Antwort wurde auf der Diskussionsseite des Benutzers hinzugefügt.',
+	'response-back-text' => 'Zurück',
+	'response-preview-text' => 'Vorschau',
+	'response-ajax-action-head' => 'Am Antworten ...',
+	'response-ajax-action-body' => 'Die Antwort wird hinzugefügt.',
+	'response-ajax-success-head' => 'Vielen Dank!',
+	'response-ajax-success-body' => 'Die Antwort wurde hinzugefügt.',
+	'response-ajax-error-head' => 'Hoppla!',
+	'response-ajax-error-body' => 'Es ist beim Hinzufügen der Antwort ein Fehler aufgetreten. <br />Bitte versuche es später noch einmal.',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -786,9 +776,8 @@ $messages['de-formal'] = array(
 	'moodbar-privacy' => 'Mit dem Speichern erklären Sie sich mit diesen $1 einverstanden.',
 	'moodbar-success-subtitle' => 'Uns Ihre Stimmung mitzuteilen hilft uns dabei $1 weiter zu verbessern.',
 	'moodbar-error-subtitle' => 'Etwas ist schief gelaufen. Bitte versuchen Sie es später noch einmal uns Ihre Rückmeldung mitzuteilen.',
-	'moodbar-response-ula' => 'Durch Klicken auf die Schaltfläche „$1“ stimmen Sie den $2 zu. Zudem sind Sie unwiderruflich damit einverstanden, Ihrem Beitrag gemäß der $3-Lizenz sowie der $4 zu veröffentlichen.
-Sie stimmen auch zu, dass ein Hyperlink oder die Angabe einer URL für die Namensnennung gemäß der $3-Lizenz ausreichend ist.',
-	'feedbackresponse-success' => 'Vielen Dank. Ihre Antwort wurde auf der Diskussionsseite des Benutzers hinzugefügt.',
+	'moodbar-feedback-response-title' => '== Antwort auf Ihre [[$1|Rückmeldung]] ==',
+	'response-ajax-error-body' => 'Es ist beim Hinzufügen der Antwort ein Fehler aufgetreten. <br />Bitte versuchen Sie es später noch einmal.',
 );
 
 /** Greek (Ελληνικά)
@@ -954,6 +943,7 @@ $messages['es'] = array(
 
 /** Persian (فارسی)
  * @author Mjbmr
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'moodbar-desc' => 'به کاربران مشخص این اجازه را می‌دهد که بازخوردی از تجربهٔ ویرایش‌هایشان، ارائه دهند',
@@ -970,6 +960,8 @@ $messages['fa'] = array(
 	'tooltip-moodbar-what' => 'دربارهٔ این ویژگی بیشتر مطالعه کنید',
 	'moodbar-what-label' => 'این چیست؟',
 	'moodbar-what-collapsed' => '◄',
+	'moodbar-respond-text' => 'پاسخ به این',
+	'moodbar-response-add' => 'افزودن پاسخ',
 	'moodbar-what-content' => 'این ویژگی طوری طراحی شده است که به جامعه برای فهم تجربهٔ مردم از ویرایش در این تارنما کمک می‌کند.
 برای اطلاعات بیشتر، به $1 مراجعه کنید.',
 	'moodbar-what-link' => 'صفحهٔ ویژگی',
@@ -1006,12 +998,31 @@ $messages['fa'] = array(
 	'moodbar-header-user-editcount' => 'شمار ویرایش‌های کاربر',
 	'moodbar-header-namespace' => 'فضای نام',
 	'moodbar-header-own-talk' => 'صفحهٔ بحث خود',
+	'moodbar-feedback-filters-type-happy' => 'شاد',
+	'moodbar-feedback-filters-type-confused' => 'گیج',
+	'moodbar-feedback-filters-type-sad' => 'غمگین',
+	'moodbar-feedback-filters-username' => 'نام کاربری',
+	'moodbar-feedback-permalink' => 'پیوند به اینجا',
+	'moodbar-feedback-more' => 'بیشتر',
+	'moodbar-feedback-newer' => 'جدیدتر',
+	'moodbar-feedback-older' => 'قدیمی‌تر',
+	'moodbar-feedback-action-confirm' => 'تأیید',
+	'moodbar-feedback-action-cancel' => 'لغو',
+	'moodbar-action-reason' => 'دلیل:',
 	'moodbar-type-happy' => 'شاد',
 	'moodbar-type-sad' => 'غمگین',
 	'moodbar-type-confused' => 'گیج',
 	'moodbar-user-anonymized' => 'گمنام',
 	'moodbar-user-ip' => 'نشانی آی‌پی',
 	'moodbar-user-user' => 'کاربر ثبت شده',
+	'moodbar-log-name' => 'سیاههٔ بازخورد',
+	'response-back-text' => 'بازگشت',
+	'response-preview-text' => 'پیش‌نمایش',
+	'response-ajax-action-head' => 'در حال پاسخ...',
+	'response-ajax-action-body' => 'پاسخ شما در حال افزوده‌شدن است.',
+	'response-ajax-success-head' => 'سپاس!',
+	'response-ajax-success-body' => 'پاسخ شما افزوده شده‌است.',
+	'response-ajax-error-head' => 'اوه!',
 );
 
 /** Finnish (Suomi)
@@ -1100,7 +1111,6 @@ $messages['fr'] = array(
 	'moodbar-what-label' => "Qu'est-ce que c'est?",
 	'moodbar-respond-text' => 'Répondre à cela',
 	'moodbar-response-add' => 'Ajouter une réponse',
-	'moodbar-response-nosig' => 'signature non requise',
 	'moodbar-response-btn' => 'Envoyer la réponse',
 	'moodbar-what-content' => "Cette fonctionnalité est conçue pour aider la communauté à comprendre le ressenti des personnes éditant le site.
 Pour plus d'information, consultez la $1.",
@@ -1184,10 +1194,6 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-log-header' => 'Ceci est le journal des actions prises sur les commentaires listés sur [[Special:FeedbackDashboard|tableau de bord de commentaires]].',
 	'moodbar-log-hide' => 'a caché [[$1]]',
 	'moodbar-log-restore' => 'a restauré la visibilité de [[$1]]',
-	'moodbar-response-ula' => 'En cliquant sur le bouton "$1", vous vous engagez à $2, et vous acceptez de mettre votre contribution de façon irrévocable sous la licence $3 et $4 .
-Vous acceptez qu\'une URL ou un lien hypertexte est une attribution suffisante sous la licence $3.',
-	'moodbar-response-terms-of-use' => "Conditions d'utilisation",
-	'feedbackresponse-success' => "Merci. Votre réponse a été ajoutée à la page de discussion de l'utilisateur.",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1295,7 +1301,7 @@ $messages['gl'] = array(
 	'moodbar-what-label' => 'Que é isto?',
 	'moodbar-respond-text' => 'Responder a isto',
 	'moodbar-response-add' => 'Engadir unha resposta',
-	'moodbar-response-nosig' => 'a sinatura non é necesaria',
+	'moodbar-response-desc' => 'A resposta terá unha referencia ao comentario orixinal. Non é necesario asinar.',
 	'moodbar-response-btn' => 'Enviar a resposta',
 	'moodbar-what-content' => 'Esta característica está deseñada para axudar á comunidade a entender a experiencia da xente á hora de editar o sitio.
 Para obter máis información, bótelle unha ollada á $1 .',
@@ -1335,7 +1341,7 @@ Para obter máis información, bótelle unha ollada á $1 .',
 	'moodbar-header-namespace' => 'Espazo de nomes',
 	'moodbar-header-own-talk' => 'Páxina de conversa propia',
 	'moodbar-feedback-title' => 'Taboleiro de comentarios',
-	'moodbar-feedback-response-title' => 'Resposta do taboleiro de comentarios',
+	'moodbar-feedback-response-title' => '==En resposta aos seus [[$1|comentarios]]==',
 	'moodbar-feedback-view-link' => '(Ollar os comentarios)',
 	'moodbar-feedback-filters' => 'Filtros',
 	'moodbar-feedback-filters-type' => 'Humor:',
@@ -1369,6 +1375,7 @@ Para obter máis información, bótelle unha ollada á $1 .',
 	'moodbar-restore-header' => 'Restaurar a visibilidade deste elemento',
 	'moodbar-invalid-item' => 'O sistema non puido atopar o elemento de valoración correcto.',
 	'moodbar-feedback-action-error' => 'Produciuse un erro ao intentar levar a cabo esta acción.',
+	'moodbar-feedback-response-summary' => '[[$1|$2]] [[$3|respondeu]] este comentario hai $4',
 	'moodbar-type-happy' => 'Contento',
 	'moodbar-type-sad' => 'Triste',
 	'moodbar-type-confused' => 'Confuso',
@@ -1379,10 +1386,14 @@ Para obter máis información, bótelle unha ollada á $1 .',
 	'moodbar-log-header' => 'Este é o rexistro das accións levadas a cabo nos elementos de valoración listados no [[Special:FeedbackDashboard|taboleiro de comentarios]].',
 	'moodbar-log-hide' => 'agochou "[[$1]]"',
 	'moodbar-log-restore' => 'restaurou a visibilidade de "[[$1]]"',
-	'moodbar-response-ula' => 'Ao premer no botón "$1" acepta os $2 e acepta liberar irrevogablemente a súa contribución baixo a licenza $3 e a $4.
-Acepta que unha hiperligazón ou URL é recoñecemento abondo baixo a licenza $3.',
-	'moodbar-response-terms-of-use' => 'Termos de uso',
-	'feedbackresponse-success' => 'Grazas. A súa resposta engadiuse á páxina de conversa do usuario.',
+	'response-back-text' => 'Volver',
+	'response-preview-text' => 'Vista previa',
+	'response-ajax-action-head' => 'Respondendo...',
+	'response-ajax-action-body' => 'Estase engadindo a resposta.',
+	'response-ajax-success-head' => 'Grazas!',
+	'response-ajax-success-body' => 'Engadiuse a resposta.',
+	'response-ajax-error-head' => 'Vaites!',
+	'response-ajax-error-body' => 'Houbo un erro ao engadir a resposta.<br />Inténteo de novo.',
 );
 
 /** Swiss German (Alemannisch)
@@ -1448,7 +1459,6 @@ $messages['he'] = array(
 	'moodbar-what-collapsed' => '◄',
 	'moodbar-respond-text' => 'להשיב לזה',
 	'moodbar-response-add' => 'להוסיף תשובה',
-	'moodbar-response-nosig' => 'אין צורך בחתימה',
 	'moodbar-response-btn' => 'שליחת תגובה',
 	'moodbar-what-content' => 'התכונה הזאת נועדה לעזור לקהילה להבין את החוויה של האנשים שעורכים את האתר.
 למידע נוסף, בקרו בדף $1.',
@@ -1488,7 +1498,7 @@ $messages['he'] = array(
 	'moodbar-header-namespace' => 'מרחב שם',
 	'moodbar-header-own-talk' => 'דף שיחה של עצמי',
 	'moodbar-feedback-title' => 'לוח בקרה של משובים',
-	'moodbar-feedback-response-title' => 'תגובה מלוח הבקרה של המשוב',
+	'moodbar-feedback-response-title' => '==בתגובה ל[[$1|משוב שלך]]==',
 	'moodbar-feedback-view-link' => '(הצגת המשוב)',
 	'moodbar-feedback-filters' => 'מסננים',
 	'moodbar-feedback-filters-type' => 'מצב רוח:',
@@ -1533,10 +1543,6 @@ $messages['he'] = array(
 	'moodbar-log-header' => 'זהו יומן של פעולות שנעשו על פריטי משוב שרשומים ב[[Special:FeedbackDashboard|לוח הבקרה של המשוב]].',
 	'moodbar-log-hide' => 'הסתיר את [[$1]]',
 	'moodbar-log-restore' => 'שחזר את הנראוּת של [[$1]]',
-	'moodbar-response-ula' => 'באמצעות לחיצה על כפתור "$1", אתם נותנים הסכמה בלתי־חוזרת לשחרר את תרומתכם לפי תנאי רישיון $3 ו$4.
-אתם מסכימים לכך שקישור או כתובת URL הם ייחוס מספיק לפי תנאי רישיון $3.',
-	'moodbar-response-terms-of-use' => 'תנאי שימוש',
-	'feedbackresponse-success' => 'תודה. תשובתך הוספה לדף שיחת המשתמש.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1595,7 +1601,6 @@ $messages['ia'] = array(
 	'moodbar-what-label' => 'Que es isto?',
 	'moodbar-respond-text' => 'Responder a isto',
 	'moodbar-response-add' => 'Adder un responsa',
-	'moodbar-response-nosig' => 'signatura non obligatori',
 	'moodbar-response-btn' => 'Inviar responsa',
 	'moodbar-what-content' => 'Iste function es concipite pro adjutar le communitate a comprender le experientia del personas qui modifica le sito.
 Pro ulterior information, per favor visita le $1.',
@@ -1679,10 +1684,6 @@ Pro ulterior information, per favor visita le $1.',
 	'moodbar-log-header' => 'Isto es le registro de actiones prendite sur elementos de retroaction listate in le [[Special:FeedbackDashboard|pannello de retroaction]].',
 	'moodbar-log-hide' => 'celava [[$1]]',
 	'moodbar-log-restore' => 'restaurava le visibilitate de [[$1]]',
-	'moodbar-response-ula' => 'Per cliccar sur le button "$1", tu accepta le $2, e tu consenti irrevocabilemente al publication de tu contribution sub le licentia $3 e sub le $4.
-Tu accepta que un hyperligamine o URL suffice como attribution sub le licentia $3.',
-	'moodbar-response-terms-of-use' => 'conditiones de uso',
-	'feedbackresponse-success' => 'Gratias. Tu responsa ha essite addite al pagina de discussion del usator.',
 );
 
 /** Khowar (کھوار) */
@@ -1831,7 +1832,7 @@ $messages['mk'] = array(
 	'moodbar-what-label' => 'Што е ова?',
 	'moodbar-respond-text' => 'Одговори на ова',
 	'moodbar-response-add' => 'Додајте ваш одѕив',
-	'moodbar-response-nosig' => 'потписот не е задолжителен',
+	'moodbar-response-desc' => 'Во одговорот ќе биде наведен изворниот коментар (мислење). Потписот не е задолжителен.',
 	'moodbar-response-btn' => 'Испрати одѕив',
 	'moodbar-what-content' => 'Оваа функција е предвидена да ѝ овозможува на заедницата да го осознае искуството на луѓето што го уредуваат мрежното место.
 Повеќе информации ќе добиете на $1.',
@@ -1871,7 +1872,7 @@ $messages['mk'] = array(
 	'moodbar-header-namespace' => 'Именски простор',
 	'moodbar-header-own-talk' => 'Сопствена страница за разговор',
 	'moodbar-feedback-title' => 'Табла за мислења',
-	'moodbar-feedback-response-title' => 'Одѕив на таблата за мислења',
+	'moodbar-feedback-response-title' => '==Одговор на Вашето [[$1|искажано мислење]]==',
 	'moodbar-feedback-view-link' => '(Погл. мислењето)',
 	'moodbar-feedback-filters' => 'Филтри',
 	'moodbar-feedback-filters-type' => 'Расположение:',
@@ -1905,6 +1906,7 @@ $messages['mk'] = array(
 	'moodbar-restore-header' => 'Врати ја видливоста на мислењето',
 	'moodbar-invalid-item' => 'Системот не можеше да го најде бараното мислење',
 	'moodbar-feedback-action-error' => 'Настана грешка при обидот да се изврши дејството.',
+	'moodbar-feedback-response-summary' => '[[$1|$2]] [[$3|одговори]] на овој коментар пред $4',
 	'moodbar-type-happy' => 'Среќен',
 	'moodbar-type-sad' => 'Тажен',
 	'moodbar-type-confused' => 'Збунет',
@@ -1915,12 +1917,14 @@ $messages['mk'] = array(
 	'moodbar-log-header' => 'Ова е дневник на дејства што се однесуваат на мислењата искажани на [[Special:FeedbackDashboard|таблата за мислења и коментари]].',
 	'moodbar-log-hide' => 'скриено [[$1]]',
 	'moodbar-log-restore' => 'вратена видливоста на [[$1]]',
-	'moodbar-response-ula' => 'Стискајќи на копчето „$1“ се согласувате со $2, и неотповикливо прифаќате да го објавите придонесеното под лиценците $3 и $4.
-Се согласувате дека хиперврска или URL-адреса претставува достатно признание за авторство под лиценцата на $3.',
-	'moodbar-response-terms-of-use' => 'Условите на употреба',
-	'moodbar-response-cc' => 'Криејтив комонс',
-	'moodbar-response-gfdl' => 'ГЛСД',
-	'feedbackresponse-success' => 'Ви благодариме. Вашиот одѕив е поставен на корисничката страница за разговор.',
+	'response-back-text' => 'Назад',
+	'response-preview-text' => 'Преглед',
+	'response-ajax-action-head' => 'Пишува одговор...',
+	'response-ajax-action-body' => 'Го додавам вашиот одговор.',
+	'response-ajax-success-head' => 'Благодариме!',
+	'response-ajax-success-body' => 'Вашиот одговор е додаден.',
+	'response-ajax-error-head' => 'Упс!',
+	'response-ajax-error-body' => 'Се појави грешка при додавањето на вашиот одговор. <br />Обидете се подоцна.',
 );
 
 /** Malayalam (മലയാളം)
@@ -1938,6 +1942,9 @@ $messages['ml'] = array(
 	'moodbar-type-confused-title' => 'ആശയക്കുഴപ്പമായി',
 	'tooltip-moodbar-what' => 'ഈ വിശേഷഗുണത്തെക്കുറിച്ച് കൂടുതൽ അറിയുക',
 	'moodbar-what-label' => 'എന്താണിത്?',
+	'moodbar-respond-text' => 'ഇതിനോട് പ്രതികരിക്കുക',
+	'moodbar-response-add' => 'പ്രതികരണം ചേർക്കുക',
+	'moodbar-response-btn' => 'പ്രതികരണം അയയ്ക്കുക',
 	'moodbar-what-content' => 'വിജ്ഞാനകോശം തിരുത്തുന്നവരുടെ അനുഭവങ്ങൾ വിക്കിപീഡിയ സമൂഹത്തിനു മനസ്സിലാക്കാനായാണ് ഈ സൗകര്യം രൂപകല്പന ചെയ്തിരിക്കുന്നത്.
 കൂടുതൽ വിവരങ്ങൾക്ക് ദയവായി $1 സന്ദർശിക്കുക.',
 	'moodbar-what-link' => 'സവിശേഷതാ താൾ',
@@ -1972,6 +1979,7 @@ $messages['ml'] = array(
 	'moodbar-feedback-filters-type' => 'തരം:',
 	'moodbar-feedback-filters-username' => 'ഉപയോക്തൃനാമം',
 	'moodbar-feedback-filters-button' => 'അരിപ്പകൾ സജ്ജീകരിക്കുക',
+	'moodbar-feedback-whatis' => 'ഈ സവിശേഷത എന്താണ്?',
 	'moodbar-feedback-permalink' => 'ഇങ്ങോട്ടുള്ള കണ്ണികൾ',
 	'moodbar-feedback-more' => 'കൂടുതൽ',
 	'moodbar-feedback-nomore' => 'പ്രദർശിപ്പിക്കാൻ കൂടുതൽ ഫലങ്ങളിലില്ല.',
@@ -1989,7 +1997,6 @@ $messages['ml'] = array(
 	'moodbar-user-anonymized' => 'അജ്ഞാതവത്കരിച്ചു',
 	'moodbar-user-ip' => 'ഐ.പി. വിലാസം',
 	'moodbar-user-user' => 'അംഗത്വമെടുത്ത ഉപയോക്താവ്',
-	'feedbackresponse-success' => 'നന്ദി. താങ്കളുടെ പ്രതികരണം ഉപയോക്താവിന്റെ സംവാദം താളിൽ ചേർത്തിട്ടുണ്ട്.',
 );
 
 /** Malay (Bahasa Melayu)
@@ -2012,7 +2019,7 @@ $messages['ms'] = array(
 	'moodbar-what-label' => 'Apakah ini?',
 	'moodbar-respond-text' => 'Balas',
 	'moodbar-response-add' => 'Tulis balasan',
-	'moodbar-response-nosig' => 'tandatangan tidak diperlukan',
+	'moodbar-response-desc' => 'Balasan akan merujuk komen asal. Tandatangan tidak diperlukan.',
 	'moodbar-response-btn' => 'Hantar balasan',
 	'moodbar-what-content' => 'Ciri ini direka untuk membantu komuniti memahami pengalaman sesiapa yang menyunting ensiklopedia ini.
 Untuk maklumat lanjut, sila layari $1.',
@@ -2052,7 +2059,7 @@ Untuk maklumat lanjut, sila layari $1.',
 	'moodbar-header-namespace' => 'Ruang nama',
 	'moodbar-header-own-talk' => 'Laman perbincangan sendiri',
 	'moodbar-feedback-title' => 'Papan pemuka maklum balas',
-	'moodbar-feedback-response-title' => 'Respons papan pemuka maklum balas',
+	'moodbar-feedback-response-title' => '==Sebagai balasan keada [[$1|maklum balas]] anda==',
 	'moodbar-feedback-view-link' => '(Baca maklum balas)',
 	'moodbar-feedback-filters' => 'Penapis',
 	'moodbar-feedback-filters-type' => 'Angin:',
@@ -2086,6 +2093,7 @@ Untuk maklumat lanjut, sila layari $1.',
 	'moodbar-restore-header' => 'Perlihatkan semula butiran ini',
 	'moodbar-invalid-item' => 'Sistem tidak dapat mencari butiran maklum balas yang betul.',
 	'moodbar-feedback-action-error' => 'Ralat berlaku ketika cuba melakukan tindakan ini.',
+	'moodbar-feedback-response-summary' => '[[$1|$2]] [[$3|membalas]] komen ini $4 lalu',
 	'moodbar-type-happy' => 'Gembira',
 	'moodbar-type-sad' => 'Sedih',
 	'moodbar-type-confused' => 'Keliru',
@@ -2096,12 +2104,14 @@ Untuk maklumat lanjut, sila layari $1.',
 	'moodbar-log-header' => 'Inilah log tindakan kepada butiran maklum balas yang tersenarai dalam [[Special:FeedbackDashboard|papan pemuka maklum balas]].',
 	'moodbar-log-hide' => 'menyorokkan [[$1]]',
 	'moodbar-log-restore' => 'memperlihatkan semula [[$1]]',
-	'moodbar-response-ula' => 'Dengan mengklik butang "$1", anda bersetuju dengan $2, dan anda bersetuju tanpa tertarik balik untuk melepaskan sumbangan-sumbangan anda di bawah Lesen $3 dan $4.
-Anda bersetuju bahawa pautan hiper atau URL merupakan atribusi yang memadai di bawah lesen $3.',
-	'moodbar-response-terms-of-use' => 'Syarat-syarat penggunaan',
-	'moodbar-response-cc' => 'Creative Commons',
-	'moodbar-response-gfdl' => 'GFDL',
-	'feedbackresponse-success' => 'Terima kasih. Balasan anda telah dikirim kepada laman Perbincangan Pengguna itu.',
+	'response-back-text' => 'Belakang',
+	'response-preview-text' => 'Pralihat',
+	'response-ajax-action-head' => 'Membalas...',
+	'response-ajax-action-body' => 'Balasan anda sedang disampaikan.',
+	'response-ajax-success-head' => 'Terima kasih!',
+	'response-ajax-success-body' => 'Balasan anda telah disampaikan.',
+	'response-ajax-error-head' => 'Alamak!',
+	'response-ajax-error-body' => 'Terdapat ralat ketika menyampaikan balasan anda.<br />Sila cuba lagi nanti.',
 );
 
 /** Dutch (Nederlands)
@@ -2128,7 +2138,7 @@ $messages['nl'] = array(
 	'moodbar-respond-expanded' => '▼',
 	'moodbar-respond-text' => 'Hierop reageren',
 	'moodbar-response-add' => 'Reactie toevoegen',
-	'moodbar-response-nosig' => 'ondertekening niet vereist',
+	'moodbar-response-desc' => 'Uw reactie verwijst terug naar de oorspronkelijke opmerking. U hoeft niet te ondertekenen.',
 	'moodbar-response-btn' => 'Antwoord verzenden',
 	'moodbar-what-content' => 'Deze functie is ontworpen om de ervaring van mensen die de site bewerken te helpen begrijpen.
 Ga naar de $1 voor mee informatie.',
@@ -2168,7 +2178,7 @@ Ga naar de $1 voor mee informatie.',
 	'moodbar-header-namespace' => 'Naamruimte',
 	'moodbar-header-own-talk' => 'Eigen overlegpagina',
 	'moodbar-feedback-title' => 'Dashboard voor terugkoppeling',
-	'moodbar-feedback-response-title' => 'Dashboardreactie',
+	'moodbar-feedback-response-title' => '== Antwoord op uw [[$1|terugkoppeling]] ==',
 	'moodbar-feedback-view-link' => '(terugkoppeling bekijken)',
 	'moodbar-feedback-filters' => 'Filters',
 	'moodbar-feedback-filters-type' => 'Stemming:',
@@ -2202,6 +2212,7 @@ Ga naar de $1 voor mee informatie.',
 	'moodbar-restore-header' => 'De zichtbaarheid van dit item herstellen',
 	'moodbar-invalid-item' => 'Het systeem kon het juiste terugkoppelingsitem niet vinden.',
 	'moodbar-feedback-action-error' => 'Er is een fout opgetreden tijdens het uitvoeren van deze handeling.',
+	'moodbar-feedback-response-summary' => '[[$1|$2]] heeft $4 geleden [[$3|gereageerd]] op deze opmerking',
 	'moodbar-type-happy' => '{{GENDER:$1|Blij}}',
 	'moodbar-type-sad' => '{{GENDER:$1|Somber}}',
 	'moodbar-type-confused' => '{{GENDER:$1|Verward}}',
@@ -2212,10 +2223,14 @@ Ga naar de $1 voor mee informatie.',
 	'moodbar-log-header' => 'Dit is een logboek met uitgevoerde handelingen op items uit het [[Special:FeedbackDashboard|terugkoppelingsdashboard]].',
 	'moodbar-log-hide' => 'heeft [[$1]] verborgen',
 	'moodbar-log-restore' => 'heeft [[$1]] weer zichtbaar gemaakt',
-	'moodbar-response-ula' => 'Door op de knop "$1" te klikken, gaat u akkoord met de $2 en gaat u onherroepelijk akkoord met het vrijgeven van uw bijdragen onder de licentie $3 en $4.
-U stemt ermee in dat een hyperlink of URL voldoende naamsvermelding is onder de $3-licentie.',
-	'moodbar-response-terms-of-use' => 'Gebruiksvoorwaarden',
-	'feedbackresponse-success' => 'Dank u wel. Uw reactie is toegevoegd aan de overlegpagina van de gebruiker.',
+	'response-back-text' => 'Terug',
+	'response-preview-text' => 'Voorvertoning',
+	'response-ajax-action-head' => 'Bezig met reageren...',
+	'response-ajax-action-body' => 'Uw reactie wordt toegevoegd.',
+	'response-ajax-success-head' => 'Bedankt!',
+	'response-ajax-success-body' => 'Uw reactie is toegevoegd.',
+	'response-ajax-error-head' => 'Er is iets misgegaan',
+	'response-ajax-error-body' => 'Er is een fout opgetreden tijdens het toevoegen van uw antwoord.<br />Probeer het later opnieuw.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -2880,7 +2895,7 @@ $messages['sl'] = array(
 	'moodbar-what-label' => 'Kaj je to?',
 	'moodbar-respond-text' => 'Odgovori na to',
 	'moodbar-response-add' => 'Dodaj odgovor',
-	'moodbar-response-nosig' => 'podpis ni potreben',
+	'moodbar-response-desc' => 'Odziv se bo skliceval na izvirno pripombo. Podpis ni potreben.',
 	'moodbar-response-btn' => 'Pošlji odgovor',
 	'moodbar-what-content' => 'Funkcija je oblikovana kot pomoč skupnosti pri razumevanju izkušnje ljudi, ki urejajo stran.
 Za več informacij obiščite $1.',
@@ -2920,7 +2935,7 @@ Za več informacij obiščite $1.',
 	'moodbar-header-namespace' => 'Imenski prostor',
 	'moodbar-header-own-talk' => 'Lastna pogovorna stran',
 	'moodbar-feedback-title' => 'Pregledna plošča povratnih informacij',
-	'moodbar-feedback-response-title' => 'Odziv pregledne plošče povratnih informacij',
+	'moodbar-feedback-response-title' => '== V odgovoru na vašo [[$1|povratno informacijo]] ==',
 	'moodbar-feedback-view-link' => '(Ogled povratne informacije)',
 	'moodbar-feedback-filters' => 'Filtri',
 	'moodbar-feedback-filters-type' => 'Razpoloženje:',
@@ -2954,6 +2969,7 @@ Za več informacij obiščite $1.',
 	'moodbar-restore-header' => 'Obnovi vidljivost tega predmeta',
 	'moodbar-invalid-item' => 'Sistem ni mogel najti ustreznega predmeta povratne informacije.',
 	'moodbar-feedback-action-error' => 'Med poskusom izvedbe tega dejanja je prišlo do napake.',
+	'moodbar-feedback-response-summary' => '[[$1|$2]] se je [[$3|odzval(-a)]] na to pripombo pred $4',
 	'moodbar-type-happy' => 'Veselega',
 	'moodbar-type-sad' => 'Žalostnega',
 	'moodbar-type-confused' => 'Zmedenega',
@@ -2964,10 +2980,14 @@ Za več informacij obiščite $1.',
 	'moodbar-log-header' => 'To je dnevnik dejanj, izvedenih na predmetih povratnih informacij, navedenih na [[Special:FeedbackDashboard|pregledni plošči povratnih informacij]].',
 	'moodbar-log-hide' => 'je skril(-a) [[$1]]',
 	'moodbar-log-restore' => 'je obnovil(-a) vidljivost [[$1]]',
-	'moodbar-response-ula' => 'S klikom na gumb »$1« se strinjate s $2 in se nepreklicno strinjate z objavo vašega prispevka pod dovoljenjema $3 in $4.
-Strinjate se, da je hiperpovezava ali URL zadostna navedba avtorja pod dovoljenjem $3.',
-	'moodbar-response-terms-of-use' => 'Pogoji uporabe',
-	'feedbackresponse-success' => 'Hvala. Vaš odgovor smo dodali na uporabnikovo pogovorno stran.',
+	'response-back-text' => 'Nazaj',
+	'response-preview-text' => 'Predogled',
+	'response-ajax-action-head' => 'Odgovarjanje ...',
+	'response-ajax-action-body' => 'Dodajamo vaš odziv.',
+	'response-ajax-success-head' => 'Hvala!',
+	'response-ajax-success-body' => 'Vaš odziv smo dodali.',
+	'response-ajax-error-head' => 'Ups!',
+	'response-ajax-error-body' => 'Med dodajanjem vašega odgovora je prišlo do napake. <br />Prosimo, poskusite znova pozneje.',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
@@ -3165,7 +3185,6 @@ $messages['vi'] = array(
 	'moodbar-what-label' => 'Đây là gì?',
 	'moodbar-respond-text' => 'Hồi đáp cái này',
 	'moodbar-response-add' => 'Thêm hồi đáp',
-	'moodbar-response-nosig' => 'không cần ký tên',
 	'moodbar-response-btn' => 'Gửi hồi đáp',
 	'moodbar-what-content' => 'Tính năng này nhằm mục đích giúp cộng đồng hiểu biết những ấn tượng của người sửa đổi trang này.
 Để biết thêm chi tiết, xin ghé vào $1.',
@@ -3249,10 +3268,6 @@ $messages['vi'] = array(
 	'moodbar-log-header' => 'Nhật trình này liệt kê các tác vụ được thực hiện do các khoản mục phản hồi trên [[Special:FeedbackDashboard|bảng điều khiển phản hồi]].',
 	'moodbar-log-hide' => 'đã ẩn [[$1]]',
 	'moodbar-log-restore' => 'đã phục hồi mức hiển thị của [[$1]]',
-	'moodbar-response-ula' => 'Với việc bấm nút “$1”, bạn chấp nhận các $2, và bạn đồng ý phát hành, không thể hủy bỏ, đóng góp của mình theo giấy phép $3 và $4.
-Bạn đồng ý rằng một siêu liên kết hoặc URL thỏa mãn điều kiện ghi công trong giấy phép $3.',
-	'moodbar-response-terms-of-use' => 'Điều khoản sử dụng',
-	'feedbackresponse-success' => 'Cám ơn. Hồi đáp đã được thêm vào trang thảo luận của người dùng.',
 );
 
 /** Yiddish (ייִדיש)
