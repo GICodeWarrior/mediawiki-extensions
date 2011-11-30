@@ -349,12 +349,13 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author Sahim
  * @author Wayiran
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'communityvoice' => 'صدای جامعه',
 	'communityvoice-desc' => 'ابزارهای انجمن مشارکتی',
 	'communityvoice-ratings' => 'ارزش‌دهی‌ها',
-	'communityvoice-ratings-scale-status-sending' => 'در حال ارسال...',
+	'communityvoice-ratings-scale-status-sending' => 'در حال فرستادن...',
 	'communityvoice-ratings-scale-status-error' => 'ارسال خطا!',
 	'communityvoice-ratings-scale-status-thanks' => 'سپاس از رای‌دادنتان!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 رای داده شد)',
