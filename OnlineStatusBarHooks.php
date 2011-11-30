@@ -99,7 +99,7 @@ class OnlineStatusBarHooks {
 		$text = wfMessage( 'onlinestatusbar-line', $user->getName() )
 				->rawParams( $image )->params( $modetext )->escaped();
 		$context = $article->getContext();
-		$context->getOutput()->updateCacheExpiry($wgOnlineStatusBarCacheTime[$status] * 60);
+		$article->getParserOutput()->updateCacheExpiry($wgOnlineStatusBarCacheTime[$status] * 60);
 		$context->getOutput()->addHtml( OnlineStatusBar::getStatusBarHtml( $text ) );
 
 		return true;
