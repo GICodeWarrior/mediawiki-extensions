@@ -287,9 +287,9 @@
 			},
 
 			"Lohit Telugu": {
-				eot: "Telu/LohitTelugu.eot",
-				ttf: "Telu/LohitTelugu.ttf",
-				woff: "Telu/LohitTelugu.woff"
+				eot: "Telu/Lohit-Telugu.eot",
+				ttf: "Telu/Lohit-Telugu.ttf",
+				woff: "Telu/Lohit-Telugu.woff"
 			},
 
 			"Lohit Punjabi": {
