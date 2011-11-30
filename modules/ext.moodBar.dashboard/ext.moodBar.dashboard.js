@@ -382,32 +382,15 @@ jQuery(function( $ ) {
 		} else {		
 		
 			//init terms of use link
-			var termsofuse = mw.html.element ('a', {
-					'href': mw.msg( 'moodbar-response-terms-of-use-link' ),
-					'title': mw.msg( 'moodbar-response-terms-of-use' ),
+			var termsLink = mw.html.element ('a', {
+					'href': mw.msg( 'moodbar-response-url' ),
+					'title': mw.msg( 'moodbar-response-link' ),
 					'target': '_new'
-				}, mw.msg( 'moodbar-response-terms-of-use' ) );
+				}, mw.msg( 'moodbar-response-link' ) );
 	
-			//creative commons link
-			var creativecommons = mw.html.element('a', {
-					'href':  mw.msg ( 'moodbar-response-cc-link' ),
-					'title': mw.msg ( 'moodbar-response-cc' ),
-					'target': '_new'
-				}, mw.msg ( 'moodbar-response-cc' ) );
-			
-			//gfdl
-			var gfdl = mw.html.element('a', {
-					'href': mw.msg( 'moodbar-response-gfdl-link' ),
-					'title': mw.msg( 'moodbar-response-gfdl' ),
-					'target': '_new'
-				}, mw.msg( 'moodbar-response-gfdl' ) );
-			
 			//ULA	      
-			var ula = mw.msg( 'moodbar-response-ula' )
-				.replace ( /\$1/g, mw.msg( 'moodbar-response-btn') )
-				.replace ( /\$2/g, termsofuse)
-				.replace ( /\$3/g, creativecommons)
-				.replace ( /\$4/g, gfdl);
+			var ula = mw.msg( 'moodbar-response-terms' )
+				.replace ( /\$1/g, termsLink );
 				
 			//build form
 			var inlineForm = $('<div>').attr( 'class', 'fbd-response-form' )
@@ -605,7 +588,7 @@ jQuery(function( $ ) {
 								.end();
 								setTimeout(function(){
 									reloadItem($item, true);	
-								}, 5000);
+								}, 2000);
 											
 					},
 					'error': function( jqXHR, textStatus, errorThrown ) {	

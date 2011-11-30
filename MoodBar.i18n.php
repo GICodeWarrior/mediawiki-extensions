@@ -131,15 +131,9 @@ For more information, please visit the $1.',
 	'moodbar-log-hide' => 'hid [[$1]]',
 	'moodbar-log-restore' => 'restored the visibility for [[$1]]',
         //Feedback Response
-	'moodbar-response-ula' => 'By clicking the "$1" button, you agree to the $2, and you irrevocably agree to release your contribution under the $3 license and the $4.
-You agree that a hyperlink or URL is sufficient attribution under the $3 license.',
-	'moodbar-response-terms-of-use' => 'Terms of use',
-	'moodbar-response-terms-of-use-link' => '#',
-	'moodbar-response-cc' => 'Creative Commons',
-	'moodbar-response-cc-link' => 'http://creativecommons.org/licenses/by-sa/3.0/us/legalcode',
-	'moodbar-response-gfdl' => 'GFDL',
-	'moodbar-response-gfdl-link' => 'http://www.gnu.org/copyleft/fdl.html',
-	'feedbackresponse-success' => 'Thank you.  Your response was added to the user\'s talk page.',
+	'moodbar-response-terms' => 'By submitting, you agree to transparency under these $1.',
+	'moodbar-response-link' => 'terms',
+	'moodbar-response-url' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'response-back-text' => 'Back',
 	'response-preview-text' => 'Preview',
 	'response-ajax-action-head' => 'Responding...',
@@ -254,16 +248,10 @@ See also:
 	'moodbar-type-sad' => '$1 is the username that can be used for GENDER',
 	'moodbar-type-confused' => '$1 is the username that can be used for GENDER',
 	'moodbar-user-ip' => '{{Identical|IP Address}}',
-	'moodbar-response-ula' => 'Text of the user license agreement. Parameters:
-* $1 {{msg-mw|moodbar-response-btn}}
-* $2 {{msg-mw|moodbar-response-terms-of-use}}
-* $3 {{msg-mw|moodbar-response-cc}}
-* $4 {{msg-mw|moodbar-response-gfdl}}',
-	'moodbar-response-terms-of-use' => 'Terms of Use Text',
-	'moodbar-response-cc' => '{{optional}}
-Creative Commons Text',
-	'moodbar-response-gfdl' => '{{optional}}
-GFDL Text',
+	'moodbar-response-terms' => 'Text of the user license agreement. Parameters:
+* $1 {{msg-mw|moodbar-response-link}}',
+	'moodbar-response-link' => 'Terms of Use Text',
+	'moodbar-response-url' => 'Terms of use URL',
 	'feedbackresponse-success' => 'Text for successful feedback response',
 	'moodbar-action-reason' => 'Text for Admin action reason', 
 	'moodbar-action-reason-required' => 'Text explaining admin action reason is required',
