@@ -140,11 +140,12 @@ class OnlineStatusBar_StatusCheck {
 		}
 		// If we track them, let's insert it to the table
 		$dbw = wfGetDB( DB_MASTER );
+		$timestamp = $dbw->timestamp();
 		$row = array(
 			'username' => $wgUser->getName(),
-			'timestamp' => $dbw->timestamp(),
+			'timestamp' => $timestamp,
 		);
-		self::setCache( $wgUser->getName(), '', ONLINESTATUSBAR_NORMAL_CACHE );
+		self::setCache( $wgUser->getName(), $timestamp, ONLINESTATUSBAR_NORMAL_CACHE );
 		$dbw->insert( 'online_status', $row, __METHOD__ );
 		return false;
 	}
@@ -181,13 +182,14 @@ class OnlineStatusBar_StatusCheck {
 
 		if ( $user_status == 'write' ) {
 			$dbw = wfGetDB( DB_MASTER );
+			$timestamp = $dbw->timestamp();
 			$dbw->update(
 				'online_status',
-				array( 'timestamp' => $dbw->timestamp() ),
+				array( 'timestamp' => $timestamp ),
 				array( 'username' => $wgUser->getName() ),
 				__METHOD__
 			);
-			self::setCache( $wgUser->getName(), '', ONLINESTATUSBAR_NORMAL_CACHE );
+			self::setCache( $wgUser->getName(), $timestamp, ONLINESTATUSBAR_NORMAL_CACHE );
 			self::deleteOld();
 		}
 		return true;
