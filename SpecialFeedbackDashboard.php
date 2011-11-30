@@ -235,7 +235,10 @@ HTML;
 		if ( isset( $response[$id] ) ) {	
 			//for now we only display the latest response
 			foreach ( $response[$id] AS $response_detail ) { 
-				if ( $responder =  User::newFromId( $response_detail->mbfr_user_id ) ) {
+				
+				$responder =  User::newFromId( $response_detail->mbfr_user_id );
+				
+				if ( !$responder->isAnon() ) {
 					
 					$now = wfTimestamp( TS_UNIX );
 					$responsetimestamp = wfTimestamp( TS_UNIX, $response_detail->mbfr_timestamp );
@@ -248,7 +251,7 @@ HTML;
 					
 					$individual_response = wfMsgExt('moodbar-feedback-response-summary', array('parse'),  
 						                         $responder->getUserPage()->getFullText(), 
-						                         htmlspecialchars($responder->getName()), 
+						                         $responder->getName(), 
 						                         $permalinkTitle . '#feedback-dashboard-response-' . $response_detail->mbfr_id,  
 						                         $responsetime);
 					$showResponseBox = false;
@@ -620,12 +623,12 @@ HTML;
 		
 		$response = array();
 		
-		if ( $feedback = implode( ',', $feedback ) ) {
+		if ( count( $feedback ) > 0 ) {
 			$res = $dbr->select( array( 'moodbar_feedback_response' ),
 					     array( 'mbfr_id', 'mbfr_mbf_id', 'mbfr_user_id', 'mbfr_timestamp' ),
-					     array( 'mbfr_mbf_id IN (' . $feedback . ') AND mbfr_user_id != 0' ),
+					     array( 'mbfr_mbf_id' => $feedback, 'mbfr_user_id != 0' ),
 					     __METHOD__,
-					     array( 'ORDER BY' => "mbfr_timestamp DESC, mbfr_id DESC" )
+					     array( 'ORDER BY' => "mbfr_mbf_id DESC, mbfr_timestamp DESC, mbfr_id DESC" )
 					     );
 			
 	                foreach ( $res AS $row ) {

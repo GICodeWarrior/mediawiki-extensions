@@ -29,7 +29,7 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 		if ( $commenter !== null && $commenter->isAnon() == false ) {
 			$talkPage = $commenter->getTalkPage();
 			 
-			$feedback_link = wfMessage('moodbar-feedback-response-title')->rawParams($wgContLang->getNsText( NS_SPECIAL ) . 
+			$feedback_link = wfMessage('moodbar-feedback-response-title')->params($wgContLang->getNsText( NS_SPECIAL ) . 
 				         ':FeedbackDashboard/' . $item->getProperty('feedback'))->escaped();
 			
 			$api = new ApiMain( new FauxRequest( array(

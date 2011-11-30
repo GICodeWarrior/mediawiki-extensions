@@ -105,6 +105,10 @@ class MoodBarHooks {
 		$updater->addExtensionUpdate( array( 'addTable', 'moodbar_feedback_response',
 			dirname(__FILE__).'/sql/moodbar_feedback_response.sql', true ) );
 
+		$updater->addExtensionUpdate( array( 'addIndex', 'moodbar_feedback_response',
+			'mbfr_timestamp_id', dirname( __FILE__ ) . '/sql/mbfr_timestamp_id_index.sql', true )
+		);
+		
 		return true;
 	}
 
