@@ -536,10 +536,11 @@ $messages['ms'] = array(
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
 	'useroptionstats' => 'Statistieken over gebruikersinstellingen',
-	'useroptionstats-desc' => '[[Special:UserOptionStats|Speciale pagina]] voor rapportage over het gebruik van gebruikersinstellingen in Mediawiki',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Speciale pagina]] voor rapportage over het gebruik van gebruikersinstellingen',
 	'uos-warn' => 'PHPlot is niet geïnstalleerd!',
 	'uos-choose' => 'Kies een van de volgende gebruikersinstellingen: $1',
 	'uos-choose-hidden' => 'Kies een van de volgende verborgen gebruikersinstellingen: $1',
