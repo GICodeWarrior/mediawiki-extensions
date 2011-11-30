@@ -474,6 +474,7 @@ $messages['de'] = array(
 	'narayam-si-singlish' => 'Singhalesisch (Singlish)',
 	'narayam-si-wijesekara' => 'Singhalesisch (Wijesekara)',
 	'narayam-ta-99' => 'Tamilisch (Tamil 99)',
+	'narayam-ta-inscript' => 'Tamilisch (InScript)',
 	'narayam-ta' => 'Tamilisch (Transliteration)',
 	'narayam-ta-bamini' => 'Tamilisch (Bamini)',
 	'narayam-te-inscript' => 'Telugu (InScript)',
@@ -537,6 +538,7 @@ $messages['eo'] = array(
 
 /** Persian (فارسی)
  * @author Mjbmr
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'narayam-desc' => 'اجازهٔ افزودن روش‌های ورودی سفارشی برای زمینه‌های ورودی را می‌دهد',
@@ -547,7 +549,11 @@ $messages['fa'] = array(
 	'narayam-help-page' => 'Help:حروف‌چینی',
 	'narayam-checkbox-tooltip' => 'برای تغییر روش ورودی، روشن یا خاموش',
 	'narayam-disable-preference' => 'غیر فعال کردن ویرایشگر روش ورودی نارایام (IME)',
+	'narayam-more-imes' => 'روش‌های ورودی بیشتر',
+	'narayam-am' => 'نویسه‌گردانی امهاری',
+	'narayam-as' => 'نویسه‌گردانی آسامی',
 	'narayam-eo' => 'اسپرانتو',
+	'narayam-hi' => 'نویسه‌گردانی هندی',
 	'narayam-hi-inscript' => 'اسکریپت هندی',
 	'narayam-kn' => 'نویسه‌گردانی کانادهای',
 	'narayam-kn-inscript' => 'اسکریپت کانادهای',
@@ -567,6 +573,11 @@ $messages['fa'] = array(
 	'narayam-bn-avro' => 'بنگالی آورو',
 	'narayam-bn-inscript' => 'اسکریپت بنگالی',
 	'narayam-bn-nkb' => 'بنگالی ان‌کِی‌بی',
+	'narayam-ur' => 'اردوی استاندارد',
+	'narayam-de' => 'آلمانی',
+	'narayam-gu' => 'نویسه‌گردانی گجراتی',
+	'narayam-ru-standard' => 'روسی استاندارد',
+	'narayam-sah-standard' => 'یاکوتی استاندارد',
 );
 
 /** Finnish (Suomi)
@@ -1208,9 +1219,9 @@ $messages['mk'] = array(
 	'narayam-more-imes' => 'Други вносни методи',
 	'narayam-am' => 'Транслитерација на амхарски',
 	'narayam-as' => 'Транслитерација на асамски',
-	'narayam-as-avro' => 'Асамски - Avro',
-	'narayam-as-bornona' => 'Асамски - Bornona',
-	'narayam-as-inscript' => 'Асамски - InScript',
+	'narayam-as-avro' => 'асамски - Avro',
+	'narayam-as-bornona' => 'асамски - Bornona',
+	'narayam-as-inscript' => 'асамски - InScript',
 	'narayam-ber-tfng' => 'Транслитерација на тифинаг',
 	'narayam-brx-inscript' => 'Бодо - InScript',
 	'narayam-eo' => 'Есперанто',
@@ -1228,18 +1239,19 @@ $messages['mk'] = array(
 	'narayam-or-lekhani' => 'Орија - Lekhani',
 	'narayam-or-inscript' => 'Орија - InScript',
 	'narayam-pa-phonetic' => 'Гурмуки за пенџапски (фонетски)',
-	'narayam-pa-inscript' => 'Пенџапски InScript (за Гурумки)',
+	'narayam-pa-inscript' => 'пенџапски InScript (за Гурмуки)',
 	'narayam-sa' => 'Транслитерација на Санскрит',
 	'narayam-sa-inscript' => 'Санскрит - InScript',
 	'narayam-si-singlish' => 'синхалски - Синглсих',
 	'narayam-si-wijesekara' => 'синхалски - Виџесекара',
 	'narayam-ta-99' => 'Tamil99',
+	'narayam-ta-inscript' => 'тамилски - InScript',
 	'narayam-ta' => 'Транслитерација на тамилски',
-	'narayam-ta-bamini' => 'Тамилски - Bamini',
+	'narayam-ta-bamini' => 'тамилски - Bamini',
 	'narayam-te-inscript' => 'Телугу - InScript',
-	'narayam-bn-avro' => 'Бенгалски - Avro',
-	'narayam-bn-inscript' => 'Бенгалски - InScript',
-	'narayam-bn-nkb' => 'Бенгалски - NKB',
+	'narayam-bn-avro' => 'бенгалски - Avro',
+	'narayam-bn-inscript' => 'бенгалски - InScript',
+	'narayam-bn-nkb' => 'бенгалски - NKB',
 	'narayam-ur' => 'Урду - стандард',
 	'narayam-de' => 'германски',
 	'narayam-gu' => 'Транслитерација на Гуџарати',
@@ -1292,6 +1304,7 @@ $messages['ml'] = array(
 	'narayam-si-singlish' => 'സിംഹള സിൻഗ്ലീഷ്',
 	'narayam-si-wijesekara' => 'സിംഹള വിജെശേഖര',
 	'narayam-ta-99' => 'തമിഴ്99',
+	'narayam-ta-inscript' => 'തമിഴ് ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-ta' => 'തമിഴ് ലിപ്യന്തരണം',
 	'narayam-ta-bamini' => 'തമിൾ ഭാമിനി',
 	'narayam-te-inscript' => 'തെലുഗു ഇൻസ്ക്രിപ്റ്റ്',
@@ -1307,10 +1320,13 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Kaajawa
  * @author Pathak.ab
  */
 $messages['mr'] = array(
-	'narayam-more-imes' => 'इतर भाशा',
+	'narayam-help' => 'मदत',
+	'narayam-help-page' => 'Help:टंकलेखन',
+	'narayam-more-imes' => 'इतर भाषा',
 );
 
 /** Malay (Bahasa Melayu)
@@ -1354,6 +1370,7 @@ $messages['ms'] = array(
 	'narayam-si-singlish' => 'Singlish Sinhala',
 	'narayam-si-wijesekara' => 'Wijesekara Sinhala',
 	'narayam-ta-99' => 'Tamil99',
+	'narayam-ta-inscript' => 'InScript Tamil',
 	'narayam-ta' => 'Alih Huruf Tamil',
 	'narayam-ta-bamini' => 'Tamil Bamini',
 	'narayam-te-inscript' => 'InScript Telugu',
@@ -1411,6 +1428,7 @@ $messages['nl'] = array(
 	'narayam-si-singlish' => 'Singalees Singlish',
 	'narayam-si-wijesekara' => 'Singalees Wijesekara',
 	'narayam-ta-99' => 'Tamil99',
+	'narayam-ta-inscript' => 'Tamil InScript',
 	'narayam-ta' => 'Tamil (transliteratie)',
 	'narayam-ta-bamini' => 'Tamil Bamini',
 	'narayam-te-inscript' => 'Telugu InScript',
@@ -1783,16 +1801,18 @@ $messages['sah'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
  * @author බිඟුවා
  */
 $messages['si'] = array(
 	'narayam-toggle-ime' => 'සක්‍රිය කරන්න ($1)',
-	'narayam-menu' => 'දායකත්ව ක්‍රමය',
-	'narayam-menu-tooltip' => 'Narayam Input Method (IME) සංස්කාරකය පාලනය කරන්න',
+	'narayam-menu' => 'යෙදවුම් ක්‍රමය',
+	'narayam-menu-tooltip' => 'නරයම් යෙදවුම් ක්‍රම සංස්කාරකය (IME) පාලනය කරන්න',
 	'narayam-help' => 'උදව්',
 	'narayam-help-page' => 'Help:මූලිකාදර්ශය',
-	'narayam-checkbox-tooltip' => 'දායකත්ව ක්‍රමය සක්‍රිය, අක්‍රිය කිරීමට',
-	'narayam-disable-preference' => 'Narayam Input Method (IME) සංස්කාරකය අක්‍රිය කරන්න',
+	'narayam-checkbox-tooltip' => 'යෙදවුම් ක්‍රමය සක්‍රිය හෝ අක්‍රිය කිරීමට',
+	'narayam-disable-preference' => 'නරයම් යෙදවුම් ක්‍රම සංස්කාරකය (IME) අක්‍රිය කරන්න',
+	'narayam-more-imes' => 'තවත් යෙදවුම් ක්‍රම',
 	'narayam-hi-inscript' => 'හින්දි අන්තර්ලේඛනය',
 	'narayam-kn' => 'කන්නද අක්ෂර පරිවර්තනය',
 	'narayam-kn-inscript' => 'කන්නද අන්තර්ලේඛනය',
@@ -1884,6 +1904,7 @@ $messages['sl'] = array(
 	'narayam-si-singlish' => 'Singalska singleščina',
 	'narayam-si-wijesekara' => 'Singalska Wijesekara',
 	'narayam-ta-99' => 'Tamil 99',
+	'narayam-ta-inscript' => 'InScript za tamilščino',
 	'narayam-ta' => 'Prečrkovanje tamilščine',
 	'narayam-ta-bamini' => 'Tamilski bamini',
 	'narayam-te-inscript' => 'InScript za teluščino',
