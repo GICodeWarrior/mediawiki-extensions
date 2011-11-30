@@ -940,15 +940,18 @@ $messages['mn'] = array(
 
 /** Marathi (मराठी)
  * @author Htt
+ * @author Kaajawa
  * @author Kaustubh
  */
 $messages['mr'] = array(
 	'edituser-desc' => 'काही विशिष्ट सदस्यांना इतर सदस्यांच्या पसंती बदलण्याची अनुमती देते',
 	'edituser' => 'सदस्य संपादित करा',
-	'edituser-username' => 'नाव',
+	'edituser-username' => 'सदस्य नाव:',
 	'edituser-dosearch' => 'शोधा',
 	'edituser-nouser' => 'सदस्य "$1" अस्तित्वात नाही.',
 	'edituser-exempt' => 'दिलेला सदस्य संपादित करू शकत नाही',
+	'right-edituser' => 'इतर सदस्यांच्या आवडी-निवडी बदला',
+	'right-edituser-exempt' => 'इतर लोक या सदस्याच्या आवडी-निवडी बदलवू शकत नाहीत.',
 );
 
 /** Malay (Bahasa Melayu)
