@@ -646,16 +646,19 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Mjbmr
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'article-comments-title-string' => 'عنوان',
 	'article-comments-name-string' => 'نام',
+	'article-comments-name-field' => 'نام (اجباری):',
 	'article-comments-url-field' => 'تارنما:',
 	'article-comments-url-string' => 'نشانی اینترنتی',
 	'article-comments-comment-string' => 'توضیح',
 	'article-comments-comment-field' => 'توضیح:',
 	'article-comments-submit-button' => 'ارسال',
 	'article-comments-leave-comment-link' => 'ارسال نظر ...',
+	'article-comments-commenter-said' => '$1 گفت ...',
 );
 
 /** Finnish (Suomi)
