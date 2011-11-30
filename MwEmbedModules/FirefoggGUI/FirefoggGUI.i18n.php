@@ -3445,7 +3445,7 @@ Maklumat lanjut mengenai <a href="http://ms.wikipedia.org/wiki/Penyahhingaran_vi
 	'fogg-encoding-done' => 'Pengekodan siap',
 	'fogg-badtoken' => 'Token tidak sah',
 	'fogg-preview' => 'Pratonton video',
-	'fogg-hidepreview' => 'Sorokkan pratonton',
+	'fogg-hidepreview' => 'Sorokkan pralihat',
 	'fogg-warning-firebug' => '<b>Firebug</b> boleh menyebabkan konflik dengan <i>Firefogg</i>.
 Sila matikan <b>Firebug</b> untuk laman ini.',
 );
