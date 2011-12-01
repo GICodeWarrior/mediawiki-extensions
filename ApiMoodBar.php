@@ -2,6 +2,12 @@
 
 class ApiMoodBar extends ApiBase {
 	public function execute() {
+		global $wgUser;
+
+		if ( $wgUser->isBlocked( false ) ) {
+			$this->dieUsageMsg( array( 'blockedtext' ) );
+		}
+
 		$params = $this->extractRequestParams();
 
 		$params['page'] = Title::newFromText( $params['page'] );

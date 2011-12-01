@@ -8,6 +8,9 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 		if ( $wgUser->isAnon() ) {
 			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
 		}
+		if ( $wgUser->isBlocked( false ) ) {
+			$this->dieUsageMsg( array( 'blockedtext' ) );
+		}
 		
 		$params = $this->extractRequestParams();
 	
