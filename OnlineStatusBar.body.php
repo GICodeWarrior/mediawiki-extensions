@@ -42,6 +42,9 @@ HTML;
 		return Html::element( 'img', array( 'src' => $icon, 'alt' => $mode_text ) );
 	}
 
+	public static function getAnonFromTitle( Title $title ) {
+		return self::getAnonFromString( $title->getBaseText() );
+	}
 
 	/**
 	 * Returns the status and User element
@@ -49,7 +52,7 @@ HTML;
 	 * @param Title $title a title of page
 	 * @return array|bool Array containing the status and User object
          */
-	public static function getAnonFromTitle( Title $title ) {
+	public static function getAnonFromString( $username ) {
 		global $wgOnlineStatusBarTrackIpUsers;
 		// if user is anon and we don't track them stop
 		if ( $wgOnlineStatusBarTrackIpUsers == false ) {
@@ -58,7 +61,7 @@ HTML;
 
 		// we need to create temporary user object
 		$user = User::newFromId( 0 );
-		$user->setName( $title->getBaseText() );
+		$user->setName( $username );
 
 		// Check if something wrong didn't happen
 		if ( !($user instanceof User) ) {
@@ -74,6 +77,9 @@ HTML;
 		return array( $status, $user );
 	}
 
+	public static function getUserInfoFromTitle( Title $title ) {
+		return self::getUserInfoFromString( $title->getBaseText() );
+	}
 
 	/**
 	 * Returns the status and User element
@@ -81,9 +87,9 @@ HTML;
 	 * @param Title $title a title of page
 	 * @return array|bool Array containing the status and User object
 	 */
-	public static function getUserInfoFromTitle( Title $title ) {
+	public static function getUserInfoFromString( $username ) {
 		// We create an user object using name of user parsed from title
-		$user = User::newFromName( $title->getBaseText() );
+		$user = User::newFromName( $username );
 		// Invalid user
 		if ( !($user instanceof User) ) {
 			return false;

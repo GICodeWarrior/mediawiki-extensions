@@ -1,0 +1,5 @@
+Fixed undefined v., and reworded option
+--This line, and those below, will be ignored--
+
+M    OnlineStatusBar.i18n.php
+M    OnlineStatusBar.status.php

@@ -45,7 +45,9 @@ $wgResourceModules['ext.OnlineStatusBar'] = array (
 // Load other files of extension
 $wgAutoloadClasses['OnlineStatusBar'] = "$dir/OnlineStatusBar.body.php";
 $wgAutoloadClasses['OnlineStatusBar_StatusCheck'] = "$dir/OnlineStatusBar.status.php";
-$wgAutoloadClasses['OnlineStatusBarHooks'] = "$dir/OnlineStatusBarHooks.php";
+$wgAutoloadClasses['OnlineStatusBarHooks'] = "$dir/OnlineStatusBar.hooks.php";
+$wgAutoloadClasses['ApiOnlineStatus'] = "$dir/OnlineStatusBar.api.php";
+$wgAPIPropModules['onlinestatus'] = 'ApiOnlineStatus';
 
 // For memcached
 define( 'ONLINESTATUSBAR_DELAYED_CACHE', 'd' );
