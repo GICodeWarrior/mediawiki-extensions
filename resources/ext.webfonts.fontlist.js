@@ -41,6 +41,13 @@
 				woff: "Deva/SamyakDevanagari.woff",
 				version: "1.0"
 			},
+			
+			"Madan": {
+				eot: "Deva/madan.eot",
+				ttf: "Deva/madan.ttf",
+				woff: "Deva/madan.woff",
+				version: "2.0"
+			},
 
 			AbyssinicaSIL: {
 				eot: "Ethi/AbyssinicaSIL-R.eot",
@@ -385,7 +392,7 @@
 			ml:  [ "AnjaliOldLipi", "Meera", "Rachana", "RaghuMalayalam" ],
 			mr:  [ "Lohit Devanagari", "Samyak Devanagari" ],
 			my:  [ "Masterpiece Uni Sans", "Padauk-Regular", "Myanmar3", "Yunghkio" ],
-			ne:  [ "Lohit Devanagari" ], 
+			ne:  [ "Lohit Devanagari", "Madan" ], 
 			or:  [ "Lohit Oriya" , "Utkal" ],
 			pa:  [ "Lohit Punjabi", "Saab" ],
 			sa:  [ "Lohit Devanagari", "Samyak Devanagari" ],
