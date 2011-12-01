@@ -33,11 +33,12 @@ class ApiOnlineStatus extends ApiQueryBase {
 				null, $this->getModuleName(), array( 'result' => $ret ) );
 		} else
 		{
-			$this->dieUsage( "You provided invalid user." );
+			$this->dieUsage( "You provided an invalid user." );
 		}
 	}
 
 	public function getAllowedParams() {
+	// params
 		return array(
 			'user' => null,
 		);
@@ -45,7 +46,7 @@ class ApiOnlineStatus extends ApiQueryBase {
 
 	public function getParamDescription() {
 		return array(
-			'user' => 'Username of user you want to get status of',
+			'user' => 'Username of user of which you want to get status',
 		);
 	}
 
@@ -61,7 +62,7 @@ class ApiOnlineStatus extends ApiQueryBase {
 
 	public function getExamples() {
 		return array(
-		'api.php?action=query&list=onlinestatus&onlinestatususer=Petrb',
+		'api.php?action=query&prop=onlinestatus&onlinestatususer=Petrb',
 		);
 	}
 
