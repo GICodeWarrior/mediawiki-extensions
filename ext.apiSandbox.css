@@ -36,3 +36,10 @@ table.api-sandbox-result-container {
 	height: 15em;
 	overflow: scroll;
 }
+
+/* override enwiki's insane styles */
+div.mw-collapsible {
+	border: none !important;
+	text-align: left !important;
+	font-size: 100% !important;
+}
