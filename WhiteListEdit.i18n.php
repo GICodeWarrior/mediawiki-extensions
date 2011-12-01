@@ -1347,7 +1347,7 @@ $2',
 	'action-editwhitelist' => 'changiér la lista blanche por los utilisators ègzistents',
 	'action-restricttowhitelist' => 'changiér et vêre les pâges que figuront ren que sur la lista blanche',
 	'group-restricted' => 'Utilisators a accès rètrent',
-	'group-restricted-member' => 'utilisat{{GENDER:$1|or|rice}} a accès rètrent',
+	'group-restricted-member' => 'usanciér{{GENDER:$1||e}} a accès rètrent',
 	'group-manager' => 'Administrators',
 	'group-manager-member' => 'administrat{{GENDER:$1|or|rice}}',
 );
