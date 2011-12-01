@@ -486,8 +486,8 @@ Vérifiez l'orthographe.",
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'ajaxlogin-desc' => 'Formulèro dinamico que pèrmèt ux utilisators de sè branchiér et pués retegnir lor mot de pâssa.',
-	'ajaxLogin1' => 'Por complètar voutron branchement, vos dête buchiér un mot de pâssa novél.
+	'ajaxlogin-desc' => 'Formulèro dinamico que pèrmèt ux usanciérs de sè branchiér et pués retegnir lor contresegno per mèssageria èlèctronica.',
+	'ajaxLogin1' => 'Por complètar voutron branchement, vos dête buchiér un contresegno novél.
 Cen vos farat quitar ceta pâge et pués vos porriâd pèrdre voutros changements d’ora.',
 	'ajaxLogin2' => 'Éte-vos de sûr ?
 Vos porriâd pèrdre voutros changements sur ceta pâge se vos la quitâd ora.',
@@ -496,7 +496,7 @@ Vos porriâd pèrdre voutros changements sur ceta pâge se vos la quitâd ora.',
 Los noms d’utilisator sont sensiblos a la câssa.
 Controlâd l’ortografia.',
 	'al-createblocked' => 'Voutra adrèce IP est dèfendua de fâre un compto.',
-	'al-throttled' => 'Dês pou, vos éd fêt trop de tentatives de mots de pâssa. Volyéd pacientar $1 second{{PLURAL:$1|a|es}} devant que tornar èprovar.',
+	'al-throttled' => 'Dês pou, vos éd fêt trop de tentatives de contresegnos. Volyéd pacientar $1 second{{PLURAL:$1|a|es}} devant que tornar èprovar.',
 );
 
 /** Irish (Gaeilge)
