@@ -35,36 +35,9 @@ $wgExtensionMessagesFiles['ArraysMagic'] = ExtArrays::getDir() . '/Arrays.i18n.m
 $wgHooks['ParserFirstCallInit'][] = 'ExtArrays::init';
 $wgHooks['ParserClearState'   ][] = 'ExtArrays::onParserClearState';
 
+// Include the settings file:
+require_once ExtArrays::getDir() . '/Arrays_Settings.php';
 
-/**
- * Full compatbility to versions before 1.4.
- * Set to true by default since version 2.0.
- * Regretable, this one has a speclling error...
- *
- * @since 1.4 alpha
- *
- * @var boolean
- */
-$egArrayExtensionCompatbilityMode = false;
-
-/**
- * Contains a key-value par list of characters that should be replaced by a template or parser function
- * call within array values included into an #arrayprint. By replacing these special characters before
- * including the values into the string which is being parsed afterwards, array values can't distract
- * the surounding MW code. Otherwise the array values themselves would be parsed as well.
- *
- * This has no effect in case $egArrayExtensionCompatbilityMode is set to false!
- * 
- * @since 2.0
- *
- * @var array
- */
-$egArraysEscapeTemplates = array(
-	'='  => '{{=}}',
-	'|'  => '{{!}}',
-	'{{' => '{{((}}',
-	'}}' => '{{))}}'
-);
 
 /**
  * Extension class with all the array functionality, also serves as store for arrays per
