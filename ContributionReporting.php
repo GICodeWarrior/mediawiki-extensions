@@ -145,29 +145,17 @@ $wgResourceModules['ext.disablednotice'] = array(
 $wgHooks['ParserFirstCallInit'][] = 'efContributionReportingSetup';
 $wgHooks['LanguageGetMagic'][] = 'efContributionReportingTotal_Magic';
 
-/**
- * @param $parser Parser
- * @return bool
- */
 function efContributionReportingSetup( $parser ) {
 	$parser->setFunctionHook( 'contributiontotal', 'efContributionReportingTotal_Render' );
 	return true;
 }
 
-/**
- * @param $magicWords array
- * @param $langCode string
- * @return bool
- */
 function efContributionReportingTotal_Magic( &$magicWords, $langCode ) {
 	$magicWords['contributiontotal'] = array( 0, 'contributiontotal' );
 	return true;
 }
 
 // Automatically use a local or special database connection
-/**
- * @return DatabaseMysql
- */
 function efContributionReportingConnection() {
 	global $wgContributionReportingDBserver, $wgContributionReportingDBname;
 	global $wgContributionReportingDBuser, $wgContributionReportingDBpassword;
@@ -186,9 +174,6 @@ function efContributionReportingConnection() {
 	return $db;
 }
 
-/**
- * @return DatabaseMysql
- */
 function efContributionTrackingConnection() {
 	global $wgContributionTrackingDBserver, $wgContributionTrackingDBname;
 	global $wgContributionTrackingDBuser, $wgContributionTrackingDBpassword;
@@ -207,11 +192,6 @@ function efContributionTrackingConnection() {
 	return $db;
 }
 
-/**
- * @param $start
- * @param $fudgeFactor
- * @return string
- */
 function efContributionReportingTotal( $start, $fudgeFactor ) {
 	$db = efContributionReportingConnection();
 
@@ -233,9 +213,6 @@ function efContributionReportingTotal( $start, $fudgeFactor ) {
 	return $output;
 }
 
-/**
- * @return string
- */
 function efContributionReportingTotal_Render() {
 	$args = func_get_args();
 	array_shift( $args );

@@ -205,12 +205,7 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 
 	/* Query Functions */
 
-	/**
-	 * Totals for today
-	 *
-	 * @param $timestamp string
-	 * @return array
-	 */
+	// Totals for today
 	public function getDayTotals( $timestamp = 0 ) {
 		$range = array();
 		$end_format = 'Ymd235959';
@@ -255,21 +250,15 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 
 		);
 
-		$result = array();
 		foreach ( $res as $row ) {
-			foreach( $row as $value ) {
+			foreach( $row as $key => $value ) {
 				$result[] = $value;
 			}
 		}
 		return $result;
 	}
 
-	/**
-	 * Given a day figure out what its week bounds are
-	 *
-	 * @param $day
-	 * @return array
-	 */
+	// Given a day figure out what its week bounds are
 	public function weekRange( $day ) {
 		$day = wfTimestamp( TS_UNIX, $day );
 		$start = ( date( 'w', $day ) == 0) ? $day : strtotime('last sunday', $day ); // Use current Sunday

@@ -274,10 +274,6 @@ class SpecialContributionStatistics extends SpecialPage {
 
 	/* Query Functions */
 
-	/**
-	 * @param $limit int
-	 * @return array
-	 */
 	public function getDailyTotals( $limit = 30 ) {
 		// Get connection
 		$dbr = efContributionReportingConnection();
@@ -373,9 +369,6 @@ class SpecialContributionStatistics extends SpecialPage {
 		return $totals;
 	}
 
-	/**
-	 * @return array
-	 */
 	public function getCurrencyTotals() {
 		// Get connection
 		$dbr = efContributionReportingConnection();
@@ -505,10 +498,6 @@ class SpecialContributionStatistics extends SpecialPage {
 		);
 	}
 
-	/**
-	 * @param $dbr DatabaseBase
-	 * @return array
-	 */
 	protected function dateConds( $dbr ) {
 		return
 			array(

@@ -11,6 +11,7 @@ class ContributionHistory extends SpecialPage {
 		$wgOut->redirect( SpecialPage::getTitleFor( 'FundraiserStatistics' )->getFullURL() );
 		return;
 
+
 		if ( !preg_match( '/^[a-z-]+$/', $language ) ) {
 			$language = 'en';
 		}
