@@ -84,7 +84,7 @@ var rules = [
 ['%', '','੫'],
 ['\\^', '','੬'],
 ['&', '','੭'],
-['*', '','੮'],
+['\\*', '','੮'],
 ['R', '','੍ਰ'],
 ['H', '','੍ਹ'],
 ['W', '','ਾਂ']
@@ -92,7 +92,7 @@ var rules = [
 
 jQuery.narayam.addScheme( 'pa-phonetic', {
 	'namemsg': 'narayam-pa-phonetic',
-	'extended_keyboard': true,
+	'extended_keyboard': false,
 	'lookbackLength': 0,
 	'keyBufferLength': 0,
 	'rules': rules
