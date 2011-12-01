@@ -28,10 +28,12 @@ $wgExtensionCredits[ 'specialpage' ][ ] = array(
 $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses[ 'FundraiserLandingPage' ] = $dir . 'FundraiserLandingPage.body.php';
+$wgAutoloadClasses[ 'FundraiserRedirector' ] = $dir . 'FundraiserRedirector.body.php';
 
 $wgExtensionMessagesFiles[ 'FundraiserLandingPage' ] = $dir . 'FundraiserLandingPage.i18n.php';
 
 $wgSpecialPages[ 'FundraiserLandingPage' ] = 'FundraiserLandingPage';
+$wgSpecialPages[ 'FundraiserRedirector' ] = 'FundraiserRedirector';
 
 /*
  * Defaults for the required fields.  These fields will be included whether
