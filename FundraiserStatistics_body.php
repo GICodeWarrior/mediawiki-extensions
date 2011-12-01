@@ -15,7 +15,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 	}
 
 	public function execute( $sub ) {
-		global $wgRequest, $wgOut, $wgUser, $wgLang, $wgScriptPath, $egFundraiserStatisticsFundraisers;
+		global $wgRequest, $wgOut, $wgLang, $wgScriptPath, $egFundraiserStatisticsFundraisers;
 
 		$showYear = array();
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
@@ -242,7 +242,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				Xml::tags(
 					'table',
 					array( 'cellpadding' => 0, 'cellspacing' => 0, 'border' => 0 ),
-					Xml::tags( 'tr', null, implode( $chart['data'] ) )
+					Xml::tags( 'tr', null, implode( $chart['data'] ) ) // FIXME: Missing parameter to implode
 				)
 			);
 			$first = false;
@@ -364,6 +364,10 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		return null;
 	}
 
+	/**
+	 * @param $values
+	 * @return string
+	 */
 	private function dropDownList ( $values ) {
 		$dropDown = '';
 		foreach ( $values as $value ) {
