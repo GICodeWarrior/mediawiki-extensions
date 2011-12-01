@@ -133,7 +133,7 @@ $messages['fr'] = array(
 $messages['frp'] = array(
 	'mirrortools' => 'OutilsMerior',
 	'group-MirrorTools' => 'Utilisators de l’outil merior',
-	'group-MirrorTools-member' => 'utilisat{{GENDER:$1|or|rice}} de l’outil merior',
+	'group-MirrorTools-member' => 'usanciér{{GENDER:$1||e}} de l’outil merior',
 	'grouppage-MirrorTools' => '{{ns:project}}:Utilisators de l’outil merior',
 );
 
