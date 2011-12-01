@@ -14,7 +14,6 @@ class FundraiserRedirector extends UnlistedSpecialPage {
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgFundraiserLPDefaults;
 		
-		$wgOut->setSquidMaxage( 0 ); // Never cache on server side
 		$this->setHeaders();
 		
 		// Set the country parameter
