@@ -46,7 +46,7 @@ class ApiOnlineStatus extends ApiQueryBase {
 
 	public function getParamDescription() {
 		return array(
-			'user' => 'Username of user of which you want to get status',
+			'user' => 'Username of user you want to get status for',
 		);
 	}
 
@@ -67,6 +67,6 @@ class ApiOnlineStatus extends ApiQueryBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: OnlineStatusBar.api.php 90814 2011-12-01 15:00:00Z petrb $';
+		return __CLASS__ . ': $Id: OnlineStatusBar.api.php petrb $';
 	}
 }

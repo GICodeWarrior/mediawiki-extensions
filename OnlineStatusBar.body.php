@@ -42,6 +42,9 @@ HTML;
 		return Html::element( 'img', array( 'src' => $icon, 'alt' => $mode_text ) );
 	}
 
+	/**
+	 * @param Title $title
+	 */
 	public static function getAnonFromTitle( Title $title ) {
 		return self::getAnonFromString( $title->getBaseText() );
 	}
@@ -49,7 +52,7 @@ HTML;
 	/**
 	 * Returns the status and User element
 	 *
-	 * @param Title $title a title of page
+	 * @param string $username a user
 	 * @return array|bool Array containing the status and User object
          */
 	public static function getAnonFromString( $username ) {
@@ -77,6 +80,10 @@ HTML;
 		return array( $status, $user );
 	}
 
+	/**
+	 * @param $title Title
+	 * @return array
+	 */
 	public static function getUserInfoFromTitle( Title $title ) {
 		return self::getUserInfoFromString( $title->getBaseText() );
 	}
@@ -84,7 +91,7 @@ HTML;
 	/**
 	 * Returns the status and User element
 	 *
-	 * @param Title $title a title of page
+	 * @param string $username name of user
 	 * @return array|bool Array containing the status and User object
 	 */
 	public static function getUserInfoFromString( $username ) {
