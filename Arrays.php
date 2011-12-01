@@ -15,12 +15,6 @@
  * @author Li Ding < lidingpku@gmail.com >
  * @author Jie Bao
  * @author Daniel Werner < danweetz@web.de > (since version 1.3)
- *
- * @ToDo:
- * use $egArrayExtensionCompatbilityMode to finally get rid of unlogic behavior of certain functions
- * who create a new array from the data of one or more old arrays. In case only the new array name is
- * given, sometimes the new array will be created, sometimes not. It should always be created to make
- * things more consistent and clear.
  */
 
 if ( ! defined( 'MEDIAWIKI' ) ) { die(); }
@@ -53,6 +47,24 @@ $wgHooks['ParserClearState'   ][] = 'ExtArrays::onParserClearState';
  */
 $egArrayExtensionCompatbilityMode = false;
 
+/**
+ * Contains a key-value par list of characters that should be replaced by a template or parser function
+ * call within array values included into an #arrayprint. By replacing these special characters before
+ * including the values into the string which is being parsed afterwards, array values can't distract
+ * the surounding MW code. Otherwise the array values themselves would be parsed as well.
+ *
+ * This has no effect in case $egArrayExtensionCompatbilityMode is set to false!
+ * 
+ * @since 2.0
+ *
+ * @var array
+ */
+$egArraysEscapeTemplates = array(
+	'='  => '{{=}}',
+	'|'  => '{{!}}',
+	'{{' => '{{((}}',
+	'}}' => '{{))}}'
+);
 
 /**
  * Extension class with all the array functionality, also serves as store for arrays per
@@ -292,7 +304,9 @@ class ExtArrays {
 	*    {{#arrayprint:b|<br/>|@@@|{{f.tag{{f.print.vbar}}prop{{f.print.vbar}}@@@}} }}   -- embed template function
 	*    {{#arrayprint:b|<br/>|@@@|[[name::@@@]]}}   -- make SMW links
 	*/
-	static function pfObj_arrayprint( Parser &$parser, $frame, $args ) {
+	static function pfObj_arrayprint( Parser &$parser, PPFrame $frame, $args ) {
+		global $egArrayExtensionCompatbilityMode;
+		
 		// Get Parameters
 		$arrayId   = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
 		$delimiter = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : self::$mDefaultSep;
@@ -302,7 +316,7 @@ class ExtArrays {
 		 * sense in any sane scenario.
 		 */
 		$search  = isset( $args[2] ) ? trim( $frame->expand( $args[2], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
-		$subject = isset( $args[3] ) ? trim( $frame->expand( $args[3], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';		
+		$subject = isset( $args[3] ) ? trim( $frame->expand( $args[3], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
 		// options array:
 		$options = isset( $args[4] )
 				? self::parse_options( $frame->expand( $args[4] ) )
@@ -313,8 +327,7 @@ class ExtArrays {
 		$array = self::get( $parser )->getArray( $arrayId );
 
 		if( $array === null ) {
-			// array we want to print doesn't exist!
-			global $egArrayExtensionCompatbilityMode;
+			// array we want to print doesn't exist!			
 			if( ! $egArrayExtensionCompatbilityMode ) {
 				return '';
 			} else {
@@ -326,9 +339,16 @@ class ExtArrays {
 		$rendered_values = array();
 
 		foreach( $array as $val ) {
+					
+			if( ! $egArrayExtensionCompatbilityMode ) {
+				// NO COMPATIBILITY-MODE
+				/**
+				 * escape the array value so it won't destroy the users wiki markup expression.
+				 */
+				$val = self::escapeForExpansion( $val );
+			}
 			// replace place holder with current value:
 			$rawResult = str_replace( $search, $val, $subject );
-
 			/*
 			 * $subjectd still is un-expanded (this allows to use some parser functions like
 			 * {{FULLPAGENAME:@@@@}} directly without getting parsed before @@@@ is replaced.
@@ -357,15 +377,18 @@ class ExtArrays {
 				$output = implode( $delimiter, $rendered_values );
 				break;
 		}
+		
+		if( $egArrayExtensionCompatbilityMode ) {
+			// COMPATIBLITY-MODE:
+			/*
+			 * don't leave the final parse to Parser::braceSubstitution() since there are some special cases where it
+			 * would produce unexpected output (it uses a new child frame and ignores whether the frame is a template!)
+			 */
+			$output = $parser->preprocessToDom( $output, $frame->isTemplate() ? Parser::PTD_FOR_INCLUSION : 0 );
+			$output = $frame->expand( $output );
+		}
 
-		/*
-		 * don't leave the final parse to Parser::braceSubstitution() since there are some special cases where it
-		 * would produce unexpected output (it uses a new child frame and ignores whether the frame is a template!)
-		 */
-		$output = $parser->preprocessToDom( $output, $frame->isTemplate() ? Parser::PTD_FOR_INCLUSION : 0 );
-		$output = trim( $frame->expand( $output ) );
-
-		return $output;
+		return trim( $output );
 	}
 
 	/**
@@ -1201,6 +1224,7 @@ class ExtArrays {
 	 * 
 	 * @param Array  $array
 	 * @param string $commaSep
+	 * 
 	 * @return string
 	 */
 	public static function arrayToText( $array, $commaSep = null ) {
@@ -1222,6 +1246,25 @@ class ExtArrays {
 			}
 			return $s;
 		}
+	}
+	
+	/**
+	 * Escapes a string so it can be used within PPFrame::expand() expansion without actually being
+	 * changed because of special characters.
+	 * Respects the configuration variable $egArraysEscapeTemplates.
+	 * 
+	 * @since 2.0
+	 * 
+	 * @param string $string
+	 * @return string
+	 */
+	public static function escapeForExpansion( $string ) {
+		global $egArraysEscapeTemplates;
+		$string = strtr(
+			$string,
+			$egArraysEscapeTemplates		
+		);
+		return $string;
 	}
 
 	/**

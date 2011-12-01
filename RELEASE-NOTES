@@ -14,7 +14,11 @@
       + '#arraymerge', '#arrayunion', '#arraydiff' and '#arrayintersect' with only one array for
         the operation will make a copy of that array instead of creating no array at all.
       + Default separator for '#arrayprint' now is the languages default separator instead of ', '.
-      + See 1.4 alpha for previous changes
+	  + '#arrayprint' will no longer expand the given wiki markup twice. Instead, it will escape special
+	    characters of array values before they will be inserted into the markup. This way it won't be
+		possible anymore that array values can break the functions output. '$egArraysEscapeTemplates'
+		defines which special characters should be escaped by which template/parser function
+      + *** See 1.4 alpha for previous changes ***
     - '#arraydefine' option 'print' no longer supports 'print=print' and parameters beyond options.
       This functionality never worked reliably anyways. 'print=list' still works.
     - '#arrayprint' now has a new parameter for options. Option 'print=pretty' will print a list where
