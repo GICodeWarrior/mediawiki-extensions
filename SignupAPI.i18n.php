@@ -137,13 +137,13 @@ $messages['frp'] = array(
 	'signupapi-ok' => 'D’acôrd',
 	'signupapi-noname' => 'Nion nom d’utilisator at étâ spècefiâ',
 	'signupapi-userexists' => 'L’utilisator ègziste',
-	'signupapi-enterpassword' => 'Vos dête buchiér un mot de pâssa',
-	'signupapi-passwordtooshort' => 'Lo mot de pâssa est trop côrt',
+	'signupapi-enterpassword' => 'Vos dête buchiér un contresegno',
+	'signupapi-passwordtooshort' => 'Lo contresegno est trop côrt',
 	'signupapi-weak' => 'Fêblo',
 	'signupapi-medium' => 'Moyen',
 	'signupapi-strong' => 'Fôrt',
-	'signupapi-badretype' => 'Los mots de pâssa que vos éd buchiês sont pas pariérs.',
-	'signupapi-passwordsmatch' => 'Los mots de pâssa corrèspondont',
+	'signupapi-badretype' => 'Los contresegnos que vos éd buchiês sont pas pariérs.',
+	'signupapi-passwordsmatch' => 'Los contresegnos corrèspondont',
 	'signupapi-invalidemailaddress' => 'L’adrèce èlèctronica est envalida',
 );
 
