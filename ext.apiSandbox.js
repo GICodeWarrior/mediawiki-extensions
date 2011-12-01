@@ -282,17 +282,6 @@ jQuery( function( $ ) {
 		return typeof x != 'undefined';
 	}
 
-	/**
-	 * Merges several objects into one that gets returned
-	 */
-	function merge( /* ... */ ) {
-		var res = {};
-		for ( var i = 0; i < arguments.length; i++ ) {
-			$.extend( res, arguments[i] );
-		}
-		return res;
-	}
-
 	function showLoading( $element ) {
 		$element.html(
 			mw.html.element( 'img',
@@ -394,6 +383,9 @@ jQuery( function( $ ) {
 	 * @return {String}
 	 */
 	function smartEscape( s ) {
+		if ( !s ) {
+			return ''; // @todo: fully verify paraminfo output
+		}
 		s = mw.html.escape( s );
 		if ( s.indexOf( '\n ' ) >= 0 ) {
 			// turns *-bulleted list into a HTML list
