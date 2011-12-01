@@ -17,30 +17,28 @@ class ApiOnlineStatus extends ApiQueryBase {
 
 	public function execute() {
 		$params = $this->extractRequestParams();
-		if (is_string ( $params['user'] )) {
-			$result = OnlineStatusBar::getUserInfoFromString( $params['user'] );
-			// if user is IP and we track them
-			if ( User::isIP( $params['user'] ) && $result === false ) {
-				$result = OnlineStatusBar::getAnonFromString( $params['user'] );
-			}
-			if ( $result === false ) {
-				$ret = 'unknown';
-			} else {
-				$ret = $result[0];
-			}
-
-			$this->getResult()->addValue(
-				null, $this->getModuleName(), array( 'result' => $ret ) );
-		} else
-		{
-			$this->dieUsage( "You provided an invalid user." );
+		$result = OnlineStatusBar::getUserInfoFromString( $params['user'] );
+		// if user is IP and we track them
+		if ( User::isIP( $params['user'] ) && $result === false ) {
+			$result = OnlineStatusBar::getAnonFromString( $params['user'] );
 		}
+		if ( $result === false ) {
+			$ret = 'unknown';
+		} else {
+			$ret = $result[0];
+		}
+
+		$this->getResult()->addValue(
+			null, $this->getModuleName(), array( 'result' => $ret ) );
 	}
 
 	public function getAllowedParams() {
 	// params
 		return array(
-			'user' => null,
+			'user' => array (
+					ApiBase::PARAM_TYPE => 'string',
+					ApiBase::PARAM_REQUIRED => true
+				),
 		);
 	}
 
