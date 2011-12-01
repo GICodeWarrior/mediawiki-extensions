@@ -20,7 +20,6 @@ li#pt-narayam {
 div#narayam-menu {
 	direction: ltr;
 	float: left;
-	cursor: pointer;
 }
 div.narayam-menuFocus {
 	background-position: -22px 60%;
@@ -108,7 +107,6 @@ div#narayam-menu li a {
 	padding: 0.5em;
 	white-space: nowrap;
 	color: #0645ad;
-	cursor: pointer;
 /*	font-size: 0.8em;*/
 }
 /* IGNORED BY IE6 */
@@ -153,4 +151,8 @@ li.narayam-more-imes-link.open {
 }
 li.narayam-more-imes-link a {
 	padding-left: 10px;
+}
+
+div#narayam-menu label:hover, input:hover {
+	cursor: pointer;
 }
