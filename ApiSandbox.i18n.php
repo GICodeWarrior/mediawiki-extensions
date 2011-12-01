@@ -104,6 +104,8 @@ $messages['be-tarask'] = array(
 	'apisb-query-prop' => 'Уласьцівасьці',
 	'apisb-query-list' => 'Сьпісы',
 	'apisb-query-meta' => 'Мэтазьвесткі',
+	'apisb-generic-parameters' => 'Агульныя парамэтры',
+	'apisb-generator-parameters' => 'Генэратар',
 );
 
 /** Bulgarian (Български)
@@ -982,19 +984,30 @@ $messages['uk'] = array(
  * @author Trần Nguyễn Minh Huy
  */
 $messages['vi'] = array(
+	'apisb-desc' => 'Cho phép gỡ lỗi các lần gọi [http://www.mediawiki.org/wiki/API API của MediaWiki] trong trình duyệt',
 	'apisandbox' => 'Chỗ thử API',
 	'apisb-no-js' => "'''Lỗi:''' Tính năng này cần JavaScript.",
+	'apisb-intro' => "Trang này dùng để thử nghiệm với '''API của MediaWiki'''.
+	Hãy tra cứu [http://www.mediawiki.org/wiki/API tài liệu API] để biết chi tiết về cách sử dụng API.",
 	'apisb-api-disabled' => 'API đã bị vô hiệu hóa trên trang web này.',
 	'apisb-parameters' => 'Các tham số',
 	'apisb-result' => 'Kết quả',
 	'apisb-request-url' => 'URL của yêu cầu:',
+	'apisb-request-post' => 'Dữ liệu POST:',
 	'apisb-select-action' => 'Chọn tác vụ',
+	'apisb-select-query' => 'Bạn muốn truy vấn gì?',
 	'apisb-select-value' => 'Chọn giá trị',
 	'apisb-loading' => 'Đang tải…',
+	'apisb-load-error' => 'Lỗi khi tải miêu tả API',
+	'apisb-request-error' => 'Lỗi khi phản ứng yêu cầu API',
+	'apisb-namespaces-error' => 'Lỗi khi tải các không gian tên',
 	'apisb-ns-main' => '(Chính)',
+	'apisb-submit' => 'Yêu cầu',
 	'apisb-query-prop' => 'Thuộc tính',
 	'apisb-query-list' => 'Danh sách',
 	'apisb-query-meta' => 'Siêu thông tin',
+	'apisb-generic-parameters' => 'Tham số chung',
+	'apisb-generator-parameters' => 'Bộ xuất phát',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
