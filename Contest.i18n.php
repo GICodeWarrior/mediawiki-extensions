@@ -557,6 +557,9 @@ $messages['be-tarask'] = array(
 	'contest-signup-finished' => 'Гэты конкурс скончыўся. Дзякуй за ўдзел!',
 	'contest-signup-draft' => 'Гэты конкурс яшчэ не пачаўся. Калі ласка, пачакайце.',
 	'contest-signup-country' => 'Вашая краіна',
+	'contest-signup-emailwarn' => 'Папярэджаньне: Вы зьмяняеце адрас электроннай пошты для Вашага рахунку, для чаго будзе неабходна пацьвердзіць новы адрас электроннай пошты.',
+	'contest-signup-require-rules' => 'Вы павінны пагадзіцца з правіламі конкурсу.',
+	'contest-signup-require-country' => 'Вы павінны падаць краіну Вашага жыхарства.',
 );
 
 /** Breton (Brezhoneg)
