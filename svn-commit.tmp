@@ -1,7 +1,0 @@
-Performance tweaks
---This line, and those below, will be ignored--
-
-M    OnlineStatusBar.body.php
-M    OnlineStatusBar.php
-A    OnlineStatusBar.status.php
-M    OnlineStatusBarHooks.php
