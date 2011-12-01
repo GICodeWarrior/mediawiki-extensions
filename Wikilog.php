@@ -107,6 +107,7 @@ $wgAutoloadClasses += array(
 	// Namespace pages
 	'WikilogMainPage'           => $dir . 'WikilogMainPage.php',
 	'WikilogItemPage'           => $dir . 'WikilogItemPage.php',
+	'WikilogWikiItemPage'       => $dir . 'WikilogItemPage.php',
 	'WikilogCommentsPage'       => $dir . 'WikilogCommentsPage.php',
 
 	// Captcha adapter
@@ -274,7 +275,8 @@ class Wikilog
 					return true;
 				}
 			} elseif ( $wi->isItem() ) {
-				$article = new WikilogItemPage( $title, $wi );
+				$item = WikilogItem::newFromInfo( $wi );
+				$article = new WikilogItemPage( $title, $item );
 			} else {
 				$article = new WikilogMainPage( $title, $wi );
 			}

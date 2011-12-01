@@ -2,4 +2,4 @@
 
 === Wikilog 1.3.0. ===
 
-(empty)
+* Remove WikilogItemPage::preSaveTransform() (Mw 1.17 compatibility).
