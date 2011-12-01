@@ -108,6 +108,16 @@ $messages['gl'] = array(
 	'apiexplorer-loading' => 'Cargando as funcións...',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'apiexplorer' => 'API-Explorer',
+	'apiexplorer-desc' => 'Strona za interaktiwne wužiwanje dokumentacije MediaWikijoweho API',
+	'apiexplorer-intro' => 'Tuta strona pokazuje dokumentaciju za API aktualneho wikija. Prošu klikń na jednu ze sledowacych funkcijow, zo by dalše informacije wo tym widźał, kotre parametry dadźa so w kóždym wołanju wužiwać. Hlej tež [http://www.mediawiki.org/wiki/API:Main_page the powšitkowna dokumentacija API MediaWiki].',
+	'apiexplorer-loading' => 'Funkcije so začituja...',
+);
+
 /** Hungarian (Magyar)
  * @author Dj
  */
