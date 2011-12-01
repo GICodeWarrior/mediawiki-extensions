@@ -217,28 +217,9 @@
 					"ർ": "ര്‍",
 					"ൺ ": "ണ്‍",
 					"ൽ": "ല്‍",
-					"ൿ": "ക്‍ ",
-					"ൻ‍റ": "ന്റ",
-					"ന്‍റെ": "ന്റെ"
+					"ൿ": "ക്‍ "
 				},
-				version: "4.5"
-			},
-
-			Rachana: {
-				eot: "Mlym/Rachana.eot",
-				ttf: "Mlym/Rachana.ttf",
-				woff: "Mlym/Rachana.woff",
-				normalization: {
-					"ൾ": "ള്‍",
-					"ൻ": "ന്‍",
-					"ർ": "ര്‍",
-					"ൺ ": "ണ്‍",
-					"ൽ": "ല്‍",
-					"ൿ": "ക്‍ ",
-					"ൻ‍റ": "ന്റ",
-					"ന്‍റെ": "ന്റെ"
-				},
-				version: "4.5"
+				version: "5.01"
 			},
 
 			RaghuMalayalam: {
@@ -251,9 +232,7 @@
 					"ർ": "ര്‍",
 					"ൺ ": "ണ്‍",
 					"ൽ": "ല്‍",
-					"ൿ": "ക്‍ ",
-					"ൻ‍റ": "ന്റ",
-					"ന്‍റെ": "ന്റെ"
+					"ൿ": "ക്‍ "
 				},
 				version: "2.0"
 			},
@@ -390,7 +369,7 @@
 			kok: [ "Lohit Devanagari" ],
 			gom: [ "Lohit Devanagari" ],
 			mai: [ "Lohit Devanagari" ],
-			ml:  [ "AnjaliOldLipi", "Meera", "Rachana", "RaghuMalayalam" ],
+			ml:  [ "AnjaliOldLipi", "Meera", "RaghuMalayalam" ],
 			mr:  [ "Lohit Devanagari", "Samyak Devanagari" ],
 			my:  [ "Masterpiece Uni Sans", "Padauk-Regular", "Myanmar3", "Yunghkio" ],
 			ne:  [ "Lohit Devanagari", "Madan" ], 
