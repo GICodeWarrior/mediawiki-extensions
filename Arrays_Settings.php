@@ -18,14 +18,13 @@
 
 /**
  * Full compatbility to versions before 1.4.
- * Set to true by default since version 2.0.
- * Regretable, this one has a speclling error...
+ * Set to false by default since version 2.0.
  *
- * @since 1.4 alpha
+ * @since 2.0 (as '$egArrayExtensionCompatbilityMode' in 1.4 alpha)
  *
  * @var boolean
  */
-$egArrayExtensionCompatbilityMode = false;
+$egArraysCompatibilityMode = false;
 
 /**
  * Contains a key-value pair list of characters that should be replaced by a template or parser function
@@ -33,8 +32,8 @@ $egArrayExtensionCompatbilityMode = false;
  * including the values into the string which is being expanded afterwards, array values can't distract
  * the surounding MW code. Otherwise the array values themselves would be parsed as well.
  *
- * This has no effect in case $egArrayExtensionCompatbilityMode is set to false! If set to null, Arrays
- * will jump to compatbility mode behavior on this, independently from $egArrayExtensionCompatbilityMode.
+ * This has no effect in case $egArraysCompatibilityMode is set to false! If set to null, Arrays will
+ * jump to compatbility mode behavior on this, independently from $egArraysCompatibilityMode.
  * 
  * @since 2.0
  *
@@ -46,4 +45,3 @@ $egArraysExpansionEscapeTemplates = array(
 	'{{' => '{{((}}',
 	'}}' => '{{))}}'
 );
-$egArraysExpansionEscapeTemplates = null;

@@ -78,7 +78,7 @@ class ExtArrays {
 	 * @since 2.0
 	 */
 	public static function init( Parser &$parser ) {
-		global $egArrayExtensionCompatbilityMode;
+		global $egArraysCompatibilityMode;
 		/*
 		 * store for arrays per Parser object. This will solve several bugs related to
 		 * 'ParserClearState' hook clearing all variables early in combination with certain
@@ -87,7 +87,7 @@ class ExtArrays {
 		$parser->mExtArrays = new self();
 		
 		// initialize default separator for '#arrayprint'
-		if( $egArrayExtensionCompatbilityMode ) {
+		if( $egArraysCompatibilityMode ) {
 			// COMPATIBILITY-MODE
 			self::$mDefaultSep = ', ';
 		}
@@ -278,7 +278,7 @@ class ExtArrays {
 	*    {{#arrayprint:b|<br/>|@@@|[[name::@@@]]}}   -- make SMW links
 	*/
 	static function pfObj_arrayprint( Parser &$parser, PPFrame $frame, $args ) {
-		global $egArrayExtensionCompatbilityMode, $egArraysExpansionEscapeTemplates;
+		global $egArraysCompatibilityMode, $egArraysExpansionEscapeTemplates;
 		
 		// Get Parameters
 		$arrayId   = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
@@ -301,7 +301,7 @@ class ExtArrays {
 
 		if( $array === null ) {
 			// array we want to print doesn't exist!			
-			if( ! $egArrayExtensionCompatbilityMode ) {
+			if( ! $egArraysCompatibilityMode ) {
 				return '';
 			} else {
 				// COMPATIBILITY-MODE
@@ -313,7 +313,7 @@ class ExtArrays {
 
 		foreach( $array as $val ) {
 					
-			if( ! $egArrayExtensionCompatbilityMode ) {
+			if( ! $egArraysCompatibilityMode ) {
 				// NO COMPATIBILITY-MODE
 				/**
 				 * escape the array value so it won't destroy the users wiki markup expression.
@@ -351,7 +351,7 @@ class ExtArrays {
 				break;
 		}
 		
-		if( $egArrayExtensionCompatbilityMode || $egArraysExpansionEscapeTemplates === null ) {
+		if( $egArraysCompatibilityMode || $egArraysExpansionEscapeTemplates === null ) {
 			// COMPATIBLITY-MODE:
 			/*
 			 * don't leave the final parse to Parser::braceSubstitution() since there are some special cases where it
@@ -370,7 +370,7 @@ class ExtArrays {
 	*   {{#arrayindex:arrayid|index}}
 	*/
 	static function pfObj_arrayindex( Parser &$parser, PPFrame $frame, $args ) {
-		global $egArrayExtensionCompatbilityMode;
+		global $egArraysCompatibilityMode;
 
 		// Get Parameters
 		$arrayId    = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
@@ -384,14 +384,14 @@ class ExtArrays {
 		// get value or null if it doesn't exist. Takes care of negative index as well
 		$val = self::get( $parser )->getArrayValue( $arrayId, $index );
 
-		if( $val === null || ( $val === '' && !$egArrayExtensionCompatbilityMode ) ) {
+		if( $val === null || ( $val === '' && !$egArraysCompatibilityMode ) ) {
 			// index doesn't exist, return default (parameter 3)!
 			// without compatibility, also return default in case of empty string ''
 
 			// only expand default when needed
 			$defaultOrOptions = trim( $frame->expand( $rawOptions ) );
 
-			if( $egArrayExtensionCompatbilityMode ) {
+			if( $egArraysCompatibilityMode ) {
 				// COMPATIBILITY-MODE
 				// now parse the options, and do posterior process on the created array
 				$options = self::parse_options( $defaultOrOptions );
@@ -480,12 +480,12 @@ class ExtArrays {
 			}
 		}
 
-		global $egArrayExtensionCompatbilityMode;
+		global $egArraysCompatibilityMode;
 
 		// no match! (Expand only when needed!)
 		$no = isset( $args[4] )
 			  ? trim( $frame->expand( $args[4] ) )
-			  : $egArrayExtensionCompatbilityMode ? '-1' : ''; // COMPATIBILITY-MODE
+			  : $egArraysCompatibilityMode ? '-1' : ''; // COMPATIBILITY-MODE
 		return $no;
 	}
 
@@ -509,8 +509,8 @@ class ExtArrays {
 		$store = self::get( $parser );
 
 		if( $arrayId === null ) {
-			global $egArrayExtensionCompatbilityMode;
-			if( ! $egArrayExtensionCompatbilityMode ) { // COMPATIBILITY-MODE
+			global $egArraysCompatibilityMode;
+			if( ! $egArraysCompatibilityMode ) { // COMPATIBILITY-MODE
 				$store->setArray( $arrayId_new );
 			}
 			return '';
@@ -591,8 +591,8 @@ class ExtArrays {
 	static function pf_arrayslice( Parser &$parser, $arrayId_new, $arrayId = null , $offset = 0, $length = null ) {
 		$store = self::get( $parser );
 		if( $arrayId === null ) {
-			global $egArrayExtensionCompatbilityMode;
-			if( ! $egArrayExtensionCompatbilityMode ) { // COMPATIBILITY-MODE
+			global $egArraysCompatibilityMode;
+			if( ! $egArraysCompatibilityMode ) { // COMPATIBILITY-MODE
 				$store->setArray( $arrayId_new );
 			}
 			return '';
@@ -632,9 +632,9 @@ class ExtArrays {
 	*    {{#arrayreset:arrayid1,arrayid2,...arrayidn}}
 	*/
 	static function pfObj_arrayreset( Parser &$parser, PPFrame $frame, $args) {
-		global $egArrayExtensionCompatbilityMode;
+		global $egArraysCompatibilityMode;
 
-		if( $egArrayExtensionCompatbilityMode && count( $args ) == 1 ) {
+		if( $egArraysCompatibilityMode && count( $args ) == 1 ) {
 			/*
 			 * COMPATIBILITY-MODE: before arrays were separated by ';' which is an bad idea since
 			 * the ',' is an allowed character in array names!
@@ -839,9 +839,9 @@ class ExtArrays {
 			$lastArray = array();
 		}
 
-		global $egArrayExtensionCompatbilityMode;
+		global $egArraysCompatibilityMode;
 
-		if( ! $operationRan && $egArrayExtensionCompatbilityMode
+		if( ! $operationRan && $egArraysCompatibilityMode
 			&& $operationFunc !== 'multi_arraymerge' // only exception was 'arraymerge'
 		) {
 			/*
@@ -922,8 +922,8 @@ class ExtArrays {
 			|| ! array_key_exists( $arrayId, $this->mArrays )
 			|| ! is_array( $this->mArrays[ $arrayId ] )
 		) {
-			global $egArrayExtensionCompatbilityMode;
-			if( $egArrayExtensionCompatbilityMode ) {
+			global $egArraysCompatibilityMode;
+			if( $egArraysCompatibilityMode ) {
 				return "undefined array: $arrayId"; // COMPATIBILITY-MODE
 			} else {
 				return '';
