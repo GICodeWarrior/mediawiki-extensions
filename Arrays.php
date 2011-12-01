@@ -278,7 +278,7 @@ class ExtArrays {
 	*    {{#arrayprint:b|<br/>|@@@|[[name::@@@]]}}   -- make SMW links
 	*/
 	static function pfObj_arrayprint( Parser &$parser, PPFrame $frame, $args ) {
-		global $egArrayExtensionCompatbilityMode;
+		global $egArrayExtensionCompatbilityMode, $egArraysExpansionEscapeTemplates;
 		
 		// Get Parameters
 		$arrayId   = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
@@ -351,7 +351,7 @@ class ExtArrays {
 				break;
 		}
 		
-		if( $egArrayExtensionCompatbilityMode ) {
+		if( $egArrayExtensionCompatbilityMode || $egArraysExpansionEscapeTemplates === null ) {
 			// COMPATIBLITY-MODE:
 			/*
 			 * don't leave the final parse to Parser::braceSubstitution() since there are some special cases where it
@@ -1232,11 +1232,17 @@ class ExtArrays {
 	 * @return string
 	 */
 	public static function escapeForExpansion( $string ) {
-		global $egArraysEscapeTemplates;
+		global $egArraysExpansionEscapeTemplates;
+		
+		if( $egArraysExpansionEscapeTemplates === null ) {
+			return $string;
+		}
+		
 		$string = strtr(
 			$string,
-			$egArraysEscapeTemplates		
+			$egArraysExpansionEscapeTemplates		
 		);
+		
 		return $string;
 	}
 
