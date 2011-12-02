@@ -60,7 +60,7 @@ function wfHelpCommonsLoad( $article ) {
 				$page = $dbr->select(
 					'page',
 					array( 'page_title', 'page_namespace', 'page_latest' ),
-					array( 'page_namespace' => 12, 'page_title' => $title ),
+					array( 'page_namespace' => constant( 'NS_HELP' ), 'page_title' => $title ),
 					__METHOD__
 				);
 				$page = $dbr->fetchObject( $page );
@@ -114,7 +114,7 @@ function wfHelpCommonsRedirectTalks( &$article, &$outputDone, &$pcache ) {
 				$page = $dbr->select(
 					'page',
 					array( 'page_title', 'page_namespace', 'page_latest' ),
-					array( 'page_namespace' => 12, 'page_title' => $title ),
+					array( 'page_namespace' => constant( 'NS_HELP' ), 'page_title' => $title ),
 					__METHOD__
 				);
 				$page = $dbr->fetchObject( $page );
@@ -218,7 +218,7 @@ function fnProtectHelpCommons( &$title, &$user, $action, &$result) {
 				$res = $dbr->select(
 					'page',
 					array( 'page_title', 'page_namespace', 'page_latest' ),
-					array( 'page_namespace' => 12, 'page_title' => str_replace( ' ', '_', $title->getText() ) ),
+					array( 'page_namespace' => constant( 'NS_HELP' ), 'page_title' => str_replace( ' ', '_', $title->getText() ) ),
 					__METHOD__
 				);
 
@@ -229,7 +229,7 @@ function fnProtectHelpCommons( &$title, &$user, $action, &$result) {
 				$ns = $title->getNamespace();
 
 				// check namespaces
-				if( $ns == 12 || $ns == 13 ) {
+				if( $ns == constant( 'NS_HELP' ) || $ns == constant( 'NS_HELP_TALK' ) ) {
 					// error message if action is blocked
 					$result = array( 'protectedpagetext' );
 
