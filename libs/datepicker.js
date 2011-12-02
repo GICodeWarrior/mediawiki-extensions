@@ -56,7 +56,7 @@ function SFI_DP_init ( input_id, params ) {
 			inputShow.after( resetbutton );
 			resetbutton.click( function(){
 				inputShow.datepicker( 'setDate', null);
-			})
+			});
 		}
 
 		inputShow.datepicker( {
@@ -75,10 +75,6 @@ function SFI_DP_init ( input_id, params ) {
 			'dateFormat': params.dateFormat,
 			'beforeShowDay': function ( date ) {return SFI_DP_checkDate( '#' + input_id + '_show', date );}
 		} );
-
-		if ( ! params.partOfDTP ) {
-			inputShow.datepicker( 'option', 'altField', input );
-		}
 
 		if ( params.minDate ) {
 			inputShow.datepicker( 'option', 'minDate',
@@ -144,14 +140,23 @@ function SFI_DP_init ( input_id, params ) {
 			}
 		}
 
-		// delete date when user deletes input field
-		inputShow.change(function() {
+		if ( ! params.partOfDTP ) {
 
-			if ( this.value == '' ) {
-				inputShow.datepicker( 'setDate', null );
-			}
-
-		});
+			inputShow.datepicker( 'option', 'altField', input );
+			
+			// when the input loses focus set the date value
+			inputShow.change( function(){
+				// try parsing the value
+				try {
+					var value = jQuery.datepicker.parseDate( params.dateFormat, this.value, null );				
+					input.val( jQuery.datepicker.formatDate( 'yy/mm/dd', value ) );
+				} catch ( e ) {
+					// value does not conform to specified format
+					// just return the value as is
+					input.val( this.value );
+				}
+			});
+		}
 	}
 }
 
