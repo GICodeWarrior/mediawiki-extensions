@@ -342,13 +342,14 @@ class SimpleFarmMember {
 			if( in_array( $address, $member->getAddresses() ) ) {
 				// if script path is required, then check for it too:
 				if( $scriptPath !== null ) {
-					if( trim( $scriptPath ) === $member->getScriptPath() )
+					if( trim( $scriptPath ) === $member->getScriptPath() ) {
 						return $member;
-				} else {
+					}
+				}
+				else {
 					return $member;
 				}
 			}
-				
 		}
 		return null;
 	}

@@ -43,7 +43,7 @@ require_once ExtSimpleFarm::getDir() . '/SimpleFarm_Classes.php';
 /*
  * It's no good, at that stage it is too late to set some global variables like $wgScriptPath
  * because some others depend on it and being set at the beginning of setup.php after default
- * settings and LocalSettings are loaded. 
+ * settings and LocalSettings are loaded.
  * That's also why we can't rely on global functions including hook an message system!
  */
 // make sure to initialise farm if not manually in 'LocalSettings.php':
