@@ -202,15 +202,15 @@ function wfHelpCommonsChangeEditSectionLink( $skin, $title, $section, $tooltip, 
  * @param $result
  * @return bool
  */
-function fnProtectHelpCommons( &$title, &$user, $action, &$result) {
-	global $wgHelpCommonsFetchingWikis, $wgDBname;
+function fnProtectHelpCommons( &$title, &$user, $action, &$result ) {
+	global $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
 
-	foreach ( $wgHelpCommonsFetchingWikis as $urls ) {
+	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
 		foreach ( $urls as $url => $helpwiki ) {
 			// only protect Help pages on non-help-pages-fetching wikis
-			if( $wgDBname != $helpwiki ) {
+			if ( $wgLanguageCode == "$language" && $wgDBname != $helpwiki ) {
 				// block actions 'edit' and 'create'
-				if( $action != 'edit' && $action != 'create' ) {
+				if ( $action != 'edit' && $action != 'create' ) {
 					return true;
 				}
 
