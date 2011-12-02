@@ -32,14 +32,14 @@ class FundraiserRedirector extends UnlistedSpecialPage {
 			$country = $wgFundraiserLPDefaults[ 'country' ];
 		}
 		
-		$params = "country=$country";
+		$params = array( 'country' => $country );
 		
 		// Pass any other params that are set
 		$excludeKeys = array( 'country', 'title' );
 		foreach ( $wgRequest->getValues() as $key => $value ) {
 			// Skip the required variables
 			if ( !in_array( $key, $excludeKeys ) ) {
-				$params .= '&'."$key=$value";
+				$params[$key] = $value;
 			}
 		}
 		
