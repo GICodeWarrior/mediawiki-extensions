@@ -95,6 +95,10 @@
 	outline: none;
 }
 
+.mw-moodBar-feedback-invalid {
+	border:2px solid #CC0000;
+}
+
 .mw-moodBar-privacy,
 .mw-moodBar-overlayWhatContent {
 	font-size: 10px;
@@ -109,6 +113,7 @@
 }
 .mw-moodBar-formInputs {
 	padding-left: 1em;
+	padding-right: .2em;
 }
 
 .mw-moodBar-state-loading {
@@ -126,6 +131,11 @@
 .mw-moodBar-state-subtitle {
 	font-size: 14px;
 	color: #7e7e7e;
+}
+
+.red-bold {
+	font-weight:bold;
+	color:#CC0000;
 }
 
 /**

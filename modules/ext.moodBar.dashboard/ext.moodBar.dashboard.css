@@ -284,6 +284,10 @@
 	overflow:hidden;
 }
 
+.fbd-response-text-invalid {
+	border:2px solid #CC0000;
+}
+
 .fbd-response-preview-spinner {
 	height:32px;
 	line-height:32px;
@@ -337,4 +341,8 @@
 }
 .center {
 	text-align:center;
+}
+.red-bold {
+	font-weight:bold;
+	color:#CC0000;
 }

@@ -26,7 +26,7 @@
 							<html:msg key="moodbar-form-title" />\
 						</div>\
 						<div class="mw-moodBar-formInputs">\
-							<textarea rows="3" maxlength="140" id="mw-moodBar-feedbackInput" class="mw-moodBar-formInput" /></textarea>\
+							<textarea rows="3" id="mw-moodBar-feedbackInput" class="mw-moodBar-formInput" /></textarea>\
 							<div class="mw-moodBar-privacy"></div>\
 							<input type="button" class="mw-moodBar-formSubmit" disabled="disabled" />\
 						</div>\
@@ -56,6 +56,11 @@
 				<div class="mw-moodBar-state mw-moodBar-state-error">\
 					<div class="mw-moodBar-state-title"><html:msg key="moodbar-error-title" /></div>\
 					<div class="mw-moodBar-state-subtitle"><html:msg key="moodbar-error-subtitle" /></div>\
+				</div>',
+			blocked: '\
+				<div class="mw-moodBar-state mw-moodBar-state-blocked">\
+					<div class="mw-moodBar-state-title"><html:msg key="moodbar-blocked-title" /></div>\
+					<div class="mw-moodBar-state-subtitle"><html:msg key="moodbar-blocked-subtitle" /></div>\
 				</div>'
 		},
 
@@ -89,6 +94,11 @@
 			callback: function( data ) {
 				if ( data && data.moodbar && data.moodbar.result === 'success' ) {
 					mb.swapContent( mb.tpl.success );
+					setTimeout( function() {
+						mb.ui.overlay.fadeOut();
+					}, 3000 );
+				} else if (data && data.error && data.error.code === 'blocked') { 
+					mb.swapContent( mb.tpl.blocked );
 					setTimeout( function() {
 						mb.ui.overlay.fadeOut();
 					}, 3000 );
@@ -231,8 +241,8 @@
 				.find( '.mw-moodBar-formSubmit' )
 					.val( mw.msg( 'moodbar-form-submit' ) )
 					.click( function() {
-						mb.feedbackItem.comment = mb.ui.overlay.find( '.mw-moodBar-formInput' ).val();
-						if(mb.feedbackItem.comment){
+						mb.feedbackItem.comment = $.trim(mb.ui.overlay.find( '.mw-moodBar-formInput' ).val() );
+						if( mb.feedbackItem.comment.length > 0 ){
 							mb.swapContent( mb.tpl.loading );
 							$.moodBar.submit( mb.feedbackItem );
 						}
@@ -248,8 +258,24 @@
 			
 				// Set up character counter
 				// This is probably not the right way to do this.
-				$( '#mw-moodBar-feedbackInput' ).NobleCount('#mw-moodBar-charCount', {max_chars:140});
-			
+				$( '#mw-moodBar-feedbackInput' )
+					.NobleCount('#mw-moodBar-charCount', {	
+						max_chars:140,
+						on_negative: function( t_obj ) {
+							$( t_obj )
+							.addClass('mw-moodBar-feedback-invalid')
+							.parent().prev()
+							.find('.mw-moodBar-formNote')
+							.addClass('red-bold');
+						},
+						on_positive: function( t_obj ) {
+							$( t_obj )
+							.removeClass( 'mw-moodBar-feedback-invalid')
+							.parent().prev()
+							.find('.mw-moodBar-formNote')
+							.removeClass('red-bold');
+						}
+					});
 		},
 
 		core: function() {
@@ -314,7 +340,8 @@
 		},
 		
 		validate: function() {
-			if( $( '#mw-moodBar-feedbackInput' ).val() !== "" && $( '.mw-moodBar-selected').length ) {
+			var comment = $( '#mw-moodBar-feedbackInput' ).val();
+			if( $.trim( comment ).length > 0 && comment.length <= 140 && $( '.mw-moodBar-selected').length ) {
 				mb.ui.overlay.find( '.mw-moodBar-formSubmit').removeAttr('disabled');
 			} else {
 				mb.ui.overlay.find( '.mw-moodBar-formSubmit').attr({'disabled':'true'});		

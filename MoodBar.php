@@ -133,6 +133,8 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'moodbar-loading-subtitle',
 		'moodbar-error-subtitle',
 		'moodbar-success-subtitle',
+		'moodbar-blocked-title',
+		'moodbar-blocked-subtitle',
 	),
 	'dependencies' => array(
 		'mediawiki.util',

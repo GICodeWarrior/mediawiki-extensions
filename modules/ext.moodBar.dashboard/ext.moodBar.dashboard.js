@@ -444,7 +444,23 @@ jQuery(function( $ ) {
 			
 			$item.append(inlineForm)
 				.find('.fbd-response-text')
-				.NobleCount('.fbd-response-charCount', {max_chars:5000})
+				.NobleCount('.fbd-response-charCount', {
+					max_chars:5000,
+					on_negative: function( t_obj ) {
+						$( t_obj )
+							.addClass('fbd-response-text-invalid')
+							.prev()
+							.find('span')
+							.addClass('red-bold');
+					},
+					on_positive: function( t_obj ) {
+						$( t_obj )
+							.removeClass( 'fbd-response-text-invalid')
+							.prev()
+							.find('span')
+							.removeClass('red-bold');
+					}
+				})
 				.end()
 				.find('.fbd-response-text')
 				.keyup( function(event) {							
@@ -524,7 +540,29 @@ jQuery(function( $ ) {
 			.delay(2000)
 			.fadeOut('slow', callback);		
 	}
-	
+	/**
+	 * Set status message for Send Response
+	 * @param $el Feedback Item for response
+	 * @param type is type of message which determins icon (error, success)
+	 * @param head Heading text to be displayed
+	 * @param body Body text to be displayed
+	 */
+	function responseMessage ($el, type, head, body) { 
+		$el
+			.find('.mw-ajax-loader')
+			.addClass('fbd-item-response-' + type)
+			.removeClass('mw-ajax-loader')
+			.end()
+			.find('.fbd-ajax-heading')
+			.text( head ) 
+			.end()
+			.find('.fbd-ajax-text')
+			.html( body )
+			.end();
+			setTimeout(function(){
+				reloadItem($el, true);	
+			}, 2000);
+	} 
 	// On-load stuff
 	
 	$('.fbd-item-show a').live( 'click', showHiddenItem );
@@ -575,33 +613,14 @@ jQuery(function( $ ) {
 					'url': mw.util.wikiScript( 'api' ),
 					'data': resData,
 					'success': function (data) {
-							$responseForm
-								.find('.mw-ajax-loader')
-								.addClass('fbd-item-response-success')
-								.removeClass('mw-ajax-loader')
-								.end()
-								.find('.fbd-ajax-heading')
-								.text( mw.msg( 'response-ajax-success-head' ) ) 
-								.end()
-								.find('.fbd-ajax-text')
-								.html( mw.msg( 'response-ajax-success-body') )
-								.end();
-								setTimeout(function(){
-									reloadItem($item, true);	
-								}, 2000);
-											
+							if('error' in data) { //if rejected
+								responseMessage ($item, 'error',  mw.msg( 'response-ajax-error-head' ), data.error.info );
+							} else if('feedbackdashboardresponse' in data) { //if successful
+								responseMessage ($item, 'success', mw.msg( 'response-ajax-success-head' ), mw.msg( 'response-ajax-success-body' ) );
+							}
 					},
-					'error': function( jqXHR, textStatus, errorThrown ) {	
-							$responseForm
-								.find('.mw-ajax-loader')
-								.addClass('fbd-item-response-error')
-								.removeClass('mw-ajax-loader')
-								.end()
-								.find('.fbd-ajax-heading') 
-								.text( mw.msg( 'response-ajax-error-head' ) )
-								.end()
-								.find('.fbd-ajax-text')
-								.html( mw.msg( 'response-ajax-error-body' ) );
+					'error': function( jqXHR, textStatus, errorThrown ) {
+							responseMessage ($item, 'error',  mw.msg( 'response-ajax-error-head' ), mw.msg( 'response-ajax-error-body' ) );	
 					},
 					'dataType': 'json'
 				} );
