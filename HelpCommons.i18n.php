@@ -11,11 +11,6 @@
  * @author Tim 'SVG' Weyer <SVG@Wikiunity.com>
  */
 
-if (!defined('MEDIAWIKI')) {
-	echo "THIS IS NOT VALID ENTRY POINT";
-	exit(1);
-}
-
 $messages = array();
 
 /** English
@@ -38,3 +33,4 @@ $messages['qqq'] = array(
 $messages['de'] = array(
    'helpcommons-desc' => 'Nimmt den Hilfe-Namensraum aus einem Hilfe Wiki und bindet ihn in andere Wikis der Wiki-Family ein',
 );
+
