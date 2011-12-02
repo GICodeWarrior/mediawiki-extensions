@@ -421,7 +421,15 @@ $.narayam = new ( function() {
 		schemes[name] = data;
 		return true;
 	};
-
+	
+	/**
+	 * Get the transliteration rules for the given input method name.
+	 * @param name String
+	 */
+	this.getScheme = function( name ) {
+		return schemes[name];
+	}
+	
 	/**
 	 * Change the current transliteration scheme
 	 * @param name String

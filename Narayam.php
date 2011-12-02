@@ -64,6 +64,9 @@ $wgNarayamSchemes = array(
 	'brx' => array(
 		'brx-inscript' => 'ext.narayam.rules.brx-inscript',
 	),
+	'hne' => array(
+		'hne-inscript' => 'ext.narayam.rules.hne-inscript',
+	),
 	'de' => array(
 		'de' => 'ext.narayam.rules.de',
 	),
@@ -222,6 +225,7 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-gu-inscript',
 		'narayam-ru-standard',
 		'narayam-sah-standard',
+		'narayam-hne-inscript',
 	),
 	'dependencies' => array(
 		'mediawiki.util',
@@ -392,4 +396,8 @@ $wgResourceModules['ext.narayam.rules.ru-standard'] = $narayamTpl + array(
 $wgResourceModules['ext.narayam.rules.sah-standard'] = $narayamTpl + array(
 	'scripts' => 'resources/ext.narayam.rules.sah-standard.js',
 	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.hne-inscript'] = $narayamTpl + array(
+	'scripts' => 'resources/ext.narayam.rules.hne-inscript.js',
+	'dependencies' => 'ext.narayam.rules.hi-inscript',
 );

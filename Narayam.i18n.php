@@ -64,6 +64,7 @@ $messages['en'] = array(
 	'narayam-gu-inscript' => 'Gujarati InScript',
 	'narayam-ru-standard' => 'Russian Standard',
 	'narayam-sah-standard' => 'Sakha Standard',
+	'narayam-hne-inscript' => 'Chhattisgarhi InScript',
 );
 
 /** Message documentation (Message documentation)
@@ -1317,6 +1318,7 @@ $messages['ml'] = array(
 	'narayam-gu-inscript' => 'ഗുജറാത്തി ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-ru-standard' => 'റഷ്യൻ മാനകരൂപം',
 	'narayam-sah-standard' => 'സാഖാ മാനകരൂപം',
+	'narayam-hne-inscript' => 'ഛത്തീസ്ഗാഢി ഇന്‍സ്ക്രിപ്റ്റ്',
 );
 
 /** Marathi (मराठी)
