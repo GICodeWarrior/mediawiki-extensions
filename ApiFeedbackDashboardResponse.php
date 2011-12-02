@@ -3,7 +3,7 @@
 class ApiFeedbackDashboardResponse extends ApiBase {
 	
 	public function execute() {
-		global $wgRequest, $wgUser, $wgContLang, $wgParser;
+		global $wgRequest, $wgUser, $wgParser;
 		
 		if ( $wgUser->isAnon() ) {
 			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
@@ -32,8 +32,9 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 		if ( $commenter !== null && $commenter->isAnon() == false ) {
 			$talkPage = $commenter->getTalkPage();
 			 
-			$feedback_link = wfMessage('moodbar-feedback-response-title')->params($wgContLang->getNsText( NS_SPECIAL ) . 
-				         ':FeedbackDashboard/' . $item->getProperty('feedback'))->escaped();
+			$feedback_link = wfMessage('moodbar-feedback-response-title')->
+			                 	params( SpecialPage::getTitleFor( 'FeedbackDashboard', $item->getProperty('feedback') )->
+			                 	getPrefixedText() )->escaped();
 			
 			$api = new ApiMain( new FauxRequest( array(
 				'action' => 'edit',
