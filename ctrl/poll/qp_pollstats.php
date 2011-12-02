@@ -91,13 +91,15 @@ class qp_PollStats extends qp_AbstractPoll {
 	 */
 	function parseInput( $input ) {
 		$this->questions = new qp_QuestionCollection();
-		# question attributes split pattern
-		$splitPattern = '`\s*{|}\s*\n*`u';
-		# preg_split counts the matches starting from zero
-		$unparsedAttributes = preg_split( $splitPattern, $input, -1, PREG_SPLIT_NO_EMPTY );
-		# we count questions starting from 1
-		array_unshift( $unparsedAttributes, null );
-		unset( $unparsedAttributes[0] );
+		# match questions in statistical mode
+		$unparsedAttributes = array();
+		if ( preg_match_all( '/^\s*\{(.*?)\}\s*$/msu', $input, $matches ) ) {
+			$unparsedAttributes = $matches[1];
+			# increase key values of $unparsedAttributes by one,
+			# because questions are numbered from one, not zero
+			array_unshift( $unparsedAttributes, null );
+			unset( $unparsedAttributes[0] );
+		}
 		# first pass: parse the headers
 		foreach ( $this->pollStore->Questions as $qdata ) {
 			$question = new qp_QuestionStats(
@@ -106,11 +108,9 @@ class qp_PollStats extends qp_AbstractPoll {
 				$qdata->type,
 				$qdata->question_id
 			);
-			if ( isset( $unparsedAttributes[$qdata->question_id] ) ) {
-				$attr_str = $unparsedAttributes[$qdata->question_id];
-			} else {
-				$attr_str = '';
-			}
+			$attr_str = isset( $unparsedAttributes[$qdata->question_id] ) ?
+				$unparsedAttributes[$qdata->question_id] :
+				'';
 			$paramkeys = array();
 			$type = $this->getQuestionAttributes( $attr_str, $paramkeys );
 			$question->applyAttributes( $paramkeys );

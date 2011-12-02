@@ -126,7 +126,7 @@ class qp_TabularQuestionView extends qp_StubQuestionView {
 	 * @return  boolean  true for valid value, false otherwise
 	 */
 	function isCSSLengthValid( $width ) {
-		preg_match( '`^\s*(\d+)(px|em|en|%|)\s*$`', $width, $matches );
+		preg_match( '`^\s*(\d+)(px|em|%|)\s*$`', $width, $matches );
 		return count( $matches > 1 ) && $matches[1] > 0;
 	}
 
@@ -266,20 +266,13 @@ class qp_TabularQuestionView extends qp_StubQuestionView {
 	function renderTable() {
 		$questionTable = array();
 		# add header views to $questionTable
+		$rowattrs = array();
 		foreach ( $this->hviews as $header ) {
-			$rowattrs = array();
-			$attribute_maps = array();
-			if ( is_object( $header ) ) {
-				$row = &$header->row;
-				$rowattrs['class'] = $header->className;
-				$attribute_maps = &$header->attribute_maps;
-			} else {
-				$row = &$header;
-			}
+			$rowattrs['class'] = $header->className;
 			if ( $this->transposed ) {
-				qp_Renderer::addColumn( $questionTable, $row, $rowattrs, 'th', $attribute_maps );
+				qp_Renderer::addColumn( $questionTable, $header->row, $rowattrs, 'th', $header->attribute_maps );
 			} else {
-				qp_Renderer::addRow( $questionTable, $row, $rowattrs, 'th', $attribute_maps );
+				qp_Renderer::addRow( $questionTable, $header->row, $rowattrs, 'th', $header->attribute_maps );
 			}
 		}
 		# add proposal views to $questionTable

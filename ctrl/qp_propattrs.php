@@ -19,7 +19,8 @@ class qp_PropAttrs {
 	# index of $this->rawkeys (when available)
 	protected $rawidx;
 	# code of error after getting attributes
-	# 0 means there is no error
+	# integer 0 means there is no error
+	# string  key of wiki error message
 	public $error;
 	# proposal name (for interpretation scripts);
 	# '' means there is no name
@@ -47,12 +48,20 @@ class qp_PropAttrs {
 	 */
 	public function setQuestion( qp_StubQuestion $question ) {
 		$this->question = $question;
-		$this->rawkeys = array_keys( $question->raws );
-		$this->rawidx = 0;
+		$this->reset();
 	}
 
 	/**
-	 * Iterates through question raws array.
+	 * Begin new iteration through raw proposals.
+	 */
+	public function reset() {
+		$this->rawkeys = array_keys( $this->question->raws );
+		$this->rawidx = $this->question->rawProposalKey;
+	}
+
+	/**
+	 * Iterates through question raws array, using only raw proposals.
+	 * Raw categories and category spans (if any) are processed separately.
 	 * @return  boolean
 	 *   true  $this properties are populated
 	 *   false there are no more raws available
@@ -90,7 +99,7 @@ class qp_PropAttrs {
 		$this->cpdef = $proposal_text;
 		$matches = array();
 		# try to match the raw proposal name (without specific attributes)
-		preg_match( '`^:\|\s*(.+?)\s*\|\s*(.+?)\s*$`u', $this->cpdef, $matches );
+		preg_match( '/^:\|\s*(.+?)\s*\|\s*(.+?)\s*$/su', $this->cpdef, $matches );
 		if ( count( $matches ) < 3 ||
 				( $this->name = $matches[1] ) === '' ) {
 			# raw proposal name is not defined or empty
@@ -98,7 +107,7 @@ class qp_PropAttrs {
 		}
 		# check, whether raw proposal name will fit into the corresponding DB field
 		if ( strlen( $this->getAttrDef() ) >= qp_Setup::$field_max_len['proposal_text'] ) {
-			$this->setError( qp_Setup::ERROR_TOO_LONG_PROPNAME );
+			$this->setError( 'qp_error_too_long_proposal_name' );
 			return;
 		}
 		# try to get xml-like attributes;
@@ -114,7 +123,10 @@ class qp_PropAttrs {
 			$this->emptytext = self::getSaneEmptyText( $paramkeys['emptytext'] );
 		}
 		if ( is_numeric( $this->name ) ) {
-				$this->setError( qp_Setup::ERROR_NUMERIC_PROPNAME );
+			$this->setError( 'qp_error_numeric_proposal_name' );
+			return;
+		} elseif ( preg_match( '/$.^/msu', $this->name ) ) {
+			$this->setError( 'qp_error_multiline_proposal_name' );
 			return;
 		}
 		# remove raw proposal name from proposal definition
@@ -194,28 +206,25 @@ class qp_PropAttrs {
 	/**
 	 * Checks, whether current proposal has not enough of user-answered categories,
 	 * according to current question instance.
-	 * @param  $proposal_id  integer
-	 *   id of existing question's proposal
-	 * @param  $prop_cats_count
-	 *   integer  total amount of categories in current proposal
+	 * @param  $answered_cats_count  integer
+	 *   number of user-answered categories in current proposal
+	 * @param  $total_cats_count  integer
+	 *   total amount of categories in current proposal
 	 * @return  boolean
 	 *   true  not enough of categories are filled
 	 *   false otherwise
 	 */
-	function hasMissingCategories( $proposal_id, $prop_cats_count ) {
+	function hasMissingCategories( $answered_cats_count, $total_cats_count ) {
 		# How many categories has to be answered,
 		# all defined in row or the amount specified by "catreq" attribute?
 		# total amount of categories in current proposal
-		$countRequired = ($this->catreq === 'all') ? $prop_cats_count : $this->catreq;
-		if ( $countRequired > $prop_cats_count ) {
+		$countRequired = ($this->catreq === 'all') ? $total_cats_count : $this->catreq;
+		if ( $countRequired > $total_cats_count ) {
 			# do not require to fill more categories
 			# than is available in current proposal row
-			$countRequired = $prop_cats_count;
+			$countRequired = $total_cats_count;
 		}
-		$answered_cat_count = array_key_exists( $proposal_id, $this->question->mProposalCategoryId ) ?
-			count( $this->question->mProposalCategoryId[$proposal_id] ) :
-			0;
-		return $answered_cat_count < $countRequired;
+		return $answered_cats_count < $countRequired;
 	}
 
 	/**

@@ -45,8 +45,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_StubQuestionView extends qp_AbstractView {
 
-	# error message which occured during the question header parsing that will be output later at rendering stage
-	var $headerErrorMessage = 'Unknown error';
+	# error message which occured during the question header parsing that will be
+	# output later at rendering stage, empty string means there is no error
+	var $headerErrorMessage = '';
 
 	# header views (list of tagarrays)
 	# tagarray is a primitive view without it's own methods
@@ -86,19 +87,6 @@ class qp_StubQuestionView extends qp_AbstractView {
 	}
 
 	/**
-	 * @param $tagarray  array / string row to add to the question's header
-	 */
-	function addHeader( $tagarray ) {
-		$this->hviews[] = $tagarray;
-	}
-
-	function addHeaderError() {
-		$this->hviews[] = array(
-			array( '__tag' => 'td', 'class' => 'proposalerror', $this->headerErrorMessage )
-		);
-	}
-
-	/**
 	 * Adds table header row to question's view
 	 * @param $row             tagarray representation of row
 	 * @param $className       CSS class name of row
@@ -110,6 +98,34 @@ class qp_StubQuestionView extends qp_AbstractView {
 			'className' => $className,
 			'attribute_maps' => $attribute_maps
 		);
+	}
+
+	/**
+	 * Outputs question body parser error/warning message.
+	 * Set new controller state.
+	 * @param    $msg  string
+	 *   text of message
+	 * @param    $state  string
+	 *   set new question controller state;
+	 *   note that the 'error' state cannot be changed and '' state cannot be set
+	 * @param    $rowClass  mixed
+	 *   string set rowClass value
+	 *   boolean false (do not set)
+	 *
+	 * note: this method should be invoked directly only for header errors generation;
+	 *   body errors should call wrappers defined in their proposal view classes.
+	 */
+	function bodyErrorMessage( $msg, $state, $rowClass = 'proposalerror' ) {
+		$prev_state = $this->ctrl->getState();
+		# do not clear previous errors (do not call setState() when $state == '')
+		if ( $state != '' ) {
+			$this->ctrl->setState( $state, $msg );
+		}
+		if ( is_string( $rowClass ) ) {
+			$this->rowClass = $rowClass;
+		}
+		# will show only the first error, when the state is not clean (not '')
+		return ( $prev_state == '' ) ? '<span class="proposalerror" title="' . qp_Setup::specialchars( $msg ) . '">???</span> ' : '';
 	}
 
 	/**
@@ -125,17 +141,10 @@ class qp_StubQuestionView extends qp_AbstractView {
 	function renderTable() {
 		$questionTable = array();
 		# add header views to $questionTable
+		$rowattrs = array();
 		foreach ( $this->hviews as $header ) {
-			$rowattrs = array();
-			$attribute_maps = array();
-			if ( is_object( $header ) ) {
-				$row = &$header->row;
-				$rowattrs['class'] = $header->className;
-				$attribute_maps = &$header->attribute_maps;
-			} else {
-				$row = &$header;
-			}
-			qp_Renderer::addRow( $questionTable, $row, $rowattrs, 'th', $attribute_maps );
+			$rowattrs['class'] = $header->className;
+			qp_Renderer::addRow( $questionTable, $header->row, $rowattrs, 'th', $header->attribute_maps );
 		}
 		return $questionTable;
 	}
@@ -170,7 +179,17 @@ class qp_StubQuestionView extends qp_AbstractView {
 					array( '__tag' => 'span', 'class' => 'questionId', 0 => $this->ctrl->usedId )
 			);
 		}
-		$tags[] = array( '__tag' => 'div', 0 => $this->rtp( $this->ctrl->mCommonQuestion ) );
+		if ( $this->headerErrorMessage !== '' ) {
+			# either fatal or proposal error occured
+			$tags[] = array(
+				'__tag' => 'div',
+				'class' => ( $this->ctrl->getState() === 'error' ) ? 'fatalerror' : 'proposalerror',
+				qp_Setup::specialchars( $this->headerErrorMessage )
+			);
+		}
+		$tags[] = array( '__tag' => 'div', $this->rtp( $this->ctrl->mCommonQuestion ) );
+		# class 'question_mod4_[0-3]' is used to prettify question table cells;
+		# todo: at some later point, when HTML5/CSS3 will take over, this will not be needed.
 		$tags = array( '__tag' => 'div', '__end' => "\n", 'class' => 'question question_mod4_' . ( $this->ctrl->usedId % 4 ), $tags );
 		$tags[] = &$output_table;
 		return qp_Renderer::renderTagArray( $tags );

@@ -91,7 +91,7 @@ class qp_TextQuestionProposalView extends qp_StubQuestionProposalView {
 	 * @param    $rowClass - string set rowClass value, boolean false (do not set)
 	 */
 	function prependErrorToken( $msg, $state, $rowClass = 'proposalerror' ) {
-		$errmsg = $this->bodyErrorMessage( $msg, $state, $rowClass );
+		$errmsg = $this->ctrl->view->bodyErrorMessage( $msg, $state, $rowClass );
 		# note: when $state == '' every $errmsg is non-empty;
 		#       when $state == 'error' only the first $errmsg is non-empty;
 		if ( $errmsg !== '' ) {
@@ -110,7 +110,7 @@ class qp_TextQuestionProposalView extends qp_StubQuestionProposalView {
 	 * @param    $rowClass - string set rowClass value, boolean false (do not set)
 	 */
 	function addErrorToken( $msg, $state, $rowClass = 'proposalerror' ) {
-		$errmsg = $this->bodyErrorMessage( $msg, $state, $rowClass );
+		$errmsg = $this->ctrl->view->bodyErrorMessage( $msg, $state, $rowClass );
 		# note: when $state == '' every $errmsg is non-empty;
 		#       when $state == 'error' only the first $errmsg is non-empty;
 		if ( $errmsg !== '' ) {
@@ -142,7 +142,7 @@ class qp_TextQuestionProposalView extends qp_StubQuestionProposalView {
 						$cat_desc = wfMsg( 'qp_interpetation_wrong_answer' );
 					}
 					# mark the input to highlight it during the rendering
-					if ( ( $msg = $this->bodyErrorMessage( $cat_desc, '', false ) ) !=='' ) {
+					if ( ( $msg = $this->ctrl->view->bodyErrorMessage( $cat_desc, '', false ) ) !=='' ) {
 						# we call with question state = '', so the returned $msg never should be empty
 						# unless there was a syntax error, however during the interpretation stage there
 						# should be no syntax errors, so we can assume that $msg is never equal to ''

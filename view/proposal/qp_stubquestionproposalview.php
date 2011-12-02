@@ -50,25 +50,4 @@ class qp_StubQuestionProposalView {
 		}
 	}
 
-	/**
-	 * Outputs question body parser error/warning message; also set new controller state
-	 * @param    $msg - text of message
-	 * @param    $state - set new question controller state
-	 *               note that the 'error' state cannot be changed and '' state cannot be set
-	 * @param    $rowClass - string set rowClass value, boolean false (do not set)
-	 */
-	function bodyErrorMessage( $msg, $state, $rowClass = 'proposalerror' ) {
-		$prev_state = $this->ctrl->getState();
-		# do not clear previous errors (do not call setState() when $state == '')
-		if ( $state != '' ) {
-			$this->ctrl->setState( $state, $msg );
-		}
-		if ( is_string( $rowClass ) ) {
-			$this->rowClass = $rowClass;
-		}
-		# will show only the first error, when the state is not clean (not '')
-		return ( $prev_state == '' ) ? '<span class="proposalerror" title="' . qp_Setup::specialchars( $msg ) . '">???</span> ' : '';
-	}
-
 } /* end of qp_StubQuestionProposalView */
-

@@ -69,7 +69,6 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 	 */
 	function statsParseBody() {
 		if ( $this->getState() == 'error' ) {
-			$this->view->addHeaderError();
 			return;
 		}
 		$catRow = $this->parseCategories();
@@ -82,6 +81,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 			$this->view->addSpanRow( $spansRow );
 		}
 		$this->view->addCategoryRow( $catRow );
+		# set static view state for the future qp_QuestionStatsProposalView instances
 		qp_QuestionStatsProposalView::applyViewState( $this->view );
 		foreach ( $this->mProposalText as $proposalId => $text ) {
 			$pview = new qp_QuestionStatsProposalView( $proposalId, $this );

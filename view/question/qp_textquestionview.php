@@ -102,7 +102,9 @@ class qp_TextQuestionViewRow {
 			$value = $elem->options[0];
 			if ( $tagName === 'textarea' ) {
 				# oversimplicated regexp, but it's enough for our needs
-				$value = preg_replace( '/<br[\sA-Z\d="]*\/{0,1}>/i', qp_Setup::TEXTAREA_LINES_SEPARATOR, $value, -1, $lines_count );
+				# todo: multiline proposals do not require to use <br> to separate lines
+				# of pre-filled text, check out when question type="free" will be implemented.
+				$value = preg_replace( '/<br[\sA-Z\d="]*\/?>/i', qp_Setup::TEXTAREA_LINES_SEPARATOR, $value, -1, $lines_count );
 				$lines_count++;
 			}
 			$className .= ' cat_prefilled';

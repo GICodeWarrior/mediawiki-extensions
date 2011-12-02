@@ -13,14 +13,15 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 	/**
 	 * Creates question view which should be renreded and
 	 * also may be altered during the poll generation
+	 * todo: this method is too long, split to smaller parts
 	 */
 	function parseBody() {
 		global $wgContLang;
-		$this->mProposalPattern = '`^';
+		$proposalPattern = '/^';
 		foreach ( $this->mCategories as $catDesc ) {
-			$this->mProposalPattern .= '(\[\]|\(\)|<>)';
+			$proposalPattern .= '(\[\]|\(\)|<>)';
 		}
-		$this->mProposalPattern .= '(.*)`u';
+		$proposalPattern .= '(.*)/su';
 		$proposalId = -1;
 		# set static view state for the future qp_TabularQuestionProposalView instances
 		qp_TabularQuestionProposalView::applyViewState( $this->view );
@@ -30,7 +31,7 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 			# new proposal view
 			$pview = new qp_TabularQuestionProposalView( $proposalId + 1, $this );
 			# get the list of categories ($matches)
-			if ( preg_match( $this->mProposalPattern, $prop_attrs->cpdef, $matches ) ) {
+			if ( preg_match( $proposalPattern, $prop_attrs->cpdef, $matches ) ) {
 				$prop_attrs->dbText = array_pop( $matches ); // current proposal text
 				array_shift( $matches ); // remove "at whole" match
 				$last_matches = $matches;
@@ -47,10 +48,8 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 			$pview->text = $prop_attrs->dbText;
 			$proposalId++;
 			# set proposal name (if any)
-			if ( $prop_attrs->error === qp_Setup::ERROR_TOO_LONG_PROPNAME ) {
-				$pview->prependErrorMessage( wfMsg( 'qp_error_too_long_proposal_name' ), 'error' );
-			} elseif ( $prop_attrs->error === qp_Setup::ERROR_NUMERIC_PROPNAME ) {
-				$pview->prependErrorMessage( wfMsg( 'qp_error_invalid_proposal_name' ), 'error' );
+			if ( is_string( $prop_attrs->error ) ) {
+				$pview->prependErrorMessage( wfMsg( $prop_attrs->error, 'error' ) );
 			} elseif ( $prop_attrs->name !== '' ) {
 				$this->mProposalNames[$proposalId] = $prop_attrs->name;
 			}
@@ -137,9 +136,17 @@ class qp_MixedQuestion extends qp_TabularQuestion {
 					throw new Exception( 'qp_error' );
 				}
 				if ( $this->poll->mBeingCorrected &&
-						$prop_attrs->hasMissingCategories( $proposalId, count( $this->mCategories ) ) ) {
-					# the proposal was submitted but has not enough answered categories
-					$pview->prependErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' );
+						$prop_attrs->hasMissingCategories(
+							$answered_cats_count = $this->getAnsweredCatCount( $proposalId ),
+							count( $this->mCategories )
+						) ) {
+					# the proposal was submitted but has not enough categories answered
+					$pview->prependErrorMessage(
+						($answered_cats_count > 0) ?
+							wfMsg( 'qp_error_not_enough_categories_answered' ) :
+							wfMsg( 'qp_error_no_answer' )
+						, 'NA'
+					);
 					# if there was no previous errors, hightlight the whole row
 					if ( $this->getState() == '' ) {
 						throw new Exception( 'qp_error' );

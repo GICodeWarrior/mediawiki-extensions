@@ -10,7 +10,7 @@
 .qpoll table.object .spans { color:Gray; }
 .qpoll table.object .categories { color:#444455; }
 .qpoll table.object .proposal { }
-.qpoll span.proposalerror { color:Red; font-weight:600; }
+.qpoll span.proposalerror, div.proposalerror { color:Red; font-weight:600; }
 .qpoll tr.proposalerror { background-color: Snow; }
 .qpoll .settings td { padding: 0.1em 0.4em 0.1em 0.4em }
 .qpoll table.settings { background-color:transparent; }

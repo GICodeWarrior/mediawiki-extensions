@@ -42,6 +42,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_Poll extends qp_AbstractPoll {
 
+	# question header match pattern without line begin/end, braces, regexp modifiers
+	private static $headerPattern = '[^{\|].*?\|.*?[^}\|]';
+	# question header split pattern
+	private static $splitPattern;
+	# question header match pattern with line begin/end, braces, regexp modifiers
+	private static $matchPattern;
+
 	# optional address of the poll which must be answered first
 	var $dependsOn = '';
 	# optional template used to interpret user vote in the Special:Pollresults page
@@ -56,6 +63,15 @@ class qp_Poll extends qp_AbstractPoll {
 
 	function __construct( array $argv, qp_PollView $view ) {
 		parent::__construct( $argv, $view );
+		# Split header / body
+		# Includes surrounding newlines and header's curly braces into match in parentheses
+		# because raw question bodies has to be trimmed from single surrounding newlines.
+		# Otherwise, these newlines will cause false positive detection of multiline proposals.
+		self::$splitPattern = '/((?:$.^|^)\s*{' . self::$headerPattern . '\}\s*$.^)/msu';
+		# match header
+		# Does not include surrounding newlines and header's curly braces into match in parentheses
+		# because we need to parse only the inner part (common question and optional categories).
+		self::$matchPattern = '/^\s*{(' . self::$headerPattern . ')\}\s*$/msu';
 		# dependance attr
 		if ( array_key_exists( 'dependance', $argv ) ) {
 			$this->dependsOn = trim( $argv['dependance'] );
@@ -324,25 +340,24 @@ class qp_Poll extends qp_AbstractPoll {
 	 */
 	function parseQuestionsHeaders( $input ) {
 		$this->questions = new qp_QuestionCollection();
-		$splitPattern = '`(^|\n\s*)\n\s*{`u';
-		$unparsedQuestions = preg_split( $splitPattern, $input, -1, PREG_SPLIT_NO_EMPTY );
-		$questionPattern = '`(.*?[^|\}])\}[ \t]*(\n(.*)|$)`su';
+		$unparsedQuestions = preg_split( self::$splitPattern, $input, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE );
 		# first pass: parse the headers
-		foreach ( $unparsedQuestions as $unparsedQuestion ) {
-			# If this "unparsedQuestion" is not a full question,
-			# we put the text into a buffer to add it at the beginning of the next question.
-			if ( !empty( $buffer ) ) {
-				$unparsedQuestion = "$buffer\n\n{" . $unparsedQuestion;
-			}
-			if ( preg_match( $questionPattern, $unparsedQuestion, $matches ) ) {
-				$buffer = "";
-				$header = isset( $matches[1] ) ? $matches[1] : '';
-				$body = isset( $matches[3] ) ? $matches[3] : null;
+		$header =
+		$body = '';
+		$matches = array();
+		while ( list( $key, $part ) = each( $unparsedQuestions ) ) {
+			if ( preg_match( self::$matchPattern, $part, $matches ) ) {
+				$body = '';
+				$header = $matches[1];
+			} else {
+				$body = $part;
 				$question = $this->parseQuestionHeader( $header, $body );
 				$this->questions->add( $question );
-			} else {
-				$buffer = $unparsedQuestion;
 			}
+		}
+		if ( $body === '' ) {
+			$question = $this->parseQuestionHeader( $header, $body );
+			$this->questions->add( $question );
 		}
 	}
 
@@ -380,17 +395,20 @@ class qp_Poll extends qp_AbstractPoll {
 	 */
 	function parseMainHeader( $header ) {
 		# split common question and question attributes from the header
-		@list( $common_question, $attr_str ) = preg_split( '`\n\|([^\|].*)\s*$`u', $header, -1, PREG_SPLIT_DELIM_CAPTURE );
-
+		$parts = explode( '|', $header );
+		# last pipe character separates attributes from common question
+		$attr_str = array_pop( $parts );
+		# this enables to use tables and templates in common question
+		$common_question = implode( '|', $parts );
 		$error_msg = '';
+		# assume that question name does not exists (by default)
+		$name = null;
 		if ( isset( $attr_str ) ) {
 			$paramkeys = array();
 			$type = $this->getQuestionAttributes( $attr_str, $paramkeys );
 			if ( !array_key_exists( $type, qp_Setup::$questionTypes ) ) {
 				$error_msg = wfMsg( 'qp_error_invalid_question_type', qp_Setup::entities( $type ) );
 			}
-			# assume that question name does not exists (by default)
-			$name = null;
 			if ( $paramkeys['name'] !== null &&
 						( $name = trim( $paramkeys['name'] ) ) === '' ||
 						is_numeric( $name ) ||
@@ -452,9 +470,13 @@ class qp_Poll extends qp_AbstractPoll {
 		$question = $this->parseMainHeader( $header );
 		if ( $question->getState() != 'error' ) {
 			# load previous user choice, when it's available and DB header is compatible with parsed header
-			if ( $body === null || !method_exists( $question, 'parseBody' ) ) {
+			if ( !method_exists( $question, 'parseBody' ) ) {
 				$question->setState( 'error', wfMsgHtml( 'qp_error_question_not_implemented', qp_Setup::entities( $question->mType ) ) );
+			} elseif ( $body === '' ) {
+				$question->setState( 'error', wfMsgHtml( 'qp_error_question_empty_body' ) );
 			} else {
+				# build $question->raws[]
+				$question->splitRawProposals( $body );
 				# parse the categories and spans (metacategories)
 				$question->parseBodyHeader( $body );
 			}
@@ -466,40 +488,51 @@ class qp_Poll extends qp_AbstractPoll {
 	 * Populates the question with data and builds question->view
 	 */
 	function parseQuestionBody( qp_StubQuestion $question ) {
-		if ( $question->getState() == 'error' ) {
-			# error occured during the previously performed header parsing, do not process further
-			$question->view->addHeaderError();
-			# http get: invalid question syntax, parse errors will cause submit button disabled
-			$this->pollStore->stateError();
-			return;
-		}
-		# populate $question with raw source values
-		$question->getQuestionAnswer( $this->pollStore );
-		# check whether the global showresults level prohibits to show statistical data
-		# to the users who hasn't voted
-		if ( qp_Setup::$global_showresults <= 1 && !$question->alreadyVoted ) {
-			# suppress statistical results when the current user hasn't voted the question
-			$question->view->showResults = array( 'type' => 0 );
-		}
-		# parse the question body
-		# will populate $question->view which can be modified accodring to quiz results
-		# warning! parameters are passed only by value, not the reference
-		$question->parseBody();
-		if ( $this->mBeingCorrected ) {
-			if ( $question->getState() == '' ) {
-				# question is OK, store it into pollStore
-				$this->pollStore->setQuestion( $question );
-			} else {
-				# http post: not every proposals were answered: do not update DB
-				$this->pollStore->stateIncomplete();
+		try {
+			if ( $question->getState() == 'error' ) {
+				throw new Exception( 'qp_error' );
 			}
-		} else {
-			# this is the get, not the post: do not update DB
-			if ( $question->getState() == '' ) {
-				$this->pollStore->stateIncomplete();
+			# populate $question with raw source values
+			$question->getQuestionAnswer( $this->pollStore );
+			# check whether the global showresults level prohibits to show statistical data
+			# to the users who hasn't voted
+			if ( qp_Setup::$global_showresults <= 1 && !$question->alreadyVoted ) {
+				# suppress statistical results when the current user hasn't voted the question
+				$question->view->showResults = array( 'type' => 0 );
+			}
+			# parse the question body
+			# will populate $question->view which can be modified accodring to quiz results
+			# warning! parameters are passed only by value, not the reference
+			$question->parseBody();
+			$question->isEmpty();
+			if ( $question->getState() == 'error' ) {
+				throw new Exception( 'qp_error' );
+			}
+			if ( $this->mBeingCorrected ) {
+				if ( $question->getState() == '' ) {
+					# question is OK, store it into pollStore
+					$this->pollStore->setQuestion( $question );
+				} else {
+					# http post: not every proposals were answered: do not update DB
+					$this->pollStore->stateIncomplete();
+				}
 			} else {
+				# this is the get, not the post: do not update DB
+				if ( $question->getState() == '' ) {
+					$this->pollStore->stateIncomplete();
+				} else {
+					# http get: invalid question syntax, parse errors will cause submit button disabled
+					$this->pollStore->stateError();
+				}
+			}
+		} catch ( Exception $e ) {
+			if ( $e->getMessage() === 'qp_error' ) {
+				# error occured during the previously performed header parsing, do not process further
 				# http get: invalid question syntax, parse errors will cause submit button disabled
 				$this->pollStore->stateError();
+				return;
+			} else {
+				throw new MWException( $e->getMessage() );
 			}
 		}
 	}

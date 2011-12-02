@@ -106,7 +106,7 @@ class qp_TabularQuestionProposalView extends qp_StubQuestionProposalView {
 	 * @param    $rowClass - string set rowClass value, boolean false (do not set)
 	 */
 	function prependErrorMessage( $msg, $state, $rowClass = 'proposalerror' ) {
-		$this->text = $this->bodyErrorMessage( $msg, $state, $rowClass ) . $this->text;
+		$this->text = $this->ctrl->view->bodyErrorMessage( $msg, $state, $rowClass ) . $this->text;
 	}
 
 	/**
@@ -117,7 +117,7 @@ class qp_TabularQuestionProposalView extends qp_StubQuestionProposalView {
 	 * @param    $rowClass - string set rowClass value, boolean false (do not set)
 	 */
 	function setErrorMessage( $msg, $state, $rowClass = 'proposalerror' ) {
-		$this->text = $this->bodyErrorMessage( $msg, $state, $rowClass );
+		$this->text = $this->ctrl->view->bodyErrorMessage( $msg, $state, $rowClass );
 	}
 
 	/**
@@ -199,7 +199,7 @@ class qp_TabularQuestionProposalView extends qp_StubQuestionProposalView {
 				}
 				# highlight the input
 				qp_Renderer::addClass( $cat_tag, 'cat_error' );
-				array_unshift( $cat_tag, $this->bodyErrorMessage( $cat_desc, '', false ) . '<br />' );
+				array_unshift( $cat_tag, $this->ctrl->view->bodyErrorMessage( $cat_desc, '', false ) . '<br />' );
 			}
 		}
 		return $foundCats;

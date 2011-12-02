@@ -10,6 +10,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_TabularQuestion extends qp_StubQuestion {
 
+	private static $categoryPattern = '/^\s*\|(.*)/su';
+	private static $categorySpansPattern = '/^\s*[\|!].*/su';
+
 	## default proposal attributes
 	# do not allow empty text fields submission / storage by default
 	var $mEmptyText = false;
@@ -17,48 +20,30 @@ class qp_TabularQuestion extends qp_StubQuestion {
 	var $mCatReq = 1;
 
 	/**
-	 * Constructor
-	 * @public
-	 * @param  $poll  object
-	 *   an instance of question's parent controller
-	 * @param  $view  object
-	 *   an instance of question view "linked" to this question
-	 * @param  $questionId  integer
-	 *   identifier of the question used to generate input names
-	 * @param  $name  mixed
-	 *   null  when question has no name / invalid name
-	 *   string  valid question name
-	 */
-	function __construct( qp_AbstractPoll $poll, qp_StubQuestionView $view, $questionId, $name ) {
-		parent::__construct( $poll, $view, $questionId, $name );
-		$this->mProposalPattern = '`^[^\|\!].*`u';
-		$this->mCategoryPattern 	= '`^\|(\n|[^\|].*\n)`u';
-	}
-
-	/**
 	 * Builds internal & visual representations of categories and spans according to their
 	 * text definition in the question body
-	 * @param   $input - the text of question body
 	 */
-	function parseBodyHeader( $input ) {
-		$this->raws = preg_split( '`\n`su', $input, -1, PREG_SPLIT_NO_EMPTY );
-		$categorySpans = false;
-		if ( isset( $this->raws[1] ) ) {
-			$categorySpans = preg_match( $this->mCategoryPattern, $this->raws[1] . "\n", $matches );
-		}
-		if ( !$categorySpans && isset( $this->raws[0] ) ) {
-			preg_match( $this->mCategoryPattern, $this->raws[0] . "\n", $matches );
-		}
+	function parseBodyHeader() {
 		# parse the header - spans and categories
-		$catString = isset( $matches[1] ) ? $matches[1] : '';
-		$catRow = $this->parseCategories( $catString );
-		if ( $categorySpans ) {
+		$matches = array();
+		if ( isset( $this->raws[1] ) &&
+				preg_match( self::$categorySpansPattern, $this->raws[0] ) &&
+				preg_match( self::$categoryPattern, $this->raws[1], $matches ) ) {
+			# category spans are found, raw proposals begin at key 2
+			$this->rawProposalKey = 2;
+			$catRow = $this->parseCategories( $matches[1] );
 			$spansRow = $this->parseCategorySpans( $this->raws[0] );
 			# if there are multiple spans, "turn on" borders for span and category cells
 			if ( count( $this->mCategorySpans ) > 1 ) {
 				$this->view->categoriesStyle .= 'border:1px solid gray;';
 			}
 			$this->view->addSpanRow( $spansRow );
+		} else {
+			# no category spans, raw proposals begin at key 1
+			$this->rawProposalKey = 1;
+			$catRow = preg_match( self::$categoryPattern, $this->raws[0], $matches ) ?
+				$this->parseCategories( $matches[1] ) :
+				$this->parseCategories( $this->raws[0] );
 		}
 		# do not render single empty category at all (on user's request)
 		if ( count( $this->mCategories ) == 1 &&
@@ -78,10 +63,10 @@ class qp_TabularQuestion extends qp_StubQuestion {
 		# build "raw" $categories array
 		# split tokens
 		$cat_split = preg_split( '`({{|}}|\[\[|\]\]|\|)`u', $input, -1, PREG_SPLIT_DELIM_CAPTURE );
-		$matching_braces = Array();
+		$matching_braces = array();
 		$curr_elem = '';
-		$categories = Array();
-		foreach ( $cat_split as $part ) {
+		$categories = array();
+		foreach ( $cat_split as $key => $part ) {
 			switch ( $part ) {
 				case '|' :
 					if ( count( $matching_braces ) == 0 ) {
@@ -154,9 +139,9 @@ class qp_TabularQuestion extends qp_StubQuestion {
 		# build "raw" spans array
 		# split tokens
 		$span_split = preg_split( '`({{|}}|\[\[|\]\]|\||\!)`u', $input, -1, PREG_SPLIT_DELIM_CAPTURE );
-		$matching_braces = Array();
+		$matching_braces = array();
 		$curr_elem = null;
-		$spans = Array();
+		$spans = array();
 		if ( isset( $span_split[0] ) && $span_split[0] == '' ) {
 			array_shift( $span_split );
 			if ( isset( $span_split[0] ) && in_array( $span_split[0], array( '!', '|' ) ) ) {
@@ -288,17 +273,12 @@ class qp_TabularQuestion extends qp_StubQuestion {
 		$prop_attrs = qp_Setup::$propAttrs;
 		$prop_attrs->setQuestion( $this );
 		while ( $prop_attrs->iterate() ) {
-			if ( !preg_match( $this->mProposalPattern, $prop_attrs->cpdef, $matches ) ) {
-				continue;
-			}
 			# new proposal view
 			$pview = new qp_TabularQuestionProposalView( $proposalId + 1, $this );
 			$proposalId++;
-			$prop_attrs->dbText = $pview->text = array_pop( $matches );
-			if ( $prop_attrs->error === qp_Setup::ERROR_TOO_LONG_PROPNAME ) {
-				$pview->prependErrorMessage( wfMsg( 'qp_error_too_long_proposal_name' ), 'error' );
-			} elseif ( $prop_attrs->error === qp_Setup::ERROR_NUMERIC_PROPNAME ) {
-				$pview->prependErrorMessage( wfMsg( 'qp_error_invalid_proposal_name' ), 'error' );
+			$prop_attrs->dbText = $pview->text = $prop_attrs->cpdef;
+			if ( is_string( $prop_attrs->error ) ) {
+				$pview->prependErrorMessage( wfMsg( $prop_attrs->error ), 'error' );
 			} elseif ( $prop_attrs->name !== '' ) {
 				$this->mProposalNames[$proposalId] = $prop_attrs->name;
 			}
@@ -375,13 +355,21 @@ class qp_TabularQuestion extends qp_StubQuestion {
 			}
 			# If the proposal was submitted but unanswered
 			if ( $this->poll->mBeingCorrected &&
-					$prop_attrs->hasMissingCategories( $proposalId, count( $this->mCategories ) ) ) {
+						$prop_attrs->hasMissingCategories(
+							$answered_cats_count = $this->getAnsweredCatCount( $proposalId ),
+							count( $this->mCategories )
+						) ) {
 				# if there was no previous errors, hightlight the whole row
 				if ( $this->getState() == '' ) {
 					$pview->addCellsClass( 'error' );
 				}
-				# the proposal was submitted but has not enough answered categories
-				$pview->prependErrorMessage( wfMsg( 'qp_error_no_answer' ), 'NA' );
+				# the proposal was submitted but has not enough categories answered
+				$pview->prependErrorMessage(
+					($answered_cats_count > 0) ?
+						wfMsg( 'qp_error_not_enough_categories_answered' ) :
+						wfMsg( 'qp_error_no_answer' )
+					, 'NA'
+				);
 			}
 			if ( $pview->text !== null ) {
 				$this->view->addProposal( $proposalId, $pview );

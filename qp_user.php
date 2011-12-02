@@ -145,8 +145,6 @@ class qp_Setup {
 	const NO_ERROR = 0;
 	const ERROR_MISSED_TITLE = 1;
 	const ERROR_INVALID_ADDRESS = 2;
-	const ERROR_TOO_LONG_PROPNAME = 3;
-	const ERROR_NUMERIC_PROPNAME = 4;
 
 	# unicode entity used to display selected checkboxes and radiobuttons in
 	# result views at Special:Pollresults page
@@ -253,7 +251,7 @@ class qp_Setup {
 		# otherwise checking of dependance chain will fail:
 		'dependance' => 768,
 		# limited due to performance improvements (to fit into DB row),
-		# and also to properly truncate UFT8 tails:
+		# and also to properly truncate UTF-8 tails:
 		'common_question' => 768,
 		# limited to maximal length of DB field
 		'question_name' => 255,
@@ -266,7 +264,7 @@ class qp_Setup {
 		# may be lost:
 		'text_answer' => 768,
 		# limited due to performance improvements (to fit into DB row),
-		# and also to properly truncate UFT8 tails:
+		# and also to properly truncate UTF-8 tails:
 		'long_interpretation' => 768,
 		# 'serialized_interpretation' is not longer than DB field size (65535),
 		# otherwise unserialization of structured answer will be invalid:
@@ -285,16 +283,15 @@ class qp_Setup {
 	# result views at Special:Pollresults page
 	static $resultsCheckCode = '+';
 
-	
-	static function entities( $s ) {
+	public static function entities( $s ) {
 		return htmlentities( $s, ENT_QUOTES, 'UTF-8' );
 	}
 
-	static function specialchars( $s ) {
+	public static function specialchars( $s ) {
 		return htmlentities( $s, ENT_QUOTES, 'UTF-8' );
 	}
 
-	static function entity_decode( $s ) {
+	public static function entity_decode( $s ) {
 		return html_entity_decode( $s, ENT_QUOTES, 'UTF-8' );
 	}
 

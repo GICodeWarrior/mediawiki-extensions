@@ -287,12 +287,10 @@ class qp_TextQuestion extends qp_StubQuestion {
 
 	/**
 	 * Parses question body header.
-	 * Text questions do not have "body header" (no definitions of spans and categories)
-	 * so, this method just splits raw lines of body text to analyze raws in $this->parseBody()
-	 * @param   $input - the text of question body
+	 * Text questions do not have "body header" (no definitions of spans and categories).
 	 */
-	function parseBodyHeader( $input ) {
-		$this->raws = preg_split( '`\n`su', $input, -1, PREG_SPLIT_NO_EMPTY );
+	function parseBodyHeader() {
+		/* noop */
 	}
 
 	/**
@@ -478,10 +476,8 @@ class qp_TextQuestion extends qp_StubQuestion {
 			$opt->reset();
 			$this->propview = new qp_TextQuestionProposalView( $proposalId, $this );
 			# get proposal name and optional attributes (if any)
-			if ( $prop_attrs->error === qp_Setup::ERROR_TOO_LONG_PROPNAME ) {
-				$this->propview->prependErrorToken( wfMsg( 'qp_error_too_long_proposal_name' ), 'error' );
-			} elseif ( $prop_attrs->error === qp_Setup::ERROR_NUMERIC_PROPNAME ) {
-				$this->propview->prependErrorToken( wfMsg( 'qp_error_invalid_proposal_name' ), 'error' );
+			if ( is_string( $prop_attrs->error ) ) {
+				$this->propview->prependErrorToken( wfMsg( $prop_attrs->error, 'error' ) );
 			}
 			$this->dbtokens = $brace_stack = array();
 			$dbtokens_idx = -1;
@@ -575,9 +571,17 @@ class qp_TextQuestion extends qp_StubQuestion {
 			$this->propview->catreq = $prop_attrs->catreq;
 			## Check for unanswered categories.
 			if ( $this->poll->mBeingCorrected &&
-					$prop_attrs->hasMissingCategories( $proposalId, $catId ) ) {
+						$prop_attrs->hasMissingCategories(
+							$answered_cats_count = $this->getAnsweredCatCount( $proposalId ),
+							$catId
+						) ) {
 				$prev_state = $this->getState();
-				$this->propview->prependErrorToken( wfMsg( 'qp_error_no_answer' ), 'NA' );
+				$this->propview->prependErrorToken(
+					($answered_cats_count > 0) ?
+						wfMsg( 'qp_error_not_enough_categories_answered' ) :
+						wfMsg( 'qp_error_no_answer' )
+					, 'NA'
+				);
 			}
 			$this->view->addProposal( $proposalId, $this->propview );
 			$proposalId++;

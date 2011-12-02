@@ -12,6 +12,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class qp_StubQuestion extends qp_AbstractQuestion {
 
+	# array of raw question source lines
+	var $raws;
+	# key of first raw proposal in $this->raws
+	var $rawProposalKey = 0;
+
 	# optional question literal name, used to address questions in interpretation scripts
 	var $mName = null;
 
@@ -68,6 +73,32 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 	 */
 	function getProposalIdByName( $proposalName ) {
 		return array_search( $proposalName, $this->mProposalNames, true );
+	}
+
+	private function substBackslashNL( &$s ) {
+		# warning: in single quoted regexp replace '\\\' translates into '\';
+		# without trim(), regexp match in qp_PropAttrs::getFromSource() will fail.
+		$s = preg_replace( '/^(\s*\\\??\s*)$/mu', '', trim( $s ) );
+	}
+
+	/**
+	 * Split raw question body into raw proposals and optionally
+	 * raw categories / raw category spans, when available.
+	 */
+	function splitRawProposals( $input ) {
+		# detect type of raw proposals
+		# originally was: preg_match( '/(?:^|\n)\s*\\??\s*(?:$|\n)/', $input )
+		# multiline raw proposals have empty lines and also optionally have lines
+		# containing only '\' character.
+		if ( preg_match( '/^\s*\\??\s*$/mu', $input ) ) {
+			# multiline raw proposals
+			# warning: in single quoted regexp split '\\' translates into '\'
+			$this->raws = preg_split( '/^(\s*\\??\s*)$/mu', $input, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE );
+			array_walk( $this->raws, array( __CLASS__, 'substBackslashNL' ) );
+		} else {
+			# single line raw proposals
+			$this->raws = preg_split( '`\n`su', $input, -1, PREG_SPLIT_NO_EMPTY );
+		}
 	}
 
 	# load some question fields from qp_QuestionData given
@@ -135,6 +166,19 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 	}
 
 	/**
+	 * @param  $proposal_id  integer
+	 *   id of existing question's proposal
+	 * @return integer
+	 *   count of answered categories by current submitting user for
+	 *   specified proposal id
+	 */
+	function getAnsweredCatCount( $proposal_id ) {
+		return array_key_exists( $proposal_id, $this->mProposalCategoryId ) ?
+			count( $this->mProposalCategoryId[$proposal_id] ) :
+			0;
+	}
+
+	/**
 	 * Applies previousely parsed attributes from main header into question's view
 	 * (all attributes but type)
 	 * @param  $paramkeys array
@@ -166,6 +210,15 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 			return $interpResult->qpcErrors[$key];
 		}
 		return false;
+	}
+
+	/**
+	 * Raises an error in case parsed question does not have any proposals.
+	 */
+	function isEmpty() {
+		if ( count( $this->mProposalText ) === 0 ) {
+			$this->setState( 'error', wfMsgHtml( 'qp_error_question_no_proposals' ) );
+		};
 	}
 
 	/**
