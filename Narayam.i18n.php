@@ -65,6 +65,8 @@ $messages['en'] = array(
 	'narayam-ru-standard' => 'Russian Standard',
 	'narayam-sah-standard' => 'Sakha Standard',
 	'narayam-hne-inscript' => 'Chhattisgarhi InScript',
+	'narayam-gom-deva' => 'Goan Konkani-Devanagari Transliteration',
+	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari InScript',
 );
 
 /** Message documentation (Message documentation)
@@ -1319,6 +1321,8 @@ $messages['ml'] = array(
 	'narayam-ru-standard' => 'റഷ്യൻ മാനകരൂപം',
 	'narayam-sah-standard' => 'സാഖാ മാനകരൂപം',
 	'narayam-hne-inscript' => 'ഛത്തീസ്ഗാഢി ഇന്‍സ്ക്രിപ്റ്റ്',
+	'narayam-gom-deva' => 'ഗോവന്‍ കൊങ്കണി-ദേവനാഗരി ലിപ്യന്തരണം',
+	'narayam-gom-deva-inscript' => 'ഗോവന്‍ കൊങ്കണി-ദേവനാഗരി ഇന്‍സ്ക്രിപ്റ്റ്',
 );
 
 /** Marathi (मराठी)

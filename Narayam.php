@@ -74,8 +74,8 @@ $wgNarayamSchemes = array(
 		'eo' => 'ext.narayam.rules.eo',
 	),
 	'gom-deva' => array(
-		'mr' => 'ext.narayam.rules.mr',
-		'mr-inscript' => 'ext.narayam.rules.mr',
+		'gom-deva' => 'ext.narayam.rules.gom-deva',
+		'gom-deva-inscript' => 'ext.narayam.rules.gom-deva-inscript',
 	),
 	'hi' => array(
 		'hi' => 'ext.narayam.rules.hi',
@@ -189,12 +189,20 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-as-avro',
 		'narayam-as-bornona',
 		'narayam-as-inscript',
-		'narayam-de',
+		'narayam-bn-avro',
+		'narayam-bn-inscript',
+		'narayam-bn-nkb',
 		'narayam-ber-tfng',
 		'narayam-brx-inscript',
+		'narayam-de',
 		'narayam-eo',
+		'narayam-gom-deva',
+		'narayam-gom-deva-inscript',
+		'narayam-gu',
+		'narayam-gu-inscript',
 		'narayam-hi',
 		'narayam-hi-inscript',
+		'narayam-hne-inscript',
 		'narayam-kn',
 		'narayam-kn-inscript',
 		'narayam-ml',
@@ -208,8 +216,10 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-or-inscript',
 		'narayam-pa-inscript',
 		'narayam-pa-phonetic',
+		'narayam-ru-standard',
 		'narayam-sa',
 		'narayam-sa-inscript',
+		'narayam-sah-standard',
 		'narayam-si-singlish',
 		'narayam-si-wijesekara',
 		'narayam-ta-99',
@@ -217,15 +227,7 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-ta',
 		'narayam-ta-bamini',
 		'narayam-te-inscript',
-		'narayam-bn-avro',
-		'narayam-bn-inscript',
-		'narayam-bn-nkb',
 		'narayam-ur',
-		'narayam-gu',
-		'narayam-gu-inscript',
-		'narayam-ru-standard',
-		'narayam-sah-standard',
-		'narayam-hne-inscript',
 	),
 	'dependencies' => array(
 		'mediawiki.util',
@@ -399,5 +401,13 @@ $wgResourceModules['ext.narayam.rules.sah-standard'] = $narayamTpl + array(
 );
 $wgResourceModules['ext.narayam.rules.hne-inscript'] = $narayamTpl + array(
 	'scripts' => 'resources/ext.narayam.rules.hne-inscript.js',
+	'dependencies' => 'ext.narayam.rules.hi-inscript',
+);
+$wgResourceModules['ext.narayam.rules.gom-deva'] = $narayamTpl + array(
+	'scripts' => 'resources/ext.narayam.rules.gom-deva.js',
+	'dependencies' => 'ext.narayam.rules.hi',
+);
+$wgResourceModules['ext.narayam.rules.gom-deva-inscript'] = $narayamTpl + array(
+	'scripts' => 'resources/ext.narayam.rules.gom-deva-inscript.js',
 	'dependencies' => 'ext.narayam.rules.hi-inscript',
 );
