@@ -34,7 +34,7 @@ class WOMPropertyModel extends WikiObjectModel {
 		// FIXME: property should be collection object according to templates
 		// if template/field used
 		if ( preg_match( '/\{\{.+\}\}/s', $value . $caption ) ) {
-			$value = "{$value}|{$caption}";
+			$value = $value . ( $caption == '' ? '' : "|{$caption}" );
 			$caption = '';
 		} else {
 			if ( version_compare ( SMW_VERSION, '1.6', '>=' ) ) {
