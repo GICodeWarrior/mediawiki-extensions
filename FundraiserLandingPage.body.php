@@ -23,11 +23,27 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 
 		# clear output variable to be safe
 		$output = '';
-
-		# get the required variables to use for the landing page
+		
+		# begin generating the template call
 		$template = $this->make_safe( $wgRequest->getText( 'template', $wgFundraiserLPDefaults[ 'template' ] ) );
-		$appeal = $this->make_safe( $wgRequest->getText( 'appeal', $wgFundraiserLPDefaults[ 'appeal' ] ) );
-		$form = $this->make_safe( $wgRequest->getText( 'form', $wgFundraiserLPDefaults[ 'form' ] ) );
+		$output .= "{{ $template\n";
+		
+		# get the required variables (except template and country) to use for the landing page
+		$requiredParams = array(
+			'appeal',
+			'appeal-template',
+			'form-template',
+			'form-countryspecific'
+		);
+		foreach( $requiredParams as $requiredParam ) {
+			$param = $this->make_safe(
+				$wgRequest->getText( $requiredParam, $wgFundraiserLPDefaults[$requiredParam] )
+			);
+			// Add them to the template call
+			$output .= "| $requiredParam = $param\n";
+		}
+
+		# get the country code
 		$country = $wgRequest->getVal( 'country' );
 		// If no country was passed do a GeoIP lookup
 		if ( !$country ) {
@@ -43,17 +59,17 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 			$country = $wgFundraiserLPDefaults[ 'country' ];
 		}
 		$country = $this->make_safe( $country );
+		$output .= "| country = $country\n";
 
-		# begin generating the template call
-		$output .= "{{ $template\n| appeal = $appeal\n| form = $form\n| country = $country\n";
-
-		# add any parameters passed in the querystring
+		$excludeKeys = $requiredParams + array( 'template', 'country', 'title' );
+		
+		# add any other parameters passed in the querystring
 		foreach ( $wgRequest->getValues() as $k_unsafe => $v_unsafe ) {
 			# skip the required variables
-			if ( $k_unsafe == "template" || $k_unsafe == "appeal" || $k_unsafe == "form" || $k_unsafe == "country" ) {
+			if ( in_array( $k_unsafe, $excludeKeys ) ) {
 				continue;
 			}
-			# get the variables name and value
+			# get the variable's name and value
 			$key = $this->make_safe( $k_unsafe );
 			$val = $this->make_safe( $v_unsafe );
 			# print to the template in wiki-syntax

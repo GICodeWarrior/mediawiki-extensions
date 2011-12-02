@@ -40,9 +40,11 @@ $wgSpecialPages[ 'FundraiserRedirector' ] = 'FundraiserRedirector';
  * or not they are passed through the querystring.
  */
 $wgFundraiserLPDefaults = array(
-	'template' => 'Lp-wrapper',
+	'template' => 'Lp-layout-default',
 	'appeal' => 'Appeal-default',
-	'form' => 'Form-default',
+	'appeal-template' => 'Appeal-template-default',
+	'form-template' => 'Form-template-default',
+	'form-countryspecific' => 'Form-countryspecific-control',
 	'country' => 'XX' // per Charles Barr
 );
 
