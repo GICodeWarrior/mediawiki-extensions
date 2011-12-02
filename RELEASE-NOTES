@@ -1,7 +1,7 @@
  'Parser Fun' Changelog:
  =======================
  
- * (trunk) -- Version 0.1rc (initial release)
+ * December 2, 2011 -- Version 0.1 (initial release)
    - Magic word prefix 'THIS:', which is working with basically all functions returning page related information:
      'FULLPAGENAME', 'PAGENAME', 'BASEPAGENAME', 'SUBPAGENAME', 'SUBJECTPAGENAME', 'TALKPAGENAME', 'NAMESPACE',
 	 'SUBJECTSPACE', 'ARTICLESPACE', 'TALKSPACE' and their URL-encoded equivalents ending with 'EE'.

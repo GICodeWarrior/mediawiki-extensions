@@ -34,8 +34,8 @@ MediaWiki 'extensions' directory. Then add the following code to your
  # Parser Fun
  require_once( "$IP/extensions/ParserFun/ParserFun.php" );
  
-This extension requires Jeroen De Dauws 'Validator' extension in a version higher
-than 0.4.11. It must be included before the 'Parser Fun' extension.
+This extension requires Jeroen De Dauws 'Validator' extension (version 0.4.13 or
+above). It must be included before the 'Parser Fun' extension.
 You can get it at: http://www.mediawiki.org/wiki/Extension:Validator
 
  
