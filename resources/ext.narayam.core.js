@@ -577,6 +577,7 @@ $.narayam = new ( function() {
 			
 		var $moreLink = $( '<a>' )
 			.text( mw.msg( 'narayam-more-imes' ) )
+			.prop( 'href', '#' )
 			.click( function() {
 				$('.narayam-scheme-dynamic-item').toggle( 'fast' );
 				if ( $('li.narayam-more-imes-link').hasClass( 'open' ) ) {
