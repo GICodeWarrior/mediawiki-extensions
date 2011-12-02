@@ -1,7 +1,7 @@
  'Supage Fun' Changelog:
  =======================
 
-* (trunk), 2011 - Version 0.5.2:
+* December 2, 2011 - Version 0.5.2:
   - Support for 'Parser Fun' extensions 'THIS' function added. With 'Parser Fun' enabled it now is possible to call
     '{{THIS:SUBPAGETITLE}}' which will output the subpage title of the template or page where the phrase is defined on, not the
     page which is actually being rendered by the parser as '{{SUBPAGETITLE}}' would output it.

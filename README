@@ -36,6 +36,10 @@ specific page ''{{SUBPAGES:page}}'', some even with additional parameters.
  
  TOPLEVELPAGE:
  The top level page which is the page with subpage level 0 within the same subpage tree.
+ 
+As a new feature in 'Subpage Fun' 0.5.2, all these variables also support the 'THIS:' prefix functionality of the
+'Parser Fun' extension if it is installed within the wiki.
+See [http://www.mediawiki.org/wiki/Extension:Parser_Fun] for details.
 
 
 == Installation ==
