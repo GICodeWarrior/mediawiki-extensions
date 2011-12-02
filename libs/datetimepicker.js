@@ -10,13 +10,21 @@ function SFI_DTP_init ( inputId, params ) {
 
 	var input = jQuery( '#' + inputId );
 	
+	var hiddenInput = jQuery( '<input type="hidden" >' );
+	
+	hiddenInput.attr( {
+		id: inputId,
+		name: input.attr( 'name' ),
+		value: input.val()
+	} );
+
+	input.replaceWith( hiddenInput );
+	input = hiddenInput;
+	
 	// create and insert subinput elements
-	var subinputs = jQuery( params.subinputs );
+	var subinputs = jQuery( params.subinputs );	
 	input.before( subinputs );
 	
-	// hide datetimepicker's true input
-	input.attr('hidden', 'hidden');
-
 	// call initialisation functions for subinputs
 	for (var subinputId in params.subinputsInitData) {
 		
@@ -36,11 +44,24 @@ function SFI_DTP_init ( inputId, params ) {
 
 	dp.add(tp)
 	.change (function(){
-		input.val(
-			jQuery.datepicker.formatDate( dp.datepicker( 'option', 'altFormat' ), dp.datepicker( 'getDate' ), null ) +
-			' ' + tp.val()
-		);
-	})
+		
+		var date;
+		
+		// try parsing the date value
+		try {
+			
+			date = jQuery.datepicker.parseDate( dp.datepicker( 'option', 'dateFormat' ), dp.val(), null );				
+			date = jQuery.datepicker.formatDate( dp.datepicker( 'option', 'altFormat' ), date );
+			
+		} catch ( e ) {
+			// value does not conform to specified format
+			// just return the value as is
+			date = dp.val();
+		}
+		
+		input.val( jQuery.trim( date + ' ' + tp.val() ) );
+		
+	});
 
 	if ( params.resetButtonImage  ) {
 
@@ -52,7 +73,7 @@ function SFI_DTP_init ( inputId, params ) {
 		} else {
 			
 			var resetbutton = jQuery('<button type="button" class="ui-datetimepicker-trigger ' + params.userClasses + '" ><img src="' + params.resetButtonImage + '" alt="..." title="..."></button>');
-			tp.parent().append( resetbutton );
+			input.before( resetbutton );
 			
 			resetbutton.click( function(){
 				

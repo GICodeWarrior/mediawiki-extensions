@@ -3,9 +3,13 @@
  * Additional input types for [http://www.mediawiki.org/wiki/Extension:SemanticForms Semantic Forms].
  *
  * @defgroup SFI Semantic Forms Inputs
+ * 
  * @author Stephan Gambke
+ * @author Yaron Koren
+ * @author Jeroen de Dauw 
  * @author Sanyam Goyal
- * @version 0.4.2 alpha
+ * 
+ * @version 0.5
  */
 
 /**
@@ -23,11 +27,11 @@ if ( !defined( 'SF_VERSION' ) ) {
 	die( '<b>Error:</b> <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs">Semantic Forms Inputs</a> is a Semantic Forms extension. You need to install <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms">Semantic Forms</a> first.' );
 }
 
-if ( version_compare( '2.3', SF_VERSION ) != -1 ) {
-	die( '<b>Error:</b> This version of <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs">Semantic Forms Inputs</a> is only compatible with Semantic Forms 2.4 or above. You need to upgrade <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms">Semantic Forms</a> first.' );
+if ( version_compare( '2.3.1', SF_VERSION ) != -1 ) {
+	die( '<b>Error:</b> This version of <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs">Semantic Forms Inputs</a> is only compatible with Semantic Forms 2.3.1 or above. You need to upgrade <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms">Semantic Forms</a> first.' );
 }
 
-define( 'SFI_VERSION', '0.4.2 alpha' );
+define( 'SFI_VERSION', '0.5' );
 
 // create and initialize settings
 $sfigSettings = new SFISettings();
@@ -36,7 +40,7 @@ $sfigSettings = new SFISettings();
 $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Semantic Forms Inputs',
-	'author' => array( '[http://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]', 'Sanyam Goyal', 'Yaron Koren' ),
+	'author' => array( '[http://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]', 'others' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs',
 	'descriptionmsg' => 'semanticformsinputs-desc',
 	'version' => SFI_VERSION,
@@ -63,7 +67,6 @@ $wgAutoloadClasses['SFIRegExp'] = $dir . '/includes/SFI_RegExp.php';
 class SFISettings {
 	// general settings
 	public $scriptPath;
-	//public $yuiBase;
 
 	// settings for input type datepicker
 	public $datePickerFirstDate;

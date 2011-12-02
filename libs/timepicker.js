@@ -128,23 +128,23 @@ function SFI_TP_init( inputID, params ) { // minTime, maxTime, interval, format
 	// build html structure
 	var sp = jQuery( '<span class="SFI_timepicker" id="' + inputID + '_tree" ></span>' ).insertBefore( '#' + inputIDshow );
 
-	var ulh = jQuery( '<ul>' ).appendTo( sp );
+	var ulh = jQuery( '<ul class="SFI_timepicker_hours" >' ).appendTo( sp );
 
 
 	for ( var h = minh; h <= maxh; ++h ) {
 
-		var lih = jQuery( '<li class="ui-state-default">' + ( ( h < 10 ) ? '0' : '' ) + h + '</li>' ).appendTo( ulh );
+		var lih = jQuery( '<li class="ui-state-default SFI_timepicker_hour">' + ( ( h < 10 ) ? '0' : '' ) + h + '</li>' ).appendTo( ulh );
 
 		//TODO: Replace value for "show" by formatted string
 		lih
 		.data( 'value', ( ( h < 10 ) ? '0' : '' ) + h + ':00' )
 		.data( 'show', ( ( h < 10 ) ? '0' : '' ) + h + ':00' );
 
-		var ulm = jQuery( '<ul>' ).appendTo( lih );
+		var ulm = jQuery( '<ul class="SFI_timepicker_minutes" >' ).appendTo( lih );
 
 		for ( var m = ( (h == minh) ? minm : 0 ) ; m <= ( (h == maxh) ? maxm : 59 ); m += interv ) {
 
-			var lim = jQuery( '<li class="ui-state-default">' + ( ( m < 10 ) ? '0' : '' ) + m  + '</li>' ).appendTo( ulm );
+			var lim = jQuery( '<li class="ui-state-default SFI_timepicker_minute">' + ( ( m < 10 ) ? '0' : '' ) + m  + '</li>' ).appendTo( ulm );
 
 			//TODO: Replace value for "show" by formatted string
 			lim
