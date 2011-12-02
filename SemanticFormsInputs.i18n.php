@@ -15,6 +15,7 @@ $messages['en'] = array(
 	'semanticformsinputs-dateformatlong' => 'd MM yy', // see http://docs.jquery.com/UI/Datepicker/formatDate
 	'semanticformsinputs-dateformatshort' => 'dd/mm/yy', // see http://docs.jquery.com/UI/Datepicker/formatDate
 	'semanticformsinputs-firstdayofweek' => '0', // 0 - sunday, 1 - monday...
+	'semanticformsinputs-malformedregexp' => 'Malformed regular expression ($1).',
 
 	'semanticformsinputs-datepicker-dateformat' => 'The date format string. See the [http://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters online documentation] for more information.',
 	'semanticformsinputs-datepicker-weekstart' => 'The first day of the week (0 - Sunday, 1 - Monday, ...).',
@@ -63,6 +64,7 @@ $messages['qqq'] = array(
 
 {{doc-important|This is an ''optional'' message. Do not translate it, if it would remain unchanged in your language. }}",
 	'semanticformsinputs-firstdayofweek' => '0 - sunday, 1 - monday...',
+	'semanticformsinputs-malformedregexp' => 'An error message.',
 
 	'semanticformsinputs-datepicker-dateformat' => 'This is a help text for the Special:CreateForm page.',
 	'semanticformsinputs-datepicker-weekstart' => 'This is a help text for the Special:CreateForm page.',
