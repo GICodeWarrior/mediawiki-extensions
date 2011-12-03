@@ -27,7 +27,7 @@ if ( !defined( 'SF_VERSION' ) ) {
 	die( '<b>Error:</b> <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs">Semantic Forms Inputs</a> is a Semantic Forms extension. You need to install <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms">Semantic Forms</a> first.' );
 }
 
-if ( version_compare( '2.3.1', SF_VERSION ) != -1 ) {
+if ( version_compare( SF_VERSION, '2.3.1', 'lt' ) ) {
 	die( '<b>Error:</b> This version of <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs">Semantic Forms Inputs</a> is only compatible with Semantic Forms 2.3.1 or above. You need to upgrade <a href="https://www.mediawiki.org/wiki/Extension:Semantic_Forms">Semantic Forms</a> first.' );
 }
 
