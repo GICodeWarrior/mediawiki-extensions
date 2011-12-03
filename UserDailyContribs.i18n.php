@@ -219,7 +219,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'userdailycontribs-desc' => 'Contribucions de tôs los jorns per utilisator por l’èxtension de survelyence des clics',
+	'userdailycontribs-desc' => 'Contribucions de tôs los jorns per usanciér por l’èxtension de survelyence des clics',
 );
 
 /** Scottish Gaelic (Gàidhlig)
