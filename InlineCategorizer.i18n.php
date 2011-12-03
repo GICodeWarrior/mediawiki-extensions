@@ -778,8 +778,10 @@ Arrazoia izan ohi da kategoria hori txantiloi batek erantsi diola orrialdera.',
 /** Persian (فارسی)
  * @author Armandaneshjoo
  * @author Huji
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
+	'inlinecategorizer-desc' => 'ماژول جاوااسکریپت که تغییر، افزودن و حذف‌کردن رده‌ها را مستقیماً از صفحه ممکن می‌کند',
 	'inlinecategorizer-add-category' => 'افزودن رده',
 	'inlinecategorizer-add-category-submit' => 'افزودن',
 	'inlinecategorizer-add-category-summary' => 'افزودن رده «$1»',
