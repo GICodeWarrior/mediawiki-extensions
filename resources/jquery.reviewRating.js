@@ -18,7 +18,12 @@
 		var $this = $( _this );
 		
 		this.setup = function() {
-			$this.html( $( '<p>' ).text( $this.attr( 'data-type' ) + ': ' ) );
+			if ( $this.attr( 'data-type' ) === undefined ) {
+				$this.html( '' );
+			}
+			else {
+				$this.html( $( '<p>' ).text( $this.attr( 'data-type' ) + ': ' ) );
+			}
 			
 			$this.append( reviews.htmlSelect(
 				{ 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 }, // TODO

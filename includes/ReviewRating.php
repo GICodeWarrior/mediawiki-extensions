@@ -106,4 +106,37 @@ class ReviewRating extends ReviewsDBObject {
 		return $ratings;
 	}
 	
+	/**
+	 * Gets the HTML to display this rating.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return string
+	 */
+	public function getDisplayHTML() {
+		return self::getDisplayHTMLFor( $this );
+	}
+	
+	/**
+	 * Gets the HTML to display the provided rating.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param ReviewRating $rating
+	 * 
+	 * @return string
+	 */
+	public static function getDisplayHTMLFor( ReviewRating $rating ) {
+		$attribs = array(
+			'class' => 'review-rating-display',
+			'data-value' => $rating->getField( 'value' ),
+		);
+		
+		if ( $rating->hasField( 'type' ) ) {
+			$attribs['data-type'] = $rating->getField( 'type' );
+		}
+		
+		return Html::element( 'div', $attribs );
+	}
+	
 }

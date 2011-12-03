@@ -178,6 +178,9 @@ $wgResourceModules['jquery.reviewRating'] = $moduleTemplate + array(
 	'scripts' => array(
 		'jquery.reviewRating.js',
 	),
+	'styles' => array(
+		'jquery.reviewRating.css',
+	),
 	'dependencies' => array(
 		'ext.reviews', 'jquery.ui.stars',
 	),
@@ -212,7 +215,7 @@ $wgResourceModules['ext.reviews.pager'] = $moduleTemplate + array(
 		'reviews.pager.js',
 	),
 	'dependencies' => array(
-		'jquery.reviewState'
+		'jquery.reviewState',
 	),
 );
 
@@ -239,10 +242,10 @@ $wgResourceModules['ext.reviews.special.reviews'] = $moduleTemplate + array(
 		'reviews.special.js',
 	),
 	'dependencies' => array(
-		'jquery.reviewState', 'jquery.ui.button', 'ext.reviews'
+		'jquery.reviewState', 'jquery.ui.button', 'ext.reviews', 'jquery.reviewRating',
 	),
 	'messages' => array(
-		'reviews-reviews-delete-confirm'
+		'reviews-reviews-delete-confirm',
 	),
 );
 

@@ -210,6 +210,17 @@ class Review extends ReviewsDBObject {
 	}
 	
 	/**
+	 * Get the main rating of this review.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return ReviewRating
+	 */
+	public function getRating() {
+		return new ReviewRating( array( 'value' => $this->getField( 'rating' ) ) );
+	}
+	
+	/**
 	 * Get if the review has any (non-main) ratings associated with it.
 	 * 
 	 * @since 0.1
@@ -357,14 +368,10 @@ class Review extends ReviewsDBObject {
 		
 		$html .= '<tr colspan="2">';
 		
-		$html .= Html::rawElement( 'td', array(),
-			array_reduce( $this->getRatings(), function( $html, /* ReviewRating */ $rating ) {
-				return $html . Html::element( 'div', array(
-					'class' => 'review-rating-display',
-					'data-type' => $rating->getField( 'type' ),
-					'data-value' => $rating->getField( 'value' ),
-				) );
-			}, '' )
+		$html .= Html::rawElement(
+			'td',
+			array(),
+			implode( array_map( 'ReviewRating::getDisplayHTMLFor', $this->getRatings() ) ) 
 		);
 		
 		$html .= '</tr>';

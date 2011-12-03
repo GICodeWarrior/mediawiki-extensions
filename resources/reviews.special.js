@@ -33,6 +33,8 @@
 			}
 		} );
 		
+		$( '.review-rating-display' ).reviewRating();
+		
 	} );
 	
 })( window.jQuery, window.mediaWiki, window.reviews );
