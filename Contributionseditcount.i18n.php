@@ -244,7 +244,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'contributionseditcount' => 'Ceti utilisator at fêt $1 changement{{PLURAL:$1||s}}.',
+	'contributionseditcount' => 'Ceti usanciér at fêt $1 changement{{PLURAL:$1||s}}.',
 );
 
 /** Galician (Galego)
