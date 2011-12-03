@@ -98,7 +98,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'editpagetracking-desc' => 'Encârte lo premiér côp que châque utilisator ôvre la pâge d’èdicion.',
+	'editpagetracking-desc' => 'Encârte lo premiér côp que châque usanciér ôvre la pâge d’èdicion.',
 );
 
 /** Galician (Galego)
