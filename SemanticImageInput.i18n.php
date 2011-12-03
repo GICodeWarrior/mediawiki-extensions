@@ -95,6 +95,14 @@ $messages['ksh'] = array(
 	'sii-imageinput-loading' => 'Ben e Beld aam Laade&nbsp;&hellip;',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'sii-desc' => 'Setzt eng Method derbäi fir Biller op Wikipedia vun [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms] eriwwer ze huelen',
+	'sii-imageinput-loading' => 'Bild gëtt gelueden...',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
