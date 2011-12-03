@@ -262,7 +262,8 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			);
 			$first = false;
 		}
-		// Output
+		
+		// Output everything
 		$wgOut->addHTML(
 			Xml::tags(
 				'table',
@@ -275,6 +276,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 				Xml::tags( 'tr', null, Xml::tags( 'td', null, $dataTablesHtml ) )
 			)
 		);
+		
 		$wgOut->addWikiMsg( 'contribstats-footer' ); // Footer (typically empty)
 	}
 
