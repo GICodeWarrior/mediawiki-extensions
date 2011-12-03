@@ -490,6 +490,9 @@ $messages['de'] = array(
 	'narayam-gu-inscript' => 'Gujarati (InScript)',
 	'narayam-ru-standard' => 'Russisch (Standard)',
 	'narayam-sah-standard' => 'Jakutisch (Standard)',
+	'narayam-hne-inscript' => 'Chhattisgarhi (InScript)',
+	'narayam-gom-deva' => 'Konkani - Devanagari / Goa (Transliteration)',
+	'narayam-gom-deva-inscript' => 'Konkani - Devanagari / Goa (InScript)',
 );
 
 /** Greek (Ελληνικά)
@@ -1009,6 +1012,7 @@ $messages['ia'] = array(
 	'narayam-si-singlish' => 'Cingalese (Singlish)',
 	'narayam-si-wijesekara' => 'Cingalese (Wijesekara)',
 	'narayam-ta-99' => 'Tamil99',
+	'narayam-ta-inscript' => 'Tamil InScript',
 	'narayam-ta' => 'Translitteration in tamil',
 	'narayam-ta-bamini' => 'Tamil (Bamini)',
 	'narayam-te-inscript' => 'Telugu (InScript)',
@@ -1021,6 +1025,9 @@ $messages['ia'] = array(
 	'narayam-gu-inscript' => 'Gujarati InScript',
 	'narayam-ru-standard' => 'Russo standard',
 	'narayam-sah-standard' => 'Sakha standard',
+	'narayam-hne-inscript' => 'Chhattisgarhi (InScript)',
+	'narayam-gom-deva' => 'Translitteration in Goan Konkani-Devanagari',
+	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari (InScript)',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1261,6 +1268,9 @@ $messages['mk'] = array(
 	'narayam-gu-inscript' => 'Гуџарати - InScript',
 	'narayam-ru-standard' => 'руски (стандардно)',
 	'narayam-sah-standard' => 'јакутски (стандардно)',
+	'narayam-hne-inscript' => 'Чатисгари - InScript',
+	'narayam-gom-deva' => 'гоански Конкани - транслитерација на деванагари',
+	'narayam-gom-deva-inscript' => 'гоански Конкани - InScript за деванагари',
 );
 
 /** Malayalam (മലയാളം)
@@ -1389,6 +1399,9 @@ $messages['ms'] = array(
 	'narayam-gu-inscript' => 'InScript Gujarati',
 	'narayam-ru-standard' => 'Piawaian Rusia',
 	'narayam-sah-standard' => 'Piawaian Sakha',
+	'narayam-hne-inscript' => 'InScript Chhattisgarhi',
+	'narayam-gom-deva' => 'Alih Huruf Devanagari Konkani Goa',
+	'narayam-gom-deva-inscript' => 'InScript Devanagari Konkani Goa',
 );
 
 /** Dutch (Nederlands)
@@ -1447,6 +1460,9 @@ $messages['nl'] = array(
 	'narayam-gu-inscript' => 'Gujarati InScript',
 	'narayam-ru-standard' => 'Russisch (standaard)',
 	'narayam-sah-standard' => 'Jakoets (standaard)',
+	'narayam-hne-inscript' => 'Chhattisgarhi InScript',
+	'narayam-gom-deva' => 'Goan Konkani-Devanagari (transliteratie)',
+	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari InScript',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1926,21 +1942,25 @@ $messages['sl'] = array(
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Nikola Smolenski
  * @author Rancher
  */
 $messages['sr-ec'] = array(
 	'narayam-desc' => 'Омогућава додавање прилагођених улазних метода за уређивачки оквир',
 	'narayam-toggle-ime' => 'Омогући ($1)',
+	'narayam-help' => 'Помоћ',
 	'narayam-help-page' => 'Help:Куцање',
 	'narayam-checkbox-tooltip' => 'Укључивање или искључивање улазне методе',
+	'narayam-eo' => 'Есперанто',
 	'narayam-ml' => 'Малајалам пресловљавање',
-	'narayam-ml-inscript' => 'Малајалам индијска скрипта',
+	'narayam-ml-inscript' => 'Малајалам – индијско писмо',
 	'narayam-sa' => 'Санскрит пресловљавање',
 	'narayam-ta-99' => 'Тамил99',
 	'narayam-ta' => 'Тамилско пресловљавање',
 	'narayam-bn-avro' => 'Бенгалски авро',
-	'narayam-bn-inscript' => 'Бенгалска индијска скрипта',
+	'narayam-bn-inscript' => 'Бенгалски – индијско писмо',
 	'narayam-bn-nkb' => 'Званични распоред за бенгалски',
+	'narayam-de' => 'Немачки',
 );
 
 /** Swedish (Svenska)
@@ -1971,8 +1991,9 @@ $messages['ta'] = array(
 	'narayam-disable-preference' => 'நரையம் தட்டச்சுக் கருவியை நீக்கு',
 	'narayam-more-imes' => 'மேலுமுள்ள தட்டச்சு முறைகள்',
 	'narayam-ta-99' => 'தமிழ்99',
+	'narayam-ta-inscript' => 'தமிழ் இன்ஸ்கிரிப்ட் (சோதனை)',
 	'narayam-ta' => 'எழுத்துப்பெயர்ப்பு',
-	'narayam-ta-bamini' => 'பாமினி',
+	'narayam-ta-bamini' => 'பாமினி (சோதனை)',
 );
 
 /** Telugu (తెలుగు)
