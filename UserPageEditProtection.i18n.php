@@ -151,7 +151,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'right-editalluserpages' => 'Changiér les pâges utilisator',
+	'right-editalluserpages' => 'Changiér les pâges usanciér',
 );
 
 /** Galician (Galego)
