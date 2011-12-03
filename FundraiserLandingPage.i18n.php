@@ -50,9 +50,10 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dj
+ * @author Misibacsi
  */
 $messages['hu'] = array(
-	'fundraiserlandingpage-desc' => 'Veszi az URL paramétereket, és átadja megadott sablonoknak, mint sablon változók',
+	'fundraiserlandingpage-desc' => 'Veszi az URL paramétereket és mint sablon változókat átadja a megadott sablonnak',
 );
 
 /** Interlingua (Interlingua)
