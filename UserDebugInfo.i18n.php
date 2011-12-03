@@ -100,7 +100,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'userdebuginfo-useragent' => 'Agent utilisator HTTP',
+	'userdebuginfo-useragent' => 'Agent usanciér HTTP',
 	'userdebuginfo-remotehost' => 'Hôto distant HTTP',
 	'userdebuginfo-remoteaddr' => 'Adrèce distanta HTTP',
 	'userdebuginfo-key' => 'Cllâf',
