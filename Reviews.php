@@ -215,7 +215,7 @@ $wgResourceModules['ext.reviews.pager'] = $moduleTemplate + array(
 		'reviews.pager.js',
 	),
 	'dependencies' => array(
-		'jquery.reviewState',
+		'jquery.reviewState', 'jquery.reviewRating',
 	),
 );
 

@@ -14,6 +14,8 @@
 			$( e ).reviewState();
 		} );
 		
+		$( '.review-rating-display' ).reviewRating();
+		
 	} );
 	
 })( window.jQuery, window.mediaWiki );

@@ -158,8 +158,7 @@ class ReviewPager extends TablePager {
 				}
 				break;
 			case 'review_rating':
-				// TODO: might want to display stars here as well.
-				$value = $this->getLanguage()->formatNum( $value );
+				$value = $this->currentReview->getRating()->getDisplayHTML();
 				break;
 		}
 
