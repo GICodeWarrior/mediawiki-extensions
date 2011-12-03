@@ -15,6 +15,7 @@ final class ContestHooks {
 
 	/**
 	 * Schema update to set up the needed database tables.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LoadExtensionSchemaUpdates
 	 *
 	 * @since 0.1
 	 *
@@ -22,8 +23,8 @@ final class ContestHooks {
 	 *
 	 * @return true
 	 */
-	public static function onSchemaUpdate( /* DatabaseUpdater */ $updater = null ) {
-	$updater->addExtensionUpdate( array(
+	public static function onSchemaUpdate( DatabaseUpdater $updater ) {
+		$updater->addExtensionUpdate( array(
 			'addTable',
 			'contests',
 			dirname( __FILE__ ) . '/Contest.sql',
@@ -49,6 +50,7 @@ final class ContestHooks {
 
 	/**
 	 * Hook to add PHPUnit test cases.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
 	 *
 	 * @since 0.1
 	 *
