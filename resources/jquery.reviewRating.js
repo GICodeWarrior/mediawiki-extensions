@@ -10,7 +10,7 @@
 	
 	var settings = $.extend( {
 		
-	} );
+	}, options );
 	
 	return this.each( function() {
 

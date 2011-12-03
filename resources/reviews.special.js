@@ -10,9 +10,7 @@
 
 	$( document ).ready( function() {
 		
-		$.each( $( '.reviews-state-controls' ), function( i, e ) { 
-			$( e ).reviewState();
-		} );
+		$( '.reviews-state-controls' ).reviewState();
 		
 		$( '.reviews-delete-button' ).button().click( function() {
 			if ( confirm( mw.msg( 'reviews-reviews-delete-confirm' ) ) ) {

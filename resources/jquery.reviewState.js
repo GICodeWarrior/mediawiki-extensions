@@ -6,89 +6,95 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-(function( $, mw ) { $.fn.reviewState = function() {
+(function( $, mw ) { $.fn.reviewState = function( options ) {
 
-	var _this = this;
-	var $this = $( _this );
+	var settings = $.extend( {
+		
+	}, options );
 	
-	this.linksForState = null;
+	return this.each( function() {
 	
-	this.updateStateLinks = function( id, state ) {
-		$this.text( '' );
+		var _this = this;
+		var $this = $( _this );
 		
-		$this.attr( {
-			'data-review-state': state
-		} );
+		this.linksForState = null;
 		
-		for ( i in this.linksForState[state] ) {
-			if ( this.linksForState[state].hasOwnProperty( i ) ) {
-				var targetState = this.linksForState[state][i];
-				var isFirst = $this.text() === '';
-				
-				if ( isFirst ) {
-					$this.append( mw.msg( 'reviews-state-' + state ), ' (' );
-				}
-				else {
-					$this.append( ' | ' );
-				}
-				
-				$this.append( $( '<a>' ).attr( {
-					'class': 'review-flag-link',
-					'data-target': targetState
-				} ).text( mw.msg( 'reviews-pager-change-' + targetState ) ).click( this.onLinkClick ) );
-			}
-		}
-		
-		if ( this.linksForState[state].length > 0 ) {
-			$this.append( ')' );
-		}
-	};
-	
-	this.onLinkClick = function() {
-		var state = $this.attr( 'data-review-state' );
-		var id = $this.attr( 'data-review-id' );
-		var targetState = $( this ).attr( 'data-target' );
-		
-		if ( confirm( mw.msg( 'reviews-pager-confirm-' + targetState ) ) ) {
-			var requestArgs = {
-				'action': 'flagreviews',
-				'format': 'json',
-				'token': mw.user.tokens.get( 'editToken' ),
-				'state': targetState,
-				'ids': id
-			};
+		this.updateStateLinks = function( id, state ) {
+			$this.text( '' );
 			
-			$this.text( mw.msg( 'reviews-pager-updating' ) );
+			$this.attr( {
+				'data-review-state': state
+			} );
 			
-			$.post(
-				wgScriptPath + '/api.php',
-				requestArgs,
-				function( data ) {
-					if ( data.hasOwnProperty( 'success' ) && data.success ) {
-						_this.updateStateLinks( id, targetState );
+			for ( i in this.linksForState[state] ) {
+				if ( this.linksForState[state].hasOwnProperty( i ) ) {
+					var targetState = this.linksForState[state][i];
+					var isFirst = $this.text() === '';
+					
+					if ( isFirst ) {
+						$this.append( mw.msg( 'reviews-state-' + state ), ' (' );
 					}
 					else {
-						// TODO
-						alert( 'Could not change the state of the review' );
-						
-						_this.updateStateLinks( id, state );
+						$this.append( ' | ' );
 					}
+					
+					$this.append( $( '<a>' ).attr( {
+						'class': 'review-flag-link',
+						'data-target': targetState
+					} ).text( mw.msg( 'reviews-pager-change-' + targetState ) ).click( this.onLinkClick ) );
 				}
-			);
-		}
-	};
-	
-	this.setup = function() {
-		this.linksForState = $.parseJSON( $this.attr( 'data-review-states' ) );
+			}
+			
+			if ( this.linksForState[state].length > 0 ) {
+				$this.append( ')' );
+			}
+		};
 		
-		this.updateStateLinks(
-			$this.attr( 'data-review-id' ),
-			$this.attr( 'data-review-state' )
-		);
-	};
-	
-	this.setup();
+		this.onLinkClick = function() {
+			var state = $this.attr( 'data-review-state' );
+			var id = $this.attr( 'data-review-id' );
+			var targetState = $( this ).attr( 'data-target' );
+			
+			if ( confirm( mw.msg( 'reviews-pager-confirm-' + targetState ) ) ) {
+				var requestArgs = {
+					'action': 'flagreviews',
+					'format': 'json',
+					'token': mw.user.tokens.get( 'editToken' ),
+					'state': targetState,
+					'ids': id
+				};
+				
+				$this.text( mw.msg( 'reviews-pager-updating' ) );
+				
+				$.post(
+					wgScriptPath + '/api.php',
+					requestArgs,
+					function( data ) {
+						if ( data.hasOwnProperty( 'success' ) && data.success ) {
+							_this.updateStateLinks( id, targetState );
+						}
+						else {
+							// TODO
+							alert( 'Could not change the state of the review' );
+							
+							_this.updateStateLinks( id, state );
+						}
+					}
+				);
+			}
+		};
+		
+		this.setup = function() {
+			this.linksForState = $.parseJSON( $this.attr( 'data-review-states' ) );
+			
+			this.updateStateLinks(
+				$this.attr( 'data-review-id' ),
+				$this.attr( 'data-review-state' )
+			);
+		};
+		
+		this.setup();
 
-	return this;
+	});
 	
 }; })( window.jQuery, window.mediaWiki );
