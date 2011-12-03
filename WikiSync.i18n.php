@@ -543,7 +543,7 @@ $messages['frp'] = array(
 	'wikisync_api_result_WrongPluginPass' => 'Lo contresegno que vos éd balyê est fôx',
 	'wikisync_api_result_Blocked' => 'L’utilisator est blocâ',
 	'wikisync_api_result_mustbeposted' => 'Lo modulo de branchement at fôta d’una requéta POST',
-	'wikisync_api_result_no_import_rights' => 'Cél utilisator est pas ôtorisâ a importar des fichiérs de vouedâ XML',
+	'wikisync_api_result_no_import_rights' => 'Cél usanciér est pas ôtorisâ a importar des fichiérs de vouedâ XML',
 	'wikisync_api_result_Success' => 'Branchiê avouéc reusséta sur lo seto vouiqui distant',
 	'wikisync_js_last_op_error' => 'La dèrriére opèracion at retornâ una èrror.
 
