@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
  * @licence GNU General Public Licence 2.0 or later
  */
 
-define( 'CATEGORYWATCH_VERSION', '1.2.1, 2010-08-05' );
+define( 'CATEGORYWATCH_VERSION', '1.2.2, 2011-12-03' );
 
 # Whether or not to also send notificaton to the person who made the change
 $wgCategoryWatchNotifyEditor = true;
@@ -173,7 +173,7 @@ class CategoryWatch {
 				# Reveal the page editor's address as REPLY-TO address only if
 				# the user has not opted-out and the option is enabled at the
 				# global configuration level.
-				$name = $wgEnotifUseRealName ? $editor->getRealName() : $editor->getName();
+				$name = $wgEnotifUseRealName ? $watchingUser->getRealName() : $watchingUser->getName();
 				if ( $wgEnotifRevealEditorAddress
 					&& ( $editor->getEmail() != '' )
 					&& $editor->getOption( 'enotifrevealaddr' ) ) {
