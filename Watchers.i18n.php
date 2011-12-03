@@ -458,11 +458,11 @@ $messages['frp'] = array(
 	'watchers_link_title' => 'Qui siut ceta pâge ?',
 	'watchers_error_article' => "'''Èrror :''' la pâge ègziste pas.",
 	'watchers-error-invalid-page' => "'''Èrror :''' « $1 » est un titro de pâge envalido.",
-	'watchers_header' => '{{PLURAL:$2|Utilisator que siut|Utilisators que siuvont}} « [[:$1]] »',
+	'watchers_header' => '{{PLURAL:$2|Usanciér que siut|Usanciérs que siuvont}} « [[:$1]] »',
 	'watchers_noone_watches' => 'Nion siut la pâge [[:$1]].',
-	'watchers_x_or_more' => '$1 utilisator{{PLURAL:$1||s}} ou ben més ont la pâge [[:$2]] dens lor lista de survelyence.',
-	'watchers_less_than_x' => 'Muens {{PLURAL:$1|de yon utilisator a|de $1 utilisators on}}t la pâge [[:$2]] dens lor lista de survelyence.',
-	'watchers-num' => '$1 {{PLURAL:$1|utilisator a|utilisators on}}t la pâge [[:$2]] dens {{PLURAL:$1|sa lista|lors listes}} de survelyence.',
+	'watchers_x_or_more' => '$1 usanciér{{PLURAL:$1||s}} ou ben més ont la pâge [[:$2]] dens lor lista de survelyence.',
+	'watchers_less_than_x' => 'Muens {{PLURAL:$1|de yon usanciér a|de $1 usanciérs on}}t la pâge [[:$2]] dens lor lista de survelyence.',
+	'watchers-num' => '$1 {{PLURAL:$1|usanciér a|usanciérs on}}t la pâge [[:$2]] dens {{PLURAL:$1|sa lista|lors listes}} de survelyence.',
 	'right-watchers-list' => '[[Special:Watchers|Listar los utilisators que siuvont una pâge spècefica]]',
 );
 
