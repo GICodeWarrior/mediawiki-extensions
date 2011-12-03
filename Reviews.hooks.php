@@ -15,6 +15,7 @@ final class ReviewsHooks {
 
 	/**
 	 * Schema update to set up the needed database tables.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LoadExtensionSchemaUpdates
 	 *
 	 * @since 0.1
 	 *
@@ -22,7 +23,7 @@ final class ReviewsHooks {
 	 *
 	 * @return true
 	 */
-	public static function onSchemaUpdate( /* DatabaseUpdater */ $updater = null ) {
+	public static function onSchemaUpdate( DatabaseUpdater $updater ) {
 		$updater->addExtensionUpdate( array(
 			'addTable',
 			'reviews',
@@ -35,6 +36,7 @@ final class ReviewsHooks {
 
 	/**
 	 * Hook to add PHPUnit test cases.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
 	 *
 	 * @since 0.1
 	 *
@@ -44,8 +46,6 @@ final class ReviewsHooks {
 	 */
 	public static function registerUnitTests( array &$files ) {
 		$testDir = dirname( __FILE__ ) . '/test/';
-
-		//$files[] = $testDir . 'ContestValidationTests.php';
 
 		return true;
 	}
