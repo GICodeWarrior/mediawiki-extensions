@@ -1802,7 +1802,7 @@ $messages['pt-br'] = array(
  */
 $messages['qu'] = array(
 	'group-patroller' => 'Patrullaqkuna',
-	'group-patroller-member' => 'patrullaq',
+	'group-patroller-member' => '{{GENDER:$1|}}patrullaq',
 );
 
 /** Romansh (Rumantsch) */
