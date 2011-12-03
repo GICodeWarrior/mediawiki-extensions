@@ -478,7 +478,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'edituser' => 'Changiér l’utilisator',
-	'edituser-username' => 'Nom d’utilisator :',
+	'edituser-username' => 'Nom d’usanciér :',
 	'edituser-dosearch' => 'Rechèrchiér',
 	'edituser-nouser' => 'L’utilisator « $1 » ègziste pas.',
 	'edituser-exempt' => 'L’utilisator « $1 » pôt pas étre changiê.',
@@ -1310,7 +1310,7 @@ $messages['sq'] = array(
  */
 $messages['sr-ec'] = array(
 	'edituser-desc' => 'Омогућава привилегованим корисницима да мењају подешавања других корисника',
-	'edituser' => 'Измени корисника',
+	'edituser' => 'Уреди корисника',
 	'edituser-username' => 'Корисничко име:',
 	'edituser-dosearch' => 'Претрага',
 	'edituser-nouser' => 'Корисник „$1“ не постоји.',
