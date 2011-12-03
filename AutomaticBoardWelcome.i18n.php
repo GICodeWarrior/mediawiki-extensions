@@ -56,7 +56,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'automaticboardwelcome-desc' => 'Mandar ôtomaticament un [[MediaWiki:User-board-welcome-message|mèssâjo de benvegnua]] sur les pâges utilisator ux novéls utilisators aprés lor crèacion',
+	'automaticboardwelcome-desc' => 'Mandar ôtomaticament un [[MediaWiki:User-board-welcome-message|mèssâjo de benvegnua]] sur les pâges usanciér ux novéls usanciérs aprés lor crèacion',
 );
 
 /** Galician (Galego)
