@@ -1719,7 +1719,7 @@ $messages['frp'] = array(
 	'sign-viewfield-country' => 'Payis',
 	'sign-viewfield-zip' => 'Code postâl',
 	'sign-viewfield-ip' => 'Adrèce IP',
-	'sign-viewfield-agent' => 'Agent utilisator',
+	'sign-viewfield-agent' => 'Agent usanciér',
 	'sign-viewfield-phone' => 'Numerô de tèlèfono',
 	'sign-viewfield-email' => 'Adrèce èlèctronica',
 	'sign-viewfield-age' => 'Âjo',
@@ -1742,9 +1742,9 @@ $messages['frp'] = array(
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:BlockIP/$1|Blocar l’utilisator]] • <!--
+-->[[Special:BlockIP/$1|Blocar l’usanciér]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Jornal des blocâjos] • <!--
--->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Contrôlo d’utilisator])<!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Contrôlo d’usanciér])<!--
 --></span>',
 	'sign-viewfield-stricken' => 'Traciê',
 	'sign-viewfield-reviewedby' => 'Rèvisor',
@@ -4551,7 +4551,7 @@ $1',
 	'sig-success' => 'Успешно сте потписали документ.',
 	'sign-view-selectfields' => "'''Поља за приказ:'''",
 	'sign-viewfield-entryid' => 'ID уноса',
-	'sign-viewfield-timestamp' => 'Временска марка',
+	'sign-viewfield-timestamp' => 'Време и датум',
 	'sign-viewfield-realname' => 'Име',
 	'sign-viewfield-address' => 'Адреса',
 	'sign-viewfield-city' => 'Град',
