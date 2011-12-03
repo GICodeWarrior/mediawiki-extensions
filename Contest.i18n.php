@@ -2287,6 +2287,7 @@ $messages['lb'] = array(
 	'contest-mycontests-toplink' => 'Meng Concoursen',
 	'contest-mycontests-no-contests' => 'Dir maacht bäi kengem Concours mat.',
 	'contest-mycontests-active-header' => 'Aktuell Concoursen',
+	'contest-mycontests-finished-header' => 'Concoursen déi ofgeschloss sinn',
 	'contest-mycontests-header-contest' => 'Concours',
 	'contest-mycontests-header-challenge' => 'Erausfuerderung',
 	'contest-submission-unknown' => 'Et gëtt kee Concours mam Numm deen ugi gouf.',
