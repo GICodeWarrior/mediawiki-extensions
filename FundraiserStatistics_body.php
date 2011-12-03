@@ -31,8 +31,6 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			}
 		}
 
-		$this->timezone = $wgRequest->getText( 'timezone', '+0:00' );
-
 		/* Configuration (this isn't totally static data, some of it gets built on the fly) */
 
 		$charts = array(
@@ -85,7 +83,8 @@ class SpecialFundraiserStatistics extends SpecialPage {
 
 		/* Display */
 
-		$wgOut->addWikiMsg('contribstats-header');
+		$wgOut->addWikiMsg( 'contribstats-header' ); // Header (typically empty)
+		
 		// Chart maximums
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
 			foreach ( $charts as $name => $chart ) {
@@ -99,12 +98,25 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		foreach ( $charts as $name => $chart ) {
 			$charts[$name]['factor'] = 300 / $chart['max'];
 		}
+		
 		// HTML-time!
-		$view = 0;
-		$htmlViews = '';
+		
+		// Each bar on the graph is associated with an individual data table. The ID linking the
+		// bar and the table is stored in $dataTableId.
+		$dataTableId = 0;
+		$dataTablesHtml = ''; // This will contain the HTML for all the data tables
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiserIndex => $fundraiser ) {
+		
+			// Get all the daily data for a particular fundraiser
 			$days = $this->query( 'dailyTotals', $fundraiser['start'], $fundraiser['end'] );
-			$mostRecentFundraiser = $fundraiserIndex == count( $egFundraiserStatisticsFundraisers ) - 1;
+			
+			// See if this is the most recent fundraiser or not
+			if ( $fundraiserIndex == count( $egFundraiserStatisticsFundraisers ) - 1 ) {
+				$mostRecentFundraiser = true;
+			} else {
+				$mostRecentFundraiser = false;
+			}
+			
 			foreach ( $charts as $name => $chart ) {
 				$column = 0;
 				foreach( $days as $i => $day ) {
@@ -131,7 +143,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					$attributes = array(
 						'style' => $style,
 						'class' => "fundraiserstats-bar fundraiserstats-bar-{$fundraiser['id']}",
-						'rel' => "fundraiserstats-view-box-{$view}",
+						'rel' => "fundraiserstats-view-box-{$dataTableId}",
 					);
 					if ( $mostRecentFundraiser && $i == count( $days ) -1 ) {
 						$attributes['class'] .= ' fundraiserstats-current';
@@ -139,28 +151,31 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					$charts[$name]['data'][$column] .= Xml::tags(
 						'td', array( 'valign' => 'bottom' ), Xml::element( 'div', $attributes, '', false )
 					);
-					$htmlView = Xml::openElement( 'tr' );
+					
+					// Construct the data table for this day
+					$dataTable = Xml::openElement( 'tr' );
 					$count = 0;
 					foreach ( $charts as $subchart ) {
-						$htmlView .= Xml::element(
+						$dataTable .= Xml::element(
 							'td', array( 'width' => '16%', 'nowrap' => 'nowrap' ), wfMsg( $subchart['label'] )
 						);
-						$htmlView .= Xml::element(
+						$dataTable .= Xml::element(
 							'td',
 							array( 'width' => '16%', 'nowrap' => 'nowrap', 'align' => 'right' ),
 							$wgLang->formatNum( number_format( $day[$subchart['index']], $subchart['precision'] ) )
 						);
 						if ( ++$count % 3 == 0 ) {
-							$htmlView .= Xml::closeElement( 'tr' ) . Xml::openElement( 'tr' );
+							$dataTable .= Xml::closeElement( 'tr' ) . Xml::openElement( 'tr' );
 						}
 					}
-					$htmlView .= Xml::closeElement( 'tr' );
-					$htmlViews .= Xml::tags(
+					$dataTable .= Xml::closeElement( 'tr' );
+					
+					$dataTablesHtml .= Xml::tags(
 						'div',
 						array(
-							'id' => 'fundraiserstats-view-box-' . $view,
+							'id' => 'fundraiserstats-view-box-' . $dataTableId,
 							'class' => 'fundraiserstats-view-box',
-							'style' => 'display: ' . ( $view == 0 ? 'block' : 'none' )
+							'style' => 'display: ' . ( $dataTableId == 0 ? 'block' : 'none' )
 						),
 						Xml::tags(
 							'table',
@@ -171,7 +186,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 								Xml::tags(
 									'td',
 									array( 'colspan' => 6 ),
-									Xml::element( 'h3', array( 'style' => 'float:right;color:gray;' ), $day[0] ) .
+									Xml::element( 'h3', array( 'style' => 'float:right;color:gray;' ), $day[0] ) . // The date
 									Xml::tags(
 										'h3',
 										array( 'style' => 'float:left;color:black;' ),
@@ -180,11 +195,11 @@ class SpecialFundraiserStatistics extends SpecialPage {
 									Xml::element( 'div', array( 'style' => 'clear:both;' ), '', false )
 								)
 							) .
-							$htmlView
+							$dataTable
 						)
 					);
 					$column++;
-					$view++;
+					$dataTableId++;
 				}
 			}
 		}
@@ -203,9 +218,6 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		}
 		$wgOut->addHTML( Xml::openElement( 'div', array( 'id' => 'configholder' ) ) );
 		$wgOut->addHTML( $years );
-		// TODO: Fix timezone feature to work with caching correctly.
-		// $wgOut->addHTML( wfMsg( 'fundraiserstats-time-zone' ).'<br/>' );
-		// $wgOut->addHTML( '&#160;'.Xml::listDropDown( 'timezone', $this->dropDownList( range ( -12, 14, 1 ) ), '', $this->timezone, '', 1 ).' '.wfMsg( 'fundraiserstats-utc' ) );
 		$wgOut->addHTML( Xml::closeElement( 'div' ) );
 
 		$wgOut->addHTML( Xml::closeElement( 'form' ) );
@@ -213,11 +225,13 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		// Instructions
 		$wgOut->addWikiMsg( 'fundraiserstats-instructions' );
 
+		$chartsHtml = ''; // This will contain the HTML for all of the bar charts and tabs
+		
 		// Tabs
+		$chartsHtml .= Xml::openElement( 'div', array( 'class' => 'fundraiserstats-chart-tabs' ) );
 		$first = true;
-		$htmlCharts = Xml::openElement( 'div', array( 'class' => 'fundraiserstats-chart-tabs' ) );
 		foreach ( $charts as $chart => $columns ) {
-			$htmlCharts .= Xml::tags(
+			$chartsHtml .= Xml::tags(
 				'div',
 				array(
 					'id' => "fundraiserstats-chart-{$chart}-tab",
@@ -228,11 +242,12 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			);
 			$first = false;
 		}
-		$htmlCharts .= Xml::closeElement( 'div' );
+		$chartsHtml .= Xml::closeElement( 'div' );
+		
 		// Charts
 		$first = true;
 		foreach ( $charts as $name => $chart ) {
-			$htmlCharts .= Xml::tags(
+			$chartsHtml .= Xml::tags(
 				'div',
 				array(
 					'id' => "fundraiserstats-chart-{$name}",
@@ -256,23 +271,35 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					'cellspacing' => 0,
 					'border' => 0
 				),
-				Xml::tags( 'tr', null, Xml::tags( 'td', null, $htmlCharts ) ) .
-				Xml::tags( 'tr', null, Xml::tags( 'td', null, $htmlViews ) )
+				Xml::tags( 'tr', null, Xml::tags( 'td', null, $chartsHtml ) ) .
+				Xml::tags( 'tr', null, Xml::tags( 'td', null, $dataTablesHtml ) )
 			)
 		);
-		$wgOut->addWikiMsg('contribstats-footer');
+		$wgOut->addWikiMsg( 'contribstats-footer' ); // Footer (typically empty)
 	}
 
 	/* Private Functions */
 
+	/**
+	 * Retrieve the donation data from the database
+	 *
+	 * @param string $type Which type of query to do
+	 * @param string $start The start date for a fundraiser
+	 * @param string $end The end date for a fundraiser
+	 * @return an array of results or null
+	 */
 	private function query( $type, $start, $end ) {
 		global $wgMemc, $egFundraiserStatisticsMinimum, $egFundraiserStatisticsMaximum, $egFundraiserStatisticsCacheTimeout;
 
+		// Conctruct the key for memcached
 		$key = wfMemcKey( 'fundraiserstatistics', $type, $start, $end );
+		
+		// If result exists in memcached, use that
 		$cache = $wgMemc->get( $key );
 		if ( $cache != false && $cache != -1 ) {
 			return $cache;
 		}
+		
 		// Use database
 		$dbr = efContributionReportingConnection();
 		$conditions = array(
@@ -285,7 +312,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			case 'dailyTotals':
 				$select = $dbr->select( 'public_reporting',
 					array(
-						"DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')",
+						"DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')",
 						'sum(converted_amount)',
 						'count(*)',
 						'avg(converted_amount)',
@@ -295,13 +322,14 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					__METHOD__ . '-dailyTotals',
 					array(
 						'ORDER BY' => 'received',
-						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
+						'GROUP BY' => "DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')"
 					)
 				);
 				$result = array();
 				$ytd = 0;
 				while ( $row = $dbr->fetchRow( $select ) ) {
-					$row[] = $ytd += $row[1]; // YTD
+					// Insert the year-to-date amount as a record in the row (existing $ytd + sum)
+					$row[5] = $ytd += $row[1];
 					$result[] = $row;
 				}
 				break;
@@ -312,7 +340,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					__METHOD__ . '-dailyTotalMax',
 					array(
 						'ORDER BY' => 'sum DESC',
-						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
+						'GROUP BY' => "DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')"
 					)
 				);
 				break;
@@ -330,7 +358,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					__METHOD__ . '-contributionsMax',
 					array(
 						'ORDER BY' => 'sum DESC',
-						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
+						'GROUP BY' => "DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')"
 					)
 				);
 				break;
@@ -341,7 +369,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					__METHOD__ . '-averagesMax',
 					array(
 						'ORDER BY' => 'sum DESC',
-						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
+						'GROUP BY' => "DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')"
 					)
 				);
 				break;
@@ -352,28 +380,16 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					__METHOD__ . '-maximumsMax',
 					array(
 						'ORDER BY' => 'sum DESC',
-						'GROUP BY' => "DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$this->timezone'),'%Y-%m-%d')"
+						'GROUP BY' => "DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')"
 					)
 				);
 				break;
 		}
 		if ( isset( $result ) ) {
+			// Store the result in memcached
 			$wgMemc->set( $key, $result, $egFundraiserStatisticsCacheTimeout );
 			return $result;
 		}
 		return null;
-	}
-
-	/**
-	 * @param $values
-	 * @return string
-	 */
-	private function dropDownList ( $values ) {
-		$dropDown = '';
-		foreach ( $values as $value ) {
-			if ( $value >= 0 ) $dropDown .= '+';
-			$dropDown .= "$value:00\n";
-		}
-		return $dropDown;
 	}
 }
