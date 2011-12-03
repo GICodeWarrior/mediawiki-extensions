@@ -204,7 +204,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'emailusers' => 'Mandar un mèssâjo ux utilisators',
+	'emailusers' => 'Mandar un mèssâjo ux usanciérs',
 );
 
 /** Galician (Galego)
