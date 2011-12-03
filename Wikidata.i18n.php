@@ -4771,7 +4771,7 @@ $messages['frp'] = array(
 	'transaction' => 'Wikidata : jornal de les transaccions',
 	'ow_transaction_from_transaction' => 'Dês la transaccion :',
 	'ow_transaction_count' => 'Compto :',
-	'ow_transaction_user' => 'Nom d’utilisator :',
+	'ow_transaction_user' => 'Nom d’usanciér :',
 	'ow_transaction_show_rollback' => 'Fâre vêre los contrôlos de rèvocacion :',
 	'ow_transaction_rollback_button' => 'Rèvocar',
 	'ow_transaction_rollback_header' => 'Rèvocacion',
@@ -4860,7 +4860,7 @@ $messages['frp'] = array(
 	'ow_Link' => 'Lim',
 	'ow_LinkAttribute' => 'Propriètât',
 	'ow_LinkAttributeValues' => 'Lims',
-	'ow_User' => 'Utilisator',
+	'ow_User' => 'Usanciér',
 	'ow_Property' => 'Propriètât',
 	'ow_Value' => 'Valor',
 	'ow_added' => 'Apondu',
@@ -5077,7 +5077,7 @@ Por favor, comprobe o enderezo da páxina web.',
 	'ow_ClassAttributeLevel' => 'Nivel',
 	'ow_ClassAttributeType' => 'Tipo',
 	'ow_ClassMembership' => 'Clase de membros',
-	'ow_Collection' => 'Recompilación',
+	'ow_Collection' => 'Colección',
 	'ow_Collection_colon' => 'Colección:',
 	'ow_CollectionMember' => 'Membro da colección',
 	'ow_CollectionMembership' => 'Recompilación dos membros',
@@ -12567,7 +12567,7 @@ $messages['sr-ec'] = array(
 	'ow_datasets' => 'Одабир скупа података',
 	'ow_noedit_title' => 'Без дозволе за уређивање',
 	'ow_noedit' => 'Није ти дозвољено да мењаш стране у скупу података "$1". Види [[{{MediaWiki:Ow editing policy url}}|нашу уређивачку политику]].',
-	'ow_uipref_datasets' => 'Подразумевани преглед:',
+	'ow_uipref_datasets' => 'Подразумевани приказ:',
 	'ow_uiprefs' => 'Викидата',
 	'ow_none_selected' => 'Ништа није изабрано',
 	'ow_transaction_count' => 'Број:',
@@ -13430,10 +13430,18 @@ Sprowdź eli jeij adres je poprawny.',
 );
 
 /** Tamil (தமிழ்)
+ * @author Logicwiki
  * @author Trengarasu
  */
 $messages['ta'] = array(
+	'ow_importtsv_test_run' => 'சோதனை ஒட்டம்:',
 	'ow_save' => 'சேமி',
+	'ow_history' => 'வரலாறு',
+	'ow_transaction_count' => 'எண்ணிக்கை:',
+	'ow_transaction_user' => 'பயனர் பெயர்:',
+	'ow_transaction_remove' => 'நீக்குக',
+	'ow_transaction_summary' => 'சுருக்கம்',
+	'ow_dm_OK' => 'சரி',
 );
 
 /** Telugu (తెలుగు)
