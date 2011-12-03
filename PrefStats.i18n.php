@@ -1027,13 +1027,13 @@ $messages['frp'] = array(
 Clicâd dessus yona d’entre-lor por vêre les statistiques a son propôs.',
 	'prefstats-noprefs' => 'Ora, niona prèference est siuvua.
 Configurâd $wgPrefStatsTrackPrefs por siuvre des prèferences.',
-	'prefstats-counters' => '* $1 {{PLURAL:$1|utilisator a|utilisators on}}t activâ ceta prèference dês que les statistiques de prèferences ont étâ activâs
-** $2 {{PLURAL:$2|utilisator l’a|utilisators l’on}}t adés activâ
-** $3 {{PLURAL:$3|utilisator l’a|utilisators l’on}}t dèsactivâ',
-	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|utilisator a|utilisators on}}t activâ ceta prèference dês que les statistiques de prèferences ont étâ activâs
-** $2 {{PLURAL:$2|utilisator l’a|utilisators l’on}}t adés activâ
-** $3 {{PLURAL:$3|utilisator l’a|utilisators l’on}}t dèsactivâ
-* En tot, $4 {{PLURAL:$4|utilisator a|utilisators on}}t dèfeni ceta prèference',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|usanciér a|usanciérs on}}t activâ ceta prèference dês que les statistiques de prèferences ont étâ activâs
+** $2 {{PLURAL:$2|usanciér l’a|usanciérs l’on}}t adés activâ
+** $3 {{PLURAL:$3|usanciér l’a|usanciérs l’on}}t dèsactivâ',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|usanciér a|usanciérs on}}t activâ ceta prèference dês que les statistiques de prèferences ont étâ activâs
+** $2 {{PLURAL:$2|usanciér l’a|usanciérs l’on}}t adés activâ
+** $3 {{PLURAL:$3|usanciér l’a|usanciérs l’on}}t dèsactivâ
+* En tot, $4 {{PLURAL:$4|usanciér a|usanciérs on}}t dèfeni ceta prèference',
 	'prefstats-xaxis' => 'Temps (hores)',
 	'prefstats-factors' => 'Fâre vêre per : $1',
 	'prefstats-factor-hour' => 'hora',
