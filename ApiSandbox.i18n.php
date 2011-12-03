@@ -550,7 +550,7 @@ $messages['lb'] = array(
  * @author Ignas693
  */
 $messages['lt'] = array(
-	'apisb-desc' => 'Leidžia derinti [MediaWiki API //www.mediawiki.org/wiki/API] skambučių iš naršyklės',
+	'apisb-desc' => 'Leidžia derinti [MediaWiki API http://www.mediawiki.org/wiki/API] skambučių iš naršyklės',
 	'apisandbox' => 'API smėlio dėžės',
 	'apisb-no-js' => '"" Klaida "": ši funkcija reikalauja JavaScript.',
 	'apisb-intro' => "Naudokite šį puslapį norėdami eksperimentuoti su '''MediaWiki API \"„.
@@ -984,11 +984,11 @@ $messages['uk'] = array(
  * @author Trần Nguyễn Minh Huy
  */
 $messages['vi'] = array(
-	'apisb-desc' => 'Cho phép gỡ lỗi các lần gọi [http://www.mediawiki.org/wiki/API API của MediaWiki] trong trình duyệt',
+	'apisb-desc' => 'Cho phép gỡ lỗi các lần gọi [//www.mediawiki.org/wiki/API API của MediaWiki] trong trình duyệt',
 	'apisandbox' => 'Chỗ thử API',
 	'apisb-no-js' => "'''Lỗi:''' Tính năng này cần JavaScript.",
 	'apisb-intro' => "Trang này dùng để thử nghiệm với '''API của MediaWiki'''.
-	Hãy tra cứu [http://www.mediawiki.org/wiki/API tài liệu API] để biết chi tiết về cách sử dụng API.",
+	Hãy tra cứu [//www.mediawiki.org/wiki/API tài liệu API] để biết chi tiết về cách sử dụng API.",
 	'apisb-api-disabled' => 'API đã bị vô hiệu hóa trên trang web này.',
 	'apisb-parameters' => 'Các tham số',
 	'apisb-result' => 'Kết quả',
