@@ -336,7 +336,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'whatismyip' => 'Quinta est ma adrèce IP',
-	'whatismyip-desc' => 'Montre [[Special:WhatIsMyIP|l’adrèce IP]] d’ora a l’utilisator.',
+	'whatismyip-desc' => 'Montre [[Special:WhatIsMyIP|l’adrèce IP]] d’ora a l’usanciér.',
 	'whatismyip-out' => 'Voutra adrèce IP :',
 	'right-whatismyip' => 'Vêre sa [[Special:WhatIsMyIP|prôpra adrèce IP]]',
 );
