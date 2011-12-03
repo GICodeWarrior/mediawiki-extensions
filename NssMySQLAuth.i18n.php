@@ -407,7 +407,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'accountmanager' => 'Administrator de comptos',
-	'am-username' => 'Nom d’utilisator',
+	'am-username' => 'nom d’usanciér',
 	'am-email' => 'mèssâjo',
 	'am-active' => 'actif',
 	'nss-rights' => 'drêts',
