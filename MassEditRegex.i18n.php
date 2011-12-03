@@ -858,6 +858,7 @@ A csere értékeket nem kell feloldójellel ellátni.',
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'action-masseditregex' => 'exequer un modification in massa',
 	'masseditregex' => 'Modification in massa con expressiones regular',
 	'masseditregex-desc' => 'Usar expressiones regular pro [[Special:MassEditRegex|modificar multe paginas in un operation]]',
 	'masseditregextext' => 'Entra un o plus expressiones regular (un per linea) a cercar, e un o plus expressiones pro reimplaciar cata resultato.
