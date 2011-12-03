@@ -2612,7 +2612,7 @@ Vos vos pouede $1 et pués tornâd èprovar',
 	'mwe-cc_sa_title' => 'Partâjo a l’identico',
 	'mwe-cc_pd_title' => 'Domêno publico',
 	'mwe-unknown_license' => 'Licence encognua',
-	'mwe-no-import-by-url' => 'Cél utilisator ou vouiqui <b>pôt pas</b> importar des ressôrses dês les URLs a distance.
+	'mwe-no-import-by-url' => 'Cél usanciér ou vouiqui <b>pôt pas</b> importar des ressôrses dês les URLs a distance.
 <p>Avéd-vos fôta de vos branchiér ?</p>
 <p>La pèrmission « upload_by_url » vos est acordâ ?
 Lo vouiqui at-o ôtorisâ los $1 ?</p>',
