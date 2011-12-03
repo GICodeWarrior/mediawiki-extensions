@@ -51,6 +51,7 @@ $messages['en'] = array(
  * @author F.trott
  * @author Siebrand
  * @author The Evil IP address
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'semanticformsinputs-desc' => '{{desc}}',
@@ -63,7 +64,8 @@ $messages['qqq'] = array(
 	'semanticformsinputs-dateformatshort' => "{{doc-important|This is a machine-readable date format string!| <br>It is used by a function to format a date. It will not be read by a human user. Do not translate each letter literally! Instead insert the date format for your language using the english-based letters. See http://docs.jquery.com/UI/Datepicker/formatDate }}
 
 {{doc-important|This is an ''optional'' message. Do not translate it, if it would remain unchanged in your language. }}",
-	'semanticformsinputs-firstdayofweek' => '0 - sunday, 1 - monday...',
+	'semanticformsinputs-firstdayofweek' => '{{optional}}
+0 - sunday, 1 - monday...',
 	'semanticformsinputs-malformedregexp' => 'An error message.',
 
 	'semanticformsinputs-datepicker-dateformat' => 'This is a help text for the Special:CreateForm page.',
@@ -93,27 +95,6 @@ $messages['qqq'] = array(
 
 	'semanticformsinputs-menuselect-structure' => 'This is a help text for the Special:CreateForm page.',
 	'semanticformsinputs-menuselect-enableinputfield' => 'This is a help text for the Special:CreateForm page.',
-);
-
-/** Message documentation (Message documentation)
- * @author EugeneZelenko
- * @author F.trott
- * @author The Evil IP address
- * @author Umherirrender
- */
-$messages['qqq'] = array(
-	'semanticformsinputs-desc' => '{{desc}}',
-	'semanticformsinputs-close' => '{{Identical|Close}}',
-	'semanticformsinputs-prev' => '{{Identical|Previous}}',
-	'semanticformsinputs-next' => '{{Identical|Next}}',
-	'semanticformsinputs-dateformatlong' => "{{doc-important|This is a machine-readable date format string!| <br>It is used by a function to format a date. It will not be read by a human user. Do not translate each letter literally! Instead insert the date format for your language using the english-based letters. See http://docs.jquery.com/UI/Datepicker/formatDate }}
-
-{{doc-important|This is an ''optional'' message. Do not translate it, if it would remain unchanged in your language. }}",
-	'semanticformsinputs-dateformatshort' => "{{doc-important|This is a machine-readable date format string!| <br>It is used by a function to format a date. It will not be read by a human user. Do not translate each letter literally! Instead insert the date format for your language using the english-based letters. See http://docs.jquery.com/UI/Datepicker/formatDate }}
-
-{{doc-important|This is an ''optional'' message. Do not translate it, if it would remain unchanged in your language. }}",
-	'semanticformsinputs-firstdayofweek' => '{{optional}}
-0 - sunday, 1 - monday...',
 );
 
 /** Afrikaans (Afrikaans)
@@ -256,7 +237,7 @@ $messages['de'] = array(
 	'semanticformsinputs-dateformatlong' => 'd. MM yy',
 	'semanticformsinputs-dateformatshort' => 'dd.mm.yy',
 	'semanticformsinputs-firstdayofweek' => '1',
-	'semanticformsinputs-malformedregexp' => 'Fehlerhafter regulärer Ausdruck: $1',
+	'semanticformsinputs-malformedregexp' => 'Fehlerhafter regulärer Ausdruck ($1)',
 	'semanticformsinputs-datepicker-dateformat' => 'Die Zeichenfolge des Datumsformats. Siehe hierzu die [http://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters Online-Dokumentation] für weitere Informationen.',
 	'semanticformsinputs-datepicker-weekstart' => 'Der erste Tag der Woche (0 - Sonntag, 1 - Montag, usw.)',
 	'semanticformsinputs-datepicker-firstdate' => 'Das erste auswählbare Datum (im Format JJJJ/MM/TT).',
@@ -321,7 +302,6 @@ $messages['fr'] = array(
 	'semanticformsinputs-next' => 'Suivant',
 	'semanticformsinputs-today' => "Aujourd'hui",
 	'semanticformsinputs-dateformatshort' => 'dd / mm / yy',
-	'semanticformsinputs-firstdayofweek' => '0',
 	'semanticformsinputs-datepicker-dateformat' => "La chaîne de format de date. Voyez la [http://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters documentation en ligne] pour plus d'information.",
 	'semanticformsinputs-datepicker-weekstart' => 'Le premier jour de la semaine (0 - dimanche, 1 - lundi, ...).',
 	'semanticformsinputs-datepicker-firstdate' => 'La première date qui peut être choisie (au format aaaa/mm/jj).',
@@ -557,8 +537,6 @@ $messages['mk'] = array(
 	'semanticformsinputs-prev' => 'Претходно',
 	'semanticformsinputs-next' => 'Следно',
 	'semanticformsinputs-today' => 'Денес',
-	'semanticformsinputs-dateformatlong' => 'd MM yy',
-	'semanticformsinputs-dateformatshort' => 'dd/mm/yy',
 	'semanticformsinputs-malformedregexp' => 'Погрешно срочен регуларен израз ($1).',
 	'semanticformsinputs-datepicker-dateformat' => 'Низа за датумски формат. За повеќе информации, погледајте ја [http://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters документацијата].',
 	'semanticformsinputs-datepicker-weekstart' => 'Прв ден во седмицата (0 - недела, 1 - понеделник, ...).',
@@ -747,8 +725,6 @@ $messages['ru'] = array(
  * @author Rancher
  */
 $messages['sr-ec'] = array(
-	'semanticformsinputs-dateformatlong' => 'd MM yy',
-	'semanticformsinputs-dateformatshort' => 'dd/mm/yy',
 	'semanticformsinputs-firstdayofweek' => '1',
 );
 
