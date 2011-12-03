@@ -24,13 +24,27 @@ $messages['en'] = array(
  * @author SVG
  */
 $messages['qqq'] = array(
-   'helpcommons-desc' => '{{desc}}',
+	'helpcommons-desc' => '{{desc}}',
 );
 
 /** German (Deutsch)
  * @author SVG
  */
 $messages['de'] = array(
-   'helpcommons-desc' => 'Nimmt den Hilfe-Namensraum aus einem Hilfe Wiki und bindet ihn in andere Wikis der Wiki-Family ein',
+	'helpcommons-desc' => 'Nimmt den Hilfe-Namensraum aus einem Hilfe Wiki und bindet ihn in andere Wikis der Wiki-Family ein',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'helpcommons-desc' => 'Го презема страниците од именскиот простор за помош од помошно вики и ги вклучува во други викија од семејството',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'helpcommons-desc' => "Maakt de Help-naamruimte uit een hulpwiki beschikbaar in andere wiki's van een wikifamilie",
 );
 
