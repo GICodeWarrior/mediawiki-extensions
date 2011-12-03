@@ -172,6 +172,17 @@ class SpecialReviews extends SpecialPage {
 		// TODO: might want to display stars here as well.
 		$stats['rating'] = htmlspecialchars( $this->getLanguage()->formatNum( $review->getField( 'rating' ) ) );
 
+		if ( $review->hasRatings() ) {
+			$ratings = array();
+
+			foreach ( $review->getRatings() as /* ReviewRating */ $rating ) {
+				// TODO: might want to display stars here as well.
+				$ratings[] = Html::element( 'li', array(), $rating->getField( 'type' ) . ': ' . $rating->getField( 'value' ) );
+			}
+			
+			$stats['ratings'] = Html::rawElement( 'ul', array(), implode( $ratings ) );
+		}
+			
 		return $stats;
 	}
 	

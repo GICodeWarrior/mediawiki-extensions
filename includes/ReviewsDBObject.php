@@ -607,11 +607,11 @@ abstract class ReviewsDBObject {
 	 *
 	 * @since 0.1
 	 *
-	 * @param object $result
+	 * @param stdClass $result
 	 *
 	 * @return ReviewDBObject
 	 */
-	public static function newFromDBResult( $result ) {
+	public static function newFromDBResult( stdClass $result ) {
 		return static::newFromArray( static::getFieldsFromDBResult( $result ) );
 	}
 

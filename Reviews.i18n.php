@@ -88,6 +88,7 @@ $messages['en'] = array(
 	'reviews-reviews-header-user' => 'User',
 	'reviews-reviews-header-state' => 'Review state',
 	'reviews-reviews-header-rating' => 'Main rating',
+	'reviews-reviews-header-ratings' => 'Other ratings',
 
 	// Review pager
 	'reviews-pager-no-results' => 'There are no reviews to list.',
@@ -178,4 +179,5 @@ $messages['qqq'] = array(
 	'reviews-reviews-header-user' => 'Table row header value',
 	'reviews-reviews-header-state' => 'Table row header value',
 	'reviews-reviews-header-rating' => 'Table row header value',
+	'reviews-reviews-header-ratings' => 'Table row header value',
 );

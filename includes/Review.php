@@ -197,6 +197,8 @@ class Review extends ReviewsDBObject {
 	 * 
 	 * @since 0.1
 	 * 
+	 * @param boolean $forceLoad Load the ratings even if there are already some set.
+	 * 
 	 * @return array of ReviewRating
 	 */
 	public function getRatings( $forceLoad = false ) {
@@ -205,6 +207,19 @@ class Review extends ReviewsDBObject {
 		}
 		
 		return $this->ratings;
+	}
+	
+	/**
+	 * Get if the review has any (non-main) ratings associated with it.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param boolean $forceLoad Load the ratings even if there are already some set.
+	 * 
+	 * @return boolean
+	 */
+	public function hasRatings( $forceLoad = false ) {
+		return count( $this->getRatings( $forceLoad ) ) > 0;
 	}
 	
 	/**
