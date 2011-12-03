@@ -121,12 +121,14 @@ $messages['es'] = array(
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Huji
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'webfonts' => 'وب‌قلم',
 	'webfonts-desc' => 'جاسازی قلم‌ها در صفحه‌ها',
 	'webfonts-load' => 'انتخاب قلم',
 	'webfonts-reset' => 'بازنشانی',
+	'webfonts-enable-preference' => 'فعال‌کردن جاسازی قلم (وب‌قلم)',
 );
 
 /** French (Français)
@@ -476,6 +478,7 @@ $messages['ta'] = array(
 	'webfonts-desc' => 'பக்கங்களில் எழுத்துருக்களை செயலாக்க',
 	'webfonts-load' => 'எழுத்துரு மாற்ற',
 	'webfonts-reset' => 'இயல்பு எழுத்துரு',
+	'webfonts-enable-preference' => 'எழுத்துரு புதைத்தல் (இணைய எழுத்துருக்களை) பயன்படுத்துக',
 );
 
 /** Tagalog (Tagalog)
