@@ -894,7 +894,7 @@ $messages['fr'] = array(
 $messages['frp'] = array(
 	'specialuserstats' => 'Statistiques d’usâjo',
 	'usagestatistics' => 'Statistiques d’usâjo',
-	'usagestatistics-desc' => 'Montre les statistiques d’usâjo per utilisator et por l’ensemblo du vouiqui.',
+	'usagestatistics-desc' => 'Montre les statistiques d’usâjo per usanciér et por l’ensemblo du vouiqui.',
 	'usagestatisticsfor' => '<h2>Statistiques d’usâjo por [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Statistiques d’usâjo por tôs los utilisators</h2>',
 	'usagestatisticsinterval' => 'Entèrvalo :',
@@ -917,8 +917,8 @@ $messages['frp'] = array(
 	'usagestatisticscumulative' => 'Cumulatif',
 	'usagestatisticscumulative-text' => 'cumulatives',
 	'usagestatisticscalselect' => 'Chouèsir',
-	'usagestatistics-editindividual' => 'Statistiques $1 des changements per utilisator',
-	'usagestatistics-editpages' => 'Statistiques $1 de les pâges per utilisator',
+	'usagestatistics-editindividual' => 'Statistiques $1 des changements per usanciér',
+	'usagestatistics-editpages' => 'Statistiques $1 de les pâges per usanciér',
 	'right-viewsystemstats' => 'Vêre les [[Special:UserStats|statistiques d’usâjo du vouiqui]]',
 );
 
