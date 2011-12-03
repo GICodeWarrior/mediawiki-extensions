@@ -564,7 +564,7 @@ Ajoutez-en en utilisant les outils dans la barre de menu.',
  */
 $messages['frp'] = array(
 	'gep-emailsubject' => '[$1] Consèly de catègorie : $2',
-	'gep-emailbody' => 'L’utilisator « $1 » at conselyê la catègorie « $2 » por lo seto « $3 ».',
+	'gep-emailbody' => 'L’usanciér « $1 » at conselyê la catègorie « $2 » por lo seto « $3 ».',
 	'gep-emailfailure' => 'Dèsolâ, voutron consèly at pas possu étre fêt.',
 	'gep-emailsuccess' => 'Grant-marci d’avêr conselyê la catègorie : $1.',
 	'gep-categories' => 'Catègories',

@@ -1127,10 +1127,10 @@ $messages['frp'] = array(
 	'ct_success' => 'Tèlèchargement du fichiér reussi !',
 	'ct_popupblocked' => 'L’uvèrtura de la fenétra de tèlèchargement at étâ empachiê.
 Volyéd controlar voutron bloquior de fenétres sortentes.',
-	'ct_user_user' => 'Utilisator',
-	'ct_user_tip' => 'Entrebetar un lim de vers una pâge utilisator',
-	'ct_user_caption' => 'Lim a l’utilisator',
-	'ct_user_sample' => 'Nom d’utilisator',
+	'ct_user_user' => 'Usanciér',
+	'ct_user_tip' => 'Entrebetar un lim de vers una pâge usanciér',
+	'ct_user_caption' => 'Lim a l’usanciér',
+	'ct_user_sample' => 'Nom d’usanciér',
 );
 
 /** Irish (Gaeilge)
@@ -2828,7 +2828,7 @@ $messages['sr-ec'] = array(
 	'ct_link' => 'Додај назив линка (необавезно):',
 	'ct_submit' => 'Иди!',
 	'ct_close' => 'Затвори прозор',
-	'ct_success' => 'Слање датотеке је извршено!',
+	'ct_success' => 'Датотека је послата.',
 	'ct_user_user' => 'Корисник',
 	'ct_user_tip' => 'Убаци линк ка корисничкој страни',
 	'ct_user_caption' => 'Корисничка веза',
