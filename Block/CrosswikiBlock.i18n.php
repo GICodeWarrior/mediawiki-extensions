@@ -961,18 +961,18 @@ Revenir vers :
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'crosswikiblock' => 'Blocar un utilisator sur un ôtro vouiqui',
+	'crosswikiblock' => 'Blocar un usanciér sur un ôtro vouiqui',
 	'crosswikiblock-target' => 'Adrèce IP ou ben nom d’utilisator et vouiqui de dèstinacion :',
 	'crosswikiblock-expiry' => 'Èxpiracion :',
 	'crosswikiblock-reason' => 'Rêson :',
-	'crosswikiblock-submit' => 'Blocar ceti utilisator',
+	'crosswikiblock-submit' => 'Blocar ceti usanciér',
 	'crosswikiblock-anononly' => 'Blocar ren que los utilisators pas encartâs',
 	'crosswikiblock-nocreate' => 'Empachiér la crèacion de compto',
 	'crosswikiblock-noemail' => 'Empachiér l’utilisator de mandar des mèssâjos',
-	'crosswikiunblock' => 'Dèblocar un utilisator sur un ôtro vouiqui',
+	'crosswikiunblock' => 'Dèblocar un usanciér sur un ôtro vouiqui',
 	'crosswikiunblock-user' => 'Nom d’utilisator, adrèce IP ou ben numerô de blocâjo et vouiqui de dèstinacion :',
 	'crosswikiunblock-reason' => 'Rêson :',
-	'crosswikiunblock-submit' => 'Dèblocar ceti utilisator',
+	'crosswikiunblock-submit' => 'Dèblocar ceti usanciér',
 	'crosswikiblock-nousername' => 'Nion nom d’utilisator at étâ balyê',
 	'crosswikiblock-dbnotfound' => 'La bâsa de balyês $1 ègziste pas',
 	'crosswikiblock-noname' => '« $1 » est pas un nom d’utilisator valido.',
@@ -981,7 +981,7 @@ $messages['frp'] = array(
 	'crosswikiblock-noreason' => 'Niona rêson at étâ spècefiâ.',
 	'crosswikiblock-notoken' => 'Jeton de changement envalido.',
 	'crosswikiblock-alreadyblocked' => 'L’utilisator $3 est ja blocâ.',
-	'crosswikiblock-noblock' => 'Ceti utilisator est pas blocâ.',
+	'crosswikiblock-noblock' => 'Ceti usanciér est pas blocâ.',
 	'right-crosswikiblock' => 'Blocar et dèblocar des utilisators sur d’ôtros vouiquis',
 );
 
