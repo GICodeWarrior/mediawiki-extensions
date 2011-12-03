@@ -313,13 +313,13 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'lastuserlogin' => 'Dèrriér branchement ux utilisators',
-	'lastuserlogin-desc' => 'Montre lo dèrriér côp qu’un utilisator s’est branchiê.',
-	'lastuserlogin_userid' => 'Nom d’utilisator',
+	'lastuserlogin-desc' => 'Montre lo dèrriér côp qu’un usanciér s’est branchiê.',
+	'lastuserlogin_userid' => 'Nom d’usanciér',
 	'lastuserlogin_username' => 'Veré nom',
 	'lastuserlogin_useremail' => 'Adrèce èlèctronica a l’utilisator',
 	'lastuserlogin_lastlogin' => 'Dèrriér branchement',
 	'lastuserlogin_daysago' => 'Jorns passâs',
-	'right-lastlogin' => 'Vêre lo dèrriér côp qu’un utilisator s’est branchiê',
+	'right-lastlogin' => 'Vêre lo dèrriér côp qu’un usanciér s’est branchiê',
 );
 
 /** Galician (Galego)
