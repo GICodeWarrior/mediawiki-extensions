@@ -231,9 +231,12 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'bookmanager-desc' => 'ابزارهایی برای کتاب‌ها',
+	'bm-booktools-section' => 'ابزارهای کتاب',
+	'bm-randomchapter-link' => 'فصل تصادفی',
 	'bm-printversion' => 'نسخه قابل چاپ',
 	'bm-printversion-desc' => 'ساخت یک [[Special:PrintVersion|نسخهٔ قابل چاپ]] از یک کتاب',
 	'bm-printversion-no-book' => 'لطفاً نام کتابی که می‌خواهید به صورت قابل چاپ بگیرید را وارد کنید.',
