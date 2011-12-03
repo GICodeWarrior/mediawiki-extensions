@@ -190,6 +190,13 @@ $messages['ia'] = array(
 	'signupapi-invalidemailaddress' => 'Le adresse de e-mail es invalide',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'signupapi-ok' => 'OK',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
