@@ -379,7 +379,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'showprocesslist-id' => 'N°',
-	'showprocesslist-user' => 'Utilisator',
+	'showprocesslist-user' => 'Usanciér',
 	'showprocesslist-host' => 'Hôto',
 	'showprocesslist-db' => 'Bâsa de balyês',
 	'showprocesslist-command' => 'Comanda',
