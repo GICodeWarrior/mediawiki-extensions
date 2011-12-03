@@ -263,7 +263,7 @@ Un nouveau compte utilisateur, $2, a été créé sur $3 le $4.',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'newusernotifsubj' => 'Notificacion a un novél utilisator por $1',
+	'newusernotifsubj' => 'Notificacion a un novél usanciér por $1',
 );
 
 /** Irish (Gaeilge)
