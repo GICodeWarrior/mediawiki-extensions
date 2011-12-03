@@ -490,8 +490,8 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'onlinestatus-subtitle-offline' => 'Ceti utilisator est ora en defôr de legne',
-	'onlinestatus-subtitle-online' => 'Ceti utilisator est ora en legne',
+	'onlinestatus-subtitle-offline' => 'Ceti usanciér est ora en defôr de legne',
+	'onlinestatus-subtitle-online' => 'Ceti usanciér est ora en legne',
 	'onlinestatus-tab' => 'Statut',
 	'onlinestatus-toggles-desc' => 'Voutron statut :',
 	'onlinestatus-toggle-offline' => 'Absent',
