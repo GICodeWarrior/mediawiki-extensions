@@ -511,9 +511,9 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'countedits' => 'Comptor de changements',
-	'countedits-username' => 'Nom d’utilisator :',
+	'countedits-username' => 'Nom d’usanciér :',
 	'countedits-ok' => 'Accèptar',
-	'countedits-nosuchuser' => 'Nion utilisator corrèspond a $1.',
+	'countedits-nosuchuser' => 'Nion usanciér corrèspond a $1.',
 	'countedits-resultheader' => 'Rèsultats por $1',
 	'countedits-resulttext' => '$1 at fêt $2 changement{{PLURAL:$2||s}}',
 	'countedits-mostactive' => 'Contributors los ples actifs',
