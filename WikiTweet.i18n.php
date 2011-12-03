@@ -589,6 +589,13 @@ $messages['ia'] = array(
 	'wikitweet-cannotparse' => 'Impossibile processar',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'wikitweet-status0' => 'トーク',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
