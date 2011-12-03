@@ -185,6 +185,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedback-report-ratings' => "Needs plural support.
 This message is used in JavaScript by module 'jquery.articleFeedback'.
 $1 is an integer, and the rating count.",
+	'articlefeedback-field-complete-label' => 'This is an adjective, as in the question "Is this article complete?"',
 	'articlefeedback-pitch-or' => '{{Identical|Or}}',
 	'articlefeedback-pitch-join-body' => 'Based on {{msg-mw|Articlefeedback-pitch-join-message}}.',
 	'articlefeedback-pitch-join-accept' => '{{Identical|Create an account}}',
@@ -2935,7 +2936,7 @@ $messages['he'] = array(
 	'articlefeedback-field-trustworthy-tooltip-3' => 'מקורות מהימנים מהימנים',
 	'articlefeedback-field-trustworthy-tooltip-4' => 'מקורות מהימנים טובים',
 	'articlefeedback-field-trustworthy-tooltip-5' => 'מקורות מהימנים מעולים',
-	'articlefeedback-field-complete-label' => 'להשלים',
+	'articlefeedback-field-complete-label' => 'מלא',
 	'articlefeedback-field-complete-tip' => 'האם אתם מרגישים שהדף הזה סוקר את התחומים החיוניים הנוגעים בנושא?',
 	'articlefeedback-field-complete-tooltip-1' => 'רוב המידע חסר',
 	'articlefeedback-field-complete-tooltip-2' => 'קיים חלק מהמידע',
@@ -3391,7 +3392,7 @@ $messages['ia'] = array(
 	'articlefeedback-survey-submit' => 'Submitter',
 	'articlefeedback-survey-title' => 'Per favor responde a alcun questiones',
 	'articlefeedback-survey-thanks' => 'Gratias pro completar le questionario.',
-	'articlefeedback-survey-disclaimer' => 'Per submitter, tu te declara de accordo con transparentia sub iste $1.',
+	'articlefeedback-survey-disclaimer' => 'Per submitter, tu accepta que tu contribution essera usate publicamente sub iste $1.',
 	'articlefeedback-survey-disclaimerlink' => 'conditiones',
 	'articlefeedback-error' => 'Un error ha occurrite. Per favor reproba plus tarde.',
 	'articlefeedback-form-switch-label' => 'Evalutar iste pagina',
