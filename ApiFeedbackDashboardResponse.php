@@ -32,7 +32,7 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 		if ( $commenter !== null && $commenter->isAnon() == false ) {
 			$talkPage = $commenter->getTalkPage();
 			 
-			$feedback_link = wfMessage('moodbar-feedback-response-title')->
+			$feedback_link = wfMessage('moodbar-feedback-response-title')->inContentLanguage()->
 			                 	params( SpecialPage::getTitleFor( 'FeedbackDashboard', $item->getProperty('feedback') )->
 			                 	getPrefixedText() )->escaped();
 			
