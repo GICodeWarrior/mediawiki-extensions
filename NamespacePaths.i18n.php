@@ -57,6 +57,13 @@ $messages['he'] = array(
 	'namespacepaths-desc' => 'אפשרות למפות נתיבי ערכים מותאמים אישית למרחבי שם של ויקי. למשל, למפות דפים כמו עזרה:דף לנתיב <span dir="ltr">/help/דף</span> במקום <span dir="ltr">/wiki/עזרה:דף</span>.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'namespacepaths-desc' => 'Zmóžnja zwobraznjenje swójskich pućow k nastawkam za mjenowe rumy',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
