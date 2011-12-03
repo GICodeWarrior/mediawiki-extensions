@@ -11,6 +11,7 @@
  * @ingroup Arrays
  *
  * @licence MIT License
+ * @version: 2.0 alpha
  *
  * @author Li Ding < lidingpku@gmail.com >
  * @author Jie Bao
@@ -288,8 +289,8 @@ class ExtArrays {
 		 * in $subject before $subject is being parsed. So any template or argument influence in the patterns wouldn't make any
 		 * sense in any sane scenario.
 		 */
-		$search  = isset( $args[2] ) ? trim( $frame->expand( $args[2], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
-		$subject = isset( $args[3] ) ? trim( $frame->expand( $args[3], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : '@@@@';
+		$search  = isset( $args[2] ) ? trim( $frame->expand( $args[2], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : null;
+		$subject = isset( $args[3] ) ? trim( $frame->expand( $args[3], PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) ) : null;
 		// options array:
 		$options = isset( $args[4] )
 				? self::parse_options( $frame->expand( $args[4] ) )
@@ -307,6 +308,13 @@ class ExtArrays {
 				// COMPATIBILITY-MODE
 				return "undefined array: $arrayId";
 			}
+		}
+		
+		// if there is no subject, there is no point in expanding. Faster!
+		if( !$egArraysCompatibilityMode && $subject === null ) {
+			// NO COMPATIBILITY-MODE
+			// we can ignore options here, since if subject is null, options won't be set as well!
+			return trim( implode( $delimiter, $array ) );
 		}
 
 		$rendered_values = array();
