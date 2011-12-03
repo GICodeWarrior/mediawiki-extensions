@@ -9,3 +9,25 @@
 .review-table {
 	width: 100%;
 }
+
+table.review-table, table.review-table td, table.review-table th {
+	border: 1px solid gray;
+}
+
+.review-table-title {
+	text-align: left;
+	padding-left: 5px;
+}
+
+.review-rating-display {
+	display: block;
+	clear: both;
+}
+
+.review-rating-display > * {
+	float: left;
+}
+
+.review-rating-display > p {
+	line-height: 1.4em;
+}

@@ -174,6 +174,15 @@ $wgResourceModules['reviews.review.control'] = $moduleTemplate + array(
 	),
 );
 
+$wgResourceModules['jquery.reviewRating'] = $moduleTemplate + array(
+	'scripts' => array(
+		'jquery.reviewRating.js',
+	),
+	'dependencies' => array(
+		'ext.reviews', 'jquery.ui.stars',
+	),
+);
+
 $wgResourceModules['jquery.ui.stars'] = $moduleTemplate + array(
 	'scripts' => array(
 		'jquery.ui.stars/jquery.ui.stars.js',
@@ -192,6 +201,9 @@ $wgResourceModules['ext.reviews.tag'] = $moduleTemplate + array(
 	),
 	'styles' => array(
 		'reviews.tag.css',
+	),
+	'dependencies' => array(
+		'jquery.reviewRating',
 	),
 );
 

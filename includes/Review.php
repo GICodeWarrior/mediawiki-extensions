@@ -345,13 +345,27 @@ class Review extends ReviewsDBObject {
 	public function getHTML() {
 		$html = '<table class="review-table">';
 		
-		$html .= '<tr><th colspan="2">' . htmlspecialchars( $this->getField( 'title' ) ) . '</th></tr>';
+		$html .= '<tr><th colspan="2" class="review-table-title">' . htmlspecialchars( $this->getField( 'title' ) ) . '</th></tr>';
 		
 		$html .= '<tr>';
 		
-		$html .= '<td>...</td>';
+		$html .= '<td rowspan="2">author stuff be here</td>';
 		
 		$html .= Html::element( 'td', array(), $this->getField( 'text' ) );
+		
+		$html .= '</tr>';
+		
+		$html .= '<tr colspan="2">';
+		
+		$html .= Html::rawElement( 'td', array(),
+			array_reduce( $this->getRatings(), function( $html, /* ReviewRating */ $rating ) {
+				return $html . Html::element( 'div', array(
+					'class' => 'review-rating-display',
+					'data-type' => $rating->getField( 'type' ),
+					'data-value' => $rating->getField( 'value' ),
+				) );
+			}, '' )
+		);
 		
 		$html .= '</tr>';
 		

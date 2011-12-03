@@ -67,11 +67,17 @@ class ReviewsTag {
 		}
 		
 		$reviews = $this->getReviews( $parser );
-		return $this->getList( $reviews );
+		
+		if ( count( $reviews ) > 0 ) {
+			return $this->getList( $reviews );
+		}
+		else {
+			return is_null( $this->contents['default'] ) ? '' : $this->contents['default'];
+		}
 	}
 	
 	/**
-	 * 
+	 * Get the reviews to display based on the provided arguments that are selection criteria.
 	 * 
 	 * @since 0.1
 	 * 
@@ -111,7 +117,7 @@ class ReviewsTag {
 	}
 	
 	/**
-	 * 
+	 * Get the HTML for a list of reviews.
 	 * 
 	 * @since 0.1
 	 * 
@@ -130,7 +136,7 @@ class ReviewsTag {
 	}
 	
 	/**
-	 * 
+	 * Gets the parameters accepted by this tag extension.
 	 * 
 	 * @since 0.1
 	 * 
@@ -143,6 +149,7 @@ class ReviewsTag {
 			'id' => array( 'filter' => FILTER_VALIDATE_INT, 'options' => array( 'min_range' => 1 ) ),
 			'page' => array(),
 			'user' => array(),
+			'default' => array(),
 		);
 	}
 
