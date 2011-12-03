@@ -765,7 +765,7 @@ $messages['frp'] = array(
 	'article-comments-submission-succeeded' => 'L’èxpèdicion du comentèro at reussia',
 	'article-comments-submission-success' => 'Vos éd mandâ avouéc reusséta un comentèro sur « [[$1]] »',
 	'article-comments-submission-view-all' => 'Vos pouede vêre tôs los comentèros sur cela pâge [[$1|ique]]',
-	'article-comments-user-is-blocked' => 'Ora, voutron compto utilisator est blocâ en ècritura sur « [[$1]] ».',
+	'article-comments-user-is-blocked' => 'Ora, voutron compto usanciér est blocâ en ècritura sur « [[$1]] ».',
 	'article-comments-comment-bad-mode' => 'La fôrma balyê por lo comentèro est envalida.
 Les fôrmes disponibles sont « plain », « normal » et « wiki ».',
 	'article-comments-comment-missing-name-parameter' => 'Nom manquent',
