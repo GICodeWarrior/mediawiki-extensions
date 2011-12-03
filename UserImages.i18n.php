@@ -288,7 +288,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'userimages-desc' => 'Fât des galeries d’émâges tèlèchargiês per un utilisator avouéc <code><nowiki><userimage /></nowiki></code>.',
+	'userimages-desc' => 'Fât des galeries d’émâges tèlèchargiês per un usanciér avouéc <code><nowiki><userimage /></nowiki></code>.',
 	'userimages-caption' => 'Émâges tèlèchargiês per $1',
 	'userimages-noname' => 'Nom d’utilisator envalido ou ben manquent.',
 	'userimages-noimages' => '$1 at tèlèchargiê gins d’émâge.',
