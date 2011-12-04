@@ -55,12 +55,12 @@ function wfHelpCommonsLoad( $article ) {
 
 	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
 		foreach ( $urls as $helpwiki ) {
-			if ( $wgLanguageCode == "$language" && $wgDBname != $helpwiki ) {
+			if ( $wgLanguageCode == $language && $wgDBname != $helpwiki ) {
 				$dbr = wfGetDB( DB_SLAVE, array(), $helpwiki );
 				$page = $dbr->select(
 					'page',
 					array( 'page_title', 'page_namespace', 'page_latest' ),
-					array( 'page_namespace' => constant( 'NS_HELP' ), 'page_title' => $title ),
+					array( 'page_namespace' => NS_HELP, 'page_title' => $title ),
 					__METHOD__
 				);
 				$page = $dbr->fetchObject( $page );
@@ -109,12 +109,12 @@ function wfHelpCommonsRedirectTalks( &$article, &$outputDone, &$pcache ) {
 
 	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
 		foreach ( $urls as $url => $helpwiki ) {
-			if ( $wgLanguageCode == "$language" && $wgDBname != $helpwiki ) {
+			if ( $wgLanguageCode == $language && $wgDBname != $helpwiki ) {
 				$dbr = wfGetDB( DB_SLAVE, array(), $helpwiki );
 				$page = $dbr->select(
 					'page',
 					array( 'page_title', 'page_namespace', 'page_latest' ),
-					array( 'page_namespace' => constant( 'NS_HELP' ), 'page_title' => $title ),
+					array( 'page_namespace' => NS_HELP, 'page_title' => $title ),
 					__METHOD__
 				);
 				$page = $dbr->fetchObject( $page );
@@ -184,7 +184,7 @@ function wfHelpCommonsChangeEditSectionLink( $skin, $title, $section, $tooltip, 
 	}
 	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
 		foreach ( $urls as $url => $helpwiki ) {
-			if ( $wgLanguageCode == "$language" && $wgDBname != $helpwiki ) {
+			if ( $wgLanguageCode == $language && $wgDBname != $helpwiki ) {
 				// FIXME: $result is unused
 				$result = '<span class="editsection">[<a href="' . $url . '/index.php?title=' .
 						str_replace( ' ', '_', $title ) . '&amp;action=edit&amp;section=' . $section .
@@ -208,7 +208,7 @@ function fnProtectHelpCommons( &$title, &$user, $action, &$result ) {
 	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
 		foreach ( $urls as $url => $helpwiki ) {
 			// only protect Help pages on non-help-pages-fetching wikis
-			if ( $wgLanguageCode == "$language" && $wgDBname != $helpwiki ) {
+			if ( $wgLanguageCode == $language && $wgDBname != $helpwiki ) {
 				// block actions 'edit' and 'create'
 				if ( $action != 'edit' && $action != 'create' ) {
 					return true;
@@ -218,7 +218,7 @@ function fnProtectHelpCommons( &$title, &$user, $action, &$result ) {
 				$res = $dbr->select(
 					'page',
 					array( 'page_title', 'page_namespace', 'page_latest' ),
-					array( 'page_namespace' => constant( 'NS_HELP' ), 'page_title' => str_replace( ' ', '_', $title->getText() ) ),
+					array( 'page_namespace' => NS_HELP, 'page_title' => str_replace( ' ', '_', $title->getText() ) ),
 					__METHOD__
 				);
 
@@ -229,7 +229,7 @@ function fnProtectHelpCommons( &$title, &$user, $action, &$result ) {
 				$ns = $title->getNamespace();
 
 				// check namespaces
-				if( $ns == constant( 'NS_HELP' ) || $ns == constant( 'NS_HELP_TALK' ) ) {
+				if( $ns == NS_HELP || $ns == NS_HELP_TALK ) {
 					// error message if action is blocked
 					$result = array( 'protectedpagetext' );
 
