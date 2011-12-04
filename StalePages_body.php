@@ -54,6 +54,6 @@ class Stalepages extends QueryPage
 		$d = $wgLang->timeanddate( wfTimestamp( TS_MW, $result->value ), true );
 		$title = Title::makeTitle( $result->namespace, $result->title );
 		$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $wgContLang->convert( $title->getPrefixedText() ) ) );
-		return wfSpecialList($link, $d);
+		return $wgLang->specialList( $link, $d );
 	}
 }
