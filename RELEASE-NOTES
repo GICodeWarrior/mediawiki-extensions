@@ -7,10 +7,14 @@
    interaction with 'HashTables' extension.
    - Compatbility with other extensions increased by using one hash tables store per Parser instance.
    - Inclusion of special pages in the middle of the page won't reset all defined hash tables anymore.
-   - arrayprint will handle <includeonly>/<noinclude> correct in case it's used in a template.
-   - '#hashvalue' will only expand its default when required.
+   - '#hashprint' will handle <includeonly>/<noinclude> correct in case it's used in a template.
    - '#hashprint' will use the languages default comma separator instead of hard-coded ', ' as default.
-
+   - '#hashprint' will no longer expand the given wiki markup twice. Instead, it will escape special
+     characters of hash values before they will be inserted into the markup. This way it won't be
+     possible anymore that hash values can break the functions output. '$egHashTablesExpansionEscapeTemplates'
+     defines which special characters should be escaped by which template/parser function. It can also
+	 be set to null to keep the old behavior as some kind of compatibility mode.
+   - '#hashvalue' will only expand its default when required.
 
  * November 4, 2011 -- Version 0.7
    - buggy behavior in 'hashkeyexists' which led to expanding both arguments 'yes' and 'no' in
