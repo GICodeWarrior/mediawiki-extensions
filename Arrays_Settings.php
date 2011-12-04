@@ -17,7 +17,6 @@
  */
 
 /**
- * Full compatbility to versions before 1.4.
  * Set to false by default since version 2.0.
  *
  * @since 2.0 (as '$egArrayExtensionCompatbilityMode' in 1.4 alpha)

@@ -11,7 +11,7 @@
  * @ingroup Arrays
  *
  * @licence MIT License
- * @version: 2.0rc
+ * @version: 2.0rc2
  *
  * @author Li Ding < lidingpku@gmail.com >
  * @author Jie Bao
@@ -53,7 +53,7 @@ class ExtArrays {
 	 *
 	 * @since 2.0 (before in 'Arrays' class since 1.3.2)
 	 */
-	const VERSION = '2.0rc';
+	const VERSION = '2.0rc2';
 
 	/**
 	 * Store for arrays.
@@ -105,7 +105,7 @@ class ExtArrays {
 		self::initFunction( $parser, 'arrayindex', SFH_OBJECT_ARGS );
 		self::initFunction( $parser, 'arraysize' );
 		self::initFunction( $parser, 'arraysearch', SFH_OBJECT_ARGS );
-		self::initFunction( $parser, 'arraysearcharray' );
+		self::initFunction( $parser, 'arraysearcharray', SFH_OBJECT_ARGS );
 		self::initFunction( $parser, 'arrayslice' );
 		self::initFunction( $parser, 'arrayreset', SFH_OBJECT_ARGS );
 		self::initFunction( $parser, 'arrayunique' );
@@ -445,7 +445,7 @@ class ExtArrays {
 	*   note it is extended to support regular expression match and index
 	*/
 	static function pfObj_arraysearch( Parser &$parser, PPFrame $frame, $args ) {
-
+		// Get Parameters
 		$arrayId = trim( $frame->expand( $args[0] ) );
 		$index = isset( $args[2] ) ? trim( $frame->expand( $args[2] ) ) : 0;
 
@@ -505,17 +505,13 @@ class ExtArrays {
 	* "needle" can be a regular expression or a string search value. If "needle" is a regular expression, "transform" can contain
 	* "$n" where "n" stands for a number to access a variable from the regex result.
 	*/
-	static function pf_arraysearcharray(
-			Parser &$parser,
-			$arrayId_new,
-			$arrayId = null,
-			$needle = '/^(\s*)$/',
-			$index = 0,
-			$limit = '',
-			$transform = ''
-	) {
+	static function pfObj_arraysearcharray( Parser &$parser, PPFrame $frame, $args ) {
 		$store = self::get( $parser );
-
+		
+		// get first two parameters
+		$arrayId = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : null;
+		$arrayId_new  = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
+		
 		if( $arrayId === null ) {
 			global $egArraysCompatibilityMode;
 			if( ! $egArraysCompatibilityMode ) { // COMPATIBILITY-MODE
@@ -523,6 +519,13 @@ class ExtArrays {
 			}
 			return '';
 		}
+		
+		// Get Parameters the other parameters
+		$needle       = isset( $args[2] ) ? trim( $frame->expand( $args[2] ) ) : '/^(\s*)$/';
+		$index        = isset( $args[3] ) ? trim( $frame->expand( $args[3] ) ) : 0;
+		$limit        = isset( $args[4] ) ? trim( $frame->expand( $args[4] ) ) : '';
+		$rawTransform = isset( $args[5] ) ? $args[5] : null;
+		
 		// also takes care of negative index by calculating start index:
 		$validIndex = $store->validate_array_index( $arrayId, $index, false );
 
@@ -556,10 +559,14 @@ class ExtArrays {
 
 			if( preg_match( $needle, $value ) ) {
 				// Found something!
-				if( $transform !== '' ) {
+				if( $rawTransform !== null ) {
 					// Transform the found string. Can we use 'Regex Fun' ?
 					if( $regexFunSupport ) {
 						// do the transformation with Regex Fun to support 'e' flag:
+						$transform = trim( $frame->expand(
+								$rawTransform,
+								PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES // leave expanding of templates to 'Regex Fun'
+						) );
 						$value = ExtRegexFun::doPregReplace(
 								$needle,
 								$transform,
@@ -571,6 +578,7 @@ class ExtArrays {
 					}
 					else {
 						// regular preg_replace:
+						$transform = trim( $frame->expand( $rawTransform ) );
 						$value = preg_replace( $needle, $transform, $value );
 					}
 				}

@@ -1,16 +1,20 @@
  Changelog:
  ==========
 
+ * (trunk) -- Version 2.0rc2
+    - '#arraysearcharray' with 'e' using 'Regex Fun' no longer requires an escaped transform (parameter 6)
+      input. It works just like the '#regex' parser functions replacement parameter.
+
  * December 4, 2011 -- Version 2.0rc
-   This release is built upon 1.4 alpha. See changes of 1.4 alpha as well.
-   'ArrayExtension' is now simply called 'Arrays'. Therefore you have to adjust your LocalSettings.php.
+    This release is built upon 1.4 alpha. See changes of 1.4 alpha as well.
+    'ArrayExtension' is now simply called 'Arrays'. Therefore you have to adjust your LocalSettings.php.
     - Compatibility mode variable '$egArraysCompatibilityMode' ('$egArrayExtensionCompatbilityMode' in
       Version 1.4 alpha) is set to false by default. See Version 1.4 alpha for further information.
     - Additional changes to the compatibility mode behavior in version 2.0 include:
       + '#arrayindex' will return its default also in case of existing index but empty value. This
-        makes the function consistent with Variables '#var' and hash tables '#hashvalue'.
-      + '#arraymerge', '#arrayunion', '#arraydiff' and '#arrayintersect' with only one array for
-        the operation will make a copy of that array instead of creating no array at all.
+        makes the function consistent with Variables '#var' and HashTables '#hashvalue'.
+      + '#arrayunion', '#arraydiff' and '#arrayintersect' with only one array for the operation will make
+        a copy of that array instead of creating no array at all (just like '#arraymerge' behaved already).
       + Default separator for '#arrayprint' now is the languages default separator instead of ', '.
 	  + '#arrayprint' will no longer expand the given wiki markup twice. Instead, it will escape special
 	    characters of array values before they will be inserted into the markup. This way it won't be
