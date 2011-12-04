@@ -28,18 +28,32 @@ CREATE INDEX /*i*/ep_course_year ON /*_*/ep_courses (course_year);
 CREATE INDEX /*i*/ep_course_start ON /*_*/ep_courses (course_start);
 CREATE INDEX /*i*/ep_course_end ON /*_*/ep_courses (course_end);
 
--- Students. In essence this is an extension to the user table.
-CREATE TABLE IF NOT EXISTS /*_*/ep_students (
-  student_id                 INT unsigned        NOT NULL auto_increment PRIMARY KEY,
-  student_user_id            INT unsigned        NOT NULL -- Foreign key on user.user_id
+---- Students. In essence this is an extension to the user table.
+--CREATE TABLE IF NOT EXISTS /*_*/ep_students (
+--  student_id                 INT unsigned        NOT NULL auto_increment PRIMARY KEY,
+--  student_user_id            INT unsigned        NOT NULL -- Foreign key on user.user_id
+--) /*$wgDBTableOptions*/;
+--
+--CREATE UNIQUE INDEX /*i*/ep_students_user_id ON /*_*/ep_students (student_user_id);
+--
+---- Mentors. In essence this is an extension to the user table.
+--CREATE TABLE IF NOT EXISTS /*_*/ep_mentors (
+--  mentor_id                  INT unsigned        NOT NULL auto_increment PRIMARY KEY,
+--  mentor_user_id             INT unsigned        NOT NULL -- Foreign key on user.user_id
+--) /*$wgDBTableOptions*/;
+--
+--CREATE UNIQUE INDEX /*i*/ep_mentors_user_id ON /*_*/ep_mentors (mentor_user_id);
+
+CREATE TABLE IF NOT EXISTS /*_*/ep_students_per_course (
+  student_user_id            INT unsigned        NOT NULL, -- Foreign key on user.user_id
+  student_course_id          INT unsigned        NOT NULL -- Foreign key on ep_courses.course_id
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/ep_students_user_id ON /*_*/ep_students (student_user_id);
+CREATE UNIQUE INDEX /*i*/ep_students_per_course ON /*_*/ep_students_per_course (student_user_id, student_course_id);
 
--- Mentors. In essence this is an extension to the user table.
-CREATE TABLE IF NOT EXISTS /*_*/ep_mentors (
-  mentor_id                  INT unsigned        NOT NULL auto_increment PRIMARY KEY,
-  mentor_user_id             INT unsigned        NOT NULL -- Foreign key on user.user_id
+CREATE TABLE IF NOT EXISTS /*_*/ep_mentors_per_org (
+  mentor_user_id             INT unsigned        NOT NULL, -- Foreign key on user.user_id
+  mentor_org_id              INT unsigned        NOT NULL -- Foreign key on ep_orgs.org_id
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/ep_mentors_user_id ON /*_*/ep_mentors (mentor_user_id);
+CREATE UNIQUE INDEX /*i*/ep_mentors_per_org ON /*_*/ep_mentors_per_org (mentor_user_id, mentor_org_id);
