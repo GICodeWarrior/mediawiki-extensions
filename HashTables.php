@@ -41,13 +41,9 @@ $wgExtensionMessagesFiles['HashTablesMagic'] = ExtHashTables::getDir() . '/HashT
 $wgHooks['ParserFirstCallInit'][] = 'ExtHashTables::init';
 $wgHooks['ParserClearState'   ][] = 'ExtHashTables::onParserClearState';
 
-// Config vars:
-$egHashTablesExpansionEscapeTemplates = array(
-	'='  => '{{=}}',
-	'|'  => '{{!}}',
-	'{{' => '{{((}}',
-	'}}' => '{{))}}'
-);
+// Include the settings file:
+require_once ExtHashTables::getDir() . '/HashTables_Settings.php';
+
 
 /**
  * Extension class with all the hash table functionality, also serves as store for hash tables per
