@@ -1,11 +1,9 @@
  Changelog:
  ==========
 
- * (trunk) -- Version 2.0
+ * December 4, 2011 -- Version 2.0rc
    This release is built upon 1.4 alpha. See changes of 1.4 alpha as well.
    'ArrayExtension' is now simply called 'Arrays'. Therefore you have to adjust your LocalSettings.php.
-    - '#arrayindex' will only expand options/default when required.
-    - '#arraymerge', '#arrayunion', '#arraydiff' and '#arrayintersect' can handle multiple arrays now.
     - Compatibility mode variable '$egArraysCompatibilityMode' ('$egArrayExtensionCompatbilityMode' in
       Version 1.4 alpha) is set to false by default. See Version 1.4 alpha for further information.
     - Additional changes to the compatibility mode behavior in version 2.0 include:
@@ -17,8 +15,10 @@
 	  + '#arrayprint' will no longer expand the given wiki markup twice. Instead, it will escape special
 	    characters of array values before they will be inserted into the markup. This way it won't be
 		possible anymore that array values can break the functions output. '$egArraysExpansionEscapeTemplates'
-		defines which special characters should be escaped by which template/parser function
+		defines which special characters should be escaped by which template/parser function.
       + *** See 1.4 alpha for previous changes ***
+    - '#arrayindex' will only expand options/default when required.
+    - '#arraymerge', '#arrayunion', '#arraydiff' and '#arrayintersect' can handle multiple arrays now.
     - '#arraydefine' option 'print' no longer supports 'print=print' and parameters beyond options.
       This functionality never worked reliably anyways. 'print=list' still works.
     - '#arrayprint' now has a new parameter for options. Option 'print=pretty' will print a list where
@@ -26,8 +26,8 @@
       also can be used as option within '#arraydefine'.
     - If 'Regex Fun' extension is installed, '#arraysearcharray' can use Regex Funs 'e' flag feature
       for transforming the result and at the same time parsing them after each back-reference inclusion.
-    - 1.4 alpha bug solved, '#arraysearcharray' with empty string as start index was interpreted as 0
-    - class 'ArrayExtension' renamed to 'ExtArrays'
+    - 1.4 alpha bug solved, '#arraysearcharray' with empty string as start index was interpreted as 0.
+    - class 'ArrayExtension' renamed to 'ExtArrays'.
 
 
  * November 20, 2001 -- Version 1.4 alpha (r103716)
@@ -51,11 +51,6 @@
     - arrayprint will handle <includeonly>/<noinclude> correct in case it's used in a template.
     - Internationalization for several languages added.	
     - moved into mediawiki.org svn repository.
-    
-    @ToDo before release:
-    - As in Variables 2.0, one store per Parser should be used.
-    - ''#arraysearch'' should not expand both, 'yes' and 'no', just the one actual case.
-    - Further breaking changes fixing weird old behavior and functionality
 
 
  * January 24, 2011 -- Version 1.3.2

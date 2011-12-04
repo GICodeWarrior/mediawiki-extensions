@@ -11,7 +11,7 @@
  * @ingroup Arrays
  *
  * @licence MIT License
- * @version: 2.0 alpha
+ * @version: 2.0rc
  *
  * @author Li Ding < lidingpku@gmail.com >
  * @author Jie Bao
@@ -53,7 +53,7 @@ class ExtArrays {
 	 *
 	 * @since 2.0 (before in 'Arrays' class since 1.3.2)
 	 */
-	const VERSION = '2.0 alpha';
+	const VERSION = '2.0rc';
 
 	/**
 	 * Store for arrays.
@@ -1232,7 +1232,7 @@ class ExtArrays {
 	/**
 	 * Escapes a string so it can be used within PPFrame::expand() expansion without actually being
 	 * changed because of special characters.
-	 * Respects the configuration variable $egArraysEscapeTemplates.
+	 * Respects the configuration variable '$egArraysEscapeTemplates'.
 	 * 
 	 * @since 2.0
 	 * 
