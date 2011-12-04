@@ -219,17 +219,18 @@ class SimpleFarm {
 		$wgSitename = $wiki->getName();
 		
 		// check for maintain mode:
-		if( $wiki->isInMaintainMode() && ! $wiki->userIsMaintaining() )
+		if( $wiki->isInMaintainMode() && ! $wiki->userIsMaintaining() ) {
 			self::dieEarly( "$wgSitename is in maintain mode currently! Please try again later." );
-		
+		}		
 		self::$activeMember = $wiki;
 		
 		$wgScriptPath = $wiki->getScriptPath(); //in case of 'scriptpath' config and mod-rewrite, otherwise same value anyway
 		$wgDBname = $wiki->getDB();
 		$wgUploadDirectory = "{$IP}/images/images_{$wgDBname}";
 		$wgUploadPath      = "{$wgScriptPath}/images/images_{$wgDBname}";
-		if( ! is_dir( $wgUploadDirectory ) )
+		if( ! is_dir( $wgUploadDirectory ) ) {
 			mkdir( $wgUploadDirectory, 0777 );
+		}
 				
 		$wgLogo    = "{$wgScriptPath}/images/logos/{$wgDBname}.png";
 		$wgFavicon = "{$wgScriptPath}/images/logos/{$wgDBname}.ico";
@@ -306,8 +307,9 @@ class SimpleFarmMember {
 		global $egSimpleFarmMembers;
 		
 		foreach( $egSimpleFarmMembers as $siteOpt ) {
-			if( strtolower( $siteOpt['db'] ) === strtolower( trim( $dbName ) ) )
+			if( strtolower( $siteOpt['db'] ) === strtolower( trim( $dbName ) ) ) {
 				return new SimpleFarmMember( $siteOpt );
+			}
 		}
 		return null;
 	}
@@ -327,8 +329,9 @@ class SimpleFarmMember {
 	public static function loadFromAddress( $url, $scriptPath = null ) {
 		global $egSimpleFarmMembers, $egSimpleFarmIgnoredDomainPrefixes;
 		
-		if( $scriptPath !== null )
+		if( $scriptPath !== null ) {
 			$scriptPath = str_replace( "\\", "/", trim( $scriptPath ) );
+		}
 		
 		// url to domain name. Trim url scheme,
 		$pref = implode( '|', $egSimpleFarmIgnoredDomainPrefixes ); // no escaping necessary
@@ -365,8 +368,9 @@ class SimpleFarmMember {
 		$members = SimpleFarm::getMembers();
 		foreach( $members as $member ) {
 			if( $scriptPath !== null ) {
-				if( trim( $scriptPath ) === $member->getScriptPath() )
+				if( trim( $scriptPath ) === $member->getScriptPath() ) {
 					return $member;
+				}
 			} else {
 				return $member;
 			}
@@ -380,10 +384,11 @@ class SimpleFarmMember {
 	 * @return integer
 	 */
 	public function isInMaintainMode() {
-		if( empty( $this->siteOpt['maintain'] ) )
+		if( empty( $this->siteOpt['maintain'] ) ) {
 			return SimpleFarm::MAINTAIN_OFF;
-		else
+		} else {
 			return $this->siteOpt['maintain'];
+		}
 	}
 	
 	/**
@@ -412,13 +417,15 @@ class SimpleFarmMember {
 		switch( $this->isInMaintainMode() ) {
 			// no break, step by step!			
 			case SimpleFarm::MAINTAIN_SIMPLE:
-				if( isset( $_GET['maintainer'] ) || isset( $_GET['maintain'] ) )
+				if( isset( $_GET['maintainer'] ) || isset( $_GET['maintain'] ) ) {					
 					return true;
+				}
 				// no break!
 				
 			case SimpleFarm::MAINTAIN_STRICT:
-				if( $wgCommandLineMode )
+				if( $wgCommandLineMode ) {
 					return true;
+				}
 				// no break!
 				
 			case SimpleFarm::MAINTAIN_TOTAL:
@@ -462,13 +469,13 @@ class SimpleFarmMember {
 			return array( $_SERVER['HTTP_HOST'] );
 		}
 		else {
-			return null; // in case arr option is not set and we are in commandline-mode!
+			// in case arr option is not set and we are in commandline-mode!
+			return null;
 		}
 			
 		if( is_array( $addr ) ) {
 			return $addr;
-		}
-		else {
+		} else {
 			return array( $addr );
 		}
 	}
@@ -507,12 +514,15 @@ class SimpleFarmMember {
 	 *         self::CFG_MODE_NONE if not set up properly.
 	 */
 	public function getCfgMode() {
-		if( isset( $this->siteOpt['scriptpath'] ) )
+		if( isset( $this->siteOpt['scriptpath'] ) ) {
 			return self::CFG_MODE_SCRIPTPATH;
-		elseif( isset( $this->siteOpt['addresses'] ) )
+		}
+		elseif( isset( $this->siteOpt['addresses'] ) ) {
 			return self::CFG_MODE_ADDRESS; //address can be given even if 'scriptpath' is
-		else
+		}
+		else {
 			return self::CFG_MODE_NONE;
+		}
 	}
 	
 	/**
@@ -544,10 +554,11 @@ class SimpleFarmMember {
 	 * @return mixed
 	 */
 	public function getCfgOption( $name, $default = false ) {
-		if( array_key_exists( $name, $this->siteOpt ) )
+		if( array_key_exists( $name, $this->siteOpt ) ) {
 			return $this->siteOpt[ $name ];
-		else
+		} else {
 			return $default;
+		}
 	}
 	
 	/**
