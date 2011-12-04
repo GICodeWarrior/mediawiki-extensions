@@ -1,7 +1,7 @@
  Changelog:
  ==========
  
- * (trunk) -- Version 1.0.2 alpha
+ * December 5, 2011 -- Version 1.0.2
    - Limit won't exceed early when 'e' flag with many backrefs in replacement is used extensivelly.
    - It's possible to use the 'Regex Fun' regex system with advanced flags within other extensions.
    - Performance increased for executing huge numbers of the same regex on different strings.
@@ -48,5 +48,5 @@
    - '#regexquote' delimiter set to '/' by default.
    - '#regex' no longer returns its value as parsed wikitext (option 'noparse' => false) instead
      the 'e' flag can be used (although not exactly the same).
-   - contributed under ISC License, maintained in wikimedia.org svn.=======
+   - contributed under ISC License, maintained in wikimedia.org svn.
    

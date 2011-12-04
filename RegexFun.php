@@ -8,7 +8,7 @@
  * Support:       http://www.mediawiki.org/wiki/Extension_talk:Regex_Fun
  * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/RegexFun
  * 
- * @version: 1.0.2 alpha
+ * @version: 1.0.2
  * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
  *
@@ -273,7 +273,8 @@ class ExtRegexFun {
 			$lastMatches = self::getLastMatches( $parser );
             $output = ( preg_match( $pattern, $subject, $lastMatches ) ? $lastMatches[0] : '' );
 			self::setLastMatches( $parser, $lastMatches );
-        } else {
+        }
+		else {
 			// replace mode:			
 			$limit = (int)$limit;
 			
@@ -298,13 +299,13 @@ class ExtRegexFun {
     }
 	
 	/**
-	 * 'preg_replace' like function but can handle special modifiers 'e' and 'r'.
+	 * 'preg_replace'-like function but can handle special modifiers 'e' and 'r'.
 	 * 
 	 * @param string &$pattern
 	 * @param string $replacement
 	 * @param string $subject
 	 * @param int    $limit
-	 * @param Parser &$parser if 'e' flag should be allowed, a parser objecdt for parsing is required.
+	 * @param Parser &$parser if 'e' flag should be allowed, a parser object for parsing is required.
 	 * @param array  $allowedSpecialFlags all special flags that should be handled, by default 'e' and 'r'.
 	 */
 	public static function doPregReplace(
