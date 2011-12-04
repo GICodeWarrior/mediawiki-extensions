@@ -8,7 +8,7 @@
  * Support:       http://www.mediawiki.org/wiki/Extension_talk:SemanticUpdateOnPurge
  * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SemanticUpdateOnPurge
  *
- * @version: 0.4
+ * @version: 0.4.1
  * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
  * 
@@ -48,7 +48,7 @@ class ExtSemanticUpdateOnPurge {
 	 * 
 	 * @var string
 	 */
-	const VERSION = '0.4';
+	const VERSION = '0.4.1';
 	
 	/**
 	 * contains Title::getPrefixedDBkey() values as keys, and 'true' as value
