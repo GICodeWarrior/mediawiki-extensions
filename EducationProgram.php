@@ -28,12 +28,12 @@ if ( version_compare( $wgVersion, '1.18c', '<' ) ) { // Needs to be 1.18c becaus
 	die( '<b>Error:</b> Reviews requires MediaWiki 1.18 or above.' );
 }
 
-define( 'REVIEWS_VERSION', '0.1 alpha' );
+define( 'EP_VERSION', '0.1 alpha' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Education Program',
-	'version' => REVIEWS_VERSION,
+	'version' => EP_VERSION,
 	'author' => array(
 		'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
 	),
