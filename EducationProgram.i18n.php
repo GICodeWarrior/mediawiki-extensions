@@ -44,6 +44,7 @@ $messages['en'] = array(
 	'grouppage-epmentor' => '{{ns:project}}:Education_program_mentors',
 
 	// Special pages
+	'specialpages-group-education' => 'Education',
 	'special-mycourses' => 'My courses',
 	'special-institution' => 'Institution',
 	'special-institutions' => 'Institutions',
@@ -67,6 +68,7 @@ $messages['qqq'] = array(
 	'action-epstudent' => '{{doc-action|epstudent}}',
 	'action-epmentor' => '{{doc-action|epmentor}}',
 
+	'specialpages-group-education' => 'Special pages group, h2',
 	'special-mycourses' => '{{doc-special|mycourses}}',
 	'special-institution' => '{{doc-special|institution}}',
 	'special-institutions' => '{{doc-special|institutions}}',
