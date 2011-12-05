@@ -542,6 +542,14 @@ Dennoch sollte, sofern irgend möglich, der Browser aktualisiert oder gewechselt
 	'cb_edit_paste_right_hint' => 'Operator an nächstmöglicher Position einfügen (sofern möglich)',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'cb_cat_pages' => 'peli',
+	'cb_or_op' => 'ya zi',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
