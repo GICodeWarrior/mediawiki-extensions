@@ -193,6 +193,14 @@ $messages['de'] = array(
 	'right-admanager' => '[[Special:AdManager|Anzeigen konfigurieren]]',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'admanager_submit' => 'Qeyd ke',
+	'admanager_Page' => 'Peli',
+);
+
 /** Persian (فارسی)
  * @author ZxxZxxZ
  */
