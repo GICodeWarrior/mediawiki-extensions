@@ -311,10 +311,15 @@ class ExtArrays {
 		}
 		
 		// if there is no subject, there is no point in expanding. Faster!
-		if( !$egArraysCompatibilityMode && $subject === null ) {
-			// NO COMPATIBILITY-MODE
-			// we can ignore options here, since if subject is null, options won't be set as well!
-			return trim( implode( $delimiter, $array ) );
+		if( $subject === null ) {
+			if( ! $egArraysCompatibilityMode ) {				
+				// we can ignore options here, since if subject is null, options won't be set as well!
+				return trim( implode( $delimiter, $array ) );
+			} else {
+				// COMPATIBILITY-MODE
+				// set search and subject so the old routine can be done
+				$search = $subject = '@@@@';
+			}
 		}
 
 		$rendered_values = array();
