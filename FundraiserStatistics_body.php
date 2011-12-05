@@ -363,7 +363,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			if ( $mostRecent ) {
 				$wgMemc->set( $key, $result, $egFundraiserStatisticsCacheTimeout );
 			} else {
-				#$wgMemc->set( $key, $result, 86400 );
+				$wgMemc->set( $key, $result, 86400 );
 			}
 			return $result;
 		}
