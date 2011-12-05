@@ -88,6 +88,15 @@ $messages['ja'] = array(
 	'wom-desc' => 'ウィキ利用者のための簡単​​なページオブジェクトモデル',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'objecteditor' => 'Object Editeur',
+	'wom_editor' => 'Object-Schabloun',
+	'wom-desc' => 'Einfach Object-Schabloun vu Säite fir Wiki-Benotzer',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
