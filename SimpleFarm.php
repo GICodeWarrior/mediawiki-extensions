@@ -7,7 +7,7 @@
  * 
  * Documentation: http://www.mediawiki.org/wiki/Extension:Simple_Farm
  * Support:       http://www.mediawiki.org/wiki/Extension_talk:Simple_Farm
- * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SubpageFun
+ * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SimpleFarm
  * 
  * @version: 0.1rc
  * @license: ISC license
