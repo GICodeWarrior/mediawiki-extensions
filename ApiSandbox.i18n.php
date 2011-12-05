@@ -143,6 +143,7 @@ Kit da deuler ur sell war [//www.mediawiki.org/wiki/API teulioù API] evit gouzo
 	'apisb-query-prop' => 'Perzhioù',
 	'apisb-query-list' => 'Rolloù',
 	'apisb-query-meta' => 'Titouroù Meta',
+	'apisb-generic-parameters' => 'Arventennoù hollek',
 	'apisb-generator-parameters' => 'Ganer',
 );
 
@@ -263,6 +264,19 @@ $messages['fa'] = array(
 	'apisb-submit' => 'ایجاد درخواست',
 	'apisb-query-list' => 'فهرست‌ها',
 	'apisb-query-meta' => 'اطلاعات متا',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'apisandbox' => 'API-hiekkalaatikko',
+	'apisb-no-js' => "'''Virhe:''' Tämä ominaisuus vaatii JavaScriptin.",
+	'apisb-api-disabled' => 'API on poistettu käytöstä tällä sivustolla.',
+	'apisb-result' => 'Tulos',
+	'apisb-select-action' => 'Valitse toiminto',
+	'apisb-select-value' => 'Valitse arvo',
+	'apisb-loading' => 'Ladataan...',
 );
 
 /** French (Français)
@@ -533,6 +547,7 @@ $messages['lb'] = array(
 	'apisb-api-disabled' => 'API ass op dësem Site ausgeschalt.',
 	'apisb-parameters' => 'Parameteren',
 	'apisb-result' => 'Resultat',
+	'apisb-request-url' => 'URL fir Ufroen:',
 	'apisb-select-action' => 'Aktioun eraussichen',
 	'apisb-select-value' => 'Wäert eraussichen',
 	'apisb-loading' => 'Lueden...',
