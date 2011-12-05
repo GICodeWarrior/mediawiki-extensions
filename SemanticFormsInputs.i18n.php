@@ -97,6 +97,52 @@ $messages['qqq'] = array(
 	'semanticformsinputs-menuselect-enableinputfield' => 'This is a help text for the Special:CreateForm page.',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ * @author F.trott
+ * @author The Evil IP address
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'semanticformsinputs-desc' => '{{desc}}',
+	'semanticformsinputs-close' => '{{Identical|Close}}',
+	'semanticformsinputs-prev' => '{{Identical|Previous}}',
+	'semanticformsinputs-next' => '{{Identical|Next}}',
+	'semanticformsinputs-dateformatlong' => "{{doc-important|This is a machine-readable date format string!| <br>It is used by a function to format a date. It will not be read by a human user. Do not translate each letter literally! Instead insert the date format for your language using the english-based letters. See http://docs.jquery.com/UI/Datepicker/formatDate }}
+
+{{doc-important|This is an ''optional'' message. Do not translate it, if it would remain unchanged in your language. }}",
+	'semanticformsinputs-dateformatshort' => "{{doc-important|This is a machine-readable date format string!| <br>It is used by a function to format a date. It will not be read by a human user. Do not translate each letter literally! Instead insert the date format for your language using the english-based letters. See http://docs.jquery.com/UI/Datepicker/formatDate }}
+
+{{doc-important|This is an ''optional'' message. Do not translate it, if it would remain unchanged in your language. }}",
+	'semanticformsinputs-firstdayofweek' => '{{optional}}
+0 - sunday, 1 - monday...',
+	'semanticformsinputs-malformedregexp' => 'An error message.',
+	'semanticformsinputs-datepicker-dateformat' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-weekstart' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-firstdate' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-lastdate' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-disabledaysofweek' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-highlightdaysofweek' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-disabledates' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-highlightdates' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-showweeknumbers' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-enableinputfield' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-datepicker-showresetbutton' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-timepicker-mintime' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-timepicker-maxtime' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-timepicker-interval' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-timepicker-enableinputfield' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-timepicker-showresetbutton' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-regexp-regexp' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-regexp-basetype' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-regexp-baseprefix' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-regexp-orchar' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-regexp-inverse' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-regexp-message' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-menuselect-structure' => 'This is a help text for the Special:CreateForm page.',
+	'semanticformsinputs-menuselect-enableinputfield' => 'This is a help text for the Special:CreateForm page.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -290,6 +336,7 @@ $messages['es'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author F.trott
  * @author Gomoko
  * @author IAlex
@@ -302,6 +349,7 @@ $messages['fr'] = array(
 	'semanticformsinputs-next' => 'Suivant',
 	'semanticformsinputs-today' => "Aujourd'hui",
 	'semanticformsinputs-dateformatshort' => 'dd / mm / yy',
+	'semanticformsinputs-malformedregexp' => 'Expression régulière mal formée ($1).',
 	'semanticformsinputs-datepicker-dateformat' => "La chaîne de format de date. Voyez la [http://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters documentation en ligne] pour plus d'information.",
 	'semanticformsinputs-datepicker-weekstart' => 'Le premier jour de la semaine (0 - dimanche, 1 - lundi, ...).',
 	'semanticformsinputs-datepicker-firstdate' => 'La première date qui peut être choisie (au format aaaa/mm/jj).',
@@ -349,6 +397,7 @@ $messages['gl'] = array(
 	'semanticformsinputs-prev' => 'Anterior',
 	'semanticformsinputs-next' => 'Seguinte',
 	'semanticformsinputs-today' => 'Hoxe',
+	'semanticformsinputs-malformedregexp' => 'Expresión regular formada incorrectamente ($1).',
 	'semanticformsinputs-datepicker-dateformat' => 'A cadea de formato de data. Olle a [http://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters documentación en liña] para obter máis información.',
 	'semanticformsinputs-datepicker-weekstart' => 'O primeiro día da semana (0 = domingo, 1 = luns...).',
 	'semanticformsinputs-datepicker-firstdate' => 'A primeira data que se pode elixir (en formato aaa/mm/dd).',
