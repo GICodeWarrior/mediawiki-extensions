@@ -115,6 +115,10 @@ $egFundraiserStatisticsFundraisers = array(
 	),
 );
 
+// The first year of statistics to make visible by default.
+// We normally don't show all of them by default, since it makes the chart extremely wide.
+$egFundraiserStatisticsFirstYearDefault = 2009;
+
 // Thesholds for fundraiser statistics
 $egFundraiserStatisticsMinimum = 1;
 $egFundraiserStatisticsMaximum = 10000;

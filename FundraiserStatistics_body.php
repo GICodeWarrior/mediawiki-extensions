@@ -1,6 +1,7 @@
 <?php
 /**
  * Special Page for Contribution statistics extension
+ * This page displays charts and tables related to donation statistics.
  *
  * @file
  * @ingroup Extensions
@@ -15,15 +16,22 @@ class SpecialFundraiserStatistics extends SpecialPage {
 	}
 
 	public function execute( $sub ) {
-		global $wgRequest, $wgOut, $wgLang, $wgScriptPath, $egFundraiserStatisticsFundraisers;
+		global $wgRequest, $wgOut, $wgLang, $wgScriptPath, $egFundraiserStatisticsFundraisers,
+			$egFundraiserStatisticsFirstYearDefault;
 
+		// Figure out what years to display initially
 		$showYear = array();
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
-			if ( $wgRequest->wasPosted() ) {
-				$showYear[$fundraiser['id']] = $wgRequest->getCheck( 'toogle'.$fundraiser['id'] );
+			// You can override the years to display by default via the query string.
+			// For example, Special:FundraiserStatistics?2007=show&2010=hide
+			$yearOverride = $wgRequest->getVal( $fundraiser['id'] );
+			if ( $yearOverride === "hide" ) {
+				$showYear[$fundraiser['id']] = false;
+			} else if ( $yearOverride === "show" ) {
+				$showYear[$fundraiser['id']] = true;
 			} else {
-				// By default, show only the fundraising years after 2008
-				if ( intval( $fundraiser['id'] ) > 2008 ) {
+				// By default, show only the recent fundraising years
+				if ( intval( $fundraiser['id'] ) >= $egFundraiserStatisticsFirstYearDefault ) {
 					$showYear[$fundraiser['id']] = true;
 				} else {
 					$showYear[$fundraiser['id']] = false;
@@ -37,7 +45,6 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			'totals' => array(
 				'data' => array(),
 				'index' => 1,
-				'query' => 'dailyTotalMax',
 				'precision' => 2,
 				'label' => 'fundraiserstats-total',
 				'max' => 1,
@@ -45,7 +52,6 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			'contributions' => array(
 				'data' => array(),
 				'index' => 2,
-				'query' => 'contributionsMax',
 				'precision' => 0,
 				'label' => 'fundraiserstats-contributions',
 				'max' => 1,
@@ -53,7 +59,6 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			'averages' => array(
 				'data' => array(),
 				'index' => 3,
-				'query' => 'averagesMax',
 				'precision' => 2,
 				'label' => 'fundraiserstats-avg',
 				'max' => 1,
@@ -61,7 +66,6 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			'maximums' => array(
 				'data' => array(),
 				'index' => 4,
-				'query' => 'maximumsMax',
 				'precision' => 2,
 				'label' => 'fundraiserstats-max',
 				'max' => 1,
@@ -69,7 +73,6 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			'ytd' => array(
 				'data' => array(),
 				'index' => 5,
-				'query' => 'yearlyTotalMax',
 				'precision' => 2,
 				'label' => 'fundraiserstats-ytd',
 				'max' => 1,
@@ -85,10 +88,28 @@ class SpecialFundraiserStatistics extends SpecialPage {
 
 		$wgOut->addWikiMsg( 'contribstats-header' ); // Header (typically empty)
 		
+		// The $fundraisingData array contains all of the fundraising data in the following scheme:
+		// $fundraisingData[<fundraiserId>][<dayIndex>][<dataTypeIndex>]
+		$fundraisingData = array();
+		
+		foreach ( $egFundraiserStatisticsFundraisers as $fundraiserIndex => $fundraiser ) {
+		
+			// See if this is the most recent fundraiser or not
+			if ( $fundraiserIndex == count( $egFundraiserStatisticsFundraisers ) - 1 ) {
+				$mostRecent = true;
+			} else {
+				$mostRecent = false;
+			}
+			
+			// Collect all the data
+			$fundraisingData[$fundraiser['id']] = $this->query( $mostRecent, $fundraiser['start'], $fundraiser['end'] );
+		}
+		
 		// Chart maximums
-		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
+		// We cycle through all the fundraisers with all the different chart types and collect the maximums.
+		foreach ( $fundraisingData as $fundraiser ) {
 			foreach ( $charts as $name => $chart ) {
-				$chartMax = $this->query( $charts[$name]['query'], $fundraiser['start'], $fundraiser['end'] );
+				$chartMax = $this->getMaximum( $fundraiser, $chart['index'] );
 				if ( $chartMax > $charts[$name]['max'] ) {
 					$charts[$name]['max'] = $chartMax;
 				}
@@ -108,7 +129,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiserIndex => $fundraiser ) {
 		
 			// Get all the daily data for a particular fundraiser
-			$days = $this->query( 'dailyTotals', $fundraiser['start'], $fundraiser['end'] );
+			$days = $fundraisingData[$fundraiser['id']];
 			
 			// See if this is the most recent fundraiser or not
 			if ( $fundraiserIndex == count( $egFundraiserStatisticsFundraisers ) - 1 ) {
@@ -137,7 +158,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 
 					$height = $chart['factor'] * $day[$chart['index']];
 					$style = "height:{$height}px;";
-					if ( $showYear[$fundraiser['id']] !== true ) {
+					if ( !$showYear[$fundraiser['id']] ) {
 						$style .= "display:none;";
 					}
 					$attributes = array(
@@ -212,8 +233,8 @@ class SpecialFundraiserStatistics extends SpecialPage {
 
 		$years = wfMsg( 'fundraiserstats-show-years' ).'<br/>';
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
-			$years .= Xml::check( 'toogle'.$fundraiser['id'], $showYear[$fundraiser['id']], array( 'id' => 'bar-'.$fundraiser['id'], 'class' => 'yeartoggle' ) );
-			$years .= Xml::label( $fundraiser['id'], 'toogle'.$fundraiser['id'] );
+			$years .= Xml::check( 'toggle'.$fundraiser['id'], $showYear[$fundraiser['id']], array( 'id' => 'bar-'.$fundraiser['id'], 'class' => 'yeartoggle' ) );
+			$years .= Xml::label( $fundraiser['id'], 'toggle'.$fundraiser['id'] );
 			$years .= "<br/>";
 		}
 		$wgOut->addHTML( Xml::openElement( 'div', array( 'id' => 'configholder' ) ) );
@@ -285,16 +306,16 @@ class SpecialFundraiserStatistics extends SpecialPage {
 	/**
 	 * Retrieve the donation data from the database
 	 *
-	 * @param string $type Which type of query to do
+	 * @param boolean $mostRecent Is this query for the most recent fundraiser?
 	 * @param string $start The start date for a fundraiser
 	 * @param string $end The end date for a fundraiser
 	 * @return an array of results or null
 	 */
-	private function query( $type, $start, $end ) {
+	private function query( $mostRecent, $start, $end ) {
 		global $wgMemc, $egFundraiserStatisticsMinimum, $egFundraiserStatisticsMaximum, $egFundraiserStatisticsCacheTimeout;
 
 		// Conctruct the key for memcached
-		$key = wfMemcKey( 'fundraiserstatistics', $type, $start, $end );
+		$key = wfMemcKey( 'fundraiserstatistics', $start, $end );
 		
 		// If result exists in memcached, use that
 		$cache = $wgMemc->get( $key );
@@ -310,88 +331,60 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			'converted_amount >= ' . $egFundraiserStatisticsMinimum,
 			'converted_amount <= ' . $egFundraiserStatisticsMaximum
 		);
-		switch ( $type ) {
-			case 'dailyTotals':
-				$select = $dbr->select( 'public_reporting',
-					array(
-						"DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')",
-						'sum(converted_amount)',
-						'count(*)',
-						'avg(converted_amount)',
-						'max(converted_amount)',
-					),
-					$conditions,
-					__METHOD__ . '-dailyTotals',
-					array(
-						'ORDER BY' => 'received',
-						'GROUP BY' => "DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')"
-					)
-				);
-				$result = array();
-				$ytd = 0;
-				while ( $row = $dbr->fetchRow( $select ) ) {
-					// Insert the year-to-date amount as a record in the row (existing $ytd + sum)
-					$row[5] = $ytd += $row[1];
-					$result[] = $row;
-				}
-				break;
-			case 'dailyTotalMax':
-				$result = $dbr->selectField( 'public_reporting',
-					array( 'sum(converted_amount) as sum' ),
-					$conditions,
-					__METHOD__ . '-dailyTotalMax',
-					array(
-						'ORDER BY' => 'sum DESC',
-						'GROUP BY' => "DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')"
-					)
-				);
-				break;
-			case 'yearlyTotalMax':
-				$result = $dbr->selectField( 'public_reporting',
-					array( 'sum(converted_amount) as sum' ),
-					$conditions,
-					__METHOD__ . '-yearlyTotalMax'
-				);
-				break;
-			case 'contributionsMax':
-				$result = $dbr->selectField( 'public_reporting',
-					array( 'count(converted_amount) as sum' ),
-					$conditions,
-					__METHOD__ . '-contributionsMax',
-					array(
-						'ORDER BY' => 'sum DESC',
-						'GROUP BY' => "DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')"
-					)
-				);
-				break;
-			case 'averagesMax':
-				$result = $dbr->selectField( 'public_reporting',
-					array( 'avg(converted_amount) as sum' ),
-					$conditions,
-					__METHOD__ . '-averagesMax',
-					array(
-						'ORDER BY' => 'sum DESC',
-						'GROUP BY' => "DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')"
-					)
-				);
-				break;
-			case 'maximumsMax':
-				$result = $dbr->selectField( 'public_reporting',
-					array( 'max(converted_amount) as sum' ),
-					$conditions,
-					__METHOD__ . '-maximumsMax',
-					array(
-						'ORDER BY' => 'sum DESC',
-						'GROUP BY' => "DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')"
-					)
-				);
-				break;
+		
+		// Get the data for a fundraiser
+		$select = $dbr->select( 'public_reporting',
+			array(
+				"DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')",
+				'sum(converted_amount)',
+				'count(*)',
+				'avg(converted_amount)',
+				'max(converted_amount)',
+			),
+			$conditions,
+			__METHOD__,
+			array(
+				'ORDER BY' => 'received',
+				'GROUP BY' => "DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')"
+			)
+		);
+		$result = array();
+		$ytd = 0;
+		while ( $row = $dbr->fetchRow( $select ) ) {
+			// Insert the year-to-date amount as a record in the row (existing $ytd + sum)
+			$row[5] = $ytd += $row[1];
+			$result[] = $row;
 		}
+		
 		if ( isset( $result ) ) {
-			// Store the result in memcached
-			$wgMemc->set( $key, $result, $egFundraiserStatisticsCacheTimeout );
+			// Store the result in memcached.
+			// If it's the most recent fundraiser, cache for a short period of time, otherwise
+			// cache for 24 hours (since the query is expensive).
+			if ( $mostRecent ) {
+				$wgMemc->set( $key, $result, $egFundraiserStatisticsCacheTimeout );
+			} else {
+				#$wgMemc->set( $key, $result, 86400 );
+			}
 			return $result;
 		}
 		return null;
+	}
+	
+	/**
+	 * Given a particular index, find the maximum for all values in a 2D array with that particular
+	 * index as the 2nd key.
+	 *
+	 * @param array $fundraiserDays A 2D array of daily data for a particular fundraiser
+	 * @param integer $comparisonIndex The index to find the maximum for
+	 * @return an integer
+	 */
+	private function getMaximum( $fundraiserDays, $comparisonIndex ) {
+		$max = 0;
+		foreach( $fundraiserDays as $day ) {
+			if ( $day[$comparisonIndex] > $max ) {
+				$max = $day[$comparisonIndex];
+			}
+		}
+		return $max;
 	}
 }

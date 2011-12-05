@@ -33,9 +33,11 @@ $j( document ).ready( function() {
 	$j( '.fundraiserstats-current' ).each( function() {
 		replaceView( $j(this).attr( 'rel' ) )
 	} );
+	// When someone clicks on a year, hide or show that year in the chart
 	$j( '#configholder .yeartoggle' ).click( function() {
 		$j('.fundraiserstats-'+$j(this).attr( 'id' )).toggle();
 	} );
+	// When someone clicks on Customize, display pop-up menu and change arrow icon.
 	$j( '#configtoggle' ).click( function() {
 		$j('#configholder').toggle();
 		if ($j( '#configtoggle a' ).css( 'background-position' ) == '0px -18px') {
@@ -43,9 +45,6 @@ $j( document ).ready( function() {
 		} else {
 			$j( '#configtoggle a' ).css( 'background-position','0px -18px' );
 		}
-	} );
-	$j( '#timezone' ).change( function() {
-		$j('#configform').submit();
 	} );
 
 } );
