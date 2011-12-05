@@ -107,6 +107,7 @@ $messages['de-formal'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author DavidL
  * @author Gomoko
  * @author Zebulon84
@@ -120,7 +121,7 @@ $messages['fr'] = array(
 	'onlinestatusbar-away' => 'Status "absent" automatique',
 	'onlinestatusbar-purge' => 'Vider la page utilisateur chaque vous que vous vous connectez ou vous déconnectez',
 	'prefs-onlinestatus' => 'État en ligne',
-	'onlinestatusbar-hide' => "Voulez-vous masquer la barre d'état afin d'utiliser le mot magique seulement ? (Pour les utilisateurs avancés)",
+	'onlinestatusbar-hide' => "Masquer la barre d'état sur les pages d'utilisateur afin d'utiliser le mot magique seulement (pour les utilisateurs avancés)",
 	'onlinestatusbar-status-online' => 'Présent',
 	'onlinestatusbar-status-busy' => 'Occupé',
 	'onlinestatusbar-status-away' => 'Parti',
