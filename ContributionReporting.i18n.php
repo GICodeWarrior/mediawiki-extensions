@@ -1940,6 +1940,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author Jean-Frédéric
@@ -1955,6 +1956,8 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'contributionreporting-desc' => 'Rapport de suivi en direct sur la collecte de fonds de Wikimedia',
 	'contributiontotal' => 'Total des contributions',
+	'disablednotice' => 'Rapports de contribution',
+	'disablednotice-disabled' => 'Cette page a été temporairement désactivée. Veuillez réessayer plus tard.',
 	'contributionhistory' => 'Historique des contributions',
 	'contrib-hist-header' => 'Commentaires des donateurs du monde entier',
 	'contrib-hist-name' => 'Nom',
