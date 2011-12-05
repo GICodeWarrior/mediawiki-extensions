@@ -40,6 +40,15 @@ $messages['ar'] = array(
 استخدم: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'stockcharts-desc' => 'Amiesta la etiqueta <nowiki><stockchart ticker="AAPL"/></nowiki> pa un gráficu de valores financieros interactivu',
+	'stockcharts-missingticker' => 'Pa inxertar una tabla de valores, necesites especificar polo menos un marcador.
+Usa: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
