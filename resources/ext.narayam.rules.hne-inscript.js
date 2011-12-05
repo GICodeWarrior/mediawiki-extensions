@@ -8,5 +8,6 @@
 
 //copy the rules from hi_inscript.
 hne_inscript_scheme = $.narayam.getScheme( 'hi-inscript' );
-hne_inscript_scheme.namemsg ='narayam-hne-inscript';
+hne_inscript_scheme.namemsg = 'narayam-hne-inscript';
 jQuery.narayam.addScheme( 'hne-inscript', hne_inscript_scheme );
+

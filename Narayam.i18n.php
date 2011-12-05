@@ -65,6 +65,7 @@ $messages['en'] = array(
 	'narayam-ru-standard' => 'Russian Standard',
 	'narayam-sah-standard' => 'Sakha Standard',
 	'narayam-hne-inscript' => 'Chhattisgarhi InScript',
+	'narayam-mai-inscript' => 'Maithili InScript',
 	'narayam-gom-deva' => 'Goan Konkani-Devanagari Transliteration',
 	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari InScript',
 );
