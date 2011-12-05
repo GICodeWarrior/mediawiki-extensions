@@ -6,13 +6,15 @@
  * @ingroup SWBLanguage
  */
 
+$messages = array();
+
 /** English
  *
  */
 $messages['en'] = array(
 	'browsewiki'                 => 'Browse Wiki & Semantic Web',
 	'swb_desc'                   => 'Adds a special page [[Special:BrowseWiki|Browse Wiki & Semantic Web]]',
-	'swb_browse_article'         => 'Enter the name of the page to start semantic browsing from.'
+	'swb_browse_article'         => 'Enter the name of the page to start semantic browsing from.',
 	'swb_browse_go'              => 'Go',
 	'swb_browse_show_incoming'   => 'show incoming properties that link here',
 	'swb_browse_hide_incoming'   => 'hide incoming properties that link here',
