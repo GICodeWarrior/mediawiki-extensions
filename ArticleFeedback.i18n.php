@@ -682,10 +682,10 @@ $messages['bn'] = array(
 	'articlefeedback-survey-question-useful-iffalse' => 'কেন?',
 	'articlefeedback-survey-question-comments' => 'আপনার কী প্রদান করার মতো আরও কোনো মন্তব্য রয়েছে?',
 	'articlefeedback-survey-submit' => 'জমা দাও',
-	'articlefeedback-survey-title' => 'অনুগ্রহ করে কয়েকটি প্রশ্নের উত্তর দিন',
+	'articlefeedback-survey-title' => 'অনুগ্রহপূর্বক কয়েকটি প্রশ্নের উত্তর দিন',
 	'articlefeedback-survey-thanks' => 'জরিপে অংশ নেওয়ার জন্য আপনাকে ধন্যবাদ।',
 	'articlefeedback-survey-disclaimer' => 'এই বৈশিষ্ট্যের আরও উন্নয়নে, আপনার প্রতিক্রিয়া উইকিপিডিয়া সম্প্রদায়ের সাথে বেনামে শেয়ার করা হতে পারে।',
-	'articlefeedback-error' => 'একটি ত্রুটি দেখা দিয়েছে। অনুগ্রহ করে পরবর্তীতে আবার চেষ্টা করুন।',
+	'articlefeedback-error' => 'একটি ত্রুটি দেখা দিয়েছে। অনুগ্রহপূর্বক পরবর্তীতে আবার চেষ্টা করুন।',
 	'articlefeedback-form-switch-label' => 'এই পাতায় রেট করুন',
 	'articlefeedback-form-panel-title' => 'এই পাতায় রেট করুন',
 	'articlefeedback-form-panel-explanation' => 'এইটি কী?',
@@ -749,7 +749,7 @@ $messages['bn'] = array(
 	'articlefeedback-pitch-edit-accept' => 'পাতাটি সম্পাদনা করুন',
 	'articlefeedback-survey-message-success' => 'জরিপটিতে অংশ নেওয়ার জন্য আপনাকে ধন্যবাদ।',
 	'articlefeedback-survey-message-error' => 'একটি ত্রুটি দেখা দিয়েছে।
-অনুগ্রহ করে পরবর্তীতে আবার চেষ্টা করুন।',
+অনুগ্রহপূর্বক পরবর্তীতে আবার চেষ্টা করুন।',
 	'articleFeedback-table-heading-page' => 'পাতা',
 	'articleFeedback-table-heading-average' => 'গড়',
 	'articlefeedback-disable-preference' => 'পাতায় নিবন্ধ প্রতিক্রিয়া উইজেটটি দেখিও না',
@@ -1556,6 +1556,18 @@ Viele Grüße und vielen Dank,
 Das {{SITENAME}}-Team',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'articlefeedback-survey-answer-whyrated-other' => 'Bin',
+	'articlefeedback-survey-question-useful-iffalse' => 'Çıra?',
+	'articlefeedback-survey-submit' => 'Qeyd ke',
+	'articlefeedback-pitch-or' => 'ya zi',
+	'articlefeedback-pitch-join-login' => 'Cıkewe',
+	'articleFeedback-table-heading-page' => 'Pele',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -1839,6 +1851,7 @@ $messages['es'] = array(
 	'articlefeedback-survey-title' => 'Por favor, contesta algunas preguntas',
 	'articlefeedback-survey-thanks' => 'Gracias por completar la encuesta.',
 	'articlefeedback-survey-disclaimer' => 'Para ayudar a mejorar esta característica, sus comentarios podrían compartirse anónimamente con la comunidad de Wikipedia.',
+	'articlefeedback-survey-disclaimerlink' => 'términos',
 	'articlefeedback-error' => 'Ha ocurrido un error. Por favor inténtalo de nuevo más tarde.',
 	'articlefeedback-form-switch-label' => 'Evalúa este artículo',
 	'articlefeedback-form-panel-title' => 'Evalúa este artículo',
@@ -1851,7 +1864,7 @@ $messages['es'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'Es una pasión personal',
 	'articlefeedback-form-panel-expertise-other' => 'La fuente de mi conocimiento no está en esta lista',
 	'articlefeedback-form-panel-helpimprove' => 'Me gustaría ayudar a mejorar Wikipedia, enviarme un correo electrónico (opcional)',
-	'articlefeedback-form-panel-helpimprove-note' => 'Te enviaremos un correo electrónico de confirmación. No compartiremos tu dirección con nadie. $1',
+	'articlefeedback-form-panel-helpimprove-note' => 'Te enviaremos un correo electrónico de confirmación. No compartiremos tu dirección de correo electrónico con terceros por nuestra $1.',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Política de privacidad',
 	'articlefeedback-form-panel-submit' => 'Enviar calificaciones',
 	'articlefeedback-form-panel-pending' => 'Tu valoración aún no ha sido enviada',
@@ -5158,6 +5171,7 @@ $messages['nn'] = array(
  * @author Event
  * @author Nghtwlkr
  * @author Sjurhamre
+ * @author Stigmj
  */
 $messages['no'] = array(
 	'articlefeedback' => 'Panelbord for artikkelvurdering',
@@ -5176,7 +5190,8 @@ $messages['no'] = array(
 	'articlefeedback-survey-submit' => 'Send',
 	'articlefeedback-survey-title' => 'Svar på noen få spørsmål',
 	'articlefeedback-survey-thanks' => 'Takk for at du fylte ut undersøkelsen.',
-	'articlefeedback-survey-disclaimer' => 'For å stimulere til å forbedre denne funksjonaliteten kan din tilbakemelding deles anonymt med Wikipedia-samfunnet.',
+	'articlefeedback-survey-disclaimer' => 'Ved å sende inn, samtykker du til innsyn under disse $1',
+	'articlefeedback-survey-disclaimerlink' => 'vilkår',
 	'articlefeedback-error' => 'En feil har oppstått. Prøv igjen senere.',
 	'articlefeedback-form-switch-label' => 'Vurder denne siden',
 	'articlefeedback-form-panel-title' => 'Vurder denne siden',
@@ -5189,8 +5204,8 @@ $messages['no'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'Det er en dypt personlig hobby/lidenskap',
 	'articlefeedback-form-panel-expertise-other' => 'Kilden til min kunnskap er ikke listet opp her',
 	'articlefeedback-form-panel-helpimprove' => 'Jeg ønsker å bidra til å forbedre Wikipedia, send meg en e-post (valgfritt)',
-	'articlefeedback-form-panel-helpimprove-note' => 'Vi vil sende deg en bekreftelse på e-post. Vi vil ikke dele adressen din med noen andre. $1',
-	'articlefeedback-form-panel-helpimprove-privacy' => 'Retningslinjer for personvern',
+	'articlefeedback-form-panel-helpimprove-note' => 'Vi vil sende deg en bekreftelse på e-post. Vi vil ikke dele adressen din med noen andre i henhold til vår $1.',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'personvernerklæring for tilbakemeldinger',
 	'articlefeedback-form-panel-submit' => 'Send vurdering',
 	'articlefeedback-form-panel-pending' => 'Vurderingene dine har ikke blitt sendt inn',
 	'articlefeedback-form-panel-success' => 'Lagret',
@@ -5208,7 +5223,7 @@ $messages['no'] = array(
 	'articlefeedback-field-trustworthy-tooltip-3' => 'Tilstrekkelig troverdige kilder',
 	'articlefeedback-field-trustworthy-tooltip-4' => 'Godt anerkjente kilder',
 	'articlefeedback-field-trustworthy-tooltip-5' => 'Spesielt anerkjente kilder',
-	'articlefeedback-field-complete-label' => 'Fullfør',
+	'articlefeedback-field-complete-label' => 'Fullstendig',
 	'articlefeedback-field-complete-tip' => 'Føler du at denne siden dekker de vesentlige emneområdene som den burde?',
 	'articlefeedback-field-complete-tooltip-1' => 'Mangler det meste av informasjonen',
 	'articlefeedback-field-complete-tooltip-2' => 'Inneholder noe informasjon',
