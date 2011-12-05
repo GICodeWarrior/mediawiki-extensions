@@ -2,7 +2,7 @@
 /**
  * Aliases for special pages
  *
- * @author Anna Kantorovitch and Benedikt Kämpgen
+ * @author Anna Kantorovitch and Benedikt KÃ¤mpgen
  * @ingroup Extensions
  * @ingroup SWBLanguage
  */
@@ -11,5 +11,5 @@
 /** English (English) */
 
 $specialPageAliases['en'] = array(
-           'BrowseWiki' => array( 'BrowseWiki' ),
+	'BrowseWiki' => array( 'BrowseWiki' ),
 );

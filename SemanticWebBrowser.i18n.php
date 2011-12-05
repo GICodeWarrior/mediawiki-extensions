@@ -1,28 +1,40 @@
 <?php
 /**
  * Internationalization file for Semantic WebBrowser
- *@author Anna Kantorovitch and Benedikt K�mpgen
+ * @author Anna Kantorovitch and Benedikt Kämpgen
  * @ingroup Language
  * @ingroup SWBLanguage
  */
-
 
 /** English
  *
  */
 $messages['en'] = array(
-
-	// Messages for the browsing semantic Web special
-	
-	'browsewiki'                 => 'Browse Wiki & Semantic Web', #title of the SWB page
-    'swb_browse_semantic_web'    => 'Browse Wiki & Semantic Web', #title for browsing
-	'swb_browse_article'         => 'Enter the name of the page to start semantic browsing from.',#text above "go"window
-	'swb_browse_go'              => 'Go', #title of button "go"
-	'swb_browse_show_incoming'   => 'show incoming properties that link here', #title of properties
-	'swb_browse_hide_incoming'   => 'hide incoming properties that link here', #title of properties
-	'swb_browse_no_outgoing'     => 'This page has no properties.', #text: page has no properties
-	'swb_browse_no_incoming'     => 'No properties link to this page.', #text:page has no incoming properties
-	'swb_inverse_label_property' => 'Inverse property label', # this is the name of a special property
-	'swb_inverse_label_default'  => '$1 of', #text : inverse label dafault,$1 is place marker, have not to be translated
-    'swb_browse_more'            => '…', #text: browse more details
+	'browsewiki'                 => 'Browse Wiki & Semantic Web',
+	'swb_desc'                   => 'Adds a special page [[Special:BrowseWiki|Browse Wiki & Semantic Web]]',
+	'swb_browse_article'         => 'Enter the name of the page to start semantic browsing from.'
+	'swb_browse_go'              => 'Go',
+	'swb_browse_show_incoming'   => 'show incoming properties that link here',
+	'swb_browse_hide_incoming'   => 'hide incoming properties that link here',
+	'swb_browse_no_outgoing'     => 'This page has no properties.',
+	'swb_browse_no_incoming'     => 'No properties link to this page.',
+	'swb_inverse_label_property' => 'Inverse property label',
+	'swb_inverse_label_default'  => '$1 of',
+	'swb_browse_more'            => '...',
 );
+
+/** Message documentation (Message documentation)
+ * @author Benedikt Kämpgen
+ */
+$messages['en'] = array(
+	'browsewiki'                 => 'Title of the SWB page',
+	'swb_browse_semantic_web'    => 'Title for browsing',
+	'swb_browse_article'         => 'Text above "go" window',
+	'swb_browse_go'              => 'Title of button "go"',
+	'swb_browse_show_incoming'   => 'Title of properties',
+	'swb_browse_hide_incoming'   => 'Title of properties',
+	'swb_inverse_label_property' => 'Name of a special property',
+	'swb_inverse_label_default'  => 'Inverse label default, $1 is a place marker', 
+	'swb_browse_more'            => 'Browse more details',
+);
+

@@ -21,9 +21,9 @@ $wgExtensionCredits['semantic'][] = array(
 	'path' 			 =>  __FILE__,
 	'name' 			 =>  'Semantic Web Browser',
 	'version' 		 =>  '0.2',
-	'author' 		 =>  'Benedikt Kaempgen, Anna Kantorovitch.',
+	'author' 		 =>  array( 'Benedikt Kaempgen', 'Anna Kantorovitch' ),
 	'url'			 =>  'http://semantic-mediawiki.org',
-	'descriptionmsg' =>  'This extension adds a special page (and later a factbox) Browse Wiki and Semantic Web.'
+	'descriptionmsg'         =>  'swb_desc'
 );
 
 /**
@@ -35,5 +35,3 @@ $swbgToolboxBrowseSemWeb = true;
 
 // load global constants and setup functions
 require_once( $swbgIP.'SemanticWebBrowser.php' );
-
-?>
