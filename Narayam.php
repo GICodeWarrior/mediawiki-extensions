@@ -44,11 +44,14 @@ $wgNarayamEnabledByDefault = true;
 // Number of recently used input methods to be shown
 $wgNarayamRecentItemsLength = 3;
 
+// Whether the extension should load input methods in beta status
+$wgNarayamUseBetaMapping = false;
+
 // Array mapping language codes and scheme names to module names
 // Custom schemes can be added here
 $wgNarayamSchemes = array(
 	'am' => array(
-		'am' => 'ext.narayam.rules.am',
+		'am' => array( 'ext.narayam.rules.am', 'beta' ),
 	),
 	'as' => array(
 		'as' => 'ext.narayam.rules.as',
@@ -62,10 +65,10 @@ $wgNarayamSchemes = array(
 		'bn-nkb' => 'ext.narayam.rules.bn-nkb',
 	),
 	'brx' => array(
-		'brx-inscript' => 'ext.narayam.rules.brx-inscript',
+		'brx-inscript' => array( 'ext.narayam.rules.brx-inscript', 'beta' ),
 	),
 	'hne' => array(
-		'hne-inscript' => 'ext.narayam.rules.hne-inscript',
+		'hne-inscript' => array( 'ext.narayam.rules.hne-inscript', 'beta' ),
 	),
 	'de' => array(
 		'de' => 'ext.narayam.rules.de',
@@ -74,8 +77,8 @@ $wgNarayamSchemes = array(
 		'eo' => 'ext.narayam.rules.eo',
 	),
 	'gom-deva' => array(
-		'gom-deva' => 'ext.narayam.rules.gom-deva',
-		'gom-deva-inscript' => 'ext.narayam.rules.gom-deva-inscript',
+		'gom-deva' =>  array( 'ext.narayam.rules.gom-deva', 'beta' ),
+		'gom-deva-inscript' => array( 'ext.narayam.rules.gom-deva-inscript', 'beta' ),
 	),
 	'hi' => array(
 		'hi' => 'ext.narayam.rules.hi',
@@ -86,38 +89,38 @@ $wgNarayamSchemes = array(
 		'kn-inscript' => 'ext.narayam.rules.kn-inscript',
 	),
 	'mai' => array(
-		'mai-inscript' => 'ext.narayam.rules.mai-inscript',
+		'mai-inscript' => array( 'ext.narayam.rules.mai-inscript', 'beta' ),
 	),
 	'ml' => array(
 		'ml' => 'ext.narayam.rules.ml',
 		'ml-inscript' => 'ext.narayam.rules.ml-inscript',
 	),
 	'mr' => array(
-		'mr' => 'ext.narayam.rules.mr',
-		'mr-inscript' => 'ext.narayam.rules.mr',
+		'mr' => array( 'ext.narayam.rules.mr', 'beta' ),
+		'mr-inscript' => array( 'ext.narayam.rules.mr', 'beta' ),
 	),
 	'ne' => array(
-		'ne' => 'ext.narayam.rules.ne',
-		'ne-inscript' => 'ext.narayam.rules.ne-inscript',
+		'ne' => array( 'ext.narayam.rules.ne', 'beta' ),
+		'ne-inscript' => array( 'ext.narayam.rules.ne-inscript', 'beta' ),
 	),
 	'or' => array(
 		'or' => 'ext.narayam.rules.or',
-		'or-lekhani' => 'ext.narayam.rules.or-lekhani',
+		'or-lekhani' =>  array( 'ext.narayam.rules.or-lekhani', 'beta' ),
 		'or-inscript' => 'ext.narayam.rules.or-inscript',
 	),
 	'pa' => array(
-		'pa-inscript' => 'ext.narayam.rules.pa-inscript',
-		'pa-phonetic' => 'ext.narayam.rules.pa-phonetic',
+		'pa-inscript' => array( 'ext.narayam.rules.pa-inscript', 'beta' ),
+		'pa-phonetic' => array( 'ext.narayam.rules.pa-phonetic', 'beta' ),
 	),
 	'rif' => array(
-		'ber-tfng' => 'ext.narayam.rules.ber-tfng',
+		'ber-tfng' => array( 'ext.narayam.rules.ber-tfng', 'beta' ),
 	),
 	'sa' => array(
 		'sa' => 'ext.narayam.rules.sa',
 		'sa-inscript' => 'ext.narayam.rules.sa-inscript',
 	),
 	'shi' => array(
-		'ber-tfng' => 'ext.narayam.rules.ber-tfng',
+		'ber-tfng' => array( 'ext.narayam.rules.ber-tfng', 'beta' ),
 	),
 	'si' => array(
 		'si-singlish' => 'ext.narayam.rules.si-singlish',
@@ -126,24 +129,24 @@ $wgNarayamSchemes = array(
 	'ta' => array(
 		'ta' => 'ext.narayam.rules.ta',
 		'ta-99' => 'ext.narayam.rules.ta-99',
-		'ta-bamini' => 'ext.narayam.rules.ta-bamini',
-		'ta-inscript' => 'ext.narayam.rules.ta-inscript',
+		'ta-bamini' => array( 'ext.narayam.rules.ta-bamini', 'beta' ),
+		'ta-inscript' =>  array( 'ext.narayam.rules.ta-inscript', 'beta' ),
 	),
 	'te' => array(
 		'te-inscript' => 'ext.narayam.rules.te-inscript',
 	),
 	'ur' => array(
-		'ur' => 'ext.narayam.rules.ur',
+		'ur' => array( 'ext.narayam.rules.ur', 'beta' ),
 	),
 	'gu' => array(
-		'gu' => 'ext.narayam.rules.gu',
-		'gu-inscript' => 'ext.narayam.rules.gu-inscript',
+		'gu' => array( 'ext.narayam.rules.gu', 'beta' ),
+		'gu-inscript' => array( 'ext.narayam.rules.gu-inscript', 'beta' ),
 	),
 	'ru' => array(
-		'ru-standard' => 'ext.narayam.rules.ru-standard',
+		'ru-standard' => array( 'ext.narayam.rules.ru-standard', 'beta' ),
 	),
 	'sah' => array(
-		'sah-standard' => 'ext.narayam.rules.sah-standard',
+		'sah-standard' => array( 'ext.narayam.rules.sah-standard', 'beta' ),
 	),
 );
 

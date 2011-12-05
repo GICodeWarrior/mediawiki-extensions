@@ -34,14 +34,25 @@ class NarayamHooks {
 
 	/// Hook: MakeGlobalVariablesScript
 	public static function addVariables( &$vars ) {
-		global $wgUser, $wgNarayamSchemes;
+		global $wgUser, $wgNarayamSchemes, $wgNarayamUseBetaMapping;
 
 		if ( $wgUser->getOption( 'narayamDisable' ) ) {
 			return true;
 		}
 
 		$vars['wgNarayamAvailableSchemes'] = self::getSchemes(); // Note: scheme names must be keys, not values
-		$vars['wgNarayamAllSchemes'] = $wgNarayamSchemes;
+		$allSchemes = $wgNarayamSchemes;
+		if ( !$wgNarayamUseBetaMapping ) {
+			foreach ( $allSchemes as $lang => $schemes ) {
+				foreach ( $schemes as $i => $scheme ) {
+					$version = isset( $scheme[1] ) ? $scheme[1] : "stable";
+					if ( $version === "beta" ) {
+						unset( $allSchemes[$lang][$i] );
+					}
+				}
+			}
+		}
+		$vars['wgNarayamAllSchemes'] = $allSchemes;
 		return true;
 	}
 
@@ -50,7 +61,7 @@ class NarayamHooks {
 	 * @return array( scheme name => module name )
 	 */
 	protected static function getSchemes() {
-		global $wgLanguageCode, $wgLang, $wgNarayamSchemes, $wgTitle;
+		global $wgLanguageCode, $wgLang, $wgNarayamSchemes, $wgTitle, $wgNarayamUseBetaMapping;
 
 		$userlangCode = $wgLang->getCode();
 		$contlangSchemes = isset( $wgNarayamSchemes[$wgLanguageCode] ) ?
@@ -62,7 +73,14 @@ class NarayamHooks {
 			$wgNarayamSchemes[$pagelang] : array();
 
 		$schemes = $userlangSchemes + $contlangSchemes + $pagelangSchemes;
-
+		if ( !$wgNarayamUseBetaMapping ) {
+			foreach ( $schemes as $i => $scheme ) {
+				$version = isset( $scheme[1] ) ? $scheme[1] : "stable";
+				if ( $version === "beta" ) {
+					unset( $schemes[$i] );
+				}
+			}
+		}
 		return $schemes;
 	}
 
