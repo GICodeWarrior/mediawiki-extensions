@@ -34,6 +34,13 @@ $messages['de'] = array(
 	'helpcommons-desc' => 'Nimmt den Hilfe-Namensraum aus einem Hilfe Wiki und bindet ihn in andere Wikis der Wiki-Family ein',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'helpcommons-desc' => 'Extrae o espazo de nomes de axuda dun wiki auxiliar e inclúe os contidos noutros wikis da familia',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
