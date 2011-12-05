@@ -292,6 +292,14 @@ $messages['ksh'] = array(
 	'webfonts-enable-preference' => 'Et Schreff_Aate en de Sigge enboue aanschallde ({{int:webfonts}})',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'webfonts-load' => 'Buschtawen-Typ (Font) eraussichen',
+	'webfonts-reset' => 'Zrécksetzen',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
