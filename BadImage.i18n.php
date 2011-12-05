@@ -634,6 +634,14 @@ $messages['de-formal'] = array(
 	'badimages-unprivileged' => '(Sie haben nicht die erforderliche Berechtigung, die Liste ändern zu können)',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'badimages-name' => 'Name:',
+	'badimages-reason' => 'Sebeb:',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
