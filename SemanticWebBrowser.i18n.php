@@ -26,7 +26,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Benedikt Kämpgen
  */
-$messages['en'] = array(
+$messages['qqq'] = array(
 	'browsewiki'                 => 'Title of the SWB page',
 	'swb_browse_semantic_web'    => 'Title for browsing',
 	'swb_browse_article'         => 'Text above "go" window',
