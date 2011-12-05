@@ -457,7 +457,7 @@ Denne advarsel kan slås fra under Redigering i dine indstillinger.',
  * @author ✓
  */
 $messages['de'] = array(
-	'vector' => 'Verbesserungen für die Vector-Benutzeroberfläche',
+	'vector' => 'Verbesserungen für die Benutzeroberfläche „Vector“',
 	'vector-desc' => 'Ermöglicht zusätzliche Verbesserungen der Benutzeroberfläche „Vector“',
 	'vector-collapsiblenav-preference' => 'Zusammenklappen von Elementen im Navigationsmenü der Benutzeroberfläche Vector aktivieren',
 	'vector-collapsiblenav-more' => 'Weitere Sprachen',
