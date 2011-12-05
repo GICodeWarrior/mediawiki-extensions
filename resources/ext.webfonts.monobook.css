@@ -1,0 +1,9 @@
+ 
+div#webfonts-menu   {
+	float: none;
+}
+ 
+ul#webfonts-fontsmenu {
+	position: relative;
+	margin: 0px;
+}
