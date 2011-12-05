@@ -14,8 +14,6 @@ class FundraiserRedirector extends UnlistedSpecialPage {
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgFundraiserLPDefaults;
 		
-		$this->setHeaders();
-		
 		// Set the country parameter
 		$country = $wgRequest->getVal( 'country' );
 		// If no country was passed do a GeoIP lookup
