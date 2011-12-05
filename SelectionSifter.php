@@ -15,6 +15,14 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 // Extension credits that will show up on Special:Version
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'SelectionSifter',
+	'author' => 'Yuvi Panda',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:SelectionSifter',
+	# 'version' => '0.1',
+	'descriptionmsg' => 'selectionsifter-desc',
+);
 
 // Set up the new special page
 $dir = dirname( __FILE__ ) . '/';
