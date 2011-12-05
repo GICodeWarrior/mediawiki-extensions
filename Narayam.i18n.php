@@ -338,12 +338,15 @@ $messages['br'] = array(
 	'narayam-as-avro' => 'Avro asameg',
 	'narayam-as-bornona' => 'Bornora asameg',
 	'narayam-as-inscript' => 'InSript asameg',
+	'narayam-ber-tfng' => 'Treuzlizherennadur tifinagh',
 	'narayam-eo' => 'Esperanteg',
+	'narayam-hi' => 'Treuzlizherennadur hindi',
 	'narayam-hi-inscript' => 'InScript hindi',
 	'narayam-kn' => 'Treuzlizherennadur kannada',
 	'narayam-kn-inscript' => 'InScript kannada',
 	'narayam-ml' => 'Treuzlizherennadur Malayalam',
 	'narayam-ml-inscript' => 'InScript malayalam',
+	'narayam-mr' => 'Treuzlizherennadur marathi',
 	'narayam-ne' => 'Treuzlizherennadur nepaleg',
 	'narayam-ne-inscript' => 'Inscript nepaleg',
 	'narayam-or' => 'Treuzlizherennadur oriya',
@@ -359,6 +362,8 @@ $messages['br'] = array(
 	'narayam-bn-avro' => 'Avro bengaleg',
 	'narayam-bn-inscript' => 'InScript bengaleg',
 	'narayam-bn-nkb' => 'NKB bengaleg',
+	'narayam-ur' => 'Standard ourdou',
+	'narayam-de' => 'Alamaneg',
 );
 
 /** Bosnian (Bosanski)
@@ -492,6 +497,7 @@ $messages['de'] = array(
 	'narayam-ru-standard' => 'Russisch (Standard)',
 	'narayam-sah-standard' => 'Jakutisch (Standard)',
 	'narayam-hne-inscript' => 'Chhattisgarhi (InScript)',
+	'narayam-mai-inscript' => 'Maithili (InScript)',
 	'narayam-gom-deva' => 'Konkani - Devanagari / Goa (Transliteration)',
 	'narayam-gom-deva-inscript' => 'Konkani - Devanagari / Goa (InScript)',
 );
@@ -674,6 +680,7 @@ $messages['fr'] = array(
 	'narayam-si-singlish' => 'Singlish cinghalais',
 	'narayam-si-wijesekara' => 'Wijesekara cinghalais',
 	'narayam-ta-99' => 'Tamil99',
+	'narayam-ta-inscript' => 'InScript tamoul',
 	'narayam-ta' => 'Translittération tamoule',
 	'narayam-ta-bamini' => 'Tamoul Bamini',
 	'narayam-te-inscript' => 'InScript télougou',
@@ -686,6 +693,10 @@ $messages['fr'] = array(
 	'narayam-gu-inscript' => 'InScript gujarati',
 	'narayam-ru-standard' => 'Norme russe',
 	'narayam-sah-standard' => 'Norme sakha',
+	'narayam-hne-inscript' => 'InScript chhattisgarhi',
+	'narayam-mai-inscript' => 'InScript maithili',
+	'narayam-gom-deva' => 'Traduction Goan Konkani-Devanagari',
+	'narayam-gom-deva-inscript' => 'InScript Goan Konkani-Devanagari',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -784,6 +795,10 @@ $messages['gl'] = array(
 	'narayam-gu-inscript' => 'InScript para maratí gujarati',
 	'narayam-ru-standard' => 'Ruso estándar',
 	'narayam-sah-standard' => 'Sakha estándar',
+	'narayam-hne-inscript' => 'InScript para chhattisgarhi',
+	'narayam-mai-inscript' => 'InScript para maithili',
+	'narayam-gom-deva' => 'Transliteración para goan konkani-devanagari',
+	'narayam-gom-deva-inscript' => 'InScript para goan konkani-devanagari',
 );
 
 /** Swiss German (Alemannisch)
@@ -1027,6 +1042,7 @@ $messages['ia'] = array(
 	'narayam-ru-standard' => 'Russo standard',
 	'narayam-sah-standard' => 'Sakha standard',
 	'narayam-hne-inscript' => 'Chhattisgarhi (InScript)',
+	'narayam-mai-inscript' => 'Maithili (InScript)',
 	'narayam-gom-deva' => 'Translitteration in Goan Konkani-Devanagari',
 	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari (InScript)',
 );
@@ -1270,6 +1286,7 @@ $messages['mk'] = array(
 	'narayam-ru-standard' => 'руски (стандардно)',
 	'narayam-sah-standard' => 'јакутски (стандардно)',
 	'narayam-hne-inscript' => 'Чатисгари - InScript',
+	'narayam-mai-inscript' => 'Мајтили - InScript',
 	'narayam-gom-deva' => 'гоански Конкани - транслитерација на деванагари',
 	'narayam-gom-deva-inscript' => 'гоански Конкани - InScript за деванагари',
 );
@@ -2118,7 +2135,7 @@ $messages['vi'] = array(
 	'narayam-ml' => 'Chuyển tự tiếng Malayalam',
 	'narayam-ml-inscript' => 'InScript Malayalam',
 	'narayam-mr' => 'Chuyển tự tiếng Marathi',
-	'narayam-mr-inscript' => 'InScript tiếng Marathi',
+	'narayam-mr-inscript' => 'InScript Marathi',
 	'narayam-ne' => 'Chuyển tự tiếng Nepal',
 	'narayam-ne-inscript' => 'InScript Nepal',
 	'narayam-or' => 'Chuyển tự tiếng Oriya',
@@ -2144,6 +2161,10 @@ $messages['vi'] = array(
 	'narayam-gu-inscript' => 'InScript Gujarati',
 	'narayam-ru-standard' => 'Tiếng Nga chuẩn',
 	'narayam-sah-standard' => 'Tiếng Sakha chuẩn',
+	'narayam-hne-inscript' => 'InScript Chhattisgarh',
+	'narayam-mai-inscript' => 'InScript Mithila',
+	'narayam-gom-deva' => 'Chuyển tự tiếng Konkan Goa chữ Devanagari',
+	'narayam-gom-deva-inscript' => 'InScript Konkan Goa chữ Devanagari',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
