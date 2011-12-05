@@ -1129,6 +1129,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author DavidL
  * @author Gomoko
  * @author Hashar
@@ -1192,6 +1193,7 @@ Assurez-vous que le sondage soit déclaré et sauvegardé. Vérifiez également 
 	'qp_error_no_stats' => 'Aucune donnée statistique n’est disponible, car personne n’a répondu à ce sondage pour l’instant (address=$1)',
 	'qp_error_address_in_decl_mode' => 'Impossible d’obtenir une adresse du sondage en mode déclaratif',
 	'qp_error_question_not_implemented' => 'Les questions de ce type ne sont pas implémentées : $1',
+	'qp_error_question_empty_body' => 'Le corps de la question est vide.',
 	'qp_error_invalid_question_type' => 'Type de question invalide : $1',
 	'qp_error_invalid_question_name' => 'Nom de question invalide:  $1.',
 	'qp_error_type_in_stats_mode' => 'Le type de question ne peut pas être défini en mode d’affichage statistique : $1',
@@ -1220,6 +1222,7 @@ Pour enregistrer un sondage, soumettez-le en ne répondant à aucune question de
 	'qp_error_too_few_categories' => 'Au moins deux catégories doivent être définies',
 	'qp_error_too_few_spans' => 'Toute classe de catégorie nécessite au moins deux réponses possibles définies',
 	'qp_error_no_answer' => 'Proposition sans réponse',
+	'qp_error_not_enough_categories_answered' => 'Pas assez de catégories sélectionnées.',
 	'qp_error_unique' => 'La question de type unique() a plus de propositions qu’il n’y a de réponses possibles définies : impossible de compléter',
 	'qp_error_no_more_attempts' => 'Vous avez atteint le nombre maximal de tentatives de soumission pour ce sondage.',
 	'qp_error_no_interpretation' => "Le script d'interprétation n'existe pas.",
