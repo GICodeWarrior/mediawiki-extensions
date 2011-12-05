@@ -16,7 +16,7 @@ $messages = array();
  * @author Daniel Werner
  */
 $messages['en'] = array(
-	'simplefarm-desc' => 'Simple, yet powerfull wiki farm extension without any fancy configuration pages',
+	'simplefarm-desc' => 'Simple, yet powerful wiki farm extension without any fancy configuration pages',
 );
 
 /** German (Deutsch)
