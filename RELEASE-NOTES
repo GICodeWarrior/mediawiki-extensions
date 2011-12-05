@@ -1,11 +1,12 @@
  Changelog:
  ==========
 
- * (trunk) -- Version 2.0rc2
+ * December 5, 2011 -- Version 2.0rc2
+    - Bug introduced in r105069 fixed where '#arrayprint' was broken in compatibility mode in some cases.
     - '#arraysearcharray' with 'e' using 'Regex Fun' no longer requires an escaped transform (parameter 6)
       input. It works just like the '#regex' parser functions replacement parameter.
 
- * December 4, 2011 -- Version 2.0rc
+ * December 4, 2011 -- Version 2.0rc1
     This release is built upon 1.4 alpha. See changes of 1.4 alpha as well.
     'ArrayExtension' is now simply called 'Arrays'. Therefore you have to adjust your LocalSettings.php.
     - Compatibility mode variable '$egArraysCompatibilityMode' ('$egArrayExtensionCompatbilityMode' in
