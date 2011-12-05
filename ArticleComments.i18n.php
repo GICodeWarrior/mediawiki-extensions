@@ -487,6 +487,14 @@ $messages['de-formal'] = array(
 	'article-comments-user-is-blocked' => 'Sie dürfen die Seite „[[$1]]“ derzeit nicht bearbeiten.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'article-comments-name-string' => 'Name',
+	'article-comments-submit-button' => 'Qeyd ke',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
