@@ -27,6 +27,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Crowd Authentication Plugin',
 	'author'         => 'River Tarnell',
+	'version'        => '1.1',
 	'descriptionmsg' => 'crowdauthentication-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:CrowdAuthentication'
 );
@@ -39,6 +40,8 @@ $caCrowdServerUrl = 'http://localhost:8095/crowd/services';
 $caDefaultGroups = array("jira-users", "confluence-users");
 $caImportGroups = true;
 $caOverwriteLocalGroups = false;
+
+$caAddUserToCrowd = true;
 
 class caPasswordCredential {
 	/**
@@ -307,6 +310,11 @@ class CrowdAuthenticator extends AuthPlugin {
 	 * @return bool
 	 */
 	public function addUser( $user, $password, $email = '', $realname = '' ) {
+		global $caAddUserToCrowd;
+		if ( !$caAddUserToCrowd ) {
+			return true;
+		}
+
 		global $caDefaultGroups;
 		$crowd = $this->getCrowd();
 		$nameparts = split( " ", $realname, 2 );
