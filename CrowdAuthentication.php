@@ -33,23 +33,21 @@ $wgExtensionCredits['other'][] = array(
 
 $wgExtensionMessagesFiles['CrowdAuthentication'] = dirname(__FILE__) . '/CrowdAuthentication.i18n.php';
 
-require_once("AuthPlugin.php");
-
 class caPasswordCredential {
 	public /*string*/ $credential;
-};
+}
 
 class caAuthenticatedToken {
-};
+}
 
 class caPrincipal {
-};
+}
 
 class caSearchRestriction {
-};
+}
 
 class caSOAPGroup {
-};
+}
 
 class caSOAPAttribute {
 	public /*string*/ $name;
@@ -59,7 +57,7 @@ class caSOAPAttribute {
 		$this->name = $name;
 		$this->values = array($value);
 	}
-};
+}
 
 class caApplicationAuthenticationContext {
 	public /*PasswordCredential*/ $credential;
