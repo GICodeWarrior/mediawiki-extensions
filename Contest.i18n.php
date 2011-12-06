@@ -995,6 +995,7 @@ $messages['fa'] = array(
 	'contest-edit-rulespage' => 'صفحهٔ قوانین',
 	'contest-edit-help' => 'صفحهٔ راهنما',
 	'contest-edit-submit' => 'ثبت',
+	'contest-edit-challenge-oneline' => 'توضیح کوتاه',
 	'contest-welcome-signup' => 'هم‌اکنون ثبت‌نام کنید',
 	'contest-signup-submit' => 'ثبت‌نام',
 	'contest-signup-email' => 'نشانی رایانامهٔ شما',
