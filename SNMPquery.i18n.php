@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'snmpquery-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'snmpquery-desc' => 'Amiesta les funciones SNMPget y SNMPwalk y permite amosar los resultaos na wiki',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
