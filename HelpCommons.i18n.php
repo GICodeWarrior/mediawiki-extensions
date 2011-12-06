@@ -17,7 +17,7 @@ $messages = array();
  * @author SVG
  */
 $messages['en'] = array(
-   'helpcommons-desc' => 'Fetches the help namespace from a help wiki and includes them into other wikis on the wiki family',
+   'helpcommons-desc' => 'Fetches the help pages from a help wiki and includes them into other wikis on the wiki family',
 );
 
 /** Message documentation (Message documentation)
@@ -31,7 +31,7 @@ $messages['qqq'] = array(
  * @author SVG
  */
 $messages['de'] = array(
-	'helpcommons-desc' => 'Nimmt den Hilfe-Namensraum aus einem Hilfe Wiki und bindet ihn in andere Wikis der Wiki-Family ein',
+	'helpcommons-desc' => 'Nimmt den Hilfe-Namensraum aus einem Hilfe Wiki und bindet ihn in andere Wikis der Wiki-Familie ein',
 );
 
 /** Galician (Galego)

@@ -7,7 +7,7 @@
 *
 * @author: Tim 'SVG' Weyer <SVG@Wikiunity.com>
 *
-* @copyright Copyright (C) 2011 Tim 'SVG' Weyer, Wikiunity
+* @copyright Copyright (C) 2011 Tim Weyer, Wikiunity
 * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
 *
 */
@@ -22,7 +22,7 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => array( 'Tim Weyer' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:HelpCommons',
 	'descriptionmsg' => 'helpcommons-desc',
-	'version'        => '1.0',
+	'version'        => '1.0.1',
 );
 
 // Internationalization
@@ -31,6 +31,10 @@ $wgExtensionMessagesFiles['HelpCommons'] = $dir . 'HelpCommons.i18n.php';
 
 // Help wiki(s) where the help namespace is fetched from
 $wgHelpCommonsFetchingWikis = array();
+// If true, all non-existing help pages and talks which exist on help wiki will be protected on non-help wikis
+$wgHelpCommonsProtect = true;
+// If true, every non-existing help page will be protected on non-help wikis
+$wgHelpCommonsProtectAll = false;
 
 // Hooks
 $wgHooks['ShowMissingArticle'][] = 'wfHelpCommonsLoad';
@@ -150,8 +154,8 @@ function efHelpCommonsMakeBlueLinks( $skin, $target, &$text, &$customAttribs, &$
 		return true;
 	}
 
-	// only affects non-existing Help pages
-	if ( $target->getNamespace() != NS_HELP || $target->exists() ) {
+	// only affects non-existing help pages and talks
+	if ( $target->getNamespace() != NS_HELP && $target->getNamespace() != NS_HELP_TALK || $target->exists() ) {
 		return true;
 	}
 
@@ -182,9 +186,10 @@ function wfHelpCommonsChangeEditSectionLink( $skin, $title, $section, $tooltip, 
 	if ( $wgTitle->getNamespace() != NS_HELP ) {
 		return false;
 	}
+
 	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
 		foreach ( $urls as $url => $helpwiki ) {
-			if ( $wgLanguageCode == $language && $wgDBname != $helpwiki ) {
+			if ( $wgLanguageCode == $language && $wgDBname != $helpwiki && !$wgTitle->exists() ) {
 				// FIXME: $result is unused
 				$result = '<span class="editsection">[<a href="' . $url . '/index.php?title=' .
 						str_replace( ' ', '_', $title ) . '&amp;action=edit&amp;section=' . $section .
@@ -203,14 +208,18 @@ function wfHelpCommonsChangeEditSectionLink( $skin, $title, $section, $tooltip, 
  * @return bool
  */
 function fnProtectHelpCommons( &$title, &$user, $action, &$result ) {
-	global $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
+	global $wgHelpCommonsProtect, $wgHelpCommonsProtectAll, $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
+
+	if ( !$wgHelpCommonsProtect && !$wgHelpCommonsProtectAll ) {
+		return false;
+	}
 
 	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
 		foreach ( $urls as $url => $helpwiki ) {
-			// only protect Help pages on non-help-pages-fetching wikis
-			if ( $wgLanguageCode == $language && $wgDBname != $helpwiki ) {
-				// block actions 'edit' and 'create'
-				if ( $action != 'edit' && $action != 'create' ) {
+			// only protect non-existing help pages on non-help-page-fetching wikis
+			if ( $wgLanguageCode == $language && $wgDBname != $helpwiki && !$title->exists() ) {
+				// block actions 'create', 'edit' and 'protect'
+				if ( $action != 'create' && $action != 'edit' && $action != 'protect' ) {
 					return true;
 				}
 
@@ -222,7 +231,7 @@ function fnProtectHelpCommons( &$title, &$user, $action, &$result ) {
 					__METHOD__
 				);
 
-				if ( $dbr->numRows( $res ) < 1 ) {
+				if ( $dbr->numRows( $res ) < 1 && $wgHelpCommonsProtect && !$wgHelpCommonsProtectAll ) {
 					return true;
 				}
 
@@ -232,7 +241,6 @@ function fnProtectHelpCommons( &$title, &$user, $action, &$result ) {
 				if( $ns == NS_HELP || $ns == NS_HELP_TALK ) {
 					// error message if action is blocked
 					$result = array( 'protectedpagetext' );
-
 					// bail, and stop the request
 					return false;
 				}
@@ -241,3 +249,4 @@ function fnProtectHelpCommons( &$title, &$user, $action, &$result ) {
 	}
 	return true;
 }
+
