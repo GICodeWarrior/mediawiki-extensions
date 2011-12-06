@@ -30,6 +30,13 @@ $messages['ar'] = array(
 	'nsfilerepo-desc' => 'يوفر خصائص معنمدة على النطاق للملفات المرفوعة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'nsfilerepo-desc' => 'Proporciona carauterístiques basaes nel espaciu de nomes pa los ficheros xubíos',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
