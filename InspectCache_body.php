@@ -13,8 +13,6 @@ class SpecialInspectCache extends SpecialPage {
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
 
-
-
 		$this->setHeaders();
 
 		if ( !$this->userCanExecute( $wgUser ) ) {
