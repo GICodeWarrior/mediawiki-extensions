@@ -39,6 +39,14 @@ $messages['arz'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|صفحة خاصة]] تعرض صفحة جذر عشوائية',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'randomrootpage' => 'Páxina raíz al debalu',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Páxina especial]] que devuelve una páxina raíz al debalu',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
