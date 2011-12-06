@@ -40,6 +40,14 @@ $messages['arz'] = array(
 	'random-users-avatars-desc' => 'يضيف وسم <code>&lt;randomuserswithavatars&gt;</code> لعرض أفاترات مستخدمين مختارين عشوائيا',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'random-users-avatars-title' => 'Conocer la comunidá',
+	'random-users-avatars-desc' => "Amiesta la etiqueta <code>&lt;randomuserswithavatars&gt;</code> p'amosar los fustaxes d'usuarios elixíos al debalu",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
