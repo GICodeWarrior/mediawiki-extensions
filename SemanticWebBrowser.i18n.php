@@ -57,3 +57,34 @@ $messages['de'] = array(
 	'swb_inverse_label_default' => '$1 von',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'browsewiki' => 'Прелистување на викито и Семантичката пајажина',
+	'swb_desc' => 'Додава специјална страница [[Special:BrowseWiki|Прелистување на викито и Семантичката пајажина]]',
+	'swb_browse_article' => 'Внесете го името на страницата од која би почнале со семантичкото прелистување.',
+	'swb_browse_go' => 'Оди',
+	'swb_browse_show_incoming' => 'прикажи дојдовни својства што водат овде',
+	'swb_browse_hide_incoming' => 'скриј дојдовни својства што водат овде',
+	'swb_browse_no_outgoing' => 'Оваа страница нема својства.',
+	'swb_browse_no_incoming' => 'До оваа страница не водат никакви својства.',
+	'swb_inverse_label_property' => 'Обратен наслов на својството',
+	'swb_inverse_label_default' => '$1 од',
+	'swb_browse_more' => '...',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'swb_browse_go' => 'ورځه',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'swb_browse_go' => 'వెళ్ళు',
+);
+
