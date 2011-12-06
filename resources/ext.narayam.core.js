@@ -646,12 +646,23 @@ $.narayam = new ( function() {
 			.text( mw.msg( 'narayam-menu' ) )
 			.attr( 'title', mw.msg( 'narayam-menu-tooltip' ) );
 		
-		$menu.append( $link ).append( $menuItemsDiv );
-		var $li = $( '<li>' ).attr( 'id', 'pt-narayam' ).append( $menu );
+		$menu.append( $menuItemsDiv );
+		var $li = $( '<li>' ).attr( 'id', 'pt-narayam' ).append( $link );
 
 		// If rtl, add to the right of top personal links. Else, to the left
 		var fn = $( 'body' ).hasClass( 'rtl' ) ? "append" : "prepend";
 		$( '#p-personal ul:first' )[fn]( $li );
+		$( 'body').prepend($menu);
+		$menu.hide();
+		$li.hover( function() {
+			$menuItemsDiv.css( 'left', $li.offset().left );
+			$menu.slideDown( 'slow' );
+		});
+		$menu.hover( function() {
+			}, function() {
+			$menu.slideUp( 'slow' );
+		});
+
 		// Workaround for IE bug - activex components like input fields
 		// coming on top of everything.
 		// TODO: is there a better solution other than hiding it on hover?

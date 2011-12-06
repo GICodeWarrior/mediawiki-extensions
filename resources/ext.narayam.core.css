@@ -30,10 +30,13 @@ body.rtl div#narayam-menu {
 }
 div#narayam-menu div.menu-items {
 	position: relative;
-	display: none;
+	display: block;
 	clear: both;
 	text-align: left;
 	z-index: 99999;
+	width: 300px;
+	top: 20px;
+	font-size: 0.8em;
 }
 
 div#narayam-menu-items li {
@@ -107,7 +110,6 @@ div#narayam-menu li a {
 	padding: 0.5em;
 	white-space: nowrap;
 	color: #0645ad;
-/*	font-size: 0.8em;*/
 }
 /* IGNORED BY IE6 */
 div#narayam-menu li > a {
@@ -130,12 +132,12 @@ div#narayam-menu-items li.narayam-help-link a {
 	padding-left: 15px;
 }
 
-li.narayam-active {
+li#pt-narayam.narayam-active {
 	/* @embed */
 	background: url('images/narayam-active.png') no-repeat scroll left top transparent;
 }
 
-li.narayam-inactive {
+li#pt-narayam.narayam-inactive {
 	/* @embed */
 	background: url('images/narayam-inactive.png') no-repeat scroll left top transparent;
 }
