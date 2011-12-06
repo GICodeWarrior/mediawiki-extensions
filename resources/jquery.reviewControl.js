@@ -6,9 +6,14 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-(function( $, mw, reviews ) {
-
-	$.fn.reviewControl = function() {
+(function( $, mw, reviews ) { $.fn.reviewControl = function( options ) {
+	
+	var settings = $.extend( {
+		
+	}, options );
+	
+	return this.each( function() {
+		
 		var _this = this;
 		var $this = $( this );
 		
@@ -163,8 +168,6 @@
 		};
 		
 		this.setup();
+	} );
 
-		return this;
-	};
-
-})( window.jQuery, window.mediaWiki, window.reviews );
+}; })( window.jQuery, window.mediaWiki, window.reviews );

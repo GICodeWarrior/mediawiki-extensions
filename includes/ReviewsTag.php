@@ -53,23 +53,39 @@ class ReviewsTag {
 	 * @since 0.1
 	 * 
 	 * @param IContextSource $contextSource
+	 * @param Parser $parser
 	 * 
 	 * @return string
 	 */
-	public function render( IContextSource $contextSource ) {
+	public function render( IContextSource $contextSource = null, Parser $parser = null ) {
 		static $loadedJs = false;
 		
-		if ( !$loadedJs ) {
-			$contextSource->getOutput()->addModules( 'ext.reviews.tag' );
-			$contextSource->getOutput()->addHeadItem( 
-				'wgReviewsSettings',
-				Skin::makeVariablesScript( array(  
-					'wgReviewsSettings' => ReviewsSettings::getSettings()
-				) )
-			);
+		$source = false;
+		
+		if ( !is_null( $contextSource ) ) {
+			$source = $contextSource;
+		}
+	
+		if ( !is_null( $parser ) ) {
+			$source = $parser;
 		}
 		
-		$reviews = $this->getReviews( $contextSource );
+		if ( !$loadedJs ) {
+			$js = Skin::makeVariablesScript( array(  
+				'wgReviewsSettings' => ReviewsSettings::getSettings()
+			) );
+			
+			$source->getOutput()->addModules( 'ext.reviews.tag' );
+			
+			if ( is_null( $contextSource ) ) {
+				$source->getOutput()->addHeadItem( $js );
+			}
+			else {
+				$source->getOutput()->addHeadItem( 'wgReviewsSettings', $js );
+			}
+		}
+		
+		$reviews = $this->getReviews( $source->getTitle() );
 		
 		if ( count( $reviews ) > 0 ) {
 			return $this->getList( $reviews );
@@ -84,11 +100,11 @@ class ReviewsTag {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param IContextSource $contextSource
+	 * @param Title $title
 	 * 
 	 * @return array of Review
 	 */
-	protected function getReviews( IContextSource $contextSource ) {
+	protected function getReviews( Title $title ) {
 		$conditions = array(
 			'state' => array( Review::STATUS_NEW, Review::STATUS_REVIEWED )
 		);
@@ -115,7 +131,7 @@ class ReviewsTag {
 			}
 		}
 		else {
-			$conditions['page_id'] = $contextSource->getTitle()->getArticleID();
+			$conditions['page_id'] = $title->getArticleID();
 		}
 		
 		if ( $this->contents['user'] ) {
