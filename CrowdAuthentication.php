@@ -78,16 +78,36 @@ class caApplicationAuthenticationContext {
 	/**
 	 * @var PasswordCredential
 	 */
-	public /**/ $credential;
-	public /*string*/ $name;
-	public /*ValidationFactor[]*/ $validationFactors = null;
+	public $credential;
+
+	/**
+	 * @var string
+	 */
+	public $name;
+
+	/**
+	 * @var array
+	 */
+	public $validationFactors = null;
 }
 
 class caPrincipalAuthenticationContext {
-	public /*string*/ $application;
-	public /*PasswordCredential*/ $credential;
-	public /*string*/ $name;
-	public /*ValidationFactor[]*/ $validationFactors = null;
+	public $application;
+
+	/**
+	 * @var PasswordCredential
+	 */
+	public $credential;
+
+	/**
+	 * @var string
+	 */
+	public $name;
+
+	/**
+	 * @var array
+	 */
+	public $validationFactors = null;
 }
 
 class CrowdAuthenticator extends AuthPlugin {
@@ -133,7 +153,7 @@ class CrowdAuthenticator extends AuthPlugin {
 
 	/**
 	 * @param $name string
-	 * @return bool
+	 * @return string|null
 	 */
 	private function findUsername( $name ) {
 		/*
@@ -159,12 +179,21 @@ class CrowdAuthenticator extends AuthPlugin {
 		return null;
 	}
 
-	public function /*bool*/ userExists( /*string*/ $name ) {
+	/**
+	 * @param $name string
+	 * @return bool
+	 */
+	public function userExists( $name ) {
 		return !is_null( $this->findUsername( $name ) );
 	}
 
-	public function /*bool*/ authenticate( /*string*/ $username, /*string*/ $password ) {
-	global	$caApplicationName, $caImportGroups, $caOverwriteLocalGroups;
+	/**
+	 * @param $username string
+	 * @param $password string
+	 * @return bool
+	 */
+	public function authenticate( $username, $password ) {
+		global $caApplicationName;
 
 		$crowd = $this->getCrowd();
 		$cred = new caPasswordCredential();
@@ -182,11 +211,16 @@ class CrowdAuthenticator extends AuthPlugin {
 		}
 	}
 
-	public function /*void*/ updateUser( /*User*/ &$user ) {
-	global	$caImportGroups, $caOverwriteLocalGroups;
+	/**
+	 * @param $user User
+	 * @return bool
+	 */
+	public function updateUser( &$user ) {
+		global $caImportGroups, $caOverwriteLocalGroups;
 
-		if ( !$caImportGroups )
+		if ( !$caImportGroups ) {
 			return true;
+		}
 
 		/*
 		 * Find the groups this user is a member of.
@@ -199,27 +233,43 @@ class CrowdAuthenticator extends AuthPlugin {
 		$groups = $groups->out->SOAPGroup;
 
 		$dbw = wfGetDB( DB_MASTER );
-		if ( $caOverwriteLocalGroups )
+		if ( $caOverwriteLocalGroups ) {
 			$dbw->delete( 'user_group', array( 'ug_user' => $user->getId() ) );
+		}
 
 		foreach ( $groups as $group ) {
 			$user->addGroup( $group->name );
 		}
-	}
-
-	public function /*bool*/ autoCreate( /*void*/ ) {
 		return true;
 	}
 
-	public function /*bool*/ strict( /*void*/ ) {
+	/**
+	 * @return bool
+	 */
+	public function autoCreate() {
 		return true;
 	}
 
-	public function /*bool*/ allowPasswordChange( /*void*/ ) {
+	/**
+	 * @return bool
+	 */
+	public function strict() {
 		return true;
 	}
 
-	public function /*bool*/ setPassword( /*User*/ $user, /*string*/ $password ) {
+	/**
+	 * @return bool
+	 */
+	public function allowPasswordChange() {
+		return true;
+	}
+
+	/**
+	 * @param $user User
+	 * @param $password string
+	 * @return bool
+	 */
+	public function setPassword( $user, $password ) {
 		$newcred = new caPasswordCredential;
 		$newcred->credential = $password;
 		$username = $this->findUsername( $user->getName() );
@@ -235,21 +285,33 @@ class CrowdAuthenticator extends AuthPlugin {
 		}
 	}
 
-	public function /*bool*/ canCreateAccounts( /*void*/ ) {
+	/**
+	 * @return bool
+	 */
+	public function canCreateAccounts() {
 		return true;
 	}
 
-	public function /*bool*/ addUser( /*User*/ $user, /*string*/ $password,
-					 /*string*/ $email = '', /*string*/ $realname = '' ) {
-	global	$caDefaultGroups;
+	/**
+	 * @param $user User
+	 * @param $password string
+	 * @param $email string
+	 * @param $realname string
+	 * @return bool
+	 */
+	public function addUser( $user, $password, $email = '', $realname = '' ) {
+		global $caDefaultGroups;
 		$crowd = $this->getCrowd();
 		$nameparts = split( " ", $realname, 2 );
 		$firstname = $user->getName();
 		$lastname = "";
-		if ( count( $nameparts ) > 0 )
+		if ( count( $nameparts ) > 0 ) {
 			$firstname = $nameparts[0];
-		if ( count( $nameparts ) > 1 )
-			$lastname = $nameparts[1];
+
+			if ( count( $nameparts ) > 1 ) {
+				$lastname = $nameparts[1];
+			}
+		}
 		$cred = new caPasswordCredential();
 		$cred->credential = $password;
 		$principal = new caPrincipal();
@@ -271,8 +333,9 @@ class CrowdAuthenticator extends AuthPlugin {
 			$crowd->addPrincipal( array( "in0" => $this->token,
 						   "in1" => $principal,
 						   "in2" => $cred ) );
-			foreach ( $caDefaultGroups as $group )
+			foreach ( $caDefaultGroups as $group ) {
 				$crowd->addPrincipalToGroup( array( "in0" => $this->token, "in1" => $user->getName(), "in2" => $group ) );
+			}
 
 			return true;
 		} catch ( Exception $e ) {
