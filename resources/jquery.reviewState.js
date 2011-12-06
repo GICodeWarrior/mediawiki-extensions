@@ -40,7 +40,8 @@
 					
 					$this.append( $( '<a>' ).attr( {
 						'class': 'review-flag-link',
-						'data-target': targetState
+						'data-target': targetState,
+						'href': '#'
 					} ).text( mw.msg( 'reviews-pager-change-' + targetState ) ).click( this.onLinkClick ) );
 				}
 			}
@@ -82,6 +83,8 @@
 					}
 				);
 			}
+			
+			return false;
 		};
 		
 		this.setup = function() {
