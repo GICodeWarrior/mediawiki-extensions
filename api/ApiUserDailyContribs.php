@@ -31,7 +31,7 @@ class ApiUserDailyContribs extends ApiBase {
 
 		// Returns date of registration in YYYYMMDDHHMMSS format
 		$result->addValue( $this->getModuleName(),
-			'registration', !$user->getRegistration() ? '0' : $user->getRegistration() );
+			'registration', $user->getRegistration() ? $user->getRegistration() : '0' );
 
 		// Returns number of edits between daysago date and basetimestamp (or today)
 		$result->addValue( $this->getModuleName(),
