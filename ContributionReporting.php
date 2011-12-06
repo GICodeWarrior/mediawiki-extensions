@@ -41,28 +41,20 @@ $wgAutoloadClasses['ContributionTotal'] = $dir . 'ContributionTotal_body.php';
 $wgAutoloadClasses['SpecialContributionStatistics'] = $dir . 'ContributionStatistics_body.php';
 $wgAutoloadClasses['SpecialFundraiserStatistics'] = $dir . 'FundraiserStatistics_body.php';
 $wgAutoloadClasses['SpecialContributionTrackingStatistics'] = $dir . 'ContributionTrackingStatistics_body.php';
+/*
 $wgAutoloadClasses['SpecialDailyTotal'] = $dir . 'DailyTotal_body.php';
 $wgAutoloadClasses['SpecialYearlyTotal'] = $dir . 'YearlyTotal_body.php';
 $wgAutoloadClasses['DisabledNotice'] = $dir . 'DisabledNotice_body.php';
+*/
 
 $wgSpecialPages['ContributionHistory'] = 'ContributionHistory';
 $wgSpecialPages['ContributionTotal'] = 'ContributionTotal';
 $wgSpecialPages['ContributionStatistics'] = 'SpecialContributionStatistics';
 $wgSpecialPages['FundraiserStatistics'] = 'SpecialFundraiserStatistics';
 $wgSpecialPages['ContributionTrackingStatistics'] = 'SpecialContributionTrackingStatistics';
+/*
 $wgSpecialPages['DailyTotal'] = 'SpecialDailyTotal';
 $wgSpecialPages['YearlyTotal'] = 'SpecialYearlyTotal';
-
-/*
-// Temporarily redirect all pages to DisabledNotice
-$wgSpecialPages['DisabledNotice'] = 'DisabledNotice';
-$wgSpecialPages['ContributionHistory'] = 'DisabledNotice';
-$wgSpecialPages['ContributionTotal'] = 'DisabledNotice';
-$wgSpecialPages['ContributionStatistics'] = 'DisabledNotice';
-$wgSpecialPages['FundraiserStatistics'] = 'DisabledNotice';
-$wgSpecialPages['ContributionTrackingStatistics'] = 'DisabledNotice';
-$wgSpecialPages['DailyTotal'] = 'DisabledNotice';
-$wgSpecialPages['YearlyTotal'] = 'DisabledNotice';
 */
 
 $wgSpecialPageGroups['ContributionHistory'] = 'contribution';
