@@ -236,11 +236,8 @@ class CrowdAuthenticator extends AuthPlugin {
 		 * Find the groups this user is a member of.
 		 */
 
-		$restr = new caSearchRestriction();
-		$restr->name = "group.principal.member";
-		$restr->value = $this->findUsername( $user->getName() );
-		$groups = $this->crowd->searchGroups( array( "in0" => $this->token, "in1" => array( $restr ) ) );
-		$groups = $groups->out->SOAPGroup;
+		$groups = $this->crowd->findGroupMemberships( array( "in0" => $this->token, "in1" => $user->getName() ) );
+		$groups = $groups->out->string;
 
 		$dbw = wfGetDB( DB_MASTER );
 		if ( $caOverwriteLocalGroups ) {
@@ -248,7 +245,7 @@ class CrowdAuthenticator extends AuthPlugin {
 		}
 
 		foreach ( $groups as $group ) {
-			$user->addGroup( $group->name );
+			$user->addGroup( $group );
 		}
 		return true;
 	}
@@ -320,7 +317,7 @@ class CrowdAuthenticator extends AuthPlugin {
 		$nameparts = split( " ", $realname, 2 );
 		$firstname = $user->getName();
 		$lastname = "";
-		if ( count( $nameparts ) > 0 ) {
+		if ( count( $nameparts ) > 0 && strlen( $nameparts[0] ) ) {
 			$firstname = $nameparts[0];
 
 			if ( count( $nameparts ) > 1 ) {
@@ -335,10 +332,10 @@ class CrowdAuthenticator extends AuthPlugin {
 			new caSOAPAttribute( "mail", $email ),
 			new caSOAPAttribute( "givenName", $firstname ),
 			new caSOAPAttribute( "sn", $lastname ),
-			new caSOAPAttribute( "invalidPasswordAttempts", 0 ),
-			new caSOAPAttribute( "lastAuthenticated", 0 ),
-			new caSOAPAttribute( "passwordLastChanged", 0 ),
-			new caSOAPAttribute( "requiresPasswordChange", 0 ),
+			// new caSOAPAttribute( "invalidPasswordAttempts", 0 ),
+			// new caSOAPAttribute( "lastAuthenticated", 0 ),
+			// new caSOAPAttribute( "passwordLastChanged", 0 ),
+			// new caSOAPAttribute( "requiresPasswordChange", 0 ),
 		);
 		$principal->active = true;
 		$principal->conception = 0;
@@ -351,7 +348,10 @@ class CrowdAuthenticator extends AuthPlugin {
 				)
 			);
 			foreach ( $caDefaultGroups as $group ) {
-				$crowd->addPrincipalToGroup( array( "in0" => $this->token, "in1" => $user->getName(), "in2" => $group ) );
+				// XXX hack from Toolserver
+				try {
+					$crowd->addPrincipalToGroup( array( "in0" => $this->token, "in1" => $user->getName(), "in2" => $group ) );
+				} catch (Exception $e) { }
 			}
 
 			return true;
