@@ -261,6 +261,13 @@ $messages['es'] = array(
 	'pf-header-approve' => 'Aprobar',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'pf-header-documentation' => 'Dokumentazioa',
+);
+
 /** Persian (فارسی)
  * @author Mjbmr
  */
