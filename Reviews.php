@@ -260,4 +260,4 @@ $wgDefaultUserOptions['reviews_showtoplink'] = false;
 
 $wgDefaultUserOptions['reviews_showcontrol'] = true;
 
-$wgDefaultUserOptions['reviews_showedit'] = false;
+$wgDefaultUserOptions['reviews_showedit'] = true;
