@@ -59,6 +59,13 @@ $messages['hsb'] = array(
 	'interactiveblockmessage-desc' => 'Wutworja nowe magiske słowo <nowiki>{{USERBLOCKED}}</nowiki>, kotrež podawa, hač wužiwar je zablokowany abo nic',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'interactiveblockmessage-desc' => 'Egy új varázsszót vezet be (<nowiki>{{USERBLOCKED}}</nowiki>), amelyik a felhasználói névtérben jelzi, hogy a felhasználó blokkolva van-e',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
