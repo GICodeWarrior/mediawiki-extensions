@@ -4311,6 +4311,7 @@ $messages['mg'] = array(
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
+ * @author Rancher
  */
 $messages['mk'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 од $2',
@@ -4399,7 +4400,7 @@ $messages['mk'] = array(
 	'mwe-ftype-jpg' => 'JPEG ликовна податотека',
 	'mwe-ftype-png' => 'PNG ликовна податотека',
 	'mwe-ftype-oga' => 'Ogg аудио податотека',
-	'mwe-ftype-ogg' => 'Ogg аудио податотека',
+	'mwe-ftype-ogg' => 'Ogg видео податотека',
 	'mwe-ftype-unk' => 'Непознат податотечен формат',
 	'mwe-am-commons-title' => 'Заедничка Ризница',
 	'mwe-am-commons' => 'Заедничка Ризница (Wikimedia Commons),архив на слободно-лиценцирани медиумски содржини (слики, аудио и видео снимки)',
@@ -6136,7 +6137,7 @@ $messages['sr-ec'] = array(
 	'mwe-ftype-jpg' => 'JPEG слика',
 	'mwe-ftype-png' => 'PNG слика',
 	'mwe-ftype-oga' => 'Ogg звучни запис',
-	'mwe-ftype-ogg' => 'Ogg видео запис',
+	'mwe-ftype-ogg' => 'Ogg видео-запис',
 	'mwe-ftype-unk' => 'Непознати формат датотеке',
 	'mwe-am-commons-title' => 'Викимедијина остава',
 	'mwe-am-this_wiki-title' => 'Овај вики',
