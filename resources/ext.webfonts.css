@@ -44,9 +44,12 @@ body.rtl div.webfontMenu ul li {
 
 div.webfontMenu div.menu {
 	position: relative;
-	display: none;
+	display: block;
 	clear: both;
 	text-align: left;
+	top: 20px;
+	width: 300px;
+	font-size: 0.8em;
 }
 
 /* OVERRIDDEN BY COMPLIANT BROWSERS */
@@ -66,11 +69,7 @@ body.rtl div.webfontMenu > div.menu,
 x:-moz-any-link {
 	margin-left: 23px;
 }
-/* Enable forcing showing of the menu for accessibility */
-div.webfontMenu:hover div.menu,
-div.webfontMenu div.menuForceShow {
-	display: block;
-}
+
 div.webfontMenu ul {
 	position: absolute;
 	background-color: white;
@@ -107,7 +106,6 @@ div.webfontMenu li a {
 	padding: 0.5em;
 	white-space: nowrap;
 	color: #0645ad;
-	font-size: 0.8em;
 }
 /* IGNORED BY IE6 */
 div.webfontMenu li > a {

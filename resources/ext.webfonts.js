@@ -323,21 +323,26 @@
 			if( $menuItemsDiv == null ) {
 				return;
 			}
-			var $div = $( '<div>' )
+			var $menu = $( '<div>' )
 				.attr( 'id', 'webfonts-menu' )
 				.addClass( 'webfontMenu' )
-				.append( $( '<a>' ).prop( 'href', '#' ).text( mw.message( 'webfonts-load' ).escaped() ) )
 				.append( $menuItemsDiv );
-
+			var $link = $( '<a>' ).prop( 'href', '#' ).text( mw.message( 'webfonts-load' ).escaped() );
 			// This is the fonts link
-			var $li = $( '<li>' )
-				.attr( 'id', 'pt-webfont' )
-				.append( $div );
-
+			var $li = $( '<li>' ).attr( 'id', 'pt-webfont' ).append( $link );
 			// If RTL, add to the right of top personal links. Else, to the left
 			var fn = $( 'body' ).hasClass( 'rtl' ) ? 'append' : 'prepend';
 			$( '#p-personal ul:first' )[fn]( $li );
-
+			$( 'body').prepend($menu);
+			$menu.hide();
+			$li.hover( function() {
+				$menuItemsDiv.css( 'left', $li.offset().left );
+				$menu.slideDown( 'slow' );
+			});
+			$menu.hover( function() {
+				}, function() {
+				$menu.slideUp( 'slow' );
+			});
 			// Workaround for IE bug - ActiveX components like input fields coming on top of everything.
 			// @todo Is there a better solution other than hiding it on hover?
 			if ( $.browser.msie ) { 
