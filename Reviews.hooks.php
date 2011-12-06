@@ -122,6 +122,30 @@ final class ReviewsHooks {
 	}
 	
 	/**
+	 * Checks for the reviewable magic word and stores it's precence in the OuputPage
+	 * object for further usage in onBeforePageDisplay.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/OutputPageParserOutput
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param OuputPage $out
+	 * @param ParserOutput $parseroutput
+	 * 
+	 * @return true
+	 */
+	public static function onOutputPageParserOutput( OutputPage &$out, ParserOutput $parserOutput ) {
+		if ( $out->isArticle() && $out->getTitle()->exists() && $out->getRequest()->getText( 'action' ) !== 'edit' ) {
+			$mw = MagicWord::get( 'REVIEWABLE' );
+			
+			if ( $mw->matchAndRemove( $parserOutput->mText ) ) {
+				$out->reviewsMagicWord = true;
+			}
+		}
+		
+		return true;
+	}
+	
+	/**
 	 * Add the review control when needed.
 	 * 
 	 * @since 0.1
@@ -132,20 +156,23 @@ final class ReviewsHooks {
 	 * @return true
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
-		/* User */ $user = $skin->getUser();
-		
-		if ( $user->isLoggedIn() && $user->isAllowed( 'postreview' ) && $user->getOption( 'reviews_showcontrol' )
-			&& $out->isArticle() && $skin->getTitle()->exists()
-			&& $skin->getRequest()->getText( 'action' ) !== 'edit' ) {
+		if ( property_exists( $out, 'reviewsMagicWord' ) && $out->reviewsMagicWord ) {
+			$tag = new ReviewsTag();
+			$out->addHTML( $tag->render( $out ) );
 			
-			$review = Review::selectRow( null, array(
-				'user_id' => $user->getId(),
-			 	'page_id' => $skin->getTitle()->getArticleID()
-			) );
-			
-			if ( $review === false || $user->getOption( 'reviews_showedit' ) ) {
-				$control = new ReviewControl( $review === false ? null : $review );
-				$control->addToContext( $skin );
+			/* User */ $user = $out->getUser();
+	
+			if ( $user->isLoggedIn() && $user->isAllowed( 'postreview' ) && $user->getOption( 'reviews_showcontrol' ) ) {
+				
+				$review = Review::selectRow( null, array(
+					'user_id' => $user->getId(),
+				 	'page_id' => $out->getTitle()->getArticleID()
+				) );
+				
+				if ( $review === false || $user->getOption( 'reviews_showedit' ) ) {
+					$control = new ReviewControl( $review === false ? null : $review );
+					$control->addToContext( $out );
+				}
 			}
 		}
 		
@@ -164,7 +191,7 @@ final class ReviewsHooks {
 	 */
 	public static function onReviewsRender( $input, array $args, Parser $parser, PPFrame $frame ) {
 		$tag = new ReviewsTag( $args, $input );
-		return $tag->render( $parser );
+		return $tag->render( $parser->getOutput() );
 	}
 	
 	/**

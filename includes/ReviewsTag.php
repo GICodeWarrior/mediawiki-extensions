@@ -24,6 +24,8 @@ class ReviewsTag {
 	
 	protected $contents;
 	
+	protected $titleCondition = false;
+	
 	/**
 	 * Constructor.
 	 * 
@@ -32,7 +34,7 @@ class ReviewsTag {
 	 * @param array $args
 	 * @param string|null $contents
 	 */
-	public function __construct( array $args, $contents = null ) {
+	public function __construct( array $args = array(), $contents = null ) {
 		$this->contents = $contents;
 		
 		$args = filter_var_array( $args, $this->getTagParameters() );
@@ -50,23 +52,24 @@ class ReviewsTag {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param Parser $parser
+	 * @param IContextSource $contextSource
 	 * 
 	 * @return string
 	 */
-	public function render( Parser $parser ) {
+	public function render( IContextSource $contextSource ) {
 		static $loadedJs = false;
 		
 		if ( !$loadedJs ) {
-			$parser->getOutput()->addModules( 'ext.reviews.tag' );
-			$parser->getOutput()->addHeadItem( 
+			$contextSource->getOutput()->addModules( 'ext.reviews.tag' );
+			$contextSource->getOutput()->addHeadItem( 
+				'wgReviewsSettings',
 				Skin::makeVariablesScript( array(  
 					'wgReviewsSettings' => ReviewsSettings::getSettings()
 				) )
 			);
 		}
 		
-		$reviews = $this->getReviews( $parser );
+		$reviews = $this->getReviews( $contextSource );
 		
 		if ( count( $reviews ) > 0 ) {
 			return $this->getList( $reviews );
@@ -81,11 +84,11 @@ class ReviewsTag {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param Parser $parser
+	 * @param IContextSource $contextSource
 	 * 
 	 * @return array of Review
 	 */
-	protected function getReviews( Parser $parser ) {
+	protected function getReviews( IContextSource $contextSource ) {
 		$conditions = array(
 			'state' => array( Review::STATUS_NEW, Review::STATUS_REVIEWED )
 		);
@@ -95,14 +98,24 @@ class ReviewsTag {
 		}
 		
 		if ( $this->contents['page'] ) {
+			$ids = array();
+			
+			if ( $this->titleCondition !== false ) {
+				$ids[] = $this->titleCondition->getArticleID();
+			}
+			
 			$title = Title::newFromText( $this->contents['page'] );
 			
 			if ( !is_null( $title ) ) {
-				$conditions['page_id'] = $title->getArticleID();
+				$ids[] = $title->getArticleID();
+			}
+			
+			if ( count( $ids ) > 0 ) {
+				$conditions['page_id'] = $ids;
 			}
 		}
 		else {
-			$conditions['page_id'] = $parser->getTitle()->getArticleID();
+			$conditions['page_id'] = $contextSource->getTitle()->getArticleID();
 		}
 		
 		if ( $this->contents['user'] ) {
@@ -114,6 +127,10 @@ class ReviewsTag {
 		}
 		
 		return Review::select( null, $conditions );
+	}
+	
+	public function limitToTitle( Title $title ) {
+		$this->titleCondition = $title;
 	}
 	
 	/**

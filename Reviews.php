@@ -44,6 +44,7 @@ $wgExtensionCredits['other'][] = array(
 // i18n
 $wgExtensionMessagesFiles['Reviews'] 			= dirname( __FILE__ ) . '/Reviews.i18n.php';
 $wgExtensionMessagesFiles['ReviewsAlias']		= dirname( __FILE__ ) . '/Reviews.alias.php';
+$wgExtensionMessagesFiles['ReviewsMagic'] 		= dirname( __FILE__ ) . '/Reviews.magic.php';
 
 // Autoloading
 $wgAutoloadClasses['ReviewsHooks'] 				= dirname( __FILE__ ) . '/Reviews.hooks.php';
@@ -83,6 +84,7 @@ $wgHooks['LoadExtensionSchemaUpdates'][] 		= 'ReviewsHooks::onSchemaUpdate';
 $wgHooks['UnitTestsList'][] 					= 'ReviewsHooks::registerUnitTests';
 $wgHooks['PersonalUrls'][] 						= 'ReviewsHooks::onPersonalUrls';
 $wgHooks['GetPreferences'][] 					= 'ReviewsHooks::onGetPreferences';
+$wgHooks['OutputPageParserOutput'][] 			= 'ReviewsHooks::onOutputPageParserOutput';
 $wgHooks['BeforePageDisplay'][] 				= 'ReviewsHooks::onBeforePageDisplay';
 $wgHooks['ParserFirstCallInit'][] 				= 'ReviewsHooks::onParserFirstCallInit';
 
