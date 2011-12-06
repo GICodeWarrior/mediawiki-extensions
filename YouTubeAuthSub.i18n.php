@@ -3228,7 +3228,7 @@ Ju lutemi keni durim.',
 $messages['sr-ec'] = array(
 	'youtubeauthsub' => 'Слање видеа са Јутуба',
 	'youtubeauthsub-desc' => 'Омогући корисницима да [[Special:YouTubeAuthSub|шаљу видее]] директно на Јутуб',
-	'youtubeauthsub_info' => 'Попуните следећи формукар како бисте послали видео на Јутуб и потом га укључили на страну:',
+	'youtubeauthsub_info' => 'Попуните следећи образац да бисте отпремили видео-снимак на Јутјуб и убацили га на страницу:',
 	'youtubeauthsub_title' => 'Наслов:',
 	'youtubeauthsub_description' => 'Опис',
 	'youtubeauthsub_password' => 'Лозинка на Јутубу',
@@ -3239,21 +3239,20 @@ $messages['sr-ec'] = array(
 	'youtubeauthsub_clickhere' => 'Кликните овде да бисте се улоговали на Јутуб',
 	'youtubeauthsub_tokenerror' => 'Грешка при генерисању ауторизационог кључа, покушајте са освеживањем странице.',
 	'youtubeauthsub_success' => "Честитамо!
-Ваш видео је послат.
-<a href='http://www.youtube.com/watch?v=$1'>Погледајте свој видео</a>.
-Могуће је да Ваш видео неће бити одмах доступан, јер Јутубу треба времена да га обради.
+Ваш видео-снимак је отпремљен.
+<a href='http://www.youtube.com/watch?v=$1'>Погледајте га овде</a>.
+Видео-снимак можда неће бити одмах доступан, јер Јутјубу треба времена да га обради.
 
-Да бисте укључили свој видео на Вики-страну, убаците следећи код у њу:
+Да бисте убацили снимак на вики-страницу, унесите следећи код:
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'Да бисте послали видео, прво морате да будете улоговани на Јутубу.',
-	'youtubeauthsub_uploadhere' => 'Пошаљите Ваш видео одавде:',
+	'youtubeauthsub_authsubinstructions' => 'Да бисте отпремили видео-снимак, прво се пријавите на Јутјуб.',
+	'youtubeauthsub_uploadhere' => 'Отпремите видео-снимак одавде:',
 	'youtubeauthsub_uploadbutton' => 'Слање',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-[http://www.youtube.com/watch?v=$1 Погледајте овај видео]',
+[http://www.youtube.com/watch?v=$1 Погледајте видео-снимак]',
 	'youtubeauthsub_summary' => 'Слање видеа на Јутуб.',
-	'youtubeauthsub_uploading' => 'Овај видео се управо шаље.
-Молимо Вас, будите стрпљиви.',
+	'youtubeauthsub_uploading' => 'Видео-снимак се отпрема. Будите стрпљиви.',
 	'youtubeauthsub_viewpage' => 'Такође можете да [[$1|погледате свој видео]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Молимо Вас, унесите једну или више кључних речи.',
 	'youtubeauthsub_jserror_notitle' => 'Унесите наслов видео снимка.',
