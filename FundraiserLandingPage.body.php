@@ -13,9 +13,9 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 
 	function execute( $par ) {
 		global $wgFundraiserLPDefaults, $wgRequest, $wgOut, $wgFundraiserLandingPageMaxAge;
-		
+
 		#Set squid age
-		$wgOut->setSquidMaxage( $wgFundraiserLandingPageMaxAge );		
+		$wgOut->setSquidMaxage( $wgFundraiserLandingPageMaxAge );
 		$this->setHeaders();
 
 		# set the page title to something useful
@@ -84,7 +84,7 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 	 */
 	function make_safe( $string ) {
 		$num = preg_match( '([a-zA-Z0-9_-]+)', $string, $matches );
-		
+
 		if ( $num == 1 ){
 			# theoretically this is overkill, but better safe than sorry
 			return wfEscapeWikiText( htmlspecialchars( $matches[0] ) );
