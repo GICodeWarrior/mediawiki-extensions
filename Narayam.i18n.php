@@ -68,6 +68,7 @@ $messages['en'] = array(
 	'narayam-mai-inscript' => 'Maithili InScript',
 	'narayam-gom-deva' => 'Goan Konkani-Devanagari Transliteration',
 	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari InScript',
+	'narayam-he-standard-2011' => 'Hebrew Standard 2011',
 );
 
 /** Message documentation (Message documentation)
@@ -950,6 +951,7 @@ $messages['he'] = array(
 	'narayam-gu-inscript' => 'גוג׳ראטית InScript',
 	'narayam-ru-standard' => 'רוסית תקנית',
 	'narayam-sah-standard' => 'סאחה תקנית',
+	'narayam-he-standard-2011' => 'עברית עם ניקוד',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -514,7 +514,7 @@ $.narayam = new ( function() {
 	 * prepare the menu list for all the input methods.
 	 * @return The div containing the constructed menu.
 	 */
-	this.buildMenuItems = function(){
+	this.buildMenuItems = function() {
 		var haveSchemes = false;
 		// Build schemes option list
 		var $narayamMenuItems = $( '<ul>' );
