@@ -40,3 +40,16 @@
 .review-ratingdiv > p {
 	line-height: 1.4em;
 }
+
+.reviews-submission-success {
+	color: darkgreen;
+	font-wieght: bold;
+}
+
+.reviews-submission-submitdiv {
+	
+}
+
+.review-save, .reviews-submission-success {
+	float: left;
+}

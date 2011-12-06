@@ -100,6 +100,13 @@
 					_this.save();
 				} );
 			
+			this.successMessage = $( '<p>' )
+				.text( mw.msg( 'reviews-submission-success' ) )
+				.attr( { 
+					'class': 'reviews-submission-success',
+					'style': 'display: none;'
+				} );
+			
 			$this.html( '' );
 			
 			$this.append(
@@ -120,7 +127,12 @@
 			);
 			
 			$this.append( this.ratingsInput );
-			$this.append( this.button );
+			
+			$this.append( $( '<div>' ).html( this.button ).append( this.successMessage ).attr( {
+				'class': 'reviews-submission-submitdiv'
+			} ) );
+			
+			$this.append( '<hr style="display: block; clear: both; visibility: hidden;" />' );
 			
 			this.ratingInput.stars( {
 				inputType: 'select',
@@ -157,7 +169,11 @@
 			
 			this.review.save( function( success ) {
 				if ( success ) {
-					// TODO
+					_this.successMessage.fadeIn( 'slow', function() {
+//						setTimeout( function() {
+//							_this.successMessage.fadeOut( 'slow' );
+//						}, 60000 );
+					} );
 				}
 				else {
 					alert( 'Review could not be saved' ); // TODO
