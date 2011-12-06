@@ -41,6 +41,13 @@ $messages['gl'] = array(
 	'helpcommons-desc' => 'Extrae o espazo de nomes de axuda dun wiki auxiliar e inclúe os contidos noutros wikis da familia',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'helpcommons-desc' => 'Bjerje mjenowy rum Pomoc z wikija pomocy a zapřijima jón do druhich wikijow wikiswójby',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
