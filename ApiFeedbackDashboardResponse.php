@@ -3,7 +3,7 @@
 class ApiFeedbackDashboardResponse extends ApiBase {
 	
 	public function execute() {
-		global $wgRequest, $wgUser, $wgParser;
+		global $wgRequest, $wgUser;
 		
 		if ( $wgUser->isAnon() ) {
 			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
@@ -42,7 +42,7 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 				'appendtext' => ( $talkPage->exists() ? "\n\n" : '' ) . 
 						$feedback_link . "\n" . 
 						'<span id="feedback-dashboard-response-' . $item->getProperty('id') . '"></span>' . "\n\n" . 
-						$wgParser->cleanSigInSig($params['response']) . "\n\n~~~~",
+						Parser::cleanSigInSig($params['response']) . "\n\n~~~~",
 				'token'  => $params['token'],
 				'summary' => '',
 				'notminor' => true,
