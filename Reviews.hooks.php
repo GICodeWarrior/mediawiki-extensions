@@ -139,6 +139,18 @@ final class ReviewsHooks {
 			
 			if ( $mw->matchAndRemove( $parserOutput->mText ) ) {
 				$out->reviewsMagicWord = true;
+				
+				// This is a hack to disable the page caching.
+				// TODO: do not output user specific stuff but obtain it via the API after page load.
+				$dbw = wfGetDB( DB_MASTER );
+				$dbw->update(
+					'page',
+					array( 'page_touched' => $dbw->timestamp( time() + 9001 ) ),
+					$out->getTitle()->pageCond(),
+					__METHOD__
+				);
+		
+				HTMLFileCache::clearFileCache( $out->getTitle() );
 			}
 		}
 		
