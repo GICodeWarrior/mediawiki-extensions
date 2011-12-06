@@ -49,6 +49,13 @@ $messages['ar'] = array(
 	'pipeescape-desc' => 'دالة محلل <code>#!</code> لعندما تريد حرف أنبوبة ليكون فقط حرف أنبوبة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'pipeescape-desc' => "Función del analizador sintácticu <code>#!</code> pa cuando se quier que'l caráuter de barra vertical «|» nun tenga significáu especial",
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  */
