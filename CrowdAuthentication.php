@@ -33,6 +33,13 @@ $wgExtensionCredits['other'][] = array(
 
 $wgExtensionMessagesFiles['CrowdAuthentication'] = dirname( __FILE__ ) . '/CrowdAuthentication.i18n.php';
 
+$caApplicationName = 'mediawiki';
+$caApplicationPassword = '';
+$caCrowdServerUrl = 'http://localhost:8095/crowd/services';
+$caDefaultGroups = array("jira-users", "confluence-users");
+$caImportGroups = true;
+$caOverwriteLocalGroups = false;
+
 class caPasswordCredential {
 	/**
 	 * @var string
@@ -331,8 +338,10 @@ class CrowdAuthenticator extends AuthPlugin {
 
 		try {
 			$crowd->addPrincipal( array( "in0" => $this->token,
-						   "in1" => $principal,
-						   "in2" => $cred ) );
+					"in1" => $principal,
+					"in2" => $cred
+				)
+			);
 			foreach ( $caDefaultGroups as $group ) {
 				$crowd->addPrincipalToGroup( array( "in0" => $this->token, "in1" => $user->getName(), "in2" => $group ) );
 			}
