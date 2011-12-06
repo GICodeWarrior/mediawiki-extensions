@@ -79,6 +79,14 @@ $messages['arz'] = array(
 	'catboxattop-categories' => 'تصانيف',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'catboxattop-desc' => 'Amiesta una caxa de categoríes nel cantu superior drechu de les páxines',
+	'catboxattop-categories' => 'Categoríes',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */

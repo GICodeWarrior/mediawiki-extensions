@@ -44,6 +44,13 @@ $messages['arz'] = array(
 	'csshooks-desc' => 'يضيف سى إس إس لمخرج إتش تى إم إل للصفحات لأسلوب أفضل',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'csshooks-desc' => 'Amiesta CSS a la salida HTML de les páxines pa un meyor estilu',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
