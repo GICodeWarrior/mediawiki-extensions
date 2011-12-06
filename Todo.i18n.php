@@ -975,6 +975,7 @@ $4',
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Dj
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -1003,6 +1004,7 @@ $4',
 	'todo-list-change' => 'Változtatás',
 	'todo-list-cancel' => 'Mégse',
 	'todo-new-item' => 'Új teendő',
+	'todo-not-updated' => 'Adatbázis rekord frissítése sikertelen',
 	'todo-issue-summary' => 'Ügy összefoglalója:',
 	'todo-form-details' => 'Részletek:',
 	'todo-form-email' => 'Ha szeretnél értesítést kapni e-mailben a feladat lezárásakor, add meg a címedet:',
