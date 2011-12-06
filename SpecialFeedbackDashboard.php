@@ -16,7 +16,7 @@ class SpecialFeedbackDashboard extends SpecialPage {
 
 	public function execute( $par ) {
 		global $wgOut, $wgRequest;
-		
+
 		$limit = 20;
 		$offset = false;
 		$filterType = '';
@@ -63,6 +63,43 @@ class SpecialFeedbackDashboard extends SpecialPage {
 	}
 	
 	/**
+	 * Get the stats for the moodbar type in the last 24 hours
+	 * @return array - count of number for each moodbar type
+	 */
+	public function getMoodBarTypeStats( ) {
+	
+		global $wgMemc;
+ 
+		$timestamp = time() - 24 * 60 * 60; // 24 hours ago
+		
+		// Try cache first
+		$key = wfMemcKey( 'moodbar_feedback', 'type_stats', 'last_day' );
+		$moodbarStat = $wgMemc->get( $key );
+                
+                if ( $moodbarStat === false ) {
+                        $dbr = wfGetDB( DB_SLAVE );
+                        $res = $dbr->select( array( 'moodbar_feedback' ),
+                        	             array( 'mbf_type', 'COUNT(*) AS number' ),
+                                             array( 'mbf_hidden_state' => 0, 'mbf_timestamp > ' . $dbr->addQuotes( wfTimestamp( TS_MW, $timestamp ) ) ),
+                                             __METHOD__,
+                                             array( 'GROUP BY' => 'mbf_type' )
+                        );
+ 
+                        $moodbarStat = array('happy' => 0, 'sad' => 0, 'confused' => 0);
+ 
+                        foreach ( $res as $row ) {
+                                $moodbarStat[$row->mbf_type] = $row->number;
+                        }
+ 
+                        // Cache the results in cache for 1 hour
+                        $wgMemc->set( $key, $moodbarStat, 60 * 60 );
+                }
+               
+                return $moodbarStat;
+		
+	}
+	
+	/**
 	 * Build the filter form. The state of each form element is preserved
 	 * using data in $wgRequest.
 	 * @param $filterType string Value to pass in the <form>'s data-filtertype attribute
@@ -92,7 +129,13 @@ class SpecialFeedbackDashboard extends SpecialPage {
 			array( 'id' => 'fbd-filters-username', 'class' => 'fbd-filters-input' ) );
 		$filterType = htmlspecialchars( $filterType );
 		
+		$moodbarStat = $this->getMoodBarTypeStats();
+		$moodbarStatMsg = wfMessage( 'moodbar-type-stats' )->params( $moodbarStat['happy'], $moodbarStat['sad'], $moodbarStat['confused'] )->escaped();
+		
 		return <<<HTML
+		<div id="fbd-description">
+		 	<div id="fbd-stats">$moodbarStatMsg</div>
+		</div>
 		<div id="fbd-filters">
 			<form action="$actionURL" data-filtertype="$filterType">
 				<h3 id="fbd-filters-title">$filtersMsg</h3>

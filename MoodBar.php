@@ -27,6 +27,8 @@ $wgAutoloadClasses['ApiFeedbackDashboard'] = dirname(__FILE__).'/ApiFeedbackDash
 $wgAPIModules['feedbackdashboard'] = 'ApiFeedbackDashboard';
 $wgAutoloadClasses['ApiFeedbackDashboardResponse'] = dirname(__FILE__).'/ApiFeedbackDashboardResponse.php';
 $wgAPIModules['feedbackdashboardresponse'] = 'ApiFeedbackDashboardResponse';
+$wgAutoloadClasses['ApiMoodBarSetUserEmail'] = dirname(__FILE__).'/ApiMoodBarSetUserEmail.php';
+$wgAPIModules['moodbarsetuseremail'] = 'ApiMoodBarSetUserEmail';
 
 // Hooks
 $wgAutoloadClasses['MoodBarHooks'] = dirname(__FILE__).'/MoodBar.hooks.php';

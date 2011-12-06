@@ -32,19 +32,24 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 		if ( $commenter !== null && $commenter->isAnon() == false ) {
 			$talkPage = $commenter->getTalkPage();
 			 
+			$response = Parser::cleanSigInSig($params['response']);
+			
 			$feedback_link = wfMessage('moodbar-feedback-response-title')->inContentLanguage()->
 			                 	params( SpecialPage::getTitleFor( 'FeedbackDashboard', $item->getProperty('feedback') )->
 			                 	getPrefixedText() )->escaped();
 			
+			$summary = wfMessage('moodbar-feedback-edit-summary')->inContentLanguage()->
+         					rawParams( $item->getProperty('feedback'),  $response)->escaped();                	
+			                 	
 			$api = new ApiMain( new FauxRequest( array(
 				'action' => 'edit',
 				'title'  => $talkPage->getFullText(),
 				'appendtext' => ( $talkPage->exists() ? "\n\n" : '' ) . 
 						$feedback_link . "\n" . 
 						'<span id="feedback-dashboard-response-' . $item->getProperty('id') . '"></span>' . "\n\n" . 
-						Parser::cleanSigInSig($params['response']) . "\n\n~~~~",
+						$response . "\n\n~~~~",
 				'token'  => $params['token'],
-				'summary' => '',
+				'summary' => $summary,
 				'notminor' => true,
 			), true, array( 'wsEditToken' => $wgRequest->getSessionData( 'wsEditToken' ) ) ), true );
 	
