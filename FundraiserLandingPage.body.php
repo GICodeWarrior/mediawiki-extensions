@@ -45,16 +45,7 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 
 		# get the country code
 		$country = $wgRequest->getVal( 'country' );
-		// If no country was passed do a GeoIP lookup
-		if ( !$country ) {
-			if ( function_exists( 'geoip_country_code_by_name' ) ) {
-				$ip = wfGetIP();
-				if ( IP::isValid( $ip ) ) {
-					$country = geoip_country_code_by_name( $ip );
-				}
-			}
-		}
-		// If country still isn't set, set it to the default
+		# If country still isn't set, set it to the default
 		if ( !$country ) {
 			$country = $wgFundraiserLPDefaults[ 'country' ];
 		}
