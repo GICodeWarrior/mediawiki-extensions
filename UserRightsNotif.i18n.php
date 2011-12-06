@@ -109,6 +109,25 @@ $2',
 	'userrightsnotif-desc' => 'يبعت إيميل لليوزرز على تغييرات الحقوق',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'userrightsnotifysubject' => "Cambiu del grupu d'usuariu a $1",
+	'userrightsnotifybody' => "Hola $1:
+
+Esti corréu ye pa informate de que'l grupu al que pertenecíes en $2 camudolu $3 el $4.
+
+
+Amestáu: $5
+Desaniciáu: $6
+
+Un saludu caldiu,
+
+$2",
+	'userrightsnotif-desc' => 'Unviar un avisu per corréu a los usuarios tres camudar los permisos',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
