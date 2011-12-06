@@ -33,6 +33,20 @@ $messages['de'] = array(
 	'simplefarm-desc' => 'Einfache, jedoch trotzdem mächtige Wiki-Farm-Erweiterung ohne großartige Konfigurations-Seiten',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'simplefarm-desc' => 'Jednore, ale mócne wikifarmowe rozšěrjenje bjez wulkich konfiguraciskich stronow',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'simplefarm-desc' => 'Едноставен, но моќен додаток за викифарма без сложени страници за поставки',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */
