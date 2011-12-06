@@ -501,6 +501,7 @@ $messages['de'] = array(
 	'narayam-mai-inscript' => 'Maithili (InScript)',
 	'narayam-gom-deva' => 'Konkani - Devanagari / Goa (Transliteration)',
 	'narayam-gom-deva-inscript' => 'Konkani - Devanagari / Goa (InScript)',
+	'narayam-he-standard-2011' => 'Hebräisch (Standard 2011)',
 );
 
 /** Greek (Ελληνικά)
@@ -638,6 +639,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Coyau
+ * @author DavidL
  * @author Gomoko
  * @author IAlex
  * @author Sherbrooke
@@ -698,6 +700,7 @@ $messages['fr'] = array(
 	'narayam-mai-inscript' => 'InScript maithili',
 	'narayam-gom-deva' => 'Traduction Goan Konkani-Devanagari',
 	'narayam-gom-deva-inscript' => 'InScript Goan Konkani-Devanagari',
+	'narayam-he-standard-2011' => 'Hébreu Standard 2011',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -902,15 +905,15 @@ $messages['gu'] = array(
  * @author McDutchie
  */
 $messages['he'] = array(
-	'narayam-desc' => 'הוספת שיטות קלט מותאמות אישית לשדות קלט.',
-	'narayam-toggle-ime' => 'הפעלת שיטת קלט ($1)',
-	'narayam-menu' => 'שיטת קלט',
-	'narayam-menu-tooltip' => 'בקרה על שיטת קלט של נאראיאם',
+	'narayam-desc' => 'הוספת פריסות מקלדת מיוחדות לשדות קלט.',
+	'narayam-toggle-ime' => 'הפעלה ($1)',
+	'narayam-menu' => 'מקלדת',
+	'narayam-menu-tooltip' => 'בקרה על פריסות מקלדת של נאראיאם',
 	'narayam-help' => 'עזרה',
 	'narayam-help-page' => 'Help:הקלדה',
-	'narayam-checkbox-tooltip' => 'הפעלה וכיבוי של שיטת קלט',
-	'narayam-disable-preference' => 'לבטל את שיטת הקלט של נאראיאם',
-	'narayam-more-imes' => 'שיטות קלט נוספות',
+	'narayam-checkbox-tooltip' => 'הפעלה וכיבוי של מקלדת מיוחדת',
+	'narayam-disable-preference' => 'לבטל את המקלדת המיוחדת של נאראיאם',
+	'narayam-more-imes' => 'פריסות מקלדת נוספות',
 	'narayam-am' => 'אמהרית – תעתיק',
 	'narayam-as' => 'אסאמית – תעתיק',
 	'narayam-as-avro' => 'אסאמית – Avro',
@@ -939,6 +942,7 @@ $messages['he'] = array(
 	'narayam-si-singlish' => 'סינהלה – Singlish',
 	'narayam-si-wijesekara' => 'סינהלה – Wijesekara',
 	'narayam-ta-99' => 'טמילית – Tamil99',
+	'narayam-ta-inscript' => 'טמילית InScript',
 	'narayam-ta' => 'טמילית – תעתיק',
 	'narayam-ta-bamini' => 'טמילית – Bamini',
 	'narayam-te-inscript' => 'טלוגו – InScript',
@@ -951,6 +955,10 @@ $messages['he'] = array(
 	'narayam-gu-inscript' => 'גוג׳ראטית InScript',
 	'narayam-ru-standard' => 'רוסית תקנית',
 	'narayam-sah-standard' => 'סאחה תקנית',
+	'narayam-hne-inscript' => 'צ׳טיסגרי InScript',
+	'narayam-mai-inscript' => 'מייתילי InScript',
+	'narayam-gom-deva' => 'קונקנית של גואה – דוונגרי תעתיק',
+	'narayam-gom-deva-inscript' => 'קונקנית של גואה – דוונגרי InScript',
 	'narayam-he-standard-2011' => 'עברית עם ניקוד',
 );
 
@@ -1420,6 +1428,7 @@ $messages['ms'] = array(
 	'narayam-ru-standard' => 'Piawaian Rusia',
 	'narayam-sah-standard' => 'Piawaian Sakha',
 	'narayam-hne-inscript' => 'InScript Chhattisgarhi',
+	'narayam-mai-inscript' => 'InScript Maithili',
 	'narayam-gom-deva' => 'Alih Huruf Devanagari Konkani Goa',
 	'narayam-gom-deva-inscript' => 'InScript Devanagari Konkani Goa',
 );
