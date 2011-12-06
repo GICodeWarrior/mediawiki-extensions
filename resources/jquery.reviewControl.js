@@ -34,10 +34,6 @@
 			for ( rating in ratings ) {
 				if ( ratings.hasOwnProperty( rating ) ) {
 					$tr.append( $( '<td>' ).append(
-						$( '<label>' ).attr( {
-							'for': this.fieldName( 'ratingdiv' + rating ),
-							'class': 'review-ratings-label'
-						} ).text( rating ),
 						$( '<div>' )
 							.attr( {
 								'id': this.fieldName( 'ratingdiv' + rating ),
@@ -53,12 +49,18 @@
 									'class': 'review-specificratinginput'
 								}
 							) )
+							.prepend( $( '<label>' ).attr( {
+								'for': this.fieldName( 'ratingdiv' + rating ),
+								'class': 'review-ratings-label'
+							} ).text( rating ) )
 						)
 					);
 				}
 			}
 			
-			this.ratingsInput = $( '<div>' ).attr( { 'class': 'review-ratings-table-div' } ).html( $( '<table>' ).html( $tr ) );
+			this.ratingsInput = $( '<div>' )
+				.attr( { 'class': 'review-ratings-table-div' } )
+				.html( $( '<table>' ).html( $tr ).attr( { 'class': 'review-ratings-table' } ) );
 		};
 		
 		this.buildInterface = function() {
@@ -106,16 +108,15 @@
 			).append( '<br>' );
 			
 			$this.append(
-				$( '<label>' ).attr( { 'for': this.fieldName( 'text' ) } ).text( mw.msg( 'reviews-submission-text' ) ).append( '<br />' ),
+				$( '<label>' ).attr( { 'for': this.fieldName( 'text' ) } ).text( mw.msg( 'reviews-submission-text' ) ).append( '<br>' ),
 				this.textInput
 			).append( '<br>' );
 			
 			$this.append(
-				$( '<label>' ).attr( {
+				this.ratingInput.prepend( $( '<label>' ).attr( {
 					'for': this.fieldName( 'rating' ),
 					'class': 'review-rating-label'
-				} ).text( mw.msg( 'reviews-submission-rating' ) ),
-				this.ratingInput
+				} ).text( mw.msg( 'reviews-submission-rating' ) ) )
 			);
 			
 			$this.append( this.ratingsInput );

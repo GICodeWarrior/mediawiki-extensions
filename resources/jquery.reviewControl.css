@@ -7,15 +7,15 @@
  */
 
 .review-control {
-	/* border: 1px solid gray; */
+	border: 1px solid gray;
+	background-color: #EEEEEE;
 }
 
 .review-textinput {
 	width: 80%;	
 }
 
-/* .review-ratings-div */
-#review-1-ratingdiv > * {
+.review-ratings-div > * {
     float: left;
     line-height: 1.4em;
 }
@@ -26,4 +26,17 @@
 
 .review-ratings-table-div {
 	clear: both;
+}
+
+.review-ratingdiv {
+	display: block;
+	clear: both;
+}
+
+.review-ratingdiv > * {
+	float: left;
+}
+
+.review-ratingdiv > p {
+	line-height: 1.4em;
 }
