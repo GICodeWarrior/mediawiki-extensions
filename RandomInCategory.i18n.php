@@ -99,6 +99,18 @@ $messages['arz'] = array(
 	'randomincategory-submit' => 'اذهب',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'randomincategory' => 'Páxina de la categoría al debalu',
+	'randomincategory-desc' => "[[Special:Randomincategory|Páxina especial]] p'abrir una páxina de la categoría al debalu",
+	'randomincategory-toolbox' => 'Páxina al debalu',
+	'randomincategory-nocategory' => 'La categoría $1 nun esiste o ta balera',
+	'randomincategory-label' => 'Categoría:',
+	'randomincategory-submit' => 'Dir',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */
