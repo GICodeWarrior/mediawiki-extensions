@@ -11,7 +11,7 @@
  * @ingroup Arrays
  *
  * @licence MIT License
- * @version: 2.0rc2
+ * @version: 2.0rc3 alpha
  *
  * @author Li Ding < lidingpku@gmail.com >
  * @author Jie Bao
@@ -53,7 +53,7 @@ class ExtArrays {
 	 *
 	 * @since 2.0 (before in 'Arrays' class since 1.3.2)
 	 */
-	const VERSION = '2.0rc2';
+	const VERSION = '2.0rc3 alpha';
 
 	/**
 	 * Store for arrays.
@@ -312,7 +312,7 @@ class ExtArrays {
 		
 		// if there is no subject, there is no point in expanding. Faster!
 		if( $subject === null ) {
-			if( ! $egArraysCompatibilityMode ) {				
+			if( ! $egArraysCompatibilityMode && $egArraysExpansionEscapeTemplates !== null ) {				
 				// we can ignore options here, since if subject is null, options won't be set as well!
 				return trim( implode( $delimiter, $array ) );
 			} else {
@@ -565,7 +565,7 @@ class ExtArrays {
 			if( preg_match( $needle, $value ) ) {
 				// Found something!
 				if( $rawTransform !== null ) {
-					// Transform the found string. Can we use 'Regex Fun' ?
+					// Transform the matching string. Can we use 'Regex Fun' with special 'e' flag support ?
 					if( $regexFunSupport ) {
 						// do the transformation with Regex Fun to support 'e' flag:
 						$transform = trim( $frame->expand(
@@ -574,10 +574,11 @@ class ExtArrays {
 						) );
 						$value = ExtRegexFun::doPregReplace(
 								$needle,
-								$transform,
+								$rawTransform,
 								$value,
 								-1,
 								$parser,
+								$frame,
 								array( ExtRegexFun::FLAG_REPLACEMENT_PARSE )
 						);
 					}
@@ -1247,6 +1248,8 @@ class ExtArrays {
 	 * changed because of special characters.
 	 * Respects the configuration variable '$egArraysEscapeTemplates'.
 	 * 
+	 * This is a workaround for bug #32829
+	 * 
 	 * @since 2.0
 	 * 
 	 * @param string $string
@@ -1301,7 +1304,7 @@ class ExtArrays {
 		if( $support === null ) {
 			$support = (
 					defined( 'ExtRegexFun::VERSION' )
-					&& version_compare( ExtRegexFun::VERSION, '1.0.1', '>=' )
+					&& version_compare( ExtRegexFun::VERSION, '1.1', '>=' )
 			);
 		}
 		return $support;

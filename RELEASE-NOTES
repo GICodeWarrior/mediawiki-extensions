@@ -1,6 +1,9 @@
  Changelog:
  ==========
 
+ * (trunk) -- Version 2.0rc3 alpha
+   - Adjusted to work with 'Regex Fun' version 1.1
+
  * December 5, 2011 -- Version 2.0rc2
     - Bug introduced in r105069 fixed where '#arrayprint' was broken in compatibility mode in some cases.
     - '#arraysearcharray' with 'e' using 'Regex Fun' no longer requires an escaped transform (parameter 6)
