@@ -32,7 +32,7 @@ var rules = [
 ['u', '', 'ஹ'],
 ['U', '', 'ங'],
 ['p', '', 'ஜ'],
-['\\}', '', 'ஞ்'],
+['\\}', '', 'ஞ'],
 
 ['a', '', 'ோ'],
 ['A', '', 'ஓ'],
@@ -73,7 +73,7 @@ var rules = [
 jQuery.narayam.addScheme( 'ta-inscript', {
 	'namemsg': 'narayam-ta-inscript',
 	'extended_keyboard': false,
-	'lookbackLength': 2,
+	'lookbackLength': 0,
 	'keyBufferLength': 0,
 	'rules': rules
 } );
