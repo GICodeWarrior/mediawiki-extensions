@@ -17,11 +17,18 @@ if ($statusbar.length > 0) {
 				onlinestatususer: mw.config.get('wgTitle'),
 				format: 'json'
 			},
-			success: function(data) {
+			success: function( data ) {
 				// code to update the statusbar based on the returned message
-				var $icon = $("<img>").attr("src",mw.config.values.wgScriptPath+"/extensions/OnlineStatusBar/status"+({offline:'red',online:'green',away:'orange'})[data.onlinestatus.result]+'.png');
+				var statusMap = {
+					offline:'red',
+					online:'green',
+					away:'orange'
+				};
+				var imgName = statusMap[data.onlinestatus.result] + '.png';
+				var $icon = mw.html.element('img', {
+					src: mw.config.values.wgExtensionAssetsPath + "/OnlineStatusBar/status" + imgName
+				});
 				$statusbar.html(mw.msg('onlinestatusbar-line', wgTitle,$icon,data.onlinestatus.result));
-				//$statusbar.text(mw.config.values.wgTitle +" is now ").append($("<img>").attr("src",mw.config.values.wgScriptPath+"/extensions/OnlineStatusBar/status"+({offline:'red',online:'green',away:'orange'})[data.onlinestatus.result]+'.png')).append(data)
 			}
 		});
 	}
