@@ -128,7 +128,7 @@ class ReviewPager extends TablePager {
 	 */
 	function formatRow( $row ) {
 		$this->currentReview = Review::newFromDBResult( $row );
-		return '<tr><td>' . $this->currentReview->getHTML() . '</td></tr>';
+		return '<tr><td>' . $this->currentReview->getHTML( $this->getUser() ) . '</td></tr>';
 	}
 
 	/**

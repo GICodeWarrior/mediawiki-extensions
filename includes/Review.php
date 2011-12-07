@@ -353,7 +353,7 @@ class Review extends ReviewsDBObject {
 	 * 
 	 * @return string
 	 */
-	public function getHTML() {
+	public function getHTML( User $user ) {
 		$ratings = $this->getRatings( true );
 		
 		$html = '<table class="review-table">';
@@ -362,8 +362,7 @@ class Review extends ReviewsDBObject {
 		
 		$html .= '<tr>';
 		
-		// ' . $this->hasRatings() ? '2' : '1' . '
-		$html .= '<td rowspan="2" class="review-author-box">';
+		$html .= '<td rowspan="' . ( $this->hasRatings() ? 3 : 2 ) . '" class="review-author-box">';
 		
 		$html .= ReviewRating::getDisplayHTMLFor( $this->getRating() );
 		
@@ -396,6 +395,14 @@ class Review extends ReviewsDBObject {
 			
 			$html .= '</tr>';
 		}
+		
+		$html .= '<tr><td>';
+		
+		$html .= $this->getStateControl( $user );
+		
+		$html .= "  ( View details | Edit )";
+		
+		$html .= '</td></tr>';
 		
 		$html .= '</table>';
 		
@@ -478,6 +485,7 @@ class Review extends ReviewsDBObject {
 			'div',
 			array(
 				'class' => 'reviews-state-controls',
+				'style' => 'display:inline;',
 				'data-review-id' => $this->getId(),
 				'data-review-state' => self::getStateString( $this->getField( 'state' ) ),
 				'data-review-states' => FormatJson::encode( $states ),
