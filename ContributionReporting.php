@@ -115,8 +115,11 @@ $egFundraiserStatisticsFirstYearDefault = 2009;
 $egFundraiserStatisticsMinimum = 1;
 $egFundraiserStatisticsMaximum = 10000;
 
-// Cache timeout for fundraiser statistics, in seconds
+// Cache timeout for fundraiser statistics (short timeout), in seconds
 $egFundraiserStatisticsCacheTimeout = 900; // 15 minutes
+// Cache timeout for fundraiser statistics (long timeout), in seconds
+$wgFundraiserStatisticsLongCacheTimeout = 60 * 60 * 24 * 7; // one week
+
 
 $wgContributionTrackingStatisticsViewWeeks = 3;
 

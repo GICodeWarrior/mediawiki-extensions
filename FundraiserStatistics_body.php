@@ -312,7 +312,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 	 * @return an array of results or null
 	 */
 	private function query( $mostRecent, $start, $end ) {
-		global $wgMemc, $egFundraiserStatisticsMinimum, $egFundraiserStatisticsMaximum, $egFundraiserStatisticsCacheTimeout;
+		global $wgMemc, $egFundraiserStatisticsMinimum, $egFundraiserStatisticsMaximum, $egFundraiserStatisticsCacheTimeout, $wgFundraiserStatisticsLongCacheTimeout;
 
 		// Conctruct the key for memcached
 		$key = wfMemcKey( 'fundraiserstatistics', $start, $end );
@@ -359,11 +359,11 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		if ( isset( $result ) ) {
 			// Store the result in memcached.
 			// If it's the most recent fundraiser, cache for a short period of time, otherwise
-			// cache for 24 hours (since the query is expensive).
+			// cache for long period of time
 			if ( $mostRecent ) {
 				$wgMemc->set( $key, $result, $egFundraiserStatisticsCacheTimeout );
 			} else {
-				$wgMemc->set( $key, $result, 86400 );
+				$wgMemc->set( $key, $result, $wgFundraiserStatisticsLongCacheTimeout );
 			}
 			return $result;
 		}
