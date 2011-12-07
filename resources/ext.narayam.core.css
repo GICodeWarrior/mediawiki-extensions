@@ -76,6 +76,9 @@ div#narayam-menu ul {
 	position: absolute;
 	background-color: white;
 	border: solid 1px silver;
+	-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	border-top-width: 0;
 	list-style: none;
 	list-style-image: none;
