@@ -225,6 +225,11 @@ function efContributionReportingTotal( $start, $fudgeFactor ) {
 
 	# Output
 	$output = $row['ttl'] ? $row['ttl'] : '0';
+	
+	// Make sure fudge factor is a number
+	if ( is_nan( $fudgeFactor ) ) {
+		$fudgeFactor = 0;
+	}
 
 	$output += $fudgeFactor;
 
