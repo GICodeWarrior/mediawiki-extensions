@@ -46,7 +46,6 @@ div.webfontMenu div.menu {
 	text-align: left;
 	top: 20px;
 	width: 300px;
-	font-size: 0.8em;
 }
 
 /* OVERRIDDEN BY COMPLIANT BROWSERS */
@@ -82,18 +81,9 @@ div.webfontMenu ul {
 	margin: 0;
 	margin-left: -1px;
 	text-align: left;
+	font-size: 0.8em;
 }
-/* Fixes old versions of FireFox */
-div.webfontMenu ul,
-x:-moz-any-link {
-	min-width: 5em;
-}
-/* Returns things back to normal in modern versions of FireFox */
-div.webfontMenu ul,
-x:-moz-any-link,
-x:default {
-	min-width: 0;
-}
+
 div.webfontMenu li {
 	padding: 0;
 	margin: 0;
