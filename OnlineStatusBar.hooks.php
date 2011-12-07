@@ -162,7 +162,7 @@ class OnlineStatusBarHooks {
 	 * @return bool
 	 */
 	public static function stylePage( &$out, &$skin ) {
-		$out->addModuleStyles( 'ext.OnlineStatusBar' );
+		$out->addModules( 'ext.OnlineStatusBar' );
 		return true;
 	}
 

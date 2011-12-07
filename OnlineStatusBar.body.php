@@ -25,7 +25,7 @@ class OnlineStatusBar {
 		return <<<HTML
 <div class="onlinestatusbarbody metadata onlinestatusbartop" id="status-top">
 <div class="onlinestatusbaricon">
-$text</div></div>
+</div></div>
 HTML;
 	}
 
