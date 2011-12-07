@@ -42,3 +42,22 @@ $egRegexFunDisabledFunctions = array();
  * @var integer
  */
 $egRegexFunMaxRegexPerParse = -1;
+
+/**
+ * Contains a key-value pair list of characters that should be replaced by a template or parser function
+ * call within matching back-reference values by '#regex' with 'e' flags in use. By replacing these special
+ * characters before including the back-references values into the replacement string, these special
+ * characters can't modify wiki syntax within the replacement code.
+ * 
+ * If this is set to null, the old behavior will be active.
+ * 
+ * @since 1.1
+ * @var array|null
+ */
+$egRegexFunExpansionEscapeTemplates = array(
+	'='  => '{{=}}',
+	'|'  => '{{!}}',
+	'{{' => '{{((}}',
+	'}}' => '{{))}}'
+);
+$egRegexFunExpansionEscapeTemplates = null;

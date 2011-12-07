@@ -1,5 +1,12 @@
  Changelog:
  ==========
+
+ * (trunk) -- Version 1.1
+   - '#regex' in replace mode with 'e' flag doesn't require escaped replacement string anymore.
+     Instead of something like "{{((}}#if:$2{{!}}$2{{!}}$1{{))}}", "{{#if:$2|$2|$1}}" can be used.
+   - '#regex' with 'e' flag now first escapes matches before putting them into the back-references
+     and expanding them. Therefore a new configuration variable '$egRegexFunExpansionEscapeTemplates'
+     has been introduced which serves as a workaround for MW bug #32829.
  
  * December 5, 2011 -- Version 1.0.2
    - Limit won't exceed early when 'e' flag with many backrefs in replacement is used extensivelly.

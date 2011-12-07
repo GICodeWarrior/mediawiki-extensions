@@ -8,7 +8,7 @@
  * Support:       http://www.mediawiki.org/wiki/Extension_talk:Regex_Fun
  * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/RegexFun
  * 
- * @version: 1.0.2
+ * @version: 1.1
  * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
  *
@@ -57,29 +57,28 @@ class ExtRegexFun {
 	 * 
 	 * @var string
 	 */
-	const VERSION = '1.0.2';
+	const VERSION = '1.1';
 	
 	/**
 	 * Sets up parser functions
 	 */
 	public static function init( Parser &$parser ) {
-		self::initFunction( $parser, 'regex' );
+		self::initFunction( $parser, 'regex', SFH_OBJECT_ARGS );
 		self::initFunction( $parser, 'regex_var' );
 		self::initFunction( $parser, 'regexquote' );
 		self::initFunction( $parser, 'regexall' );
 		
 		return true;		
 	}	
-	private static function initFunction( Parser &$parser, $name, $functionCallback = null ) {
-		if( $functionCallback === null ) {
-			$functionCallback = array( __CLASS__, "pf_{$name}" );
-		}
-		
+	private static function initFunction( Parser &$parser, $name, $flags = 0 ) {		
 		global $egRegexFunDisabledFunctions;
 		
 		// only register function if not disabled by configuration
 		if( ! in_array( $name, $egRegexFunDisabledFunctions ) ) {
-			$parser->setFunctionHook( $name, $functionCallback );
+			// all parser functions with prefix:
+			$prefix = ( $flags & SFH_OBJECT_ARGS ) ? 'pfObj_' : 'pf_';
+			$functionCallback = array( __CLASS__, $prefix . $name );			
+			$parser->setFunctionHook( $name, $functionCallback, $flags );
 		}
 	}
 	
@@ -246,15 +245,24 @@ class ExtRegexFun {
 	
     /**
 	 * Performs a regular expression search or replacement
+	 * Syntax:
+	 * {{#regex: subject |pattern |replacement |limit }}
 	 * 
-	 * @param $parser Parser instance of running Parse
-	 * @param $subject String input string to evaluate
-	 * @param $pattern String regular expression pattern - must use /, | or % delimiter
-	 * @param $replacement String regular expression replacement
+	 * subject: input string to evaluate
+	 * pattern: regular expression pattern - can use any valid preg delimiter, e.g. /, | or % and various modifiers
+	 * replacement: regular expression replacement (optional)
+	 * limit: max number of how many matches should be replaced (optional)
 	 * 
 	 * @return String Result of replacing pattern with replacement in string, or matching text if replacement was omitted
 	 */
-    public static function pf_regex( Parser &$parser, $subject = '', $pattern = '', $replacement = null, $limit = -1 ) {
+    //public static function pf_regex( Parser &$parser, $subject = '', $pattern = '', $replacement = null, $limit = -1 ) {		
+	public static function pfObj_regex( Parser &$parser, PPFrame $frame, array $args ) {
+		// Get Parameters
+		$subject     = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
+		$pattern     = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : '';
+		$replacement = isset( $args[2] ) ? $args[2] : null; // unexpanded replacement in case 'e' flag is used
+		$limit       = isset( $args[3] ) ? trim( $frame->expand( $args[3] ) ) : -1;
+		
 		// check whether limit exceeded:
 		if( self::limitExceeded( $parser ) ) {
 			return self::msgLimitExceeded();
@@ -282,7 +290,7 @@ class ExtRegexFun {
 			self::setLastMatches( $parser, false );
 			
 			// do the regex plus all handling of special flags and validation
-			$output = self::doPregReplace( $pattern, $replacement, $subject, $limit, $parser );
+			$output = self::doPregReplace( $pattern, $replacement, $subject, $limit, $parser, $frame );
 			
 			if( $output === false ) {
 				// invalid regex, don't store any infor for '#regex_var'
@@ -301,12 +309,16 @@ class ExtRegexFun {
 	/**
 	 * 'preg_replace'-like function but can handle special modifiers 'e' and 'r'.
 	 * 
-	 * @param string &$pattern
-	 * @param string $replacement
-	 * @param string $subject
-	 * @param int    $limit
-	 * @param Parser &$parser if 'e' flag should be allowed, a parser object for parsing is required.
-	 * @param array  $allowedSpecialFlags all special flags that should be handled, by default 'e' and 'r'.
+	 * @since 1.1
+	 * 
+	 * @param string  &$pattern
+	 * @param PPNode|string  $replacement should be a PPNode in case 'e' flag might be used since in that
+	 *                case the string will be expanded after back-refs are inserted. Otherwise string is ok.
+	 * @param string  $subject
+	 * @param int     $limit
+	 * @param Parser  &$parser if 'e' flag should be allowed, a parser object for parsing is required.
+	 * @param PPFrame $frame which keeps template parameters which should be used in case 'e' flag is set.
+	 * @param array   $allowedSpecialFlags all special flags that should be handled, by default 'e' and 'r'.
 	 */
 	public static function doPregReplace(
 			$pattern, // not by value in here!
@@ -314,10 +326,11 @@ class ExtRegexFun {
 			$subject,
 			$limit = -1,
 			&$parser = null,
+			$frame = null,
 			array $allowedSpecialFlags = array(
 				self::FLAG_REPLACEMENT_PARSE,
 				self::FLAG_NO_REPLACE_NO_OUT,
-			)			
+			)
 	) {
 		static $lastPattern = null;
 		static $activePattern = null;
@@ -352,6 +365,11 @@ class ExtRegexFun {
 			$pattern = $activePattern;
 		}
 		
+		// make sure we have a frame to expand the $replacement (necessary for 'e' flag support!)
+		if( $frame === null ) {
+			// new frame without template parameters then
+			$frame = $parser->getPreprocessor()->newCustomFrame( array() );
+		}
 		
 		// FLAG 'e' (parse replace after match) handling:
 		if( ! empty( $specialFlags[ self::FLAG_REPLACEMENT_PARSE ] ) ) {
@@ -366,12 +384,15 @@ class ExtRegexFun {
 			self::$tmpRegexCB = array(
 				'replacement' => $replacement,
 				'parser'      => &$parser,
+				'frame'       => $frame,
 				'internal'    => isset( $parser->mExtRegexFun['lastMatches'] ) && $parser->mExtRegexFun['lastMatches'] === false
 			);
 			
+			// do the actual replacement with special 'e' flag handling
 			$output = preg_replace_callback( $pattern, array( __CLASS__, 'doPregReplace_eFlag_callback' ), $subject, $limit, $count );
 		}
 		else {
+			$replacement = trim( $frame->expand( $replacement ) );
 			// no 'e' flag, we can perform the standard function
 			$output = preg_replace( $pattern, $replacement, $subject, $limit, $count );
 		}
@@ -397,6 +418,7 @@ class ExtRegexFun {
 		
 		$replace  = self::$tmpRegexCB['replacement'];
 		$parser   = self::$tmpRegexCB['parser'];
+		$frame    = self::$tmpRegexCB['frame'];
 		$internal = self::$tmpRegexCB['internal']; // whether doPregReplace() is called as part of a parser function
 		
 		/*
@@ -408,12 +430,11 @@ class ExtRegexFun {
 			self::setLastMatches( $parser, $matches );
 		}
 		// replace backrefs with their actual values:
-		$replace = self::regexVarReplace( $replace, $matches );
+		$replace = trim( $frame->expand( $replace, PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES ) );
+		$replace = self::regexVarReplace( $replace, $matches, true );
 		
 		// parse the replacement after matches are inserted
-		// use a new frame, no need for SFH_OBJECT_ARGS style parser functions
-		$frame = $parser->getPreprocessor()->newCustomFrame( $parser );
-		$replace = $parser->preprocessToDom( $replace );
+		$replace = $parser->preprocessToDom( $replace, $frame->isTemplate() ? Parser::PTD_FOR_INCLUSION : 0 );
 		$replace = trim( $frame->expand( $replace ) );
 				
 		return $replace;
@@ -503,15 +524,19 @@ class ExtRegexFun {
 			self::increaseRegexCount( $parser );
 			
 			// do the actual transformation:
-			return self::regexVarReplace( $index, $lastMatches );
+			return self::regexVarReplace( $index, $lastMatches, false );
 		}
 	}
 	
 	/**
 	 * Replaces all backref variables within a replacement string with the backrefs actual
 	 * values just like preg_replace would do it.
+	 * 
+	 * @param string $replacement
+	 * @param array  $matches
+	 * @param bool   $forExpansion has to be set in case the 'e' flag should be handled
 	 */
-	private static function regexVarReplace( $replacement, $matches ) {
+	private static function regexVarReplace( $replacement, array $matches, $forExpansion = false ) {
 		/*
 		 * replace all back-references with their number increased by 1!
 		 * this way we can also handle $0 in the right way!
@@ -520,15 +545,23 @@ class ExtRegexFun {
 				'%(?<!\\\)(?:\$(?:(\d+)|\{(\d+)\})|\\\(\d+))%',
 				array( __CLASS__, 'regexVarReplace_increaseBackrefs_callback' ),
 				$replacement
-		);			
+		);
 		/*
 		 * build a helper regex matching all the last matches to use preg_replace
 		 * which will handle all the replace-escaping handling correct
 		 */
 		$regEx = '';
-		foreach( $matches as $match ) {
+		foreach( $matches as &$match ) {
+			if( $forExpansion ) {
+				/*
+				 * if this is for 'e' flag, we have to escape the matches so they won't break wiki markup
+				 * within the replacement in case they contain characters like '|'.
+				 */
+				$match = self::escapeForExpansion( $match );
+			}
 			$regEx .= '(' . preg_quote( $match, '/' ) . ')';
 		}
+		
 		$regEx = "/^{$regEx}$/";
 		
 		return preg_replace( $regEx, $replacement, implode( '', $matches ) );
@@ -543,7 +576,11 @@ class ExtRegexFun {
 		$full = $matches[0];
 		for( $i = 1; $index === false || $index === '' ; $i++ ) {
 			// $index can be false (shouldn't happen), '' or any number (including 0 !)
-			$index = @$matches[ $i ];
+			if( array_key_exists( $i, $matches ) ) {
+				$index = $matches[ $i ];
+			} else {
+				$index = false;
+			}
 		}
 		return preg_replace( '%\d+%', (int)$index + 1, $full );	
 	}	
@@ -597,6 +634,34 @@ class ExtRegexFun {
 		}
         return true;
     }
+	
+	
+	/**
+	 * Escapes a string so it can be used within PPFrame::expand() expansion without actually being
+	 * changed because of special characters.
+	 * Respects the configuration variable '$egRegexFunExpansionEscapeTemplates'.
+	 * 
+	 * This is a workaround for bug #32829
+	 * 
+	 * @since 1.1
+	 * 
+	 * @param string $string
+	 * @return string
+	 */
+	public static function escapeForExpansion( $string ) {
+		global $egRegexFunExpansionEscapeTemplates;
+		
+		if( $egRegexFunExpansionEscapeTemplates === null ) {
+			return $string;
+		}
+		
+		$string = strtr(
+			$string,
+			$egRegexFunExpansionEscapeTemplates		
+		);
+		
+		return $string;
+	}
 	
 	
 	/***********************************
