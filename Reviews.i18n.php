@@ -107,6 +107,10 @@ $messages['en'] = array(
 	'reviews-pager-confirm-new' => 'Are you sure you want to unflag this review?',
 	'reviews-pager-confirm-reviewed' => 'Are you sure you want to mark this review as reviewed?',
 	'reviews-pager-updating' => 'Updating...',
+
+	// Review display
+	'reviews-posted-by' => 'By $1',
+	'reviews-posted-on' => 'Added $1',
 );
 
 /** Message documentation (Message documentation)

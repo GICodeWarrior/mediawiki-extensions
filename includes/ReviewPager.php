@@ -84,6 +84,10 @@ class ReviewPager extends TablePager {
 		return version_compare( $GLOBALS['wgUser'], '1.18', '>' ) ? parent::getUser() : $GLOBALS['wgUser'];
 	}
 
+	function getStartBody() {
+		return '<table class="reviews-pager-table"><thead><tr><th>..</th></tr></thead><tbody>';
+	}
+	
 	/**
 	 * @return array
 	 */
@@ -124,7 +128,7 @@ class ReviewPager extends TablePager {
 	 */
 	function formatRow( $row ) {
 		$this->currentReview = Review::newFromDBResult( $row );
-		return parent::formatRow( $row );
+		return '<tr><td>' . $this->currentReview->getHTML() . '</td></tr>';
 	}
 
 	/**
@@ -168,15 +172,7 @@ class ReviewPager extends TablePager {
 	function getQueryInfo() {
 		return array(
 			'tables' => array( 'reviews' ),
-			'fields' => array(
-				'review_id',
-				'review_post_time',
-				'review_state',
-				'review_title',
-				'review_user_id',
-				'review_page_id',
-				'review_rating',
-			),
+			'fields' => Review::getPrefixedFields( Review::getFieldNames() ),
 			'conds' => $this->conds,
 		);
 	}

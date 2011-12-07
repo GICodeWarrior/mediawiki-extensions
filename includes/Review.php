@@ -354,27 +354,48 @@ class Review extends ReviewsDBObject {
 	 * @return string
 	 */
 	public function getHTML() {
+		$ratings = $this->getRatings( true );
+		
 		$html = '<table class="review-table">';
 		
 		$html .= '<tr><th colspan="2" class="review-table-title">' . htmlspecialchars( $this->getField( 'title' ) ) . '</th></tr>';
 		
 		$html .= '<tr>';
 		
-		$html .= '<td rowspan="2">author stuff be here</td>';
+		// ' . $this->hasRatings() ? '2' : '1' . '
+		$html .= '<td rowspan="2" class="review-author-box">';
+		
+		$html .= ReviewRating::getDisplayHTMLFor( $this->getRating() );
+		
+		$html .= Html::element( 'p', array( 'class' => 'reviews-posted-by' ), wfMsgExt(
+			'reviews-posted-by',
+			'parsemag',
+			$this->getUser()->getRealName() === '' ? $this->getUser()->getName() : $this->getUser()->getRealName() 
+		) );
+		
+		$html .= Html::element( 'p', array( 'class' => 'reviews-posted-on' ), wfMsgExt(
+			'reviews-posted-on',
+			'parsemag',
+			$this->getField( 'post_time' )
+		) );
+		
+		$html .= '</td>';
 		
 		$html .= Html::element( 'td', array(), $this->getField( 'text' ) );
 		
 		$html .= '</tr>';
 		
-		$html .= '<tr colspan="2">';
-		
-		$html .= Html::rawElement(
-			'td',
-			array(),
-			implode( array_map( 'ReviewRating::getDisplayHTMLFor', $this->getRatings() ) ) 
-		);
-		
-		$html .= '</tr>';
+		if ( $this->hasRatings() ) {
+			$html .= '<tr>';
+			
+			$html .= Html::rawElement(
+				'td',
+				array(),
+				implode( array_map( 'ReviewRating::getDisplayHTMLFor', $ratings ) ) 
+			);
+			
+			$html .= '</tr>';
+		}
 		
 		$html .= '</table>';
 		

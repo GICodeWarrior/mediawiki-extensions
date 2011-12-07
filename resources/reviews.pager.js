@@ -10,8 +10,8 @@
 
 	$( document ).ready( function() {
 		
-		$( '.reviews-state-controls' ).reviewState();
-		$( '.review-rating-display' ).reviewRating();
+//		$( '.reviews-state-controls' ).reviewState();
+//		$( '.review-rating-display' ).reviewRating();
 		
 	} );
 	
