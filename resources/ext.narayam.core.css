@@ -67,11 +67,7 @@ body.rtl div#narayam-menu > div.menu-items,
 x:-moz-any-link {
 	margin-left: 23px;
 }
-/* Enable forcing showing of the menu for accessibility */
-div#narayam-menu:hover div.menu-items,
-div#narayam-menu div.menuForceShow {
-	display: block;
-}
+
 div#narayam-menu ul {
 	position: absolute;
 	background-color: white;
@@ -90,34 +86,13 @@ div#narayam-menu ul {
 	max-height: 360px;
 	overflow-y: auto;
 }
-/* Fixes old versions of FireFox */
-div#narayam-menu ul,
-x:-moz-any-link {
-	min-width: 5em;
-}
-/* Returns things back to normal in modern versions of FireFox */
-div#narayam-menu ul,
-x:-moz-any-link,
-x:default {
-	min-width: 0;
-}
+
 div#narayam-menu li {
-/*	padding: 0;*/
 	margin: 0;
 	text-align: left;
 	line-height: 1em;
 }
-/* OVERRIDDEN BY COMPLIANT BROWSERS */
-div#narayam-menu li a {
-	display: inline-block;
-	padding: 0.5em;
-	white-space: nowrap;
-	color: #0645ad;
-}
-/* IGNORED BY IE6 */
-div#narayam-menu li > a {
-	display: block;
-}
+
 div#narayam-menu li.selected a,
 div#narayam-menu li.selected a:visited {
 	color: #333333;

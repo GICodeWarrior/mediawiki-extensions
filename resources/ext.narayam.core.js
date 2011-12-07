@@ -652,15 +652,15 @@ $.narayam = new ( function() {
 		// If rtl, add to the right of top personal links. Else, to the left
 		var fn = $( 'body' ).hasClass( 'rtl' ) ? "append" : "prepend";
 		$( '#p-personal ul:first' )[fn]( $li );
-		$( 'body').prepend($menu);
+		$( 'body' ).prepend( $menu );
 		$menu.hide();
 		$li.hover( function() {
 			$menuItemsDiv.css( 'left', $li.offset().left );
-			$menu.slideDown( 'slow' );
+			$menu.show();
 		});
 		$menu.hover( function() {
 			}, function() {
-			$menu.slideUp( 'slow' );
+			$menu.hide();
 		});
 
 		// Workaround for IE bug - activex components like input fields
