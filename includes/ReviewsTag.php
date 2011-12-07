@@ -48,7 +48,7 @@ class ReviewsTag {
 	}
 	
 	/**
-	 * Renrder the survey div.
+	 * Renrder the reviews div.
 	 * 
 	 * @since 0.1
 	 * 
@@ -109,18 +109,18 @@ class ReviewsTag {
 			'state' => array( Review::STATUS_NEW, Review::STATUS_REVIEWED )
 		);
 		
-		if ( $this->contents['id'] ) {
-			$conditions['id'] = $this->contents['id'];
+		if ( $this->parameters['id'] ) {
+			$conditions['id'] = $this->parameters['id'];
 		}
 		
-		if ( $this->contents['page'] ) {
+		if ( $this->parameters['page'] ) {
 			$ids = array();
 			
 			if ( $this->titleCondition !== false ) {
 				$ids[] = $this->titleCondition->getArticleID();
 			}
 			
-			$title = Title::newFromText( $this->contents['page'] );
+			$title = Title::newFromText( $this->parameters['page'] );
 			
 			if ( !is_null( $title ) ) {
 				$ids[] = $title->getArticleID();
@@ -134,8 +134,8 @@ class ReviewsTag {
 			$conditions['page_id'] = $title->getArticleID();
 		}
 		
-		if ( $this->contents['user'] ) {
-			$user = User::newFromName( $this->contents['user'] );
+		if ( $this->parameters['user'] ) {
+			$user = User::newFromName( $this->parameters['user'] );
 			
 			if ( $user !== false ) {
 				$conditions['user_id'] = $user->getId();

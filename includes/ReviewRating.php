@@ -123,10 +123,11 @@ class ReviewRating extends ReviewsDBObject {
 	 * @since 0.1
 	 * 
 	 * @param ReviewRating $rating
+	 * @param integer|false $count
 	 * 
 	 * @return string
 	 */
-	public static function getDisplayHTMLFor( ReviewRating $rating ) {
+	public static function getDisplayHTMLFor( ReviewRating $rating, $count = false ) {
 		$attribs = array(
 			'class' => 'review-rating-display',
 			'data-value' => $rating->getField( 'value' ),
@@ -134,6 +135,10 @@ class ReviewRating extends ReviewsDBObject {
 		
 		if ( $rating->hasField( 'type' ) ) {
 			$attribs['data-type'] = $rating->getField( 'type' );
+		}
+		
+		if ( $count !== false ) {
+			$attribs['data-count'] = $count;
 		}
 		
 		return Html::element( 'div', $attribs );

@@ -207,6 +207,21 @@ final class ReviewsHooks {
 	}
 	
 	/**
+	 * Render the reviews tag.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param mixed $input
+	 * @param array $args
+	 * @param Parser $parser
+	 * @param PPFrame $frame
+	 */
+	public static function onRatingsRender( $input, array $args, Parser $parser, PPFrame $frame ) {
+		$tag = new ReviewRatingsTag( $args, $input );
+		return $tag->render( $parser );
+	}
+	
+	/**
 	 * Register the reviews tag extension when the parser initializes.
 	 * 
 	 * @since 0.1
@@ -217,6 +232,7 @@ final class ReviewsHooks {
 	 */
 	public static function onParserFirstCallInit( Parser &$parser ) {
 		$parser->setHook( 'reviews', __CLASS__ . '::onReviewsRender' );
+		$parser->setHook( 'review_ratings', __CLASS__ . '::onRatingsRender' );
 		return true;
 	}
 

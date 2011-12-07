@@ -60,6 +60,7 @@ $wgAutoloadClasses['Review'] 					= dirname( __FILE__ ) . '/includes/Review.php'
 $wgAutoloadClasses['ReviewControl'] 			= dirname( __FILE__ ) . '/includes/ReviewControl.php';
 $wgAutoloadClasses['ReviewPager'] 				= dirname( __FILE__ ) . '/includes/ReviewPager.php';
 $wgAutoloadClasses['ReviewRating'] 				= dirname( __FILE__ ) . '/includes/ReviewRating.php';
+$wgAutoloadClasses['ReviewRatingsTag'] 			= dirname( __FILE__ ) . '/includes/ReviewRatingsTag.php';
 $wgAutoloadClasses['ReviewsDBObject'] 			= dirname( __FILE__ ) . '/includes/ReviewsDBObject.php';
 $wgAutoloadClasses['ReviewsTag'] 				= dirname( __FILE__ ) . '/includes/ReviewsTag.php';
 
