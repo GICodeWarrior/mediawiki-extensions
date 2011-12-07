@@ -42,13 +42,19 @@ class NarayamHooks {
 
 		$vars['wgNarayamAvailableSchemes'] = self::getSchemes(); // Note: scheme names must be keys, not values
 		$allSchemes = $wgNarayamSchemes;
-		if ( !$wgNarayamUseBetaMapping ) {
-			foreach ( $allSchemes as $lang => $schemes ) {
-				foreach ( $schemes as $i => $scheme ) {
-					$version = isset( $scheme[1] ) ? $scheme[1] : "stable";
-					if ( $version === "beta" ) {
+		foreach ( $allSchemes as $lang => $schemes ) {
+			foreach ( $schemes as $i => $scheme ) {
+				$version = isset( $scheme[1] ) ? $scheme[1] : "stable";
+				if ( $version === "beta" ) {
+					if ( !$wgNarayamUseBetaMapping ) {
 						unset( $allSchemes[$lang][$i] );
 					}
+					else {
+						$allSchemes[$lang][$i] = $scheme[0];
+					}
+				}
+				else {
+					$allSchemes[$lang][$i] = $scheme;
 				}
 			}
 		}
@@ -73,12 +79,18 @@ class NarayamHooks {
 			$wgNarayamSchemes[$pagelang] : array();
 
 		$schemes = $userlangSchemes + $contlangSchemes + $pagelangSchemes;
-		if ( !$wgNarayamUseBetaMapping ) {
-			foreach ( $schemes as $i => $scheme ) {
-				$version = isset( $scheme[1] ) ? $scheme[1] : "stable";
-				if ( $version === "beta" ) {
+		foreach ( $schemes as $i => $scheme ) {
+			$version = isset( $scheme[1] ) ? $scheme[1] : "stable";
+			if ( $version === "beta" ) {
+				if ( !$wgNarayamUseBetaMapping ) {
 					unset( $schemes[$i] );
 				}
+				else {
+					$schemes[$i] = $scheme[0];
+				}
+			}
+			else {
+				$schemes[$i] = $scheme;
 			}
 		}
 		return $schemes;
