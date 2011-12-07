@@ -555,7 +555,7 @@ $.narayam = new ( function() {
 		
 		if ( !haveSchemes ) {
 			// No schemes available, don't show the tool
-			return false;
+			return null;
 		}
 
 		// Event listener for scheme selection.
@@ -638,6 +638,9 @@ $.narayam = new ( function() {
 	 */
 	this.buildMenu = function() {
 		var $menuItemsDiv = that.buildMenuItems();
+		if( $menuItemsDiv == null ) {
+			return;
+		}
 		var $menu = $( '<div>' )
 			.attr( 'id', 'narayam-menu' )
 			.addClass( 'narayam-menu' );
