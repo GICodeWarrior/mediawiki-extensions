@@ -41,6 +41,7 @@ $wgResourceModules['ext.OnlineStatusBar'] = array (
 	'scripts' => 'ext.onlinestatusbar.js',
 	'localBasePath' => dirname ( __FILE__ ),
 	'remoteExtPath' => 'OnlineStatusBar',
+	'messages' => array ( 'onlinestatusbar-status-offline', 'onlinestatusbar-status-online', 'onlinestatusbar-status-busy', 'onlinestatusbar-status-away', 'onlinestatusbar-line' ),
 );
 
 // Load other files of extension
