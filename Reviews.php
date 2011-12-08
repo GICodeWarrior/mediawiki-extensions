@@ -261,8 +261,8 @@ unset( $moduleTemplate );
 $egReviewsSettings = array();
 
 # The default value for the user preference to display a top link to the my reviews special page.
-$wgDefaultUserOptions['reviews_showtoplink'] = false;
+$wgDefaultUserOptions['reviews_showtoplink'] = true;
 
 $wgDefaultUserOptions['reviews_showcontrol'] = true;
 
-$wgDefaultUserOptions['reviews_showedit'] = true;
+$wgDefaultUserOptions['reviews_showedit'] = false;
