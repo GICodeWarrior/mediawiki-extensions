@@ -202,7 +202,7 @@ final class ReviewsHooks {
 	 * @param PPFrame $frame
 	 */
 	public static function onReviewsRender( $input, array $args, Parser $parser, PPFrame $frame ) {
-		$tag = new ReviewsTag( $args, $input );
+		$tag = new ReviewsList( $args, $input );
 		return $tag->render( null, $parser );
 	}
 	
