@@ -1,3 +1,8 @@
+<?php
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
+?>
 <!-- s:<?php echo __FILE__ ?> -->
 <!-- CSS part -->
 <style type="text/css">

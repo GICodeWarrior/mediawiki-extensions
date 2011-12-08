@@ -1,3 +1,8 @@
+<?php
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
+?>
 <!-- s:<?php echo __FILE__ ?> -->
 <fieldset id="cp-infobox-fieldset">
 <legend><?php echo wfMsg( 'createpage-infobox-legend' ) ?> <span style="font-size: small; font-weight: normal; margin-left: 5px">[<a id="cp-infobox-toggle" title="toggle" href="#"><?php echo wfMsg( 'createpage-hide' ) ?></a>]</span></legend>

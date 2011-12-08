@@ -1,3 +1,8 @@
+<?php
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
+?>
 <!-- s:<?php echo __FILE__ ?> -->
 <div style="display:block;" id="wpTableMultiEdit" name="wpTableMultiEdit">
 <?php

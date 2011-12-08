@@ -1,3 +1,8 @@
+<?php
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
+?>
 <!-- s:<?php echo __FILE__ ?> -->
 <!-- JavaScript part -->
 <script type="text/javascript">
