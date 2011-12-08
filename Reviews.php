@@ -201,15 +201,18 @@ $wgResourceModules['jquery.ui.stars'] = $moduleTemplate + array(
 	),
 );
 
-$wgResourceModules['ext.reviews.list'] = $moduleTemplate + array(
+$wgResourceModules['ext.reviews.display'] = $moduleTemplate + array(
 	'scripts' => array(
-		'reviews.list.js',
+		'reviews.display.js',
 	),
 	'styles' => array(
-		'reviews.list.css',
+		'reviews.display.css',
 	),
 	'dependencies' => array(
-		'jquery.reviewState', 'jquery.reviewRating',
+		'ext.reviews', 'jquery.reviewState', 'jquery.reviewRating',
+	),
+	'messages' => array(
+		'reviews-display-delete-confirm',
 	),
 );
 
@@ -221,7 +224,7 @@ $wgResourceModules['ext.reviews.pager'] = $moduleTemplate + array(
 		'reviews.pager.css',
 	),
 	'dependencies' => array(
-		'jquery.reviewState', 'jquery.reviewRating', 'ext.reviews.list',
+		'jquery.reviewState', 'jquery.reviewRating', 'ext.reviews.display',
 	),
 );
 

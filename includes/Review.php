@@ -375,6 +375,18 @@ class Review extends ReviewsDBObject {
 			);
 		}
 		
+		if ( $user->isAllowed( 'reviewsadmin' ) ) {
+			$controlLinks[] = Html::element(
+				'a',
+				array(
+					'href' => '#',
+					'class' => 'review-link-delete',
+					'data-review-id' => $this->getId()
+				),
+				wfMsg( 'reviews-review-delete' )
+			);
+		}
+		
 		$stateControl = $this->getStateControl( $user, false );
 		
 		$html = '<table class="review-table">';
