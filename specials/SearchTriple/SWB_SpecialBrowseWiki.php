@@ -16,6 +16,9 @@
  * 
  * @ingroup SpecialPage
  */
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
 
 global $swbgIP;
 
