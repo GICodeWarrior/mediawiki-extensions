@@ -375,7 +375,7 @@ class Review extends ReviewsDBObject {
 			);
 		}
 		
-		if ( $user->isAllowed( 'reviewsadmin' ) ) {
+		if ( $user->isAllowed( 'reviewsadmin' ) && ReviewsSettings::get( 'reviewDeletionEnabled' ) ) {
 			$controlLinks[] = Html::element(
 				'a',
 				array(
