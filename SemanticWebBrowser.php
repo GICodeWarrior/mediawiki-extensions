@@ -1,12 +1,10 @@
 <?php
-
 /**
  * Main entry point for the Semantic Web Browser extension.
  * @author Anna Kantorovitch and Benedikt Kämpgen
- *  @file SemanticWebBrowser.php
+ * @file SemanticWebBrowser.php
  * @ingroup SWB
  */
-
 
 require_once dirname( __FILE__ ) . '/SWB_Settings.php';
 
@@ -15,19 +13,15 @@ require_once dirname( __FILE__ ) . '/SWB_Settings.php';
  *
  */
 // include for toolbox
-global  $swbgToolboxBrowseSemWeb, $wgHooks, $wgAutoloadClasses, $swbgIP,
-        $wgFooterIcons, $wgExtensionFunctions, $wgSpecialPageGroups,
-		$wgExtensionMessagesFiles, $wgExtensionAliasesFiles, $wgSpecialPages,
-		$smwgNamespace, $wgServer, $wgAPIModules, $wgExtensionAliasesFiles;
+global $swbgToolboxBrowseSemWeb, $wgHooks, $wgAutoloadClasses, $swbgIP,
+       $wgFooterIcons, $wgExtensionFunctions, $wgSpecialPageGroups,
+       $wgExtensionMessagesFiles, $wgExtensionAliasesFiles, $wgSpecialPages,
+       $smwgNamespace, $wgServer, $wgAPIModules, $wgExtensionAliasesFiles;
 
-$wgExtensionMessagesFiles['SemanticWebBrowser'] = $swbgIP . 'SemanticWebBrowser.i18n.php'; // register messages (requires MW=>1.11)
-
-// Register special pages aliases file
+$wgExtensionMessagesFiles['SemanticWebBrowser'] = $swbgIP . 'SemanticWebBrowser.i18n.php';
 $wgExtensionAliasesFiles['SemanticWebBrowser']  = $swbgIP . 'SemanticWebBrowser.alias.php';
 
-/*
- * create Special Page for Browse Wiki
- */
+// Special Page for Browse Wiki
 $wgAutoloadClasses['SWBSpecialBrowseWiki']      = $swbgIP . 'specials/SearchTriple/SWB_SpecialBrowseWiki.php';
 $wgSpecialPages['BrowseWiki']                   = 'SWBSpecialBrowseWiki';
 $wgSpecialPageGroups['BrowseWiki']              = 'smw_group';
@@ -46,33 +40,28 @@ $wgHooks['smwInitProperties'][] = 'registerPropertyTypes';
 
 
 function registerPropertyTypes() {
-	// 5 means uri
-	SMWDataValueFactory::registerDatatype( "_rur",
-	                                       "SWBResolvableUriValue",
-	                                       SMWDataItem::TYPE_URI,
-	                                       $label = false );
+	SMWDataValueFactory::registerDatatype( "_rur", "SWBResolvableUriValue",
+		SMWDataItem::TYPE_URI, $label = false );
 
 	return true;
 }
 
-/**include in toolbox for show the last article in "Browsing Semantic Web"
- *has the same functionality as 'Browse properties' in the toolbox
-**/
-
+/*
+ * Include in toolbox to show the last article in "Browsing Semantic Web".
+ * Has the same functionality as 'Browse properties' in the toolbox.
+ */
 if ( $swbgToolboxBrowseSemWeb ) {
-		$wgHooks['SkinTemplateToolboxEnd'][] = 'swbfShowBrowseSemWeb';
+	$wgHooks['SkinTemplateToolboxEnd'][] = 'swbfShowBrowseSemWeb';
 }
 
 
- function swbfShowBrowseSemWeb( $skintemplate ) {
-	if ( $skintemplate -> data['isarticle'] ) {
-		smwfLoadExtensionMessages( 'SemanticWebBrowser' );
+function swbfShowBrowseSemWeb( $skintemplate ) {
+	if ( $skintemplate->data['isarticle'] ) {
 		$browselink = SWBInfolink::newBrowsingLink( wfMsg( 'swb_browse_semantic_web' ),
-						$skintemplate->data['titleprefixeddbkey'], false );
-
+			$skintemplate->data['titleprefixeddbkey'], false );
 		echo '<li id="t-smwbrowselink">' . $browselink->getHTML() . '</li>';
-
 	}
+
 	return true;
- }
+}
 
