@@ -53,6 +53,7 @@ $wgResourceModules['ext.webfonts.core'] = array(
 	'styles' => 'resources/ext.webfonts.css',
 	'skinStyles' => array(
 		'modern' => 'resources/ext.webfonts.modern.css',
+		'monobook' => 'resources/ext.webfonts.monobook.css',
 	),
 	'localBasePath' => $dir,
 	'remoteExtPath' => 'WebFonts',
