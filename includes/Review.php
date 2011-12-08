@@ -351,9 +351,12 @@ class Review extends ReviewsDBObject {
 	 * 
 	 * @since 0.1
 	 * 
+	 * @param User $user
+	 * @param Language $lang
+	 * 
 	 * @return string
 	 */
-	public function getHTML( User $user ) {
+	public function getHTML( User $user, Language $lang ) {
 		$ratings = $this->getRatings( true );
 		
 		$html = '<table class="review-table">';
@@ -375,7 +378,7 @@ class Review extends ReviewsDBObject {
 		$html .= Html::element( 'p', array( 'class' => 'reviews-posted-on' ), wfMsgExt(
 			'reviews-posted-on',
 			'parsemag',
-			$this->getField( 'post_time' )
+			$lang->date( $this->getField( 'post_time' ), true )
 		) );
 		
 		$html .= '</td>';

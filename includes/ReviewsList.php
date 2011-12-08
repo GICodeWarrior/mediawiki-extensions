@@ -88,7 +88,8 @@ class ReviewsList {
 		$reviews = $this->getReviews( $source->getTitle() );
 		
 		if ( count( $reviews ) > 0 ) {
-			return $this->getList( $reviews, $source->getUser() );
+			$lang = method_exists( $source, 'getLanguage' ) ? $source->getLanguage() : $GLOBALS['wgLang'];
+			return $this->getList( $reviews, $source->getUser(), $lang );
 		}
 		else {
 			return is_null( $this->contents['default'] ) ? '' : $this->contents['default'];
@@ -155,14 +156,16 @@ class ReviewsList {
 	 * @since 0.1
 	 * 
 	 * @param array $reviews
+	 * @param User $user
+	 * @param Language $lang
 	 * 
 	 * @return string
 	 */
-	protected function getList( array /* of Review */ $reviews, User $user ) {
+	protected function getList( array /* of Review */ $reviews, User $user, Language $lang ) {
 		$html = '';
 		
 		foreach ( $reviews as /* Review */ $review ) {
-			$html .= $review->getHTML( $user );
+			$html .= $review->getHTML( $user, $lang );
 		}
 		
 		return $html;

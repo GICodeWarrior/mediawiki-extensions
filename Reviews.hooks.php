@@ -169,7 +169,7 @@ final class ReviewsHooks {
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
 		if ( property_exists( $out, 'reviewsMagicWord' ) && $out->reviewsMagicWord ) {
-			$tag = new ReviewsTag();
+			$tag = new ReviewsList();
 			$out->addHTML( $tag->render( $out ) );
 			
 			/* User */ $user = $out->getUser();
