@@ -6,22 +6,22 @@ var seriesOptions = {
 	"MA": { "label": "Middle-East/Africa", "color": "#e61d0a"},// "#99445e"},
 	"NA": { "label": "North America", "color": "#0a0aa4"},//"#5e9944"}, //green!
 	"W" : { "label": "World", "color": "#5cc3f0",//"#448899"//theme
-			"lineWidth": 1, //5, 
-            "fillColor":"#F0F"
-           },
-    "us" : { "label" : "United States", "color" : "blue"
-    },
-    "ca" : { "label" : "Canada", "color": "red" },
-    "SUM(editors_ge_5)": { "label":"At least 5 edits", "color":"#448899" },
-    "SUM(editors_ge_100)": { "label":"At least 100 edits", "color": "#e61d0a" },
-    "OfflineEst" : { "label": "Offline Estimate", "color": "black"},
-    "SUM(views_mobile_raw)": { "label":"Mobile Views", "color":"#448899" }, 
-    "SUM(views_non_mobile_raw)": { "label":"Non Mobile Views", "color":"#e61d0a" }
-};  
+			"lineWidth": 1, //5,
+			"fillColor":"#F0F"
+		   },
+	"us" : { "label" : "United States", "color" : "blue"
+	},
+	"ca" : { "label" : "Canada", "color": "red" },
+	"SUM(editors_ge_5)": { "label":"At least 5 edits", "color":"#448899" },
+	"SUM(editors_ge_100)": { "label":"At least 100 edits", "color": "#e61d0a" },
+	"OfflineEst" : { "label": "Offline Estimate", "color": "black"},
+	"SUM(views_mobile_raw)": { "label":"Mobile Views", "color":"#448899" },
+	"SUM(views_non_mobile_raw)": { "label":"Non Mobile Views", "color":"#e61d0a" }
+};
 
 
 /*
-* makes API calls based 
+* makes API calls based
 */
 function makeAPICall(plotObj){
 		var apiDataReturns = {};
@@ -50,37 +50,37 @@ function makeAPICall(plotObj){
 * Function to lazy load chart objects
 */
 function lazyLoad(llobj){
-  	if(jQuery.isEmptyObject(llobj.plotVar)){
-        		makeAPICall(llobj);    	
-            } else {
-            	llobj.plotVar.replot();
-            }
+	if(jQuery.isEmptyObject(llobj.plotVar)){
+				makeAPICall(llobj);
+			} else {
+				llobj.plotVar.replot();
+			}
   }
-  
+
 
 /*
  * Function to get Y axis max
 */
 function maxYaxis(yaxis_max) {
-    mult = 1 ;
-    while (yaxis_max > 1) {
-       yaxis_max /= 10 ;
-       mult *= 10 ;
-    }
-    if (yaxis_max < 0.1) {
-       yaxis_max = 0.1 ; 
-    } else 
-    if (yaxis_max < 0.2) {
-      yaxis_max = 0.2 ;
-    }  else
-    if (yaxis_max < 0.5) {
-       yaxis_max = 0.5 ;
-    }
-    else {
-       yaxis_max = 1 ;
-       }
-    yaxis_max *= mult ;
-  return (yaxis_max) ;  
+	mult = 1 ;
+	while (yaxis_max > 1) {
+	   yaxis_max /= 10 ;
+	   mult *= 10 ;
+	}
+	if (yaxis_max < 0.1) {
+	   yaxis_max = 0.1 ;
+	} else
+	if (yaxis_max < 0.2) {
+	  yaxis_max = 0.2 ;
+	}  else
+	if (yaxis_max < 0.5) {
+	   yaxis_max = 0.5 ;
+	}
+	else {
+	   yaxis_max = 1 ;
+	   }
+	yaxis_max *= mult ;
+  return (yaxis_max) ;
 }
 
 /*
@@ -97,7 +97,7 @@ function extractAPIData(apiData){
 	}
 	return retval;
 }
- 
+
 /*
 * get labels from API return object
 */
@@ -112,7 +112,7 @@ function getLabels(apiData, labelName){
 	}
 	return retval;
 }
- 
+
 /*
 * go from MW date format to date format used by jqplot
 */
@@ -120,130 +120,130 @@ function mw2month(date){
 	date = date+"";
 	return date.substring(0,4)+"-"+date.substring(4,6)+"-"+date.substring(6,8);
 }
- 
 
-// provisional: get Data function 
+
+// provisional: get Data function
  function p_getData(apiReturnObj, labelName, dataName, isInt, scaleYfunction){
- 	var apiData;
- 	for(var robj in apiReturnObj){
- 		apiData = apiReturnObj[robj];
- 	}
- 	var labels = new Array();
- 	var dataArray = new Array();
- 	var minDate = "9999";
- 	var maxDate = "";
- 	
+	var apiData;
+	for(var robj in apiReturnObj){
+		apiData = apiReturnObj[robj];
+	}
+	var labels = new Array();
+	var dataArray = new Array();
+	var minDate = "9999";
+	var maxDate = "";
+
 	var yaxis_min =  9999999999 ;
 	var yaxis_max = -9999999999 ;
-	  
+
 	var findYaxisMinMax = function(value){
-	    if (value < yaxis_min)
-	    { yaxis_min = value ; }
-	    if (value > yaxis_max)
-	    { yaxis_max = value ; }
+		if (value < yaxis_min)
+		{ yaxis_min = value ; }
+		if (value > yaxis_max)
+		{ yaxis_max = value ; }
 	  return (value) ;
 	};
- 	 	
- 	for(var i in apiData){
- 		var tempDataArray = new Array();
- 		labels.push(apiData[i][labelName]);
- 		for(var j in apiData[i].data){
- 			
- 			if(apiData[i].data[j].date < minDate){
- 				minDate = apiData[i].data[j].date; 
- 			}
- 			if(apiData[i].data[j].date > maxDate){
- 				maxDate = apiData[i].data[j].date; 
- 			}
- 			if(isInt){
- 				tempDataArray.push( [apiData[i].data[j].date, 
-                                                     findYaxisMinMax (scaleYfunction(parseInt(apiData[i].data[j][dataName]))) ]);
- 				}else{
-				tempDataArray.push( [apiData[i].data[j].date, 
-                                                     findYaxisMinMax (scaleYfunction(parseFloat(apiData[i].data[j][dataName]))) ]);
- 			} 
- 		}
- 		dataArray.push(tempDataArray);
- 	}
-       
- 		maxDate = maxDate.substr(0,8)+'01' ; // last month is outside range  
-        var returnObj = { "labels": labels, "data": dataArray, 
-                          "minDate": minDate, "maxDate": maxDate,
-                          "minY":  yaxis_min, "maxY": yaxis_max };
- 	return returnObj;
- 
+
+	for(var i in apiData){
+		var tempDataArray = new Array();
+		labels.push(apiData[i][labelName]);
+		for(var j in apiData[i].data){
+
+			if(apiData[i].data[j].date < minDate){
+				minDate = apiData[i].data[j].date;
+			}
+			if(apiData[i].data[j].date > maxDate){
+				maxDate = apiData[i].data[j].date;
+			}
+			if(isInt){
+				tempDataArray.push( [apiData[i].data[j].date,
+													 findYaxisMinMax (scaleYfunction(parseInt(apiData[i].data[j][dataName]))) ]);
+				}else{
+				tempDataArray.push( [apiData[i].data[j].date,
+													 findYaxisMinMax (scaleYfunction(parseFloat(apiData[i].data[j][dataName]))) ]);
+			}
+		}
+		dataArray.push(tempDataArray);
+	}
+
+		maxDate = maxDate.substr(0,8)+'01' ; // last month is outside range
+		var returnObj = { "labels": labels, "data": dataArray,
+						  "minDate": minDate, "maxDate": maxDate,
+						  "minY":  yaxis_min, "maxY": yaxis_max };
+	return returnObj;
+
  }
- 
+
  /* provisional: get data only function (labels set in the function that draws the chart) */
  function p_getDataOnly(apiReturnObj, dataName, isInt, scaleYfunction){
- 	var apiData;
- 	for(var robj in apiReturnObj){
- 		apiData = apiReturnObj[robj];
- 	}
- 	var dataArray = new Array();
- 	var minDate = "9999";
- 	var maxDate = "";
- 	
- 	for(var i in apiData){
- 		var tempDataArray = new Array();
- 		for(var j in apiData[i].data){
- 			
- 			if(apiData[i].data[j].date < minDate){
- 				minDate = apiData[i].data[j].date; 
- 			}
- 			if(apiData[i].data[j].date > maxDate){
- 				maxDate = apiData[i].data[j].date; 
- 			}
- 			if(isInt){
- 				tempDataArray.push( [apiData[i].data[j].date, scaleYfunction(parseInt(apiData[i].data[j][dataName])) ]);
- 				}else{
- 				tempDataArray.push( [apiData[i].data[j].date, scaleYfunction(parseFloat(apiData[i].data[j][dataName])) ]);
- 			} 
- 		}
- 		dataArray.push(tempDataArray);
- 	}
- 	var returnObj = {"data": dataArray, "minDate": minDate, "maxDate": maxDate};
- 	return returnObj;
- 
+	var apiData;
+	for(var robj in apiReturnObj){
+		apiData = apiReturnObj[robj];
+	}
+	var dataArray = new Array();
+	var minDate = "9999";
+	var maxDate = "";
+
+	for(var i in apiData){
+		var tempDataArray = new Array();
+		for(var j in apiData[i].data){
+
+			if(apiData[i].data[j].date < minDate){
+				minDate = apiData[i].data[j].date;
+			}
+			if(apiData[i].data[j].date > maxDate){
+				maxDate = apiData[i].data[j].date;
+			}
+			if(isInt){
+				tempDataArray.push( [apiData[i].data[j].date, scaleYfunction(parseInt(apiData[i].data[j][dataName])) ]);
+				}else{
+				tempDataArray.push( [apiData[i].data[j].date, scaleYfunction(parseFloat(apiData[i].data[j][dataName])) ]);
+			}
+		}
+		dataArray.push(tempDataArray);
+	}
+	var returnObj = {"data": dataArray, "minDate": minDate, "maxDate": maxDate};
+	return returnObj;
+
  }
 
 // provisional: get data simple, for unformatted API data
 function p_getDataSimple(apiData, dataName, isInt, scaleYfunction){
- 	var dataArray = new Array();
- 	var minDate = "9999";
- 	var maxDate = "";
- 	
- 	for(var i in apiData){
- 		var tempDataArray = new Array();
- 		for(var j in apiData[i]){
- 			
- 			if(apiData[i][j].date < minDate){
- 				minDate = apiData[i][j].date; 
- 			}
- 			if(apiData[i][j].date > maxDate){
- 				maxDate = apiData[i][j].date; 
- 			}
- 			if(isInt){
- 				tempDataArray.push( [apiData[i][j].date, scaleYfunction(parseInt(apiData[i][j][dataName])) ]);
- 				}else{
- 				tempDataArray.push( [apiData[i][j].date, scaleYfunction(parseFloat(apiData[i][j][dataName])) ]);
- 			} 
- 		}
- 		dataArray.push(tempDataArray);
- 	}
- 	var returnObj = {"data": dataArray, "minDate": minDate, "maxDate": maxDate};
- 	return returnObj;
- 
+	var dataArray = new Array();
+	var minDate = "9999";
+	var maxDate = "";
+
+	for(var i in apiData){
+		var tempDataArray = new Array();
+		for(var j in apiData[i]){
+
+			if(apiData[i][j].date < minDate){
+				minDate = apiData[i][j].date;
+			}
+			if(apiData[i][j].date > maxDate){
+				maxDate = apiData[i][j].date;
+			}
+			if(isInt){
+				tempDataArray.push( [apiData[i][j].date, scaleYfunction(parseInt(apiData[i][j][dataName])) ]);
+				}else{
+				tempDataArray.push( [apiData[i][j].date, scaleYfunction(parseFloat(apiData[i][j][dataName])) ]);
+			}
+		}
+		dataArray.push(tempDataArray);
+	}
+	var returnObj = {"data": dataArray, "minDate": minDate, "maxDate": maxDate};
+	return returnObj;
+
  }
- 
- 
- 
- 
+
+
+
+
 function buildErrorBand(originalSeries, errorSeriesWrapped){
 	var errorSeries = errorSeriesWrapped[0];
 	var bandedHi = new Array(originalSeries.length);
 	var bandedLo = new Array(originalSeries.length);
-	
+
 	var j = 0;
 	var endFound = false;
 	for(var i = 0; i < originalSeries.length; i++){
@@ -261,9 +261,9 @@ function buildErrorBand(originalSeries, errorSeriesWrapped){
 			bandedLo[i] = [originalSeries[i][0], originalSeries[i][1]];
 			originalSeries[i][1] = originalSeries[i][1] + errorSeries[j][1]/2;
 			j++;
-		} 
+		}
 	}
-	return [bandedHi, bandedLo];	
+	return [bandedHi, bandedLo];
 }
 
 

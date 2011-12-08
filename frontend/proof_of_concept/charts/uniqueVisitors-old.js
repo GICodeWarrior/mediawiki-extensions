@@ -1,4 +1,4 @@
-var uniqueVisitors = { 
+var uniqueVisitors = {
 	divTarget: "chartUniqueVisitors",
 	title: 'comScore unique visitors (millions)',
 	plotVar: {},
@@ -8,79 +8,79 @@ var uniqueVisitors = {
 	},
 	plotData: function(apiDataArray){
 			var data = apiDataArray.uniqueVisitors;
-			var scaleYfunction = function(Y){return Y/1000000;} 
+			var scaleYfunction = function(Y){return Y/1000000;}
 			var parsedData = p_getData(data, "region_code", "visitors", true, scaleYfunction);
-    		var offlineData = p_getDataSimple(apiDataArray.offlineEstimate, "readers", true, scaleYfunction);
+			var offlineData = p_getDataSimple(apiDataArray.offlineEstimate, "readers", true, scaleYfunction);
 
-    		
-    		var labels = parsedData.labels;
-    		labels.push("OfflineEst");
-    		
-    		parsedData.maxY = maxYaxis (parsedData.maxY) ;
-    	
-    		seriesArray = new Array(labels.length);
-    		for(var i = 0; i < seriesArray.length; i++){
-    			if(seriesOptions[labels[i]]){
-    				seriesArray[i] = seriesOptions[labels[i]];
-    			}
-    			else{
-    				seriesArray[i] = {};
-    			}
-    		}
-    		
-    		
-    		$('#' + this.divTarget ).empty();
-    		this.plotVar = $.jqplot(this.divTarget,$.merge(parsedData.data, offlineData.data),{
-            	title: this.title,
-            	legend: {show: true, placement: "outsideGrid"} ,
-            	series: seriesArray,
-                cursor: {show: true, zoom:false, showTooltip:false, dblClickReset:true, zoom:true},
-                grid: {
-                  background: "#FFF",  
-                  borderColor: "#CCC", 
-                  borderWidth: 1,
-                  shadow: false,
-                  gridLineWidth: 1.0,  
-                },
-                seriesDefaults: {
-                  fill: false,
-                  shadow: false,
-                  showMarker : false,
-                  // markerOptions: {
-                  //  size: 5,
-                  // } 
-                }, 
-            	axes: {
-            		xaxis: {
-            			renderer: $.jqplot.DateAxisRenderer,
-            			min: parsedData.minDate,
-			            tickInterval: '90 days', 
-			            tickOptions: 
-			            {
-			            formatString:'%b %y', 
-			            fontSize: '7pt',
-			            textColor: "#000"
-			           },
-            			max: parsedData.maxDate,
-                                showMinorTicks: true, 
-                                labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-                                labelOptions: {
-                                  fontSize: '14pt',
-                                  textColor: '#F44',
-                                }
-                        },
-        		yaxis: {
-     		          min: 0,
-        		  max: parsedData.maxY,
-                          labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-                          tickOptions: {
-                             formatString: '&nbsp;%d', 
-                             textColor: "#000" ,  
-                          },
-                          tickInterval: parsedData.maxY / 4, 
-        		}            			
-            	}
-      		});
- 	
+
+			var labels = parsedData.labels;
+			labels.push("OfflineEst");
+
+			parsedData.maxY = maxYaxis (parsedData.maxY) ;
+
+			seriesArray = new Array(labels.length);
+			for(var i = 0; i < seriesArray.length; i++){
+				if(seriesOptions[labels[i]]){
+					seriesArray[i] = seriesOptions[labels[i]];
+				}
+				else{
+					seriesArray[i] = {};
+				}
+			}
+
+
+			$('#' + this.divTarget ).empty();
+			this.plotVar = $.jqplot(this.divTarget,$.merge(parsedData.data, offlineData.data),{
+				title: this.title,
+				legend: {show: true, placement: "outsideGrid"} ,
+				series: seriesArray,
+				cursor: {show: true, zoom:false, showTooltip:false, dblClickReset:true, zoom:true},
+				grid: {
+				  background: "#FFF",
+				  borderColor: "#CCC",
+				  borderWidth: 1,
+				  shadow: false,
+				  gridLineWidth: 1.0,
+				},
+				seriesDefaults: {
+				  fill: false,
+				  shadow: false,
+				  showMarker : false,
+				  // markerOptions: {
+				  //  size: 5,
+				  // }
+				},
+				axes: {
+					xaxis: {
+						renderer: $.jqplot.DateAxisRenderer,
+						min: parsedData.minDate,
+						tickInterval: '90 days',
+						tickOptions:
+						{
+						formatString:'%b %y',
+						fontSize: '7pt',
+						textColor: "#000"
+					   },
+						max: parsedData.maxDate,
+								showMinorTicks: true,
+								labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+								labelOptions: {
+								  fontSize: '14pt',
+								  textColor: '#F44',
+								}
+						},
+				yaxis: {
+					  min: 0,
+				  max: parsedData.maxY,
+						  labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+						  tickOptions: {
+							 formatString: '&nbsp;%d',
+							 textColor: "#000" ,
+						  },
+						  tickInterval: parsedData.maxY / 4,
+				}
+				}
+			});
+
 	}
 }; //unique visitors
