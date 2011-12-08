@@ -359,13 +359,41 @@ class Review extends ReviewsDBObject {
 	public function getHTML( User $user, Language $lang ) {
 		$ratings = $this->getRatings( true );
 		
+		$controlLinks = array();
+		
+		if ( $user->isAllowed( 'reviewsadmin' ) ) {
+			$controlLinks[] = Linker::linkKnown(
+				SpecialPage::getTitleFor( 'Reviews', $this->getId() ),
+				wfMsg( 'reviews-review-details' )
+			);
+		}
+		
+		if ( $user->getId() === $this->getField( 'user_id' ) ) {
+			$controlLinks[] = Linker::linkKnown(
+				SpecialPage::getTitleFor( 'MyReviews', $this->getId() ),
+				wfMsg( 'reviews-review-edit' )
+			);
+		}
+		
+		$stateControl = $this->getStateControl( $user, false );
+		
 		$html = '<table class="review-table">';
 		
 		$html .= '<tr><th colspan="2" class="review-table-title">' . htmlspecialchars( $this->getField( 'title' ) ) . '</th></tr>';
 		
 		$html .= '<tr>';
 		
-		$html .= '<td rowspan="' . ( $this->hasRatings() ? 3 : 2 ) . '" class="review-author-box">';
+		$rowspan = 1;
+		
+		if ( $this->hasRatings() ) {
+			$rowspan++;
+		}
+		
+		if ( count( $controlLinks ) > 0 || $stateControl !== '' ) {
+			$rowspan++;
+		}
+		
+		$html .= '<td rowspan="' . $rowspan . '" class="review-author-box">';
 		
 		$html .= ReviewRating::getDisplayHTMLFor( $this->getRating() );
 		
@@ -399,31 +427,17 @@ class Review extends ReviewsDBObject {
 			$html .= '</tr>';
 		}
 		
-		$html .= '<tr><td>';
-		
-		$html .= $this->getStateControl( $user, false );
-		
-		$controlLinks = array();
-		
-		if ( $user->isAllowed( 'reviewsadmin' ) ) {
-			$controlLinks[] = Linker::linkKnown(
-				SpecialPage::getTitleFor( 'Reviews', $this->getId() ),
-				wfMsg( 'reviews-review-details' )
-			);
+		if ( count( $controlLinks ) > 0 || $stateControl ) {
+			$html .= '<tr><td>';
+			
+			$html .= $stateControl;
+			
+			if ( count( $controlLinks ) > 0 ) {
+				$html .= '(' . $lang->pipeList( $controlLinks ) . ')';
+			}
+			
+			$html .= '</td></tr>';
 		}
-		
-		if ( $user->getId() === $this->getField( 'user_id' ) ) {
-			$controlLinks[] = Linker::linkKnown(
-				SpecialPage::getTitleFor( 'MyReviews', $this->getId() ),
-				wfMsg( 'reviews-review-edit' )
-			);
-		}
-		
-		if ( count( $controlLinks ) > 0 ) {
-			$html .= '(' . $lang->pipeList( $controlLinks ) . ')';
-		}
-		
-		$html .= '</td></tr>';
 		
 		$html .= '</table>';
 		
@@ -486,21 +500,30 @@ class Review extends ReviewsDBObject {
 			'reviewed' => array(),
 		);
 		
+		$canView = false;
+		
 		if ( $user->isAllowed( 'reviewsadmin' ) ) {
 			$states['new'] = array( 'flagged', 'reviewed' );
 			$states['flagged'] = array( 'new', 'reviewed' );
 			$states['reviewed'] = array( 'flagged' );
+			$canView = true;
 		}
 		else {
 			if ( $user->isAllowed( 'reviewreview' ) ) {
 				$states['flagged'] = array( 'new', 'reviewed' );
+				$canView = true;
 			}
 			
 			if ( $user->isAllowed( 'flagreview' ) ) {
 				$states['reviewed'] = array( 'flagged' );
 				$states['new'][] = 'flagged';
 				$states['new'] = array_unique( $states['new'] );
+				$canView = true;
 			}
+		}
+		
+		if ( !$canView ) {
+			return '';
 		}
 		
 		$control = Html::element(
