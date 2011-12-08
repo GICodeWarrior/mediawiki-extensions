@@ -24,7 +24,8 @@ class AssessmentsExtractor
 	 * @return array Assessments
 	 */
 	public function extractAssessments() {
-		$regex = '/<span data-project-name="(?P<project>.*)" data-importance="(?P<importance>.*)" data-quality="(?P<quality>.*)"\s*>/';
+		// Am going to a special level in hell for using Regex to parse HTML, am I not?
+		$regex = '/<span data-project-name="(?P<project>.*)" data-importance="(?P<importance>\w*)" data-quality="(?P<quality>\w*)"\s*>/';
 		$matches = array();
 		preg_match_all($regex, $this->mText, $matches, PREG_SET_ORDER);
 
