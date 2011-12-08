@@ -2,6 +2,9 @@
 -- Replace /*$wgDBTableOptions*/ with the correct options
 
 CREATE TABLE IF NOT EXISTS /*_*/assessment_changelog (    
+    l_id             int not null auto_increment,
+    -- id, for pagination
+
     l_project        varchar(63)  not null,   
     -- project name
 
@@ -28,7 +31,8 @@ CREATE TABLE IF NOT EXISTS /*_*/assessment_changelog (
     -- a wiki-format timestamp
 
     primary key (l_project, l_namespace, l_article, l_action, l_timestamp),
-    key (l_article, l_namespace)
+    key (l_article, l_namespace),
+    unique key (l_id)
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/l_project ON /*_*/assessment_changelog (l_project);

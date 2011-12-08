@@ -2,6 +2,8 @@
 -- Replace /*$wgDBTableOptions*/ with the correct options
 
 CREATE TABLE IF NOT EXISTS /*_*/project_stats (    
+    ps_id             int not null auto_increment,
+    -- id, for pagination
 
 	ps_project         varchar(63) not null,
 	-- project name
@@ -43,7 +45,9 @@ CREATE TABLE IF NOT EXISTS /*_*/project_stats (
 	ps_icount          int unsigned default 0,
 	-- how many pages have importance assessments in the project 
 
-	primary key (ps_project, ps_quality)
+	primary key (ps_project, ps_quality),
+    key (ps_id)
 ) /*$wgDBTableOptions*/;
 
+CREATE UNIQUE INDEX /*i*/ps_id ON /*_*/project_stats (ps_id);
 CREATE INDEX /*i*/ps_project ON /*_*/project_stats (ps_project);
