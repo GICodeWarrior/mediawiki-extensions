@@ -22,14 +22,22 @@
 				
 				review.remove( function( success ) {
 					if ( success ) {
-						$this.closest( 'table' ).closest( 'tr' ).slideUp( 'slow', function() {
-							$this.remove();
-						} );
+						$tr = $this.closest( 'table' ).closest( 'tr' );
+						
+						if ( $( '.reviews-pager-table > tr' ).length > 1 ) {
+							$tr.slideUp( 'slow', function() { $tr.remove(); } );
+						}
+						else {
+							$table = $tr.closest( 'table' );
+							$table.slideUp( 'slow', function() {
+								$table.remove();
+								$( '#reviewslist' ).remove();
+							} );
+						}
 					}
 					else {
 						// TODO
 						alert( 'The review could not be removed.' );
-						$this.button( 'enable' );
 					}
 				} );
 			}
