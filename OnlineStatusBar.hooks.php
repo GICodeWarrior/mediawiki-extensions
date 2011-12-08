@@ -198,3 +198,5 @@ class OnlineStatusBarHooks {
 
 		$ret = $result[0];
 		return true;
+	}
+}
