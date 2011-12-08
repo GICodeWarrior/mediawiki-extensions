@@ -403,7 +403,25 @@ class Review extends ReviewsDBObject {
 		
 		$html .= $this->getStateControl( $user, false );
 		
-		$html .= "  ( View details | Edit )";
+		$controlLinks = array();
+		
+		if ( $user->isAllowed( 'reviewsadmin' ) ) {
+			$controlLinks[] = Linker::linkKnown(
+				SpecialPage::getTitleFor( 'Reviews', $this->getId() ),
+				wfMsg( 'reviews-review-details' )
+			);
+		}
+		
+		if ( $user->getId() === $this->getField( 'user_id' ) ) {
+			$controlLinks[] = Linker::linkKnown(
+				SpecialPage::getTitleFor( 'MyReviews', $this->getId() ),
+				wfMsg( 'reviews-review-edit' )
+			);
+		}
+		
+		if ( count( $controlLinks ) > 0 ) {
+			$html .= '(' . $lang->pipeList( $controlLinks ) . ')';
+		}
 		
 		$html .= '</td></tr>';
 		

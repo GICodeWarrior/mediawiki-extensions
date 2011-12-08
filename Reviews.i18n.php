@@ -111,6 +111,9 @@ $messages['en'] = array(
 	// Review display
 	'reviews-posted-by' => 'By $1',
 	'reviews-posted-on' => 'Added $1',
+	'reviews-review-details' => 'View details',
+	'reviews-review-edit' => 'Edit',
+	'reviews-review-delete' => 'Delete',
 );
 
 /** Message documentation (Message documentation)
