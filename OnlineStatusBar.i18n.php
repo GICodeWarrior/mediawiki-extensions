@@ -36,6 +36,7 @@ $messages['en'] = array(
 	'onlinestatusbar-status-busy' => 'Busy',
 	'onlinestatusbar-status-away' => 'Away',
 	'onlinestatusbar-status-offline' => 'Offline',
+	'onlinestatusbar-status-uknown' => 'status is unknown',
 	'onlinestatusbar-status-hidden' => 'Hidden',
 );
 
@@ -60,6 +61,7 @@ $messages['qqq'] = array(
 	'onlinestatusbar-status-busy' => 'Status for users who mark themselves as busy',
 	'onlinestatusbar-status-away' => 'Status for users who mark themselves as away',
 	'onlinestatusbar-status-offline' => 'Status for users who are offline',
+	'onlinestatusbar-status-unknown' => 'When error occur for instance you retrieve status of user who changed options to hide it',
 	'onlinestatusbar-status-hidden' => 'Status for users who mark themselves as hidden (used on preferences only)',
 );
 
