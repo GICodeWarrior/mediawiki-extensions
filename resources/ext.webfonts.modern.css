@@ -5,6 +5,10 @@
 	overflow: visible!important;
 }
 
+div.webfontMenu div.menu {
+	top: 0px;
+}
+
 div#webfonts-menu li {
 	background-color: #FFFFFF;
 	font-weight: normal;
@@ -17,6 +21,7 @@ div#webfonts-menu  ul {
 	border: solid 1px silver;
 	background-color: #FFFFFF;
 	height: auto;
+	font-size: 1.2em;
 }
 
 div#webfonts-menu li a:hover{
