@@ -23,6 +23,8 @@ class ReviewControl {
 		$types = is_null( $title ) ? array() : ReviewRating::getTypesForTitleText( $title->getFullText() );
 		
 		if ( is_null( $this->review ) ) {
+			$out->addHTML( Html::element( 'h2', array( 'id' => 'reviews-post' ), wfMsg( 'reviews-submission-post-title' ) ) );
+			
 			$ratings = array();
 			
 			foreach ( $types as $type ) {
@@ -38,10 +40,13 @@ class ReviewControl {
 			);
 		} 
 		else {
+			$out->addHTML( Html::element( 'h2', array( 'id' => 'reviews-edit' ), wfMsg( 'reviews-submission-edit-title' ) ) );
+			
 			$review = $this->review->toArray( array( 'id', 'page_id', 'title', 'text', 'rating' ), false, $types );
 		}
 		
 		$attribs['data-review'] = FormatJson::encode( $review );
+		$attribs['data-reload-target'] = $context->getTitle()->getLocalURL() . '#reviewslist';
 		
 		$out->addHTML( Html::element( 'div', $attribs ) );
 	}

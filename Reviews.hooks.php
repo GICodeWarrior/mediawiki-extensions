@@ -169,8 +169,18 @@ final class ReviewsHooks {
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
 		if ( property_exists( $out, 'reviewsMagicWord' ) && $out->reviewsMagicWord ) {
-			$tag = new ReviewsList();
-			$out->addHTML( $tag->render( $out ) );
+			$reviewPager = new ReviewPager( array( 'page_id' => $out->getTitle()->getArticleID() ) );
+
+			if ( $reviewPager->getNumRows() ) {
+				$out->addHTML(
+					$reviewPager->getNavigationBar() .
+					$reviewPager->getBody() .
+					$reviewPager->getNavigationBar()
+				);
+			}
+			else {
+				$this->getOutput()->addWikiMsg( 'reviews-pager-no-results' );
+			}
 			
 			/* User */ $user = $out->getUser();
 	
@@ -201,21 +211,6 @@ final class ReviewsHooks {
 	 * @param Parser $parser
 	 * @param PPFrame $frame
 	 */
-	public static function onReviewsRender( $input, array $args, Parser $parser, PPFrame $frame ) {
-		$tag = new ReviewsList( $args, $input );
-		return $tag->render( null, $parser );
-	}
-	
-	/**
-	 * Render the reviews tag.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param mixed $input
-	 * @param array $args
-	 * @param Parser $parser
-	 * @param PPFrame $frame
-	 */
 	public static function onRatingsRender( $input, array $args, Parser $parser, PPFrame $frame ) {
 		$tag = new ReviewRatingsTag( $args, $input );
 		return $tag->render( $parser );
@@ -231,7 +226,7 @@ final class ReviewsHooks {
 	 * @return true
 	 */
 	public static function onParserFirstCallInit( Parser &$parser ) {
-		$parser->setHook( 'reviews', __CLASS__ . '::onReviewsRender' );
+		//$parser->setHook( 'reviews', __CLASS__ . '::onReviewsRender' );
 		$parser->setHook( 'review_ratings', __CLASS__ . '::onRatingsRender' );
 		return true;
 	}

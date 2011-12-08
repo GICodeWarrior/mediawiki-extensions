@@ -98,7 +98,7 @@ class SpecialReviews extends SpecialPage {
 	 * @since 0.1
 	 */
 	protected function displayReviewList() {
-		$reviewPager = new ReviewPager( array(), $this->getName() );
+		$reviewPager = new ReviewPager( array() );
 
 		if ( $reviewPager->getNumRows() ) {
 			$this->getOutput()->addHTML(

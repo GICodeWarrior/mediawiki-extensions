@@ -66,6 +66,8 @@ $messages['en'] = array(
 	'reviews-submission-text' => 'Review:',
 	'reviews-submission-rating' => 'Overall rating:',
 	'reviews-submission-ratings' => 'Specific ratings:',
+	'reviews-submission-post-title' => 'Post a review',
+	'reviews-submission-edit-title' => 'Edit your review',
 
 	// Special:MyReviews
 	'reviews-myreviews-header' => 'This page lists all reviews you posted.',

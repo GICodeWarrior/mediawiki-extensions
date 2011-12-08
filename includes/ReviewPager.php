@@ -3,6 +3,8 @@
 /**
  * Review pager, for on Special:Reviews and Special:MyReviews
  *
+ * TODO: might be better to directly derive from IndexPager
+ *
  * @since 0.1
  *
  * @file ReviewPager.php
@@ -18,12 +20,6 @@ class ReviewPager extends TablePager {
 	 * @var array
 	 */
 	protected $conds;
-
-	/**
-	 * Name of a special page to which the review titles should link.
-	 * @var string|false $editPage
-	 */
-	protected $editPage;
 	
 	/**
 	 * Review object of $this->currentRow.
@@ -35,12 +31,10 @@ class ReviewPager extends TablePager {
 	 * Constructor.
 	 *
 	 * @param array $conds
-	 * @param string|false $editPage
 	 */
-	public function __construct( array $conds, $editPage = false ) {
+	public function __construct( array $conds ) {
 		$this->conds = $conds;
 		$this->mDefaultDirection = true;
-		$this->editPage = $editPage;
 
 		// when MW 1.19 becomes min, we want to pass an IContextSource $context here.
 		parent::__construct();
@@ -85,7 +79,7 @@ class ReviewPager extends TablePager {
 	}
 
 	function getStartBody() {
-		return '<table class="reviews-pager-table"><thead><tr><th>..</th></tr></thead><tbody>';
+		return '<table class="reviews-pager-table"><tbody>';
 	}
 	
 	/**
@@ -113,6 +107,8 @@ class ReviewPager extends TablePager {
 
 		return $headers;
 	}
+	
+	function formatValue( $name, $value ) {}
 
 	/**
 	 * @param $row
@@ -131,49 +127,11 @@ class ReviewPager extends TablePager {
 		return '<tr><td>' . $this->currentReview->getHTML( $this->getUser(), $this->getLanguage() ) . '</td></tr>';
 	}
 
-	/**
-	 * @param $name
-	 * @param $value
-	 * @return string
-	 */
-	public function formatValue( $name, $value ) {
-		switch ( $name ) {
-			case 'review_post_time':
-				$value = $this->getLanguage()->timeanddate( $value, true );
-				break;
-			case 'review_state':
-				$value = $this->currentReview->getStateControl( $this->getUser() );
-				break;
-			case 'review_page_id':
-				$title = Title::newFromID( $value );
-				$value = is_null( $title ) ? wfMsg( 'reviews-pager-deleted' ) : Linker::link( $title );
-				break;
-			case 'review_user_id':
-				$user = User::newFromId( $value );
-				$value = Linker::userLink( $user->getId(), $user->getName() ) .
-							Linker::userToolLinks( $user->getId(), $user->getName() );
-				break;
-			case 'review_title':
-				if ( $this->editPage !== false ) {
-					$value = Linker::linkKnown(
-						SpecialPage::getTitleFor( $this->editPage, $this->mCurrentRow->review_id ),
-						$value
-					);
-				}
-				break;
-			case 'review_rating':
-				$value = $this->currentReview->getRating()->getDisplayHTML();
-				break;
-		}
-
-		return $value;
-	}
-
 	function getQueryInfo() {
 		return array(
 			'tables' => array( 'reviews' ),
 			'fields' => Review::getPrefixedFields( Review::getFieldNames() ),
-			'conds' => $this->conds,
+			'conds' => Review::getPrefixedValues( $this->conds ),
 		);
 	}
 

@@ -22,6 +22,8 @@
 		this.button = null;
 		this.textInput = null;
 		this.titleInput = null;
+		
+		this.reloadTarget = null;
 
 		this.fieldName = function( name ) {
 			return 'review-' + ( typeof this.review.fields.id === 'undefined' ? 'new' : this.review.fields.id ) + '-' + name;
@@ -154,6 +156,7 @@
 		
 		this.setup = function() {
 			this.review = new reviews.Review( $.parseJSON( $this.attr( 'data-review' ) ) );
+			this.reloadTarget = $this.attr( 'data-reload-target' );
 			this.buildInterface();
 		};
 		
@@ -175,6 +178,7 @@
 //							_this.successMessage.fadeOut( 'slow' );
 //						}, 60000 );
 					} );
+					window.location = _this.reloadTarget;
 				}
 				else {
 					alert( 'Review could not be saved' ); // TODO
