@@ -1,12 +1,25 @@
 <?php
 
+/**
+ * Review control.
+ *
+ * @since 0.1
+ *
+ * @file ReviewsControl.php
+ * @ingroup Reviews
+ *
+ * @licence GNU GPL v3+
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ */
 class ReviewControl {
 
 	protected $review;
 	protected $context;
+	protected $reload;
 	
-	public function __construct( Review $review = null ) {
+	public function __construct( Review $review = null, $reload = false ) {
 		$this->review = $review;
+		$this->reload = $reload;
 	}
 	
 	public function addToContext( ContextSource &$context = null ) {
@@ -38,7 +51,7 @@ class ReviewControl {
 				'rating' => 0,
 				'ratings' => $ratings
 			);
-		} 
+		}
 		else {
 			$out->addHTML( Html::element( 'h2', array( 'id' => 'reviews-edit' ), wfMsg( 'reviews-submission-edit-title' ) ) );
 			
@@ -46,7 +59,10 @@ class ReviewControl {
 		}
 		
 		$attribs['data-review'] = FormatJson::encode( $review );
-		$attribs['data-reload-target'] = $context->getTitle()->getLocalURL( array( 'action' => 'refresh' ) );
+		
+		if ( $this->reload ) {
+			$attribs['data-reload-target'] = $context->getTitle()->getLocalURL( array( 'action' => 'purge' ) );
+		}
 		
 		$out->addHTML( Html::element( 'div', $attribs ) );
 	}

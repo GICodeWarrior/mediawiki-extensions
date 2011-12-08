@@ -191,7 +191,8 @@ final class ReviewsHooks {
 				) );
 				
 				if ( $review === false || $user->getOption( 'reviews_showedit' ) ) {
-					$control = new ReviewControl( $review === false ? null : $review );
+					$review = $review === false ? null : $review;
+					$control = new ReviewControl( $review, true );
 					$control->addToContext( $out );
 				}
 			}
