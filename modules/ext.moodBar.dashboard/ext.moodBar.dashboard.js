@@ -30,6 +30,14 @@ jQuery(function( $ ) {
 	}
 	
 	/**
+	 * Select all comment type filters.
+	 */
+	function selectAllTypes() {
+		$( '#fbd-filters-type-praise, #fbd-filters-type-confusion, #fbd-filters-type-issues' ).each( function() {
+			$(this).prop( 'checked', true);
+		});
+	}
+	/**
 	 * Set the moodbar-feedback-types and moodbar-feedback-username cookies based on formState.
 	 * This function uses the form state saved in formState, so you may want to call saveFormState() first.
 	 */
@@ -57,6 +65,8 @@ jQuery(function( $ ) {
 					changed = true;
 				}
 			} );
+		} else {
+			selectAllTypes();
 		}
 		return changed;
 	}
@@ -262,7 +272,7 @@ jQuery(function( $ ) {
 				.append( $('<button>').attr('class', 'fbd-action-cancel').text( mw.msg('moodbar-feedback-action-cancel')) )
 				.append( $('<span>').attr('class', 'fbd-item-reason-msg') )
 			.append( $('<div>').attr('class', 'fbd-item-reason-msg') );
-				   
+
 		var storedParams = params;
 		var $storedItem = $item;
 		
@@ -388,7 +398,7 @@ jQuery(function( $ ) {
 					'target': '_new'
 				}, mw.msg( 'moodbar-response-link' ) );
 	
-			//ULA	      
+			//ULA
 			var ula = mw.msg( 'moodbar-response-terms' )
 				.replace ( /\$1/g, termsLink );
 				
@@ -643,6 +653,13 @@ jQuery(function( $ ) {
 		loadComments( 'more' );
 	} );
 	
+	$( '#fbd-filters-types input[type=checkbox]' ).click( function() {
+		var types = getSelectedTypes();
+		if(types.length === 0) { //check for 0 because onclick it will already have unchecked itself.
+			$(this).prop('checked', true);
+		}
+	});
+
 	saveFormState();
 	var filterType = $( '#fbd-filters' ).children( 'form' ).data( 'filtertype' );
 	// If filtering already happened on the PHP side, don't load the form state from cookies

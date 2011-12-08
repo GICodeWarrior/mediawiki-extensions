@@ -91,6 +91,21 @@ $wgResourceModules['ext.moodBar.init'] = $mbResourceTemplate + array(
 	),
 );
 
+$wgResourceModules['ext.moodBar.tooltip'] = $mbResourceTemplate + array(
+	'styles' => 'ext.moodBar/ext.moodBar.tooltip.css',
+	'scripts' => 'ext.moodBar/ext.moodBar.tooltip.js',
+	'messages' => array(
+		 'moodbar-tooltip-title',
+		 'moodbar-tooltip-subtitle',		
+	),
+	'position' => 'top',
+	'dependencies' => array(
+		'jquery.cookie',
+		'jquery.client',
+		'ext.moodBar.init',
+	),
+);
+
 $oldVersion = version_compare( $wgVersion, '1.17', '<=' );
 
 if ( !$oldVersion ) {
@@ -137,6 +152,16 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'moodbar-success-subtitle',
 		'moodbar-blocked-title',
 		'moodbar-blocked-subtitle',
+		'moodbar-email-title',
+		'moodbar-email-input',
+		'moodbar-email-desc',
+		'moodbar-email-submit',
+		'moodbar-updating-title',
+		'moodbar-updating-subtitle',
+		'moodbar-email-confirm-title',
+		'moodbar-email-confirm-desc',
+		'moodbar-email-resend-confirmation',
+		'moodbar-email-optout',
 	),
 	'dependencies' => array(
 		'mediawiki.util',

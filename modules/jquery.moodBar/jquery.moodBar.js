@@ -48,6 +48,42 @@
 				success: fb.callback,
 				dataType: 'json'
 			} );
+		}, 
+
+		/* ajax method to set user email. 
+		 * called when user email address is not sent.
+		 */
+		'setEmail': function( mbProps ) {			
+			var apiRequest = {
+				'action': 'moodbarsetuseremail',
+				'mbaction': 'setemail', 
+				'email': mbProps.email,
+				'token': mw.config.get('mbEditToken'),
+				'format':'json'
+			};
+			return $.ajax( {
+				type: 'post',
+				url: mw.util.wikiScript( 'api' ),
+				data: apiRequest,
+				success: mbProps.callback,
+				dataType: 'json' 
+			} );
+		}, 
+
+		'resendVerification': function (mbProps) {
+			var apiRequest = {
+				'action': 'moodbarsetuseremail',
+				'mbaction': 'resendverification', 
+				'token': mw.config.get('mbEditToken'),
+				'format':'json'
+			};
+			return $.ajax( {
+				type: 'post',
+				url: mw.util.wikiScript( 'api' ),
+				data: apiRequest,
+				success: mbProps.callback,
+				dataType: 'json' 
+			} );
 		}
 	};
 } ) ( jQuery );

@@ -7,9 +7,10 @@ class MoodBarHooks {
 	 * @param $output OutputPage
 	 * @param $skin Skin
 	 */
+
 	public static function onPageDisplay( &$output, &$skin ) {
 		if ( self::shouldShowMoodbar( $output, $skin ) ) {
-			$output->addModules( array( 'ext.moodBar.init', 'ext.moodBar.core' ) );
+			$output->addModules( array( 'ext.moodBar.init', 'ext.moodBar.tooltip', 'ext.moodBar.core' ) );
 		}
 
 		return true;

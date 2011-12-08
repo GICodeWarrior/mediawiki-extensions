@@ -96,7 +96,7 @@
 }
 
 .mw-moodBar-feedback-invalid {
-	border:2px solid #CC0000;
+	border: 2px solid #CC0000;
 }
 
 .mw-moodBar-privacy,
@@ -123,6 +123,20 @@
 	height: 77px;
 }
 
+.mw-moodBar-state-success {
+	/* @embed */
+	background: url(images/response-success.png) left center no-repeat;
+	padding: 20px 0 0 90px;
+	height: 77px;
+}
+
+.mw-moodBar-state-error {
+	/* @embed */
+	background: url(images/response-error.png) left center no-repeat;
+	padding: 20px 0 0 90px;
+	height: 77px;
+}
+
 .mw-moodBar-state-title {
 	font-weight: bold;
 	font-size: 25px;
@@ -133,10 +147,17 @@
 	color: #7e7e7e;
 }
 
-.red-bold {
-	font-weight:bold;
-	color:#CC0000;
+.mw-moodBar-desc {
+	font-size: .8em;
+	padding: 1em;
 }
+
+.red-bold {
+	font-weight: bold;
+	color: #CC0000;
+}
+
+
 
 /**
  * Types
