@@ -45,7 +45,18 @@ HTML;
 	 * @param Title $title
 	 */
 	public static function getAnonFromTitle( Title $title ) {
-		return self::getAnonFromString( $title->getBaseText() );
+		global $wgOnlineStatusBarTrackIpUsers;
+		if ( $wgOnlineStatusBarTrackIpUsers == false ) {
+			return false;
+		}
+		$user = User::newFromId( 0 );
+		$user->setName( $title->getBaseText() );
+	
+		if (!($user instanceof User)) {
+			return false;
+		}
+	
+		return $user;
 	}
 
 	/**
@@ -70,10 +81,6 @@ HTML;
 			return false;
 		}
 
-		if ( self::isValid( $user ) != true ) {
-			return false;
-		}
-
 		$status = OnlineStatusBar_StatusCheck::getStatus( $user );
 
 		return array( $status, $user );
@@ -84,7 +91,16 @@ HTML;
 	 * @return array
 	 */
 	public static function getUserInfoFromTitle( Title $title ) {
-		return self::getUserInfoFromString( $title->getBaseText() );
+		$user = User::newFromName( $title->getBaseText() );
+		// check
+		if (!($user instanceof User)) {
+			return false;
+		}
+		if ( !self::isValid($user)) {
+			return false;
+		}
+
+		return $user;
 	}
 
 	/**

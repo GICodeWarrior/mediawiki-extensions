@@ -22,7 +22,8 @@ if ($statusbar.length > 0) {
 				var statusMap = {
 					offline:'red',
 					online:'green',
-					away:'orange'
+					away:'orange',
+					busy:'orange'
 				};
 				var imgName = statusMap[data.onlinestatus.result] + '.png';
 				var $icon = mw.html.element('img', {

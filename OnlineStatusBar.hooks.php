@@ -86,11 +86,8 @@ class OnlineStatusBarHooks {
 			return true;
 		}
 
-		/** @var $user User */
-		list( $status, $user ) = $result;
-
 		// Don't display status of those who don't want to show bar but only use magic
-		if ( $user->getOption( 'OnlineStatusBar_hide' ) == true ) {
+		if ( $result->getOption( 'OnlineStatusBar_hide', false ) == true ) {
 			return true;
 		}
 		$context = $article->getContext();
