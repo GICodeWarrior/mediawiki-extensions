@@ -180,10 +180,10 @@ class OnlineStatusBarHooks {
 		}
 
 		// get a status of user parsed from title
-		$result = OnlineStatusBar::getUserInfoFromTitle( $parser->getTitle() );
+		$result = OnlineStatusBar::getUserInfoFromString( $parser->getTitle()->getBaseText() );
 		// if user is IP and we track them
 		if ( User::isIP( $parser->getTitle()->getBaseText() ) && $result === false ) {
-			$result = OnlineStatusBar::getAnonFromTitle( $parser->getTitle() );
+			$result = OnlineStatusBar::getAnonFromString( $parser->getTitle()->getBaseText() );
 		}
 		
 		if ( $result === false ) {
@@ -198,5 +198,3 @@ class OnlineStatusBarHooks {
 
 		$ret = $result[0];
 		return true;
-	}
-}
