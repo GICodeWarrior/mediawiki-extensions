@@ -73,7 +73,8 @@
 			
 			this.textInput = $( '<textarea>' ).attr( {
 				'name': this.fieldName( 'text' ),
-				'class': 'review-textinput'
+				'class': 'review-textinput',
+				'rows': 6
 			} ).text( this.review.fields.text );
 			
 			this.ratingInput = reviews.htmlSelect(

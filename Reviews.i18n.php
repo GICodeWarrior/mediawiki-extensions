@@ -62,8 +62,8 @@ $messages['en'] = array(
 	'reviews-submission-submit' => 'Submit',
 	'reviews-submission-saving' => 'Saving',
 	'reviews-submission-success' => 'Your review has been submitted!',
-	'reviews-submission-title' => 'A title for your review:',
-	'reviews-submission-text' => 'The review text:',
+	'reviews-submission-title' => 'Title:',
+	'reviews-submission-text' => 'Review:',
 	'reviews-submission-rating' => 'Overall rating:',
 	'reviews-submission-ratings' => 'Specific ratings:',
 
