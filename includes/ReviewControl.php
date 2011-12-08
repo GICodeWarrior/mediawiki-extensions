@@ -46,7 +46,7 @@ class ReviewControl {
 		}
 		
 		$attribs['data-review'] = FormatJson::encode( $review );
-		$attribs['data-reload-target'] = $context->getTitle()->getLocalURL() . '#reviewslist';
+		$attribs['data-reload-target'] = $context->getTitle()->getLocalURL( array( 'action' => 'refresh' ) );
 		
 		$out->addHTML( Html::element( 'div', $attribs ) );
 	}

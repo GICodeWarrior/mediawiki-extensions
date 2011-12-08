@@ -172,14 +172,13 @@ final class ReviewsHooks {
 			$reviewPager = new ReviewPager( array( 'page_id' => $out->getTitle()->getArticleID() ) );
 
 			if ( $reviewPager->getNumRows() ) {
+				$out->addHTML( HTML::element( 'h2', array( 'id' => 'reviewslist' ), wfMsg( 'reviews-list-title' ) ) );
+				
 				$out->addHTML(
 					$reviewPager->getNavigationBar() .
 					$reviewPager->getBody() .
 					$reviewPager->getNavigationBar()
 				);
-			}
-			else {
-				$this->getOutput()->addWikiMsg( 'reviews-pager-no-results' );
 			}
 			
 			/* User */ $user = $out->getUser();
