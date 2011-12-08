@@ -18,6 +18,7 @@
 		var $this = $( _this );
 		
 		this.linksForState = null;
+		this.showState = null;
 		
 		this.updateStateLinks = function( id, state ) {
 			$this.text( '' );
@@ -26,13 +27,17 @@
 				'data-review-state': state
 			} );
 			
+			if ( this.showState ) {
+				$this.append( mw.msg( 'reviews-state-' + state ) + ' ' );
+			}
+			
 			for ( i in this.linksForState[state] ) {
 				if ( this.linksForState[state].hasOwnProperty( i ) ) {
 					var targetState = this.linksForState[state][i];
 					var isFirst = $this.text() === '';
 					
 					if ( isFirst ) {
-						$this.append( mw.msg( 'reviews-state-' + state ), ' (' );
+						$this.append( '(' );
 					}
 					else {
 						$this.append( ' | ' );
@@ -89,6 +94,7 @@
 		
 		this.setup = function() {
 			this.linksForState = $.parseJSON( $this.attr( 'data-review-states' ) );
+			this.showState = $this.attr( 'data-show-state' ) === '1';
 			
 			this.updateStateLinks(
 				$this.attr( 'data-review-id' ),

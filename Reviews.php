@@ -210,7 +210,7 @@ $wgResourceModules['ext.reviews.list'] = $moduleTemplate + array(
 		'reviews.list.css',
 	),
 	'dependencies' => array(
-		'jquery.reviewRating',
+		'jquery.reviewState', 'jquery.reviewRating',
 	),
 );
 

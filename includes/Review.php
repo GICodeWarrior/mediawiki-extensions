@@ -401,7 +401,7 @@ class Review extends ReviewsDBObject {
 		
 		$html .= '<tr><td>';
 		
-		$html .= $this->getStateControl( $user );
+		$html .= $this->getStateControl( $user, false );
 		
 		$html .= "  ( View details | Edit )";
 		
@@ -455,11 +455,12 @@ class Review extends ReviewsDBObject {
 	 * @since 0.1
 	 * 
 	 * @param User $user
+	 * @param boolean $showState
 	 * 
 	 * @return string
 	 */
-	public function getStateControl( User $user ) {
-		$control = htmlspecialchars( self::getStateMessage( $this->getField( 'state' ) ) );
+	public function getStateControl( User $user, $showState = true ) {
+		$control = $showState ? htmlspecialchars( self::getStateMessage( $this->getField( 'state' ) ) ) : '';
 		
 		$states = array(
 			'new' => array(),
@@ -492,6 +493,7 @@ class Review extends ReviewsDBObject {
 				'data-review-id' => $this->getId(),
 				'data-review-state' => self::getStateString( $this->getField( 'state' ) ),
 				'data-review-states' => FormatJson::encode( $states ),
+				'data-show-state' => $showState ? 1 : 0
 			),
 			$control
 		);
