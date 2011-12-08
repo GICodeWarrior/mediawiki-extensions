@@ -1,5 +1,9 @@
 <?php
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
+
 global $IP;
 require_once( "$IP/maintenance/tests/ApiSetup.php" );
 require_once( "$IP/maintenance/deleteArchivedFiles.inc" );
