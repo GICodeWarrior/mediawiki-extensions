@@ -28,7 +28,7 @@ if ($statusbar.length > 0) {
 				var $icon = mw.html.element('img', {
 					src: mw.config.values.wgExtensionAssetsPath + "/OnlineStatusBar/status" + imgName
 				});
-				$statusbar.html(mw.msg('onlinestatusbar-line', wgTitle,$icon,data.onlinestatus.result));
+				$statusbar.html(mw.msg('onlinestatusbar-line', wgTitle,$icon,mw.msg('onlinestatusbar-status-' + data.onlinestatus.result)));
 			}
 		});
 	}

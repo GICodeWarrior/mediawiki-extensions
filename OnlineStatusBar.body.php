@@ -18,10 +18,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class OnlineStatusBar {
 	/**
 	 * Create a html bar
-	 * @param $text
 	 * return HTML
 	 **/
-	public static function getStatusBarHtml( $text ) {
+	public static function getStatusBarHtml() {
 		return <<<HTML
 <div class="onlinestatusbarbody metadata onlinestatusbartop" id="status-top">
 <div class="onlinestatusbaricon">

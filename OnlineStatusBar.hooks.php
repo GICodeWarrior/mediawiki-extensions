@@ -93,14 +93,8 @@ class OnlineStatusBarHooks {
 		if ( $user->getOption( 'OnlineStatusBar_hide' ) == true ) {
 			return true;
 		}
-
-		$modetext = wfMessage( 'onlinestatusbar-status-' . $status )->toString();
-		$image = OnlineStatusBar::getImageHtml( $status, $modetext );
-		$text = wfMessage( 'onlinestatusbar-line', $user->getName() )
-				->rawParams( $image )->params( $modetext )->escaped();
 		$context = $article->getContext();
-		$article->getParserOutput()->updateCacheExpiry($wgOnlineStatusBarCacheTime[$status] * 60);
-		$context->getOutput()->addHtml( OnlineStatusBar::getStatusBarHtml( $text ) );
+		$context->getOutput()->addHtml( OnlineStatusBar::getStatusBarHtml() );
 
 		return true;
 	}
