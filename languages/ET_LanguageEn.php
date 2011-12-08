@@ -1,4 +1,7 @@
 <?php
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
 
 global $smwgExtTabIP;
 include_once( $smwgExtTabIP . '/languages/ET_Language.php' );
