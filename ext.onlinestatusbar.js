@@ -1,4 +1,5 @@
-// brion's
+// script of Online Status Bar extension
+// created by Brion Vibber and Petr Bena
 
 $(function() {
 
