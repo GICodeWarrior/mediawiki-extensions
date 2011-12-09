@@ -57,6 +57,38 @@ $messages['de'] = array(
 	'swb_inverse_label_default' => '$1 von',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'browsewiki' => 'Naviguer dans le wiki & le web sémantique',
+	'swb_desc' => 'Ajouter une page spéciale [[Special:BrowseWiki|Naviguer dans le wiki & le web sémantique]]',
+	'swb_browse_article' => 'Entrez le nom de la page à partir de laquelle commencer la navigation sémantique.',
+	'swb_browse_go' => 'Valider',
+	'swb_browse_show_incoming' => "afficher les propriétés d'entrée qui pointent ici",
+	'swb_browse_hide_incoming' => "cacher les propriétés d'entrée qui pointent ici",
+	'swb_browse_no_outgoing' => 'Cette page n’a aucune propriété.',
+	'swb_browse_no_incoming' => 'Aucune propriété ne pointe vers cette page.',
+	'swb_inverse_label_property' => 'Label de la propriété inverse',
+	'swb_inverse_label_default' => '$1 de',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'browsewiki' => 'Explorar o wiki e web semántica',
+	'swb_desc' => 'Engade unha páxina especial denominada [[Special:BrowseWiki|Explorar o wiki e web semántica]]',
+	'swb_browse_article' => 'Insira o nome da páxina para comezar a navegación semántica.',
+	'swb_browse_go' => 'Ir',
+	'swb_browse_show_incoming' => 'mostrar as propiedades entrantes que ligan cara a aquí',
+	'swb_browse_hide_incoming' => 'agochar as propiedades entrantes que ligan cara a aquí',
+	'swb_browse_no_outgoing' => 'Esta páxina non ten propiedades.',
+	'swb_browse_no_incoming' => 'Ningunha propiedade liga con esta páxina.',
+	'swb_inverse_label_property' => 'Etiqueta da propiedade inversa',
+	'swb_inverse_label_default' => '$1 de',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -74,6 +106,17 @@ $messages['mk'] = array(
 	'swb_browse_more' => '...',
 );
 
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Saruman
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'browsewiki' => 'Blader door Wiki en Semantisch Web',
+	'swb_browse_go' => 'OK',
+	'swb_browse_no_outgoing' => 'Deze pagina heeft geen eigenschappen.',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -86,5 +129,6 @@ $messages['ps'] = array(
  */
 $messages['te'] = array(
 	'swb_browse_go' => 'వెళ్ళు',
+	'swb_browse_no_outgoing' => 'ఈ పేజీలో లక్షణాలేమీ లేవు.',
 );
 
