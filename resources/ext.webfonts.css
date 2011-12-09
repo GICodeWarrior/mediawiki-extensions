@@ -35,12 +35,12 @@ div.webfontMenu {
 }
 
 /* @noflip */
-body.rtl div.webfontMenu ul li {
+body.rtl div.webfontMenu {
 	direction: rtl;
 }
 
 div.webfontMenu div.menu {
-	position: relative;
+	position: absolute;
 	display: block;
 	clear: both;
 	text-align: left;
@@ -82,6 +82,7 @@ div.webfontMenu ul {
 	margin-left: -1px;
 	text-align: left;
 	font-size: 0.8em;
+	width: 100%;
 }
 
 div.webfontMenu li {

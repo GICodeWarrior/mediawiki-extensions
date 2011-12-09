@@ -7,6 +7,7 @@
 
 div.webfontMenu div.menu {
 	top: 0px;
+	position: relative;
 }
 
 div#webfonts-menu li {
