@@ -4867,12 +4867,14 @@ Prošu zdźěl to [[{{MediaWiki:Grouppage-sysop}}|sydłowemu administratorej]].'
 /** Hungarian (Magyar)
  * @author Bdamokos
  * @author Dani
+ * @author Dj
  * @author Dorgan
  * @author Glanthor Reviol
  * @author Tgr
  */
 $messages['hu'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Videómetaadat-szerkesztő és médiakereső]',
+	'mvadmin' => 'MetavidWiki adminisztratív funkciók',
 	'metavid' => 'MetaVid-lap',
 	'mv_missing_stream' => 'Hiányzó adatfolyam: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki speciális lapok',
@@ -9825,8 +9827,8 @@ $messages['sr-ec'] = array(
 	'ao_file_MPEG2' => 'Archive.org – MPEG-2',
 	'ao_file_flash_flv' => 'Archive.org – Флеш видео',
 	'ao_file_Ogg_Video' => 'Archive.org – Ogg видео',
-	'mv_error_stream_missing' => '<span class="error">Грешка: Не постоји видео-фајл придружен овом стриму.</span><br />
-Молимо Вас да пријавите ово [[{{MediaWiki:Grouppage-sysop}}|администратору сајта]].',
+	'mv_error_stream_missing' => '<span class="error">Грешка: нема видео-снимка који је повезан с овим током.</span><br />
+Пријавите овај проблем [[{{MediaWiki:Grouppage-sysop}}|администратору]].',
 	'mv_stream_added' => 'Додали сте стрим $1',
 	'mv_move_delete_msg' => 'премештено у $1',
 	'mv_add_stream_submit' => 'Додај стрим',
@@ -9867,7 +9869,7 @@ $messages['sr-ec'] = array(
 	'mv_tool_export_title' => 'Извези метаподатке стрима',
 	'mv_tool_embed' => 'Убаци',
 	'mv_tool_embed_title' => 'Опције убацивања за тренутно захтевани сегмент',
-	'mv_results_found' => 'Видео резултати <b>$1</b> до <b>$2</b> од <b>$3</b>',
+	'mv_results_found' => 'Видео-резултати <b>$1</b> до <b>$2</b> од <b>$3</b>',
 	'mv_watch_clip' => 'Погледај клип',
 	'mv_close_clip' => 'Затвори клип',
 	'mv_improve_transcript' => 'Побољшај транскрипт',
@@ -9904,7 +9906,7 @@ $messages['sr-ec'] = array(
 	'mv_viewprevnext' => 'Погледај ($1) ($2)',
 	'mv_search_sel_t' => 'Изаберите врсту претраге',
 	'mv_results_for' => 'Резултати за $1',
-	'mv_video_search' => 'Претрага видео снимака',
+	'mv_video_search' => 'Претрага видео-снимака',
 	'mv_page_search' => 'Претражи вики странице за $1',
 	'mv_add_filter' => 'Додај филтер',
 	'mv_search_match' => 'Претрага текста',
