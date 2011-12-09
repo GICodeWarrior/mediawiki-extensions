@@ -622,9 +622,17 @@ $messages['mk'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Junaidpv
+ * @author Praveenp
  */
 $messages['ml'] = array(
+	'apisb-no-js' => "'''പിഴവ്''': ഈ വിശേഷഗുണത്തിനു ജാവാസ്ക്രിപ്റ്റ് ആവശ്യമാണ്.",
+	'apisb-api-disabled' => 'ഈ സൈറ്റിൽ എ.പി.ഐ. പ്രവർത്തനരഹിതമാക്കിയിരിക്കുന്നു.',
+	'apisb-parameters' => 'ചരങ്ങൾ',
 	'apisb-result' => 'ഫലം',
+	'apisb-request-url' => 'അഭ്യർത്ഥിച്ച യൂ.ആർ.എൽ.:',
+	'apisb-loading' => 'ശേഖരിക്കുന്നു...',
+	'apisb-ns-main' => '(മുഖ്യം)',
+	'apisb-query-meta' => 'മെറ്റ വിവരങ്ങൾ',
 );
 
 /** Malay (Bahasa Melayu)
