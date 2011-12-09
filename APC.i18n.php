@@ -4564,7 +4564,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'apc' => 'APCയെക്കുറിച്ചുള്ള വിവരണം',
+	'apc' => 'എ.പി.സി. വിവരങ്ങൾ',
 	'right-apc' => 'Special:APCലുള്ള എല്ലാ സവിശേഷതകളും ഉപയോഗിക്കുക',
 	'viewapc-clear-confirm' => 'താങ്കൾക്ക് കാഷെ ക്ലിയർ ചെയ്യണമോ?',
 	'viewapc-clear-user-cache' => 'ഉപയോക്തൃകാഷെ ക്ലിയർ ചെയ്യുക',
