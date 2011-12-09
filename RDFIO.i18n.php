@@ -198,12 +198,12 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'rdfio-desc' => 'Functionalitate extendite de importation e exportation RDF, incluse un puncto de fin pro SPARQL, pro Semantic MediaWiki',
+	'rdfio-desc' => 'Functionalitate extendite de importation e exportation RDF, incluse un puncto de accesso a SPARQL, pro Semantic MediaWiki',
 	'rdfimport' => 'Importation RDF',
 	'rdfio-arc2admin-desc' => 'Pagina de administration pro le immagazinage ARC2 RDF pro Semantic MediaWiki',
 	'rdfio-rdfimport-desc' => 'Un pagina special pro importar datos semantic in formato RDF/XML',
-	'rdfio-sparqlendpoint-desc' => 'Un puncto de fin SPARQL fornite per le SMWRDFConnector',
-	'sparqlendpoint' => 'Puncto de fin SPARQL',
+	'rdfio-sparqlendpoint-desc' => 'Un puncto de accesso a SPARQL fornite per le extension RDFIO',
+	'sparqlendpoint' => 'Puncto de accesso a SPARQL',
 	'specialarc2admin' => 'Pagina de administration pro le immagazinage ARC2 RDF',
 );
 
