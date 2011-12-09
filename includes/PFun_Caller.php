@@ -181,6 +181,20 @@ class ParserFunCaller extends ParserHook {
 	}
 	
 	/**
+	 * Returns a string, exactly like '{{CALLER}}' as variable would return it.
+	 * 
+	 * @param PPFrame $frame
+	 * 
+	 * @return string
+	 */
+	static function getCallerVar( PPFrame $frame ) {
+		$siteFrame = ParserFunCaller::getFrameStackItem( $frame, 1 );
+		return ( $siteFrame !== null )
+				? self::createSiteList( array( $siteFrame ), false )
+				: '';
+	}
+	
+	/**
 	 * Returns a certain parent caller from a given frame by index. 0 returns the given frame, 1 would return
 	 * the frame of the site which was calling the given frame and so on.
 	 * 
