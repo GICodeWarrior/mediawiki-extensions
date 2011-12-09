@@ -1421,6 +1421,7 @@ $messages['mn'] = array(
  * @author Htt
  * @author Kaustubh
  * @author Mahitgar
+ * @author Rahuldeshmukh101
  */
 $messages['mr'] = array(
 	'patrol' => 'संपादनांवर पहारा ठेवा',
@@ -1443,7 +1444,7 @@ $messages['mr'] = array(
 	'patrol-stopped' => 'तुम्ही इतर संपादनांवर पहारा देण्याचे नाकारले आहे. $1',
 	'patrol-resume' => 'पुन्हा चालू करण्यासाठी इथे टिचकी द्या.',
 	'group-patroller' => 'निरीक्षक',
-	'group-patroller-member' => 'निरीक्षक',
+	'group-patroller-member' => '{{GENDER:$1|निरीक्षक}}',
 	'grouppage-patroller' => '{{ns:project}}:निरीक्षक',
 	'right-patroller' => 'पानांवर पहारा करा',
 );
