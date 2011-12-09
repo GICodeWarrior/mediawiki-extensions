@@ -427,10 +427,11 @@ $messages['sq'] = array(
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'gnuplot-desc' => 'Додаје таг <code><nowiki><gnuplot></nowiki></code> зарад коришћења Gnuplot-а',
+	'gnuplot-desc' => 'Додаје ознаку <code><nowiki><gnuplot></nowiki></code> за коришћење Gnuplot-а',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
