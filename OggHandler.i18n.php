@@ -2351,6 +2351,7 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author AVRS
+ * @author Kaajawa
  * @author Kaustubh
  */
 $messages['mr'] = array(
@@ -2371,7 +2372,7 @@ $messages['mr'] = array(
 	'ogg-no-player' => 'माफ करा, पण तुमच्या संगणकामध्ये कुठलाही प्लेयर आढळला नाही. कृपया <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">प्लेयर डाउनलोड करा</a>.',
 	'ogg-no-xiphqt' => 'तुमच्या संगणकामध्ये क्वीकटाईम ला लागणारा XiphQT हा तुकडा आढळला नाही. याशिवाय क्वीकटाईम ऑग संचिका चालवू शकणार नाही. कॄपया <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT डाउनलोड करा</a> किंवा दुसरा प्लेयर वापरा.',
 	'ogg-player-videoElement' => '<video> तुकडा',
-	'ogg-player-oggPlugin' => 'ऑग प्लगीन',
+	'ogg-player-oggPlugin' => 'न्याहाळक प्लगीन',
 	'ogg-player-cortado' => 'कोर्टाडो (जावा)',
 	'ogg-player-thumbnail' => 'फक्त स्थिर चित्र',
 	'ogg-player-soundthumb' => 'प्लेयर उपलब्ध नाही',
@@ -3333,7 +3334,7 @@ $messages['sr-ec'] = array(
 	'ogg-short-general' => 'Ogg $1 медијска датотека, $2.',
 	'ogg-long-audio' => 'Ogg $1 звучна датотека, трајање $2, $3',
 	'ogg-long-video' => 'Ogg $1 видео-снимак, трајање $2, $4 × $5 пиксела, $3',
-	'ogg-long-multiplexed' => 'Мултиплексирани .ogg аудио/видео-снимак, $1, трајање $2, $4 × $5 пиксела, $3',
+	'ogg-long-multiplexed' => 'Мултиплексирани .ogg аудио/видео снимак, $1, трајање $2, $4 × $5 пиксела, $3',
 	'ogg-long-general' => 'Ogg медијска датотека, трајање $2, $3.',
 	'ogg-long-error' => '(неисправна .ogg датотека: $1)',
 	'ogg-play' => 'Пусти',
