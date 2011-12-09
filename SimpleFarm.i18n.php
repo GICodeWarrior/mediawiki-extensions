@@ -33,11 +33,32 @@ $messages['de'] = array(
 	'simplefarm-desc' => 'Einfache, jedoch trotzdem mächtige Wiki-Farm-Erweiterung ohne großartige Konfigurations-Seiten',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'simplefarm-desc' => 'Simple mais puissante extension de ferme de wiki sans aucune page de configuration fantaisiste',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'simplefarm-desc' => 'Simple, pero potente extensión de wiki granxa sen ningunha páxina de configuración luxosa',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
 	'simplefarm-desc' => 'Jednore, ale mócne wikifarmowe rozšěrjenje bjez wulkich konfiguraciskich stronow',
+);
+
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'simplefarm-desc' => 'Egyszerű, mégis hatékony wiki farm kiterjesztés csili-vili konfigurációs oldalak nélkül',
 );
 
 /** Macedonian (Македонски)
