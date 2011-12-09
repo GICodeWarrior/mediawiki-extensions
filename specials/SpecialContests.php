@@ -149,11 +149,6 @@ class SpecialContests extends SpecialContestPage {
 
 		$headers[] = Html::element( 'th', array( 'class' => 'unsortable' ) );
 
-//		if ( $user->isAllowed( 'contestadmin' ) ) {
-//			$headers[] = Html::element( 'th', array( 'class' => 'unsortable' ), wfMsg( 'contest-special-edit' ) );
-//			$headers[] = Html::element( 'th', array( 'class' => 'unsortable' ), wfMsg( 'contest-special-delete' ) );
-//		}
-
 		$out->addHTML( '<thead><tr>' . implode( '', $headers ) . '</tr></thead>' );
 
 		$out->addHTML( '<tbody>' );
