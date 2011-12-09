@@ -60,8 +60,8 @@ $wgHooks['ParserGetVariableValueSwitch'][] = 'ExtParserFun::onParserGetVariableV
 
 
 // 'parse' and 'CALLER' parser function initializations:
-$wgAutoloadClasses['ParserFunParse' ] = ExtParserFun::getDir() . '/PFun_Parse.php';
-$wgAutoloadClasses['ParserFunCaller'] = ExtParserFun::getDir() . '/PFun_Caller.php';
+$wgAutoloadClasses['ParserFunParse' ] = ExtParserFun::getDir() . '/includes/PFun_Parse.php';
+$wgAutoloadClasses['ParserFunCaller'] = ExtParserFun::getDir() . '/includes/PFun_Caller.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'ParserFunParse::staticInit';
 $wgHooks['LanguageGetMagic'   ][] = 'ParserFunParse::staticMagic';
