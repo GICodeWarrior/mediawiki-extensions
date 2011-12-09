@@ -95,6 +95,7 @@ $messages['de'] = array(
 	'onlinestatusbar-status-busy' => 'Beschäftigt',
 	'onlinestatusbar-status-away' => 'Abwesend',
 	'onlinestatusbar-status-offline' => 'Offline',
+	'onlinestatusbar-status-uknown' => 'Status ist unbekannt',
 	'onlinestatusbar-status-hidden' => 'Versteckt',
 );
 
@@ -251,6 +252,7 @@ $messages['mk'] = array(
 	'onlinestatusbar-status-busy' => 'Зафатен',
 	'onlinestatusbar-status-away' => 'Отсутен',
 	'onlinestatusbar-status-offline' => 'Исклучен',
+	'onlinestatusbar-status-uknown' => 'статусот е непознат',
 	'onlinestatusbar-status-hidden' => 'Скриен',
 );
 
