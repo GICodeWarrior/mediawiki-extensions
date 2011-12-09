@@ -609,7 +609,8 @@ $.narayam = new ( function() {
 		$( '.narayam-scheme', $('.narayam-scheme-dynamic-item') ).live( 'click', function() {
 			that.setScheme( $( this ).val() );
 			// rebuild the menu items with recent items.
-			$( '#narayam-menu-items' ).html( $.narayam.buildMenuItems() );
+			$( '#narayam-menu' ).html( $.narayam.buildMenuItems() );
+			$( '#narayam-menu-items' ).css( 'left', $('li#pt-narayam').offset().left );
 			$( '#narayam-' + $( this ).val() ).prop( 'checked', true );
 			if ( enabled ) {
 				$( '#narayam-toggle' ).prop( 'checked', true );

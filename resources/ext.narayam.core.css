@@ -6,11 +6,6 @@
 	background-color: #EAF3F8 !important;
 }
 
-.narayam-wrapper {
-	padding: 0;
-	margin: 0;
-}
-
 li#pt-narayam {
 	padding-left: 15px !important;
 }
@@ -21,9 +16,7 @@ div#narayam-menu {
 	direction: ltr;
 	float: left;
 }
-div.narayam-menuFocus {
-	background-position: -22px 60%;
-}
+
 /* @noflip */
 body.rtl div#narayam-menu {
 	direction: rtl;
@@ -34,7 +27,7 @@ div#narayam-menu div.menu-items {
 	clear: both;
 	text-align: left;
 	z-index: 99999;
-	width: 300px;
+	width: 200px;
 	top: 20px;
 	font-size: 0.8em;
 }
@@ -85,6 +78,7 @@ div#narayam-menu ul {
 	text-align: left;
 	max-height: 360px;
 	overflow-y: auto;
+	width: 100%;
 }
 
 div#narayam-menu li {
