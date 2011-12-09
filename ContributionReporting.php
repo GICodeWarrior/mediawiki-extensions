@@ -155,7 +155,7 @@ function efContributionReportingSetup( $parser ) {
 
 /**
  * Define the contributiontotal magic word
- * Example: {{#contributiontotal:start=2011-11-16 00:00:00|fudgefactor=0}}
+ * Example: {{#contributiontotal:fundraiser=2011|fudgefactor=0}}
  * @param $magicWords array
  * @param $langCode string
  * @return bool
@@ -210,39 +210,84 @@ function efContributionTrackingConnection() {
 }
 
 /**
- * Get the total amount of money raised since the start of the fundraiser
- * @param $start
- * @param $fudgeFactor
- * @return string
+ * Get the total amount of money raised for a specific fundraiser
+ * @param string $fundraiser The ID of the fundraiser to return the current total for
+ * @param int $fudgeFactor How much to adjust the total by
+ * @return integer
  */
-function efContributionReportingTotal( $start, $fudgeFactor ) {
-	$db = efContributionReportingConnection();
+function efContributionReportingTotal( $fundraiser, $fudgeFactor = 0 ) {
+	global $wgMemc, $egFundraiserStatisticsFundraisers, $egFundraiserStatisticsCacheTimeout;
 
-	$sql = 'SELECT ROUND( SUM(converted_amount) ) AS ttl FROM public_reporting';
-
-	if ( $start ) {
-		$sql .= ' WHERE received >= ' . $db->addQuotes( wfTimestamp( TS_UNIX, $start ) );
-	}
-
-	$res = $db->query( $sql );
-
-	$row = $res->fetchRow();
-
-	# Output
-	$output = $row['ttl'] ? $row['ttl'] : '0';
+	$dbr = efContributionReportingConnection();
 	
-	// Make sure fudge factor is a number
+	// If a total is cached, use that
+	$key = wfMemcKey( 'contributionreportingtotal', $fundraiser, $fudgeFactor );
+	$cache = $wgMemc->get( $key );
+	if ( $cache != false && $cache != -1 ) {
+		return $cache;
+	}
+	
+	// Find the index number for the requested fundraiser
+	$myFundraiserIndex = false;
+	foreach ( $egFundraiserStatisticsFundraisers as $fundraiserIndex => $fundraiserArray ) {
+		if ( $fundraiserArray['id'] == $fundraiser ) {
+			$myFundraiserIndex = $fundraiserIndex;
+			break;
+		}
+	}
+	if ( !$myFundraiserIndex ) {
+		// If none was found, use the most recent fundraiser
+		$myFundraiserIndex = count( $egFundraiserStatisticsFundraisers ) - 1;
+	}
+	
+	$myFundraiser = $egFundraiserStatisticsFundraisers[$myFundraiserIndex];
+
+	// First, try to get the total from the summary table
+	$result = $dbr->select(
+		'public_reporting_fundraisers',
+		'round( prf_total ) AS total',
+		'prf_id = ' . $myFundraiser['id'],
+		__METHOD__
+	);
+	$row = $dbr->fetchRow( $result );
+	
+	if ( $row['total'] > 0 ) {
+		$total = $row['total'];
+	} else {
+
+		// Try to get the total manually from public_reporting (more expensive)
+		$result = $dbr->select(
+			'public_reporting',
+			'round( sum( converted_amount ) ) AS total',
+			array(
+				'received >= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $myFundraiser['start'] ) ) ),
+				'received <= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $myFundraiser['end'] ) + 24 * 60 * 60 ) ),
+			),
+			__METHOD__
+		);
+		$row = $dbr->fetchRow( $result );
+		
+		if ( $row['total'] > 0 ) {
+			$total = $row['total'];
+		} else {
+			return 0;
+		}
+	}
+	
+	// Make sure the fudge factor is a number
 	if ( is_nan( $fudgeFactor ) ) {
 		$fudgeFactor = 0;
 	}
 
-	$output += $fudgeFactor;
+	// Add the fudge factor to the total
+	$total += $fudgeFactor;
 
-	return $output;
+	$wgMemc->set( $key, $total, $egFundraiserStatisticsCacheTimeout );
+	return $total;
 }
 
 /**
- * @return string
+ * @return integer
  */
 function efContributionReportingTotal_Render() {
 	$args = func_get_args();
@@ -252,18 +297,18 @@ function efContributionReportingTotal_Render() {
 	$start = false;
 
 	foreach( $args as $arg ) {
-		if ( strpos($arg,'=') === false ) {
+		if ( strpos( $arg,'=' ) === false ) {
 			continue;
 		}
 
-		list($key,$value) = explode( '=', trim($arg), 2 );
+		list( $key, $value ) = explode( '=', trim( $arg ), 2 );
 
-		if ($key == 'fudgefactor') {
+		if ( $key == 'fudgefactor' ) {
 			$fudgeFactor = $value;
-		} elseif ($key == 'start') {
-			$start = $value;
+		} elseif ( $key == 'fundraiser' ) {
+			$fundraiser = $value;
 		}
 	}
 
-	return efContributionReportingTotal( $start, $fudgeFactor );
+	return efContributionReportingTotal( $fundraiser, $fudgeFactor );
 }

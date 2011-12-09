@@ -46,26 +46,14 @@ class SpecialYearlyTotal extends IncludableSpecialPage {
 	/* Private Functions */
 
 	private function query( $adjustment ) {
-		global $wgMemc, $egFundraiserStatisticsCacheTimeout, $egFundraiserStatisticsFundraisers;
+		global $egFundraiserStatisticsFundraisers;
 		
 		$currenctFundraiserIndex = count( $egFundraiserStatisticsFundraisers ) - 1;
-		$year = $egFundraiserStatisticsFundraisers[$currenctFundraiserIndex]['id'];
+		$fundraiser = $egFundraiserStatisticsFundraisers[$currenctFundraiserIndex]['id'];
 
-		$key = wfMemcKey( 'fundraiserstatistics', $year, $adjustment );
-		$cache = $wgMemc->get( $key );
-		if ( $cache != false && $cache != -1 ) {
-			return $cache;
-		}
-		
-		// Get the timestamp for the start of the current fundraiser
-		// Note: This depends on the fundraisers being listed in chronological order
-		$start = strtotime( $egFundraiserStatisticsFundraisers[$currenctFundraiserIndex]['start'] );
-		$start = intval( wfTimestampOrNull( TS_UNIX, $start ) );
-
-		$total = efContributionReportingTotal( $start, $adjustment );
+		$total = efContributionReportingTotal( $fundraiser, $adjustment );
 		if ( !$total ) $total = 0;
-
-		$wgMemc->set( $key, $total, $egFundraiserStatisticsCacheTimeout );
+		
 		return $total;
 	}
 	

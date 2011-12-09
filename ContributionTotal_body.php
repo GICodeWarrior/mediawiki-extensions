@@ -10,12 +10,12 @@ class ContributionTotal extends SpecialPage {
 
 		$this->setHeaders();
 
-		# Get request data from, e.g.
-		$start = intval( wfTimestampOrNull( TS_UNIX, $wgRequest->getVal( 'start' ) ) );
+		# Get request data
+		$fundraiser = $wgRequest->getText( 'fundraiser' );
 		$action = $wgRequest->getText( 'action' );
 		$fudgeFactor = $wgRequest->getInt( 'fudgefactor' );
 
-		$output = efContributionReportingTotal( $start, $fudgeFactor );
+		$output = efContributionReportingTotal( $fundraiser, $fudgeFactor );
 
 		header( 'Cache-Control: max-age=300,s-maxage=300' );
 		if ( $action == 'raw' ) {
