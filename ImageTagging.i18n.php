@@ -2042,7 +2042,7 @@ $messages['sr-ec'] = array(
 	'imagetagging-addingtag' => 'Додавање тага…',
 	'imagetagging-removingtag' => 'Брисање тага…',
 	'imagetagging-addtagsuccess' => 'Додат таг.',
-	'imagetagging-removetagsuccess' => 'Избрисан таг.',
+	'imagetagging-removetagsuccess' => 'Уклоњена ознака.',
 	'imagetagging-canteditneedloginmessage' => 'Не можете мењати овај чланак.
 Ово може бити због тога што је потребно да се улогујете како би таговали слике.
 Да ли желите да се улогујете?',
