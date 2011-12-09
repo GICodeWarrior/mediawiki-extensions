@@ -1,10 +1,10 @@
  'Parser Fun' Changelog:
  =======================
  
- * (trunk) -- Version 0.2 alpha
+ * December 9, 2011 -- Version 0.2
    - New parser function/variable 'CALLER' to return a templates caller. Comes with the following parameters:
       + <1>/mode - can be the level of the call stack to return (if negative the value will be returned from the
-                   bottom. Instead of a numer a mode can be given: 'count' will return the current callstack level,
+                   bottom). Instead of a number a mode can be given: 'count' will return the current callstack level,
                    'list' will return a list of all sites in the stack.
       + linked   - boolean whether page(s) should be returned linked.
       + sep      - separator between pages in 'list' mode. ', ' by default.
@@ -12,7 +12,7 @@
       + limit    - how many items to return in 'list' mode. If negative the list will end that far from the stacks top.
      All parameters with specific meaning in 'list' mode have the same effect for the 'count' mode. In 'count' mode the
      offset is set to 1 by default, in 'list' mode to 0.
-      
+
 
  * December 2, 2011 -- Version 0.1 (initial release)
    - Magic word prefix 'THIS:', which is working with basically all functions returning page related information:

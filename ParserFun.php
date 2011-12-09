@@ -8,7 +8,7 @@
  * Support:       http://www.mediawiki.org/wiki/Extension_talk:Parser_Fun
  * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/ParserFun
  * 
- * @version: 0.2 alpha
+ * @version: 0.2
  * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
  *
@@ -83,7 +83,7 @@ class ExtParserFun {
 	 * 
 	 * @var string
 	 */
-	const VERSION = '0.2 alpha';
+	const VERSION = '0.2';
 	
 	const MAG_THIS = 'this';
 	const MAG_CALLER = 'caller';
