@@ -803,6 +803,7 @@ $messages['gl'] = array(
 	'narayam-mai-inscript' => 'InScript para maithili',
 	'narayam-gom-deva' => 'Transliteración para goan konkani-devanagari',
 	'narayam-gom-deva-inscript' => 'InScript para goan konkani-devanagari',
+	'narayam-he-standard-2011' => 'Hebreo estándar 2011',
 );
 
 /** Swiss German (Alemannisch)
@@ -1055,6 +1056,7 @@ $messages['ia'] = array(
 	'narayam-mai-inscript' => 'Maithili (InScript)',
 	'narayam-gom-deva' => 'Translitteration in Goan Konkani-Devanagari',
 	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari (InScript)',
+	'narayam-he-standard-2011' => 'Hebreo Standard 2011',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1299,6 +1301,7 @@ $messages['mk'] = array(
 	'narayam-mai-inscript' => 'Мајтили - InScript',
 	'narayam-gom-deva' => 'гоански Конкани - транслитерација на деванагари',
 	'narayam-gom-deva-inscript' => 'гоански Конкани - InScript за деванагари',
+	'narayam-he-standard-2011' => 'хебрејски (стандард 2011)',
 );
 
 /** Malayalam (മലയാളം)
@@ -1359,8 +1362,10 @@ $messages['ml'] = array(
 	'narayam-ru-standard' => 'റഷ്യൻ മാനകരൂപം',
 	'narayam-sah-standard' => 'സാഖാ മാനകരൂപം',
 	'narayam-hne-inscript' => 'ഛത്തീസ്ഗാഢി ഇന്‍സ്ക്രിപ്റ്റ്',
+	'narayam-mai-inscript' => 'മൈഥിലി ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-gom-deva' => 'ഗോവന്‍ കൊങ്കണി-ദേവനാഗരി ലിപ്യന്തരണം',
 	'narayam-gom-deva-inscript' => 'ഗോവന്‍ കൊങ്കണി-ദേവനാഗരി ഇന്‍സ്ക്രിപ്റ്റ്',
+	'narayam-he-standard-2011' => 'ഹീബ്രു മാനകരൂപം 2011',
 );
 
 /** Marathi (मराठी)
@@ -1431,6 +1436,7 @@ $messages['ms'] = array(
 	'narayam-mai-inscript' => 'InScript Maithili',
 	'narayam-gom-deva' => 'Alih Huruf Devanagari Konkani Goa',
 	'narayam-gom-deva-inscript' => 'InScript Devanagari Konkani Goa',
+	'narayam-he-standard-2011' => 'Piawaian Ibrani 2011',
 );
 
 /** Dutch (Nederlands)
@@ -1490,8 +1496,10 @@ $messages['nl'] = array(
 	'narayam-ru-standard' => 'Russisch (standaard)',
 	'narayam-sah-standard' => 'Jakoets (standaard)',
 	'narayam-hne-inscript' => 'Chhattisgarhi InScript',
+	'narayam-mai-inscript' => 'Maithili InScript',
 	'narayam-gom-deva' => 'Goan Konkani-Devanagari (transliteratie)',
 	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari InScript',
+	'narayam-he-standard-2011' => 'Hebreeuws standaard 2011',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -2176,6 +2184,7 @@ $messages['vi'] = array(
 	'narayam-mai-inscript' => 'InScript Mithila',
 	'narayam-gom-deva' => 'Chuyển tự tiếng Konkan Goa chữ Devanagari',
 	'narayam-gom-deva-inscript' => 'InScript Konkan Goa chữ Devanagari',
+	'narayam-he-standard-2011' => 'Tiếng Hê-brơ chuẩn 2011',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
