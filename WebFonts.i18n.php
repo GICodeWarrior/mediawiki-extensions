@@ -377,9 +377,10 @@ $messages['no'] = array(
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Odisha1
+ * @author Psubhashish
  */
 $messages['or'] = array(
-	'webfonts-reset' => 'ପୁନଃ ସ୍ଥାପନ',
+	'webfonts-reset' => 'ପୁନସ୍ଥାପନ',
 );
 
 /** Polish (Polski)
