@@ -70,6 +70,14 @@ $messages['he'] = array(
 תצוגת העץ משתמשת בתפריט [http://www.destroydrop.com/javascripts/tree dTree] והפתריטים המפתחים משתמשים ב־[http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'treeandmenu-desc' => 'Přidawa parserowe funkcije <code><nowiki>#tree</nowiki></code> and <code><nowiki>#menu</nowiki></code>, kotrež naličenja jako fałdujomne štomowe napohlady abo padace menije zwobraznjeja.
+Štomowe napohlady wužiwaja JavaScriptowy štomowy menij [http://www.destroydrop.com/javascripts/tree dTree] a padace menije wužiwaja [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
