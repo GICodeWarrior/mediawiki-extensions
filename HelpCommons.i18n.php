@@ -34,6 +34,13 @@ $messages['de'] = array(
 	'helpcommons-desc' => 'Nimmt den Hilfe-Namensraum aus einem Hilfe Wiki und bindet ihn in andere Wikis der Wiki-Familie ein',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'helpcommons-desc' => "Récupérer les pages d'aide d'un wiki d'aide et les inclure dans d'autres wikis de la famille de wikis",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
