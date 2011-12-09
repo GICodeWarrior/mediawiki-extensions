@@ -69,6 +69,14 @@ $messages['he'] = array(
 	'spark-missing-query' => 'יש להזין שאילתה באמצעות הפרמטר "data-spark-query".',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'spark-desc' => 'Přidawa tafličku <code><nowiki><spark /></nowiki></code>, kotraž zasadźenje [http://km.aifb.kit.edu/sites/spark/ Sparkowych] mashupow zmóžnja. Biblioteka Spark bu wot Dennisa Vrandecic a Andreasa Hartha wutworjena.',
+	'spark-missing-query' => 'Dyrbiš naprašowanje z pomocu parametra "data-spark-query" podać.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
