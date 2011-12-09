@@ -3253,10 +3253,10 @@ $messages['sr-ec'] = array(
 [http://www.youtube.com/watch?v=$1 Погледајте видео-снимак]',
 	'youtubeauthsub_summary' => 'Слање видеа на Јутуб.',
 	'youtubeauthsub_uploading' => 'Видео-снимак се отпрема. Будите стрпљиви.',
-	'youtubeauthsub_viewpage' => 'Такође можете да [[$1|погледате свој видео]].',
+	'youtubeauthsub_viewpage' => 'Или пак можете да [[$1|погледате видео-снимак]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Молимо Вас, унесите једну или више кључних речи.',
-	'youtubeauthsub_jserror_notitle' => 'Унесите наслов видео снимка.',
-	'youtubeauthsub_jserror_nodesc' => 'Унесите опис видео снимка.',
+	'youtubeauthsub_jserror_notitle' => 'Унесите наслов видео-снимка.',
+	'youtubeauthsub_jserror_nodesc' => 'Унесите опис видео-снимка.',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
