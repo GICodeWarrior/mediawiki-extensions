@@ -815,9 +815,11 @@ Hlej [http://php.net/manual/de/function.preg-replace.php the PHP function preg_r
 );
 
 /** Hungarian (Magyar)
+ * @author Dj
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'action-masseditregex' => 'tömeges szerkesztés végrehajtása',
 	'masseditregex' => 'Tömeges szerkesztés reguláris kifejezések használatával',
 	'masseditregex-desc' => 'Reguláris kifejezések használata [[Special:MassEditRegex|sok lap szerkesztéséhez egy művelettel]]',
 	'masseditregextext' => 'Adj meg egy vagy több reguláris kifejezést a kereséshez (soronként egyet), és egy vagy több kifejezést amire a találatokat ki szeretnéd cserélni.
@@ -853,6 +855,7 @@ A csere értékeket nem kell feloldójellel ellátni.',
 	'masseditregex-badregex' => 'Érvénytelen reguláris kifejezés:',
 	'masseditregex-editfailed' => 'A szerkesztés sikertelen:',
 	'masseditregex-tooltip-execute' => 'Változtatások alkalmazása mindegyik lapra',
+	'right-masseditregex' => 'Lap tartalmának lecserélése reguláris kifejezés segítségével',
 );
 
 /** Interlingua (Interlingua)
