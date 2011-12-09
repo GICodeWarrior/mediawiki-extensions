@@ -134,6 +134,13 @@ $messages['hsb'] = array(
 	'categorymembersonsidebar-desc' => 'Přidawa strony kategorije w bóčnicy',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'categorymembersonsidebar-desc' => 'Kategória tagok megjelenítése az oldalsávon',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
