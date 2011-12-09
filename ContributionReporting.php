@@ -154,6 +154,8 @@ function efContributionReportingSetup( $parser ) {
 }
 
 /**
+ * Define the contributiontotal magic word
+ * Example: {{#contributiontotal:start=2011-11-16 00:00:00|fudgefactor=0}}
  * @param $magicWords array
  * @param $langCode string
  * @return bool
