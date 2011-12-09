@@ -22,7 +22,7 @@ body.rtl div#narayam-menu {
 	direction: rtl;
 }
 div#narayam-menu div.menu-items {
-	position: relative;
+	position: absolute;
 	display: block;
 	clear: both;
 	text-align: left;

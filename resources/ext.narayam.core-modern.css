@@ -8,13 +8,13 @@
 div#narayam-menu div.menu-items {
 	top: 0px;
 	font-size: 1.2em;
+	position: relative;
 }
 
 div#narayam-menu ul {
 	min-width: 15em;
 	height: auto;
 }
-
 div#narayam-menu li {
 	background-color: #FFFFFF;
 	font-weight: normal;
