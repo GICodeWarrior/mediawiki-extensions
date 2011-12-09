@@ -19,6 +19,7 @@ $magicWords = array();
 $magicWords['en'] = array(
 	'parse' => array( 0, 'parse' ),
 	ExtParserFun::MAG_THIS => array( 1, 'THIS' ),
+	ExtParserFun::MAG_CALLER => array( 1, 'CALLER' ),
 );
 
 /** Message documentation (Message documentation)
@@ -27,6 +28,7 @@ $magicWords['en'] = array(
 $messages['qqq'] = array(
 	'parse' => array( 0, 'Do not translate this! This is the magic word for the "#parse" function' ),
 	ExtParserFun::MAG_THIS => array( 1, 'Keyword to put in front of a variable like "{{THIS:PAGENAME}}". This will output the pagename of the page where it is defined on instead of the page actually being parsed. "THIS" refers to that page.' ),
+	ExtParserFun::MAG_CALLER =>  array( 1, 'Variable/Parser function returning an templates direct initiator or with options even all or just specific initiators.' ),
 );
 
 /** German (Deutsch)

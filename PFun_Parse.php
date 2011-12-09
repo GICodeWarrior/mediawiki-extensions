@@ -105,7 +105,7 @@ class ParserFunParse extends ParserHook {
 	}
 	
 	/**
-	 * Returns the parser function otpions.
+	 * Returns the parser function options.
 	 * @see ParserHook::getFunctionOptions
 	 * 
 	 * @return array
@@ -126,9 +126,6 @@ class ParserFunParse extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		
-		
-		
 		$text = $parameters['text'];
 		
 		// current parsers StripState object

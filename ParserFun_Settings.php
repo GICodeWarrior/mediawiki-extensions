@@ -29,4 +29,4 @@
  * @since 0.1
  * @var array
  */
-$egParserFunEnabledFunctions = array( 'this', 'parse' );
+$egParserFunEnabledFunctions = array( 'this', 'parse', 'caller' );

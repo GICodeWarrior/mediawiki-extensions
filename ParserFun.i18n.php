@@ -17,6 +17,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'parserfun-desc' => "Adds a parser function <code>#parse</code> for parsing wikitext and introduces <code>THIS:</code> prefix for page information related magic variables",
+	'parserfun-invalid-caller-mode' => 'No valid operation mode or numeric index given.',
 );
 
 /** Message documentation (Message documentation)

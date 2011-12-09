@@ -8,7 +8,7 @@
  * Support:       http://www.mediawiki.org/wiki/Extension_talk:Parser_Fun
  * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/ParserFun
  * 
- * @version: 0.1
+ * @version: 0.2 alpha
  * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
  *
@@ -59,11 +59,15 @@ $wgHooks['MagicWordwgVariableIDs'      ][] = 'ExtParserFun::onMagicWordwgVariabl
 $wgHooks['ParserGetVariableValueSwitch'][] = 'ExtParserFun::onParserGetVariableValueSwitch';
 
 
-// 'parse' parser function initialization:
-$wgAutoloadClasses['ParserFunParse'] = ExtParserFun::getDir() . '/PFun_Parse.php';
+// 'parse' and 'CALLER' parser function initializations:
+$wgAutoloadClasses['ParserFunParse' ] = ExtParserFun::getDir() . '/PFun_Parse.php';
+$wgAutoloadClasses['ParserFunCaller'] = ExtParserFun::getDir() . '/PFun_Caller.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'ParserFunParse::staticInit';
 $wgHooks['LanguageGetMagic'   ][] = 'ParserFunParse::staticMagic';
+
+$wgHooks['ParserFirstCallInit'][] = 'ParserFunCaller::staticInit';
+$wgHooks['LanguageGetMagic'   ][] = 'ParserFunCaller::staticMagic';
 
 
 /**
@@ -71,7 +75,6 @@ $wgHooks['LanguageGetMagic'   ][] = 'ParserFunParse::staticMagic';
  * Handling the functionality around the 'THIS' magic word feature.
  */
 class ExtParserFun {
-
 	/**
 	 * Version of the 'Parser Fun' extension.
 	 * 
@@ -79,9 +82,10 @@ class ExtParserFun {
 	 * 
 	 * @var string
 	 */
-	const VERSION = '0.1';
+	const VERSION = '0.2 alpha';
 	
 	const MAG_THIS = 'this';
+	const MAG_CALLER = 'caller';
 	
 	public static function init( Parser &$parser ) {
 		global $egParserFunEnabledFunctions;		
@@ -158,6 +162,7 @@ class ExtParserFun {
 	 * 
 	 * @param Parser $parser
 	 * @param type $word
+	 * 
 	 * @return string|null
 	 */
 	static function getVariablesMagicWordId( Parser $parser, $word ) {
@@ -184,7 +189,7 @@ class ExtParserFun {
 	/**
 	 * Returns the value of a variable like '{{FULLPAGENAME}}' in the context of the given PPFrame objects
 	 * $frame->$title instead of the Parser objects subject. Returns null in case the requested variable
-	 * doesn't support {{THIS:}}.
+	 * does not support '{{THIS:}}'.
 	 * 
 	 * @param string  $mwId magic word ID of the variable
 	 * @param Parser  $parser
@@ -203,6 +208,14 @@ class ExtParserFun {
 		
 		// check whether info is available, e.g. 'THIS:FULLPAGENAME' requires 'FULLPAGENAME'
 		switch( $mwId ) {
+			case 'namespace':
+				// 'namespace' function name was renamed as PHP 5.3 came along
+				if( is_callable( 'CoreParserFunctions::mwnamespace' ) ) {
+					$ret = CoreParserFunctions::mwnamespace( $parser, $title->getPrefixedText() );
+					break;
+				}
+				// else: no different from the other variables
+				// no-break, default function call
 			case 'fullpagename':
 			case 'fullpagenamee':
 			case 'pagename':
@@ -215,22 +228,13 @@ class ExtParserFun {
 			case 'subjectpagenamee':
 			case 'talkpagename':
 			case 'talkpagenamee':
-			case 'namespacee': // for 'namespace', see bottom
+			case 'namespacee': // special treat for 'namespace', on top
 			case 'subjectspace':
 			case 'subjectspacee':
 			case 'talkspace':
 			case 'talkspacee':
-				// core parser function information requested
+				// core parser function information requested				
 				$ret = CoreParserFunctions::$mwId( $parser, $title->getPrefixedText() );
-				break;
-			
-			case 'namespace':
-				// 'namespace' function name was renamed as PHP 5.3 came along
-				if( is_callable( 'CoreParserFunctions::mwnamespace' ) ) {
-					$ret = CoreParserFunctions::mwnamespace( $parser, $title->getPrefixedText() );
-				} else {
-					$ret = CoreParserFunctions::$mwId( $parser, $title->getPrefixedText() );
-				}
 				break;
 			
 			default:
@@ -240,11 +244,26 @@ class ExtParserFun {
 		return $ret;
 	}
 	
+	
+	##################
+	# Hooks Handling #
+	##################
+	
 	static function onParserGetVariableValueSwitch( Parser &$parser, &$cache, &$magicWordId, &$ret, $frame = null ) {
+		if( $frame === null ) {
+			// unsupported MW version
+			return true;
+		}
 		switch( $magicWordId ) {
 			/** THIS **/
 			case self::MAG_THIS:
 				$ret = self::pfObj_this( $parser, $frame, null );
+				break;
+			
+			/** CALLER **/
+			case self::MAG_CALLER:
+				$siteFrame = ParserFunCaller::getFrameStackItem( $frame, 1 );
+				$ret = ( $siteFrame !== null ) ? $siteFrame->title->getPrefixedText() : '';
 				break;
 		}
 		return true;
@@ -252,9 +271,13 @@ class ExtParserFun {
 	
 	static function onMagicWordwgVariableIDs( &$variableIds ) {
 		global $egParserFunEnabledFunctions;		
+		// only register variables if not disabled by configuration
+		
 		if( in_array( self::MAG_THIS, $egParserFunEnabledFunctions ) ) {
-			// only register variable if not disabled by configuration
 			$variableIds[] = self::MAG_THIS;
+		}
+		if( in_array( self::MAG_CALLER, $egParserFunEnabledFunctions ) ) {
+			$variableIds[] = self::MAG_CALLER;
 		}
 		return true;
 	}
