@@ -374,7 +374,7 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'flvhandler_desc' => 'Дозволи флеш видео (.flv) датотеке да се додају као стандардне датотеке (нпр. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
+	'flvhandler_desc' => 'Дозволи додавање флеш видео-снимака (.flv) као стандардне датотеке (нпр. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
 	'flv-long-desc' => 'Флеш видео, $1 × $2 пиксела, величина: $3',
 );
 
