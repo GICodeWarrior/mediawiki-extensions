@@ -3,6 +3,9 @@
 
  * (trunk) -- Version 2.0rc3 alpha
    - Adjusted to work with 'Regex Fun' version 1.1
+   - '{{#arraydefine: a |}}' will create an empty array instead of an array with an empty element as in
+     version 1.3.2. A new option 'singleempty' can be used to avoid this behavior, ',' can be used to
+     create an array with two empty elements.
 
  * December 5, 2011 -- Version 2.0rc2
     - Bug introduced in r105069 fixed where '#arrayprint' was broken in compatibility mode in some cases.

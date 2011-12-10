@@ -181,8 +181,6 @@ class ExtArrays {
 			$array = array();
 		}
 		else {
-			$value = trim( $value ); // just in case...
-
 			// fill array with user input:
 			if( $delimiter === '' ) {
 				// whole input one element, also takes care of special case empty '' value and 'unique' option set
@@ -210,6 +208,15 @@ class ExtArrays {
 			if( array_key_exists( 'unique', $arrayOptions ) ) {
 				// unique like the parser function would do it
 				$array = self::array_unique( $array );
+			}
+			
+			// if 'singleempty' is NOT set, {{#arraydefine:a|}} will be empty.
+			// by default this would give an empty array (due to historical as well as usability reasons)
+			if( ! array_key_exists( 'singleempty', $arrayOptions ) ) {
+				// there is no other uncomplicated way than this to define a single empty elemented array currently!
+				if( count( $array ) === 1 && $array[0] === '' ) {
+					$array = array();
+				}
 			}
 
 			/**
