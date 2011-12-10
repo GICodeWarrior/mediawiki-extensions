@@ -27,14 +27,14 @@ class SpecialInstitutions extends SpecialEPPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $arg
+	 * @param string|null $arg
 	 */
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
 
 		$out = $this->getOutput();
 
-		// TODO: AUTH
+		
 	}
 
 }

@@ -46,6 +46,10 @@ class EPCourse extends EPDBObject {
 	protected static function getFieldTypes() {
 		return array(
 			'id' => 'id',
+			'org_id' => 'id',
+		
+			'name' => 'str',
+			'description' => 'str',
 		);
 	}
 

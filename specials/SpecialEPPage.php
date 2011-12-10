@@ -43,10 +43,11 @@ abstract class SpecialEPPage extends SpecialPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $arg
+	 * @param string|null $arg
 	 */
 	public function execute( $subPage ) {
-		$this->subPage = $subPage;
+		$subPage = is_null( $subPage ) ? '' : $subPage;
+		$this->subPage = str_replace( '_', ' ', $subPage );
 
 		$this->setHeaders();
 		$this->outputHeader();

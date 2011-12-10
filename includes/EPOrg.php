@@ -45,6 +45,10 @@ class EPOrg extends EPDBObject {
 	protected static function getFieldTypes() {
 		return array(
 			'id' => 'id',
+			
+			'name' => 'str',
+			'city' => 'str',
+			'country' => 'str',
 		);
 	}
 

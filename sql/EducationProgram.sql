@@ -16,7 +16,8 @@ CREATE UNIQUE INDEX /*i*/ep_org_name ON /*_*/ep_orgs (org_name);
 CREATE TABLE IF NOT EXISTS /*_*/ep_courses (
   course_id                  INT unsigned        NOT NULL auto_increment PRIMARY KEY,
   course_org_id              INT unsigned        NOT NULL, -- Foreign key on ep_orgs.org_id
-  course_name                VARCHAR(255)        NOT NULL -- Name of the course
+  course_name                VARCHAR(255)        NOT NULL, -- Name of the course
+  course_description         TEXT                NOT NULL -- Description of the course
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/ep_course_org_id ON /*_*/ep_courses (course_org_id);

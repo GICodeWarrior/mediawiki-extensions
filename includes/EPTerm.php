@@ -46,6 +46,11 @@ class EPTerm extends EPDBObject {
 	protected static function getFieldTypes() {
 		return array(
 			'id' => 'id',
+			'course_id' => 'id',
+		
+			'year' => 'int',
+			'start' => 'str', // TS_MW
+			'end' => 'str', // TS_MW
 		);
 	}
 
