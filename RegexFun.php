@@ -64,7 +64,7 @@ class ExtRegexFun {
 	 */
 	public static function init( Parser &$parser ) {
 		self::initFunction( $parser, 'regex', SFH_OBJECT_ARGS );
-		self::initFunction( $parser, 'regex_var' );
+		self::initFunction( $parser, 'regex_var', SFH_OBJECT_ARGS );
 		self::initFunction( $parser, 'regexquote' );
 		self::initFunction( $parser, 'regexall' );
 		
@@ -220,7 +220,7 @@ class ExtRegexFun {
 	
 	protected static function msgLimitExceeded() {
 		global $egRegexFunMaxRegexPerParse, $wgContLang;
-		$msg = '<span class="error">' . wfMsgForContent( 'regexfun-limit-exceed', $wgContLang->formatNum( $$egRegexFunMaxRegexPerParse ) ) . '</span>';
+		$msg = '<span class="error">' . wfMsgForContent( 'regexfun-limit-exceed', $wgContLang->formatNum( $egRegexFunMaxRegexPerParse ) ) . '</span>';
 		return array( $msg, 'noparse' => true, 'isHTML' => false ); // 'isHTML' must be false for #iferror!
 	}
 	
@@ -228,17 +228,17 @@ class ExtRegexFun {
 	 * Helper function. Validates regex and takes care of security risks in pattern which is why
 	 * the pattern is taken by reference!
 	 */
-	protected static function validateRegexCall( Parser &$parser, $subject, &$pattern, &$specialFlags, $resetLastRegex = false ) {
+	protected static function validateRegexCall( PPFrame &$frame, $subject, &$pattern, &$specialFlags, $resetLastRegex = false ) {
 		if( $resetLastRegex ) {
 			//reset last matches for the case anything goes wrong
-			self::setLastMatches( $parser , null );
+			self::setLastMatches( $frame , null );
 		}        
         if( ! self::validateRegex( $pattern, $specialFlags ) ) {			
 			return false;
 		}
 		if( $resetLastRegex ) {
 			// store infos for this regex for '#regex_var'
-			self::initLastRegex( $parser, $pattern, $subject );
+			self::initLastRegex( $frame, $pattern, $subject );
 		}
 		return true;
 	}
@@ -273,34 +273,34 @@ class ExtRegexFun {
 			// search mode:
 			
 			// validate, initialise and check for wrong input:
-			$continue = self::validateRegexCall( $parser, $subject, $pattern, $specialFlags, true );
+			$continue = self::validateRegexCall( $frame, $subject, $pattern, $specialFlags, true );
 			if( ! $continue ) {
 				return self::msgInvalidRegex( $pattern );
 			}
 			
-			$lastMatches = self::getLastMatches( $parser );
+			$lastMatches = self::getLastMatches( $frame );
             $output = ( preg_match( $pattern, $subject, $lastMatches ) ? $lastMatches[0] : '' );
-			self::setLastMatches( $parser, $lastMatches );
+			self::setLastMatches( $frame, $lastMatches );
         }
 		else {
 			// replace mode:			
 			$limit = (int)$limit;
 			
 			// set last matches to 'false' and get them on demand instead since preg_replace won't communicate them			
-			self::setLastMatches( $parser, false );
+			self::setLastMatches( $frame, false );
 			
 			// do the regex plus all handling of special flags and validation
 			$output = self::doPregReplace( $pattern, $replacement, $subject, $limit, $parser, $frame );
 			
 			if( $output === false ) {
 				// invalid regex, don't store any infor for '#regex_var'
-				self::setLastMatches( $parser , null );
+				self::setLastMatches( $frame , null );
 				return self::msgInvalidRegex( $pattern );
 			}
 			
 			// set these infos only if valid, pattern still contains special flags though
-			self::setLastPattern( $parser, $pattern );
-			self::setLastSubject( $parser, $subject );
+			self::setLastPattern( $frame, $pattern );
+			self::setLastSubject( $frame, $subject );
         }
 		
 		return $output;
@@ -459,9 +459,8 @@ class ExtRegexFun {
 		}
 		self::increaseRegexCount( $parser );
 		
-		// validate and check for wrong input:
-		$continue = self::validateRegexCall( $parser, $subject, $pattern, $specialFlags, false );
-		if( ! $continue ) {
+		// validate and check for wrong input (no effect on #regex_var):
+		if( ! self::validateRegex( $pattern, $specialFlags ) ) {
 			return self::msgInvalidRegex( $pattern );;
 		}
 		
@@ -497,9 +496,12 @@ class ExtRegexFun {
 	 * @param $index Integer index of the last match which should be returnd or a string containing $n as indexes to be replaced
 	 * @param $defaultVal Integer default value which will be returned when the result with the given index doesn't exist or is a void string
 	 */
-	public static function pf_regex_var( &$parser, $index = 0, $defaultVal = '' ) {
+	public static function pfObj_regex_var( Parser &$parser, PPFrame $frame, array $args ) {		
+		$index      = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : 0;
+		$defaultVal = isset( $args[1] ) ? trim( $frame->expand( $args[1] ) ) : '';
+		
 		// get matches from last #regex
-		$lastMatches = self::getLastMatches( $parser );
+		$lastMatches = self::getLastMatches( $frame );
 		
 		if( $lastMatches === null ) { // last regex was invalid or none executed yet
 			return $defaultVal;
@@ -677,18 +679,20 @@ class ExtRegexFun {
 	 **
 	 ***/
 	
-	protected static function initLastRegex( Parser &$parser, $pattern, $subject ) {
-		self::setLastMatches( $parser, array() );
-		self::setLastPattern( $parser, $pattern );
-		self::setLastSubject( $parser, $subject );
+	protected static function initLastRegex( PPFrame $frame, $pattern, $subject ) {
+		self::setLastMatches( $frame, array() );
+		self::setLastPattern( $frame, $pattern );
+		self::setLastSubject( $frame, $subject );
 	}
 	
 	public static function onParserClearState( &$parser ) {
 		//cleanup to avoid conflicts with job queue or Special:Import
+		/*
 		$parser->mExtRegexFun = array();
 		self::setLastMatches( $parser, null );
 		self::setLastPattern( $parser, '' );
-		self::setLastSubject( $parser, '' );
+		self::setLastSubject( $parser, '' );		
+		*/
 		$parser->mExtRegexFun['counter'] = 0;
 		
 		return true;
@@ -700,7 +704,7 @@ class ExtRegexFun {
 	 * 
 	 * @return boolean
 	 */
-	public static function limitExceeded( Parser &$parser ) {
+	public static function limitExceeded( Parser &$parser ) {		
 		global $egRegexFunMaxRegexPerParse;
 		return (
 			$egRegexFunMaxRegexPerParse !== -1
@@ -716,56 +720,56 @@ class ExtRegexFun {
 	}
 	
 	private static function increaseRegexCount( Parser &$parser ) {
-		$parser->mExtRegexFun['counter']++;
+		$parser->mExtRegexFun['counter']++;		
 	}
 	
 	/**
-	 * Returns the last regex matches done by #regex in the context of the same parser object.
+	 * Returns the last regex matches done by #regex in the context of the same frame.
 	 * 
-	 * @param Parser $parser
+	 * @param PPFrame $frame
 	 * @return array|null
 	 */
-	public static function getLastMatches( Parser &$parser ) {
+	public static function getLastMatches( PPFrame $frame ) {
 				
-		if( isset( $parser->mExtRegexFun['lastMatches'] ) ) {
+		if( isset( $frame->mExtRegexFun['lastMatches'] ) ) {
 			
 			// last matches are set to false in case last regex was in replace mode! Get them on demand:
-			if( $parser->mExtRegexFun['lastMatches'] === false ) {
+			if( $frame->mExtRegexFun['lastMatches'] === false ) {
 				// first, validate pattern to remove special flags!
-				$pattern = self::getLastPattern( $parser );
+				$pattern = self::getLastPattern( $frame );
 				self::validateRegex( $pattern );
 				preg_match(
 						$pattern,
-						self::getLastSubject( $parser ),
-						$parser->mExtRegexFun['lastMatches']
+						self::getLastSubject( $frame ),
+						$frame->mExtRegexFun['lastMatches']
 				);
 			}			
-			return $parser->mExtRegexFun['lastMatches'];
+			return $frame->mExtRegexFun['lastMatches'];
 		}
 		return null;
 	}	
-	protected static function setLastMatches( Parser &$parser, $value ) {
-		$parser->mExtRegexFun['lastMatches'] = $value;
+	protected static function setLastMatches( PPFrame $frame, $value ) {
+		$frame->mExtRegexFun['lastMatches'] = $value;
 	}
 	
-	public static function getLastPattern( Parser &$parser ) {
-		if( isset( $parser->mExtRegexFun['lastPattern'] ) ) {
-			return $parser->mExtRegexFun['lastPattern'];
+	public static function getLastPattern( PPFrame $frame ) {
+		if( isset( $frame->mExtRegexFun['lastPattern'] ) ) {
+			return $frame->mExtRegexFun['lastPattern'];
 		}
 		return '';
 	}
-	protected static function setLastPattern( Parser &$parser, $value ) {
-		$parser->mExtRegexFun['lastPattern'] = $value;
+	protected static function setLastPattern( PPFrame $frame, $value ) {
+		$frame->mExtRegexFun['lastPattern'] = $value;
 	}
 	
-	public static function getLastSubject( Parser &$parser ) {
-		if( isset( $parser->mExtRegexFun['lastSubject'] ) ) {
-			return $parser->mExtRegexFun['lastSubject'];
+	public static function getLastSubject( PPFrame $frame ) {
+		if( isset( $frame->mExtRegexFun['lastSubject'] ) ) {
+			return $frame->mExtRegexFun['lastSubject'];
 		}
 		return '';
 	}
-	protected static function setLastSubject( Parser &$parser, $value ) {
-		$parser->mExtRegexFun['lastSubject'] = $value;
+	protected static function setLastSubject( PPFrame $frame, $value ) {
+		$frame->mExtRegexFun['lastSubject'] = $value;
 	}
 	
 }

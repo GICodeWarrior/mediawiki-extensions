@@ -7,7 +7,12 @@
    - '#regex' with 'e' flag now first escapes matches before putting them into the back-references
      and expanding them. Therefore a new configuration variable '$egRegexFunExpansionEscapeTemplates'
      has been introduced which serves as a workaround for MW bug #32829.
+   - '#regex_var' stored variables are now working in a frame-based scope. '#regex' used on a site or
+     template followed by a template call using '#regex' as well with '#regex_var after that template
+	 call will now access the variable from the '#regex' within the same page/template.
+   - Changes in ExtRegexFun::doPregReplace(). Other extensions using this might have to adjust usage.
  
+
  * December 5, 2011 -- Version 1.0.2
    - Limit won't exceed early when 'e' flag with many backrefs in replacement is used extensivelly.
    - It's possible to use the 'Regex Fun' regex system with advanced flags within other extensions.

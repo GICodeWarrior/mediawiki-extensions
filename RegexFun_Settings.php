@@ -60,4 +60,3 @@ $egRegexFunExpansionEscapeTemplates = array(
 	'{{' => '{{((}}',
 	'}}' => '{{))}}'
 );
-$egRegexFunExpansionEscapeTemplates = null;
