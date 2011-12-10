@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Class representing a single course.
- * These describe a specific course, time-independent.
+ * Class representing a single term.
+ * These are "instances" of a course in a certain period.
  *
  * @since 0.1
  *
- * @file EPCourse.php
+ * @file EPTerm.php
  * @ingroup EducationProgram
  *
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class EPCourse extends EPDBObject {
+class EPTerm extends EPDBObject {
 
 	/**
 	 * @see parent::getFieldTypes
@@ -22,7 +22,7 @@ class EPCourse extends EPDBObject {
 	 * @return string
 	 */
 	public static function getDBTable() {
-		return 'ep_courses';
+		return 'ep_terms';
 	}
 
 	/**
@@ -33,7 +33,7 @@ class EPCourse extends EPDBObject {
 	 * @return string
 	 */
 	protected static function getFieldPrefix() {
-		return 'course_';
+		return 'term_';
 	}
 
 	/**

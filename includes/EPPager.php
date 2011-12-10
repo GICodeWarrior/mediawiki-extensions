@@ -104,7 +104,7 @@ abstract class EPPager extends TablePager {
 		return array(
 			'tables' => array( $c::getDBTable() ),
 			'fields' => $c::getFieldNames(),
-			'conds' => $this->conds,
+			'conds' => $c::getPrefixedValues( $this->conds ),
 		);
 	}
 	
