@@ -27,6 +27,9 @@ $wgExtensionCredits['other'][] = array(
 // Set up the new special page
 $dir = dirname( __FILE__ ) . '/';
 
+$wgExtensionMessagesFiles['SelectionSifter'] = $dir . 'SelectionSifter.i18n.php';
+$wgExtensionAliasesFiles['SelectionSifter'] = $dir . 'SelectionSifter.alias.php';
+
 $wgAutoloadClasses['SelectionSifterHooks'] = $dir . 'SelectionSifter.hooks.php';
 $wgAutoloadClasses['Statistics'] = $dir . 'models/Statistics.php';
 $wgAutoloadClasses['Rating'] = $dir . 'models/Rating.php';
