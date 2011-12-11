@@ -481,6 +481,7 @@ $messages['ia'] = array(
 	'semanticformsinputs-prev' => 'Precedente',
 	'semanticformsinputs-next' => 'Sequente',
 	'semanticformsinputs-today' => 'Hodie',
+	'semanticformsinputs-malformedregexp' => 'Expression regular mal formate ($1).',
 	'semanticformsinputs-datepicker-dateformat' => 'Le specification del formato del data. Vide le [http://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters documentation in linea] pro plus information.',
 	'semanticformsinputs-datepicker-weekstart' => 'Le prime die del septimana (0 - dominica, 1 - lunedi, ...).',
 	'semanticformsinputs-datepicker-firstdate' => 'Le prime data que pote esser seligite (in formato aaaa/mm/dd).',
