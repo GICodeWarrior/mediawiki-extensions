@@ -1976,6 +1976,11 @@ $messages['sl'] = array(
 	'narayam-gu-inscript' => 'InScript za gudžaratščino',
 	'narayam-ru-standard' => 'Standardna ruščina',
 	'narayam-sah-standard' => 'standardna sakha',
+	'narayam-hne-inscript' => 'InScript za čatisgari',
+	'narayam-mai-inscript' => 'InScript za maitili',
+	'narayam-gom-deva' => 'prečrkovanje goanske konkanščine-devanagarija',
+	'narayam-gom-deva-inscript' => 'InScript za goansko konkanščino-devanagari',
+	'narayam-he-standard-2011' => 'hebrejski standard 2011',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
