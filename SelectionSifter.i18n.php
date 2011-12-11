@@ -23,6 +23,7 @@ $messages['en'] = array(
 	'ss-assessment-log' => 'Assessment Log',
 	'ss-action' => 'Action',
 	'ss-old' => 'Old Value',
+	'ss-timestamp' => 'Timestamp',
 	'ss-new' => 'New Value',
 	'ss-assessment-log-empty' => 'No log entries found'
 );

@@ -26,17 +26,17 @@ class SpecialAssessmentLog extends SpecialPage {
 		$out->setPageTitle( $this->msg( 'ss-assessment-log' ) );
 
 	$fields = array(
-	    'Project' => array(
+		'Project' => array(
 		'type' => 'text',
 		'label-message' => 'ss-project',
 		'tabindex' => '1'
-	    )
+		)
 	);
 
 	$project = $request->getText( 'wpProject' );
 		
 		$filters = array_filter( array(
-	    'l_project' => $project
+			'l_project' => $project
 		) );
 
 		$form = new HTMLForm( $fields, $this->getContext() );
@@ -55,7 +55,8 @@ class SpecialAssessmentLog extends SpecialPage {
 					Html::element( 'td', array(), wfMessage( 'ss-old' ) ) .
 					Html::element( 'td', array(), wfMessage( 'ss-new' ) ) .
 					Html::element( 'td', array(), wfMessage( 'ss-article' ) ) .
-					Html::element( 'td', array(), wfMessage( 'ss-project' ) )
+					Html::element( 'td', array(), wfMessage( 'ss-project' ) ) .
+					Html::element( 'td', array(), wfMessage( 'ss-timestamp' ) )
 				) .
 				$pager->getBody() .
 				'</table>' .
@@ -109,7 +110,7 @@ class AssessmentLogPager extends ReverseChronologicalPager {
 			Html::rawElement( 'td', array(), 
 				Linker::linkKnown( $project_title, htmlspecialchars( $project_title->getText() ) ) 
 			) .
-			Html::element( 'td', array(), $row->l_timestamp )
+			Html::element( 'td', array(), wfTimestamp( TS_DB, $row->l_timestamp ) )
 		);
 	}
 }	
