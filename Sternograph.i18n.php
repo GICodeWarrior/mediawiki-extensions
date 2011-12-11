@@ -35,6 +35,14 @@ $messages['qqq'] = array(
 * $2 is the character that is required.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'sternograph-desc' => "Balizenn <nowiki><sterno></nowiki> evit treuzskirvañ ar c'homzoù (c'hoarioù, atersadennoù, hag all)",
+	'sternograph-empty' => "Ne c'hell ket bezañ goullo ar balizenn <$1>.",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
