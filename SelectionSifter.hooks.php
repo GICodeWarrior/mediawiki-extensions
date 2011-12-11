@@ -20,20 +20,19 @@ class SelectionSifterHooks {
 		foreach ( $assessments as $project => $assessment ) {
 			$curRating = $ratings[$project];
 			if( $curRating ) {
-				$curRating->update( $assessment['importance'], $assessment['quality'], 0 );
+				$curRating->update( $assessment['importance'], $assessment['quality'], $timestamp );
 			} else {
 				$rating = new Rating(
 					$project, 
 					$main_title->getNamespace(),
 					$main_title->getText(),
 					$assessment['quality'],
-					0,
+					$timestamp,
 					$assessment['importance'],
-					0
+					$timestamp
 				);
 				$rating->saveAll();
 				
-				$timestamp = wfTimestamp( TS_MW );
 				if( isset( $assessment['quality'] ) ) {
 					AssessmentChangeLog::makeEntry(
 						$project,
@@ -42,7 +41,8 @@ class SelectionSifterHooks {
 						$timestamp,
 						"quality",
 						"",
-						$assessment['quality']
+						$assessment['quality'],
+						$timestamp
 					);
 				}
 				if( isset( $assessment['importance'] ) ) {
@@ -53,7 +53,8 @@ class SelectionSifterHooks {
 						$timestamp,
 						"importance",
 						"",
-						$assessment['importance']
+						$assessment['importance'],
+						$timestamp
 					);
 				}
 			}
@@ -73,7 +74,7 @@ class SelectionSifterHooks {
 			$preparedText = $article->prepareTextForEdit( $text )->output->getText();
 			$extractor = new AssessmentsExtractor( $preparedText );
 			$assessments = $extractor->extractAssessments();
-			SelectionSifterHooks::updateDatabase( $title, $assessments, $revision );
+			SelectionSifterHooks::updateDatabase( $title, $assessments, wfTimestamp( TS_MW, $revision->getTimestamp() ) );
 		}
 		return true;
 	}

@@ -17,7 +17,7 @@ class AssessmentsExtractor
 	}
 
 	/**
-	 * Once AssessmentsExtractor is build, call this method to generate
+	 * Once AssessmentsExtractor is built, call this method to generate
 	 * an array of assessment.
 	 * @todo Describe the returned array
 	 * @todo What happens if the preparedText does not match the expected format?

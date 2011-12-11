@@ -4,7 +4,7 @@
  * Represents an convenience methods for logging
  **/
 class AssessmentChangeLog {
-	public static function makeEntry( $project, $namespace, $article, $timestamp, $action, $old, $new ) {
+	public static function makeEntry( $project, $namespace, $article, $timestamp, $action, $old, $new, $revision_timestamp ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert(
 			'assessment_changelog',
@@ -16,7 +16,7 @@ class AssessmentChangeLog {
 				'l_timestamp' => $timestamp,
 				'l_old' => $old,
 				'l_new' => $new,
-				'l_revision_timestamp' => 0
+				'l_revision_timestamp' => $revision_timestamp 
 			),
 			__METHOD__
 		);

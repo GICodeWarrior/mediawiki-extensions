@@ -50,7 +50,8 @@ class Rating {
 					$timestamp,
 					"quality",
 					$this->old_quality,
-					$this->quality
+					$this->quality,
+					$timestamp
 				);
 			}
 			if( strpos( $logAction, 'i' ) !== false ) {
@@ -61,7 +62,8 @@ class Rating {
 					$timestamp,
 					"importance",
 					$this->old_importance,
-					$this->importance
+					$this->importance,
+					$timestamp
 				);
 			}
 			

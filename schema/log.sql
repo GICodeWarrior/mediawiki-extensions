@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS /*_*/assessment_changelog (
     l_new            varchar(63),
     -- new value (e.g. GA-Class)
 
-    l_revision_timestamp  binary(20)  not null,
+    l_revision_timestamp  binary(14)  not null,
     -- timestamp when page was edited
     -- a wiki-format timestamp
 

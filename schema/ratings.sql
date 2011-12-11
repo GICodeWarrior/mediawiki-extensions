@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS /*_*/ratings (
 	r_quality               varchar(63),
 	-- quality rating
 
-	r_quality_timestamp     binary(20),
+	r_quality_timestamp     binary(14),
 	-- time when quality rating was assigned
 	--   NOTE: a revid can be obtained from timestamp via API
 	--  a wiki-format timestamp
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS /*_*/ratings (
 	r_importance            varchar(63),
 	-- importance rating
 
-	r_importance_timestamp  binary(20),
+	r_importance_timestamp  binary(14),
 	-- time when importance rating was assigned
 	-- a wiki-style timestamp
 
