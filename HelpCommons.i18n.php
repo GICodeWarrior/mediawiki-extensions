@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalization file for the HelpCommons extension
+ * Internationalization file for HelpCommons extension
  *
  * @since 1.0
  *
@@ -17,7 +17,7 @@ $messages = array();
  * @author SVG
  */
 $messages['en'] = array(
-   'helpcommons-desc' => 'Fetches the help pages from a help wiki and includes them into other wikis on the wiki family',
+   'helpcommons-desc' => 'Fetches help pages from a help wiki and includes them into other wikis on the wiki family',
 );
 
 /** Message documentation (Message documentation)
