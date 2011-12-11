@@ -38,3 +38,4 @@ $wgExtensionMessagesFiles['ReassignEditsAliases'] = $dir . 'ReassignEdits.alias.
 $wgAutoloadClasses['SpecialReassignEdits'] = $dir . 'ReassignEdits_body.php';
 $wgSpecialPages['ReassignEdits'] = 'SpecialReassignEdits';
 $wgSpecialPageGroups['ReassignEdits'] = 'users';
+
