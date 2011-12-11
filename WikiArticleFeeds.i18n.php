@@ -377,11 +377,12 @@ $messages['sl'] = array(
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'wikiarticlefeeds-desc' => 'Израђује фидове произведене код МедијаВики страна',
-	'wikiarticlefeeds_combined_description' => 'Ово је комбиновани фид, који садржи елементе неколико изворних фидова.',
+	'wikiarticlefeeds_combined_description' => 'Ово је комбиновани довод који садржи ставке из неколико извора.',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬) */
