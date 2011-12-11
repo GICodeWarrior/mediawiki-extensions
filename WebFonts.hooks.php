@@ -11,6 +11,9 @@ class WebFontsHooks {
 
 	/**
 	 * BeforePageDisplay hook handler.
+	 * @param $out OutputPage
+	 * @param $skin Skin
+	 * @return bool
 	 */
 	public static function addModules( $out, $skin ) {
 
@@ -23,6 +26,9 @@ class WebFontsHooks {
 
 	/**
 	 * GetPreferences hook handler.
+	 * @param $user User
+	 * @param $preferences array
+	 * @return bool
 	 */
 	public static function addPreference( $user, &$preferences ) {
 		// A checkbox in preferences to enable WebFonts
@@ -35,11 +41,13 @@ class WebFontsHooks {
 
 		return true;
 	}
-	
+
 	/**
 	 * UserGetDefaultOptions hook handler.
+	 * @param $defaultOptions array
+	 * @return bool
 	 */
-	public static function addDefaultOptions( &$defaultOptions ) { 
+	public static function addDefaultOptions( &$defaultOptions ) {
 		global $wgWebFontsEnabledByDefault;
 		// By default, the preference page option to enable webfonts is set to wgWebFontsEnabledByDefault value.
 		$defaultOptions['webfontsEnable'] = $wgWebFontsEnabledByDefault;
