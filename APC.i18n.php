@@ -6470,9 +6470,9 @@ $messages['sr-ec'] = array(
 	'right-apc' => 'коришћење свих могућности [[Special:APC|APC]]-а',
 	'viewapc-apc-not-available' => 'Нема информација о међумеморији.
 Изгледа да APC није покренут.',
-	'viewapc-clear-confirm' => 'Да ли желите да очистите међумеморију?',
-	'viewapc-clear-user-cache' => 'Очисти корисничку међумеморију',
-	'viewapc-clear-code-cache' => 'Очисти опкôд међумеморију',
+	'viewapc-clear-confirm' => 'Желите ли да очистите кеш?',
+	'viewapc-clear-user-cache' => 'Очисти кориснички кеш',
+	'viewapc-clear-code-cache' => 'Очисти опкôд кеш',
 	'viewapc-mode-stats' => 'Погледај статистике домаћина',
 	'viewapc-mode-system-cache' => 'Системски међумеморијски уноси',
 	'viewapc-mode-system-cache-dir' => 'Уноси по директоријуму',
