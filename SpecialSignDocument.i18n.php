@@ -4537,7 +4537,7 @@ $messages['sr-ec'] = array(
 	'sign-list-hideextaddress' => 'Не приказуј град, државу, поштански код, или земљу',
 	'sign-list-hidephone' => 'Не пријазуј телефон',
 	'sign-list-hidebday' => 'Не приказуј старост',
-	'sign-list-hideemail' => 'Не приказуј имејл',
+	'sign-list-hideemail' => 'Не приказуј е-адресу',
 	'sign-submit' => 'Потпиши документ',
 	'sign-information' => '<div class="noarticletext">Хвала Вам што сте одвојили времен да прочитате овај документ.
 Ако се слажете с њим, молимо Вас да покажете вашу подршку попуњавањем обавезних поља испод и кликом на дугме "Потпиши документ".
@@ -4597,7 +4597,7 @@ $1',
 	'sign-uniquequery-similarname' => 'Слично име',
 	'sign-uniquequery-similaraddress' => 'Слична адреса',
 	'sign-uniquequery-similarphone' => 'Сличан телефон',
-	'sign-uniquequery-similaremail' => 'Сличан имејл',
+	'sign-uniquequery-similaremail' => 'Слична е-пошта',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] потписан [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
