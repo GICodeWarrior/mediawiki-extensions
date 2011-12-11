@@ -392,10 +392,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'stringfunctions-desc' => 'Обогаћује парсер функцијама за стрингове',
+	'stringfunctions-desc' => 'Проширује рашчлањивач с функцијама за рад са нискама',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
