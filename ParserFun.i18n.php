@@ -33,6 +33,7 @@ $messages['qqq'] = array(
  */
 $messages['de'] = array(
 	'parserfun-desc' => 'Ergänzt die Parserfunktion <code>#parse</code> zum Parsen von Wikitext, sowie das <code>THIS:</code>-Präfix für Variablen, die von Wikiseiten Informationen abrufen',
+	'parserfun-invalid-caller-mode' => 'Es wurde kein gültiger Modus oder kein numerischer Index angegeben.',
 );
 
 /** French (Français)
@@ -47,6 +48,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'parserfun-desc' => 'Engade unha función analítica <code>#parse</code> para analizar texto wiki e introduce o prefixo <code>THIS:</code> para as páxinas de información relacionadas coas variables máxicas',
+	'parserfun-invalid-caller-mode' => 'Non se especificou ningún modo de operación ou índice numérico válido.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -54,6 +56,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'parserfun-desc' => 'Přidawa parserowu funkciju <code>#parse</code> za parsowanje wikiteksta a zawjeduje prefiks <code>THIS:</code> za magiske wariable, kotrež informacije stronow wotwołuja',
+	'parserfun-invalid-caller-mode' => 'Žadyn płaćiwy modus abo numeriski indeks njepodaty.',
 );
 
 /** Interlingua (Interlingua)
@@ -61,6 +64,7 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'parserfun-desc' => 'Adde al analysator syntactic un function <code>#parse</code> pro interpretar wikitexto e introduce le prefixo <code>THIS:</code> pro variabiles magic connexe a information de paginas',
+	'parserfun-invalid-caller-mode' => 'Nulle modo de operation o indice numeric valide specificate.',
 );
 
 /** Japanese (日本語)
@@ -75,6 +79,7 @@ $messages['ja'] = array(
  */
 $messages['mk'] = array(
 	'parserfun-desc' => 'Додава парсерска функција <code>#parse</code> за парсирање на викитекст и го воведува префиксот <code>THIS:</code> за волшебни променливи што се однесуваат на информации за страници',
+	'parserfun-invalid-caller-mode' => 'Нема зададено важечка операција или бројчен показател.',
 );
 
 /** Malay (Bahasa Melayu)
