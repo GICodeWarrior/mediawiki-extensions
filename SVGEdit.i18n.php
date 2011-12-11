@@ -536,7 +536,7 @@ $messages['sl'] = array(
  */
 $messages['sr-ec'] = array(
 	'svgedit-editbutton-edit' => 'Уреди цртеж',
-	'svgedit-summary-label' => 'Сажетак измене',
+	'svgedit-summary-label' => 'Опис измене',
 	'svgedit-summary-default' => '/* Измењено SVG уређивачем */',
 	'svgedit-editor-save-close' => 'Сачувај и затвори',
 	'svgedit-editor-close' => 'Откажи',
