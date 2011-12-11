@@ -265,10 +265,11 @@ $messages['sk'] = array(
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'negref-desc' => 'Омогућава таг за подешавање места сваког појединачног <nowiki><ref/></nowiki> тага унутар унешеног текста, да би се поправили неки случајеви употребе шаблона',
+	'negref-desc' => 'Пружа ознаку за подешавање места сваке ознаке <nowiki><ref/></nowiki> унутар унетог текста за исправку одређених случајева употребе шаблона',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬) */
