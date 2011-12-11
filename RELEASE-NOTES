@@ -1,13 +1,13 @@
 = Wikilog release notes =
 
-== Current development version ==
+== Wikilog 1.2.0 ==
+
+Dec 11, 2011
 
 === General notes ===
 
 MediaWiki requirement raised to 1.17.0 and later.
 MediaWiki 1.16 and earlier are no longer supported in this release.
-
-=== New configuration options ===
 
 === New features ===
 
@@ -24,6 +24,7 @@ MediaWiki 1.16 and earlier are no longer supported in this release.
   function).
 * Fixed a crash when creating a new wikilog post as an unlogged user.
 * Several fixes for compatibility with MediaWiki 1.18.
+
 
 == Wikilog 1.1.0 ==
 
