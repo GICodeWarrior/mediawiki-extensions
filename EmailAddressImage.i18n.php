@@ -460,10 +460,11 @@ $messages['sq'] = array(
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'emailaddressimage-desc' => 'Додаје <code>&lt;email&gt;</code> таг, за приказивање имејл адреса као слика',
+	'emailaddressimage-desc' => 'Додаје ознаку <code>&lt;email&gt;</code> за приказ е-адресе у виду слике',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
