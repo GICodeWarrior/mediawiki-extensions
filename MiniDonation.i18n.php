@@ -523,7 +523,7 @@ $messages['sl'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'donationform-desc' => 'Додаје таг <code>&lt;donateform&gt;</code> као подршку прилозима преко PayPal-а',
+	'donationform-desc' => 'Додаје ознаку <code>&lt;donateform&gt;</code> за подршку давања прилога преко Пејпала',
 	'donationform-submit' => 'Приложи преко Пејпала',
 );
 
