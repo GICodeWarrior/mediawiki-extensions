@@ -25,25 +25,25 @@ class SpecialAssessmentLog extends SpecialPage {
 		$this->outputHeader();
 		$out->setPageTitle( $this->msg( 'ss-assessment-log' ) );
 
-        $fields = array(
-            'Project' => array(
-                'type' => 'text',
-                'label-message' => 'ss-project',
-                'tabindex' => '1'
-            )
-        );
+	$fields = array(
+	    'Project' => array(
+		'type' => 'text',
+		'label-message' => 'ss-project',
+		'tabindex' => '1'
+	    )
+	);
 
-        $project = $request->getText( 'wpProject' );
+	$project = $request->getText( 'wpProject' );
 		
 		$filters = array_filter( array(
-            'l_project' => $project
+	    'l_project' => $project
 		) );
 
-        $form = new HTMLForm( $fields, $this->getContext() );
-        $form->setMethod( 'get' );
-        $form->prepareForm();
+		$form = new HTMLForm( $fields, $this->getContext() );
+		$form->setMethod( 'get' );
+		$form->prepareForm();
 
-        $form->displayForm( '' );
+		$form->displayForm( '' );
 
 		$pager = new AssessmentLogPager( $this, $filters );
 		if( $pager->getNumRows() ) {
