@@ -1259,11 +1259,12 @@ $messages['sl'] = array(
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'chemicalsources' => 'Хемијски извори',
-	'chemicalsource-desc' => 'Додаје таг <nowiki><chemform></nowiki>, за хемијске формуле',
+	'chemicalsource-desc' => 'Додаје ознаку <nowiki><chemform></nowiki> за хемијске формуле',
 	'chemFunctions_ListPage' => 'Хемијски извори',
 	'chemFunctions_DataList' => 'Овде се налази списак веза ка сајтовима који прожају информације о хемојском једињењу коју тражите.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Једињење $MIXCASNameFormula на NIST</a><br />
