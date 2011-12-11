@@ -325,9 +325,12 @@ $messages['qqq'] = array(
 	'contest-contest-go' => 'Submission button text for filter form.
 {{Identical|Go}}',
 	'contest-contest-showonly' => 'Header text for filter form',
-	'contest-contest-yes' => 'Option in a dropdown menu',
-	'contest-contest-no' => 'Option in a dropdown menu',
-	'contest-contest-none' => 'Option in a dropdown menu',
+	'contest-contest-yes' => 'Option in a dropdown menu.
+{{Identical|Yes}}',
+	'contest-contest-no' => 'Option in a dropdown menu.
+{{Identical|No}}',
+	'contest-contest-none' => 'Option in a dropdown menu.
+{{Identical|None}}',
 	'contest-contest-some' => 'Option in a dropdown menu',
 	'contest-contest-filter-challenge' => 'Label put before and input field',
 	'contest-contest-filter-volunteer' => 'Label put before and input field',
@@ -699,6 +702,7 @@ $messages['br'] = array(
 	'contest-contest-contestants' => 'Perzhidi',
 	'contest-contest-contestants-text' => "Evit barn ur c'hinnig hiniennel, klikit war an ID zo er bann kleiz.",
 	'contest-contest-reminder-mail' => 'Postel degas da soñj',
+	'contest-contest-reminder-page' => 'Eus [[$1|ar bajenn-mañ]] e teu an danvez evit ar postel kas da soñj.',
 	'contest-contest-send-reminder' => 'Kas ar postel kas da soñj',
 	'contest-contest-go' => 'Kas',
 	'contest-contest-showonly' => 'Silañ ar gevezerien dre',
@@ -762,15 +766,27 @@ $messages['br'] = array(
 	'contest-mycontests-header-contest' => 'Kenstrivadeg',
 	'contest-mycontests-header-challenge' => 'Dae',
 	'contest-mycontests-signup-success' => 'Deuet oc\'h a-benn da lakaat hoc\'h anv evit ar genstrivadeg "$1".',
+	'contest-mycontests-addition-success' => 'Kaset eo bet ho respont ervat ! Trugarez da vezañ kemeret perzh er genstrivadeg-mañ.',
 	'contest-mycontests-updated-success' => "Degaset hoc'h eus kemmoù en ho respont.",
+	'contest-mycontests-sessionfail' => "N'eus ket bet gallet enrollañ ho respont rak kollet ez eus bet roadennoù zo. Klaskit en-dro.",
 	'contest-submission-submit' => 'Kas',
+	'contest-submission-unknown' => "N'eus kenstrivadeg ebet dezhi an anv bet merket ganeoc'h.",
+	'contest-submission-header' => "Ho trugarekaat da vezañ kemeret perzh er genstrivadeg-mañ ! Ur wezh kaset an dae da benn e c'hallot ouzhpennañ ul liamm d'hor respont a-is.",
+	'contest-submission-finished' => 'Kloz eo ar genstrivadeg-mañ. Ho trugarekaat da vezañ kemeret perzh enni !',
 	'contest-submission-submission' => 'Liamm war-zu ho respont',
+	'contest-submission-invalid-url' => 'Ne glot an URL-mañ gant hini ebet eus ar furmadoù aotreet.',
+	'contest-submission-new-submission' => "Rankout a rit merkañ URL ho respont c'hoazh. Ret eo en ober a-raok an termen.",
+	'contest-submission-current-submission' => "Setu aze URL ho respont a c'hallit kemmañ betek an termen.",
+	'contest-submission-challenge' => 'Kemer a rit perzh en dae $1.',
+	'contest-submission-challenge-description' => "'''Dae evit ar mare: $1''' -- $2",
+	'contest-submission-domains' => "Miret eo ar respontoù evit al lec'hiennoù-mañ : $1",
 );
 
 /** German (Deutsch)
  * @author Kghbln
  * @author Metalhead64
  * @author Reedy
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'contest-desc' => 'Ermöglicht Wettbewerbe sowie die anschließende Ermittlung der Gewinner durch Juroren',
@@ -783,13 +799,13 @@ $messages['de'] = array(
 	'action-contestjudge' => 'Wettbewerbsbeiträge beurteilen zu können',
 	'group-contestadmin' => 'Wettbewerbsadministratoren',
 	'group-contestadmin-member' => '{{GENDER:$1|Wettbewerbsadministrator|Wettbewerbsadministratorin}}',
-	'grouppage-contestadmin' => 'Project:Wettbewerbsadministratoren',
+	'grouppage-contestadmin' => '{{ns:project}}:Wettbewerbsadministratoren',
 	'group-contestant' => 'Wettbewerbsteilnehmer',
 	'group-contestant-member' => '{{GENDER:$1|Wettbewerbsteilnehmer|Wettbewerbsteilnehmerin}}',
-	'grouppage-contestant' => 'Project:Wettbewerbsteilnehmer',
+	'grouppage-contestant' => '{{ns:project}}:Wettbewerbsteilnehmer',
 	'group-contestjudge' => 'Wettbewerbsjuroren',
 	'group-contestjudge-member' => '{{GENDER:$1|Wettbewerbsjuror|Wettbewerbsjurorin}}',
-	'grouppage-contestjudge' => 'Project:Wettbewerbsjuroren',
+	'grouppage-contestjudge' => '{{ns:project}}:Wettbewerbsjuroren',
 	'prefs-contest' => 'Wettbewerbe',
 	'contest-prefs-showtoplink' => 'Den Link [[Special:MyContests|Meine Wettbewerbe]] im Benutzermenü anzeigen.',
 	'contest-status-draft' => 'Entwurf (deaktiviert)',
