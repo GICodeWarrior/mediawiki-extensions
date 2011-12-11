@@ -13,8 +13,12 @@ class WikidataHooks {
 
 		if ( $wgRequest->getText( 'action' )=='edit' ) {
 			$out->addModules( 'ext.Wikidata.edit' );
+			$out->addModules( 'ext.Wikidata.suggest' );
 		}
 
+		if ( $skin->getTitle()->isSpecialPage() ) {
+			$out->addModules( 'ext.Wikidata.suggest' );
+		}
 		return true;
 	}
 

@@ -52,7 +52,10 @@ $wgResourceModules['ext.Wikidata.rtl'] = $resourcePathArray + array(
 );
 
 $wgResourceModules['ext.Wikidata.edit'] = $resourcePathArray + array(
-	'scripts' => array( 'OmegaWiki/resources/suggest.js', 'OmegaWiki/resources/omegawiki-edit.js' )
+	'scripts' => 'OmegaWiki/resources/omegawiki-edit.js'
+);
+$wgResourceModules['ext.Wikidata.suggest'] = $resourcePathArray + array(
+	'scripts' => 'OmegaWiki/resources/suggest.js'
 );
 
 
