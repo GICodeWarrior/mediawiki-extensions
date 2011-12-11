@@ -54,6 +54,9 @@ $messages['en'] = array(
 	'special-courses' => 'Courses',
 	'special-educationprogram' => 'Education Program',
 
+	// Special:Institutions
+	'ep-institutions-nosuchinstitution' => 'There is no institution with name "$1". Existing institutions are listed below.',
+
 );
 
 /** Message documentation (Message documentation)
@@ -77,4 +80,6 @@ $messages['qqq'] = array(
 	'special-course' => '{{doc-special|course}}',
 	'special-courses' => '{{doc-special|courses}}',
 	'special-educationprogram' => '{{doc-special|educationprogram}}',
+
+	'ep-institutions-nosuchinstitution' => 'Error message stating there is no institution with name $1',
 );

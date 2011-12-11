@@ -34,6 +34,23 @@ class SpecialInstitutions extends SpecialEPPage {
 
 		$out = $this->getOutput();
 
+		if ( $this->subPage === '' ) {
+			$this->displayPage();
+		}
+		else {
+			$org = EPOrg::has( array( 'name' => $this->subPage ) );
+			
+			if ( $org === false ) {
+				$this->showError( 'ep-institutions-nosuchinstitution', $this->subPage );
+				$this->displayPage();
+			}
+			else {
+				$out->redirect( SpecialPage::getTitleFor( 'Institution', $this->subPage )->getLocalURL() );
+			}
+		}
+	}
+	
+	protected function displayPage() {
 		
 	}
 

@@ -47,7 +47,7 @@ abstract class SpecialEPPage extends SpecialPage {
 	 */
 	public function execute( $subPage ) {
 		$subPage = is_null( $subPage ) ? '' : $subPage;
-		$this->subPage = str_replace( '_', ' ', $subPage );
+		$this->subPage = trim( str_replace( '_', ' ', $subPage ) );
 
 		$this->setHeaders();
 		$this->outputHeader();
@@ -66,11 +66,13 @@ abstract class SpecialEPPage extends SpecialPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $message
+	 * @param string $message Message key
+	 * @param array|string $args Message arguments
 	 */
-	protected function showError( $message ) {
+	protected function showError( $message, $args = array() ) {
+		$message = call_user_func_array( 'wfMsgExt', array_merge( array( $message ), (array)$args ) );
 		$this->getOutput()->addHTML(
-			'<p class="visualClear errorbox">' . wfMsgExt( $message, 'parseinline' ) . '</p>'
+			'<p class="visualClear errorbox">' . $message . '</p>'
 			. '<hr style="display: block; clear: both; visibility: hidden;" />'
 		);
 	}
@@ -80,11 +82,13 @@ abstract class SpecialEPPage extends SpecialPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $message
+	 * @param string $message Message key
+	 * @param array|string $args Message arguments
 	 */
-	protected function showWarning( $message ) {
+	protected function showWarning( $message, $args = array() ) {
+		$message = call_user_func_array( 'wfMsgExt', array_merge( array( $message ), (array)$args ) );
 		$this->getOutput()->addHTML(
-			'<p class="visualClear warningbox">' . wfMsgExt( $message, 'parseinline' ) . '</p>'
+			'<p class="visualClear warningbox">' . $message . '</p>'
 			. '<hr style="display: block; clear: both; visibility: hidden;" />'
 		);
 	}
@@ -94,11 +98,13 @@ abstract class SpecialEPPage extends SpecialPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $message
+	 * @param string $message Message key
+	 * @param array|string $args Message arguments
 	 */
-	protected function showSuccess( $message, $subst = '' ) {
+	protected function showSuccess( $message, $args = array() ) {
+		$message = call_user_func_array( 'wfMsgExt', array_merge( array( $message ), (array)$args ) );
 		$this->getOutput()->addHTML(
-			'<div class="successbox"><strong><p>' . wfMsgExt( $message, array( 'parseinline' ), $subst ) . '</p></strong></div>'
+			'<div class="successbox"><strong><p>' . $message . '</p></strong></div>'
 			. '<hr style="display: block; clear: both; visibility: hidden;" />'
 		);
 	}
