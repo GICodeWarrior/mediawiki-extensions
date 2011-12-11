@@ -775,13 +775,14 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Emperyan
  * @author Manco Capac
  */
 $messages['tr'] = array(
 	'lastuserlogin' => 'Son çevrimiçi olan kullanıcı',
 	'lastuserlogin-desc' => 'Kullanıcının en son çevrimiçi olduğunu zamanı gösterir',
 	'lastuserlogin_userid' => 'Kullanıcı adı',
-	'lastuserlogin_username' => 'Gerçwk ad',
+	'lastuserlogin_username' => 'Gerçek ad',
 	'lastuserlogin_useremail' => 'Kullanıcı eposta',
 	'lastuserlogin_lastlogin' => 'Son çevrimiçi',
 	'lastuserlogin_daysago' => 'Kaç gün önce',
