@@ -825,7 +825,7 @@ $messages['sq'] = array(
 $messages['sr-ec'] = array(
 	'whatismyip' => 'Која је моја IP адреса',
 	'whatismyip-desc' => 'Приказује тренутну [[Special:WhatIsMyIP|IP адресу]] корисника',
-	'whatismyip-out' => 'Ваша IP адреса:',
+	'whatismyip-out' => 'Ваша ИП адреса:',
 	'right-whatismyip' => 'приказ [[Special:WhatIsMyIP|сопствене IP адресе]]',
 );
 
