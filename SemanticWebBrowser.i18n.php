@@ -41,6 +41,14 @@ $messages['qqq'] = array(
 	'swb_browse_more' => 'Browse more details',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'swb_browse_go' => 'Mont',
+	'swb_inverse_label_default' => '$1 eus',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -87,6 +95,30 @@ $messages['gl'] = array(
 	'swb_browse_no_incoming' => 'Ningunha propiedade liga con esta páxina.',
 	'swb_inverse_label_property' => 'Etiqueta da propiedade inversa',
 	'swb_inverse_label_default' => '$1 de',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'browsewiki' => 'Navigar in wiki & web semantic',
+	'swb_desc' => 'Adde un pagina special [[Special:BrowseWiki|Navigar in wiki & web semantic]]',
+	'swb_browse_article' => 'Entra le nomine del pagina ab le qual tu vole initiar le exploration semantic.',
+	'swb_browse_go' => 'Va',
+	'swb_browse_show_incoming' => 'monstrar le proprietates de entrata con ligamines verso hic',
+	'swb_browse_hide_incoming' => 'celar le proprietates de entrata con ligamines verso hic',
+	'swb_browse_no_outgoing' => 'Iste pagina non ha proprietates.',
+	'swb_browse_no_incoming' => 'Nulle proprietate ha un ligamine a iste pagina.',
+	'swb_inverse_label_property' => 'Etiquetta de proprietate inverse',
+	'swb_inverse_label_default' => '$1 de',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'swb_browse_go' => 'Lass',
+	'swb_inverse_label_default' => '$1 vu(n)',
 );
 
 /** Macedonian (Македонски)
