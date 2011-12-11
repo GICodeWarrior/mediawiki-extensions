@@ -534,7 +534,7 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'mediafunctions-desc' => 'Парсер функције за преузимање података о медија фајловима',
+	'mediafunctions-desc' => 'Рашчлањивачке функције за преузимање података о медијским датотекама',
 	'mediafunctions-invalid-title' => '"$1" није исправан наслов',
 	'mediafunctions-not-exist' => 'Датотека „$1“ не постоји',
 );
