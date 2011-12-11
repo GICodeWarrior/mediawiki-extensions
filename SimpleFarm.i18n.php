@@ -28,9 +28,10 @@ $messages['qqq'] = array(
 
 /** German (Deutsch)
  * @author Daniel Werner
+ * @author Kghbln
  */
 $messages['de'] = array(
-	'simplefarm-desc' => 'Einfache, jedoch trotzdem mächtige Wiki-Farm-Erweiterung ohne großartige Konfigurations-Seiten',
+	'simplefarm-desc' => 'Ermöglicht den einfachen wie umfänglichen Betrieb einer Wikifarm, ohne dabei komplexe Konfigurationsseiten zu nutzen',
 );
 
 /** French (Français)
@@ -59,6 +60,13 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'simplefarm-desc' => 'Egyszerű, mégis hatékony wiki farm kiterjesztés csili-vili konfigurációs oldalak nélkül',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'simplefarm-desc' => 'Extension de ferma wiki simple ma potente sin paginas de configuration special',
 );
 
 /** Macedonian (Македонски)
