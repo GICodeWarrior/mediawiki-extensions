@@ -333,10 +333,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'conditionalshowsection-desc' => 'Додаје cshow таг за условно приказивање и скривање одељака вики-текста.',
+	'conditionalshowsection-desc' => 'Додавање ознаке cshow за условно приказивање/сакривање делова викитекста.',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
