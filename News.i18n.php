@@ -366,10 +366,11 @@ $messages['sk'] = array(
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'newsextension-desc' => 'Приказује подесиве скорашње измене, или их приказује као RSS или атом фид',
+	'newsextension-desc' => 'Приказује прилагођени преглед скорашњих измена на вики-страници, или као RSS или Атом довод',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬) */
