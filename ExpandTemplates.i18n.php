@@ -1919,12 +1919,13 @@ $messages['sq'] = array(
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'expandtemplates' => 'Замена шаблона',
-	'expandtemplates-desc' => '[[Special:ExpandTemplates|Развија шаблоне, парсер-функције и променљиве]] како би показао развијени викитекст и преглед приказиване стране',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Проширује шаблоне, рашчлањивачке функције и променљиве]] за приказ проширеног викитекста и преглед исцртане слике',
 	'expand_templates_intro' => 'Ова посебна страница узима неки текст и мења све шаблоне у њему рекурзивно.
 Такође мења функције парсера као што је <nowiki>{{</nowiki>#if:...}}, и променљиве као што је
 <nowiki>{{</nowiki>ТРЕНУТНИДАН}}&mdash;заправо практично све што се налази између витичастих заграда.
