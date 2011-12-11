@@ -427,10 +427,11 @@ $messages['sli'] = array(
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML интерфејс, који пружа извлачење делова текста',
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML сучеље омогућава извлачење делова текста',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
