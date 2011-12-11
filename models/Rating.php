@@ -152,18 +152,4 @@ class Rating {
 		);
 		// Article moves not logged - yet
 	}
-
-	private static function checkArticle( $article, $category_filters ) {
-		// Check category
-		if( count( $category_filters ) == 0 || ( count($category_filters) == 1 && empty( $category_filters[0] ) ) ) {
-			return true;
-		}
-
-		foreach( $category_filters as $category ) {
-			if( in_array( $category, $article['categories'] ) ) {
-				return true;
-			}
-		}
-		return false;
-	}
 }

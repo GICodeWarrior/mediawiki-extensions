@@ -34,7 +34,7 @@ class SelectionSifterHooks {
 				$rating->saveAll();
 				
 				$timestamp = wfTimestamp( TS_MW );
-				if( !empty( $assessment['quality'] ) ) {
+				if( isset( $assessment['quality'] ) ) {
 					AssessmentChangeLog::makeEntry(
 						$project,
 						$main_title->getNamespace(),
@@ -45,7 +45,7 @@ class SelectionSifterHooks {
 						$assessment['quality']
 					);
 				}
-				if( !empty( $assessment['importance'] ) ) {
+				if( isset( $assessment['importance'] ) ) {
 					AssessmentChangeLog::makeEntry(
 						$project,
 						$main_title->getNamespace(),

@@ -19,7 +19,7 @@ class Statistics {
 	}
 
 	public static function updateAggregateStats( $rating, $is_new_rating, $update_global = true ) {
-		if(! $is_new_rating && empty($rating->old_importance) && empty($rating->old_quality) ) {
+		if(! $is_new_rating && !isset($rating->old_importance) && !isset($rating->old_quality) ) {
 			return;
 		}
 		$dbw = wfGetDB( DB_MASTER );
@@ -46,12 +46,12 @@ class Statistics {
 
 		if(! $is_new_rating ) {
 			// Is not a new rating, and atleast one of quality or importance has changed
-			if(! empty( $rating->old_quality ) ) {
+			if( isset( $rating->old_quality ) ) {
 				$q_value = $rating->old_quality;
 			} else {
 				$q_value = $rating->quality;
 			}
-			if(! empty( $rating->old_importance) ) {
+			if( isset( $rating->old_importance) ) {
 				$i_column = Statistics::getImportanceColumn( $rating->old_importance );
 			} else {
 				$i_column = Statistics::getImportanceColumn( $rating->importance );
