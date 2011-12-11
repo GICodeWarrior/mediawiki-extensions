@@ -619,9 +619,9 @@ $messages['sk'] = array(
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
-	'purgecache' => 'Очисти међумеморију',
-	'purgecache-warning' => 'Ово ће очистити међумеморију табела.',
-	'purgecache-purged' => 'Међумеморија је очишћена.',
+	'purgecache' => 'Очисти кеш',
+	'purgecache-warning' => 'Ово ће очистити кеш табела.',
+	'purgecache-purged' => 'Кеш је очишћен.',
 	'purgecache-button' => 'Очисти',
 );
 
