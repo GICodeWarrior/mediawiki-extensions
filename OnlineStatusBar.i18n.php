@@ -109,6 +109,23 @@ $messages['de-formal'] = array(
 	'onlinestatusbar-hide' => "Möchten Sie die Statusleiste ausblenden, um stattdessen lediglich das ''magische Wort'' zu nutzen? (Für Fortgeschrittene)",
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'onlinestatusbar-desc' => 'Statusowa kšoma, kótaraž pokazujo na zakłaźe nastajenjow na wužywarskem boku, lěc wužywaŕ jo online',
+	'onlinestatusbar-line' => '$1 jo něnto $3 $2',
+	'onlinestatusbar-used' => 'Twój onlinestatus na twójich wužywarskich bokach pokazaś',
+	'onlinestatusbar-status' => 'Standardny status, kótaryž coš wužywaś:',
+	'prefs-onlinestatus' => 'Onlinestatus',
+	'onlinestatusbar-status-online' => 'Online',
+	'onlinestatusbar-status-busy' => 'Zabrany',
+	'onlinestatusbar-status-away' => 'Njepśibytny',
+	'onlinestatusbar-status-offline' => 'Offline',
+	'onlinestatusbar-status-uknown' => 'status jo njeznaty',
+	'onlinestatusbar-status-hidden' => 'Schowany',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author DavidL
@@ -162,6 +179,7 @@ $messages['gl'] = array(
 	'onlinestatusbar-status-busy' => 'Ocupado',
 	'onlinestatusbar-status-away' => 'Non dispoñible',
 	'onlinestatusbar-status-offline' => 'Desconectado',
+	'onlinestatusbar-status-uknown' => 'descoñécese o estado',
 	'onlinestatusbar-status-hidden' => 'Agochado',
 );
 
@@ -200,6 +218,7 @@ $messages['hsb'] = array(
 	'onlinestatusbar-status-busy' => 'Ma dźěło',
 	'onlinestatusbar-status-away' => 'Preč',
 	'onlinestatusbar-status-offline' => 'Offline',
+	'onlinestatusbar-status-uknown' => 'status je njeznaty',
 	'onlinestatusbar-status-hidden' => 'Schowany',
 );
 
@@ -220,6 +239,7 @@ $messages['ia'] = array(
 	'onlinestatusbar-status-busy' => 'Occupate',
 	'onlinestatusbar-status-away' => 'Absente',
 	'onlinestatusbar-status-offline' => 'Foras de linea',
+	'onlinestatusbar-status-uknown' => 'stato es incognite',
 	'onlinestatusbar-status-hidden' => 'Celate',
 );
 
@@ -294,6 +314,7 @@ $messages['nl'] = array(
 	'onlinestatusbar-status-busy' => 'Druk',
 	'onlinestatusbar-status-away' => 'Weg',
 	'onlinestatusbar-status-offline' => 'Offline',
+	'onlinestatusbar-status-uknown' => 'status is onbekend',
 	'onlinestatusbar-status-hidden' => 'Verborgen',
 );
 
