@@ -27,6 +27,13 @@ $messages['qqq'] = array(
 	'helpcommons-desc' => '{{desc}}',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'helpcommons-desc' => 'Adtapout pajennoù skoazell ur wiki skoazell hag enframmañ anezho e wikioù all eus familh ar wikioù',
+);
+
 /** German (Deutsch)
  * @author SVG
  */
@@ -53,6 +60,13 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'helpcommons-desc' => 'Bjerje mjenowy rum Pomoc z wikija pomocy a zapřijima jón do druhich wikijow wikiswójby',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'helpcommons-desc' => 'Obtene le paginas de adjuta ab un wiki de adjuta e los include in altere wikis in le familia de wikis',
 );
 
 /** Macedonian (Македонски)
