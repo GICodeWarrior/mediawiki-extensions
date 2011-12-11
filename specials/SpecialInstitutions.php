@@ -51,7 +51,20 @@ class SpecialInstitutions extends SpecialEPPage {
 	}
 	
 	protected function displayPage() {
+		$pager = new EPOrgPager(  );
 		
+		if ( $pager->getNumRows() ) {
+			$this->getOutput()->addHTML(
+				$pager->getFilterControl() .
+				$pager->getNavigationBar() .
+				$pager->getBody() .
+				$pager->getNavigationBar()
+			);
+		}
+		else {
+			$this->getOutput()->addHTML( $pager->getFilterControl( true ) );
+			$this->getOutput()->addWikiMsg( 'ep-institutions-noresults' );
+		}
 	}
 
 }

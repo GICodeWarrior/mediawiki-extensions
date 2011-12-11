@@ -147,5 +147,100 @@ abstract class EPPager extends TablePager {
 	 * @return array of string
 	 */
 	protected abstract function getSortableFields();
+	
+	/**
+	 * Returns a list with the filter options.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array 
+	 */
+	protected function getFilterOptions() {
+		return array();
+	}
+	
+	/**
+	 * Gets the HTML for a filter control.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param boolean $hideWhenNoResults When true, there are no results, and no filters are applied, an empty string is returned. 
+	 * 
+	 * @return string
+	 */
+	protected function getFilterControl( $hideWhenNoResults ) {
+		$filterOptions = $this->getFilterOptions();
+		
+		if ( count( $filterOptions ) < 1 ) {
+			return '';
+		}
+		
+		$this->addFilterValues( $filterOptions );
+		
+		if ( $hideWhenNoResults && $this->getNumRows() < 1 ) {
+			$noFiltersSet = array_reduce( $filterOptions, function( $current, array $data ) {
+				return $current && $data['value'] !== '' && !is_null( $data['value'] );
+			}, true );
+			
+			if ( $noFiltersSet ) {
+				return '';
+			}
+		}
+		
+		$controls = array();
+		
+		foreach ( $filterOptions as $optionName => $optionData ) {
+			switch ( $optionData['type'] ) {
+				case 'select':
+					$select = new XmlSelect( $optionName, $optionName, $optionData['value'] );
+					$select->addOptions( $optionData['options'] );
+					$control = $select->getHTML();
+					break;
+			}
+			
+			$controls[] = $control;
+		}
+		
+		$title = $this->getTitle( $this->subPage )->getFullText();
+		
+		return
+ 			'<fieldset>' .
+				'<legend>' . wfMsgHtml( 'reviews-reviews-showonly' ) . '</legend>' .
+				'<form method="post" action="' . htmlspecialchars( $GLOBALS['wgScript'] . '?title=' . $title ) . '">' .
+					Html::hidden( 'title', $title ) .
+					implode( '', $controls ) .
+					'<input type="submit" value="' . wfMsgHtml( 'reviews-reviews-go' ) . '">' .
+				'</form>' .
+			'</fieldset>';
+	}
+	
+	/**
+	 * Changes the provided filter options list by replacing the values by what's set
+	 * in the request, or as fallback, what's set in the session. 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $filterOptions
+	 * 
+	 * @return boolean If anything was changed from the default
+	 */
+	protected function addFilterValues( array &$filterOptions ) {
+		$req = $this->getRequest();
+		$changed = false;
+		
+		foreach ( $filterOptions as $optionName => &$optionData ) {
+			if ( $req->getCheck( $optionName ) ) {
+				$optionData['value'] = $req->getVal( $optionName );
+				$req->setSessionData( __CLASS__ . $optionName, $optionData['value'] );
+				$changed = true;
+			}
+			elseif ( !is_null( $req->getSessionData( __CLASS__ . $optionName ) ) ) {
+				$optionData['value'] = $req->getSessionData( __CLASS__ . $optionName );
+				$changed = true;
+			}
+		}
+		
+		return $changed;
+	}
 
 }
