@@ -1414,7 +1414,7 @@ Váš priateľský upozorňovací systém %s',
  */
 $messages['sr-ec'] = array(
 	'tasklist' => 'Списак послова',
-	'tasklist-parser-desc' => 'Додаје <nowiki>{{#todo:}}</nowiki> парсер функцију за давање задатака',
+	'tasklist-parser-desc' => 'Додаје рашчлањивачку функцију <nowiki>{{#todo:}}</nowiki> за додељивање задатака',
 	'tasklist-special-desc' => 'Додаје посебну страницу за преглед [[Special:TaskList|додељених задатака]]',
 	'tasklistbyproject' => 'Списак задатака по пројекту',
 	'tasklistunknownproject' => 'Непознати пројекат',
