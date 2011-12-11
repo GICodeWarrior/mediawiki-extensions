@@ -32,6 +32,30 @@ class SelectionSifterHooks {
 					0
 				);
 				$rating->saveAll();
+				
+				$timestamp = wfTimestamp( TS_MW );
+				if( !empty( $assessment['quality'] ) ) {
+					AssessmentChangeLog::makeEntry(
+						$project,
+						$main_title->getNamespace(),
+						$main_title->getText(),
+						$timestamp,
+						"quality",
+						"",
+						$assessment['quality']
+					);
+				}
+				if( !empty( $assessment['importance'] ) ) {
+					AssessmentChangeLog::makeEntry(
+						$project,
+						$main_title->getNamespace(),
+						$main_title->getText(),
+						$timestamp,
+						"importance",
+						"",
+						$assessment['importance']
+					);
+				}
 			}
 		}
 	}
