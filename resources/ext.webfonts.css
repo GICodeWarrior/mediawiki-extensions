@@ -4,13 +4,6 @@ li#pt-webfont {
 	padding-left: 15px !important;
 }
 
-li#pt-webfont a{
-	/* @embed */
-	background: url(images/arrow_down.png) no-repeat scroll right top transparent;
-	padding-left: 5px;
-	padding-right: 15px;
-}
-
 div#webfonts-menu {
 	font-size: 100%;
 	z-index: 99999;
