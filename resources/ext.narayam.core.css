@@ -15,8 +15,12 @@ li#pt-narayam {
 div#narayam-menu {
 	direction: ltr;
 	float: left;
+	display: none;
 }
 
+div#narayam-menu.open {
+	display: block;
+}
 /* @noflip */
 body.rtl div#narayam-menu {
 	direction: rtl;

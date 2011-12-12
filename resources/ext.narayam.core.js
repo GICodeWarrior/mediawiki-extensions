@@ -578,13 +578,14 @@ $.narayam = new ( function() {
 		var $moreLink = $( '<a>' )
 			.text( mw.msg( 'narayam-more-imes' ) )
 			.prop( 'href', '#' )
-			.click( function() {
+			.click( function( event ) {
 				$('.narayam-scheme-dynamic-item').toggle( 'fast' );
 				if ( $('li.narayam-more-imes-link').hasClass( 'open' ) ) {
 					$('li.narayam-more-imes-link').removeClass( 'open' );
 				} else {
 					$('li.narayam-more-imes-link').addClass( 'open' );
 				}
+				event.stopPropagation();
 			} );
 
 		$narayamMenuItems.append( $( '<li>' )
@@ -615,6 +616,7 @@ $.narayam = new ( function() {
 			if ( enabled ) {
 				$( '#narayam-toggle' ).prop( 'checked', true );
 			}
+			event.stopPropagation();
 		} );
 
 		var helppage = mw.config.get( 'wgNarayamHelpPage' );
@@ -658,14 +660,22 @@ $.narayam = new ( function() {
 		$( '#p-personal ul:first' )[fn]( $li );
 		$( 'body' ).prepend( $menu );
 		$menu.hide();
-		$li.hover( function() {
+		$li.click( function( event ) {
 			$menuItemsDiv.css( 'left', $li.offset().left );
-			$menu.show();
-		});
-		$menu.hover( function() {
-			}, function() {
+			if( $menu.hasClass( 'open' ) ){
+				$menu.removeClass( 'open' );
+				$menu.hide();
+			} else {
+				$( 'div.open' ).removeClass( 'open' );
+				$menu.addClass( 'open' );
+				$menu.show();
+				event.stopPropagation();
+			}
+		} );
+		$( 'html' ).click( function() {
+			$menu.removeClass( 'open' );
 			$menu.hide();
-		});
+		} );
 
 		// Workaround for IE bug - activex components like input fields
 		// coming on top of everything.
