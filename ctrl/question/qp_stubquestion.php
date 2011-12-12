@@ -75,10 +75,15 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 		return array_search( $proposalName, $this->mProposalNames, true );
 	}
 
+	/**
+	 * Replace lines of alone '\' character to empty lines.
+	 * Trims first and last empty line, left from raws split regexp,
+	 * when available.
+	 */
 	private function substBackslashNL( &$s ) {
 		# warning: in single quoted regexp replace '\\\' translates into '\';
-		# without trim(), regexp match in qp_PropAttrs::getFromSource() will fail.
-		$s = preg_replace( '/^(\s*\\\??\s*)$/mu', '', trim( $s ) );
+		# wikitext always uses '\n' as line separator (unix style)
+		$s = preg_replace( '/^(\s*\\\??\s*)$|(\A\n)|(\n\Z)/mu', '', $s );
 	}
 
 	/**
@@ -87,13 +92,12 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 	 */
 	function splitRawProposals( $input ) {
 		# detect type of raw proposals
-		# originally was: preg_match( '/(?:^|\n)\s*\\??\s*(?:$|\n)/', $input )
 		# multiline raw proposals have empty lines and also optionally have lines
 		# containing only '\' character.
 		if ( preg_match( '/^\s*\\??\s*$/mu', $input ) ) {
 			# multiline raw proposals
 			# warning: in single quoted regexp split '\\' translates into '\'
-			$this->raws = preg_split( '/^(\s*\\??\s*)$/mu', $input, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE );
+			$this->raws = preg_split( '/((?:^\s*$)+)/mu', $input, -1, PREG_SPLIT_NO_EMPTY );
 			array_walk( $this->raws, array( __CLASS__, 'substBackslashNL' ) );
 		} else {
 			# single line raw proposals
@@ -101,9 +105,10 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 		}
 	}
 
-	# load some question fields from qp_QuestionData given
-	# (usually qp_QuestionData is an array property of qp_PollStore instance)
-	# @param   $qdata - an instance of qp_QuestionData
+	/**
+	 * Load answer-related question fields from qp_QuestionData instance given.
+	 * @param  $qdata  instance of qp_QuestionData
+	 */
 	function loadAnswer( qp_QuestionData $qdata ) {
 		$this->alreadyVoted = $qdata->alreadyVoted;
 		$this->mPrevProposalCategoryId = $qdata->ProposalCategoryId;
@@ -116,8 +121,10 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 		}
 	}
 
-	# populates an instance of qp_Question with data from qp_QuestionData
-	# @param   the object of type qp_Question
+	/**
+	 * Populates current instance of question with data from pollstore.
+	 * @param  $pollStore  instance of qp_PollStore
+	 */
 	function getQuestionAnswer( qp_PollStore $pollStore ) {
 		if ( $pollStore->pid !== null ) {
 			if ( $pollStore->questionExists( $this->mQuestionId ) ) {
@@ -131,9 +138,13 @@ class qp_StubQuestion extends qp_AbstractQuestion {
 		return false;
 	}
 
-	# checks, whether user had previousely selected the category of the proposal of this question
-	# returns true/false for 'checkbox' and 'radio' inputTypes
-	# text string/false for 'text' inputType
+	/**
+	 * Check, whether current user previousely selected the particular category of
+	 * the proposal of this question.
+	 * @return  mixed
+	 *   boolean true / boolean false for 'checkbox' and 'radio' inputTypes
+	 *   string / boolean false for 'text' inputType
+	 */
 	function answerExists( $inputType, $proposalId, $catId ) {
 		if ( $this->alreadyVoted ) {
 			if ( array_key_exists( $proposalId, $this->mPrevProposalCategoryId ) ) {

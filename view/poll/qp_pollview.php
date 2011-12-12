@@ -63,7 +63,7 @@ class qp_PollView extends qp_AbstractPollView {
 				$write_col[] = array( '__tag' => 'td', 'valign' => 'top', 0 => $question->view->renderQuestion(), '__end' => "\n" );
 				if ( $this->currCol == 1 ) {
 					$write_row[] = array( '__tag' => 'tr', 0 => $write_col, '__end' => "\n" );
-					$write_col = Array();
+					$write_col = array();
 				}
 				if ( --$this->currCol < 1 ) {
 					$this->currCol = $this->perRow;
@@ -131,22 +131,22 @@ class qp_PollView extends qp_AbstractPollView {
 			}
 		} else {
 			if ( $pollStore->getState() == "error" ) {
-				$submitBtn[ 'disabled' ] = 'disabled';
+				$submitBtn['disabled'] = 'disabled';
 			}
 		}
 		$atLeft = $this->ctrl->attemptsLeft();
 		if ( $atLeft === false ) {
-			$submitBtn[ 'disabled' ] = 'disabled';
+			$submitBtn['disabled'] = 'disabled';
 		}
 		# disable submit button in preview mode & printable version
 		if ( qp_Setup::$request->getVal( 'action' ) == 'parse' ||
 				qp_Setup::$output->isPrintable() ) {
-			$submitBtn[ 'disabled' ] = 'disabled';
+			$submitBtn['disabled'] = 'disabled';
 		}
-		$submitBtn[ 'value' ] = wfMsgHtml( $submitMsg );
+		$submitBtn['value'] = wfMsgHtml( $submitMsg );
 		$p = array( '__tag' => 'p' );
 		$p[] = $submitBtn;
-		# output no more attempts message, when applicable
+		# output "no more attempts" message, when applicable
 		if ( $atLeft === false ) {
 			$p[] = array( '__tag' => 'span', 'class' => 'attempts_counter', qp_Setup::specialchars( wfMsg( 'qp_error_no_more_attempts' ) ) );
 		} elseif ( $atLeft !== true ) {
