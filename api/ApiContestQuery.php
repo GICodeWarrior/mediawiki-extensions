@@ -40,7 +40,11 @@ abstract class ApiContestQuery extends ApiQueryBase {
 	protected function getClass() {
 		$className = $this->getClassInfo();
 		$className = $className['class'];
-		return $className::s();
+		static $classes = array();
+		if ( !isset( $classes[$className] ) ) {
+			$classes[$className] = new $className( array() );
+		}
+		return $classes[$className];
 	}
 
 	/**
