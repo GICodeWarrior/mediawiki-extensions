@@ -103,7 +103,7 @@ abstract class EPPager extends TablePager {
 		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
 		return array(
 			'tables' => array( $c::getDBTable() ),
-			'fields' => $c::getFieldNames(),
+			'fields' => $c::getPrefixedFields( $c::getFieldNames() ),
 			'conds' => $c::getPrefixedValues( $this->conds ),
 		);
 	}
@@ -168,7 +168,7 @@ abstract class EPPager extends TablePager {
 	 * 
 	 * @return string
 	 */
-	protected function getFilterControl( $hideWhenNoResults ) {
+	public function getFilterControl( $hideWhenNoResults ) {
 		$filterOptions = $this->getFilterOptions();
 		
 		if ( count( $filterOptions ) < 1 ) {

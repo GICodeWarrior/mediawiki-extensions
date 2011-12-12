@@ -18,7 +18,7 @@ class EPCoursePager extends EPPager {
 	 *
 	 * @param array $conds
 	 */
-	public function __construct( array $conds ) {
+	public function __construct( array $conds = array() ) {
 		$this->mDefaultDirection = true;
 
 		// when MW 1.19 becomes min, we want to pass an IContextSource $context here.
