@@ -57,7 +57,7 @@ $wgResourceModules['ext.webfonts.core'] = array(
 	),
 	'localBasePath' => $dir,
 	'remoteExtPath' => 'WebFonts',
-	'messages' => array( 'webfonts-load', 'webfonts-reset' ),
+	'messages' => array( 'webfonts-load', 'webfonts-reset', 'webfonts-menu-tooltip' ),
 	'dependencies' =>  'jquery.cookie' ,
 	'position' => 'top',
 );

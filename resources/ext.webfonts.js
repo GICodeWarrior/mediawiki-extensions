@@ -327,7 +327,10 @@
 				.attr( 'id', 'webfonts-menu' )
 				.addClass( 'webfontMenu' )
 				.append( $menuItemsDiv );
-			var $link = $( '<a>' ).prop( 'href', '#' ).text( mw.message( 'webfonts-load' ).escaped() );
+			var $link = $( '<a>' )
+				.prop( 'href', '#' )
+				.text( mw.message( 'webfonts-load' ).escaped() )
+				.attr( 'title', mw.msg( 'webfonts-menu-tooltip' ) );
 			// This is the fonts link
 			var $li = $( '<li>' ).attr( 'id', 'pt-webfont' ).append( $link );
 			// If RTL, add to the right of top personal links. Else, to the left

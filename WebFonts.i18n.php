@@ -17,13 +17,18 @@ $messages['en'] = array(
 	'webfonts-load'    => 'Select font',
 	'webfonts-reset'   => 'Reset',
 	'webfonts-enable-preference' => 'Enable font embedding (WebFonts)',
+	'webfonts-menu-tooltip' => 'Select a font for the page',
 );
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  */
 $messages['qqq'] = array(
+	'webfonts'         => 'The extension name - WebFonts',
+	'webfonts-desc'    => 'short description of the extension',
+	'webfonts-load'    => 'The text shown in the webfont link',
 	'webfonts-reset' => '{{Identical|Reset}}',
+	'webfonts-menu-tooltip' => 'Tooltip text displayed in the webfont link',
 );
 
 /** Arabic (العربية)
@@ -321,6 +326,7 @@ $messages['ml'] = array(
 	'webfonts-load' => 'ഫോണ്ടുകള്‍',
 	'webfonts-reset' => 'പഴയപടിയാക്കുക',
 	'webfonts-enable-preference' => 'ഫോണ്ട് എംബെഡ് ചെയ്യുക.(വെബ്ഫോണ്ട്സ്)',
+	'webfonts-menu-tooltip' => 'താളിനുവേണ്ടി ഒരു ഫോണ്ട് തിരഞ്ഞെടുക്കുക',
 );
 
 /** Marathi (मराठी)
