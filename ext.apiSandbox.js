@@ -398,6 +398,10 @@ jQuery( function( $ ) {
 			s = s.replace( /\n\s+\*?([^\n]*)/g, '\n<li>$1</li>' ); // <li> around bulleted lines
 		}
 		s = s.replace( /\n(?!<)/, '\n<br/>' );
+		s = s.replace( /(?:https?:)?\/\/[^\s<>]+/g, function( s ) {
+			// linkify URLs, input is already HTML-escaped above
+			return '<a href="' + s + '">' + s + '</a>';
+		} );
 		return s;
 	}
 
