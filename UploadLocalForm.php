@@ -37,11 +37,11 @@ class UploadLocalForm {
 		# Check for warnings like the file already exists in the wiki
 		$warnings = $this->upload->checkWarnings();
 		if ( $warnings && isset( $warnings['exists'] ) && $warnings['exists']['warning'] != 'was-deleted' ) {
-			$this->uploadError( 'The file '.$warnings['exists']['file']->getName().' already exists' );
+			$this->uploadError( wfMsg( 'uploadlocal_error_exists', $warnings['exists']['file']->getName() ) );
 			return;
 		}
 		
-		# Check for verificatoins that the upload succeded.
+		# Check for verifications that the upload succeded.
 		$verification = $this->upload->verifyUpload();
 		if ( $verification['status'] === UploadBase::OK ) {
 			$this->upload->performUpload( $this->comment, $this->comment, $this->watch, $user );
@@ -51,32 +51,32 @@ class UploadLocalForm {
 		} else {
 			switch( $verification['status'] ) {
 				case UploadBase::EMPTY_FILE:
-					$this->uploadError( 'The file you submitted was empty' );
+					$this->uploadError( wfMsg( 'uploadlocal_error_empty' ) );
 					break;
 				case UploadBase::FILETYPE_MISSING:
-					$this->uploadError( 'The file is missing an extension' );
+					$this->uploadError( wfMsg( 'uploadlocal_error_missing' ) );
 					break;
 				case UploadBase::FILETYPE_BADTYPE:
 					global $wgFileExtensions;
-					$this->uploadError( 'This type of file is banned' );
+					$this->uploadError( wfMsg( 'uploadlocal_error_badtype' ) );
 					break;
 				case UploadBase::MIN_LENGTH_PARTNAME:
-					$this->uploadError( 'The filename is too short' );
+					$this->uploadError( wfMsg( 'uploadlocal_error_tooshort' ) );
 					break;
 				case UploadBase::ILLEGAL_FILENAME:
-					$this->uploadError( 'The filename is not allowed' );
+					$this->uploadError( wfMsg( 'uploadlocal_error_illegal' ) );
 					break;
 				case UploadBase::OVERWRITE_EXISTING_FILE:
-					$this->uploadError( 'Overwriting an existing file is not allowed' );
+					$this->uploadError( wfMsg( 'uploadlocal_error_overwrite' ) );
 					break;
 				case UploadBase::VERIFICATION_ERROR:
-					$this->uploadError( 'This file did not pass file verification: ' . $verification['details'][0] );
+					$this->uploadError( wfMsg( 'uploadlocal_error_verify', $verification['details'][0] ) );
 					break;
 				case UploadBase::HOOK_ABORTED:
-					$this->uploadError( "The modification you tried to make was aborted by an extension hook" );
+					$this->uploadError( wfMsg( 'uploadlocal_error_hook' ) );
 					break;
 				default:
-					$this->uploadError( 'An unknown error occurred' );
+					$this->uploadError( wfMsg( 'uploadlocal_error_unknown' ) );
 					break;
 			}
 		}

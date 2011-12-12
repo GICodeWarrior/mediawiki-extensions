@@ -42,5 +42,16 @@ $messages['en'] = array(
 		' descriptions, make sure you give a few linebreaks before/after'.
 		' the text.',
 		
+	'uploadlocal_error_exists' => 'The file $1 already exists',
+	'uploadlocal_error_empty' => 'The file you submitted was empty',
+	'uploadlocal_error_missing' => 'The file is missing an extension',
+	'uploadlocal_error_badtype' => 'This type of file is banned',
+	'uploadlocal_error_tooshort' => 'The filename is too short',
+	'uploadlocal_error_illegal' => 'The filename is not allowed',
+	'uploadlocal_error_overwrite' => 'Overwriting an existing file is not allowed',
+	'uploadlocal_error_verify' => 'This file did not pass file verification:  $1',
+	'uploadlocal_error_hook' => 'The modification you tried to make was aborted by an extension hook',
+	'uploadlocal_error_unknown' => 'An unknown error occurred',
+		
 	'right-uploadlocal' => 'Upload files from the local machine'
 );
