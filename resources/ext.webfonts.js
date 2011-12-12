@@ -334,14 +334,18 @@
 			var fn = $( 'body' ).hasClass( 'rtl' ) ? 'append' : 'prepend';
 			$( '#p-personal ul:first' )[fn]( $li );
 			$( 'body' ).prepend( $menu );
-			$menu.hide();
-			$li.hover( function() {
+			$li.click( function( event ) {
 				$menuItemsDiv.css( 'left', $li.offset().left );
-				$menu.show();
-			});
-			$menu.hover( function() {
-				}, function() {
-				$menu.hide();
+				if($menu.hasClass( 'open' ) ){
+					$menu.removeClass( 'open' );
+				} else{
+					$( 'div.open' ).removeClass( 'open' );
+					$menu.addClass( 'open' );
+					event.stopPropagation();
+				}
+			} );
+			$( 'html' ).click( function() {
+				$menu.removeClass( 'open' );
 			});
 			// Workaround for IE bug - ActiveX components like input fields coming on top of everything.
 			// @todo Is there a better solution other than hiding it on hover?
