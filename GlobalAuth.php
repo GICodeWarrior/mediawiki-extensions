@@ -61,7 +61,7 @@ class GlobalAuth {
 		$res = $dbr->select( $this->tablename, 'user_wiki',
 			array( 'user_name' => $username ),
 			$fname );
-		while ( $row = $dbr->fetchObject( $res ) ) {
+		foreach( $res as $row ) {
 			if ( $row->user_wiki == $this->thiswiki || $row->user_wiki == '*' ) {
 				return true;
 			}
@@ -87,11 +87,11 @@ class GlobalAuth {
 		$res = $dbr->select( $this->tablename, array( 'user_wiki',
 				'user_name', 'user_password',
 				'user_email', 'user_email_authenticated',
-				'user_real_name', 'user_options',
+				'user_real_name',
 				'user_token' ),
 			array( 'user_name' => $username ),
 			$fname );
-		while ( $row = $dbr->fetchObject( $res ) ) {
+		foreach( $res as $row ) {
 			if ( $row->user_wiki == $this->thiswiki || $row->user_wiki == '*' ) {
 				if ( $row->user_password == User::oldCrypt( $password, $row->user_id ) ) {
 					$this->data =& $row;
@@ -175,7 +175,6 @@ class GlobalAuth {
 					'user_email' => $user->getEmail(),
 					'user_email_authenticated' => $dbw->timestampOrNull( $user->getEmailAuthenticationTimestamp() ),
 					'user_real_name' => $user->getRealName(),
-					'user_options' => $user->encodeOptions(),
 					'user_token' => $user->mToken ),
 				array( /*WHERE*/ 'user_id' => $this->data->user_id,
 					'user_wiki' => $this->data->user_wiki ),
@@ -213,7 +212,7 @@ class GlobalAuth {
 				'GlobalAuth::addUser' );
 		$create = true;
 		$first = true;
-		while ( $row = $dbr->fetchObject( $res ) ) {
+		foreach( $res as $row ) {
 			if ( $first ) {
 				# Set create to false for now. We've found entries for
 				# this username. Now we have to check whether we allow
@@ -247,17 +246,16 @@ class GlobalAuth {
 				'user_email_authenticated' => $dbw->timestampOrNull(
 					$user->getEmailAuthenticationTimestamp() ),
 				'user_real_name' => $user->getRealName(),
-				'user_options' => $user->encodeOptions(),
 				'user_token' => $user->mToken,
 				'user_wiki' => $wiki ),
 				$fname );
 
 		# Query back to get the user_id
 
-		$row = $dbr->selectRow( $this->tablename, array( 'user_wiki',
+		$row = $dbw->selectRow( $this->tablename, array( 'user_wiki',
 				'user_name', 'user_password',
 				'user_email', 'user_email_authenticated',
-				'user_real_name', 'user_options',
+				'user_real_name',
 				'user_token' ),
 			array( 'user_name' => $user->getName(),
 				'user_wiki' => $wiki ),
