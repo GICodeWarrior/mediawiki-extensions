@@ -588,22 +588,39 @@ class ExtHashTables {
 			return '';
 		}
 		
+		global $egHashTablesExpansionEscapeTemplates;
 		$store = self::get( $parser );
 		
         $template = trim( $frame->expand($args[0] ) );
         $hashId   = trim( $frame->expand($args[1] ) );
-		$pipeReplacer = isset($args[2]) ? trim( $frame->expand( $args[2] ) ) : '&#124;';
+		if( $egHashTablesExpansionEscapeTemplates === null ) {
+			// COMPATIBILITY-MODE
+			// third parameter is depreciated since 1.0 in case we can auto-escape
+			$pipeReplacer = isset($args[2]) ? trim( $frame->expand( $args[2] ) ) : '&#124;';
+		}
 		
 		if( ! $store->hashExists( $hashId ) ) {
 			return '';
 		}
 		
         $params = $store->getHash( $hashId );
-		$templateCall = '{{' . $template;
+		$templateCall = '{{' . $template;		
 		
-		foreach ($params as $paramKey => $paramValue){
-			// replace '{', '}' and '|' to avoid template call manipulation
-			$paramValue = str_replace( array( '{', '}', '|' ), array( '&#123;', '&#125;', $pipeReplacer ), $paramValue );
+		foreach( $params as $paramKey => $paramValue ){			
+			if( $egHashTablesExpansionEscapeTemplates !== null ) {
+				// escape all special chars so template call won't get destroyed by user values
+				$paramKey   = self::escapeForExpansion( $paramKey );
+				$paramValue = self::escapeForExpansion( $paramValue );
+			} else {
+				// COMPATIBILITY-MODE
+				$replacedValues = str_replace(
+						array( '{', '}', '|' ),
+						array( '&#123;', '&#125;', $pipeReplacer ),
+						array( $paramKey, $paramValue )
+				);
+				$paramKey   = $replacedValues[0];
+				$paramValue = $replacedValues[1];
+			}
 			$templateCall .= "|$paramKey=$paramValue";
 		}
 		$templateCall .= '}}';
