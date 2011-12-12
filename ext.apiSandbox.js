@@ -225,7 +225,12 @@ jQuery( function( $ ) {
 		}
 	} );
 
-	$submit.click( function() {
+
+	$( '#api-sandbox-form' ).submit( function( e ) {
+		e.preventDefault();
+		if ( !$submit.is( ':enabled' ) ) {
+			return;
+		}
 		var url = mw.util.wikiScript( 'api' ) + '?action=' + $action.val(),
 		    params = mainRequest.getRequestData(),
 		    mustBePosted = isset( mainRequest.info.mustbeposted );

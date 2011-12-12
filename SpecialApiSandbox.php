@@ -32,7 +32,8 @@ class SpecialApiSandbox extends SpecialPage {
 		$out->addHTML( '<noscript>' . wfMessage( 'apisb-no-js' )->parse() . '</noscript>
 <div id="api-sandbox-content" style="display: none">' );
 		$out->addWikiMsg( 'apisb-intro' );
-		$out->addHTML( $this->openFieldset( 'parameters' )
+		$out->addHTML( '<form id="api-sandbox-form">'
+			. $this->openFieldset( 'parameters' )
 			. $this->getInputs()
 			. '</fieldset>'
 			. $this->openFieldset( 'result' )
@@ -48,7 +49,7 @@ class SpecialApiSandbox extends SpecialPage {
 '
 			. '<tr><td colspan="2"><div id="api-sandbox-output"></div></td></tr>'
 			. "\n</tbody></table>"
-			. "\n</fieldset>" );
+			. "\n</fieldset>\n</form>" );
 		
 		$out->addHTML( "\n</div>" ); # <div id="api-sandbox-content">
 	}
@@ -103,7 +104,7 @@ class SpecialApiSandbox extends SpecialPage {
 
 		$s .= Html::element( 'input',
 			array(
-				'type' => 'button',
+				'type' => 'submit',
 				'id' => 'api-sandbox-submit',
 				'value' => wfMessage( 'apisb-submit' )->text(),
 				'disabled' => 'disabled',
