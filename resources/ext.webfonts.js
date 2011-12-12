@@ -329,7 +329,7 @@
 				.append( $menuItemsDiv );
 			var $link = $( '<a>' )
 				.prop( 'href', '#' )
-				.text( mw.message( 'webfonts-load' ).escaped() )
+				.text( mw.msg( 'webfonts-load' ) )
 				.attr( 'title', mw.msg( 'webfonts-menu-tooltip' ) );
 			// This is the fonts link
 			var $li = $( '<li>' ).attr( 'id', 'pt-webfont' ).append( $link );
@@ -339,7 +339,7 @@
 			$( 'body' ).prepend( $menu );
 			$li.click( function( event ) {
 				$menuItemsDiv.css( 'left', $li.offset().left );
-				if($menu.hasClass( 'open' ) ){
+				if( $menu.hasClass( 'open' ) ){
 					$menu.removeClass( 'open' );
 				} else{
 					$( 'div.open' ).removeClass( 'open' );
@@ -349,7 +349,7 @@
 			} );
 			$( 'html' ).click( function() {
 				$menu.removeClass( 'open' );
-			});
+			} );
 			// Workaround for IE bug - ActiveX components like input fields coming on top of everything.
 			// @todo Is there a better solution other than hiding it on hover?
 			if ( $.browser.msie ) { 
