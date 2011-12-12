@@ -1629,7 +1629,8 @@ class SMWNotifyUpdate {
 			if ( $wgEnotifyMeJob ) {
 				// send notifications by mail
 				$user_info = $sStore->getUserInfo( $user_id );
-				if ( ( $user_info->user_email != '' ) && $this->getUserNMOption( $user_info->user_options ) ) {
+				$user = User::newFromRow( $user_info );
+				if ( ( $user_info->user_email != '' ) && $user->getOption( 'enotifyme' ) ) {
 					$name = ( ( $user_info->user_real_name == '' ) ? $user_info->user_name:$user_info->user_real_name );
 
 					$params = array( 'to' => new MailAddress( $user_info->user_email, $name ),
@@ -1681,17 +1682,5 @@ class SMWNotifyUpdate {
 				$oExec = $wshShell->Run( $runCommand, 7, false );
 			}
 		}
-	}
-	// copy from user class
-	function getUserNMOption( $str ) {
-		$options = array();
-		$a = explode( "\n", $str );
-		foreach ( $a as $s ) {
-			$m = array();
-			if ( preg_match( "/^(.[^=]*)=(.*)$/", $s, $m ) ) {
-				$options[$m[1]] = $m[2];
-			}
-		}
-		return $options['enotifyme'];
 	}
 }

@@ -26,19 +26,6 @@ if ( version_compare( PHP_VERSION, '5.0.0' ) < 0 ) {
 	die( -1 );
 }
 
-// copy from user class
-function getUserNMOption( $str ) {
-	$options = array();
-	$a = explode( "\n", $str );
-	foreach ( $a as $s ) {
-		$m = array();
-		if ( preg_match( "/^(.[^=]*)=(.*)$/", $s, $m ) ) {
-			$options[$m[1]] = $m[2];
-		}
-	}
-	return $options['enotifyme'];
-}
-
 // include commandLine script which provides some basic
 // methodes for maintenance scripts
 $mediaWikiLocation = dirname( __FILE__ ) . '/../../../..';
@@ -50,9 +37,12 @@ $sStore = NMStorage::getDatabase();
 $msgs = $sStore->getUnmailedNMMessages();
 foreach ( $msgs as $msg ) {
 	// send notifications by mail
-	if ( $msg['user_id'] == null ) continue;
+	if ( $msg['user_id'] == null ) {
+		continue;
+	}
 	$user_info = $sStore->getUserInfo( $msg['user_id'] );
-	if ( ( $user_info->user_email != '' ) && getUserNMOption( $user_info->user_options ) ) {
+	$user = User::newFromRow( $user_info );
+	if ( ( $user_info->user_email != '' ) &&  $user->getOption( 'enotifyme' ) ) {
 		$name = ( ( $user_info->user_real_name == '' ) ? $user_info->user_name:$user_info->user_real_name );
 
 		UserMailer::send(

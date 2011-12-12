@@ -600,7 +600,7 @@ class NMStorageSQL {
 		wfProfileIn( $fname );
 
 		$db = wfGetDB( DB_SLAVE );
-		$result = $db->selectRow( 'user', array( 'user_name', 'user_real_name', 'user_email', 'user_options' ), array( 'user_id' => $user_id ), $fname );
+		$result = $db->selectRow( 'user', array( 'user_name', 'user_real_name', 'user_email' ), array( 'user_id' => $user_id ), $fname );
 
 		wfProfileOut( $fname );
 		return $result;
