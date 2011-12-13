@@ -4,7 +4,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version'      => '1.2.1', // Mar. 4, 2011
 	'description'  => 'Provides the <tt><nowiki>{{#urlget:...}}</nowiki></tt> parserfunction which enables access to the url get parameters.',
 	'author'       => 'S.O.E. Ansems',
-	'url'          => 'http://www.mediawiki.org/wiki/Extension:UrlGetParameters',
+	'url'          => 'https://www.mediawiki.org/wiki/Extension:UrlGetParameters',
 );
 
 $wgHooks['ParserFirstCallInit'][] = 'urlGetParameters_Setup';
