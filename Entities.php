@@ -17,7 +17,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Entities',
 	'author' => array( 'Trevor Parscal' ),
 	'version' => '0.1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Entities',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Entities',
 	'descriptionmsg' => 'entities-desc',
 );
 $wgAutoloadClasses['EntitiesHooks'] = dirname( __FILE__ ) . '/Entities.hooks.php';
