@@ -3,7 +3,7 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'CreativeCoreRdf',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CreativeCoreRdf',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CreativeCoreRdf',
 	'author' => 'Evan Prodromou',
 	'descriptionmsg' => 'creativecommonsrdf-desc',
 );
