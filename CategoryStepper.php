@@ -24,7 +24,7 @@ $wgExtensionCredits[ 'other' ][] = array(
 	'name'           => 'CategoryStepper',
 	'descriptionmsg' => 'categorystepper-desc',
 	'author'         => 'MinuteElectron',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:CategoryStepper',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:CategoryStepper',
 	'version'        => '1.5',
 );
 
