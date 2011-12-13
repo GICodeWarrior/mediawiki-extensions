@@ -146,7 +146,7 @@ class GetSvnMetadata extends Maintenance {
 			'description' => 'Awesome extension will be awesome when fully implemented.',
 			'version' => 4.2,
 			'authors' => 'James T. Kirk and Luke Skywalker',
-			'url' => 'http://www.mediawiki.org/wiki/Extension:' . $extensionPath,
+			'url' => 'https://www.mediawiki.org/wiki/Extension:' . $extensionPath,
 			'date' => time()
 		);
 		

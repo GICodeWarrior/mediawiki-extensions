@@ -22,7 +22,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Distribution',
 	'version' => Distribution_VERSION,
 	'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]', 'Chad Horohoe' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Distribution',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Distribution',
 	'descriptionmsg' => 'distribution-desc',
 );
 
