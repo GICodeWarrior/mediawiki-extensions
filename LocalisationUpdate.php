@@ -39,7 +39,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'LocalisationUpdate',
 	'author'         => array( 'Tom Maaswinkel', 'Niklas Laxström', 'Roan Kattouw' ),
 	'version'        => '0.3',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:LocalisationUpdate',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:LocalisationUpdate',
 	'descriptionmsg' => 'localisationupdate-desc',
 );
 
