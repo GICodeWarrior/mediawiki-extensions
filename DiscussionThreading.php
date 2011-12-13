@@ -19,7 +19,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'DiscussionThreading',
 	'author' => array( 'Jack D. Pond' , 'Daniel Brice' ),
 	'version' => '1.4',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:DiscussionThreading',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:DiscussionThreading',
 	'descriptionmsg' => 'discussionthreading-desc',
 );
 
