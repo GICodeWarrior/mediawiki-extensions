@@ -40,7 +40,7 @@ $wgExtensionCredits['media'][] = array(
 	'name' => 'NSFileRepo',
 	'author' => 'Jack D. Pond',
 	'version' => '1.4',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:NSFileRepo',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:NSFileRepo',
 	'descriptionmsg' => 'nsfilerepo-desc'
 );
 
