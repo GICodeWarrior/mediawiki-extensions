@@ -40,7 +40,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '1.0',
 	'author' => 'Mark Jaroski',
 	'descriptionmsg' => 'othersites-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:OtherSites',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:OtherSites',
 );
 
 $wgExtensionMessagesFiles['OtherSites'] = dirname(__FILE__) . '/OtherSites.i18n.php';
