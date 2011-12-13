@@ -22,7 +22,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Deployment',
 	'version' => Deployment_VERSION,
 	'author' => '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Deployment',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Deployment',
 	'descriptionmsg' => 'deployment-desc',
 );
 
