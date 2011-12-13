@@ -878,13 +878,13 @@ $messages['ig'] = array(
  */
 $messages['ilo'] = array(
 	'vector' => 'Napasayat nga UI iti Vector',
-	'vector-desc' => 'Napasaayat kadagiti "interface elements" ti agar-aramat no agusar iti kudil nga Vector.',
-	'vector-collapsiblenav-preference' => 'Ipabalin ti pagpabassit kadagita adda dita  "sidebar" ti Vector nga kudil',
-	'vector-collapsiblenav-more' => 'Adu pay nga pagsasao',
-	'vector-editwarning-warning' => 'No pumanaw ka ditoy nga panid baka agpukaw dagiti binalbaliwam.
-No nakastrekka, mabalin mo nga ikkaten daytoy nga ballaag idiay "Pagbaliwan" a benneg kadagiti kaykayatmo.',
-	'vector-editwarning-preference' => 'Pagballaagannak ket no pumanawak iti pabaliwan a panid nga saan nga naidulin ti sinukatak',
-	'vector-simplesearch-search' => 'Biroken',
+	'vector-desc' => 'Napasaayat kadagiti "interface elements" ti agar-aramat no agusar iti kudil a Vector.',
+	'vector-collapsiblenav-preference' => 'Ipabalin ti pagpabassit kadagita adda dita  "sidebar" ti Vector a kudil',
+	'vector-collapsiblenav-more' => 'Adu pay a pagsasao',
+	'vector-editwarning-warning' => 'No pumanaw ka ditoy a panid baka agpukaw dagiti binalbaliwam.
+No nakastrekka, mabalin mo nga ikkaten daytoy a ballaag idiay "Pagbaliwan" a paset kadagiti kaykayatmo.',
+	'vector-editwarning-preference' => 'Pagballaagannak ket no pumanawak iti inurnos a panid a saan a naidulin ti sinukatak',
+	'vector-simplesearch-search' => 'Biruken',
 	'vector-simplesearch-containing' => 'nagyan na nga...',
 	'vector-noexperiments-preference' => 'Saannak nga iraman kadagiti experimento ti ramramit',
 );
