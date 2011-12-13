@@ -24,7 +24,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Livelets',
 	'author' => '[http://www.organicdesign.co.nz/User:Nad Aran Dunkley], [http://www.organicdesign.co.nz/User:Jack Jack Henderson]',
 	'descriptionmsg' => 'livelets-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Livelets',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Livelets',
 	'version' => LIVELETS_VERSION
 );
 $dir = dirname( __FILE__ );
