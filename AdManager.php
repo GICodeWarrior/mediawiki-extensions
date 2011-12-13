@@ -28,7 +28,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'AdManager',
 	'version' => '0.2',
 	'author' => 'Ike Hecht for WikiWorks',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:AdManager',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:AdManager',
 	'descriptionmsg' => 'admanager-desc',
 );
 
