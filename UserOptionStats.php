@@ -30,7 +30,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '1.1',
 	'author'         => 'Niklas Laxström',
 	'descriptionmsg' => 'useroptionstats-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:UserOptionStats',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:UserOptionStats',
 );
 
 $dir = dirname( __FILE__ );
