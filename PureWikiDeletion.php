@@ -29,7 +29,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'Pure wiki deletion',
 	'author' => 'Tisane',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:PureWikiDeletion',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:PureWikiDeletion',
 	'descriptionmsg' => 'purewikideletion-desc',
 	'version' => '1.0.5',
 );
