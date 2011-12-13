@@ -62,7 +62,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'MWSearch',
 	'author'         => array( 'Kate Turner', 'Brion Vibber' ),
 	'descriptionmsg' => 'mwsearch-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:MWSearch',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:MWSearch',
 );
 
 $dir = dirname(__FILE__) . '/';
