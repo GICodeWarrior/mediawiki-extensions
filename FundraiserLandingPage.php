@@ -20,7 +20,7 @@ $wgExtensionCredits[ 'specialpage' ][ ] = array(
 	'path' => __FILE__,
 	'name' => 'FundraiserLandingPage',
 	'author' => array( 'Peter Gehres', 'Ryan Kaldari' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:FundraiserLandingPage',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:FundraiserLandingPage',
 	'descriptionmsg' => 'fundraiserlandingpage-desc',
 	'version' => '1.0.0',
 );
