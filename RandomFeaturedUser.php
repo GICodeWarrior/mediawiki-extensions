@@ -36,7 +36,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '1.1',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
 	'description' => 'Adds <tt>&lt;randomfeatureduser&gt;</tt> parser hook to display a random featured user along with some data',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:RandomFeaturedUser',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:RandomFeaturedUser',
 );
 
 // Internationalization messages
