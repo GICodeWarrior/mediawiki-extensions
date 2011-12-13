@@ -13,7 +13,7 @@ $wgExtensionCredits['specialpages'][] = array(
 	'name'           => 'Wikimania',
 	'author'         => array( 'Chad Horohoe' ),
 	'descriptionmsg' => 'wikimania-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Wikimania',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Wikimania',
 	'version'        => 0.1,
 );
 
