@@ -35,7 +35,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'MicroID',
 	'version' => MEDIAWIKI_MICROID_VERSION,
 	'author' => 'Evan Prodromou',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:MicroID',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:MicroID',
 	'descriptionmsg' => 'microid-desc'
 );
 
