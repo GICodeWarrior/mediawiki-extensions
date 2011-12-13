@@ -24,7 +24,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '2.0',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
 	'description' => 'Advanced polling system that uses special pages and allows embedding polls to wiki pages',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:PollNY'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:PollNY'
 );
 
 // Global poll namespace reference
