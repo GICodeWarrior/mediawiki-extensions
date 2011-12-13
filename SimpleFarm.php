@@ -23,7 +23,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'simplefarm-desc',
 	'version'        => ExtSimpleFarm::VERSION,
 	'author'         => '[http://www.mediawiki.org/wiki/User:Danwe Daniel Werner]',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:SimpleFarm',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:SimpleFarm',
 );
 
 // language file for extension description:
