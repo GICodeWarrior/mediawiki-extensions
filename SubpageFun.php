@@ -27,7 +27,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg' => 'subpagefun-desc',
 	'version'        => ExtSubpageFun::VERSION,
 	'author'         => '[http://www.mediawiki.org/wiki/User:Danwe Daniel Werner]',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Subpage_Fun',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Subpage_Fun',
 );
 
 // language files:
