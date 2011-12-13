@@ -22,7 +22,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'EmbedVideo',
 	'author'         => array( 'Jim R. Wilson', 'Andrew Whitworth' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:EmbedVideo',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:EmbedVideo',
 	'descriptionmsg' => 'embedvideo-desc',
 	'version'        => '1.0'
 );
