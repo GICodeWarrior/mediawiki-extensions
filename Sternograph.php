@@ -8,7 +8,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Sternograph',
 	'version' => '1.1',
 	'author' =>'Smoke 003723', 
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Sternograph', 
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Sternograph', 
 	'descriptionmsg' => 'sternograph-desc'
        );
  
