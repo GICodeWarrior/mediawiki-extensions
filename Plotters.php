@@ -30,7 +30,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'        => '0.6c',
 	'author'         => 'Ryan Lane',
 	'descriptionmsg' => 'plotters-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Plotters',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Plotters',
 );
 
 $wgHooks['ParserFirstCallInit'][] = 'efPlottersSetHooks';
