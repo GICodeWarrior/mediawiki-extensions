@@ -19,7 +19,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'User Rights Email Notification',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:User_Rights_Email_Notification',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:User_Rights_Email_Notification',
 	'author' => 'Rob Church',
 	'descriptionmsg' => 'userrightsnotif-desc',
 );
