@@ -21,7 +21,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'AdvancedRandom',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:AdvancedRandom',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:AdvancedRandom',
 	'descriptionmsg' => 'advancedrandom-desc',
 	'author' => 'Ævar Arnfjörð Bjarmason',
 	'version' => '0.2',
