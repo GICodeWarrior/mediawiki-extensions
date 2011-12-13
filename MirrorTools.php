@@ -34,7 +34,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'MirrorTools',
 	'author' => 'Tisane',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:MirrorTools',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:MirrorTools',
 	'descriptionmsg' => 'mirrortools-desc',
 	'version' => '1.0.0',
 );
