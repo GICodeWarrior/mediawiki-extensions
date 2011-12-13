@@ -18,7 +18,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'AdditionalNewUserNotifParams',
 	'author' => array( 'Jack D. Pond' ),
 	'version' => '1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:NewUserNotif',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:NewUserNotif',
 );
 
 /**

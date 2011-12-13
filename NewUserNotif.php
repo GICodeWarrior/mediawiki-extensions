@@ -17,7 +17,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'New User Email Notification',
 	'version'        => '1.5.2',
 	'author'         => 'Rob Church',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:New_User_Email_Notification',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:New_User_Email_Notification',
 	'descriptionmsg' => 'newusernotif-desc',
 );
 
