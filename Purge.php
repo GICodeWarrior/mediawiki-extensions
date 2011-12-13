@@ -11,7 +11,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Purge',
 	'author' => 'Ævar Arnfjörð Bjarmason',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Purge',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Purge',
 	'descriptionmsg' => 'purge-desc',
 );
 
