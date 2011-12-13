@@ -47,7 +47,7 @@ $wgExtensionCredits['other'][] = array(
         'name' => 'CategorySortHeaders',
         'author' => '[http://mediawiki.org/wiki/User:Bawolff Brian Wolff]',
         'descriptionmsg' => 'categorysortheaders-desc',
-        'url' => 'http://www.mediawiki.org/wiki/Extension:CategorySortHeaders',
+        'url' => 'https://www.mediawiki.org/wiki/Extension:CategorySortHeaders',
         'version' => 0.2,
 );
 
