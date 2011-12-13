@@ -27,7 +27,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'SecurePasswords',
 	'author'         => 'Ryan Schmidt',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:SecurePasswords',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:SecurePasswords',
 	'version'        => '2.0',
 	'descriptionmsg' => 'securepasswords-desc',
 );
