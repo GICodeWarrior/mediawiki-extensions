@@ -19,7 +19,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Page Object Model',
 	'author' => 'Sergey Chernyshev',
 	'descriptionmsg' => 'pageobjectmodel-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Page_Object_Model',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Page_Object_Model',
 );
 
 $dir = dirname( __FILE__ );
