@@ -56,7 +56,7 @@ $wgExtensionCredits['parserhooks'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'ABC',
 	'author'         => 'River Tarnell',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:ABC',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:ABC',
 	'descriptionmsg' => 'abc-desc',
 );
 $wgExtensionMessagesFiles['ABC'] =  dirname( __FILE__ ) . '/ABC.i18n.php';
