@@ -47,7 +47,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'JIRA',
 	'author'         => 'River Tarnell',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:JIRA',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:JIRA',
 );
 
 $wgHooks['ParserFirstCallInit'][] = 'efJIRASetHook';
