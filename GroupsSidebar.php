@@ -8,7 +8,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'GroupsSidebar',
 	'author' => 'Church of emacs',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:GroupsSidebar',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:GroupsSidebar',
 	'descriptionmsg' => 'groupssidebar-desc',
 	'version' => '0.1.1',
 );
