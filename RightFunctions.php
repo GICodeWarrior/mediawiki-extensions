@@ -16,7 +16,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'RightFunctions',
 	'version' => '1.10',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:RightFunctions',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:RightFunctions',
 	'author' => 'Ryan Schmidt',
 	'descriptionmsg' => 'rightfunctions-desc',
 );
