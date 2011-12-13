@@ -24,7 +24,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.0.1',
 	'author' => 'Łukasz Matysiak',
 	'descriptionmsg' => 'getfamily-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:GetFamily'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:GetFamily'
 );
 
 // Set up the new special page
