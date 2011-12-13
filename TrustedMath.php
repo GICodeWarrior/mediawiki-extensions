@@ -30,7 +30,7 @@ THE SOFTWARE.
 $wgExtensionCredits['parserhooks'][] = array(
 	'path' => __FILE__,
 	'name' => 'TrustedMath',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:TrustedMath',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:TrustedMath',
 	'author' => 'Bryan Tong Minh',
 	'descriptionmsg' => 'trustedmath-desc',
 );
