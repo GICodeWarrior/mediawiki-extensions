@@ -34,7 +34,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Description',
 	'version' => DESCRIPTION_VERSION,
 	'author' => 'Evan Prodromou',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Description',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Description',
 	'description' => 'Adds a description meta-tag to MW pages');
 
 $wgHooks['ArticleViewHeader'][] = 'DescriptionArticleViewHeader';
