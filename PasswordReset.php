@@ -12,7 +12,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Password Reset',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Password_Reset',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Password_Reset',
 	'author'         => 'Tim Laqua',
 	'descriptionmsg' => 'passwordreset-desc',
 	'version'        => '1.7'
