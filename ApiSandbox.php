@@ -7,7 +7,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'ApiSandbox',
 	'author' => array( 'Max Semenik' ),
-	'url' => 'http://mediawiki.org/wiki/Extension:ApiSandbox',
+	'url' => 'https://mediawiki.org/wiki/Extension:ApiSandbox',
 	'descriptionmsg' => 'apisb-desc',
 );
 
