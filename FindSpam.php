@@ -19,7 +19,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.0',
 	'author' => 'Tim Starling',
 	'descriptionmsg' => 'findspam-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Find_Spam',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Find_Spam',
 );
 
 // New user right
