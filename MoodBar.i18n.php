@@ -163,7 +163,7 @@ For more information, please visit the $1.',
 	'moodbar-enotif-subject' => '$1 replied to your feedback',
 	'moodbar-enotif-text-body-user-response-message' => '$1 replied to your feedback, see the response: $2',
 	'moodbar-enotif-html-body-user-response-message' => '[$1 $2] replied to your feedback, see the [$3 response] for more detail',
-	'moodbar-enotif-body-user-response-title' => 'User response: '
+	'moodbar-enotif-body-user-response-title' => 'User response:'
 );
 
 /** Message documentation (Message documentation)
@@ -300,7 +300,6 @@ Terms of use URL. Do not change this URL until a translation of the page itself 
 	'moodbar-enotif-subject' => 'Feedback response email subject',
 	'moodbar-enotif-text-body-user-response-message' => 'The text version response message, $1 is the user name, $2 is the link to the response',
 	'moodbar-enotif-html-body-user-response-message' => 'The html version response message, $1 is the the user page link, $2 is user name, $3 is the link to response',
-	'moodbar-enotif-body-user-response-title' => 'User response: '
 );
 
 /** Afrikaans (Afrikaans)
