@@ -20,7 +20,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Ask SQL',
 	'descriptionmsg' => 'asksql-desc',
 	'author' => 'Brion Vibber',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Asksql',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Asksql',
 );
 
 /** Dangerous if not configured properly. */
