@@ -20,7 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'        => 'FileAttach',
 	'author'      => '[http://www.mediawiki.org/wiki/User:Milan Milan Holzapfel]',
 	'descriptionmsg' => 'fileattach-desc',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:FileAttach',
+	'url'         => 'https://www.mediawiki.org/wiki/Extension:FileAttach',
 	'version'     => FILEATTCH_VERSION
 );
 
