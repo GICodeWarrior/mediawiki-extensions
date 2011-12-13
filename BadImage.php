@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.3',
 	'author' => 'Rob Church',
 	'descriptionmsg' => 'badimage-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Bad_Image_List',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Bad_Image_List',
 );
 
 $dir = dirname( __FILE__ ) . '/';
