@@ -39,7 +39,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'CreateBox',
 	'author' => 'Ross McClure',
 	'version' => '1.6',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CreateBox',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CreateBox',
 	'descriptionmsg' => 'createbox-desc',
 );
 
