@@ -32,7 +32,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'CategoryWatch',
 	'author'         => '[http://www.organicdesign.co.nz/User:Nad User:Nad]',
 	'descriptionmsg' => 'categorywatch-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:CategoryWatch',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:CategoryWatch',
 	'version'        => CATEGORYWATCH_VERSION,
 );
 
