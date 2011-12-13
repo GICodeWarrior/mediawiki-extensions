@@ -12,7 +12,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Lua parser extensions',
 	'author'         => 'Fran Rogers',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Lua',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Lua',
 	'descriptionmsg' => 'lua_desc',
 );
 
