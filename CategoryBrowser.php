@@ -48,7 +48,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'CategoryBrowser',
 	'author' => 'QuestPC',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryBrowser',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CategoryBrowser',
 	'descriptionmsg' => 'categorybrowser-desc',
 );
 $dir = dirname(__FILE__);
