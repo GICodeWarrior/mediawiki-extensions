@@ -21,7 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
         'name' => 'ExtensionManagement',
         'author' => array('aigerim'),
-        'url' => 'http://www.mediawiki.org/wiki/Extension:ExtensionManagement',
+        'url' => 'https://www.mediawiki.org/wiki/Extension:ExtensionManagement',
         'description' => 'Extension for displaying installed extension information.',
         'descriptionmsg' => 'extensionmanagement-desc',
 );
