@@ -17,7 +17,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'OnlineStatus',
 	'author'         => 'Alexandre Emsenhuber',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:OnlineStatus',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:OnlineStatus',
 	'version'        => '2009-08-22',
 	'descriptionmsg' => 'onlinestatus-desc',
 );
