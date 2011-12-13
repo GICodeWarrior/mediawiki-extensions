@@ -11,7 +11,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'MeanEditor',
 	'author' => 'Jacopo Corbetta and Alessandro Pignotti for Antonio Gulli',
 	'descriptionmsg' => 'meaneditor_desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:MeanEditor',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:MeanEditor',
 	'version' => '0.5.5'
 );
 
