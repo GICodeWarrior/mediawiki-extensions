@@ -22,7 +22,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'Image Tagging',
 	'author'         => array( 'Tristan Harris', 'Tomasz Klim' ),
 	'version'        => '1.2',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:ImageTagging',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:ImageTagging',
 	'descriptionmsg' => 'imagetagging-desc',
 );
 
