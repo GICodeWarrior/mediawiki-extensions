@@ -48,7 +48,7 @@ $wgExtensionCredits['Tasks'][] = array(
 	'name'           => 'Tasks',
 	'author'         => 'Magnus Manske',
 	'descriptionmsg' => 'tasks_desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Tasks',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Tasks',
 );
 
 $wgExtensionMessagesFiles['Tasks'] = dirname( __FILE__ ) . '/Tasks.i18n.php';
