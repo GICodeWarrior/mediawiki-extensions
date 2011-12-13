@@ -17,7 +17,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => '[http://www.dasch-tour.de DaSch]',
 	'version' =>  '1.2.2',
 	'descriptionmsg' => 'credits-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CreditTab',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CreditTab',
 );
 
 $dir = dirname( __FILE__ ) . '/';
