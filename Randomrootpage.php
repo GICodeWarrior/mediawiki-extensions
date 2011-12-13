@@ -16,7 +16,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Random root page',
 	'version'        => '1.1',
 	'author'         => 'Hojjat (aka Huji)',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Randomrootpage',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Randomrootpage',
 	'descriptionmsg' => 'randomrootpage-desc',
 );
 
