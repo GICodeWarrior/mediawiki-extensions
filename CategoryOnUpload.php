@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Invalid entry point.' );
 $wgExtensionCredits[ 'other' ][] = array(
 	'path'          => __FILE__,
 	'name'          => 'CategoryOnUpload',
-	'url'           => 'http://www.mediawiki.org/wiki/Extension:CategoryOnUpload',
+	'url'           => 'https://www.mediawiki.org/wiki/Extension:CategoryOnUpload',
 	'author'        => 'Robert Leverington',
 	'version'       => '1.1.0',
 	'decriptionmsg' => 'categoryonupload-desc'
