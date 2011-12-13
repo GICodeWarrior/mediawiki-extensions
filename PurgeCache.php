@@ -21,7 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Rob Church',
 	'version' => '0.1',
 	'descriptionmsg' => 'purgecache-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:PurgeCache',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:PurgeCache',
 );
 
 $dir = dirname( __FILE__ ) . '/';
