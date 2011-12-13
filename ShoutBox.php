@@ -59,7 +59,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'ShoutBox',
 	'version' => '0.2.2',
 	'author' => array( 'Jim R. Wilson', 'Jack Phoenix' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ShoutBox',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ShoutBox',
 	'descriptionmsg' => 'shoutbox-desc',
 );
 
