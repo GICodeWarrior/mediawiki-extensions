@@ -37,7 +37,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => array(
 		'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
 	),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Contest',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Contest',
 	'descriptionmsg' => 'contest-desc'
 );
 
