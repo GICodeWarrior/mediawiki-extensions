@@ -11,7 +11,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'TidyTab',
 	'version'        => '1.1',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:TidyTab',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:TidyTab',
 	'author'         => 'Ævar Arnfjörð Bjarmason',
 	'descriptionmsg' => 'tidy-desc',
 );
