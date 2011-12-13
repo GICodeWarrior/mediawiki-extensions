@@ -22,7 +22,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Nimish Gautam',
 	'version' => '0.1.0',
 	'descriptionmsg' => 'customusersignup-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CustomUserSignup'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CustomUserSignup'
 );
 
 // Autoloading
