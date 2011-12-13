@@ -18,7 +18,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'author'         => '[http://spiele.j-crew.de Thomas Bleher]',
 	'version'        => '0.2',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Commentbox',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Commentbox',
 	'descriptionmsg' => 'commentbox-desc',
 );
 
