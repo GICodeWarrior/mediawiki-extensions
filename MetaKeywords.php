@@ -25,7 +25,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'MetaKeywords',
 	'author'         => '[http://en.wiktionary.org/wiki/User:Conrad.Irwin Conrad Irwin]',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:MetaKeywords',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:MetaKeywords',
 	'descriptionmsg' => 'metakeywords-desc',
 );
 
