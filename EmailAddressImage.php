@@ -18,7 +18,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'        => '1.1',
 	'author'         => 'Maarten van Dantzich',
 	'descriptionmsg' => 'emailaddressimage-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:EmailAddressImage',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:EmailAddressImage',
 );
 
 $wgExtensionMessagesFiles['AdvancedRandom'] = dirname(__FILE__) . '/EmailAddressImage.i18n.php';
