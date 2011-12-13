@@ -24,9 +24,9 @@ $messages['en'] = array(
  * @author EugeneZelenko
  */
 $messages['qqq'] = array(
-	'webfonts'         => 'The extension name - WebFonts',
-	'webfonts-desc'    => 'short description of the extension',
-	'webfonts-load'    => 'The text shown in the webfont link',
+	'webfonts' => 'The extension name - WebFonts',
+	'webfonts-desc' => 'short description of the extension',
+	'webfonts-load' => 'The text shown in the webfont link',
 	'webfonts-reset' => '{{Identical|Reset}}',
 	'webfonts-menu-tooltip' => 'Tooltip text displayed in the webfont link',
 );
@@ -111,6 +111,19 @@ $messages['de'] = array(
 	'webfonts-load' => 'Schriftart auswählen',
 	'webfonts-reset' => 'Zurücksetzen',
 	'webfonts-enable-preference' => 'Schriftarteneinbettung aktivieren',
+	'webfonts-menu-tooltip' => 'Eine Schriftart für die Seite auswählen.',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Pisma do bokow zasajźiś',
+	'webfonts-load' => 'Pismo wubraś',
+	'webfonts-reset' => 'Slědk stajiś',
+	'webfonts-enable-preference' => 'Zasajźenje pismow zmóžniś (WebFonts)',
+	'webfonts-menu-tooltip' => 'Pismo za bok wubraś',
 );
 
 /** Spanish (Español)
@@ -147,6 +160,7 @@ $messages['fr'] = array(
 	'webfonts-load' => 'Sélectionnez une police',
 	'webfonts-reset' => 'Réinitialiser',
 	'webfonts-enable-preference' => "Active l'incorporation des fontes (WebFonts)",
+	'webfonts-menu-tooltip' => 'Sélectionnez une police pour la page',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -220,6 +234,7 @@ $messages['hsb'] = array(
 	'webfonts-load' => 'Pismo wubrać',
 	'webfonts-reset' => 'Wróćo stajić',
 	'webfonts-enable-preference' => 'Zasadźenje pismow zmóžnić (WebFonts)',
+	'webfonts-menu-tooltip' => 'Pismo za stronu wubrać',
 );
 
 /** Interlingua (Interlingua)
@@ -231,6 +246,7 @@ $messages['ia'] = array(
 	'webfonts-load' => 'Selige un typo de litteras',
 	'webfonts-reset' => 'Reinitialisar',
 	'webfonts-enable-preference' => 'Activar le incorporation de typos de litteras (WebFonts)',
+	'webfonts-menu-tooltip' => 'Selige un typo de litteras pro le pagina',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -314,6 +330,7 @@ $messages['mk'] = array(
 	'webfonts-load' => 'Изберете фонт',
 	'webfonts-reset' => 'Врати',
 	'webfonts-enable-preference' => 'Овозможи на вметнување на фонтови (WebFonts)',
+	'webfonts-menu-tooltip' => 'Изберете фонт за страницата',
 );
 
 /** Malayalam (മലയാളം)
