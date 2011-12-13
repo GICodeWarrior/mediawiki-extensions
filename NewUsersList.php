@@ -28,7 +28,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '1.0',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
 	'descriptionmsg' => 'newuserslist-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:NewUsersList'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:NewUsersList'
 );
 
 $wgHooks['ParserFirstCallInit'][] = 'wfGetNewUsers';
