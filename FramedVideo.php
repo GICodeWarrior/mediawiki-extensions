@@ -31,7 +31,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'FramedVideo',
 	'descriptionmsg' => 'framedvideo-desc',
 	'author'         => '[http://filop.pl/wiki/U%C5%BCytkownik:Ruiz Ruiz]',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:FramedVideo',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:FramedVideo',
 	'version'        => '1.2.1',
 );
 
