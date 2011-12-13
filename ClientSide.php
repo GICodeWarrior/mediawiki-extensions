@@ -4,7 +4,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'ClientSide',
 	'author' => 'Trevor Parscal',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ClientSide',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ClientSide',
 	'descriptionmsg' => 'clientside-desc',
 	'version' => '0.1.1',
 );
