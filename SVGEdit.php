@@ -15,7 +15,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'SVGEdit',
 	'author'         => array( 'Brion Vibber' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:SVGEdit',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:SVGEdit',
 	'descriptionmsg' => 'svgedit-desc',
 );
 $wgExtensionMessagesFiles['SVGEdit'] =  dirname(__FILE__) . '/SVGEdit.i18n.php';
