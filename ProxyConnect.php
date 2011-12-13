@@ -20,7 +20,7 @@ $wgExtensionCredits['special'][] = array(
 	'name' => 'ProxyConnect',
 	'version' => '1.0.1',
 	'author' => 'Travis Derouin',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ProxyConnect',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ProxyConnect',
 	'descriptionmsg' => 'proxyconnect-desc',
 );
 
