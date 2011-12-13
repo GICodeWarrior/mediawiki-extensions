@@ -21,7 +21,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '1.2',
 	'author' => 'Rob Church',
 	'descriptionmsg' => 'userimages-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:User_Image_Gallery',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:User_Image_Gallery',
 );
 
 $dir = dirname(__FILE__) . '/';
