@@ -28,7 +28,7 @@ $wgHooks['Debug'][] = 'efFirePHPDebug';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'FirePHP',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:FirePHP',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:FirePHP',
 	'author' => 'Brion Vibber',
 	'description' => 'Allows the Firebug Extension for AJAX Development to work with MediaWiki',
 );
