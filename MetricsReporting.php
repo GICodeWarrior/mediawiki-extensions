@@ -9,7 +9,7 @@ define( 'METRICS_REPORTING_VERSION', 0.1 );
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'MetricsReporting',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:MetricsReporting',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:MetricsReporting',
 	'author' => 'Sam Reed',
 	'version' => METRICS_REPORTING_VERSION,
 	'description' => 'Api for Wikimedia Metrics Reporting output',
