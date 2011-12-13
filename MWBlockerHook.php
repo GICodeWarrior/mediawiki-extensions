@@ -6,7 +6,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'BlockerHook',
 	'author'         => '',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:BlockerHook',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:BlockerHook',
 );
 
 $wgExtensionFunctions[] = 'mwBlockerHookSetup';
