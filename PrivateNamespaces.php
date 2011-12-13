@@ -52,7 +52,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'PrivateNamespaces',
 	'author'         => '',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:PrivateNamespaces',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:PrivateNamespaces',
 );
 
 /**
