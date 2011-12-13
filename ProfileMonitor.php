@@ -14,7 +14,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'ProfileMonitor',
 	'author' => 'Rob Church',
 	'descriptionmsg' => 'profiling-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ProfileMonitor',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ProfileMonitor',
 );
 
 $dir = dirname(__FILE__) . '/';
