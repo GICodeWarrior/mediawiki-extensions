@@ -18,7 +18,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'RDFIO',
 	'version' => RDFIO_VERSION,
 	'author' => '[http://saml.rilspace.org Samuel Lampa]',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:RDFIO',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:RDFIO',
 	'descriptionmsg' => 'rdfio-desc',
 );
 
