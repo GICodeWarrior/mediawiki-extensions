@@ -28,7 +28,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Interwiki Integration',
 	'author' => 'Tisane',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:InterwikiIntegration',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:InterwikiIntegration',
 	'descriptionmsg' => 'integration-desc',
 	'version' => '1.0.4',
 );
