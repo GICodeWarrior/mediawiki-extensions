@@ -49,7 +49,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'ThomasV',
 	'version' => '1.1',
 	'descriptionmsg' => 'protectsection_desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ProtectSection'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ProtectSection'
 );
 
 // If set to true, text cannot be inserted before a protect tag at the start of an article
