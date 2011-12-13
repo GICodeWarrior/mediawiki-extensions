@@ -23,7 +23,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'        => 'UserContactLinks',
 	'author'      => 'Paul Grinberg',
 	'email'       => 'gri6507 at yahoo dot com',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:User_Contact_Links',
+	'url'         => 'https://www.mediawiki.org/wiki/Extension:User_Contact_Links',
 	'descriptionmsg' => 'usercontactlinks-desc',
 );
 
