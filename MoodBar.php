@@ -17,6 +17,8 @@ $wgExtensionCredits['other'][] = array(
 $wgAutoloadClasses['MBFeedbackItem'] = dirname(__FILE__).'/FeedbackItem.php';
 $wgAutoloadClasses['MBFeedbackResponseItem'] = dirname(__FILE__).'/FeedbackResponseItem.php';
 $wgAutoloadClasses['MoodBarFormatter'] = dirname(__FILE__).'/Formatter.php';
+$wgAutoloadClasses['MoodBarHTMLEmailNotification'] = dirname(__FILE__).'/include/MoodBarHTMLEmailNotification.php';
+$wgAutoloadClasses['MoodBarHTMLMailerJob'] = dirname( __FILE__ ) . '/include/MoodBarHTMLMailerJob.php';
 
 // API
 $wgAutoloadClasses['ApiMoodBar'] = dirname(__FILE__).'/ApiMoodBar.php';
@@ -56,6 +58,9 @@ $wgLogActions += array(
 	'moodbar/hide' => 'moodbar-log-hide',
 	'moodbar/restore' => 'moodbar-log-restore',
 );
+
+// Jobs
+$wgJobClasses['MoodBarHTMLMailerJob'] = 'MoodBarHTMLMailerJob';
 
 // User rights
 $wgAvailableRights[] = 'moodbar-view';
