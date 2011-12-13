@@ -72,7 +72,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'WebStore',
 	'author' => 'Tim Starling',
 	'descriptionmsg' => 'webstore-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:WebStore',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:WebStore',
 );
 
 define( 'MW_WEBSTORE_ENABLED', 1 );
