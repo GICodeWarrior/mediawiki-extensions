@@ -24,7 +24,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '1.0',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
 	'description' => 'Displays a random image from a given category',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:RandomImageByCategory',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:RandomImageByCategory',
 );
 
 $wgHooks['ParserFirstCallInit'][] = 'wfRandomImageByCategory';
