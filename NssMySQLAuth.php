@@ -22,7 +22,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'        => '1.0',
 	'author'         => 'Bryan Tong Minh',
 	'descriptionmsg' => 'nss-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:NssMySQLAuth',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:NssMySQLAuth',
 );
 
 $dir = dirname( __FILE__ ) . '/';
