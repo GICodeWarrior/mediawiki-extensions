@@ -328,57 +328,26 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		// Set timezone to UTC just in case
 		date_default_timezone_set( 'UTC' );
 		
-		// If the summary table exists, use that, otherwise compute from scratch
-		if ( mysql_num_rows( mysql_query( "SHOW TABLES LIKE 'public_reporting_days'" ) ) ) {
+		$conditions = array(
+			'prd_date >= ' . $dbr->addQuotes( wfTimestamp( TS_DB, strtotime( $start ) ) ),
+			'prd_date <= ' . $dbr->addQuotes( wfTimestamp( TS_DB, strtotime( $end ) ) ),
+		);
 		
-			$conditions = array(
-				'prd_date >= ' . $dbr->addQuotes( wfTimestamp( TS_DB, strtotime( $start ) ) ),
-				'prd_date <= ' . $dbr->addQuotes( wfTimestamp( TS_DB, strtotime( $end ) ) ),
-			);
-			
-			// Get the data for a fundraiser
-			$select = $dbr->select( 'public_reporting_days',
-				array(
-					'prd_date',
-					'prd_total',
-					'prd_number',
-					'prd_average',
-					'prd_maximum',
-				),
-				$conditions,
-				__METHOD__,
-				array(
-					'ORDER BY' => 'prd_date',
-				)
-			);
-			
-		} else {
-			
-			$conditions = array(
-				'received >= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $start ) ) ),
-				'received <= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $end ) + 24 * 60 * 60 ) ),
-				'converted_amount >= ' . $egFundraiserStatisticsMinimum,
-				'converted_amount <= ' . $egFundraiserStatisticsMaximum,
-			);
-		
-			// Get the data for a fundraiser
-			$select = $dbr->select( 'public_reporting',
-				array(
-					"DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')",
-					'sum(converted_amount)',
-					'count(*)',
-					'avg(converted_amount)',
-					'max(converted_amount)',
-				),
-				$conditions,
-				__METHOD__,
-				array(
-					'ORDER BY' => 'received',
-					'GROUP BY' => "DATE_FORMAT(FROM_UNIXTIME(received),'%Y-%m-%d')"
-				)
-			);
-		
-		}
+		// Get the data for a fundraiser
+		$select = $dbr->select( 'public_reporting_days',
+			array(
+				'prd_date',
+				'prd_total',
+				'prd_number',
+				'prd_average',
+				'prd_maximum',
+			),
+			$conditions,
+			__METHOD__,
+			array(
+				'ORDER BY' => 'prd_date',
+			)
+		);
 		
 		$result = array();
 		$ytd = 0;

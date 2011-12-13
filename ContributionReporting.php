@@ -41,9 +41,8 @@ $wgAutoloadClasses['ContributionTotal'] = $dir . 'ContributionTotal_body.php';
 $wgAutoloadClasses['SpecialContributionStatistics'] = $dir . 'ContributionStatistics_body.php';
 $wgAutoloadClasses['SpecialFundraiserStatistics'] = $dir . 'FundraiserStatistics_body.php';
 $wgAutoloadClasses['SpecialContributionTrackingStatistics'] = $dir . 'ContributionTrackingStatistics_body.php';
-/*
 $wgAutoloadClasses['SpecialDailyTotal'] = $dir . 'DailyTotal_body.php';
-$wgAutoloadClasses['SpecialYearlyTotal'] = $dir . 'YearlyTotal_body.php';
+/*
 $wgAutoloadClasses['DisabledNotice'] = $dir . 'DisabledNotice_body.php';
 */
 
@@ -52,10 +51,7 @@ $wgSpecialPages['ContributionTotal'] = 'ContributionTotal';
 $wgSpecialPages['ContributionStatistics'] = 'SpecialContributionStatistics';
 $wgSpecialPages['FundraiserStatistics'] = 'SpecialFundraiserStatistics';
 $wgSpecialPages['ContributionTrackingStatistics'] = 'SpecialContributionTrackingStatistics';
-/*
 $wgSpecialPages['DailyTotal'] = 'SpecialDailyTotal';
-$wgSpecialPages['YearlyTotal'] = 'SpecialYearlyTotal';
-*/
 
 $wgSpecialPageGroups['ContributionHistory'] = 'contribution';
 $wgSpecialPageGroups['ContributionTotal'] = 'contribution';
@@ -254,24 +250,7 @@ function efContributionReportingTotal( $fundraiser, $fudgeFactor = 0 ) {
 	if ( $row['total'] > 0 ) {
 		$total = $row['total'];
 	} else {
-
-		// Try to get the total manually from public_reporting (more expensive)
-		$result = $dbr->select(
-			'public_reporting',
-			'round( sum( converted_amount ) ) AS total',
-			array(
-				'received >= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $myFundraiser['start'] ) ) ),
-				'received <= ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $myFundraiser['end'] ) + 24 * 60 * 60 ) ),
-			),
-			__METHOD__
-		);
-		$row = $dbr->fetchRow( $result );
-		
-		if ( $row['total'] > 0 ) {
-			$total = $row['total'];
-		} else {
-			return 0;
-		}
+		$total = 0;
 	}
 	
 	// Make sure the fudge factor is a number

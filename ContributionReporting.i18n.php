@@ -15,6 +15,7 @@ $messages['en'] = array(
 	// ContributionReporting and ContributionTotal
 	'contributionreporting-desc' => 'Live reporting on the Wikimedia fundraiser',
 	'contributiontotal' => 'Contribution total',
+	'dailytotal' => 'Daily total',
 	
 	'contribstats-header' => '',
 	'contribstats-footer' => '',

@@ -19,6 +19,10 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 
 	public function execute( $sub ) {
 		global $wgOut, $wgRequest;
+		
+		# Emergecny short cut until this is back in working order
+		$wgOut->redirect( SpecialPage::getTitleFor( 'FundraiserStatistics' )->getFullURL() );
+		return;
 
 		$start = $wgRequest->getIntOrNull( 'start' );
 		$end = $wgRequest->getIntOrNull( 'end' );

@@ -6,12 +6,10 @@
  * @ingroup Extensions
  */
 
-class SpecialDailyTotal extends IncludableSpecialPage {
+class SpecialDailyTotal extends UnlistedSpecialPage {
 
-	protected $sharedMaxAge = 600; // Cache for 10 minutes on the server side
-	protected $maxAge = 600; // Cache for 10 minutes on the client side
-
-	/* Functions */
+	protected $sharedMaxAge = 300; // Cache for 5 minutes on the server side
+	protected $maxAge = 300; // Cache for 5 minutes on the client side
 
 	public function __construct() {
 		parent::__construct( 'DailyTotal' );
@@ -20,13 +18,12 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 	public function execute( $sub ) {
 		global $wgRequest, $wgOut;
 		
-		$js = $wgRequest->getBool( 'js', false );
-
+		$this->setHeaders();
+		
+		// Get request data
+		$action = $wgRequest->getText( 'action' );
+		$fudgeFactor = $wgRequest->getInt( 'adjustment' );
 		$timezone = $wgRequest->getText( 'timezone', '0' );
-
-		/* Setup */
-		$wgOut->disable();
-		$this->sendHeaders();
 		
 		$zoneList = array (
 			'-12' => array( 'name' => 'Kwajalein', 'offset' => '-12:00' ),
@@ -79,64 +76,68 @@ class SpecialDailyTotal extends IncludableSpecialPage {
 		}
 		
 		$setTimeZone = date_default_timezone_set( $timeZoneName );
-		$start = date( 'Y-m-d' ); // Get the current date in the requested timezone
-		$total = $this->query( $timeZoneOffset, $start );
-		
-		$content = "wgFundraisingDailyTotal = $total;";
-		
-		if ( $js ) {
-			echo $content;
+		$today = date( 'Y-m-d' ); // Get the current date in the requested timezone
+		$output = $this->getTodaysTotal( $timeZoneOffset, $today, $fudgeFactor );
+
+		header( "Cache-Control: max-age=$this->maxAge,s-maxage=$this->sharedMaxAge" );
+		if ( $action == 'raw' ) {
+			$wgOut->disable();
+			echo $output;
 		} else {
-			echo $total;
+			$wgOut->setRobotpolicy( 'noindex,nofollow' );
+			$wgOut->addHTML( $output );
 		}
 	}
 
 	/* Private Functions */
 
-	private function query( $timeZoneOffset, $start ) {
+	/**
+	 * Get the total amount of money raised for today
+	 * @param string $timeZoneOffset The timezone to request the total for
+	 * @param string $today The current date in the requested time zone, e.g. '2011-12-16'
+	 * @param int $fudgeFactor How much to adjust the total by
+	 * @return integer
+	 */
+	private function getTodaysTotal( $timeZoneOffset, $today, $fudgeFactor = 0 ) {
 		global $wgMemc, $egFundraiserStatisticsMinimum, $egFundraiserStatisticsMaximum, $egFundraiserStatisticsCacheTimeout;
 
-		$key = wfMemcKey( 'fundraiserstatistics', $timeZoneOffset, $start );
+		// Delete this block once there is timezone support in the populating script
+		$setTimeZone = date_default_timezone_set( 'UTC' );
+		$today = date( 'Y-m-d' ); // Get the current date in UTC
+		$timeZoneOffset = '+00:00';
+		
+		$key = wfMemcKey( 'fundraiserdailytotal', $timeZoneOffset, $today, $fudgeFactor );
 		$cache = $wgMemc->get( $key );
 		if ( $cache != false && $cache != -1 ) {
 			return $cache;
 		}
 		
-		// We're only interested in donations from the past 2 days at most
-		$recentTime = time() - 60 * 60 * 48;
-		
 		// Use database
 		$dbr = efContributionReportingConnection();
-		#$dbr = wfGetDB( DB_MASTER );
-		$conditions = array(
-			'received > ' . $recentTime,
-			'converted_amount >= ' . $egFundraiserStatisticsMinimum,
-			'converted_amount <= ' . $egFundraiserStatisticsMaximum,
-			"DATE_FORMAT(CONVERT_TZ(FROM_UNIXTIME(received),'+00:00','$timeZoneOffset'),'%Y-%m-%d') = '$start'"
-		);
 		
-		$select = $dbr->select( 'public_reporting',
-			array(
-				'sum(converted_amount)'
-			),
-			$conditions,
+		$result = $dbr->select(
+			'public_reporting_days',
+			'round( prd_total ) AS total',
+			"prd_date = '$today'",
 			__METHOD__
 		);
-		$row = $dbr->fetchRow( $select );
-		$total = $row['sum(converted_amount)'];
-		if ( !$total ) $total = 0;
+		$row = $dbr->fetchRow( $result );
+		
+		if ( $row['total'] > 0 ) {
+			$total = $row['total'];
+		} else {
+			$total = 0;
+		}
+		
+		// Make sure the fudge factor is a number
+		if ( is_nan( $fudgeFactor ) ) {
+			$fudgeFactor = 0;
+		}
+
+		// Add the fudge factor to the total
+		$total += $fudgeFactor;
 		
 		$wgMemc->set( $key, $total, $egFundraiserStatisticsCacheTimeout );
 		return $total;
-	}
-	
-	private function sendHeaders() {
-		global $wgJsMimeType;
-		header( "Content-type: $wgJsMimeType; charset=utf-8" );
-		header( "Cache-Control: public, s-maxage=$this->sharedMaxAge, max-age=$this->maxAge" );
-	}
-
-	public function isListed(){
-		return false;
 	}
 }
