@@ -161,13 +161,9 @@ For more information, please visit the $1.',
 	'response-ajax-error-body' => 'There was an error adding your response. <br />Please try again later.', 
 	//Email notification
 	'moodbar-enotif-subject' => '$1 replied to your feedback',
-	'moodbar-enotif-text-body-header' => '$1 responded to your feedback: $2',
-	'moodbar-enotif-html-body-header' => '[$1 $2] responded to your [$3 feedback]',
-	'moodbar-enotif-body-copy-text' => 'View this message on your talk page
-
-What is a talk page?
-
-Your talk page is where other Wikipedia editors communicate with you by leaving messages.  Wikipedia editors use talk pages to discuss issues, provide help, notify people of what’s happening in the community, express thanks.  They also use talk pages just to say hi.'
+	'moodbar-enotif-text-body-user-response-message' => '$1 replied to your feedback, see the response: $2',
+	'moodbar-enotif-html-body-user-response-message' => '[$1 $2] replied to your feedback, see the [$3 response] for more detail',
+	'moodbar-enotif-body-user-response-title' => 'User response:'
 );
 
 /** Message documentation (Message documentation)
@@ -302,9 +298,8 @@ Terms of use URL. Do not change this URL until a translation of the page itself 
 	'response-ajax-error-head' => 'Text for ajax status heading on error',
 	'response-ajax-error-body' => 'Text for ajax status body on error (can be html)',
 	'moodbar-enotif-subject' => 'Feedback response email subject',
-	'moodbar-enotif-text-body-header' => 'The text version email header, $1 is the user name, $2 is the link to the feedback',
-	'moodbar-enotif-html-body-header' => 'The html version email header, $1 is the the user talk page link, $2 is user name, $3 is the link to feedback',
-	'moodbar-enotif-body-copy-text' => 'Email copy text'
+	'moodbar-enotif-text-body-user-response-message' => 'The text version response message, $1 is the user name, $2 is the link to the response',
+	'moodbar-enotif-html-body-user-response-message' => 'The html version response message, $1 is the the user page link, $2 is user name, $3 is the link to response',
 );
 
 /** Afrikaans (Afrikaans)
@@ -784,7 +779,7 @@ Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'right-moodbar-view' => 'Rückmeldung zur Stimmung ansehen und exportieren',
 	'right-moodbar-admin' => 'Sichtbarkeit auf der Übersichts- und Verwaltungsseite der Rückmeldungen ändern',
 	'moodbar-admin-title' => 'Rückmeldung zur Stimmung',
-	'moodbar-admin-intro' => 'Auf dieser Seite können die Rückmeldungen zur Stimmung angesehen werden',
+	'moodbar-admin-intro' => 'Auf dieser Seite können die Rückmeldungen angesehen werden.',
 	'moodbar-admin-empty' => 'Keine Ergebnisse',
 	'moodbar-header-id' => 'Rückmeldungskennung',
 	'moodbar-header-timestamp' => 'Zeitstempel',
@@ -860,6 +855,10 @@ Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'response-ajax-success-body' => 'Die Antwort wurde hinzugefügt.',
 	'response-ajax-error-head' => 'Hoppla!',
 	'response-ajax-error-body' => 'Es ist beim Hinzufügen der Antwort ein Fehler aufgetreten. <br />Bitte versuche es später noch einmal.',
+	'moodbar-enotif-subject' => '$1 antwortete auf deine Rückmeldung.',
+	'moodbar-enotif-text-body-user-response-message' => '$1 antwortete auf deine Rückmeldung an folgender Stelle: $2',
+	'moodbar-enotif-html-body-user-response-message' => '[$1 $2] antwortete auf deine Rückmeldung. Die [$3 Antwort] enthält weitere Einzelheiten.',
+	'moodbar-enotif-body-user-response-title' => 'Antwort des Nutzers:',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -880,6 +879,9 @@ $messages['de-formal'] = array(
 	'moodbar-feedback-response-title' => '== Antwort auf Ihre [[$1|Rückmeldung]] ==',
 	'moodbar-response-terms' => 'Mit dem Speichern erklären Sie sich mit diesen $1 einverstanden.',
 	'response-ajax-error-body' => 'Es ist beim Hinzufügen der Antwort ein Fehler aufgetreten. <br />Bitte versuchen Sie es später noch einmal.',
+	'moodbar-enotif-subject' => '$1 antwortete auf Ihre Rückmeldung.',
+	'moodbar-enotif-text-body-user-response-message' => '$1 antwortete auf Ihre Rückmeldung an folgender Stelle: $2',
+	'moodbar-enotif-html-body-user-response-message' => '[$1 $2] antwortete auf Ihre Rückmeldung. Die [$3 Antwort] enthält weitere Einzelheiten.',
 );
 
 /** Greek (Ελληνικά)
@@ -1238,6 +1240,18 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-error-subtitle' => "Quelque chose s'est mal passé ! Essayer de partager vos commentaires plus tard.",
 	'moodbar-blocked-title' => 'Bloqué !',
 	'moodbar-blocked-subtitle' => 'Vous avez été bloqué en édition.',
+	'moodbar-email-title' => 'Recevoir des notifications?',
+	'moodbar-email-input' => 'Votre adresse de courriel',
+	'moodbar-email-desc' => 'Veuillez entrer votre adresse de courriel pour recevoir des notifications concernant les réponses à vos commentaires.',
+	'moodbar-email-submit' => 'Mettre à jour',
+	'moodbar-updating-title' => 'Mise à jour...',
+	'moodbar-updating-subtitle' => 'Nous mettons à jour vos paramètres de courriel.',
+	'moodbar-email-confirm-title' => 'Confirmation du courriel?',
+	'moodbar-email-confirm-desc' => 'Afin de recevoir des notifications concernant les réponses à vos commentaires, vous devez confirmer votre adresse de courriel. Pour renvoyer le courriel de confirmation, cliquez sur le bouton «Confirmation du renvoi».',
+	'moodbar-email-resend-confirmation' => 'Renvoyez la confirmation',
+	'moodbar-email-optout' => 'Non merci',
+	'moodbar-tooltip-title' => 'Êtes-vous triste, joyeux ou confus par rapport à la modification de Wikipédia ?',
+	'moodbar-tooltip-subtitle' => 'Vos commentaires sur la modification de Wikipédia nous aide à améliorer le site.',
 	'right-moodbar-view' => 'Afficher et exporter vos ressentis MoodBar',
 	'right-moodbar-admin' => 'Modifier la visibilité sur le tableau de bord des commentaires',
 	'moodbar-admin-title' => 'Ressenti MoodBar',
@@ -1534,6 +1548,10 @@ Para obter máis información, bótelle unha ollada á $1 .',
 	'response-ajax-success-body' => 'Engadiuse a resposta.',
 	'response-ajax-error-head' => 'Vaites!',
 	'response-ajax-error-body' => 'Houbo un erro ao engadir a resposta.<br />Inténteo de novo.',
+	'moodbar-enotif-subject' => '$1 respondeu os seus comentarios',
+	'moodbar-enotif-text-body-user-response-message' => '$1 respondeu os seus comentarios; olle a resposta: $2',
+	'moodbar-enotif-html-body-user-response-message' => '[$1 $2] respondeu os seus comentarios; olle a [$3 resposta] se quere máis detalles',
+	'moodbar-enotif-body-user-response-title' => 'Resposta do usuario:',
 );
 
 /** Swiss German (Alemannisch)
@@ -1627,6 +1645,7 @@ $messages['he'] = array(
 	'moodbar-updating-title' => 'עדכון...',
 	'moodbar-updating-subtitle' => 'אנחנו מעדכנים את הגדרות הדואר האלקטרוני שלך.',
 	'moodbar-email-confirm-title' => 'וידוא דואר אלקטרוני?',
+	'moodbar-email-confirm-desc' => 'כדי לקבל הודעות על תשובות למשוב שלך, יש לאשר את כתובת הדוא האלקטרוני שלך. כדי לשלוח מחדש את מכתב האישור, יש ללחוץ על כפתור "שליחה מחדש של מכתב אישור".',
 	'moodbar-email-resend-confirmation' => 'שליחה מחדש של מכתב אישור',
 	'moodbar-email-optout' => 'לא, תודה',
 	'moodbar-tooltip-title' => 'איזו תחושה ויקיפדיה גורמת לך – עצב, שמחה או בלבול?',
@@ -1687,7 +1706,7 @@ $messages['he'] = array(
 	'moodbar-restore-header' => 'שחזור הנראוּת של הפריט הזה',
 	'moodbar-invalid-item' => 'המערכת לא הצליחה למצא את פריט המשוב הנכון.',
 	'moodbar-feedback-action-error' => 'אירעה שגיאה בעת ניסיון לבצע את הפעולה הזאת.',
-	'moodbar-feedback-response-summary' => 'המשתמש [[$1|$2]] [[#3|ענה]] להערה הזאת לפני $4',
+	'moodbar-feedback-response-summary' => 'המשתמש [[$1|$2]] [[$3|ענה]] להערה הזאת לפני $4',
 	'moodbar-feedback-edit-summary' => 'תשובה ל[[Special:FeedbackDashboard/$1|משוב ממשתמש]]: $2',
 	'moodbar-type-happy' => '{{GENDER:$1|שמח|שמחה}}',
 	'moodbar-type-sad' => '{{GENDER:$1|עצוב|עצובה}}',
@@ -1700,6 +1719,16 @@ $messages['he'] = array(
 	'moodbar-log-header' => 'זהו יומן של פעולות שנעשו על פריטי משוב שרשומים ב[[Special:FeedbackDashboard|לוח הבקרה של המשוב]].',
 	'moodbar-log-hide' => 'הסתיר את [[$1]]',
 	'moodbar-log-restore' => 'שחזר את הנראוּת של [[$1]]',
+	'moodbar-response-terms' => 'השליחה מהווה הסכמה לשקיפות לפי ה$1 הבאים.',
+	'moodbar-response-link' => 'תנאים',
+	'response-back-text' => 'חזרה',
+	'response-preview-text' => 'תצוגה מקדימה',
+	'response-ajax-action-head' => 'התשובה נשלחת...',
+	'response-ajax-action-body' => 'תשובתך מוספת...',
+	'response-ajax-success-head' => 'תודה!',
+	'response-ajax-success-body' => 'תשובתך הוספה.',
+	'response-ajax-error-head' => 'אוי!',
+	'response-ajax-error-body' => 'אירעה שגיאה בהוספת תשובתך.<br />נא לנסות שוב מאוחר יותר.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1869,6 +1898,10 @@ Pro ulterior information, per favor visita le $1.',
 	'response-ajax-success-body' => 'Tu responsa ha essite addite.',
 	'response-ajax-error-head' => 'Ups!',
 	'response-ajax-error-body' => 'Un error occurreva durante le addition de tu responsa. <br />Per favor reproba plus tarde.',
+	'moodbar-enotif-subject' => '$1 respondeva a tu retroaction',
+	'moodbar-enotif-text-body-user-response-message' => '$1 respondeva a tu retroaction, vide le responsa: $2',
+	'moodbar-enotif-html-body-user-response-message' => '[$1 $2] respondeva a tu retroaction, vide le [$3 responsa] pro plus detalio',
+	'moodbar-enotif-body-user-response-title' => 'Responsa del usator:',
 );
 
 /** Japanese (日本語)
@@ -2142,6 +2175,10 @@ $messages['mk'] = array(
 	'response-ajax-success-body' => 'Вашиот одговор е додаден.',
 	'response-ajax-error-head' => 'Упс!',
 	'response-ajax-error-body' => 'Се појави грешка при додавањето на вашиот одговор. <br />Обидете се подоцна.',
+	'moodbar-enotif-subject' => '$1 одговори на вашето мислење',
+	'moodbar-enotif-text-body-user-response-message' => '$1 одговори на вашето мислење. Прочитајте го одговорот: $2',
+	'moodbar-enotif-html-body-user-response-message' => '[$1 $2] одговори на вашето мислење. Прочитајте го [$3 одговорот]',
+	'moodbar-enotif-body-user-response-title' => 'Одговор на корисникот:',
 );
 
 /** Malayalam (മലയാളം)
@@ -2420,8 +2457,10 @@ Ga naar de $1 voor mee informatie.',
 	'moodbar-updating-title' => 'Bezig met bijwerken...',
 	'moodbar-updating-subtitle' => 'We zijn uw e-mailinstellingen aan het bijwerken.',
 	'moodbar-email-confirm-title' => 'Bevestiging per e-mail?',
+	'moodbar-email-confirm-desc' => 'Om kennisgevingen met betrekking tot de reacties op uw feedback te ontvangen, moet u uw e-mailadres bevestigen. Klik op de knop "Opnieuw bevestiging verzenden" om de bevestigingsmail opnieuw te verzenden.',
 	'moodbar-email-resend-confirmation' => 'Bevestiging opnieuw verzenden',
 	'moodbar-email-optout' => 'Nee, dank u',
+	'moodbar-tooltip-title' => 'Bent u verdrietig, gelukkig of verward over het bewerken van Wikipedia?',
 	'moodbar-tooltip-subtitle' => 'Uw terugkoppeling over het bewerken van Wikipedia helpt ons de website beter te maken.',
 	'right-moodbar-view' => 'MoodBar-terugkoppeling bekijken en exporteren',
 	'right-moodbar-admin' => 'Zichtbaarheid van de terugkoppelingsdashboard wijzigen',
