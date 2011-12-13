@@ -27,7 +27,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '1.0',
 	'author' => 'Jack Phoenix',
 	'description' => 'Handle global interwikis and local interlanguage links',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ShoutWiki_Interwiki_Magic',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ShoutWiki_Interwiki_Magic',
 );
 
 // This hook was added in r84173, on 17:51, 17 March 2011
