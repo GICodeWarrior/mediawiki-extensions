@@ -29,7 +29,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Subpage Sortkey',
 	'author' => array( '[http://mediawiki.org/wiki/User:Bawolff Brian Wolff]' ),
 	'descriptionmsg' => 'subpagesortkey-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SubpageSortkey',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SubpageSortkey',
 	'version' => 0.1,
 );
 
