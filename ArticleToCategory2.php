@@ -58,7 +58,7 @@ $wgExtensionCredits['other'][] = array(
 		'Julien Devincre (exclude categories)',
 		'[http://www.mediawiki.org/wiki/User:Cm Cynthia Mattingly] (i18n, adding category)',
 		'[http://www.mediawiki.org/wiki/User:MikaelLindmark Mikael Lindmark] (adding options, input check)'),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleToCategory2'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ArticleToCategory2'
 );
 
 /*** Hook functions ***/
