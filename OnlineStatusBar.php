@@ -20,7 +20,7 @@ $wgExtensionCredits[version_compare( $wgVersion, '1.17', '>=' ) ? 'userpage tool
 	'version' => '1.0.4',
 	'author' => array( 'Petr Bena' ),
 	'descriptionmsg' => 'onlinestatusbar-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:OnlineStatusBar',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:OnlineStatusBar',
 );
 
 $dir = dirname( __FILE__ );
