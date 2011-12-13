@@ -11,7 +11,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'Skin per page',
 	'version'        => '1.0',
 	'author'         => 'Tim Starling',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:SkinPerPage',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:SkinPerPage',
 	'descriptionmsg' => 'skinperpage-desc',
 );
 
