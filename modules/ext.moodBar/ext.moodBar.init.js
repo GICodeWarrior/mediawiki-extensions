@@ -53,7 +53,7 @@
 
 			// Insert trigger into portlet
 			ui.trigger
-				.wrap( '<p>' )
+				.wrap( "<span>" ).attr('id', 'p-moodbar-el') // absolute id for bg to work in ie7
 				.parent()
 				.appendTo( ui.pMoodbar );
 			

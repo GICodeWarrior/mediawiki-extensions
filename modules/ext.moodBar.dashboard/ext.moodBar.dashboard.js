@@ -368,8 +368,12 @@ jQuery(function( $ ) {
 			
 			$link = $( this ).find('.fbd-respond-link');
 			if( $link.hasClass('responder-expanded') ) {
-		
-				$link.find('span').text( mw.msg( 'moodbar-respond-collapsed' ) )
+				
+				$link.find('.fbd-item-response-expanded')
+					.addClass('fbd-item-response-collapsed')
+					.removeClass('fbd-item-response-expanded')
+					.end()
+					.find('.fbd-item-response-collapsed')
 					.parent()
 					.removeClass('responder-expanded');
 			
@@ -432,7 +436,7 @@ jQuery(function( $ ) {
 					.append(
 						$('<div>').attr('class', 'ula small').html( ula ).hide())
 				).append(
-					$('<button>').attr( 'class', 'fbd-response-submit' ).text( mw.msg( 'moodbar-response-btn' ) + ' ' + mw.msg( 'moodbar-respond-collapsed' ) )
+					$('<button>').attr( 'class', 'fbd-response-submit' ).html( mw.msg( 'moodbar-response-btn' ) + '&nbsp;<span class="fbd-item-send-response-icon"></span>' )
 						.attr( 'disabled', 'true' ).hide()
 				).append(
 					$('<button>').attr('class', 'fbd-response-preview-back').text( mw.msg( 'response-back-text' ) ).hide() 
@@ -447,11 +451,14 @@ jQuery(function( $ ) {
 			
 			closeAllResponders();
 			
-			$(this).find('span').text( mw.msg( 'moodbar-respond-expanded' ) )
+			$(this).find('.fbd-item-response-collapsed')
+				.addClass('fbd-item-response-expanded')
+				.removeClass('fbd-item-response-collapsed')
+				.end()
+				.find('.fbd-item-response-expanded')
 				.parent()
-				.addClass( 'responder-expanded' )
-				.end();
-			
+				.addClass('responder-expanded');
+
 			$item.append(inlineForm)
 				.find('.fbd-response-text')
 				.NobleCount('.fbd-response-charCount', {

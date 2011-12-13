@@ -223,7 +223,8 @@
 					.end()
 				// Link what-button
 				.find( '.mw-moodBar-overlayWhatTrigger' )
-					.text( mw.msg( 'moodbar-what-collapsed' ) )
+					//.text( mw.msg( 'moodbar-what-collapsed' ) )
+					.addClass('moodbar-what-collapsed')
 					.end()
 				.find( '.mw-moodBar-overlayWhat > a' )
 					.click( function( e ) {
@@ -235,10 +236,14 @@
 										$trigger = mb.ui.overlay.find( '.mw-moodBar-overlayWhatTrigger' );
 									if ( $el.is( ':visible' ) ) {
 										$el.slideUp( 'fast' );
-										$trigger.html( mw.msg( 'moodbar-what-collapsed' ) );
+										//$trigger.html( mw.msg( 'moodbar-what-collapsed' ) );
+										$trigger.addClass('moodbar-what-collapsed')
+											.removeClass('moodbar-what-expanded');
 									} else {
 										$el.slideDown( 'fast' );
-										$trigger.html( mw.msg( 'moodbar-what-expanded' ) );
+										//$trigger.html( mw.msg( 'moodbar-what-expanded' ) );
+										$trigger.addClass('moodbar-what-expanded')
+											.removeClass('moodbar-what-collapsed');
 									}
 								} );
 					} )

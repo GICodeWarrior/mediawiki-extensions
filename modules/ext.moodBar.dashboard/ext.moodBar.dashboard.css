@@ -257,6 +257,30 @@
 	display:block;
 }
 
+.fbd-item-response-collapsed {
+	display:inline-block;
+	/* @embed */
+	background: url(images/respondtothis-collapsed.png) left top no-repeat;
+	width: 10px;
+	height: 12px;
+}
+
+.fbd-item-response-expanded {
+	display:inline-block;
+	/* @embed */
+	background: url(images/respondtothis-expanded.png) left top no-repeat;
+	width: 12px;
+	height: 10px;
+}
+
+.fbd-item-send-response-icon {
+	display:inline-block;
+	/* @embed */
+	background: url(images/send-response-arrow.png) left top no-repeat;
+	width: 8px;
+	height: 8px;
+}
+
 .fbd-item-userName {
 	font-size: 1.2em;
 	margin: 0;
@@ -291,6 +315,10 @@
 .fbd-response-preview-spinner {
 	height:32px;
 	line-height:32px;
+}
+
+.fbd-response-preview-block {
+	width:100%;  /* ie7 fix */
 }
 
 .fbd-response-wikitext{

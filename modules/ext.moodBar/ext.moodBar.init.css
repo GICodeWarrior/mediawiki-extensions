@@ -5,7 +5,7 @@
 	top: 0px;
 }
 
-#p-moodbar p {
+#p-moodbar-el { /* absolute id for ie7 */
 	margin-top: 0.5em;
 	margin-right: 0.75em;
 	font-size: 0.75em;
@@ -13,8 +13,9 @@
 	line-height: 1.125em;
 	text-transform: none;
 	/* @embed */
-	background: url(images/icon-speechbubble-blue.png);
+	background-image: url(images/icon-speechbubble-blue.png);
 	background-repeat: no-repeat;
 	background-position: left;
 	padding-left: 18px;
+	display:block;
 }
