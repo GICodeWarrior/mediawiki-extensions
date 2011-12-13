@@ -28,7 +28,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Package Force',
 	'version' => '0.1',
 	'author' => 'Svip',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:PackageForce',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:PackageForce',
 	'descriptionmsg' => 'pf-desc',
 );
 
