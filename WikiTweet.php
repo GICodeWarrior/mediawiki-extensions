@@ -36,7 +36,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'WikiTweet',
 	'author'         => 'Thomas Fauré',
 	'descriptionmsg' => 'wikitweet-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:WikiTweet',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:WikiTweet',
 	'version'        => '0.9.0'
 );
 
