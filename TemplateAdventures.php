@@ -40,7 +40,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'        => __FILE__,
 	'name'        => 'Template Adventures',
 	'author'      => array( 'Svip' ),
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:TemplateAdventures',
+	'url'         => 'https://www.mediawiki.org/wiki/Extension:TemplateAdventures',
 	'descriptionmsg' => 'ta-desc',
 	'version'     => '0.3'
 );
