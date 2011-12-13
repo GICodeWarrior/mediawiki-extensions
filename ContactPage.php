@@ -20,7 +20,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'svn-date' => '$LastChangedDate$',
 	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Daniel Kinzler',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ContactPage',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ContactPage',
 	'descriptionmsg' => 'contactpage-desc',
 );
 
