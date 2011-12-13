@@ -28,7 +28,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'MwEmbedSupport',
 	'author' => array( 'Michael Dale' ),
 	'version' => '0.2',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:MwEmbed',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:MwEmbed',
 	'descriptionmsg' => 'mwembed-desc',
 );
 
