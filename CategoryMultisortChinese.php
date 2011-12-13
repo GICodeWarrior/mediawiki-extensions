@@ -9,7 +9,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'CategoryMultisortChinese',
 	'author' => 'Liangent',
 	'descriptionmsg' => 'categorymultisortchinese-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryMultisortChinese',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CategoryMultisortChinese',
 );
 
 $dir = dirname(__FILE__) . '/';
