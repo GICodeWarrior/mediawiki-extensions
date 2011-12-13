@@ -20,7 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'StaticWiki',
 	'author'         => 'Magnus Manske',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:StaticWiki',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:StaticWiki',
 );
 
 $wgHooks['AlternateEdit'][] = 'wfStaticEditHook' ;
