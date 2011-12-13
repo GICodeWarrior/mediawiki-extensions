@@ -29,7 +29,7 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'River Tarnell',
 	'version'        => '1.1',
 	'descriptionmsg' => 'crowdauthentication-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:CrowdAuthentication'
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:CrowdAuthentication'
 );
 
 $wgExtensionMessagesFiles['CrowdAuthentication'] = dirname( __FILE__ ) . '/CrowdAuthentication.i18n.php';
