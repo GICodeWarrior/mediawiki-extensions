@@ -26,7 +26,7 @@ $wgExtensionCredits[ 'other' ][] = array(
 	'name'           => 'MultiBoilerplate',
 	'descriptionmsg' => 'multiboilerplate-desc',
 	'author'         => array( 'Robert Leverington', 'Al Maghi' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:MultiBoilerplate',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:MultiBoilerplate',
 	'version'        => '1.8.0',
 );
 
