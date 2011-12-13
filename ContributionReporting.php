@@ -26,7 +26,7 @@ $wgContributionTrackingDBname = $wgDBname;
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'Contribution Reporting',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ContributionReporting',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ContributionReporting',
 	'author' => array( 'David Strauss', 'Brion Vibber', 'Siebrand Mazeland', 'Trevor Parscal', 'Tomasz Finc' ),
 	'descriptionmsg' => 'contributionreporting-desc',
 );
