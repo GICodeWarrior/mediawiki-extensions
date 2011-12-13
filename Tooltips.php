@@ -7,7 +7,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Tooltips',
 	'version'        => '1.0',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Tooltips',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Tooltips',
 	'author'         => array( 'Andrew Garrett' ),
 	'descriptionmsg' => 'tooltips-desc',
 );
