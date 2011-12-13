@@ -23,7 +23,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'Gnuplot',
 	'author'         => 'Christina Pöpper',
 	'descriptionmsg' => 'gnuplot-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Gnuplot',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Gnuplot',
 );
 
 $wgExtensionMessagesFiles['Gnuplot'] =  dirname(__FILE__) . '/Gnuplot.i18n.php';
