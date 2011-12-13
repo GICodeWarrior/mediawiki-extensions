@@ -16,7 +16,7 @@ if ( ! defined( 'MEDIAWIKI' ) ) die();
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'SpecialTalk',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SpecialTalk',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SpecialTalk',
 	'version' => '1.0',
 	'descriptionmsg' => 'specialtalk-desc',
 	'description' => 'Adds a talk tab to Special Pages',
