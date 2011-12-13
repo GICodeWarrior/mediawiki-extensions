@@ -47,7 +47,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => array(
 		'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
 	),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Ratings',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Ratings',
 	'descriptionmsg' => 'ratings-desc'
 );
 
