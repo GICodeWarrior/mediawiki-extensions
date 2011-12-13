@@ -25,7 +25,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'ApiSVGProxy',
 	'author' => 'Roan Kattouw',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ApiSVGProxy',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ApiSVGProxy',
 	'version' => '1.0',
 	'descriptionmsg' => 'apisvgproxy-desc',
 );
