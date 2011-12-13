@@ -39,7 +39,7 @@ $wgMiniPreviewMaxTotal = 15; # Maximum number of categories and galleries shown
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'MiniPreview',
 	'author' => 'Magnus Manske',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:MiniPreview',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:MiniPreview',
 	'descriptionmsg' => 'minipreview-desc',
 );
 
