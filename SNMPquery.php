@@ -24,7 +24,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'        => __FILE__,
 	'name'        => 'SNMPquery',
 	'author'      => 'Rudy Rucker, Jr.',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:SNMPquery',
+	'url'         => 'https://www.mediawiki.org/wiki/Extension:SNMPquery',
 	'descriptionmsg' => 'snmpquery-desc',
 	'version'     => '0.1.1',
 );
