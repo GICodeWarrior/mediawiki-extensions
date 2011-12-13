@@ -5,7 +5,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'CommunityHiring',
 	'author' => 'Andrew Garrett',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CommunityHiring',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CommunityHiring',
 );
 
 $wgSpecialPages['CommunityHiring'] = 'SpecialCommunityHiring';
