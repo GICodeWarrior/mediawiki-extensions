@@ -20,12 +20,10 @@ class MoodBarHTMLMailerJob extends Job {
 			$editor,
 			$this->title,
 			$this->params['timestamp'],
-			$this->params['feedbackResponse'],
+			$this->params['feedback'],
 			$this->params['response']
 		);
 		return true;
 	}
 
 }
-
-?>

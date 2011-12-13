@@ -7,7 +7,7 @@
 class MoodBarHTMLEmailNotification {
 	
 	protected $to, $subject, $body, $replyto, $from;
-	protected $timestamp, $composed_common, $feedbackResponse, $response;
+	protected $timestamp, $composed_common, $response, $feedback;
 	protected $mime_boundary;
 	
 	/**
@@ -34,10 +34,10 @@ class MoodBarHTMLEmailNotification {
 	 * @param $editor User object
 	 * @param $title Title object
 	 * @param $timestamp string Edit timestamp
-	 * @param $feedbackResponse integer response id
 	 * @param $response string response text
+	 * @param $feedback integer feedback id
 	 */
-	public function notifyOnRespond( $editor, $title, $timestamp, $feedbackResponse, $response ) {
+	public function notifyOnRespond( $editor, $title, $timestamp, $feedback, $response ) {
 		global $wgEnotifUseJobQ, $wgEnotifUserTalk;
 
 		if ( $title->getNamespace() != NS_USER_TALK || !$wgEnotifUserTalk || 
@@ -51,12 +51,12 @@ class MoodBarHTMLEmailNotification {
 				'editorID' => $editor->getID(),
 				'timestamp' => $timestamp,
 				'response' => $response,
-				'feedbackResponse' => $feedbackResponse
+				'feedback' => $feedback
 			);
 			$job = new MoodBarHTMLMailerJob( $title, $params );
 			$job->insert();
 		} else {
-			$this->actuallyNotifyOnRespond( $editor, $title, $timestamp, $feedbackResponse, $response );
+			$this->actuallyNotifyOnRespond( $editor, $title, $timestamp, $feedback, $response );
 		}
 	}
 	
@@ -69,10 +69,10 @@ class MoodBarHTMLEmailNotification {
 	 * @param $editor User object
 	 * @param $title Title object
 	 * @param $timestamp string Edit timestamp
-	 * @param $feedbackResponse integer response id
 	 * @param $response string response text
+	 * @param $feedabck integer feedback id
 	 */
-	public function actuallyNotifyOnRespond( $editor, $title, $timestamp, $feedbackResponse, $response ) {
+	public function actuallyNotifyOnRespond( $editor, $title, $timestamp, $feedback, $response ) {
 
 		global $wgEnotifUserTalk;
 
@@ -86,8 +86,8 @@ class MoodBarHTMLEmailNotification {
 		$this->timestamp = $timestamp;
 		$this->editor = $editor;
 		$this->composed_common = false;
-		$this->feedbackResponse = $feedbackResponse;
 		$this->response = $response;
+		$this->feedback = $feedback;
 
 		if ( $wgEnotifUserTalk && $this->canSendUserTalkEmail( $editor, $title ) ) {
 			$this->compose( $this->targetUser );
@@ -145,28 +145,27 @@ class MoodBarHTMLEmailNotification {
 			$pageEditor = $wgEnotifUseRealName ? $this->editor->getRealName() : $this->editor->getName();
 		}
 		
-		$talkPageUrl = $this->title->getCanonicalURL() . '#feedback-dashboard-response-' . $this->feedbackResponse;
+		$feedbackUrl = SpecialPage::getTitleFor( 'FeedbackDashboard', $this->feedback )->getCanonicalURL();
 		
 		// build the subject	
-		$this->subject = wfMessage( 'moodbar-enotif-subject')->params($pageEditor)->escaped();
+		$this->subject = wfMessage( 'moodbar-enotif-subject')->params( $pageEditor )->escaped();
 
-		// build section for the email body
-		$textUserResponseMessage = wfMessage('moodbar-enotif-text-body-user-response-message')
-		                                     ->params($this->editor->getName(), $talkPageUrl)->escaped();
-		
-		$htmlUserResponseMessage = wfMsgExt('moodbar-enotif-html-body-user-response-message', 
-			                            array('parse'), 
-			                            $this->editor->getUserPage()->getCanonicalURL(), 
-			                            $this->editor->getName(), 
-			                            $talkPageUrl);
-		
-		$userReplyTitle = wfMessage('moodbar-enotif-body-user-response-title')->escaped();
-		
-		
+		// build the header
+		$textEmailHeader = wfMessage( 'moodbar-enotif-text-body-header' )
+		                                     ->params( $pageEditor, $feedbackUrl )->escaped();
+		$htmlEmailHeader = wfMsgExt( 'moodbar-enotif-html-body-header', 
+			                            array( 'parse' ), 
+			                            $this->editor->getTalkPage()->getCanonicalURL(), 
+			                            $pageEditor, 
+			                            $feedbackUrl );
+	        // build the response text
 		$textResponse = htmlspecialchars( $this->response );
-		
 		$messageCache = MessageCache::singleton();
 		$htmlResponse = $messageCache->parse( $this->response )->getText();
+		
+		//build the copy text
+		$textEmailCopy = wfMessage( 'moodbar-enotif-body-copy-text' )->escaped();
+		$htmlEmailCopy = wfMsgExt( 'moodbar-enotif-body-copy-text', array( 'parse' ) );
 		
 		//assemable the email body
 		$this->body = <<<HTML
@@ -174,9 +173,11 @@ class MoodBarHTMLEmailNotification {
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-$textUserResponseMessage 
-$userReplyTitle
+$textEmailHeader 
+
 $textResponse
+
+$textEmailCopy
 
 --$this->mime_boundary
 Content-Type: text/html; charset=UTF-8
@@ -184,9 +185,11 @@ Content-Transfer-Encoding: 8bit
 
 <html>
 	<body>
-		$htmlUserResponseMessage
-		$userReplyTitle
+		$htmlEmailHeader
+		
 		$htmlResponse
+		
+		$htmlEmailCopy
 	</body>
 </html>
 
@@ -234,5 +237,3 @@ HTML;
 	}
 	
 }
-
-?>

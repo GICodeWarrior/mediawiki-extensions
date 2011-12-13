@@ -161,9 +161,13 @@ For more information, please visit the $1.',
 	'response-ajax-error-body' => 'There was an error adding your response. <br />Please try again later.', 
 	//Email notification
 	'moodbar-enotif-subject' => '$1 replied to your feedback',
-	'moodbar-enotif-text-body-user-response-message' => '$1 replied to your feedback, see the response: $2',
-	'moodbar-enotif-html-body-user-response-message' => '[$1 $2] replied to your feedback, see the [$3 response] for more detail',
-	'moodbar-enotif-body-user-response-title' => 'User response:'
+	'moodbar-enotif-text-body-header' => '$1 responded to your feedback: $2',
+	'moodbar-enotif-html-body-header' => '[$1 $2] responded to your [$3 feedback]',
+	'moodbar-enotif-body-copy-text' => 'View this message on your talk page
+
+What is a talk page?
+
+Your talk page is where other Wikipedia editors communicate with you by leaving messages.  Wikipedia editors use talk pages to discuss issues, provide help, notify people of what’s happening in the community, express thanks.  They also use talk pages just to say hi.'
 );
 
 /** Message documentation (Message documentation)
@@ -298,8 +302,9 @@ Terms of use URL. Do not change this URL until a translation of the page itself 
 	'response-ajax-error-head' => 'Text for ajax status heading on error',
 	'response-ajax-error-body' => 'Text for ajax status body on error (can be html)',
 	'moodbar-enotif-subject' => 'Feedback response email subject',
-	'moodbar-enotif-text-body-user-response-message' => 'The text version response message, $1 is the user name, $2 is the link to the response',
-	'moodbar-enotif-html-body-user-response-message' => 'The html version response message, $1 is the the user page link, $2 is user name, $3 is the link to response',
+	'moodbar-enotif-text-body-header' => 'The text version email header, $1 is the user name, $2 is the link to the feedback',
+	'moodbar-enotif-html-body-header' => 'The html version email header, $1 is the the user talk page link, $2 is user name, $3 is the link to feedback',
+	'moodbar-enotif-body-copy-text' => 'Email copy text'
 );
 
 /** Afrikaans (Afrikaans)
