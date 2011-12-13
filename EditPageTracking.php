@@ -8,7 +8,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => array( 'Andrew Garrett' ),
 	'descriptionmsg' => 'editpagetracking-desc',
 	'name' => 'EditPageTracking',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:EditPageTracking',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:EditPageTracking',
 	'version' => '0.1',
 	'path' => __FILE__,
 );
