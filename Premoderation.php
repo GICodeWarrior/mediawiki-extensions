@@ -9,7 +9,7 @@ $wgExtensionCredits['antispam'][] = array(
 	'author' => array( 'Cryptocoryne' ),
 	'descriptionmsg' => 'premoderation-desc',
 	'version' => '1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Premoderation',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Premoderation',
 );
 
 $dir = dirname( __FILE__ );
