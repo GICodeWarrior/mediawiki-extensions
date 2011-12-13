@@ -22,7 +22,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Subpage List 3',
 	'version' => '1.1',
 	'descriptionmsg' => 'spl3-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SubPageList3',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SubPageList3',
 	'author' => array(
 		'James McCormack',
 		'Martin Schallnahs',
