@@ -21,7 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'ReassignEdits',
 	'author'         => array( 'Tim Weyer' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:ReassignEdits',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:ReassignEdits',
 	'descriptionmsg' => 'reassignedits-desc',
 	'version'        => '0.1.0',
 );
