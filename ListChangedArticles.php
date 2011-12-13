@@ -10,7 +10,7 @@ $wgExtensionCredits['specialpage '][] = array(
 	'path'           => __FILE__,
 	'name'           => 'ListChangedArticles',
 	'author'         => '',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:ListChangedArticles',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:ListChangedArticles',
 );
 
 $dir = dirname(__FILE__) . '/';
