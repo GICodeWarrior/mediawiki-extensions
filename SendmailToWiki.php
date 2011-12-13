@@ -12,7 +12,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'SendmailToWiki',
 	'author' => 'Jure Kajzer - freakolowsky <jure.kajzer@abakus.si>',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SendmailToWiki',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SendmailToWiki',
 	'descriptionmsg' => 'sendmailtowiki-desc',
 	'version' => '0.1.0',
 );
