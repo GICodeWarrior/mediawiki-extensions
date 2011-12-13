@@ -25,7 +25,7 @@ define( 'SlimboxThumbs_VERSION', '0.2' );
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'SlimboxThumbs',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SlimboxThumbs',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SlimboxThumbs',
 	'author' => array(
 		'[http://david.raison.lu Kwisatz]',
 		'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw].' .
