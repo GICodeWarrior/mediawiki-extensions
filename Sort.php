@@ -22,7 +22,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Sort',
 	'author' => 'Rob Church',
 	'description' => 'Create simple sorted lists using <tt>&lt;sort&gt;</tt>',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Sort',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Sort',
 );
 
 /**
