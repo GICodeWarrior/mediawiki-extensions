@@ -21,7 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Import Users',
 	'version' => '1.2',
 	'author' => array( 'Yuriy Ilkiv', 'Rouslan Zenetl' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ImportUsers',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ImportUsers',
 	'descriptionmsg' => 'importusers-desc',
 );
 
