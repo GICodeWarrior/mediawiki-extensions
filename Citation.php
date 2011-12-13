@@ -6,7 +6,7 @@
 $wgExtensionCredits['parserhooks'][] = array(
 	'path' => __FILE__,
 	'name' => 'Citation',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Citation',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Citation',
 	'author' => 'Magnus Manske',
 );
 
