@@ -19,7 +19,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'ChemFunctions',
 	'descriptionmsg' => 'chemicalsource-desc',
 	'author'         => 'Dirk Beetstra',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Chemistry',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Chemistry',
 );
 
 /** Chemform wikipedia extension.

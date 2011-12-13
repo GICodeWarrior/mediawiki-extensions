@@ -38,7 +38,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'Special:Chemicalsources',
 	'author' => 'Dirk Beetstra',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Chemistry/ChemFunctions.php',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Chemistry/ChemFunctions.php',
 	'descriptionmsg' => 'chemicalsources-desc',
 );
 
