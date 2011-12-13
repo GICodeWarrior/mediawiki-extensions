@@ -30,7 +30,7 @@ $wgExtensionCredits[ 'parserhook' ][] = array(
 	'author'          => 'David M. Sledge',
 	'name'            => 'Pipe Escape',
 	'version'         => ExtPipeEsc::VERSION,
-	'url'             => 'http://www.mediawiki.org/wiki/Extension:Pipe_Escape',
+	'url'             => 'https://www.mediawiki.org/wiki/Extension:Pipe_Escape',
 	'descriptionmsg'  => 'pipeescape-desc',
 );
 
