@@ -66,7 +66,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'OAIRepository',
 	'author'         => 'Brion Vibber',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:OAIRepository',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:OAIRepository',
 	'descriptionmsg' => 'oai-desc',
 );
 
