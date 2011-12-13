@@ -23,7 +23,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '0.1.1',
 	'author' => 'Jack Phoenix',
 	'descriptionmsg' => 'automaticboardwelcome-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Automatic_Board_Welcome',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Automatic_Board_Welcome',
 );
 
 $wgHooks['AddNewAccount'][] = 'wfSendUserBoardMessageOnRegistration';
