@@ -39,7 +39,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => array( 'Travis Derouin', 'Bryan Tong Minh' ),
 	'version' => '2.0',
 	'descriptionmsg' => 'importfreeimages-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ImportFreeImages',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ImportFreeImages',
 );
 
 // Set up the new special page
