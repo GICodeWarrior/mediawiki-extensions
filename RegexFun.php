@@ -27,7 +27,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg' => 'regexfun-desc',
 	'version'        => ExtRegexFun::VERSION,
 	'author'         => '[http://www.mediawiki.org/wiki/User:Danwe Daniel Werner]',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Regex_Fun',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Regex_Fun',
 );
 
 // language files:
