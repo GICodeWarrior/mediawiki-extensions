@@ -8,7 +8,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'CommunityApplications',
 	'author' => 'Andrew Garrett',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CommunityApplications',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CommunityApplications',
 );
 
 // Reader for CommunityHiring data
