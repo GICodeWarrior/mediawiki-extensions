@@ -37,7 +37,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'CommunityVoice',
 	'author' => 'Trevor Parscal',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CommunityVoice',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CommunityVoice',
 	'descriptionmsg' => 'communityvoice-desc',
 	'version' => '0.1.0',
 );
