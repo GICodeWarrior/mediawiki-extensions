@@ -31,7 +31,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => array( 'Michael Dale' ),
 	'version' => '0.2',
 	'descriptionmsg' => 'addmediawizard-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Add_Media_Wizard'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Add_Media_Wizard'
 );
 
 $AMWdir = dirname(__FILE__) . '/';
