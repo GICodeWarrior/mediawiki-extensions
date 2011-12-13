@@ -23,7 +23,7 @@ $wgExtensionCredits['other'][] = array(
         'name' => 'Woopra Live Stats Tracking',
         'author' => array( 'Shane' ),
         'version' => '1.1.0',
-        'url' => 'http://www.mediawiki.org/wiki/Extension:Woopra',
+        'url' => 'https://www.mediawiki.org/wiki/Extension:Woopra',
 	'descriptionmsg' => 'woopra-desc',
 );
  
