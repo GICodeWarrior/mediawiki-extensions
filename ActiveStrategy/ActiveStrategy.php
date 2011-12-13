@@ -5,7 +5,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'ActiveStrategy',
 	'author'         => array( 'Tim Starling', 'Andrew Garrett' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:ActiveStrategy',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:ActiveStrategy',
 	'descriptionmsg' => 'active-strategy-desc',
 );
 
