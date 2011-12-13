@@ -14,7 +14,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '2.0',
 	'author'         => 'Al Maghi',
 	'email'          => 'alfred.maghi@gmail.com',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:MostRevisors',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:MostRevisors',
 	'descriptionmsg' => 'mostrevisors-desc',
 );
 
