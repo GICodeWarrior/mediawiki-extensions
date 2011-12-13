@@ -18,7 +18,7 @@ $wgSpecialPages[ "ApiExplorer" ] = "SpecialApiExplorer";
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'API Explorer',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ApiExplorer',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ApiExplorer',
 	'descriptionmsg' => 'apiexplorer-desc',
 	'author' => '[http://seancolombo.com Sean Colombo]'
 );
