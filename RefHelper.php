@@ -21,7 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'RefHelper',
 	'author' => 'Jonathan Williford',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:RefHelper',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:RefHelper',
 	'descriptionmsg' => 'refhelper-desc',
 	'version' => '0.0.2',
 );
