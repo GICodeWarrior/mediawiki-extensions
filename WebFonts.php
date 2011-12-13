@@ -22,7 +22,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'WebFonts',
 	'author'         => array( 'Santhosh Thottingal', 'Niklas Laxström' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:WebFonts',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:WebFonts',
 	'descriptionmsg' => 'webfonts-desc',
 );
 
