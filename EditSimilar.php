@@ -40,7 +40,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'EditSimilar',
 	'version' => '1.20',
 	'author' => array( 'Bartek Łapiński', 'Łukasz Garczewski' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:EditSimilar',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:EditSimilar',
 	'descriptionmsg' => 'editsimilar-desc',
 );
 
