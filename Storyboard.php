@@ -87,7 +87,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Storyboard',
 	'version' => Storyboard_VERSION,
 	'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Storyboard',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Storyboard',
 	'descriptionmsg' => 'storyboard-desc',
 );
 
