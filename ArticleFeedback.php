@@ -143,7 +143,7 @@ $wgExtensionCredits['other'][] = array(
 	),
 	'version' => '0.2.0',
 	'descriptionmsg' => 'articlefeedback-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleFeedback'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ArticleFeedback'
 );
 
 // Autoloading
