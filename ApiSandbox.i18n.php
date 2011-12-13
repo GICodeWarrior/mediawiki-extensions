@@ -348,7 +348,7 @@ Reportâd-vos sur [//www.mediawiki.org/wiki/API la documentacion de l’API] por
 $messages['gl'] = array(
 	'apisb-desc' => 'Permite a depuración das chamadas da [//www.mediawiki.org/wiki/API API de MediaWiki] desde o navegador',
 	'apisandbox' => 'Zona de probas API',
-	'apisb-no-js' => "'''Error''': Esta característica necesita JavaScript.",
+	'apisb-no-js' => "'''Erro:''' Esta característica necesita JavaScript.",
 	'apisb-intro' => "Use esta páxina para experimentar coa '''API de MediaWiki'''.
 Consulte a [//www.mediawiki.org/wiki/API documentación da API] para obter máis información sobre o uso da API.",
 	'apisb-api-disabled' => 'API está desactivado neste sitio.',
