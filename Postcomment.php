@@ -20,7 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'PostComment',
 	'author' => 'Travis Derouin, Siebrand Mazeland',
 	'descriptionmsg' => 'postcomment_desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:PostComment',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:PostComment',
 );
 
 $dir = dirname(__FILE__) . '/';
