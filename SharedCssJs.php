@@ -21,7 +21,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'SharedCssJs',
 	'author' => array( "Tim Weyer" ),
 	'version' => '1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SharedCssJs',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SharedCssJs',
 	'descriptionmsg' => 'sharedcssjs-desc',
 );
 
