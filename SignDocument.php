@@ -29,7 +29,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author'         => 'Daniel Cannon',
 	'version'        => '0.1',
 	'descriptionmsg' => 'signature-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:SignDocument',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:SignDocument',
 );
 
 $dir = dirname( __FILE__ ) . '/';
