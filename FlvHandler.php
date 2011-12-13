@@ -22,7 +22,7 @@ $wgExtensionCredits['media'][] = array(
 	'name'         => 'FLV Image Handler',
 	'version'      => 'r4',
 	'author'       => 'Adam Nielsen',
-	'url'          => 'http://www.mediawiki.org/wiki/Extension:FlvHandler',
+	'url'          => 'https://www.mediawiki.org/wiki/Extension:FlvHandler',
 	'descriptionmsg' => 'flvhandler_desc'
 );
 
