@@ -6,7 +6,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Reflect',
 	'version' => '0.1-alpha',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Reflect',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Reflect',
 	'author' => array( 'Travis Kriplean' ),
 	'descriptionmsg' => 'reflect-desc',
 );
