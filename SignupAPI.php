@@ -21,7 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'SignupAPI',
 	'version' => 1.0,
 	'author' => 'Akshay Agarwal',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SignupAPI',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SignupAPI',
 	'descriptionmsg' => 'signupapi-desc',
 );
 
