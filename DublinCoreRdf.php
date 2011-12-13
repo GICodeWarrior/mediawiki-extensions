@@ -3,7 +3,7 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'DublinCoreRdf',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:DublinCoreRdf',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:DublinCoreRdf',
 	'author' => 'Evan Prodromou',
 	'descriptionmsg' => "dublincorerdf-desc"
 );
