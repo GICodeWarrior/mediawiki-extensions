@@ -58,7 +58,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'ExternalPages',
 	'version' => '0.1',
 	'author' => 'Ariel Glenn',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ExternalPages',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ExternalPages',
 	'descriptionmsg' => 'externalpages-desc',
 );
 
