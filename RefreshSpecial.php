@@ -21,7 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Refresh Special',
 	'author' => array( 'Bartek Łapiński', 'Jack Phoenix' ),
 	'version' => '1.2.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:RefreshSpecial',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:RefreshSpecial',
 	'descriptionmsg' => 'refreshspecial-desc',
 );
 
