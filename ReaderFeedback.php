@@ -27,7 +27,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Reader Feedback',
 	'author'         => array( 'Aaron Schulz' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:ReaderFeedback',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:ReaderFeedback',
 	'descriptionmsg' => 'readerfeedback-desc',
 );
 
