@@ -15,7 +15,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '0.3',
 	'name'           => 'InspectCache',
 	'author'         => array( 'Tim Starling', 'Brion Vibber' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:InspectCache',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:InspectCache',
 	'descriptionmsg' => 'inspectcache-desc',
 );
 
