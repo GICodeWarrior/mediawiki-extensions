@@ -56,7 +56,7 @@ $wgExtensionCredits['parserhooks'][] = array(
 	'name' => 'LilyPond',
 	'version' => 0.01,
 	'author' => 'Johannes E. Schindelin',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:LilyPond',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:LilyPond',
 	'descriptionmsg' => 'lilypond-desc',
 );
 
