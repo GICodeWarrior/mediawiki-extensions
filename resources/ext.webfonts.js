@@ -108,7 +108,7 @@
 			if ( 'version' in fontconfig ) {
 				version = fontconfig.version;
 			}
-			var versionSuffix = "?version=" + version;
+			var versionSuffix = "?version=" + version + '&20111213';
 			var styleString =
 				"<style type='text/css'>\n@font-face {\n"
 				+ "\tfont-family: '"+fontFamily+"';\n";
