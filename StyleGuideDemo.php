@@ -22,7 +22,7 @@ $wgExtensionCredits['other'][] = array(
 	),
 	'version' => '0.1.0',
 	'descriptionmsg' => 'styleguidedemo-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:StyleGuideDemo'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:StyleGuideDemo'
 );
 
 // Autoloading
