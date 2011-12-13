@@ -111,8 +111,8 @@ class ContestantPager extends TablePager {
 	 *
 	 * @return Language
 	 */
-	public function getLang() {
-		return version_compare( $GLOBALS['wgVersion'], '1.18', '>' ) ? parent::getLang() : $GLOBALS['wgLang'];
+	public function getLanguage() {
+		return version_compare( $GLOBALS['wgVersion'], '1.18', '>' ) ? parent::getLanguage() : $GLOBALS['wgLang'];
 	}
 
 	/**
@@ -213,14 +213,14 @@ class ContestantPager extends TablePager {
 				$value = htmlspecialchars( wfMsg( 'contest-contestant-' . ( $value === '1' ? 'yes' : 'no' ) ) );
 				break;
 			case 'contestant_comments':
-				$value = htmlspecialchars( $this->getLang()->formatNum( $value ) );
+				$value = htmlspecialchars( $this->getLanguage()->formatNum( $value ) );
 				break;
 			case 'contestant_rating':
 				$value = '<div style="white-space:nowrap;">' . htmlspecialchars( wfMsgExt(
 					'contest-contestant-rating',
 					'parsemag',
-					$this->getLang()->formatNum( $value / 100 ),
-					$this->getLang()->formatNum( $this->mCurrentRow->contestant_rating_count )
+					$this->getLanguage()->formatNum( $value / 100 ),
+					$this->getLanguage()->formatNum( $this->mCurrentRow->contestant_rating_count )
 				) ) . '</div>';
 				break;
 			case 'contestant_submission':

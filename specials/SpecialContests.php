@@ -188,7 +188,7 @@ class SpecialContests extends SpecialContestPage {
 			$fields[] = Html::element(
 				'td',
 				array(),
-				$this->getLang()->formatNum( $contest->getField( 'submission_count' ) )
+				$this->getLanguage()->formatNum( $contest->getField( 'submission_count' ) )
 			);
 
 			$links = array();
@@ -247,7 +247,7 @@ class SpecialContests extends SpecialContestPage {
 			$fields[] = Html::rawElement(
 				'td',
 				array(),
-				$this->getLang()->pipeList( $links )
+				$this->getLanguage()->pipeList( $links )
 			);
 
 			$out->addHTML( '<tr>' . implode( '', $fields ) . '</tr>' );

@@ -180,7 +180,7 @@ abstract class SpecialContestPage extends SpecialPage {
 			$subPage = $this->subPage;
 		}
 
-		$this->getOutput()->addHTML( self::getNavigation( $subPage, $this->getUser(), $this->getLang(), $this->getName() ) );
+		$this->getOutput()->addHTML( self::getNavigation( $subPage, $this->getUser(), $this->getLanguage(), $this->getName() ) );
 	}
 
 }

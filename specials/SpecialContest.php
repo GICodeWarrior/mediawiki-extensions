@@ -118,13 +118,13 @@ class SpecialContest extends SpecialContestPage {
 
 		$stats['name'] = $contest->getField( 'name' );
 		$stats['status'] = Contest::getStatusMessage( $contest->getStatus() );
-		$stats['submissioncount'] = $this->getLang()->formatNum( $contest->getField( 'submission_count' ) );
+		$stats['submissioncount'] = $this->getLanguage()->formatNum( $contest->getField( 'submission_count' ) );
 
 		$stats['end'] = wfMsgExt(
 			$contest->getDaysLeft() < 0 ? 'contest-contest-days-ago' : 'contest-contest-days-left',
 			'parsemag',
-			$this->getLang()->timeanddate( $contest->getField( 'end' ), true ),
-			$this->getLang()->formatNum( abs( $contest->getDaysLeft() ) )
+			$this->getLanguage()->timeanddate( $contest->getField( 'end' ), true ),
+			$this->getLanguage()->formatNum( abs( $contest->getDaysLeft() ) )
 		);
 
 		return $stats;

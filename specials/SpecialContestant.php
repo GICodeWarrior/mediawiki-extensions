@@ -214,11 +214,11 @@ class SpecialContestant extends SpecialContestPage {
 		$stats['rating'] = htmlspecialchars( wfMsgExt(
 			'contest-contestant-rating',
 			'parsemag',
-			$this->getLang()->formatNum( $contestant->getField( 'rating' ) / 100 ),
-			$this->getLang()->formatNum( $contestant->getField( 'rating_count' ) )
+			$this->getLanguage()->formatNum( $contestant->getField( 'rating' ) / 100 ),
+			$this->getLanguage()->formatNum( $contestant->getField( 'rating_count' ) )
 		) );
 
-		$stats['comments'] = htmlspecialchars( $this->getLang()->formatNum( $contestant->getField( 'comments' ) ) );
+		$stats['comments'] = htmlspecialchars( $this->getLanguage()->formatNum( $contestant->getField( 'comments' ) ) );
 
 		return $stats;
 	}
@@ -248,7 +248,7 @@ class SpecialContestant extends SpecialContestPage {
 			$message = wfMsgExt(
 				'contest-contestant-voted',
 				'parsemag',
-				$this->getLang()->formatNum( $vote->getField( 'value' ) )
+				$this->getLanguage()->formatNum( $vote->getField( 'value' ) )
 			);
 
 			$out->addHTML( Html::hidden( 'contestant-vote-id', $vote->getId() ) );
@@ -276,7 +276,7 @@ class SpecialContestant extends SpecialContestPage {
 				Html::element(
 					'label',
 					array( 'for' => 'contestant-rating-' . $value ),
-					$this->getLang()->formatNum( $value )
+					$this->getLanguage()->formatNum( $value )
 				)
 			);
 		}
@@ -348,12 +348,12 @@ class SpecialContestant extends SpecialContestPage {
 				'contest-contestant-comment-by',
 				Linker::userLink( $comment->getField( 'user_id' ), $user->getName() ) .
 					Linker::userToolLinks( $comment->getField( 'user_id' ), $user->getName() )
-			) . '&#160;&#160;&#160;' . htmlspecialchars( $this->getLang()->timeanddate( $comment->getField( 'time' ), true ) )
+			) . '&#160;&#160;&#160;' . htmlspecialchars( $this->getLanguage()->timeanddate( $comment->getField( 'time' ), true ) )
 		);
 
 		$html .= Html::rawElement(
 			'div',
-			array( 'class' => 'contestant-comment-text mw-content-' . $this->getLang()->getDir() . '' ),
+			array( 'class' => 'contestant-comment-text mw-content-' . $this->getLanguage()->getDir() . '' ),
 			$this->getOutput()->parse( $comment->getField( 'text' ) )
 		);
 

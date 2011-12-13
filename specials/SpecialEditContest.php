@@ -124,7 +124,7 @@ class SpecialEditContest extends FormSpecialPage {
 		else {
 			if ( !$isNew ) {
 				$this->getOutput()->addHTML(
-					SpecialContestPage::getNavigation( $contest->getField( 'name' ), $this->getUser(), $this->getLang(), $this->getName() )
+					SpecialContestPage::getNavigation( $contest->getField( 'name' ), $this->getUser(), $this->getLanguage(), $this->getName() )
 				);
 			}
 
