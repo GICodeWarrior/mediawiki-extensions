@@ -24,7 +24,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'            => 'PeopleCategories',
 	'version'         => '1.0.0',
 	'author'          => 'Robert Leverington for whatleadership.com',
-	'url'             => 'http://www.mediawiki.org/wiki/Extension:PeopleCategories',
+	'url'             => 'https://www.mediawiki.org/wiki/Extension:PeopleCategories',
 	'descriptionmsg'  => 'peoplecategories-desc'
 );
 
