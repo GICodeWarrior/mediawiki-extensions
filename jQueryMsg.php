@@ -31,7 +31,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'jQueryMsg',
 	'author' => array( 'Neil Kandalgaonkar', 'Ian Baker' ),
 	'version' => '0.1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:jQueryMsg',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:jQueryMsg',
 	'descriptionmsg' => 'jquerymsg-desc',
 );
 
