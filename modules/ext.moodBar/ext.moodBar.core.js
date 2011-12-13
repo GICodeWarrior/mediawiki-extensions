@@ -341,6 +341,11 @@
 				$( '#mw-moodBar-feedbackInput' )
 					.NobleCount('#mw-moodBar-charCount', {	
 						max_chars:140,
+						/*
+						 * Callbacks:
+						 * function on_negative: called when text field is negative in remaining characters.
+						 * @param t_obj is the text object.  need to pass to the callback to add modifiers. 
+						 */
 						on_negative: function( t_obj ) {
 							$( t_obj )
 							.addClass('mw-moodBar-feedback-invalid')
@@ -348,6 +353,10 @@
 							.find('.mw-moodBar-formNote')
 							.addClass('red-bold');
 						},
+						/*
+						 * function on_positive: called when text field has available remaining characters.
+						 * @param t_obj is the text object.  need to pass to the callback to add modifiers. 
+						 */
 						on_positive: function( t_obj ) {
 							$( t_obj )
 							.removeClass( 'mw-moodBar-feedback-invalid')

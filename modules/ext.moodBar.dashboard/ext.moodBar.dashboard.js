@@ -463,13 +463,22 @@ jQuery(function( $ ) {
 				.find('.fbd-response-text')
 				.NobleCount('.fbd-response-charCount', {
 					max_chars:5000,
-					on_negative: function( t_obj ) {
+					/*
+					 * Callbacks:
+					 * function on_negative: called when text field is negative in remaining characters.
+					 * @param t_obj is the text object.  need to pass to the callback to add modifiers. 
+					 */
+					on_negative: function( t_obj ) { 
 						$( t_obj )
 							.addClass('fbd-response-text-invalid')
 							.prev()
 							.find('span')
 							.addClass('red-bold');
 					},
+					/*
+					 * function on_positive: called when text field has available remaining characters.
+					 * @param t_obj is the text object.  need to pass to the callback to add modifiers. 
+					 */
 					on_positive: function( t_obj ) {
 						$( t_obj )
 							.removeClass( 'fbd-response-text-invalid')
