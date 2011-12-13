@@ -9,7 +9,7 @@ $wgExtensionCredits['specialpage'][] = array(
     'name' => 'E-mail users',
     'author' => 'Liangent',
     'descriptionmsg' => 'emailusers-desc',
-    'url' => 'http://www.mediawiki.org/wiki/Extension:EmailUsers',
+    'url' => 'https://www.mediawiki.org/wiki/Extension:EmailUsers',
 );
 
 $dir = dirname( __FILE__ ) . '/';
