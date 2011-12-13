@@ -23,7 +23,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.1',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
 	'description' => '[[Special:SiteMetrics|Displays statistics about social tools]]',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SiteMetrics',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SiteMetrics',
 );
 
 // Set up the new special page
