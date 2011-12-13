@@ -20,7 +20,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'FeedsFromPrivateWikis',
 	'version' => '0.1',
 	'author' => 'Raimond Spekking',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:FeedsFromPrivateWikis',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:FeedsFromPrivateWikis',
 	'descriptionmsg' => 'feedsfromprivatewikis-desc',
 );
 
