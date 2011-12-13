@@ -49,7 +49,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'EditConflict',
 	'version' => '0.4.2',
 	'author' => 'QuestPC',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:EditConflict',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:EditConflict',
 	'descriptionmsg' => 'editconflict_desc'
 );
 
