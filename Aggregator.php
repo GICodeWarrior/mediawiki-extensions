@@ -9,7 +9,7 @@ global $wgExtensionFunctions;
 $wgExtensionCredits['parserhooks'][] = array(
 	'path' => __FILE__,
 	'name' => 'Aggregator',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Aggregator',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Aggregator',
 	'author' => 'Brion Vibber',
 );
 
