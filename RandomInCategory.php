@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Random in category',
 	'author' => array( 'VasilievVV', 'Sam Reed' ),
 	'version' => '2.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:RandomInCategory',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:RandomInCategory',
 	'descriptionmsg' => 'randomincategory-desc',
 );
 
