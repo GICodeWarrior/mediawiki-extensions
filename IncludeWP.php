@@ -48,7 +48,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => array(
 		'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
 	),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Include_WP',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Include_WP',
 	'descriptionmsg' => 'includewp-desc'
 );
 
