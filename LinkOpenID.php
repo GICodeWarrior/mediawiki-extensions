@@ -17,7 +17,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'LinkOpenID',
 	'author'         => 'Michael Holzt',
 	'descriptionmsg' => 'linkopenid-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:LinkOpenID',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:LinkOpenID',
 );
 
 $wgHooks['ArticleViewHeader'][] = 'wfLinkOpenIDViewHeader';
