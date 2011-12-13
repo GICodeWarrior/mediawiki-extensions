@@ -39,7 +39,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Form',
 	'version' => '0.5.0',
 	'author' => 'Evan Prodromou',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Form',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Form',
 	'descriptionmsg' => 'form-desc',
 );
 
