@@ -125,10 +125,6 @@ final class ContestHooks {
 
 			// Find the watchlist item and replace it by the my contests link and itself.
 			if ( $wgUser->isLoggedIn() && $wgUser->getOption( 'contest_showtoplink' ) ) {
-				$keys = array_keys( $personal_urls );
-				$watchListLocation = array_search( 'watchlist', $keys );
-				$watchListItem = $personal_urls[$keys[$watchListLocation]];
-
 				$url = SpecialPage::getTitleFor( 'MyContests' )->getLinkUrl();
 				$myContests = array(
 					'text' => wfMsg( 'contest-toplink' ),
@@ -136,7 +132,9 @@ final class ContestHooks {
 					'active' => ( $url == $title->getLinkUrl() )
 				);
 
-				array_splice( $personal_urls, $watchListLocation, 1, array( $myContests, $watchListItem ) );
+				$insertUrls = array( 'mycontests' => $myContests );
+		
+				$personal_urls = wfArrayInsertAfter( $personal_urls, $insertUrls, 'watchlist' );
 			}
 		}
 
