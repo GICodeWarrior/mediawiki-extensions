@@ -218,16 +218,20 @@
 		 */
 		loadFontsForLangAttr: function() {
 			var languages = mw.webfonts.config.languages;
+			var requested = [mw.config.get( 'wgUserVariant' ), mw.config.get( 'wgContentLanguage' ), mw.config.get( 'wgUserLanguage' )];
 			// If there are tags with lang attribute, 
 			$( 'body' ).find( '*[lang]' ).each( function( index ) {
-				// .. check the availability of font, add a font-family style if it does not have any
-				if( languages[this.lang] && ( !this.style.fontFamily || this.style.fontFamily === 'none' ) ) {
-					fontFamily = languages[this.lang][0];
-					mw.webfonts.addFont( fontFamily );
-					$(this).css( 'font-family', fontFamily ).addClass( 'webfonts-lang-attr' );
+				// If the lang attribute value is same as one of
+				// contentLang,useLang, variant, no need to do this.
+				if( $.inArray( this.lang , requested ) === -1 ) {
+					// check the availability of font, add a font-family style if it does not have any
+					if( languages[this.lang] && ( !this.style.fontFamily || this.style.fontFamily === 'none' ) ) {
+						fontFamily = languages[this.lang][0];
+						mw.webfonts.addFont( fontFamily );
+						$(this).css( 'font-family', fontFamily ).addClass( 'webfonts-lang-attr' );
+					}
 				}
 			});
-			
 		},
 		
 		/**
