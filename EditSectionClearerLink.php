@@ -35,7 +35,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'EditSectionClearerLink',
 	'author' => 'Ian Baker',
 	'version' => '0.1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:EditSectionClearerLink',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:EditSectionClearerLink',
 	'descriptionmsg' => 'editsectionclearerlink-desc',
 );
 
