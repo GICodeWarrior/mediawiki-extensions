@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '1.0',
 	'author'         => 'Al Maghi',
 	'email'          => 'alfred.maghi@gmail.com',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:CooperationStatistics',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:CooperationStatistics',
 	'descriptionmsg' => 'cooperationstatistics-desc',
 );
 
