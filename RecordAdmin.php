@@ -31,7 +31,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'Record administration',
 	'author'         => array( '[http://www.organicdesign.co.nz/nad Aran Dunkley]', 'Bertrand GRONDIN', 'Siebrand Mazeland' ),
 	'descriptionmsg' => 'recordadmin-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:RecordAdmin',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:RecordAdmin',
 	'version'        => RECORDADMIN_VERSION,
 );
 
