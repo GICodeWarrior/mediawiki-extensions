@@ -38,7 +38,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'        => '1.1h',
 	'author'         => 'Ryan Lane',
 	'descriptionmsg' => 'smoothgallery-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:SmoothGallery',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:SmoothGallery',
 );
 
 $wgHooks['ParserFirstCallInit'][] = 'efSmoothGallerySetHooks';
