@@ -3225,6 +3225,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedback-form-panel-expertise-other' => 'Žórło mojich znajomosćow njeje tu podate',
 	'articlefeedback-form-panel-helpimprove' => 'Bych rady pomhał {{GRAMMAR:akuzatiw|{{SITENAME}}}} polěpšić, pósćelće mi e-mejl (opcionalny)',
 	'articlefeedback-form-panel-submit' => 'Posudki pósłać',
+	'articlefeedback-form-panel-pending' => 'Twoje posudki hišće njejsu so wotpósłali',
 	'articlefeedback-form-panel-success' => 'wuspěšnje składowany',
 	'articlefeedback-form-panel-expiry-title' => 'Twoje pohódnoćenja su spadnyli',
 	'articlefeedback-form-panel-expiry-message' => 'Prošu pohódnoć tutu stronu znowa a pósćel nowe pohódnoćenja.',
@@ -3272,6 +3273,8 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articleFeedback-table-caption-recentlows' => 'Aktualne niske stawy',
 	'articleFeedback-table-heading-page' => 'Strona',
 	'articleFeedback-table-heading-average' => 'Přerězk',
+	'articleFeedback-copy-above-highlow-tables' => 'To je eksperimentelna funkcija. Prošu daj swój komentar na [$1 diskusijnej stronje].',
+	'articlefeedback-disable-preference' => 'Asistent za posudźenje nastawkow na stronje njepokazać',
 );
 
 /** Hungarian (Magyar)
