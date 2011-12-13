@@ -5,7 +5,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Trade Track',
 	'author'         => array( 'Brandon Harris' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:TradeTrack',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:TradeTrack',
 	'descriptionmsg' => 'tradetrack-desc',
 );
 
