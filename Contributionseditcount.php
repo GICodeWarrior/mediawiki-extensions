@@ -19,7 +19,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Contributionseditcount',
 	'descriptionmsg' => 'contributionseditcount-desc',
 	'author' => array( 'Ævar Arnfjörð Bjarmason', 'Chad Horohoe' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Contributionseditcount',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Contributionseditcount',
 );
 $wgExtensionMessagesFiles['Contributionseditcount'] = dirname( __FILE__ ) . '/Contributionseditcount.i18n.php';
 $wgHooks['SpecialContributionsBeforeMainOutput'][] = 'wfContributionseditcount';
