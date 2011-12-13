@@ -24,7 +24,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Redirect',
 	'version' => '1.0',
 	'author' => array( 'Marcel Minke', 'Siebrand Mazeland' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Redirect',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Redirect',
 	'descriptionmsg' => 'redirect-desc',
 );
 
