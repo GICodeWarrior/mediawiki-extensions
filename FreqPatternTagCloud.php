@@ -30,7 +30,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.0',
 	'name' => 'FreqPatternTagCloud',
 	'descriptionmsg' => 'freqpatterntagcloud-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:FrequentPatternTagCloud',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:FrequentPatternTagCloud',
 );
 
 // Register hook to prepare header files
