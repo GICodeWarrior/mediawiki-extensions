@@ -18,7 +18,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'     => '1.0',
 	'author'      => 'Tim Laqua',
 	'description' => 'Allows you to include phpBB data in wiki pages',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:phpbbData',
+	'url'         => 'https://www.mediawiki.org/wiki/Extension:phpbbData',
 );
 
 $wgHooks['ParserFirstCallInit'][] = 'efPhpbbData_ParserFirstCallInit';
