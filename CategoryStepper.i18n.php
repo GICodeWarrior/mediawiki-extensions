@@ -807,10 +807,11 @@ $messages['vec'] = array(
 	'categorystepper-start' => '(Scominsio de la categoria)',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'categorystepper-desc' => "Ozutab navigacijan panelin, kudamb laskeb kävuda edehe da tagaze sid kategorijan südäimišton kirjamištnimikirjutestme, kudambha om sidotud lehtpol'.",
 	'categorystepper-end' => '(Kategorijan lop)',
 	'categorystepper-start' => '(Kategorijan augotiž)',
 );
