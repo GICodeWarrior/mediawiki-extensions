@@ -9,7 +9,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'WikimediaMobile',
 	'author' => array( 'Tim Starling', 'Brion Vibber', 'Hampton Catlin', 'Patrick Reilly' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:WikimediaMobile',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:WikimediaMobile',
 	'descriptionmsg' => 'wikimediamobile-desc',
 );
 
