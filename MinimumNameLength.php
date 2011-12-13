@@ -23,7 +23,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '1.1',
 	'author' => 'Rob Church',
 	'descriptionmsg' => 'minnamelength-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Minimum_Name_Length',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Minimum_Name_Length',
 );
 
 $wgExtensionMessagesFiles['MinimumNameLength'] = dirname(__FILE__) . '/MinimumNameLength.i18n.php';
