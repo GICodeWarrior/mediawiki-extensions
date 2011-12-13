@@ -38,7 +38,7 @@ if ( !defined( 'SMWAutoRefresh_VERSION' ) ) {
 		'author' => array(
 			'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
 		),
-		'url' => 'http://www.mediawiki.org/wiki/Extension:SMWAutoRefresh',
+		'url' => 'https://www.mediawiki.org/wiki/Extension:SMWAutoRefresh',
 		'descriptionmsg' => 'smwautorefresh-desc'
 	);
 	
