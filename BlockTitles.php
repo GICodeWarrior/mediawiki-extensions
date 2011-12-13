@@ -21,7 +21,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'BlockTitles',
 	'author' => 'Travis Derouin',
 	'descriptionmsg' => 'blocktitles-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:BlockTitles',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:BlockTitles',
 );
 
 $dir = dirname( __FILE__ ) . '/';
