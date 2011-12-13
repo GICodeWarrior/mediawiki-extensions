@@ -8,7 +8,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Resumable Upload',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ResumableUpload',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ResumableUpload',
 	'author' => array( 'Mark A. Hershberger', 'Michael Dale' ),
 	'descriptionmsg' => 'resumableupload-desc',
 );
