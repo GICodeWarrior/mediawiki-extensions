@@ -30,7 +30,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '1.0',
 	'descriptionmsg' => 'filepagemasking-desc',
 	'path' =>  __FILE__,
-	'url' => 'http://www.mediawiki.org/wiki/Extension:FilePageMasking',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:FilePageMasking',
 );
 
 $wgFilePageMaskingCharacter = '_';
