@@ -25,5 +25,5 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.2',
 	'author' => 'Algorithmix',
 	'descriptionmsg' => 'call-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Call',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Call',
 );
