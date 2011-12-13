@@ -20,7 +20,7 @@ if (!defined('MEDIAWIKI')) {
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'HelpCommons',
 	'author'         => array( 'Tim Weyer' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:HelpCommons',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:HelpCommons',
 	'descriptionmsg' => 'helpcommons-desc',
 	'version'        => '1.0.1',
 );
