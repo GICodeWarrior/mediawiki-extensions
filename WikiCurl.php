@@ -22,7 +22,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '1.0',
 	'author' => array('Tomasz Klim', 'Mikołaj Musielak'),
 	'description' => 'Universal CURL extension',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:WikiCurl'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:WikiCurl'
 );
 
 class WikiCurl {
