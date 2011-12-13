@@ -66,7 +66,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'SelectCategory',
 	'version'        => '0.8.1',
 	'author'         => array( 'Leon Weber', 'Manuel Schneider' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:SelectCategory',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:SelectCategory',
 	'descriptionmsg' => 'selectcategory-desc',
 );
 
