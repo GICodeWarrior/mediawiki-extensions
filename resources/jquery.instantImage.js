@@ -154,7 +154,7 @@
 									
 									$this.html( $( '<img />' ).attr( {
 										'src': info[i].thumburl,
-										'width': settings.imagewidth + 'px'
+										'width': settings.imagewidth
 									} ) );
 									
 									return;

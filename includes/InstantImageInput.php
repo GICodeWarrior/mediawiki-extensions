@@ -104,12 +104,7 @@ class InstantImageInput extends SFFormInput {
 			}
 			else {
 				global $wgParser;
-				
-				$html .= $wgParser->parse(
-					'[[' . $cur_value . '|' . $width . ']]',
-					Title::newFromText( self::getPage() ),
-					( new ParserOptions() )
-				)->getText();
+				$html .= $wgParser->recursiveTagParse( '[[' . $cur_value . '|' . $width . 'px ]]' );				
 			}
 		}
 		
@@ -139,15 +134,8 @@ class InstantImageInput extends SFFormInput {
 	}
 	
 	protected static function getPage() {
-		$parts = explode( '/', $GLOBALS['wgTitle']->getFullText() );
-		
-		// TODO: this will not work for non-en.
-		if ( $parts[0] == 'Special:FormEdit' ) {
-			array_shift( $parts );
-			array_shift( $parts );
-		}
-		
-		return implode( '/', $parts );
+		global $wgParser;
+		return $wgParser->getTitle()->getFullText();
 	}
 	
 }

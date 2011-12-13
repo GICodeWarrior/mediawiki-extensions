@@ -55,10 +55,7 @@ $wgAutoloadClasses['SIISettings'] 				= dirname( __FILE__ ) . '/SemanticImageInp
 
 $wgAutoloadClasses['InstantImageInput'] 		= dirname( __FILE__ ) . '/includes/InstantImageInput.php';
 
-$wgExtensionFunctions[] = function() {
-	global $sfgFormPrinter;
-	$sfgFormPrinter->registerInputType( 'InstantImageInput' );
-};
+$wgExtensionFunctions[] = 'efSIISetup';
 
 // Resource loader modules
 $moduleTemplate = array(
@@ -76,3 +73,9 @@ $wgResourceModules['sii.image'] = $moduleTemplate + array(
 unset( $moduleTemplate );
 
 $egSIISettings = array();
+
+function efSIISetup() {
+	
+	global $sfgFormPrinter;
+	$sfgFormPrinter->registerInputType( 'InstantImageInput' );
+}
