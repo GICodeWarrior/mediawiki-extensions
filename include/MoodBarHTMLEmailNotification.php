@@ -133,7 +133,7 @@ class MoodBarHTMLEmailNotification {
 	protected function composeCommonMailtext() {
 		global $wgPasswordSender, $wgPasswordSenderName, $wgNoReplyAddress;
 		global $wgEnotifFromEditor, $wgEnotifRevealEditorAddress;
-		global $wgEnotifUseRealName;
+		global $wgEnotifUseRealName, $wgRequest;
 
 		$this->composed_common = true;
 	
@@ -161,7 +161,12 @@ class MoodBarHTMLEmailNotification {
 	        // build the response text
 		$textResponse = htmlspecialchars( $this->response );
 		$messageCache = MessageCache::singleton();
+		
+		// This is ugly, it's used to add domain name to wiki link so it can be clicked from email.
+		$action = $wgRequest->getVal( 'action' );
+		$wgRequest->setVal( 'action', 'render' );
 		$htmlResponse = $messageCache->parse( $this->response )->getText();
+		$wgRequest->setVal( 'action', $action );
 		
 		//build the copy text
 		$textEmailCopy = wfMessage( 'moodbar-enotif-body-copy-text' )->escaped();
