@@ -19,7 +19,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '1.5.2-piwik0.5.5',
 	'author'         => 'Isb1009',
 	'descriptionmsg' => 'piwik-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Piwik_Integration',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Piwik_Integration',
 );
 
 $wgHooks['SkinAfterBottomScripts'][]  = 'efPiwikHookText';
