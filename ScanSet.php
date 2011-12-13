@@ -15,7 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Not a valid entry point.' );
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'ScanSet',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ScanSet',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ScanSet',
 	'descriptionmsg' => 'scanset-desc',
 	'author' => 'Tim Starling',
 );
