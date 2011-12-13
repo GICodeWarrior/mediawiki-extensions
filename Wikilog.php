@@ -38,7 +38,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '1.2.0',
 	'author'         => 'Juliano F. Ravasi',
 	'descriptionmsg' => 'wikilog-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Wikilog',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Wikilog',
 );
 
 /**
