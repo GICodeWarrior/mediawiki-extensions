@@ -63,7 +63,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg'  => 'pfunc_desc',
 	'author'          => array('Jack D. Pond'),
 	'license'         => 'GNU Version 2',
-	'url'             => 'http://www.mediawiki.org/wiki/Extension:StringFunctionsEscaped',
+	'url'             => 'https://www.mediawiki.org/wiki/Extension:StringFunctionsEscaped',
 );
 
 $dir = dirname( __FILE__ ) . '/';
