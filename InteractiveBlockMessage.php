@@ -20,7 +20,7 @@ $wgExtensionCredits[version_compare( $wgVersion, '1.17', '>=' ) ? 'userpage tool
 	'version' => '1.0.0',
 	'author' => array( 'Petr Bena' ),
 	'descriptionmsg' => 'interactiveblockmessage-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:InteractiveBlockMessage',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:InteractiveBlockMessage',
 );
 
 $dir = dirname( __FILE__ );
