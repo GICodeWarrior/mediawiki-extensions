@@ -16,7 +16,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Cross-namespace links',
 	'descriptionmsg' => 'crossnamespacelinks-desc',
 	'author' => 'Ævar Arnfjörð Bjarmason',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CrossNamespaceLinks',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CrossNamespaceLinks',
 );
 
 $dir = dirname(__FILE__) . '/';
