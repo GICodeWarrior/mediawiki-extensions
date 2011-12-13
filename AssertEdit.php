@@ -21,7 +21,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'AssertEdit',
 	'author' => 'Steve Sanbeg',
 	'descriptionmsg' => 'assertedit-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Assert_Edit',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Assert_Edit',
 );
 
 $dir = dirname( __FILE__ ) . '/';
