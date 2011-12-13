@@ -37,7 +37,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'DataCenter',
 	'version' => '0.1.0',
 	'author' => 'Trevor Parscal',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:DataCenter',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:DataCenter',
 	'descriptionmsg' => 'datacenter-desc',
 );
 
