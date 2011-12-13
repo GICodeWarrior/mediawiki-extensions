@@ -22,7 +22,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'PovWatch',
 	'version'        => '1.1.1',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:PovWatch',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:PovWatch',
 	'author'         => 'Tim Starling',
 	'descriptionmsg' => 'povwatch_desc',
 );
