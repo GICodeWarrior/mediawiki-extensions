@@ -16,7 +16,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'SisterSites',
 	'author'         => '',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:SisterSites',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:SisterSites',
 );
 
 // This should be in a footer. meh
