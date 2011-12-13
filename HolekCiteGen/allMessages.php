@@ -462,7 +462,7 @@ $messages['gl'] = array(
 	'ts-citegen-Save-it' => 'Pescuda actual',
 	'ts-citegen-Errors-title' => 'Erros',
 	'ts-citegen-Unavailable-SQL' => 'Erro: A base de datos do Toolserver non está dispoñible. MySQL devolveu: %s',
-	'ts-citegen-base-disabled' => 'Error: A base de datos %s non está dispoñible',
+	'ts-citegen-base-disabled' => 'Erro: A base de datos %s non está dispoñible',
 );
 
 /** Swiss German (Alemannisch)
