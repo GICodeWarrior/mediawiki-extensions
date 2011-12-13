@@ -21,7 +21,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'AjaxLogin',
 	'version' => '2.2.1',
 	'author' => array( 'Inez Korczyński', 'Jack Phoenix', 'Ryan Schmidt' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxLogin',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:AjaxLogin',
 	'descriptionmsg' => 'ajaxlogin-desc',
 );
 
