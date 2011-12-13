@@ -15,7 +15,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'Checkpoint',
 	'descriptionmsg' => 'checkpoint-desc',
 	'author'         => 'Ryan Schmidt',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Checkpoint',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Checkpoint',
 	'version'        => '0.1',
 );
 
