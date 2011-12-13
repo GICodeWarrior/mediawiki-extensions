@@ -29,7 +29,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'NamespacePaths',
 	'version' => '1.0',
 	'author' => array( '[http://mediawiki.org/wiki/User:Dantman Daniel Friesen]', '[http://redwerks.org/mediawiki/ Redwerks]' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:NamespacePaths',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:NamespacePaths',
 	'descriptionmsg' => 'namespacepaths-desc',
 );
 
