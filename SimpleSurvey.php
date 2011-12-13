@@ -30,7 +30,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'SimpleSurvey',
 	'author' => array( 'Nimish Gautam' ),
 	'version' => '0.1',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 );
 
 // Register database operations
