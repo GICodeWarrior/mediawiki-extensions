@@ -41,7 +41,7 @@ $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other']
 	'path' => __FILE__,
 	'name' => 'Semantic Forms Inputs',
 	'author' => array( '[http://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]', '...' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs',
 	'descriptionmsg' => 'semanticformsinputs-desc',
 	'version' => SFI_VERSION,
 );
