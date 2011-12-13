@@ -20,7 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Todo',
 	'version' => '0.3',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Todo',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Todo',
 	'author' => array( 'Brion Vibber', 'Bertrand Grondin' ),
 	'descriptionmsg' => 'todo-desc',
 );
