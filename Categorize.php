@@ -42,7 +42,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'        => __FILE__,
 	'name'        => 'Categorize',
 	'author'      => 'Thomas Fauré',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:Categorize',
+	'url'         => 'https://www.mediawiki.org/wiki/Extension:Categorize',
 	'descriptionmsg' => 'categorize-desc',
 	'version'     => '0.1.2'
 );
