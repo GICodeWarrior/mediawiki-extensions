@@ -14,7 +14,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Duplicator',
 	'version' => '1.2',
 	'author' => 'Rob Church',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Duplicator',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Duplicator',
 	'descriptionmsg' => 'duplicator-desc',
 );
 
