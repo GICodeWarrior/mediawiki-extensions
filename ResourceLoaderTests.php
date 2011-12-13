@@ -17,7 +17,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'ResourceLoaderTests',
 	'author' => array( 'Trevor Parscal' ),
 	'version' => '0.1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ResourceLoaderTests',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ResourceLoaderTests',
 	'descriptionmsg' => 'resourceloadertests-desc',
 );
 
