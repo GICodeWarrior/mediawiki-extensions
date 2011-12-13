@@ -20,7 +20,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'ContributorsAddon',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ContributorsAddon',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ContributorsAddon',
 	'author' => 'Tim Laqua',
 	'descriptionmsg' => 'contributorsaddon-desc',
 );
