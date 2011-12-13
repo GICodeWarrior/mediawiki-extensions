@@ -23,7 +23,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'TemplateLink',
 	'version' => '1.1',
 	'author' =>'Magnus Manske',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:TemplateLink',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:TemplateLink',
 	'descriptionmsg' => 'templatelink_desc',
 );
 
@@ -32,7 +32,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'TemplateLink',
 	'version' => '1.2',
 	'author' =>'Magnus Manske',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:TemplateLink',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:TemplateLink',
 	'descriptionmsg' => 'templatelink_desc',
 );
 
