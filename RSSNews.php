@@ -7,7 +7,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'RSSNews',
 	'author'         => '',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:RSSNews',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:RSSNews',
 );
 
 $wgHooks['ParserFirstCallInit'][] = 'wfRSSFeedSetHook';
