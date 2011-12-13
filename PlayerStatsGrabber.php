@@ -99,7 +99,7 @@ $wgExtensionCredits['media'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'PlayerStats',
 	'author'         => 'Michael Dale',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:PlayerStats',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:PlayerStats',
 	'description'    => 'PlayerStats and survey for monitoring theora support relative to flash'
 );
 
