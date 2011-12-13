@@ -55,7 +55,7 @@ $wgExtensionCredits['media'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Wiki@Home',
 	'author'         => 'Michael Dale',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:WikiAtHome',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:WikiAtHome',
 	'descriptionmsg' => 'wah-desc',
 );
 /******************* CONFIGURATION STARTS HERE **********************/
