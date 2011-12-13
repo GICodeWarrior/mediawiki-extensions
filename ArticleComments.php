@@ -86,7 +86,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'ArticleComments',
 	'author' => array( 'Jim R. Wilson', 'Platonides' ),
 	'version' => '0.6',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleComments',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ArticleComments',
 	'descriptionmsg' => 'article-comments-desc',
 );
 
