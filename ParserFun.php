@@ -38,7 +38,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg' => 'parserfun-desc',
 	'version'        => ExtParserFun::VERSION,
 	'author'         => '[http://www.mediawiki.org/wiki/User:Danwe Daniel Werner]',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Parser_Fun',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Parser_Fun',
 );
 
 
