@@ -5,7 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Ajax Query Pages',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxQueryPages',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:AjaxQueryPages',
 	'author' => 'Ashar Voultoiz',
 	'descriptionmsg' => 'ajaxquerypages-desc',
 );
