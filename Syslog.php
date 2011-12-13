@@ -132,7 +132,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Syslog',
 	'author' => 'Evan Prodromou',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Syslog',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Syslog',
 	'description' => 'An extension to log events to the system logger',
 	'version' => '1.1'
 );
