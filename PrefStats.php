@@ -59,7 +59,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'PrefStats',
 	'author' => array( 'Roan Kattouw', 'Trevor Parscal' ),
 	'version' => '0.2.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:PrefStats',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:PrefStats',
 	'descriptionmsg' => 'prefstats-desc',
 );
 $dir = dirname( __FILE__ ) . '/';
