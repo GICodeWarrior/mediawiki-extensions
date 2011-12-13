@@ -17,7 +17,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'HtmlUi',
 	'author' => array( 'Trevor Parscal' ),
 	'version' => '0.1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:HtmlUi',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:HtmlUi',
 	'descriptionmsg' => 'htmlui-desc',
 );
 $dir = dirname( __FILE__ );
