@@ -22,7 +22,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '1.2',
 	'author' => 'Ryan Schmidt',
 	'descriptionmsg' => 'forcepreview-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ForcePreview',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ForcePreview',
 );
 
 // i18n file
