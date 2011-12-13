@@ -38,7 +38,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Footnote',
 	'author'         => '',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Footnote',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Footnote',
 );
 
 $wgHooks['ParserBeforeTidy'][] = 'insert_endnotes';
