@@ -16,7 +16,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.0rc3',
 	'author' => 'Rob Church',
 	'descriptionmsg' => 'patrol-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Patroller',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Patroller',
 );
 
 $dir = dirname(__FILE__) . '/';
