@@ -35,7 +35,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author'         => array('Paul Grinberg', 'Mike Sullivan'),
 	'email'          => 'gri6507 at yahoo dot com, ms-mediawiki AT umich DOT edu',
 	'descriptionmsg' => 'whitelist-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:WhiteList',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:WhiteList',
 );
 
 # these are the groups and the rights used within this extension
