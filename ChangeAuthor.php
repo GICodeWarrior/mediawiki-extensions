@@ -29,7 +29,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'ChangeAuthor',
 	'author' => 'Roan Kattouw',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ChangeAuthor',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ChangeAuthor',
 	'version' => '1.1',
 	'descriptionmsg' => 'changeauthor-desc',
 );
