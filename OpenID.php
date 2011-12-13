@@ -234,7 +234,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => MEDIAWIKI_OPENID_VERSION,
 	'path' => __FILE__,
 	'author' => array( 'Evan Prodromou', 'Sergey Chernyshev', 'Alexandre Emsenhuber', 'Thomas Gries' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:OpenID',
 	'descriptionmsg' => 'openid-desc',
 );
 
