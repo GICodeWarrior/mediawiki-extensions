@@ -24,7 +24,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '1.4.1',
 	'descriptionmsg' => 'transliterator-desc',
 	'author' => 'Conrad Irwin',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Transliterator',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Transliterator',
 	'path' => __FILE__,
 );
 
