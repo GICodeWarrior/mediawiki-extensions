@@ -24,7 +24,7 @@ $wgExtensionCredits[ 'specialpage' ][] = array(
 	'name'           => 'WebChat',
 	'descriptionmsg' => 'webchat-desc',
 	'author'         => array( 'Robert Leverington', 'Marco 27' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:WebChat',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:WebChat',
 	'version'        => '1.0.0',
 );
 
