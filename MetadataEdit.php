@@ -13,7 +13,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'MetadataEdit',
 	'author' => array( 'Magnus Manske', 'Alexandre Emsenhuber' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:MetadataEdit',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:MetadataEdit',
 	'descriptionmsg' => 'metadataedit-desc',
 	'version' => '0.1',
 );
