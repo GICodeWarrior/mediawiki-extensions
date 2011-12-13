@@ -20,7 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Back and Forth',
 	'author' => 'Rob Church',
 	'descriptionmsg' => 'backandforth-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Back-and-Forth',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Back-and-Forth',
 );
 
 $wgExtensionMessagesFiles['BackAndForth'] = dirname( __FILE__ ) . '/BackAndForth.i18n.php';
