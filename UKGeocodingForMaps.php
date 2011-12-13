@@ -52,7 +52,7 @@ function ukgfSetup() {
 		'name' => wfMsg( 'ukgeocoding_name' ),
 		'version' => UKG_VERSION,
 		'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw] for Neill Mitchell at Prescient Software Ltd' ),
-		'url' => 'http://www.mediawiki.org/wiki/Extension:UK_geocoding_for_Maps',
+		'url' => 'https://www.mediawiki.org/wiki/Extension:UK_geocoding_for_Maps',
 		'descriptionmsg' => 'ukgeocoding_desc',
 	);
 
