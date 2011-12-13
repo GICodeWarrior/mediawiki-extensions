@@ -33,7 +33,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => "Don't Switch Me Over",
 	'author' => array( 'Roan Kattouw', 'Nimish Gautam', 'Trevor Parscal' ),
 	'version' => '0.2.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'dontswitchmeover-desc',
 );
 $wgAutoloadClasses['DontSwitchMeOverHooks'] = dirname( __FILE__ ) . '/DontSwitchMeOver.hooks.php';
