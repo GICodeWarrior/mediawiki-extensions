@@ -17,7 +17,7 @@ $wgExtensionCredits['variable'][] = array(
 	'name' => 'Autoincrement',
 	'author' => 'Ævar Arnfjörð Bjarmason',
 	'descriptionmsg' => 'autoincrement-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Autoincrement',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Autoincrement',
 );
 
 $dir = dirname( __FILE__ ) . '/';
