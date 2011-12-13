@@ -25,7 +25,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'OpenSearchXml',
 	'descriptionmsg' => 'opensearchxml-desc',
 	'author'         => 'Brion Vibber',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:OpenSearchXml'
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:OpenSearchXml'
 );
 
 $dir = dirname(__FILE__);
