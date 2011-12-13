@@ -15,7 +15,7 @@ $wgExtensionCredits[version_compare($wgVersion, '1.17alpha', '>=') ? 'antispam' 
 	'name'           => 'SimpleAntiSpam',
 	'descriptionmsg' => 'simpleantispam-desc',
 	'author'         => 'Ryan Schmidt',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:SimpleAntiSpam',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:SimpleAntiSpam',
 	'version'        => '1.0',
 );
 
