@@ -7,9 +7,16 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-(function( $, mw ) {
+(function( $, mw ) { $.fn.instantImage = function( options ) {
+		
+	var settings = $.extend( {
+		'imagename': 'Beatles',
+		'inputname': '',
+		'apipath': 'https://en.wikipedia.org/w/api.php?callback=?',
+		'imagewidth': 200
+	}, options );
 	
-	$.fn.instantImage = function( opts ) {
+	return this.each( function() {
 		
 		var _this = this;
 		var $this = $( this );
@@ -18,25 +25,18 @@
 		this.images = null;
 		this.raw = null;
 		
-		this.options = {
-			'imagename': 'Beatles',
-			'inputname': '',
-			'apipath': 'https://en.wikipedia.org/w/api.php?callback=?',
-			'imagewidth': 200
-		};
-		
 		this.getMainTitle = function( callback ) {
 			$.getJSON(
-				this.options.apipath,
+				settings.apipath,
 				{
 					'action': 'query',
 					'format': 'json',
-					'titles': this.options.imagename,
+					'titles': settings.imagename,
 					'redirects': 1
 				},
 				function( data ) {
 					if ( data.query && data.query.redirects ) {
-						_this.options.imagename = data.query.redirects[0].to;
+						settings.imagename = data.query.redirects[0].to;
 					}
 					
 					callback();
@@ -46,12 +46,12 @@
 		
 		this.getImages = function( callback ) {
 			$.getJSON(
-				this.options.apipath,
+				settings.apipath,
 				{
 					'action': 'query',
 					'format': 'json',
 					'prop': 'images',
-					'titles': this.options.imagename,
+					'titles': settings.imagename,
 					'redirects': 1,
 					'imlimit': 500
 				},
@@ -81,13 +81,13 @@
 		
 		this.getRaw = function( callback ) {
 			$.getJSON(
-				this.options.apipath,
+				settings.apipath,
 				{
 					'action': 'query',
 					'format': 'json',
 					'prop': 'revisions',
 					'rvprop': 'content',
-					'titles': this.options.imagename
+					'titles': settings.imagename
 				},
 				function( data ) {
 					if ( data.query ) {
@@ -133,14 +133,14 @@
 			}
 			
 			$.getJSON(
-				this.options.apipath,
+				settings.apipath,
 				{
 					'action': 'query',
 					'format': 'json',
 					'prop': 'imageinfo',
 					'iiprop': 'url',
 					'titles': image,
-					'iiurlwidth': this.options.imagewidth
+					'iiurlwidth': settings.imagewidth
 				},
 				function( data ) {
 					if ( data.query && data.query.pages ) {
@@ -150,11 +150,11 @@
 							var info = pages[p].imageinfo;
 							for ( i in info ) {
 								if ( info[i].thumburl.indexOf( '/wikipedia/commons/' ) !== -1 ) {
-									$( 'input[name="' + _this.options.inputname + '"]' ).val( image );
+									$( 'input[name="' + settings.inputname + '"]' ).val( image );
 									
 									$this.html( $( '<img />' ).attr( {
 										'src': info[i].thumburl,
-										'width': _this.options.imagewidth + 'px'
+										'width': settings.imagewidth + 'px'
 									} ) );
 									
 									return;
@@ -180,11 +180,11 @@
 		this.start = function() {
 			this.loadedFirstReq = false;
 			
-			if ( this.options.iteminput ) {
-				this.options.imagename = this.options.iteminput.val();
+			if ( settings.iteminput ) {
+				settings.imagename = settings.iteminput.val();
 			}
 			
-			if ( this.options.imagename.trim() === '' ) {
+			if ( settings.imagename.trim() === '' ) {
 				$this.html( '' );
 			}
 			else {
@@ -196,18 +196,14 @@
 		};
 		
 		this.init = function() {
-			$.extend( this.options, opts );
-			
-			if ( this.options.iteminput ) {
-				this.options.iteminput.change( function() { _this.start(); } );
+			if ( settings.iteminput ) {
+				settings.iteminput.change( function() { _this.start(); } );
 			}
 			
 			this.start();
 		};
 		
 		this.init();
-		
-		return this;
-	};
+	} );
 	
-})( window.jQuery, window.mediaWiki );
+}; })( window.jQuery, window.mediaWiki );
