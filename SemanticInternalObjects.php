@@ -16,7 +16,7 @@ $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'parserh
 	'name'	=> 'Semantic Internal Objects',
 	'version' => SIO_VERSION,
 	'author' => 'Yaron Koren',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Internal_Objects',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Semantic_Internal_Objects',
 	'descriptionmsg' => 'semanticinternalobjects-desc',
 );
 
