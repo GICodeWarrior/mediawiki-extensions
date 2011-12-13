@@ -23,7 +23,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'TrustedXFF',
 	'descriptionmsg' => 'trustedxff-desc',
 	'author'         => 'Tim Starling',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:TrustedXFF',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:TrustedXFF',
 );
 $wgExtensionMessagesFiles['TrustedXFF'] = dirname(__FILE__) . '/TrustedXFF.i18n.php';
 $wgHooks['IsTrustedProxy'][] = 'TrustedXFF::onIsTrustedProxy';
