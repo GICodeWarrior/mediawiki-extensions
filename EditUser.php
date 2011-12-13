@@ -16,7 +16,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '1.7.0',
 	'author'         => 'Ryan Schmidt',
 	'descriptionmsg' => 'edituser-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:EditUser',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:EditUser',
 );
 
 $wgExtensionMessagesFiles['EditUser'] = $dir . 'EditUser.i18n.php';
