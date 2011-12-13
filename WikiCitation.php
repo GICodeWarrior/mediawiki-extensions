@@ -72,7 +72,7 @@ $wgExtensionCredits[ 'parserhook' ][] = array(
 	'path' => __FILE__,
 	'name' => 'WikiCitation',
 	'author' => array( 'COGDEN' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:WikiCitation',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:WikiCitation',
 	'descriptionmsg' => 'wc-description',
 	'version' => '0.8.1'
 );
