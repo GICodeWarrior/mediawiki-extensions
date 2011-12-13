@@ -9,7 +9,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'     => '0.2',
 	'name'        => 'LatexDoc',
 	'author'      => 'Tim Starling',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:LatexDoc',
+	'url'         => 'https://www.mediawiki.org/wiki/Extension:LatexDoc',
 	'descriptionmsg' => 'latexdoc-desc',
 );
 
