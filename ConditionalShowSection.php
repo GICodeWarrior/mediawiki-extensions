@@ -23,7 +23,7 @@
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'ConditionalShowSection',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ConditionalShow',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ConditionalShow',
 	'version' => '1.5',
 	'author' => '[http://www.bluecortex.com Jean-Lou Dupont]',
 	'descriptionmsg' => 'conditionalshowsection-desc',
