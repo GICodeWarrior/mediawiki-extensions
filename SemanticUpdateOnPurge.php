@@ -25,7 +25,7 @@ $wgExtensionCredits[ defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'
 	'descriptionmsg' => 'suop-desc',
 	'version'        => ExtSemanticUpdateOnPurge::VERSION,
 	'author'         => '[http://www.mediawiki.org/wiki/User:Danwe Daniel Werner]',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:SemanticUpdateOnPurge',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:SemanticUpdateOnPurge',
 );
 
 // language file:
