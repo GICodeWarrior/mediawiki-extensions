@@ -7,7 +7,7 @@ if (!defined('MEDIAWIKI')) {
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'FlagPage',
 	'author' => 'Church of emacs',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:FlagPage',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:FlagPage',
 	'descriptionmsg' => 'flagarticle-desc',
 	'version' => '0.1.2beta',
 );
