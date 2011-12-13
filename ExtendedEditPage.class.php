@@ -58,10 +58,10 @@ class ExtendedEditPage extends EditPage {
 
 		$this->isConflict = false;
 		// css / js subpages of user pages get a special treatment
-		$this->isCssJsSubpage      = $this->mTitle->isCssJsSubpage();
-		$this->isCssSubpage        = $this->mTitle->isCssSubpage();
-		$this->isJsSubpage         = $this->mTitle->isJsSubpage();
-		$this->isValidCssJsSubpage = $this->mTitle->isValidCssJsSubpage();
+		$this->isCssJsSubpage       = $this->mTitle->isCssJsSubpage();
+		$this->isCssSubpage         = $this->mTitle->isCssSubpage();
+		$this->isJsSubpage          = $this->mTitle->isJsSubpage();
+		$this->isWrongCaseCssJsPage = $this->isWrongCaseCssJsPage();
 
 		// catch the HTML that the intro throws
 		// if anything is thrown, fall back to the normal editor
