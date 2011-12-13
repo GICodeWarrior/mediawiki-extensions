@@ -39,7 +39,7 @@ $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other']
 	'name' => 'Semantic Project Management',
 	'version' => SPM_VERSION,
 	'author' => array( 'Frank Dengler, Jonas Bissinger'),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Project_Management',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Semantic_Project_Management',
 	'descriptionmsg' => 'semanticprojectmanagement-desc'
 );
 
