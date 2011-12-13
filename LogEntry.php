@@ -29,7 +29,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'LogEntry',
 	'author'         => 'Trevor Parscal', 
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:LogEntry', 
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:LogEntry', 
 	'descriptionmsg' => 'logentry-parserhook-desc',
 );
 
