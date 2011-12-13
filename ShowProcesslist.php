@@ -8,7 +8,7 @@ if (!defined('MEDIAWIKI')) {
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'ShowProcesslist',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:ShowProcesslist',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:ShowProcesslist',
 	'author'         => 'Tim Starling',
 	'descriptionmsg' => 'showprocesslist-desc',
 );
