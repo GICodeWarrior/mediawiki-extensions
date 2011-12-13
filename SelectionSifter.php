@@ -19,7 +19,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'SelectionSifter',
 	'author' => 'Yuvi Panda',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SelectionSifter',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SelectionSifter',
 	# 'version' => '0.1',
 	'descriptionmsg' => 'selectionsifter-desc',
 );
