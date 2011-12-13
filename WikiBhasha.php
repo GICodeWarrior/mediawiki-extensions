@@ -34,7 +34,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'WikiBhasha',
 	'author' => 'Microsoft Research',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:WikiBhasha',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:WikiBhasha',
 	'descriptionmsg' => 'Application to create multilingual content leveraging the English Wikipedia content',
 	'version' => '1.0',
 );
