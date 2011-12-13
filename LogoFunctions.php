@@ -18,7 +18,7 @@ $wgExtensionCredits[ 'parserhook' ][] = array(
 	'path'            => __FILE__,
 	'name'           => 'LogoFunctions',
 	'author'         => 'Devunt (Bae June Hyeon)',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:LogoFunctions',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:LogoFunctions',
 	'descriptionmsg' => 'logofunctions-desc',
 	'version'        => '0.9.1',
 );
