@@ -12,7 +12,7 @@ $wgExtensionCredits['specialpage'][] = array(
 		'path' => __FILE__,
 		'name' => 'Diagnosis',
 		'author' => '[http://www.dasch-tour.de DaSch]',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:Diagnosis',
+		'url' => 'https://www.mediawiki.org/wiki/Extension:Diagnosis',
 		'descriptionmsg' => 'diagnosis-desc',
 		'version' => '0.0.1',
 );
