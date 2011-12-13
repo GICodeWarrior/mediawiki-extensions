@@ -24,7 +24,7 @@ $wgExtensionCredits['other'][] = array(
 		'Aaron Wright', 'Ashish Datta', 'David Pean', 'Jack Phoenix'
 	),
 	'description' => 'Networking functionality',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SportsTeams',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SportsTeams',
 );
 
 // Google Maps API key for the map on Special:FanHome
