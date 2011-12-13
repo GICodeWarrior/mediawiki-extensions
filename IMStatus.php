@@ -42,7 +42,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'IM Status',
 	'version' => '1.3',
 	'author' => array( 'PatheticCockroach', 'various MediaWiki contributors' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:IM_Status',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:IM_Status',
 	'descriptionmsg' => 'imstatus-desc'
 );
 
