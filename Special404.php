@@ -19,7 +19,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'author' => 'Daniel Friesen',
 	'name' => 'Special404',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Special404',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Special404',
 	'descriptionmsg' => 'special404-desc',
 );
 
