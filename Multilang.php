@@ -16,7 +16,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Multilang',
 	'author'         => '',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Multilang',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Multilang',
 );
 
 $wgAutoloadClasses['Multilang'] = dirname( __FILE__ ) . '/Multilang.class.php';
