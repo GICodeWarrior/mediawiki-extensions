@@ -25,7 +25,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'author' => 'Brendan Meutzner, Anton Zolotkov, Roger Fong',
 	'descriptionmsg' => 'stockcharts-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:StockCharts',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:StockCharts',
 	'version' => '0.2',
 );
 
