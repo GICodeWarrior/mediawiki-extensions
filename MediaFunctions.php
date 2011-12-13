@@ -15,7 +15,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'MediaFunctions',
 	'version' => '1.2.1',
 	'author' => 'Rob Church',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:MediaFunctions',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:MediaFunctions',
 	'descriptionmsg' => 'mediafunctions-desc',
 );
 
