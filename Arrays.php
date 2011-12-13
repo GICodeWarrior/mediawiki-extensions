@@ -23,7 +23,7 @@ if ( ! defined( 'MEDIAWIKI' ) ) { die(); }
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Arrays',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Arrays',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Arrays',
 	'author'         => array ( 'Li Ding', 'Jie Bao', '[http://www.mediawiki.org/wiki/User:Danwe Daniel Werner]' ),
 	'descriptionmsg' => 'arrays-desc',
 	'version'        => ExtArrays::VERSION
