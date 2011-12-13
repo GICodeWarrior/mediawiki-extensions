@@ -105,7 +105,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'StringFunctions',
 	'version' => '2.0.3', // Nov 30, 2008
 	'author' => array( 'Ross McClure', 'Juraj Simlovic' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:StringFunctions',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:StringFunctions',
 	'descriptionmsg' => 'stringfunctions-desc',
 );
 
