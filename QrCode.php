@@ -24,7 +24,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'QrCode',
 	'version' => '0.11',
 	'author' => array( 'David Raison' ), 
-	'url' => 'http://www.mediawiki.org/wiki/Extension:QrCode',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:QrCode',
 	'descriptionmsg' => 'qrcode-desc'
 );
 
