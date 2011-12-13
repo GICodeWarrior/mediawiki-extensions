@@ -15,7 +15,7 @@ function semanticGallery_Setup()
 		'name'            => 'Semantic Gallery',
 		'version'         => '0.3.1',
 		'author'          => array( 'Rowan Rodrik van der Molen' ),
-		'url'             => 'http://www.mediawiki.org/wiki/Extension:Semantic_Gallery',
+		'url'             => 'https://www.mediawiki.org/wiki/Extension:Semantic_Gallery',
 		'descriptionmsg'  => 'semanticgallery-desc',
 	);
 
