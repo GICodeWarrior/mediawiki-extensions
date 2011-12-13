@@ -15,7 +15,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'WhoIsWatching',
 	'author'         => 'Paul Grinberg, Siebrand Mazeland',
 	'email'          => 'gri6507 at yahoo dot com',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:WhoIsWatching',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:WhoIsWatching',
 	'descriptionmsg' => 'whoiswatching-desc',
 );
 
