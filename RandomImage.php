@@ -20,7 +20,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'RandomImage',
 	'author'         => 'Rob Church',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:RandomImage',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:RandomImage',
 	'descriptionmsg' => 'randomimage-desc',
 );
 $wgExtensionMessagesFiles['RandomImage'] = dirname(__FILE__) . '/RandomImage.i18n.php';
