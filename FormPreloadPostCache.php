@@ -17,7 +17,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'FormPreloadPostCache',
 	'author'         => '',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:FormPreloadPostCache',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:FormPreloadPostCache',
 );
 
 $wgHooks['OutputPageBeforeHTML'][] = 'FormPreloadPostCache::htmlHook';
