@@ -52,7 +52,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'QPoll',
 	'version' => '0.8.0a',
 	'author' => 'Dmitriy Sintsov',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:QPoll',
 	'descriptionmsg' => 'qp_desc',
 );
 $wgExtensionCredits['specialpage'][] = array(
@@ -60,7 +60,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'QPoll results page',
 	'version' => '0.8.0a',
 	'author' => 'Dmitriy Sintsov',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:QPoll',
 	'descriptionmsg' => 'qp_desc-sp',
 );
 
