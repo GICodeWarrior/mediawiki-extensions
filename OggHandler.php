@@ -34,7 +34,7 @@ $wgExtensionCredits['media'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'OggHandler',
 	'author'         => 'Tim Starling',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:OggHandler',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:OggHandler',
 	'descriptionmsg' => 'ogg-desc',
 );
 
