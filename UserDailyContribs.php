@@ -20,7 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'User Daily Contributions',
 	'author' => array( 'Nimish Gautam', 'Trevor Parscal' ),
 	'version' => '0.2.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'userdailycontribs-desc',
 );
 $wgAutoloadClasses['UserDailyContribsHooks'] = dirname( __FILE__ ) . '/UserDailyContribs.hooks.php';
