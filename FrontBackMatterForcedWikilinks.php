@@ -27,7 +27,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'Front and Back Matter and Forced Wikilinks',
 	'author' => 'Tisane',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:FrontBackMatterForcedWikilinks',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:FrontBackMatterForcedWikilinks',
 	'descriptionmsg' => 'frontbackforced-desc',
 	'version' => '1.0.0',
 );
