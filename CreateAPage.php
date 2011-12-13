@@ -27,7 +27,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	),
 	'version' => '3.91',
 	'description' => '[[Special:CreatePage|Easy to use interface]] for creating new articles',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CreateAPage',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CreateAPage',
 );
 
 // Autoload classes and set up the new special page(s)
