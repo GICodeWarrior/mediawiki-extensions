@@ -17,7 +17,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'DelayedDefinition',
 	'version'        => '0.5.0',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:DelayedDefinition',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:DelayedDefinition',
 	'author'         => 'Robert Rohde',
 	'descriptionmsg' => 'delayeddefinition-desc',
 );
