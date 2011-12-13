@@ -26,6 +26,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Jon Harald Søby
  * @author Purodha
  * @author The Evil IP address
@@ -34,6 +35,7 @@ $messages['qqq'] = array(
 	'bookinformation-desc' => '{{desc}}',
 	'bookinfo-result-title' => '{{Identical|Title}}',
 	'bookinfo-result-author' => '{{Identical|Author}}',
+	'bookinfo-result-publisher' => '{{Identical|Publisher}}',
 	'bookinfo-result-year' => '{{Identical|Year}}',
 );
 
