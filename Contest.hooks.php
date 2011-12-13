@@ -134,7 +134,7 @@ final class ContestHooks {
 
 				$insertUrls = array( 'mycontests' => $myContests );
 		
-				$personal_urls = wfArrayInsertAfter( $personal_urls, $insertUrls, 'watchlist' );
+				$personal_urls = wfArrayInsertAfter( $personal_urls, $insertUrls, 'preferences' );
 			}
 		}
 
