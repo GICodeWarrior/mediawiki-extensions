@@ -12,7 +12,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'ExpandTemplates',
 	'author'         => 'Tim Starling',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:ExpandTemplates',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:ExpandTemplates',
 	'descriptionmsg' => 'expandtemplates-desc',
 );
 
