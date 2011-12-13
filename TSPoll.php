@@ -30,7 +30,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version'       => '1.0 Beta',
 	'path'          => __FILE__,
 	'author'        => 'Jan Luca',
-	'url'           => 'http://www.mediawiki.org/wiki/Extension:TSPoll',
+	'url'           => 'https://www.mediawiki.org/wiki/Extension:TSPoll',
 	'descriptionmsg' => 'tspoll-desc'
 );
 
