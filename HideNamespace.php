@@ -26,7 +26,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'hidens-desc',
 	'version'        => '1.4.3',
 	'author'         => 'Matěj Grabovský',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:HideNamespace',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:HideNamespace',
 );
 
 $wgHidensNamespaces = array();
