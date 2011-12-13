@@ -13,7 +13,7 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'ParserPlayground',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ParserPlayground',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ParserPlayground',
 	'author' => array( 'Brion Vibber', ),
 	'descriptionmsg' => 'parserplayground-desc',
 );
