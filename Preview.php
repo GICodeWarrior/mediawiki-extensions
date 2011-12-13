@@ -7,7 +7,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Preview',
 	'author'         => '',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Preview',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Preview',
 );
 
 $wgSpecialPages['Preview'] = 'SpecialPreview';
