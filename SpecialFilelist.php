@@ -14,7 +14,7 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'File list',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SpecialFileList',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SpecialFileList',
 	'descriptionmsg' => 'filelist-desc',
 	'author' => 'Magnus Manske'
 );
