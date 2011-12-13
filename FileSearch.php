@@ -18,7 +18,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'FileSearch',
 	'author'         => '',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:FileSearch',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:FileSearch',
 );
 
 #$wgExtensionFunctions[] = array( 'FileSearchIndexer', 'initialise' );
