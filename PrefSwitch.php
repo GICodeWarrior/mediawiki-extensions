@@ -146,7 +146,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'PrefSwitch',
 	'author' => array( 'Trevor Parscal', 'Roan Kattouw' ),
 	'version' => '0.1.2',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'prefswitch-desc',
 );
 $wgAutoloadClasses = array_merge(
