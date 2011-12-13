@@ -335,16 +335,20 @@ $messages['qqq'] = array(
 	'contest-contest-filter-challenge' => 'Label put before and input field',
 	'contest-contest-filter-volunteer' => 'Label put before and input field',
 	'contest-contest-filter-wmf' => 'Label put before and input field',
-	'contest-contest-filter-comments' => 'Label put before and input field',
-	'contest-contest-filter-rating_count' => 'Label put before and input field',
+	'contest-contest-filter-comments' => 'Label put before and input field.
+{{Identical|Comment}}',
+	'contest-contest-filter-rating_count' => 'Label put before and input field.
+{{Identical|Vote}}',
 	'contest-contest-filter-submission' => 'Label put before and input field',
 	'contest-contest-reminder-preview' => 'Text indicating that the following content is the preview for the reminder e-mail.',
 	'contest-contest-reminder-title' => 'Dialog title',
 	'contest-contest-reminder-send' => 'Send button text',
-	'contest-contest-reminder-cancel' => 'Cancel button text',
+	'contest-contest-reminder-cancel' => 'Cancel button text.
+{{Identical|Cancel}}',
 	'contest-contest-reminder-sending' => 'Send button text after clicking it',
 	'contest-contest-reminder-success' => 'Success message, $1 is the amount of contestants. No PLURAL for now, just assume there are multiple until MWs JS supports plural.',
-	'contest-contest-reminder-close' => 'Close button text',
+	'contest-contest-reminder-close' => 'Close button text.
+{{Identical|Close}}',
 	'contest-contest-reminder-retry' => 'Retry button text',
 	'contest-contest-reminder-failed' => 'Failiure message, displayed in an alert box',
 	'contest-contest-reminder-subject' => 'E-mail subject indicator',
@@ -589,6 +593,19 @@ $messages['be-tarask'] = array(
 	'contest-contest-no' => 'Не',
 	'contest-contest-none' => 'Ніхто',
 	'contest-contest-some' => 'Некаторыя',
+	'contest-contest-filter-challenge' => 'Задача',
+	'contest-contest-filter-volunteer' => 'Валянтэр',
+	'contest-contest-filter-comments' => 'Камэнтары',
+	'contest-contest-filter-rating_count' => 'Галасы',
+	'contest-contest-filter-submission' => 'Прадстаўленьне',
+	'contest-contest-reminder-preview' => 'Папярэдні прагляд электроннага ліста напаміну:',
+	'contest-contest-reminder-title' => 'Напамін электронным лістом',
+	'contest-contest-reminder-send' => 'Даслаць напамін',
+	'contest-contest-reminder-cancel' => 'Скасаваць',
+	'contest-contest-reminder-sending' => 'Адпраўка…',
+	'contest-contest-reminder-success' => 'Пасьпяхова дасланы напамін электроннай поштай да $1 удзельнікаў',
+	'contest-contest-reminder-close' => 'Закрыць',
+	'contest-contest-reminder-retry' => 'Паўтарыць адпраўку',
 );
 
 /** Breton (Brezhoneg)
