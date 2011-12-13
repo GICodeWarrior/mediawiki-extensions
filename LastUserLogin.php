@@ -36,7 +36,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'LastUserLogin',
 	'version' => '1.2.1',
 	'author' => array( 'Justin G. Cramer', 'Danila Ulyanov', 'Thomas Klein' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SpecialLastUserLoginEx',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SpecialLastUserLoginEx',
 	'descriptionmsg' => 'lastuserlogin-desc',
 );
  
