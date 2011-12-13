@@ -15,7 +15,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'        => '1.0',
 	'author'         => 'Tim Laqua',
 	'descriptionmsg' => 'gotocategory-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:GoToCategory',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:GoToCategory',
 );
 
 $wgHooks['SpecialSearchNogomatch'][] = 'efGoToCategory_SpecialSearchNogomatch';
