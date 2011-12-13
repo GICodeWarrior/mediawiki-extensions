@@ -10,7 +10,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'CommentPages',
 	'author'         => '[http://en.wikinews.org/wiki/User:Zachary Zachary Hauri]',
 	'descriptionmsg' => 'commentpages-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:CommentPages',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:CommentPages',
 );
 
 $wgExtensionMessagesFiles['CommentPages'] = dirname(__FILE__) . '/CommentPages.i18n.php';
