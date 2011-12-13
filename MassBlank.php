@@ -27,7 +27,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'massblank-desc',
 	'author'         => 'Tisane',
         'version'        => '0.0.1',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:MassBlank'
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:MassBlank'
 );
 
 $wgGroupPermissions['sysop']['massblank'] = true;
