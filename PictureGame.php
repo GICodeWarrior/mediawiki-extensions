@@ -27,7 +27,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '2.0',
 	'author' => array( 'Aaron Wright', 'Ashish Datta', 'David Pean', 'Jack Phoenix' ),
 	'description' => 'Allows making picture games',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:PictureGame'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:PictureGame'
 );
 
 // ResourceLoader support for MediaWiki 1.17+
