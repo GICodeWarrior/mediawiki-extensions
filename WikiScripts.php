@@ -28,7 +28,7 @@ $wgExtensionCredits['parserhook']['WikiScripts'] = array(
 	'name'           => 'WikiScripts',
 	'author'         => 'Victor Vasiliev',
 	'descriptionmsg' => 'wikiscripts-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:WikiScripts',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:WikiScripts',
 );
 
 $dir = dirname(__FILE__) . '/';
