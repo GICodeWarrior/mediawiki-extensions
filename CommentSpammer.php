@@ -18,7 +18,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'CommentSpammer',
 	'author' => 'Nick Jenkins',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CommentSpammer',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CommentSpammer',
 	'descriptionmsg' => 'commentspammer-desc',
 );
 
