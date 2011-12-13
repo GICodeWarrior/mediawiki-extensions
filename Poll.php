@@ -30,7 +30,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '1.1',
 	'path'           => __FILE__,
 	'author'         => 'Jan Luca',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Poll2',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Poll2',
 	'descriptionmsg' => 'poll-desc'
 );
 
