@@ -80,7 +80,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '2.1',
 	'author'         => '[mailto:codedriller@gmail.com Iaroslav Vassiliev]',
 	'descriptionmsg' => 'newschannel-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:News_Channel',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:News_Channel',
 );
 
 $dir = dirname(__FILE__) . '/';
