@@ -12,7 +12,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'ErrorHandler',
 	'author'         => 'Alexandre Emsenhuber',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:ErrorHandler',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:ErrorHandler',
 	'descriptionmsg' => 'errorhandler-desc',
 );
 
