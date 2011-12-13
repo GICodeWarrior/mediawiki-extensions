@@ -30,7 +30,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg' => 'hashtables-desc',
 	'version'        => ExtHashTables::VERSION,
 	'author'         => '[http://www.mediawiki.org/wiki/User:Danwe Daniel Werner]',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:HashTables',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:HashTables',
 );
 
 // language files:
