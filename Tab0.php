@@ -9,7 +9,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'Tab0',
 	'author'         => 'Agbad',
 	'descriptionmsg' => 'tab0-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Tab0',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Tab0',
 );
 
 $wgExtensionMessagesFiles['Tab0'] = dirname( __FILE__ ) . '/Tab0.i18n.php';
