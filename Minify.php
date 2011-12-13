@@ -15,7 +15,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'         => '0.8.1', // June 26, 2009
 	'descriptionmsg'  => 'minify-desc',
 	'author'          => 'Robert Rohde',
-	'url'             => 'http://www.mediawiki.org/wiki/Extension:Minify',
+	'url'             => 'https://www.mediawiki.org/wiki/Extension:Minify',
 	'path'            => __FILE__,
 );
 
