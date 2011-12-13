@@ -7,7 +7,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'MakeDBError',
 	'author' => 'Tim Starling',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:MakeDBError',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:MakeDBError',
 	'description' => 'makes a database error with an invalid query'
 );
 
