@@ -26,7 +26,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Category Intersection',
 	'author'         => 'Magnus Manske',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:CategoryIntersection',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:CategoryIntersection',
 	'descriptionmsg' => 'categoryintersection-desc',
 );
 
