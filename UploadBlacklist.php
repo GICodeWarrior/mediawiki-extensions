@@ -15,7 +15,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'UploadBlacklist',
 	'descriptionmsg' => 'uploadblacklist-desc',
 	'author'         => 'Brion Vibber',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:UploadBlacklist',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:UploadBlacklist',
 );
 
 $wgExtensionMessagesFiles['UploadBlacklist'] = dirname( __FILE__ ) . '/UploadBlacklist.i18n.php';
