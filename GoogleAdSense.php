@@ -51,7 +51,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'        => '1.1',
 	'author'         => 'Siebrand Mazeland',
 	'descriptionmsg' => 'googleadsense-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Google_AdSense_2',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Google_AdSense_2',
 );
 
 // Register class and localisations
