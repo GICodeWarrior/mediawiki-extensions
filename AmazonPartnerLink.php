@@ -32,7 +32,7 @@ $wgExtensionCredits['parserhook'][] = array(
 		'[http://www.roman-lehnert.de Roman Lehnert]',
 		'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
 	),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:AmazonPartnerLink',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:AmazonPartnerLink',
 	'path' => __FILE__,
     'descriptionmsg' => 'amazonpartnerlink-desc',
 	'version' => APL_VERSION
