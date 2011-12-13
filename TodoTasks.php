@@ -26,7 +26,7 @@ $wgExtensionCredits['parserhook'][]    = array(
 	'name'           => 'Todo Tasks',
 	'author'         => 'Paul Grinberg',
 	'email'          => 'gri6507 at yahoo dot com',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Todo_Tasks',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Todo_Tasks',
 	'descriptionmsg' => 'tasklist-parser-desc',
 );
 	$wgExtensionCredits['specialpage'][] = array(
@@ -35,7 +35,7 @@ $wgExtensionCredits['parserhook'][]    = array(
 	'version'     => $wgTodoTasksExtensionVersion,
 	'author'      => 'Paul Grinberg',
 	'email'       => 'gri6507 at yahoo dot com',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:Todo_Tasks',
+	'url'         => 'https://www.mediawiki.org/wiki/Extension:Todo_Tasks',
 	'descriptionmsg' => 'tasklist-special-desc',
 );
 
