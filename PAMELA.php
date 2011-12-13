@@ -49,7 +49,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => array(
 		'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
 	),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:PAMELA',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:PAMELA',
 	'descriptionmsg' => 'pamela-desc'
 );
 
