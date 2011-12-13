@@ -9,7 +9,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'CategoryMultisort',
 	'author' => 'Liangent',
 	'descriptionmsg' => 'categorymultisort-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryMultisort',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CategoryMultisort',
 );
 
 $dir = dirname(__FILE__) . '/';
