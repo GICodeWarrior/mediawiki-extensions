@@ -10,7 +10,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '1.2',
 	'author' => 'Carl Fürstenberg (AzaToth)',
 	'descriptionmsg' => 'msfunc_desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:MathStatFunctions',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:MathStatFunctions',
 );
 
 $wgExtensionMessagesFiles['MathStatFunctions'] = dirname( __FILE__ ) . '/MathStatFunctions.i18n.php';
