@@ -5,7 +5,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'IndexFunction',
 	'author' => 'Alex Zaddach',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:IndexFunction',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:IndexFunction',
 	'descriptionmsg' => 'indexfunc-desc',
 );
 
