@@ -16,7 +16,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'GlobalUserrights',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:GlobalUserrights',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:GlobalUserrights',
 	'version'        => '1.0.3',
 	'author'         => 'Nathaniel Herman',
 	'descriptionmsg' => 'gur-desc',
