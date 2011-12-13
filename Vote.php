@@ -20,7 +20,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.0.2',
 	'author' => 'Rob Church',
 	'descriptionmsg' => 'vote-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Vote',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Vote',
 );
 
 $dir = dirname( __FILE__ ) . '/';
