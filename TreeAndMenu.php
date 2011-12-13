@@ -29,7 +29,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'        => __FILE__,
 	'name'        => 'TreeAndMenu',
 	'author'      => array( '[http://www.organicdesign.co.nz/User:Nad Nad]', '[http://www.organicdesign.co.nz/User:Sven Sven]' ),
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:TreeAndMenu',
+	'url'         => 'https://www.mediawiki.org/wiki/Extension:TreeAndMenu',
 	'descriptionmsg' => 'treeandmenu-desc',
 	'version'     => TREEANDMENU_VERSION
 );
