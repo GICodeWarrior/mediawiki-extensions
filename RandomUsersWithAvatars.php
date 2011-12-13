@@ -27,7 +27,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'RandomUsersWithAvatars',
 	'version' => '1.1',
 	'author' => array( 'David Pean', 'Jack Phoenix' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:RandomUsersWithAvatars',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:RandomUsersWithAvatars',
 	'descriptionmsg' => 'random-users-avatars-desc',
 );
 
