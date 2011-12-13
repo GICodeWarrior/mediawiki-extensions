@@ -10,7 +10,7 @@
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'CodeBrowse',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CodeBrowse',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CodeBrowse',
 	'author' => 'Bryan Tong Minh',
 );
 
