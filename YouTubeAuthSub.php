@@ -34,7 +34,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'YouTubeAuthSub',
 	'author'         => 'Travis Derouin',
 	'descriptionmsg' => 'youtubeauthsub-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:YouTubeAuthSub',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:YouTubeAuthSub',
 );
 
 $dir = dirname(__FILE__) . '/';
