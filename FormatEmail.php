@@ -21,7 +21,7 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '1.0',
 	'author' => 'Travis Derouin',
 	'descriptionmsg' => 'email-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:FormatEmail',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:FormatEmail',
 );
 
 $dir = dirname( __FILE__ ) . '/';
