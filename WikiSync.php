@@ -42,7 +42,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'WikiSync',
 	'author' => 'QuestPC',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:WikiSync',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:WikiSync',
 	'descriptionmsg' => 'wikisync-desc',
 );
 
