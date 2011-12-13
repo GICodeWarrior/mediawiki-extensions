@@ -49,7 +49,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'AmazonPlus',
 	'descriptionmsg' => 'amazonplus-desc',
 	'version'        => '0.5.3',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:AmazonPlus',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:AmazonPlus',
 	'author'         => 'Ryan Schmidt',
 );
 
