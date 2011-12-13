@@ -17,7 +17,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'ResearchTools',
 	'author' => array( 'Trevor Parscal' ),
 	'version' => '0.1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ResearchTools',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ResearchTools',
 	'descriptionmsg' => 'researchtools-desc',
 );
 $dir = dirname( __FILE__ );
