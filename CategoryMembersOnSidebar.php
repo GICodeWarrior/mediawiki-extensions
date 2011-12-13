@@ -36,7 +36,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'categorymembersonsidebar-desc',
 	'version' => '1.0.1',
 	'author' => 'Bryan Tong Minh',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryMembersOnSidebar',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CategoryMembersOnSidebar',
 );
 
 
