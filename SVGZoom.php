@@ -28,7 +28,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'SVGZoom',
 	'author' => array( 'Trevor Parscal', 'Brad Neuberg' ),
 	'version' => '0.1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SVGZoom',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SVGZoom',
 	'descriptionmsg' => 'svgzoom-desc',
 );
 
