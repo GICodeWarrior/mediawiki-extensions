@@ -10,7 +10,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Layouts',
 	'author'         => array( 'Merrick Schaefer', 'Mark Johnston', 'Evan Wheeler', 'Adam Mckaig (at UNICEF)' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Layouts',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Uniwiki_Layouts',
 	'descriptionmsg' => 'layouts-desc',
 );
 
