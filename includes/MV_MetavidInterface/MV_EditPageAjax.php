@@ -188,8 +188,8 @@
 
 		$this->isConflict = false;
 		// css / js subpages of user pages get a special treatment
-		$this->isCssJsSubpage      = $this->mTitle->isCssJsSubpage();
-		$this->isValidCssJsSubpage = $this->mTitle->isValidCssJsSubpage();
+		$this->isCssJsSubpage       = $this->mTitle->isCssJsSubpage();
+		$this->isWrongCaseCssJsPage = $this->isWrongCaseCssJsPage();
 
 		/* Notice that we can't use isDeleted, because it returns true if article is ever deleted
 		 * no matter it's current state
@@ -485,7 +485,7 @@
 		} else {
 			if ( $this->isCssJsSubpage && $this->formtype != 'preview' ) {
 				# Check the skin exists
-				if ( $this->isValidCssJsSubpage ) {
+				if ( !$this->isWrongCaseCssJsPage ) {
 					$wgOut->addWikiText( wfMsg( 'usercssjsyoucanpreview' ) );
 				} else {
 					$wgOut->addWikiText( wfMsg( 'userinvalidcssjstitle', $this->mTitle->getSkinFromCssJsSubpage() ) );
