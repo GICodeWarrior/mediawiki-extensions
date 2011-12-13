@@ -22,7 +22,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => array('Joe Beaudoin Jr.', 'Roan Kattouw'),
 	'description' => 'Adds tabs with interwiki links above Image: pages',
 	'version' => '1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Imagetabs'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Imagetabs'
 );
 
 $wgHooks['SkinTemplateContentActions'][] = 'createImageTabs_hook';
