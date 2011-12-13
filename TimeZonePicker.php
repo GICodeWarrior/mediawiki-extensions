@@ -16,7 +16,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'TimeZonePicker',
 	'author'         => array( 'Brion Vibber' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:TimeZonePicker',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:TimeZonePicker',
 );
 
 $wgHooks['BeforePageDisplay'][] = 'TimeZonePickerHooks::beforePageDisplay';
