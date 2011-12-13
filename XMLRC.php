@@ -34,7 +34,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Daniel Kinzler',
 	'name' => 'XMLRC',
 	'version' => '1.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:XMLRC',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:XMLRC',
 	'descriptionmsg'=> 'xmlrc-desc',
 );
 
