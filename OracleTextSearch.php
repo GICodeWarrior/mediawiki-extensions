@@ -11,7 +11,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'OracleTextSearch',
 	'author' => 'freakolowsky [Jure Kajzer]',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:OracleTextSearch',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:OracleTextSearch',
 	'descriptionmsg' => 'oracletextsearch-desc',
 	'version' => '1.0.0',
 );
