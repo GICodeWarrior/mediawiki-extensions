@@ -3,7 +3,7 @@
 $wgExtensionCredits['parserhooks'][] = array(
 	'path' => __FILE__,
 	'name' => 'WitionaryInflection',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:WitionaryInflection',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:WitionaryInflection',
 	'author' => '',
 );
 
