@@ -28,7 +28,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'WhatIsMyIP',
 	'version' => '1.3',
 	'author' => 'Łukasz Galezewski',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:WhatIsMyIP',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:WhatIsMyIP',
 	'descriptionmsg' => 'whatismyip-desc'
 );
 
