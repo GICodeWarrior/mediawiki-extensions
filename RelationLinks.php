@@ -17,7 +17,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => '[http://www.dasch-tour.de DaSch]',
 	'descriptionmsg' => 'relationlinks-desc',
 	'version' =>  '0.3.0',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:RelationLinks',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:RelationLinks',
 );
 
 $dir = dirname( __FILE__ ) . '/';
