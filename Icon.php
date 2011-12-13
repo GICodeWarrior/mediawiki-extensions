@@ -15,7 +15,7 @@ $wgExtensionCredits['other'][] = array(
 	'version'        => '1.6.1',
 	'author'         => 'Tim Laqua',
 	'descriptionmsg' => 'icon-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Icon',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:Icon',
 );
 
 $wgHooks['ParserFirstCallInit'][] = 'efIcon_Setup';
