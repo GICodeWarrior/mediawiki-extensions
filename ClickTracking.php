@@ -39,7 +39,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => array( 'Nimish Gautam', 'Trevor Parscal' ),
 	'version' => '0.1.1',
 	'descriptionmsg' => 'clicktracking-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ClickTracking'
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ClickTracking'
 );
 
 $dir = dirname( __FILE__ ) . '/';
