@@ -44,7 +44,7 @@
 			};
 			$.get( mw.util.wikiScript( "api" ), params, $.kieli.buildMenu );
 			
-			var params = {
+			params = {
 				action: "query",
 				meta: "siteinfo",
 				siprop: "languages",
@@ -59,7 +59,7 @@
 			var localnames = mw.config.get( "wgKieliLanguages" );
 			for ( var i = 0; i < languages.length; i++ ) {
 				var name = languages[i]["*"];
-				var code = languages[i]["code"];
+				var code = languages[i].code;
 				if ( localnames[code] && localnames[code] !== name  ) {
 					var localnamecode = localnames[code] + " (" + code + ")";
 					langlist.push( { label: localnamecode, value: code } );
@@ -123,7 +123,7 @@
 			var name = names && names[id] || id;
 			
 			var $link = $( '<input type="radio" name="language" />' )
-				.val( id )
+				.val( id );
 			if ( id === current ) {
 				$link = $link.attr( "checked", true );
 			}
