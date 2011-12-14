@@ -367,6 +367,18 @@ $messages['id'] = array(
 	'right-userrights-global' => 'Mengelola Hak Pengguna Global',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'globaluserrights' => 'Pagtaripatuen ti sangalubongan a karkarbengan ti agar-aramat',
+	'gur-desc' => 'Nalaka [[Special:GlobalUserRights|sangalobungan a karkarbengan ti agar-aramat]] pagaywanan',
+	'gur-rightslog-name' => 'Listaan ti sangalubongan a karkarbengan',
+	'gur-rightslog-header' => 'Listaan daytoy kadagiti sinukatan a sangalubongan a karkarbengan.',
+	'gur-rightslog-entry' => 'nasukatan ti sangalubongan a panagkameng iti bunggoy ti $1 manipud $2 iti $3',
+	'right-userrights-global' => 'Taripatuen dagiti sangalubongan a karbengan ti agar-aramat',
+);
+
 /** Icelandic (Íslenska)
  * @author Snævar
  */
