@@ -274,12 +274,11 @@
 			var haveSchemes = false;
 			// Build font dropdown
 			var $fontsMenu = $( '<ul>' ).attr( 'id', 'webfonts-fontsmenu' );
-			$fontsMenu.delegate( 'input:radio', 'change', function( e ) {
+			$fontsMenu.delegate( 'input:radio', 'click', function( ) {
 				mw.webfonts.set( $(this).val() );
 			} );
 			for ( var scheme in config ) {
-				var $fontLink = $( '<input type="radio" />' )
-					.attr( 'name', 'font' ) 
+				var $fontLink = $( '<input type="radio" name="font" />' )
 					.attr( 'id', fontID( config[scheme] ) )
 					.val( config[scheme] );
 
@@ -304,8 +303,7 @@
 				return null;
 			}
 
-			var $resetLink = $( '<input type="radio" />' )
-				.attr( 'name', 'font' )
+			var $resetLink = $( '<input type="radio" name="font"/>' )
 				.attr( 'value', 'webfont-none' )
 				.attr( 'id', 'webfont-none' )
 				.click( function( e ) {
