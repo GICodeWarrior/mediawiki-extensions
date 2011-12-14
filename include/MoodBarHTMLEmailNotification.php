@@ -159,7 +159,8 @@ class MoodBarHTMLEmailNotification {
                                                                        $FeedbackUrl, 
                                                                        $editorTalkPage,
                                                                        $this->response,
-                                                                       $targetUserTalkPage )->escaped();                                                 
+                                                                       $targetUserTalkPage,
+                                                                       $pageEditor )->escaped();                                                 
                 $textBody = MessageCache::singleton()->transform( $textBody, false, null, $this->title );                                                  
 		
                 //html version, this ugly as we have to make wiki link clickable in emails
@@ -169,7 +170,8 @@ class MoodBarHTMLEmailNotification {
                                                                        $FeedbackUrl, 
                                                                        $editorTalkPage,
                                                                        '<div style="margin-left:20px; margin-right:20px;">' .$this->response . '</div>',
-                                                                       $targetUserTalkPage );                                                 
+                                                                       $targetUserTalkPage,
+                                                                       $pageEditor );                                                 
 		$wgRequest->setVal( 'action', $action );                                                     
 	
 		//assemable the email body

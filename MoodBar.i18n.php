@@ -166,7 +166,7 @@ For more information, please visit the $1.',
 	
 	'moodbar-enotif-body' => 'Hello $1!
 
-Welcome to {{SITENAME}}, and thanks for your [[$2|feedback]]. Another Wikipedia user, [[$3|Responder]], wrote the following response:
+Welcome to {{SITENAME}}, and thanks for your [[$2|feedback]]. Another Wikipedia user, [[$3|$6]], wrote the following response:
 
      $4
 
