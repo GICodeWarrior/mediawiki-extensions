@@ -28,7 +28,7 @@ class ApiMoodBarSetUserEmail extends ApiBase {
 							$error = wfMsgExt( 'invalidemailaddress', 'parseinline' ) ;
 						}
 						else {
-							list( $status, $info ) = Preferences::trySetUserEmail( $wgUser, $params['email'] );
+							list( $status, $info ) = self::trySetUserEmail( $wgUser, $params['email'] );
 							
 							// Status Object
 							if ( $status !== true ) {
@@ -68,6 +68,35 @@ class ApiMoodBarSetUserEmail extends ApiBase {
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
+	/**
+	 * Tempoarary solution, will use Preference::trySetUserEmail in 1.19
+	 */
+	private static function trySetUserEmail( User $user, $newaddr ) {
+		global $wgEnableEmail, $wgEmailAuthentication;
+		$info = ''; // none
+
+		if ( $wgEnableEmail ) {
+			$oldaddr = $user->getEmail();
+			if ( ( $newaddr != '' ) && ( $newaddr != $oldaddr ) ) {
+				$user->setEmail( $newaddr );
+				if ( $wgEmailAuthentication ) {
+					$type = $oldaddr != '' ? 'changed' : 'set';
+					$result = $user->sendConfirmationMail( $type );
+					if ( !$result->isGood() ) {
+						return array( $result, 'mailerror' );
+					}
+					$info = 'eauth';
+				}
+			} elseif ( $newaddr != $oldaddr ) { // if the address is the same, don't change it
+				$user->setEmail( $newaddr );
+			}
+		}
+
+		return array( true, $info );
+	}
+
+	
+	
 	public function needsToken() {
 		return true;
 	}
