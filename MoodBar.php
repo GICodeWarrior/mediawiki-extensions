@@ -251,6 +251,6 @@ $wgMoodBarConfig = array(
 			'expires' => 30,
 		),
 	'infoUrl' => 'http://www.mediawiki.org/wiki/MoodBar',
-	'privacyUrl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
+	'privacyUrl' => 'about:blank',
 	'disableExpiration' => 365,
 );
