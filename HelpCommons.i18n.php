@@ -41,6 +41,13 @@ $messages['de'] = array(
 	'helpcommons-desc' => 'Nimmt den Hilfe-Namensraum aus einem Hilfe Wiki und bindet ihn in andere Wikis der Wiki-Familie ein',
 );
 
+/** Esperanto (Esperanto)
+ * @author ThomasPusch
+ */
+$messages['eo'] = array(
+	'helpcommons-desc' => 'Alportas helpopaĝojn el helpa vikio kaj inkluzivigas ĝin en aliajn vikiojn de la vikia familio',
+);
+
 /** French (Français)
  * @author Gomoko
  */
