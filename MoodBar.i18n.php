@@ -161,7 +161,7 @@ For more information, please visit the $1.',
 	'response-ajax-error-head' => 'Oops!',
 	'response-ajax-error-body' => 'There was an error adding your response. <br />Please try again later.', 
 	//Email notification
-	'moodbar-enotif-subject' => '$1 replied to your feedback',
+	'moodbar-enotif-subject' => '$1 responded to your feedback',
 	'moodbar-enotif-text-body-header' => '$1 responded to your feedback: $2',
 	'moodbar-enotif-html-body-header' => '[$1 $2] responded to your [$3 feedback]',
 	'moodbar-enotif-body-copy-text' => 'View this message on your talk page
