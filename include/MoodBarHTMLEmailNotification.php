@@ -168,7 +168,7 @@ class MoodBarHTMLEmailNotification {
 	        $htmlBody = wfMsgExt( 'moodbar-enotif-body', array( 'parse' ), $targetUserName, 
                                                                        $FeedbackUrl, 
                                                                        $editorTalkPage,
-                                                                       '<div style="margin-left:20px;">' .$this->response . '</div>',
+                                                                       '<div style="margin-left:20px; margin-right:20px;">' .$this->response . '</div>',
                                                                        $targetUserTalkPage );                                                 
 		$wgRequest->setVal( 'action', $action );                                                     
 	
