@@ -325,7 +325,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		
 		// Use database
 		$dbr = efContributionReportingConnection();
-		// Set timezone to UTC just in case
+		// Set timezone to UTC (contribution data will always be in UTC)
 		date_default_timezone_set( 'UTC' );
 		
 		$conditions = array(
