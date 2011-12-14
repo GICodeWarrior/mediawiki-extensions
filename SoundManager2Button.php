@@ -33,8 +33,8 @@
 #
 #   script/soundmanager2.js
 #   script/soundmanager2-jsmin.js
-#   script/soundmanager2-nodebug.js
-#   script/soundmanager2-nodebug-jsmin.js  <- We use this one in production.
+#   script/soundmanager2-nodebug.js        <- We use this one in production.
+#   script/soundmanager2-nodebug-jsmin.js
 #
 #   swf/soundmanager2.swf                  <- We use this one in production.
 #   swf/soundmanager2_debug.swf
@@ -46,7 +46,7 @@
 #
 # For debug mode:
 #   In $wgResourceModules: add css/debug.css
-#   In $wgResourceModules: replace script/soundmanager2-nodebug-jsmin.js with script/soundmanager2.js
+#   In $wgResourceModules: replace script/soundmanager2-nodebug.js with script/soundmanager2.js
 #   In args.js           : toggle soundManager.debugMode = false;
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -59,7 +59,6 @@ $wgExtensionCredits['media'][] = array(
         'name'           => 'SoundManager2Button',
         'author'         => 'kroocsiogsi',
         'url'            => 'https://www.mediawiki.org/wiki/Extension:SoundManager2Button',
-        'description'    => 'Embeds a SoundManager 2 MP3 player into a wiki page',
         'descriptionmsg' => 'soundmanager2button-desc',
         'version'        => '0.3.0',
 );
@@ -69,7 +68,7 @@ $wgExtensionMessagesFiles['SoundManager2Button'] = dirname( __FILE__ ) . '/Sound
 $wgHooks['ParserFirstCallInit'][] = 'wfSoundManager2Button';
  
 $wgResourceModules['ext.wfSoundManager2Button'] = array(
-        'scripts' => array( 'script/soundmanager2-nodebug-jsmin.js', 'script/mp3-player-button.js', 'script/args.js' ),
+        'scripts' => array( 'script/soundmanager2-nodebug.js', 'script/mp3-player-button.js', 'script/args.js' ),
         'styles' => 'css/mp3-player-button.css',
         'localBasePath' => dirname( __FILE__ ),
         'remoteExtPath' => 'SoundManager2Button',
