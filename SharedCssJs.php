@@ -20,7 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'SharedCssJs',
 	'author' => array( "Tim Weyer" ),
-	'version' => '1.0',
+	'version' => '1.0.1',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:SharedCssJs',
 	'descriptionmsg' => 'sharedcssjs-desc',
 );
@@ -30,8 +30,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['SharedCssJs'] = $dir . 'SharedCssJs.i18n.php';
 
 // Loading page protector
-$dir = dirname( __FILE__ ) . '/';
-require_once ( "$dir/SharedCssJsProtector.php" );
+require_once ( $dir . 'SharedCssJsProtector.php' );
 
 // Hooks
 $wgHooks['SkinTemplateSetupPageCss'][] = 'wfSharedCSS';
@@ -39,7 +38,7 @@ $wgHooks['SkinTemplateSetupPageCss'][] = 'wfSharedUserCSS';
 $wgHooks['BeforePageDisplay'][] = 'wfSharedJS';
 $wgHooks['BeforePageDisplay'][] = 'wfSharedUserJS';
 
-function wfSharedCSS( &$out ) {
+function wfSharedCSS( &$globalcss ) {
 	global $wgDisableSharedCSS, $wgSharedCssJsUrl;
 	if( !empty( $wgDisableSharedCSS ) ) {
 		return true;
@@ -47,12 +46,12 @@ function wfSharedCSS( &$out ) {
 
 	if ($wgSharedCssJsUrl) {
 		$url = $wgSharedCssJsUrl;
-		$out .= "@import \"{$url}?title=MediaWiki:Global.css&action=raw&ctype=text/css&smaxage=0\";";
+		$globalcss .= "@import \"{$url}?title=MediaWiki:Global.css&action=raw&ctype=text/css&smaxage=0\";";
 	}
 	return true;
 }
 
-function wfSharedJS( &$out ) {
+function wfSharedJS( &$globaljs ) {
 	global $wgDisableSharedJS, $wgJsMimeType, $wgSharedCssJsUrl;
 	if( !empty( $wgDisableSharedJS ) ) {
 		return true;
@@ -60,12 +59,12 @@ function wfSharedJS( &$out ) {
 
 	if ($wgSharedCssJsUrl) {
 		$url = $wgSharedCssJsUrl;
-		$out->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$url}?title=MediaWiki:Global.js&action=raw&ctype={$wgJsMimeType}\"></script>");
+		$globaljs->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$url}?title=MediaWiki:Global.js&action=raw&ctype={$wgJsMimeType}\"></script>");
 	}
 	return true;
 }
 
-function wfSharedUserCSS( &$out ) {
+function wfSharedUserCSS( &$globalusercss ) {
 	global $wgDisableSharedUserCSS, $wgSharedCssJsUrl, $wgUser;
 	if( !empty( $wgDisableSharedUserCSS ) || !isset( $wgSharedCssJsUrl ) ) {
 		return true;
@@ -74,12 +73,12 @@ function wfSharedUserCSS( &$out ) {
 	if (!$wgUser->isAnon()) {
 		$url = $wgSharedCssJsUrl;
 		$userName = str_replace(' ', '_', $wgUser->getName());
-		$out .= "@import \"{$url}?title=User:{$userName}/global.css&action=raw&ctype=text/css&smaxage=0\";";
+		$globalusercss .= "@import \"{$url}?title=User:{$userName}/global.css&action=raw&ctype=text/css&smaxage=0\";";
 	}
 	return true;
 }
 
-function wfSharedUserJS( &$out ) {
+function wfSharedUserJS( &$globaluserjs ) {
 	global $wgDisableSharedUserJS, $wgJsMimeType, $wgSharedCssJsUrl, $wgUser;
 	if( !empty( $wgDisableSharedUserJS ) || !isset( $wgSharedCssJsUrl ) ) {
 		return true;
@@ -88,7 +87,7 @@ function wfSharedUserJS( &$out ) {
 	if (!$wgUser->isAnon()) {
 		$url = $wgSharedCssJsUrl;
 		$userName = str_replace(' ', '_', $wgUser->getName());
-		$out->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$url}?title=User:{$userName}/global.js&action=raw&ctype={$wgJsMimeType}\"></script>");
+		$globaluserjs->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$url}?title=User:{$userName}/global.js&action=raw&ctype={$wgJsMimeType}\"></script>");
 	}
 	return true;
 }
