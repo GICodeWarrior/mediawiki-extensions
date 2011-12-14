@@ -320,8 +320,10 @@ $messages['nl'] = array(
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author Vvk.pentapati
  */
 $messages['te'] = array(
+	'onlinestatusbar-line' => '$1 ippudu $2 $3',
 	'onlinestatusbar-used' => 'మీరు ఆన్‌లైనులో ఉన్నట్టు ఇతరులుకు చూపించాలా?',
 );
 
