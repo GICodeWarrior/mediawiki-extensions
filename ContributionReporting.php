@@ -214,14 +214,14 @@ function efContributionTrackingConnection() {
 function efContributionReportingTotal( $fundraiser, $fudgeFactor = 0 ) {
 	global $wgMemc, $egFundraiserStatisticsFundraisers, $egFundraiserStatisticsCacheTimeout;
 
-	$dbr = efContributionReportingConnection();
-	
 	// If a total is cached, use that
 	$key = wfMemcKey( 'contributionreportingtotal', $fundraiser, $fudgeFactor );
 	$cache = $wgMemc->get( $key );
 	if ( $cache != false && $cache != -1 ) {
 		return $cache;
 	}
+	
+	$dbr = efContributionReportingConnection();
 	
 	// Find the index number for the requested fundraiser
 	$myFundraiserIndex = false;
@@ -242,7 +242,7 @@ function efContributionReportingTotal( $fundraiser, $fudgeFactor = 0 ) {
 	$result = $dbr->select(
 		'public_reporting_fundraisers',
 		'round( prf_total ) AS total',
-		'prf_id = ' . $myFundraiser['id'],
+		'prf_id' => $myFundraiser['id'],
 		__METHOD__
 	);
 	$row = $dbr->fetchRow( $result );
