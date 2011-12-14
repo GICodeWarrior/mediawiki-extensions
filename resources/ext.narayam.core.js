@@ -56,7 +56,7 @@ $.narayam = new ( function() {
 			if ( regex.test( str ) // Input string match
 				&&
 				(
-					rules[i][1].length == 0 // Keybuffer match not required
+					rules[i][1].length === 0 // Keybuffer match not required
 					||
 					( // Keybuffer match specified, so it should be met
 						rules[i][1].length > 0
@@ -130,7 +130,7 @@ $.narayam = new ( function() {
 			shiftKey: false,
 			cmdKey: false,
 			key: 'm'
-		}
+		};
 		// Browser sniffing to determine the available shortcutKey
 		// Refer: mediawiki.util.js and en.wikipedia.org/wiki/Access_key
 		var profile = $.client.profile();
@@ -168,7 +168,7 @@ $.narayam = new ( function() {
 			text += 'Command-';
 		}
 		text += shortcutKey.key.toUpperCase();
- 		return text;
+		return text;
 	}
 
 	/**
@@ -428,7 +428,7 @@ $.narayam = new ( function() {
 	 */
 	this.getScheme = function( name ) {
 		return schemes[name];
-	}
+	};
 	
 	/**
 	 * Change the current transliteration scheme
@@ -438,9 +438,9 @@ $.narayam = new ( function() {
 		var recent = $.cookie( 'narayam-scheme' ) || [];
 		if ( typeof recent === "string" ) {
 			recent = recent.split( "," );
-		};
+		}
 		recent = $.grep( recent, function( value ) {
- 			 return value != name;
+			 return value != name;
 		} );
 		recent.unshift( name );
 		recent = recent.slice( 0, recentItemsLength );
@@ -465,7 +465,7 @@ $.narayam = new ( function() {
 	this.setup = function() {
 		that.buildMenu();
 		// Restore state from cookies
-		var recentSchemes = $.cookie( 'narayam-scheme' );
+		var recent = $.cookie( 'narayam-scheme' );
 		var lastScheme = null;
 		if ( typeof recent === "string" ) {
 			lastScheme = recent.split( "," )[0];
@@ -531,7 +531,7 @@ $.narayam = new ( function() {
 			if ( $.inArray( scheme, seen ) > -1 ) { continue; }
 			seen.push( scheme );
 			if ( count++ > recentItemsLength ) { break; }
-			$narayamMenuItem = that.buildMenuItem( scheme );
+			var $narayamMenuItem = that.buildMenuItem( scheme );
 			$narayamMenuItem.addClass( 'narayam-recent-menu-item' );
 			$narayamMenuItems.append( $narayamMenuItem );
 		}
@@ -548,7 +548,7 @@ $.narayam = new ( function() {
 				haveSchemes = true;
 				if ( $.inArray( scheme, seen ) !== -1 ) { continue; }
 				seen.push( scheme );
-				$narayamMenuItem = that.buildMenuItem( scheme );
+				var $narayamMenuItem = that.buildMenuItem( scheme );
 				$narayamMenuItems.append( $narayamMenuItem );
 			}
 		}
@@ -599,7 +599,7 @@ $.narayam = new ( function() {
 				// Donot repeat the input methods in more input methods section.
 				// If already shown on recent items.
 				if ( $.inArray( langscheme, seen ) > -1 ) { continue; }
-				$narayamMenuItem = that.buildMenuItem( langscheme );
+				var $narayamMenuItem = that.buildMenuItem( langscheme );
 				$narayamMenuItem.addClass( 'narayam-scheme-dynamic-item' );
 				$narayamMenuItems.append( $narayamMenuItem );
 
