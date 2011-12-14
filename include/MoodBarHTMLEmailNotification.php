@@ -145,44 +145,40 @@ class MoodBarHTMLEmailNotification {
 			$pageEditor = $wgEnotifUseRealName ? $this->editor->getRealName() : $this->editor->getName();
 		}
 		
-		$feedbackUrl = SpecialPage::getTitleFor( 'FeedbackDashboard', $this->feedback )->getCanonicalURL();
-		
 		// build the subject	
 		$this->subject = wfMessage( 'moodbar-enotif-subject')->params( $pageEditor )->escaped();
 
-		// build the header
-		$textEmailHeader = wfMessage( 'moodbar-enotif-text-body-header' )
-		                                     ->params( $pageEditor, $feedbackUrl )->escaped();
-		$htmlEmailHeader = wfMsgExt( 'moodbar-enotif-html-body-header', 
-			                            array( 'parse' ), 
-			                            $this->editor->getTalkPage()->getCanonicalURL(), 
-			                            $pageEditor, 
-			                            $feedbackUrl );
-	        // build the response text
-		$textResponse = htmlspecialchars( $this->response );
-		$messageCache = MessageCache::singleton();
+		// build the body
+		$messageCache       = MessageCache::singleton();
+		$targetUserName     = $this->targetUser->getName();
+		$FeedbackUrl        = SpecialPage::getTitleFor( 'FeedbackDashboard', $this->feedback )->getPrefixedText();
+		$editorTalkPage     = $this->editor->getTalkPage()->getPrefixedText();
+		$targetUserTalkPage = $this->targetUser->getTalkPage()->getCanonicalUrl();
+		//text version
+		$textBody = wfMessage( 'moodbar-enotif-body')->params( $targetUserName, 
+                                                                       $FeedbackUrl, 
+                                                                       $editorTalkPage,
+                                                                       $this->response,
+                                                                       $targetUserTalkPage )->escaped();                                                 
+                $textBody = MessageCache::singleton()->transform( $textBody, false, null, $this->title );                                                  
 		
-		// This is ugly, it's used to add domain name to wiki link so it can be clicked from email.
+                //html version, this ugly as we have to make wiki link clickable in emails
 		$action = $wgRequest->getVal( 'action' );
 		$wgRequest->setVal( 'action', 'render' );
-		$htmlResponse = $messageCache->parse( $this->response )->getText();
-		$wgRequest->setVal( 'action', $action );
-		
-		//build the copy text
-		$textEmailCopy = wfMessage( 'moodbar-enotif-body-copy-text' )->escaped();
-		$htmlEmailCopy = wfMsgExt( 'moodbar-enotif-body-copy-text', array( 'parse' ) );
-		
+	        $htmlBody = wfMsgExt( 'moodbar-enotif-body', array( 'parse' ), $targetUserName, 
+                                                                       $FeedbackUrl, 
+                                                                       $editorTalkPage,
+                                                                       '<div style="margin-left:20px;">' .$this->response . '</div>',
+                                                                       $targetUserTalkPage );                                                 
+		$wgRequest->setVal( 'action', $action );                                                     
+	
 		//assemable the email body
 		$this->body = <<<HTML
 --$this->mime_boundary
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-$textEmailHeader 
-
-$textResponse
-
-$textEmailCopy
+$textBody
 
 --$this->mime_boundary
 Content-Type: text/html; charset=UTF-8
@@ -190,11 +186,7 @@ Content-Transfer-Encoding: 8bit
 
 <html>
 	<body>
-		$htmlEmailHeader
-		
-		$htmlResponse
-		
-		$htmlEmailCopy
+		$htmlBody
 	</body>
 </html>
 

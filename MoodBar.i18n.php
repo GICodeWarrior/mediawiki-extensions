@@ -163,13 +163,22 @@ For more information, please visit the $1.',
 	'response-ajax-error-body' => 'There was an error adding your response. <br />Please try again later.', 
 	//Email notification
 	'moodbar-enotif-subject' => '$1 responded to your feedback',
-	'moodbar-enotif-text-body-header' => '$1 responded to your feedback: $2',
-	'moodbar-enotif-html-body-header' => '[$1 $2] responded to your [$3 feedback]',
-	'moodbar-enotif-body-copy-text' => 'View this message on your talk page
+	
+	'moodbar-enotif-body' => 'Hello $1!
 
-What is a talk page?
+Welcome to {{SITENAME}}, and thanks for your [[$2|feedback]]. Another Wikipedia user, [[$3|Responder]], wrote the following response:
 
-Your talk page is where other Wikipedia editors communicate with you by leaving messages.  Wikipedia editors use talk pages to discuss issues, provide help, notify people of what’s happening in the community, express thanks.  They also use talk pages just to say hi.',
+$4
+
+View this message on your [$5 talk page]
+
+What’s a talk page?
+Your user talk page is the page that other {{SITENAME}} editors use to communicate with you.  You can respond by clicking “Edit”, moving the cursor below the comment, typing your response and four tildes (~~~~) to sign, and saving. All pages in {{SITENAME}} have talk pages, and they’re used for many different purposes. It takes a while to get the hang of it, but is pretty easy once you’re used to it.
+
+Still confused? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv This video] (watch on [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) gives you a step-by-step overview.
+
+Have a nice day,
+-- {{SITENAME}}',
 );
 
 /** Message documentation (Message documentation)
@@ -307,9 +316,7 @@ Terms of use URL. Do not change this URL until a translation of the page itself 
 	'response-ajax-error-head' => 'Text for ajax status heading on error',
 	'response-ajax-error-body' => 'Text for ajax status body on error (can be html)',
 	'moodbar-enotif-subject' => 'Feedback response email subject',
-	'moodbar-enotif-text-body-header' => 'The text version email header, $1 is the user name, $2 is the link to the feedback',
-	'moodbar-enotif-html-body-header' => 'The html version email header, $1 is the the user talk page link, $2 is user name, $3 is the link to feedback',
-	'moodbar-enotif-body-copy-text' => 'Email copy text',
+	'moodbar-enotif-body' => 'Feedback response email body, $1 is the commenter name, $2 is the link to the feedback of commenter, $3 is the responder talk page, $4 is the response text, $5 is commenter talk page',
 );
 
 /** Afrikaans (Afrikaans)
