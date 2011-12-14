@@ -47,21 +47,6 @@ class PopulateFundraisingStatistics extends Maintenance {
 	}
 
 	/**
-	 * Wait for all the slave database servers to sync up with the master
-	 */	
-	public function syncDBs() {
-		// FIXME: Copied from populateAFRevisions.php, which coppied from updateCollation.php, should be centralized somewhere
-		$lb = wfGetLB();
-		// bug 27975 - Don't try to wait for slaves if there are none
-		// Prevents permission error when getting master position
-		if ( $lb->getServerCount() > 1 ) {
-			$dbw = $lb->getConnection( DB_MASTER );
-			$pos = $dbw->getMasterPos();
-			$lb->waitForAll( $pos );
-		}
-	}
-
-	/**
 	 * Bootstrap this maintenance script
 	 *
 	 * Performs operations necessary for this maintenance script to run which
@@ -72,16 +57,19 @@ class PopulateFundraisingStatistics extends Maintenance {
 		 * Set user-specified operations to perform
 		 */
 		$operations = explode( ',', $this->getOption( 'op' ) );
-		// check sanity of specified operations
+		// Check sanity of specified operations
 		if ( !$this->checkOperations( $operations ) ) {
 			$this->error( 'Invalid operation specified.', true );
 		} else {
 			$this->operations = $operations;
 		}
 
-		// set db objects
+		// Set database objects
 		$this->dbr = wfGetDB( DB_SLAVE );
 		$this->dbw = wfGetDB( DB_MASTER );
+		
+		// Set timezone to UTC (contribution data will always be in UTC)
+		date_default_timezone_set( 'UTC' );
 	}
 
 	/**
@@ -129,8 +117,8 @@ class PopulateFundraisingStatistics extends Maintenance {
 		$this->output( "Writing data to public_reporting_days...\n" );
 		
 		$conditions = array(
-			'converted_amount >= ' . $egFundraiserStatisticsMinimum,
-			'converted_amount <= ' . $egFundraiserStatisticsMaximum
+			'converted_amount >= ' . intval( $egFundraiserStatisticsMinimum ),
+			'converted_amount <= ' . intval( $egFundraiserStatisticsMaximum )
 		);
 		
 		// Get the data for a fundraiser
@@ -168,8 +156,8 @@ class PopulateFundraisingStatistics extends Maintenance {
 			$res = $this->dbw->delete( 'public_reporting_days', array( 1 ) );
 			// Insert the new totals
 			$res = $this->dbw->insert( 'public_reporting_days', $insertArray, __METHOD__ );
-			// Sync the databases
-			$this->syncDBs();
+			// Wait for the databases to sync
+			wfWaitForSlaves();
 		}
 		
 		$lag = time() - $begin;
@@ -228,8 +216,8 @@ class PopulateFundraisingStatistics extends Maintenance {
 			$res = $this->dbw->delete( 'public_reporting_fundraisers', array( 1 ) );
 			// Insert the new totals
 			$res = $this->dbw->insert( 'public_reporting_fundraisers', $insertArray, __METHOD__ );
-			// Sync the databases
-			$this->syncDBs();
+			// Wait for the databases to sync
+			wfWaitForSlaves();
 		}
 		$lag = time() - $begin;
 		$this->output( "Inserted " . $records . " rows. ($lag seconds)\n" );
@@ -294,8 +282,6 @@ class PopulateFundraisingStatistics extends Maintenance {
 		}
 		
 		if ( $records > 0 ) {
-			// Set timezone to UTC to match donation servers
-			date_default_timezone_set( 'UTC' );
 			// Empty the table of previous totals for this fundraiser
 			$res = $this->dbw->delete(
 				'public_reporting_days', 
@@ -306,8 +292,8 @@ class PopulateFundraisingStatistics extends Maintenance {
 			);
 			// Insert the new totals
 			$res = $this->dbw->insert( 'public_reporting_days', $insertArray, __METHOD__ );
-			// Sync the databases
-			$this->syncDBs();
+			// Wait for the databases to sync
+			wfWaitForSlaves();
 		}
 		
 		$lag = time() - $begin;

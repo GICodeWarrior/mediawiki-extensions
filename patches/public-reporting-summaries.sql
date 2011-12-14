@@ -7,8 +7,8 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/public_reporting_fundraisers (
 	`prf_average` decimal(8,4) NOT NULL DEFAULT '0.0000',
 	`prf_maximum` decimal(11,4) NOT NULL DEFAULT '0.0000',
 	`prf_insert_timestamp` int(10) NOT NULL,
+	PRIMARY KEY (prf_id)
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/prf_id ON /*$wgDBprefix*/public_reporting_fundraisers (prf_id);
 
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/public_reporting_days (
 	`prd_date` date NOT NULL,
@@ -17,5 +17,5 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/public_reporting_days (
 	`prd_average` decimal(8,4) unsigned NOT NULL DEFAULT '0.0000',
 	`prd_maximum` decimal(11,4) unsigned NOT NULL DEFAULT '0.0000',
 	`prd_insert_timestamp` int(10) NOT NULL,
+	PRIMARY KEY (prd_date)
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/prf_id ON /*$wgDBprefix*/public_reporting_days (prd_date);
