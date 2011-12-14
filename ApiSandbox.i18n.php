@@ -407,6 +407,11 @@ Hlej [//www.mediawiki.org/wiki/API API-dokumentaciju] za dalše podrobnosće za 
 	'apisb-parameters' => 'Parametry',
 	'apisb-result' => 'Wuslědk',
 	'apisb-select-value' => 'Hódnotu wubrać',
+	'apisb-query-prop' => 'Kajkosće',
+	'apisb-query-list' => 'Lisćiny',
+	'apisb-query-meta' => 'Metainformacije',
+	'apisb-generic-parameters' => 'Powšitkowne parametry',
+	'apisb-generator-parameters' => 'Generator',
 );
 
 /** Hungarian (Magyar)
