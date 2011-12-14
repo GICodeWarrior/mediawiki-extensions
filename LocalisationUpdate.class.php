@@ -63,7 +63,7 @@ class LocalisationUpdate {
 			$wgLocalisationUpdateDirectory = $options['outdir'];
 		}
 		
-		if ( isset( $options['svnurl['] ) ) {
+		if ( isset( $options['svnurl'] ) ) {
 			// FIXME: Ewwwww. Refactor so this can be done properly
 			$wgLocalisationUpdateSVNURL = $options['svnurl'];
 		}
