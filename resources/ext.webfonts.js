@@ -138,10 +138,10 @@
 				fontFormats.push( "\t\turl('" + base + fontconfig.ttf + versionSuffix + "') format('truetype')" );
 			}
 			
-			styleString += fontFormats.join() + ";\n"
+			styleString += fontFormats.join() + ";\n";
 			styleString += "\tfont-weight: normal;\n}\n</style>\n";
 
- 			//inject the css to the head of the page.
+			//inject the css to the head of the page.
 			$( styleString ).appendTo( 'head' );
 		},
 		
@@ -231,6 +231,7 @@
 		loadFontsForLangAttr: function() {
 			var languages = mw.webfonts.config.languages;
 			var requested = [mw.config.get( 'wgUserVariant' ), mw.config.get( 'wgContentLanguage' ), mw.config.get( 'wgUserLanguage' )];
+			var fontFamily = false;
 			// If there are tags with lang attribute, 
 			$( 'body' ).find( '*[lang]' ).each( function( index ) {
 				// If the lang attribute value is same as one of
@@ -303,7 +304,7 @@
 				return null;
 			}
 
-			var $resetLink = $( '<input type="radio" name="font"/>' )
+			var $resetLink = $( '<input type="radio" name="font" />' )
 				.attr( 'value', 'webfont-none' )
 				.attr( 'id', 'webfont-none' )
 				.click( function( e ) {
@@ -334,7 +335,7 @@
 		 */
 		buildMenu: function(config) {
 			var $menuItemsDiv = mw.webfonts.buildMenuItems( config );
-			if( $menuItemsDiv == null ) {
+			if( $menuItemsDiv === null ) {
 				return;
 			}
 			var $menu = $( '<div>' )
