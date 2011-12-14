@@ -372,7 +372,7 @@
 			ml:  [ "AnjaliOldLipi", "Meera", "RaghuMalayalam" ],
 			mr:  [ "Lohit Devanagari" ],
 			my:  [ "Masterpiece Uni Sans", "Padauk-Regular", "Myanmar3", "Yunghkio" ],
-			ne:  [ "Lohit Devanagari" ], 
+			ne:  [ "Lohit Devanagari", "Madan" ], 
 			or:  [ "Lohit Oriya" , "Utkal" ],
 			pa:  [ "Lohit Punjabi", "Saab" ],
 			sa:  [ "Lohit Devanagari" ],
