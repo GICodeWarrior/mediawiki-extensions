@@ -656,12 +656,36 @@ $.narayam = new ( function() {
 		var $li = $( '<li>' ).attr( 'id', 'pt-narayam' ).append( $link );
 
 		// If rtl, add to the right of top personal links. Else, to the left
-		var fn = $( 'body' ).hasClass( 'rtl' ) ? "append" : "prepend";
-		$( '#p-personal ul:first' )[fn]( $li );
+		var rtlEnv = $( 'body' ).hasClass( 'rtl' );
+		var positionFunction = rtlEnv ? "append" : "prepend";
+		$( '#p-personal ul:first' )[positionFunction]( $li );
 		$( 'body' ).prepend( $menu );
 		$menu.hide();
 		$li.click( function( event ) {
-			$menuItemsDiv.css( 'left', $li.offset().left );
+			var menuSide, menuOffset, distanceToEdge;
+
+			if ( rtlEnv ) {
+				distanceToEdge = $li.outerWidth() + $li.offset().left;
+				if ( $menuItemsDiv.outerWidth() > distanceToEdge ) {
+					menuSide = 'left';
+					menuOffset = $li.offset().left;
+				} else {
+					menuSide = 'right';
+					menuOffset = $(window).width() - distanceToEdge;
+				}
+			} else {
+				distanceToEdge = $(window).width() - $li.offset().left;
+				if ( $menuItemsDiv.outerWidth() > distanceToEdge ) {
+					menuSide = 'right';
+					menuOffset = distanceToEdge - $li.outerWidth();
+				} else {
+					menuSide = 'left';
+					menuOffset = $li.offset().left;
+				}
+			}
+
+			$menuItemsDiv.css( menuSide, menuOffset );
+
 			if( $menu.hasClass( 'open' ) ){
 				$menu.removeClass( 'open' );
 				$menu.hide();
