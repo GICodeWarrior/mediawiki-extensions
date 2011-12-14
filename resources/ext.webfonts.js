@@ -348,17 +348,34 @@
 				.attr( 'title', mw.msg( 'webfonts-menu-tooltip' ) );
 			// This is the fonts link
 			var $li = $( '<li>' ).attr( 'id', 'pt-webfont' ).append( $link );
+			var positionFunction, menuSide;
+			if ( $( 'body' ).hasClass( 'rtl' ) ) {
+				positionFunction = 'append';
+				menuSide = 'left';
+			}
+			else {
+				positionFunction = 'prepend';
+				menuSide = 'right';
+			}
 			// If RTL, add to the right of top personal links. Else, to the left
-			var fn = $( 'body' ).hasClass( 'rtl' ) ? 'append' : 'prepend';
-			$( '#p-personal ul:first' )[fn]( $li );
+			$( '#p-personal ul:first' )[positionFunction]( $li );
+
 			$( 'body' ).prepend( $menu );
 			$li.click( function( event ) {
-				$menuItemsDiv.css( 'left', $li.offset().left );
-				if( $menu.hasClass( 'open' ) ){
+				var menuOffset;
+				if ( $( 'body' ).hasClass( 'rtl' ) ) {
+					menuOffset = $li.offset().left;
+				}
+				else {
+ 					menuOffset = $(window).width() - ( $li.offset().left + $li.outerWidth() );
+				}
+				$menuItemsDiv.css( menuSide, menuOffset );
+
+				if( $menu.hasClass( 'open' ) ) {
 					$menu.removeClass( 'open' );
-				} else{
+				} else {
 					$( 'div.open' ).removeClass( 'open' );
-					$menu.addClass( 'open' );
+ 					$menu.addClass( 'open' );
 					event.stopPropagation();
 				}
 			} );
