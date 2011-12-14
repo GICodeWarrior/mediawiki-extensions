@@ -56,6 +56,11 @@ $messages['en'] = array(
 
 	// Special:Institutions
 	'ep-institutions-nosuchinstitution' => 'There is no institution with name "$1". Existing institutions are listed below.',
+	'ep-institutions-noresults' => 'There are no institutions to list.',
+	'ep-institutions-addnew' => 'Add a new institution',
+	'ep-institutions-namedoc' => 'Enter the name for the new institution (which should be unique) and hit the button.',
+	'ep-institutions-newname' => 'Institution name:',
+	'ep-institutions-add' => 'Add institution',
 
 );
 
