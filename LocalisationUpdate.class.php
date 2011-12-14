@@ -348,9 +348,14 @@ class LocalisationUpdate {
 		// Get the array with messages.
 		$base_messages = self::parsePHP( $basefilecontents, 'base_messages' );
 		if ( !is_array( $base_messages ) ) {
-			// Broken file? Report and bail
-			self::myLog( "Failed to parse $basefile" );
-			return array();
+			if ( strpos( $basefilecontents, "\$base_messages" ) === false ) {
+				// No $messages array. This happens for some languages that only have a fallback
+				$base_messages = array();
+			} else {
+				// Broken file? Report and bail
+				self::myLog( "Failed to parse $basefile" );
+				return array();
+			}
 		}
 
 		$comparefilecontents = self::getFileContents( $comparefile );
@@ -379,8 +384,14 @@ class LocalisationUpdate {
 		$compare_messages = self::parsePHP( $comparefilecontents, 'compare_messages' );
 		if ( !is_array( $compare_messages ) ) {
 			// Broken file? Report and bail
-			self::myLog( "Failed to parse $comparefile" );
-			return array();
+			if ( strpos( $comparefilecontents, "\$compare_messages" ) === false ) {
+				// No $messages array. This happens for some languages that only have a fallback
+				self::myLog( "Skipping $langcode , no messages array in $comparefile", $verbose );
+				$compare_messages = array();
+			} else {
+				self::myLog( "Failed to parse $comparefile" );
+				return array();
+			}
 		}
 
 		// If the localfile and the remote file are the same, skip them!
