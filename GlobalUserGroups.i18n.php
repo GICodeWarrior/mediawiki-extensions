@@ -77,6 +77,13 @@ $messages['ia'] = array(
 	'globalusergroups-desc' => 'Permitte le uso de gruppos definite de usatores local como gruppos global',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'globalusergroups-desc' => 'Palubosan na ti pinag-usar iti naipalawag a dagiti lokal a bunggoy ti agar-aramat a kas dagiti sangalubongan a bunggoy',
+);
+
 /** Japanese (日本語)
  * @author Whym
  */
