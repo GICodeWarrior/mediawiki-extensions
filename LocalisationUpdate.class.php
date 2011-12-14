@@ -52,7 +52,7 @@ class LocalisationUpdate {
 	 * @return true
 	 */
 	public static function updateMessages( array $options ) {
-		global $wgLocalisationUpdateDirectory;
+		global $wgLocalisationUpdateDirectory, $wgLocalisationUpdateSVNURL;
 
 		$verbose = !isset( $options['quiet'] );
 		$all = isset( $options['all'] );
@@ -61,6 +61,11 @@ class LocalisationUpdate {
 
 		if( isset( $options['outdir'] ) ) {
 			$wgLocalisationUpdateDirectory = $options['outdir'];
+		}
+		
+		if ( isset( $options['svnurl['] ) ) {
+			// FIXME: Ewwwww. Refactor so this can be done properly
+			$wgLocalisationUpdateSVNURL = $options['svnurl'];
 		}
 
 		$result = 0;
