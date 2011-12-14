@@ -117,6 +117,8 @@ $messages['ia'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'browsewiki' => "Duerch d'Wiki an de semantesche Spaweck browsen",
+	'swb_desc' => "Setzt eng Spezialsäit [[Special:BrowseWiki|Duerch d'Wiki an de semantesche Spaweck browsen]] derbäi",
 	'swb_browse_go' => 'Lass',
 	'swb_inverse_label_default' => '$1 vu(n)',
 );
