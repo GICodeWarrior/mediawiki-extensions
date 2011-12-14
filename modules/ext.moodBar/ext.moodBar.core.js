@@ -89,7 +89,7 @@
 					<div class="mw-moodBar-state-subtitle"><html:msg key="moodbar-error-subtitle" /></div>\
 				</div>',
 			blocked: '\
-				<div class="mw-moodBar-state mw-moodBar-state-blocked">\
+				<div class="mw-moodBar-state mw-moodBar-state-error">\
 					<div class="mw-moodBar-state-title"><html:msg key="moodbar-blocked-title" /></div>\
 					<div class="mw-moodBar-state-subtitle"><html:msg key="moodbar-blocked-subtitle" /></div>\
 				</div>'
