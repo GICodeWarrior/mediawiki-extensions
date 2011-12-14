@@ -258,7 +258,8 @@
 							linkMessage = mw.msg( 'moodbar-what-link' );
 							link = mw.html.element( 'a', {
 									'href': mb.conf.infoUrl,
-									'title': linkMessage
+									'title': linkMessage,
+									'target': '_blank' 
 								}, linkMessage );
 
 							out = mw.html.escape( message )
@@ -287,13 +288,15 @@
 				.find( '.mw-moodBar-privacy' )
 					.html(
 						function() {
-							var message, linkMessage, link;
+							var message, linkMessage, linkTitle, link;
 
 							message = mw.msg( 'moodbar-privacy' );
 							linkMessage = mw.msg( 'moodbar-privacy-link' );
+							linkTitle = mw.msg( 'moodbar-privacy-link-title' );
 							link = mw.html.element( 'a', {
 									'href': mb.conf.privacyUrl,
-									'title': linkMessage
+									'title': linkTitle,
+									'target': '_blank' 
 								}, linkMessage );
 
 							return mw.html.escape( message )
@@ -348,7 +351,6 @@
 						 */
 						on_negative: function( t_obj ) {
 							$( t_obj )
-							.addClass('mw-moodBar-feedback-invalid')
 							.parent().prev()
 							.find('.mw-moodBar-formNote')
 							.addClass('red-bold');
@@ -359,7 +361,6 @@
 						 */
 						on_positive: function( t_obj ) {
 							$( t_obj )
-							.removeClass( 'mw-moodBar-feedback-invalid')
 							.parent().prev()
 							.find('.mw-moodBar-formNote')
 							.removeClass('red-bold');

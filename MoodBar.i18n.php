@@ -44,6 +44,7 @@ For more information, please visit the $1.',
 	'moodbar-what-link' => 'feature page',
 	'moodbar-privacy' => 'By submitting, you agree to transparency under these $1.',
 	'moodbar-privacy-link' => 'terms',
+	'moodbar-privacy-link-title' => 'Terms of Use',
 	'moodbar-disable-link' => "I'm not interested. Please disable this feature.",
 	'moodbar-form-title' => 'Because...',
 	'moodbar-form-note' => '140 character maximum',
@@ -222,6 +223,7 @@ The link is to the privacy policy of the wiki.
 
 See [[Thread:Support/About MediaWiki:Moodbar-privacy/en (2)/reply (4)|discussion]].',
 	'moodbar-privacy-link' => 'This is the anchor text being used in the link replacing $1 in the message {{msg-mw|moodbar-privacy}}',
+	'moodbar-privacy-link-title' => 'This is the title of the anchor link being used for the privacy message',
 	'moodbar-form-note-dynamic' => 'Should support plural.',
 	'moodbar-form-policy-text' => 'Text displayed below the input area.
 

@@ -148,6 +148,7 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'moodbar-form-submit',
 		'moodbar-privacy',
 		'moodbar-privacy-link',
+		'moodbar-privacy-link-title',
 		'moodbar-disable-link',
 		'moodbar-loading-title',
 		'moodbar-error-title',
@@ -250,6 +251,6 @@ $wgMoodBarConfig = array(
 			'expires' => 30,
 		),
 	'infoUrl' => 'http://www.mediawiki.org/wiki/MoodBar',
-	'privacyUrl' => 'about:blank',
+	'privacyUrl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'disableExpiration' => 365,
 );

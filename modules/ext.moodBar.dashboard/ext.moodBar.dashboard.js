@@ -470,7 +470,6 @@ jQuery(function( $ ) {
 					 */
 					on_negative: function( t_obj ) { 
 						$( t_obj )
-							.addClass('fbd-response-text-invalid')
 							.prev()
 							.find('span')
 							.addClass('red-bold');
@@ -481,7 +480,6 @@ jQuery(function( $ ) {
 					 */
 					on_positive: function( t_obj ) {
 						$( t_obj )
-							.removeClass( 'fbd-response-text-invalid')
 							.prev()
 							.find('span')
 							.removeClass('red-bold');
