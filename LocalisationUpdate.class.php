@@ -326,7 +326,8 @@ class LocalisationUpdate {
 		$basefilecontents = self::getFileContents( $basefile );
 
 		if ( $basefilecontents === false || $basefilecontents === '' ) {
-			return array(); // Failed
+			self::myLog( "Failed to read $basefile" );
+			return array();
 		}
 
 		// Only get the part we need.
@@ -346,11 +347,17 @@ class LocalisationUpdate {
 
 		// Get the array with messages.
 		$base_messages = self::parsePHP( $basefilecontents, 'base_messages' );
+		if ( !is_array( $base_messages ) ) {
+			// Broken file? Report and bail
+			self::myLog( "Failed to parse $basefile" );
+			return array();
+		}
 
 		$comparefilecontents = self::getFileContents( $comparefile );
 
 		if ( $comparefilecontents === false || $comparefilecontents === '' ) {
-			return array(); // Failed
+			self::myLog( "Failed to read $comparefile" );
+			return array();
 		}
 
 		// Only get the stuff we need.
@@ -370,6 +377,11 @@ class LocalisationUpdate {
 
 		// Get the array.
 		$compare_messages = self::parsePHP( $comparefilecontents, 'compare_messages' );
+		if ( !is_array( $compare_messages ) ) {
+			// Broken file? Report and bail
+			self::myLog( "Failed to parse $comparefile" );
+			return array();
+		}
 
 		// If the localfile and the remote file are the same, skip them!
 		if ( $basehash == $comparehash && !$alwaysGetResult ) {
