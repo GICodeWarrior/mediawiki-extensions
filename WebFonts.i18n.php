@@ -277,6 +277,9 @@ $messages['it'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Incorpora caratteri nelle pagine',
 	'webfonts-load' => 'Seleziona il tipo di carattere',
+	'webfonts-reset' => 'Reimposta',
+	'webfonts-enable-preference' => "Attiva l'incorporazione dei caratteri (WebFont)",
+	'webfonts-menu-tooltip' => 'Seleziona un tipo di carattere per la pagina',
 );
 
 /** Japanese (日本語)
