@@ -154,7 +154,7 @@ class SFIDatePicker extends SFFormInput {
 	protected function setupJsInitAttribs() {
 
 		global $sfigSettings;
-		global $wgAmericanDates;
+		global $wgAmericanDates, $wgLang;
 
 		// store user class(es) for use with buttons
 		$userClasses = array_key_exists( 'class', $this->mOtherArgs ) ? $this->mOtherArgs['class'] : '';
