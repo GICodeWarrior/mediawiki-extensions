@@ -1945,6 +1945,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Gomoko
  * @author Grondin
  * @author IAlex
  * @author Jean-Frédéric
@@ -1960,6 +1961,7 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'contributionreporting-desc' => 'Rapport de suivi en direct sur la collecte de fonds de Wikimedia',
 	'contributiontotal' => 'Total des contributions',
+	'dailytotal' => 'Total quotidien',
 	'disablednotice' => 'Rapports de contribution',
 	'disablednotice-disabled' => 'Cette page a été temporairement désactivée. Veuillez réessayer plus tard.',
 	'contributionhistory' => 'Historique des contributions',
@@ -3305,6 +3307,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'contributionreporting-desc' => 'Live-Reportage vun der Wikimedia-Spendenaktioun',
 	'contributiontotal' => 'Total vun den Donen',
+	'dailytotal' => 'Total vum Dag',
 	'disablednotice-disabled' => 'Dës Säit gouf temporär desaktivéiert. Probéiert et w.e.g. méi spéit nach eng kéier.',
 	'contributionhistory' => 'Evolutioun vun den Donen',
 	'contrib-hist-header' => 'Bemierkunge vun Donateuren aus der ganzer Welt',
@@ -3744,6 +3747,7 @@ $messages['mrj'] = array(
 $messages['ms'] = array(
 	'contributionreporting-desc' => 'Laporan langsung kempen dana Wikimedia',
 	'contributiontotal' => 'Jumlah sumbangan',
+	'dailytotal' => 'Jumlah harian',
 	'disablednotice' => 'Melaporkan sumbangan',
 	'disablednotice-disabled' => 'Laman ini dimatikan buat sementara waktu. Sila cuba lagi nanti.',
 	'contributionhistory' => 'Sejarah sumbangan',
@@ -3897,12 +3901,14 @@ $messages['nds'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author SPQRobin
  * @author Saruman
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'contributionreporting-desc' => 'Liverapportage voor de fondswervingsactie van Wikimedia',
 	'contributiontotal' => 'Totaal donaties',
+	'dailytotal' => 'Dagelijks totaal',
 	'disablednotice' => 'Bijdragerapportage',
 	'disablednotice-disabled' => 'Deze pagina is tijdelijk uitgeschakeld. Probeer het op een later moment nog een keer.',
 	'contributionhistory' => 'Giftenhistorie',
@@ -5055,6 +5061,7 @@ $messages['sk'] = array(
 $messages['sl'] = array(
 	'contributionreporting-desc' => 'Živo poročanje zbiranja sredstev za Wikimedio',
 	'contributiontotal' => 'Seštevek prispevkov',
+	'dailytotal' => 'Skupaj na dan',
 	'disablednotice' => 'Poročanje o prispevkih',
 	'disablednotice-disabled' => 'Stran je začasno onemogočena. Prosimo, poskusite znova pozneje.',
 	'contributionhistory' => 'Zgodovina prispevkov',
