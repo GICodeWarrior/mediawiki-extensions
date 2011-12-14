@@ -18,6 +18,10 @@
 	margin-top: 0.5em;
 }
 
+#fbd-description-text, #fbd-stats {
+	padding: 0 0 1em 0;
+}
+
 #fbd-filters-title {
 	font-size: 1.2em;
 	margin: 0;

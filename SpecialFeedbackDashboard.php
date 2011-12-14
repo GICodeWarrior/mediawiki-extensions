@@ -131,10 +131,16 @@ class SpecialFeedbackDashboard extends SpecialPage {
 		
 		$moodbarStat = $this->getMoodBarTypeStats();
 		$moodbarStatMsg = wfMessage( 'moodbar-type-stats' )->params( $moodbarStat['happy'], $moodbarStat['sad'], $moodbarStat['confused'] )->escaped();
-		
+		$feedbackDashboardDescription = wfMessage( 'moodbar-feedback-description' ); // don't escape because there is html 
+
 		return <<<HTML
 		<div id="fbd-description">
-		 	<div id="fbd-stats">$moodbarStatMsg</div>
+			<div id="fbd-description-text">
+				$feedbackDashboardDescription
+			</div>
+		 	<div id="fbd-stats">
+		 		$moodbarStatMsg
+		 	</div>
 		</div>
 		<div id="fbd-filters">
 			<form action="$actionURL" data-filtertype="$filterType">
