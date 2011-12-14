@@ -138,7 +138,7 @@ For more information, please visit the $1.',
 	'moodbar-type-happy' => '{{GENDER:$1|Happy}}',
 	'moodbar-type-sad' => '{{GENDER:$1|Sad}}',
 	'moodbar-type-confused' => '{{GENDER:$1|Confused}}',
-	'moodbar-type-stats' => 'Moodbar feedback in the last 24 hours, Happy: $1, Sad: $2, Confused: $3',
+	'moodbar-type-stats' => 'Moodbar feedback made in last 24 hours: Happy: $1, Sad: $2, Confused: $3',
 	// User types
 	'moodbar-user-anonymized' => 'Anonymized',
 	'moodbar-user-ip' => 'IP address',
