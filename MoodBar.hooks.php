@@ -67,7 +67,7 @@ class MoodBarHooks {
 
 	public static function makeGlobalVariablesScript( &$vars ) {
 		global $wgUser;
-		$vars['mbEditToken'] = $wgUser->getEditToken();
+		$vars['mbEditToken'] = $wgUser->editToken();
 		return true;
 	}
 
