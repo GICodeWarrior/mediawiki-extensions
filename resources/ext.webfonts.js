@@ -349,38 +349,32 @@
 
 			// This is the fonts link
 			var $li = $( '<li>' ).attr( 'id', 'pt-webfont' ).append( $link );
-			var positionFunction;
-			if ( $( 'body' ).hasClass( 'rtl' ) ) {
-				positionFunction = 'append';
-			}
-			else {
-				positionFunction = 'prepend';
-			}
+
+			var rtlEnv = $( 'body' ).hasClass( 'rtl' );
+
 			// If RTL, add to the right of top personal links. Else, to the left
+			var positionFunction = rtlEnv ? 'append' : 'prepend';
 			$( '#p-personal ul:first' )[positionFunction]( $li );
 
 			$( 'body' ).prepend( $menu );
 			$li.click( function( event ) {
 				var menuSide, menuOffset, distanceToEdge;
 				
-				if ( $( 'body' ).hasClass( 'rtl' ) ) {
+				if ( rtlEnv ) {
 					distanceToEdge = $li.outerWidth() + $li.offset().left;
 					if ( $menuItemsDiv.outerWidth() > distanceToEdge ) {
 						menuSide = 'left';
 						menuOffset = $li.offset().left;
-					}
-					else {
+					} else {
 						menuSide = 'right';
 						menuOffset = $(window).width() - distanceToEdge;
 					}
-				}
-				else {
+				} else {
 					distanceToEdge = $(window).width() - $li.offset().left;
 					if ( $menuItemsDiv.outerWidth() > distanceToEdge ) {
 						menuSide = 'right';
 						menuOffset = distanceToEdge - $li.outerWidth();
-					}
-					else {
+					} else {
 						menuSide = 'left';
 						menuOffset = $li.offset().left;
 					}
@@ -390,8 +384,7 @@
 
 				if ( $menu.hasClass( 'open' ) ) {
 					$menu.removeClass( 'open' );
-				}
-				else {
+				} else {
 					$( 'div.open' ).removeClass( 'open' );
 					$menu.addClass( 'open' );
 					event.stopPropagation();
