@@ -660,7 +660,6 @@ $.narayam = new ( function() {
 		var positionFunction = rtlEnv ? "append" : "prepend";
 		$( '#p-personal ul:first' )[positionFunction]( $li );
 		$( 'body' ).prepend( $menu );
-		$menu.hide();
 		$li.click( function( event ) {
 			var menuSide, menuOffset, distanceToEdge;
 
@@ -700,7 +699,9 @@ $.narayam = new ( function() {
 			$menu.removeClass( 'open' );
 			$menu.hide();
 		} );
-
+		$menu.click( function( event ) {
+			event.stopPropagation();
+		} );
 		// Workaround for IE bug - activex components like input fields
 		// coming on top of everything.
 		// TODO: is there a better solution other than hiding it on hover?
