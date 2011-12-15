@@ -393,6 +393,9 @@
 			$( 'html' ).click( function() {
 				$menu.removeClass( 'open' );
 			} );
+			$menu.click( function( event ) {
+				event.stopPropagation();
+			} );
 			// Workaround for IE bug - ActiveX components like input fields coming on top of everything.
 			// @todo Is there a better solution other than hiding it on hover?
 			if ( $.browser.msie ) { 
