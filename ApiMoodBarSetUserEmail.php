@@ -4,7 +4,7 @@
 class ApiMoodBarSetUserEmail extends ApiBase {
 	
 	public function execute() {
-		global $wgUser, $wgAuth;
+		global $wgUser, $wgAuth, $wgEnableEmail, $wgEmailAuthentication;
 		
 		if ( $wgUser->isAnon() ) {
 			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
@@ -45,7 +45,7 @@ class ApiMoodBarSetUserEmail extends ApiBase {
 			
 			case 'resendverification':
 				//only sends the email if the email has not been verified
-				if ( $wgUser->getEmail() && !$wgUser->isEmailConfirmed() ) {
+				if ( $wgEnableEmail && $wgEmailAuthentication && $wgUser->getEmail() && !$wgUser->isEmailConfirmed() ) {
 					$status = $wgUser->sendConfirmationMail( 'set' );
 					if ( !$status->isGood() ) {
 						$error =  $status->getWikiText( 'mailerror' );
@@ -69,7 +69,7 @@ class ApiMoodBarSetUserEmail extends ApiBase {
 	}
 
 	/**
-	 * Tempoarary solution, will use Preference::trySetUserEmail in 1.19
+	 * Temporary solution, will use Preference::trySetUserEmail in 1.19
 	 */
 	private static function trySetUserEmail( User $user, $newaddr ) {
 		global $wgEnableEmail, $wgEmailAuthentication;
