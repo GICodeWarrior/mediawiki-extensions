@@ -500,12 +500,15 @@ class ExtArrays {
 			}
 		}
 
-		global $egArraysCompatibilityMode;
-
 		// no match! (Expand only when needed!)
-		$no = isset( $args[4] )
-			  ? trim( $frame->expand( $args[4] ) )
-			  : $egArraysCompatibilityMode ? '-1' : ''; // COMPATIBILITY-MODE
+		if( isset( $args[4] ) ) {
+			$no = trim( $frame->expand( $args[4] ) );
+		} else {
+			global $egArraysCompatibilityMode;
+			$no = $egArraysCompatibilityMode
+				? '-1' // COMPATIBILITY-MODE
+				: '';
+		}
 		return $no;
 	}
 
