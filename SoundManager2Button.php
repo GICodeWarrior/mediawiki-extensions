@@ -1,5 +1,5 @@
 <?php
- 
+
 # Initialization file for SoundManager2Button extension.
 #
 # @file SoundManager2Button.php
@@ -50,46 +50,57 @@
 #   In args.js           : toggle soundManager.debugMode = false;
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-        echo "This is the SoundManager2Button MediaWiki extension. It cannot be run standalone.\n";
-        die( -1 );
+	echo "This is the SoundManager2Button MediaWiki extension. It cannot be run standalone.\n";
+	die( -1 );
 }
- 
+
 $wgExtensionCredits['media'][] = array(
-        'path'           => __FILE__,
-        'name'           => 'SoundManager2Button',
-        'author'         => 'kroocsiogsi',
-        'url'            => 'https://www.mediawiki.org/wiki/Extension:SoundManager2Button',
-        'descriptionmsg' => 'soundmanager2button-desc',
-        'version'        => '0.3.0',
+	'path'           => __FILE__,
+	'name'           => 'SoundManager2Button',
+	'author'         => 'kroocsiogsi',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:SoundManager2Button',
+	'descriptionmsg' => 'soundmanager2button-desc',
+	'version'        => '0.3.0',
 );
- 
+
 $wgExtensionMessagesFiles['SoundManager2Button'] = dirname( __FILE__ ) . '/SoundManager2Button.i18n.php';
- 
+
 $wgHooks['ParserFirstCallInit'][] = 'wfSoundManager2Button';
- 
+
 $wgResourceModules['ext.wfSoundManager2Button'] = array(
-        'scripts' => array( 'script/soundmanager2-nodebug.js', 'script/mp3-player-button.js', 'script/args.js' ),
-        'styles' => 'css/mp3-player-button.css',
-        'localBasePath' => dirname( __FILE__ ),
-        'remoteExtPath' => 'SoundManager2Button',
+	'scripts' => array( 'script/soundmanager2-nodebug.js', 'script/mp3-player-button.js', 'script/args.js' ),
+	'styles' => 'css/mp3-player-button.css',
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteExtPath' => 'SoundManager2Button',
 );
- 
-// Hook our callback function into the parser
+
+/**
+ * Hook our callback function into the parser
+ *
+ * @param $parser Parser
+ * @return bool
+ */
 function wfSoundManager2Button( &$parser ) {
-        $parser->setHook( 'sm2', 'renderSM2' );
-        return true;
+	$parser->setHook( 'sm2', 'renderSM2' );
+	return true;
 }
- 
-// Execute
+
+/**
+ * Execute
+ * @param $input
+ * @param $args
+ * @param $parser Parser
+ * @return string
+ */
 function renderSM2( $input, $args, $parser ) {
-        global $wgExtensionAssetsPath;
-        $parser->getOutput()->addModules( 'ext.wfSoundManager2Button' );
- 
-        $file = wfFindFile($input);
-        if( $file ) {
-                $url = $file->getFullURL();
-                $output='<a href="'.$url.'" title="'.wfMsgForContent('play').'" class="sm2_button">'.wfMsgForContent('play').'</a>';
-        };
- 
-        return $output;
+	$parser->getOutput()->addModules( 'ext.wfSoundManager2Button' );
+
+	$file = wfFindFile($input);
+	$output = '';
+	if( $file ) {
+		$url = $file->getFullURL();
+		$output='<a href="'.$url.'" title="'.wfMsgForContent('play').'" class="sm2_button">'.wfMsgForContent('play').'</a>';
+	}
+
+	return $output;
 }
