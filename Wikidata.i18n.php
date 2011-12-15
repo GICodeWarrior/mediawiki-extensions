@@ -2897,9 +2897,9 @@ Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_conceptmapping_help' => '<p>Mögliche Aktionen: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&… Eine Verknüpfung hinzufügen</li>
 <li>&action=get&concept=<concept_id> Eine Verknüpfung abrufen</li>
-<li>&action=list_sets Zeige eine Liste von möglichen Datenkontextpräfixen und auf was sie sich beziehen</li>
-<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> für eine DefinedMeaning in einem Kontext, zeige alle anderen</li>
-<li>&action=help Hilfe anzeigen.</li>
+<li>&action=list_sets Eine Liste möglicher Datenkontextpräfixe ausgeben sowie, worauf sie sich beziehen</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> für eine definierte Bedeutung in einem Kontext, zeige alle anderen</li>
+<li>&action=help Die Hilfe anzeigen.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Mit Concept Mapping kann festgelegt werden, welche DefinedMeaning in einem Dataset mit anderen DefinedMeanings aus anderen Datasets identisch ist.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Die Aktion „$1“ wird nicht unterstützt.',
