@@ -7,7 +7,7 @@ class ContributionHistory extends SpecialPage {
 	function execute( $language ) {
 		global $wgRequest, $wgOut, $wgLang;
 
-		# Emergecny short cut until post donation comments are enabled
+		# Emergency short cut until post donation comments are enabled
 		$wgOut->redirect( SpecialPage::getTitleFor( 'FundraiserStatistics' )->getFullURL() );
 		return;
 

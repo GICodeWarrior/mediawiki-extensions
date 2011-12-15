@@ -25,7 +25,7 @@ class SpecialContributionStatistics extends SpecialPage {
 	public function execute( $sub ) {
 		global $wgOut,$egContributionStatisticsViewDays;
 		
-		# Emergecny short cut until this can be changed to use cron-generated data
+		# Emergency short cut until this can be changed to use cron-generated data
 		# These queries are too expensive to run on demand.
 		$wgOut->redirect( SpecialPage::getTitleFor( 'FundraiserStatistics' )->getFullURL() );
 		return;

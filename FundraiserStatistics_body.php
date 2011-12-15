@@ -323,8 +323,8 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			return $cache;
 		}
 		
-		// Use database
-		$dbr = efContributionReportingConnection();
+		// Use MediaWiki slave database
+		$dbr = wfGetDB( DB_SLAVE );
 		// Set timezone to UTC (contribution data will always be in UTC)
 		date_default_timezone_set( 'UTC' );
 		

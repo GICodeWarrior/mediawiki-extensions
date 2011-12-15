@@ -112,8 +112,8 @@ class SpecialDailyTotal extends UnlistedSpecialPage {
 			return $cache;
 		}
 		
-		// Use database
-		$dbr = efContributionReportingConnection();
+		// Use MediaWiki slave database
+		$dbr = wfGetDB( DB_SLAVE );
 		
 		$result = $dbr->select(
 			'public_reporting_days',

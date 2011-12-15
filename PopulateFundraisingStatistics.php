@@ -67,6 +67,7 @@ class PopulateFundraisingStatistics extends Maintenance {
 		// Set database objects
 		$this->dbr = wfGetDB( DB_SLAVE );
 		$this->dbw = wfGetDB( DB_MASTER );
+		$this->dbpr = efContributionReportingReadConnection();
 		
 		// Set timezone to UTC (contribution data will always be in UTC)
 		date_default_timezone_set( 'UTC' );
@@ -122,7 +123,7 @@ class PopulateFundraisingStatistics extends Maintenance {
 		);
 		
 		// Get the data for a fundraiser
-		$result = $this->dbr->select( 'public_reporting',
+		$result = $this->dbpr->select( 'public_reporting',
 			array(
 				"DATE_FORMAT( FROM_UNIXTIME( received ),'%Y-%m-%d' ) AS date",
 				'sum( converted_amount ) AS total',
@@ -138,7 +139,7 @@ class PopulateFundraisingStatistics extends Maintenance {
 			)
 		);
 		
-		while ( $row = $this->dbr->fetchRow( $result ) ) {
+		while ( $row = $this->dbpr->fetchRow( $result ) ) {
 			// Add it to the insert array
 			$insertArray[] = array(
 				'prd_date' => $row['date'],
@@ -181,12 +182,12 @@ class PopulateFundraisingStatistics extends Maintenance {
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
 		
 			$conditions = array(
-				'received >= ' . $this->dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $fundraiser['start'] ) ) ),
-				'received <= ' . $this->dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $fundraiser['end'] ) + 24 * 60 * 60 ) ),
+				'received >= ' . $this->dbpr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $fundraiser['start'] ) ) ),
+				'received <= ' . $this->dbpr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $fundraiser['end'] ) + 24 * 60 * 60 ) ),
 			);
 			
 			// Get the total for a fundraiser
-			$result = $this->dbr->select(
+			$result = $this->dbpr->select(
 				'public_reporting',
 				array(
 					'sum( converted_amount ) AS total',
@@ -197,7 +198,7 @@ class PopulateFundraisingStatistics extends Maintenance {
 				$conditions,
 				__METHOD__
 			);
-			$row = $this->dbr->fetchRow( $result );
+			$row = $this->dbpr->fetchRow( $result );
 		
 			// Add it to the insert array
 			$insertArray[] = array(
@@ -245,14 +246,14 @@ class PopulateFundraisingStatistics extends Maintenance {
 		$this->output( "Writing data to public_reporting_days...\n" );
 		
 		$conditions = array(
-			'received >= ' . $this->dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $start ) ) ),
-			'received <= ' . $this->dbr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $end ) + 24 * 60 * 60 ) ),
+			'received >= ' . $this->dbpr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $start ) ) ),
+			'received <= ' . $this->dbpr->addQuotes( wfTimestamp( TS_UNIX, strtotime( $end ) + 24 * 60 * 60 ) ),
 			'converted_amount >= ' . $egFundraiserStatisticsMinimum,
 			'converted_amount <= ' . $egFundraiserStatisticsMaximum
 		);
 		
 		// Get the data for a fundraiser
-		$result = $this->dbr->select( 'public_reporting',
+		$result = $this->dbpr->select( 'public_reporting',
 			array(
 				"DATE_FORMAT( FROM_UNIXTIME( received ),'%Y-%m-%d' ) AS date",
 				'sum( converted_amount ) AS total',
@@ -268,7 +269,7 @@ class PopulateFundraisingStatistics extends Maintenance {
 			)
 		);
 		
-		while ( $row = $this->dbr->fetchRow( $result ) ) {
+		while ( $row = $this->dbpr->fetchRow( $result ) ) {
 			// Add it to the insert array
 			$insertArray[] = array(
 				'prd_date' => $row['date'],
@@ -286,8 +287,8 @@ class PopulateFundraisingStatistics extends Maintenance {
 			$res = $this->dbw->delete(
 				'public_reporting_days', 
 				array(
-					'prd_date >= ' . $this->dbr->addQuotes( wfTimestamp( TS_DB, strtotime( $start ) ) ),
-					'prd_date <= ' . $this->dbr->addQuotes( wfTimestamp( TS_DB, strtotime( $end ) ) ),
+					'prd_date >= ' . $this->dbpr->addQuotes( wfTimestamp( TS_DB, strtotime( $start ) ) ),
+					'prd_date <= ' . $this->dbpr->addQuotes( wfTimestamp( TS_DB, strtotime( $end ) ) ),
 				)
 			);
 			// Insert the new totals

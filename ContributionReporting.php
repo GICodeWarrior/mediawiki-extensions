@@ -11,11 +11,17 @@ EOT;
 
 $wgContributionReportingBaseURL = "http://meta.wikimedia.org/w/index.php?title=Special:NoticeTemplate/view&template=";
 
-// Override these with appropriate DB settings for the CiviCRM database...
+// Override these with appropriate DB settings for the CiviCRM master database...
 $wgContributionReportingDBserver = $wgDBserver;
 $wgContributionReportingDBuser = $wgDBuser;
 $wgContributionReportingDBpassword = $wgDBpassword;
 $wgContributionReportingDBname = $wgDBname;
+
+// Override these with appropriate DB settings for the CiviCRM slave database...
+$wgContributionReportingReadDBserver = $wgDBserver;
+$wgContributionReportingReadDBuser = $wgDBuser;
+$wgContributionReportingReadDBpassword = $wgDBpassword;
+$wgContributionReportingReadDBname = $wgDBname;
 
 // And now the tracking database
 $wgContributionTrackingDBserver = $wgDBserver;
@@ -163,6 +169,7 @@ function efContributionReportingTotal_Magic( &$magicWords, $langCode ) {
 
 /**
  * Automatically use a local or special database connection for reporting
+ * This connection will typically be to the CiviCRM master database
  * @return DatabaseMysql
  */
 function efContributionReportingConnection() {
@@ -177,6 +184,29 @@ function efContributionReportingConnection() {
 			$wgContributionReportingDBuser,
 			$wgContributionReportingDBpassword,
 			$wgContributionReportingDBname );
+		$db->query( "SET names utf8" );
+	}
+
+	return $db;
+}
+
+/**
+ * Automatically use a local or special database connection for reporting
+ * This connection will typically be to a CiviCRM slave database
+ * @return DatabaseMysql
+ */
+function efContributionReportingReadConnection() {
+	global $wgContributionReportingReadDBserver, $wgContributionReportingReadDBname;
+	global $wgContributionReportingReadDBuser, $wgContributionReportingReadDBpassword;
+
+	static $db;
+
+	if ( !$db ) {
+		$db = new DatabaseMysql(
+			$wgContributionReportingReadDBserver,
+			$wgContributionReportingReadDBuser,
+			$wgContributionReportingReadDBpassword,
+			$wgContributionReportingReadDBname );
 		$db->query( "SET names utf8" );
 	}
 
@@ -221,7 +251,7 @@ function efContributionReportingTotal( $fundraiser, $fudgeFactor = 0 ) {
 		return $cache;
 	}
 	
-	$dbr = efContributionReportingConnection();
+	$dbr = wfGetDB( DB_SLAVE );
 	
 	// Find the index number for the requested fundraiser
 	$myFundraiserIndex = false;
