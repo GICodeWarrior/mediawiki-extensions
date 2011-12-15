@@ -21,14 +21,13 @@ $messages['en'] = array(
 	'reassignedits' => 'Reassign user edits',
 	'reassignedits-desc' => 'Allows reassigning edits from an old user to a new one',
 	'reassignedits-error-invalid' => 'The username "<nowiki>$1</nowiki>" is invalid.',
-	'reassignedits-new' => 'New user name',
-	'reassignedits-old' => 'Old user name',
+	'reassignedits-new' => 'New username',
+	'reassignedits-old' => 'Old username',
 	'reassignedits-submit' => 'Submit',
-	'reassignedits-success' => 'The user edits by "<nowiki>$1</nowiki>" has been added to "<nowiki>$2</nowiki>".',
+	'reassignedits-success' => 'The edits by "<nowiki>$1</nowiki>" has been added to "<nowiki>$2</nowiki>".',
 	'reassignedits-summary' => 'Reassign edits from an old user to a new one.',
-	'reassignedits-updatelog-title' => 'Update user name in log titles',
+	'reassignedits-updatelog-title' => 'Update username in log titles',
 	'reassignedits-updatelog-user' => 'Update executive user in logs',
-
 	'right-reassignedits' => 'Reassign edits from an old user to a new one',
 );
 
@@ -67,3 +66,4 @@ $messages['de'] = array(
 
 	'right-reassignedits' => 'Übertragen von Bearbeitungen eines alten Benutzers zu einem neuen Benutzer',
 );
+
