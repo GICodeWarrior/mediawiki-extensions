@@ -8,7 +8,7 @@
  * Support:       http://www.mediawiki.org/wiki/Extension_talk:Subpage_Fun
  * Source code:   http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SubpageFun
  * 
- * @version: 0.5.2
+ * @version: 0.5.3
  * @license: ISC license
  * @author:  Daniel Werner < danweetz@web.de >
  *
@@ -49,7 +49,7 @@ $wgHooks['GetThisVariableValueSwitch'][] = 'ExtSubpageFun::onGetThisVariableValu
 
 class ExtSubpageFun {
 
-	const VERSION = '0.5.2';
+	const VERSION = '0.5.3';
 
 	const MAG_SUBPAGETITLE     = 'subpagetitle';
 	const MAG_SUBPAGES         = 'subpages';
@@ -92,7 +92,7 @@ class ExtSubpageFun {
 	
 	/**
 	 * Helper function for seperating n arguments of a MW parser function
-	 * @return Array
+	 * @return array
 	 */
 	private static function getFunctionArgsArray( $args )
 	{
@@ -149,21 +149,20 @@ class ExtSubpageFun {
 	 * Create a list with page titles as final output of a SubpageFun function.
 	 * The output ist un-parsed wiki markup, no HTML.
 	 * 
-	 * @param $pages Array the pages
-	 * @param $link Boolean whether or not to link the pages in the list
-	 * @param $sep String glue between the pages
+	 * @param array  $pages array of Title elements
+	 * @param bool   $link whether or not to link the pages in the list
+	 * @param string $sep  glue between the pages
 	 * 
-	 * @return String
+	 * @return string
 	 */
-	private static function createSiteList( $pages, $link = false, $sep = ', ' ) {		
-		//if( $pages === null )
-		//	return '';
+	protected static function createSiteList( $pages, $link = false, $sep = ', ' ) {
 		$out = array();
-		foreach( $pages as $page ) {
-			$text = wfEscapeWikiText( $page->getPrefixedText() );
+		foreach( $pages as $page ) {			
+			$text = $page->getPrefixedText();
 			if( $link ) {
 				$out[] = "[[:{$text}]]";
 			} else {
+				$text = wfEscapeWikiText( $text );
 				$out[] = $text;
 			}
 		}
@@ -174,11 +173,12 @@ class ExtSubpageFun {
 	 * Filters a list of title elements by a word or a regular expression.
 	 * The titles name without prefix is taken for comparision.
 	 * 
-	 * @param array $list
+	 * @param array  $list
 	 * @param string $filter
+	 * 
 	 * @return array 
 	 */
-	private static function filterSiteList( array $list, $filter = null ) {
+	protected static function filterSiteList( array $list, $filter = null ) {
 		// return all if no filter set:
 		if( $filter === null ) {
 			return $list;
@@ -211,7 +211,7 @@ class ExtSubpageFun {
 	 * 
 	 * @return boolean
 	 */
-	private static function isValidRegEx( $pattern ) {
+	public static function isValidRegEx( $pattern ) {
 		// validate first for allowd delimiters '/%|' and flags
 		if( ! preg_match( '/^([\\/\\|%]).*\\1[imsSuUx]*$/', $pattern ) ) {
 			return false;
@@ -228,9 +228,10 @@ class ExtSubpageFun {
 	 * a number, including negative value, is given
 	 * 
 	 * @param $depth Mixed
+	 * 
 	 * @return Mixed null or integer
 	 */
-	private static function valDepth( $depth ) {
+	protected static function valDepth( $depth ) {
 		if( $depth === null || $depth === false || trim( $depth ) === '' ) {
 			return null;
 		}
