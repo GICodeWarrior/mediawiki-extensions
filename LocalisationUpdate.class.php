@@ -478,7 +478,9 @@ class LocalisationUpdate {
 			return 0;
 		}
 
-		$new_messages = array();
+		// This function is run once for core and once for each extension,
+		// so make sure messages from previous runs aren't lost
+		$new_messages = self::readFile( $langcode );
 
 		//foreach ( $changedStrings as $key => $value ) {
 		// HACK for r103763 CR: store all messages, even unchanged ones
@@ -503,6 +505,10 @@ class LocalisationUpdate {
 				// Use that previous translation rather than falling back to the .i18n.php file
 				$new_messages[$key] = $compare_messages[$key];
 			}
+			// Other possible cases:
+			// * The messages is no longer in the SVN file, but is present in the local i18n file or in the cache
+			// * The message was changed in English, and there is no previous translation in the i18n file or in the cache
+			// In both cases, we can safely do nothing
 		}
 		self::writeFile( $langcode, $new_messages );
 
