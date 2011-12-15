@@ -33,7 +33,7 @@ $wgAvailableRights[] = 'ViewContributionTrackingTester';
 
 $wgAutoloadClasses['ApiContributionTracking'] = $dir . 'ApiContributionTracking.php';
 $wgAutoloadClasses['ContributionTrackingProcessor'] = $dir . 'ContributionTracking.processor.php';
-
+ 
 //this only works if contribution tracking is inside a mediawiki DB, which typically it isn't.
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efContributionTrackingLoadUpdates';
 
@@ -74,6 +74,12 @@ $wgContributionTrackingPayPalRecurringIPN = 'https://civicrm.wikimedia.org/fundc
  * 'Business' string for PayPal
  */
 $wgContributionTrackingPayPalBusiness = 'donations@wikimedia.org';
+
+/**
+ * Recurring PayPal subscription Length. Default of 0 is unlimited until canceled
+ */
+
+$wgContributionTrackingRPPLength = '0';
 
 # Unit tests
 $wgHooks['UnitTestsList'][] = 'efContributionTrackingUnitTests';

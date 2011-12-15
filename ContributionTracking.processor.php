@@ -301,7 +301,7 @@ class ContributionTrackingProcessor {
 	 * gateway to complete the transaction.
 	 */
 	static function getRepostFields( $input ) {
-		global $wgContributionTrackingPayPalBusiness, $wgContributionTrackingReturnToURLDefault;
+		global $wgContributionTrackingPayPalBusiness, $wgContributionTrackingReturnToURLDefault, $wgContributionTrackingRPPLength;
 		// Set the action and tracking ID fields
 		$input = ContributionTrackingProcessor::stage_repost( $input );
 
@@ -378,7 +378,7 @@ class ContributionTrackingProcessor {
 
 				$repost['fields']['t3'] = "M"; // The unit of measurement for for p3 (M = month)
 				$repost['fields']['p3'] = '1'; // Billing cycle duration
-				$repost['fields']['srt'] = '12'; // # of billing cycles
+				$repost['fields']['srt'] = $wgContributionTrackingRPPLength; // # of billing cycles
 				$repost['fields']['src'] = '1'; // Make this 'recurring'
 				$repost['fields']['sra'] = '1'; // Turn on re-attempt on failure
 				$repost['fields']['cmd'] = '_xclick-subscriptions';
