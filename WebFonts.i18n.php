@@ -367,6 +367,7 @@ $messages['ms'] = array(
 	'webfonts-load' => 'Pilih fon',
 	'webfonts-reset' => 'Set semula',
 	'webfonts-enable-preference' => 'Hidupkan pembenaman fon (WebFonts)',
+	'webfonts-menu-tooltip' => 'Pilih fon untuk laman ini',
 );
 
 /** Nepali (नेपाली)
