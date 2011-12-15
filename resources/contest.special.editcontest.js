@@ -160,7 +160,7 @@
 				'id': $this.attr( 'data-challenge-id' ),
 				'title': $this.attr( 'data-challenge-title' ),
 				'text': $this.attr( 'data-challenge-text' ),
-				'oneline': $this.attr( 'data-challenge-oneline' ),
+				'oneline': $this.attr( 'data-challenge-oneline' )
 			} );
 		} );
 
