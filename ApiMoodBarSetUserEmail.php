@@ -45,7 +45,7 @@ class ApiMoodBarSetUserEmail extends ApiBase {
 			
 			case 'resendverification':
 				//only sends the email if the email has not been verified
-				if ( $wgUser->getEmail() && $wgUser->isEmailConfirmed() == false ) {
+				if ( $wgUser->getEmail() && !$wgUser->isEmailConfirmed() ) {
 					$status = $wgUser->sendConfirmationMail( 'set' );
 					if ( !$status->isGood() ) {
 						$error =  $status->getWikiText( 'mailerror' );
