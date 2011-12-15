@@ -118,7 +118,7 @@ class SpecialDailyTotal extends UnlistedSpecialPage {
 		$result = $dbr->select(
 			'public_reporting_days',
 			'round( prd_total ) AS total',
-			'prd_date' => $today,
+			array( 'prd_date' => $today ),
 			__METHOD__
 		);
 		$row = $dbr->fetchRow( $result );

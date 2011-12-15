@@ -242,7 +242,7 @@ function efContributionReportingTotal( $fundraiser, $fudgeFactor = 0 ) {
 	$result = $dbr->select(
 		'public_reporting_fundraisers',
 		'round( prf_total ) AS total',
-		'prf_id' => $myFundraiser['id'],
+		array( 'prf_id' => $myFundraiser['id'] ),
 		__METHOD__
 	);
 	$row = $dbr->fetchRow( $result );
