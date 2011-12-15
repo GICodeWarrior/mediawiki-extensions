@@ -780,7 +780,7 @@ Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'moodbar-error-title' => 'Hoppla!',
 	'moodbar-success-subtitle' => 'Uns deine Stimmung mitzuteilen hilft uns dabei $1 weiter zu verbessern.',
 	'moodbar-error-subtitle' => 'Es ist ein Fehler aufgetreten. Bitte versuche es später noch einmal, uns deine Rückmeldung mitzuteilen.',
-	'moodbar-blocked-title' => 'Benutzer gesperrt',
+	'moodbar-blocked-title' => 'Hoppla!',
 	'moodbar-blocked-subtitle' => 'Du wurdest gesperrt und kannst daher keine Bearbeitungen machen.',
 	'moodbar-email-title' => 'E-Mail-Adresse hinzufügen',
 	'moodbar-email-input' => 'Deine E-Mail-Adresse',
@@ -875,6 +875,19 @@ Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'response-ajax-error-head' => 'Hoppla!',
 	'response-ajax-error-body' => 'Es ist beim Hinzufügen der Antwort ein Fehler aufgetreten. <br />Bitte versuche es später noch einmal.',
 	'moodbar-enotif-subject' => '$1 antwortete auf deine Rückmeldung.',
+	'moodbar-enotif-body' => 'Hallo $1,
+
+Willkommen bei {{SITENAME}} und vielen Dank für deine [[$2|Rückmeldung]]. Ein anderer Benutzer aus {{SITENAME}}, [[$3|$6]], hinterließ die folgende Antwort:
+
+     $4
+
+Sehe dir die Nachricht auf deiner [$5 Diskussionsseite] an.
+
+Was ist eine Diskussionsseite?
+Eine Diskussionsseite ist eine Seite auf der die Benutzer eines Wikis miteinander kommunizieren, indem sie dort Nachrichten hinterlassen. Es können aktuelle Angelegenheiten diskutiert werden, Hilfestellung gegeben werden, allgemeine Nachrichten oder ein Dankeschön hinterlassen werden. Eine Diskussionsseite kann auch genutzt werden, um einfach Hallo zu sagen.
+
+Wir wünschen dir noch einen schönen Tag,
+-- {{SITENAME}}',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -896,6 +909,19 @@ $messages['de-formal'] = array(
 	'moodbar-response-terms' => 'Mit dem Speichern erklären Sie sich mit diesen $1 einverstanden.',
 	'response-ajax-error-body' => 'Es ist beim Hinzufügen der Antwort ein Fehler aufgetreten. <br />Bitte versuchen Sie es später noch einmal.',
 	'moodbar-enotif-subject' => '$1 antwortete auf Ihre Rückmeldung.',
+	'moodbar-enotif-body' => 'Hallo $1,
+
+Willkommen bei {{SITENAME}} und vielen Dank für Ihre [[$2|Rückmeldung]]. Ein anderer Benutzer aus {{SITENAME}}, [[$3|$6]], hinterließ die folgende Antwort:
+
+     $4
+
+Sehen Sie sich die Nachricht auf Ihrer [$5 Diskussionsseite] an.
+
+Was ist eine Diskussionsseite?
+Eine Diskussionsseite ist eine Seite auf der die Benutzer eines Wikis miteinander kommunizieren, indem sie dort Nachrichten hinterlassen. Es können aktuelle Angelegenheiten diskutiert werden, Hilfestellung gegeben werden, allgemeine Nachrichten oder ein Dankeschön hinterlassen werden. Eine Diskussionsseite kann auch genutzt werden, um einfach Hallo zu sagen.
+
+Wir wünschen Ihnen noch einen schönen Tag,
+-- {{SITENAME}}',
 );
 
 /** Greek (Ελληνικά)
@@ -1177,7 +1203,7 @@ $messages['fi'] = array(
 	'moodbar-error-title' => 'Hups!',
 	'moodbar-success-subtitle' => 'Muokkauskokemuksesi jakaminen auttaa meitä kehittämään $1.',
 	'moodbar-error-subtitle' => 'Joku meni vikaan! Yritä palautteesi jakamista myöhemmin.',
-	'moodbar-email-submit' => 'Päivitä',
+	'moodbar-email-submit' => 'Lähetä',
 	'moodbar-updating-title' => 'Päivitetään...',
 	'right-moodbar-view' => 'Näytä ja vie MoodBar-palautetta',
 	'moodbar-admin-title' => 'MoodBar-palaute',
@@ -1216,6 +1242,7 @@ $messages['fi'] = array(
  * @author IAlex
  * @author McDutchie
  * @author Tpt
+ * @author Wyz
  */
 $messages['fr'] = array(
 	'moodbar-desc' => "Permet aux utilisateurs spécifiés de fournir leur ressenti sur leur expérience d'édition",
@@ -1240,6 +1267,7 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-what-link' => 'page décrivant la fonction',
 	'moodbar-privacy' => 'En soumettant, vous acceptez une transparence en accord avec ces $1.',
 	'moodbar-privacy-link' => 'conditions',
+	'moodbar-privacy-link-title' => "Conditions d'utilisation",
 	'moodbar-disable-link' => 'Je ne suis pas intéressé. Désactiver cette fonctionnalité.',
 	'moodbar-form-title' => 'Parce que ...',
 	'moodbar-form-note' => '140 caractères maximum',
@@ -1252,7 +1280,7 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-error-title' => 'Oups !',
 	'moodbar-success-subtitle' => 'Partager votre expérience  nous aide à améliorer $1.',
 	'moodbar-error-subtitle' => "Quelque chose s'est mal passé ! Essayer de partager vos commentaires plus tard.",
-	'moodbar-blocked-title' => 'Bloqué !',
+	'moodbar-blocked-title' => 'Oups !',
 	'moodbar-blocked-subtitle' => 'Vous avez été bloqué en édition.',
 	'moodbar-email-title' => 'Ajouter une adresse de courriel',
 	'moodbar-email-input' => 'Votre adresse de courriel',
@@ -1262,7 +1290,7 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-updating-subtitle' => 'Nous mettons à jour vos paramètres de courriel.',
 	'moodbar-email-confirm-title' => "Confirmer l'adresse de courriel",
 	'moodbar-email-confirm-desc' => 'Vous devez confirmer votre adresse de courriel pour recevoir des notifications. Pour renvoyer le courriel de confirmation, cliquez sur le bouton «Confirmation du renvoi».',
-	'moodbar-email-resend-confirmation' => 'Renvoyez la confirmation',
+	'moodbar-email-resend-confirmation' => 'Renvoyer la confirmation',
 	'moodbar-email-optout' => 'Non merci',
 	'moodbar-tooltip-title' => "Faites-nous connaître votre retour d'expérience en modifiant Wikipédia.",
 	'moodbar-tooltip-subtitle' => 'Vos commentaires sur la modification de Wikipédia nous aide à améliorer le site.',
@@ -1287,6 +1315,7 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-header-namespace' => 'Espace de noms',
 	'moodbar-header-own-talk' => 'Page de discussion personnelle',
 	'moodbar-feedback-title' => 'Tableau de bord des ressentis',
+	'moodbar-feedback-description' => 'Ce tableau de bord affiche les commentaires des nouveaux contributeurs sur leur expérience en participant sur Wikipédia. [http://en.wikipedia.org/wiki/Wikipedia:New_editor_feedback En Savoir plus]',
 	'moodbar-feedback-response-title' => '== En réponse à votre [[$1|avis]] ==',
 	'moodbar-feedback-view-link' => '(Voir les commentaires)',
 	'moodbar-feedback-filters' => 'Filtres',
@@ -1315,7 +1344,7 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-hidden-footer-without-log' => 'Commentaire caché $1',
 	'moodbar-feedback-restore' => 'restaurer les commentaires cachés',
 	'moodbar-action-item' => 'Objet du commentaire :',
-	'moodbar-action-reason' => 'Motif:',
+	'moodbar-action-reason' => 'Motif :',
 	'moodbar-action-reason-required' => 'Veuillez fournir une raison.',
 	'moodbar-hide-header' => "Cacher cet élément de l'affichage",
 	'moodbar-restore-header' => 'Restaurer la visibilité de cet élément',
@@ -1345,6 +1374,21 @@ Pour plus d'information, consultez la $1.",
 	'response-ajax-error-head' => 'Oups !',
 	'response-ajax-error-body' => 'Il y a eu une erreur en ajoutant votre réponse.<br />Veuillez réessayer plus tard.',
 	'moodbar-enotif-subject' => '$1a répondu à vos commentaires',
+	'moodbar-enotif-body' => 'Bonjour  $1!
+
+Bienvenue sur {{SITENAME}}, et merci pour votre [[$2|commentaire]]. Un autre utilisateur de {{SITENAME}}, [[$3|$6]], a écrit la réponse suivante: 
+
+     $4
+
+Afficher ce message sur votre [ $5 page de discussion]
+
+Qu\'est-ce qu\'une page de discussion?
+Votre page de discussion d\'utilisateur est la page autres rédacteurs de {{SITENAME}} utilisent pour communiquer avec vous.  Vous pouvez répondre en cliquant "Modifier", déplacer le curseur en dessous du commentaire, taper votre réponse et quatre tildes (~~~~) pour signer, et enregistrer. Toutes les pages de {{SITENAME}} ont des pages de discussion, et elles sont utilisées à de nombreuses fins diverses. Cela prend un certain temps comprendre cela, mais c\'est assez facile une fois que vous y êtes habitué.
+
+Encore incertain? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Cette vidéo] (à voir sur [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) vous donne un aperçu pas à pas. 
+
+Bonne journée,
+-- {{SITENAME}}',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1472,7 +1516,7 @@ Para obter máis información, bótelle unha ollada á $1 .',
 	'moodbar-error-title' => 'Vaites!',
 	'moodbar-success-subtitle' => 'Compartir a súa experiencia na edición axúdanos a mellorar $1.',
 	'moodbar-error-subtitle' => 'Algo foi mal! Intente compartir os seus comentarios máis tarde.',
-	'moodbar-blocked-title' => 'Bloqueado!',
+	'moodbar-blocked-title' => 'Vaites!',
 	'moodbar-blocked-subtitle' => 'Foi bloqueado fronte á edición.',
 	'moodbar-email-title' => 'Engadir un enderezo de correo',
 	'moodbar-email-input' => 'O seu enderezo de correo electrónico',
@@ -1566,6 +1610,21 @@ Para obter máis información, bótelle unha ollada á $1 .',
 	'response-ajax-error-head' => 'Vaites!',
 	'response-ajax-error-body' => 'Houbo un erro ao engadir a resposta.<br />Inténteo de novo.',
 	'moodbar-enotif-subject' => '$1 respondeu os seus comentarios',
+	'moodbar-enotif-body' => 'Ola, $1!
+
+Benvido a {{SITENAME}} e grazas polos seus [[$2|comentarios]]. Outro usuario de {{SITENAME}}, [[$3|$6]], deixou a seguinte resposta:
+
+     $4
+
+Lea esta mensaxe na súa [$5 páxina de conversa]
+
+Que é unha páxina de conversa?
+A súa páxina de conversa é o lugar onde os editores de {{SITENAME}} se comunican con vostede mediante mensaxes. Pode responder premendo en "Editar", desprazando o cursor debaixo do comentario, escribindo a súa resposta e catro tiles (~~~~) para asinar e gardando. Todas as páxinas de {{SITENAME}} teñen a súa páxina de conversa asociada e úsanse para moitas cousas. Leva un tempo afacerse a elas, pero é doado unha vez que se usan varias veces.
+
+Aínda ten preguntas? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Este vídeo] (velo no [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) dá unha guía paso a paso.
+
+Teña un bo día,
+-- {{SITENAME}}',
 );
 
 /** Swiss German (Alemannisch)
@@ -1821,7 +1880,7 @@ Pro ulterior information, per favor visita le $1.',
 	'moodbar-error-title' => 'Ups!',
 	'moodbar-success-subtitle' => 'Per specificar tu experientia durante le modification, tu nos adjuta a meliorar $1.',
 	'moodbar-error-subtitle' => 'Un problema ha occurrite! Per favor tenta specificar tu retroaction de novo plus tarde.',
-	'moodbar-blocked-title' => 'Blocate!',
+	'moodbar-blocked-title' => 'Ups!',
 	'moodbar-blocked-subtitle' => 'Le modification ha essite blocate pro te.',
 	'moodbar-email-title' => 'Adder e-mail',
 	'moodbar-email-input' => 'Tu adresse de e-mail',
@@ -2089,6 +2148,7 @@ $messages['mk'] = array(
 	'moodbar-what-link' => 'страница за функцијата',
 	'moodbar-privacy' => 'Поднесувајќи го ова, се согласувате на транспарентност под следниве $1.',
 	'moodbar-privacy-link' => 'услови',
+	'moodbar-privacy-link-title' => 'Услови на употреба',
 	'moodbar-disable-link' => 'Не сум заинтересиран. Оневозможи ја функцијава.',
 	'moodbar-form-title' => 'Бидејќи...',
 	'moodbar-form-note' => 'највеќе 140 знаци',
@@ -2101,7 +2161,7 @@ $messages['mk'] = array(
 	'moodbar-error-title' => 'Упс!',
 	'moodbar-success-subtitle' => 'Споделувајќи го вашето уредувачко искуство ни помагате да ја подобриме $1.',
 	'moodbar-error-subtitle' => 'Нешто не е во ред! Обидете се да го споделите вашето мислење подоцна.',
-	'moodbar-blocked-title' => 'Блокирани сте!',
+	'moodbar-blocked-title' => 'Упс!',
 	'moodbar-blocked-subtitle' => 'Блокирани сте од уредување.',
 	'moodbar-email-title' => 'Додај е-пошта',
 	'moodbar-email-input' => 'Ваша е-пошта',
@@ -2136,6 +2196,7 @@ $messages['mk'] = array(
 	'moodbar-header-namespace' => 'Именски простор',
 	'moodbar-header-own-talk' => 'Сопствена страница за разговор',
 	'moodbar-feedback-title' => 'Табла за мислења',
+	'moodbar-feedback-description' => 'На оваа табла се истакнуваат коментари на нови уредници за тоа како се снаоѓаат со уредувањето на Википедија. [http://en.wikipedia.org/wiki/Wikipedia:New_editor_feedback?uselang=mk Дознајте повеќе]',
 	'moodbar-feedback-response-title' => '==Одговор на Вашето [[$1|искажано мислење]]==',
 	'moodbar-feedback-view-link' => '(Погл. мислењето)',
 	'moodbar-feedback-filters' => 'Филтри',
@@ -2194,6 +2255,21 @@ $messages['mk'] = array(
 	'response-ajax-error-head' => 'Упс!',
 	'response-ajax-error-body' => 'Се појави грешка при додавањето на вашиот одговор. <br />Обидете се подоцна.',
 	'moodbar-enotif-subject' => '$1 одговори на вашето мислење',
+	'moodbar-enotif-body' => 'Здраво $1!
+
+Добредојдовте на {{SITENAME}}, и ви благодариме за искажаното [[$2|мислење]]. Корисникот [[$3|$6]] напиша одговор на тоа:
+
+     $4
+
+Погледајте ја пораката на вашата [$5 страницата за разговор]
+
+Што е страница за разговор?
+Вашата страница ра разговор е местото кадешто другите уредници на {{SITENAME}} општат со вас. За да одговорите, стиснете на „Уреди“, ја носите стрелката под коментарот, го пишувате одговорот, ставата четири тилди за да се потпишете (~~~~), па ја зачувувате страницата. Сите страници на {{SITENAME}} имаат свои страници за разговор, и имаат најразлични намени. Може да ви треба некое време за да се привикнете, но потоа ќе ви биде многу лесно.
+
+Сè уште сте збунети? [http://mk.wikipedia.org/wiki/Податотека:Wikipedia_basics_-_Talk_pages.ogv Ова видео] ([http://www.youtube.com/watch?v=JdeDLRsB2Es на YouTube]) ќе ве воведе во нештата чекор по чекор.
+
+Пријатен ден,
+-- {{SITENAME}}',
 );
 
 /** Malayalam (മലയാളം)
@@ -2327,7 +2403,7 @@ Untuk maklumat lanjut, sila layari $1.',
 	'moodbar-error-title' => 'Alamak!',
 	'moodbar-success-subtitle' => 'Berkongsi pengalaman menyunting anda membantu kami meningkatkan $1.',
 	'moodbar-error-subtitle' => 'Ada yang tak kena! Sila cuba berkongsi maklum balas anda kemudian.',
-	'moodbar-blocked-title' => 'Disekat!',
+	'moodbar-blocked-title' => 'Alamak!',
 	'moodbar-blocked-subtitle' => 'Anda disekat daripada menyunting.',
 	'moodbar-email-title' => 'Tambahkan e-mel',
 	'moodbar-email-input' => 'Alamat e-mel anda',
@@ -2421,6 +2497,21 @@ Untuk maklumat lanjut, sila layari $1.',
 	'response-ajax-error-head' => 'Alamak!',
 	'response-ajax-error-body' => 'Terdapat ralat ketika menyampaikan balasan anda.<br />Sila cuba lagi nanti.',
 	'moodbar-enotif-subject' => '$1 membalas maklum balas anda',
+	'moodbar-enotif-body' => 'Selamat sejahtera, $1!
+
+Selamat datang ke {{SITENAME}}, dan terima kasih atas [[$2|maklum balas]] anda. Seorang lagi pengguna {{SITENAME}}, iaitu [[$3|$6]], menulis balasan yang berikut:
+
+     $4
+
+Baca pesanan ini dalam [$5 laman perbincangan] anda
+
+Laman perbincangan itu apa?
+Laman perbincangan pengguna anda ialah laman yang digunakan oleh para penyunting {{SITENAME}} yang lain untuk berhubung dengan anda.  Anda boleh membalas dengan mengklik “Sunting”, mengalihkan kursor ke bawah ulasan, menaipkan balasan anda dengan diakhiri empat tanda tilde (~~~~), dan menyimpan. Kesemua laman di {{SITENAME}} ada laman perbincangan yang digunakan untuk pelbagai kegunaan yang berbeza. Mula-mula anda perlu membiasakan diri, tetapi lambat-laun semuanya menjadi mudah.
+
+Masih tak faham? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Video ini] (tonton di [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) menunjukkan anda langkah demi langkah. (Bahasa Inggeris sahaja)
+
+Semoga ceria,
+-- {{SITENAME}}',
 );
 
 /** Dutch (Nederlands)
