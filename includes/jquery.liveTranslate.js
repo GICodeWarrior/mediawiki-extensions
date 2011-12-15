@@ -18,7 +18,7 @@
 		    arguments.callee.sRE = new RegExp( '(\\' + specials.join('|\\') + ')', 'g' );
 		}
 		return text.replace(arguments.callee.sRE, '\\$1');
-	}
+	};
 	
 	var _this = this;
 	
@@ -246,7 +246,7 @@
 			
 			// Re-bind the events to the controls.
 			_this.bindEvents();
-		} )
+		} );
 	};
 	
 	this.setup();

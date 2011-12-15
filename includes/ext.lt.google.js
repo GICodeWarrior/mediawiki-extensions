@@ -114,7 +114,7 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 				}
 			}
 		);	
-	}
+	};
 	
 	/**
 	 * Translates a single DOM element using Google Translate.
@@ -162,7 +162,7 @@ google.setOnLoadCallback(function(){google.language.getBranding("googlebranding"
 		} );
 		
 		this.handleTranslationCompletion();
-	}
+	};
 	
 	/**
 	 * Should be called every time a DOM element has been translated.
