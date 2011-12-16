@@ -98,9 +98,7 @@ class SpecialInstitutions extends SpecialEPPage {
 
 		$out->addHTML( Html::element( 'p', array(), wfMsg( 'ep-institutions-namedoc' ) ) );
 
-		$out->addHTML( Html::element( 'label', array( 'for' => 'newname' ), wfMsg( 'ep-institutions-newname' ) ) );
-
-		$out->addHTML( '&#160;' . Html::input( 'newname' ) . '&#160;' );
+		$out->addHTML( Xml::inputLabel( wfMsg( 'ep-institutions-newname' ), 'newname', 'newname' ) );
 
 		$out->addHTML( Html::input(
 			'addneworg',
