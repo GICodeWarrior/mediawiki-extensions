@@ -303,7 +303,7 @@ class SpecialContest extends SpecialContestPage {
 		$this->getOutput()->addHTML(
 			'<fieldset>' .
 				'<legend>' . wfMsgHtml( 'contest-contest-showonly' ) . '</legend>' .
-				'<form method="post" action="' . $GLOBALS['wgScript'] . '?title=' . $title . '">' .
+				'<form method="post" action="' . htmlspecialchars( $GLOBALS['wgScript'] . '?title=' . $title ) . '">' .
 					Html::hidden( 'title', $title ) .
 					$this->getDropdownHTML(
 						'challenge',
