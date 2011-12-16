@@ -785,8 +785,7 @@ class DumpHTML {
 		if ( is_null( $title ) ) {
 			return false;
 		}
-		$linkCache =& LinkCache::singleton();
-		$linkCache->clear();
+		LinkCache::singleton()->clear();
 
 		$context = new RequestContext();
 		$context->setRequest( new DumpFauxRequest( $title->getLocalUrl(),
