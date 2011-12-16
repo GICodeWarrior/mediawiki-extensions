@@ -16,14 +16,14 @@ $messages = array();
 $messages['en'] = array(
 	'credits-desc' => 'Adds a link to credits',
 	'credits-tab' => 'Credits',
-    'credits-tab-title' => 'Credits for this page',
+	'credits-tab-title' => 'Credits for this page',
 );
 
 /** Message documentation (Message documentation) */
 $messages['qqq'] = array(
 	'credits-desc' => 'Description for Special:Version',
 	'credits-tab' => 'Label of the tab that is shown by this extension',
-	'credits-tab-title' => 'Title of the link that is shown when hovering (Tool-Tip)',
+	'credits-tab-title' => 'Tool tip of the link shown in the "credits" tab',
 );
 
 /** Arabic (العربية)
