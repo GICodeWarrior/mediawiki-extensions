@@ -25,4 +25,5 @@ if( !defined( 'MEDIAWIKI' ) ) die( "This is an extension to the MediaWiki packag
 $messages['en'] = array(
 	'nobogususerpages-desc' => "Restricts creation of userpages for which a user does not exist by those without rights to do so.",
 	'badaccess-bogususerpage' => 'The user this userpage is meant for does not exist. You do not have the rights to be able to create a bogus userpage.',
+	'right-createbogususerpage' => "Create user pages for users who are not registered on this wiki",
 );
