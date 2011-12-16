@@ -14,6 +14,13 @@
  */
 abstract class SpecialEPPage extends SpecialPage {
 
+	/**
+	 * The subpage, ie the part after Special:PageName/
+	 * Emptry string if none is provided.
+	 * 
+	 * @since 0.1
+	 * @var string
+	 */
 	public $subPage;
 
 	/**
