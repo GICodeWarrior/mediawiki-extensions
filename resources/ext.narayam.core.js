@@ -558,11 +558,6 @@ $.narayam = new ( function() {
 			return null;
 		}
 
-		// Event listener for scheme selection.
-		$( '.narayam-scheme', $( '#narayam-menu-items > ul')[0] ).live( 'click', function() {
-			that.setScheme( $( this ).val() );
-		} );
-
 		// Build enable/disable checkbox and label
 		var $checkbox = $( '<input type="checkbox" id="narayam-toggle" />' );
 		$checkbox
@@ -607,16 +602,17 @@ $.narayam = new ( function() {
 		}
 
 		// Event listener for scheme selection - dynamic loading of rules.
-		$( '.narayam-scheme', $('.narayam-scheme-dynamic-item') ).live( 'click', function() {
+		$narayamMenuItems.delegate( 'input:radio', 'click', function( ) {
 			that.setScheme( $( this ).val() );
-			// rebuild the menu items with recent items.
-			$( '#narayam-menu' ).html( $.narayam.buildMenuItems() );
-			$( '#narayam-menu-items' ).css( 'left', $('li#pt-narayam').offset().left );
-			$( '#narayam-' + $( this ).val() ).prop( 'checked', true );
-			if ( enabled ) {
-				$( '#narayam-toggle' ).prop( 'checked', true );
+			if ( $( this ).parent().hasClass( 'narayam-scheme-dynamic-item' ) ){
+				// rebuild the menu items with recent items.
+				$( '#narayam-menu' ).html( $.narayam.buildMenuItems() );
+				$( '#narayam-menu-items' ).css( 'left', $( 'li#pt-narayam' ).offset().left );
+				$( '#narayam-' + $( this ).val() ).prop( 'checked', true );
+				if ( enabled ) {
+					$( '#narayam-toggle' ).prop( 'checked', true );
+				}
 			}
-			event.stopPropagation();
 		} );
 
 		var helppage = mw.config.get( 'wgNarayamHelpPage' );
@@ -700,7 +696,9 @@ $.narayam = new ( function() {
 			$menu.removeClass( 'open' );
 			$menu.hide();
 		} );
-
+ 		$menu.click( function( event ) {
+			event.stopPropagation();
+		} );
 		// Workaround for IE bug - activex components like input fields
 		// coming on top of everything.
 		// TODO: is there a better solution other than hiding it on hover?
