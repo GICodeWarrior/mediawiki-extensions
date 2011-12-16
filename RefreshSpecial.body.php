@@ -118,9 +118,10 @@ class RefreshSpecialForm {
 			$checked = '';
 			if ( $queryPage->isExpensive() ) {
 				$checked = 'checked="checked"';
+				$specialEsc = htmlspecialchars( $special );
 				$wgOut->addHTML("\t\t\t\t\t<li>
-						<input type=\"checkbox\" name=\"wpSpecial[]\" value=\"$special\" $checked />
-						<b>"  . wfMsg($special) . "</b>
+						<input type=\"checkbox\" name=\"wpSpecial[]\" value=\"$specialEsc\" $checked />
+						<b>"  . htmlspecialchars( $specialObj->getDescription() ) . "</b>
 					</li>\n");
 			}
 		}
