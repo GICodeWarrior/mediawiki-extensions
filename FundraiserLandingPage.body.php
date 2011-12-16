@@ -25,7 +25,7 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 		$output = '';
 		
 		# begin generating the template call
-		$template = $this->make_safe( $wgRequest->getText( 'template', $wgFundraiserLPDefaults[ 'template' ] ) );
+		$template = $this->makeSafe( $wgRequest->getText( 'template', $wgFundraiserLPDefaults[ 'template' ] ) );
 		$output .= "{{ $template\n";
 		
 		# get the required variables (except template and country) to use for the landing page
@@ -36,7 +36,7 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 			'form-countryspecific'
 		);
 		foreach( $requiredParams as $requiredParam ) {
-			$param = $this->make_safe(
+			$param = $this->makeSafe(
 				$wgRequest->getText( $requiredParam, $wgFundraiserLPDefaults[$requiredParam] )
 			);
 			// Add them to the template call
@@ -49,7 +49,7 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 		if ( !$country ) {
 			$country = $wgFundraiserLPDefaults[ 'country' ];
 		}
-		$country = $this->make_safe( $country );
+		$country = $this->makeSafe( $country );
 		$output .= "| country = $country\n";
 
 		$excludeKeys = $requiredParams + array( 'template', 'country', 'title' );
@@ -61,8 +61,8 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 				continue;
 			}
 			# get the variable's name and value
-			$key = $this->make_safe( $k_unsafe );
-			$val = $this->make_safe( $v_unsafe );
+			$key = $this->makeSafe( $k_unsafe );
+			$val = $this->makeSafe( $v_unsafe );
 			# print to the template in wiki-syntax
 			$output .= "| $key = $val\n";
 		}
@@ -82,7 +82,7 @@ class FundraiserLandingPage extends UnlistedSpecialPage
 	 * @param $string The unsafe string to escape and check for invalid characters
 	 * @return mixed|String A string matching the regex or an empty string
 	 */
-	function make_safe( $string ) {
+	function makeSafe( $string ) {
 		$num = preg_match( '([a-zA-Z0-9_-]+)', $string, $matches );
 
 		if ( $num == 1 ){
