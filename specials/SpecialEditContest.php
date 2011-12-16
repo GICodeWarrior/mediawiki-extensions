@@ -14,7 +14,6 @@
 class SpecialEditContest extends FormSpecialPage {
 
 	protected $contest = false;
-	protected $isNewPost = false;
 
 	/**
 	 * Constructor.
