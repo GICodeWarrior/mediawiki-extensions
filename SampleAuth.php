@@ -11,8 +11,7 @@ class SampleAuth extends AuthPlugin {
 	}
 
 	function authenticate( $username, $password ) {
-		return $this->userExists( $username ) &&
-		       ( $password == "password" );
+		return $this->userExists( $username ) && ( $password == "password" );
 	}
 
 	function autoCreate() {
