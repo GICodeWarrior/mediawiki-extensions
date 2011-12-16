@@ -5,6 +5,10 @@
 	overflow: visible !important;
 }
 
+li#pt-narayam {
+	margin-left: 5px;
+}
+
 div#narayam-menu div.menu-items {
 	top: 0px;
 	font-size: 1.2em;
