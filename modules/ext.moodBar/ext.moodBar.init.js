@@ -58,14 +58,14 @@
 				.appendTo( ui.pMoodbar );
 			
 			// Inject portlet into document, when document is ready
-			$( mb.inject );
+			// Send mb.getUserInfo as a callback to be ran after MoodBar injection
+			$( mb.inject( mb.getUserInfo ) );
 
-			// Assign user props to mb.userData object.
-			mb.getUserInfo();
 		},
 
-		inject: function() {
+		inject: function(getUserInfo) {
 			$( '#mw-head' ).append( mb.ui.pMoodbar );
+			getUserInfo(); //run the callback
 		},
 
 		getUserInfo: function() {
@@ -75,21 +75,17 @@
 				uiprop: 'email',
 				format: 'json'
 			};
-			$(document).ready( function() {
-				$.ajax( {
-					'type': 'POST',
-					'url': mw.util.wikiScript( 'api' ),
-					'data': query,
-					'success': function (data) {
-						mb.userData = data.query.userinfo;
-					},
-					'error': function( jqXHR, textStatus, errorThrown ) {
-						mb.userData = null;
-					},
-					'dataType': 'json'
-				} );
-			});
-			
+			$.ajax( {
+				'url': mw.util.wikiScript( 'api' ),
+				'data': query,
+				'success': function (data) {
+					mb.userData = data.query.userinfo;
+				},
+				'error': function( jqXHR, textStatus, errorThrown ) {
+					mb.userData = null;
+				},
+				'dataType': 'json'
+			} );
 		}
 
 	};

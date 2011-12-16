@@ -33,9 +33,7 @@ jQuery(function( $ ) {
 	 * Select all comment type filters.
 	 */
 	function selectAllTypes() {
-		$( '#fbd-filters-type-praise, #fbd-filters-type-confusion, #fbd-filters-type-issues' ).each( function() {
-			$(this).prop( 'checked', true);
-		});
+		$( '#fbd-filters-type-praise, #fbd-filters-type-confusion, #fbd-filters-type-issues' ).prop( 'checked', true);
 	}
 	/**
 	 * Set the moodbar-feedback-types and moodbar-feedback-username cookies based on formState.
@@ -546,9 +544,9 @@ jQuery(function( $ ) {
 	function validateResponse($item) {
 		var response = $.trim( $item.find('.fbd-response-text').val() ); 
 		if( response.length > 0 && response.length <= 5000 ) { 
-			$item.find( '.fbd-response-submit, .fbd-response-preview').removeAttr('disabled');
+			$item.find( '.fbd-response-submit, .fbd-response-preview').prop('disabled', false);
 		} else {
-			$item.find( '.fbd-response-submit, .fbd-response-preview').attr({'disabled':'true'});		
+			$item.find( '.fbd-response-submit, .fbd-response-preview').prop('disabled', true);
 		}
 	}
 	

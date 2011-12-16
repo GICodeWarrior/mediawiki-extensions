@@ -138,7 +138,7 @@
 						emailOptOut = ($.cookie( mb.cookiePrefix() + 'emailOptOut' ) == '1');
 
 					if( emailOptOut === false) {
-						if(userData.email !== "") { //check for email address
+						if('email' in userData && userData.email !== "") { //check for email address
 							if('emailauthenticated' in userData) { //they have confirmed
 								mb.showSuccess();
 							} else { //show email confirmation form
@@ -483,18 +483,18 @@
 		validateFeedback: function() {
 			var comment = $( '#mw-moodBar-feedbackInput' ).val();
 			if( $.trim( comment ).length > 0 && comment.length <= 140 && $( '.mw-moodBar-selected').length ) {
-				mb.ui.overlay.find( '.mw-moodBar-formSubmit').removeAttr('disabled');
+				mb.ui.overlay.find( '.mw-moodBar-formSubmit').prop('disabled', false);
 			} else {
-				mb.ui.overlay.find( '.mw-moodBar-formSubmit').attr({'disabled':'true'});		
+				mb.ui.overlay.find( '.mw-moodBar-formSubmit').prop('disabled', true);		
 			}
 		},
 
 		validateEmail: function() {
 			var email = $( '#mw-moodBar-emailInput' ).val();
 			if( $.trim( email ).length > 0) {  //find validate email method
-				mb.ui.overlay.find( '.mw-moodBar-emailSubmit').removeAttr('disabled');
+				mb.ui.overlay.find( '.mw-moodBar-emailSubmit').prop('disabled', false);
 			} else {
-				mb.ui.overlay.find( '.mw-moodBar-emailSubmit').attr({'disabled':'true'});		
+				mb.ui.overlay.find( '.mw-moodBar-emailSubmit').prop('disabled', true);		
 			}
 		}
 

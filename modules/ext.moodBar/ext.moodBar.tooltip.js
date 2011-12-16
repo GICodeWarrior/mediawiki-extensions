@@ -39,9 +39,10 @@ jQuery( document ).ready( function( $ ) {
 						.append(
 							$('<div>').attr('id', 'moodbar-tooltip-pointy')
 						).append(
-							$('<div>').attr('id', 'moodbar-tooltip-title').text( mw.msg( 'moodbar-tooltip-title' ) )
-						).append(
-							$('<div>').attr('id', 'moodbar-tooltip-subtitle').text( mw.msg( 'moodbar-tooltip-subtitle' )  )
+							$('<div>').attr('id', 'moodbar-tooltip-title')
+								.text( mw.msg( 'moodbar-tooltip-title' ) 
+								.replace( new RegExp( $.escapeRE('{{SITENAME}}'), 'g' ), mw.config.get( 'wgSiteName' ) )
+							)
 						)
 					);
 	

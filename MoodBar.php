@@ -89,10 +89,11 @@ $wgResourceModules['ext.moodBar.init'] = $mbResourceTemplate + array(
 		'tooltip-p-moodbar-trigger-share',
 		'tooltip-p-moodbar-trigger-editing',
 	),
-	'position' => 'top',
+	'position' => 'bottom',
 	'dependencies' => array(
 		'jquery.cookie',
 		'jquery.client',
+		'mediawiki.util'
 	),
 );
 
@@ -101,12 +102,10 @@ $wgResourceModules['ext.moodBar.tooltip'] = $mbResourceTemplate + array(
 	'scripts' => 'ext.moodBar/ext.moodBar.tooltip.js',
 	'messages' => array(
 		 'moodbar-tooltip-title',
-		 'moodbar-tooltip-subtitle',		
 	),
-	'position' => 'top',
+	'position' => 'bottom',
 	'dependencies' => array(
 		'jquery.cookie',
-		'jquery.client',
 		'ext.moodBar.init',
 	),
 );

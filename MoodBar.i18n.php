@@ -71,8 +71,7 @@ For more information, please visit the $1.',
 	'moodbar-email-resend-confirmation' => 'Resend confirmation',
 	'moodbar-email-optout' => 'No thanks',
 	// MoodBar Tooltip
-	'moodbar-tooltip-title' => 'Let us know about your experience editing Wikipedia.',
-	'moodbar-tooltip-subtitle' => 'Your feedback about editing Wikipedia helps us make the site better.',
+	'moodbar-tooltip-title' => 'Let us know about your experience editing {{SITENAME}}.',
 	// Special:MoodBar
 	'right-moodbar-view' => 'View and export MoodBar feedback',
 	'right-moodbar-admin' => 'Alter visibility on the feedback dashboard',
@@ -260,7 +259,6 @@ See also:
 	'moodbar-email-resend-confirmation' => "Button text for resending confirmation email. This message is used in {{msg-mw|Moodbar-email-confirm-desc}}, so if you're updating this message, update that one, too.",
 	'moodbar-email-optout' => 'Button text for email opt-out',
 	'moodbar-tooltip-title' => 'Text for title of moodbar tooltip',
-	'moodbar-tooltip-subtitle' => 'Text for subtitle of moodbar tooltip',
 	'right-moodbar-view' => '{{doc-right|moodbar-view}}',
 	'right-moodbar-admin' => '{{doc-right|moodbar-admin}}',
 	'moodbar-header-timestamp' => '{{Identical|Timestamp}}',
