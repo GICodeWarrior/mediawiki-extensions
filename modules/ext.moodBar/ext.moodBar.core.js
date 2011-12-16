@@ -491,7 +491,7 @@
 
 		validateEmail: function() {
 			var email = $( '#mw-moodBar-emailInput' ).val();
-			if( $.trim( email ).length > 0) {  //find validate email method
+			if( mw.util.validateEmail( email ) ) {
 				mb.ui.overlay.find( '.mw-moodBar-emailSubmit').prop('disabled', false);
 			} else {
 				mb.ui.overlay.find( '.mw-moodBar-emailSubmit').prop('disabled', true);		
