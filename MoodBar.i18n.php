@@ -95,7 +95,7 @@ For more information, please visit the $1.',
 	'moodbar-header-own-talk' => 'Own talk page',
 	// Special:MoodBarFeedback
 	'moodbar-feedback-title' => 'Feedback dashboard',
-	'moodbar-feedback-description' => "This dashboard displays comments from new editors about their experiences editing Wikipedia. [http://en.wikipedia.org/wiki/Wikipedia:New_editor_feedback Learn More]",
+	'moodbar-feedback-description' => "This dashboard displays comments from new editors about their experiences editing $1. [http://en.wikipedia.org/wiki/Wikipedia:New_editor_feedback Learn More]",
 	'moodbar-feedback-response-title' => '==In response to your [[$1|feedback]]==',
 	'moodbar-feedback-view-link' => '(View the feedback)',
 	'moodbar-feedback-filters' => 'Filters',

@@ -106,7 +106,7 @@ class SpecialFeedbackDashboard extends SpecialPage {
 	 * @return string HTML
 	 */
 	public function buildForm( $filterType ) {
-		global $wgRequest, $wgMoodBarConfig;
+		global $wgRequest, $wgMoodBarConfig, $wgSitename;
 		$filtersMsg = wfMessage( 'moodbar-feedback-filters' )->escaped();
 		$typeMsg = wfMessage( 'moodbar-feedback-filters-type' )->escaped();
 		$praiseMsg = wfMessage( 'moodbar-feedback-filters-type-happy' )->escaped();
@@ -131,7 +131,7 @@ class SpecialFeedbackDashboard extends SpecialPage {
 		
 		$moodbarStat = $this->getMoodBarTypeStats();
 		$moodbarStatMsg = wfMessage( 'moodbar-type-stats' )->params( $moodbarStat['happy'], $moodbarStat['sad'], $moodbarStat['confused'] )->escaped();
-		$feedbackDashboardDescription = wfMessage( 'moodbar-feedback-description' ); // don't escape because there is html 
+		$feedbackDashboardDescription = wfMessage( 'moodbar-feedback-description' )->params( $wgSitename ); // don't escape because there is html 
 
 		return <<<HTML
 		<div id="fbd-description">
