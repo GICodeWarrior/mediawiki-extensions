@@ -88,7 +88,7 @@ class SpecialInstitutions extends SpecialEPPage {
 			'form',
 			array(
 				'method' => 'post',
-				'action' => SpecialPage::getTitleFor( 'Institution' )->getLocalURL(),
+				'action' => SpecialPage::getTitleFor( 'EditInstitution' )->getLocalURL(),
 			)
 		) );
 
@@ -98,9 +98,9 @@ class SpecialInstitutions extends SpecialEPPage {
 
 		$out->addHTML( Html::element( 'p', array(), wfMsg( 'ep-institutions-namedoc' ) ) );
 
-		$out->addHTML( Html::element( 'label', array( 'for' => 'neworg' ), wfMsg( 'ep-institutions-newname' ) ) );
+		$out->addHTML( Html::element( 'label', array( 'for' => 'newname' ), wfMsg( 'ep-institutions-newname' ) ) );
 
-		$out->addHTML( '&#160;' . Html::input( 'neworg' ) . '&#160;' );
+		$out->addHTML( '&#160;' . Html::input( 'newname' ) . '&#160;' );
 
 		$out->addHTML( Html::input(
 			'addneworg',

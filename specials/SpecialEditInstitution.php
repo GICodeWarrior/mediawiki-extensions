@@ -19,7 +19,7 @@ class SpecialEditInstitution extends SpecialEPFormPage {
 	 * @since 0.1
 	 */
 	public function __construct() {
-		parent::__construct( 'EditInstitution', 'epadmin', false );
+		parent::__construct( 'EditInstitution', 'epadmin', 'EPOrg', 'Institutions' );
 	}
 
 	/**
@@ -37,22 +37,6 @@ class SpecialEditInstitution extends SpecialEPFormPage {
 		);
 
 		return $this->processFormFields( $fields );
-	}
-	
-	/**
-	 * (non-PHPdoc)
-	 * @see SpecialEPFormPage::getListPage()
-	 */
-	protected function getListPage() {
-		return 'Institutions';
-	}
-	
-	/**
-	 * (non-PHPdoc)
-	 * @see SpecialEPFormPage::getListPage()
-	 */
-	protected function getObjectClassName() {
-		return 'EPOrg';
 	}
 
 }

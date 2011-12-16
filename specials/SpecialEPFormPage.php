@@ -28,25 +28,28 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 	 * @since 0.1
 	 * @var EPDBObject|false
 	 */
-	protected $item; 
+	protected $item = false; 
+	
+	protected $itemClass;
+	
+	protected $listPage;
 	
 	/**
-	 * Returns the name of the EPDBObject deriving class this page edits or creates.
-	 * 
+	 * Constructor.
+	 *
 	 * @since 0.1
 	 * 
-	 * @return string
+	 * @param string $name Name of the page 
+	 * @param string $right Right needed to access the page
+	 * @param string $itemClass Name of the item class
+	 * @param string $listPage Name of the page listing the items
 	 */
-	protected abstract function getObjectClassName();
-	
-	/**
-	 * Gets the name of the list page corresponding to this edit page.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @return string
-	 */
-	protected abstract function getListPage();
+	public function __construct( $name, $right, $itemClass, $listPage ) {
+		$this->itemClass = $itemClass;
+		$this->listPage = $listPage;
+		
+		parent::__construct( $name, $right, false );
+	}
 	
 	/**
 	 * @see SpecialPage::getDescription
@@ -103,7 +106,7 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 	 * @return boolean
 	 */
 	protected function isNew() {
-		return $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) );
+		return $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'newEditToken' ) );
 	}
 
 	/**
@@ -139,7 +142,7 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 	 * @since 0.1
 	 */
 	protected function showContent() {
-		$c = $this->getObjectClassName();
+		$c = $this->itemClass;
 		
 		if ( $this->isNew() ) {
 			$data = $this->getNewData();
@@ -158,7 +161,7 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 		}
 
 		if ( $object === false ) {
-			$this->getOutput()->redirect( SpecialPage::getTitleFor( $this->getListPage() )->getLocalURL() );
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( $this->listPage )->getLocalURL() );
 		}
 		else {
 //			if ( !$this->isNew() ) {
@@ -185,7 +188,7 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 			wfMsg( 'cancel' ),
 			'cancelEdit',
 			array(
-				'target-url' => SpecialPage::getTitleFor( $this->getListPage() )->getFullURL()
+				'target-url' => SpecialPage::getTitleFor( $this->listPage )->getFullURL()
 			)
 		);
 
@@ -258,7 +261,7 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 	 * @since 0.1
 	 */
 	public function onSuccess() {
-		$this->getOutput()->redirect( SpecialPage::getTitleFor( $this->getListPage() )->getLocalURL() );
+		$this->getOutput()->redirect( SpecialPage::getTitleFor( $this->listPage )->getLocalURL() );
 	}
 	
 	/**
@@ -281,7 +284,7 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 			}
 		}
 
-		$c = $this->getObjectClassName();
+		$c = $this->itemClass;
 		$item = new $c( $fields, is_null( $fields['id'] ) );
 
 		$success = $item->writeAllToDB();

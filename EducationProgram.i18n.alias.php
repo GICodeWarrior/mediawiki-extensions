@@ -24,4 +24,5 @@ $specialPageAliases['en'] = array(
 	'Course' => array( 'Course' ),
 	'Courses' => array( 'Courses' ),
 	'EducationProgram' => array( 'EducationProgram' ),
+	'EditInstitution' => array( 'EditInstitution' ),
 );
