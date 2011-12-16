@@ -18,15 +18,17 @@ $wgExtensionCredits['specialpage'][] = array(
         'version' => '1.0.0',
 );
 
-$wgAutoloadClasses['SpecialTranslateSvg'] = dirname(__FILE__) . '/' . 'SpecialTranslateSvg.php';
-$wgExtensionMessagesFiles['TranslateSvg'] = dirname( __FILE__ ) . '/TranslateSvg.i18n.php';
+$dir = dirname( __FILE__ ) . '/';
+$wgAutoloadClasses['SpecialTranslateSvg'] = $dir . 'SpecialTranslateSvg.php';
+$wgExtensionMessagesFiles['TranslateSvg'] = $dir . 'TranslateSvg.i18n.php';
+$wgExtensionAliasesFiles['TranslateSvg'] = $dir . 'TranslateSvg.alias.php';
 $wgSpecialPages['TranslateSvg'] = 'SpecialTranslateSvg'; # Tell MediaWiki about the new special page and its class name
 $wgSpecialPageGroups['TranslateSvg'] = 'media';
  
 $wgResourceModules['ext.translateSvg'] = array(
 	'scripts' => array( 'ext.translateSvg.core.js' ),
 	// 'styles' => 'css/ext.translateSvg.css',
-	'messages' => array( 'translatesvg-add', 'translatesvg-addlink' ),
+	'messages' => array( 'translatesvg-add', 'translatesvg-addlink', 'translatesvg-specify' ),
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteExtPath' => 'translateSvg'
 );

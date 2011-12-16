@@ -138,23 +138,22 @@ class SpecialTranslateSvg extends SpecialPage {
 		$groups = array();
 		foreach( $this->translations as $language=>$translations ){
 			$languages = Language::getLanguageNames();
-			$languages['fallback'] = "Default (no language specified)"; //TODO: localise
-			$languages['qqq'] = "Advice to translators"; //TODO: localise
+			$languages['fallback'] = wfMsg( 'translatesvg-fallbackdesc');
+			$languages['qqq'] = wfMsg( 'translatesvg-qqqdesc' );
 			
 			$html .= Html::openElement( 'fieldset', array( 'id' => $language ) ) .
 					Html::element( 'legend', null, $languages[$language] );
 			$groups = array();
 			for( $i = 0; $i < $this->number; $i++ ){
-				$fallback = $this->getfallback( $i );
-				$default = $this->getDefault( $i, $language );
-				$grouphtml = Xml::inputLabel( $fallback['text'], $language.'-'.$i.'-text', $language.'-'.$i.'-text', 50, $default['text'] );
+				$fallback = $this->getFallback( $i );
+				$existing = $this->getExisting( $i, $language );
+				$desc = ( $language === 'qqq' ) ? '' : '&#160;' . Html::element( 'small', null, $this->getDescriptor( $i ) );
+				list( $label, $input ) = Xml::inputLabelSep( $fallback['text'], $language.'-'.$i.'-text', $language.'-'.$i.'-text', 50, $existing['text'] );
+				$grouphtml = $label . $desc . '&#160;&#160;&#160;' . $input;
 				if( $language !== 'qqq' ){
 					$grouphtml .= Html::element( 'br' ) .
-							"&nbsp;&nbsp;&nbsp;" . Xml::inputLabel( wfMsg( 'translatesvg-xcoordinate-pre' ), $language.'-'.$i.'-x', $language.'-'.$i.'-x', 5, $default['x'] ) . 
-							"&nbsp;&nbsp;&nbsp;" . Xml::inputLabel( wfMsg( 'translatesvg-ycoordinate-pre' ), $language.'-'.$i.'-y', $language.'-'.$i.'-y', 5, $default['y'] ); 
-					if( trim( $this->getQQQ( $i ) ) !== '' ){
-						$grouphtml .= "&nbsp" . Html::element( 'small', null, $this->getQQQ( $i ) );
-					}
+							"&#160;&#160;&#160;" . Xml::inputLabel( wfMsg( 'translatesvg-xcoordinate-pre' ), $language.'-'.$i.'-x', $language.'-'.$i.'-x', 5, $existing['x'] ) . 
+							"&#160;&#160;&#160;" . Xml::inputLabel( wfMsg( 'translatesvg-ycoordinate-pre' ), $language.'-'.$i.'-y', $language.'-'.$i.'-y', 5, $existing['y'] );
 				}
 				$groups[] = $grouphtml;
 			}
@@ -166,27 +165,46 @@ class SpecialTranslateSvg extends SpecialPage {
 		$this->getOutput()->addHTML( $html );
 	}
 	
-	function getfallback( $num ){
+	function getFallback( $num ){
 		if( isset( $this->translations['fallback'][$num] ) ){
 			return $this->translations['fallback'][$num];
 		} else {
 			//TODO
 		}
 	}
-	function getDefault( $num, $language ){
+	
+	/*
+		Return the existing translation of a text: the starting point that the translator works with.
+		Autofill is annoying at best, but it's useful for numbers. Hence scrub all non-numeric text (but
+		keep other properties).
+		This function is useful when translations are missing for zero or more but not all text elements.
+		For the equivalent function for when they are missing for all text, see the JavaScript function.
+	*/
+	function getExisting( $num, $language ){
 		if( isset( $this->translations[$language][$num] ) ){
 			return $this->translations[$language][$num];
 		} else {
-			//TODO
+			$fallback = $this->getFallback( $num );
+			$fallback = trim( $fallback['text'] );
+			if( preg_match( '/^[0-9 .,]+$/', $fallback ) ){
+				return $fallback;
+			} else {
+				return '';
+			}
 		}
 	}
-	function getQQQ( $num ){
+	
+	function getDescriptor( $num ){
+		$qqq = '';
 		if( isset( $this->translations['qqq'][$num]['text'] ) ){
-			return $this->translations['qqq'][$num]['text'];
-		} else {
-			return '(no description)';
+			$qqq = trim( $this->translations['qqq'][$num]['text'] );
 		}
+		if( $qqq === '' ) {
+			$qqq = wfMsg( 'translatesvg-nodesc' );
+		}
+		return $qqq;
 	}
+	
 	function updateTranslations( $params ){
 		foreach( $params as $name=>$value ){
 			list( $lang, $num, $param ) = explode( '-', $name );
@@ -290,7 +308,6 @@ class SpecialTranslateSvg extends SpecialPage {
 		if( count( $this->added ) > 0 )	$comment .= " added " . implode( ", ", array_keys( $this->added ) ) . ";";
 		if( count( $this->modified ) > 0 )	$comment .= " modified " . implode( ", ", array_keys( $this->modified ) ) . ";";
 		$comment = trim( $comment, ";" ) . ".";
-		die( $comment );
 		$status = $mUpload->performUpload( $comment, false, $watch, $this->getUser() );
 		if ( !$status->isGood() ) {
 			//TODO

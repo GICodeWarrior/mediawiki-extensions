@@ -14,8 +14,8 @@
 		//'translatesvg-xcoordinate-post' => '',
 		'translatesvg-ycoordinate-pre' => 'Y-coordinate (vertical): ',
 		//'translatesvg-ycoordinate-post' => ''
+		'translatesvg-specify' => 'Specify new language code (e.g. en, fr, de, es...)',
+		'translatesvg-fallbackdesc' => 'Default (no language specified)',
+		'translatesvg-qqqdesc' => 'Advice to translators',
+		'translatesvg-nodesc'  => '(no description)',
 	);
-	$specialPageAliases['en'] = array(
-        'TranslateSvg' => array( 'TranslateSVG', 'TranslateSvg' ),
-	);
-	$aliases =& $specialPageAliases; // for backwards compatibility with MediaWiki 1.15 and earlier.
