@@ -26,28 +26,38 @@ $wgExtensionCredits['other'][] = array (
 	"name" => "NoBogusUserpages",
 	"url" => "http://www.mediawiki.org/wiki/Extension:NoBogusUserpages",
 	"author" => "[http://www.mediawiki.org/wiki/User:Dantman Daniel Friesen] [mailto:Daniel%20Friesen%20%3Cmediawiki@danielfriesen.name%3E <mediawiki@danielfriesen.name>]",
-	"description" => "Restricts creation of userpages for which a user does not exist by those without rights to do so."
+	"descriptionmsg" => 'nobogususerpages-desc',
 );
 
 $wgAvailableRights[] = 'createbogususerpage';
 $wgGroupPermissions['*'    ]['createbogususerpage'] = false;
 $wgGroupPermissions['sysop']['createbogususerpage'] = true;
+$wgExtensionMessagesFiles['NoBogusUserpages'] = dirname(__FILE__) . '/NoBogusUserpages.i18n.php';
+$wgHooks['getUserPermissionsErrors'][] = 'efNoBogusUserpagesUserCan';
 
-require_once( dirname(__FILE__).'/NoBogusUserpages.body.php' );
-$wgExtensionFunctions[] = 'efNoBogusUserpagesSetup';
-
-function efNoBogusUserpagesSetup() {
-	global $wgMessageCache, $wgVersion;
+function efNoBogusUserpagesUserCan( $title, $user, $action, &$result ) {
+	// If we're not in the user namespace,
+	// or we're not trying to edit,
+	// or the page already exists,
+	// or we are allowed to create bogus userpages
+	// then just let MediaWiki continue. 
+	if ( $title->getNamespace() != NS_USER
+	 || $action != 'create'
+	 || $user->isAllowed('createbogususerpage') ) return true;
 	
-	require_once( dirname(__FILE__).'/NoBogusUserpages.i18n.php' );
-	$wgMessageCache->addMessagesByLang($messages);
+	$userTitle = explode( '/', $title->getText(), 2 );
+	$userName = $userTitle[0];
 	
-	// Anything older than 1.6 wont' work.
-	wfUseMW( '1.6' );
-	if( version_compare( $wgVersion, '1.12a', '<' ) )
-		// We are in pre 1.12, use the old hook.
-		$wgHooks['userCan'][] = 'efNoBogusUserpagesUserCan';
-	else
-		// We are in 1.12, use the new hook which allows for a custom message.
-		$wgHooks['getUserPermissionsErrors'][] = 'efNoBogusUserpagesUserCan';
+	// Don't block the creation of IP userpages if the page is for a IPv4 or IPv6 page.
+	if ( User::isIP( $userName ) ) return true;
+	
+	// Check if the user exists, if it says the user is anon,
+	// but we know we're not on an ip page, then the user does not exist.
+	// And therefore, we block creation.
+	$user = User::newFromName( $userName );
+	if ( $user->isAnon() ) {
+		$result = 'badaccess-bogususerpage';
+		return false;
+	}
+	return true;
 }
