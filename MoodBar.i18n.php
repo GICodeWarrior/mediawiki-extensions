@@ -132,7 +132,7 @@ For more information, please visit the $1.',
 	'moodbar-restore-intro' => '',
 	'moodbar-invalid-item' => 'The system was unable to find the correct feedback item.',
 	'moodbar-feedback-action-error' => 'An error occurred when trying to perform this action.',
-	'moodbar-feedback-response-summary' => '[[$1|$2]] [[$3|responded]] to this comment $4 ago',
+	'moodbar-feedback-response-summary' => '[[$1|$2]] [[$3|responded]] $4 ago',
 	'moodbar-feedback-edit-summary' => 'Response to [[Special:FeedbackDashboard/$1|user feedback]]: $2',
 	// Mood types
 	'moodbar-type-happy' => '{{GENDER:$1|Happy}}',
