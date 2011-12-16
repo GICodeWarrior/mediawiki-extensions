@@ -279,6 +279,10 @@
 				mw.webfonts.set( $(this).val() );
 			} );
 			for ( var scheme in config ) {
+				if ( !Object.prototype.hasOwnProperty.call( config, scheme ) ) {
+					continue;
+				}
+
 				var $fontLink = $( '<input type="radio" name="font" />' )
 					.attr( 'id', fontID( config[scheme] ) )
 					.val( config[scheme] );
