@@ -29,9 +29,22 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 	 * @var EPDBObject|false
 	 */
 	protected $item = false; 
-	
+
+	/**
+	 * Name of the class of the object being edited or created.
+	 * 
+	 * @since 0.1
+	 * @var string
+	 */
 	protected $itemClass;
 	
+	/**
+	 * Name of the special page listing the items.
+	 * For example, for "EditLolcat", it could be "Lolcats".
+	 * 
+	 * @since 0.1
+	 * @var string
+	 */
 	protected $listPage;
 	
 	/**
@@ -58,7 +71,7 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 	 */
 	public function getDescription() {
 		$action = $this->isNew() ? 'add' : 'edit';
-		return wfMsg( 'special-' . strtolower( $this->getName() ) . $action );
+		return wfMsg( 'special-' . strtolower( $this->getName() ) . '-' . $action );
 	}
 
 	/**
@@ -106,7 +119,22 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 	 * @return boolean
 	 */
 	protected function isNew() {
-		return $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'newEditToken' ) );
+		static $isNew = null;
+		
+		if ( is_null( $isNew ) ) {
+			$isNew = $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'newEditToken' ) );
+		}
+		
+		return $isNew;
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see FormSpecialPage::alterForm()
+	 */
+	protected function alterForm( HTMLForm $form ) {
+		$action = $this->isNew() ? 'add' : 'edit';
+		$form->setWrapperLegend( $this->msg( strtolower( $this->getName() ) . '-' . $action . '-legend' ) );
 	}
 
 	/**
