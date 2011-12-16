@@ -33,7 +33,26 @@ class SpecialEditInstitution extends SpecialEPFormPage {
 		$fields['name'] = array (
 			'type' => 'text',
 			'label-message' => 'educationprogram-org-edit-name',
-			'id' => 'org-name-field',
+			'required' => true,
+			'validation-callback' => function ( $value, array $alldata = null ) {
+				return strlen( $value ) < 2 ? wfMsg( 'educationprogram-org-invalid-name' ) : true;
+			},
+		);
+		
+		$fields['city'] = array (
+			'type' => 'text',
+			'label-message' => 'educationprogram-org-edit-city',
+			'required' => true,
+			'validation-callback' => function ( $value, array $alldata = null ) {
+				return strlen( $value ) < 2 ? wfMsg( 'educationprogram-org-invalid-city' ) : true;
+			},
+		);
+		
+		$fields['country'] = array (
+			'type' => 'select',
+			'label-message' => 'educationprogram-org-edit-country',
+			'required' => true,
+			'options' => array( 'foo' => 'foo', 'bar' => 'bar' ), // TODO
 		);
 
 		return $this->processFormFields( $fields );

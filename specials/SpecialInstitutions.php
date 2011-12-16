@@ -94,7 +94,7 @@ class SpecialInstitutions extends SpecialEPPage {
 
 		$out->addHTML( '<fieldset>' );
 
-		$out->addHTML( '<legend>' . htmlspecialchars( wfMsg( 'ep-institutions-addnew' ) ) . '</legend>' );
+		$out->addHTML( '<legend>' . wfMsgHtml( 'ep-institutions-addnew' ) . '</legend>' );
 
 		$out->addHTML( Html::element( 'p', array(), wfMsg( 'ep-institutions-namedoc' ) ) );
 

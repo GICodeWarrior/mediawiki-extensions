@@ -11,17 +11,8 @@
  * @licence GNU GPL v3 or later
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class SpecialEPFormPage extends FormSpecialPage {
+abstract class SpecialEPFormPage extends SpecialEPPage {
 
-	/**
-	 * The subpage, ie the part after Special:PageName/
-	 * Emptry string if none is provided.
-	 * 
-	 * @since 0.1
-	 * @var string
-	 */
-	protected $subPage;
-	
 	/**
 	 * Instance of the object being edited or created.
 	 * 
@@ -94,15 +85,8 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
-		$subPage = is_null( $subPage ) ? '' : $subPage;
-		$this->subPage = trim( str_replace( '_', ' ', $subPage ) );
-
-		$this->setHeaders();
-		$this->outputHeader();
-
-		// This will throw exceptions if there's a problem.
-		$this->checkExecutePermissions( $this->getUser() );
-
+		parent::execute( $subPage );
+		
 		if ( $this->isNew() ) {
 			$this->showForm();
 		}
@@ -127,15 +111,6 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 		
 		return $isNew;
 	}
-	
-	/**
-	 * (non-PHPdoc)
-	 * @see FormSpecialPage::alterForm()
-	 */
-	protected function alterForm( HTMLForm $form ) {
-		$action = $this->isNew() ? 'add' : 'edit';
-		$form->setWrapperLegend( $this->msg( strtolower( $this->getName() ) . '-' . $action . '-legend' ) );
-	}
 
 	/**
 	 * Show the form.
@@ -145,8 +120,14 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 	protected function showForm() {
 		$form = $this->getForm();
 
-		if ( $form->show() ) {
-			$this->onSuccess();
+		if ( $this->isNew() ) {
+			$form->prepareForm();
+			$form->displayForm( Status::newGood() );
+		}
+		else {
+			if ( $form->show() ) {
+				$this->onSuccess();
+			}
 		}
 	}
 	
@@ -209,8 +190,14 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 	 * @return HTMLForm|null
 	 */
 	protected function getForm() {
-		$form = parent::getForm();
+		$form = new HTMLForm( $this->getFormFields(), $this->getContext() );
 
+		$form->setSubmitCallback( array( $this, 'handleSubmission' ) );
+		$form->setSubmitText( wfMsg( 'educationprogram-org-submit' ) );
+
+		$action = $this->isNew() ? 'add' : 'edit';
+		$form->setWrapperLegend( $this->msg( strtolower( $this->getName() ) . '-' . $action . '-legend' ) );
+		
 		$form->addButton(
 			'cancelEdit',
 			wfMsg( 'cancel' ),
@@ -252,35 +239,25 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 	 */
 	protected function processFormFields( array $fields ) {
 		if ( $this->item !== false ) {
-			foreach ( $fields as $name => $data ) {
+			foreach ( $fields as $name => &$data ) {
 				$default = $this->item->getField( $name );
-				$fields[$name]['default'] = $default;
+				$data['default'] = $default;
 			}
 		}
-
+		
 		$mappedFields = array();
 
 		foreach ( $fields as $name => $field ) {
+			if ( $this->isNew() ) {
+				// HTML form is being a huge pain in running the validation on post,
+				// so just remove it if when not appropriate.
+				unset( $field['validation-callback'] );
+			}
+			
 			$mappedFields['item-' . $name] = $field;
 		}
 
 		return $mappedFields;
-	}
-
-	/**
-	 * Show a message in a warning box.
-	 *
-	 * @since 0.1
-	 *
-	 * @param string $message Message key
-	 * @param array|string $args Message arguments
-	 */
-	protected function showWarning( $message, $args = array() ) {
-		$message = call_user_func_array( 'wfMsgExt', array_merge( array( $message ), (array)$args ) );
-		$this->getOutput()->addHTML(
-			'<p class="visualClear warningbox">' . $message . '</p>'
-			. '<hr style="display: block; clear: both; visibility: hidden;" />'
-		);
 	}
 	
 	/**
