@@ -20,7 +20,33 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 	 * @since 0.1
 	 * @var string
 	 */
-	public $subPage;
+	protected $subPage;
+	
+	/**
+	 * Instance of the object being edited or created.
+	 * 
+	 * @since 0.1
+	 * @var EPDBObject|false
+	 */
+	protected $item; 
+	
+	/**
+	 * Returns the name of the EPDBObject deriving class this page edits or creates.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return string
+	 */
+	protected abstract function getObjectClassName();
+	
+	/**
+	 * Gets the name of the list page corresponding to this edit page.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return string
+	 */
+	protected abstract function getListPage();
 	
 	/**
 	 * @see SpecialPage::getDescription
@@ -70,8 +96,11 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 	}
 	
 	/**
+	 * Returns if the page should work in insertion mode rather then modification mode.
 	 * 
-	 * Enter description here ...
+	 * @since 0.1
+	 * 
+	 * @return boolean
 	 */
 	protected function isNew() {
 		return $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) );
@@ -89,6 +118,59 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 			$this->onSuccess();
 		}
 	}
+	
+	/**
+	 * Returns the data to use as condition for selecting the object,
+	 * or in case nothing matches the selection, the data to initialize
+	 * it with. This is typically an identifier such as name or id.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
+	protected function getNewData() {
+		return array( 'name' => $this->getRequest()->getVal( 'newname' ) );
+	}
+	
+	/**
+	 * Attempt to get the contest to be edited or create the one to be added.
+	 * If this works, show the form, if not, redirect to special:contests.
+	 *
+	 * @since 0.1
+	 */
+	protected function showContent() {
+		$c = $this->getObjectClassName();
+		
+		if ( $this->isNew() ) {
+			$data = $this->getNewData();
+
+			$object = $c::selectRow( null, $data );
+
+			if ( $object === false ) {
+				$object = new Contest( $data, true );
+			}
+			else {
+				$this->showWarning( 'educationprogram-' . strtolower( $this->getName() ) . '-exists-already' );
+			}
+		}
+		else {
+			$object = $c::selectRow( null, array( 'name' => $this->subPage ) );
+		}
+
+		if ( $object === false ) {
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( $this->getListPage() )->getLocalURL() );
+		}
+		else {
+//			if ( !$this->isNew() ) {
+//				$this->getOutput()->addHTML(
+//					SpecialContestPage::getNavigation( $contest->getField( 'name' ), $this->getUser(), $this->getLanguage(), $this->getName() )
+//				);
+//			}
+
+			$this->item = $object;
+			$this->showForm();
+		}
+	}
 
 	/**
 	 * (non-PHPdoc)
@@ -103,7 +185,7 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 			wfMsg( 'cancel' ),
 			'cancelEdit',
 			array(
-				'target-url' => SpecialPage::getTitleFor( 'Contests' )->getFullURL()
+				'target-url' => SpecialPage::getTitleFor( $this->getListPage() )->getFullURL()
 			)
 		);
 
@@ -114,6 +196,44 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 //		);
 
 		return $form;
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see FormSpecialPage::getFormFields()
+	 * @return array
+	 */
+	protected function getFormFields() {
+		$fields = array();
+
+		$fields['id'] = array ( 'type' => 'hidden' );
+		
+		return $fields;
+	}
+	
+	/**
+	 * Populates the form fields with the data of the item
+	 * and prefixes their names.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $fields
+	 */
+	protected function processFormFields( array $fields ) {
+		if ( $this->item !== false ) {
+			foreach ( $fields as $name => $data ) {
+				$default = $this->item->getField( $name );
+				$fields[$name]['default'] = $default;
+			}
+		}
+
+		$mappedFields = array();
+
+		foreach ( $fields as $name => $field ) {
+			$mappedFields['item-' . $name] = $field;
+		}
+
+		return $mappedFields;
 	}
 
 	/**
@@ -131,5 +251,47 @@ abstract class SpecialEPFormPage extends FormSpecialPage {
 			. '<hr style="display: block; clear: both; visibility: hidden;" />'
 		);
 	}
+	
+	/**
+	 * Gets called after the form is saved.
+	 * 
+	 * @since 0.1
+	 */
+	public function onSuccess() {
+		$this->getOutput()->redirect( SpecialPage::getTitleFor( $this->getListPage() )->getLocalURL() );
+	}
+	
+	/**
+	 * Process the form.  At this point we know that the user passes all the criteria in
+	 * userCanExecute(), and if the data array contains 'Username', etc, then Username
+	 * resets are allowed.
+	 *
+	 * @param array $data
+	 *
+	 * @return Bool|Array
+	 */
+	public function onSubmit( array $data ) {
+		$fields = array();
 
+		foreach ( $data as $name => $value ) {
+			$matches = array();
+
+			if ( preg_match( '/item-(.+)/', $name, $matches ) ) {
+				$fields[$matches[1]] = $value;
+			}
+		}
+
+		$c = $this->getObjectClassName();
+		$item = new $c( $fields, is_null( $fields['id'] ) );
+
+		$success = $item->writeAllToDB();
+
+		if ( $success ) {
+			return true;
+		}
+		else {
+			return array(); // TODO
+		}
+	}
+	
 }
