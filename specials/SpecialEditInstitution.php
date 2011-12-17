@@ -48,14 +48,27 @@ class SpecialEditInstitution extends SpecialEPFormPage {
 			},
 		);
 		
+		$countries = efEpGetCountries();
+		
 		$fields['country'] = array (
 			'type' => 'select',
 			'label-message' => 'educationprogram-org-edit-country',
 			'required' => true,
-			'options' => array( 'foo' => 'foo', 'bar' => 'bar' ), // TODO
+			'options' => efEpGetCountryOptions(),
+			'validation-callback' => array( $this, 'countryIsValid' ),
 		);
 
 		return $this->processFormFields( $fields );
+	}
+	
+	public function countryIsValid( $value, array $alldata = null ) {
+		$countries = array_keys( efEpGetCountries() );
+		
+		if ( $this->isNew() ) {
+			array_unshift( $countries, '' );
+		}
+		
+		return in_array( $value, $countries ) ? true : wfMsg( 'educationprogram-org-invalid-country' );
 	}
 
 }

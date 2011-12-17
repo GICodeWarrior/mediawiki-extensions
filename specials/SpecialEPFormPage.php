@@ -87,11 +87,48 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
 		
-		if ( $this->isNew() ) {
+		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
 			$this->showForm();
 		}
 		else {
 			$this->showContent();
+		}
+	}
+	
+	/**
+	 * @since 0.1
+	 */
+	protected function showContent() {
+		$c = $this->itemClass; // Yeah, this is needed in PHP 5.3 >_>
+		
+		if ( $this->isNew() ) {
+			$data = $this->getNewData();
+
+			$object = $c::selectRow( null, $data );
+
+			if ( $object === false ) {
+				$object = new $c( $data, true );
+			}
+			else {
+				$this->showWarning( 'educationprogram-' . strtolower( $this->getName() ) . '-exists-already' );
+			}
+		}
+		else {
+			$object = $c::selectRow( null, array( 'name' => $this->subPage ) );
+		}
+
+		if ( $object === false ) {
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( $this->listPage )->getLocalURL() );
+		}
+		else {
+//			if ( !$this->isNew() ) {
+//				$this->getOutput()->addHTML(
+//					SpecialContestPage::getNavigation( $contest->getField( 'name' ), $this->getUser(), $this->getLanguage(), $this->getName() )
+//				);
+//			}
+
+			$this->item = $object;
+			$this->showForm();
 		}
 	}
 	
@@ -142,46 +179,6 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	 */
 	protected function getNewData() {
 		return array( 'name' => $this->getRequest()->getVal( 'newname' ) );
-	}
-	
-	/**
-	 * Attempt to get the contest to be edited or create the one to be added.
-	 * If this works, show the form, if not, redirect to special:contests.
-	 *
-	 * @since 0.1
-	 */
-	protected function showContent() {
-		$c = $this->itemClass;
-		
-		if ( $this->isNew() ) {
-			$data = $this->getNewData();
-
-			$object = $c::selectRow( null, $data );
-
-			if ( $object === false ) {
-				$object = new Contest( $data, true );
-			}
-			else {
-				$this->showWarning( 'educationprogram-' . strtolower( $this->getName() ) . '-exists-already' );
-			}
-		}
-		else {
-			$object = $c::selectRow( null, array( 'name' => $this->subPage ) );
-		}
-
-		if ( $object === false ) {
-			$this->getOutput()->redirect( SpecialPage::getTitleFor( $this->listPage )->getLocalURL() );
-		}
-		else {
-//			if ( !$this->isNew() ) {
-//				$this->getOutput()->addHTML(
-//					SpecialContestPage::getNavigation( $contest->getField( 'name' ), $this->getUser(), $this->getLanguage(), $this->getName() )
-//				);
-//			}
-
-			$this->item = $object;
-			$this->showForm();
-		}
 	}
 
 	/**
@@ -240,8 +237,9 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	protected function processFormFields( array $fields ) {
 		if ( $this->item !== false ) {
 			foreach ( $fields as $name => &$data ) {
-				$default = $this->item->getField( $name );
-				$data['default'] = $default;
+				if ( !array_key_exists( 'default', $data ) ) {
+					$data['default'] = $this->item->getField( $name );
+				}
 			}
 		}
 		
@@ -252,6 +250,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 				// HTML form is being a huge pain in running the validation on post,
 				// so just remove it if when not appropriate.
 				unset( $field['validation-callback'] );
+				unset( $field['required'] );
 			}
 			
 			$mappedFields['item-' . $name] = $field;
@@ -278,21 +277,25 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	 *
 	 * @return Bool|Array
 	 */
-	public function onSubmit( array $data ) {
+	public function handleSubmission( array $data ) {
 		$fields = array();
 
 		foreach ( $data as $name => $value ) {
 			$matches = array();
 
 			if ( preg_match( '/item-(.+)/', $name, $matches ) ) {
+				if ( $matches[1] === 'id' && $value === '' ) {
+					$value = null;
+				}
+				
 				$fields[$matches[1]] = $value;
 			}
 		}
 
-		$c = $this->itemClass;
-		$item = new $c( $fields, is_null( $fields['id'] ) );
+		$c = $this->itemClass; // Yeah, this is needed in PHP 5.3 >_>
+		/* EPDBObject */ $item = new $c( $fields, is_null( $fields['id'] ) );
 
-		$success = $item->writeAllToDB();
+		$success = $item->writeToDB();
 
 		if ( $success ) {
 			return true;

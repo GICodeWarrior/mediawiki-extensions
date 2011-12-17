@@ -36,16 +36,30 @@ abstract class EPPager extends TablePager {
 	protected $currentObject;
 	
 	/**
+	 * Context in which this pager is being shown.
+	 * @since 0.1
+	 * @var IContextSource
+	 */
+	protected $context;
+	
+	/**
 	 * Constructor.
 	 *
+	 * @param IContextSource $context
 	 * @param array $conds
+	 * @param string $className
 	 */
-	public function __construct( array $conds, $className ) {
+	public function __construct( IContextSource $context, array $conds, $className ) {
 		$this->conds = $conds;
 		$this->className = $className;
+		$this->context = $context;
 		
-		// when MW 1.19 becomes min, we want to pass an IContextSource $context here.
-		parent::__construct();
+		if ( version_compare( $GLOBALS['wgVersion'], '1.18c', '>' ) ) {
+			parent::__construct( $context );
+		}
+		else {
+			parent::__construct();
+		}
 	}
 
 	/**
@@ -57,7 +71,7 @@ abstract class EPPager extends TablePager {
 	 * @return OutputPage
 	 */
 	public function getOutput() {
-		return version_compare( $GLOBALS['wgVersion'], '1.18', '>' ) ? parent::getOutput() : $GLOBALS['wgOut'];
+		return $this->context->getOutput();
 	}
 
 	/**
@@ -69,7 +83,7 @@ abstract class EPPager extends TablePager {
 	 * @return Language
 	 */
 	public function getLanguage() {
-		return version_compare( $GLOBALS['wgVersion'], '1.18', '>' ) ? parent::getLanguage() : $GLOBALS['wgLang'];
+		return $this->context->getLanguage();
 	}
 	
 	/**
@@ -81,7 +95,7 @@ abstract class EPPager extends TablePager {
 	 * @return User
 	 */
 	public function getUser() {
-		return version_compare( $GLOBALS['wgUser'], '1.18', '>' ) ? parent::getUser() : $GLOBALS['wgUser'];
+		return $this->context->getUser();
 	}
 	
 	/**
@@ -100,19 +114,42 @@ abstract class EPPager extends TablePager {
 	}
 	
 	function getQueryInfo() {
-		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
+		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_> 
 		return array(
 			'tables' => array( $c::getDBTable() ),
 			'fields' => $c::getPrefixedFields( $c::getFieldNames() ),
-			'conds' => $c::getPrefixedValues( $this->conds ),
+			'conds' => $c::getPrefixedValues( $this->getConditions() ),
 		);
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
+	protected function getConditions() {
+		$req = $this->getRequest();
+		$conds = array();
+		
+		$filterOptions = $this->getFilterOptions();
+		$this->addFilterValues( $filterOptions );
+		
+		foreach ( $filterOptions as $optionName => $optionData ) {
+			if ( array_key_exists( 'value', $optionData ) && $optionData['value'] !== '' ) {
+				$conds[$optionName] = $optionData['value'];
+			}
+		}
+		
+		return array_merge( $conds, $this->conds );
 	}
 	
 	function isFieldSortable( $name ) {
 		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
 		return in_array(
 			$name,
-			$c::getPrefixedFields( 'id' )
+			$c::getPrefixedFields( $this->getSortableFields() )
 		);
 	}
 	
@@ -136,7 +173,7 @@ abstract class EPPager extends TablePager {
 			);
 		}
 		
-		return array_map( 'wfMsg', $headers );
+		return $headers;
 	}
 	
 	/**
@@ -168,7 +205,7 @@ abstract class EPPager extends TablePager {
 	 * 
 	 * @return string
 	 */
-	public function getFilterControl( $hideWhenNoResults ) {
+	public function getFilterControl( $hideWhenNoResults = true ) {
 		$filterOptions = $this->getFilterOptions();
 		
 		if ( count( $filterOptions ) < 1 ) {
@@ -201,7 +238,7 @@ abstract class EPPager extends TablePager {
 			$controls[] = $control;
 		}
 		
-		$title = $this->getTitle( $this->subPage )->getFullText();
+		$title = $this->getTitle()->getFullText();
 		
 		return
  			'<fieldset>' .

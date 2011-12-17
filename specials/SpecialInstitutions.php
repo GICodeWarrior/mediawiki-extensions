@@ -60,7 +60,7 @@ class SpecialInstitutions extends SpecialEPPage {
 			$this->displayAddNewControl();
 		}
 		
-		$pager = new EPOrgPager(  );
+		$pager = new EPOrgPager( $this->getContext() );
 		
 		if ( $pager->getNumRows() ) {
 			$this->getOutput()->addHTML(

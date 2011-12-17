@@ -16,13 +16,14 @@ class EPOrgPager extends EPPager {
 	/**
 	 * Constructor.
 	 *
+	 * @param IContextSource $context
 	 * @param array $conds
 	 */
-	public function __construct( array $conds = array() ) {
+	public function __construct( IContextSource $context, array $conds = array() ) {
 		$this->mDefaultDirection = true;
 
 		// when MW 1.19 becomes min, we want to pass an IContextSource $context here.
-		parent::__construct( $conds, 'EPOrg' );
+		parent::__construct( $context, $conds, 'EPOrg' );
 	}
 
 	/**
@@ -31,7 +32,9 @@ class EPOrgPager extends EPPager {
 	 */
 	public function getFieldNames() {
 		return parent::getFieldNameList( array(
-			// TODO
+			'name',
+			'city',
+			'country',
 		) ); 
 	}
 	
@@ -65,8 +68,12 @@ class EPOrgPager extends EPPager {
 		return $value;
 	}
 
+	/**
+	 * (non-PHPdoc)
+	 * @see TablePager::getDefaultSort()
+	 */
 	function getDefaultSort() {
-		return ''; // TODO
+		return 'asc';
 	}
 
 	/**
@@ -74,7 +81,25 @@ class EPOrgPager extends EPPager {
 	 * @see EPPager::getSortableFields()
 	 */
 	protected function getSortableFields() {
-		return array();
+		return array(
+			'name',
+			'city',
+			'country',
+		);
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see EPPager::getFilterOptions()
+	 */
+	protected function getFilterOptions() {
+		return array(
+			'country' => array(
+				'type' => 'select',
+				'options' => efEpGetCountryOptions(),
+				'value' => ''
+			),
+		);
 	}
 
 }

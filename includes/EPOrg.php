@@ -51,5 +51,13 @@ class EPOrg extends EPDBObject {
 			'country' => 'str',
 		);
 	}
+	
+	public static function getDefaults() {
+		return array(
+			'name' => '',
+			'city' => '',
+			'country' => '',
+		);
+	}
 
 }
