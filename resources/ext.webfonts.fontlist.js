@@ -369,7 +369,7 @@
 			kok: [ "Lohit Devanagari" ],
 			gom: [ "Lohit Devanagari" ],
 			mai: [ "Lohit Devanagari" ],
-			ml:  [ "AnjaliOldLipi", "Meera", "RaghuMalayalam" ],
+			ml:  [ "AnjaliOldLipi" ],
 			mr:  [ "Lohit Devanagari" ],
 			my:  [ "Masterpiece Uni Sans", "Padauk-Regular", "Myanmar3", "Yunghkio" ],
 			ne:  [ "Lohit Devanagari", "Madan" ], 
