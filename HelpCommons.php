@@ -13,16 +13,17 @@
 */
 
 if (!defined('MEDIAWIKI')) {
-	echo "THIS IS NOT VALID ENTRY POINT";
+	echo "HelpCommons extension";
 	exit(1);
 }
 
 $wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'HelpCommons',
 	'author'         => array( 'Tim Weyer' ),
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:HelpCommons',
 	'descriptionmsg' => 'helpcommons-desc',
-	'version'        => '1.0.1',
+	'version'        => '1.0.2',
 );
 
 // Internationalization
@@ -31,31 +32,31 @@ $wgExtensionMessagesFiles['HelpCommons'] = $dir . 'HelpCommons.i18n.php';
 
 // Help wiki(s) where the help namespace is fetched from
 $wgHelpCommonsFetchingWikis = array();
-// If true, all non-existing help pages and talks which exist on help wiki will be protected on non-help wikis
+// If true, all non-existent help pages and talks which exist on help wiki will be protected on non-help wikis
 $wgHelpCommonsProtect = true;
-// If true, every non-existing help page will be protected on non-help wikis
+// If true, every non-existent help page will be protected on non-help wikis
 $wgHelpCommonsProtectAll = false;
 
 // Hooks
 $wgHooks['ShowMissingArticle'][] = 'wfHelpCommonsLoad';
 $wgHooks['ArticleViewHeader'][] = 'wfHelpCommonsRedirectTalks';
 $wgHooks['LinkBegin'][] = 'efHelpCommonsMakeBlueLinks';
+$wgHooks['LinkBegin'][] = 'efHelpCommonsChangeCategoryLinks';
 $wgHooks['DoEditSectionLink'][] = 'wfHelpCommonsChangeEditSectionLink';
 $wgHooks['getUserPermissionsErrors'][] = 'fnProtectHelpCommons';
 
 /**
- * @param $article Article
+ * @param $helppage Article
  * @return bool
  */
-function wfHelpCommonsLoad( $article ) {
+function wfHelpCommonsLoad( $helppage ) {
 	global $wgTitle, $wgOut, $wgContLang, $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
 
 	if ( $wgTitle->getNamespace() != NS_HELP ) {
 		return false;
 	}
 
-	$replacewhitespace = str_replace( ' ', '_', $wgOut->getTitle() );
-	$title = str_replace( $wgContLang->namespaceNames[NS_HELP].':', '', $replacewhitespace );
+	$title = str_replace( ' ', '_', $helppage->mTitle->getText() );
 
 	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
 		foreach ( $urls as $helpwiki ) {
@@ -90,6 +91,7 @@ function wfHelpCommonsLoad( $article ) {
 
 	if ( !empty( $text->old_text ) ) {
 		$wgOut->addWikiText( $text->old_text );
+		$wgOut->addScript('<style type="text/css">div.noarticletext { display: none; } div.mw-warning-with-logexcerpt { display: none; } #contentSub, #contentSub2 { display: none; }</style>');
 		return true;
 	} else {
 		return false;
@@ -97,19 +99,18 @@ function wfHelpCommonsLoad( $article ) {
 }
 
 /**
- * @param $article
+ * @param $helppage
  * @param $fields
  * @return bool
  */
-function wfHelpCommonsRedirectTalks( &$article, &$outputDone, &$pcache ) {
+function wfHelpCommonsRedirectTalks( &$helppage, &$outputDone, &$pcache ) {
 	global $wgTitle, $wgOut, $wgContLang, $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
 
 	if ( $wgTitle->getNamespace() != NS_HELP_TALK ) {
 		return false;
 	}
 
-	$replacewhitespace = str_replace( ' ', '_', $wgOut->getTitle() );
-	$title = str_replace( $wgContLang->namespaceNames[NS_HELP_TALK].':', '', $replacewhitespace );
+	$title = str_replace( ' ', '_', $helppage->mTitle->getText() );
 
 	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
 		foreach ( $urls as $url => $helpwiki ) {
@@ -149,12 +150,22 @@ function wfHelpCommonsRedirectTalks( &$article, &$outputDone, &$pcache ) {
  * @return bool
  */
 function efHelpCommonsMakeBlueLinks( $skin, $target, &$text, &$customAttribs, &$query, &$options, &$ret ) {
+	global $wgHelpCommonsFetchingWikis, $wgDBname;
+
+	// only affects non-help-page-fetching wikis
+	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
+		foreach ( $urls as $url => $helpwiki ) {
+			if ( $wgDBname == $helpwiki ) {
+				return true;
+			}
+		}
+	}
 
 	if ( is_null( $target ) ) {
 		return true;
 	}
 
-	// only affects non-existing help pages and talks
+	// only affects non-existent help pages and talks
 	if ( $target->getNamespace() != NS_HELP && $target->getNamespace() != NS_HELP_TALK || $target->exists() ) {
 		return true;
 	}
@@ -167,6 +178,53 @@ function efHelpCommonsMakeBlueLinks( $skin, $target, &$text, &$customAttribs, &$
 
 	// make the link "blue"
 	$options[] = 'known';
+
+	return true;
+}
+
+/**
+ * @param $skin
+ * @param $target Title
+ * @param $text
+ * @param $customAttribs
+ * @param $query
+ * @param $options array
+ * @param $ret
+ * @return bool
+ */
+function efHelpCommonsChangeCategoryLinks( $skin, $target, &$text, &$customAttribs, &$query, &$options, &$ret ) {
+	global $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname, $wgTitle;
+
+	if ( $wgTitle->getNamespace() != NS_HELP || $wgTitle->exists() ) {
+		return true;
+	}
+
+	if ( is_null( $target ) ) {
+		return true;
+	}
+
+	// only affects non-existent categories
+	if ( $target->getNamespace() != NS_CATEGORY || $target->exists() ) {
+		return true;
+	}
+
+	// remove "broken" assumption/override
+	$brokenKey = array_search( 'broken', $options );
+	if ( $brokenKey !== false ) {
+		unset( $options[$brokenKey] );
+	}
+
+	// make the link "blue"
+	$options[] = 'known';
+
+	// change category's link
+	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
+		foreach ( $urls as $url => $helpwiki ) {
+			if ( $wgLanguageCode == $language && $wgDBname != $helpwiki ) {
+				$text = '<a href="' . $url . '/index.php?title=' . str_replace( ' ', '_', $target->getPrefixedText() ) . '">' . $text . '</a>';
+			}
+		}
+	}
 
 	return true;
 }
@@ -216,7 +274,7 @@ function fnProtectHelpCommons( &$title, &$user, $action, &$result ) {
 
 	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
 		foreach ( $urls as $url => $helpwiki ) {
-			// only protect non-existing help pages on non-help-page-fetching wikis
+			// only protect non-existent help pages on non-help-page-fetching wikis
 			if ( $wgLanguageCode == $language && $wgDBname != $helpwiki && !$title->exists() ) {
 				// block actions 'create', 'edit' and 'protect'
 				if ( $action != 'create' && $action != 'edit' && $action != 'protect' ) {
@@ -249,4 +307,3 @@ function fnProtectHelpCommons( &$title, &$user, $action, &$result ) {
 	}
 	return true;
 }
-
