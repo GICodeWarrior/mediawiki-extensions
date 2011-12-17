@@ -143,7 +143,8 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 			$myResponseCheckbox = Xml::check( 'myresponse', $wgRequest->getCheck( 'myresponse' ),
 			array( 'id' => 'fbd-filters-my-response', 'value' => '1' ) );
 			
-			$myResponseFilter = '<label for="fbd-filters-my-response" id="fbd-filters-type-my-response-label" class="fbd-filters-label">' . $myResponseMsg . $myResponseCheckbox . '</label>';
+			$myResponseFilter = '<label for="fbd-filters-my-response" id="fbd-filters-type-my-response-label" class="fbd-filters-label">' . 
+			                    $myResponseMsg . $myResponseCheckbox . '</label>';
 		}
 		
 		return <<<HTML
