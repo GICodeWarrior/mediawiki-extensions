@@ -5,7 +5,7 @@ jQuery(function( $ ) {
 	/**
 	 * Saved form state
 	 */
-	var formState = { types: [], username: '' };
+	var formState = { types: [], username: '', myresponse: '0' };
 	
 	/**
 	 * Save the current form state to formState
@@ -13,6 +13,7 @@ jQuery(function( $ ) {
 	function saveFormState() {
 		formState.types = getSelectedTypes();
 		formState.username = $( '#fbd-filters-username' ).val();
+		formState.myresponse = $( '#fbd-filters-my-response' ).prop( 'checked' ) ? $( '#fbd-filters-my-response' ).val() : '0';
 	}
 	
 	/**
@@ -130,6 +131,9 @@ jQuery(function( $ ) {
 		}
 		if ( formState.username.length ) {
 			reqData.mbcuser = formState.username;
+		}
+		if ( formState.myresponse != '0' ) {
+			reqData.mbcmyresponse = formState.myresponse;
 		}
 		
 		$.ajax( {

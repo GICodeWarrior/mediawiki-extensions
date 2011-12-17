@@ -38,6 +38,13 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 		$this->addWhereRange( 'mbf_id', $params['dir'], null, null );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 		
+		if ( $params['myresponse'] == '1' && !$wgUser->isAnon() ) {
+			$this->addTables( array( 'moodbar_feedback_response' ) );
+			$this->addJoinConds( array( 'moodbar_feedback_response' => array( 'INNER JOIN', 'mbf_id=mbfr_mbf_id' ) ) );
+			$this->addWhereFld( 'mbfr_user_id', $wgUser->getId() );
+			$this->addOption( 'GROUP BY', 'mbf_id' );
+		}
+		
 		if ( ! $wgUser->isAllowed( 'moodbar-admin' ) ) {
 			$this->addWhereFld( 'mbf_hidden_state', 0 );
 		}
@@ -156,6 +163,9 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 			'user' => array(
 				ApiBase::PARAM_TYPE => 'user',
 			),
+			'myresponse' => array(
+				ApiBase::PARAM_TYPE => array( '1' , '0' ),	
+			),
 			'prop' => array(
 				ApiBase::PARAM_TYPE => array( 'metadata', 'formatted', 'hidden' ),
 				ApiBase::PARAM_DFLT => 'metadata',
@@ -174,6 +184,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 			'continue' => 'When more results are available, use this to continue',
 			'type' => 'Only return comments of the given type(s). If not set or empty, return all comments',
 			'user' => 'Only return comments submitted by the given user',
+			'myresponse' => 'Only return comments to which the current user has responded',
 			'prop' => array( 'Which properties to get:',
 				'  metadata  - Comment ID, type, timestamp, user',
 				'  formatted - HTML that would be displayed for this comment on Special:MoodBarFeedback',

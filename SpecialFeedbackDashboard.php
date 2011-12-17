@@ -2,7 +2,7 @@
 /**
  * Special:FeedbackDashboard. Special page for viewing moodbar comments.
  */
-class SpecialFeedbackDashboard extends SpecialPage {
+class SpecialFeedbackDashboard extends IncludableSpecialPage {
 	protected $showHidden = false;
 	protected $action = false;
 	
@@ -49,6 +49,8 @@ class SpecialFeedbackDashboard extends SpecialPage {
 			if ( count( $filters ) ) {
 				$filterType = 'filtered';
 			}
+			
+			$filters['myresponse'] = $wgRequest->getVal( 'myresponse' );
 		}
 		// Do the query
 		$backwards = $wgRequest->getVal( 'dir' ) === 'prev';
@@ -106,7 +108,7 @@ class SpecialFeedbackDashboard extends SpecialPage {
 	 * @return string HTML
 	 */
 	public function buildForm( $filterType ) {
-		global $wgRequest, $wgMoodBarConfig, $wgSitename;
+		global $wgRequest, $wgMoodBarConfig, $wgSitename, $wgUser;
 		$filtersMsg = wfMessage( 'moodbar-feedback-filters' )->escaped();
 		$typeMsg = wfMessage( 'moodbar-feedback-filters-type' )->escaped();
 		$praiseMsg = wfMessage( 'moodbar-feedback-filters-type-happy' )->escaped();
@@ -129,10 +131,21 @@ class SpecialFeedbackDashboard extends SpecialPage {
 			array( 'id' => 'fbd-filters-username', 'class' => 'fbd-filters-input' ) );
 		$filterType = htmlspecialchars( $filterType );
 		
+		
 		$moodbarStat = $this->getMoodBarTypeStats();
 		$moodbarStatMsg = wfMessage( 'moodbar-type-stats' )->params( $moodbarStat['happy'], $moodbarStat['sad'], $moodbarStat['confused'] )->escaped();
 		$feedbackDashboardDescription = wfMessage( 'moodbar-feedback-description' )->params( $wgSitename ); // don't escape because there is html 
 
+		$myResponseFilter = '';
+		
+		if ( !$wgUser->isAnon() ) {
+			$myResponseMsg = wfMessage( 'moodbar-feedback-filters-my-response' )->escaped();
+			$myResponseCheckbox = Xml::check( 'myresponse', $wgRequest->getCheck( 'myresponse' ),
+			array( 'id' => 'fbd-filters-my-response', 'value' => '1' ) );
+			
+			$myResponseFilter = '<label for="fbd-filters-my-response" id="fbd-filters-type-my-response-label" class="fbd-filters-label">' . $myResponseMsg . $myResponseCheckbox . '</label>';
+		}
+		
 		return <<<HTML
 		<div id="fbd-description">
 			<div id="fbd-description-text">
@@ -164,6 +177,7 @@ class SpecialFeedbackDashboard extends SpecialPage {
 				</fieldset>
 				<label for="fbd-filters-username" class="fbd-filters-label">$usernameMsg</label>
 				$usernameTextbox
+				$myResponseFilter
 				<button type="submit" id="fbd-filters-set">$setFiltersMsg</button>
 			</form>
 			<a href="$whatIsURL" id="fbd-about">$whatIsMsg</a>
@@ -580,15 +594,28 @@ HTML;
 		
 		// Do the actual query
 		$desc = $backwards ? '' : ' DESC';
-		$res = $dbr->select( array( 'moodbar_feedback', 'user' ), array(
+		
+		$table     = array( 'moodbar_feedback', 'user' );
+		$option    = array( 'LIMIT' => $limit + 2, 'ORDER BY' => "mbf_timestamp$desc, mbf_id$desc" );
+		$tableJoin = array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) ); 
+		
+		//View my response
+		if ( isset( $filters['myresponse'] ) && $filters['myresponse'] == '1' && !$wgUser->isAnon() ) {
+			$table[] = 'moodbar_feedback_response';
+			$option['GROUP BY'] = 'mbf_id';
+			$tableJoin['moodbar_feedback_response'] = array( 'INNER JOIN', 'mbf_id=mbfr_mbf_id' );
+			$conds['mbfr_user_id'] = $wgUser->getId(); 
+		}
+		
+		$res = $dbr->select( $table, array(
 				'user_name', 'mbf_id', 'mbf_type',
 				'mbf_timestamp', 'mbf_user_id', 'mbf_user_ip', 'mbf_comment',
 				'mbf_anonymous', 'mbf_hidden_state',
 			),
 			$conds,
 			__METHOD__,
-			array( 'LIMIT' => $limit + 2, 'ORDER BY' => "mbf_timestamp$desc, mbf_id$desc" ),
-			array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) )
+			$option,
+			$tableJoin
 		);
 		$rows = iterator_to_array( $res, /*$use_keys=*/false );
 		
