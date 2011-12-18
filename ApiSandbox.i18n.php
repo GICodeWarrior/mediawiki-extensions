@@ -246,6 +246,7 @@ $messages['es'] = array(
  * @author Ebraminio
  * @author Leyth
  * @author Mjbmr
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'apisb-desc' => 'اشکال‌یابی فراخوانی‌های [//www.mediawiki.org/wiki/API رابط برنامه‌نویسی مدیاویکی] را از طریق مرورگر اجازه می‌دهد',
@@ -255,15 +256,20 @@ $messages['fa'] = array(
 	'apisb-parameters' => 'پارامترها',
 	'apisb-result' => 'نتیجه',
 	'apisb-request-url' => 'درخواست آدرس:',
+	'apisb-request-post' => 'فرستادن داده‌ها:',
 	'apisb-select-action' => 'انتخاب اقدامات',
+	'apisb-select-value' => 'انتخاب مقدار',
 	'apisb-loading' => 'در حال بارگذاری…',
 	'apisb-load-error' => 'خطا در بارگذاری توضیحات ای‌پی‌آی',
 	'apisb-request-error' => 'خطا در اجرای درخواست ای‌پی‌آی',
 	'apisb-namespaces-error' => 'خطا در بارگذاری فضاهای نام',
 	'apisb-ns-main' => '(اصلی)',
 	'apisb-submit' => 'ایجاد درخواست',
+	'apisb-query-prop' => 'ویژگی‌ها',
 	'apisb-query-list' => 'فهرست‌ها',
 	'apisb-query-meta' => 'اطلاعات متا',
+	'apisb-generic-parameters' => 'پارامترهای عمومی',
+	'apisb-generator-parameters' => 'تولیدکننده',
 );
 
 /** Finnish (Suomi)
