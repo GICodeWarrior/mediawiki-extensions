@@ -7071,4 +7071,3 @@ $wgGoogleMapsMessages['zh-tw'] = array(
 	'gm-moon' => '月亮',
 	'gm-mars' => '火星',
 );
-

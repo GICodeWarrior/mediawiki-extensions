@@ -1,10 +1,5 @@
-1. Go sign up for a Google Maps API key from
+1. Make sure this GoogleMaps folder is in your "extensions" directory
 
-    http://maps.google.com/apis/maps/
+2. Add this to the end of LocalSettings.php:
 
-2. Make sure this GoogleMaps folder is in your "extensions" directory
-
-3. Add this to the end of LocalSettings.php:
-
-$wgGoogleMapsKey = "your key from step 1 goes here";
 require_once( "extensions/GoogleMaps/GoogleMaps.php" );

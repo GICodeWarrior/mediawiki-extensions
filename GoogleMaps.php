@@ -116,7 +116,7 @@ function wfGoogleMaps_Install() {
 		$wgTitle );
 
 	// This hook will add the interactive editing map to the article edit page.
-        $editHook = array( $wgGoogleMaps, 'editForm' );
+		$editHook = array( $wgGoogleMaps, 'editForm' );
 	if( !$wgGoogleMapsDisableEditorsMap ) {
 		if( isset( $wgHooks['EditPage::showEditForm:initial'] )
 			&& is_array( $wgHooks['EditPage::showEditForm:initial'] ) ) {
@@ -128,7 +128,7 @@ function wfGoogleMaps_Install() {
 
 	// This hook will do some post-processing on the javascript that has been added
 	// to an article.
-        $hook = 'wfGoogleMaps_CommentJS';
+		$hook = 'wfGoogleMaps_CommentJS';
 	if( isset( $wgHooks['ParserAfterTidy'] ) && is_array( $wgHooks['ParserAfterTidy'] ) ) {
 		array_unshift( $wgHooks['ParserAfterTidy'], $hook );
 	} else {

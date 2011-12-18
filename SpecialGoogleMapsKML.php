@@ -8,9 +8,9 @@ require_once("includes/SpecialPage.php");
 // Easy links to KML files
 
 class GoogleMapsKML extends SpecialPage {
-        function __construct() {
-            parent::__construct('GoogleMapsKML', '', false /* listed */);
-        }
+		function __construct() {
+			parent::__construct('GoogleMapsKML', '', false /* listed */);
+		}
 	function execute( $params ) {
 		global $wgRequest, $wgOut, $wgUser;
 		global $wgContLang, $wgProxyKey, $wgParser;
@@ -35,7 +35,7 @@ class GoogleMapsKML extends SpecialPage {
 
 			$popts = ParserOptions::newFromUser( $wgUser );
 			$popts->setEditSection( false );
-			
+
 			$wgParser->startExternalParse( $this->getTitle(), $popts, OT_WIKI, true );
 
 			$localParser = new Parser();
@@ -44,12 +44,12 @@ class GoogleMapsKML extends SpecialPage {
 			if (preg_match_all("/<googlemap( .*?|)>(.*?)<\/googlemap>/s", $revision->getText(), $matches)) {
 				$exporter->addFileHeader();
 				for($i=0;$i<count($matches[2]);$i++) {
-                                    $attrs = Sanitizer::decodeTagAttributes($matches[1][$i]);
-                                    $mapOptions['version'] = isset($attrs['version']) ? $attrs['version'] : "0";
-                                    $exporter->addHeader(isset($attrs['title']) ? $attrs['title'] : "Map #".($i+1));
-                                    GoogleMaps::renderContent($matches[2][$i], $wgParser, $localParser, $exporter, $mapOptions);
-                                    $exporter->addTrailer();
-                                }
+									$attrs = Sanitizer::decodeTagAttributes($matches[1][$i]);
+									$mapOptions['version'] = isset($attrs['version']) ? $attrs['version'] : "0";
+									$exporter->addHeader(isset($attrs['title']) ? $attrs['title'] : "Map #".($i+1));
+									GoogleMaps::renderContent($matches[2][$i], $wgParser, $localParser, $exporter, $mapOptions);
+									$exporter->addTrailer();
+								}
 				$exporter->addFileTrailer();
 				echo $exporter->render();
 			} else {
