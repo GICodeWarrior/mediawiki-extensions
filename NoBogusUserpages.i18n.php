@@ -20,10 +20,21 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
-if( !defined( 'MEDIAWIKI' ) ) die( "This is an extension to the MediaWiki package and cannot be run standalone." );
-
+/** English
+ * @author Dantman
+ * @author SVG
+ */
 $messages['en'] = array(
-	'nobogususerpages-desc' => "Restricts creation of userpages for which a user does not exist by those without rights to do so.",
+	'nobogususerpages-desc' => 'Restricts creation of userpages for which a user does not exist by those without rights to do so',
 	'badaccess-bogususerpage' => 'The user this userpage is meant for does not exist. You do not have the rights to be able to create a bogus userpage.',
-	'right-createbogususerpage' => "Create user pages for users who are not registered on this wiki",
+	'right-createbogususerpage' => 'Create user pages for users who are not registered on this wiki',
+);
+
+/** Message documentation (Message documentation)
+ * @author SVG
+ */
+$messages['qqq'] = array(
+	'nobogususerpages-desc' => '{{desc}}',
+	'badaccess-bogususerpage' => 'Error message: {{msg-mw|badaccess-bogususerpage}}',
+	'right-createbogususerpage' => '{{doc-right|createbogususerpage}}',
 );

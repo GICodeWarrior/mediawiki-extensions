@@ -23,16 +23,20 @@
 if( !defined( 'MEDIAWIKI' ) ) die( "This is an extension to the MediaWiki package and cannot be run standalone." );
 
 $wgExtensionCredits['other'][] = array (
-	"name" => "NoBogusUserpages",
-	"url" => "http://www.mediawiki.org/wiki/Extension:NoBogusUserpages",
-	"author" => "[http://www.mediawiki.org/wiki/User:Dantman Daniel Friesen] [mailto:Daniel%20Friesen%20%3Cmediawiki@danielfriesen.name%3E <mediawiki@danielfriesen.name>]",
-	"descriptionmsg" => 'nobogususerpages-desc',
+	'name' => 'NoBogusUserpages',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:NoBogusUserpages',
+	'author' => '[https://www.mediawiki.org/wiki/User:Dantman Daniel Friesen] [mailto:Daniel%20Friesen%20%3Cmediawiki@danielfriesen.name%3E <mediawiki@danielfriesen.name>]',
+	'descriptionmsg' => 'nobogususerpages-desc',
 );
 
-$wgAvailableRights[] = 'createbogususerpage';
-$wgGroupPermissions['*'    ]['createbogususerpage'] = false;
-$wgGroupPermissions['sysop']['createbogususerpage'] = true;
+// Internationlization file
 $wgExtensionMessagesFiles['NoBogusUserpages'] = dirname(__FILE__) . '/NoBogusUserpages.i18n.php';
+
+// Add missing permission
+$wgAvailableRights[] = 'createbogususerpage';
+$wgGroupPermissions['sysop']['createbogususerpage'] = true;
+
+// Hook
 $wgHooks['getUserPermissionsErrors'][] = 'efNoBogusUserpagesUserCan';
 
 function efNoBogusUserpagesUserCan( $title, $user, $action, &$result ) {
