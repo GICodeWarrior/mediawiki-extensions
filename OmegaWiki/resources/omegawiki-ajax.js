@@ -10,7 +10,7 @@ jQuery(function() {
 		$(this).parent().find("ul.wd-dropdownlist").show();
 	}, function(){  //On Hover Out 
 		$(this).parent().find("ul.wd-dropdownlist").hide();
-	}
+	});
 }); // jQuery
 
 //TODO: convert the functions below to jQuery...
