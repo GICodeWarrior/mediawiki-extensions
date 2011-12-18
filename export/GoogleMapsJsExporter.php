@@ -182,7 +182,7 @@ JAVASCRIPT;
 		  if (overlay) {
 			if (overlay.tabs) {
 			  overlay.openInfoWindowTabsHtml(overlay.tabs);
-			} elseif (overlay.title_link || overlay.caption || overlay.maxContent) {
+			} else if (overlay.title_link || overlay.caption || overlay.maxContent) {
 				overlay.openInfoWindowHtml('<div class="gmapinfowindow">'+
 					(overlay.title?('<b>'+overlay.title_link+'</b><br />'):'')+overlay.caption+'</div>',
 					{ 'maxTitle': overlay.maxContent?overlay.title:undefined, 'maxContent': overlay.maxContent });
