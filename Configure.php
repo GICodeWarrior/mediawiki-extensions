@@ -211,7 +211,7 @@ $wgExtensionMessagesFiles['Configure'] = $dir . 'Configure.i18n.php';
 $wgExtensionMessagesFiles['ConfigureSettings'] = $dir . 'settings/Settings.i18n.php';
 
 # And special pages aliases...
-$wgExtensionAliasesFiles['Configure'] = $dir . 'Configure.alias.php';
+$wgExtensionMessagesFiles['ConfigureAliases'] = $dir . 'Configure.alias.php';
 
 # Add custom rights defined in $wgRestrictionLevels
 $wgHooks['UserGetAllRights'][] = 'efConfigureGetAllRights';
