@@ -28,12 +28,14 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Dead3y3
+ * @author EugeneZelenko
  * @author Sp5uhe
  * @author Yekrats
  */
 $messages['qqq'] = array(
 	'communityvoice' => 'Name of the [http://www.mediawiki.org/wiki/Extension:CommunityVoice Community Voice extension]',
 	'communityvoice-desc' => 'Description for the [http://www.mediawiki.org/wiki/Extension:CommunityVoice Community Voice extension]',
+	'communityvoice-ratings' => '{{Identical|Rating}}',
 	'communityvoice-ratings-scale-stats' => 'Guessing:
 
 * $1 / 5: rating
@@ -46,7 +48,7 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'communityvoice' => 'Gemeenskapsstem',
 	'communityvoice-desc' => 'Hulpmiddele vir deelname deur die gemeenskap',
-	'communityvoice-ratings' => 'Waardering',
+	'communityvoice-ratings' => 'Gradering',
 	'communityvoice-ratings-scale-status-sending' => 'Stuur...',
 	'communityvoice-ratings-scale-status-error' => 'Fout met stuur!',
 	'communityvoice-ratings-scale-status-thanks' => 'Dankie dat u u mening met ons gedeel het!',
