@@ -129,6 +129,7 @@ $messages['br'] = array(
 	'notificator-change-tag' => 'kemmañ',
 	'notificator-new-tag' => 'nevez',
 	'notificator-subject' => 'Danvez :',
+	'notificator-error-parameter-missing' => 'Fazi : Un arventenn a vank.',
 );
 
 /** German (Deutsch)
