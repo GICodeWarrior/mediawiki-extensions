@@ -27,3 +27,8 @@ $specialPageAliases['en'] = array(
 $specialPageAliases['de'] = array(
 	'ReassignEdits' => array( 'Bearbeitungen_übertragen', 'Benutzerbearbeitungen_übertragen' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;
