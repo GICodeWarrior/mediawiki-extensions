@@ -59,10 +59,13 @@ $wgAutoloadClasses['EPPager'] 						= dirname( __FILE__ ) . '/includes/EPPager.p
 $wgAutoloadClasses['EPStudent'] 					= dirname( __FILE__ ) . '/includes/EPStudent.php';
 $wgAutoloadClasses['EPStudentPager'] 				= dirname( __FILE__ ) . '/includes/EPStudentPager.php';
 $wgAutoloadClasses['EPTerm'] 						= dirname( __FILE__ ) . '/includes/EPTerm.php';
+$wgAutoloadClasses['EPTermPager'] 						= dirname( __FILE__ ) . '/includes/EPTermPager.php';
 
 $wgAutoloadClasses['SpecialCourse'] 				= dirname( __FILE__ ) . '/specials/SpecialCourse.php';
 $wgAutoloadClasses['SpecialCourses'] 				= dirname( __FILE__ ) . '/specials/SpecialCourses.php';
+$wgAutoloadClasses['SpecialEditCourse'] 			= dirname( __FILE__ ) . '/specials/SpecialEditCourse.php';
 $wgAutoloadClasses['SpecialEditInstitution'] 		= dirname( __FILE__ ) . '/specials/SpecialEditInstitution.php';
+$wgAutoloadClasses['SpecialEditTerm'] 				= dirname( __FILE__ ) . '/specials/SpecialEditTerm.php';
 $wgAutoloadClasses['SpecialEducationProgram'] 		= dirname( __FILE__ ) . '/specials/SpecialEducationProgram.php';
 $wgAutoloadClasses['SpecialEPFormPage'] 			= dirname( __FILE__ ) . '/specials/SpecialEPFormPage.php';
 $wgAutoloadClasses['SpecialEPPage'] 				= dirname( __FILE__ ) . '/specials/SpecialEPPage.php';
@@ -71,6 +74,8 @@ $wgAutoloadClasses['SpecialInstitutions'] 			= dirname( __FILE__ ) . '/specials/
 $wgAutoloadClasses['SpecialMyCourses'] 				= dirname( __FILE__ ) . '/specials/SpecialMyCourses.php';
 $wgAutoloadClasses['SpecialStudent'] 				= dirname( __FILE__ ) . '/specials/SpecialStudent.php';
 $wgAutoloadClasses['SpecialStudents'] 				= dirname( __FILE__ ) . '/specials/SpecialStudents.php';
+$wgAutoloadClasses['SpecialTerm'] 					= dirname( __FILE__ ) . '/specials/SpecialTerm.php';
+$wgAutoloadClasses['SpecialTerms'] 					= dirname( __FILE__ ) . '/specials/SpecialTerms.php';
 
 // Special pages
 $wgSpecialPages['MyCourses'] 						= 'SpecialMyCourses';
@@ -80,8 +85,12 @@ $wgSpecialPages['Student'] 							= 'SpecialStudent';
 $wgSpecialPages['Students'] 						= 'SpecialStudents';
 $wgSpecialPages['Course'] 							= 'SpecialCourse';
 $wgSpecialPages['Courses'] 							= 'SpecialCourses';
+$wgSpecialPages['Term'] 							= 'SpecialTerm';
+$wgSpecialPages['Terms'] 							= 'SpecialTerms';
 $wgSpecialPages['EducationProgram'] 				= 'SpecialEducationProgram';
+$wgSpecialPages['EditCourse'] 						= 'SpecialEditCourse';
 $wgSpecialPages['EditInstitution'] 					= 'SpecialEditInstitution';
+$wgSpecialPages['EditTerm'] 						= 'SpecialEditTerm';
 
 $wgSpecialPageGroups['MyCourses'] 					= 'education';
 $wgSpecialPageGroups['Institution'] 				= 'education';
@@ -90,8 +99,12 @@ $wgSpecialPageGroups['Student'] 					= 'education';
 $wgSpecialPageGroups['Students'] 					= 'education';
 $wgSpecialPageGroups['Course'] 						= 'education';
 $wgSpecialPageGroups['Courses'] 					= 'education';
+$wgSpecialPageGroups['Term'] 						= 'education';
+$wgSpecialPageGroups['Terms'] 						= 'education';
 $wgSpecialPageGroups['EducationProgram'] 			= 'education';
+$wgSpecialPageGroups['EditCourse'] 					= 'education';
 $wgSpecialPageGroups['EditInstitution'] 			= 'education';
+$wgSpecialPageGroups['EditTerm'] 					= 'education';
 
 // API
 

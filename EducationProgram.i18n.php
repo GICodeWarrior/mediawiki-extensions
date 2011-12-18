@@ -55,6 +55,12 @@ $messages['en'] = array(
 	'special-educationprogram' => 'Education Program',
 	'special-editinstitution-add' => 'Add institution',
 	'special-editinstitution-edit' => 'Edit institution',
+	'special-terms' => 'Terms',
+	'special-term' => 'Term',
+	'special-editterm-add' => 'Add term',
+	'special-editterm-edit' => 'Edit term',
+	'special-editcourse-add' => 'Add course',
+	'special-editcourse-edit' => 'Edit course',
 
 	// Special:Institutions
 	'ep-institutions-nosuchinstitution' => 'There is no institution with name "$1". Existing institutions are listed below.',
@@ -63,6 +69,23 @@ $messages['en'] = array(
 	'ep-institutions-namedoc' => 'Enter the name for the new institution (which should be unique) and hit the button.',
 	'ep-institutions-newname' => 'Institution name:',
 	'ep-institutions-add' => 'Add institution',
+
+	// Special:Courses
+	'ep-courses-nosuchcourse' => 'There is no course with name "$1". Existing courses are listed below.',
+	'ep-courses-noresults' => 'There are no courses to list.',
+	'ep-courses-addnew' => 'Add a new course',
+	'ep-courses-namedoc' => 'Enter the name for the new course (which should be unique) and hit the button.',
+	'ep-courses-newname' => 'Course name:',
+	'ep-courses-add' => 'Add course',
+
+	// Special:Terms
+	'ep-terms-nosuchterm' => 'There is no term with id "$1". Existing terms are listed below.',
+	'ep-terms-noresults' => 'There are no terms to list.',
+	'ep-terms-addnew' => 'Add a new term',
+	'ep-terms-namedoc' => 'Enter the course the term belongs to and the year in which it is active.',
+	'ep-terms-newyear' => 'Term year:',
+	'ep-terms-newcourse' => 'Term course:',
+	'ep-terms-add' => 'Add term',
 
 	// Pager
 	'ep-pager-showonly' => 'Show only items with',

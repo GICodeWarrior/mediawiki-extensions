@@ -45,6 +45,7 @@ class EPStudent extends EPDBObject {
 	protected static function getFieldTypes() {
 		return array(
 			'id' => 'id',
+			'user_id' => 'id',
 		);
 	}
 

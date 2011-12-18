@@ -23,6 +23,10 @@ $specialPageAliases['en'] = array(
 	'Students' => array( 'Students' ),
 	'Course' => array( 'Course' ),
 	'Courses' => array( 'Courses' ),
+	'Term' => array( 'Term' ),
+	'Terms' => array( 'Terms' ),
 	'EducationProgram' => array( 'EducationProgram' ),
+	'EditCourse' => array( 'EditCourse' ),
 	'EditInstitution' => array( 'EditInstitution' ),
+	'EditTerm' => array( 'EditTerm' ),
 );
