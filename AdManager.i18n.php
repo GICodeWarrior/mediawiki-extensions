@@ -96,6 +96,8 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'admanager' => 'Merour ar brudañ',
+	'admanagerzones' => 'Takadoù merañ ar brudañ',
 	'admanager_invalidtargetpage' => 'N\'eus bet kavet pajenn ebet dezhi an titl "$1".',
 	'admanager_invalidtargetcategory' => 'N\'eus bet kavet rummañ ebet dezhañ an titl "$1".',
 	'admanager_labelPage' => 'Titloù ar bajenn',
