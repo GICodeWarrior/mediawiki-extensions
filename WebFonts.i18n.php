@@ -80,6 +80,7 @@ $messages['br'] = array(
 	'webfonts-desc' => "Ensoc'hañ a ra ar fontoù er pajennoù",
 	'webfonts-load' => 'Diuzañ ar font',
 	'webfonts-reset' => 'Adderaouekaat',
+	'webfonts-menu-tooltip' => 'Dibabit ur font evit ar bajenn',
 );
 
 /** Bosnian (Bosanski)
@@ -383,6 +384,7 @@ $messages['ne'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Saruman
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -391,6 +393,7 @@ $messages['nl'] = array(
 	'webfonts-load' => 'Lettertype selecteren',
 	'webfonts-reset' => 'Opnieuw instellen',
 	'webfonts-enable-preference' => 'Lettertypen insluiten inschakelen (WebFonts)',
+	'webfonts-menu-tooltip' => 'Selecteer een lettertype voor de pagina',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
