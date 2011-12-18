@@ -50,7 +50,7 @@ $wgHooks['getUserPermissionsErrors'][] = 'fnProtectHelpCommons';
  * @return bool
  */
 function wfHelpCommonsLoad( $helppage ) {
-	global $wgOut, $wgContLang, $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
+	global $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname, $wgOut;
 
 	$title = $helppage->getTitle();
 
@@ -105,7 +105,7 @@ function wfHelpCommonsLoad( $helppage ) {
  * @return bool
  */
 function wfHelpCommonsRedirectTalks( &$helppage, &$outputDone, &$pcache ) {
-	global $wgOut, $wgContLang, $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
+	global $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname, $wgOut;
 
 	$title = $helppage->getTitle();
 
@@ -127,8 +127,8 @@ function wfHelpCommonsRedirectTalks( &$helppage, &$outputDone, &$pcache ) {
 				);
 			}
 			if ( !empty( $page->page_title ) ) {
-				if ( $page->page_title == $title && !$title->exists() ) {
-					$helpCommonsRedirectTalk = Title::newFromText( $url . '/index.php?title=' . str_replace( ' ', '_', $wgOut->getTitle() ) );
+				if ( $page->page_title == $dbkey && !$title->exists() ) {
+					$helpCommonsRedirectTalk = Title::newFromText( $url . '/index.php?title=' . str_replace( ' ', '_', $title ) );
 					$redirectTalkPage = $helpCommonsRedirectTalk->getFullText();
 					$wgOut->redirect( $redirectTalkPage );
 					return false;
@@ -168,7 +168,7 @@ function efHelpCommonsMakeBlueLinks( $skin, $target, &$text, &$customAttribs, &$
 	}
 
 	// only affects non-existent help pages and talks
-	if ( $target->getNamespace() != NS_HELP && $target->getNamespace() != NS_HELP_TALK || $target->exists() ) {
+	if ( ( $target->getNamespace() != NS_HELP && $target->getNamespace() != NS_HELP_TALK ) || $target->exists() ) {
 		return true;
 	}
 
@@ -195,7 +195,7 @@ function efHelpCommonsMakeBlueLinks( $skin, $target, &$text, &$customAttribs, &$
  * @return bool
  */
 function efHelpCommonsChangeCategoryLinks( $skin, $target, &$text, &$customAttribs, &$query, &$options, &$ret ) {
-	global $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname, $wgTitle;
+	global $wgTitle, $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
 
 	if ( $wgTitle->getNamespace() != NS_HELP || $wgTitle->exists() ) {
 		return true;
@@ -272,7 +272,16 @@ function wfHelpCommonsChangeEditSectionLink( $skin, $title, $section, $tooltip, 
  * @return bool
  */
 function fnProtectHelpCommons( &$title, &$user, $action, &$result ) {
-	global $wgHelpCommonsProtect, $wgHelpCommonsProtectAll, $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
+	global $wgHelpCommonsFetchingWikis, $wgDBname, $wgHelpCommonsProtectAll, $wgHelpCommonsProtect, $wgLanguageCode;
+
+	// only affects non-help-page-fetching wikis
+	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
+		foreach ( $urls as $url => $helpwiki ) {
+			if ( $wgDBname == $helpwiki ) {
+				return true;
+			}
+		}
+	}
 
 	$ns = $title->getNamespace();
 	if ( ( $ns !== NS_HELP && $ns !== NS_HELP_TALK ) || $title->exists() ) {
@@ -286,7 +295,7 @@ function fnProtectHelpCommons( &$title, &$user, $action, &$result ) {
 
 	if ( $wgHelpCommonsProtectAll ) {
 		$result = array( 'protectedpagetext' );
-		return true;
+		return false;
 	} elseif ( !$wgHelpCommonsProtect ) {
 		return true;
 	}
@@ -294,7 +303,7 @@ function fnProtectHelpCommons( &$title, &$user, $action, &$result ) {
 	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
 		foreach ( $urls as $url => $helpwiki ) {
 			// only protect non-existent help pages on non-help-page-fetching wikis
-			if ( $wgLanguageCode == $language && $wgDBname != $helpwiki ) {
+			if ( $wgLanguageCode == $language ) {
 				$dbr = wfGetDB( DB_SLAVE, array(), $helpwiki );
 				$res = $dbr->selectField(
 					'page',
