@@ -19,14 +19,16 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:EditUser',
 );
 
+// Internationlization files
 $wgExtensionMessagesFiles['EditUser'] = $dir . 'EditUser.i18n.php';
-$wgExtensionAliasesFiles['EditUser'] = $dir . 'EditUser.alias.php';
-$wgAutoloadClasses['EditUser'] = $dir . '/EditUser_body.php';
+$wgExtensionMessagesFiles['EditUserAliases'] = $dir . 'EditUser.alias.php';
+// Special page classes
+$wgAutoloadClasses['EditUser'] = $dir . 'EditUser_body.php';
 $wgSpecialPages['EditUser'] = 'EditUser';
-$wgAvailableRights[] = 'edituser';
-$wgAvailableRights[] = 'edituser-exempt';
 $wgSpecialPageGroups['EditUser'] = 'users';
 
-#Default group permissions
+// Default group permissions
+$wgAvailableRights[] = 'edituser';
+$wgAvailableRights[] = 'edituser-exempt';
 $wgGroupPermissions['bureaucrat']['edituser'] = true;
 $wgGroupPermissions['sysop']['edituser-exempt'] = true;
