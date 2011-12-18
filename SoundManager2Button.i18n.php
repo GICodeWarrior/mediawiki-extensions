@@ -11,7 +11,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'soundmanager2button-desc' => 'Embeds a SoundManager 2 MP3 player into a wiki page',
-	'play' => 'Play',
+	'soundmanager2button-play' => 'Play',
 );
 
 # Message documentation (Message documentation)
