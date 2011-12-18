@@ -243,7 +243,9 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'action-push' => 'bountañ ar pajennoù',
 	'grouppage-pusher' => 'Project:Bounterien',
+	'group-filepusher' => 'Bounterioù pajennoù',
 	'push-tab-text' => 'Bountañ',
 	'push-button-text' => 'Bountañ',
 	'push-button-pushing' => 'O vountañ',
