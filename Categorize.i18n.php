@@ -116,6 +116,16 @@ $messages['gl'] = array(
 	'categorize-advice' => 'Prema nas etiquetas que queira atribuír a esta páxina:',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'categorize-desc' => 'Přidawa zapodawanske polo za wobdźěłowanje a nahrawanje stronow, kotrež wužiwarjam dowola, kategorije připokazać',
+	'categorize-title' => 'Kategorizacija wědy',
+	'categorize-footer' => 'Jeli chceš pomjenowanje přidać, staj so prošu z [[Special:ListUsers/sysop|administratorom]] do zwiska.',
+	'categorize-advice' => 'Klikń na pomjenowanja, kotrež chceš tutej stronje připisać:',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
