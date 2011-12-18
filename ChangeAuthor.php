@@ -37,7 +37,7 @@ $wgExtensionCredits['specialpage'][] = array(
 // Set up the new special page
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['ChangeAuthor'] = $dir . 'ChangeAuthor.i18n.php';
-$wgExtensionAliasesFiles['ChangeAuthor'] = $dir . 'ChangeAuthor.alias.php';
+$wgExtensionMessagesFiles['ChangeAuthorAliases'] = $dir . 'ChangeAuthor.alias.php';
 $wgAutoloadClasses['ChangeAuthor'] = $dir . 'ChangeAuthor.body.php';
 
 $wgSpecialPages['ChangeAuthor'] = 'ChangeAuthor';
