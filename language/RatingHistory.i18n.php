@@ -44,6 +44,7 @@ $messages['en'] = array(
  * @author Aotake
  * @author Boivie
  * @author Byrial
+ * @author EugeneZelenko
  * @author Hamilton Abreu
  * @author Purodha
  * @author Raymond
@@ -55,6 +56,7 @@ $messages['qqq'] = array(
 
 
 $3 is the page name for the rated page.',
+	'ratinghistory-table-rating' => '{{Identical|Rating}}',
 	'ratinghistory-ratings' => "Must be consistent with:
 *'''(1)''' {{msg-mw|readerfeedback-level-0}}
 *'''(2)''' {{msg-mw|readerfeedback-level-1}}

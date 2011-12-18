@@ -89,6 +89,7 @@ $messages['qqq'] = array(
 	'readerfeedback-submitting' => '{{flaggedrevs}}
 {{identical|submitting}}',
 	'readerfeedback-tagfilter' => '{{Identical|Tag}}',
+	'readerfeedback-tierfilter' => '{{Identical|Rating}}',
 	'readerfeedback-tt-review' => 'Pop-up text for the submit button (captioned with {{msg-mw|readerfeedback-submit}}) on review form',
 );
 
@@ -126,7 +127,7 @@ U terugvoer is waardevol en help ons om ons webwerf te verbeter.''",
 	'readerfeedback-submitting' => 'Besig om in te dien…',
 	'readerfeedback-finished' => 'Baie dankie!',
 	'readerfeedback-tagfilter' => 'Etiket:',
-	'readerfeedback-tierfilter' => 'Waardering:',
+	'readerfeedback-tierfilter' => 'Gradering:',
 	'readerfeedback-tier-high' => 'Hoog',
 	'readerfeedback-tier-medium' => 'Gemiddeld',
 	'readerfeedback-tier-poor' => 'Laag',
