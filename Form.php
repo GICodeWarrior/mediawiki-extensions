@@ -30,7 +30,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['SpecialForm'] = $dir . 'Form.body.php'; # Tell MediaWiki to load the extension body.
 $wgExtensionMessagesFiles['Form'] = $dir . 'Form.i18n.php'; # Load internationalization file
-$wgExtensionAliasesFiles['Form'] = $dir . 'Form.alias.php';
+$wgExtensionMessagesFiles['FormAliases'] = $dir . 'Form.alias.php';
 $wgSpecialPages['Form'] = 'SpecialForm'; # Let MediaWiki know about your new special page.
 
 // Extension credits that will show up on Special:Version
