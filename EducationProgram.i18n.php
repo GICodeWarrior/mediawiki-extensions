@@ -65,7 +65,9 @@ $messages['en'] = array(
 	'ep-institutions-add' => 'Add institution',
 
 	// Pager
-	'educationprogram-pager-showonly' => 'Show only these items',
+	'ep-pager-showonly' => 'Show only items with',
+	'ep-pager-clear' => 'Clear filters',
+	'ep-pager-go' => 'Go',
 
 	// Org pager
 	'eporgpager-header-name' => 'Name',

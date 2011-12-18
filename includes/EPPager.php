@@ -60,6 +60,8 @@ abstract class EPPager extends TablePager {
 		else {
 			parent::__construct();
 		}
+		
+		$this->context->getOutput()->addModules( 'ep.pager' );
 	}
 
 	/**
@@ -242,11 +244,12 @@ abstract class EPPager extends TablePager {
 		
 		return
  			'<fieldset>' .
-				'<legend>' . wfMsgHtml( 'educationprogram-pager-showonly' ) . '</legend>' .
+				'<legend>' . wfMsgHtml( 'ep-pager-showonly' ) . '</legend>' .
 				'<form method="post" action="' . htmlspecialchars( $GLOBALS['wgScript'] . '?title=' . $title ) . '">' .
 					Html::hidden( 'title', $title ) .
 					implode( '', $controls ) .
-					'&#160;<input type="submit" value="' . wfMsgHtml( 'reviews-reviews-go' ) . '">' .
+					'&#160;<input type="submit" class="ep-pager-go" value="' . wfMsgHtml( 'ep-pager-go' ) . '">' .
+					'&#160;<button class="ep-pager-clear">' . wfMsgHtml( 'ep-pager-clear' ) . '</button>' .
 				'</form>' .
 			'</fieldset>';
 	}

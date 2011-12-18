@@ -141,6 +141,12 @@ $moduleTemplate = array(
 	'remoteExtPath' => 'EducationProgram/resources'
 );
 
+$wgResourceModules['ep.pager'] = $moduleTemplate + array(
+	'scripts' => array(
+		'ep.pager.js',
+	),
+);
+
 unset( $moduleTemplate );
 
 $egEPSettings = array();

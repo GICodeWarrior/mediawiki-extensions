@@ -60,8 +60,15 @@ class EPOrgPager extends EPPager {
 	 */
 	public function formatValue( $name, $value ) {
 		switch ( $name ) {
-			case '': // TODO
-				$value = $value;
+			case 'org_name':
+				$value = Linker::linkKnown(
+					SpecialPage::getTitleFor( 'Institution', $value ),
+					$value
+				);
+				break;
+			case 'org_country':
+				$countries = array_flip( efEpGetCountryOptions() );
+				$value = $countries[$value];
 				break;
 		}
 
