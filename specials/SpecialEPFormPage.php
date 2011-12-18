@@ -110,7 +110,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 				$object = new $c( $data, true );
 			}
 			else {
-				$this->showWarning( 'educationprogram-' . strtolower( $this->getName() ) . '-exists-already' );
+				$this->showWarning( wfMessage( 'educationprogram-' . strtolower( $this->getName() ) . '-exists-already' ) );
 			}
 		}
 		else {

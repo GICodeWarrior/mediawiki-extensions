@@ -73,13 +73,11 @@ abstract class SpecialEPPage extends SpecialPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $message Message key
-	 * @param array|string $args Message arguments
+	 * @param Message $message
 	 */
-	protected function showError( $message, $args = array() ) {
-		$message = call_user_func_array( 'wfMsgExt', array_merge( array( $message ), (array)$args ) );
+	protected function showError( Message $message ) {
 		$this->getOutput()->addHTML(
-			'<p class="visualClear errorbox">' . $message . '</p>'
+			'<p class="visualClear errorbox">' . $message->parse() . '</p>'
 			. '<hr style="display: block; clear: both; visibility: hidden;" />'
 		);
 	}
@@ -89,13 +87,11 @@ abstract class SpecialEPPage extends SpecialPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $message Message key
-	 * @param array|string $args Message arguments
+	 * @param Message $message
 	 */
-	protected function showWarning( $message, $args = array() ) {
-		$message = call_user_func_array( 'wfMsgExt', array_merge( array( $message ), (array)$args ) );
+	protected function showWarning( Message $message ) {
 		$this->getOutput()->addHTML(
-			'<p class="visualClear warningbox">' . $message . '</p>'
+			'<p class="visualClear warningbox">' . $message->parse() . '</p>'
 			. '<hr style="display: block; clear: both; visibility: hidden;" />'
 		);
 	}
@@ -105,13 +101,11 @@ abstract class SpecialEPPage extends SpecialPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $message Message key
-	 * @param array|string $args Message arguments
+	 * @param Message $message
 	 */
-	protected function showSuccess( $message, $args = array() ) {
-		$message = call_user_func_array( 'wfMsgExt', array_merge( array( $message ), (array)$args ) );
+	protected function showSuccess( Message $message ) {
 		$this->getOutput()->addHTML(
-			'<div class="successbox"><strong><p>' . $message . '</p></strong></div>'
+			'<div class="successbox"><strong><p>' . $message->parse() . '</p></strong></div>'
 			. '<hr style="display: block; clear: both; visibility: hidden;" />'
 		);
 	}

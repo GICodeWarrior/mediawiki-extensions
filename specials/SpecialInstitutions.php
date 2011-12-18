@@ -41,7 +41,7 @@ class SpecialInstitutions extends SpecialEPPage {
 			$org = EPOrg::has( array( 'name' => $this->subPage ) );
 			
 			if ( $org === false ) {
-				$this->showError( 'ep-institutions-nosuchinstitution', $this->subPage );
+				$this->showError( wfMessage( 'ep-institutions-nosuchinstitution', $this->subPage ) );
 				$this->displayPage();
 			}
 			else {
