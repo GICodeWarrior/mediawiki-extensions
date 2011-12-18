@@ -214,14 +214,14 @@ function getSynonymId( $definedMeaningId, $expressionId ) {
 		return 0;
 }
 
-function createSynonymOrTranslation( $definedMeaningId, $expressionId, $identicalMeaning ) {
+function createSynonymOrTranslation( $definedMeaningId, $expressionId, $identicalMeaning = 1 ) {
 	
 	$dc = wdGetDataSetContext();
-
 	$synonymId = getSynonymId( $definedMeaningId, $expressionId );
 	
-	if ( $synonymId == 0 )
+	if ( $synonymId == 0 ) {
 		$synonymId = newObjectId( "{$dc}_syntrans" );
+	}
 	
 	$dbw = wfGetDB( DB_MASTER );
 	$identicalMeaningInteger = (int) $identicalMeaning;
@@ -1664,10 +1664,22 @@ function getExpressions( $spelling, $dc = null ) {
 	$dbr = wfGetDB( DB_SLAVE );
 
 	$spelling = $dbr->addQuotes( $spelling );
-	$queryResult = $dbr->query( "SELECT * FROM {$dc}_expression WHERE spelling=$spelling AND " . getLatestTransactionRestriction( "{$dc}_expression" ) );
+	$sql = "SELECT * FROM {$dc}_expression " . 
+		" WHERE spelling=binary $spelling " .
+		" AND {$dc}_expression.remove_transaction_id IS NULL" ;
+
+	// needed because expression.remove_transaction_id is not updated automatically
+	$sql .= " AND EXISTS (" .
+		"SELECT * " .
+		" FROM {$dc}_syntrans " .
+		" WHERE {$dc}_syntrans.expression_id={$dc}_expression.expression_id" .
+		" AND {$dc}_syntrans.remove_transaction_id IS NULL " .
+		")";
+
+	$queryResult = $dbr->query( $sql );
 
 	$rv = array();
-	while ( $expressionRecord = $dbr->fetchObject( $queryResult ) ) {
+	foreach ( $queryResult as $expressionRecord ) {
 		$rv[] = new Expression( $expressionRecord->expression_id, $expressionRecord->spelling, $expressionRecord->language_id );
 	}
 	$dbr->freeResult( $queryResult ) ;

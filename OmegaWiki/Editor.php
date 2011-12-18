@@ -240,11 +240,13 @@ abstract class DefaultEditor implements Editor {
 	protected $editors;
 	protected $attributeEditorMap;
 	protected $attribute;
+	protected $isCollapsible;
 
 	public function __construct( Attribute $attribute = null ) {
 		$this->attribute = $attribute;
 		$this->editors = array();
 		$this->attributeEditorMap = new AttributeEditorMap();
+		$this->isCollapsible = true;
 	}
 
 	public function addEditor( Editor $editor ) {
@@ -264,8 +266,38 @@ abstract class DefaultEditor implements Editor {
 		return $this->attributeEditorMap;
 	}
 
+	/**
+	* returns true if the editor is collapsible
+	* @return boolean
+	*/
+	public function getCollapsible() {
+		return $this->isCollapsible;
+	}
+
+	/**
+	* set the editor as collapsible or not collapsible
+	* @param $value boolean
+	*/
+	public function setCollapsible( $value ) {
+		$this->isCollapsible = $value;
+	}
+
 	public function getExpansionPrefix( $class, $elementId ) {
-		return '<span id="prefix-collapsed-' . $elementId . '" class="collapse-' . $class . '">▶</span><span id="prefix-expanded-' . $elementId . '" class="expand-' . $class . '">▼</span>' . EOL;
+		if ( ! $this->isCollapsible ) {
+			return '';
+		}
+
+		// if it is collapsible, continue
+		$prefix = HTML::element('span', array(
+			'id' => "prefix-collapsed-$elementId" ,
+			'class' => "collapse-$class"
+			) , "▶" ) ;
+		$prefix .= HTML::element('span', array(
+			'id' => "prefix-expanded-$elementId" ,
+			'class' => "expand-$class"
+			) , "▼" ) ;
+			
+		return $prefix ;
 	}
 
 	static private $staticExpansionStyles = array();
@@ -603,10 +635,11 @@ class RecordSetTableEditor extends RecordSetEditor {
 		foreach ( $editor->getEditors() as $childEditor ) {
 			$childAttribute = $childEditor->getAttribute();
 
-			if ( $childEditor instanceof RecordTableCellEditor )
+			if ( $childEditor instanceof RecordTableCellEditor ) {
 				$type = $this->getTableStructure( $childEditor );
-			else
+			} else {
 				$type = 'short-text';
+			}
 
 			$attributes[] = new Attribute( $childAttribute->id, $childAttribute->name, $type );
 		}
@@ -940,7 +973,10 @@ class RecordTableCellEditor extends RecordEditor {
 	}
 }
 
-/* XXX: What is this for? */
+/**
+ * ScalarEditor is an editor that shows one field
+ * such as a cell in a table.
+ */
 abstract class ScalarEditor extends DefaultEditor {
 	protected $permissionController;
 	protected $isAddField;
@@ -1043,7 +1079,99 @@ class LanguageEditor extends ScalarEditor {
 	}
 }
 
+/**
+ * Shows one language at a time, but when clicked, it shows
+ * a drop-down menu with other available languages
+ * (for a given expression as defined in IdStack)
+ * the dropdown is generated with jQuery from a list <ul>.
+ * $value is the currently displayed language
+ */
+class DropdownLanguageEditor extends ScalarEditor {
+	public function getViewHTML( IdStack $idPath, $value ) {
+		global $wgRequest;
+		$dc = wdGetDataSetContext();
+		$output = "";
+
+		// We must find the spelling and the list of possible languages from $idPath
+		$expressionId = $idPath->getKeyStack()->peek( 0 )->expressionId;
+		$spelling = getExpression( $expressionId, $dc )->spelling;
+		$title = Title::makeTitle( NS_EXPRESSION, $spelling );
+		$expressionsArray = getExpressions( $spelling, $dc ) ;
+
+		$languageIdList = array() ;
+		foreach ( $expressionsArray as $expression ) {
+			if ( $expression->languageId != $value ) {
+				// only add languages that are not the current language
+				$languageIdList[] = $expression->languageId ;
+			}
+		}
+
+		if ( count($languageIdList) > 0 ) {
+			// there are other languages as alternative, prepare the dropdown
+			$output .= Html::openElement('span', array('class' => 'wd-dropdown') ) ;
+		}
+
+		// displays the name of the current language
+		// this is the only thing that is displayed if there are no other language available
+		$output .= languageIdAsText( $value ) ;
+
+		if ( count($languageIdList) > 0 ) {
+			// there might be duplicates
+			$languageIdList = array_unique ( $languageIdList ) ;
+
+			// Now the names
+			$languageNameList = array();
+			foreach ( $languageIdList as $languageId ) {
+				$languageNameList[$languageId] = languageIdAsText($languageId) ;
+			}
+			asort($languageNameList);
+
+			// build the list <ul>
+			$output .= ' ▿' ;
+
+			// now the <li> definining the menu
+			// display: none is also in the .css, but defined here to prevent the list to show
+			// when the .css is not yet loaded.
+			$output .= Html::openElement('ul', array('class' => 'wd-dropdownlist', 'style' => 'display: none;' ));
+			foreach ( $languageNameList as $languageId => $languageName ) {
+				$output .= Html::openElement('li');
+
+				$urlOptions = array( 'explang' => $languageId );
+				if ( $wgRequest->getVal("action") == "edit" ) {
+					$urlOptions['action'] = "edit" ;
+				}
+				$aHref = $title->getLocalURL( $urlOptions ) ;
+				$output .= Html::rawElement('a', array('href' => $aHref), $languageName );
+				$output .= Html::closeElement('li');
+			}
+			$output .= Html::closeElement('ul');
+			$output .= Html::closeElement('span');
+		}
+
+		return $output;
+	}
+
+	public function getEditHTML( IdStack $idPath, $value ) {
+		return getSuggest( $this->updateId( $idPath->getId() ), "language" );
+	}
+	
+	public function add( IdStack $idPath ) {
+		return getSuggest( $this->addId( $idPath->getId() ), "language" );
+	}
+
+	public function getInputValue( $id ) {
+		global $wgRequest;
+
+		return $wgRequest->getInt( $id );
+	}
+	
+	public function showsData( $value ) {
+		return ( $value != null ) && ( $value != 0 );
+	}
+}
+
 class SpellingEditor extends ScalarEditor {
+
 	public function getViewHTML( IdStack $idPath, $value ) {
 		return spellingAsLink( $value );
 	}
@@ -1907,7 +2035,7 @@ class RecordSetListEditor extends RecordSetEditor {
 		$recordCount = $value->getRecordCount();
 
 		if ( $recordCount > 0 ) {
-			$result = '<ul class="collapsable-items">' . EOL;
+			$result = HTML::openElement ('ul', array( 'class' => 'collapsable-items')) ;
 			$key = $value->getKey();
 			$captionAttribute = $this->captionEditor->getAttribute();
 			$valueAttribute = $this->valueEditor->getAttribute();
@@ -1923,18 +2051,36 @@ class RecordSetListEditor extends RecordSetEditor {
 				$this->setExpansion( $this->childrenExpanded, $valueClass );
 		
 				$idPath->pushAttribute( $captionAttribute );
-				$result .= '<li><div class="level' . $this->headerLevel . '"><span id="collapse-' . $recordId . '" class="toggle ' . addCollapsablePrefixToClass( $captionClass ) . '" onclick="toggle(this, event);">' . $captionExpansionPrefix . '&#160;' . $this->captionEditor->view( $idPath, $record->getAttributeValue( $captionAttribute ) ) . '</span></div>';
+				$result .= HTML::openElement ('li') ;
+				$class = 'level' . $this->headerLevel ;
+				$result .= HTML::openElement ('div', array( 'class' => $class )) ;
+
+				$text = $captionExpansionPrefix . '&#160;'
+					. $this->captionEditor->view( $idPath, $record->getAttributeValue( $captionAttribute ) ) ;
+
+				$attribs = array(); // default if not collapsible
+				if ( $this->isCollapsible ) {
+					// collapsible element
+					$class = 'toggle ' . addCollapsablePrefixToClass( $captionClass ) ;
+					$id = 'collapse-' . $recordId ;
+					$attribs = array('class' => $class , 'id' => $id , 'onclick' => 'toggle(this, event);' );
+				}
+				$result .= HTML::rawElement ('span', $attribs, $text ) ;
+				$result .= HTML::closeElement ('div');
+
 				$idPath->popAttribute();
-		
 				$idPath->pushAttribute( $valueAttribute );
-				$result .= '<div id="collapsable-' . $recordId . '" class="expand-' . $valueClass . '">' . $this->valueEditor->view( $idPath, $record->getAttributeValue( $valueAttribute ) ) . '</div>' .
-							'</li>';
+
+				$text = $this->valueEditor->view( $idPath, $record->getAttributeValue( $valueAttribute ) );
+				$class = 'expand-' . $valueClass ;
+				$id = 'collapsable-' . $recordId ;
+				$result .= HTML::rawElement ('div', array('class' => $class , 'id' => $id), $text ) ;
+				$result .= HTML::closeElement ('li') ;
 				$idPath->popAttribute();
-		
 				$idPath->popKey();
 			}
-		
-			$result .= '</ul>';
+
+			$result .= HTML::closeElement ('ul');
 		
 			return $result;
 		}
@@ -1943,8 +2089,7 @@ class RecordSetListEditor extends RecordSetEditor {
 	}
 
 	public function edit( IdStack $idPath, $value ) {
-		global
-			$wgScriptPath;
+		global $wgScriptPath;
 		
 		$recordCount = $value->getRecordCount();
 		

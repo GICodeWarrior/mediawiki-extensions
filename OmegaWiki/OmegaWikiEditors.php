@@ -502,6 +502,9 @@ function getAlternativeDefinitionsEditor( ViewInformation $viewInformation ) {
 	return $editor;
 }
 
+/**
+ * Attribute is $o->expression
+ */
 function getExpressionTableCellEditor( Attribute $attribute, ViewInformation $viewInformation ) {
 	$o = OmegaWikiAttributes::getInstance();
 
@@ -751,13 +754,15 @@ function getExpressionsEditor( $spelling, ViewInformation $viewInformation ) {
 	
 	$exactMeaningsEditor = getExpressionMeaningsEditor( $o->expressionExactMeanings, true, $viewInformation );
 	$expressionMeaningsRecordEditor->addEditor( $exactMeaningsEditor );
-	$expressionMeaningsRecordEditor->addEditor( getExpressionMeaningsEditor( $o->expressionApproximateMeanings, false, $viewInformation ) );
-	
+	$approximateMeaningsEditor = getExpressionMeaningsEditor( $o->expressionApproximateMeanings, false, $viewInformation ) ;
+	$expressionMeaningsRecordEditor->addEditor( $approximateMeaningsEditor );
+
 	$expressionMeaningsRecordEditor->expandEditor( $exactMeaningsEditor );
-	
+
 	if ( $viewInformation->filterLanguageId == 0 ) {
+		// show all languages
 		$expressionEditor = new RecordSpanEditor( $o->expression, ': ', ' - ' );
-		$expressionEditor->addEditor( new LanguageEditor( $o->language, new SimplePermissionController( false ), true ) );
+		$expressionEditor->addEditor( new DropdownLanguageEditor( $o->language, new SimplePermissionController( false ), true ) );
 
 		$expressionsEditor = new RecordSetListEditor(
 			$o->expressions,
@@ -767,13 +772,15 @@ function getExpressionsEditor( $spelling, ViewInformation $viewInformation ) {
 			false,
 			false,
 			new ExpressionController( $spelling, $viewInformation->filterLanguageId ),
-			2,
-			true
+			2, // headerLevel
+			true // childrenExpanded
 		);
+		$expressionsEditor->setCollapsible( false );
 		$expressionsEditor->setCaptionEditor( $expressionEditor );
 		$expressionsEditor->setValueEditor( $expressionMeaningsRecordEditor );
 	}
 	else {
+		// show only one language
 		$expressionEditor = new RecordSubRecordEditor( $o->expression );
 		$expressionEditor->setSubRecordEditor( $expressionMeaningsRecordEditor );
 		

@@ -1,5 +1,19 @@
 
-jQuery(function() { sortAll(); }); 
+jQuery(function() {
+	
+	// sort all tables
+	sortAll();
+
+	// create the dropdown menu (e.g. to select a language in the Expression: namespace)
+	$("span.wd-dropdown").hover(function() {
+		//Drop down the dropdownmenu
+		$(this).parent().find("ul.wd-dropdownlist").show();
+	}, function(){  //On Hover Out 
+		$(this).parent().find("ul.wd-dropdownlist").hide();
+	}
+}); // jQuery
+
+//TODO: convert the functions below to jQuery...
 
 window.elementsToSort = new Array();
 

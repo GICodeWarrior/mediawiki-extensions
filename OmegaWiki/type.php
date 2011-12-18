@@ -43,8 +43,21 @@ function pageAsURL( $nameSpace, $title, $usedc = true ) {
 	return $url;
 }
 
-function spellingAsURL( $spelling ) {
-	return pageAsURL( "Expression", $spelling );
+function spellingAsURL( $spelling, $lang = 0 ) {
+	global $wdDefaultViewDataSet;
+
+	$title = Title::makeTitle( NS_EXPRESSION, $spelling );
+	$query = array() ;
+
+	$dc = wdGetDataSetContext();
+	if ( $dc != $wdDefaultViewDataSet ) {
+		$query['dataset'] = $dc ;
+	}
+	if ( $lang != 0 ) {
+		$query['explang'] = $lang ;
+	}
+
+	return $title->getLocalURL( $query ) ;
 }
 
 function definedMeaningReferenceAsURL( $definedMeaningId, $definingExpression ) {
@@ -59,8 +72,8 @@ function createLink( $url, $text ) {
 	return '<a href="' . htmlspecialchars( $url ) . '">' . htmlspecialchars( $text ) . '</a>';
 }
 
-function spellingAsLink( $spelling ) {
-	return createLink( spellingAsURL( $spelling ), $spelling );
+function spellingAsLink( $spelling, $lang = 0 ) {
+	return createLink( spellingAsURL( $spelling, $lang ), $spelling );
 }
 
 function definedMeaningReferenceAsLink( $definedMeaningId, $definingExpression, $label ) {
