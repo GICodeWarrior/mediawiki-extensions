@@ -356,11 +356,16 @@ $messages['qqq'] = array(
 	'contest-contestant-id' => 'Table column header',
 	'contest-contestant-volunteer' => 'Table column header',
 	'contest-contestant-wmf' => 'Table column header',
-	'contest-contestant-no' => 'Table cell value',
-	'contest-contestant-yes' => 'Table cell value',
-	'contest-contestant-commentcount' => 'Table column header',
-	'contest-contestant-overallrating' => 'Table column header',
-	'contest-contestant-rating' => '$1 is the avarage rating, $2 is the amount of votes',
+	'contest-contestant-no' => 'Table cell value.
+{{Identical|No}}',
+	'contest-contestant-yes' => 'Table cell value.
+{{Identical|Yes}}',
+	'contest-contestant-commentcount' => 'Table column header.
+{{Identical|Comment}}',
+	'contest-contestant-overallrating' => 'Table column header.
+{{Identical|Rating}}',
+	'contest-contestant-rating' => '$1 is the avarage rating, $2 is the amount of votes.
+{{Identical|Vote}}',
 	'contest-contestant-submission' => 'Table column header',
 	'contest-contestant-title' => 'Page title. Parameters:
 * $1 is a contestant ID
@@ -406,6 +411,13 @@ $messages['tly'] = array(
 	'contest-special-name' => 'Ном',
 	'contest-special-edit' => 'Сәрост кардеј',
 	'contest-special-delete' => 'Рәдд кардеј',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'contest-contestant-overallrating' => 'Gradering',
 );
 
 /** Arabic (العربية)
@@ -612,6 +624,17 @@ $messages['be-tarask'] = array(
 	'contest-contestant-id' => 'Ідэнтыфікатар',
 	'contest-contestant-challenge-name' => 'Назва выкліку',
 	'contest-contestant-volunteer' => 'Валянтэр',
+	'contest-contestant-no' => 'Не',
+	'contest-contestant-yes' => 'Так',
+	'contest-contestant-commentcount' => 'Камэнтары',
+	'contest-contestant-overallrating' => 'Адзнака',
+	'contest-contestant-rating' => '$1 ($2 {{PLURAL:$2|голас|галасы|галасоў}})',
+	'contest-contestant-submission' => 'Прадстаўленьне',
+	'contest-contestant-title' => 'Удзельнік конкурсу $1 ($2)',
+	'contest-contestant-header-id' => 'Ідэнтыфікатар удзельніка конкурсу',
+	'contest-contestant-header-contest' => 'Назва конкурсу',
+	'contest-contestant-header-challenge' => 'Назва выкліку',
+	'contest-contestant-header-submission' => 'Спасылка запыту',
 );
 
 /** Breton (Brezhoneg)
@@ -2029,12 +2052,15 @@ $messages['hsb'] = array(
 	'contest-signup-header' => 'Prošu wupjelń formular, zo by so za $1 registrował.',
 	'contest-signup-email' => 'Twoja e-mejlowa adresa',
 	'contest-signup-realname' => 'Twoje woprawdźite mjeno',
+	'contest-signup-volunteer' => 'Sym zajimowany na tym, e-mejl wo móžnosćach dobrowólnika dóstać',
+	'contest-signup-wmf' => 'Sym na kontaktach zajimowany, zo bych za załožbu Wikimedia Foundation dźěłał',
 	'contest-signup-cv' => 'Wotkaz k twojemu žiwjenjoběhej',
 	'contest-signup-readrules' => 'Wobkrućam, zo sym [[$1|wubědźowanske prawidła]] přečitał a do nich zwolu.',
 	'contest-signup-challenge' => 'Kotre wužadanje chceš přiwzać?',
 	'contest-signup-finished' => 'Tute wubědźowanje je skónčene. Dźakujemy so za twoje wobdźělenje!',
 	'contest-signup-draft' => 'Wubědźowanje hišće njeje so započało.  Prosymy wo trochu sćerpnosće.',
 	'contest-signup-country' => 'Twój kraj',
+	'contest-signup-emailwarn' => 'Warnowanje: Měnješ swoju e-mejlowu adresu, kotraž je za wobkrućenje noweje adresy trěbna.',
 	'contest-signup-require-rules' => 'Dyrbiš do wubědźowanskich prawidłow zwolić.',
 	'contest-signup-require-country' => 'Dyrbiš kraj podać, w kotrymž bydliš.',
 	'contest-signup-invalid-email' => 'Podata e-mejlowa adresa płaćiwa njeje.',
@@ -2050,6 +2076,7 @@ $messages['hsb'] = array(
 	'contest-contest-days-ago' => '$1, před $2 {{PLURAL:$2|dnjom|dnjomaj|dnjemi|dnjemi}}',
 	'contest-contest-days-left' => '$1, za $2 {{PLURAL:$2|dźeń|dnjej|dny|dnjow}}',
 	'contest-contest-contestants' => 'Wubědźowarjo',
+	'contest-contest-contestants-text' => 'Klikń na ID přinoška w lěwej špalće, zo by wotpowědny přinošk posudźił.',
 	'contest-contest-reminder-mail' => 'Dopomnjenska e-mejl',
 	'contest-contest-reminder-page' => 'Wobsah za dopomnjensku e-mejl pochadźa z [[$1|tuteje strony]].',
 	'contest-contest-send-reminder' => 'Dopomnjeće pósłać',
@@ -2070,8 +2097,10 @@ $messages['hsb'] = array(
 	'contest-contest-reminder-send' => 'Dopomnjeće pósłać',
 	'contest-contest-reminder-cancel' => 'Přetorhnyć',
 	'contest-contest-reminder-sending' => 'Sćele so...',
+	'contest-contest-reminder-success' => 'Dopomnjensku e-mejl na $1 wubědźowarjow wuspěšnje pósłany',
 	'contest-contest-reminder-close' => 'Začinić',
 	'contest-contest-reminder-retry' => 'Hišće raz pósłanje spytać',
+	'contest-contest-reminder-failed' => 'Dopomnjenske e-mejle njedachu so rozpósłać.',
 	'contest-contest-reminder-subject' => 'Tema:',
 	'contest-contestant-id' => 'ID',
 	'contest-contestant-challenge-name' => 'Mjeno wužadanja',
@@ -2090,6 +2119,7 @@ $messages['hsb'] = array(
 	'contest-contestant-header-submission' => 'Wotkaz k přinoškej',
 	'contest-contestant-header-country' => 'Kraj wubědźowarja',
 	'contest-contestant-header-wmf' => 'Na přistajenju pola WMF zajimowany',
+	'contest-contestant-header-volunteer' => 'Na móžnosćach dobrowólnika zajimowany',
 	'contest-contestant-header-rating' => 'Pohodnoćenje',
 	'contest-contestant-header-comments' => 'Ličba komentarow',
 	'contest-contestant-submission-url' => 'Přinošk',
@@ -2112,13 +2142,20 @@ $messages['hsb'] = array(
 	'contest-mycontests-header-contest' => 'Wubědźowanje',
 	'contest-mycontests-header-challenge' => 'Wužadanje',
 	'contest-mycontests-signup-success' => 'Sy so wuspěšnje za wubědźowanje "$1" zregistrował.',
+	'contest-mycontests-addition-success' => 'Sy swój přinošk wuspěšnje zapodał! Wulki dźak za wobdźělenje na tutym wubědźowanju.',
 	'contest-mycontests-updated-success' => 'Sy swój přinošk změnił.',
+	'contest-mycontests-sessionfail' => 'Straty twojich posedźenskich datow dla njeda so twój přinošk składować. Prošu spytaj hišće raz.',
 	'contest-submission-submit' => 'Wotpósłać',
 	'contest-submission-unknown' => 'Wubědźowanje z podatym mjenom njeeksistuje.',
+	'contest-submission-header' => 'Wulki dźak za wobdźělenje na tutym wubědźowanju! Zmištrowawši wužadanje, móžeš swojemu přinoškej wotkaz přidać.',
 	'contest-submission-finished' => 'Tute wubědźowanje je skónčene. Dźakujemy so za twoje wobdźělenje!',
+	'contest-submission-submission' => 'Wotkaz k twojemu přinoškej',
 	'contest-submission-invalid-url' => 'Tutón URL jednemu z dowolenych formatow njewotpowěduje.',
+	'contest-submission-new-submission' => 'Dyrbiš hišće URL k swojemu přinoškej zapodać. To dyrbi so hišće před kónčnym terminom stać.',
+	'contest-submission-current-submission' => 'To je URL k twojemu přinoškej, kotryž móžeš hišće hač do kónčneho termina změnić.',
 	'contest-submission-challenge' => 'Wobdźěleš so tuchwilu na wužadanju $1.',
 	'contest-submission-challenge-description' => "'''Aktualne wužadanje: $1''' -- $2",
+	'contest-submission-domains' => 'Přinoški su na slědowace websydła wobmjezowane: $1',
 );
 
 /** Hungarian (Magyar)
@@ -3290,6 +3327,7 @@ $messages['pdc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Rzuwig
  * @author Sp5uhe
  * @author Woytecr
  */
@@ -3311,6 +3349,7 @@ $messages['pl'] = array(
 	'grouppage-contestjudge' => '{{ns:project}}:Sędziowie_konkursów',
 	'prefs-contest' => 'Konkursy',
 	'contest-prefs-showtoplink' => 'Pokaż link do [[Special:MyContests|moich konkursów]] w menu użytkownika.',
+	'contest-status-finished' => 'Gotowe (wyłączone)',
 	'special-contest' => 'Pokaż konkurs',
 	'special-contestwelcome' => 'Pokaż konkurs',
 	'special-editcontest' => 'Edycja konkursu',
@@ -3357,6 +3396,7 @@ $messages['pl'] = array(
 	'contest-signup-header' => 'Wypełnij formularz, aby ukończyć rejestrację w „$1”.',
 	'contest-signup-email' => 'Twój adres e‐mail',
 	'contest-signup-realname' => 'Imię i nazwisko',
+	'contest-signup-volunteer' => 'Jestem zainteresowany odbieraniem wiadomości e-mail dotyczących wolontariuszy',
 	'contest-signup-cv' => 'Link do Twojego CV',
 	'contest-signup-readrules' => 'Oświadczam, że zapoznałem się z [[$1|zasadami konkursu]] i je akceptuję',
 	'contest-signup-challenge' => 'Jakiego wyzwania chcesz się podjąć?',
@@ -3385,6 +3425,7 @@ $messages['pl'] = array(
 	'contest-contest-yes' => 'Tak',
 	'contest-contest-no' => 'Nie',
 	'contest-contest-none' => 'Brak',
+	'contest-contest-some' => 'Niektóre',
 	'contest-contest-filter-challenge' => 'Wyzwanie',
 	'contest-contest-filter-volunteer' => 'Wolontariusz',
 	'contest-contest-filter-comments' => 'Komentarze',
