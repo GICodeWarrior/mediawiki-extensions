@@ -365,6 +365,7 @@ $messages['br'] = array(
 	'narayam-bn-nkb' => 'NKB bengaleg',
 	'narayam-ur' => 'Standard ourdou',
 	'narayam-de' => 'Alamaneg',
+	'narayam-he-standard-2011' => 'Hebraeg standard 2011',
 );
 
 /** Bosnian (Bosanski)
