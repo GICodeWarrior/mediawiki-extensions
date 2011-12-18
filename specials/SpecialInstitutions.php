@@ -100,7 +100,7 @@ class SpecialInstitutions extends SpecialEPPage {
 
 		$out->addHTML( Xml::inputLabel( wfMsg( 'ep-institutions-newname' ), 'newname', 'newname' ) );
 
-		$out->addHTML( Html::input(
+		$out->addHTML( '&#160;' . Html::input(
 			'addneworg',
 			wfMsg( 'ep-institutions-add' ),
 			'submit'

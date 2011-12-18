@@ -64,10 +64,14 @@ $messages['en'] = array(
 	'ep-institutions-newname' => 'Institution name:',
 	'ep-institutions-add' => 'Add institution',
 
+	// Pager
+	'educationprogram-pager-showonly' => 'Show only these items',
+
 	// Org pager
-	'educationprogram-pager-eporg-name' => 'Name',
-	'educationprogram-pager-eporg-city' => 'City',
-	'educationprogram-pager-eporg-country' => 'Country',
+	'eporgpager-header-name' => 'Name',
+	'eporgpager-header-city' => 'City',
+	'eporgpager-header-country' => 'Country',
+	'eporgpager-filter-country' => 'Country',
 
 	// Special:EditInstitution
 	'editinstitution-text' => 'Enter the institution details below and click submit to save your changes.',

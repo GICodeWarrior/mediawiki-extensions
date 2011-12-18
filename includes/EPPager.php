@@ -168,9 +168,7 @@ abstract class EPPager extends TablePager {
 		$c = $this->className;
 		
 		foreach ( $fields as $fieldName ) {
-			$headers[$c::getPrefixedField( $fieldName )] = wfMsg(
-				'educationprogram-pager-' . strtolower( $c ) . '-' . str_replace( '_', '-', $fieldName )
-			);
+			$headers[$c::getPrefixedField( $fieldName )] = $this->getMsg( 'header-' . $fieldName );
 		}
 		
 		return $headers;
@@ -235,6 +233,8 @@ abstract class EPPager extends TablePager {
 					break;
 			}
 			
+			$control = '&#160;' . $this->getMsg( 'filter-' . $optionName ) . '&#160;' . $control;
+			
 			$controls[] = $control;
 		}
 		
@@ -242,11 +242,11 @@ abstract class EPPager extends TablePager {
 		
 		return
  			'<fieldset>' .
-				'<legend>' . wfMsgHtml( 'reviews-reviews-showonly' ) . '</legend>' .
+				'<legend>' . wfMsgHtml( 'educationprogram-pager-showonly' ) . '</legend>' .
 				'<form method="post" action="' . htmlspecialchars( $GLOBALS['wgScript'] . '?title=' . $title ) . '">' .
 					Html::hidden( 'title', $title ) .
 					implode( '', $controls ) .
-					'<input type="submit" value="' . wfMsgHtml( 'reviews-reviews-go' ) . '">' .
+					'&#160;<input type="submit" value="' . wfMsgHtml( 'reviews-reviews-go' ) . '">' .
 				'</form>' .
 			'</fieldset>';
 	}
@@ -278,6 +278,20 @@ abstract class EPPager extends TablePager {
 		}
 		
 		return $changed;
+	}
+	
+	/**
+	 * Takes a message key and prefixes it with the extension name and name of the pager,
+	 * feeds it to wfMsg, and returns it.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $messageKey
+	 * 
+	 * @return string
+	 */
+	protected function getMsg( $messageKey ) {
+		return wfMsg( strtolower( $this->className ) . 'pager-' . str_replace( '_', '-', $messageKey ) );
 	}
 
 }
