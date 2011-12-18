@@ -110,5 +110,16 @@ abstract class SpecialEPPage extends SpecialPage {
 		);
 	}
 
+	/**
+	 * Get the Language being used for this instance.
+	 * getLang was deprecated in 1.19, getLanguage was introduces in the same version.
+	 *
+	 * @since 0.1
+	 *
+	 * @return Language
+	 */
+	public function getLanguage() {
+		return method_exists( $this, 'getLanguage' ) ? $this->getLanguage() : $this->getLang();
+	}
 
 }
