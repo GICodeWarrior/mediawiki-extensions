@@ -395,6 +395,18 @@ class SpecialEditContest extends FormSpecialPage {
 			. '<hr style="display: block; clear: both; visibility: hidden;" />'
 		);
 	}
+	
+	/**
+	 * Get the Language being used for this instance.
+	 * getLang was deprecated in 1.19, getLanguage was introduces in the same version.
+	 *
+	 * @since 0.2
+	 *
+	 * @return Language
+	 */
+	public function getLanguage() {
+		return method_exists( $this, 'getLanguage' ) ? $this->getLanguage() : $this->getLang();
+	}
 
 }
 
