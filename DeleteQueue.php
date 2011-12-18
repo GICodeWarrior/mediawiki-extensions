@@ -27,7 +27,7 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 
 $wgExtensionMessagesFiles['DeleteQueue'] = $dir . 'DeleteQueue.i18n.php';
-$wgExtensionAliasesFiles['DeleteQueue'] = $dir . 'DeleteQueue.alias.php';
+$wgExtensionMessagesFiles['DeleteQueueAliases'] = $dir . 'DeleteQueue.alias.php';
 
 $wgHooks['SkinTemplateTabs'][] = 'DeleteQueueHooks::onSkinTemplateTabs';
 $wgHooks['UnknownAction'][] = 'DeleteQueueHooks::onUnknownAction';
