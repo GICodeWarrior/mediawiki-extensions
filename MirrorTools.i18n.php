@@ -48,6 +48,7 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -55,7 +56,7 @@ $messages['br'] = array(
 	'mirrortools-desc' => "Aotreañ ar c'hemmoù dre an API da vezañ graet dindan forzh peseurt anv implijer",
 	'right-mirroredit' => 'Kemmañ dre an API dindan forzh peseurt anv implijer',
 	'group-MirrorTools' => 'Implijerien an ostilh melezour',
-	'group-MirrorTools-member' => 'implijer an ostilh melezour',
+	'group-MirrorTools-member' => '{{GENDER:$1|implijer an ostilh melezour|implijerez an ostilh melezour}}',
 	'grouppage-MirrorTools' => '{{ns:project}}: Implijerien an ostilh melezour',
 );
 
