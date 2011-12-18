@@ -1,21 +1,21 @@
 <?php
 
 class GoogleMapsExporter {
-    var $mOutput;
+	var $mOutput;
 
-    function addXmlSource($url) {
-    }
+	function addXmlSource($url) {
+	}
 
-    function addPolyline ( $pPolyline, $pLineColor, $pLineOpacity, $pStroke, $pFillColor, $pFillOpacity ) {
-    }
+	function addPolyline ( $pPolyline, $pLineColor, $pLineOpacity, $pStroke, $pFillColor, $pFillOpacity ) {
+	}
 
-    function addMarker ( $pLat, $pLon, $pIcon, $pTitle, $pCaption, $pMaxContent, $pIsLine ) {
-    }
+	function addMarker ( $pLat, $pLon, $pIcon, $pTitle, $pTitleLink, $pCaption, $pMaxContent, $pIsLine ) {
+	}
 
-    function addIcon($icon, $options) {
-    }
+	function addIcon($icon, $options) {
+	}
 
-    function render() {
-        return $this->mOutput;
-    }
+	function render() {
+		return $this->mOutput;
+	}
 }
