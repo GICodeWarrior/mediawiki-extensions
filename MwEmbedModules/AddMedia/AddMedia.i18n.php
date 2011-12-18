@@ -4507,6 +4507,38 @@ $messages['ml'] = array(
 	'mwe-review-upload' => 'പ്രമാണ {{PLURAL:$1|അപ്‌‌ലോഡ്|അപ്‌‌ലോഡുകൾ}} സംശോധനം ചെയ്യുക',
 );
 
+/** Marathi (मराठी)
+ * @author Kaajawa
+ */
+$messages['mr'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 ($2 पैकी)',
+	'mwe-upload-unknown-size' => 'अज्ञात आकारमान',
+	'mwe-cancel-confim' => 'तुम्ही सद्य कृती रद्द करू इच्छिता?',
+	'mwe-successfulupload' => 'चढवणे यशस्वी',
+	'mwe-file-exists-duplicate' => 'ही संचिका खालील संचिकेची नक्कल आहे :',
+	'mwe-ignorewarning' => 'इशाऱ्याकडे दुर्लक्ष करा आणि संचिका जतन करा.',
+	'mwe-thumbnail-more' => 'मोठे करा',
+	'mwe-filesource' => 'स्रोत:',
+	'mwe-filestatus' => 'प्रताधिकार स्थिती:',
+	'mwe-select_file' => 'संचिका निवडा',
+	'mwe-upload' => 'संचिका चढवा',
+	'mwe-summary' => 'सारांश',
+	'mwe-date-of-work' => 'काम केल्याची तारीख',
+	'mwe-upload-in-progress' => 'संचिका चढवणे चालू आहे (ही खिडकी बंद करू नका)',
+	'mwe-uploaded-status' => 'चढवले',
+	'mwe-uploaded-time-remaining' => 'उरलेला वेळ : $1',
+	'mwe-am-results_desc' => 'निकाल $1 ते $2',
+	'mwe-am-results_desc_total' => 'निकाल $1 ते $2 ($3 पैकी)',
+	'mwe-am-results_next' => 'पुढील',
+	'mwe-am-results_prev' => 'मागील',
+	'mwe-cc_nc_title' => 'अव्यावहारिक',
+	'mwe-results_from' => '$1 साठीचे निकाल',
+	'mwe-upload-a-file' => 'नवी संचिका चढवा',
+	'mwe-watch_this_page' => 'या पानावर बदलांसाठी लक्ष ठेवा',
+	'mwe-return-search-results' => 'शोध निकालांकडे परत जा',
+	'mwe-do-more-modification' => 'अजून बदल करा',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
  */
