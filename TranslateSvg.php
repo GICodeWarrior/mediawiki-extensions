@@ -11,11 +11,11 @@
 */
 
 $wgExtensionCredits['specialpage'][] = array(
-        'name' => 'TranslateSVG',
-        'author' => 'Harry Burt',
-        'url' => 'http://www.mediawiki.org/wiki/Extension:TranslateSvg',
-		'descriptionmsg' => 'translatesvg-desc',
-        'version' => '1.0.0',
+	'name' => 'TranslateSVG',
+	'author' => 'Harry Burt',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:TranslateSvg',
+	'descriptionmsg' => 'translatesvg-desc',
+	'version' => '1.0.0',
 );
 
 $dir = dirname( __FILE__ ) . '/';
@@ -32,3 +32,4 @@ $wgResourceModules['ext.translateSvg'] = array(
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteExtPath' => 'translateSvg'
 );
+

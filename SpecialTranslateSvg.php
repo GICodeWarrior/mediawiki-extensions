@@ -1,12 +1,16 @@
 <?php
 class SpecialTranslateSvg extends SpecialPage {
+
+	/**
+	 * @var SimpleXMLElement
+	 */
 	private $svg = '';
 	private $translations = array();
 	private $number = 0;
 	private $num = 0; //iterator
 	private $added = array();
 	private $modified = array();
-	
+
 	function __construct() {
 		parent::__construct( 'TranslateSvg' );
 	}
@@ -25,8 +29,8 @@ class SpecialTranslateSvg extends SpecialPage {
 		} else {
 			$file = wfFindFile( $title );
 
-			if ( $file && $file->exists() ){ 
-				$this->svg = new SimpleXMLElement( $file->getPath(), 0, true ); 
+			if ( $file && $file->exists() ){
+				$this->svg = new SimpleXMLElement( $file->getPath(), 0, true );
 				$this->svg->registerXPathNamespace( 'svg', 'http://www.w3.org/2000/svg' );
 				$this->makeTranslationReady();
 				$this->extractTranslations();
@@ -67,6 +71,7 @@ class SpecialTranslateSvg extends SpecialPage {
 			Html::closeElement( 'form' )
 		);
 	}
+
 	function makeTranslationReady() {
 		$result = $this->svg->xpath("//svg:text");
 		foreach( $result as &$text ){
@@ -86,6 +91,7 @@ class SpecialTranslateSvg extends SpecialPage {
 			}
 		}
 	}
+
 	function extractTranslations(){
 		$result = $this->svg->xpath("//svg:switch");
 		$this->number = count( $result );
@@ -107,8 +113,9 @@ class SpecialTranslateSvg extends SpecialPage {
 				}
 				$this->translations [ $i ][] = array_merge( $attr, array( 'text'=>$text) );
 			}
-		}	
+		}
 	}
+
 	function tidyTranslations(){
 		$new = array();
 		foreach( $this->translations as $number=>$translations ){
@@ -127,20 +134,19 @@ class SpecialTranslateSvg extends SpecialPage {
 		}
 		$this->translations = $new;
 	}
-	
-	function printTranslations( $filename ){	
+
+	function printTranslations( $filename ){
 		global $wgScript;
 		$this->getOutput()->addModules( 'ext.translateSvg' );
 		$html = Html::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'id' => 'specialtranslatesvg' ) ) .
 			Html::hidden( 'file', $filename ) .
 			Html::hidden( 'title', $this->getTitle()->getPrefixedText() );
-			
-		$groups = array();
+
 		foreach( $this->translations as $language=>$translations ){
 			$languages = Language::getLanguageNames();
 			$languages['fallback'] = wfMsg( 'translatesvg-fallbackdesc');
 			$languages['qqq'] = wfMsg( 'translatesvg-qqqdesc' );
-			
+
 			$html .= Html::openElement( 'fieldset', array( 'id' => $language ) ) .
 					Html::element( 'legend', null, $languages[$language] );
 			$groups = array();
@@ -152,7 +158,7 @@ class SpecialTranslateSvg extends SpecialPage {
 				$grouphtml = $label . $desc . '&#160;&#160;&#160;' . $input;
 				if( $language !== 'qqq' ){
 					$grouphtml .= Html::element( 'br' ) .
-							"&#160;&#160;&#160;" . Xml::inputLabel( wfMsg( 'translatesvg-xcoordinate-pre' ), $language.'-'.$i.'-x', $language.'-'.$i.'-x', 5, $existing['x'] ) . 
+							"&#160;&#160;&#160;" . Xml::inputLabel( wfMsg( 'translatesvg-xcoordinate-pre' ), $language.'-'.$i.'-x', $language.'-'.$i.'-x', 5, $existing['x'] ) .
 							"&#160;&#160;&#160;" . Xml::inputLabel( wfMsg( 'translatesvg-ycoordinate-pre' ), $language.'-'.$i.'-y', $language.'-'.$i.'-y', 5, $existing['y'] );
 				}
 				$groups[] = $grouphtml;
@@ -164,7 +170,7 @@ class SpecialTranslateSvg extends SpecialPage {
 				Html::closeElement( 'form' );
 		$this->getOutput()->addHTML( $html );
 	}
-	
+
 	function getFallback( $num ){
 		if( isset( $this->translations['fallback'][$num] ) ){
 			return $this->translations['fallback'][$num];
@@ -172,7 +178,7 @@ class SpecialTranslateSvg extends SpecialPage {
 			//TODO
 		}
 	}
-	
+
 	/*
 		Return the existing translation of a text: the starting point that the translator works with.
 		Autofill is annoying at best, but it's useful for numbers. Hence scrub all non-numeric text (but
@@ -193,7 +199,7 @@ class SpecialTranslateSvg extends SpecialPage {
 			}
 		}
 	}
-	
+
 	function getDescriptor( $num ){
 		$qqq = '';
 		if( isset( $this->translations['qqq'][$num]['text'] ) ){
@@ -204,7 +210,7 @@ class SpecialTranslateSvg extends SpecialPage {
 		}
 		return $qqq;
 	}
-	
+
 	function updateTranslations( $params ){
 		foreach( $params as $name=>$value ){
 			list( $lang, $num, $param ) = explode( '-', $name );
@@ -213,7 +219,7 @@ class SpecialTranslateSvg extends SpecialPage {
 			}
 			$this->translations[ $lang ][ $num ][$param] = $value;
 		}
-	
+
 		$reverse = array();
 		foreach( $this->translations as $language=>$translations ){
 			if( $language == 'fallback' ) continue; //We'll come back for it.
@@ -226,11 +232,12 @@ class SpecialTranslateSvg extends SpecialPage {
 		}
 		$this->translations = $reverse;
 	}
+
 	function updateSVG(){
 		$result = $this->svg->xpath("//svg:switch");
 		for( $i = 0; $i < $this->number; $i++ ){
 			$switch = $result[$i];
-			$switch->registerXPathNamespace( 'svg', 'http://www.w3.org/2000/svg' );			
+			$switch->registerXPathNamespace( 'svg', 'http://www.w3.org/2000/svg' );
 			foreach( $this->translations[$i] as $translation ){
 				$language = $translation['systemLanguage'];
 				if( $language === 'fallback' ){
@@ -238,7 +245,7 @@ class SpecialTranslateSvg extends SpecialPage {
 				} else {
 					$path = "svg:text[@systemLanguage='$language']";
 				}
-				$existing = $switch->xpath( $path );			
+				$existing = $switch->xpath( $path );
 				if( count( $existing ) == 1 ){
 					// Update of existing translation
 					$old = array( (string)$existing[0][0], (string)$existing[0]['x'], (string)$existing[0]['y']);
@@ -271,8 +278,9 @@ class SpecialTranslateSvg extends SpecialPage {
 			}
 		}
 	}
+
 	function saveSVG( $filepath, $filename ){
-		
+
 		$mUpload = new TranslateSvgUpload();
 		$temp = tempnam( wfTempDir(), 'trans' );
 		$dom = new DOMDocument('1.0');
@@ -281,9 +289,9 @@ class SpecialTranslateSvg extends SpecialPage {
 		$dom->loadXML($this->svg->asXML());
 		$dom->save( $temp );
 		unset( $dom );
-		
+
 		$mUpload->initializePathInfo( $filename, $temp, filesize( $filepath ), true );
-		
+
 		$details = $mUpload->verifyUpload();
 		if ( $details['status'] != UploadBase::OK ) {
 			//TODO
@@ -322,6 +330,6 @@ class SpecialTranslateSvg extends SpecialPage {
 
 class TranslateSvgUpload extends UploadBase {
 	public function initializeFromRequest( &$request ) {
-	
+
 	}
 }
