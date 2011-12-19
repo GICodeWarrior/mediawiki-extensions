@@ -192,7 +192,7 @@ abstract class SpecialContestPage extends SpecialPage {
 	 * @return Language
 	 */
 	public function getLanguage() {
-		return method_exists( $this, 'getLanguage' ) ? $this->getLanguage() : $this->getLang();
+		return method_exists( get_parent_class(), 'getLanguage' ) ? parent::getLanguage() : $this->getLang();
 	}
 
 }
