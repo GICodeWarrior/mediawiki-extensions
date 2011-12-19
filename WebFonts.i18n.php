@@ -52,6 +52,7 @@ $messages['ast'] = array(
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
+ * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
@@ -59,6 +60,8 @@ $messages['be-tarask'] = array(
 	'webfonts-desc' => 'Дазваляе ўбудоўваць шрыфты на старонкі',
 	'webfonts-load' => 'Выбраць шрыфт',
 	'webfonts-reset' => 'Скінуць',
+	'webfonts-enable-preference' => 'Дазволіць убудаваньне шрыфтоў (WebFonts)',
+	'webfonts-menu-tooltip' => 'Выбраць шрыфт для старонкі',
 );
 
 /** Bengali (বাংলা)
@@ -148,6 +151,7 @@ $messages['fa'] = array(
 	'webfonts-load' => 'انتخاب قلم',
 	'webfonts-reset' => 'بازنشانی',
 	'webfonts-enable-preference' => 'فعال‌کردن جاسازی قلم (وب‌قلم)',
+	'webfonts-menu-tooltip' => 'انتخاب قلم برای صفحه',
 );
 
 /** French (Français)
@@ -315,6 +319,7 @@ $messages['ksh'] = array(
 	'webfonts-load' => 'Schreff_Aat ußsöke',
 	'webfonts-reset' => 'Zeröksäze',
 	'webfonts-enable-preference' => 'Et Schreff_Aate en de Sigge enboue aanschallde ({{int:webfonts}})',
+	'webfonts-menu-tooltip' => 'Donn en Schreff för di Sigg ußwähle.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -552,5 +557,7 @@ $messages['vi'] = array(
 	'webfonts-desc' => 'Nhúng phông chữ vào các trang',
 	'webfonts-load' => 'Chọn phông chữ',
 	'webfonts-reset' => 'Mặc định lại',
+	'webfonts-enable-preference' => 'Bật các phông chữ được nhúng vào (WebFonts)',
+	'webfonts-menu-tooltip' => 'Chọn phông chữ để sử dụng trong trang',
 );
 
