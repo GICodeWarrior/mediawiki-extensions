@@ -95,10 +95,11 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Melancholie
  */
 $messages['de'] = array(
-	'stringfunctions-desc' => 'Erweitert den Parser mit Zeichenkettenfunktionen (String Functions)',
+	'stringfunctions-desc' => 'Ergänzt Parserfunktionen, die zeichenkettenbezogene Funktionen auf Wikiseiten ermöglichen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -176,7 +177,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'stringfunctions-desc' => 'Realza a análise con funcións de cordas',
+	'stringfunctions-desc' => 'Mellora o analizador con funcións de cadeas de caracteres',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
