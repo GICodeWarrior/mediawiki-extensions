@@ -258,7 +258,7 @@ abstract class EPPager extends TablePager {
 		return
  			'<fieldset>' .
 				'<legend>' . wfMsgHtml( 'ep-pager-showonly' ) . '</legend>' .
-				'<form method="post" action="' . htmlspecialchars( wfAppendQuery( $GLOBALS['wgScript'], array( 'title', $title ) ) ) . '">' .
+				'<form method="post" action="' . htmlspecialchars( wfAppendQuery( $GLOBALS['wgScript'], array( 'title' => $title ) ) ) . '">' .
 					Html::hidden( 'title', $title ) .
 					implode( '', $controls ) .
 					'&#160;<input type="submit" class="ep-pager-go" value="' . wfMsgHtml( 'ep-pager-go' ) . '">' .
