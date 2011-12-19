@@ -41,7 +41,7 @@
 				woff: "Deva/SamyakDevanagari.woff",
 				version: "1.0"
 			},
-			
+
 			"Madan": {
 				eot: "Deva/madan.eot",
 				ttf: "Deva/madan.ttf",
@@ -89,7 +89,7 @@
 				eot: "Khmr/KhmerOS.eot",
 				ttf: "Khmr/KhmerOS.ttf",
 				woff: "Khmr/KhmerOS.woff",
-				svg:  "Khmr/KhmerOS.svg",
+				svg: "Khmr/KhmerOS.svg",
 				version: "1.10"
 			},
 
@@ -97,7 +97,7 @@
 				eot: "Khmr/KhmerOSbattambang.eot",
 				ttf: "Khmr/KhmerOSbattambang.ttf",
 				woff: "Khmr/KhmerOSbattambang.woff",
-				svg:  "Khmr/KhmerOSbattambang.svg",
+				svg: "Khmr/KhmerOSbattambang.svg",
 				version: "1.10"
 			},
 
@@ -105,7 +105,7 @@
 				eot: "Khmr/KhmerOSbokor.eot",
 				ttf: "Khmr/KhmerOSbokor.ttf",
 				woff: "Khmr/KhmerOSbokor.woff",
-				svg:  "Khmr/KhmerOSbokor.svg",
+				svg: "Khmr/KhmerOSbokor.svg",
 				version: "1.10"
 			},
 
@@ -113,7 +113,7 @@
 				eot: "Khmr/KhmerOSfreehand.eot",
 				ttf: "Khmr/KhmerOSfreehand.ttf",
 				woff: "Khmr/KhmerOSfreehand.woff",
-				svg:  "Khmr/KhmerOSfreehand.svg",
+				svg: "Khmr/KhmerOSfreehand.svg",
 				version: "1.10"
 			},
 
@@ -121,7 +121,7 @@
 				eot: "Khmr/KhmerOSfasthand.eot",
 				ttf: "Khmr/KhmerOSfasthand.ttf",
 				woff: "Khmr/KhmerOSfasthand.woff",
-				svg:  "Khmr/KhmerOSfasthand.svg",
+				svg: "Khmr/KhmerOSfasthand.svg",
 				version: "1.10"
 			},
 
@@ -129,7 +129,7 @@
 				eot: "Khmr/KhmerOSmuol.eot",
 				ttf: "Khmr/KhmerOSmuol.ttf",
 				woff: "Khmr/KhmerOSmuol.woff",
-				svg:  "Khmr/KhmerOSmuol.svg",
+				svg: "Khmr/KhmerOSmuol.svg",
 				version: "1.10"
 			},
 
@@ -137,7 +137,7 @@
 				eot: "Khmr/KhmerOSmuollight.eot",
 				ttf: "Khmr/KhmerOSmuollight.ttf",
 				woff: "Khmr/KhmerOSmuollight.woff",
-				svg:  "Khmr/KhmerOSmuollight.svg",
+				svg: "Khmr/KhmerOSmuollight.svg",
 				version: "1.10"
 			},
 
@@ -145,7 +145,7 @@
 				eot: "Khmr/KhmerOSmuolpali.eot",
 				ttf: "Khmr/KhmerOSmuolpali.ttf",
 				woff: "Khmr/KhmerOSmuolpali.woff",
-				svg:  "Khmr/KhmerOSmuolpali.svg",
+				svg: "Khmr/KhmerOSmuolpali.svg",
 				version: "1.10"
 			},
 
@@ -153,7 +153,7 @@
 				eot: "Khmr/KhmerOSsiemreap.eot",
 				ttf: "Khmr/KhmerOSsiemreap.ttf",
 				woff: "Khmr/KhmerOSsiemreap.woff",
-				svg:  "Khmr/KhmerOSsiemreap.svg",
+				svg: "Khmr/KhmerOSsiemreap.svg",
 				version: "1.10"
 			},
 
@@ -241,7 +241,7 @@
 				eot: "Mymr/MasterpieceUniSans.eot",
 				ttf: "Mymr/MasterpieceUniSans.ttf",
 				woff: "Mymr/MasterpieceUniSans.woff",
-				svg:  "Mymr/MasterpieceUniSans.svg",
+				svg: "Mymr/MasterpieceUniSans.svg",
 				version: "0.5"
 			},
 
@@ -249,7 +249,7 @@
 				eot: "Mymr/Myanmar3.eot",
 				ttf: "Mymr/Myanmar3.ttf",
 				woff: "Mymr/Myanmar3.woff",
-				svg:  "Mymr/Myanmar3.svg",
+				svg: "Mymr/Myanmar3.svg",
 				version: "3.0"
 			},
 
@@ -257,7 +257,7 @@
 				eot: "Mymr/Padauk-Regular.eot",
 				ttf: "Mymr/Padauk-Regular.ttf",
 				woff: "Mymr/Padauk-Regular.woff",
-				svg:  "Mymr/Padauk-Regular.svg",
+				svg: "Mymr/Padauk-Regular.svg",
 				version: "2.8"
 			},
 
@@ -265,7 +265,7 @@
 				eot: "Mymr/Yunghkio.eot",
 				ttf: "Mymr/Yunghkio.ttf",
 				woff: "Mymr/Yunghkio.woff",
-				svg:  "Mymr/Yunghkio.svg",
+				svg: "Mymr/Yunghkio.svg",
 				version: "1.0"
 			},
 
@@ -297,14 +297,14 @@
 				version: "2.5.0"
 			},
 
-			Thendral:  {
+			Thendral: {
 				eot: "Taml/ThendralUni.eot",
 				ttf: "Taml/ThendralUni.ttf",
 				woff: "Taml/ThendralUni.woff",
 				version: "1.0"
 			},
 
-			Thenee:  {
+			Thenee: {
 				eot: "Taml/TheneeUni.eot",
 				ttf: "Taml/TheneeUni.ttf",
 				woff: "Taml/TheneeUni.woff",
@@ -353,7 +353,7 @@
 			am:  [ "AbyssinicaSIL" ],
 			as:  [ "Lohit Assamese" ],
 			bh:  [ "Lohit Devanagari" ],
-			bho:  [ "Lohit Devanagari" ],  
+			bho: [ "Lohit Devanagari" ],
 			bn:  [ "Lohit Bengali" ],
 			bpy: [ "Lohit Bengali" ],
 			cdo: [ "Charis SIL" ],
@@ -372,7 +372,7 @@
 			ml:  [ "AnjaliOldLipi" ],
 			mr:  [ "Lohit Devanagari" ],
 			my:  [ "Masterpiece Uni Sans", "Padauk-Regular", "Myanmar3", "Yunghkio" ],
-			ne:  [ "Lohit Devanagari", "Madan" ], 
+			ne:  [ "Lohit Devanagari", "Madan" ],
 			or:  [ "Lohit Oriya" , "Utkal" ],
 			pa:  [ "Lohit Punjabi", "Saab" ],
 			sa:  [ "Lohit Devanagari" ],
@@ -383,5 +383,7 @@
 			ti:  [ "AbyssinicaSIL" ]
 		}
 	};
-	$.extend( mw.webfonts.config, config);
+
+	$.extend( mw.webfonts.config, config );
+
 } ) ( jQuery );
