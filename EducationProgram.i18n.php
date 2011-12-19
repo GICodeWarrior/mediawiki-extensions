@@ -107,6 +107,13 @@ $messages['en'] = array(
 	'educationprogram-org-edit-country' => 'Country',
 	'educationprogram-org-submit' => 'Submit',
 
+	// Special:EditCourse
+	'editcourse-add-legend' => 'Add course',
+	'editcourse-edit-legend' => 'Edit course',
+	'ep-course-edit-name' => 'Name',
+	'ep-course-edit-org' => 'Institution',
+	'ep-course-edit-description' => 'Description',
+
 );
 
 /** Message documentation (Message documentation)
