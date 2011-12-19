@@ -30,7 +30,7 @@ if ( !defined( 'SMW_VERSION' ) ) {
 define( 'SC_VERSION', '0.5 Beta' );
 
 // register the extension
-//TODO: Add other authors here and in the file header
+// TODO: Add other authors here and in the file header
 $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][] = array(
 	'path' => __FILE__,
 	'name' => 'SolrStore',
@@ -72,7 +72,6 @@ $wgSearchType = 'SolrSearch';
 
 // Solr Configuration
 $wgSolrTalker = new SolrTalker();
-if ( !isset( $wgSolrUrl ) ){ 
-    //Url to the Solr Server
-    $wgSolrUrl = 'http://svbosofixwiki:8180/solr';
-}
+
+$wgSolrUrl = 'http://127.0.0.1:8080/solr';
+$wgSolrFields = array();

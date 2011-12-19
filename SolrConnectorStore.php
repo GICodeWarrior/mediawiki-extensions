@@ -9,7 +9,7 @@
 
 /**
  * TODO: Insert class description
- * 
+ *
  * @ingroup SolrStore
  */
 class SolrConnectorStore extends SMWStore {
@@ -28,14 +28,14 @@ class SolrConnectorStore extends SMWStore {
     static function &getBaseStore() {
         global $wgscBaseStore;
 
-        if (self::$smBaseStore === null) {
+        if ( self::$smBaseStore === null ) {
             self::$smBaseStore = new $wgscBaseStore();
         }
 
         return self::$smBaseStore;
     }
 
-///// Reading methods /////
+//// / Reading methods /////
 
     /**
      * Retrieve all data stored about the given subject and return it as a
@@ -49,8 +49,8 @@ class SolrConnectorStore extends SMWStore {
      * data than requested when a filter is used. Filtering just ensures
      * that only necessary requests are made, i.e. it improves performance.
      */
-    public function getSemanticData(SMWDIWikiPage $subject, $filter = false) {
-        return self::getBaseStore()->getSemanticData($subject, $filter);
+    public function getSemanticData( SMWDIWikiPage $subject, $filter = false ) {
+        return self::getBaseStore()->getSemanticData( $subject, $filter );
     }
 
     /**
@@ -66,8 +66,8 @@ class SolrConnectorStore extends SMWStore {
      *
      * @return array of SMWDataItem
      */
-    public function getPropertyValues($subject, SMWDIProperty $property, $requestoptions = null) {
-        return self::getBaseStore()->getPropertyValues($subject, $property, $requestoptions);
+    public function getPropertyValues( $subject, SMWDIProperty $property, $requestoptions = null ) {
+        return self::getBaseStore()->getPropertyValues( $subject, $property, $requestoptions );
     }
 
     /**
@@ -75,16 +75,16 @@ class SolrConnectorStore extends SMWStore {
      * property. The result is an array of SMWDIWikiPage objects. If null
      * is given as a value, all subjects having that property are returned.
      */
-    public function getPropertySubjects(SMWDIProperty $property, $value, $requestoptions = null) {
-        return self::getBaseStore()->getPropertySubjects($property, $value, $requestoptions);
+    public function getPropertySubjects( SMWDIProperty $property, $value, $requestoptions = null ) {
+        return self::getBaseStore()->getPropertySubjects( $property, $value, $requestoptions );
     }
 
     /**
      * Get an array of all subjects that have some value for the given
      * property. The result is an array of SMWDIWikiPage objects.
      */
-    public function getAllPropertySubjects(SMWDIProperty $property, $requestoptions = null) {
-        return self::getBaseStore()->getAllPropertySubjects($property, $requestoptions);
+    public function getAllPropertySubjects( SMWDIProperty $property, $requestoptions = null ) {
+        return self::getBaseStore()->getAllPropertySubjects( $property, $requestoptions );
     }
 
     /**
@@ -94,8 +94,8 @@ class SolrConnectorStore extends SMWStore {
      * @param $subject SMWDIWikiPage denoting the subject
      * @param $requestoptions SMWRequestOptions optionally defining further options
      */
-    public function getProperties(SMWDIWikiPage $subject, $requestoptions = null) {
-        return self::getBaseStore()->getProperties($subject, $requestoptions);
+    public function getProperties( SMWDIWikiPage $subject, $requestoptions = null ) {
+        return self::getBaseStore()->getProperties( $subject, $requestoptions );
     }
 
     /**
@@ -105,11 +105,11 @@ class SolrConnectorStore extends SMWStore {
      * @note In some stores, this function might be implemented partially
      * so that only values of type Page (_wpg) are supported.
      */
-    public function getInProperties(SMWDataItem $object, $requestoptions = null) {
-        return self::getBaseStore()->getInProperties($object, $requestoptions);
+    public function getInProperties( SMWDataItem $object, $requestoptions = null ) {
+        return self::getBaseStore()->getInProperties( $object, $requestoptions );
     }
 
-///// Writing methods /////
+//// / Writing methods /////
 
     /**
      * Delete all semantic properties that the given subject has. This
@@ -119,12 +119,12 @@ class SolrConnectorStore extends SMWStore {
      *
      * @param Title $subject
      */
-    public function deleteSubject(Title $subject) {
+    public function deleteSubject( Title $subject ) {
         global $wgSolrTalker;
-        //TODO: Update Solr to reflect the deleting of semantic properties
+        // TODO: Update Solr to reflect the deleting of semantic properties
 
-        $wgSolrTalker->deleteDocId($subject);
-        return self::getBaseStore()->deleteSubject($subject);
+        $wgSolrTalker->deleteDocId( $subject );
+        return self::getBaseStore()->deleteSubject( $subject );
     }
 
     /**
@@ -134,10 +134,10 @@ class SolrConnectorStore extends SMWStore {
      *
      * @param SMWSemanticData $data
      */
-    public function doDataUpdate(SMWSemanticData $data) {
+    public function doDataUpdate( SMWSemanticData $data ) {
         global $wgSolrTalker;
-        $wgSolrTalker->parseSemanticData($data);
-        return self::getBaseStore()->doDataUpdate($data);
+        $wgSolrTalker->parseSemanticData( $data );
+        return self::getBaseStore()->doDataUpdate( $data );
     }
 
     /**
@@ -150,13 +150,13 @@ class SolrConnectorStore extends SMWStore {
      * redirect, if any, is given by $redirid. If no new page was created,
      * $redirid will be 0.
      */
-    public function changeTitle(Title $oldtitle, Title $newtitle, $pageid, $redirid = 0) {
-        
-        //TODO: Update Solr to reflect a renaming of some article
-        return self::getBaseStore()->changeTitle($oldtitle, $newtitle, $pageid, $redirid);
+    public function changeTitle( Title $oldtitle, Title $newtitle, $pageid, $redirid = 0 ) {
+
+        // TODO: Update Solr to reflect a renaming of some article
+        return self::getBaseStore()->changeTitle( $oldtitle, $newtitle, $pageid, $redirid );
     }
 
-///// Query answering /////
+//// / Query answering /////
 
     /**
      * Execute the provided query and return the result as an
@@ -169,56 +169,56 @@ class SolrConnectorStore extends SMWStore {
      *
      * @return SMWQueryResult
      */
-    public function getQueryResult(SMWQuery $query) {
-        //IF YOU SEE THIS HERE PLEASE IGNORE IT!
-        //Our first aproche was it to create new SMWStore for Querying Data
-        //but we had big Problems recreating and parsing the SMW Query Syntax
-        //that we just Stoped at this Point here. Maybe we will finish it someday
+    public function getQueryResult( SMWQuery $query ) {
+        // IF YOU SEE THIS HERE PLEASE IGNORE IT!
+        // Our first aproche was it to create new SMWStore for Querying Data
+        // but we had big Problems recreating and parsing the SMW Query Syntax
+        // that we just Stoped at this Point here. Maybe we will finish it someday
         $wgSolrTalker = new SolrTalker();
-        if (property_exists($query, 'params') &&
-                array_key_exists('source', $query->params) &&
-                $query->params['source'] == 'solr') {
+        if ( property_exists( $query, 'params' ) &&
+                array_key_exists( 'source', $query->params ) &&
+                $query->params['source'] == 'solr' ) {
 
             $results = array();
             $dbkey = '';
             $namespace = 0;
             $interwiki = '';
 
-            echo("SOLR query: {$query->getQueryString()}\n");
+            echo( "SOLR query: {$query->getQueryString()}\n" );
 
-            echo("Search is Powered by Solr!");
-            echo $queryStr = urldecode($wgSolrTalker->parseSolrQuery($query->getQueryString()));
-                       
-            
-            //Get Sort Parameters and add them to the QueryString
-            if ($query->sort) {
-                //TODO: Der Inhalt von Sort muss genau der Name eines der Felder von Solr sein 
+            echo( "Search is Powered by Solr!" );
+            echo $queryStr = urldecode( $wgSolrTalker->parseSolrQuery( $query->getQueryString() ) );
+
+
+            // Get Sort Parameters and add them to the QueryString
+            if ( $query->sort ) {
+                // TODO: Der Inhalt von Sort muss genau der Name eines der Felder von Solr sein
                 //      um danach Sortieren zu können. Deshalb Wird eine Liste alle Solr Felder
                 //      Benötigt um Festzustellen welches Feld gemeint ist bzw. welche _XYZ Endung
                 //      an dem Ende des Feldes angehängt wurde.
-                //      
+                //
 
 
-                $sort = $wgSolrTalker->findField($query->params['sort'], $query->params['order']);
-                $queryStr .= '&sort%3D' . $sort . '+' . trim($query->params['order']);
+                $sort = $wgSolrTalker->findField( $query->params['sort'], $query->params['order'] );
+                $queryStr .= '&sort%3D' . $sort . '+' . trim( $query->params['order'] );
                 //  $queryStr = $queryStr . '&sort=' . trim($sort . '+' . trim($query->params['order']));
-                //TODO: Mehrer Sort parameter auslesen wenn sie vorhanden sind.
-              } 
+                // TODO: Mehrer Sort parameter auslesen wenn sie vorhanden sind.
+              }
 //            else {
 //                $queryStr = $queryStr . '&sort=pagetitle';
 //            }
-            
-            //TODO: Prüfen wieso nur 1 Ergebniss ausgegeben wird
-            echo 'Query Limit:'.$query->getLimit();
 
-            echo ("SEARCHRESULT: " . $xml = $wgSolrTalker->solrQuery($queryStr, $query->getOffset(), $query->getLimit()));
-            echo("<br/>");
-            //TODO: Move this Code to parseSolrResult
+            // TODO: Prüfen wieso nur 1 Ergebniss ausgegeben wird
+            echo 'Query Limit:' . $query->getLimit();
+
+            echo ( "SEARCHRESULT: " . $xml = $wgSolrTalker->solrQuery( $queryStr, $query->getOffset(), $query->getLimit() ) );
+            echo( "<br/>" );
+            // TODO: Move this Code to parseSolrResult
             $numFound = $xml->result['numFound'];
             // print_r('1: ' . $xml->{"result"});
-            foreach ($xml->result->doc as $doc) {
-                foreach ($doc->str as $field) {
-                    switch ($field['name']) {
+            foreach ( $xml->result->doc as $doc ) {
+                foreach ( $doc->str as $field ) {
+                    switch ( $field['name'] ) {
                         case 'dbkey':
                             $dbkey = $field;
                             break;
@@ -230,9 +230,9 @@ class SolrConnectorStore extends SMWStore {
                             break;
                     }
                 }
-                // Multivalue Felder                
-                foreach ($doc->arr as $field) {
-                    switch ($field['name']) {
+                // Multivalue Felder
+                foreach ( $doc->arr as $field ) {
+                    switch ( $field['name'] ) {
                         case 'dbkey':
                             $dbkey = $field;
                             break;
@@ -243,29 +243,29 @@ class SolrConnectorStore extends SMWStore {
                             $namespace = $field;
                             break;
                     }
-                    foreach ($field->str as $value) {
+                    foreach ( $field->str as $value ) {
                         $value;
                     }
                 }
-                $results[] = new SMWDIWikiPage($dbkey, $namespace, $interwiki);
+                $results[] = new SMWDIWikiPage( $dbkey, $namespace, $interwiki );
             }
-            
+
             // Do we have more Results ?
             $more = false;
-            //TODO: Does this Work ?
-            echo 'Number of Records: '.$numFound;
-            if ($numFound > 10) {
+            // TODO: Does this Work ?
+            echo 'Number of Records: ' . $numFound;
+            if ( $numFound > 10 ) {
                 $more = true;
             }
-            
-            //return new SMWQueryResult($printRequests, $query, $results, $store);
-            return new SMWQueryResult($query->getDescription()->getPrintrequests(), $query, $results, $this, $more);
+
+            // return new SMWQueryResult($printRequests, $query, $results, $store);
+            return new SMWQueryResult( $query->getDescription()->getPrintrequests(), $query, $results, $this, $more );
         } else {
-            return self::getBaseStore()->getQueryResult($query);
+            return self::getBaseStore()->getQueryResult( $query );
         }
     }
 
-///// Special page functions /////
+//// / Special page functions /////
 
     /**
      * Return all properties that have been used on pages in the wiki. The
@@ -277,8 +277,8 @@ class SolrConnectorStore extends SMWStore {
      *
      * @return array
      */
-    public function getPropertiesSpecial($requestoptions = null) {
-        return self::getBaseStore()->getPropertiesSpecial($requestoptions);
+    public function getPropertiesSpecial( $requestoptions = null ) {
+        return self::getBaseStore()->getPropertiesSpecial( $requestoptions );
     }
 
     /**
@@ -291,8 +291,8 @@ class SolrConnectorStore extends SMWStore {
      *
      * @return array of SMWDIProperty
      */
-    public function getUnusedPropertiesSpecial($requestoptions = null) {
-        return self::getBaseStore()->getUnusedPropertiesSpecial($requestoptions);
+    public function getUnusedPropertiesSpecial( $requestoptions = null ) {
+        return self::getBaseStore()->getUnusedPropertiesSpecial( $requestoptions );
     }
 
     /**
@@ -305,8 +305,8 @@ class SolrConnectorStore extends SMWStore {
      *
      * @return array of array( SMWDIProperty, int )
      */
-    public function getWantedPropertiesSpecial($requestoptions = null) {
-        return self::getBaseStore()->getWantedPropertiesSpecial($requestoptions);
+    public function getWantedPropertiesSpecial( $requestoptions = null ) {
+        return self::getBaseStore()->getWantedPropertiesSpecial( $requestoptions );
     }
 
     /**
@@ -322,7 +322,7 @@ class SolrConnectorStore extends SMWStore {
         return self::getBaseStore()->getStatistics();
     }
 
-///// Setup store /////
+//// / Setup store /////
 
     /**
      * Setup all storage structures properly for using the store. This
@@ -341,11 +341,11 @@ class SolrConnectorStore extends SMWStore {
      *
      * @param boolean $verbose
      */
-    public function setup($verbose = true) {
+    public function setup( $verbose = true ) {
 
-        //TODO: Setup data structures on the the Solr server, if necessary
+        // TODO: Setup data structures on the the Solr server, if necessary
 
-        return self::getBaseStore()->setup($verbose);
+        return self::getBaseStore()->setup( $verbose );
     }
 
     /**
@@ -354,12 +354,12 @@ class SolrConnectorStore extends SMWStore {
      *
      * @param boolean $verbose
      */
-    public function drop($verbose = true) {
+    public function drop( $verbose = true ) {
         global $wgSolrTalker;
         $wgSolrTalker->deleteAllDocs();
-        //Drop all data from Solr
+        // Drop all data from Solr
 
-        return self::getBaseStore()->drop($verbose);
+        return self::getBaseStore()->drop( $verbose );
     }
 
     /**
@@ -389,11 +389,11 @@ class SolrConnectorStore extends SMWStore {
      *
      * @return decimal between 0 and 1 to indicate the overall progress of the refreshing
      */
-    public function refreshData(&$index, $count, $namespaces = false, $usejobs = true) {
+    public function refreshData( &$index, $count, $namespaces = false, $usejobs = true ) {
 
-        //TODO: Do we need to do something here for Solr? Can we do something?
+        // TODO: Do we need to do something here for Solr? Can we do something?
 
-        return self::getBaseStore()->refreshData($index, $count, $namespaces, $usejobs);
+        return self::getBaseStore()->refreshData( $index, $count, $namespaces, $usejobs );
     }
 
 }

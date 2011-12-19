@@ -9,7 +9,7 @@
 
 /**
  * TODO: Insert class description
- * 
+ *
  * @ingroup SolrStore
  */
 class SolrSearch extends SearchEngine {
@@ -18,11 +18,11 @@ class SolrSearch extends SearchEngine {
     var $offset = 0;
     var $prefix = '';
     var $searchTerms = array();
-    var $namespaces = array(NS_MAIN);
+    var $namespaces = array( NS_MAIN );
     var $showRedirects = false;
     var $solrTalker;
 
-    function __construct($db = null) {
+    function __construct( $db = null ) {
         global $wgSolrTalker;
     }
 
@@ -34,8 +34,8 @@ class SolrSearch extends SearchEngine {
      * @return SolrSearchSet
      * @access public
      */
-    function searchText($term) {
-        return SolrSearchSet::newFromQuery(isset($this->related) ? 'related' : 'search', $term, $this->namespaces, $this->limit, $this->offset, $this->searchingEverything());
+    function searchText( $term ) {
+        return SolrSearchSet::newFromQuery( isset( $this->related ) ? 'related' : 'search', $term, $this->namespaces, $this->limit, $this->offset, $this->searchingEverything() );
     }
 
     /**
@@ -45,19 +45,19 @@ class SolrSearch extends SearchEngine {
      * @return SolrSearchSet
      * @access public
      */
-    function searchTitle($term) {
+    function searchTitle( $term ) {
         return null;
     }
 
     /**
      *  PrefixSearchBackend override for OpenSearch results
      */
-    static function prefixSearch($ns, $search, $limit, &$results) {
+    static function prefixSearch( $ns, $search, $limit, &$results ) {
         echo "Prefix Search!<br/>";
-        $it = SolrSearchSet::newFromQuery('prefix', $search, $ns, $limit, 0);
+        $it = SolrSearchSet::newFromQuery( 'prefix', $search, $ns, $limit, 0 );
         $results = array();
-        if ($it) { // $it can be null
-            while ($res = $it->next()) {
+        if ( $it ) { // $it can be null
+            while ( $res = $it->next() ) {
                 $results[] = $res->getTitle()->getPrefixedText();
             }
         }
@@ -66,30 +66,30 @@ class SolrSearch extends SearchEngine {
 
     /**
      * Check if we are searching all the namespaces on this wiki
-     * 
+     *
      * @return boolean
      */
     function searchingEverything() {
-        return $this->namespaces == array_keys(SearchEngine::searchableNamespaces());
+        return $this->namespaces == array_keys( SearchEngine::searchableNamespaces() );
     }
 
     /**
      * Prepare query for the Solr-search daemon:
-     * 
-     * 1) rewrite namespaces into standardized form 
+     *
+     * 1) rewrite namespaces into standardized form
      * e.g. image:clouds -> [6]:clouds
-     * 
+     *
      * 2) rewrite localizations of "search everything" keyword
      * e.g. alle:heidegger -> all:heidegger
      *
-     * @param string query 
+     * @param string query
      * @return string rewritten query
      * @access private
      */
-    function replacePrefixes($query) {
+    function replacePrefixes( $query ) {
         global $wgContLang, $wgSolrUseRelated;
         $fname = 'SolrSearch::replacePrefixes';
-        wfProfileIn($fname);
+        wfProfileIn( $fname );
         $start = 0;
         $len = 0; // token start pos and length
         $rewritten = ''; // rewritten query
@@ -97,65 +97,65 @@ class SolrSearch extends SearchEngine {
         $inquotes = false;
 
 // "search everything" keyword
-        $allkeyword = wfMsgForContent('searchall');
+        $allkeyword = wfMsgForContent( 'searchall' );
 
-        $qlen = strlen($query);
+        $qlen = strlen( $query );
 
 // quick check, most of the time we don't need any rewriting
-        if (strpos($query, ':') === false) {
-            wfProfileOut($fname);
+        if ( strpos( $query, ':' ) === false ) {
+            wfProfileOut( $fname );
             return $query;
         }
 
 // check if this is query for related articles
-        $relatedkey = wfMsgForContent('searchrelated') . ':';
-        if ($wgSolrUseRelated && strncmp($query, $relatedkey, strlen($relatedkey)) == 0) {
+        $relatedkey = wfMsgForContent( 'searchrelated' ) . ':';
+        if ( $wgSolrUseRelated && strncmp( $query, $relatedkey, strlen( $relatedkey ) ) == 0 ) {
             $this->related = true;
-            list($dummy, $ret) = explode(":", $query, 2);
-            wfProfileOut($fname);
-            return trim($ret);
+            list( $dummy, $ret ) = explode( ":", $query, 2 );
+            wfProfileOut( $fname );
+            return trim( $ret );
         }
 
         global $wgCanonicalNamespaceNames, $wgNamespaceAliases;
-        $nsNamesRaw = array_merge($wgContLang->getNamespaces(), $wgCanonicalNamespaceNames, array_keys(array_merge($wgNamespaceAliases, $wgContLang->getNamespaceAliases())));
+        $nsNamesRaw = array_merge( $wgContLang->getNamespaces(), $wgCanonicalNamespaceNames, array_keys( array_merge( $wgNamespaceAliases, $wgContLang->getNamespaceAliases() ) ) );
 
 # add all namespace names w/o spaces
         $nsNames = array();
-        foreach ($nsNamesRaw as $ns) {
-            if ($ns != '') {
+        foreach ( $nsNamesRaw as $ns ) {
+            if ( $ns != '' ) {
                 $nsNames[] = $ns;
-                $nsNames[] = str_replace('_', ' ', $ns);
+                $nsNames[] = str_replace( '_', ' ', $ns );
             }
         }
 
-        $regexp = implode('|', array_unique($nsNames));
+        $regexp = implode( '|', array_unique( $nsNames ) );
 
 # rewrite the query by replacing valid namespace names
-        $parts = preg_split('/(")/', $query, -1, PREG_SPLIT_DELIM_CAPTURE);
+        $parts = preg_split( '/(")/', $query, -1, PREG_SPLIT_DELIM_CAPTURE );
         $inquotes = false;
         $rewritten = '';
-        foreach ($parts as $part) {
-            if ($part == '"') { # stuff in quote doesnt get rewritten
+        foreach ( $parts as $part ) {
+            if ( $part == '"' ) { # stuff in quote doesnt get rewritten
                 $rewritten .= $part;
                 $inquotes = !$inquotes;
-            } elseif ($inquotes) {
+            } elseif ( $inquotes ) {
                 $rewritten .= $part;
             } else {
 # replace namespaces
-                $r = preg_replace_callback('/(^|[| :])(' . $regexp . '):/i', array($this, 'replaceNamespace'), $part);
+                $r = preg_replace_callback( '/(^|[| :])(' . $regexp . '):/i', array( $this, 'replaceNamespace' ), $part );
 # replace to backend all: notation
-                $rewritten .= str_replace($allkeyword . ':', 'all:', $r);
+                $rewritten .= str_replace( $allkeyword . ':', 'all:', $r );
             }
         }
-        wfProfileOut($fname);
+        wfProfileOut( $fname );
         return $rewritten;
     }
 
     /** callback to replace namespace names to internal notation, e.g. User: -> [2]: */
-    function replaceNamespace($matches) {
+    function replaceNamespace( $matches ) {
         global $wgContLang;
-        $inx = $wgContLang->getNsIndex(str_replace(' ', '_', $matches[2]));
-        if ($inx === false)
+        $inx = $wgContLang->getNsIndex( str_replace( ' ', '_', $matches[2] ) );
+        if ( $inx === false )
             return $matches[0];
         else
             return $matches[1] . "[$inx]:";
@@ -166,11 +166,11 @@ class SolrSearch extends SearchEngine {
     }
 
     /** Merge the prefix into the query (if any) */
-    function transformSearchTerm($term) {
+    function transformSearchTerm( $term ) {
         global $wgSolrSearchVersion;
 
-        if ($wgSolrSearchVersion >= 2.1 && $this->prefix != '') {
-# convert to internal backend prefix notation 
+        if ( $wgSolrSearchVersion >= 2.1 && $this->prefix != '' ) {
+# convert to internal backend prefix notation
             $term = $term . ' prefix:' . $this->prefix;
         }
         return $term;
@@ -182,7 +182,7 @@ class SolrResult extends SearchResult {
 
     /**
      * Construct a result object from single result line
-     * 
+     *
      * @param array $lines
      * @param string $method - method used to fetch these results
      * @return array (float, Title)
@@ -192,7 +192,7 @@ class SolrResult extends SearchResult {
         return false;
     }
 
-    function SolrResult($result, $method) {
+    function SolrResult( $result, $method ) {
         global $wgContLang;
 
         $score = null;
@@ -201,7 +201,7 @@ class SolrResult extends SearchResult {
         $title = null;
 
         $xml = $result;
-        wfDebug("Solr line: '$result'\n");
+        wfDebug( "Solr line: '$result'\n" );
 
         // Defining Results
 
@@ -210,29 +210,29 @@ class SolrResult extends SearchResult {
         $this->mScore = $score;
 
 
-        //-------------------------------------
+        // -------------------------------------
         // Get The Shit out of da XML
-        //-------------------------------------
-        foreach ($xml->arr as $doc) {
-            switch ($doc['name']) {
+        // -------------------------------------
+        foreach ( $xml->arr as $doc ) {
+            switch ( $doc['name'] ) {
                 case 'text':
                     $nsText = $doc->str;
 
                     $this->mSize = "";
-                    $this->mWordCount = count($doc->str);
+                    $this->mWordCount = count( $doc->str );
                     $snipmax = 10;
                     $textsnip = "";
                     $textsnipvar = 0;
-                    foreach ($doc->str as $inner) {
+                    foreach ( $doc->str as $inner ) {
                         $textsnipvar++;
-                        if ($textsnipvar >= 4 && $textsnipvar <= $snipmax) {
-                            $textsnip.=" " . $inner;
+                        if ( $textsnipvar >= 4 && $textsnipvar <= $snipmax ) {
+                            $textsnip .= " " . $inner;
                         }
-                        $this->mSize = $this->mSize + strlen($inner);
+                        $this->mSize = $this->mSize + strlen( $inner );
                     }
-                    $textsnip.="...";
-                    $this->mSize = ($this->mSize / 3);
-                    //$this->mSize=$size;
+                    $textsnip .= "...";
+                    $this->mSize = ( $this->mSize / 3 );
+                    // $this->mSize=$size;
                     break;
                 case 'Zuletzt geändert_dt':
                     $this->mDate = $doc->date;
@@ -240,8 +240,8 @@ class SolrResult extends SearchResult {
             }
         }
 
-        foreach ($xml->str as $docs) {
-            switch ($docs['name']) {
+        foreach ( $xml->str as $docs ) {
+            switch ( $docs['name'] ) {
                 case 'pagetitle':
                     $this->mTitle = $doc->str;
                     break;
@@ -253,47 +253,47 @@ class SolrResult extends SearchResult {
                     break;
             }
         }
-        foreach ($xml->int as $doci) {
-            switch ($doci['name']) {
+        foreach ( $xml->int as $doci ) {
+            switch ( $doci['name'] ) {
                 case 'namespace':
                     $namespace = $doc->str;
                     break;
             }
         }
 
-        $title = urldecode($title);
-        if (!isset($nsText))
-            $nsText = $wgContLang->getNsText($namespace);
+        $title = urldecode( $title );
+        if ( !isset( $nsText ) )
+            $nsText = $wgContLang->getNsText( $namespace );
         else
-            $nsText = urldecode($nsText);
+            $nsText = urldecode( $nsText );
 
         // make title
-        $this->mTitle = Title::makeTitle($namespace, $title);
+        $this->mTitle = Title::makeTitle( $namespace, $title );
 
         // HIGHLIHT
         // <em> & </em> Fix to <b> // if not, no highlighting !!
         // TITLE (LINK)
-        if ($xml->highlight->title != '') {
-            $this->mHighlightTitle = str_replace("<em>", "<b>", $xml->highlight->title);
-            $this->mHighlightTitle = str_replace("</em>", "</b>", $this->mHighlightTitle);
+        if ( $xml->highlight->title != '' ) {
+            $this->mHighlightTitle = str_replace( "<em>", "<b>", $xml->highlight->title );
+            $this->mHighlightTitle = str_replace( "</em>", "</b>", $this->mHighlightTitle );
         } else {
             $this->mHighlightTitle = '';
         }
         // TEXT (under Link)
-        //$this->mHighlightText=$xml->highlight->title;
-        if ($xml->highlight->Inhalt != '') {
-            $this->mHighlightText = str_replace("<em>", "<b>", $xml->highlight->Inhalt);
-            $this->mHighlightText = str_replace("</em>", "</b>", $this->mHighlightText);
-            $this->mHighlightText.="...";
-        } else {//$this->mHighlightText=textsnip;
-            if (isset($_REQUEST['search']) != '' && isset($textsnip) != '') {
-                if (strpos(strtolower($textsnip), strtolower($_REQUEST['search']))) {
-                    $tempc = strlen($_REQUEST['search']);
-                    $pos1 = strpos(strtolower($textsnip), strtolower($_REQUEST['search']));
-                    $tmpa = substr($textsnip, 0, $pos1);
-                    $tmpb = substr($textsnip, ($pos1 + $tempc));
-                    $this->mHighlightText = $tmpa . "<b>" . substr($textsnip, $pos1, $tempc) . "</b>" . $tmpb;
-                    //str_replace($_REQUEST['search'],"<b>".$_REQUEST['search']."</b>",$textsnip);
+        // $this->mHighlightText=$xml->highlight->title;
+        if ( $xml->highlight->Inhalt != '' ) {
+            $this->mHighlightText = str_replace( "<em>", "<b>", $xml->highlight->Inhalt );
+            $this->mHighlightText = str_replace( "</em>", "</b>", $this->mHighlightText );
+            $this->mHighlightText .= "...";
+        } else {// $this->mHighlightText=textsnip;
+            if ( isset( $_REQUEST['search'] ) != '' && isset( $textsnip ) != '' ) {
+                if ( strpos( strtolower( $textsnip ), strtolower( $_REQUEST['search'] ) ) ) {
+                    $tempc = strlen( $_REQUEST['search'] );
+                    $pos1 = strpos( strtolower( $textsnip ), strtolower( $_REQUEST['search'] ) );
+                    $tmpa = substr( $textsnip, 0, $pos1 );
+                    $tmpb = substr( $textsnip, ( $pos1 + $tempc ) );
+                    $this->mHighlightText = $tmpa . "<b>" . substr( $textsnip, $pos1, $tempc ) . "</b>" . $tmpb;
+                    // str_replace($_REQUEST['search'],"<b>".$_REQUEST['search']."</b>",$textsnip);
                 } else {
                     $this->mHighlightText = $textsnip;
                 }
@@ -315,19 +315,19 @@ class SolrResult extends SearchResult {
      * @param boolean $useFinalSeparator
      * @return array (highlighted, unmodified text)
      */
-    function extractSnippet($lines, $nsText, $type, $useFinalSeparator=false) {
-        if (!array_key_exists($type, $lines))
-            return array(null, null);
+    function extractSnippet( $lines, $nsText, $type, $useFinalSeparator = false ) {
+        if ( !array_key_exists( $type, $lines ) )
+            return array( null, null );
         $ret = "";
         $original = null;
-        foreach ($lines[$type] as $h) {
-            list($s, $o) = $this->extractSnippetLine($h, $useFinalSeparator);
+        foreach ( $lines[$type] as $h ) {
+            list( $s, $o ) = $this->extractSnippetLine( $h, $useFinalSeparator );
             $ret .= $s;
             $original = $o;
         }
-        if ($nsText != '')
+        if ( $nsText != '' )
             $ret = $nsText . ':' . $ret;
-        return array($ret, $original);
+        return array( $ret, $original );
     }
 
     /**
@@ -338,67 +338,67 @@ class SolrResult extends SearchResult {
      * @access protected
      * @return array(snippet,unmodified text)
      */
-    function extractSnippetLine($line, $useFinalSeparator) {
-        $parts = explode(" ", $line);
-        if (count($parts) != 4 && count($parts) != 5) {
-            wfDebug("Bad result line:" . $line . "\n");
+    function extractSnippetLine( $line, $useFinalSeparator ) {
+        $parts = explode( " ", $line );
+        if ( count( $parts ) != 4 && count( $parts ) != 5 ) {
+            wfDebug( "Bad result line:" . $line . "\n" );
             return "";
         }
-        $splits = $this->stripBracketsSplit($parts[0]);
-        $highlight = $this->stripBracketsSplit($parts[1]);
-        $suffix = urldecode($this->stripBrackets($parts[2]));
-        $text = urldecode($parts[3]);
+        $splits = $this->stripBracketsSplit( $parts[0] );
+        $highlight = $this->stripBracketsSplit( $parts[1] );
+        $suffix = urldecode( $this->stripBrackets( $parts[2] ) );
+        $text = urldecode( $parts[3] );
         $original = null;
-        if (count($parts) > 4)
-            $original = urldecode($parts[4]);
+        if ( count( $parts ) > 4 )
+            $original = urldecode( $parts[4] );
 
-        $splits[] = strlen($text);
+        $splits[] = strlen( $text );
         $start = 0;
         $snippet = "";
         $hi = 0;
-        $ellipsis = wfMsgForContent('ellipsis');
+        $ellipsis = wfMsgForContent( 'ellipsis' );
 
-        foreach ($splits as $sp) {
-            $sp = intval($sp);
+        foreach ( $splits as $sp ) {
+            $sp = intval( $sp );
 // highlight words!
-            while ($hi < count($highlight) && intval($highlight[$hi]) < $sp) {
-                $s = intval($highlight[$hi]);
-                $e = intval($highlight[$hi + 1]);
-                $snippet .= substr($text, $start, $s - $start) . "<span class='searchmatch'>" . substr($text, $s, $e - $s) . "</span>";
+            while ( $hi < count( $highlight ) && intval( $highlight[$hi] ) < $sp ) {
+                $s = intval( $highlight[$hi] );
+                $e = intval( $highlight[$hi + 1] );
+                $snippet .= substr( $text, $start, $s - $start ) . "<span class='searchmatch'>" . substr( $text, $s, $e - $s ) . "</span>";
                 $start = $e;
                 $hi += 2;
             }
 // copy till split point
-            $snippet .= substr($text, $start, $sp - $start);
-            if ($sp == strlen($text) && $suffix != '')
+            $snippet .= substr( $text, $start, $sp - $start );
+            if ( $sp == strlen( $text ) && $suffix != '' )
                 $snippet .= $suffix;
-            else if ($useFinalSeparator)
+            else if ( $useFinalSeparator )
                 $snippet .= " <b>" . $ellipsis . "</b> ";
 
             $start = $sp;
         }
-        return array($snippet, $original);
+        return array( $snippet, $original );
     }
 
     /**
      * @access private
      */
-    function stripBrackets($str) {
-        if ($str == '[]')
+    function stripBrackets( $str ) {
+        if ( $str == '[]' )
             return '';
-        return substr($str, 1, strlen($str) - 2);
+        return substr( $str, 1, strlen( $str ) - 2 );
     }
 
     /**
      * @access private
      * @return array
      */
-    function stripBracketsSplit($str) {
-        $strip = $this->stripBrackets($str);
-        if ($strip == '')
+    function stripBracketsSplit( $str ) {
+        $strip = $this->stripBrackets( $str );
+        if ( $strip == '' )
             return array();
         else
-            return explode(",", $strip);
+            return explode( ",", $strip );
     }
 
     function getTitle() {
@@ -406,27 +406,27 @@ class SolrResult extends SearchResult {
     }
 
     function getScore() {
-        if (is_null($this->mScore))
-            return null; // Solr scores are meaningless to the user... 
-            
+        if ( is_null( $this->mScore ) )
+            return null; // Solr scores are meaningless to the user...
+
 // echo($this->mScore." ");
-        return floatval($this->mScore);
+        return floatval( $this->mScore );
     }
 
-    function getTitleSnippet($terms) {
-        if (is_null($this->mHighlightTitle))
+    function getTitleSnippet( $terms ) {
+        if ( is_null( $this->mHighlightTitle ) )
             return '';
         return $this->mHighlightTitle;
     }
 
-    function getTextSnippet($terms) {
-        if (is_null($this->mHighlightText))
-            return parent::getTextSnippet($terms);
+    function getTextSnippet( $terms ) {
+        if ( is_null( $this->mHighlightText ) )
+            return parent::getTextSnippet( $terms );
         return $this->mHighlightText;
     }
 
-    function getRedirectSnippet($terms) {
-        /* if (isset($this->mHighlightRedirect))            
+    function getRedirectSnippet( $terms ) {
+        /* if (isset($this->mHighlightRedirect))
           if (is_null($this->mHighlightRedirect))
           return '';
           return $this->mHighlightRedirect;
@@ -439,13 +439,13 @@ class SolrResult extends SearchResult {
     }
 
     function getSectionSnippet() {
-        if (is_null($this->mHighlightSection))
+        if ( is_null( $this->mHighlightSection ) )
             return null;
         return $this->mHighlightSection;
     }
 
     function getSectionTitle() {
-        if (is_null($this->mSectionTitle))
+        if ( is_null( $this->mSectionTitle ) )
             return null;
         return $this->mSectionTitle;
     }
@@ -459,19 +459,19 @@ class SolrResult extends SearchResult {
     }
 
     function getTimestamp() {
-        if (is_null($this->mDate))
+        if ( is_null( $this->mDate ) )
             return parent::getTimestamp();
         return $this->mDate;
     }
 
     function getWordCount() {
-        if (is_null($this->mWordCount))
+        if ( is_null( $this->mWordCount ) )
             return parent::getWordCount();
         return $this->mWordCount;
     }
 
     function getByteSize() {
-        if (is_null($this->mSize))
+        if ( is_null( $this->mSize ) )
             return parent::getByteSize();
         return $this->mSize;
     }
@@ -497,30 +497,30 @@ class SolrSearchSet extends SearchResultSet {
      * @return array
      * @access public
      */
-    static function newFromQuery($method, $query, $namespaces = array(), $limit = 20, $offset = 0, $searchAll = False) {
+    static function newFromQuery( $method, $query, $namespaces = array(), $limit = 20, $offset = 0, $searchAll = False ) {
         $fname = 'SolrSearchSet::newFromQuery';
-        wfProfileIn($fname);
+        wfProfileIn( $fname );
 
         $wgSolrTalker = new SolrTalker();
 
-        $query = $wgSolrTalker->queryChecker($query);
-        $xml = $wgSolrTalker->solrQuery($query, $offset, $limit, true, true);       // Abfrage ok, ergebniss in XML
+        $query = $wgSolrTalker->queryChecker( $query );
+        $xml = $wgSolrTalker->solrQuery( $query, $offset, $limit, true, true );       // Abfrage ok, ergebniss in XML
         $totalHits = $xml->result['numFound'];
 
-        $resultLines = array();;
+        $resultLines = array(); ;
 
-        $highl = $xml->xpath('//lst[@name="highlighting"]/lst');
+        $highl = $xml->xpath( '//lst[@name="highlighting"]/lst' );
 
         $hli = 0;
 
-        foreach ($xml->result->doc as $doc) {
+        foreach ( $xml->result->doc as $doc ) {
 
-            if (isset($highl[$hli]->arr)) {
+            if ( isset( $highl[$hli]->arr ) ) {
 
-                foreach ($highl[$hli]->arr as $feld) {
-                    if (isset($feld['name'])) {
+                foreach ( $highl[$hli]->arr as $feld ) {
+                    if ( isset( $feld['name'] ) ) {
 
-                        switch ($feld['name']) {
+                        switch ( $feld['name'] ) {
 
                             case 'title':
                                 $doc[]->highlight->title = $feld->str;
@@ -542,20 +542,20 @@ class SolrSearchSet extends SearchResultSet {
         $interwiki = null;
 
 
-        $resultSet = new SolrSearchSet($method, $query, $resultLines, count($resultLines), $totalHits,
-                        $suggestion, $info, $interwiki);
+        $resultSet = new SolrSearchSet( $method, $query, $resultLines, count( $resultLines ), $totalHits,
+                        $suggestion, $info, $interwiki );
 
-        wfProfileOut($fname);
+        wfProfileOut( $fname );
         return $resultSet;
     }
 
-    static function startsWith($source, $prefix) {
-        return strncmp($source, $prefix, strlen($prefix)) == 0;
+    static function startsWith( $source, $prefix ) {
+        return strncmp( $source, $prefix, strlen( $prefix ) ) == 0;
     }
 
     /**
      * Private constructor. Use SolrSearchSet::newFromQuery().
-     * 
+     *
      * @param string $method
      * @param string $query
      * @param array $lines
@@ -565,7 +565,7 @@ class SolrSearchSet extends SearchResultSet {
      * @param string $info
      * @access private
      */
-    function SolrSearchSet($method, $query, $lines, $resultCount, $totalHits = null, $suggestion = null, $info = null, $interwiki = null) {
+    function SolrSearchSet( $method, $query, $lines, $resultCount, $totalHits = null, $suggestion = null, $info = null, $interwiki = null ) {
         $this->mMethod = $method;
         $this->mQuery = $query;
         $this->mTotalHits = $totalHits;
@@ -574,46 +574,46 @@ class SolrSearchSet extends SearchResultSet {
         $this->mPos = 0;
         $this->mSuggestionQuery = null;
         $this->mSuggestionSnippet = '';
-        $this->parseSuggestion($suggestion);
+        $this->parseSuggestion( $suggestion );
         $this->mInfo = $info;
         $this->mInterwiki = $interwiki;
     }
 
     /** Get suggestions from a suggestion result line */
-    function parseSuggestion($suggestion) {
-        if (is_null($suggestion))
+    function parseSuggestion( $suggestion ) {
+        if ( is_null( $suggestion ) )
             return;
 // parse split points and highlight changes
-        list($dummy, $points, $sug) = explode(" ", $suggestion);
-        $sug = urldecode($sug);
-        $points = explode(",", substr($points, 1, -1));
-        array_unshift($points, 0);
+        list( $dummy, $points, $sug ) = explode( " ", $suggestion );
+        $sug = urldecode( $sug );
+        $points = explode( ",", substr( $points, 1, -1 ) );
+        array_unshift( $points, 0 );
         $suggestText = "";
-        for ($i = 1; $i < count($points); $i+=2) {
-            $suggestText .= htmlspecialchars(substr($sug, $points[$i - 1], $points[$i] - $points[$i - 1]));
-            $suggestText .= '<em>' . htmlspecialchars(substr($sug, $points[$i], $points[$i + 1] - $points[$i])) . "</em>";
+        for ( $i = 1; $i < count( $points ); $i += 2 ) {
+            $suggestText .= htmlspecialchars( substr( $sug, $points[$i - 1], $points[$i] - $points[$i - 1] ) );
+            $suggestText .= '<em>' . htmlspecialchars( substr( $sug, $points[$i], $points[$i + 1] - $points[$i] ) ) . "</em>";
         }
-        $suggestText .= htmlspecialchars(substr($sug, end($points)));
+        $suggestText .= htmlspecialchars( substr( $sug, end( $points ) ) );
 
-        $this->mSuggestionQuery = $this->replaceGenericPrefixes($sug);
-        $this->mSuggestionSnippet = $this->replaceGenericPrefixes($suggestText);
+        $this->mSuggestionQuery = $this->replaceGenericPrefixes( $sug );
+        $this->mSuggestionSnippet = $this->replaceGenericPrefixes( $suggestText );
     }
 
     /** replace prefixes like [2]: that are not in phrases */
-    function replaceGenericPrefixes($text) {
+    function replaceGenericPrefixes( $text ) {
         $out = "";
-        $phrases = explode('"', $text);
-        for ($i = 0; $i < count($phrases); $i+=2) {
-            $out .= preg_replace_callback('/\[([0-9]+)\]:/', array($this, 'genericPrefixCallback'), $phrases[$i]);
-            if ($i + 1 < count($phrases))
-                $out .= '"' . $phrases[$i + 1] . '"'; // phrase text	
+        $phrases = explode( '"', $text );
+        for ( $i = 0; $i < count( $phrases ); $i += 2 ) {
+            $out .= preg_replace_callback( '/\[([0-9]+)\]:/', array( $this, 'genericPrefixCallback' ), $phrases[$i] );
+            if ( $i + 1 < count( $phrases ) )
+                $out .= '"' . $phrases[$i + 1] . '"'; // phrase text
         }
         return $out;
     }
 
-    function genericPrefixCallback($matches) {
+    function genericPrefixCallback( $matches ) {
         global $wgContLang;
-        return $wgContLang->getFormattedNsText($matches[1]) . ":";
+        return $wgContLang->getFormattedNsText( $matches[1] ) . ":";
     }
 
     function numRows() {
@@ -621,8 +621,8 @@ class SolrSearchSet extends SearchResultSet {
     }
 
     function termMatches() {
-        $resq = preg_replace("/\\[.*?\\]:/", " ", $this->mQuery); # generic prefixes
-        $resq = preg_replace("/all:/", " ", $resq);
+        $resq = preg_replace( "/\\[.*?\\]:/", " ", $this->mQuery ); # generic prefixes
+        $resq = preg_replace( "/all:/", " ", $resq );
 
 // Fixme: this is ripped from SearchMySQL and probably kind of sucks,
 // but it handles quoted phrase searches more or less correctly.
@@ -631,22 +631,22 @@ class SolrSearchSet extends SearchResultSet {
         $regexes = array();
         $m = array();
         $lc = SearchEngine::legalSearchChars();
-        if (preg_match_all('/([-+<>~]?)(([' . $lc . ']+)(\*?)|"[^"]*")/', $resq, $m, PREG_SET_ORDER)) {
-            foreach ($m as $terms) {
-                if (!empty($terms[3])) {
+        if ( preg_match_all( '/([-+<>~]?)(([' . $lc . ']+)(\*?)|"[^"]*")/', $resq, $m, PREG_SET_ORDER ) ) {
+            foreach ( $m as $terms ) {
+                if ( !empty( $terms[3] ) ) {
 // Match individual terms in result highlighting...
-                    $regexp = preg_quote($terms[3], '/');
-                    if ($terms[4])
+                    $regexp = preg_quote( $terms[3], '/' );
+                    if ( $terms[4] )
                         $regexp .= "[0-9A-Za-z_]+";
                 } else {
 // Match the quoted term in result highlighting...
-                    $regexp = preg_quote(str_replace('"', '', $terms[2]), '/');
+                    $regexp = preg_quote( str_replace( '"', '', $terms[2] ), '/' );
                 }
                 $regexes[] = $regexp;
             }
-            wfDebug(__METHOD__ . ': Match with /' . implode('|', $regexes) . "/\n");
+            wfDebug( __METHOD__ . ': Match with /' . implode( '|', $regexes ) . "/\n" );
         } else {
-            wfDebug("Can't understand search query '{$resq}'\n");
+            wfDebug( "Can't understand search query '{$resq}'\n" );
         }
         return $regexes;
     }
@@ -655,12 +655,12 @@ class SolrSearchSet extends SearchResultSet {
      * Stupid hack around PHP's limited lambda support
      * @access private
      */
-    function regexQuote($term) {
-        return preg_quote($term, '/');
+    function regexQuote( $term ) {
+        return preg_quote( $term, '/' );
     }
 
     function hasResults() {
-        return count($this->mResults) > 0;
+        return count( $this->mResults ) > 0;
     }
 
     /**
@@ -678,12 +678,12 @@ class SolrSearchSet extends SearchResultSet {
 
     /**
      * Return information about how and from where the results were fetched,
-     * should be useful for diagnostics and debugging 
+     * should be useful for diagnostics and debugging
      *
      * @return string
      */
     function getInfo() {
-        if (is_null($this->mInfo))
+        if ( is_null( $this->mInfo ) )
             return null;
         return "Search results fetched via " . $this->mInfo;
     }
@@ -705,7 +705,7 @@ class SolrSearchSet extends SearchResultSet {
      * @access public
      */
     function hasSuggestion() {
-        return is_string($this->mSuggestionQuery) && $this->mSuggestionQuery != '';
+        return is_string( $this->mSuggestionQuery ) && $this->mSuggestionQuery != '';
     }
 
     function getSuggestionQuery() {
@@ -723,9 +723,9 @@ class SolrSearchSet extends SearchResultSet {
      * @abstract
      */
     function next() {
-        if ($this->mPos < $this->mResultCount) {
+        if ( $this->mPos < $this->mResultCount ) {
             $this->mPos++;
-            return new SolrResult($this->mResults[$this->mPos - 1], $this->mMethod);
+            return new SolrResult( $this->mResults[$this->mPos - 1], $this->mMethod );
         } else {
             return null;
         }

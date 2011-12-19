@@ -1,7 +1,7 @@
 <?php
 /**
  * File holding the SolrSearchFieldSet class
- * 
+ *
  * @ingroup SolrStore
  * @file
  * @author Simon Bachenberg
@@ -9,13 +9,13 @@
 
 /**
  * TODO: Insert class description
- * 
+ *
  * To create a SearchSet for your Wiki add the Following Lines to you LocalSettings.php
  * $wgSolrFields = array(
  *   new SolrSearchFieldSet('<Name of the SearchSet>', '<Semicolon Seperated List of your Semantic Propertys>', ''<Semicolon Seperated List of the Lable for your Fields>', '<Extra Query Parameters>'),
  *   new SolrSearchFieldSet('Institution', 'has_name; has_country', 'Name, Country', ' AND category:Event')
  *   );
- * 
+ *
  * @ingroup SolrStore
  */
 class SolrSearchFieldSet {
@@ -25,10 +25,10 @@ class SolrSearchFieldSet {
     var $mLable;
     var $mQuery;
 
-    public function __construct($name, $fields = 'search', $lable = 'Alles', $query = null) {
+    public function __construct( $name, $fields = 'search', $lable = 'Alles', $query = null ) {
         $this->mName = $name;
-        $this->mFields = explode(';', $fields);
-        $this->mLable = explode(';', $lable);
+        $this->mFields = explode( ';', $fields );
+        $this->mLable = explode( ';', $lable );
         $this->mQuery = $query;
     }
 
@@ -48,19 +48,19 @@ class SolrSearchFieldSet {
         return $this->mQuery;
     }
 
-    public function setName($value) {
+    public function setName( $value ) {
         $this->mName = $value;
     }
 
-    public function setFields($value) {
+    public function setFields( $value ) {
         $this->mFields = $value;
     }
 
-    public function setLable($value) {
+    public function setLable( $value ) {
         $this->mLable = $value;
     }
 
-    public function setQuery($value) {
+    public function setQuery( $value ) {
         $this->mQuery = $value;
     }
 

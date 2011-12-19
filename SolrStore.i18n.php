@@ -16,6 +16,14 @@ $messages['en'] = array(
     'searchFieldSets-title' => 'SolrSearch: SearchSet Select',
 );
 
+$messages['qqq'] = array(
+	'solrconnector-desc' =>  '{{desc}}',
+    'solrsearch' => 'The title of the Special:SolrSearch page as appearing in Special:SpecialPages. Should probably the same as message \'\'searchFieldSets\'\'',
+    'searchFieldSets' => 'The pagetitle (heading) of the Special:SolrSearch page',
+    'searchFieldSets-select' => 'A message',
+    'searchFieldSets-title' => 'The title of the Special:SolrSearch page',
+);
+
 $messages['de'] = array(
     'solrsearch' => 'SolrSuche',
     'searchFieldSets' => 'SolrSuche',
