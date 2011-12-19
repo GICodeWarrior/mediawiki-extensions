@@ -9,7 +9,7 @@ rpos
 Len
 !! input
 {{#len: Hello }}
-!! output
+!! result
 <p>5
 </p>
 !! end
@@ -18,7 +18,7 @@ Len
 First position
 !! input
 {{#pos: miruvor | r }}
-!! output
+!! result
 <p>2
 </p>
 !! end
@@ -27,7 +27,7 @@ First position
 Position from offset
 !! input
 {{#pos: miruvor | 3 }}
-!! output
+!! result
 <p>6
 </p>
 !! end
@@ -36,7 +36,7 @@ Position from offset
 Last position
 !! input
 {{#rpos: miruvor}}
-!! output
+!! result
 <p>6
 </p>
 !! end
