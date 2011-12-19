@@ -8,6 +8,13 @@
  */
 $specialPageAliases = array();
 
-$specialPageAliases['en'] = array( 'solrsearch' => array( 'SolrSearch', 'SpecialSolrSearch' ) );
-$specialPageAliases['de'] = array( 'solrsearch' => array( 'SolrSearch', 'SpecialSolrSearch' ) );
+/** English (English) */
+$specialPageAliases['en'] = array(
+	'solrsearch' => array( 'SolrSearch', 'SpecialSolrSearch' ),
+);
+
+/** German (Deutsch) */
+$specialPageAliases['de'] = array( 
+	'solrsearch' => array( 'SolrSearch', 'SpecialSolrSearch' ),
+);
 

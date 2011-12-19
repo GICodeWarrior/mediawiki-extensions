@@ -34,9 +34,9 @@ define( 'SC_VERSION', '0.5 Beta' );
 $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][] = array(
 	'path' => __FILE__,
 	'name' => 'SolrStore',
-	'author' => array( '[http://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]', '[http://www.mediawiki.org/wiki/User:SBachenberg Simon Bachenberg]', 'Sascha Schüller' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:SolrStore',
-	'descriptionmsg' => 'solrconnector-desc',
+	'author' => array( '[https://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]', '[https://www.mediawiki.org/wiki/User:SBachenberg Simon Bachenberg]', 'Sascha Schüller' ),
+	'url' => 'https://www.mediawiki.org/wiki/Extension:SolrStore',
+	'descriptionmsg' => 'solrstore-desc',
 	'version' => SC_VERSION,
 );
 
