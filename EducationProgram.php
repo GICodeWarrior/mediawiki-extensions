@@ -170,6 +170,15 @@ $wgResourceModules['ep.pager'] = $moduleTemplate + array(
 	),
 );
 
+$wgResourceModules['ep.formpage'] = $moduleTemplate + array(
+	'scripts' => array(
+		'ep.formpage.js',
+	),
+	'dependencies' => array(
+		'jquery.ui.button',
+	),
+);
+
 unset( $moduleTemplate );
 
 $egEPSettings = array();

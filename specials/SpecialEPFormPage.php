@@ -53,6 +53,8 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 		$this->listPage = $listPage;
 		
 		parent::__construct( $name, $right, false );
+		
+		$this->getOutput()->addModules( 'ep.formpage' );
 	}
 	
 	/**
