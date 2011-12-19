@@ -136,7 +136,7 @@ abstract class EPPager extends TablePager {
 		$conds = array();
 		
 		$filterOptions = $this->getFilterOptions();
-		$this->addFilterValues( $filterOptions );
+		$this->addFilterValues( $filterOptions, false );
 		
 		foreach ( $filterOptions as $optionName => $optionData ) {
 			if ( array_key_exists( 'value', $optionData ) && $optionData['value'] !== '' ) {
@@ -261,10 +261,11 @@ abstract class EPPager extends TablePager {
 	 * @since 0.1
 	 * 
 	 * @param array $filterOptions
+	 * @param boolean $cast Should values with non-string type be casted (ie to have a select with int values have the correct val selected).
 	 * 
 	 * @return boolean If anything was changed from the default
 	 */
-	protected function addFilterValues( array &$filterOptions ) {
+	protected function addFilterValues( array &$filterOptions, $cast = true ) {
 		$req = $this->getRequest();
 		$changed = false;
 		
@@ -274,7 +275,7 @@ abstract class EPPager extends TablePager {
 				$req->setSessionData( get_called_class() . $optionName, $optionData['value'] );
 				$changed = true;
 				
-				if ( array_key_exists( 'datatype', $optionData ) ) {
+				if ( $cast && array_key_exists( 'datatype', $optionData ) ) {
 					switch ( $optionData['datatype'] ) {
 						case 'int':
 							$optionData['value'] = (int)$optionData['value'];
