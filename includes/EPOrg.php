@@ -59,5 +59,46 @@ class EPOrg extends EPDBObject {
 			'country' => '',
 		);
 	}
+	
+	public static function getOrgOptions( array /* EPOrg */ $orgs ) {
+		$options = array();
+		
+		foreach ( $orgs as /* EPOrg */ $org ) {
+			$options[$org->getField( 'name' )] = $org->getId(); 
+		}
+		
+		return $options;
+	}
+	
+	/**
+	 * Returns the list of orgs that the specified user can edit.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param User|int $user
+	 * @param array|null $fields
+	 * 
+	 * @return array of EPOrg
+	 */
+	public static function getEditableOrgs( $user, array $fields = null ) {
+		if ( is_int( $user ) ) {
+			$userId = $user;
+			$user = User::newFromId( $user );
+		}
+		else {
+			$userId = $user->getId();
+		}
+		
+		if ( $user->isAllowed( 'epadmin' ) ) {
+			return self::select( $fields );
+		}
+		elseif ( $user->isAllowed( 'epmentor' ) ) {
+			$mentor = EPMentor::selectRow( 'id', array( 'user_id' => $userId ) );
+			return $mentor === false ? array() : $mentor->getOrgs( $fields );
+		}
+		else {
+			return array();
+		}
+	}
 
 }

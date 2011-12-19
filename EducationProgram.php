@@ -106,6 +106,16 @@ $wgSpecialPageGroups['EditCourse'] 					= 'education';
 $wgSpecialPageGroups['EditInstitution'] 			= 'education';
 $wgSpecialPageGroups['EditTerm'] 					= 'education';
 
+// DB object classes
+$egEPDBObjects = array();
+$egEPDBObjects['EPOrg'] = array( 'table' => 'ep_orgs', 'prefix' => 'org_' );
+$egEPDBObjects['EPCourse'] = array( 'table' => 'ep_courses', 'prefix' => 'course_' );
+$egEPDBObjects['EPTerm'] = array( 'table' => 'ep_terms', 'prefix' => 'term_' );
+$egEPDBObjects['EPMentor'] = array( 'table' => 'ep_mentors', 'prefix' => 'mentor_' );
+$egEPDBObjects['EPStudent'] = array( 'table' => 'ep_students', 'prefix' => 'student_' );
+$egEPDBObjects[] = array( 'table' => 'ep_students_per_term', 'prefix' => 'spt_' );
+$egEPDBObjects[] = array( 'table' => 'ep_mentors_per_org', 'prefix' => 'mpo_' );
+
 // API
 
 

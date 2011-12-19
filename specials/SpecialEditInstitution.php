@@ -48,8 +48,6 @@ class SpecialEditInstitution extends SpecialEPFormPage {
 			},
 		);
 		
-		$countries = efEpGetCountries();
-		
 		$fields['country'] = array (
 			'type' => 'select',
 			'label-message' => 'educationprogram-org-edit-country',

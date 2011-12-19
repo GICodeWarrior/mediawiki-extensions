@@ -59,7 +59,12 @@ class EPMentor extends EPDBObject {
 	 * @return array of EPOrg
 	 */
 	public function getOrgs( array $fields = null ) {
-		return array(); // TODO
+		return EPOrg::select(
+			$fields,
+			array( array( 'ep_mentors_per_org', 'mentor_id' ), $this->getId() ),
+			array(),
+			array( 'orgs' => array( 'INNER JOIN', array( array( array( 'ep_mentors_per_org', 'org_id' ), array( 'orgs', 'id' ) ) ) ) )
+		);
 	}
 	
 	/**
