@@ -672,6 +672,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
  * @author Nghtwlkr
  */
 $messages['no'] = array(
@@ -681,6 +682,14 @@ $messages['no'] = array(
 	'semanticformsinputs-prev' => 'Forrige',
 	'semanticformsinputs-next' => 'Neste',
 	'semanticformsinputs-today' => 'I dag',
+	'semanticformsinputs-malformedregexp' => 'Feilutformet regulæruttrykk: $1',
+	'semanticformsinputs-datepicker-dateformat' => 'Datoformatstreng. Se [http://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters online documentation] for nærmere informasjon.',
+	'semanticformsinputs-datepicker-weekstart' => 'Første ukedag (0 - søndag, 1 - mandag, ...).',
+	'semanticformsinputs-datepicker-firstdate' => 'Første valgbare dato (med "yyyy/mm/dd"-format).',
+	'semanticformsinputs-datepicker-lastdate' => 'Siste valgbare dato (med "yyyy/mm/dd"-format).',
+	'semanticformsinputs-datepicker-disabledaysofweek' => 'Liste av dager som ikke kan velges (f. eks. helg: 6, 0).',
+	'semanticformsinputs-datepicker-highlightdaysofweek' => 'Liste av dager som skal fremheves (f. eks. helg: 6, 0).',
+	'semanticformsinputs-datepicker-disabledates' => 'Komma-separert liste av skjulte datoer/datobaserte tidsrom (datoer gitt i "yyyy/mm/dd"-format, tidsrom i "yyyy/mm/dd-yyyy/mm/dd"-format).',
 );
 
 /** Deitsch (Deitsch)
