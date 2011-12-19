@@ -147,8 +147,15 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'browsewiki' => 'Blader door Wiki en Semantisch Web',
+	'swb_desc' => 'Voegt een speciale pagina [[Special:BrowseWiki|wiki en semantisch web doorbladeren]] toe',
+	'swb_browse_article' => 'Voer de naam in van de pagina vanwaar u met semantisch bladeren wilt beginnen.',
 	'swb_browse_go' => 'OK',
+	'swb_browse_show_incoming' => 'eigenschappen die hierheen verwijzen weergeven',
+	'swb_browse_hide_incoming' => 'eigenschappen die hierheen verwijzen verbergen',
 	'swb_browse_no_outgoing' => 'Deze pagina heeft geen eigenschappen.',
+	'swb_browse_no_incoming' => 'Er verwijzen geen eigenschappen naar deze pagina.',
+	'swb_inverse_label_property' => 'Tegenovergesteld eigenschapslabel',
+	'swb_inverse_label_default' => '$1 van',
 );
 
 /** Pashto (پښتو)
