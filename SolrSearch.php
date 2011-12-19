@@ -1,10 +1,16 @@
 <?php
+/**
+ * File holding the SolrSearch class
+ *
+ * @ingroup SolrStore
+ * @file
+ * @author Simon Bachenberg
+ */
 
 /**
- * SolrStore: The SolrStore Extesion is Semantic Mediawiki Searchprovieder based on Apache Solr.
- *
- * @defgroup SolrStore
- * @author Simon Bachenberg
+ * TODO: Insert class description
+ * 
+ * @ingroup SolrStore
  */
 class SolrSearch extends SearchEngine {
 

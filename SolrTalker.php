@@ -1,12 +1,16 @@
 <?php
+/**
+ * File holding the SolrTalker class
+ * 
+ * @ingroup SolrStore
+ * @file
+ * @author Simon Bachenberg
+ */
 
 /**
- * SolrStore: The SolrStore Extesion is Semantic Mediawiki Searchprovieder based on Apache Solr.
+ * This class should do all the talk to the Solr server.
  * 
- * This class should do all the Work with SOlr.
- * 
- * @defgroup SolrStore
- * @author Simon Bachenberg
+ * @ingroup SolrStore
  */
 class SolrTalker {
 
@@ -127,7 +131,7 @@ class SolrTalker {
             $queryStr = '';
             foreach ($queryParts as $value) {
                 if (strpos($value, ':') !== false) {            //Value conatins a  ":" ?
-                    $parts = split(':', $value);                                    //Split the Query part in Key (Parts[0]) and Value (Parts[1])
+                    $parts = explode(':', $value);                                    //Split the Query part in Key (Parts[0]) and Value (Parts[1])
                     $solrField = $this->findField($parts[0]);                        //Search for a Solr Field for the Key
                     if ($solrField) {
                         $queryStr = $queryStr . ' ' . $solrField . ':' . $parts[1];
@@ -205,28 +209,45 @@ class SolrTalker {
 
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
         curl_setopt($ch, CURLINFO_HEADER_OUT, 1);
-
+		
         if ($xmlcontent) {
+	        curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_HTTPHEADER, $this->header);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $xmlcontent);
         }
 
         $data = curl_exec($ch);
+		
+		if ( curl_errno( $ch ) != 0 ) {
+			throw new MWException( curl_error( $ch ) );
+		}
+		
+		$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		
+		curl_close($ch);
 
-        if (curl_errno($ch)) {
+		// if the request was successful
+		if ( $httpCode == 200 ) {
+			
+			try {
+				$xml = new SimpleXMLElement($data);
+			} catch (Exception $exc) {
+				throw new MWException( $exc->getMessage() );
+			}
+			
+		} else { // some error occurred
+			
+			// have to scrape the error message from the returned HTML
+			$xml = new DOMDocument;
+			$xml->loadHTML( $data );
+			
+			$u = $xml->getElementsByTagName( 'u' );
+			$errmsg = $xml->saveXML( $u->item( $u->length - 1 )->firstChild );
 
-        } else {
-            curl_close($ch);
-        }
-
-        try {
-            $xml = new SimpleXMLElement($data);
-        } catch (Exception $exc) {
-            return false;
-        }
+			throw new MWException( $errmsg );
+		}
 
         return $xml;
     }
@@ -404,5 +425,3 @@ class SolrTalker {
     }
 
 }
-
-?>

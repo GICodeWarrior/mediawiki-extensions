@@ -1,17 +1,16 @@
 <?php
-
 /**
- * SolrStore: The SolrStore Extesion is Semantic Mediawiki Searchprovieder based on Apache Solr.
+ * File holding the SolrDoc class
  *
- * @defgroup SolrStore
+ * @ingroup SolrStore
+ * @file
  * @author Simon Bachenberg
  */
 
 /**
  * Class for saving Documents for sending to Solr
  *
- * @file
- * @ingroup SolrConnector
+ * @ingroup SolrStore
  */
 class SolrDoc {
     private $output;
@@ -64,5 +63,3 @@ class SolrDoc {
         return $all;
     }
 }
-
-?>

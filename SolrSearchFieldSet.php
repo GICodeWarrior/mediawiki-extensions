@@ -1,17 +1,22 @@
 <?php
+/**
+ * File holding the SolrSearchFieldSet class
+ * 
+ * @ingroup SolrStore
+ * @file
+ * @author Simon Bachenberg
+ */
 
 /**
- * SolrStore: The SolrStore Extesion is Semantic Mediawiki Searchprovieder based on Apache Solr.
- *
- * @example To create a SearchSet for your Wiki add the Following Lines to you LocalSettings.php
+ * TODO: Insert class description
+ * 
+ * To create a SearchSet for your Wiki add the Following Lines to you LocalSettings.php
  * $wgSolrFields = array(
  *   new SolrSearchFieldSet('<Name of the SearchSet>', '<Semicolon Seperated List of your Semantic Propertys>', ''<Semicolon Seperated List of the Lable for your Fields>', '<Extra Query Parameters>'),
  *   new SolrSearchFieldSet('Institution', 'has_name; has_country', 'Name, Country', ' AND category:Event')
  *   );
  * 
- * 
- * @defgroup SolrStore
- * @author Simon Bachenberg
+ * @ingroup SolrStore
  */
 class SolrSearchFieldSet {
 
@@ -60,5 +65,3 @@ class SolrSearchFieldSet {
     }
 
 }
-
-?>

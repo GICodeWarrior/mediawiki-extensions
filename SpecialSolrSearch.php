@@ -1,11 +1,18 @@
 <?php
 /**
- * SolrStore: The SolrStore Extesion is Semantic Mediawiki Searchprovieder based on Apache Solr.
+ * File holding the SpecialSolrSearch class
  * 
  * This is the SpecialPage, displaying the SearchSets and Results
  * 
- * @defgroup SolrStore
+ * @ingroup SolrStore
+ * @file
  * @author Simon Bachenberg
+ */
+
+/**
+ * TODO: Insert class description
+ * 
+ * @ingroup SolrStore
  */
 class SpecialSolrSearch extends SpecialPage {
 
@@ -539,5 +546,3 @@ class SpecialSolrSearch extends SpecialPage {
     }
 
 }
-
-?>

@@ -1,11 +1,16 @@
 <?php
-
+/**
+ * File holding the SolrConnectorStore class
+ *
+ * @ingroup SolrStore
+ * @file
+ * @author Simon Bachenberg, Stephan Gambke
+ */
 
 /**
- * SolrStore: The SolrStore Extesion is Semantic Mediawiki Searchprovieder based on Apache Solr.
- *
- * @defgroup SolrStore
- * @author Simon Bachenberg, Stephan Gambke
+ * TODO: Insert class description
+ * 
+ * @ingroup SolrStore
  */
 class SolrConnectorStore extends SMWStore {
 
@@ -392,4 +397,3 @@ class SolrConnectorStore extends SMWStore {
     }
 
 }
-
