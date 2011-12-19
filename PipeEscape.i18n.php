@@ -78,10 +78,11 @@ $messages['bs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Purodha
  */
 $messages['de'] = array(
-	'pipeescape-desc' => 'Parserfunktion <code>#!</code> versteckt Parameter-Trenner',
+	'pipeescape-desc' => 'Ergänzt die Parserfunktion <code>#!</code>, die als versteckter Parametertrenner genutzt werden kann',
 );
 
 /** Lower Sorbian (Dolnoserbski)
