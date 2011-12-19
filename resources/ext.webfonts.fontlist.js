@@ -378,6 +378,7 @@
 			sa:  [ "Lohit Devanagari" ],
 			saz: [ "Pagul" ],
 			ta:  [ "Lohit Tamil", "Thendral", "Thenee" ],
+			tcy: [ "Lohit Kannada", "Kedage" ],
 			te:  [ "Lohit Telugu", "Pothana2000", "Vemana2000" ],
 			ti:  [ "AbyssinicaSIL" ]
 		}
