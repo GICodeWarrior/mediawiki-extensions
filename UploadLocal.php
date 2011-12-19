@@ -20,8 +20,12 @@ ENHANCEMENTS:
 */
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'UploadLocal',
-	'description' => 'allows users to link in files already on the server'
+	'descriptionmsg' => 'uploadlocal-desc',
+	//'author' => array( '' ),
+	// 'version' => '',
+	// 'url' => 'https://www.mediawiki.org/wiki/Extension:UploadLocal'
 );
 $wgSpecialPages['UploadLocal'] = 'UploadLocal';
 $wgExtensionMessagesFiles['UploadLocal'] = dirname( __FILE__ ) . '/UploadLocal.i18n.php';
