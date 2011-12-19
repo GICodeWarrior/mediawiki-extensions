@@ -21,7 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['SpecialTranslateSvg'] = $dir . 'SpecialTranslateSvg.php';
 $wgExtensionMessagesFiles['TranslateSvg'] = $dir . 'TranslateSvg.i18n.php';
-$wgExtensionAliasesFiles['TranslateSvg'] = $dir . 'TranslateSvg.alias.php';
+$wgExtensionMessagesFiles['TranslateSvg-alias']  = $dir . 'TranslateSvg.alias.php';
 $wgSpecialPages['TranslateSvg'] = 'SpecialTranslateSvg'; # Tell MediaWiki about the new special page and its class name
 $wgSpecialPageGroups['TranslateSvg'] = 'media';
  

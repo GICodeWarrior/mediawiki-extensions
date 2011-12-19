@@ -1,5 +1,10 @@
-var link = $('<a id="newtrans" href="#"></a>')
-	.text( mw.msg('translatesvg-addlink') )
+var paragraph = $('<p></p>').text( mw.msg('translatesvg-add') );
+var match = paragraph.html().match( /\[\[#addlanguage\|(.*?)\]\]/ );
+addtext = paragraph.html().replace( /\[\[#addlanguage\|.*?\]\]/, '<a id="newtrans" href="#"></a>' );
+paragraph.html( addtext );
+$('form#specialtranslatesvg').prepend(paragraph);
+$('#newtrans')
+	.text( match[1] )
 	.click(function() {
 	var langcode = prompt( mw.msg('translatesvg-specify') );
 	if( langcode !== null ){
@@ -19,9 +24,6 @@ var link = $('<a id="newtrans" href="#"></a>')
 	}
 	return false;
 }); //TODO: validate input
-var paragraph = $('<p></p>').text( mw.msg('translatesvg-add'))
-							.append( link );
-$('form#specialtranslatesvg').prepend(paragraph);
 
 function getExisting( fallback ){
 	//No need to check for an existing translation since we're creating a new language box
