@@ -114,6 +114,10 @@ $messages['en'] = array(
 	'ep-course-edit-org' => 'Institution',
 	'ep-course-edit-description' => 'Description',
 
+	'ep-course-invalid-name' => 'This name is to short. It needs to be at least contain $1 {{PLURAL:$1|character|characters}}.',
+	'ep-course-invalid-description' => 'This description is to short. It needs to be at least contain $1 {{PLURAL:$1|character|characters}}.',
+	'ep-course-invalid-org' => 'This institution does not exist',
+
 );
 
 /** Message documentation (Message documentation)

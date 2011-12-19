@@ -279,6 +279,9 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	 */
 	public function handleSubmission( array $data ) {
 		$fields = array();
+		$unknownValues = array();
+
+		$c = $this->itemClass; // Yeah, this is needed in PHP 5.3 >_>
 
 		foreach ( $data as $name => $value ) {
 			$matches = array();
@@ -288,13 +291,22 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 					$value = null;
 				}
 				
-				$fields[$matches[1]] = $value;
+				if ( $c::canHasField( $matches[1] ) ) {
+					$fields[$matches[1]] = $value;
+				}
+				else {
+					$unknownValues[$matches[1]] = $value;
+				}
 			}
 		}
 
-		$c = $this->itemClass; // Yeah, this is needed in PHP 5.3 >_>
+		
 		/* EPDBObject */ $item = new $c( $fields, is_null( $fields['id'] ) );
 
+		foreach ( $unknownValues as $name => $value ) {
+			
+		}
+		
 		$success = $item->writeToDB();
 
 		if ( $success ) {
@@ -303,6 +315,19 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 		else {
 			return array(); // TODO
 		}
+	}
+	
+	/**
+	 * Gets called for evey unknown submitted value, so they can be dealth with if needed.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param EPDBObject $item
+	 * @param string $name
+	 * @param string $value This is a string, since it comes from request data, but might be a number or other type.
+	 */
+	protected function handleUnknownField( EPDBObject $item, $name, $value ) {
+		// Override to use.
 	}
 	
 }

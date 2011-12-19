@@ -35,19 +35,19 @@ class SpecialEditCourse extends SpecialEPFormPage {
 			'label-message' => 'ep-course-edit-name',
 			'required' => true,
 			'validation-callback' => function ( $value, array $alldata = null ) {
-				return strlen( $value ) < 5 ? wfMsg( 'ep-course-invalid-name' ) : true;
+				return strlen( $value ) < 5 ? wfMsgExt( 'ep-course-invalid-name', 'parsemag', 5 ) : true;
 			},
 		);
 		
 		$orgOptions = EPOrg::getOrgOptions( EPOrg::getEditableOrgs( $this->getUser() ) );
 		
-		$fields['org'] = array (
+		$fields['org_id'] = array (
 			'type' => 'select',
 			'label-message' => 'ep-course-edit-org',
 			'required' => true,
 			'options' => $orgOptions,
-			'validation-callback' => function ( $value, array $alldata = null ) {
-				return strlen( $value ) < 10 ? wfMsg( 'ep-course-invalid-description' ) : true;
+			'validation-callback' => function ( $value, array $alldata = null ) use ( $orgOptions ) {
+				return in_array( (int)$value, array_values( $orgOptions ) ) ? true : wfMsg( 'ep-course-invalid-org' );
 			},
 			'default' => array_shift( $orgOptions )
 		);
@@ -57,7 +57,7 @@ class SpecialEditCourse extends SpecialEPFormPage {
 			'label-message' => 'ep-course-edit-description',
 			'required' => true,
 			'validation-callback' => function ( $value, array $alldata = null ) {
-				return strlen( $value ) < 10 ? wfMsg( 'ep-course-invalid-description' ) : true;
+				return strlen( $value ) < 10 ? wfMsgExt( 'ep-course-invalid-description', 'parsemag', 10 ) : true;
 			},
 			'default' => '',
 			'rows' => 5
