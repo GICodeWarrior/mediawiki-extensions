@@ -173,9 +173,16 @@ $messages['mk'] = array(
  * @author Saruman
  */
 $messages['nl'] = array(
+	'reassignedits' => 'Gebruikersbewerkingen opnieuw toewijzen',
+	'reassignedits-desc' => 'Laat toe bewerkingen van een oude gebruiker aan een nieuwe toe te wijzen',
 	'reassignedits-error-invalid' => 'De gebruikersnaam "<nowiki>$1</nowiki>" is ongeldig.',
 	'reassignedits-new' => 'Nieuwe gebruikersnaam',
 	'reassignedits-old' => 'Oude gebruikersnaam',
 	'reassignedits-submit' => 'Opslaan',
+	'reassignedits-success' => 'De bewerkingen van "<nowiki>$1</nowiki>" zijn toegevoegd aan "<nowiki>$2</nowiki>".',
+	'reassignedits-summary' => 'Bewerkingen van een oude gebruiker aan een nieuwe toewijzen.',
+	'reassignedits-updatelog-title' => 'Gebruikersnaam bijwerkingen in logboektitels',
+	'reassignedits-updatelog-user' => 'Uitvoerende gebruiker in logboeken bijwerken',
+	'right-reassignedits' => 'Bewerkingen van een oude gebruiker aan een nieuwe toewijzen',
 );
 
