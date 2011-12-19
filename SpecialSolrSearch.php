@@ -88,12 +88,12 @@ class SpecialSolrSearch extends SpecialPage {
         $sk = $wgUser->getSkin();
 
 
-        $wgOut->setPageTitle( wfMsg( 'searchFieldSets' ) );
-        $wgOut->setHTMLTitle( wfMsg( 'pagetitle', wfMsg( 'searchFieldSets-title', 'SolrSearch: Select FieldSet' ) ) );
+        $wgOut->setPageTitle( wfMsg( 'solrstore-searchFieldSets' ) );
+        $wgOut->setHTMLTitle( wfMsg( 'pagetitle', wfMsg( 'solrstore-searchFieldSets-title', 'SolrSearch: Select FieldSet' ) ) );
 
         $wgOut->setArticleRelated( false );
         $wgOut->addHtml( '<div class="solrsearch-fieldset">' );
-        $wgOut->addHtml( wfMsg( 'searchFieldSets-select' ) );
+        $wgOut->addHtml( wfMsg( 'solrstore-searchFieldSets-select' ) );
         $wgOut->addHtml( '<ul>' );
 
         // TODO: If no SearchSets exist, provide a shot Manual how to create some!
