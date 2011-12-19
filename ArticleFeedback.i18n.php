@@ -1563,8 +1563,10 @@ $messages['diq'] = array(
 	'articlefeedback-survey-answer-whyrated-other' => 'Bin',
 	'articlefeedback-survey-question-useful-iffalse' => 'Çıra?',
 	'articlefeedback-survey-submit' => 'Qeyd ke',
+	'articlefeedback-form-panel-explanation' => 'No çıko?',
 	'articlefeedback-pitch-or' => 'ya zi',
 	'articlefeedback-pitch-join-login' => 'Cıkewe',
+	'articlefeedback-pitch-edit-accept' => 'Ena pele bıvurne',
 	'articleFeedback-table-heading-page' => 'Pele',
 );
 
@@ -3910,6 +3912,21 @@ $messages['ka'] = array(
 	'articlefeedback-survey-message-success' => 'გმადლობთ გამოკითხვაში მონაწილეობისათვის.',
 	'articlefeedback-survey-message-error' => 'წარმოიშვა რაღაც შეცდომა.
 გთხოვთ სცადეთ მოგვიანებით.',
+);
+
+/** Kirmanjki (Kırmancki)
+ * @author Mirzali
+ */
+$messages['kiu'] = array(
+	'articlefeedback-survey-answer-whyrated-other' => 'Bin',
+	'articlefeedback-survey-question-useful-iffalse' => 'Çıra?',
+	'articlefeedback-survey-submit' => 'Bırusne',
+	'articlefeedback-form-panel-explanation' => 'No çıko?',
+	'articlefeedback-field-objective-label' => 'Bêteref',
+	'articlefeedback-pitch-or' => 'ya ki',
+	'articlefeedback-pitch-join-login' => 'Cı kuye',
+	'articlefeedback-pitch-edit-accept' => 'Na pele bıvurne',
+	'articleFeedback-table-heading-page' => 'Pele',
 );
 
 /** Korean (한국어)
