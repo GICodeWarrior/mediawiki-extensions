@@ -377,7 +377,8 @@ $messages['qqq'] = array(
 	'contest-contestant-header-country' => 'Table row header',
 	'contest-contestant-header-wmf' => 'Table row header',
 	'contest-contestant-header-volunteer' => 'Table row header',
-	'contest-contestant-header-rating' => 'Table row header',
+	'contest-contestant-header-rating' => 'Table row header.
+{{Identical|Rating}}',
 	'contest-contestant-header-comments' => 'Table row header',
 	'contest-contestant-submission-url' => 'Text for the link to the submission',
 	'contest-contestant-comments' => 'Page header (h2)',
@@ -635,6 +636,10 @@ $messages['be-tarask'] = array(
 	'contest-contestant-header-contest' => 'Назва конкурсу',
 	'contest-contestant-header-challenge' => 'Назва выкліку',
 	'contest-contestant-header-submission' => 'Спасылка запыту',
+	'contest-contestant-header-country' => 'Краіна ўдзельніка конкурсу',
+	'contest-contestant-header-wmf' => 'Зацікаўлены ў працы для WMF',
+	'contest-contestant-header-volunteer' => 'Зацікаўлены ў валянтэрскай працы',
+	'contest-contestant-header-rating' => 'Адзнака',
 );
 
 /** Breton (Brezhoneg)
@@ -1076,7 +1081,7 @@ $messages['fa'] = array(
 	'contest-edit-challenge-oneline' => 'توضیح کوتاه',
 	'contest-welcome-signup' => 'هم‌اکنون ثبت‌نام کنید',
 	'contest-signup-submit' => 'ثبت‌نام',
-	'contest-signup-email' => 'نشانی رایانامهٔ شما',
+	'contest-signup-email' => 'نشانی پست الکترونیکی شما',
 	'contest-signup-realname' => 'نام واقعی شما',
 	'contest-signup-country' => 'کشور شما',
 	'contest-contest-name' => 'نام',
