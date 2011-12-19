@@ -19,28 +19,6 @@ class EPCourse extends EPDBObject {
 	 *
 	 * @since 0.1
 	 *
-	 * @return string
-	 */
-	public static function getDBTable() {
-		return 'ep_courses';
-	}
-
-	/**
-	 * @see parent::getFieldTypes
-	 *
-	 * @since 0.1
-	 *
-	 * @return string
-	 */
-	protected static function getFieldPrefix() {
-		return 'course_';
-	}
-
-	/**
-	 * @see parent::getFieldTypes
-	 *
-	 * @since 0.1
-	 *
 	 * @return array
 	 */
 	protected static function getFieldTypes() {

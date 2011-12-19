@@ -48,11 +48,11 @@ abstract class EPDBObject {
 	 */
 	public static function getDBTable() {
 		global $egEPDBObjects;
-		if ( array_key_exists( __CLASS__, $egEPDBObjects ) ) {
-			return $egEPDBObjects[__CLASS__]['table'];
+		if ( array_key_exists( get_called_class(), $egEPDBObjects ) ) {
+			return $egEPDBObjects[get_called_class()]['table'];
 		}
 		else {
-			throw new MWException( 'Class "' . __CLASS__ . '" not found in $egEPDBObjects' );
+			throw new MWException( 'Class "' . get_called_class() . '" not found in $egEPDBObjects' );
 		}
 	}
 
@@ -66,11 +66,11 @@ abstract class EPDBObject {
 	 */
 	protected static function getFieldPrefix() {
 		global $egEPDBObjects;
-		if ( array_key_exists( __CLASS__, $egEPDBObjects ) ) {
-			return $egEPDBObjects[__CLASS__]['prefix'];
+		if ( array_key_exists( get_called_class(), $egEPDBObjects ) ) {
+			return $egEPDBObjects[get_called_class()]['prefix'];
 		}
 		else {
-			throw new MWException( 'Class "' . __CLASS__ . '" not found in $egEPDBObjects' );
+			throw new MWException( 'Class "' . get_called_class() . '" not found in $egEPDBObjects' );
 		}
 	}
 	

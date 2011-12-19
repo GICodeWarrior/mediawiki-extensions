@@ -19,28 +19,6 @@ class EPTerm extends EPDBObject {
 	 *
 	 * @since 0.1
 	 *
-	 * @return string
-	 */
-	public static function getDBTable() {
-		return 'ep_terms';
-	}
-
-	/**
-	 * @see parent::getFieldTypes
-	 *
-	 * @since 0.1
-	 *
-	 * @return string
-	 */
-	protected static function getFieldPrefix() {
-		return 'term_';
-	}
-
-	/**
-	 * @see parent::getFieldTypes
-	 *
-	 * @since 0.1
-	 *
 	 * @return array
 	 */
 	protected static function getFieldTypes() {
