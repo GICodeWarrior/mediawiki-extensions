@@ -271,11 +271,22 @@ abstract class EPPager extends TablePager {
 		foreach ( $filterOptions as $optionName => &$optionData ) {
 			if ( $req->getCheck( $optionName ) ) {
 				$optionData['value'] = $req->getVal( $optionName );
-				$req->setSessionData( __CLASS__ . $optionName, $optionData['value'] );
+				$req->setSessionData( get_called_class() . $optionName, $optionData['value'] );
 				$changed = true;
+				
+				if ( array_key_exists( 'datatype', $optionData ) ) {
+					switch ( $optionData['datatype'] ) {
+						case 'int':
+							$optionData['value'] = (int)$optionData['value'];
+							break;
+						case 'float':
+							$optionData['value'] = (float)$optionData['value'];
+							break;
+					}
+				}
 			}
-			elseif ( !is_null( $req->getSessionData( __CLASS__ . $optionName ) ) ) {
-				$optionData['value'] = $req->getSessionData( __CLASS__ . $optionName );
+			elseif ( !is_null( $req->getSessionData( get_called_class() . $optionName ) ) ) {
+				$optionData['value'] = $req->getSessionData( get_called_class() . $optionName );
 				$changed = true;
 			}
 		}
@@ -296,5 +307,24 @@ abstract class EPPager extends TablePager {
 	protected function getMsg( $messageKey ) {
 		return wfMsg( strtolower( $this->className ) . 'pager-' . str_replace( '_', '-', $messageKey ) );
 	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see TablePager::formatValue()
+	 */
+	public final function formatValue( $name, $value ) {
+		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
+		return $this->getFormattedValue( $c::unprefixFieldName( $name ), $value );
+	}
+	
+	/**
+	 * Similar to TablePager::formatValue, but passes along the name of the field without prefix.
+	 * 
+	 * @param string $name
+	 * @param string $value
+	 * 
+	 * @return string
+	 */
+	protected abstract function getFormattedValue( $name, $value );
 
 }

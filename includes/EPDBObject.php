@@ -735,6 +735,9 @@ abstract class EPDBObject {
 		if ( is_null( $fields ) ) {
 			$fields = array_keys( static::getFieldTypes() );
 		}
+		else {
+			$fields = (array)$fields;
+		}
 
 		$tables = array( static::getDBTable() );
 		$joinConds = static::getProcessedJoinConds( $joinConds, $tables );

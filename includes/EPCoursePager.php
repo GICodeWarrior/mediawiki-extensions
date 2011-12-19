@@ -32,7 +32,8 @@ class EPCoursePager extends EPPager {
 	 */
 	public function getFieldNames() {
 		return parent::getFieldNameList( array(
-			// TODO
+			'org_id',
+			'name',
 		) ); 
 	}
 	
@@ -54,12 +55,23 @@ class EPCoursePager extends EPPager {
 
 	/**
 	 * (non-PHPdoc)
-	 * @see TablePager::formatValue()
+	 * @see EPPager::getFormattedValue()
 	 */
-	public function formatValue( $name, $value ) {
+	protected function getFormattedValue( $name, $value ) {
 		switch ( $name ) {
-			case '': // TODO
-				$value = $value;
+			case 'name':
+				$value = Linker::linkKnown(
+					SpecialPage::getTitleFor( 'Course', $value ),
+					$value
+				);
+				break;
+			case 'org_id':
+				$value = EPOrg::selectRow( 'name', array( 'id' => $value ) )->getField( 'name' );
+				
+				$value = Linker::linkKnown(
+					SpecialPage::getTitleFor( 'Institution', $value ),
+					$value
+				);
 				break;
 		}
 
@@ -67,7 +79,7 @@ class EPCoursePager extends EPPager {
 	}
 
 	function getDefaultSort() {
-		return ''; // TODO
+		return 'asc';
 	}
 
 	/**
@@ -75,7 +87,27 @@ class EPCoursePager extends EPPager {
 	 * @see EPPager::getSortableFields()
 	 */
 	protected function getSortableFields() {
-		return array();
+		return array(
+			'name',
+		);
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see EPPager::getFilterOptions()
+	 */
+	protected function getFilterOptions() {
+		return array(
+			'org_id' => array(
+				'type' => 'select',
+				'options' => array_merge(
+					array( '' => '' ),
+					EPOrg::getOrgOptions( EPOrg::select( array( 'name', 'id' ) ) )
+				),
+				'value' => '',
+				'datatype' => 'int',
+			),
+		);
 	}
 
 }

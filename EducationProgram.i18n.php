@@ -98,6 +98,11 @@ $messages['en'] = array(
 	'eporgpager-header-country' => 'Country',
 	'eporgpager-filter-country' => 'Country',
 
+	// Institution pager
+	'epcoursepager-header-name' => 'Name',
+	'epcoursepager-header-org-id' => 'Institution',
+	'epcoursepager-filter-org-id' => 'Institution',
+
 	// Special:EditInstitution
 	'editinstitution-text' => 'Enter the institution details below and click submit to save your changes.',
 	'educationprogram-org-edit-name' => 'Institution name',

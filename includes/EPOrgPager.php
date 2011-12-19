@@ -56,17 +56,17 @@ class EPOrgPager extends EPPager {
 
 	/**
 	 * (non-PHPdoc)
-	 * @see TablePager::formatValue()
+	 * @see EPPager::getFormattedValue()
 	 */
-	public function formatValue( $name, $value ) {
+	public function getFormattedValue( $name, $value ) {
 		switch ( $name ) {
-			case 'org_name':
+			case 'name':
 				$value = Linker::linkKnown(
 					SpecialPage::getTitleFor( 'Institution', $value ),
 					$value
 				);
 				break;
-			case 'org_country':
+			case 'country':
 				$countries = array_flip( efEpGetCountryOptions() );
 				$value = $countries[$value];
 				break;
