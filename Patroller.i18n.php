@@ -598,7 +598,7 @@ $messages['eo'] = array(
 	'patrol-stopped' => 'Vi elektis ne patroli alian redakton. $1',
 	'patrol-resume' => 'Klaku ĉi tie por reaktivigi.',
 	'group-patroller' => 'Patrolantoj',
-	'group-patroller-member' => 'Patrolanto',
+	'group-patroller-member' => '{{GENDER:$1|patrolanto|patrolantino}}',
 	'grouppage-patroller' => '{{ns:project}}:Patrolanto',
 	'right-patroller' => 'Patroli paĝojn',
 );
@@ -663,6 +663,7 @@ $messages['eu'] = array(
  * @author Huji
  * @author Mjbmr
  * @author Sahim
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'patrol' => 'گشت‌زنی ویرایش‌ها',
