@@ -4006,17 +4006,18 @@ $messages['yue'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author AVRS
  * @author Gaoxuewei
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'ogg-desc' => 'Ogg Theora 和 Vorbis 文件的处理器，含 JavaScript 播放器',
 	'ogg-short-audio' => 'Ogg $1 声音文件，$2',
 	'ogg-short-video' => 'Ogg $1 视频文件，$2',
 	'ogg-short-general' => 'Ogg $1 媒体文件，$2',
-	'ogg-long-audio' => '（Ogg $1 声音文件，长度$2，$3）',
+	'ogg-long-audio' => 'Ogg $1 声音文件，长度$2，$3',
 	'ogg-long-video' => 'Ogg $1 视频文件，长度$2，$4×$5像素，$3',
-	'ogg-long-multiplexed' => '（Ogg 多工声音／视频文件，$1，长度$2，$4×$5像素，共$3）',
-	'ogg-long-general' => '（Ogg 媒体文件，长度$2，$3）',
-	'ogg-long-error' => '（无效的ogg文件: $1）',
+	'ogg-long-multiplexed' => 'Ogg 多工声音／视频文件，$1，长度$2，$4×$5像素，共$3',
+	'ogg-long-general' => 'Ogg 媒体文件，长度$2，$3',
+	'ogg-long-error' => '无效的ogg文件：$1',
 	'ogg-play' => '播放',
 	'ogg-pause' => '暂停',
 	'ogg-stop' => '停止',
