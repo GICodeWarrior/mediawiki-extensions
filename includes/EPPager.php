@@ -110,11 +110,19 @@ abstract class EPPager extends TablePager {
 		return parent::formatRow( $row );
 	}
 
+	/**
+	 * (non-PHPdoc)
+	 * @see TablePager::getIndexField()
+	 */
 	function getIndexField() {
 		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
 		return $c::getPrefixedField( 'id' );
 	}
 	
+	/**
+	 * (non-PHPdoc)
+	 * @see IndexPager::getQueryInfo()
+	 */
 	function getQueryInfo() {
 		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_> 
 		return array(
@@ -125,7 +133,8 @@ abstract class EPPager extends TablePager {
 	}
 	
 	/**
-	 * 
+	 * Get the conditions to use in the query.
+	 * This is done by merging the filter controls conditions with those provided to the constructor.
 	 * 
 	 * @since 0.1
 	 * 
@@ -147,6 +156,10 @@ abstract class EPPager extends TablePager {
 		return array_merge( $conds, $this->conds );
 	}
 	
+	/**
+	 * (non-PHPdoc)
+	 * @see TablePager::isFieldSortable()
+	 */
 	function isFieldSortable( $name ) {
 		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
 		return in_array(
