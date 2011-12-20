@@ -2284,13 +2284,13 @@ $messages['vec'] = array(
 	'group-patroller-member' => 'patujador',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
 	'patrol-revert-reason' => 'Sü:',
 	'group-patroller' => 'Patrulirujad',
-	'group-patroller-member' => 'patrulirui',
+	'group-patroller-member' => '{{GENDER:$1|patrulirui}}',
 );
 
 /** Vietnamese (Tiếng Việt)
