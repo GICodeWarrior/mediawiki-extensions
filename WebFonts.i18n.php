@@ -328,6 +328,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'webfonts-load' => 'Buschtawen-Typ (Font) eraussichen',
 	'webfonts-reset' => 'Zrécksetzen',
+	'webfonts-menu-tooltip' => "Sicht eng Buschtawen-Zort fir d'Säit eraus",
 );
 
 /** Macedonian (Македонски)
