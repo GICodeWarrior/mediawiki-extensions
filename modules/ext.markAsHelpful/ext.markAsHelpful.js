@@ -44,9 +44,11 @@
 				'format': 'json'
 				
 			};
-			
-			$.post( mw.util.wikiScript('api'), request,
-				function( data ) {
+			$.ajax({
+				type: 'get',
+				url: mw.util.wikiScript('api'),
+				data: request,
+				success: function( data ) {
 					if ( data && data.query && data.query.mahitem &&
 						data.query.mahitem.length > 0
 					) {
@@ -56,11 +58,13 @@
 						// Failure, remove the item for now.
 						$item.find( '.mw-mah-wrapper' ).remove();
 					}
-				}, 'json' )
-				.error( function() { 
-					// Error, remove the item for now.
+				},
+				error: function ( data ) {
+					// Failure, remove the item for now.
 					$item.find( '.mw-mah-wrapper' ).remove();
-				} );
+				},
+				dataType: 'json'
+			});
 		},
 		/*
 		 * API call to mark or unmark an item as helpful. 
