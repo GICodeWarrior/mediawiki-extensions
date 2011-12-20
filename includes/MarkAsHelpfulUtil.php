@@ -14,7 +14,7 @@ class MarkAsHelpfulUtil {
 			$data = '';
 
 			if ( $userList ) {
-				$data = wfMessage( 'mah-someone-marked-text' )->params( $userList )->escape();
+				$data = wfMessage( 'mah-someone-marked-text' )->params( $userList )->escaped();
 			}
 
 			return <<<HTML
