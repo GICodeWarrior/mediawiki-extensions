@@ -132,16 +132,11 @@ class IndexFunctionHooks {
 		if ( !$index ) {
 			return true;
 		} elseif ( $index->useSpecialPage() ) {
-			global $wgOut;
-
 			$title = SpecialPage::getTitleFor( 'Index', $title->getPrefixedText() );
-			$wgOut->redirect( $title->getLocalURL() );
-
-			return true;
+		} else {
+			$targets = $index->getTargets();
+			$title = $targets[0];
 		}
-
-		$targets = $index->getTargets();
-		$title = $targets[0];
 
 		return false;
 	}
@@ -157,17 +152,13 @@ class IndexFunctionHooks {
 		if ( !$index ) {
 			return true;
 		} elseif ( $index->useSpecialPage() ) {
-			global $wgOut;
-
-			$t = SpecialPage::getTitleFor( 'Index', $title->getPrefixedText() );
-			$wgOut->redirect( $t->getLocalURL() );
-
-			return true;
+			$target = SpecialPage::getTitleFor( 'Index', $title->getPrefixedText() );
+			$target = $t->getFullURL();
+		} else {
+			$targets = $index->getTargets();
+			$target = $targets[0];
 		}
 
-		$targets = $index->getTargets();
-		$target = $targets[0];
-		$article->mIsRedirect = true;
 		$ignoreRedirect = false;
 
 		return true;
