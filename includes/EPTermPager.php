@@ -32,7 +32,11 @@ class EPTermPager extends EPPager {
 	 */
 	public function getFieldNames() {
 		return parent::getFieldNameList( array(
-			// TODO
+			'id',
+			'course_id',
+			'year',
+			'start',
+			'end',
 		) ); 
 	}
 	
@@ -41,7 +45,7 @@ class EPTermPager extends EPPager {
 	 * @see TablePager::getRowClass()
 	 */
 	function getRowClass( $row ) {
-		return 'ep-course-row';
+		return 'ep-term-row';
 	}
 	
 	/**
@@ -49,7 +53,7 @@ class EPTermPager extends EPPager {
 	 * @see TablePager::getTableClass()
 	 */
 	public function getTableClass(){
-		return 'TablePager ep-courses';
+		return 'TablePager ep-terms';
 	}
 
 	/**
@@ -58,8 +62,24 @@ class EPTermPager extends EPPager {
 	 */
 	public function getFormattedValue( $name, $value ) {
 		switch ( $name ) {
-			case '': // TODO
-				$value = $value;
+			case 'id':
+				$value = Linker::linkKnown(
+					SpecialPage::getTitleFor( 'Term', $value ),
+					$value
+				);
+				break;
+			case 'course_id':
+				$value = EPCourse::selectRow( 'name', array( 'id' => $value ) )->getField( 'name' );
+				
+				$value = Linker::linkKnown(
+					SpecialPage::getTitleFor( 'Course', $value ),
+					$value
+				);
+				break;
+			case 'year':
+				break;
+			case 'start': case 'end':
+				$value = $this->getLanguage()->date( $value );
 				break;
 		}
 
@@ -67,7 +87,7 @@ class EPTermPager extends EPPager {
 	}
 
 	function getDefaultSort() {
-		return ''; // TODO
+		return 'asc';
 	}
 
 	/**
@@ -75,7 +95,39 @@ class EPTermPager extends EPPager {
 	 * @see EPPager::getSortableFields()
 	 */
 	protected function getSortableFields() {
-		return array();
+		return array(
+			'id',
+			'year',
+			'start',
+			'end',
+		);
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see EPPager::getFilterOptions()
+	 */
+	protected function getFilterOptions() {
+		return array(
+			'course_id' => array(
+				'type' => 'select',
+				'options' => array_merge(
+					array( '' => '' ),
+					EPCourse::getCourseOptions( EPCourse::select( array( 'name', 'id' ) ) )
+				),
+				'value' => '',
+				'datatype' => 'int',
+			),
+			'year' => array(
+				'type' => 'select',
+				'options' => array_merge(
+					array( '' => '' ),
+					array() // TODO
+				),
+				'value' => '',
+				'datatype' => 'int',
+			),
+		);
 	}
 
 }

@@ -104,6 +104,15 @@ $messages['en'] = array(
 	'epcoursepager-header-org-id' => 'Institution',
 	'epcoursepager-filter-org-id' => 'Institution',
 
+	// Term pager
+	'eptermpager-header-id' => 'Id',
+	'eptermpager-header-course-id' => 'Course',
+	'eptermpager-header-year' => 'Year',
+	'eptermpager-header-start' => 'Start',
+	'eptermpager-header-end' => 'End',
+	'eptermpager-filter-course-id' => 'Course',
+	'eptermpager-filter-year' => 'Year',
+
 	// Special:EditInstitution
 	'editinstitution-text' => 'Enter the institution details below and click submit to save your changes.',
 	'educationprogram-org-edit-name' => 'Institution name',
