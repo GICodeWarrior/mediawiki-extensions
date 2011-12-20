@@ -2217,7 +2217,7 @@ $messages['sk'] = array(
 
 '''[1]''' - Slabé; '''[2]''' - Nízke; '''[3]''' - Dobré; '''[4]''' - Vysoké; '''[5]''' - Výborné;",
 	'ratinghistory-graph-scale' => "'''Počet kontrol za deň''' <span style=\"color:red;\">''(červenou)''</span> je zobrazený  v mierke ''1:\$1''.",
-	'right-feedback' => 'Hodnotenie stránok prostredníctvom formulára',
+	'right-feedback' => 'Ohodnoťte stránku prostredníctvom formulára',
 );
 
 /** Slovenian (Slovenščina)
