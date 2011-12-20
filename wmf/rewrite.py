@@ -167,18 +167,24 @@ class WMFRewrite(object):
         # example:
         # http://upload.wikimedia.org/wikipedia/commons/a/aa/000_Finlanda_harta.PNG
         # http://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/000_Finlanda_harta.PNG/75px-000_Finlanda_harta.PNG
-        match = re.match(r'/(.*?)/(.*?)/(.*)', req.path)
+        match = re.match(r'/(?P<proj>.*?)/(?P<lang>.*?)/(?P<thumb>thumb/)?(?P<shard>./../)?(?P<path>.*)', req.path)
         if match:
             # Our target URL is as follows (example):
-            # https://alsted.wikimedia.org:8080/v1/AUTH_6790933748e741268babd69804c6298b/wikipedia-en/2/25/Machinesmith.png
+            # https://alsted.wikimedia.org:8080/v1/AUTH_6790933748e741268babd69804c6298b/wikipedia-en-25/Machinesmith.png
+            # http://msfe/v1/AUTH_6790933748e741268babd69804c6298b/wikipedia-commons-aa/000_Finlanda_harta.PNG
+            # http://mfse/v1/AUTH_6790933748e741268babd69804c6298b/wikipedia-commons-thumb-aa/000_Finlanda_harta.PNG/75px-000_Finlanda_harta.PNG
 
             # quote slashes in the container name
-            container = "%s-%s" % (match.group(1), match.group(2)) #02
-            obj = match.group(3)
+            container = "%s-%s" % (match.group('proj'), match.group('lang')) #02
+            thumb = match.group('thumb')
+            shard = match.group('shard')
+            obj = match.group('path')
             # include the thumb in the container.
-            if obj.startswith("thumb/"): #03
+            if thumb: #03
                 container += "-thumb"
-                obj = obj[len("thumb/"):]
+            if shard:
+                #add only the 2-digit shard to the container name
+                container += "-%s" % shard[2:4]
 
             if not obj:
                 # don't let them list the container (it's CRAZY huge) #08
