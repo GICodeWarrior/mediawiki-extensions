@@ -38,6 +38,7 @@ $wgHooks['BeforePageDisplay'][] = 'MoodBarHooks::onPageDisplay';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'MoodBarHooks::resourceLoaderGetConfigVars';
 $wgHooks['MakeGlobalVariablesScript'][] = 'MoodBarHooks::makeGlobalVariablesScript';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'MoodBarHooks::onLoadExtensionSchemaUpdates';
+$wgHooks['onMarkItemAsHelpful'][] = 'MoodBarHooks::onMarkItemAsHelpful';
 
 // Special pages
 $wgAutoloadClasses['SpecialMoodBar'] = dirname(__FILE__).'/SpecialMoodBar.php';
