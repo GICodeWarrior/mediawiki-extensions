@@ -167,6 +167,7 @@ class WMFRewrite(object):
         # example:
         # http://upload.wikimedia.org/wikipedia/commons/a/aa/000_Finlanda_harta.PNG
         # http://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/000_Finlanda_harta.PNG/75px-000_Finlanda_harta.PNG
+        # http://upload.wikimedia.org/wikipedia/commons/thumb/archive/b/b6/20101108115418!Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg/100px-Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg
         match = re.match(r'/(?P<proj>.*?)/(?P<lang>.*?)/(?P<thumb>thumb/)?(?P<shard>./../)?(?P<path>.*)', req.path)
         if match:
             # Our target URL is as follows (example):
