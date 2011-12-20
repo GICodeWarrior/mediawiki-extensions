@@ -8,7 +8,7 @@
 	
 	var mah = mw.mah = {
 		
-		selector: '[class^=markashelpful-]',
+		selector: '[class^=markashelpful-]',  //only selector for now
 
 		init: function() {
 			var $mahWrap = $( '<div />' ).attr( 'class', 'mw-mah-wrapper' );
@@ -26,7 +26,7 @@
 			var		tag = $item.attr( 'class' ),
 					properties = {
 						'item': tag.split('-')[2], // item id
-						'type': tag.split('-')[1]  // item type (eg, moodbarfeedbackresponse)
+						'type': tag.split('-')[1]  // item type (eg, mbresponse)
 					};
 			return properties;
 		},
