@@ -42,3 +42,14 @@ $mbResourceTemplate = array(
 	'remoteExtPath' => 'MarkAsHelpful/modules'
 );
 
+$wgResourceModules['ext.markAsHelpful'] = $mbResourceTemplate + array(
+	'styles' => 'ext.markAsHelpful/ext.markAsHelpful.css',
+	'scripts' => 'ext.markAsHelpful/ext.markAsHelpful.js',
+	'messages' => array(
+		'helpful-text',
+	),
+	'position' => 'bottom',
+	'dependencies' => array(
+		'mediawiki.util'
+	),
+);
