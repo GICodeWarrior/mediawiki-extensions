@@ -151,6 +151,18 @@ $messages['ia'] = array(
 	'right-reassignedits' => 'Reattribuer le modificationes de un usator a un altere',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'reassignedits' => 'Ännerunge vu Benotzer iwwerdroen',
+	'reassignedits-error-invalid' => 'De Benotzernumm "<nowiki>$1</nowiki>" ass net valabel.',
+	'reassignedits-new' => 'Neie Benotzernumm',
+	'reassignedits-old' => 'Ale Benotzernumm',
+	'reassignedits-success' => 'D\'Ännerunge vum "<nowiki>$1</nowiki>" goufen als Ännerunge vum Benotzer "<nowiki>$2</nowiki>" derbäigesat.',
+	'right-reassignedits' => 'Ännerunge vun engem ale Benotzer op en neie Benotzer iwwerdroen',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
