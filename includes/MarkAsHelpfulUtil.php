@@ -33,7 +33,7 @@ HTML;
 				return <<<HTML
 				<div class="mw-mah-wrapper">
 					<span class='mah-helpful-marked-state'>
-							$mahMarkedText
+						$mahMarkedText
 					</span>
 					&nbsp;(<a class='markashelpful-undo'>$undoLinkText</a>)
 				</div>

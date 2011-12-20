@@ -26,6 +26,7 @@ class MarkAsHelpfulItem {
 
 	/**
 	 * Constructor
+	 * @param $mah_id int - an id that represents a unique mark as helpful record
 	 */
 	public function __construct( $mah_id = null ) {
 		if ( $mah_id == intval( $mah_id ) ) {
@@ -33,18 +34,30 @@ class MarkAsHelpfulItem {
 		}
 	}
 
+	/**
+	 * Getter method
+	 * @param $key string - the name of a property
+	 */
 	public function getProperty( $key ) {
 		if( isset( $key, $this->property) ) {
 			return $this->property[$key];
 		}
 	}
 
+	/**
+	 * Setter method
+	 * @param $key string - the name of the property 
+	 * @param $value mixed - the valud of the property
+	 */
 	public function setProperty( $key, $value ) {
 		if( isset( $key, $this->property) ) {
 			$this->property[$key] = $value;
 		}
 	}
 
+	/**
+	 * get the owner of the 'mark as helpful' item
+	 */
 	public function getUser() {
 		if ( !$this->user ) {
 			if ( $this->loadedFromDatabase ) {
@@ -63,6 +76,11 @@ class MarkAsHelpfulItem {
 		return $this->user;
 	}
 
+	/**
+	 * Load data into object from external data
+	 * @param $params array - an array of data to be loaded into the object
+	 * @exception MWMarkAsHelpFulItemPropertyException
+	 */
 	public function loadFromRequest( $params ) {
 		global $wgUser, $wgMarkAsHelpfulType;
 
@@ -113,9 +131,27 @@ class MarkAsHelpfulItem {
 
 	/**
 	 * Load from database
-	 * @param $conds Array: keys to load unique item from database
+	 * @param $conds Array: keys to load unique item from database, it must be one of the allowed keys
+	 * @exception MWMarkAsHelpFulItemSearchKeyException
 	 */
-	public function loadFromDatabase( $conds = array() ) {
+	public function loadFromDatabase( $conds ) {
+		
+		$searchKey = array_keys( $conds );
+		
+		$flag = sort( $searchKey );
+		
+		if ( !$flag ) {
+			return false;
+		}
+		
+		$searchKey = implode(',', $searchKey );	
+	
+		$allowableSearchKey = array ( 'mah_id', 'mah_item,mah_type,mah_user_id', 'mah_item,mah_type,mah_user_ip' );
+		
+		if ( !in_array( $searchKey, $allowableSearchKey ) ) {
+			throw new MWMarkAsHelpFulItemSearchKeyException( 'Invalid search key!' );
+		}
+		
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$res = $dbr->selectRow(
@@ -131,7 +167,6 @@ class MarkAsHelpfulItem {
 			}
 
 			$this->loadedFromDatabase = true;
-
 			return true;
 		} else {
 			return false;
@@ -139,8 +174,9 @@ class MarkAsHelpfulItem {
 	}
 
 	/**
-	 * This function should be called after either prepareDataBeforeMark() or setProperty()
+	 * To mark an item as helpful, this function should be called after either loadFromRequest() or setProperty()
 	 * data must be validated if called from setProperty()
+	 * 
 	 */
 	public function mark() {
 		if ( $this->userHasMarked() ) {
@@ -162,10 +198,14 @@ class MarkAsHelpfulItem {
 		$this->setProperty( 'mah_id', $dbw->insertId() );
 	}
 
+	/**
+	 * Unmark an item as helpful
+	 * @param $currentUser Object - the current user who is browsing the site
+	 */
 	public function unmark( $currentUser ) {
 		if ( $this->getProperty( 'mah_id' ) ) {
 			if ( !$this->getProperty( 'mah_type' ) ) {
-				if( !$this->loadFromDatabase() ) {
+				if( !$this->loadFromDatabase( array( 'mah_id' => $this->getProperty( 'mah_id' ) ) ) ) {
 					return;
 				}
 			}
@@ -196,6 +236,10 @@ class MarkAsHelpfulItem {
 
 	}
 
+	/**
+	 * Check if this 'mark as helpful' recrod exists already
+	 * @return bool
+	 */
 	public function userHasMarked() {
 		$dbr = wfGetDB( DB_SLAVE );
 
@@ -232,6 +276,12 @@ class MarkAsHelpfulItem {
 		}
 	}
 
+	/**
+	 * Get a list of all users that marked this item as helpful
+	 * @param $type string - the object type
+	 * @param $item int - the object id
+	 * @return array
+	 */
 	public static function getMarkAsHelpfulList( $type, $item ) {
 		$dbr = wfGetDB( DB_SLAVE );
 
@@ -262,3 +312,4 @@ class MarkAsHelpfulItem {
 }
 
 class MWMarkAsHelpFulItemPropertyException extends MWException {}
+class MWMarkAsHelpFulItemSearchKeyException extends MWException {}

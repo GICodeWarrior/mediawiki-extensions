@@ -16,6 +16,8 @@ class ApiMarkAsHelpful extends ApiBase {
 			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
 		}
 
+		$error = false;
+		
 		switch ( $params['mahaction'] ) {
 			case 'mark':
 				$item = new MarkAsHelpfulItem();
@@ -25,22 +27,26 @@ class ApiMarkAsHelpful extends ApiBase {
 
 			case 'unmark':
 				$item = new MarkAsHelpfulItem();
-
+				
 				if( $wgUser->isAnon() ) {
-					$item->loadFromDatabase( array(
+					$status = $item->loadFromDatabase( array(
 						'mah_type' => $params['type'],
 						'mah_item' => $params['item'],
 						'mah_user_ip' => $wgUser->getName()
 					) );
 				} else {
-					$item->loadFromDatabase( array(
+					$status = $item->loadFromDatabase( array(
 						'mah_type' => $params['type'],
 						'mah_item' => $params['item'],
 						'mah_user_id' => $wgUser->getId()
 					) );
 				}
-
-				$item->unmark( $wgUser );
+				if ( $status ) {
+					$item->unmark( $wgUser );
+				}
+				else {
+					$error = wfMessage( 'mah-action-error' )->escaped();
+				}
 			break;
 
 			default:
@@ -48,7 +54,12 @@ class ApiMarkAsHelpful extends ApiBase {
 			break;
 		}
 
-		$result = array( 'result' => 'success' );
+		if ( $error === false ) {
+			$result = array( 'result' => 'success' );
+		}
+		else {
+			$result = array( 'result' => 'error', 'error' => $error );
+		}
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 

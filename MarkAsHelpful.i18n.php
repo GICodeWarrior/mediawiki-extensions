@@ -17,6 +17,7 @@ $messages['en'] = array(
 	'mah-you-marked-text' => 'You think this is helpful',
 	'mah-someone-marked-text' => '$1 thinks this is helpful',
 	'mah-undo-mark-text' => 'undo',
+	'mah-action-error' => 'There is an error performing this action',
 );
 
 /** Message documentation (Message documentation)
@@ -29,6 +30,7 @@ This is a feature in development. See [[mw:MarkAsHelpful]] for background inform
 	'mah-you-marked-text' => 'Text displayed to the logged in user if they mark an item helpful',
 	'mah-someone-marked-text' => 'Text displayed as to who marked this is helpful, shown if not the user who marked {$1 is the username}',
 	'mah-undo-mark-text' => 'Text for the the undo mark link',
+	'mah-action-error' => 'Generic error message',
 );
 
 /** German (Deutsch)
