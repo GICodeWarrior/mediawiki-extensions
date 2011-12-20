@@ -61,6 +61,10 @@ class MoodBarHooks {
 		$vars['mbConfig'] = array(
 			'validTypes' => MBFeedbackItem::getValidTypes(),
 			'userBuckets' => MoodBarHooks::getUserBuckets( $wgUser ),
+			'canReceiveEmail' => $wgUser->canReceiveEmail() ,
+			'userEmail' => strlen($wgUser->getEmail()) > 0 ? true : false,
+			'isEmailConfirmationPending' => $wgUser->isEmailConfirmationPending() //returns false if email authentication off, and if email is confimed already
+
 		) + $wgMoodBarConfig;
 		return true;
 	}
