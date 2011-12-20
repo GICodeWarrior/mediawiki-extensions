@@ -6,9 +6,9 @@
 
 $wgExtensionCredits['other'][] = array(
 	'author' => array( 'Rob Moen', 'Benny Situ' ),
-	'descriptionmsg' => 'mark-as-helpful-desc',
+	'descriptionmsg' => 'markashelpful-desc',
 	'name' => 'MarkAsHelpful',
-	'url' => 'http://www.mediawiki.org/wiki/Mark_as_Helpful',
+	'url' => 'https://www.mediawiki.org/wiki/Mark_as_Helpful', // FIXME: A page in the extension namespace should be created
 	'version' => '0.1',
 	'path' => __FILE__,
 );
