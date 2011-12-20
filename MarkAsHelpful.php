@@ -23,6 +23,7 @@ $wgExtensionCredits['other'][] = array(
 // Hooks
 $wgAutoloadClasses['MarkAsHelpfulHooks'] = dirname(__FILE__).'/MarkAsHelpful.hooks.php';
 $wgHooks['BeforePageDisplay'][] = 'MarkAsHelpfulHooks::onPageDisplay';
+$wgHooks['MakeGlobalVariablesScript'][] = 'MoodBarHooks::makeGlobalVariablesScript';
 
 // Special pages
 

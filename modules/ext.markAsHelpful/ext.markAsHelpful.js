@@ -79,7 +79,7 @@
 				'page': mw.config.get( 'wgPageName' ),
 				'useragent': clientData.name + '/' + clientData.versionNumber,
 				'system': clientData.platform,
-				'token': mw.config.get('mbEditToken'),
+				'token': mw.config.get('mahEditToken'),
 				'format': 'json'
 			}, props );
 			
