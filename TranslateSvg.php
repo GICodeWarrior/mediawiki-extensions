@@ -29,8 +29,7 @@ $wgSpecialPageGroups['TranslateSvg'] = 'media';
 $wgResourceModules['ext.translateSvg'] = array(
 	'scripts' => array( 'ext.translateSvg.core.js' ),
 	// 'styles' => 'css/ext.translateSvg.css',
-	'messages' => array( 'translatesvg-add', 'translatesvg-addlink', 'translatesvg-specify' ),
+	'messages' => array( 'translatesvg-add', 'translatesvg-addlink', 'translatesvg-specify', 'translatesvg-remove' ),
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteExtPath' => 'translateSvg'
 );
-
