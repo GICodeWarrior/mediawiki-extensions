@@ -131,6 +131,6 @@ li.narayam-more-imes-link a {
 	padding-left: 10px;
 }
 
-div#narayam-menu label:hover, input:hover {
+div#narayam-menu label:hover, div#narayam-menu input:hover {
 	cursor: pointer;
 }
