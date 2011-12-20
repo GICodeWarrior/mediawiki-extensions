@@ -4,6 +4,7 @@ class MarkAsHelpfulUtil {
 
 	public static function getMarkAsHelpfulTemplate( $user, $isAbleToMark, $helpfulUserList, $type, $item ) {
 		if ( $user->isAnon() ) {
+
 			$userList = '';
 
 			foreach ( $helpfulUserList as $val ) {
@@ -17,7 +18,7 @@ class MarkAsHelpfulUtil {
 			}
 
 			return <<<HTML
-			<div id="markashelpful-$type-$item">
+			<div class="mw-mah-wrapper">
 				$data
 			</div>
 HTML;
@@ -26,20 +27,20 @@ HTML;
 			$userId = $user->getId();
 
 			if ( isset( $helpfulUserList[$userId] ) ) {
-				$data = wfMessage( 'mah-you-marked-text' )->escaped();
-				$undo = wfMessage( 'mah-undo-mark-text' )->escaped();
+				$mahMarkedText = wfMessage( 'mah-you-marked-text' )->escaped();
+				$undoLinkText = wfMessage( 'mah-undo-mark-text' )->escaped();
 
 				return <<<HTML
-				<div id="markashelpful-$type-$item">
-					$data | $undo
+				<div class="mw-mah-wrapper">
+					<a class='mah-helpful-state'><div class='.mah-helpful-marked-icon'></div>$mahMarkedText</a> ($undoLinkText)
 				</div>
 HTML;
 			} else {
 				if ( $isAbleToMark ) {
-					$linkText = wfMessage( 'mah-mark-text' )->escaped();
+					$mahLinkText = wfMessage( 'mah-mark-text' )->escaped();
 					return <<<HTML
-					<div id="markashelpful-$type-$item">
-					$linkText
+					<div class="mw-mah-wrapper">
+						<a class='mah-helpful-state'><div class='.mah-helpful-icon'></div>$mahLinkText</a>
 					</div>
 HTML;
 				}

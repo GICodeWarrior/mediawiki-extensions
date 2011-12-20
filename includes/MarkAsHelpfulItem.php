@@ -253,12 +253,10 @@ class MarkAsHelpfulItem {
 
 		$list = array();
 
-		foreach( $res as $val ) {
-			$list[$val['user_id']] = array(
-				'user_name' => $val['user_name'],
-				'user_id' => $val['user_id'],
-				'user_ip' => $val['mah_user_ip']
-			);
+		foreach( $res AS $val ) {
+			$list[$val->user_id] = array( 'user_name' => $val->user_name, 
+				                      'user_id' => $val->user_id, 
+				                      'user_ip' => $val->mah_user_ip );
 		}
 
 		return $list;
