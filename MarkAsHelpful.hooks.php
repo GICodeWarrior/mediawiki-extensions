@@ -1,4 +1,4 @@
-<?
+<?php
 
 class MarkAsHelpfulHooks {
 	/**
@@ -7,7 +7,6 @@ class MarkAsHelpfulHooks {
 	 * @param $output OutputPage
 	 * @param $skin Skin
 	 */
-
 	public static function onPageDisplay( &$output, &$skin ) {
 		if ( self::addMarkAsHelpful( $output, $skin ) ) {
 			$output->addModules( array( 'ext.markAsHelpful' ) );
@@ -22,12 +21,11 @@ class MarkAsHelpfulHooks {
 	 * @param $output OutputPage
 	 * @param $skin Skin
 	 */
-	public static function addMarkAsHelpful ( &$output, &$skin ) {
-		
+	public static function addMarkAsHelpful( &$output, &$skin ) {
+
 		return true;
 	}
 
-	
 	/**
 	 * Runs MarkAsHelpful schema updates#
 	 *
@@ -35,17 +33,15 @@ class MarkAsHelpfulHooks {
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
 		$updater->addExtensionUpdate( array( 'addTable', 'mark_as_helpful',
-			dirname(__FILE__).'/sql/mark_as_helpful.sql', true ) );
-		
+			dirname( __FILE__ ) . '/sql/mark_as_helpful.sql', true ) );
+
 		return true;
 	}
-	
 
 	public static function makeGlobalVariablesScript( &$vars ) {
 		global $wgUser;
 		$vars['mahEditToken'] = $wgUser->editToken();
 		return true;
 	}
-
 
 }

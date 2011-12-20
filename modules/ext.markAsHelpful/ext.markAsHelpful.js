@@ -5,9 +5,8 @@
  */
 
 (function( $ ) {
-	
+
 	var mah = mw.mah = {
-		
 		selector: '[class^=markashelpful-]',  //only selector for now
 
 		init: function() {
@@ -15,34 +14,34 @@
 
 			$( mah.selector ).each ( function () {
 				$( this ).append( $mahWrap );
-				mah.loadItem( $(this) );
+				mah.loadItem( $( this ) );
 			});
-		}, 
+		},
 
-		/* 
-		 * Return object of item properties 
+		/*
+		 * Return object of item properties
 		 */
 		getItemProperties: function( $item ) {
 			var		tag = $item.attr( 'class' ),
 					properties = {
-						'item': tag.split('-')[2], // item id
-						'type': tag.split('-')[1]  // item type (eg, mbresponse)
+						'item': tag.split( '-' )[2], // item id
+						'type': tag.split( '-' )[1]  // item type (eg, mbresponse)
 					};
 			return properties;
 		},
 
-		/* 
+		/*
 		 * Load the current state of the MarkAsHelpful item
-		 */		
-		loadItem: function( $item ) {	
-			var props = mah.getItemProperties( $item );	
+		 */
+		loadItem: function( $item ) {
+			var props = mah.getItemProperties( $item );
 
 			var request = {
 				'action': 'getmarkashelpfulitem',
 				'item': props.item,
 				'type': props.type,
 				'format': 'json'
-				
+
 			};
 			$.ajax({
 				type: 'get',
@@ -67,7 +66,7 @@
 			});
 		},
 		/*
-		 * API call to mark or unmark an item as helpful. 
+		 * API call to mark or unmark an item as helpful.
 		 */
 		markItem: function( $item, action ) {
 			var		props = mah.getItemProperties( $item ),
@@ -82,7 +81,7 @@
 				'token': mw.config.get('mahEditToken'),
 				'format': 'json'
 			}, props );
-			
+
 			$.ajax( {
 				type: 'post',
 				url: mw.util.wikiScript( 'api' ),
@@ -92,27 +91,26 @@
 			} );
 
 		}
-	}; 
+	};
 
 	// Some live events for the different modes
 
-	/* 
+	/*
 	 * Click Event for marking an item as helpful.
 	 */
-	$('.markashelpful-mark').live( 'click', function() {
-		$item = $(this).parent().parent();
-		mah.markItem ( $item, 'mark' );
+	$( '.markashelpful-mark' ).live( 'click', function() {
+		$item = $( this ).parent().parent();
+		mah.markItem( $item, 'mark' );
 	} );
 
-	/* 
+	/*
 	 * Click Event for removing helpful status from an item.
 	 */
-	$('.markashelpful-undo').live( 'click', function() {
-		$item = $(this).parent().parent();
-		mah.markItem ( $item, 'unmark' );
+	$( '.markashelpful-undo' ).live( 'click', function() {
+		$item = $( this ).parent().parent();
+		mah.markItem( $item, 'unmark' );
 	} );
 
 	// Initialize MarkAsHelpful
 	mah.init();
-
 } ) ( jQuery );

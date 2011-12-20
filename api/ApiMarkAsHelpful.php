@@ -1,10 +1,10 @@
 <?php
 
 class ApiMarkAsHelpful extends ApiBase {
-	
+
 	public function execute() {
 		global $wgUser;
-		
+
 		if ( $wgUser->isBlocked( false ) ) {
 			$this->dieUsageMsg( array( 'blockedtext' ) );
 		}
@@ -12,38 +12,42 @@ class ApiMarkAsHelpful extends ApiBase {
 		$params = $this->extractRequestParams();
 
 		// Gives other extension the last chance to speicfy mark as helpful permission rules
-		if ( !wfRunHooks( 'onMarkItemAsHelpful',  array( $params['mahaction'], $params['type'], $params['item'], $wgUser ) ) ) {
-			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );	
+		if ( !wfRunHooks( 'onMarkItemAsHelpful', array( $params['mahaction'], $params['type'], $params['item'], $wgUser ) ) ) {
+			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
 		}
 
 		switch ( $params['mahaction'] ) {
-			
 			case 'mark':
-				$Item = new MarkAsHelpfulItem();
-				$Item->loadFromRequest( $params );
-				$Item->mark();
+				$item = new MarkAsHelpfulItem();
+				$item->loadFromRequest( $params );
+				$item->mark();
 			break;
-			
+
 			case 'unmark':
-				$Item = new MarkAsHelpfulItem( );
-				
+				$item = new MarkAsHelpfulItem();
+
 				if( $wgUser->isAnon() ) {
-					$Item->loadFromDatabase( array( 'mah_type' => $params['type'], 'mah_item' => $params['item'], 'mah_user_ip' => $wgUser->getName() ) );
+					$item->loadFromDatabase( array(
+						'mah_type' => $params['type'],
+						'mah_item' => $params['item'],
+						'mah_user_ip' => $wgUser->getName()
+					) );
+				} else {
+					$item->loadFromDatabase( array(
+						'mah_type' => $params['type'],
+						'mah_item' => $params['item'],
+						'mah_user_id' => $wgUser->getId()
+					) );
 				}
-				else {
-					$Item->loadFromDatabase( array( 'mah_type' => $params['type'], 'mah_item' => $params['item'], 'mah_user_id' => $wgUser->getId() ) );
-				}
-				
-				$Item->unmark( $wgUser );
+
+				$item->unmark( $wgUser );
 			break;
-			
+
 			default:
 				throw new MWApiMarkAsHelpfulInvalidActionException( "Action {$params['mbaction']} not implemented" );
 			break;
-			
 		}
-		
-		
+
 		$result = array( 'result' => 'success' );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
@@ -108,7 +112,7 @@ class ApiMarkAsHelpful extends ApiBase {
 	public function getDescription() {
 		return 'Allows users to mark/unmark an object item in the site as helpful';
 	}
-	
+
 }
 
-class MWApiMarkAsHelpfulInvalidActionException extends MWException {};
+class MWApiMarkAsHelpfulInvalidActionException extends MWException {}

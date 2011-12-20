@@ -1,27 +1,28 @@
 <?php
 
 class ApiGetMarkAsHelpfulItem extends ApiBase {
-	
+
 	public function execute() {
 		global $wgUser;
-		
+
 		$params = $this->extractRequestParams();
 
-		// check if current user has permission to mark this item, 
-		$isAbleToMark = wfRunHooks( 'onMarkItemAsHelpful',  array( 'mark', $params['type'], $params['item'], $wgUser ) );
+		// check if current user has permission to mark this item,
+		$isAbleToMark = wfRunHooks( 'onMarkItemAsHelpful', array( 'mark', $params['type'], $params['item'], $wgUser ) );
 
 		$HelpfulUserList = MarkAsHelpfulItem::getMarkAsHelpfulList( $params['type'], $params['item'] );
-		
+
 		if ( $params['prop'] == 'metadata') {
 			$data = $HelpfulUserList;
 			$format = 'metadata';
-		}
-		else {
-			$data = MarkAsHelpfulUtil::getMarkAsHelpfulTemplate( $wgUser, $isAbleToMark, $HelpfulUserList, $params['type'], $params['item'] );
+		} else {
+			$data = MarkAsHelpfulUtil::getMarkAsHelpfulTemplate(
+				$wgUser, $isAbleToMark, $HelpfulUserList, $params['type'],
+				$params['item']
+			);
 			$format = 'formatted';
 		}
-		
-		
+
 		$result = array( 'result' => 'success', $format => $data );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
@@ -41,7 +42,7 @@ class ApiGetMarkAsHelpfulItem extends ApiBase {
 			'locale' => null,
 			'prop' => array(
 				ApiBase::PARAM_TYPE => array( 'metadata', 'formatted' ),
-				),
+			),
 		);
 	}
 
@@ -62,7 +63,7 @@ class ApiGetMarkAsHelpfulItem extends ApiBase {
 	public function getDescription() {
 		return 'Get a list of all helpful status for an object item';
 	}
-	
+
 }
 
-class MWApiGetMarkAsHelpfulItemInvalidActionException extends MWException {};
+class MWApiGetMarkAsHelpfulItemInvalidActionException extends MWException {}

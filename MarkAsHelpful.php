@@ -4,28 +4,33 @@
  * Allows specified users to mark certain objects as "Helpful"
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die();
+}
+
+// Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'MarkAsHelpful',
+	'version' => '0.1',
 	'author' => array( 'Rob Moen', 'Benny Situ' ),
 	'descriptionmsg' => 'markashelpful-desc',
-	'name' => 'MarkAsHelpful',
 	'url' => 'https://www.mediawiki.org/wiki/Mark_as_Helpful', // FIXME: A page in the extension namespace should be created
-	'version' => '0.1',
-	'path' => __FILE__,
 );
 
-
+$dir = dirname( __FILE__ ) . '/';
 // Object model
-$wgAutoloadClasses['MarkAsHelpfulItem'] = dirname(__FILE__).'/includes/MarkAsHelpfulItem.php';
-$wgAutoloadClasses['MarkAsHelpfulUtil'] = dirname(__FILE__).'/includes/MarkAsHelpfulUtil.php';
+$wgAutoloadClasses['MarkAsHelpfulItem'] = $dir . 'includes/MarkAsHelpfulItem.php';
+$wgAutoloadClasses['MarkAsHelpfulUtil'] = $dir . 'includes/MarkAsHelpfulUtil.php';
 
 // API
-$wgAutoloadClasses['ApiMarkAsHelpful'] = dirname(__FILE__).'/api/ApiMarkAsHelpful.php';
+$wgAutoloadClasses['ApiMarkAsHelpful'] = $dir . 'api/ApiMarkAsHelpful.php';
 $wgAPIModules['markashelpful'] = 'ApiMarkAsHelpful';
-$wgAutoloadClasses['ApiGetMarkAsHelpfulItem'] = dirname(__FILE__).'/api/ApiGetMarkAsHelpfulItem.php';
+$wgAutoloadClasses['ApiGetMarkAsHelpfulItem'] = $dir . 'api/ApiGetMarkAsHelpfulItem.php';
 $wgAPIModules['getmarkashelpfulitem'] = 'ApiGetMarkAsHelpfulItem';
 
 // Hooks
-$wgAutoloadClasses['MarkAsHelpfulHooks'] = dirname(__FILE__).'/MarkAsHelpful.hooks.php';
+$wgAutoloadClasses['MarkAsHelpfulHooks'] = $dir . 'MarkAsHelpful.hooks.php';
 $wgHooks['BeforePageDisplay'][] = 'MarkAsHelpfulHooks::onPageDisplay';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'MarkAsHelpfulHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['MakeGlobalVariablesScript'][] = 'MoodBarHooks::makeGlobalVariablesScript';
@@ -40,11 +45,11 @@ $wgAvailableRights[] = 'markashelpful-admin';
 $wgGroupPermissions['sysop']['makrashelpful-admin'] = true;
 
 // Internationalisation
-$wgExtensionMessagesFiles['MarkAsHelpful'] = dirname(__FILE__).'/MarkAsHelpful.i18n.php';
+$wgExtensionMessagesFiles['MarkAsHelpful'] = $dir . 'MarkAsHelpful.i18n.php';
 
 // Resources
 $mbResourceTemplate = array(
-	'localBasePath' => dirname(__FILE__) . '/modules',
+	'localBasePath' => $dir . 'modules',
 	'remoteExtPath' => 'MarkAsHelpful/modules'
 );
 
