@@ -66,7 +66,7 @@ function wmfGetSwiftThumbContainer( $site, $lang ) {
 
 	$conn = new CF_Connection( $auth );
 
-	$name = "{$site}-{$lang}-images-thumb"; // swift container name
+	$name = "{$site}-{$lang}-media-thumb"; // swift container name
 	try {
 		$container = $conn->get_container( $name );
 	} catch ( NoSuchContainerException $e ) { // container not created yet
