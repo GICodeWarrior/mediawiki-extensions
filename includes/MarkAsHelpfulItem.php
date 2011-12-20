@@ -22,7 +22,7 @@ class MarkAsHelpfulItem {
 	);
 
 	protected $user;
-	protected $loadFromDatabase = false;
+	protected $loadedFromDatabase = false;
 
 	/**
 	 * Constructor
@@ -47,7 +47,7 @@ class MarkAsHelpfulItem {
 
 	public function getUser() {
 		if ( !$this->user ) {
-			if ( $this->loadFromDatabase ) {
+			if ( $this->loadedFromDatabase ) {
 				if ( $this->getProperty( 'mah_user_id' ) ) {
 					$this->user = User::newFromId( $this->getProperty( 'mah_user_id' ) );
 				} elseif ( $this->getProperty( 'mah_user_ip' ) ) {
@@ -130,9 +130,7 @@ class MarkAsHelpfulItem {
 				$this->setProperty( $key, $res->$key );
 			}
 
-			// @todo FIXME: $Item is not defined (and it should be called $item
-			// as per our coding conventions)
-			$Item->setLoadFromDatabase = true;
+			$this->loadedFromDatabase = true;
 
 			return true;
 		} else {
