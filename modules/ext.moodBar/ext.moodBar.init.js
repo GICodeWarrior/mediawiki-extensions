@@ -58,36 +58,13 @@
 				.appendTo( ui.pMoodbar );
 			
 			// Inject portlet into document, when document is ready
-			// Send mb.getUserInfo as a callback to be ran after MoodBar injection
-			$( mb.inject( mb.getUserInfo ) );
+			$( mb.inject() );
 
 		},
 
-		inject: function(getUserInfo) {
+		inject: function() {
 			$( '#mw-head' ).append( mb.ui.pMoodbar );
-			getUserInfo(); //run the callback
-		},
-
-		getUserInfo: function() {
-			var query = {
-				action: 'query',
-				meta: 'userinfo',
-				uiprop: 'email',
-				format: 'json'
-			};
-			$.ajax( {
-				'url': mw.util.wikiScript( 'api' ),
-				'data': query,
-				'success': function (data) {
-					mb.userData = data.query.userinfo;
-				},
-				'error': function( jqXHR, textStatus, errorThrown ) {
-					mb.userData = null;
-				},
-				'dataType': 'json'
-			} );
 		}
-
 	};
 
 	if ( !mb.isDisabled() ) {

@@ -134,20 +134,25 @@
 			callback: function( data ) {
 				if ( data && data.moodbar && data.moodbar.result === 'success' ) {
 					
-					var userData =  mb.userData,
-						emailOptOut = ($.cookie( mb.cookiePrefix() + 'emailOptOut' ) == '1');
+					var emailFlag,emailOptOut = ($.cookie( mb.cookiePrefix() + 'emailOptOut' ) == '1');
 
-					if( emailOptOut === false) {
-						if('email' in userData && userData.email !== "") { //check for email address
-							if('emailauthenticated' in userData) { //they have confirmed
+					// if opt out cookie not set and if email is on globally, proceed with email prompt
+					if( emailOptOut === false && mb.conf.emailEnabled ) { 
+
+						if( mb.conf.userEmail ) { // if user has email
+
+							if ( !mb.conf.isEmailConfirmationPending ) { // if no confirmation pending, show form.
 								mb.showSuccess();
+		
 							} else { //show email confirmation form
 								mb.swapContent ( mb.tpl.emailconfirmation );
 							}
+
 						} else { //no email, show email input form
 							mb.swapContent( mb.tpl.emailinput );
 						} 
-					} else { //user has email opt-out cookie set
+
+					} else { //user has email opt-out cookie set, or email is disabled
 						mb.showSuccess();
 					} 
 					
@@ -173,12 +178,17 @@
 			email: '',
 			callback: function( data ) {
 				mb.showSuccess();
+				//set email flag to true so we do not ask again on this page load.
+				mb.conf.userEmail = true;  
+				mb.conf.isEmailConfirmationPending = true; 
 			}
 		},
 
 		emailVerify: {
 			callback: function ( data ) {
 				mb.showSuccess();
+				//set conf pending flag to false so we do not ask again on this page load.
+				mb.conf.isEmailConfirmationPending = false; 
 			}	
 
 		},
