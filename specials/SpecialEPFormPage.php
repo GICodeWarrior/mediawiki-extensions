@@ -116,7 +116,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 			}
 		}
 		else {
-			$object = $c::selectRow( null, array( 'name' => $this->subPage ) );
+			$object = $c::selectRow( null, $this->getTitleConditions() );
 		}
 
 		if ( $object === false ) {
@@ -181,6 +181,17 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	 */
 	protected function getNewData() {
 		return array( 'name' => $this->getRequest()->getVal( 'newname' ) );
+	}
+	
+	/**
+	 * Get the query conditions to obtain the item based on the page title.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
+	protected function getTitleConditions() {
+		return array( 'name' => $this->subPage );
 	}
 
 	/**

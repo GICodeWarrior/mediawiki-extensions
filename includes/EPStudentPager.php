@@ -54,9 +54,9 @@ class EPStudentPager extends EPPager {
 
 	/**
 	 * (non-PHPdoc)
-	 * @see TablePager::formatValue()
+	 * @see EPPager::getFormattedValue()
 	 */
-	public function formatValue( $name, $value ) {
+	protected function getFormattedValue( $name, $value ) {
 		switch ( $name ) {
 			case '': // TODO
 				$value = $value;

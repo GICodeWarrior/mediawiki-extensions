@@ -116,7 +116,7 @@ class SpecialTerms extends SpecialEPPage {
 		$select->addOptions( EPCourse::getCourseOptions( $courses ) );
 		$out->addHTML( $select->getHTML() );
 		
-		$out->addHTML( Xml::inputLabel( wfMsg( 'ep-terms-newyear' ), 'newyear', 'newyear' ) );
+		$out->addHTML( '&#160;' . Xml::inputLabel( wfMsg( 'ep-terms-newyear' ), 'newyear', 'newyear' ) );
 
 		$out->addHTML( '&#160;' . Html::input(
 			'addnewterm',

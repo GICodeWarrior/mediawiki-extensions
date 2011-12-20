@@ -124,6 +124,11 @@ $messages['en'] = array(
 	'ep-course-invalid-description' => 'This description is to short. It needs to be at least contain $1 {{PLURAL:$1|character|characters}}.',
 	'ep-course-invalid-org' => 'This institution does not exist',
 
+	// Special:EditTerm
+	'editterm-add-legend' => 'Add term',
+	'ep-term-edit-legend' => 'Edit term',
+	'ep-term-edit-year' => 'Year',
+	'ep-term-edit-course' => 'Course',
 );
 
 /** Message documentation (Message documentation)
