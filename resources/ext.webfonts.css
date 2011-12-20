@@ -115,7 +115,7 @@ div.webfontMenu a {
 	padding-right: 5px;
 }
 
-div.webfontMenu label:hover, input:hover {
+div.webfontMenu label:hover, div.webfontMenu input:hover {
 	cursor: pointer;
 }
 
