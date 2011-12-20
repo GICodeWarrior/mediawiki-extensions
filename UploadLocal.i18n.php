@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'uploadlocal-desc' => 'Allows users to link in files already on the server'
+	'uploadlocal-desc' => 'Allows users to link in files already on the server',
 	'specialuploadlocal' => 'Upload local files',
 	'uploadlocal' => 'Upload local files',
 	'uploadlocal_directory_readonly' => 'The local upload directory ($1) is not writeable by the webserver.',
