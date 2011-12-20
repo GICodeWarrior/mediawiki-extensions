@@ -15,14 +15,19 @@ $wgExtensionCredits['other'][] = array(
 
 
 // Object model
-
+$wgAutoloadClasses['MarkAsHelpfulItem'] = dirname(__FILE__).'/includes/MarkAsHelpfulItem.php';
+$wgAutoloadClasses['MarkAsHelpfulUtil'] = dirname(__FILE__).'/includes/MarkAsHelpfulUtil.php';
 
 // API
-
+$wgAutoloadClasses['ApiMarkAsHelpful'] = dirname(__FILE__).'/api/ApiMarkAsHelpful.php';
+$wgAPIModules['markashelpful'] = 'ApiMarkAsHelpful';
+$wgAutoloadClasses['ApiGetMarkAsHelpfulItem'] = dirname(__FILE__).'/api/ApiGetMarkAsHelpfulItem.php';
+$wgAPIModules['getmarkashelpfulitem'] = 'ApiGetMarkAsHelpfulItem';
 
 // Hooks
 $wgAutoloadClasses['MarkAsHelpfulHooks'] = dirname(__FILE__).'/MarkAsHelpful.hooks.php';
 $wgHooks['BeforePageDisplay'][] = 'MarkAsHelpfulHooks::onPageDisplay';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'MarkAsHelpfulHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['MakeGlobalVariablesScript'][] = 'MoodBarHooks::makeGlobalVariablesScript';
 
 // Special pages

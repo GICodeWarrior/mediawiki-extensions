@@ -27,10 +27,25 @@ class MarkAsHelpfulHooks {
 		return true;
 	}
 
+	
+	/**
+	 * Runs MarkAsHelpful schema updates#
+	 *
+	 * @param $updater DatabasEUpdater
+	 */
+	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
+		$updater->addExtensionUpdate( array( 'addTable', 'mark_as_helpful',
+			dirname(__FILE__).'/sql/mark_as_helpful.sql', true ) );
+		
+		return true;
+	}
+	
+
 	public static function makeGlobalVariablesScript( &$vars ) {
 		global $wgUser;
 		$vars['mahEditToken'] = $wgUser->editToken();
 		return true;
 	}
+
 
 }
