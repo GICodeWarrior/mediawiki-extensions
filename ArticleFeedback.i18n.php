@@ -1463,8 +1463,8 @@ $messages['de'] = array(
 	'articlefeedback-pitch-join-body' => 'Ein Benutzerkonto hilft dir deine Bearbeitungen besser nachvollziehen zu können, dich einfacher an Diskussionen zu beteiligen sowie ein Teil der Benutzergemeinschaft zu werden.',
 	'articlefeedback-pitch-join-accept' => 'Benutzerkonto erstellen',
 	'articlefeedback-pitch-join-login' => 'Anmelden',
-	'articlefeedback-pitch-edit-message' => 'Wusstest du, dass du diesen Artikel bearbeiten kannst?',
-	'articlefeedback-pitch-edit-accept' => 'Diesen Artikel bearbeiten',
+	'articlefeedback-pitch-edit-message' => 'Wusstest du, dass du diese Seite bearbeiten kannst?',
+	'articlefeedback-pitch-edit-accept' => 'Diese Seite bearbeiten',
 	'articlefeedback-survey-message-success' => 'Vielen Dank für die Teilnahme an der Umfrage.',
 	'articlefeedback-survey-message-error' => 'Ein Fehler ist aufgetreten.
 Bitte später erneut versuchen.',
@@ -1529,7 +1529,7 @@ $messages['de-formal'] = array(
 	'articlefeedback-pitch-thanks' => 'Vielen Dank! Ihre Einschätzung wurde gespeichert.',
 	'articlefeedback-pitch-survey-message' => 'Bitte nehmen Sie sich einen Moment Zeit, um an einer kurzen Umfrage teilzunehmen.',
 	'articlefeedback-pitch-join-message' => 'Wollten Sie ein Benutzerkonto anlegen?',
-	'articlefeedback-pitch-edit-message' => 'Wussten Sie, dass Sie diesen Artikel bearbeiten können?',
+	'articlefeedback-pitch-edit-message' => 'Wussten Sie, dass Sie diese Seite bearbeiten können?',
 	'articlefeedback-survey-message-error' => 'Ein Fehler ist aufgetreten.
 Bitte versuchen Sie es später erneut.',
 	'articlefeedback-emailcapture-response-body' => 'Hallo!
