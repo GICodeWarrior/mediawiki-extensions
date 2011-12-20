@@ -38,6 +38,15 @@ class EPOrg extends EPDBObject {
 		);
 	}
 	
+	/**
+	 * Returns a list of orgs in an array that can be fed to select inputs.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $orgs
+	 * 
+	 * @return array
+	 */
 	public static function getOrgOptions( array /* EPOrg */ $orgs ) {
 		$options = array();
 		

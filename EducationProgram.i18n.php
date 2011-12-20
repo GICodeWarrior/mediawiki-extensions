@@ -86,6 +86,7 @@ $messages['en'] = array(
 	'ep-terms-newyear' => 'Term year:',
 	'ep-terms-newcourse' => 'Term course:',
 	'ep-terms-add' => 'Add term',
+	'ep-terms-addcoursefirst' => 'The institutions you are a mentor for do not have any courses associated with them. You need to [[Special:Courses|add a course]] before you can create any terms.',
 
 	// Pager
 	'ep-pager-showonly' => 'Show only items with',

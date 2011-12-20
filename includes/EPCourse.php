@@ -32,15 +32,35 @@ class EPCourse extends EPDBObject {
 	}
 	
 	/**
-	 * Returns a lift of courses that can be administered by the provided user.
+	 * Returns a list of courses in an array that can be fed to select inputs.
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param User|int $user User object or user id
+	 * @param array $orgs
+	 * 
+	 * @return array
+	 */
+	public static function getCourseOptions( array /* EPCourse */ $courses ) {
+		$options = array();
+		
+		foreach ( $courses as /* EPCourse */ $course ) {
+			$options[$course->getField( 'name' )] = $course->getId(); 
+		}
+		
+		return $options;
+	}
+	
+	/**
+	 * Returns the list of orgs that the specified user can edit.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param User|int $user
+	 * @param array|null $fields
 	 * 
 	 * @return array of EPCourse
 	 */
-	public static function getCoursesForAdmin( $user ) {
+	public static function getEditableCourses( $user, array $fields = null ) {
 		static $cache = array();
 		
 		if ( is_int( $user ) ) {
@@ -58,13 +78,13 @@ class EPCourse extends EPDBObject {
 			$courses = array();
 			
 			if ( $user->isAllowed( 'epadmin' ) ) {
-				$courses = self::select();
+				$courses = self::select( $fields );
 			}
 			elseif ( $user->isAllowed( 'epmentor' ) ) {
 				$mentor = EPMentor::select( array( 'user_id' => $user->getId() ) );
 				
 				if ( $mentor !== false ) {
-					$courses = $mentor->getCourses();
+					$courses = $mentor->getCourses( $fields );
 				}
 			}
 			

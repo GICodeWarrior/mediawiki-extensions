@@ -54,9 +54,9 @@ class EPTermPager extends EPPager {
 
 	/**
 	 * (non-PHPdoc)
-	 * @see TablePager::formatValue()
+	 * @see EPPager::getFormattedValue()
 	 */
-	public function formatValue( $name, $value ) {
+	public function getFormattedValue( $name, $value ) {
 		switch ( $name ) {
 			case '': // TODO
 				$value = $value;

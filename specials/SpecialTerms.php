@@ -59,15 +59,13 @@ class SpecialTerms extends SpecialEPPage {
 	protected function displayPage() {
 		$user = $this->getUser();
 		
-		if ( $user->isAllowed( 'epadmin' ) ) {
-			$this->displayAddNewControl();
+		$courses = EPCourse::getEditableCourses( $this->getUser() );
+		
+		if ( count( $courses ) > 0 ) {
+			$this->displayAddNewControl( $courses );
 		}
 		elseif ( $user->isAllowed( 'epmentor' ) ) {
-			$mentor = EPMentor::select( array( 'user_id' => $user->getId() ) );
-			
-			if ( $mentor !== false && count( $mentor->getOrgs() ) > 0 ) {
-				$this->displayAddNewControl();
-			}
+			$this->getOutput()->addWikiMsg( 'ep-terms-addcoursefirst' );
 		}
 		
 		$pager = new EPTermPager( $this->getContext() );
@@ -90,8 +88,10 @@ class SpecialTerms extends SpecialEPPage {
 	 * Displays a small form to add a new institution.
 	 *
 	 * @since 0.1
+	 * 
+	 * @param array $courses
 	 */
-	protected function displayAddNewControl() {
+	protected function displayAddNewControl( array $courses ) {
 		$out = $this->getOutput();
 
 		$out->addHTML( Html::openElement(
@@ -106,12 +106,14 @@ class SpecialTerms extends SpecialEPPage {
 
 		$out->addHTML( '<legend>' . wfMsgHtml( 'ep-terms-addnew' ) . '</legend>' );
 
+		$out = $this->getOutput();
+		
 		$out->addHTML( Html::element( 'p', array(), wfMsg( 'ep-terms-namedoc' ) ) );
 
 		$out->addHTML( Html::element( 'label', array( 'for' => 'newcourse' ), wfMsg( 'ep-terms-newcourse' ) ) );
 		
 		$select = new XmlSelect( 'newcourse', 'newcourse' );
-		$select->addOptions( EPCourse::getCoursesForAdmin( $this->getUser() ) );
+		$select->addOptions( EPCourse::getCourseOptions( $courses ) );
 		$out->addHTML( $select->getHTML() );
 		
 		$out->addHTML( Xml::inputLabel( wfMsg( 'ep-terms-newyear' ), 'newyear', 'newyear' ) );
@@ -123,7 +125,7 @@ class SpecialTerms extends SpecialEPPage {
 		) );
 
 		$out->addHTML( Html::hidden( 'newEditToken', $this->getUser()->editToken() ) );
-
+		
 		$out->addHTML( '</fieldset></form>' );
 	}
 
