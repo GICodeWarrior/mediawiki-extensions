@@ -11,9 +11,10 @@
 */
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'TranslateSVG',
 	'author' => 'Harry Burt',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:TranslateSvg',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:TranslateSvg',
 	'descriptionmsg' => 'translatesvg-desc',
 	'version' => '1.0.0',
 );
