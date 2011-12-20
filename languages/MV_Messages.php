@@ -5140,9 +5140,9 @@ $messages['ia'] = array(
 	'mv_missing_stream' => 'Fluxo mancante: $1',
 	'specialpages-group-mv_group' => 'Paginas special de MetaVidWiki',
 	'mv_warning_wiki' => '<i>Nota: le transcriptiones de videos metavid [[Help:FAQ#How_accurate_is_the_information.3F|pote continer inexactitudes]], adjuta nos a construer [[Help:Participation#Improving_Archive_Accuracy|un archivo plus perfecte]]</i>',
-	'mv_ogg_low_quality' => 'Fluibile per web - Ogg Theora 300 kbit/s',
+	'mv_ogg_low_quality' => 'Transmissibile per fluxo web - Ogg Theora 300 kbit/s',
 	'mv_ogg_high_quality' => 'Alte qualitate - Ogg Theora 900 kbit/s',
-	'mv_flash_low_quality' => 'Fluibile per web - Video Flash',
+	'mv_flash_low_quality' => 'Transmissibile per fluxo web - Video Flash',
 	'mv_archive_org_mp4' => 'Fluxo H.264 de Archive.org incapsulate in MP4',
 	'mv_archive_org_link' => 'Ligamines verso originales in MPEG-2 a Archive.org',
 	'mv_error_stream_missing' => '<span class="error">Error: Il non ha un file de video associate con iste fluxo.</span><br />
