@@ -168,7 +168,7 @@ class WMFRewrite(object):
         # http://upload.wikimedia.org/wikipedia/commons/a/aa/000_Finlanda_harta.PNG
         # http://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/000_Finlanda_harta.PNG/75px-000_Finlanda_harta.PNG
         # http://upload.wikimedia.org/wikipedia/commons/thumb/archive/b/b6/20101108115418!Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg/100px-Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg
-        match = re.match(r'/(?P<proj>.*?)/(?P<lang>.*?)/(?P<thumb>thumb/)?(?P<shard>./../)?(?P<path>.*)', req.path)
+        match = re.match(r'/(?P<proj>.*?)/(?P<lang>.*?)/(?P<thumb>thumb/)?(?P<archive>(temp|archive)/)?(?P<shard>./../)?(?P<path>.*)', req.path)
         if match:
             # Our target URL is as follows (example):
             # https://alsted.wikimedia.org:8080/v1/AUTH_6790933748e741268babd69804c6298b/wikipedia-en-25/Machinesmith.png
@@ -180,12 +180,16 @@ class WMFRewrite(object):
             thumb = match.group('thumb')
             shard = match.group('shard')
             obj = match.group('path')
+            arch = match.group('archive')
             # include the thumb in the container.
             if thumb: #03
                 container += "-thumb"
             if shard:
                 #add only the 2-digit shard to the container name
                 container += "-%s" % shard[2:4]
+            if arch:
+                # for urls that go /wiki/thumb/archive/a/ab/path, the container is wiki-thumb-ab and the obj is archive/path
+                obj = "%s%s" % (arch, obj)
 
             if not obj:
                 # don't let them list the container (it's CRAZY huge) #08
