@@ -11,11 +11,14 @@
 
 		init: function() {
 			var $mahWrap = $( '<div />' ).attr( 'class', 'mw-mah-wrapper' );
+				
+			
+			//$ ( mah.selector ).append( $mahWrap );
 
-			$( mah.selector ).each ( function () {
-				$( this ).append( $mahWrap );
+			$( mah.selector ).each ( function (i, e) {
+				//$(i).append( $mahWrap );
 				mah.loadItem( $( this ) );
-			});
+			}); 
 		},
 
 		/*
@@ -48,19 +51,19 @@
 				url: mw.util.wikiScript('api'),
 				data: request,
 				success: function( data ) {
-					if ( data && data.query && data.query.mahitem &&
-						data.query.mahitem.length > 0
+
+					if ( data && data.getmarkashelpfulitem.result == 'success' &&
+						data.getmarkashelpfulitem.formatted
 					) {
-						var $content = $j( data.query.mahitem[0].formatted );
-						$item.find( '.mw-mah-wrapper' ).replaceWith( $content );
+
+						var $content = $( data.getmarkashelpfulitem.formatted );
+						$item.html( $content );
 					} else {
-						// Failure, remove the item for now.
-						$item.find( '.mw-mah-wrapper' ).remove();
+						// Failure, do nothing to the item for now
 					}
 				},
 				error: function ( data ) {
-					// Failure, remove the item for now.
-					$item.find( '.mw-mah-wrapper' ).remove();
+					// Failure, do nothing to the item for now
 				},
 				dataType: 'json'
 			});
@@ -72,9 +75,10 @@
 			var		props = mah.getItemProperties( $item ),
 					clientData = $.client.profile(),
 					request;
-			props.mbaction = action;
+			props.mahaction = action;
 
 			apiRequest = $.extend( {
+				'action': 'markashelpful',
 				'page': mw.config.get( 'wgPageName' ),
 				'useragent': clientData.name + '/' + clientData.versionNumber,
 				'system': clientData.platform,
@@ -86,7 +90,9 @@
 				type: 'post',
 				url: mw.util.wikiScript( 'api' ),
 				data: apiRequest,
-				success: mah.loadItem( $item ),
+				success: function () {
+					mah.loadItem( $item );	
+				},
 				dataType: 'json'
 			} );
 

@@ -13,7 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'markashelpful-desc' => 'Provides a user interface to mark comments as helpful',
-	'mah-mark-text' => 'Mark this as helpful',
+	'mah-mark-text' => 'Mark as helpful',
 	'mah-you-marked-text' => 'You think this is helpful',
 	'mah-someone-marked-text' => '$1 thinks this is helpful',
 	'mah-undo-mark-text' => 'undo',

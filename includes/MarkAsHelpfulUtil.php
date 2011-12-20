@@ -32,7 +32,10 @@ HTML;
 
 				return <<<HTML
 				<div class="mw-mah-wrapper">
-					<a class='mah-helpful-state'><div class='.mah-helpful-marked-icon'></div>$mahMarkedText</a> ($undoLinkText)
+					<span class='mah-helpful-marked-state'>
+							$mahMarkedText
+					</span>
+					&nbsp;(<a class='markashelpful-undo'>$undoLinkText</a>)
 				</div>
 HTML;
 			} else {
@@ -40,7 +43,9 @@ HTML;
 					$mahLinkText = wfMessage( 'mah-mark-text' )->escaped();
 					return <<<HTML
 					<div class="mw-mah-wrapper">
-						<a class='mah-helpful-state'><div class='.mah-helpful-icon'></div>$mahLinkText</a>
+						<a class='mah-helpful-state markashelpful-mark'>
+							$mahLinkText
+						</a>
 					</div>
 HTML;
 				}

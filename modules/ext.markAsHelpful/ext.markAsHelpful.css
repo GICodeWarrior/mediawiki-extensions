@@ -1,33 +1,20 @@
-.mw-mah-wrapper {
-	font-size: .8em;
-	color: #7E7E7E;
+.mw-mah-wrapper a{
+	cursor:pointer;
 }
 
 .mw-mah-wrapper .mah-helpful-state {
-	font-size: 1em;
-	line-height: 1em;
+	/* @embed */
+	background: transparent url( images/mah-helpful-dull.png ) left center no-repeat;
+	padding-left: 18px;
 }
 
-.mw-mah-wrapper .mah-helpful-state .mah-helpful-icon {
+.mw-mah-wrapper .mah-helpful-state:hover {
 	/* @embed */
-	background: transparent url( images/mah-helpful-dull.png ) left top no-repeat;
-	height: 16px;
-	width: 16px;
-	float:left;
+	background: transparent url( images/mah-helpful-hover.png ) left center no-repeat;
 }
 
-.mw-mah-wrapper .mah-helpful-state .mah-helpful-icon:hover {
+.mw-mah-wrapper .mah-helpful-marked-state  {
 	/* @embed */
-	background: transparent url( images/mah-helpful-hover.png ) left top no-repeat;
-	height: 16px;
-	width: 16px;
-	float: left;
-}
-
-.mw-mah-wrapper .mah-helpful-state .mah-helpful-marked-icon {
-	/* @embed */
-	background: transparent url( images/mah-helpful-marked.png ) left top no-repeat;
-	height: 16px;
-	width: 16px;
-	float: left;
+	background: transparent url( images/mah-helpful-marked.png ) left center no-repeat;
+	padding-left:18px;
 }
