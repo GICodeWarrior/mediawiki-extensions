@@ -3859,7 +3859,7 @@ Par piaser speta n'atimo.",
 	'youtubeauthsub_jserror_nodesc' => 'Par piaser inserissi na descrission par el video.',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
@@ -3874,6 +3874,8 @@ $messages['vep'] = array(
 	'youtubeauthsub_category' => 'Kategorii',
 	'youtubeauthsub_submit' => 'Oigeta',
 	'youtubeauthsub_clickhere' => 'Paingat nakhu, miše tulda YouTube-saitale',
+	'youtubeauthsub_tokenerror' => "Avtorizacijan tokenan sämižen petuz. Lat'kat udištada lehtpol'.",
+	'youtubeauthsub_authsubinstructions' => 'Miše jügetoitta video, teile pidab ezmäi tulda YouTube-he.',
 	'youtubeauthsub_uploadhere' => 'Jügutoitta teiden video täspäi:',
 	'youtubeauthsub_uploadbutton' => 'Jügutoitta',
 	'youtubeauthsub_summary' => 'YouTube-videod jügutoitand',
