@@ -2768,6 +2768,13 @@ Bitte erstellen Sie sie und führen Sie configure.sql darin aus oder korrigieren
 	'configure-view-not-allowed' => 'Es ist Ihnen nicht gestattet diese Einstellung einzusehen',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'configure-throttle-action-rollback' => 'Peyser bia',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
