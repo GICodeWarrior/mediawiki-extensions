@@ -103,21 +103,20 @@ class MoodBarHooks {
 	 * ResourceLoaderGetConfigVars hook
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
-		global $wgMoodBarConfig, $wgUser, $wgEnableEmail;
+		global $wgMoodBarConfig, $wgUser;
 		$vars['mbConfig'] = array(
 			'validTypes' => MBFeedbackItem::getValidTypes(),
-			'userBuckets' => MoodBarHooks::getUserBuckets( $wgUser ),
-			'emailEnabled' => $wgEnableEmail,  
-			'userEmail' => strlen( $wgUser->getEmail() ) > 0 ? true : false,
-			'isEmailConfirmationPending' => $wgUser->isEmailConfirmationPending() //returns false if email authentication off, and if email is confimed already
-
+			'userBuckets' => MoodBarHooks::getUserBuckets( $wgUser )
 		) + $wgMoodBarConfig;
 		return true;
 	}
 
 	public static function makeGlobalVariablesScript( &$vars ) {
-		global $wgUser;
+		global $wgUser, $wgEnableEmail;
 		$vars['mbEditToken'] = $wgUser->editToken();
+		$vars['mbEmailEnabled'] = $wgEnableEmail;
+		$vars['mbUserEmail'] = strlen( $wgUser->getEmail() ) > 0 ? true : false;
+		$vars['mbIsEmailConfirmationPending'] = $wgUser->isEmailConfirmationPending(); //returns false if email authentication off, and if email is confimed already
 		return true;
 	}
 

@@ -137,11 +137,11 @@
 					var emailFlag,emailOptOut = ($.cookie( mb.cookiePrefix() + 'emailOptOut' ) == '1');
 
 					// if opt out cookie not set and if email is on globally, proceed with email prompt
-					if( emailOptOut === false && mb.conf.emailEnabled ) { 
+					if( emailOptOut === false && mw.config.get( 'mbEmailEnabled' ) ) { 
 
-						if( mb.conf.userEmail ) { // if user has email
+						if( mw.config.get( 'mbUserEmail' ) ) { // if user has email
 
-							if ( !mb.conf.isEmailConfirmationPending ) { // if no confirmation pending, show form.
+							if ( !mw.config.get( 'mbIsEmailConfirmationPending' ) ) { // if no confirmation pending, show form.
 								mb.showSuccess();
 		
 							} else { //show email confirmation form
@@ -179,8 +179,7 @@
 			callback: function( data ) {
 				mb.showSuccess();
 				//set email flag to true so we do not ask again on this page load.
-				mb.conf.userEmail = true;  
-				mb.conf.isEmailConfirmationPending = true; 
+				mw.config.set({'mbUserEmail': true, 'mbIsEmailConfirmationPending': true});
 			}
 		},
 
@@ -188,7 +187,7 @@
 			callback: function ( data ) {
 				mb.showSuccess();
 				//set conf pending flag to false so we do not ask again on this page load.
-				mb.conf.isEmailConfirmationPending = false; 
+				mw.config.set({'mbIsEmailConfirmationPending': false});
 			}	
 
 		},
