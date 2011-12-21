@@ -2017,6 +2017,7 @@ $messages['ilo'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author Pietrodn
  */
@@ -2075,7 +2076,7 @@ $messages['it'] = array(
 	'tasks_previous' => 'Precedenti',
 	'tasks_next' => 'Successivi',
 	'tasks_sort' => 'Ordine',
-	'tasks_ascending' => 'Cronologico',
+	'tasks_ascending' => 'Dal più vecchio',
 	'tasks_status_open' => 'Aperta',
 	'tasks_status_assigned' => 'Assegnata',
 	'tasks_status_closed' => 'Chiusa',
