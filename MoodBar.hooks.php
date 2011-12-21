@@ -22,43 +22,45 @@ class MoodBarHooks {
 	 * @param $type string - the object type to be marked
 	 * @param $item int - an item of $type to be marked 
 	 * @param $User User Object - the User in current session
+	 * @param $isAbleToMark bool - determine whether the user is able to mark the item
 	 * @return bool
 	 */
-	public static function onMarkItemAsHelpful( $mahaction, $type, $item, $User ) {
+	public static function onMarkItemAsHelpful( $mahaction, $type, $item, $User, &$isAbleToMark ) {
 		
-		$isAbleToMark = true;
-		
-		switch ( $mahaction ) {
+		if ( $type == 'mbresponse' ) {
 			
-			case 'mark':
-				$dbr = wfGetDB( DB_SLAVE );
+			switch ( $mahaction ) {
 				
-				$conds = array( 'mbf_id = mbfr_mbf_id', 'mbfr_id' => intval( $item ) );
+				case 'mark':
+					$dbr = wfGetDB( DB_SLAVE );
+					
+					$conds = array( 'mbf_id = mbfr_mbf_id', 'mbfr_id' => intval( $item ) );
+					
+					if ( !$User->isAnon() ) {
+						$conds['mbf_user_id'] = $User->getId();		
+					}
+					else {
+						$conds['mbf_user_ip'] = $User->getName();
+					}
+					
+					$res = $dbr->selectRow( array( 'moodbar_feedback', 'moodbar_feedback_response' ), 
+								array( 'mbf_id' ),
+								$conds,
+								__METHOD__ );	
+					
+					if ( $res === false ) {
+						$isAbleToMark = false;
+					}
+				break;
 				
-				if ( !$User->isAnon() ) {
-					$conds['mbf_user_id'] = $User->getId();		
-				}
-				else {
-					$conds['mbf_user_ip'] = $User->getName();
-				}
-				
-				$res = $dbr->selectRow( array( 'moodbar_feedback', 'moodbar_feedback_response' ), 
-			             			array( 'mbf_id' ),
-			             			$conds,
-			             			__METHOD__ );	
-			        
-			        if ( $res === false ) {
-			        	$isAbleToMark = false;
-			        }
-			break;
-			
-			case 'unmark':
-			default:
-				//We will leve the MarkAsHelpFul extension to check if the user has unmark right
-		        break;
+				case 'unmark':
+				default:
+					//We will leve the MarkAsHelpFul extension to check if the user has unmark right
+				break;
+			}
 		}
-
-		return $isAbleToMark;
+		
+		return true;
 		
 	}
 
