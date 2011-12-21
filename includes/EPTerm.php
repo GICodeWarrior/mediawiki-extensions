@@ -43,5 +43,21 @@ class EPTerm extends EPDBObject {
 			'end' => wfTimestamp( TS_MW ),
 		);
 	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see EPDBObject::removeFromDB()
+	 */
+	public function removeFromDB() {
+		$id = $this->getId();
+		
+		$success = parent::removeFromDB();
+		
+		if ( $success ) {
+			$success = wfGetDB( DB_MASTER )->delete( 'ep_students_per_term', array( 'spt_term_id' => $id ) ) && $success;
+		}
+		
+		return $success;
+	}
 
 }

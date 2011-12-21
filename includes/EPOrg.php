@@ -43,6 +43,26 @@ class EPOrg extends EPDBObject {
 	}
 	
 	/**
+	 * (non-PHPdoc)
+	 * @see EPDBObject::removeFromDB()
+	 */
+	public function removeFromDB() {
+		$id = $this->getId();
+		
+		$success = parent::removeFromDB();
+		
+		if ( $success ) {
+			$success = wfGetDB( DB_MASTER )->delete( 'ep_mentors_per_org', array( 'mpo_org_id' => $id ) ) && $success;
+			
+			foreach ( EPCourse::select( 'id', array( 'org_id' => $id ) ) as /* EPCourse */ $course ) {
+				$success = $course->removeFromDB() && $success;
+			}
+		}
+		
+		return $success;
+	}
+	
+	/**
 	 * Returns a list of orgs in an array that can be fed to select inputs.
 	 * 
 	 * @since 0.1

@@ -42,6 +42,24 @@ class EPCourse extends EPDBObject {
 	}
 	
 	/**
+	 * (non-PHPdoc)
+	 * @see EPDBObject::removeFromDB()
+	 */
+	public function removeFromDB() {
+		$id = $this->getId();
+		
+		$success = parent::removeFromDB();
+		
+		if ( $success ) {
+			foreach ( EPTerm::select( 'id', array( 'course_id' => $id ) ) as /* EPTerm */ $term ) {
+				$success = $term->removeFromDB() && $success;
+			}
+		}
+		
+		return $success;
+	}
+	
+	/**
 	 * Returns a list of courses in an array that can be fed to select inputs.
 	 * 
 	 * @since 0.1

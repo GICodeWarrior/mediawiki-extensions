@@ -732,7 +732,7 @@ abstract class EPDBObject {
 	 * @return array of self
 	 */
 	public static function select( $fields = null, array $conditions = array(), array $options = array(), array $joinConds = array() ) {
-		$result = static::selectFields( $fields, $conditions, $options, $joinConds );
+		$result = static::selectFields( $fields, $conditions, $options, $joinConds, false );
 
 		$objects = array();
 
