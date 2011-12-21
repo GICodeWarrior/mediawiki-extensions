@@ -405,6 +405,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'apisb-desc' => 'Zmóžnja wotstronjenje zmylkow při wołanju [//www.mediawiki.org/wiki/API MediaWiki API] z wobhladowaka',
 	'apisandbox' => 'API-hrajkanišćo',
 	'apisb-no-js' => "'''Zmylk''': tuta funkcija sej JavaScript wužaduje.",
 	'apisb-intro' => "Wužij tutu stronu, zo by z '''Mediawiki API''' eksperimentował.
@@ -412,7 +413,17 @@ Hlej [//www.mediawiki.org/wiki/API API-dokumentaciju] za dalše podrobnosće za 
 	'apisb-api-disabled' => 'API je so na tutym sydle znjemóžnił.',
 	'apisb-parameters' => 'Parametry',
 	'apisb-result' => 'Wuslědk',
+	'apisb-request-url' => 'URL naprašowanja:',
+	'apisb-request-post' => 'POST-daty:',
+	'apisb-select-action' => 'Akciju wubrać',
+	'apisb-select-query' => 'Što ma so wotprašeć?',
 	'apisb-select-value' => 'Hódnotu wubrać',
+	'apisb-loading' => 'Začituje so...',
+	'apisb-load-error' => 'Zmylk při začitowanju API-wopisanja',
+	'apisb-request-error' => 'Zmylk při přewjedźenju API-naprašowanja',
+	'apisb-namespaces-error' => 'Zmylk při začitowanju mjenowych rumow',
+	'apisb-ns-main' => '(Nastawki)',
+	'apisb-submit' => 'Naprašowanje přewjesć',
 	'apisb-query-prop' => 'Kajkosće',
 	'apisb-query-list' => 'Lisćiny',
 	'apisb-query-meta' => 'Metainformacije',
