@@ -25,11 +25,15 @@ class MarkAsHelpfulUtil {
 			}
 		}
 
-		return '<div class="mw-mah-wrapper">' . $html . '</div>';
+		return $html;
 		
 	}
 	
 	private static function otherMarkedTemplate( $helpfulUserList ) {
+		if ( count( $helpfulUserList ) == 0 ) {
+			return '';
+		}
+
 		$userList = '';
 
 		foreach ( $helpfulUserList as $val ) {
@@ -43,9 +47,11 @@ class MarkAsHelpfulUtil {
 		}
 
 		return <<<HTML
+			<div class='mw-mah-wrapper'>
 				<span class='mah-helpful-marked-state'>
 					$data
 				</span>
+			</div>
 HTML;
 	}
 	
@@ -54,19 +60,23 @@ HTML;
 		$undoLinkText = wfMessage( 'mah-undo-mark-text' )->escaped();
 
 		return <<<HTML
-			<span class='mah-helpful-marked-state'>
-				$mahMarkedText
-			</span>
-			&nbsp;(<a class='markashelpful-undo'>$undoLinkText</a>)
+			<div class='mw-mah-wrapper'>
+				<span class='mah-helpful-marked-state'>
+					$mahMarkedText
+				</span>
+				&nbsp;(<a class='markashelpful-undo'>$undoLinkText</a>)
+			</div>
 HTML;
 	}
 
 	private static function requestToMarkTemplate() {
 		$mahLinkText = wfMessage( 'mah-mark-text' )->escaped();
 		return <<<HTML
-			<a class='mah-helpful-state markashelpful-mark'>
-				$mahLinkText
-			</a>
+			<div class='mw-mah-wrapper'>
+				<a class='mah-helpful-state markashelpful-mark'>
+					$mahLinkText
+				</a>
+			</div>
 HTML;
 	}
 	
