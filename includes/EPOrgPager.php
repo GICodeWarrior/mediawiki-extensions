@@ -120,11 +120,27 @@ class EPOrgPager extends EPPager {
 		$links = parent::getControlLinks( $item );
 		
 		$links[] = $value = Linker::linkKnown(
-			SpecialPage::getTitleFor( 'EditInstitution', $item->getField( 'name' ) ),
-			wfMsg( 'edit' )
+			SpecialPage::getTitleFor( 'Institution', $item->getField( 'name' ) ),
+			wfMsg( 'view' )
 		);
 		
-		// TODO
+		if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
+			$links[] = $value = Linker::linkKnown(
+				SpecialPage::getTitleFor( 'EditInstitution', $item->getField( 'name' ) ),
+				wfMsg( 'edit' )
+			);
+			
+			$links[] = $value = Html::element(
+				'a',
+				array(
+					'href' => '#',
+					'class' => 'ep-pager-delete',
+					'data-id' => $item->getId(),
+					'data-type' => 'org',
+				),
+				wfMsg( 'delete' )
+			);
+		}
 		
 		return $links;
 	}

@@ -748,6 +748,12 @@ abstract class EPDBObject {
 	 * conditions and returns them as associative arrays.
 	 * Provided field names get prefixed.
 	 * Returned field names will not have a prefix.
+	 * 
+	 * When $collapse is true:
+	 * If one field is selected, each item in the result array will be this field.
+	 * If two fields are selected, each item in the result array will have as key
+	 * the first field and as value the second field.
+	 * If more then two fields are selected, each item will be an associative array.
 	 *
 	 * @since 0.1
 	 *
@@ -755,11 +761,11 @@ abstract class EPDBObject {
 	 * @param array $conditions
 	 * @param array $options
 	 * @param array $joinConds
-	 * @param boolean $collapse
+	 * @param boolean $collapse Set to false to always return each result row as associative array.
 	 *
 	 * @return array of array
 	 */
-	public static function selectFields( $fields = null, array $conditions = array(), array $options = array(), array $joinConds = array(), $collapse = false ) {
+	public static function selectFields( $fields = null, array $conditions = array(), array $options = array(), array $joinConds = array(), $collapse = true ) {
 		if ( is_null( $fields ) ) {
 			$fields = array_keys( static::getFieldTypes() );
 		}
@@ -855,6 +861,31 @@ abstract class EPDBObject {
 		$options['LIMIT'] = 1;
 
 		$objects = static::select( $fields, $conditions, $options, $joinConds );
+
+		return count( $objects ) > 0 ? $objects[0] : false;
+	}
+	
+	/**
+	 * Selects the the specified fields of the first record matching the provided
+	 * conditions and returns it as an associative array, or false when nothing matches.
+	 * This method makes use of selectFields and expects the same parameters and
+	 * returns the same results (if there are any, if there are none, this method returns false).
+	 * @see EPDBObject::selectFields
+	 *
+	 * @since 0.1
+	 *
+	 * @param array|string|null $fields
+	 * @param array $conditions
+	 * @param array $options
+	 * @param array $joinConds
+	 * @param boolean $collapse Set to false to always return each result row as associative array.
+	 *
+	 * @return mixed|array|false
+	 */
+	public static function selectFieldsRow( $fields = null, array $conditions = array(), array $options = array(), array $joinConds = array(), $collapse = true ) {
+		$options['LIMIT'] = 1;
+
+		$objects = static::selectFields( $fields, $conditions, $options, $joinConds, $collapse );
 
 		return count( $objects ) > 0 ? $objects[0] : false;
 	}

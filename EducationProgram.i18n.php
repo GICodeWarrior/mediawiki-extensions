@@ -143,6 +143,10 @@ $messages['en'] = array(
 
 	'ep-term-invalid-year' => 'The year needs to be number.',
 	'ep-term-invalid-course' => 'This course does not exist.',
+
+	// ep.pager
+	'ep-pager-confirm-delete' => 'Are you sure you want to delete this item?',
+	'ep-pager-delete-fail' => 'Could not delete this item.',
 );
 
 /** Message documentation (Message documentation)

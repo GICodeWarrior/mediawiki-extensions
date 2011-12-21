@@ -57,5 +57,31 @@ class EPMentor extends EPDBObject {
 	public function getCourses( array $fields = null ) {
 		return array(); // TODO
 	}
+	
+	/**
+	 * Retruns if the mentor has any course matching the provided contitions. 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $conditions
+	 * 
+	 * @return boolean
+	 */
+	public function hasCourse( array $conditions = array() ) {
+		return true; // TODO
+	}
+	
+	/**
+	 * Retruns if the mentor has any term matching the provided contitions. 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $conditions
+	 * 
+	 * @return boolean
+	 */
+	public function hasTerm( array $conditions = array() ) {
+		return true; // TODO
+	}
 
 }

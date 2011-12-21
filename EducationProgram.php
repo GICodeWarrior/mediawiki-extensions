@@ -49,6 +49,8 @@ $wgExtensionMessagesFiles['EducationProgramAlias']	= dirname( __FILE__ ) . '/Edu
 $wgAutoloadClasses['EPHooks'] 						= dirname( __FILE__ ) . '/EducationProgram.hooks.php';
 $wgAutoloadClasses['EPSettings'] 					= dirname( __FILE__ ) . '/EducationProgram.settings.php';
 
+$wgAutoloadClasses['ApiDeleteEducation'] 			= dirname( __FILE__ ) . '/api/ApiDeleteEducation.php';
+
 $wgAutoloadClasses['EPCourse'] 						= dirname( __FILE__ ) . '/includes/EPCourse.php';
 $wgAutoloadClasses['EPCoursePager'] 				= dirname( __FILE__ ) . '/includes/EPCoursePager.php';
 $wgAutoloadClasses['EPDBObject'] 					= dirname( __FILE__ ) . '/includes/EPDBObject.php';
@@ -117,7 +119,7 @@ $egEPDBObjects[] = array( 'table' => 'ep_students_per_term', 'prefix' => 'spt_' 
 $egEPDBObjects[] = array( 'table' => 'ep_mentors_per_org', 'prefix' => 'mpo_' );
 
 // API
-
+$wgAPIModules['deleteeducation'] 				= 'ApiDeleteEducation';
 
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] 		= 'EPHooks::onSchemaUpdate';
@@ -164,9 +166,22 @@ $moduleTemplate = array(
 	'remoteExtPath' => 'EducationProgram/resources'
 );
 
+$wgResourceModules['ep.api'] = $moduleTemplate + array(
+	'scripts' => array(
+		'ep.api.js',
+	),
+);
+
 $wgResourceModules['ep.pager'] = $moduleTemplate + array(
 	'scripts' => array(
 		'ep.pager.js',
+	),
+	'dependencies' => array(
+		'ep.api',
+	),
+	'messages' => array(
+		'ep-pager-confirm-delete',
+		'ep-pager-delete-fail',
 	),
 );
 
