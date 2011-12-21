@@ -16,12 +16,16 @@ $messages['en'] = array(
 	'solrstore-searchFieldSets-title' => 'SolrSearch: SearchSet select',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author F.trott
+ * @author Siebrand
+ */
 $messages['qqq'] = array(
-	'solrsearch' => "The title of the Special:SolrSearch page as appearing in Special:SpecialPages. Should probably the same as message ''searchFieldSets''",
+	'solrstore-desc' => '{{desc}}',
+	'solrsearch' => "The title of the Special:SolrSearch page as appearing in Special:SpecialPages. Should probably be the same as message ''solrstore-searchFieldSets''",
 	'solrstore-searchFieldSets' => 'The pagetitle (heading) of the Special:SolrSearch page',
-	'solrstore-searchFieldSets-select' => 'A message',
-	'solrstore-searchFieldSets-title' => 'The title of the Special:SolrSearch page',
+	'solrstore-searchFieldSets-select' => 'A SearchSet is a predefined search form for a field based search.',
+	'solrstore-searchFieldSets-title' => 'The title of the Special:SolrSearch page. A SearchSet is a predefined search form for a field based search.',
 );
 
 /** German (Deutsch)
