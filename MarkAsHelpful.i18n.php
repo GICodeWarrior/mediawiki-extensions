@@ -60,6 +60,7 @@ $messages['gl'] = array(
 	'mah-you-marked-text' => 'Pensa que isto é útil',
 	'mah-someone-marked-text' => '$1 pensa que isto é útil',
 	'mah-undo-mark-text' => 'desfacer',
+	'mah-action-error' => 'Houbo un erro ao levar a cabo a acción',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -71,6 +72,7 @@ $messages['hsb'] = array(
 	'mah-you-marked-text' => 'Maš to za pomocliwe',
 	'mah-someone-marked-text' => '$1 ma to za pomocliwe',
 	'mah-undo-mark-text' => 'cofnyć',
+	'mah-action-error' => 'Při wuwjedźenju akcije je zmylk wustupił',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -90,6 +92,7 @@ $messages['mk'] = array(
 	'mah-you-marked-text' => 'Сметате дека ова е корисно',
 	'mah-someone-marked-text' => '$1 смета дека ова е корисно',
 	'mah-undo-mark-text' => 'врати',
+	'mah-action-error' => 'Се појави грешка при извршувањето на дејството',
 );
 
 /** Dutch (Nederlands)
