@@ -720,7 +720,7 @@ abstract class EPDBObject {
 
 	/**
 	 * Selects the the specified fields of the records matching the provided
-	 * conditions. Field names get prefixed.
+	 * conditions and returns them as EPDBObject. Field names get prefixed.
 	 *
 	 * @since 0.1
 	 *
@@ -732,6 +732,34 @@ abstract class EPDBObject {
 	 * @return array of self
 	 */
 	public static function select( $fields = null, array $conditions = array(), array $options = array(), array $joinConds = array() ) {
+		$result = static::selectFields( $fields, $conditions, $options, $joinConds );
+
+		$objects = array();
+
+		foreach ( $result as $record ) {
+			$objects[] = static::newFromArray( $record );
+		}
+
+		return $objects;
+	}
+	
+	/**
+	 * Selects the the specified fields of the records matching the provided
+	 * conditions and returns them as associative arrays.
+	 * Provided field names get prefixed.
+	 * Returned field names will not have a prefix.
+	 *
+	 * @since 0.1
+	 *
+	 * @param array|string|null $fields
+	 * @param array $conditions
+	 * @param array $options
+	 * @param array $joinConds
+	 * @param boolean $collapse
+	 *
+	 * @return array of array
+	 */
+	public static function selectFields( $fields = null, array $conditions = array(), array $options = array(), array $joinConds = array(), $collapse = false ) {
 		if ( is_null( $fields ) ) {
 			$fields = array_keys( static::getFieldTypes() );
 		}
@@ -753,7 +781,22 @@ abstract class EPDBObject {
 		$objects = array();
 
 		foreach ( $result as $record ) {
-			$objects[] = static::newFromDBResult( $record );
+			$objects[] = static::getFieldsFromDBResult( $record );
+		}
+		
+		if ( $collapse ) {
+			if ( count( $fields ) === 1 ) {
+				$objects = array_map( function( $object ) { return array_shift( $object ); }, $objects );
+			}
+			elseif ( count( $fields ) === 2 ) {
+				$o = array();
+				
+				foreach ( $objects as $object ) {
+					$o[array_shift( $object )] = array_shift( $object );
+				}
+				
+				$objects = $o;
+			}
 		}
 
 		return $objects;
@@ -804,13 +847,14 @@ abstract class EPDBObject {
 	 * @param array|string|null $fields
 	 * @param array $conditions
 	 * @param array $options
+	 * @param array $joinConds
 	 *
-	 * @return self|false
+	 * @return EPBObject|false
 	 */
-	public static function selectRow( $fields = null, array $conditions = array(), array $options = array() ) {
+	public static function selectRow( $fields = null, array $conditions = array(), array $options = array(), array $joinConds = array() ) {
 		$options['LIMIT'] = 1;
 
-		$objects = static::select( $fields, $conditions, $options );
+		$objects = static::select( $fields, $conditions, $options, $joinConds );
 
 		return count( $objects ) > 0 ? $objects[0] : false;
 	}

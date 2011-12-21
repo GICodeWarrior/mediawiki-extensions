@@ -108,6 +108,11 @@ class EPTermPager extends EPPager {
 	 * @see EPPager::getFilterOptions()
 	 */
 	protected function getFilterOptions() {
+		$years = EPTerm::selectFields( 'year', array(), array( 'DISTINCT' ), array(), true );
+		asort( $years, SORT_NUMERIC );
+		$years = array_merge( array( '' ), $years );
+		$years = array_combine( $years, $years );
+		
 		return array(
 			'course_id' => array(
 				'type' => 'select',
@@ -120,12 +125,8 @@ class EPTermPager extends EPPager {
 			),
 			'year' => array(
 				'type' => 'select',
-				'options' => array_merge(
-					array( '' => '' ),
-					array() // TODO
-				),
+				'options' => $years,
 				'value' => '',
-				'datatype' => 'int',
 			),
 		);
 	}
