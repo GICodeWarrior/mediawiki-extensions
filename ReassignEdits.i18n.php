@@ -198,3 +198,12 @@ $messages['nl'] = array(
 	'right-reassignedits' => 'Bewerkingen van een oude gebruiker aan een nieuwe toewijzen',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'reassignedits-new' => 'కొత్త వాడుకరి పేరు',
+	'reassignedits-old' => 'పాత వాడుకరి పేరు',
+	'reassignedits-submit' => 'దాఖలుచెయ్యి',
+);
+
