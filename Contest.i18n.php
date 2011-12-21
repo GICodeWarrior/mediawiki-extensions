@@ -160,6 +160,7 @@ $messages['en'] = array(
 	'contest-contest-reminder-page' => 'The content for the reminder e-mail comes from [[$1|this page]].',
 	'contest-contest-send-reminder' => 'Send reminder',
 	'contest-contest-go' => 'Go',
+	'contest-contest-clear' => 'Clear filters',
 	'contest-contest-showonly' => 'Filter contestants by',
 	'contest-contest-yes' => 'Yes',
 	'contest-contest-no' => 'No',
@@ -324,6 +325,7 @@ $messages['qqq'] = array(
 	'contest-contest-send-reminder' => 'Send reminder button text',
 	'contest-contest-go' => 'Submission button text for filter form.
 {{Identical|Go}}',
+	'contest-contest-clear' => 'Clear button text for filter form.',
 	'contest-contest-showonly' => 'Header text for filter form',
 	'contest-contest-yes' => 'Option in a dropdown menu.
 {{Identical|Yes}}',

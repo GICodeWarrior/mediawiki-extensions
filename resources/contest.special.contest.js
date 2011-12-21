@@ -80,6 +80,13 @@
 		$dialog.append( $( '#reminder-content' ).html() );
 	};
 
+	$( '.contest-pager-clear' ).click( function() {
+		var $form = $( this ).closest( 'form' );
+		$form.find( 'select' ).val( '' );
+		$form.submit();
+		return false;
+	} );
+	
 	$( '#send-reminder' ).button().click( this.showReminderDialog );
 
 } ); })( window.jQuery, window.mediaWiki );

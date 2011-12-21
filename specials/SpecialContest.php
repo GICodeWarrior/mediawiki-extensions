@@ -330,6 +330,7 @@ class SpecialContest extends SpecialContestPage {
 						$noneSome
 					) .
 					'<input type="submit" value="' . wfMsgHtml( 'contest-contest-go' ) . '">' .
+					'&#160;<button class="contest-pager-clear">' . wfMsgHtml( 'contest-contest-clear' ) . '</button>' .
 				'</form>' .
 			'</fieldset>'
 		);
