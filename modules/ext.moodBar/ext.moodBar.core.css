@@ -198,7 +198,7 @@
 }
 .mw-moodBar-types-select .mw-moodBar-type-happy  {
 	/* @embed */
-	background-image: url(images/type-happy-dull.png);
+	background-image: url(images/type-happy-normal.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-happy.mw-moodBar-happy-selected {
 	/* @embed */
@@ -220,7 +220,7 @@
 }
 .mw-moodBar-types-select .mw-moodBar-type-sad {
 	/* @embed */
-	background-image: url(images/type-sad-dull.png);
+	background-image: url(images/type-sad-normal.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-sad.mw-moodBar-sad-selected {
 	/* @embed */
@@ -242,7 +242,7 @@
 }
 .mw-moodBar-types-select .mw-moodBar-type-confused {
 	/* @embed */
-	background-image: url(images/type-confused-dull.png);
+	background-image: url(images/type-confused-normal.png);
 }
 .mw-moodBar-types-select .mw-moodBar-type-confused.mw-moodBar-confused-selected {
 	/* @embed */
