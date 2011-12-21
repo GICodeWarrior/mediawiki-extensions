@@ -47,7 +47,7 @@ class ApiGetMarkAsHelpfulItem extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiGetMarkAsHelpfulItem.php 104827 2011-12-19 02:13:46Z bsitu $';
+		return __CLASS__ . ': $Id$';
 	}
 
 	public function getParamDescription() {

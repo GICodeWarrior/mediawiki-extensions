@@ -104,7 +104,7 @@ class ApiMarkAsHelpful extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiMarkAsHelpful.php 104827 2011-12-19 02:13:46Z bsitu $';
+		return __CLASS__ . ': $Id$';
 	}
 
 	public function getParamDescription() {
