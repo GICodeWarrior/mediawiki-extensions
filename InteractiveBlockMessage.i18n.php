@@ -73,6 +73,13 @@ $messages['ia'] = array(
 	'interactiveblockmessage-desc' => 'Crea un nove parola magic <nowiki>{{USERBLOCKED}}</nowiki> le qual, si in spatio de usator, indica si le usator es blocate o non',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'interactiveblockmessage-desc' => '사용자 이름공간에서 차단되었는지 여부를 판별하는 <nowiki>{{USERBLOCKED}}</nowiki> 매직 워드를 추가',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
