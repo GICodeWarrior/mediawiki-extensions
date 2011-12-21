@@ -72,6 +72,8 @@ class ApiMarkAsHelpful extends ApiBase {
 	}
 
 	public function getAllowedParams() {
+		global $wgMarkAsHelpfulType;
+		
 		return array(
 			'mahaction' => array(
 				ApiBase::PARAM_REQUIRED => true,
@@ -82,7 +84,7 @@ class ApiMarkAsHelpful extends ApiBase {
 			),
 			'type' => array(
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_TYPE => $wgMarkAsHelpfulType,
 			),
 			'item' => array(
 				ApiBase::PARAM_REQUIRED => true,
