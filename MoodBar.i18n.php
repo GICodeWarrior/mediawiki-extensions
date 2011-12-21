@@ -1274,6 +1274,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author ChrisPtDe
  * @author Crochet.david
+ * @author DavidL
  * @author Gomoko
  * @author Hashar
  * @author IAlex
@@ -1412,18 +1413,18 @@ Pour plus d'information, consultez la $1.",
 	'response-ajax-error-head' => 'Oups !',
 	'response-ajax-error-body' => 'Il y a eu une erreur en ajoutant votre réponse.<br />Veuillez réessayer plus tard.',
 	'moodbar-enotif-subject' => '$1a répondu à vos commentaires',
-	'moodbar-enotif-body' => 'Bonjour  $1!
+	'moodbar-enotif-body' => 'Bonjour $1 !
 
-Bienvenue sur {{SITENAME}}, et merci pour votre [[$2|commentaire]]. Un autre utilisateur de {{SITENAME}}, [[$3|$6]], a écrit la réponse suivante: 
+Bienvenue sur {{SITENAME}}, et merci pour votre [[$2|commentaire]]. Un autre utilisateur de {{SITENAME}}, [[$3|$6]], a écrit la réponse suivante : 
 
      $4
 
-Afficher ce message sur votre [ $5 page de discussion]
+Afficher ce message sur votre [$5 page de discussion]
 
-Qu\'est-ce qu\'une page de discussion?
-Votre page de discussion d\'utilisateur est la page autres rédacteurs de {{SITENAME}} utilisent pour communiquer avec vous.  Vous pouvez répondre en cliquant "Modifier", déplacer le curseur en dessous du commentaire, taper votre réponse et quatre tildes (~~~~) pour signer, et enregistrer. Toutes les pages de {{SITENAME}} ont des pages de discussion, et elles sont utilisées à de nombreuses fins diverses. Cela prend un certain temps comprendre cela, mais c\'est assez facile une fois que vous y êtes habitué.
+Qu\'est-ce qu\'une page de discussion ?
+Votre page de discussion d\'utilisateur est la page que les autres rédacteurs de {{SITENAME}} utilisent pour communiquer avec vous.  Vous pouvez répondre en cliquant "Modifier", déplacer le curseur en dessous du commentaire, taper votre réponse et quatre tildes (~~~~) pour signer, et enregistrer. Toutes les pages de {{SITENAME}} ont des pages de discussion, et elles sont utilisées à de nombreuses fins diverses. Cela prend un certain temps comprendre cela, mais c\'est assez facile une fois que vous y êtes habitué.
 
-Encore incertain? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Cette vidéo] (à voir sur [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) vous donne un aperçu pas à pas. 
+Encore incertain ? [[File:Wikipedia basics - Talk pages.ogv|Cette vidéo]] (à voir sur [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) vous donne un aperçu pas à pas. 
 
 Bonne journée,
 -- {{SITENAME}}',
@@ -3440,7 +3441,7 @@ Za več informacij obiščite $1.',
 	'moodbar-email-confirm-desc' => 'Za prejemanje obvestil morate potrditi svoj e-poštni naslov. Da ponovno pošljete potrditveno e-pošto, kliknite gumb »Ponovno pošlji potrditev«.',
 	'moodbar-email-resend-confirmation' => 'Ponovno pošlji potrditev',
 	'moodbar-email-optout' => 'Ne, hvala',
-	'moodbar-tooltip-title' => 'Obvestite nas o svoji izkušnji ob urejanju {{SITENAME}}.',
+	'moodbar-tooltip-title' => 'Obvestite nas o svoji izkušnji ob urejanju {{GRAMMAR:rodilnik|{{SITENAME}}}}.',
 	'right-moodbar-view' => 'Ogled in izvoz povratnih informacij MoodBar',
 	'right-moodbar-admin' => 'Spreminjanje vidnosti na pregledni plošči povratnih informacij',
 	'moodbar-admin-title' => 'Povratne informacije MoodBar',
@@ -3496,7 +3497,7 @@ Za več informacij obiščite $1.',
 	'moodbar-restore-header' => 'Obnovi vidljivost tega predmeta',
 	'moodbar-invalid-item' => 'Sistem ni mogel najti ustreznega predmeta povratne informacije.',
 	'moodbar-feedback-action-error' => 'Med poskusom izvedbe tega dejanja je prišlo do napake.',
-	'moodbar-feedback-response-summary' => '[[$1|$2]] se je [[$3|odzval(-a)]] na to pripombo pred $4',
+	'moodbar-feedback-response-summary' => '[[$1|$2]] se je [[$3|odzval(-a)]] pred $4',
 	'moodbar-feedback-edit-summary' => 'Odgovor na [[Special:FeedbackDashboard/$1|povratno informacijo uporabnika]]: $2',
 	'moodbar-type-happy' => '{{GENDER:$1|Vesel|Vesela}}',
 	'moodbar-type-sad' => '{{GENDER:$1|Žalosten|Žalostna}}',
