@@ -28,12 +28,22 @@ $wgExtensionCredits['other'][] = array(
 $cwd = dirname( __FILE__ ) . DIRECTORY_SEPARATOR;
 $wgExtensionMessagesFiles['ZeroRatedMobileAccess'] = $cwd . 'ZeroRatedMobileAccess.i18n.php';
 
+// autoload extension classes
+
+$autoloadClasses = array (
+	'ZeroRatedMobileAccessTemplate',
+);
+
+foreach ( $autoloadClasses as $class ) {
+	$wgAutoloadClasses[$class] = $cwd . $class . '.php';
+}
+
 $wgExtZeroRatedMobileAccess = new ExtZeroRatedMobileAccess();
 
 $wgHooks['BeforePageDisplay'][] = array( &$wgExtZeroRatedMobileAccess, 'beforePageDisplayHTML' );
 
 class ExtZeroRatedMobileAccess {
-	const VERSION = '0.0.1';
+	const VERSION = '0.0.2';
 
 	public static $renderZeroRatedLandingPage;
 
