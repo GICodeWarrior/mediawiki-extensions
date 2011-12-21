@@ -310,6 +310,18 @@ $messages['km'] = array(
 	'webfonts-enable-preference' => 'ដាក់ពុម្ពអក្សរបង្កប់ចូល (WebFonts)',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'webfonts' => '웹폰트',
+	'webfonts-desc' => '문서에 글꼴을 포함하기',
+	'webfonts-load' => '글꼴 선택',
+	'webfonts-reset' => '리셋',
+	'webfonts-enable-preference' => '글꼴 임베딩 켜기 (WebFonts)',
+	'webfonts-menu-tooltip' => '문서를 표시할 글꼴 선택',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -358,11 +370,13 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Htt
+ * @author Kaajawa
  */
 $messages['mr'] = array(
 	'webfonts' => 'जालटंक',
 	'webfonts-load' => 'टंक',
 	'webfonts-reset' => 'पूर्ववत करा',
+	'webfonts-menu-tooltip' => 'पानासाठी टंक निवडा',
 );
 
 /** Malay (Bahasa Melayu)
@@ -493,6 +507,7 @@ $messages['sl'] = array(
 	'webfonts-load' => 'Izberite pisavo',
 	'webfonts-reset' => 'Ponastavi',
 	'webfonts-enable-preference' => 'Omogoči vdelavo pisav (SpletnePisave)',
+	'webfonts-menu-tooltip' => 'Izberite pisavo strani',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
