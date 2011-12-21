@@ -11,8 +11,12 @@ class ApiMarkAsHelpful extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
+		$isAbleToMark = true;
+		
 		// Gives other extension the last chance to speicfy mark as helpful permission rules
-		if ( !wfRunHooks( 'onMarkItemAsHelpful', array( $params['mahaction'], $params['type'], $params['item'], $wgUser ) ) ) {
+		wfRunHooks( 'onMarkItemAsHelpful', array( $params['mahaction'], $params['type'], $params['item'], $wgUser, &$isAbleToMark ) ); 
+			
+		if ( !$isAbleToMark ) {
 			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
 		}
 

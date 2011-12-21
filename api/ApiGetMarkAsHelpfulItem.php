@@ -8,7 +8,9 @@ class ApiGetMarkAsHelpfulItem extends ApiBase {
 		$params = $this->extractRequestParams();
 
 		// check if current user has permission to mark this item,
-		$isAbleToMark = wfRunHooks( 'onMarkItemAsHelpful', array( 'mark', $params['type'], $params['item'], $wgUser ) );
+		$isAbleToMark = true; 
+		
+		wfRunHooks( 'onMarkItemAsHelpful', array( 'mark', $params['type'], $params['item'], $wgUser, &$isAbleToMark ) );
 
 		$HelpfulUserList = MarkAsHelpfulItem::getMarkAsHelpfulList( $params['type'], $params['item'] );
 
