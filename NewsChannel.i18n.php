@@ -267,6 +267,15 @@ $messages['et'] = array(
 	'newschannel_include_category' => 'Lisakategooria:',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'newschannel' => 'Albisteen kanala',
+	'newschannel_format' => 'Formatua:',
+	'newschannel_limit' => 'Muga:',
+);
+
 /** Finnish (Suomi)
  * @author Centerlink
  * @author Crt
