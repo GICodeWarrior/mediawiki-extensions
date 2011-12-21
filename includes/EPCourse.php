@@ -32,6 +32,16 @@ class EPCourse extends EPDBObject {
 	}
 	
 	/**
+	 * (non-PHPdoc)
+	 * @see EPDBObject::getDefaults()
+	 */
+	public static function getDefaults() {
+		return array(
+			'description' => '',
+		);
+	}
+	
+	/**
 	 * Returns a list of courses in an array that can be fed to select inputs.
 	 * 
 	 * @since 0.1

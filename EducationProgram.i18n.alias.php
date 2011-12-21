@@ -17,8 +17,8 @@ $specialPageAliases = array();
 /** English (English) */
 $specialPageAliases['en'] = array(
 	'MyCourses' => array( 'MyCourses' ),
-	'Institution' => array( 'Institution' ),
-	'Institutions' => array( 'Institutions' ),
+	'Institution' => array( 'Institution', 'Org' ),
+	'Institutions' => array( 'Institutions', 'Orgs' ),
 	'Student' => array( 'Student' ),
 	'Students' => array( 'Students' ),
 	'Course' => array( 'Course' ),

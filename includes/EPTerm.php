@@ -31,5 +31,17 @@ class EPTerm extends EPDBObject {
 			'end' => 'str', // TS_MW
 		);
 	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see EPDBObject::getDefaults()
+	 */
+	public static function getDefaults() {
+		return array(
+			'year' => substr( wfTimestamp( TS_MW ), 0, 4 ),
+			'start' => wfTimestamp( TS_MW ),
+			'end' => wfTimestamp( TS_MW ),
+		);
+	}
 
 }

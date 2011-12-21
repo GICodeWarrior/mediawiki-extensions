@@ -32,8 +32,8 @@ class EPCoursePager extends EPPager {
 	 */
 	public function getFieldNames() {
 		return parent::getFieldNameList( array(
-			'org_id',
 			'name',
+			'org_id',
 		) ); 
 	}
 	

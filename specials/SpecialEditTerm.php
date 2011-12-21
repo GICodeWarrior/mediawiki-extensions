@@ -42,7 +42,6 @@ class SpecialEditTerm extends SpecialEPFormPage {
 			'validation-callback' => function ( $value, array $alldata = null ) use ( $courseOptions ) {
 				return in_array( (int)$value, array_values( $courseOptions ) ) ? true : wfMsg( 'ep-term-invalid-course' );
 			},
-			'default' => array_shift( $courseOptions )
 		);
 		
 		$fields['year'] = array (
@@ -67,22 +66,6 @@ class SpecialEditTerm extends SpecialEPFormPage {
 		);
 		
 		return $this->processFormFields( $fields );
-	}
-	
-	/**
-	 * (non-PHPdoc)
-	 * @see SpecialEPFormPage::getDefaultFromItem()
-	 */
-	protected function getDefaultFromItem( EPDBObject $item, $name ) {
-		$default = $item->getField( $name );
-		
-		if ( in_array( $name, array( 'start', 'end' ) ) ) {
-			$default = wfTimestamp( TS_ISO_8601, $default );
-			$default = explode( 'T', $default );
-			$default = $default[0];
-		}
-		
-		return $default;
 	}
 	
 	/**
@@ -130,6 +113,11 @@ class EPHTMLDateField extends HTMLTextField {
 		return isset( $this->mParams['size'] )
 			? $this->mParams['size']
 			: 20;
+	}
+	
+	function getInputHTML( $value ) {
+		$value = explode( 'T',  wfTimestamp( TS_ISO_8601, $value ) );
+		return parent::getInputHTML( $value[0] );
 	}
 	
 	function validate( $value, $alldata ) {

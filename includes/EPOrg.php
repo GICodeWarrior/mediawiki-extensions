@@ -29,7 +29,11 @@ class EPOrg extends EPDBObject {
 			'country' => 'str',
 		);
 	}
-	
+
+	/**
+	 * (non-PHPdoc)
+	 * @see EPDBObject::getDefaults()
+	 */
 	public static function getDefaults() {
 		return array(
 			'name' => '',

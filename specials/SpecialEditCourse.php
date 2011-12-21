@@ -49,7 +49,6 @@ class SpecialEditCourse extends SpecialEPFormPage {
 			'validation-callback' => function ( $value, array $alldata = null ) use ( $orgOptions ) {
 				return in_array( (int)$value, array_values( $orgOptions ) ) ? true : wfMsg( 'ep-course-invalid-org' );
 			},
-			'default' => array_shift( $orgOptions )
 		);
 		
 		$fields['description'] = array (
@@ -59,8 +58,7 @@ class SpecialEditCourse extends SpecialEPFormPage {
 			'validation-callback' => function ( $value, array $alldata = null ) {
 				return strlen( $value ) < 10 ? wfMsgExt( 'ep-course-invalid-description', 'parsemag', 10 ) : true;
 			},
-			'default' => '',
-			'rows' => 5
+			'rows' => 10
 		);
 
 		return $this->processFormFields( $fields );
