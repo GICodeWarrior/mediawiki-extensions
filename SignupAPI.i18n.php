@@ -172,6 +172,24 @@ $messages['he'] = array(
 	'signupapi-desc' => 'ניקוי [[Special:UserLogin|דף הכניסה]] מדברים שקשורים לרישום והוספת ממשק תכנות (API) לרישום',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'signupapi-desc' => 'Porjedźa [[Special:UserLogin|přizjewjensku stronu]] a přidawa API za přizjewjenje',
+	'signupapi-ok' => 'W porjadku',
+	'signupapi-noname' => 'Wužiwarske mjeno njeje so podało',
+	'signupapi-userexists' => 'Wužiwar eksistuje',
+	'signupapi-enterpassword' => 'Dyrbiš hesło zapodać',
+	'signupapi-passwordtooshort' => 'Hesło je překrótke',
+	'signupapi-weak' => 'Słabe',
+	'signupapi-medium' => 'Srěnje',
+	'signupapi-strong' => 'Sylne',
+	'signupapi-badretype' => 'Hesle, kotrejž sy zapodał, so njekryjetej.',
+	'signupapi-passwordsmatch' => 'Hesle so kryjetej',
+	'signupapi-invalidemailaddress' => 'E-mejlowa adresa je njepłaćiwa',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
