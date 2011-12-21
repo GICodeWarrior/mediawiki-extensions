@@ -111,7 +111,13 @@ abstract class EPPager extends TablePager {
 		$cells = array();
 		
 		foreach ( $this->getFieldNames() as $field => $name ) {
-			$value = isset( $row->$field ) ? $row->$field : null;
+			if ( $field === 0 ) {
+				$value = $this->getLanguage()->pipeList( $this->getControlLinks( $this->currentObject ) );
+			}
+			else {
+				$value = isset( $row->$field ) ? $row->$field : null;
+			}
+			
 			$formatted = strval( $this->formatValue( $field, $value ) );
 			
 			if ( $formatted == '' ) {
@@ -122,14 +128,6 @@ abstract class EPPager extends TablePager {
 		}
 		
 		$links = $this->getControlLinks( $this->currentObject );
-		
-		if ( count( $links ) > 0 ) {
-			$cells[] = Html::rawElement(
-				'td',
-				$this->getCellAttrs( $field, $value ),
-				Html::rawElement( 'p', array(), $this->getLanguage()->pipeList( $links ) )
-			);
-		}
 		
 		return Html::rawElement( 'tr', $this->getRowAttrs( $row ), implode( '', $cells ) ) . "\n";
 	}

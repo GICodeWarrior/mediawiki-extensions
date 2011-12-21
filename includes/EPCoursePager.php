@@ -31,10 +31,13 @@ class EPCoursePager extends EPPager {
 	 * @see TablePager::getFieldNames()
 	 */
 	public function getFieldNames() {
-		return parent::getFieldNameList( array(
+		$fields = parent::getFieldNameList( array(
 			'name',
 			'org_id',
-		) ); 
+		) );
+		
+		$fields[0] = ''; // This is a hack to get an extra colum for the control links.
+		return $fields;
 	}
 	
 	/**
@@ -108,6 +111,23 @@ class EPCoursePager extends EPPager {
 				'datatype' => 'int',
 			),
 		);
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see EPPager::getControlLinks()
+	 */
+	protected function getControlLinks( EPDBObject $item ) {
+		$links = parent::getControlLinks( $item );
+		
+		$links[] = $value = Linker::linkKnown(
+			SpecialPage::getTitleFor( 'EditCourse', $item->getField( 'name' ) ),
+			wfMsg( 'edit' )
+		);
+		
+		// TODO
+		
+		return $links;
 	}
 
 }
