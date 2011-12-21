@@ -32,8 +32,7 @@ class MarkAsHelpfulHooks {
 	 * @param $updater DatabasEUpdater
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
-		$updater->addExtensionUpdate( array( 'addTable', 'mark_as_helpful',
-			dirname( __FILE__ ) . '/sql/mark_as_helpful.sql', true ) );
+		$updater->addExtensionTable( 'mark_as_helpful', dirname( __FILE__ ) . '/sql/mark_as_helpful.sql' );
 
 		return true;
 	}

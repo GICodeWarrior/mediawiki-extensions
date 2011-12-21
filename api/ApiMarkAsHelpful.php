@@ -28,19 +28,19 @@ class ApiMarkAsHelpful extends ApiBase {
 			case 'unmark':
 				$item = new MarkAsHelpfulItem();
 				
+				$conds = array ( 'mah_type' => $params['type'],
+						 'mah_item' => $params['item'] );
+				
 				if( $wgUser->isAnon() ) {
-					$status = $item->loadFromDatabase( array(
-						'mah_type' => $params['type'],
-						'mah_item' => $params['item'],
-						'mah_user_ip' => $wgUser->getName()
-					) );
+					$conds['mah_user_id'] = 0;
+					$conds['mah_user_ip'] = $wgUser->getName();
 				} else {
-					$status = $item->loadFromDatabase( array(
-						'mah_type' => $params['type'],
-						'mah_item' => $params['item'],
-						'mah_user_id' => $wgUser->getId()
-					) );
+					$conds['mah_user_id'] = $wgUser->getId();
+					$conds[] = 'mah_user_ip IS NULL';
 				}
+				
+				$status = $item->loadFromDatabase( $conds );
+				
 				if ( $status ) {
 					$item->unmark( $wgUser );
 				}

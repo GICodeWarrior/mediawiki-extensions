@@ -18,4 +18,4 @@ CREATE TABLE /*_*/mark_as_helpful (
 	mah_locale varchar(32) binary NULL -- The locale of the user's browser
 ) /*$wgDBTableOptions*/;
 
-CREATE INDEX /*i*/mah_type_item ON /*_*/mark_as_helpful (mah_type, mah_item);
+CREATE INDEX /*i*/mah_type_item_user_id_ip ON /*_*/mark_as_helpful (mah_type, mah_item, mah_user_id, mah_user_ip);

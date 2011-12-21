@@ -136,7 +136,16 @@ class MarkAsHelpfulItem {
 	 */
 	public function loadFromDatabase( $conds ) {
 		
-		$searchKey = array_keys( $conds );
+		$searchKey = array();
+		
+		foreach	( $conds AS $key => $value) {
+			if ( $value == 'mah_user_ip IS NULL' ) {
+				$searchKey[] = 'mah_user_ip';
+			}
+			else {
+				$searchKey[] = $key;
+			}
+		}
 		
 		$flag = sort( $searchKey );
 		
@@ -146,7 +155,7 @@ class MarkAsHelpfulItem {
 		
 		$searchKey = implode(',', $searchKey );	
 	
-		$allowableSearchKey = array ( 'mah_id', 'mah_item,mah_type,mah_user_id', 'mah_item,mah_type,mah_user_ip' );
+		$allowableSearchKey = array ( 'mah_id', 'mah_item,mah_type,mah_user_id,mah_user_ip' );
 		
 		if ( !in_array( $searchKey, $allowableSearchKey ) ) {
 			throw new MWMarkAsHelpFulItemSearchKeyException( 'Invalid search key!' );
@@ -203,34 +212,36 @@ class MarkAsHelpfulItem {
 	 * @param $currentUser Object - the current user who is browsing the site
 	 */
 	public function unmark( $currentUser ) {
+		
 		if ( $this->getProperty( 'mah_id' ) ) {
+			
 			if ( !$this->getProperty( 'mah_type' ) ) {
 				if( !$this->loadFromDatabase( array( 'mah_id' => $this->getProperty( 'mah_id' ) ) ) ) {
 					return;
 				}
 			}
 
-			// for sure this is an invalid item
-			if( !$this->getProperty( 'mah_item' ) ) {
-				return;
-			}
-
 			$user = $this->getUser();
 
 			if ( $user ) {
-				if (
-					$currentUser->getId() == $user->getId() ||
-					$currentUser->getName() == $user->getName()
-				)
-				{
-					$dbw = wfGetDB( DB_MASTER );
+				
+				if ( $currentUser->isAnon() == $user->isAnon() ) {
+					
+					if (  $currentUser->getId() == $user->getId() ||
+					      $currentUser->getName() == $user->getName() ) {
+					
+						$dbw = wfGetDB( DB_MASTER );
 
-					$dbw->delete(
-						'mark_as_helpful',
-						array( 'mah_id' => $this->getProperty( 'mah_id' ) ),
-						__METHOD__
-					);
+						$dbw->delete(
+							'mark_as_helpful',
+							array( 'mah_id' => $this->getProperty( 'mah_id' ) ),
+							__METHOD__
+						);
+						
+					}
+						
 				}
+				
 			}
 		}
 
