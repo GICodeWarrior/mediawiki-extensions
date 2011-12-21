@@ -4,7 +4,7 @@
  * Allows a boilerplate to be selected from a drop down box located above the
  * edit form when editing non-exstant pages or, optionally (based upon
  * configuration variable $wgMultiBoilerplateOverwrite), load the template
- * over the current contents. 
+ * over the current contents.
  *
  * @file
  * @ingroup Extensions
@@ -48,14 +48,14 @@ $wgSpecialPageGroups['Boilerplates'] = 'wiki'; //section of [[Special:SpecialPag
  * boilerplates in the format of:
  * "* Boilerplate Name|Template:Boilerplate Template"
  */
-$wgMultiBoilerplateOptions = array(); 
+$wgMultiBoilerplateOptions = array();
 /* Whether or not to show the form when editing pre-existing pages. */
 $wgMultiBoilerplateOverwrite = false;
 /* Whether or not to display a special page listing boilerplates.
  * If set to true then the special page exists. */
 $wgMultiBoilerplateDiplaySpecialPage = false;
- 
-$wgHooks['SpecialPage_initList'][]='efBoilerplateDisplaySpecialPage'; 
+
+$wgHooks['SpecialPage_initList'][]='efBoilerplateDisplaySpecialPage';
 function efBoilerplateDisplaySpecialPage( &$aSpecialPages ) {
 	global $wgMultiBoilerplateDiplaySpecialPage;
 	if ( !$wgMultiBoilerplateDiplaySpecialPage ) {
