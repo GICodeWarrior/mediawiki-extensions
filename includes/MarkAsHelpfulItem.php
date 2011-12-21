@@ -264,8 +264,10 @@ class MarkAsHelpfulItem {
 		if ( $user ) {
 			if ( $user->isAnon() ) {
 				$conds['mah_user_ip'] = $user->getName();
+				$conds['mah_user_id'] = 0;
 			} else {
 				$conds['mah_user_id'] = $user->getId();
+				$conds[] = 'mah_user_ip IS NULL';
 			}
 		} else {
 			// Invalid User object, we can't treat this user has marked an item
