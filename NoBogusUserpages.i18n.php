@@ -25,8 +25,8 @@
  * @author SVG
  */
 $messages['en'] = array(
-	'nobogususerpages-desc' => 'Restricts creation of userpages for which a user does not exist by those without rights to do so',
-	'badaccess-bogususerpage' => 'The user this userpage is meant for does not exist. You do not have the rights to be able to create a bogus userpage.',
+	'nobogususerpages-desc' => 'Restricts creation of userpages for which a user does not exist',
+	'badaccess-bogususerpage' => 'The user of this userpage does not exist. You do not have the rights to create a bogus userpage.',
 	'right-createbogususerpage' => 'Create user pages for users who are not registered on this wiki',
 );
 
@@ -38,3 +38,4 @@ $messages['qqq'] = array(
 	'badaccess-bogususerpage' => 'Error message: {{msg-mw|badaccess-bogususerpage}}',
 	'right-createbogususerpage' => '{{doc-right|createbogususerpage}}',
 );
+

@@ -23,6 +23,7 @@
 if( !defined( 'MEDIAWIKI' ) ) die( "This is an extension to the MediaWiki package and cannot be run standalone." );
 
 $wgExtensionCredits['other'][] = array (
+	'path' => __FILE__,
 	'name' => 'NoBogusUserpages',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:NoBogusUserpages',
 	'author' => '[https://www.mediawiki.org/wiki/User:Dantman Daniel Friesen] [mailto:Daniel%20Friesen%20%3Cmediawiki@danielfriesen.name%3E <mediawiki@danielfriesen.name>]',
