@@ -20,6 +20,8 @@ class SpecialEditTerm extends SpecialEPFormPage {
 	 */
 	public function __construct() {
 		parent::__construct( 'EditTerm', 'epmentor', 'EPTerm', 'Terms' );
+		
+		$this->getOutput()->addModules( 'ep.datepicker' );
 	}
 
 	/**
@@ -44,15 +46,43 @@ class SpecialEditTerm extends SpecialEPFormPage {
 		);
 		
 		$fields['year'] = array (
-			'type' => 'text',
+			'type' => 'int',
 			'label-message' => 'ep-term-edit-year',
 			'required' => true,
-			'validation-callback' => function ( $value, array $alldata = null ) {
-				return ctype_digit( $value ) ? true : wfMsg( 'ep-term-invalid-year' );
-			},
+			'min' => 2000,
+			'max' => 9001,
+			'size' => 15,
+		);
+		
+		$fields['start'] = array (
+			'class' => 'EPHTMLDateField',
+			'label-message' => 'ep-term-edit-start',
+			'required' => true,
+		);
+		
+		$fields['end'] = array (
+			'class' => 'EPHTMLDateField',
+			'label-message' => 'ep-term-edit-end',
+			'required' => true,
 		);
 		
 		return $this->processFormFields( $fields );
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see SpecialEPFormPage::getDefaultFromItem()
+	 */
+	protected function getDefaultFromItem( EPDBObject $item, $name ) {
+		$default = $item->getField( $name );
+		
+		if ( in_array( $name, array( 'start', 'end' ) ) ) {
+			$default = wfTimestamp( TS_ISO_8601, $default );
+			$default = explode( 'T', $default );
+			$default = $default[0];
+		}
+		
+		return $default;
 	}
 	
 	/**
@@ -74,4 +104,45 @@ class SpecialEditTerm extends SpecialEPFormPage {
 		);
 	}
 	
+	/**
+	 * (non-PHPdoc)
+	 * @see SpecialEPFormPage::handleKnownField()
+	 */
+	protected function handleKnownField( $name, $value ) {
+		if ( in_array( $name, array( 'end', 'start' ) ) ) {
+			$value = wfTimestamp( TS_MW, strtotime( $value ) );
+		}
+		
+		return $value;
+	}
+	
+}
+
+class EPHTMLDateField extends HTMLTextField {
+	
+	public function __construct( $params ) {
+		parent::__construct( $params );
+		
+		$this->mClass .= " ep-datepicker";
+	}
+	
+	function getSize() {
+		return isset( $this->mParams['size'] )
+			? $this->mParams['size']
+			: 20;
+	}
+	
+	function validate( $value, $alldata ) {
+		$p = parent::validate( $value, $alldata );
+
+		if ( $p !== true ) {
+			return $p;
+		}
+
+		$value = trim( $value );
+		
+		// TODO: further validation
+		
+		return true;
+	}
 }

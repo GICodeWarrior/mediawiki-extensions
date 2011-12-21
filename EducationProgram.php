@@ -170,6 +170,15 @@ $wgResourceModules['ep.pager'] = $moduleTemplate + array(
 	),
 );
 
+$wgResourceModules['ep.datepicker'] = $moduleTemplate + array(
+	'scripts' => array(
+		'ep.datepicker.js',
+	),
+	'dependencies' => array(
+		'jquery.ui.datepicker',
+	),
+);
+
 $wgResourceModules['ep.formpage'] = $moduleTemplate + array(
 	'scripts' => array(
 		'ep.formpage.js',

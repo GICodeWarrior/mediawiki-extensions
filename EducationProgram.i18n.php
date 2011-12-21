@@ -138,6 +138,11 @@ $messages['en'] = array(
 	'ep-term-edit-legend' => 'Edit term',
 	'ep-term-edit-year' => 'Year',
 	'ep-term-edit-course' => 'Course',
+	'ep-term-edit-start' => 'Start date',
+	'ep-term-edit-end' => 'End date',
+
+	'ep-term-invalid-year' => 'The year needs to be number.',
+	'ep-term-invalid-course' => 'This course does not exist.',
 );
 
 /** Message documentation (Message documentation)

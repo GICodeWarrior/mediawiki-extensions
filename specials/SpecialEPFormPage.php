@@ -251,7 +251,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 		if ( $this->item !== false ) {
 			foreach ( $fields as $name => &$data ) {
 				if ( !array_key_exists( 'default', $data ) ) {
-					$data['default'] = $this->item->getField( $name );
+					$data['default'] = $this->getDefaultFromItem( $this->item, $name );
 				}
 			}
 		}
@@ -270,6 +270,20 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 		}
 
 		return $mappedFields;
+	}
+	
+	/**
+	 * Gets the default value for a field from the item.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param EPDBObject $item
+	 * @param string $name
+	 * 
+	 * @return mixed
+	 */
+	protected function getDefaultFromItem( EPDBObject $item, $name ) {
+		return $item->getField( $name );
 	}
 	
 	/**
@@ -313,11 +327,13 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 			}
 		}
 
+		$keys = array_keys( $fields );
+		$fields = array_combine( $keys, array_map( array( $this, 'handleKnownField' ), $keys, $fields ) );
 		
 		/* EPDBObject */ $item = new $c( $fields, is_null( $fields['id'] ) );
 
 		foreach ( $unknownValues as $name => $value ) {
-			
+			$this->handleUnknownField( $item, $name, $value );
 		}
 		
 		$success = $item->writeToDB();
@@ -341,6 +357,21 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	 */
 	protected function handleUnknownField( EPDBObject $item, $name, $value ) {
 		// Override to use.
+	}
+	
+	/**
+	 * Gets called for evey known submitted value, so they can be dealth with if needed.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $name
+	 * @param string $value This is a string, since it comes from request data, but might be a number or other type.
+	 * 
+	 * @return mixed The new value
+	 */
+	protected function handleKnownField( $name, $value ) {
+		// Override to use.
+		return $value;
 	}
 	
 }
