@@ -48,12 +48,12 @@ $wgGroupPermissions['sysop']['makrashelpful-admin'] = true;
 $wgExtensionMessagesFiles['MarkAsHelpful'] = $dir . 'MarkAsHelpful.i18n.php';
 
 // Resources
-$mbResourceTemplate = array(
+$mahResourceTemplate = array(
 	'localBasePath' => $dir . 'modules',
 	'remoteExtPath' => 'MarkAsHelpful/modules'
 );
 
-$wgResourceModules['ext.markAsHelpful'] = $mbResourceTemplate + array(
+$wgResourceModules['ext.markAsHelpful'] = $mahResourceTemplate + array(
 	'styles' => 'ext.markAsHelpful/ext.markAsHelpful.css',
 	'scripts' => 'ext.markAsHelpful/ext.markAsHelpful.js',
 	'messages' => array(
