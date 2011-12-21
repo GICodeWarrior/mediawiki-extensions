@@ -137,8 +137,8 @@ function efMultiBoilerplate( $form ) {
 		 * found one with a name as if it would do this, but it didn't seam to
 		 * work).
 		 */
-		$content = preg_replace( '#<noinclude>(.*?)</noinclude>#', '', $content );
-		$content = preg_replace( '#<includeonly>(.*?)</includeonly>#', '$1', $content );
+		$content = preg_replace( '#<noinclude>(.*?)</noinclude>#ims', '', $content );
+		$content = preg_replace( '#<includeonly>(.*?)</includeonly>#ims', '$1', $content );
 		// TODO: Handle <onlyinclude> tags.
 		$form->textbox1 = $content;
 	}
