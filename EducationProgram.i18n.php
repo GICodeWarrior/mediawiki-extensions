@@ -135,7 +135,7 @@ $messages['en'] = array(
 
 	// Special:EditTerm
 	'editterm-add-legend' => 'Add term',
-	'ep-term-edit-legend' => 'Edit term',
+	'editterm-edit-legend' => 'Edit term',
 	'ep-term-edit-year' => 'Year',
 	'ep-term-edit-course' => 'Course',
 	'ep-term-edit-start' => 'Start date',

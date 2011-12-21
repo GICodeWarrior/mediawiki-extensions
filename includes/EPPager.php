@@ -106,8 +106,32 @@ abstract class EPPager extends TablePager {
 	 */
 	function formatRow( $row ) {
 		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
-		$this->currentReview = $c::newFromDBResult( $row );
-		return parent::formatRow( $row );
+		$this->currentObject = $c::newFromDBResult( $row );
+		
+		$cells = array();
+		
+		foreach ( $this->getFieldNames() as $field => $name ) {
+			$value = isset( $row->$field ) ? $row->$field : null;
+			$formatted = strval( $this->formatValue( $field, $value ) );
+			
+			if ( $formatted == '' ) {
+				$formatted = '&#160;';
+			}
+			
+			$cells[] = Html::rawElement( 'td', $this->getCellAttrs( $field, $value ), $formatted );
+		}
+		
+		$links = $this->getControlLinks( $this->currentObject );
+		
+		if ( count( $links ) > 0 ) {
+			$cells[] = Html::rawElement(
+				'td',
+				$this->getCellAttrs( $field, $value ),
+				Html::rawElement( 'p', array(), $this->getLanguage()->pipeList( $links ) )
+			);
+		}
+		
+		return Html::rawElement( 'tr', $this->getRowAttrs( $row ), implode( '', $cells ) ) . "\n";
 	}
 
 	/**
@@ -334,11 +358,26 @@ abstract class EPPager extends TablePager {
 	/**
 	 * Similar to TablePager::formatValue, but passes along the name of the field without prefix.
 	 * 
+	 * @since 0.1
+	 * 
 	 * @param string $name
 	 * @param string $value
 	 * 
 	 * @return string
 	 */
 	protected abstract function getFormattedValue( $name, $value );
+	
+	/**
+	 * Returns a list of (escaped, html) links to add in an adittional column.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param EPDBObject $item
+	 * 
+	 * @return array
+	 */
+	protected function getControlLinks( EPDBObject $item ) {
+		return array();
+	}
 
 }

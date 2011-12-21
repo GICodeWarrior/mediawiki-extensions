@@ -108,5 +108,22 @@ class EPOrgPager extends EPPager {
 			),
 		);
 	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see EPPager::getControlLinks()
+	 */
+	protected function getControlLinks( EPDBObject $item ) {
+		$links = parent::getControlLinks( $item );
+		
+		$links[] = $value = Linker::linkKnown(
+			SpecialPage::getTitleFor( 'EditInstitution', $item->getField( 'name' ) ),
+			wfMsg( 'edit' )
+		);
+		
+		// TODO
+		
+		return $links;
+	}
 
 }
