@@ -44,7 +44,7 @@ $messages['qqq'] = array(
 	'translatesvg-fallbackdesc' => 'The heading of the section that contains translations representing the fallback (default) language. The fallback language is used when translations aren\'t available. Comparable to other language headings such as "English", "Deutsch", etc.',
 	'translatesvg-qqqdesc' => 'The heading of the section that contains descriptions of the context of each translation (i.e. translations into the language with code "qqq"). Comparable to other language headings such as "English", "Deutsch", etc.',
 	'translatesvg-nodesc' => 'The text that appears next to a translation when no description (translation into language qqq) exists.',
-	'translatesvg-remove'  => 'Tooltip for a link attached to each translation language group which remove all form elements relating to the language group it is attached to' 
+	'translatesvg-remove' => 'Tooltip for a link attached to each translation language group which remove all form elements relating to the language group it is attached to',
 );
 
 /** German (Deutsch)
@@ -95,6 +95,7 @@ $messages['gl'] = array(
 	'translatesvg-fallbackdesc' => 'Predeterminado (sen especificación de lingua)',
 	'translatesvg-qqqdesc' => 'Consello para os tradutores',
 	'translatesvg-nodesc' => '(sen descrición)',
+	'translatesvg-remove' => 'Eliminar todas as traducións nesta lingua',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -124,6 +125,7 @@ $messages['mk'] = array(
 	'translatesvg-fallbackdesc' => 'По основно (неукажан јазик)',
 	'translatesvg-qqqdesc' => 'Совет за преведувачите',
 	'translatesvg-nodesc' => '(нема опис)',
+	'translatesvg-remove' => 'Отстрани ги сите преводи на овој јазик',
 );
 
 /** Dutch (Nederlands)
@@ -136,3 +138,12 @@ $messages['nl'] = array(
 	'translatesvg-submit' => 'OK',
 	'translatesvg-nodesc' => '(geen beschrijving)',
 );
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'translatesvg-submit' => 'వెళ్ళు',
+	'translatesvg-nodesc' => '(వివరణ లేదు)',
+);
+
