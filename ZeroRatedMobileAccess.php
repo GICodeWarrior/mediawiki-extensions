@@ -60,16 +60,17 @@ class ExtZeroRatedMobileAccess {
 		self::$renderZeroRatedLandingPage = $wgRequest->getInt( 'renderZeroRatedLandingPage' );
 		if ( self::$renderZeroRatedLandingPage === 1 ) {
 			echo wfMsg( 'zero-rated-mobile-access-desc' );
+			$languageNames = Language::getLanguageNames();
 			$country = $wgRequest->getVal( 'country' );
 			$ip = ( $wgRequest->getVal( 'ip') ) ? $wgRequest->getVal( 'ip' ) : wfGetIP();
 			// Temporary hack to allow for testing on localhost
 			$countryIps = array(
-								'GERMANY'	=> '80.237.226.75',
-								'MEXICO'	=> '187.184.240.247',
-								'THAILAND'	=> '180.180.150.104',
-								'FRANCE'	=> '90.6.70.28',
+								'GERMANY' => '80.237.226.75',
+								'MEXICO' => '187.184.240.247',
+								'THAILAND' => '180.180.150.104',
+								'FRANCE' => '90.6.70.28',
 								);
-			$ip = ( strpos( $ip, '192.168.' ) === 0 ) ? $countryIps['FRANCE'] : $ip;
+			$ip = ( strpos( $ip, '192.168.' ) === 0 ) ? $countryIps['THAILAND'] : $ip;
             if ( IP::isValid( $ip ) ) {
 	            // If no country was passed, try to do GeoIP lookup
                 // Requires php5-geoip package
@@ -80,11 +81,35 @@ class ExtZeroRatedMobileAccess {
 			}
 			$languageOptions = self::createLanguageOptionsFromWikiText();
 			//self::$displayDebugOutput = true;
+			$languagesForCountry = $languageOptions[self::getFullCountryNameFromCode( $country )];
 			//self::addDebugOutput( $languageOptions );
 			self::addDebugOutput( self::getFullCountryNameFromCode( $country ) );
-			self::addDebugOutput( $languageOptions[self::getFullCountryNameFromCode( $country )] );
+			self::addDebugOutput( $languagesForCountry );
 			self::writeDebugOutput();
+			
+			if ( is_array( $languagesForCountry ) ) {
+				foreach( $languagesForCountry as $language ) {
+					echo Html::element( 'h3',
+								array( 'id' => 'lang_' . $language['language'],
+									),
+									$languageNames[$language['language']]);
+					echo Html::element( 'hr',
+								array(), '');
+					echo self::getSearchFormHtml( $language['language'] );
+				}
+			}
 		}
+		$output = Html::openElement( 'select',
+			array( 'id' => 'languageselection',
+				'onchange' => 'javascript:window.location = this.options[this.selectedIndex].value;' ) );
+		foreach ( $languageNames as $languageCode => $languageName ) {
+			$output .=	Html::element( 'option',
+						array( 'value' => '//' . $languageCode . '.m.wikipedia.org/' ),
+								$languageName );
+		}
+		$output .= Html::closeElement( 'select', array() );
+		echo $output;
+		
 		wfProfileOut( __METHOD__ );
 		exit();
 		return true;
@@ -92,7 +117,9 @@ class ExtZeroRatedMobileAccess {
 	
 	private static function addDebugOutput( $object ) {
 		wfProfileIn( __METHOD__ );
-		self::$debugOutput[] = $object;
+		if ( is_array( self::$debugOutput ) ) {
+			self::$debugOutput[] = $object;
+		}
 		wfProfileOut( __METHOD__ );
 		return true;
 	}
@@ -389,5 +416,19 @@ class ExtZeroRatedMobileAccess {
 			);
 		wfProfileOut( __METHOD__ );
 		return ( isset( $countries[strtoupper( $code )] ) ) ? $countries[strtoupper( $code )] : null;
+	}
+	
+	private static function getSearchFormHtml( $langCode ) {
+		$formHtml = <<<HTML
+		<form action="//{$langCode}.wikipedia.org/w/index.php" class="search_bar" method="get">
+			<input type="hidden" value="Special:Search" name="title">
+			<div id="sq" class="divclearable">
+        		<input type="text" name="search" id="search" size="22" value="" autocorrect="off" autocomplete="off" autocapitalize="off" maxlength="1024">
+				<div class="clearlink" id="clearsearch" title="Clear"></div>
+			</div> 
+		<button id="goButton" type="submit">Search</button>
+		</form>
+HTML;
+		return $formHtml;
 	}
 }
