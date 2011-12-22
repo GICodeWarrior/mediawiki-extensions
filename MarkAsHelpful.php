@@ -8,6 +8,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die();
 }
 
+// Configuration
+// TODO: document
+$wgMarkAsHelpfulType = array();
+
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,

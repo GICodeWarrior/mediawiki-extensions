@@ -13,7 +13,7 @@ class ApiMarkAsHelpful extends ApiBase {
 
 		$isAbleToMark = true;
 		
-		// Gives other extension the last chance to speicfy mark as helpful permission rules
+		// Gives other extension the last chance to specify mark as helpful permission rules
 		wfRunHooks( 'onMarkItemAsHelpful', array( $params['mahaction'], $params['type'], $params['item'], $wgUser, &$isAbleToMark ) ); 
 			
 		if ( !$isAbleToMark ) {
