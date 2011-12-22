@@ -14,6 +14,7 @@ $messages = array();
 // en translation
 $messages['en'] = array (
 	'zero-rated-mobile-access-desc' => 'Zero Rated Mobile Access',
+	'zero-rated-mobile-access-search' => 'Search',
 );
 
 $messages['qqq'] = array(

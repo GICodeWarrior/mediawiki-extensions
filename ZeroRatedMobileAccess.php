@@ -43,7 +43,7 @@ $wgExtZeroRatedMobileAccess = new ExtZeroRatedMobileAccess();
 $wgHooks['BeforePageDisplay'][] = array( &$wgExtZeroRatedMobileAccess, 'beforePageDisplayHTML' );
 
 class ExtZeroRatedMobileAccess {
-	const VERSION = '0.0.3';
+	const VERSION = '0.0.4';
 
 	public static $renderZeroRatedLandingPage;
 	private static $debugOutput = array();
@@ -98,20 +98,20 @@ class ExtZeroRatedMobileAccess {
 					echo self::getSearchFormHtml( $language['language'] );
 				}
 			}
+			$output = Html::openElement( 'select',
+				array( 'id' => 'languageselection',
+					'onchange' => 'javascript:window.location = this.options[this.selectedIndex].value;' ) );
+			foreach ( $languageNames as $languageCode => $languageName ) {
+				$output .=	Html::element( 'option',
+							array( 'value' => '//' . $languageCode . '.m.wikipedia.org/' ),
+									$languageName );
+			}
+			$output .= Html::closeElement( 'select', array() );
+			echo $output;
+			exit();
 		}
-		$output = Html::openElement( 'select',
-			array( 'id' => 'languageselection',
-				'onchange' => 'javascript:window.location = this.options[this.selectedIndex].value;' ) );
-		foreach ( $languageNames as $languageCode => $languageName ) {
-			$output .=	Html::element( 'option',
-						array( 'value' => '//' . $languageCode . '.m.wikipedia.org/' ),
-								$languageName );
-		}
-		$output .= Html::closeElement( 'select', array() );
-		echo $output;
 		
 		wfProfileOut( __METHOD__ );
-		exit();
 		return true;
 	}
 	
@@ -419,6 +419,7 @@ class ExtZeroRatedMobileAccess {
 	}
 	
 	private static function getSearchFormHtml( $langCode ) {
+		$searchValue = wfMsg( 'zero-rated-mobile-access-search' );
 		$formHtml = <<<HTML
 		<form action="//{$langCode}.wikipedia.org/w/index.php" class="search_bar" method="get">
 			<input type="hidden" value="Special:Search" name="title">
@@ -426,7 +427,7 @@ class ExtZeroRatedMobileAccess {
         		<input type="text" name="search" id="search" size="22" value="" autocorrect="off" autocomplete="off" autocapitalize="off" maxlength="1024">
 				<div class="clearlink" id="clearsearch" title="Clear"></div>
 			</div> 
-		<button id="goButton" type="submit">Search</button>
+		<button id="goButton" type="submit">{$searchValue}</button>
 		</form>
 HTML;
 		return $formHtml;
