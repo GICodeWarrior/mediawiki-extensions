@@ -179,7 +179,8 @@
 
 			var	fonts = [],
 				languages = mw.webfonts.config.languages,
-				requested = [mw.config.get( 'wgUserVariant' ), mw.config.get( 'wgContentLanguage' ), mw.config.get( 'wgUserLanguage' )],
+				requested = [mw.config.get( 'wgUserVariant' ), mw.config.get( 'wgContentLanguage' ),
+					mw.config.get( 'wgUserLanguage' ), mw.config.get( 'wgPageContentLanguage' )],
 				i, j;
 
 			for ( i = 0; i < requested.length; i++ ) {
@@ -229,7 +230,8 @@
 		 */
 		loadFontsForLangAttr: function() {
 			var languages = mw.webfonts.config.languages;
-			var requested = [mw.config.get( 'wgUserVariant' ), mw.config.get( 'wgContentLanguage' ), mw.config.get( 'wgUserLanguage' )];
+			var requested = [mw.config.get( 'wgUserVariant' ), mw.config.get( 'wgContentLanguage' ),
+				mw.config.get( 'wgUserLanguage' ), mw.config.get( 'wgPageContentLanguage' )];
 			var fontFamily = false;
 			// If there are tags with lang attribute,
 			$( 'body' ).find( '*[lang]' ).each( function( i, el) {
