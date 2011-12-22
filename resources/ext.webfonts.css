@@ -119,3 +119,9 @@ div.webfontMenu label:hover, div.webfontMenu input:hover {
 	cursor: pointer;
 }
 
+a#webfont-help-link {
+	/* @embed */
+	background: url(images/help.png) no-repeat scroll left center transparent;
+	padding-left: 20px;
+	font-size: 1.0em;
+}

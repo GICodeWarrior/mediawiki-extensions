@@ -301,7 +301,7 @@
 
 			}
 
-			$link = $label = $item = undefined;
+			$resetLink = $resetLabel = $resetItem = undefined;
 
 			if ( !haveSchemes && !$( '.webfonts-lang-attr' ).length ) {
 				// No schemes available, and no tags with lang attr
@@ -309,23 +309,32 @@
 				return null;
 			}
 
-			$link = $( '<input type="radio" name="font" />' )
+			$resetLink = $( '<input type="radio" name="font" />' )
 				.attr( 'value', 'webfont-none' )
 				.attr( 'id', 'webfont-none' )
 				.click( function() {
 					mw.webfonts.set( 'none' );
 				});
 
-			$label = $( '<label>' )
+			$resetLabel = $( '<label>' )
 				.attr( 'for', 'webfont-none' )
-				.append( $link )
+				.append( $resetLink )
 				.append( mw.message( 'webfonts-reset' ).escaped() );
 
-			$item = $( '<li>' )
+			$resetItem = $( '<li>' )
 				.val( 'none' )
-				.append( $label );
+				.append( $resetLabel );
 
-			$fontsMenu.append( $item );
+			$fontsMenu.append( $resetItem );
+
+
+
+			var $helpLink = $( '<a id="webfont-help-link" >' )
+				.text( mw.msg( 'webfonts-help' ) )
+				.prop( 'href', '//mediawiki.org/wiki/Special:MyLanguage/Help:Web_fonts' )
+				.prop( 'target', '_blank');
+			var $helpItem = $( '<li>' ).addClass( 'webfont-help-item' ).append( $helpLink );
+			$fontsMenu.append( $helpItem );
 
 			return $( '<div>' )
 				.attr( 'id', 'webfonts-fonts' )

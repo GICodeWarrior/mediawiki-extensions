@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'webfonts-reset'   => 'Reset',
 	'webfonts-enable-preference' => 'Enable font embedding (WebFonts)',
 	'webfonts-menu-tooltip' => 'Select a font for the page',
+	'webfonts-help' => 'Help',
 );
 
 /** Message documentation (Message documentation)
@@ -29,6 +30,7 @@ $messages['qqq'] = array(
 	'webfonts-load' => 'The text shown in the webfont link',
 	'webfonts-reset' => '{{Identical|Reset}}',
 	'webfonts-menu-tooltip' => 'Tooltip text displayed in the webfont link',
+	'webfonts-help' => 'Text for the help link',
 );
 
 /** Arabic (العربية)
@@ -366,6 +368,7 @@ $messages['ml'] = array(
 	'webfonts-reset' => 'പഴയപടിയാക്കുക',
 	'webfonts-enable-preference' => 'ഫോണ്ട് എംബെഡ് ചെയ്യുക.(വെബ്ഫോണ്ട്സ്)',
 	'webfonts-menu-tooltip' => 'താളിനുവേണ്ടി ഒരു ഫോണ്ട് തിരഞ്ഞെടുക്കുക',
+	'webfonts-help' => 'സഹായം',
 );
 
 /** Marathi (मराठी)
@@ -539,6 +542,7 @@ $messages['ta'] = array(
 	'webfonts-load' => 'எழுத்துரு மாற்ற',
 	'webfonts-reset' => 'இயல்பு எழுத்துரு',
 	'webfonts-enable-preference' => 'எழுத்துரு புதைத்தல் (இணைய எழுத்துருக்களை) பயன்படுத்துக',
+	'webfonts-help' => 'உதவி',
 );
 
 /** Tagalog (Tagalog)
