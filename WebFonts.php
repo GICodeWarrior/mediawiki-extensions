@@ -63,7 +63,6 @@ $wgResourceModules['ext.webfonts.core'] = array(
 		'webfonts-reset', 
 		'webfonts-menu-tooltip',
 		'webfonts-help',
-		'webfonts-help-page',
 	),
 	'dependencies' => 'jquery.cookie',
 	'position' => 'top',
