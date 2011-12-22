@@ -42,6 +42,7 @@ $messages['de'] = array(
 	'mah-you-marked-text' => 'Du meinst, dass dieser Kommentar hilfreich ist.',
 	'mah-someone-marked-text' => '$1 meint, dass dieser Kommentar hilfreich ist.',
 	'mah-undo-mark-text' => 'rückgängig machen',
+	'mah-action-error' => 'Beim Ausführen dieser Aktion ist ein Fehler aufgetreten.',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -49,6 +50,18 @@ $messages['de'] = array(
  */
 $messages['de-formal'] = array(
 	'mah-you-marked-text' => 'Sie meinen, dass dieser Kommentar hilfreich ist.',
+);
+
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'markashelpful-desc' => 'Fournit une interface utilisateur pour marquer les commentaires comme utiles',
+	'mah-mark-text' => 'Marquer comme utile',
+	'mah-you-marked-text' => 'Vous pensez que ceci est utile',
+	'mah-someone-marked-text' => '$1pense que cela est utile',
+	'mah-undo-mark-text' => 'annuler',
+	'mah-action-error' => 'Il y a eu une erreur en exécutant cette action',
 );
 
 /** Galician (Galego)
@@ -104,5 +117,6 @@ $messages['nl'] = array(
 	'mah-you-marked-text' => 'U denkt dat dit nuttig is',
 	'mah-someone-marked-text' => '{{GENDER:$1|$1}} denkt dat dit nuttig is',
 	'mah-undo-mark-text' => 'ongedaan maken',
+	'mah-action-error' => 'Er is een fout opgetreden tijdens het uitvoeren van deze handeling',
 );
 
