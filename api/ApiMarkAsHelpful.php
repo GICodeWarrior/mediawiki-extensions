@@ -10,7 +10,7 @@ class ApiMarkAsHelpful extends ApiBase {
 		}
 		
 		// Disallow anonymous user to unmark an 'Mark As Helpful' item
-		if ( $wgUser->isAnon() && $params['type'] == 'unmark' ) {
+		if ( $wgUser->isAnon() && $params['mahaction'] == 'unmark' ) {
 			$this->noPermissionError();
 		}
 		
