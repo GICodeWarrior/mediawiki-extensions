@@ -11,10 +11,14 @@
 		selector: '[class^=markashelpful-]',  //only selector for now
 
 		init: function() {
-			var $mahWrap = $( '<div />' ).attr( 'class', 'mw-mah-wrapper' );
-
+			var	props;
 			$( mah.selector ).each ( function (i, e) {
-				mah.loadItem( $( this ) );
+				props =  mah.getItemProperties ( $(this) );
+				//be sure to only load once per item id
+				if( $.inArray( props.item, mah.ids ) === -1 ) {
+					mah.ids.push(props.item);
+					mah.loadItem( $( this ) );
+				}
 			}); 
 		},
 
@@ -34,41 +38,35 @@
 		 * Load the current state of the MarkAsHelpful item
 		 */
 		loadItem: function( $item ) {
-			var props = mah.getItemProperties( $item );
+			var		props = mah.getItemProperties( $item ),
+					request = {
+						'action': 'getmarkashelpfulitem',
+						'item': props.item,
+						'type': props.type,
+						'format': 'json'
+					};
 
-			//only inject once per item id to prevent loading mutiple of the same hook
-			if( $.inArray( props.item, mah.ids ) === -1 ) {
-				mah.ids.push(props.item);
-				
-				var request = {
-					'action': 'getmarkashelpfulitem',
-					'item': props.item,
-					'type': props.type,
-					'format': 'json'
+			$.ajax({
+				type: 'get',
+				url: mw.util.wikiScript('api') + '?' + Math.random(Date.now), // added randomness to prevent ie7 cache
+				data: request,
+				success: function( data ) {
 
-				};
-				$.ajax({
-					type: 'get',
-					url: mw.util.wikiScript('api'),
-					data: request,
-					success: function( data ) {
-
-						if ( data && data.getmarkashelpfulitem.result == 'success' &&
-							data.getmarkashelpfulitem.formatted
-						) {
-
-							var $content = $( data.getmarkashelpfulitem.formatted );
-							$item.html( $content );
-						} else {
-							// Failure, do nothing to the item for now
-						}
-					},
-					error: function ( data ) {
+					if ( data && data.getmarkashelpfulitem.result == 'success' &&
+						data.getmarkashelpfulitem.formatted
+					) {
+						var $content = $( data.getmarkashelpfulitem.formatted );
+						$item.html( $content );
+					} else {
 						// Failure, do nothing to the item for now
-					},
-					dataType: 'json'
-				});
-			}
+					}
+				},
+				error: function ( data ) {
+					// Failure, do nothing to the item for now
+				},
+				dataType: 'json'
+			});
+			
 		},
 		/*
 		 * API call to mark or unmark an item as helpful.
@@ -78,8 +76,7 @@
 					clientData = $.client.profile(),
 					request;
 			props.mahaction = action;
-
-			apiRequest = $.extend( {
+			request = $.extend( {
 				'action': 'markashelpful',
 				'page': mw.config.get( 'wgPageName' ),
 				'useragent': clientData.name + '/' + clientData.versionNumber,
@@ -91,9 +88,8 @@
 			$.ajax( {
 				type: 'post',
 				url: mw.util.wikiScript( 'api' ),
-				data: apiRequest,
+				data: request,
 				success: function () {
-					mah.ids.removeItemByValue(props.item);
 					mah.loadItem( $item );	
 				},
 				dataType: 'json'
@@ -119,21 +115,6 @@
 		var $item = $( this ).parent().parent();
 		mah.markItem( $item, 'unmark' );
 	} );
-	
-	/*
-	 * function removeItemByValue 
-	 * removes an item from array by value
-	 */
-	Array.prototype.removeItemByValue= function(){
-	    var what, a= arguments, L= a.length, ax;
-	    while(L && this.length){
-	        what= a[--L];
-	        while((ax= this.indexOf(what))!= -1){
-	            this.splice(ax, 1);
-	        }
-	    }
-	    return this;
-	};
 
 	// Initialize MarkAsHelpful
 	$( mah.init );
