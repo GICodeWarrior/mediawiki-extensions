@@ -90,6 +90,10 @@
 	font-size: 16px;
 }
 
+#mw-moodBar-emailInput {
+	width: 270px;
+}
+
 .mw-moodBar-formInput {
 	width: 100%;
 	outline: none;
@@ -157,21 +161,19 @@
 }
 
 .mw-moodBar-overlayWhatTrigger {
-	display: inline-block;
+	display:inline-block;
+    width: 8px;
+    height: 8px;
 }
 
 .moodbar-what-collapsed {
 	/* @embed */
 	background: transparent url('images/whatisthis-collapsed.png') center center no-repeat;
-	height: 8px;
-	width: 8px;
 }
 
 .moodbar-what-expanded {
 	/* @embed */
 	background: transparent url('images/whatisthis-expanded.png') center center no-repeat;
-	height: 8px;
-	width: 8px;	
 }
 
 .red-bold {

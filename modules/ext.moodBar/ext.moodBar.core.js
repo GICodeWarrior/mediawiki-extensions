@@ -47,8 +47,10 @@
 								<html:msg key="moodbar-email-desc" />\
 							</div>\
 							<div class="mw-moodBar-formInputs">\
-								<html:msg key="moodbar-email-input" />\
-								<input type="text" id="mw-moodBar-emailInput" class="mw-moodBar-emailInput" />\
+								<div>\
+									<html:msg key="moodbar-email-input" />\
+									<input type="text" id="mw-moodBar-emailInput" class="mw-moodBar-emailInput" />\
+								</div>\
 								<input type="button" class="mw-moodBar-emailSubmit" disabled="disabled" />\
 								<input type="button" class="mw-moodBar-emailOptOut" />\
 							</div>\
