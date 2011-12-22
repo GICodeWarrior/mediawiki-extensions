@@ -7,16 +7,13 @@
 (function( $ ) {
 
 	var mah = mw.mah = {
+		ids: [],
 		selector: '[class^=markashelpful-]',  //only selector for now
 
 		init: function() {
 			var $mahWrap = $( '<div />' ).attr( 'class', 'mw-mah-wrapper' );
-				
-			
-			//$ ( mah.selector ).append( $mahWrap );
 
 			$( mah.selector ).each ( function (i, e) {
-				//$(i).append( $mahWrap );
 				mah.loadItem( $( this ) );
 			}); 
 		},
@@ -39,34 +36,39 @@
 		loadItem: function( $item ) {
 			var props = mah.getItemProperties( $item );
 
-			var request = {
-				'action': 'getmarkashelpfulitem',
-				'item': props.item,
-				'type': props.type,
-				'format': 'json'
+			//only inject once per item id to preveny copy & paste of hook in pages
+			if( $.inArray( props.item, mah.ids ) === -1 ) {
+				mah.ids.push(props.item);
+				
+				var request = {
+					'action': 'getmarkashelpfulitem',
+					'item': props.item,
+					'type': props.type,
+					'format': 'json'
 
-			};
-			$.ajax({
-				type: 'get',
-				url: mw.util.wikiScript('api'),
-				data: request,
-				success: function( data ) {
+				};
+				$.ajax({
+					type: 'get',
+					url: mw.util.wikiScript('api'),
+					data: request,
+					success: function( data ) {
 
-					if ( data && data.getmarkashelpfulitem.result == 'success' &&
-						data.getmarkashelpfulitem.formatted
-					) {
+						if ( data && data.getmarkashelpfulitem.result == 'success' &&
+							data.getmarkashelpfulitem.formatted
+						) {
 
-						var $content = $( data.getmarkashelpfulitem.formatted );
-						$item.html( $content );
-					} else {
+							var $content = $( data.getmarkashelpfulitem.formatted );
+							$item.html( $content );
+						} else {
+							// Failure, do nothing to the item for now
+						}
+					},
+					error: function ( data ) {
 						// Failure, do nothing to the item for now
-					}
-				},
-				error: function ( data ) {
-					// Failure, do nothing to the item for now
-				},
-				dataType: 'json'
-			});
+					},
+					dataType: 'json'
+				});
+			}
 		},
 		/*
 		 * API call to mark or unmark an item as helpful.
