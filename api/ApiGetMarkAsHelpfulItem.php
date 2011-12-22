@@ -41,9 +41,6 @@ class ApiGetMarkAsHelpfulItem extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => 'integer'
 			),
-			'useragent' => null,
-			'system' => null,
-			'locale' => null,
 			'prop' => array(
 				ApiBase::PARAM_TYPE => array( 'metadata', 'formatted' ),
 			),
@@ -58,9 +55,7 @@ class ApiGetMarkAsHelpfulItem extends ApiBase {
 		return array(
 			'type' => 'The object type that is being marked as helpful',
 			'item' => 'The object item that is being marked as helpful',
-			'useragent' => 'The User-Agent header of the browser',
-			'system' => 'The operating system being used',
-			'locale' => 'The locale in use',
+			'prop' => 'Which property to get',
 		);
 	}
 
