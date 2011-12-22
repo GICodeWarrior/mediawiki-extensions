@@ -2,7 +2,7 @@
 
 #fbd-filters {
 	position: absolute;
-	width: 14em;
+	width: 15em;
 	left:0px;  /* needed for ie6 & ie7 */
 }
 
@@ -89,7 +89,7 @@
 /* List */
 
 #fbd-list {
-	margin: 0px 20px 0px 15em;
+	margin: 0px 20px 0px 16em;
 	padding: 0px;
 	min-height: 20em;
 	list-style: none;
