@@ -160,6 +160,8 @@ $messages['lb'] = array(
 	'reassignedits-new' => 'Neie Benotzernumm',
 	'reassignedits-old' => 'Ale Benotzernumm',
 	'reassignedits-success' => 'D\'Ännerunge vum "<nowiki>$1</nowiki>" goufen als Ännerunge vum Benotzer "<nowiki>$2</nowiki>" derbäigesat.',
+	'reassignedits-updatelog-title' => 'Benotzernumm an de Logicher aktualiséieren',
+	'reassignedits-updatelog-user' => 'Benotzernumm vum aktive Benotzer an de Logbicher aktualiséieren',
 	'right-reassignedits' => 'Ännerunge vun engem ale Benotzer op en neie Benotzer iwwerdroen',
 );
 
