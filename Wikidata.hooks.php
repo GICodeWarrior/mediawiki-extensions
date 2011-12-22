@@ -6,7 +6,7 @@ class WikidataHooks {
 		global $wgLang, $wgScriptPath, $wgRequest, $wgResourceModules;
 
 		if ( $wgLang->isRTL() ) {
-			$out->addModules( 'ext.Wikidata-rtl' );
+			$out->addModules( 'ext.Wikidata.rtl' );
 		} else {
 			$out->addModules( 'ext.Wikidata' );
 		}
