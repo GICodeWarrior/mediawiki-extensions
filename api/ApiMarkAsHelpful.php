@@ -8,7 +8,12 @@ class ApiMarkAsHelpful extends ApiBase {
 		if ( $wgUser->isBlocked( false ) ) {
 			$this->dieUsageMsg( array( 'blockedtext' ) );
 		}
-
+		
+		// Disallow anonymous user to unmark an 'Mark As Helpful' item
+		if ( $wgUser->isAnon() && $params['type'] == 'unmark' ) {
+			$this->noPermissionError();
+		}
+		
 		$params = $this->extractRequestParams();
 
 		$isAbleToMark = true;
@@ -17,7 +22,7 @@ class ApiMarkAsHelpful extends ApiBase {
 		wfRunHooks( 'onMarkItemAsHelpful', array( $params['mahaction'], $params['type'], $params['item'], $wgUser, &$isAbleToMark ) ); 
 			
 		if ( !$isAbleToMark ) {
-			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
+			$this->noPermissionError();
 		}
 
 		$error = false;
@@ -66,7 +71,11 @@ class ApiMarkAsHelpful extends ApiBase {
 		}
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
-
+	
+	private function noPermissionError() {
+		$this->dieUsage( "You don't have permission to do that", 'permission-denied' );	
+	}
+	
 	public function needsToken() {
 		return true;
 	}

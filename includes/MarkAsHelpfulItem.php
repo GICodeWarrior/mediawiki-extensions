@@ -201,10 +201,14 @@ class MarkAsHelpfulItem {
 	}
 
 	/**
-	 * Unmark an item as helpful
+	 * Unmark an item as helpful, we don't allow anonymous user to unarmk an item
 	 * @param $currentUser Object - the current user who is browsing the site
 	 */
 	public function unmark( $currentUser ) {
+		
+		if ( $currentUser->isAnon() ) {
+			return;
+		}
 		
 		if ( $this->getProperty( 'mah_id' ) ) {
 			
@@ -218,10 +222,9 @@ class MarkAsHelpfulItem {
 
 			if ( $user ) {
 				
-				if ( $currentUser->isAnon() == $user->isAnon() ) {
+				if ( !$user->isAnon() ) {
 					
-					if (  $currentUser->getId() == $user->getId() ||
-					      $currentUser->getName() == $user->getName() ) {
+					if (  $currentUser->getId() == $user->getId() ) {
 					
 						$dbw = wfGetDB( DB_MASTER );
 
