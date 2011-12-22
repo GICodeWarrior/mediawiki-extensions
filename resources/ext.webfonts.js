@@ -108,8 +108,7 @@
 				fontFormats = [],
 				version = fontconfig.version || "0.0",
 				versionSuffix = "?version=" + version + '&20111213',
-				styleString = "<style type='text/css'>"
-					+ "@font-face { font-family: '"+fontFamily+"';\n",
+				styleString = "@font-face { font-family: '"+fontFamily+"';\n",
 				ua = navigator.userAgent;
 
 			if ( fontconfig.eot !== undefined ) {
@@ -140,10 +139,8 @@
 			styleString += fontFormats.join() + ";\n";
 			styleString += "\tfont-weight: normal;}";
 
-			styleString += "\n</style>\n";
 			// inject the css to the head of the page. 
-			// mw.util.addCSS wont work with fontface, and crashes IE.
-			$( styleString ).appendTo( 'head' );
+			mw.util.addCSS( styleString );
 		},
 
 		/**
