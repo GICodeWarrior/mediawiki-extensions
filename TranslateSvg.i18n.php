@@ -63,6 +63,7 @@ $messages['de'] = array(
 	'translatesvg-fallbackdesc' => 'Standard (keine Sprache ist angegeben)',
 	'translatesvg-qqqdesc' => 'Ratschläge für Übersetzer',
 	'translatesvg-nodesc' => '(keine Beschreibung)',
+	'translatesvg-remove' => 'Alle Übersetzungen in dieser Sprache entfernen',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -77,6 +78,25 @@ $messages['de-formal'] = array(
  */
 $messages['fi'] = array(
 	'translatesvg-submit' => 'Siirry',
+);
+
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'translatesvg-desc' => 'Fournit une interface de style natif pour traduire les SVGs en ligne conformément à la spécification SVG1.1',
+	'translatesvg-legend' => 'Chemin du fichier',
+	'translatesvg-page' => 'Fichier:',
+	'translatesvg-submit' => 'Suivant',
+	'translatesvg-summary' => "Cette page spéciale vous permet d'ajouter, supprimer et modifier les traductions intégrées dans un fichier d'image SVG donné.",
+	'translatesvg-add' => "Si votre langue n'est pas déjà répertoriée, vous pouvez [[#addlanguage|l'ajouter]].",
+	'translatesvg-xcoordinate-pre' => 'Coordonnée X (horizontal):',
+	'translatesvg-ycoordinate-pre' => 'Coordonnée Y (vertical):',
+	'translatesvg-specify' => 'Spécifiez le nouveau code de langue (par ex. en, fr, de, es,...)',
+	'translatesvg-fallbackdesc' => 'Par défaut (aucune langue spécifiée)',
+	'translatesvg-qqqdesc' => 'Conseil aux traducteurs',
+	'translatesvg-nodesc' => '(aucune description)',
+	'translatesvg-remove' => 'Supprimer toutes les traductions dans cette langue.',
 );
 
 /** Galician (Galego)
@@ -129,6 +149,7 @@ $messages['mk'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -136,7 +157,15 @@ $messages['nl'] = array(
 	'translatesvg-legend' => 'Bestandslocatie',
 	'translatesvg-page' => 'Bestand:',
 	'translatesvg-submit' => 'OK',
+	'translatesvg-summary' => 'Via deze speciale pagina kunt u vertalingen in een SVG-afbeeldingsbestand toevoegen, verwijderen en aanpassen.',
+	'translatesvg-add' => 'Als uw taal niet al in de lijst voorkomt, dan kunt u deze [[#addlanguage|toevoegen]].',
+	'translatesvg-xcoordinate-pre' => 'X-coördinaat (horizontaal):',
+	'translatesvg-ycoordinate-pre' => 'Y-coördinaat (verticaal):',
+	'translatesvg-specify' => 'Geef de code van de nieuwe taal op (bijvoorbeeld: nl, en, fr, de, es, ...)',
+	'translatesvg-fallbackdesc' => 'Standaard (geen taal opgegeven)',
+	'translatesvg-qqqdesc' => 'Advies aan vertalers',
 	'translatesvg-nodesc' => '(geen beschrijving)',
+	'translatesvg-remove' => 'Alle vertalingen in deze taal verwijderen',
 );
 
 /** Telugu (తెలుగు)
