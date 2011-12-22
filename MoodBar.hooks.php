@@ -17,7 +17,8 @@ class MoodBarHooks {
 	}
 	
 	/**
-	 * Determines if this user has right to mark an feedback response as helpful
+	 * Determines if this user has right to mark an feedback response as helpful, only the user who wrote the
+	 * feedback can mark the response as helpful
 	 * @param $mahaction string - mark/unmark
 	 * @param $type string - the object type to be marked
 	 * @param $item int - an item of $type to be marked 
