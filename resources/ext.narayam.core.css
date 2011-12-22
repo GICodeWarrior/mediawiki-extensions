@@ -105,7 +105,8 @@ div#narayam-menu a {
 div#narayam-menu-items li.narayam-help-link a {
 	/* @embed */
 	background: url('images/help.png') no-repeat scroll left center transparent;
-	padding-left: 15px;
+	padding-left: 20px;
+	line-height: 1.5em;
 }
 
 li#pt-narayam.narayam-active {
