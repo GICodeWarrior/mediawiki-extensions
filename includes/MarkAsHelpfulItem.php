@@ -136,16 +136,7 @@ class MarkAsHelpfulItem {
 	 */
 	public function loadFromDatabase( $conds ) {
 		
-		$searchKey = array();
-		
-		foreach	( $conds AS $key => $value) {
-			if ( $value == 'mah_user_ip IS NULL' ) {
-				$searchKey[] = 'mah_user_ip';
-			}
-			else {
-				$searchKey[] = $key;
-			}
-		}
+		$searchKey = array_keys ( $conds );
 		
 		$flag = sort( $searchKey );
 		
@@ -267,10 +258,10 @@ class MarkAsHelpfulItem {
 				$conds['mah_user_id'] = 0;
 			} else {
 				$conds['mah_user_id'] = $user->getId();
-				$conds[] = 'mah_user_ip IS NULL';
+				$conds['mah_user_ip'] = NULL;
 			}
 		} else {
-			// Invalid User object, we can't treat this user has marked an item
+			// Invalid User object, we can't allow this user to mark an item
 			return true;
 		}
 

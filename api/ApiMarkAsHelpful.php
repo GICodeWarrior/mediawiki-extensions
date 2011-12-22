@@ -40,7 +40,7 @@ class ApiMarkAsHelpful extends ApiBase {
 					$conds['mah_user_ip'] = $wgUser->getName();
 				} else {
 					$conds['mah_user_id'] = $wgUser->getId();
-					$conds[] = 'mah_user_ip IS NULL';
+					$conds['mah_user_ip'] = NULL;
 				}
 				
 				$status = $item->loadFromDatabase( $conds );
