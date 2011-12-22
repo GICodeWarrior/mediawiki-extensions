@@ -2279,6 +2279,7 @@ $messages['vi'] = array(
 	'narayam-ta-inscript' => 'InScript Tamil',
 	'narayam-ta' => 'Chuyển tự tiếng Tamil',
 	'narayam-ta-bamini' => 'Bamini Tamil',
+	'narayam-tcy' => 'Chuyển tự tiếng Tulu',
 	'narayam-te-inscript' => 'InScript Telugu',
 	'narayam-bn-avro' => 'Avro Bengal',
 	'narayam-bn-inscript' => 'InScript Bengal',
