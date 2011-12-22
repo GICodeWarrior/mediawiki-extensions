@@ -4102,7 +4102,7 @@ $wgGoogleMapsMessages['nl'] = array(
 	'gm-selector-control' => 'Kaart/satelliet',
 	'gm-zoom-control' => 'Navigatie',
 	'gm-large' => 'Groot',
-	'gm-medium' => 'Middel',
+	'gm-medium' => 'Gemiddeld',
 	'gm-small' => 'Klein',
 	'gm-no-zoom-control' => 'Uit',
 	'gm-yes' => 'ja',
@@ -7071,3 +7071,4 @@ $wgGoogleMapsMessages['zh-tw'] = array(
 	'gm-moon' => '月亮',
 	'gm-mars' => '火星',
 );
+
