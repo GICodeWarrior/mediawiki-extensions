@@ -1407,7 +1407,7 @@ $messages['de'] = array(
 	'articlefeedback-form-panel-title' => 'Diese Seite einschätzen',
 	'articlefeedback-form-panel-explanation' => 'Worum handelt es sich?',
 	'articlefeedback-form-panel-explanation-link' => 'Project:Artikeleinschätzung',
-	'articlefeedback-form-panel-clear' => 'Einschätzung entfernen',
+	'articlefeedback-form-panel-clear' => 'Diese Einschätzung entfernen',
 	'articlefeedback-form-panel-expertise' => 'Ich habe umfangreiche Kenntnisse zu diesem Thema (optional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Ich habe einen entsprechenden Abschluss/Hochschulabschluss',
 	'articlefeedback-form-panel-expertise-profession' => 'Es ist ein Teil meines Berufes',
@@ -3199,6 +3199,7 @@ Molimo Vas, pokušajte ponovno kasnije.',
 $messages['hsb'] = array(
 	'articlefeedback' => 'Přehladna strona k posudkam',
 	'articlefeedback-desc' => 'Pohódnoćenje nastawkow (pilotowa wersija)',
+	'articlefeedback-survey-question-origin' => 'Na kotrej stronje sy na spočatku tutoho naprašowanja był?',
 	'articlefeedback-survey-question-whyrated' => 'Prošu zdźěl nam, čehodla sy tutu stronu dźensa posudźił (trjechace prošu nakřižować):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Chcych so na cyłkownym pohódnoćenju strony wobdźělić',
 	'articlefeedback-survey-answer-whyrated-development' => 'Nadźijam so, zo moje pohódnoćene by wuwiće strony pozitiwnje wobwliwowało',
@@ -3212,6 +3213,7 @@ $messages['hsb'] = array(
 	'articlefeedback-survey-submit' => 'Wotpósłać',
 	'articlefeedback-survey-title' => 'Prošu wotmołw na někotre prašenja',
 	'articlefeedback-survey-thanks' => 'Dźakujemy so za twój posudk.',
+	'articlefeedback-survey-disclaimer' => 'Přez wotesyłanje formulara zwoliš do $1.',
 	'articlefeedback-survey-disclaimerlink' => 'wuměnjenja',
 	'articlefeedback-error' => 'Zmylk je wustupił.
 Prošu spytaj pozdźišo hišće raz.',
@@ -3226,6 +3228,8 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedback-form-panel-expertise-hobby' => 'Je mój konik',
 	'articlefeedback-form-panel-expertise-other' => 'Žórło mojich znajomosćow njeje tu podate',
 	'articlefeedback-form-panel-helpimprove' => 'Bych rady pomhał {{GRAMMAR:akuzatiw|{{SITENAME}}}} polěpšić, pósćelće mi e-mejl (opcionalny)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Pósćelemy ći wobkrućensku e-mejl. Po našich $1 njedamy třećam twoju e-mejlowu adresu.',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Deklaracija priwatnosće za posudki',
 	'articlefeedback-form-panel-submit' => 'Posudki pósłać',
 	'articlefeedback-form-panel-pending' => 'Twoje posudki hišće njejsu so wotpósłali',
 	'articlefeedback-form-panel-success' => 'wuspěšnje składowany',
@@ -3249,12 +3253,21 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedback-field-complete-tooltip-2' => 'Wobsahuje někotre informcije',
 	'articlefeedback-field-complete-tooltip-3' => 'Wobsahuje wažne informacije, ma wšak mjezery',
 	'articlefeedback-field-complete-tooltip-4' => 'Wobsahuje najwjace wažnych informacijow',
+	'articlefeedback-field-complete-tooltip-5' => 'Wobšěrne informacije',
 	'articlefeedback-field-objective-label' => 'Wěcowny',
 	'articlefeedback-field-objective-tip' => 'Měniš, zo tuta strona pokazuje wurunane předstajenje wšěch perspektiwow tutoho problema?',
+	'articlefeedback-field-objective-tooltip-1' => 'Jara předsudny',
+	'articlefeedback-field-objective-tooltip-2' => 'Trochu předsudny',
+	'articlefeedback-field-objective-tooltip-3' => 'Lědma předsudny',
+	'articlefeedback-field-objective-tooltip-4' => 'Po wšěm zdaću njepředsudny',
+	'articlefeedback-field-objective-tooltip-5' => 'Cyle njepředsudny',
 	'articlefeedback-field-wellwritten-label' => 'Derje napisany',
 	'articlefeedback-field-wellwritten-tip' => 'Měniš, zo tuta strona je derje zorganizowana a derje napisana?',
 	'articlefeedback-field-wellwritten-tooltip-1' => 'Njezrozumliwy',
 	'articlefeedback-field-wellwritten-tooltip-2' => 'Ćežko zrozumliwy',
+	'articlefeedback-field-wellwritten-tooltip-3' => 'Dosć jasny',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'Jasny',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Jara jasny',
 	'articlefeedback-pitch-reject' => 'Snano pozdźišo',
 	'articlefeedback-pitch-or' => 'abo',
 	'articlefeedback-pitch-thanks' => 'Měj dźak! Twoje pohódnoćenja su so składowali.',
@@ -3279,6 +3292,28 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articleFeedback-table-heading-average' => 'Přerězk',
 	'articleFeedback-copy-above-highlow-tables' => 'To je eksperimentelna funkcija. Prošu daj swój komentar na [$1 diskusijnej stronje].',
 	'articlefeedback-disable-preference' => 'Asistent za posudźenje nastawkow na stronje njepokazać',
+	'articlefeedback-emailcapture-response-body' => 'Halo!
+
+Wulki dźak za twój zajim {{GRAMMAR:akuzatiw|{{SITENAME}}}} polěpšić.
+
+Prošu bjer sej wokomik časa, zo by swoju e-mejl přez kliknjenje na slědowacy wotkaz wobkrućił:
+
+$1
+
+Móžeš tež slědowacu stronu wopytać:
+
+$2
+
+Zapodaj potom slědowacy wobkrućenski kod:
+
+$3
+
+Stajimy so za krótki čas z tobu do zwiska, zo bychmy ći zdźělili, kak móžeš pomhać, {{GRAMMAR:akuzatiw|{{SITENAME}}}} polěpšić.
+
+Jeli njejsy tute naprašowanje pósłał, ignoruj prošu tutu e-mejl a njepósćelemy ći ničo wjace.
+
+Z najlěpšimi postrowami a wulki dźak,
+Team {{GRAMMAR:genitiw|{{SITENAME}}}}',
 );
 
 /** Hungarian (Magyar)
