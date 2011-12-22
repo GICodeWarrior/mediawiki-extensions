@@ -829,7 +829,7 @@ Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'moodbar-feedback-filters-type-confused' => 'Verwirrt',
 	'moodbar-feedback-filters-type-sad' => 'Traurig',
 	'moodbar-feedback-filters-username' => 'Benutzername',
-	'moodbar-feedback-filters-my-response' => 'Meine Antwort:',
+	'moodbar-feedback-filters-my-response' => 'Meine Antworten:',
 	'moodbar-feedback-filters-button' => 'Filter setzen',
 	'moodbar-feedback-whatis' => 'Über dieses Feature',
 	'moodbar-feedback-permalink' => 'Nach hier verlinken',
@@ -1362,7 +1362,7 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-feedback-filters-type-confused' => 'Confus',
 	'moodbar-feedback-filters-type-sad' => 'Triste',
 	'moodbar-feedback-filters-username' => "Nom d'utilisateur",
-	'moodbar-feedback-filters-my-response' => 'Ma réponse :',
+	'moodbar-feedback-filters-my-response' => 'Mes réponses:',
 	'moodbar-feedback-filters-button' => 'Positionner les filtres',
 	'moodbar-feedback-whatis' => "Qu'est-ce que cette fonctionnalité?",
 	'moodbar-feedback-permalink' => 'faire un lien vers ici',
@@ -1413,7 +1413,7 @@ Pour plus d'information, consultez la $1.",
 	'response-ajax-error-head' => 'Oups !',
 	'response-ajax-error-body' => 'Il y a eu une erreur en ajoutant votre réponse.<br />Veuillez réessayer plus tard.',
 	'moodbar-enotif-subject' => '$1a répondu à vos commentaires',
-	'moodbar-enotif-body' => 'Bonjour $1 !
+	'moodbar-enotif-body' => 'Bonjour $1!
 
 Bienvenue sur {{SITENAME}}, et merci pour votre [[$2|commentaire]]. Un autre utilisateur de {{SITENAME}}, [[$3|$6]], a écrit la réponse suivante : 
 
@@ -1424,7 +1424,7 @@ Afficher ce message sur votre [$5 page de discussion]
 Qu\'est-ce qu\'une page de discussion ?
 Votre page de discussion d\'utilisateur est la page que les autres rédacteurs de {{SITENAME}} utilisent pour communiquer avec vous.  Vous pouvez répondre en cliquant "Modifier", déplacer le curseur en dessous du commentaire, taper votre réponse et quatre tildes (~~~~) pour signer, et enregistrer. Toutes les pages de {{SITENAME}} ont des pages de discussion, et elles sont utilisées à de nombreuses fins diverses. Cela prend un certain temps comprendre cela, mais c\'est assez facile une fois que vous y êtes habitué.
 
-Encore incertain ? [[File:Wikipedia basics - Talk pages.ogv|Cette vidéo]] (à voir sur [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) vous donne un aperçu pas à pas. 
+Encore incertain ? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Cette vidéo] (à voir sur [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) vous donne un aperçu pas à pas. 
 
 Bonne journée,
 -- {{SITENAME}}',
@@ -2099,8 +2099,9 @@ Fir méi Informatiounen, gitt w.e.g. op d'$1.",
 	'moodbar-success-title' => 'Merci!',
 	'moodbar-error-title' => 'Ups!',
 	'moodbar-success-subtitle' => 'Eis Är Erfarunge beim Ännere matzedeelen hëlleft eis $1 ze verbesseren.',
-	'moodbar-blocked-title' => 'Gespaart!',
+	'moodbar-blocked-title' => 'Ups!',
 	'moodbar-blocked-subtitle' => 'Dir gouft gespaart a  kënnt dofir keng Ännerunge maachen.',
+	'moodbar-email-title' => 'Mailadress derbäisetzen',
 	'moodbar-email-input' => 'Är Mailadress',
 	'moodbar-email-submit' => 'Schécken',
 	'moodbar-updating-title' => 'Aktualisatioun...',
@@ -2274,7 +2275,7 @@ $messages['mk'] = array(
 	'moodbar-feedback-filters-type-confused' => 'Збунети',
 	'moodbar-feedback-filters-type-sad' => 'Тажни',
 	'moodbar-feedback-filters-username' => 'Корисничко име',
-	'moodbar-feedback-filters-my-response' => 'Мој одговор:',
+	'moodbar-feedback-filters-my-response' => 'Мои одговори:',
 	'moodbar-feedback-filters-button' => 'Задај филтри',
 	'moodbar-feedback-whatis' => 'Што прави оваа функција?',
 	'moodbar-feedback-permalink' => 'врска до страницава',
@@ -2672,7 +2673,7 @@ Ga naar de $1 voor mee informatie.',
 	'moodbar-feedback-filters-type-confused' => 'Verward',
 	'moodbar-feedback-filters-type-sad' => 'Somber',
 	'moodbar-feedback-filters-username' => 'Gebruikersnaam',
-	'moodbar-feedback-filters-my-response' => 'Mijn reactie:',
+	'moodbar-feedback-filters-my-response' => 'Mijn reacties:',
 	'moodbar-feedback-filters-button' => 'Filters instellen',
 	'moodbar-feedback-whatis' => 'Wat doet deze functie?',
 	'moodbar-feedback-permalink' => 'hierheen verwijzen',
