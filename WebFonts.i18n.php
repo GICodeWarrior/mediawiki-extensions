@@ -32,7 +32,6 @@ $messages['qqq'] = array(
 	'webfonts-reset' => '{{Identical|Reset}}',
 	'webfonts-menu-tooltip' => 'Tooltip text displayed in the webfont link',
 	'webfonts-help' => 'Text for the help link',
-	'webfonts-help-page' => 'Change this only if you want to point the help link to a different wiki page.',
 );
 
 /** Arabic (العربية)
@@ -114,12 +113,13 @@ $messages['da'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'webfonts' => 'WebSchriftarten',
+	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Ermöglicht die Schriftarteneinbettung in Seiten',
 	'webfonts-load' => 'Schriftart auswählen',
 	'webfonts-reset' => 'Zurücksetzen',
 	'webfonts-enable-preference' => 'Schriftarteneinbettung aktivieren',
 	'webfonts-menu-tooltip' => 'Eine Schriftart für die Seite auswählen.',
+	'webfonts-help' => 'Hilfe',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -170,6 +170,7 @@ $messages['fr'] = array(
 	'webfonts-reset' => 'Réinitialiser',
 	'webfonts-enable-preference' => "Active l'incorporation des fontes (WebFonts)",
 	'webfonts-menu-tooltip' => 'Sélectionnez une police pour la page',
+	'webfonts-help' => 'Aide',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -513,6 +514,7 @@ $messages['sl'] = array(
 	'webfonts-reset' => 'Ponastavi',
 	'webfonts-enable-preference' => 'Omogoči vdelavo pisav (SpletnePisave)',
 	'webfonts-menu-tooltip' => 'Izberite pisavo strani',
+	'webfonts-help' => 'Pomoč',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
