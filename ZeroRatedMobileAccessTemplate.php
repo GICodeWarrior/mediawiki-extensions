@@ -1,9 +1,5 @@
 <?php
 
-if( !defined( 'MEDIAWIKI' ) ) {
-	die( -1 );
-}
-
 abstract class ZeroRatedMobileAccessTemplate {
 	public $data;
 
