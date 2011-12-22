@@ -108,7 +108,7 @@
 	 * Click Event for marking an item as helpful.
 	 */
 	$( '.markashelpful-mark' ).live( 'click', function() {
-		$item = $( this ).parent().parent();
+		var $item = $( this ).parent().parent();
 		mah.markItem( $item, 'mark' );
 	} );
 
@@ -116,7 +116,7 @@
 	 * Click Event for removing helpful status from an item.
 	 */
 	$( '.markashelpful-undo' ).live( 'click', function() {
-		$item = $( this ).parent().parent();
+		var $item = $( this ).parent().parent();
 		mah.markItem( $item, 'unmark' );
 	} );
 	
@@ -136,5 +136,5 @@
 	};
 
 	// Initialize MarkAsHelpful
-	mah.init();
+	$( mah.init );
 } ) ( jQuery );
