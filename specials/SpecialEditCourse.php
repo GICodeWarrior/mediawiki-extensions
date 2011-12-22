@@ -64,4 +64,15 @@ class SpecialEditCourse extends SpecialEPFormPage {
 		return $this->processFormFields( $fields );
 	}
 	
+	/**
+	 * (non-PHPdoc)
+	 * @see SpecialEPFormPage::getNewData()
+	 */
+	protected function getNewData() {
+		return array(
+			'org_id' => $this->getRequest()->getVal( 'neworg' ),
+			'name' => $this->getRequest()->getVal( 'newname' ),
+		);
+	}
+	
 }

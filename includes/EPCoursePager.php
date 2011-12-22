@@ -20,9 +20,6 @@ class EPCoursePager extends EPPager {
 	 * @param array $conds
 	 */
 	public function __construct( IContextSource $context, array $conds = array() ) {
-		$this->mDefaultDirection = true;
-
-		// when MW 1.19 becomes min, we want to pass an IContextSource $context here.
 		parent::__construct( $context, $conds, 'EPCourse' );
 	}
 
@@ -121,11 +118,18 @@ class EPCoursePager extends EPPager {
 		$links = parent::getControlLinks( $item );
 		
 		$links[] = $value = Linker::linkKnown(
-			SpecialPage::getTitleFor( 'EditCourse', $item->getField( 'name' ) ),
-			wfMsg( 'edit' )
+			SpecialPage::getTitleFor( 'Course', $item->getField( 'name' ) ),
+			wfMsg( 'view' )
 		);
 		
-		// TODO
+		if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
+			$links[] = $value = Linker::linkKnown(
+				SpecialPage::getTitleFor( 'EditCourse', $item->getField( 'name' ) ),
+				wfMsg( 'edit' )
+			);
+			
+			$links[] = $this->getDeletionLink( 'term', $item->getId() );
+		}
 		
 		return $links;
 	}

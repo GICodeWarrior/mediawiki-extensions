@@ -54,6 +54,8 @@ abstract class EPPager extends TablePager {
 		$this->className = $className;
 		$this->context = $context;
 		
+		$this->mDefaultDirection = true;
+		
 		if ( version_compare( $GLOBALS['wgVersion'], '1.18c', '>' ) ) {
 			parent::__construct( $context );
 		}
@@ -376,6 +378,29 @@ abstract class EPPager extends TablePager {
 	 */
 	protected function getControlLinks( EPDBObject $item ) {
 		return array();
+	}
+	
+	/**
+	 * Returns a deletion link.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $type
+	 * @paran integer $id
+	 * 
+	 * @return string
+	 */
+	protected function getDeletionLink( $type, $id ) {
+		return Html::element(
+			'a',
+			array(
+				'href' => '#',
+				'class' => 'ep-pager-delete',
+				'data-id' => $id,
+				'data-type' => $type,
+			),
+			wfMsg( 'delete' )
+		);
 	}
 
 }

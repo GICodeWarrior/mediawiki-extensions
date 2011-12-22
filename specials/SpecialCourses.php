@@ -59,15 +59,16 @@ class SpecialCourses extends SpecialEPPage {
 	protected function displayPage() {
 		$user = $this->getUser();
 		
-		if ( $user->isAllowed( 'epadmin' ) ) {
-			$this->displayAddNewControl();
+		$orgs = EPOrg::getEditableOrgs( $this->getUser() );
+		
+		if ( count( $orgs ) > 0 ) {
+			$this->displayAddNewControl( $orgs );
+		}
+		elseif ( $user->isAllowed( 'epadmin' ) ) {
+			$this->getOutput()->addWikiMsg( 'ep-courses-noorgs' );
 		}
 		elseif ( $user->isAllowed( 'epmentor' ) ) {
-			$mentor = EPMentor::select( array( 'user_id' => $user->getId() ) );
-			
-			if ( $mentor !== false && count( $mentor->getOrgs() ) > 0 ) {
-				$this->displayAddNewControl();
-			}
+			$this->getOutput()->addWikiMsg( 'ep-courses-addorgfirst' );
 		}
 		
 		$pager = new EPCoursePager( $this->getContext() );
@@ -90,8 +91,10 @@ class SpecialCourses extends SpecialEPPage {
 	 * Displays a small form to add a new institution.
 	 *
 	 * @since 0.1
+	 * 
+	 * @param array $orgs
 	 */
-	protected function displayAddNewControl() {
+	protected function displayAddNewControl( array /* of EPOrg */ $orgs ) {
 		$out = $this->getOutput();
 
 		$out->addHTML( Html::openElement(
@@ -108,9 +111,21 @@ class SpecialCourses extends SpecialEPPage {
 
 		$out->addHTML( Html::element( 'p', array(), wfMsg( 'ep-courses-namedoc' ) ) );
 
+		$out->addHTML( Html::element( 'label', array( 'for' => 'neworg' ), wfMsg( 'ep-courses-neworg' ) ) );
+		
+		$out->addHTML( '&#160;' );
+		
+		$select = new XmlSelect( 'neworg', 'neworg' );
+		$select->addOptions( EPOrg::getOrgOptions( $orgs ) );
+		$out->addHTML( $select->getHTML() );
+		
+		$out->addHTML( '&#160;' );
+		
 		$out->addHTML( Xml::inputLabel( wfMsg( 'ep-courses-newname' ), 'newname', 'newname' ) );
 
-		$out->addHTML( '&#160;' . Html::input(
+		$out->addHTML( '&#160;' );
+		
+		$out->addHTML( Html::input(
 			'addneworg',
 			wfMsg( 'ep-courses-add' ),
 			'submit'

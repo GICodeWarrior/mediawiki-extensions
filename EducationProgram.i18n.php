@@ -77,6 +77,9 @@ $messages['en'] = array(
 	'ep-courses-namedoc' => 'Enter the name for the new course (which should be unique) and hit the button.',
 	'ep-courses-newname' => 'Course name:',
 	'ep-courses-add' => 'Add course',
+	'ep-courses-addorgfirst' => 'You need to [[Special:Institutions|add an institution]] before you can create any courses.',
+	'ep-courses-noorgs' => 'You are not a mentor of any insitutions yet, so cannot add any courses.',
+	'ep-courses-neworg' => 'Institution',
 
 	// Special:Terms
 	'ep-terms-nosuchterm' => 'There is no term with id "$1". Existing terms are listed below.',

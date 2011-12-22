@@ -1,7 +1,8 @@
 <?php
 
 /**
- * 
+ * Shows the info for a single course, with management and
+ * enrollment controls depending on the user and his rights.
  *
  * @since 0.1
  *

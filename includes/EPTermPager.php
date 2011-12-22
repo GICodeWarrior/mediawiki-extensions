@@ -20,9 +20,6 @@ class EPTermPager extends EPPager {
 	 * @param array $conds
 	 */
 	public function __construct( IContextSource $context, array $conds = array() ) {
-		$this->mDefaultDirection = true;
-
-		// when MW 1.19 becomes min, we want to pass an IContextSource $context here.
 		parent::__construct( $context, $conds, 'EPTerm' );
 	}
 
@@ -142,11 +139,18 @@ class EPTermPager extends EPPager {
 		$links = parent::getControlLinks( $item );
 		
 		$links[] = $value = Linker::linkKnown(
-			SpecialPage::getTitleFor( 'EditTerm', $item->getId() ),
-			wfMsg( 'edit' )
+			SpecialPage::getTitleFor( 'Term', $item->getId() ),
+			wfMsg( 'view' )
 		);
 		
-		// TODO
+		if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
+			$links[] = $value = Linker::linkKnown(
+				SpecialPage::getTitleFor( 'EditTerm', $item->getId() ),
+				wfMsg( 'edit' )
+			);
+			
+			$links[] = $this->getDeletionLink( 'term', $item->getId() );
+		}
 		
 		return $links;
 	}
