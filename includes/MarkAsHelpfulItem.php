@@ -39,8 +39,10 @@ class MarkAsHelpfulItem {
 	 * @param $key string - the name of a property
 	 */
 	public function getProperty( $key ) {
-		if( isset( $key, $this->property) ) {
+		if( array_key_exists( $key, $this->property) ) {
 			return $this->property[$key];
+		} else {
+			return null;
 		}
 	}
 
@@ -50,7 +52,7 @@ class MarkAsHelpfulItem {
 	 * @param $value mixed - the valud of the property
 	 */
 	public function setProperty( $key, $value ) {
-		if( isset( $key, $this->property) ) {
+		if( array_key_exists( $key, $this->property) ) {
 			$this->property[$key] = $value;
 		}
 	}
