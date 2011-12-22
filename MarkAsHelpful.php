@@ -42,7 +42,7 @@ $wgHooks['MakeGlobalVariablesScript'][] = 'MarkAsHelpfulHooks::makeGlobalVariabl
 $wgAvailableRights[] = 'markashelpful-view';
 $wgAvailableRights[] = 'markashelpful-admin';
 
-$wgGroupPermissions['sysop']['makrashelpful-admin'] = true;
+$wgGroupPermissions['sysop']['markashelpful-admin'] = true;
 
 // Internationalisation
 $wgExtensionMessagesFiles['MarkAsHelpful'] = $dir . 'MarkAsHelpful.i18n.php';
@@ -56,10 +56,6 @@ $mahResourceTemplate = array(
 $wgResourceModules['ext.markAsHelpful'] = $mahResourceTemplate + array(
 	'styles' => 'ext.markAsHelpful/ext.markAsHelpful.css',
 	'scripts' => 'ext.markAsHelpful/ext.markAsHelpful.js',
-	'messages' => array(
-		'helpful-text',
-	),
-	'position' => 'bottom',
 	'dependencies' => array(
 		'mediawiki.util'
 	),
