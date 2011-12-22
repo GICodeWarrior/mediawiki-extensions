@@ -86,7 +86,7 @@ class ExtZeroRatedMobileAccess {
 			self::addDebugOutput( self::getFullCountryNameFromCode( $country ) );
 			self::addDebugOutput( $languagesForCountry );
 			self::writeDebugOutput();
-			
+
 			if ( is_array( $languagesForCountry ) ) {
 				foreach( $languagesForCountry as $language ) {
 					echo Html::element( 'h3',
@@ -110,11 +110,11 @@ class ExtZeroRatedMobileAccess {
 			echo $output;
 			exit();
 		}
-		
+
 		wfProfileOut( __METHOD__ );
 		return true;
 	}
-	
+
 	private static function addDebugOutput( $object ) {
 		wfProfileIn( __METHOD__ );
 		if ( is_array( self::$debugOutput ) ) {
@@ -123,7 +123,7 @@ class ExtZeroRatedMobileAccess {
 		wfProfileOut( __METHOD__ );
 		return true;
 	}
-	
+
 	private static function writeDebugOutput() {
 		wfProfileIn( __METHOD__ );
 		if ( self::$debugOutput && self::$displayDebugOutput === true ) {
@@ -136,7 +136,7 @@ class ExtZeroRatedMobileAccess {
 		wfProfileOut( __METHOD__ );
 		return true;
 	}
-	
+
 	private static function createLanguageOptionsFromWikiText() {
 		wfProfileIn( __METHOD__ );
 		$languageOptions = array();
@@ -170,7 +170,7 @@ class ExtZeroRatedMobileAccess {
 		wfProfileOut( __METHOD__ );
 		return $languageOptions;
 	}
-	
+
 	private static function getFullCountryNameFromCode( $code ) {
 		wfProfileIn( __METHOD__ );
 		$countries = array(
@@ -417,9 +417,9 @@ class ExtZeroRatedMobileAccess {
 		wfProfileOut( __METHOD__ );
 		return ( isset( $countries[strtoupper( $code )] ) ) ? $countries[strtoupper( $code )] : null;
 	}
-	
+
 	private static function getSearchFormHtml( $langCode ) {
-		$searchValue = wfMsg( 'zero-rated-mobile-access-search' );
+		$searchValue = wfMessage( 'zero-rated-mobile-access-search' )->inLanguage( $langCode );
 		$formHtml = <<<HTML
 		<form action="//{$langCode}.wikipedia.org/w/index.php" class="search_bar" method="get">
 			<input type="hidden" value="Special:Search" name="title">
