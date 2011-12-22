@@ -58,7 +58,7 @@
 				.appendTo( ui.pMoodbar );
 			
 			// Inject portlet into document, when document is ready
-			$( mb.inject() );
+			$( mb.inject );
 
 		},
 
