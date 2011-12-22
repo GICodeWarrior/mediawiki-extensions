@@ -36,7 +36,7 @@
 		loadItem: function( $item ) {
 			var props = mah.getItemProperties( $item );
 
-			//only inject once per item id to preveny copy & paste of hook in pages
+			//only inject once per item id to prevent loading mutiple of the same hook
 			if( $.inArray( props.item, mah.ids ) === -1 ) {
 				mah.ids.push(props.item);
 				
@@ -93,6 +93,7 @@
 				url: mw.util.wikiScript( 'api' ),
 				data: apiRequest,
 				success: function () {
+					mah.ids.removeItemByValue(props.item);
 					mah.loadItem( $item );	
 				},
 				dataType: 'json'
@@ -118,6 +119,21 @@
 		$item = $( this ).parent().parent();
 		mah.markItem( $item, 'unmark' );
 	} );
+	
+	/*
+	 * function removeItemByValue 
+	 * removes an item from array by value
+	 */
+	Array.prototype.removeItemByValue= function(){
+	    var what, a= arguments, L= a.length, ax;
+	    while(L && this.length){
+	        what= a[--L];
+	        while((ax= this.indexOf(what))!= -1){
+	            this.splice(ax, 1);
+	        }
+	    }
+	    return this;
+	};
 
 	// Initialize MarkAsHelpful
 	mah.init();
