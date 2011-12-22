@@ -17,7 +17,7 @@ $messages['en'] = array(
 	'mah-you-marked-text' => 'You think this is helpful',
 	'mah-someone-marked-text' => '{{GENDER:$1|$1}} thinks this is helpful',
 	'mah-undo-mark-text' => 'undo',
-	'mah-action-error' => 'There is an error performing this action',
+	'mah-action-error' => 'There was an error performing this action',
 );
 
 /** Message documentation (Message documentation)
