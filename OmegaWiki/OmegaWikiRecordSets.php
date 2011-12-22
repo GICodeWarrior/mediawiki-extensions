@@ -450,6 +450,15 @@ function getExpressionsRecordSet( $spelling, ViewInformation $viewInformation, $
 		" WHERE spelling=BINARY " . $dbr->addQuotes( $spelling ) .
 		" AND {$dc}_expression.remove_transaction_id IS NULL " ;
 
+	// needed because expression.remove_transaction_id is not updated automatically
+	$sql .= " AND EXISTS (" .
+		"SELECT * " .
+		" FROM {$dc}_syntrans " .
+		" WHERE {$dc}_syntrans.expression_id={$dc}_expression.expression_id" .
+		" AND {$dc}_syntrans.remove_transaction_id IS NULL " .
+		")";
+
+
 	if ( $viewInformation->expressionLanguageId != 0 ) {
 		// display the expression in that language
 		$sql .= " AND language_id=" . $viewInformation->expressionLanguageId ;
