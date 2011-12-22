@@ -328,10 +328,10 @@
 			$fontsMenu.append( $resetItem );
 
 
-
+			var helpPage = mw.config.get( 'wgWebFontsHelpPage' );
 			var $helpLink = $( '<a id="webfont-help-link" >' )
 				.text( mw.msg( 'webfonts-help' ) )
-				.prop( 'href', '//mediawiki.org/wiki/Special:MyLanguage/Help:Web_fonts' )
+				.prop( 'href', helpPage  )
 				.prop( 'target', '_blank');
 			var $helpItem = $( '<li>' ).addClass( 'webfont-help-item' ).append( $helpLink );
 			$fontsMenu.append( $helpItem );

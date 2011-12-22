@@ -19,6 +19,7 @@ $messages['en'] = array(
 	'webfonts-enable-preference' => 'Enable font embedding (WebFonts)',
 	'webfonts-menu-tooltip' => 'Select a font for the page',
 	'webfonts-help' => 'Help',
+	'webfonts-help-page' => '//mediawiki.org/wiki/Special:MyLanguage/Help:Web_fonts',
 );
 
 /** Message documentation (Message documentation)
@@ -31,6 +32,7 @@ $messages['qqq'] = array(
 	'webfonts-reset' => '{{Identical|Reset}}',
 	'webfonts-menu-tooltip' => 'Tooltip text displayed in the webfont link',
 	'webfonts-help' => 'Text for the help link',
+	'webfonts-help-page' => 'Change this only if you want to point the help link to a different wiki page.',
 );
 
 /** Arabic (العربية)
