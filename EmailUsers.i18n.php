@@ -515,3 +515,14 @@ $messages['zh-hans'] = array(
 	'emailusers-toomanyrecipientsselected' => '选择了太多收件人（{{PLURAL:$1|最多$1个|最多$1个}}）。',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'emailusers-desc' => '允許用戶給多個收件人發送電子郵件',
+	'right-sendbatchemail' => '同時發電子郵件給多個收件人',
+	'emailusers' => '給多個用戶發送郵件',
+	'emailusers-target-reverse' => '發送給除了選定用戶的所有用戶',
+	'emailusers-norecipient' => '沒有用戶可以接收電子郵件。',
+	'emailusers-norecipientselected' => '沒有選擇收件人。',
+	'emailusers-toomanyrecipientsselected' => '選擇了太多收件人（{{PLURAL:$1|最多$1個|最多$1個}}）。',
+);
+
