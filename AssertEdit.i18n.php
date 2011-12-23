@@ -817,11 +817,12 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'assert_edit_title' => 'Potvrda nije uspela.',
-	'assertedit-desc' => 'Dodaje potvrde izmena kod korišćenja botova.',
-	'assert_edit_message' => 'Određena tvrdnja ($1) nije uspela.',
+	'assert_edit_title' => 'Tvrdnja nije uspela',
+	'assertedit-desc' => 'Dodaje tvrdnje za uređivanje za korišćenje od strane botova',
+	'assert_edit_message' => 'Navedena tvrdnja ($1) nije uspela.',
 );
 
 /** Seeltersk (Seeltersk)
