@@ -8,25 +8,25 @@ class ApiMarkAsHelpful extends ApiBase {
 		if ( $wgUser->isBlocked( false ) ) {
 			$this->dieUsageMsg( array( 'blockedtext' ) );
 		}
-		
+
 		// Disallow anonymous user to unmark an 'Mark As Helpful' item
-		if ( $wgUser->isAnon() && $params['mahaction'] == 'unmark' ) {
+		if ( $wgUser->isAnon() && $params['mahaction'] === 'unmark' ) {
 			$this->noPermissionError();
 		}
-		
+
 		$params = $this->extractRequestParams();
 
 		$isAbleToMark = true;
-		
+
 		// Gives other extension the last chance to specify mark as helpful permission rules
-		wfRunHooks( 'onMarkItemAsHelpful', array( $params['mahaction'], $params['type'], $params['item'], $wgUser, &$isAbleToMark ) ); 
-			
+		wfRunHooks( 'onMarkItemAsHelpful', array( $params['mahaction'], $params['type'], $params['item'], $wgUser, &$isAbleToMark ) );
+
 		if ( !$isAbleToMark ) {
 			$this->noPermissionError();
 		}
 
 		$error = false;
-		
+
 		switch ( $params['mahaction'] ) {
 			case 'mark':
 				$item = new MarkAsHelpfulItem();
@@ -36,18 +36,17 @@ class ApiMarkAsHelpful extends ApiBase {
 
 			case 'unmark':
 				$item = new MarkAsHelpfulItem();
-				
-				$conds = array ( 'mah_type' => $params['type'],
-						 'mah_item' => $params['item'],
-						 'mah_user_id' => $wgUser->getId(),
-						 'mah_user_ip' => NULL);
-				
+
+				$conds = array( 'mah_type' => $params['type'],
+						'mah_item' => $params['item'],
+						'mah_user_id' => $wgUser->getId(),
+						'mah_user_ip' => null );
+
 				$status = $item->loadFromDatabase( $conds );
-				
+
 				if ( $status ) {
 					$item->unmark( $wgUser );
-				}
-				else {
+				} else {
 					$error = wfMessage( 'mah-action-error' )->escaped();
 				}
 			break;
@@ -65,11 +64,11 @@ class ApiMarkAsHelpful extends ApiBase {
 		}
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
-	
+
 	private function noPermissionError() {
-		$this->dieUsage( "You don't have permission to do that", 'permission-denied' );	
+		$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
 	}
-	
+
 	public function needsToken() {
 		return true;
 	}
@@ -80,7 +79,7 @@ class ApiMarkAsHelpful extends ApiBase {
 
 	public function getAllowedParams() {
 		global $wgMarkAsHelpfulType;
-		
+
 		return array(
 			'mahaction' => array(
 				ApiBase::PARAM_REQUIRED => true,
