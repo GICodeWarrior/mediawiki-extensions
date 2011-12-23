@@ -1511,6 +1511,12 @@ $messages['zh-hans'] = array(
 	'refreshspecial-title' => '刷新特殊页面',
 	'refreshspecial-button' => '刷新已选页面',
 	'refreshspecial-choice' => '正在刷新特殊页面',
+	'refreshspecial-select-all-pages' => '选择所有页面',
+	'refreshspecial-link-back' => '回到特殊页面',
+	'refreshspecial-db-error' => '失败：资料库错误',
+	'refreshspecial-no-page' => '此特殊页面不存在',
+	'refreshspecial-reconnecting' => '连接失败，在 10 秒后重新连接...',
+	'right-refreshspecial' => '重新载入特殊页面',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
