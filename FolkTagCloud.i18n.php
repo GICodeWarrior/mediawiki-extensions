@@ -208,3 +208,8 @@ $messages['zh-hans'] = array(
 	'folktagcloud-desc' => '添加语义 MediaWiki 属性的用户定义的标签的标签页和解析器标记显示在标签云',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'folktagcloud-desc' => '添加語義 MediaWiki 屬性的用戶定義的標籤的標籤頁和解析器標記顯示在標籤雲',
+);
+
