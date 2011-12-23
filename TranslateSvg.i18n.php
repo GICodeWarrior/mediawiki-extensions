@@ -47,6 +47,23 @@ $messages['qqq'] = array(
 	'translatesvg-remove' => 'Tooltip for a link attached to each translation language group which remove all form elements relating to the language group it is attached to',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'translatesvg-legend' => 'Hent moned ur restr',
+	'translatesvg-page' => 'Restr :',
+	'translatesvg-submit' => 'Mont',
+	'translatesvg-add' => "Ma ne vez ket ho yezh er roll c'hoazh e c'hellit [[#addlanguage|ouzhpennañ anezhi]].",
+	'translatesvg-xcoordinate-pre' => 'Daveenn X (a-led) :',
+	'translatesvg-ycoordinate-pre' => 'Daveenn Y (a-serzh)',
+	'translatesvg-specify' => "Spisait ar c'hod yezh nevez (da sk. br, en, fr, de, es...)",
+	'translatesvg-fallbackdesc' => 'Dre ziouer (yezh spisaet ebet)',
+	'translatesvg-qqqdesc' => "Kuzul d'an droerien",
+	'translatesvg-nodesc' => '(deskrivadur ebet)',
+	'translatesvg-remove' => 'Dilemel an holl droidigezhioù er yezh-se.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
