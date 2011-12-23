@@ -829,6 +829,14 @@ $messages['sr-ec'] = array(
 	'right-whatismyip' => 'приказ [[Special:WhatIsMyIP|сопствене IP адресе]]',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'whatismyip' => 'Koja je moja IP adresa',
+	'whatismyip-desc' => 'Prikazuje trenutnu [[Special:WhatIsMyIP|IP adresu]] korisnika',
+	'whatismyip-out' => 'Vaša IP adresa:',
+	'right-whatismyip' => 'prikaz [[Special:WhatIsMyIP|sopstvene IP adrese]]',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
