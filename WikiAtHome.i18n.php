@@ -1776,7 +1776,7 @@ $messages['sr-el'] = array(
 	'wah-short-video' => '$1 video-fajl, $2',
 	'wah-short-general' => '$1 medija-fajl, $2',
 	'wah-long-audio' => '$1 zvučni fajl, trajanje $2, $3',
-	'wah-long-video' => '$1 video-fajl, trajanje $2, $3×$5 piksela, $3',
+	'wah-long-video' => '$1 video-snimak, trajanje $2, $4 × $5 piksela, $3',
 	'wah-long-multiplexed' => 'multipleksovani audio/video fajl, $1, trajanje $2, $4×$5 piksela, $3 ukupno',
 	'wah-long-general' => 'medija-fajl, trajanje $2, $3',
 	'wah-long-error' => 'ffmpeg nije mogao da pročita ovaj fajl: $1',
@@ -1941,6 +1941,8 @@ $messages['yi'] = array(
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
+	'wah-desc' => '把视频转码的工作分配予使用Firefogg的用户端',
+	'wah-user-desc' => 'Wiki@Home 可使参与者提供剩余的CPU运算能力，协助执行资源密集的作业',
 	'wah-short-audio' => '$1声音文件，$2',
 	'wah-short-video' => '$1视频文件，$2',
 	'wah-short-general' => '$1媒体文件，$2',
@@ -1949,11 +1951,27 @@ $messages['zh-hans'] = array(
 	'wah-long-general' => '（媒体文件，长度$2，$3）',
 	'wah-long-error' => '（ffmpeg不能读取这个文件：$1）',
 	'wah-transcode-working' => '这个视频正在被处理，请稍后再试',
+	'wah-transcode-helpout' => '您可以透过到访 [[Special:WikiAtHome|Wiki@Home]] 协助本视频的转码。',
 	'wah-transcode-fail' => '这个文件转码失败',
 	'wah-javascript-off' => '你必须启用JavaScript以参与Wiki@Home',
 	'wah-loading' => '正在载入Wiki@Home界面……',
+	'wah-menu-jobs' => '工作',
+	'wah-menu-stats' => '统计',
 	'wah-menu-pref' => '系统设置',
+	'wah-lookingforjob' => '正在寻找工作...',
+	'wah-start-on-visit' => '在每次访问本网站时启动 Wiki@Home。',
+	'wah-jobs-while-away' => '只于本人离开浏览器后20分钟方开始执行工作。',
+	'wah-nojobfound' => '未有新工作，将于 $1 后再试。',
+	'wah-notoken-login' => '您已登入了吗？如果没有，请先登入。',
+	'wah-apioff' => 'Wiki@Home API 似乎处于关机状态，请联络该 wiki 的管理员。',
+	'wah-downloading' => '已完成下载档案 <i>$1%</i>',
+	'wah-encoding' => '已完成档案 <i>$1%</i> 的编码',
+	'wah-encoding-fail' => '编码失败，请重新载入本页或稍后再试。',
+	'wah-uploading' => '已完成上传档案 <i>$1%</i>',
 	'wah-uploadfail' => '上传失败',
+	'wah-doneuploading' => '上载完成，谢谢您的贡献。',
+	'wah-needs-firefogg' => '您必须安装 <a href="http://firefogg.org">Firefogg</a> 方能参与 Wiki@Home。',
+	'wah-api-error' => 'API 出现错误，请稍后再试。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
