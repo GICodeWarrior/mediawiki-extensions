@@ -471,6 +471,14 @@ $messages['sr-ec'] = array(
 	'rightfunctions-sep' => ',',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'rightfunctions-rest1' => '$1 $2',
+	'rightfunctions-rest2' => '$1 $2$5 $3 $4',
+	'rightfunctions-rest3' => '$1 $2$7 $3 $4$7 $5 $6',
+	'rightfunctions-sep' => ',',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
