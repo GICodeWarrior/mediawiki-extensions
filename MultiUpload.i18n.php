@@ -1944,7 +1944,7 @@ $messages['zh-hant'] = array(
 	'multipleupload-ignoreallwarnings' => "忽略'''所有警告'''並繼續儲存檔案。",
 	'multipleupload-saveallfiles' => '儲存所有檔案',
 	'multipleupload-addresswarnings' => '在從新上傳檔案前，請先回應所有警告。',
-	'multipleupload-page' => '{{ns:project}}：檔案刪除政策',
+	'multipleupload-page' => '{{ns:project}}:文件刪除方針',
 	'multipleupload-text' => "你可以在這裡上傳多個檔案。
 
 點選「瀏覽…」並選擇你要上傳的檔案。
