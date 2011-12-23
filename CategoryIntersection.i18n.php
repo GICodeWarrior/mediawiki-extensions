@@ -947,3 +947,13 @@ $messages['zh-hans'] = array(
 	'categoryintersection-results' => '搜索返回了$1 个结果。',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'categoryintersection' => '交叉分類',
+	'categoryintersection-desc' => '在一個頁面中維護[[Special:CategoryIntersection|分類交叉]]的哈希表。',
+	'categoryintersection-doit' => '這些分類的所有列表頁',
+	'categoryintersection-maxcategories' => '允許的交叉分類最大值是$1 。',
+	'categoryintersection-mincategories' => '你需要包括至少兩個分類。',
+	'categoryintersection-results' => '搜索返回了$1 個結果。',
+);
+
