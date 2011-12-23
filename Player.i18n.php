@@ -988,21 +988,22 @@ $messages['mn'] = array(
 
 /** Marathi (मराठी)
  * @author Htt
+ * @author Kaajawa
  * @author Kaustubh
  * @author Mahitgar
  */
 $messages['mr'] = array(
-	'player' => 'खेळाडू',
+	'player' => 'चालक',
 	'player-desc' => 'सर्वसाधारण ब्राउझर प्लगीन वापरून संलग्न विविधमाध्यमे (मल्टीमीडिया), तसेच एक [[Special:Player|विशेष पान]]',
-	'player-title' => 'खेळाडू',
-	'player-playertitle' => 'प्लेयर: $1',
+	'player-title' => 'चालक',
+	'player-playertitle' => 'चालक: $1',
 	'player-file' => 'संचिका नाव',
 	'player-play' => 'चालू करा',
 	'player-not-allowed' => 'चुकीची रुपरेषा',
 	'player-not-found' => 'संचिका सापडली नाही',
 	'player-invalid-title' => 'चुकीचे शीर्षक',
 	'player-clicktoplay' => '$1 चालू करा',
-	'player-goto-player' => 'खेळाडू',
+	'player-goto-player' => 'चालक',
 	'player-goto-page' => 'पान',
 	'player-goto-file' => 'संचिका',
 );
@@ -1644,6 +1645,7 @@ $messages['zh-hans'] = array(
 	'player-playertitle' => '播放器：$1',
 	'player-file' => '文件名',
 	'player-play' => '播放',
+	'player-not-allowed' => '不允许的格式',
 	'player-not-found' => '找不到文件',
 	'player-invalid-title' => '无效标题',
 	'player-clicktoplay' => '播放$1',
