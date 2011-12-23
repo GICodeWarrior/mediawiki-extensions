@@ -63,7 +63,7 @@ class EPOrgPager extends EPPager {
 			case 'name':
 				$value = Linker::linkKnown(
 					SpecialPage::getTitleFor( 'Institution', $value ),
-					$value
+					htmlspecialchars( $value )
 				);
 				break;
 			case 'country':
@@ -118,13 +118,13 @@ class EPOrgPager extends EPPager {
 		
 		$links[] = $value = Linker::linkKnown(
 			SpecialPage::getTitleFor( 'Institution', $item->getField( 'name' ) ),
-			wfMsg( 'view' )
+			wfMsgHtml( 'view' )
 		);
 		
 		if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
 			$links[] = $value = Linker::linkKnown(
 				SpecialPage::getTitleFor( 'EditInstitution', $item->getField( 'name' ) ),
-				wfMsg( 'edit' )
+				wfMsgHtml( 'edit' )
 			);
 			
 			$links[] = $this->getDeletionLink( 'org', $item->getId() );

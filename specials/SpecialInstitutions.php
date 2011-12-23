@@ -57,59 +57,7 @@ class SpecialInstitutions extends SpecialEPPage {
 	 * @since 0.1
 	 */
 	protected function displayPage() {
-		if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
-			$this->displayAddNewControl();
-		}
-		
-		$pager = new EPOrgPager( $this->getContext() );
-		
-		if ( $pager->getNumRows() ) {
-			$this->getOutput()->addHTML(
-				$pager->getFilterControl() .
-				$pager->getNavigationBar() .
-				$pager->getBody() .
-				$pager->getNavigationBar()
-			);
-		}
-		else {
-			$this->getOutput()->addHTML( $pager->getFilterControl( true ) );
-			$this->getOutput()->addWikiMsg( 'ep-institutions-noresults' );
-		}
-	}
-	
-	/**
-	 * Displays a small form to add a new institution.
-	 *
-	 * @since 0.1
-	 */
-	protected function displayAddNewControl() {
-		$out = $this->getOutput();
 
-		$out->addHTML( Html::openElement(
-			'form',
-			array(
-				'method' => 'post',
-				'action' => SpecialPage::getTitleFor( 'EditInstitution' )->getLocalURL(),
-			)
-		) );
-
-		$out->addHTML( '<fieldset>' );
-
-		$out->addHTML( '<legend>' . wfMsgHtml( 'ep-institutions-addnew' ) . '</legend>' );
-
-		$out->addHTML( Html::element( 'p', array(), wfMsg( 'ep-institutions-namedoc' ) ) );
-
-		$out->addHTML( Xml::inputLabel( wfMsg( 'ep-institutions-newname' ), 'newname', 'newname' ) );
-
-		$out->addHTML( '&#160;' . Html::input(
-			'addneworg',
-			wfMsg( 'ep-institutions-add' ),
-			'submit'
-		) );
-
-		$out->addHTML( Html::hidden( 'newEditToken', $this->getUser()->editToken() ) );
-
-		$out->addHTML( '</fieldset></form>' );
 	}
 
 }

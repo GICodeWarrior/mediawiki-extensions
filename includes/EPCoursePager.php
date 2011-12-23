@@ -62,7 +62,7 @@ class EPCoursePager extends EPPager {
 			case 'name':
 				$value = Linker::linkKnown(
 					SpecialPage::getTitleFor( 'Course', $value ),
-					$value
+					htmlspecialchars( $value )
 				);
 				break;
 			case 'org_id':
@@ -70,7 +70,7 @@ class EPCoursePager extends EPPager {
 				
 				$value = Linker::linkKnown(
 					SpecialPage::getTitleFor( 'Institution', $value ),
-					$value
+					htmlspecialchars( $value )
 				);
 				break;
 		}
@@ -119,19 +119,38 @@ class EPCoursePager extends EPPager {
 		
 		$links[] = $value = Linker::linkKnown(
 			SpecialPage::getTitleFor( 'Course', $item->getField( 'name' ) ),
-			wfMsg( 'view' )
+			wfMsgHtml( 'view' )
 		);
 		
 		if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
 			$links[] = $value = Linker::linkKnown(
 				SpecialPage::getTitleFor( 'EditCourse', $item->getField( 'name' ) ),
-				wfMsg( 'edit' )
+				wfMsgHtml( 'edit' )
 			);
 			
 			$links[] = $this->getDeletionLink( 'term', $item->getId() );
 		}
 		
 		return $links;
+	}
+	
+	public static function displayWithAddControl( IContextSource $context, array $conditions = array() ) {
+
+		
+		$pager = new self( $this->getContext() );
+		
+		if ( $pager->getNumRows() ) {
+			$this->getOutput()->addHTML(
+				$pager->getFilterControl() .
+				$pager->getNavigationBar() .
+				$pager->getBody() .
+				$pager->getNavigationBar()
+			);
+		}
+		else {
+			$this->getOutput()->addHTML( $pager->getFilterControl( true ) );
+			$this->getOutput()->addWikiMsg( 'ep-courses-noresults' );
+		}
 	}
 
 }

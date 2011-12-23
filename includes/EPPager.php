@@ -245,6 +245,12 @@ abstract class EPPager extends TablePager {
 	public function getFilterControl( $hideWhenNoResults = true ) {
 		$filterOptions = $this->getFilterOptions();
 		
+		foreach ( $this->conds as $name => $value ) {
+			if ( array_key_exists( $name, $filterOptions ) ) {
+				unset( $filterOptions[$name] );
+			}
+		}
+		
 		if ( count( $filterOptions ) < 1 ) {
 			return '';
 		}

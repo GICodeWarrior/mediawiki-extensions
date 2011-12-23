@@ -111,5 +111,35 @@ class EPOrg extends EPDBObject {
 			return array();
 		}
 	}
+	
+	public static function displayAddNewControl( IContextSource $context, $name = false ) {
+		$out = $context->getOutput();
+		
+		$out->addHTML( Html::openElement(
+			'form',
+			array(
+				'method' => 'post',
+				'action' => SpecialPage::getTitleFor( 'EditInstitution' )->getLocalURL(),
+			)
+		) );
 
+		$out->addHTML( '<fieldset>' );
+
+		$out->addHTML( '<legend>' . wfMsgHtml( 'ep-institutions-addnew' ) . '</legend>' );
+
+		$out->addHTML( Html::element( 'p', array(), wfMsg( 'ep-institutions-namedoc' ) ) );
+
+		$out->addHTML( Xml::inputLabel( wfMsg( 'ep-institutions-newname' ), 'newname', 'newname', false, $name ) );
+
+		$out->addHTML( '&#160;' . Html::input(
+			'addneworg',
+			wfMsg( 'ep-institutions-add' ),
+			'submit'
+		) );
+
+		$out->addHTML( Html::hidden( 'newEditToken', $context->getUser()->editToken() ) );
+
+		$out->addHTML( '</fieldset></form>' );
+	}
+	
 }

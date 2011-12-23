@@ -41,7 +41,6 @@ abstract class SpecialEPPage extends SpecialPage {
 	public function setHeaders() {
 		$out = $this->getOutput();
 		$out->setArticleRelated( false );
-		$out->setRobotPolicy( 'noindex,nofollow' );
 		$out->setPageTitle( $this->getDescription() );
 	}
 

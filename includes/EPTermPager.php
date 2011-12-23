@@ -65,7 +65,7 @@ class EPTermPager extends EPPager {
 			case 'id':
 				$value = Linker::linkKnown(
 					SpecialPage::getTitleFor( 'Term', $value ),
-					$value
+					htmlspecialchars( $value )
 				);
 				break;
 			case 'course_id':
@@ -73,7 +73,7 @@ class EPTermPager extends EPPager {
 				
 				$value = Linker::linkKnown(
 					SpecialPage::getTitleFor( 'Course', $value ),
-					$value
+					htmlspecialchars( $value )
 				);
 				break;
 			case 'year':
@@ -140,13 +140,13 @@ class EPTermPager extends EPPager {
 		
 		$links[] = $value = Linker::linkKnown(
 			SpecialPage::getTitleFor( 'Term', $item->getId() ),
-			wfMsg( 'view' )
+			wfMsgHtml( 'view' )
 		);
 		
 		if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
 			$links[] = $value = Linker::linkKnown(
 				SpecialPage::getTitleFor( 'EditTerm', $item->getId() ),
-				wfMsg( 'edit' )
+				wfMsgHtml( 'edit' )
 			);
 			
 			$links[] = $this->getDeletionLink( 'term', $item->getId() );

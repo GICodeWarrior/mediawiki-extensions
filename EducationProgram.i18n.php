@@ -150,6 +150,12 @@ $messages['en'] = array(
 	// ep.pager
 	'ep-pager-confirm-delete' => 'Are you sure you want to delete this item?',
 	'ep-pager-delete-fail' => 'Could not delete this item.',
+
+	// Special:Institution
+	'ep-institution-none' => 'There is no institution with name "$1".',
+	'ep-institution-create' => 'There is no institution with name "$1" yet, but you can create it.',
+	'ep-institution-title' => 'Institution: $1',
+	'ep-institution-courses' => 'Courses',
 );
 
 /** Message documentation (Message documentation)

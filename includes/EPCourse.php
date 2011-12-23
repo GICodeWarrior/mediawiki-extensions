@@ -121,5 +121,115 @@ class EPCourse extends EPDBObject {
 		
 		return $cache[$userId];
 	}
+	
+	/**
+	 * Adds a control to add a new course to the provided context.
+	 * An org id can be provided to set the initially selected org.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param IContextSource $context
+	 * @param array $args
+	 */
+	public static function displayAddNewControl( IContextSource $context, array $args = array() ) {
+		$out = $this->getOutput();
+
+		$out->addHTML( Html::openElement(
+			'form',
+			array(
+				'method' => 'post',
+				'action' => SpecialPage::getTitleFor( 'EditCourse' )->getLocalURL(),
+			)
+		) );
+
+		$out->addHTML( '<fieldset>' );
+
+		$out->addHTML( '<legend>' . wfMsgHtml( 'ep-courses-addnew' ) . '</legend>' );
+
+		$out->addHTML( Html::element( 'p', array(), wfMsg( 'ep-courses-namedoc' ) ) );
+
+		$out->addHTML( Html::element( 'label', array( 'for' => 'neworg' ), wfMsg( 'ep-courses-neworg' ) ) );
+		
+		$out->addHTML( '&#160;' );
+		
+		$select = new XmlSelect(
+			'neworg',
+			'neworg',
+			array_key_exists( 'org', $args ) ? $args['org'] : false
+		);
+		
+		$select->addOptions( EPOrg::getOrgOptions( EPOrg::getEditableOrgs( $context->getUser() ) ) );
+		$out->addHTML( $select->getHTML() );
+		
+		$out->addHTML( '&#160;' );
+		
+		$out->addHTML( Xml::inputLabel(
+			wfMsg( 'ep-courses-newname' ),
+			'newname',
+			'newname',
+			false,
+			array_key_exists( 'name', $args ) ? $args['name'] : false
+		) );
+
+		$out->addHTML( '&#160;' );
+		
+		$out->addHTML( Html::input(
+			'addneworg',
+			wfMsg( 'ep-courses-add' ),
+			'submit'
+		) );
+
+		$out->addHTML( Html::hidden( 'newEditToken', $this->getUser()->editToken() ) );
+
+		$out->addHTML( '</fieldset></form>' );
+	}
+	
+	/**
+	 * Adds a control to add a new course to the provided context
+	 * or show a message if this is not possible for some reason.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param IContextSource $context
+	 * @param array $args
+	 */
+	public static function displayAddNewRegion( IContextSource $context, array $args = array() ) {
+		$orgs = EPOrg::getEditableOrgs( $context->getUser() );
+		
+		if ( count( $orgs ) > 0 ) {
+			EPCourse::displayAddNewControl( $context, $args );
+		}
+		elseif ( $context->getUser()->isAllowed( 'epadmin' ) ) {
+			$context->getOutput()->addWikiMsg( 'ep-courses-noorgs' );
+		}
+		elseif ( $context->getUser()->isAllowed( 'epmentor' ) ) {
+			$context->getOutput()->addWikiMsg( 'ep-courses-addorgfirst' );
+		}
+	}
+	
+	/**
+	 * Display a pager with courses.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param IContextSource $context
+	 * @param array $conditions
+	 */
+	public static function displayPager( IContextSource $context, array $conditions = array() ) {
+		$pager = new EPCoursePager( $context, $conditions );
+		
+		if ( $pager->getNumRows() ) {
+			$context->getOutput()->addHTML(
+				$pager->getFilterControl() .
+				$pager->getNavigationBar() .
+				$pager->getBody() .
+				$pager->getNavigationBar()
+			);
+		}
+		else {
+			$context->getOutput()->addHTML( $pager->getFilterControl( true ) );
+			$context->getOutput()->addWikiMsg( 'ep-courses-noresults' );
+		}
+	}
 
 }
