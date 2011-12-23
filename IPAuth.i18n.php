@@ -424,6 +424,11 @@ $messages['vi'] = array(
 	'ipauth-desc' => 'Tự động đăng nhập từ địa chỉ IP cố định',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'ipauth-desc' => '自动从固定的 IP 位址登入',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Mark85296341
  */
