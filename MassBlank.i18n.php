@@ -756,8 +756,10 @@ $messages['wuu'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
+	'massblank' => '大量空白',
 	'massblank-submit-user' => '进入',
 	'massblank-blankcomment' => '原因：',
+	'right-massblank' => '大量空白页',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -765,6 +767,7 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'massblank' => '大量空白',
+	'massblank-submit-user' => '進入',
 	'massblank-blankcomment' => '原因：',
 	'right-massblank' => '大量空白頁',
 );
