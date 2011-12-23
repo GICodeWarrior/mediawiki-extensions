@@ -848,7 +848,9 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
+	'categorystepper-desc' => '顯示一個分類跳轉盒可以讓使用者按照字母順序在同一頁面中的多個分類間跳轉',
 	'categorystepper-end' => '（分類結尾）',
+	'categorystepper-start' => '（分類開頭）',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)
