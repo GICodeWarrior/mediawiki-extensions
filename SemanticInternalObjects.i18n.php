@@ -364,3 +364,8 @@ $messages['zh-hans'] = array(
 	'semanticinternalobjects-desc' => '在语义MediaWiki中设置内部对象',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'semanticinternalobjects-desc' => '在語義MediaWiki中設置內部對象',
+);
+
