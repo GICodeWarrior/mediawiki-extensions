@@ -3217,7 +3217,45 @@ $messages['zh-hans'] = array(
  * @author Liangent
  */
 $messages['zh-hant'] = array(
+	'crosswikiblock-desc' => '可以阻止用戶對其他維基使用 [[Special:Crosswikiblock|特別頁]]',
+	'crosswikiblock' => '防止用戶對其他維基',
+	'crosswikiblock-header' => '此頁允許其他維基的塊用戶。
+請檢查，如果允許您對此維基和你的行為相匹配的所有政策。',
+	'crosswikiblock-target' => 'IP 地址或用戶名和目標維基：',
+	'crosswikiblock-expiry' => '期限：',
 	'crosswikiblock-reason' => '原因：',
+	'crosswikiblock-submit' => '阻止此用戶',
+	'crosswikiblock-anononly' => '僅阻止匿名用戶',
+	'crosswikiblock-nocreate' => '防止創建帳戶',
+	'crosswikiblock-autoblock' => '自動阻止此的用戶使用的最後一個 IP 地址和任何後續的 IP 地址，他們嘗試從編輯',
+	'crosswikiblock-noemail' => '阻止用戶發送電子郵件',
+	'crosswikiunblock' => '取消阻止其他維基上的用戶',
+	'crosswikiunblock-header' => '此頁允許取消阻止其他維基上的用戶。
+請檢查，如果允許您對此維基和你的行為相匹配的所有政策。',
+	'crosswikiunblock-user' => '用戶名、 IP 地址或阻止 ID 和目標的維基：',
 	'crosswikiunblock-reason' => '原因：',
+	'crosswikiunblock-submit' => '取消阻止此用戶',
+	'crosswikiunblock-success' => "用戶 ''$1 '' 成功解除。
+
+返回到：
+* [[Special:CrosswikiBlock|阻止表單]]
+* [[$2]]",
+	'crosswikiblock-nousername' => '有沒有用戶名',
+	'crosswikiblock-local' => '通過此接口不支持本地塊。使用 [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => '數據庫 $1 不存在',
+	'crosswikiblock-noname' => '"$1" 不是有效的用戶名。',
+	'crosswikiblock-nouser' => '找不到用戶 "$3"。',
+	'crosswikiblock-noexpiry' => '無效的過期： $1。',
+	'crosswikiblock-noreason' => '指定沒有理由。',
+	'crosswikiblock-notoken' => '無效的編輯標記。',
+	'crosswikiblock-alreadyblocked' => '用戶 $3 已經封鎖。',
+	'crosswikiblock-noblock' => '此用戶不會被阻止。',
+	'crosswikiblock-success' => "用戶 '''$3''' 阻止成功。
+
+返回到：
+* [[Special:CrosswikiBlock|阻止表單]]
+* [[$4]]",
+	'crosswikiunblock-local' => '本地可取消阻止不支持通過此接口。使用 [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => '阻止和取消阻止其他維基上的用戶',
 );
 
