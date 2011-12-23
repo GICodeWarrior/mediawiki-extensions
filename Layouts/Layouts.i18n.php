@@ -901,6 +901,7 @@ $messages['sr-el'] = array(
 	'layouts_continue' => 'Nastavi',
 	'layouts_choosecategory' => 'Izaberi kategoriju za $1:',
 	'layouts_unknown' => 'Nepoznato',
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Seeltersk (Seeltersk)
@@ -1072,6 +1073,7 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'layouts_title' => '建立一個頁面',
+	'layouts_chooselayout' => '為$1選擇一個樣式：',
 	'layouts_nolayout' => '沒有布局',
 	'layouts_continue' => '繼續',
 	'layouts_choosecategory' => '為 $1 選擇一個分類：',

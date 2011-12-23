@@ -1540,6 +1540,7 @@ $messages['sr-el'] = array(
 	'gep-nosectioninstructions' => 'Ovaj članak nema odeljaka.
 Dodajte ih pomoću alata u meni-baru.',
 	'gep-nocategories' => 'Molimo vas da izaberete makar jednu kategoriju pre snimanja',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Seeltersk (Seeltersk)
@@ -1835,6 +1836,7 @@ $messages['zh-hans'] = array(
 	'gep-suggestcategory' => '推荐一个分类',
 	'gep-suggestcategorybutton' => '提交',
 	'gep-sections' => '节',
+	'gep-sectionnotdisabled' => '这部分不能被停用',
 	'gep-addsection' => '增加一个段落',
 	'gep-addsectionbutton' => '添加',
 	'gep-classicmode' => '经典模式',
