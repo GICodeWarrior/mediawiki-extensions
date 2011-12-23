@@ -2880,6 +2880,8 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
+	'qp_parentheses' => '($1)',
+	'qp_full_category_name' => '$1($2)',
 	'qp_desc' => 'Omogućava pokretanje anketa',
 	'qp_result_NA' => 'Nije odgovoreno',
 	'qp_result_error' => 'Sintaksna greška',
@@ -2891,6 +2893,9 @@ $messages['sr-el'] = array(
 	'qp_stats_link' => 'Statistike',
 	'qp_users_link' => 'Korisnici',
 	'qp_user_polls_link' => 'Učestvovao u $1 {{PLURAL:$1|anketi|anketa}}',
+	'qp_results_line_qpul' => '$1: $2',
+	'qp_header_line_qucl' => '$1. $2<br />$3 ??? $4',
+	'qp_results_line_qucl' => '$1: $2 $3',
 );
 
 /** Swedish (Svenska)
@@ -3113,8 +3118,12 @@ $messages['yi'] = array(
  * @author Hydra
  */
 $messages['zh-hans'] = array(
+	'qp_result_NA' => '未回答',
+	'qp_result_error' => '语法错误',
 	'qp_vote_button' => '投票',
 	'qp_vote_again_button' => '改变您的投票',
+	'qp_polls_list' => '所有投票名单',
+	'qp_users_list' => '列出所有使用者',
 	'qp_source_link' => '来源',
 	'qp_stats_link' => '统计',
 	'qp_users_link' => '用户',
