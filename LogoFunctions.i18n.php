@@ -344,6 +344,11 @@ $messages['vi'] = array(
 	'logofunctions-filenotexist' => 'Lỗi: [[File:$1]] không tồn tại',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'logofunctions-filenotexist' => '错误：[[File:$1]] 不存在',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Mark85296341
  */
