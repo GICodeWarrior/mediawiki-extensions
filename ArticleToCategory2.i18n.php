@@ -689,6 +689,14 @@ $messages['sr-ec'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Направи',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Dodaj stranicu u ovu kategoriju',
+	'articletocategory2-create-article-under-category-button' => 'Napravi',
+	'articletocategory2-create-category-under-category-text' => 'Dodaj kategoriju u ovu kategoriju',
+	'articletocategory2-create-category-under-category-button' => 'Napravi',
+);
+
 /** Swedish (Svenska)
  * @author Lokal Profil
  * @author Tobulos1
@@ -783,6 +791,17 @@ $messages['zh-hans'] = array(
 	'articletocategory2-create-category-under-category-button' => '创建',
 	'right-ArticleToCategory2' => '将页面添加到分组',
 	'right-ArticleToCategory2AddCat' => '添加类别到类别',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'articletocategory2-desc' => '把一個 inputbox 放允許直接到該類別的新的一頁創建的每個類別頁',
+	'articletocategory2-create-article-under-category-text' => '將頁面添加到此類別',
+	'articletocategory2-create-article-under-category-button' => '創建',
+	'articletocategory2-create-category-under-category-text' => '此類別中添加類別',
+	'articletocategory2-create-category-under-category-button' => '創建',
+	'right-ArticleToCategory2' => '將頁面添加到分組',
+	'right-ArticleToCategory2AddCat' => '添加類別到類別',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬)
