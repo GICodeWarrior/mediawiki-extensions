@@ -5593,7 +5593,12 @@ $messages['sr-el'] = array(
 	'openidfailure' => 'Verifikacija nije prošla',
 	'openidfailuretext' => 'Verifikacija OpenID URL-a nije prošla. Poruka greške: "$1"',
 	'openidsuccess' => 'Verifikacija uspešna',
-	'openidsuccesstext' => 'Verifikacija OpenID URL-a je bila uspešna.',
+	'openidsuccesstext' => "'''Provera je uspela. Prijavljeni ste kao korisnik $1'''.
+
+Vaš OpenID je $2 .
+
+Možete da upravljate ovim i drugim neobaveznim nalozima OpenID-ja u [[Special:Preferences#prefsection-openid|jezičku za OpenID]] u vašim podešavanjima.<br />
+Možete dodati i lozinku naloga u vašem [[Special:Preferences#prefsection-personal|korisničkom profilu]].",
 	'openidoptional' => 'Neobavezno',
 	'openidrequired' => 'Obavezno',
 	'openidnickname' => 'Nadimak',
@@ -5601,7 +5606,7 @@ $messages['sr-el'] = array(
 	'openidemail' => 'E-pošta',
 	'openidlanguage' => 'Jezik',
 	'openidtimezone' => 'Vremenska zona',
-	'openidchooselegend' => 'Izbor korisničkog imena',
+	'openidchooselegend' => 'Odabir korisničkog imena i naloga',
 	'openidchooseinstructions' => 'Svaki korisnik treba da ima nadimak;
 Možete da izaberete jednu od opcija ispod.',
 	'openidchoosenick' => 'Vaš nadimak ($1)',
@@ -5622,10 +5627,13 @@ Možete da izaberete jednu od opcija ispod.',
 	'openidloginlabel' => 'OpenID URL',
 	'openidupdateuserinfo' => 'Aktualizuj moje lične podatke:',
 	'openiddelete-button' => 'Potvrdi',
+	'prefs-openid' => 'OpenID',
 	'openid-prefstext' => '[<a href="//openid.net/">//openid.net/</a> OpenID] podešavanja',
 	'openid-pref-hide' => 'Sakrijte svoj OpenID URL sa korisničke strane, ako se sa njim logujete.',
 	'openid-pref-update-userinfo-on-login' => 'Aktualizuj sledeće informacije OpenID identiteta svaki put kad se ulogujem:',
+	'openid-urls-url' => 'Adresa',
 	'openid-urls-action' => 'Radnja',
+	'openid-urls-registration-date-time' => '$1',
 	'openid-urls-delete' => 'Obriši',
 );
 
@@ -6169,13 +6177,14 @@ $messages['ug-latn'] = array(
  * @author A1
  * @author AS
  * @author Aleksandrit
+ * @author Alex Khimich
  * @author NickK
  * @author Prima klasy4na
  * @author Тест
  */
 $messages['uk'] = array(
 	'openid-desc' => 'Вхід у вікі за допомогою [//openid.net/ OpenID], а також вхід на інші сайти, що підтримують OpenID за допомогою акаунта в вікі',
-	'openidlogin' => 'Вхід з допомогою OpenID',
+	'openidlogin' => 'Вхід / створення аккаунту за допомогою OpenID',
 	'openidserver' => 'Сервер OpenID',
 	'openidxrds' => 'Файл Yadis',
 	'openidconvert' => 'Перетворювач OpenID',
