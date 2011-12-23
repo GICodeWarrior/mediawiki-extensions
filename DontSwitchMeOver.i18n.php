@@ -502,6 +502,11 @@ $messages['sr-ec'] = array(
 	'dontswitchmeover-pref' => 'Не дозволи да се моја тема промени када се промени подразумевана тема',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'dontswitchmeover-pref' => 'Ne dozvoli da se moja tema promeni kada se promeni podrazumevana tema',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
