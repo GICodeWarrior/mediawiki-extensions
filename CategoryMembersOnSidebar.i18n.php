@@ -323,3 +323,8 @@ $messages['zh-hans'] = array(
 	'categorymembersonsidebar-desc' => '侧栏上添加类别成员',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'categorymembersonsidebar-desc' => '側欄上添加類別成員',
+);
+
