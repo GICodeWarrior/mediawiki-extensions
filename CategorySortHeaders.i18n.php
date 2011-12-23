@@ -149,3 +149,8 @@ $messages['zh-hans'] = array(
 	'categorysortheaders-desc' => '允许自定义多个字符为分类中排序页面列表的“索引字”，使用语法为<nowiki>[[category:Foo|^索引字^其余部分]]</nowiki>',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'categorysortheaders-desc' => '允許自定義多個字符為分類中排序頁面列表的“索引字”，使用語法為<nowiki>[[category:Foo|^索引字^其餘部分]]</nowiki>',
+);
+
