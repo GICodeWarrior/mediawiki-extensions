@@ -128,3 +128,9 @@ $messages['sr-ec'] = array(
 	'shoutbox-url-with-css' => 'http://$1.shoutbox.us/?LANG=SR&extcss=$2',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'shoutbox-url' => 'http://$1.shoutbox.us/?LANG=SR',
+	'shoutbox-url-with-css' => 'http://$1.shoutbox.us/?LANG=SR&extcss=$2',
+);
+
