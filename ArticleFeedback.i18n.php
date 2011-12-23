@@ -218,6 +218,7 @@ $messages['af'] = array(
 	'articlefeedback-survey-submit' => 'Dien in',
 	'articlefeedback-survey-title' => "Antwoord asseblief 'n paar vrae",
 	'articlefeedback-survey-thanks' => 'Dankie dat u die opname ingevul het.',
+	'articlefeedback-survey-disclaimerlink' => 'voorwaardes',
 	'articlefeedback-form-switch-label' => 'Beoordeel hierdie bladsy',
 	'articlefeedback-form-panel-title' => 'Beoordeel hierdie bladsy',
 	'articlefeedback-form-panel-explanation' => 'Wat is dit?',
@@ -1508,6 +1509,7 @@ Das {{SITENAME}}-Team',
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Catrope
  * @author Kghbln
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'articlefeedback-survey-question-origin' => 'Auf welcher Seite befanden Sie sich zu Anfang dieser Umfrage?',
@@ -1515,7 +1517,7 @@ $messages['de-formal'] = array(
 	'articlefeedback-survey-question-useful' => 'Glauben Sie, dass die abgegebenen Einschätzungen nützlich und verständlich sind?',
 	'articlefeedback-survey-question-comments' => 'Haben Sie noch weitere Anmerkungen?',
 	'articlefeedback-survey-title' => 'Bitte beantworten Sie uns ein paar Fragen',
-	'articlefeedback-survey-disclaimer' => 'Mit dem Speichern erklären Sie sich mit diesen [http://wikimediafoundation.org/wiki/Feedback_privacy_statement Bedingungen] einverstanden.',
+	'articlefeedback-survey-disclaimer' => 'Mit dem Speichern erklären Sie sich mit diesen $1 einverstanden.',
 	'articlefeedback-error' => 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.',
 	'articlefeedback-form-panel-helpimprove' => 'Ich möchte dabei helfen, {{SITENAME}} zu verbessern. Senden Sie mir bitte eine E-Mail. (optional)',
 	'articlefeedback-form-panel-helpimprove-note' => 'Wir werden Ihnen eine Bestätigungs-E-Mail senden. Wir geben Ihre E-Mail-Adresse, gemäß unserer $1, nicht an Dritte weiter.',
@@ -2393,6 +2395,7 @@ Kiitos! Terveisin,
  * @author Seb35
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'articlefeedback' => 'Tableau de bord de l’évaluation d’article',
@@ -2411,14 +2414,14 @@ $messages['fr'] = array(
 	'articlefeedback-survey-submit' => 'Soumettre',
 	'articlefeedback-survey-title' => 'Veuillez répondre à quelques questions',
 	'articlefeedback-survey-thanks' => 'Merci d’avoir rempli le questionnaire.',
-	'articlefeedback-survey-disclaimer' => "En répondant, vous acceptez d'être transparent selon $1.",
+	'articlefeedback-survey-disclaimer' => 'En soumettant, vous acceptez la transparence en accord avec ces $1.',
 	'articlefeedback-survey-disclaimerlink' => 'conditions',
 	'articlefeedback-error' => 'Une erreur s’est produite. Veuillez réessayer plus tard.',
-	'articlefeedback-form-switch-label' => 'Noter cette page',
-	'articlefeedback-form-panel-title' => 'Noter cette page',
-	'articlefeedback-form-panel-explanation' => 'Qu’est-ce que c’est?',
+	'articlefeedback-form-switch-label' => 'Évaluer cette page',
+	'articlefeedback-form-panel-title' => 'Évaluer cette page',
+	'articlefeedback-form-panel-explanation' => 'Qu’est-ce que ceci ?',
 	'articlefeedback-form-panel-explanation-link' => 'Project:ArticleFeedback',
-	'articlefeedback-form-panel-clear' => 'Supprimer cette évaluation',
+	'articlefeedback-form-panel-clear' => 'Enlever cette évaluation',
 	'articlefeedback-form-panel-expertise' => 'Je suis très bien informé sur ce sujet (facultatif)',
 	'articlefeedback-form-panel-expertise-studies' => 'Je détiens un diplôme d’études supérieures (université ou grande école)',
 	'articlefeedback-form-panel-expertise-profession' => 'Cela fait partie de ma profession',
@@ -5371,10 +5374,12 @@ Hilsen {{SITENAME}}-teamet',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
  * @author Odisha1
  */
 $messages['or'] = array(
 	'articlefeedback-survey-submit' => 'ଦାଖଲକରିବା',
+	'articlefeedback-form-panel-success' => 'ସାଇତିବା ସଫଳ ହେଲା',
 	'articleFeedback-table-heading-page' => 'ପୃଷ୍ଠା',
 	'articleFeedback-table-heading-average' => 'ହାରାହାରି',
 );
@@ -6626,7 +6631,7 @@ $messages['sl'] = array(
 	'articlefeedback-pitch-join-accept' => 'Ustvari račun',
 	'articlefeedback-pitch-join-login' => 'Prijavite se',
 	'articlefeedback-pitch-edit-message' => 'Ali ste vedeli, da lahko uredite ta članek?',
-	'articlefeedback-pitch-edit-accept' => 'Uredi ta članek',
+	'articlefeedback-pitch-edit-accept' => 'Uredi stran',
 	'articlefeedback-survey-message-success' => 'Zahvaljujemo se vam za izpolnitev vprašalnika.',
 	'articlefeedback-survey-message-error' => 'Prišlo je do napake.
 Prosimo, poskusite znova pozneje.',
@@ -7418,6 +7423,7 @@ $messages['vec'] = array(
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Trần Nguyễn Minh Huy
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'articlefeedback' => 'Bảng phản hồi bài',
@@ -7490,7 +7496,7 @@ $messages['vi'] = array(
 	'articlefeedback-field-wellwritten-tooltip-3' => 'Đủ rõ ràng',
 	'articlefeedback-field-wellwritten-tooltip-4' => 'Khá rõ ràng',
 	'articlefeedback-field-wellwritten-tooltip-5' => 'Rất là rõ ràng',
-	'articlefeedback-pitch-reject' => 'Không bây giờ',
+	'articlefeedback-pitch-reject' => 'Có lẽ để sau',
 	'articlefeedback-pitch-or' => 'hoặc',
 	'articlefeedback-pitch-thanks' => 'Cám ơn! Đánh giá của bạn đã được lưu.',
 	'articlefeedback-pitch-survey-message' => 'Hãy dành một chút thời gian để phản hồi một cuộc khảo sát ngắn.',
@@ -7569,6 +7575,7 @@ $messages['yo'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  * @author Hydra
+ * @author Liangent
  * @author PhiLiP
  * @author Shizhao
  * @author Xiaomingyan
@@ -7655,7 +7662,7 @@ $messages['zh-hans'] = array(
 	'articlefeedback-pitch-join-body' => '帐户将帮助您跟踪您所做的编辑，参与讨论，并成为社群的一分子。',
 	'articlefeedback-pitch-join-accept' => '创建帐户',
 	'articlefeedback-pitch-join-login' => '登录',
-	'articlefeedback-pitch-edit-message' => '您知道您可以编辑此页吗？',
+	'articlefeedback-pitch-edit-message' => '您知道您可以编辑这个页面吗？',
 	'articlefeedback-pitch-edit-accept' => '编辑本页',
 	'articlefeedback-survey-message-success' => '谢谢您回答问卷。',
 	'articlefeedback-survey-message-error' => '出现错误。
