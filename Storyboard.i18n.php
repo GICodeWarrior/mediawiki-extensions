@@ -2472,6 +2472,8 @@ $messages['sr-el'] = array(
 	'story' => 'Priča',
 	'storyboard-submittedbyon' => 'Poslato od $1, na $2, $3.',
 	'storyboard-viewstories' => 'Vidi priče',
+	'storyboard-cantedit' => 'Nemate dozvolu da menjate priče.',
+	'storyboard-canedit' => 'Možete da [$1 izmenite] i objavite ovu priču.',
 	'storyboard-authorname' => 'Ime autora',
 	'storyboard-authorlocation' => 'Lokacija autora',
 	'storyboard-authoroccupation' => 'Zanimanje autora',
@@ -2488,6 +2490,7 @@ $messages['sr-el'] = array(
 Zašto je ne biste pokazali?',
 	'storyboard-email' => 'Adresa Vaše elektronske pošte (potrebno)',
 	'storyboard-storytitle' => 'Kratak, deskriptivan naslov (potrebno)',
+	'storyboard-charsneeded' => '({{PLURAL:$1|potreban je još $1 karakter|potrebna su još $1 karaktera|potrebna su još $1 karaktera|potrebna su još $1 karaktera|potrebno je još $1 karaktera}})',
 	'storyboard-submissioncomplete' => 'Slanje kompletirano',
 	'storyboard-submissionincomplete' => 'Slanje nije uspelo',
 	'storyboard-changetitle' => 'Promenite naslov.',
@@ -2706,6 +2709,8 @@ $messages['zh-hans'] = array(
 	'storyboard-storystate' => '州份/省份',
 	'storyboard-language' => '语言',
 	'storyboard-done' => '完成',
+	'storyboard-showimage' => '显示图片',
+	'storyboard-hideimage' => '隐藏图片',
 	'storyboard-deletestory' => '移除',
 );
 
@@ -2715,8 +2720,12 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'storyboard-hidden' => '隱藏',
 	'storyboard-hide' => '隱藏',
+	'storyboard-option-hidden' => '隱藏',
+	'storyboard-storystate' => '州份/省份',
+	'storyboard-language' => '語言',
 	'storyboard-done' => '完成',
 	'storyboard-showimage' => '顯示圖片',
 	'storyboard-hideimage' => '隱藏圖片',
+	'storyboard-deletestory' => '移除',
 );
 
