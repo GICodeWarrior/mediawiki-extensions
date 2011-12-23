@@ -530,6 +530,11 @@ Xem thêm:
 * [[{{MediaWiki:Mainpage}}|Trang đầu]]',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'error404' => '404 找不到页面',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Waihorace
  */
