@@ -49,6 +49,16 @@ $messages['qqq'] = array(
 	'apisb-query-list' => '{{Identical|List}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'apisb-loading' => 'Laai tans…',
+	'apisb-ns-main' => '(Hoofnaamruimte)',
+	'apisb-query-prop' => 'Eienskappe',
+	'apisb-query-list' => 'Lyste',
+);
+
 /** Arabic (العربية)
  * @author روخو
  */
@@ -520,6 +530,7 @@ Lihat [//www.mediawiki.org/wiki/API dokumentasi API] untuk perincian lanjut peng
 );
 
 /** Italian (Italiano)
+ * @author Aushulz
  * @author Beta16
  * @author Gianfranco
  * @author Rippitippi
@@ -533,12 +544,15 @@ Per ulteriori dettagli di utilizzo delle API, fai riferimento alla [//www.mediaw
 	'apisb-api-disabled' => 'Le funzionalità API sono disabilitate su questo sito.',
 	'apisb-parameters' => 'Parametri',
 	'apisb-result' => 'Risultato',
+	'apisb-request-url' => 'URL di richiesta:',
 	'apisb-select-action' => 'Seleziona azione',
 	'apisb-select-value' => 'Selezionare il valore',
 	'apisb-loading' => 'Caricamento in corso ...',
 	'apisb-ns-main' => '(Principale)',
 	'apisb-query-prop' => 'Proprietà',
 	'apisb-query-list' => 'Liste',
+	'apisb-generic-parameters' => 'Parametri generici',
+	'apisb-generator-parameters' => 'Generatore',
 );
 
 /** Colognian (Ripoarisch)
@@ -815,6 +829,30 @@ $messages['pt-br'] = array(
 	'apisb-desc' => 'Permite depurar chamadas do [//www.mediawiki.org/wiki/API API do MediaWiki] a partir do navegador',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'apisb-parameters' => 'Parametrii',
+	'apisb-result' => 'Rezultat',
+	'apisb-request-url' => 'URL cerere:',
+	'apisb-request-post' => 'Date POST:',
+	'apisb-select-action' => 'Alegeți o acțiune',
+	'apisb-select-query' => 'Ce trebuie interogat?',
+	'apisb-select-value' => 'Selectați valoarea',
+	'apisb-loading' => 'Se încarcă...',
+	'apisb-load-error' => 'Eroare la încărcarea descrierii API',
+	'apisb-request-error' => 'Eroare la executarea cererii API',
+	'apisb-namespaces-error' => 'Eroare la încărcarea spațiilor de nume',
+	'apisb-ns-main' => '(Principal)',
+	'apisb-submit' => 'Efectuați cererea',
+	'apisb-query-prop' => 'Proprietăți',
+	'apisb-query-list' => 'Liste',
+	'apisb-query-meta' => 'Meta-informații',
+	'apisb-generic-parameters' => 'Parametrii generici',
+	'apisb-generator-parameters' => 'Generator',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -1079,6 +1117,30 @@ $messages['zh-hans'] = array(
 	'apisb-ns-main' => '（主）',
 	'apisb-submit' => '提出要求',
 	'apisb-query-prop' => '属性',
+	'apisb-query-list' => '列表',
+	'apisb-query-meta' => 'Meta 信息',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'apisb-desc' => '允許調試 [//www.mediawiki.org/wiki/API MediaWiki API] 從瀏覽器的調用',
+	'apisandbox' => 'API 沙箱',
+	'apisb-no-js' => "'''錯誤'''：此功能需要 JavaScript。",
+	'apisb-api-disabled' => '此站點上禁用了 API。',
+	'apisb-parameters' => '參數',
+	'apisb-result' => '結果',
+	'apisb-request-url' => '請求的 URL：',
+	'apisb-request-post' => 'POST數據：',
+	'apisb-select-action' => '選擇操作',
+	'apisb-select-query' => '查詢又如何？',
+	'apisb-select-value' => '選擇值',
+	'apisb-loading' => '正在載入...',
+	'apisb-load-error' => '加載 API 說明時出錯',
+	'apisb-request-error' => '執行 API 請求時出錯',
+	'apisb-namespaces-error' => '載入名字空間出錯',
+	'apisb-ns-main' => '（主）',
+	'apisb-submit' => '提出要求',
+	'apisb-query-prop' => '屬性',
 	'apisb-query-list' => '列表',
 	'apisb-query-meta' => 'Meta 信息',
 );
