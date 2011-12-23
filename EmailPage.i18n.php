@@ -1384,9 +1384,23 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'e-mailpage' => '電子郵件頁面',
+	'ea-group-info' => '此外您可以向組成員發送頁面',
+	'ea-nopage' => '沒有頁面被指定為發送，請使用電子郵件鏈接欄或頁面的行動。',
+	'ea-norecipients' => '沒有找到有效的電子郵件地址！',
+	'ea-denied' => '被拒絕的權限',
+	'ea-compose' => '撰寫內容',
+	'ea-show' => '查看收件人列表',
+	'ea-from' => '從：',
+	'ea-to' => '至：',
+	'ea-to-info' => '可以與一個或多個分號、 逗號、 星號或換行字符分隔的電子郵件地址',
+	'ea-cc' => '抄送：',
+	'ea-send' => '發送',
 	'ea-subject' => '主旨：',
+	'ea-message' => '信息：',
 	'ea-style' => '風格：',
+	'ea-selectcss' => '您可以選擇樣式表',
 	'ea-data' => '日期',
+	'ea-selectrecord' => '這些模板可用於填充郵件內容中的字段',
 	'ea-allusers' => '所有用戶',
 );
 
