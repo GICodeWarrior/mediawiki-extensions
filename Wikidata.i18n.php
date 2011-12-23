@@ -12799,6 +12799,7 @@ $messages['sr-el'] = array(
 	'ow_IdenticalMeaning' => 'Istovetno značenje',
 	'ow_IncomingRelations' => 'Dolazeće relacije',
 	'ow_GotoSource' => 'Idi na izvor',
+	'ow_ID' => 'Naznaka',
 	'ow_Language' => 'Jezik',
 	'ow_LevelAnnotation' => 'Komentar',
 	'ow_Multiple_meanings' => 'Definicije za "$1"',
@@ -12830,6 +12831,7 @@ $messages['sr-el'] = array(
 	'ow_Link' => 'Spoljašnja veza',
 	'ow_LinkAttribute' => 'Osobina',
 	'ow_LinkAttributeValues' => 'Linkovi',
+	'ow_URL' => 'Adresa',
 	'ow_User' => 'Korisnik',
 	'ow_Property' => 'Osobina',
 	'ow_Value' => 'Vrednost',
@@ -12867,6 +12869,7 @@ Da li ste na ovu stranu došli direktno? Obično je u njenom linku naznačena i 
 	'ow_nstab_definedmeaning' => 'definisano značenje',
 	'ow_nstab_edit_copy' => 'izmena kopije',
 	'ow_shown_datasets' => 'Prikazani nizovi podataka',
+	'prefs-omegawiki' => 'Omegaviki',
 );
 
 /** Seeltersk (Seeltersk)
@@ -14826,7 +14829,7 @@ $messages['zh-hans'] = array(
 	'datasearch_search_text' => '搜索文字：',
 	'datasearch_within_words' => '在文字中：',
 	'datasearch_within_ext_ids' => '与外部辨识器：',
-	'datasearch_showing_only' => '最多显示$1个匹配。',
+	'datasearch_showing_only' => '在 $2 个中最多显示 $1 个匹配。',
 	'datasearch_match_ext_ids' => '外部标识符匹配<i>$1</i>',
 	'datasearch_match_words' => '文字匹配<i>$1</i>和相关的含义',
 	'datasearch_match_words_lang' => '<i>$1</i>中的文字匹配<i>$2</i>和相关的含义',
