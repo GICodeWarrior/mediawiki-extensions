@@ -1278,7 +1278,19 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
+	'commentbox-desc' => '於特定頁面添加註釋框',
+	'commentbox-intro' => '添加評論
+是否對此頁內容有意見？請將意見添加在此或
+直接修改此頁',
+	'commentbox-savebutton' => '保存注釋',
 	'commentbox-name' => '名稱：',
+	'commentbox-name-explanation' => '<small>(提示：[[Special:UserLogin|登入]]後不需要手動填寫姓名)</small>',
+	'commentbox-log' => '新評論',
+	'commentbox-first-comment-heading' => '== 注釋 ==',
+	'commentbox-regex' => '/\\n==\\s*注釋\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => '創建注釋時出錯',
 	'commentbox-error-page-nonexistent' => '該頁面不存在！',
+	'commentbox-error-namespace' => '此名字空間禁止使用評論！',
+	'commentbox-error-empty-comment' => '不允許使用空注釋 ！',
 );
 
