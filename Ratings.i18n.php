@@ -348,3 +348,18 @@ $messages['zh-hans'] = array(
 	'ratings-no-votes-yet' => '还没有人为此评价。',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'ratings-desc' => '允許用戶評價頁面的不同“屬性”',
+	'right-rate' => '評價頁面的某個屬性',
+	'ratings-starsratings-desc' => '顯示簡單的星級評價控件以允許用戶評價頁面的特定屬性。
+當用戶投票後，用戶的當前投票將被顯示。',
+	'ratings-par-page' => '評價應用到的頁面。',
+	'ratings-par-tag' => '評價標籤。此標籤指示頁面的哪個“屬性”被評價。',
+	'ratings-par-showdisabled' => '當用戶不能投票時顯示評價（在只讀模式中）。',
+	'ratings-par-incsummary' => '在評價元素上方顯示當前投票的摘要？',
+	'ratings-votesummary-desc' => '顯示指定的頁面-屬性對的投票摘要。',
+	'ratings-current-score' => '當前用戶評價：$1（$2次評價）',
+	'ratings-no-votes-yet' => '還沒有人為此評價。',
+);
+
