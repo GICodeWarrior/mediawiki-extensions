@@ -1226,9 +1226,14 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'inspectcache' => '檢查快取',
+	'inspectcache-desc' => '一個簡單的調試工具以檢查共享緩存的內容',
+	'inspectcache-general' => '一般的高速緩存',
+	'inspectcache-parser' => '解析器緩存',
 	'inspectcache-message' => '訊息快取',
 	'inspectcache-get' => '取得',
 	'inspectcache-delete' => '刪除',
+	'inspectcache-deleted' => '已刪除的緩存',
 	'inspectcache-list' => '列表',
+	'right-inspectcache' => '查看和刪除緩存條目',
 );
 
