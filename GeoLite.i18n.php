@@ -409,6 +409,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'geolite-desc' => 'Redirekcije za Lightweight GeoIp',
+	'geolite' => 'GeoLite',
 );
 
 /** Swedish (Svenska)
