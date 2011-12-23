@@ -3417,7 +3417,7 @@ $messages['sr-el'] = array(
 	'whitelistnewtableprocess' => 'Obradi',
 	'whitelistoverview' => '== Pregled izmena za $1 ==',
 	'whitelistoverviewcd' => "* Menjanje datuma na '''$1''' za [[:$2|$2]]",
-	'whitelistoverviewsa' => "* Postavljanje pristupa na '''$1''' za [:$2|$2]]",
+	'whitelistoverviewsa' => "* Postavljanje pristupa na '''$1''' za [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Uklanjanje pristupa za [[:$1|$1]]',
 	'whitelistrequest' => 'Zahtevanje pristupa za više strana',
 	'whitelistrequestmsg' => '$1 je zahtevao pristup {{PLURAL:$3|sledećoj strani|sledećim stranama}}:
@@ -3425,8 +3425,10 @@ $messages['sr-el'] = array(
 $2',
 	'whitelistrequestconf' => 'Zahtev za novim stranama je poslat $1',
 	'whitelistnever' => 'nikad',
+	'group-restricted' => 'Ograničeni korisnici',
+	'group-restricted-member' => '{{GENDER:$1|ograničen korisnik|ograničena korisnica|ograničen korisnik}}',
 	'group-manager' => 'Menadžeri',
-	'group-manager-member' => 'Menadžer',
+	'group-manager-member' => '{{GENDER:$1|rukovodilac|rukovoditeljka|rukovodilac}}',
 );
 
 /** Seeltersk (Seeltersk)
