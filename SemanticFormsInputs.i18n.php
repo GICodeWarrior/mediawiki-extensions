@@ -787,6 +787,11 @@ $messages['sr-ec'] = array(
 	'semanticformsinputs-firstdayofweek' => '1',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'semanticformsinputs-firstdayofweek' => '1',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -845,6 +850,7 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
+	'semanticformsinputs-desc' => '用於[http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]的附加輸入項類型',
 	'semanticformsinputs-wrongformat' => '格式不正確。',
 	'semanticformsinputs-close' => '關閉',
 	'semanticformsinputs-prev' => '上一個',
