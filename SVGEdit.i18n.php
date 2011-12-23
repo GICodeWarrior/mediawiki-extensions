@@ -545,6 +545,18 @@ $messages['sr-ec'] = array(
 	'svgedit-edit-tab-tooltip' => 'Можете уредити SVG цртеж у свом прегледачу',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'svgedit-editbutton-edit' => 'Uredi crtež',
+	'svgedit-summary-label' => 'Opis izmene',
+	'svgedit-summary-default' => '/* Izmenjeno SVG uređivačem */',
+	'svgedit-editor-save-close' => 'Sačuvaj i zatvori',
+	'svgedit-editor-close' => 'Otkaži',
+	'svgedit-desc' => 'Uređivanje SVG crteža preko pregledača uz [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-edit-tab' => 'Uređivanje crteža',
+	'svgedit-edit-tab-tooltip' => 'Možete urediti SVG crtež u svom pregledaču',
+);
+
 /** Swedish (Svenska)
  * @author WikiPhoenix
  */
@@ -624,6 +636,7 @@ $messages['yi'] = array(
  * @author Hydra
  */
 $messages['zh-hans'] = array(
+	'svgedit-summary-label' => '编辑摘要',
 	'svgedit-editor-save-close' => '保存和关闭',
 	'svgedit-editor-close' => '取消',
 );
@@ -633,6 +646,7 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'svgedit-summary-label' => '編輯摘要',
+	'svgedit-editor-save-close' => '保存和關閉',
 	'svgedit-editor-close' => '取消',
 );
 
