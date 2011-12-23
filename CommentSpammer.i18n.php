@@ -770,3 +770,13 @@ $messages['zh-hans'] = array(
 	'cspammer-log-page' => '注释垃圾邮件制造者日志',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'commentspammer-save-blocked' => '您的 IP 地址疑為評論垃圾製造者，該頁面未保存。
+[[Special:UserLogin|登錄或創建帳戶]]可避免這種情況。',
+	'commentspammer-desc' => '拒絕從懷疑的評論垃圾郵件製造者在黑名單上的編輯',
+	'commentspammer-log-msg' => '編輯從 [[Special:Contributions/$1|$1]] 至 [[:$2]]。',
+	'cspammerlogpagetext' => '記錄的編輯將被允許或拒絕基於源是否是一個已知的評論垃圾郵件製造者。',
+	'cspammer-log-page' => '注釋垃圾郵件製造者日誌',
+);
+
