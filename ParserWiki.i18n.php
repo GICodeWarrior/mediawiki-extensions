@@ -261,3 +261,8 @@ $messages['zh-hans'] = array(
 	'parserwiki-desc' => '允许在wiki中定义语法，并在wiki中使用该语法输入信息',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'parserwiki-desc' => '允許在wiki中定義語法，並在wiki中使用該語法輸入信息',
+);
+
