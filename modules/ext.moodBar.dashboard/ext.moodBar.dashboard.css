@@ -289,6 +289,7 @@
 	font-size: 1.2em;
 	margin: 0;
 	padding: 0;
+	display:inline; /* ie7 fix */
 }
 
 .fbd-item-userLinks{
@@ -298,6 +299,7 @@
 .fbd-item-time {
 	font-size: 1.2em;
 	float: right;
+	display:inline; /* ie7 fix */
 }
 
 .fbd-item-message {
