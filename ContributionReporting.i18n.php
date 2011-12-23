@@ -3542,6 +3542,7 @@ $messages['ltg'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author GreenZeb
  * @author Papuass
  */
 $messages['lv'] = array(
@@ -3577,6 +3578,8 @@ $messages['lv'] = array(
 	'contribstats-template' => 'Veidne',
 	'contribstats-nodata' => 'Nav datu',
 	'contribstats-landingpage' => 'Piezemēšanās lapa',
+	'fundraiserstats-total' => 'Kopā (USD)',
+	'fundraiserstats-avg' => 'Vidēji (USD)',
 );
 
 /** Macedonian (Македонски)
@@ -4742,6 +4745,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Aleksandrit
+ * @author Eugrus
  * @author Ferrer
  * @author Lockal
  * @author Александр Сигачёв
@@ -4749,6 +4753,9 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'contributionreporting-desc' => 'Текущие сведения о сборе пожертвований в пользу Викимедии',
 	'contributiontotal' => 'Всего пожертвований',
+	'dailytotal' => 'Всего за день',
+	'disablednotice' => 'Отчёт об участии',
+	'disablednotice-disabled' => 'Эта страница была временно отключена. Пожалуйста, попробуйте еще раз позднее.',
 	'contributionhistory' => 'История пожертвований',
 	'contrib-hist-header' => 'Комментарии жертвователей со всего мира',
 	'contrib-hist-name' => 'Имя',
@@ -5206,12 +5213,15 @@ $messages['sr-el'] = array(
 	'contribstats-week' => 'Nedelja',
 	'contribstats-banner' => 'Baner',
 	'contribstats-template' => 'Šablon',
+	'contribstats-average' => 'Prosek',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dan $1 od $2',
 	'fundraiserstats-total' => 'Ukupno (USD)',
 	'fundraiserstats-avg' => 'Prosečno (USD)',
 	'fundraiserstats-max' => 'Maksimum (USD)',
 	'fundraiserstats-tab-contributions' => 'Broj doprinosa',
+	'fundraiserstats-time-zone' => 'Vremenska zona:',
+	'fundraiserstats-utc' => '(prema UTC-u)',
 );
 
 /** Swedish (Svenska)
@@ -6098,6 +6108,7 @@ $messages['yi'] = array(
 $messages['zh-hans'] = array(
 	'contributionreporting-desc' => '现场报告维基媒体筹款活动',
 	'contributiontotal' => '贡献汇总',
+	'dailytotal' => '日总计',
 	'contributionhistory' => '贡献历史',
 	'contrib-hist-header' => '世界各地的捐助者评论',
 	'contrib-hist-name' => '名称',
@@ -6177,6 +6188,7 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'contributionreporting-desc' => '維基媒體現場募捐活動報告',
 	'contributiontotal' => '貢獻匯總',
+	'dailytotal' => '日總計',
 	'contributionhistory' => '歷史貢獻',
 	'contrib-hist-header' => '捐助者來自世界各地的評論',
 	'contrib-hist-name' => '名稱',
