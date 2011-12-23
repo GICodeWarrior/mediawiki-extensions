@@ -14,8 +14,6 @@
  */
 class SpecialInstitution extends SpecialEPPage {
 
-	protected $org;
-	
 	/**
 	 * Constructor.
 	 *

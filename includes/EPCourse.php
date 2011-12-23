@@ -132,7 +132,7 @@ class EPCourse extends EPDBObject {
 	 * @param array $args
 	 */
 	public static function displayAddNewControl( IContextSource $context, array $args = array() ) {
-		$out = $this->getOutput();
+		$out = $context->getOutput();
 
 		$out->addHTML( Html::openElement(
 			'form',
@@ -179,7 +179,7 @@ class EPCourse extends EPDBObject {
 			'submit'
 		) );
 
-		$out->addHTML( Html::hidden( 'newEditToken', $this->getUser()->editToken() ) );
+		$out->addHTML( Html::hidden( 'newEditToken', $context->getUser()->editToken() ) );
 
 		$out->addHTML( '</fieldset></form>' );
 	}

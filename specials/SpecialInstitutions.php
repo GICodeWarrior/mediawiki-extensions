@@ -33,14 +33,12 @@ class SpecialInstitutions extends SpecialEPPage {
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
 
-		$out = $this->getOutput();
-
 		if ( $this->subPage === '' ) {
 			EPOrg::displayAddNewControl( $this->getContext() );
 			EPOrg::displayPager( $this->getContext() );
 		}
 		else {
-			$out->redirect( SpecialPage::getTitleFor( 'Institution', $this->subPage )->getLocalURL() );
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Institution', $this->subPage )->getLocalURL() );
 		}
 	}
 	

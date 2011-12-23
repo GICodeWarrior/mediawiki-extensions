@@ -34,8 +34,40 @@ class SpecialCourse extends SpecialEPPage {
 		parent::execute( $subPage );
 
 		$out = $this->getOutput();
-
-		// TODO: AUTH
+		
+		$out->setPageTitle( wfMsgExt( 'ep-course-title', 'parsemag', $this->subPage ) );
+		
+		$course = EPCourse::selectRow( null, array( 'name' => $this->subPage ) );
+		
+		if ( $course === false ) {
+			if ( $this->getUser()->isAllowed( 'epadmin' ) || $this->getUser()->isAllowed( 'epmentor' ) ) {
+				$out->addWikiMsg( 'ep-course-create', 'parsemag', $this->subPage );
+				EPCourse::displayAddNewRegion( $this->getContext(), array( 'name' => $this->subPage ) );
+			}
+			else {
+				$out->addWikiMsg( 'ep-course-none', 'parsemag', $this->subPage );
+			}
+		}
+		else {
+			$this->displayInfo( $course );
+			
+			$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-course-terms' ) ) );
+			
+			EPTerm::displayPager( $this->getContext(), array( 'course_id' => $course->getId() ) );
+		}
+	}
+	
+	/**
+	 * Display the orgs info.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param EPCourse $course
+	 */
+	protected function displayInfo( EPCourse $course ) {
+		$out = $this->getOutput();
+		
+		
 	}
 
 }

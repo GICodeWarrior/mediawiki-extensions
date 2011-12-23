@@ -33,22 +33,12 @@ class SpecialCourses extends SpecialEPPage {
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
 
-		$out = $this->getOutput();
-
 		if ( $this->subPage === '' ) {
 			EPCourse::displayAddNewRegion( $this->getContext() );
 			EPCourse::displayPager( $this->getContext() );
 		}
 		else {
-			$org = EPOrg::has( array( 'name' => $this->subPage ) );
-			
-			if ( $org === false ) {
-				$this->showError( wfMessage( 'ep-courses-nosuchcourses', $this->subPage ) );
-				EPCourse::displayAddNewRegion( $this->getContext(), array( 'name' => $this->subPage ) );
-			}
-			else {
-				$out->redirect( SpecialPage::getTitleFor( 'Course', $this->subPage )->getLocalURL() );
-			}
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Course', $this->subPage )->getLocalURL() );
 		}
 	}
 	

@@ -152,10 +152,16 @@ $messages['en'] = array(
 	'ep-pager-delete-fail' => 'Could not delete this item.',
 
 	// Special:Institution
-	'ep-institution-none' => 'There is no institution with name "$1".',
+	'ep-institution-none' => 'There is no institution with name "$1". See [[Special:Institution|here]] for a list of institutions.',
 	'ep-institution-create' => 'There is no institution with name "$1" yet, but you can create it.',
 	'ep-institution-title' => 'Institution: $1',
 	'ep-institution-courses' => 'Courses',
+
+	// Special:Course
+	'ep-course-title' => 'Course: $1',
+	'ep-course-terms' => 'Terms',
+	'ep-course-none' => 'There is no course with name "$1". See [[Special:Course|here]] for a list of courses.',
+	'ep-course-create' => 'There is no course with name "$1" yet, but you can create it.',
 );
 
 /** Message documentation (Message documentation)

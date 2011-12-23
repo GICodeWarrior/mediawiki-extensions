@@ -33,21 +33,12 @@ class SpecialTerms extends SpecialEPPage {
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
 
-		$out = $this->getOutput();
-
 		if ( $this->subPage === '' ) {
-			$this->displayPage();
+			EPTerm::displayAddNewRegion( $this->getContext() );
+			EPTerm::displayPager( $this->getContext() );
 		}
 		else {
-			$org = EPOrg::has( array( 'name' => $this->subPage ) );
-			
-			if ( $org === false ) {
-				$this->showError( wfMessage( 'ep-terms-nosuchcourses', $this->subPage ) );
-				$this->displayPage();
-			}
-			else {
-				$out->redirect( SpecialPage::getTitleFor( 'Term', $this->subPage )->getLocalURL() );
-			}
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Term', $this->subPage )->getLocalURL() );
 		}
 	}
 	
@@ -83,50 +74,7 @@ class SpecialTerms extends SpecialEPPage {
 			$this->getOutput()->addWikiMsg( 'ep-terms-noresults' );
 		}
 	}
-	
-	/**
-	 * Displays a small form to add a new institution.
-	 *
-	 * @since 0.1
-	 * 
-	 * @param array $courses
-	 */
-	protected function displayAddNewControl( array $courses ) {
-		$out = $this->getOutput();
 
-		$out->addHTML( Html::openElement(
-			'form',
-			array(
-				'method' => 'post',
-				'action' => SpecialPage::getTitleFor( 'EditTerm' )->getLocalURL(),
-			)
-		) );
 
-		$out->addHTML( '<fieldset>' );
-
-		$out->addHTML( '<legend>' . wfMsgHtml( 'ep-terms-addnew' ) . '</legend>' );
-
-		$out = $this->getOutput();
-		
-		$out->addHTML( Html::element( 'p', array(), wfMsg( 'ep-terms-namedoc' ) ) );
-
-		$out->addHTML( Html::element( 'label', array( 'for' => 'newcourse' ), wfMsg( 'ep-terms-newcourse' ) ) );
-		
-		$select = new XmlSelect( 'newcourse', 'newcourse' );
-		$select->addOptions( EPCourse::getCourseOptions( $courses ) );
-		$out->addHTML( $select->getHTML() );
-		
-		$out->addHTML( '&#160;' . Xml::inputLabel( wfMsg( 'ep-terms-newyear' ), 'newyear', 'newyear', 10 ) );
-
-		$out->addHTML( '&#160;' . Html::input(
-			'addnewterm',
-			wfMsg( 'ep-terms-add' ),
-			'submit'
-		) );
-
-		$out->addHTML( Html::hidden( 'newEditToken', $this->getUser()->editToken() ) );
-		
-		$out->addHTML( '</fieldset></form>' );
-	}
 
 }
