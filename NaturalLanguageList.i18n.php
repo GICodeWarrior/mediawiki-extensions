@@ -404,6 +404,11 @@ $messages['sr-ec'] = array(
 	'nll-separator' => ',&#32;',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'nll-separator' => ',&#32;',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
