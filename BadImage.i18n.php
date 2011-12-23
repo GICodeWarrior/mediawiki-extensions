@@ -2502,27 +2502,28 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'badimages' => 'Spisak loših slika',
-	'badimage-desc' => 'Proširuje mogućnosti spiska loših slika MedijaVikija',
-	'badimages-add-btn' => 'dodaj',
+	'badimage-desc' => 'Proširuje mogućnosti spiska loših slika Medijavikija',
+	'badimages-add-btn' => 'Dodaj',
 	'badimages-added' => '$1 je dodata u spisak.',
-	'badimages-count' => "Trenutno se '''$1''' slika nalazi na spisku loših slika.",
+	'badimages-count' => "Trenutno {{PLURAL:$1|je|su}} '''$1''' {{PLURAL:$1|slika|slike|slika}} na spisku loših slika.",
 	'badimages-name' => 'Ime:',
-	'badimages-not-added' => 'Ovu sliku je nemoguće dodati.',
-	'badimages-not-removed' => 'Ovu sliku je nemoguće ukloniti.',
+	'badimages-not-added' => 'Dodavanje slike nije moguće.',
+	'badimages-not-removed' => 'Uklanjanje slike nije moguće.',
 	'badimages-reason' => 'Razlog:',
 	'badimages-remove' => '(ukloni)',
 	'badimages-remove-btn' => 'Ukloni',
-	'badimages-remove-confirm' => 'Molimo vas potvrdite da želite da uklonite $1 sa spiska:',
+	'badimages-remove-confirm' => 'Molimo vas, potvrdite da želite da uklonite $1 sa spiska:',
 	'badimages-removed' => '$1 je uklonjena sa spiska.',
-	'badimages-subheading' => 'Trenutno u spisku',
-	'badimages-unprivileged' => '(Nemate ovlašćenja za menjanje spiska)',
+	'badimages-subheading' => 'Trenutne stavke',
+	'badimages-unprivileged' => '(Nemate ovlašćenja da promenite spisak)',
 	'badimages-log-name' => 'Spisak loših slika',
-	'badimages-log-header' => 'Ovo je istorija promena za [[{{MediaWiki:Badimages-page}}|spisak loših slika]].',
-	'badimages-log-add' => 'dodata [[$1]] u spisak loših slika',
-	'badimages-log-remove' => 'uklonjena [[$1]] sa spiska loših slika',
+	'badimages-log-header' => 'Ovo je izveštaj o promenama [[{{MediaWiki:Badimages-page}}|spiska loših slika]].',
+	'badimages-log-add' => '[[$1]] je dodato u spisak loših slika',
+	'badimages-log-remove' => '[[$1]] je uklonjeno sa spiska loših slika',
 	'badimages-page' => '{{ns:help}}:Spisak loših slika',
 	'right-badimages' => 'Ažuriranje spiska loših slika',
 );
