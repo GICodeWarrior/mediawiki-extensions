@@ -1472,6 +1472,8 @@ $messages['zh-hant'] = array(
 	'al-nosuchuser' => '用戶名"$1"不存在。
 用戶名區分大小寫及繁體和簡體
 請重新檢查你的拼寫',
+	'al-createblocked' => '您的 IP 地址被阻止創建帳戶。',
+	'al-throttled' => '您的密碼嘗試次數達到上限。請等待$1秒後重試。',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬)
