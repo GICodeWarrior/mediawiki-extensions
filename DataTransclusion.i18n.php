@@ -768,3 +768,11 @@ $messages['zh-hans'] = array(
 "$1"未知的。',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'datatransclusion-desc' => '導入和呈現從外部數據源的數據記錄',
+	'datatransclusion-missing-source' => '沒有指定數據源。第二次或“源”參數是必需的。',
+	'datatransclusion-unknown-source' => '指定錯誤的數據源。
+"$1"未知的。',
+);
+
