@@ -52,9 +52,10 @@ $messages['de'] = array(
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Kghbln
+ * @author SVG
  */
 $messages['de-formal'] = array(
-	'badaccess-bogususerpage' => 'Zu dieser Benutzerseite ist kein Benutzerkonto vorhanden. Sie sine nicht berechtigt diese Benutzerseite zu erstellen.',
+	'badaccess-bogususerpage' => 'Zu dieser Benutzerseite ist kein Benutzerkonto vorhanden. Sie sind nicht berechtigt diese Benutzerseite zu erstellen.',
 );
 
 /** French (Français)
@@ -73,6 +74,15 @@ $messages['hsb'] = array(
 	'nobogususerpages-desc' => 'Zadźěwa wutworjenju wužiwarskich stronow, za kotrež wužiwar njeeksistuje',
 	'badaccess-bogususerpage' => 'Wužiwar tuteje wužiwarskeje strony njeeksistuje. Nimaš prawa, zo by wopačnu wužiwarsku stronu wutworił.',
 	'right-createbogususerpage' => 'Wužiwarske strony za wužiwarjow wutowrić, kotřiž njejsu na tutym wikiju zregistrowani',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'nobogususerpages-desc' => "Limitéiert d'Uleeë vu Benotzersäiten fir déi et kee Benotzer gëtt",
+	'badaccess-bogususerpage' => 'De Benotzer vun dëser Benotzersäit gëtt et net. Dir sidd net berechtegt esou eng Bogus-Benotzersäit unzeleeën.',
+	'right-createbogususerpage' => 'Säite fir Benotzer uleeën, déi op dëser Wiki net registréiert sinn',
 );
 
 /** Macedonian (Македонски)
