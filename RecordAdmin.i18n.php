@@ -879,6 +879,11 @@ $messages['frp'] = array(
 	'recordadmin-properties' => 'Propriètâts',
 );
 
+/** Simplified Gan script (‪赣语(简体)‬) */
+$messages['gan-hans'] = array(
+	'recordadmin-buttonsearch' => '寻吖',
+);
+
 /** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
@@ -2470,7 +2475,9 @@ $messages['yi'] = array(
  */
 $messages['zh-hans'] = array(
 	'recordadmin-select' => '选择',
+	'recordadmin-newsearch' => '新的 $1 搜寻',
 	'recordadmin-submit' => '提交',
+	'recordadmin-alreadyexist' => '对不起，「$1」已经存在！',
 	'recordadmin-badtitle' => '标题错误！',
 	'recordadmin-invert' => '反向选择',
 	'recordadmin-buttonsearch' => '搜寻',
@@ -2495,6 +2502,7 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'recordadmin-select' => '選擇',
 	'recordadmin-newsearch' => '新的 $1 搜尋',
+	'recordadmin-submit' => '提交',
 	'recordadmin-alreadyexist' => '對不起，「$1」已經存在！',
 	'recordadmin-badtitle' => '標題錯誤！',
 	'recordadmin-invert' => '反向選擇',
@@ -2505,5 +2513,9 @@ $messages['zh-hant'] = array(
 	'recordadmin-buttonsave' => '儲存',
 	'recordadmin-viewlink' => '檢視',
 	'recordadmin-editlink' => '編輯',
+	'recordadmin-created' => '已發起',
+	'recordadmin-modified' => '曾修改',
+	'recordadmin-actions' => '操作',
+	'recordadmin-needscontent' => '添加內容。。。',
 );
 
