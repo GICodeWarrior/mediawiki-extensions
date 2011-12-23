@@ -497,6 +497,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'oai-desc' => 'Daje skladište interfejsa [<a href="http://www.openarchives.org/OAI/openarchivesprotocol.html">http://www.openarchives.org/OAI/openarchivesprotocol.html</a> OAI-PMH].',
+	'oairepository' => 'Skladište OAI',
 );
 
 /** Seeltersk (Seeltersk)
