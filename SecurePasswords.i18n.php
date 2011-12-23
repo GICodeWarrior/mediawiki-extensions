@@ -741,9 +741,11 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
+	'securepasswords-desc' => 'Stvara bezbednije disperzije lozinki i dodaje proveru snage lozinke',
 	'securepasswords-valid' => 'Vaša lozinka je neispravna ili prekratka.
 Ona mora: $1.',
 	'securepasswords-minlength' => 'biti dugačka najmanje $1 {{PLURAL:$1|znak|znakova}}.',
+	'securepasswords-lowercase' => 'sadrži najmanje jedno malo slovo',
 	'securepasswords-uppercase' => 'sadržati najmanje 1 veliko slovo',
 	'securepasswords-digit' => 'sadržati najmanje 1 cifru',
 	'securepasswords-special' => 'sadržati najmanje 1 specijalni znak (specijalni znaci su: $1)',
@@ -906,10 +908,15 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'securepasswords-desc' => '生成更安全的密碼哈希值，並添加密碼強度檢測',
+	'securepasswords-valid' => '您的密碼無效或者太短。
+它必須：$1。',
 	'securepasswords-minlength' => '長度需要最少 $1 個字元',
 	'securepasswords-lowercase' => '包含最少一個小寫字母',
 	'securepasswords-uppercase' => '包含最少一個大寫字母',
 	'securepasswords-digit' => '包含最少一個數字',
+	'securepasswords-special' => '包含至少一個特殊字符 （特殊字符是：$1）',
 	'securepasswords-username' => '不與您的使用者名稱相同',
+	'securepasswords-word' => '不是一個單詞',
 );
 
