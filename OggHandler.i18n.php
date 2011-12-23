@@ -3342,6 +3342,11 @@ $messages['sr-ec'] = array(
 	'ogg-stop' => 'Заустави',
 	'ogg-play-video' => 'Пусти видео-снимак',
 	'ogg-play-sound' => 'Пусти звучни снимак',
+	'ogg-no-player' => 'Изгледа да немате инсталиран никакав програм за пуштање медијских датотека.
+<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Овде преузмите програм за ту намену</a>.',
+	'ogg-no-xiphqt' => 'Изгледа да немате инсталиран део XiphQT за Квиктајм.
+Квиктајм не може да пусти .ogg датотеке без ове компоненте.
+<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Преузмите XiphQT</a> или изаберите други плејер.',
 	'ogg-player-videoElement' => 'Подршка од прегледача',
 	'ogg-player-oggPlugin' => 'Додатак за прегледач',
 	'ogg-player-cortado' => 'Кортадо (Јава)',
@@ -3361,6 +3366,8 @@ $messages['sr-ec'] = array(
 	'ogg-dismiss' => 'Затвори',
 	'ogg-download' => 'Преузми датотеку',
 	'ogg-desc-link' => 'Подаци о овој датотеци',
+	'ogg-oggThumb-version' => 'OggHandler захтева oggThumb – верзију $1 или новију.',
+	'ogg-oggThumb-failed' => 'oggThumb не може да направи минијатуру.',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
@@ -3383,8 +3390,22 @@ $messages['sr-el'] = array(
 	'ogg-stop' => 'Stop',
 	'ogg-play-video' => 'Pusti video',
 	'ogg-play-sound' => 'Pusti zvuk',
+	'ogg-no-player' => 'Izgleda da nemate instaliran nikakav program za puštanje medijskih datoteka.
+<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Ovde preuzmite program za tu namenu</a>.',
+	'ogg-no-xiphqt' => 'Izgleda da nemate instaliran deo XiphQT za Kviktajm.
+Kviktajm ne može da pusti .ogg datoteke bez ove komponente.
+<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Preuzmite XiphQT</a> ili izaberite drugi plejer.',
 	'ogg-player-videoElement' => 'Ugrađena podrška u brauzer',
 	'ogg-player-oggPlugin' => 'Plagin za brauzer',
+	'ogg-player-cortado' => 'Kortado (Java)',
+	'ogg-player-vlc-mozilla' => 'VLC',
+	'ogg-player-vlc-activex' => 'VLC (Aktiviks)',
+	'ogg-player-quicktime-mozilla' => 'Kviktajm',
+	'ogg-player-quicktime-activex' => 'Kviktajm (Aktiviks)',
+	'ogg-player-totem' => 'Totem',
+	'ogg-player-kmplayer' => 'KMPlayer',
+	'ogg-player-kaffeine' => 'Kafin',
+	'ogg-player-mplayerplug-in' => 'mplayerplug-in',
 	'ogg-player-thumbnail' => 'još uvek samo slika',
 	'ogg-player-soundthumb' => 'nema plejera',
 	'ogg-player-selected' => '(označeno)',
@@ -3393,6 +3414,8 @@ $messages['sr-el'] = array(
 	'ogg-dismiss' => 'Zatvori',
 	'ogg-download' => 'Preuzmi datoteku',
 	'ogg-desc-link' => 'O ovom fajlu',
+	'ogg-oggThumb-version' => 'OggHandler zahteva oggThumb – verziju $1 ili noviju.',
+	'ogg-oggThumb-failed' => 'oggThumb ne može da napravi minijaturu.',
 );
 
 /** Seeltersk (Seeltersk)
