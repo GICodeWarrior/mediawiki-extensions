@@ -637,6 +637,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'piwik-desc' => 'Ubacuje Piwik skriptu u MedijaViki strane zarad praćenja i dodaje [[Special:Piwik|statistike]]',
+	'piwik' => 'Pivik',
 	'piwik-lastvisits' => 'Poslednje posete',
 	'piwik-countries' => 'Zemlje',
 	'piwik-browsers' => 'Brauzeri',
