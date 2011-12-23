@@ -1176,3 +1176,9 @@ $messages['zh-hans'] = array(
 	'collabwatchlistedit-tags-raw-submit' => '保存',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'collabwatchlistedit-raw-titles' => '分類：',
+	'collabwatchlistedit-tags-raw-submit' => '保存',
+);
+
