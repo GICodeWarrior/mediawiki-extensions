@@ -542,6 +542,12 @@ $messages['sr-ec'] = array(
 	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL:',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL:',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */
@@ -617,6 +623,12 @@ Nó cũng cho phép bạn sử dung trang người dùng làm một OpenID.',
 	'linkopenid-prefstext-openid' => 'OpenID của bạn:',
 	'linkopenid-prefstext-v1url' => 'Địa chỉ URL máy chủ dành cho OpenID phiên bản 1.1:',
 	'linkopenid-prefstext-v2url' => 'URL máy chủ dành cho OpenID phiên bản 2:',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'linkopenid-desc' => '允许使用者连结他们的帐号和外部的 OpenID',
+	'linkopenid-prefstext-openid' => '您的 OpenID：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
