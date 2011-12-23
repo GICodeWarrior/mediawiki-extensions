@@ -700,6 +700,7 @@ $messages['sr-ec'] = array(
 /** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'discussionthreading-replysection' => 'odgovori',
+	'discussionthreading-replysectionhint' => 'Odgovori na ovu poruku',
 	'discussionthreading-threadnewsection' => 'novo',
 	'discussionthreading-threadnewsectionhint' => 'Započni novu temu',
 );
@@ -823,8 +824,10 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
+	'discussionthreading-desc' => '添加線程交談頁',
 	'discussionthreading-replysection' => '回覆',
 	'discussionthreading-replysectionhint' => '回覆這個帖子',
 	'discussionthreading-threadnewsection' => '新',
+	'discussionthreading-threadnewsectionhint' => '啟動一個新的線程',
 );
 
