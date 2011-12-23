@@ -838,6 +838,7 @@ $messages['zh-hans'] = array(
 	'newschannel' => '新闻频道',
 	'newschannel_format' => '格式：',
 	'newschannel_limit' => '限制：',
+	'newschannel_exclude_category' => '排除分类：',
 	'newschannel_submit_button' => '创建供稿',
 );
 
