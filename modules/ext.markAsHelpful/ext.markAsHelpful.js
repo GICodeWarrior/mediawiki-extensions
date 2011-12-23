@@ -12,11 +12,11 @@
 
 		init: function() {
 			var	props;
-			$( mah.selector ).each ( function (i, e) {
-				props =  mah.getItemProperties ( $(this) );
+			$( mah.selector ).each( function ( i, e ) {
+				props = mah.getItemProperties( $(this) );
 				//be sure to only load once per item id
 				if( $.inArray( props.item, mah.ids ) === -1 ) {
-					mah.ids.push(props.item);
+					mah.ids.push( props.item );
 					mah.loadItem( $( this ) );
 				}
 			}); 
@@ -81,7 +81,7 @@
 				'page': mw.config.get( 'wgPageName' ),
 				'useragent': clientData.name + '/' + clientData.versionNumber,
 				'system': clientData.platform,
-				'token': mw.config.get('mahEditToken'),
+				'token': mw.config.get( 'mahEditToken' ),
 				'format': 'json'
 			}, props );
 
