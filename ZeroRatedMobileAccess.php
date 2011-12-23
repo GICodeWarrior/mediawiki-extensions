@@ -20,7 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'  =>  __FILE__,
 	'name'  =>  'ZeroRatedMobileAccess',
 	'version'  =>  '0.0.1',
-	'author'  =>  '[http://www.mediawiki.org/wiki/User:Preilly Preilly]',
+	'author' => array( 'Patrick Reilly' ),
 	'descriptionmsg'  =>  'zero-rated-mobile-access-desc',
 	'url'  =>  'https://www.mediawiki.org/wiki/Extension:ZeroRatedMobileAccess',
 );
