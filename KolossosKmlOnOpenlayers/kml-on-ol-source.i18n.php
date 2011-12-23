@@ -644,6 +644,12 @@ $messages['sr-ec'] = array(
 	'ts-kml-on-ol-wikipedia' => 'Википедија',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'ts-kml-on-ol-openstreetmap' => 'Openstritmap',
+	'ts-kml-on-ol-wikipedia' => 'Vikipedija',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */
@@ -732,5 +738,10 @@ $messages['yi'] = array(
  */
 $messages['zh-hans'] = array(
 	'ts-kml-on-ol-wikipedia' => '维基百科',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'ts-kml-on-ol-wikipedia' => '維基百科',
 );
 

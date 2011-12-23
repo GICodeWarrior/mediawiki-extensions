@@ -1147,3 +1147,8 @@ $messages['zh-hans'] = array(
 	'ts-citegen-Other-languages' => '其他语言',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'ts-citegen-Other-languages' => '其他語言',
+);
+

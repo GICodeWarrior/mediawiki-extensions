@@ -1456,6 +1456,12 @@ $messages['sr-ec'] = array(
 	'toolbase-navigation-api' => 'АПИ',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'toolbase-header-twitter' => 'Tviter',
+	'toolbase-navigation-api' => 'API',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  * @author WikiPhoenix
@@ -1674,6 +1680,7 @@ $messages['zh-hans'] = array(
 	'toolbase-autoedits-title' => '自动编辑计算器',
 	'toolbase-autoedits-submit' => '计算',
 	'toolbase-main-title' => '欢迎！',
+	'toolbase-main-404' => '找不到档案',
 	'toolbase-form-wiki' => '维基',
 );
 
@@ -1681,13 +1688,30 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
+	'toolbase-header-title' => 'X!的工具（測試版）',
+	'toolbase-header-bugs' => '臭蟲',
+	'toolbase-header-sitenotice' => '全域Toolserver站點通告：$1',
+	'toolbase-replag' => '服務器延遲$1',
+	'toolbase-replag-years' => '年',
+	'toolbase-replag-months' => '月',
+	'toolbase-replag-weeks' => '周',
+	'toolbase-replag-days' => '天',
+	'toolbase-replag-hours' => '小時',
+	'toolbase-replag-minutes' => '分鐘',
 	'toolbase-replag-seconds' => '秒',
+	'toolbase-footer-exectime' => '在$1秒內執行完成',
 	'toolbase-footer-source' => '檢視原始碼',
+	'toolbase-footer-language' => '選擇語言',
+	'toolbase-footer-translate' => '翻譯',
 	'toolbase-navigation' => '導覽',
 	'toolbase-navigation-homepage' => '首頁',
 	'toolbase-navigation-user_id' => '尋找使用者 ID',
+	'toolbase-navigation-autoedits' => '自動編輯計數器',
 	'toolbase-userid-submit' => '取得使用者 ID',
 	'toolbase-userid-title' => '尋找使用者 ID',
+	'toolbase-userid-result' => '<a href="$3"><b>$3</b></a>上的用戶<b>$1</b>ID為<b>$2</b>。',
+	'toolbase-autoedits-title' => '自動編輯計算器',
+	'toolbase-autoedits-submit' => '計算',
 	'toolbase-main-title' => '歡迎！',
 	'toolbase-main-404' => '找不到檔案',
 	'toolbase-form-wiki' => 'Wiki',
