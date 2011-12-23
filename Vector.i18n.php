@@ -679,6 +679,11 @@ $messages['fur'] = array(
 	'vector-simplesearch-containing' => 'che al à dentri...',
 );
 
+/** Simplified Gan script (‪赣语(简体)‬) */
+$messages['gan-hans'] = array(
+	'vector-simplesearch-search' => '寻吖',
+);
+
 /** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
@@ -1665,7 +1670,12 @@ $messages['sr-ec'] = array(
  * @author Liangent
  */
 $messages['sr-el'] = array(
+	'vector' => 'Poboljšanja korisničkog interfejsa za vektor',
+	'vector-desc' => 'Poboljšava korisničke elemente sučelja za presvlaku Vektor.',
+	'vector-collapsiblenav-preference' => 'Skupljanje stavki navigacionog menija u Vector presvlaci',
 	'vector-collapsiblenav-more' => 'Još jezika:',
+	'vector-editwarning-warning' => 'Ako napustite ovu stranicu, izgubićete sve izmene koje ste napravili.
+Ako ste prijavljeni, možete onemogućiti ovo upozorenje u svojim podešavanjima, u odeljku „Uređivanje“.',
 	'vector-editwarning-preference' => 'Upozori me kada napustim stranicu sa nesačuvanim promenama',
 	'vector-simplesearch-search' => 'Pretraga',
 	'vector-simplesearch-containing' => 'sadrži...',
