@@ -19,7 +19,7 @@ $messages['en'] = array(
 	'webfonts-enable-preference' => 'Enable font embedding (WebFonts)',
 	'webfonts-menu-tooltip' => 'Select a font for the page',
 	'webfonts-help' => 'Help',
-	'webfonts-help-page' => '//mediawiki.org/wiki/Special:MyLanguage/Help:Web_fonts',
+	'webfonts-help-page' => '//mediawiki.org/wiki/Special:MyLanguage/Help:Extension:WebFonts',
 );
 
 /** Message documentation (Message documentation)
