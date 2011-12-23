@@ -659,5 +659,7 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'forcepreview' => '儲存頁面（需先預覽）',
+	'forcepreview-desc' => '非特權用戶力預覽',
+	'right-forcepreviewexempt' => '可保存而不使用顯示預覽',
 );
 
