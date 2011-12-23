@@ -2152,12 +2152,13 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'changeauthor' => 'Promeni autora revizije',
 	'changeauthor-desc' => 'Omogući promene autora revizija',
 	'changeauthor-title' => 'Promeni autora neke revizije',
-	'changeauthor-search-box' => 'Pretraži revizije',
+	'changeauthor-search-box' => 'Pretraži izmene',
 	'changeauthor-pagename-or-revid' => 'Ime stranice ili ID revizije:',
 	'changeauthor-pagenameform-go' => 'Idi',
 	'changeauthor-comment' => 'Komentar:',
@@ -2165,11 +2166,12 @@ $messages['sr-el'] = array(
 	'changeauthor-changeauthors-single' => 'Promeni autora',
 	'changeauthor-invalid-username' => 'Pogrešno korisničko ime "$1".',
 	'changeauthor-nosuchuser' => 'Nema korisnika "$1".',
-	'changeauthor-revview' => 'Revizija #$1 ili $2',
+	'changeauthor-revview' => 'Izmena $1 od $2',
 	'changeauthor-nosuchtitle' => 'Ne postoji stranica pod nazivom "$1".',
 	'changeauthor-success' => 'Baš zahtev je bio uspešno obrađen.',
 	'changeauthor-logentry' => 'Promenjen autor $2 na $1, sa $3 na $4',
 	'changeauthor-logpagename' => 'Istorija promene autora',
+	'changeauthor-rev' => 'izm. $1',
 	'right-changeauthor' => 'Promeni autora revizije',
 );
 
