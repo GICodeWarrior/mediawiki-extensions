@@ -1168,8 +1168,13 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'contributiontracking' => 'Praćenje doprinosa',
 	'contrib-tracking-error' => 'Greška',
+	'contrib-tracking-error-text' => 'Neispravno podnošenje obrasca',
+	'contrib-tracking-submitting' => 'Šaljem obrascu za plaćanje…',
 	'contrib-tracking-button' => 'Nastavi',
+	'contrib-tracking-item-name-onetime' => 'Jednokratan prilog',
+	'contrib-tracking-item-name-recurring' => 'Mesečni prilog',
 );
 
 /** Swedish (Svenska)
@@ -1369,8 +1374,8 @@ $messages['zh-hans'] = array(
 	'contrib-tracking-error' => '错误',
 	'contrib-tracking-error-text' => '无效的表单提交',
 	'contrib-tracking-submitting' => '正在提交到支付处理器……',
-	'contrib-tracking-continue' => '若阁下没有被重定向至PayPal页面，请点击按钮以完成您的捐助。',
-	'contrib-tracking-redirect' => '您将被自动重定向到 PayPal 来完成你的捐款。',
+	'contrib-tracking-continue' => '若阁下没有被重定向，请点击按钮以完成您的捐助。',
+	'contrib-tracking-redirect' => '您将被自动重定向来完成你的捐款。',
 	'contrib-tracking-button' => '继续',
 	'contrib-tracking-item-name-onetime' => '一次性捐赠',
 	'contrib-tracking-item-name-recurring' => '每月定期捐款',
@@ -1386,8 +1391,8 @@ $messages['zh-hant'] = array(
 	'contrib-tracking-error' => '錯誤',
 	'contrib-tracking-error-text' => '無效的表單提交',
 	'contrib-tracking-submitting' => '正在提交到支付處理器……',
-	'contrib-tracking-continue' => '若閣下沒有被重定向至 PayPal 頁面，請點擊按鈕以完成您的捐助。',
-	'contrib-tracking-redirect' => '您將被自動重定向到 PayPal 來完成你的捐款。',
+	'contrib-tracking-continue' => '若閣下沒有被重定向，請點擊按鈕以完成您的捐助。',
+	'contrib-tracking-redirect' => '您將被自動重定向來完成你的捐款。',
 	'contrib-tracking-button' => '繼續',
 	'contrib-tracking-item-name-onetime' => '一次性捐助',
 	'contrib-tracking-item-name-recurring' => '每月定期捐款',
