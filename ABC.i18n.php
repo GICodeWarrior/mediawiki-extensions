@@ -1095,6 +1095,11 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'abc-desc' => 'Dodaje <code>&lt;abc&gt;</code> tag za formatiranje ABC muzike',
 	'abcdownload' => 'Preuzmi:',
+	'abcabc' => 'ABC',
+	'abcpdf' => 'PDF',
+	'abcps' => 'Postskript',
+	'abcmidi' => 'MIDI',
+	'abcvorbis' => 'Ogg Vorbis',
 );
 
 /** Seeltersk (Seeltersk)
