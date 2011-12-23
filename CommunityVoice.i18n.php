@@ -1138,7 +1138,7 @@ $messages['zh-hans'] = array(
 	'communityvoice-ratings-scale-status-sending' => '发送中...',
 	'communityvoice-ratings-scale-status-error' => '发送错误！',
 	'communityvoice-ratings-scale-status-thanks' => '感谢投票！',
-	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 个投票)',
+	'communityvoice-ratings-scale-stats' => '$1/5（$2{{PLURAL:$2|次投票}}）',
 	'communityvoice-ratings-error-no-category' => '分类属性的分级标签丢失。',
 	'communityvoice-ratings-error-no-title' => '分类属性标题标签丢失。',
 );
