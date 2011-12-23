@@ -572,6 +572,11 @@ $messages['frp'] = array(
 	'refhelper-newarticle_nocitation' => 'Ora, ègziste gins de citacion avouéc ceti nom.',
 );
 
+/** Simplified Gan script (‪赣语(简体)‬) */
+$messages['gan-hans'] = array(
+	'refhelper-search' => '寻吖',
+);
+
 /** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
@@ -1634,6 +1639,7 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
+	'refhelper-label_authorsurname' => '姓名：',
 	'refhelper-title' => '標題：',
 	'refhelper-pages' => '頁面：',
 	'refhelper-year' => '年份：',
