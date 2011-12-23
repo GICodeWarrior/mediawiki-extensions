@@ -1272,5 +1272,6 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'security-type-category' => '分類',
 	'security-type-namespace' => '名字空間',
+	'restriction-read' => '讀',
 );
 
