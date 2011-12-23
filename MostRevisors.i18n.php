@@ -1014,10 +1014,12 @@ $messages['yi'] = array(
  * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
+	'mostrevisors-limitlinks' => '显示 $1 个页面',
 	'mostrevisors-namespace' => '名字空间：',
 	'mostrevisors-submit' => '提交',
 	'mostrevisors-showredir' => '显示重定向页面',
 	'mostrevisors-hideredir' => '隐藏重定向页面',
+	'mostrevisors-users' => '$1 次{{PLURAL:$1|编辑|编辑}}',
 	'mostrevisors-viewcontributors' => '检视主要贡献者',
 );
 
@@ -1028,6 +1030,7 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'mostrevisors-limitlinks' => '顯示 $1 個頁面',
 	'mostrevisors-namespace' => '名字空間：',
+	'mostrevisors-submit' => '提交',
 	'mostrevisors-showredir' => '顯示重定向頁面',
 	'mostrevisors-hideredir' => '隱藏重定向頁面',
 	'mostrevisors-users' => '$1 次{{PLURAL:$1|編輯|編輯}}',
