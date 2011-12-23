@@ -985,3 +985,12 @@ $messages['zh-hans'] = array(
 	'cooperationstatistics-articles' => '$1个页面',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'cooperationstatistics' => '合作統計',
+	'cooperationstatistics-desc' => '顯示[[Special:CooperationStatistics|主名字空間的合作統計信息]]。',
+	'cooperationstatistics-tablearticle' => '頁面數',
+	'cooperationstatistics-tablevalue' => '編輯者數',
+	'cooperationstatistics-articles' => '$1個頁面',
+);
+
