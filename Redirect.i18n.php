@@ -340,6 +340,11 @@ $messages['sr-ec'] = array(
 	'redirect-desc' => 'Омогућава једноставно подешавање преусмерења при [[MediaWiki:Redirect-addnewaccount|отварању налога]] и [[MediaWiki:Redirect-userlogoutcomplete|одјављивању]]',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'redirect-desc' => 'Omogućava jednostavno podešavanje preusmerenja pri [[MediaWiki:Redirect-addnewaccount|otvaranju naloga]] i [[MediaWiki:Redirect-userlogoutcomplete|odjavljivanju]]',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
