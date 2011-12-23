@@ -481,6 +481,8 @@ $messages['zh-hans'] = array(
  * @author Liangent
  */
 $messages['zh-hant'] = array(
+	'tspoll-desc' => '將[http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript]包括為HTML標籤',
+	'tspoll-fetch-error' => '獲取URL時發生錯誤！',
 	'tspoll-id-error' => '沒有提供ID！',
 );
 
