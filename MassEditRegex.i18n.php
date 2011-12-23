@@ -1628,6 +1628,13 @@ $messages['tr'] = array(
 	'masseditregex-tooltip-execute' => 'Bu değişiklikleri tüm sayfalara uygula',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'masseditregex-hint-headreplace' => 'Заміна',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */
@@ -1644,21 +1651,30 @@ $messages['vep'] = array(
  */
 $messages['zh-hans'] = array(
 	'masseditregex-matchtxt' => '查找：',
+	'masseditregex-replacetxt' => '替换为：',
 	'masseditregex-executebtn' => '执行',
 	'masseditregex-before' => '前',
 	'masseditregex-after' => '后',
+	'masseditregex-page-not-exists' => '$1 不存在',
 	'masseditregex-hint-headreplace' => '替换',
+	'masseditregex-hint-headeffect' => '影响',
+	'masseditregex-listtype-intro' => '这是一个列表：',
+	'masseditregex-listtype-pagenames' => '页面名称（编辑这些网页）',
+	'masseditregex-listtype-pagename-prefixes' => '网页名称前缀（编辑网页名称的开头有这个文字）',
+	'masseditregex-editfailed' => '编辑失败：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
+	'masseditregex-matchtxt' => '查找：',
 	'masseditregex-replacetxt' => '替換為：',
 	'masseditregex-executebtn' => '執行',
 	'masseditregex-before' => '之前',
 	'masseditregex-after' => '之後',
 	'masseditregex-page-not-exists' => '$1 不存在',
+	'masseditregex-hint-headreplace' => '替換',
 	'masseditregex-hint-headeffect' => '影響',
 	'masseditregex-listtype-intro' => '這是一個列表：',
 	'masseditregex-listtype-pagenames' => '頁面名稱（編輯這些網頁）',
