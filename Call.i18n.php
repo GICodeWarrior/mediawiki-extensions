@@ -1504,6 +1504,19 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'call' => '呼叫',
 	'call-desc' => '建立一個超連結到模板（或一般頁面）的參數傳遞。可用於在瀏覽器的命令行或在維基文字中使用。',
+	'call-text' => '作為參數，調用擴展預計 wiki 頁面，該頁面的可選參數。<br /><br />
+
+示例一： <tt>[[{{#special:call}}/My template,parm1=value1]]</tt><br />
+示例二： <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br />
+示例三： <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br />
+示例四（瀏覽器 URL）： <tt>http://mydomain/mywiki/index.php?{{#special:call}}/:My Page,parm1=value1</tt><br /><br />
+
+<i>調用擴展</i> 的將調用給定的頁面，並傳遞參數。<br />
+您將看到所調用的頁和它的標題的內容，但其 type 將的一個特殊的頁面即此類的頁面無法編輯。<br />您看到的內容取決於您所傳遞的參數的值。<br /><br />
+
+<i>調用擴展</i> 的可用於構建具有 MediaWiki 的交互式應用程序。<br />
+有關示例，請參見 <a href="http://semeb.com/dpldemo/Template:Catlist">DPL GUI</a>...<br />
+問題的情況下，您可以嘗試 <b>{{#special:call}}/DebuG</b>',
 	'call-save' => '本呼叫的輸出將儲存至名為「$1」的頁面內。',
 	'call-save-success' => '以下文字經已儲存至頁面<big>[[$1]]</big>。',
 	'call-save-failed' => '由於頁面已存在，以下文字並未儲存至頁面<big>[[$1]]</big>。',
