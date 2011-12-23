@@ -657,6 +657,7 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
+	'mediafunctions-desc' => '有關媒體的信息獲取文件分析器功能',
 	'mediafunctions-invalid-title' => '「$1」不是一個有效的標題',
 	'mediafunctions-not-exist' => '「$1」不存在',
 );
