@@ -49,23 +49,23 @@ class ExtZeroRatedMobileAccess {
 			if ( is_array( $languagesForCountry ) ) {
 				foreach( $languagesForCountry as $language ) {
 					echo Html::element( 'h3',
-								array( 'id' => 'lang_' . $language['language'],
-									),
+								array( 'id' => 'lang_' . $language['language']),
 									$languageNames[$language['language']]);
-					echo Html::element( 'hr',
-								array(), '');
+					echo Html::element( 'hr' );
 					echo self::getSearchFormHtml( $language['language'] );
 				}
 			}
 			$output = Html::openElement( 'select',
 				array( 'id' => 'languageselection',
-					'onchange' => 'javascript:window.location = this.options[this.selectedIndex].value;' ) );
+					'onchange' => 'javascript:window.location = this.options[this.selectedIndex].value;',
+				)
+			);
 			foreach ( $languageNames as $languageCode => $languageName ) {
 				$output .=	Html::element( 'option',
 							array( 'value' => '//' . $languageCode . '.m.wikipedia.org/' ),
 									$languageName );
 			}
-			$output .= Html::closeElement( 'select', array() );
+			$output .= Html::closeElement( 'select' );
 			echo $output;
 			exit();
 		}
