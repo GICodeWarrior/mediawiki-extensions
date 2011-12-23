@@ -538,6 +538,16 @@ $messages['sr-ec'] = array(
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] мора имати најмање $1 {{PLURAL:$1|знак|знака|знакова}}.',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'transliterator-desc' => 'Pruža podesivi raščlanjivač za preslovljavanje',
+	'transliterator-error-ambiguous' => 'Dvosmisleno pravilo <code>$1</code> u [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Neispravna sintaksa <code>$1</code> u [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Više od $1 {{PLURAL:$1|pravila|pravila|pravila}} u [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Pravilo <code>$1</code> ima više od $3 {{PLURAL:$3|znaka|znaka|znakova}} s leve strane u [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] mora imati najmanje $1 {{PLURAL:$1|znak|znaka|znakova}}.',
+);
+
 /** Swedish (Svenska)
  * @author Ozp
  * @author Per
