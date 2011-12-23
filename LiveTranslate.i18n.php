@@ -22,7 +22,7 @@ $messages['en'] = array(
 
 	'group-tmxadmin' => 'TMX administrators',
 	'group-tmxadmin-member' => '{{GENDER:$1|TMX administrator}}',
-	'grouppage-tmxadmin' => 'Project:TMX_administrators',
+	'grouppage-tmxadmin' => '{{ns:project}}:TMX administrators',
 
 	// Translation interface
 	'livetranslate-translate-to' => 'Translate this page to',
