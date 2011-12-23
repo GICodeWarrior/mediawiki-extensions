@@ -1267,11 +1267,14 @@ $messages['yi'] = array(
  * @author Liangent
  */
 $messages['zh-hans'] = array(
+	'accountmanager' => '帐号管理',
 	'am-username' => '用户名',
 	'am-email' => '电子邮件',
 	'am-active' => '活跃',
 	'nss-rights' => '权利',
 	'nss-save-changes' => '保存更改',
+	'nss-create-account-header' => '建立新帐号',
+	'nss-create-account' => '建立新帐号',
 	'nss-no-mail' => '不要传送电邮',
 );
 
