@@ -2717,7 +2717,15 @@ Konfiguroni $wgPrefStatsTrackPrefs për të ndjekur preferencat.',
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'prefstats' => 'Статистике поставки',
+	'prefstats-desc' => 'Праћење статистика које говоре колико корисника има омогућене одређене поставке',
+	'prefstats-title' => 'Статистике поставки',
+	'prefstats-list-intro' => 'Тренутно се прате следеће поставке.
+Кликните на једну од њих да бисте видели њене статистике.',
+	'prefstats-noprefs' => 'Тренутно се не прати ниједна поставка.
+Подесите $wgPrefStatsTrackPrefs да прати поставке.',
 	'prefstats-xaxis' => 'Трајање (у сатима)',
+	'prefstats-factors' => 'Преглед за: $1',
 	'prefstats-factor-hour' => 'сат',
 	'prefstats-factor-sixhours' => 'шест сати',
 	'prefstats-factor-day' => 'дан',
@@ -2725,19 +2733,32 @@ $messages['sr-ec'] = array(
 	'prefstats-factor-twoweeks' => 'две недеље',
 	'prefstats-factor-fourweeks' => 'четири недеље',
 	'prefstats-factor-default' => 'врати се на подразумевану скалу',
+	'prefstats-legend-out' => 'Приступили',
+	'prefstats-legend-in' => 'Напустили',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'prefstats' => 'Statistike postavki',
+	'prefstats-desc' => 'Praćenje statistika koje govore koliko korisnika ima omogućene određene postavke',
+	'prefstats-title' => 'Statistike postavki',
+	'prefstats-list-intro' => 'Trenutno se prate sledeće postavke.
+Kliknite na jednu od njih da biste videli njene statistike.',
+	'prefstats-noprefs' => 'Trenutno se ne prati nijedna postavka.
+Podesite $wgPrefStatsTrackPrefs da prati postavke.',
 	'prefstats-xaxis' => 'Trajanje (sati)',
+	'prefstats-factors' => 'Pregled za: $1',
 	'prefstats-factor-hour' => 'sat',
 	'prefstats-factor-sixhours' => 'šest sati',
 	'prefstats-factor-day' => 'dan',
 	'prefstats-factor-week' => 'nedelja',
 	'prefstats-factor-twoweeks' => 'dve nedelje',
 	'prefstats-factor-fourweeks' => '4 nedelje',
+	'prefstats-factor-default' => 'vrati se na podrazumevanu skalu',
+	'prefstats-legend-out' => 'Pristupili',
+	'prefstats-legend-in' => 'Napustili',
 );
 
 /** Sundanese (Basa Sunda)
