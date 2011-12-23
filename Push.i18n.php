@@ -27,15 +27,15 @@ $messages['en'] = array(
 
 	'group-pusher' => 'Pushers',
 	'group-pusher-member' => '{{GENDER:$1|pusher}}',
-	'grouppage-pusher' => 'Project:Pushers',
+	'grouppage-pusher' => '{{ns:project}}:Pushers',
 
 	'group-bulkpusher' => 'Bulk pushers',
 	'group-bulkpusher-member' => '{{GENDER:$1|bulk pusher}}',
-	'grouppage-bulkpusher' => 'Project:Bulk_pushers',
+	'grouppage-bulkpusher' => '{{ns:project}}:Bulk pushers',
 
 	'group-filepusher' => 'File pushers',
 	'group-filepusher-member' => '{{GENDER:$1|file pusher}}',
-	'grouppage-filepusher' => 'Project:File_pushers',
+	'grouppage-filepusher' => '{{ns:project}}:File pushers',
 
 	'push-err-captacha' => 'Could not push to $1 due to captcha.',
 	'push-err-captcha-page' => 'Could not push page $1 to all targets due to CAPTCHA.',
