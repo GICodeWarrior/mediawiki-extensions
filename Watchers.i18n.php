@@ -1191,6 +1191,6 @@ $messages['zh-hant'] = array(
 	'watchers_header' => '監視「[[:$1]]」的{{PLURAL:$2|用戶|用戶}}',
 	'watchers_noone_watches' => '沒有人監視此頁面。',
 	'watchers_x_or_more' => '$1 或者更多的{{PLURAL:$1|用戶|用戶}}將本頁加入了他們的監視列表。',
-	'watchers_less_than_x' => '少於 $1 的{{PLURAL:$1|用戶|用戶}}將本頁加入了他們的監視列表。',
+	'watchers_less_than_x' => '少於$1的{{PLURAL:$1|用戶|用戶}}將本頁加入了他們的監視列表。',
 );
 
