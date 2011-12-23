@@ -327,6 +327,11 @@ $messages['fur'] = array(
 	'searchbox-namespaces' => 'Spazis dai nons:',
 );
 
+/** Simplified Gan script (‪赣语(简体)‬) */
+$messages['gan-hans'] = array(
+	'searchbox-search' => '寻吖',
+);
+
 /** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
@@ -873,6 +878,7 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'searchbox-desc' => 'Omogućava uključivanje obrazaca pretrage',
 	'searchbox-search' => 'Pretraga',
 	'searchbox-go' => 'Idi',
 	'searchbox-namespaces' => 'Imenski prostori:',
