@@ -36,28 +36,12 @@ class SpecialInstitutions extends SpecialEPPage {
 		$out = $this->getOutput();
 
 		if ( $this->subPage === '' ) {
-			$this->displayPage();
+			EPOrg::displayAddNewControl( $this->getContext() );
+			EPOrg::displayPager( $this->getContext() );
 		}
 		else {
-			$org = EPOrg::has( array( 'name' => $this->subPage ) );
-			
-			if ( $org === false ) {
-				$this->showError( wfMessage( 'ep-institutions-nosuchinstitution', $this->subPage ) );
-				$this->displayPage();
-			}
-			else {
-				$out->redirect( SpecialPage::getTitleFor( 'Institution', $this->subPage )->getLocalURL() );
-			}
+			$out->redirect( SpecialPage::getTitleFor( 'Institution', $this->subPage )->getLocalURL() );
 		}
 	}
 	
-	/**
-	 * Display all the stuff that should be on the page.
-	 * 
-	 * @since 0.1
-	 */
-	protected function displayPage() {
-
-	}
-
 }

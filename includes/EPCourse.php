@@ -124,7 +124,7 @@ class EPCourse extends EPDBObject {
 	
 	/**
 	 * Adds a control to add a new course to the provided context.
-	 * An org id can be provided to set the initially selected org.
+	 * Adittional arguments can be provided to set the default values for the control fields.
 	 * 
 	 * @since 0.1
 	 * 

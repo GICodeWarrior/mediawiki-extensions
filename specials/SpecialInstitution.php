@@ -44,7 +44,7 @@ class SpecialInstitution extends SpecialEPPage {
 		if ( $org === false ) {
 			if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
 				$out->addWikiMsg( 'ep-institution-create', 'parsemag', $this->subPage );
-				EPOrg::displayAddNewControl( $this->getContext(), $this->subPage );
+				EPOrg::displayAddNewControl( $this->getContext(), array( 'name' => $this->subPage ) );
 			}
 			else {
 				$out->addWikiMsg( 'ep-institution-none', 'parsemag', $this->subPage );
