@@ -724,11 +724,15 @@ $messages['sr-ec'] = array(
 	'prefs-category' => 'Категорија',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
+	'categorymultisort-desc' => 'Omogućava pregled kategorija sa različitim ključevima sortiranja',
 	'categorymultisort-defaultsortkey-name' => 'Podrazumevano',
-	'categorymultisort-sortkey' => 'Ključ sortiranja:',
+	'categorymultisort-sortkey' => 'Podređen ključ:',
 	'categorymultisort-go' => 'Idi',
+	'categorymultisort-default-sortkey' => 'Podrazumevani ključ sortiranja:',
 	'prefs-category' => 'Kategorija',
 );
 
