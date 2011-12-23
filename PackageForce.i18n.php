@@ -931,7 +931,10 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
+	'pf-admin-menu-default' => '预设',
+	'pf-admin-link-editlink-page' => '编辑页面',
 	'pf-header-documentation' => '说明',
+	'pf-header-edit' => '编辑连结',
 	'pf-header-page_title' => '标题',
 	'pf-header-approve' => '批复',
 );
@@ -942,6 +945,7 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'pf-admin-menu-default' => '預設',
 	'pf-admin-link-editlink-page' => '編輯頁面',
+	'pf-header-documentation' => '說明',
 	'pf-header-edit' => '編輯連結',
 	'pf-header-page_title' => '標題',
 	'pf-header-approve' => '獲准',
