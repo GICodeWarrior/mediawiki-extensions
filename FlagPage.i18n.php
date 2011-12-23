@@ -771,3 +771,17 @@ $messages['zh-hans'] = array(
 	'flagpage-tab' => '标志',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'flagpage' => '標記的頁',
+	'flagpage-desc' => '標誌使用預定義的模板的頁面',
+	'flagpage-nopageselectedtitle' => '沒有選定的頁',
+	'flagpage-nopageselected' => '您未指定的頁',
+	'flagpage-emptylisttitle' => '沒有配置的模板',
+	'flagpage-emptylist' => '您需要配置您的模板的列表。編輯 [[{{ns:8}}:flagpage-templatelist]] 現在這樣做。',
+	'flagpage-preview' => '預覽選定的模板:',
+	'flagpage-confirmsave' => '請確認您的更改。',
+	'flagpage-submitbutton' => '使用此模板保存頁',
+	'flagpage-tab' => '標誌',
+);
+
