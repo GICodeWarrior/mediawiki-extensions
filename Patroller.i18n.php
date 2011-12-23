@@ -2259,6 +2259,7 @@ $messages['ug-arab'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Тест
  */
 $messages['uk'] = array(
 	'patrol' => 'Патрулювання',
@@ -2268,7 +2269,7 @@ $messages['uk'] = array(
 	'patrol-skip' => 'Відкласти',
 	'patrol-reverting' => 'Відкіт: $1',
 	'group-patroller' => 'Патрульні',
-	'group-patroller-member' => 'патрульний',
+	'group-patroller-member' => '{{GENDER:$1|патрульний|патрульна}}',
 );
 
 /** Urdu (اردو) */
@@ -2384,6 +2385,7 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -2407,7 +2409,7 @@ $messages['zh-hans'] = array(
 	'patrol-stopped' => '您选择不巡逻其他编辑。$1',
 	'patrol-resume' => '点击这里继续。',
 	'group-patroller' => '巡逻员',
-	'group-patroller-member' => '巡逻员',
+	'group-patroller-member' => '{{GENDER:$1|巡查员}}',
 	'grouppage-patroller' => '{{ns:project}}:巡逻员',
 	'right-patroller' => '巡查页面',
 );
@@ -2440,8 +2442,8 @@ $messages['zh-hant'] = array(
 	'patrol-stopped' => '你選擇不複查其他編輯。$1',
 	'patrol-resume' => '點擊這裡繼續。',
 	'group-patroller' => '巡查員',
-	'group-patroller-member' => '巡查員',
-	'grouppage-patroller' => '{{ns:project}}：巡查員',
+	'group-patroller-member' => '{{GENDER:$1|巡查員}}',
+	'grouppage-patroller' => '{{ns:project}}:巡邏員',
 	'right-patroller' => '巡查頁面',
 );
 
