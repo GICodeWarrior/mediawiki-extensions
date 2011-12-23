@@ -746,5 +746,7 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'externalpages' => '外部網頁',
 	'externalpages-desc' => '檢索和顯示來自WMF的網站頁面',
+	'externalpages-bad-page' => '指定的錯誤頁',
+	'externalpages-no-page' => '未指定頁',
 );
 
