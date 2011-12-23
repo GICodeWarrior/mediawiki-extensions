@@ -316,3 +316,8 @@ $messages['zh-hans'] = array(
 	'sidebardonatebox-desc' => '侧栏中添加一个自定义捐框',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'sidebardonatebox-desc' => '側欄中添加一個自定義捐框',
+);
+
