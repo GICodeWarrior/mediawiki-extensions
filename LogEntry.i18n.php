@@ -698,7 +698,9 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
-	'logentry-invalidpage' => '無效的頁面',
+	'logentry-append' => '追加',
+	'logentry' => '日誌條目',
+	'logentry-invalidpage' => '無效頁面：$1',
 	'logentry-invalidtoken' => '無效的標記',
 );
 
