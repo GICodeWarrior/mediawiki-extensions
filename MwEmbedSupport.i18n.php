@@ -289,6 +289,11 @@ $messages['vi'] = array(
 	'mwembed-desc' => 'Hỗ trợ các mô đun và phần mở rộng mwEmbed',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'mwembed-desc' => '提供支援 mwEmbed 的模块及扩充套件',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Mark85296341
  */

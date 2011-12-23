@@ -880,6 +880,10 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'mwe-loading' => 'Učitavanje ...',
+	'mwe-size-gigabytes' => '$1 GB',
+	'mwe-size-megabytes' => '$1 MB',
+	'mwe-size-kilobytes' => '$1 K',
+	'mwe-size-bytes' => '$1 B',
 	'mwe-ok' => 'U redu',
 	'mwe-cancel' => 'Otkaži',
 	'mwe-test-plural' => 'Pokrenuo/la sam {{PLURAL:$1|$1 test|$1 testova}}',
@@ -990,8 +994,15 @@ $messages['wuu'] = array(
  */
 $messages['zh-hans'] = array(
 	'mwe-loading' => '正在载入...',
+	'mwe-error_load_lib' => '错误：JavaScript $1 是不可检索或未定义 $2',
+	'mwe-apiproxy-setup' => 'API 的代理设定',
+	'mwe-load-drag-item' => '拖动项载入中',
 	'mwe-ok' => '确定',
 	'mwe-cancel' => '取消',
+	'mwe-enable-gadget' => '在所有页面启用多媒体测试版（mwEmbed）。',
+	'mwe-enable-gadget-done' => '小工具多媒体测试版已启用',
+	'mwe-must-login-gadget' => '要启用小工具，你必须先<a target="_new" href="$1">登入</a>。',
+	'mwe-test-plural' => '我在执行 {{PLURAL:$1|$1 个|$1 个}}测试',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
