@@ -851,6 +851,11 @@ $messages['sr-ec'] = array(
 	'createbox-create' => 'Направи',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'createbox-create' => 'Napravi',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  * @author Kandar
