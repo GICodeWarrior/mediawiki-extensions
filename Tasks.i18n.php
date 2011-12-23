@@ -1437,6 +1437,11 @@ $messages['frp'] = array(
 	'tasks-pref-showtaskcomments' => 'Vêre la pâge de comentèros a propôs des travâlys.',
 );
 
+/** Simplified Gan script (‪赣语(简体)‬) */
+$messages['gan-hans'] = array(
+	'tasks_search_form_title' => '寻吖',
+);
+
 /** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
@@ -3663,6 +3668,7 @@ $messages['sr-el'] = array(
 	'tasks_task_is_assigned' => '(dodeljeno)',
 	'tasks_plain_text_only' => '(čist tekst, samo 256 karaktera)',
 	'tasks_help_page' => 'Zadaci',
+	'tasks_help_page_link' => '?',
 	'tasks_more_like_it' => 'više',
 	'tasks_event_on_creation' => 'proveri',
 	'tasks_event_on_creation_anon' => 'proveri',
@@ -4325,7 +4331,7 @@ $messages['zh-hans'] = array(
 	'tasks_previous' => '上一个',
 	'tasks_next' => '下一个',
 	'tasks_sort' => '排序',
-	'tasks_ascending' => '从旧到新',
+	'tasks_ascending' => '从最早开始',
 	'tasks_status_open' => '打开的',
 	'tasks_status_assigned' => '已分配的',
 	'tasks_status_closed' => '已关闭的',
@@ -4390,7 +4396,7 @@ $messages['zh-hant'] = array(
 	'tasks_on_creation_comment' => '自動任務，於頁面建立時產生',
 	'tasks_link_your_assignments' => '打開的分配',
 	'tasks_see_your_assignments' => '你目前有 $1 個打開的分配。參見你的$2。',
-	'tasks_my_assignments' => '你當前的分配',
+	'tasks_my_assignments' => '你目前的{{PLURAL:$1|分配|多個分配}}',
 	'tasks_table_header_page' => '頁面',
 	'tasks_you_have_no_assignments' => '你沒有打開的分配',
 	'tasks_search_form_title' => '搜尋',
@@ -4414,5 +4420,6 @@ $messages['zh-hant'] = array(
 	'tasks_logpage' => '任務記錄',
 	'tasks_logpagetext' => '這是一個任務修改的日誌',
 	'tasks_logentry' => '用於「[[$1]]」',
+	'tasks-pref-showtaskcomments' => 'Transclude任務的評論頁面',
 );
 
