@@ -342,6 +342,12 @@ $messages['sr-ec'] = array(
 	'templateinfo-header' => 'XML дефиниција овог шаблона:',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'templateinfo-desc' => 'Podržava šablone koji određuju njihovu strukturu podataka preko XML označavanja',
+	'templateinfo-header' => 'XML definicija ovog šablona:',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */
