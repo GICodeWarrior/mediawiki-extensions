@@ -1710,3 +1710,9 @@ $messages['zh-hans'] = array(
 	'wikisync_js_revision' => '版本$1',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'wikisync_remote_login_button' => '登入',
+	'wikisync_js_revision' => '版本$1',
+);
+
