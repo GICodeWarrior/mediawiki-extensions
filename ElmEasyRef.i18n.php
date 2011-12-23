@@ -244,6 +244,13 @@ $messages['tl'] = array(
 	'elm-easyref-close' => 'Isara',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'elm-easyref-close' => 'Закрити',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  */
@@ -251,5 +258,12 @@ $messages['zh-hans'] = array(
 	'elm-easyref-desc' => '添加弹出菜单字段来显示引用的内容',
 	'elm-easyref-ref' => '参考 $1',
 	'elm-easyref-close' => '关闭',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'elm-easyref-desc' => '添加彈出菜單字段來顯示引用的內容',
+	'elm-easyref-ref' => '參考 $1',
+	'elm-easyref-close' => '關閉',
 );
 
