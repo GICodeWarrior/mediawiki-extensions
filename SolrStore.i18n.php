@@ -39,6 +39,17 @@ $messages['de'] = array(
 	'solrstore-searchFieldSets-title' => 'SolrSearch: SearchSet Auswahl',
 );
 
+/** French (Français)
+ * @author Gomoko
+ */
+$messages['fr'] = array(
+	'solrstore-desc' => "Rechercher des propriétés avec la puissance d'un moteur de recherche plein texte",
+	'solrsearch' => 'SolrSearch',
+	'solrstore-searchFieldSets' => 'SolrSearch',
+	'solrstore-searchFieldSets-select' => 'Veuillez sélectionner un SearchSet',
+	'solrstore-searchFieldSets-title' => 'SolrSearch: choix de SearchSet',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -59,6 +70,14 @@ $messages['hsb'] = array(
 	'solrstore-searchFieldSets' => 'SolrSearch',
 	'solrstore-searchFieldSets-select' => 'Prošu wubjer pytansku sadźbu',
 	'solrstore-searchFieldSets-title' => 'SolrSearch: Wuběr pytanskich sadźbow',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'solrsearch' => 'SolrSich',
+	'solrstore-searchFieldSets' => 'SolrSich',
 );
 
 /** Macedonian (Македонски)
