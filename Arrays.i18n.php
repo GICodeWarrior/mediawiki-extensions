@@ -303,3 +303,8 @@ $messages['zh-hans'] = array(
 	'arrays-desc' => '存储和计算指定的数组',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'arrays-desc' => '存儲和計算指定的數組',
+);
+
