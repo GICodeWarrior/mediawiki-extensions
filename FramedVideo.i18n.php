@@ -931,6 +931,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
+	'framedvideo_position' => 'desno',
 	'framedvideo_errors' => 'Došlo je do nekoliko grešaka!',
 	'framedvideo_error' => 'Došlo je do greške!',
 	'framedvideo_error_height_required' => 'Video tipu "$1" je potreban parametar "height".',
@@ -1063,5 +1064,13 @@ $messages['zh-hans'] = array(
 	'framedvideo_errors' => '出现多个错误！',
 	'framedvideo_error' => '出现错误！',
 	'framedvideo_helppage' => 'Help:视频',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'framedvideo_position' => '對',
+	'framedvideo_errors' => '出現多個錯誤！',
+	'framedvideo_error' => '出現錯誤！',
+	'framedvideo_helppage' => 'Help:視頻',
 );
 
