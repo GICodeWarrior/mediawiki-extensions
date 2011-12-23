@@ -565,6 +565,15 @@ $messages['sr-ec'] = array(
 	'bm-printversion-inexistent-book' => 'Књига није пронађена. Унесите назив постојеће књиге да бисте добили њено издање за штампу.',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'bookmanager-desc' => 'Alatke za knjige',
+	'bm-printversion' => 'Izdanje za štampu',
+	'bm-printversion-desc' => 'Stvara [[Special:PrintVersion|izdanje za štampu]] knjige',
+	'bm-printversion-no-book' => 'Unesite naziv knjige da biste dobili njeno izdanje za štampu.',
+	'bm-printversion-inexistent-book' => 'Knjiga nije pronađena. Unesite naziv postojeće knjige da biste dobili njeno izdanje za štampu.',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  * @author Lokal Profil
@@ -626,5 +635,16 @@ $messages['zh-hans'] = array(
 	'bm-printversion-desc' => '生成 [[Special:PrintVersion|打印版]] 的一本书',
 	'bm-printversion-no-book' => '请输入一本书以获取其打印版本的名称。',
 	'bm-printversion-inexistent-book' => '找不到的书。请输入现有的书，以获取其打印版本的名称。',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'bookmanager-desc' => '書的工具',
+	'bm-booktools-section' => '本書的工具',
+	'bm-randomchapter-link' => '隨機章',
+	'bm-printversion' => '打印版本',
+	'bm-printversion-desc' => '生成 [[Special:PrintVersion|打印版]] 的一本書',
+	'bm-printversion-no-book' => '請輸入一本書以獲取其打印版本的名稱。',
+	'bm-printversion-inexistent-book' => '找不到的書。請輸入現有的書，以獲取其打印版本的名稱。',
 );
 
