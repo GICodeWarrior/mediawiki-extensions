@@ -555,6 +555,14 @@ $messages['sr-ec'] = array(
 	'templatelink_newtitle' => '$1 (укључено)',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'templatelink' => 'Veza šablona',
+	'templatelink_desc' => 'Ovo proširenje može prikazati šablon kao novu stranicu',
+	'templatelink_empty' => 'Morate uneti parametar.',
+	'templatelink_newtitle' => '$1 (uključeno)',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
