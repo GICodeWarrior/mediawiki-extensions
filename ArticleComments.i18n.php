@@ -2104,6 +2104,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'article-comments-desc' => '内容页上启用注释部分',
@@ -2117,7 +2118,7 @@ $messages['zh-hans'] = array(
 	'article-comments-submit-button' => '输入',
 	'article-comments-leave-comment-link' => '留言...',
 	'article-comments-invalid-field' => '$1 所提供的 <nowiki>[$2]</nowiki> 是无效的。',
-	'article-comments-required-field' => '$1必须写一个东西。',
+	'article-comments-required-field' => '“$1”字段是必需的。',
 	'article-comments-submission-failed' => '评论提交失败',
 	'article-comments-failure-reasons' => '对不起，您的意见提交失败是由以下的{{PLURAL:$1|原因|原因}}：',
 	'article-comments-no-comments' => '抱歉，页 "[[$1]]" 在这个时候不会接受的评论。',
@@ -2136,6 +2137,40 @@ $messages['zh-hans'] = array(
 	'article-comments-comment-missing-date-parameter' => '缺少注释的日期',
 	'article-comments-no-spam' => '提交的字段中，至少一个被标记为垃圾邮件。',
 	'processcomment' => '进程文章注释',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'article-comments-desc' => '內容頁上啟用注釋部分',
+	'article-comments-title-string' => '標題',
+	'article-comments-name-string' => '名字',
+	'article-comments-name-field' => '名字（必須寫一個）：',
+	'article-comments-url-field' => '網址：',
+	'article-comments-url-string' => '互聯網地止',
+	'article-comments-comment-string' => '評論',
+	'article-comments-comment-field' => '評論：',
+	'article-comments-submit-button' => '輸入',
+	'article-comments-leave-comment-link' => '留言...',
+	'article-comments-invalid-field' => '$1 所提供的 <nowiki>[$2]</nowiki> 是無效的。',
+	'article-comments-required-field' => '“$1”字段是必需的。',
+	'article-comments-submission-failed' => '評論提交失敗',
+	'article-comments-failure-reasons' => '對不起，您的意見提交失敗是由以下的{{PLURAL:$1|原因|原因}}：',
+	'article-comments-no-comments' => '抱歉，頁 "[[$1]]" 在這個時候不會接受的評論。',
+	'article-comments-talk-page-starter' => '<noinclude>對"[[$1]]"評論
+<comments />
+----__NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1說。。。',
+	'article-comments-summary' => '提供由 $1 - 通過 ArticleComments 擴展名的評論',
+	'article-comments-submission-succeeded' => '評論提交成功',
+	'article-comments-submission-success' => '您已成功為 "[[$1]]" 提交注釋',
+	'article-comments-submission-view-all' => '您可以查看[[$1|所有該頁上的評論]]',
+	'article-comments-user-is-blocked' => '您的用戶帳戶當前阻止編輯 "[[$1]]"。',
+	'article-comments-comment-bad-mode' => '無效的模式給予評論。
+"plain"、"normal"和"wiki"的可用的。',
+	'article-comments-comment-missing-name-parameter' => '缺少名稱',
+	'article-comments-comment-missing-date-parameter' => '缺少注釋的日期',
+	'article-comments-no-spam' => '提交的字段中，至少一個被標記為垃圾郵件。',
+	'processcomment' => '進程文章注釋',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬)
