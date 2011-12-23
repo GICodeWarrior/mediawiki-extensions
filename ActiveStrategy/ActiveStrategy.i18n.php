@@ -572,6 +572,14 @@ $messages['sr-ec'] = array(
 	'nedits' => '$1 {{PLURAL:$1|измена|измене|измена}}',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'activestrategy' => 'Aktivna strategija',
+	'active-strategy-desc' => 'Prikazuje broj izmena za strateško planirane stranice',
+	'active-strategy-intro' => 'Broj izmena zadatih stranica {{PLURAL:$1|poslednji $1 dan|u poslednja $1 dana|u poslednjih $1 dana}}.',
+	'nedits' => '$1 {{PLURAL:$1|izmena|izmene|izmena}}',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author Cohan
