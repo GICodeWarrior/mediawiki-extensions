@@ -1985,6 +1985,11 @@ $messages['sr-ec'] = array(
 	'cb_previous_items_stats' => ' ($1 - $2)',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'cb_previous_items_stats' => ' ($1 - $2)',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  * @author Tobulos1
@@ -2282,5 +2287,42 @@ $messages['zh-hans'] = array(
 	'cb_edit_clear_hint' => '清除当前表达式 (选择全部)',
 	'cb_edit_paste_hint' => '如有可能，将运算符粘贴到当前的位置',
 	'cb_edit_paste_right_hint' => '如有可能，将运算符粘贴到下一个位置',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'categorybrowser' => '類別瀏覽器',
+	'categorybrowser-desc' => '提供了[[Special:CategoryBrowser|特殊頁面]]以篩選最受歡迎的類別，並使用AJAX界面瀏覽。',
+	'cb_requires_javascript' => '類別瀏覽器擴展需要在瀏覽器中啟用的 JavaScript。',
+	'cb_ie6_warning' => '條件編輯器無法在Internet Explorer 6.0 或更早版本上正常工作。
+然而，瀏覽預定義的條件應當正常。
+如有可能請更換或升級您的瀏覽器。',
+	'cb_show_no_parents_only' => '僅顯示沒有上級的類別',
+	'cb_cat_name_filter' => '按名稱搜索類別：',
+	'cb_cat_name_filter_clear' => '按此清除類別名稱篩選器',
+	'cb_cat_name_filter_ci' => '區分大小寫',
+	'cb_copy_line_hint' => '使用[+]和[>+] 按鈕，複製並粘貼運算符到選定的表達式中。',
+	'cb_has_subcategories' => '$1個 {{PLURAL:$1|subcategory|subcategories}}',
+	'cb_has_pages' => '$1個頁面',
+	'cb_has_files' => '$1個 {{PLURAL:$1|file|files}}',
+	'cb_has_parentcategories' => '上級類別(如果存在)',
+	'cb_previous_items_link' => '上一頁',
+	'cb_next_items_link' => '下一頁',
+	'cb_next_items_stats' => '(自 $1)',
+	'cb_cat_subcats' => '子類別',
+	'cb_cat_pages' => '頁',
+	'cb_cat_files' => '文件',
+	'cb_apply_button' => '應用',
+	'cb_all_op' => '全部',
+	'cb_or_op' => '或',
+	'cb_and_op' => '和',
+	'cb_edit_left_hint' => '如有可能移至左側',
+	'cb_edit_right_hint' => '如有可能移至右側',
+	'cb_edit_remove_hint' => '如果可能則刪除',
+	'cb_edit_copy_hint' => '複製運算符到剪貼板',
+	'cb_edit_append_hint' => '在最後一個位置插入運算符',
+	'cb_edit_clear_hint' => '清除當前表達式 (選擇全部)',
+	'cb_edit_paste_hint' => '如有可能，將運算符粘貼到當前的位置',
+	'cb_edit_paste_right_hint' => '如有可能，將運算符粘貼到下一個位置',
 );
 
