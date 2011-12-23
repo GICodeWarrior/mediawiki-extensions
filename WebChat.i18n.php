@@ -709,6 +709,17 @@ $messages['sr-ec'] = array(
 	'right-webchat' => 'могућност коришћења [[Special:WebChat|интернет ћаскања]]',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'webchat' => 'Internet ćaskanje',
+	'webchat-desc' => 'Dodaje posebnu stranicu za [[Special:WebChat|ćaskanje s drugim korisnicima]]',
+	'webchat-header' => "Ova posebna stranica omogućava vam da se dopisujete u realnom vremenu s ostalim korisnicima vikije.
+Da biste se povezali, kliknite na dugme ''Connect''.
+Ako ste prijavljeni, vaše korisničko ime biće unapred popunjeno.
+Anonimnim korisnicima je dato nasumično korisničko ime, ali se ono može promeniti.",
+	'right-webchat' => 'mogućnost korišćenja [[Special:WebChat|internet ćaskanja]]',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
