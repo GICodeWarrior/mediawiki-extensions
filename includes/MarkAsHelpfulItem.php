@@ -138,7 +138,7 @@ class MarkAsHelpfulItem {
 	 */
 	public function loadFromDatabase( $conds ) {
 
-		$searchKey = array_keys ( $conds );
+		$searchKey = array_keys( $conds );
 
 		$flag = sort( $searchKey );
 
@@ -148,7 +148,7 @@ class MarkAsHelpfulItem {
 
 		$searchKey = implode( ',', $searchKey );
 
-		$allowableSearchKey = array ( 'mah_id', 'mah_item,mah_type,mah_user_id,mah_user_ip' );
+		$allowableSearchKey = array( 'mah_id', 'mah_item,mah_type,mah_user_id,mah_user_ip' );
 
 		if ( !in_array( $searchKey, $allowableSearchKey ) ) {
 			throw new MWMarkAsHelpFulItemSearchKeyException( 'Invalid search key!' );
