@@ -320,3 +320,8 @@ $messages['zh-hans'] = array(
 	'hidens-desc' => '当页面处于指定的名字空间下，或当页面调用了<code><nowiki>{{#hidens:}}</nowiki></code>解析器函数时，在标题中隐藏名字空间',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'hidens-desc' => '當頁面處於指定的名字空間下，或當頁面調用了<code><nowiki>{{#hidens:}}</nowiki></code>解析器函數時，在標題中隱藏名字空間',
+);
+
