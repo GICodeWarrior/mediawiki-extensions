@@ -31,7 +31,8 @@ $messages['qqq'] = array(
 	'webfonts-load' => 'The text shown in the webfont link',
 	'webfonts-reset' => '{{Identical|Reset}}',
 	'webfonts-menu-tooltip' => 'Tooltip text displayed in the webfont link',
-	'webfonts-help' => 'Text for the help link',
+	'webfonts-help' => 'Text for the help link.
+{{Identical|Help}}',
 );
 
 /** Arabic (العربية)
@@ -65,6 +66,7 @@ $messages['be-tarask'] = array(
 	'webfonts-reset' => 'Скінуць',
 	'webfonts-enable-preference' => 'Дазволіць убудаваньне шрыфтоў (WebFonts)',
 	'webfonts-menu-tooltip' => 'Выбраць шрыфт для старонкі',
+	'webfonts-help' => 'Дапамога',
 );
 
 /** Bengali (বাংলা)
@@ -132,6 +134,7 @@ $messages['dsb'] = array(
 	'webfonts-reset' => 'Slědk stajiś',
 	'webfonts-enable-preference' => 'Zasajźenje pismow zmóžniś (WebFonts)',
 	'webfonts-menu-tooltip' => 'Pismo za bok wubraś',
+	'webfonts-help' => 'Pomoc',
 );
 
 /** Spanish (Español)
@@ -222,6 +225,8 @@ $messages['he'] = array(
 	'webfonts-load' => 'בחירת גופן',
 	'webfonts-reset' => 'ביטול גופן רשת',
 	'webfonts-enable-preference' => 'הפעלה של הטמעת גופנים (גופני רשת)',
+	'webfonts-menu-tooltip' => 'בחירת גופן לדף',
+	'webfonts-help' => 'עזרה',
 );
 
 /** Hindi (हिन्दी)
@@ -245,6 +250,7 @@ $messages['hsb'] = array(
 	'webfonts-reset' => 'Wróćo stajić',
 	'webfonts-enable-preference' => 'Zasadźenje pismow zmóžnić (WebFonts)',
 	'webfonts-menu-tooltip' => 'Pismo za stronu wubrać',
+	'webfonts-help' => 'Pomoc',
 );
 
 /** Interlingua (Interlingua)
@@ -281,6 +287,7 @@ $messages['ilo'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Aushulz
  * @author Beta16
  */
 $messages['it'] = array(
@@ -290,6 +297,7 @@ $messages['it'] = array(
 	'webfonts-reset' => 'Reimposta',
 	'webfonts-enable-preference' => "Attiva l'incorporazione dei caratteri (WebFont)",
 	'webfonts-menu-tooltip' => 'Seleziona un tipo di carattere per la pagina',
+	'webfonts-help' => 'Aiuto',
 );
 
 /** Japanese (日本語)
@@ -346,6 +354,7 @@ $messages['lb'] = array(
 	'webfonts-load' => 'Buschtawen-Typ (Font) eraussichen',
 	'webfonts-reset' => 'Zrécksetzen',
 	'webfonts-menu-tooltip' => "Sicht eng Buschtawen-Zort fir d'Säit eraus",
+	'webfonts-help' => 'Hëllef',
 );
 
 /** Macedonian (Македонски)
@@ -358,6 +367,7 @@ $messages['mk'] = array(
 	'webfonts-reset' => 'Врати',
 	'webfonts-enable-preference' => 'Овозможи на вметнување на фонтови (WebFonts)',
 	'webfonts-menu-tooltip' => 'Изберете фонт за страницата',
+	'webfonts-help' => 'Помош',
 );
 
 /** Malayalam (മലയാളം)
@@ -383,6 +393,7 @@ $messages['mr'] = array(
 	'webfonts-load' => 'टंक',
 	'webfonts-reset' => 'पूर्ववत करा',
 	'webfonts-menu-tooltip' => 'पानासाठी टंक निवडा',
+	'webfonts-help' => 'मदत',
 );
 
 /** Malay (Bahasa Melayu)
@@ -395,6 +406,7 @@ $messages['ms'] = array(
 	'webfonts-reset' => 'Set semula',
 	'webfonts-enable-preference' => 'Hidupkan pembenaman fon (WebFonts)',
 	'webfonts-menu-tooltip' => 'Pilih fon untuk laman ini',
+	'webfonts-help' => 'Bantuan',
 );
 
 /** Nepali (नेपाली)
@@ -420,6 +432,7 @@ $messages['nl'] = array(
 	'webfonts-reset' => 'Opnieuw instellen',
 	'webfonts-enable-preference' => 'Lettertypen insluiten inschakelen (WebFonts)',
 	'webfonts-menu-tooltip' => 'Selecteer een lettertype voor de pagina',
+	'webfonts-help' => 'Hulp',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -436,7 +449,13 @@ $messages['no'] = array(
  * @author Psubhashish
  */
 $messages['or'] = array(
+	'webfonts' => 'ୱେବଫଣ୍ଟ',
+	'webfonts-desc' => 'ପୃଷ୍ଠାରେ ଏମବେଡ଼ କରାଯାଇଥିବା ଫଣ୍ଟ',
+	'webfonts-load' => 'ଫଣ୍ଟ ବାଛିବେ',
 	'webfonts-reset' => 'ପୁନସ୍ଥାପନ',
+	'webfonts-enable-preference' => 'ଫଣ୍ଟ ଏମବେଡ଼ କରିବା ସଚଳ କରିବେ (ୱେବ ଫଣ୍ଟ)',
+	'webfonts-menu-tooltip' => 'ଏହି ପୃଷ୍ଠା ପାଇଁ ଏକ ଫଣ୍ଟ ବାଛିବେ',
+	'webfonts-help' => 'ସହଯୋଗ',
 );
 
 /** Polish (Polski)
@@ -483,6 +502,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Eugrus
  * @author Lockal
  * @author Александр Сигачёв
  */
@@ -491,6 +511,9 @@ $messages['ru'] = array(
 	'webfonts-desc' => 'Позволяет встраивать шрифты на страницы',
 	'webfonts-load' => 'Выбрать шрифт',
 	'webfonts-reset' => 'Сбросить',
+	'webfonts-enable-preference' => 'Включить внедрение шрифтов (WebFonts)',
+	'webfonts-menu-tooltip' => 'Выберите шрифт для страницы',
+	'webfonts-help' => 'Справка',
 );
 
 /** Sanskrit (संस्कृतम्)
@@ -524,6 +547,13 @@ $messages['sr-ec'] = array(
 	'webfonts' => 'Веб фонтови',
 	'webfonts-desc' => 'Угради фонтове на страницама',
 	'webfonts-load' => 'Изабери фонт',
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'webfonts' => 'Veb fontovi',
+	'webfonts-desc' => 'Ugradi fontove na stranicama',
+	'webfonts-load' => 'Izaberi font',
 );
 
 /** Swedish (Svenska)
@@ -568,13 +598,17 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Microcell
+ * @author Тест
  */
 $messages['uk'] = array(
 	'webfonts-load' => 'Обрати шрифт',
+	'webfonts-reset' => 'Скинути',
+	'webfonts-help' => 'Допомога',
 );
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'webfonts' => 'Phông chữ Web',
@@ -583,5 +617,26 @@ $messages['vi'] = array(
 	'webfonts-reset' => 'Mặc định lại',
 	'webfonts-enable-preference' => 'Bật các phông chữ được nhúng vào (WebFonts)',
 	'webfonts-menu-tooltip' => 'Chọn phông chữ để sử dụng trong trang',
+	'webfonts-help' => 'Trợ giúp',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => '在页面中嵌入字体',
+	'webfonts-load' => '选择字体',
+	'webfonts-reset' => '重置',
+	'webfonts-help' => '帮助',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => '在頁面中嵌入字體',
+	'webfonts-load' => '選擇字體',
+	'webfonts-reset' => '重置',
+	'webfonts-help' => '幫助',
 );
 
