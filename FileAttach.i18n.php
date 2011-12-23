@@ -392,3 +392,12 @@ $messages['zh-hans'] = array(
 	'fileattach-editcomment' => '文件 [[File:$1|$1]] 连接',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'fileattach-desc' => '允許文件上載到當前頁',
+	'fileattach-attachments' => '文件附件',
+	'fileattach-attachfile' => '附加文件',
+	'fileattach-uploadheading' => '附加文件到 $1',
+	'fileattach-editcomment' => '文件 [[File:$1|$1]] 連接',
+);
+
