@@ -1167,12 +1167,14 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Aushulz
  * @author Beta16
  */
 $messages['it'] = array(
 	'narayam-desc' => 'Permette di aggiungere metodi di input personalizzati per i campi di input',
 	'narayam-toggle-ime' => 'Abilita ($1)',
 	'narayam-help' => 'Aiuto',
+	'narayam-eo' => 'Esperanto',
 );
 
 /** Japanese (日本語)
@@ -1324,6 +1326,13 @@ $messages['lb'] = array(
  */
 $messages['lt'] = array(
 	'narayam-help' => 'Pagalba',
+);
+
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'narayam-as' => 'Asamiešu transliterācija',
 );
 
 /** Maithili (मैथिली)
@@ -1798,6 +1807,9 @@ $messages['pt-br'] = array(
  * @author Minisarm
  */
 $messages['ro'] = array(
+	'narayam-toggle-ime' => 'Activare ($1)',
+	'narayam-menu' => 'Metodă de intrare',
+	'narayam-help' => 'Ajutor',
 	'narayam-help-page' => 'Help:Tastare',
 	'narayam-disable-preference' => 'Dezactivează metoda de introducere (IME) Narayam',
 	'narayam-eo' => 'Esperanto',
@@ -1858,6 +1870,7 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Dim Grits
  * @author Eleferen
+ * @author Eugrus
  * @author MaxSem
  * @author McDutchie
  * @author Александр Сигачёв
@@ -1878,6 +1891,7 @@ $messages['ru'] = array(
 	'narayam-as-bornona' => 'Ассамский Bornona',
 	'narayam-as-inscript' => 'Ассамский инскрипт',
 	'narayam-ber-tfng' => 'Тифинаг (транслитерация)',
+	'narayam-brx-inscript' => 'Bodo InScript',
 	'narayam-eo' => 'Эсперанто',
 	'narayam-hi' => 'Хинди (транслитерация)',
 	'narayam-hi-inscript' => 'Хинди инскрипт',
@@ -1886,9 +1900,11 @@ $messages['ru'] = array(
 	'narayam-ml' => 'Малайская транслитерация',
 	'narayam-ml-inscript' => 'Малайский инскрипт',
 	'narayam-mr' => 'Маратхи (транслитерация)',
+	'narayam-mr-inscript' => 'Marathi InScript',
 	'narayam-ne' => 'Непальская транслитерация',
 	'narayam-ne-inscript' => 'Непальский инскрипт',
 	'narayam-or' => 'Ория транслитерация',
+	'narayam-or-lekhani' => 'Odiya Lekhani',
 	'narayam-or-inscript' => 'Ория инскрипт',
 	'narayam-sa' => 'Санскритская транслитерация',
 	'narayam-sa-inscript' => 'Санскрит инскрипт',
@@ -1897,10 +1913,18 @@ $messages['ru'] = array(
 	'narayam-ta-99' => 'Tamil99',
 	'narayam-ta' => 'Тамильская транслитерация',
 	'narayam-ta-bamini' => 'Тамильский Bamini',
+	'narayam-tcy' => 'Тамильская транслитерация',
 	'narayam-te-inscript' => 'Телугу инскрипт',
 	'narayam-bn-avro' => 'Бенгальский Avro',
 	'narayam-bn-inscript' => 'Бенгальский инскрипт',
 	'narayam-bn-nkb' => 'Бенгальский NKB',
+	'narayam-de' => 'Немецкий',
+	'narayam-gu' => 'Транслитерация гуджарати',
+	'narayam-gu-inscript' => 'Gujarati InScript',
+	'narayam-mai-inscript' => 'Maithili InScript',
+	'narayam-gom-deva' => 'Транслитерация деванагари гоайского конкани',
+	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari InScript',
+	'narayam-he-standard-2011' => 'Hebrew Standard 2011',
 );
 
 /** Rusyn (Русиньскый)
@@ -2109,6 +2133,25 @@ $messages['sr-ec'] = array(
 	'narayam-de' => 'Немачки',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'narayam-desc' => 'Omogućava dodavanje prilagođenih ulaznih metoda za uređivački okvir',
+	'narayam-toggle-ime' => 'Omogući ($1)',
+	'narayam-help' => 'Pomoć',
+	'narayam-help-page' => 'Help:Kucanje',
+	'narayam-checkbox-tooltip' => 'Uključivanje ili isključivanje ulazne metode',
+	'narayam-eo' => 'Esperanto',
+	'narayam-ml' => 'Malajalam preslovljavanje',
+	'narayam-ml-inscript' => 'Malajalam – indijsko pismo',
+	'narayam-sa' => 'Sanskrit preslovljavanje',
+	'narayam-ta-99' => 'Tamil99',
+	'narayam-ta' => 'Tamilsko preslovljavanje',
+	'narayam-bn-avro' => 'Bengalski avro',
+	'narayam-bn-inscript' => 'Bengalski – indijsko pismo',
+	'narayam-bn-nkb' => 'Zvanični raspored za bengalski',
+	'narayam-de' => 'Nemački',
+);
+
 /** Swedish (Svenska)
  * @author Lokal Profil
  * @author WikiPhoenix
@@ -2301,6 +2344,7 @@ $messages['vi'] = array(
  * @author Anakmalaysia
  * @author Bencmq
  * @author Hydra
+ * @author Liangent
  * @author PhiLiP
  * @author Xiaomingyan
  * @author 阿pp
@@ -2314,6 +2358,7 @@ $messages['zh-hans'] = array(
 	'narayam-help-page' => 'Help:打字',
 	'narayam-checkbox-tooltip' => '要打开和关闭切换输入的法',
 	'narayam-disable-preference' => '停用Narayam输入法编辑器（IME）',
+	'narayam-more-imes' => '更多输入法',
 	'narayam-as' => '阿萨姆音译',
 	'narayam-as-avro' => '阿萨姆Avro',
 	'narayam-eo' => '世界语',
@@ -2350,6 +2395,9 @@ $messages['zh-hant'] = array(
 	'narayam-help-page' => 'Help:打字',
 	'narayam-checkbox-tooltip' => '打開和關閉切換輸入法',
 	'narayam-disable-preference' => '停用Narayam輸入法編輯器（IME）',
+	'narayam-more-imes' => '更多輸入法',
+	'narayam-as' => '阿薩姆音譯',
+	'narayam-as-avro' => '阿薩姆Avro',
 	'narayam-eo' => '世界語',
 	'narayam-hi-inscript' => '印地語 InScript',
 	'narayam-kn' => '卡納達語音譯',
