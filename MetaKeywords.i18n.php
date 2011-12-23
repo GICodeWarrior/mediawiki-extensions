@@ -416,6 +416,11 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'metakeywords-desc' => 'Omogućuje konfiguraciju <code>&lt;meta "keywords"&gt;</code> i <code>&lt;meta "description"&gt;</code> tagova po imenskom prostoru',
+	'metakeywords' => ' # Dodajte redove na ovu stranicu u obliku „imenski prostor|ključne reči,odvojene,zapetom“
+ # Pokazatelji (all) i (main) označavaju podrazumevano za sve imenske prostore i nulte imenske prostore.',
+	'metadescription' => ' # Dodajte redove na ovu stranicu u obliku „imenski prostor|opisna oznaka za postavljanje“
+ # Pokazatelji (all) i (main) označavaju podrazumevano za sve imenske prostore i nulte imenske prostore.
+ # Svi slučaji $1 će biti zamenjeni s naslovom tekuće stranice.',
 );
 
 /** Sundanese (Basa Sunda)
