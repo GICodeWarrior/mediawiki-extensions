@@ -446,3 +446,11 @@ $messages['zh-hans'] = array(
 	'includewp-loading-failed' => '未能加载页。',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'includewp-loading-page' => '正在加載頁...',
+	'includewp-show-full-page' => '顯示整頁',
+	'includewp-show-fragment' => '只顯示第一段',
+	'includewp-loading-failed' => '未能加載頁。',
+);
+
