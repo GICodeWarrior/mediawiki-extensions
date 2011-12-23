@@ -427,6 +427,13 @@ $messages['sr-ec'] = array(
 	'untidy' => 'Неуредно',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'tidy-desc' => 'Dodaje jezičak „Uredno“ ili „Neuredno“ (zavisno od $wgUseTidy) na običnim stranicama koji omogućava prevazilaženje globalne HTML Tajdi postavke za prikaz',
+	'tidy' => 'Uredno',
+	'untidy' => 'Neuredno',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
