@@ -282,6 +282,12 @@ $messages['sr-ec'] = array(
 	'wikiBhashaLink' => 'WikiBhasha (бета)',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'wikibhasha' => 'WikiBhasha',
+	'wikiBhashaLink' => 'WikiBhasha (beta)',
+);
+
 /** Telugu (తెలుగు)
  * @author రహ్మానుద్దీన్
  */
