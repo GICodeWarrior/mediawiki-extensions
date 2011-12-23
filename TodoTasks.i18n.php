@@ -1739,6 +1739,7 @@ $messages['zh-hant'] = array(
 	'tasklistchooseproj' => '選擇項目：',
 	'tasklistprojdisp' => '顯示',
 	'tasklistbyname' => '== %s 的任務列表 ==',
+	'tasklistnowguseprojects' => '你已把$wgUseProjects設為"停用"，不能使用本頁面。',
 	'tasklistnoprojects' => "錯誤：您啟動了 '''\$wgUseProjects'''，但是沒有建立 [[MediaWiki:TodoTasksValidProjects]]。參見 [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions] 以取得更多資訊。",
 	'tasklistemailbody' => '，
 
