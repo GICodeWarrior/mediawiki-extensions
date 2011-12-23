@@ -724,3 +724,9 @@ $messages['zh-hans'] = array(
 	'nstab-comments' => '注释',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'commentpages-desc' => '主名字空間的評論頁',
+	'nstab-comments' => '注釋',
+);
+
