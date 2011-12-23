@@ -16,6 +16,7 @@ $messages['en'] = array (
 	'zero-rated-mobile-access-desc' => 'Zero Rated Mobile Access extension provides features for mobile providers that provide free access',
 	'zero-rated-mobile-access-search' => 'Search',
 	'zero-rated-mobile-access-language-options-wiki-page' => 'Language_options',
+	'zero-rated-mobile-access-language-selection' => 'All languages',
 );
 
 $messages['ja'] = array (

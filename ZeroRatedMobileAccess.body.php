@@ -60,6 +60,9 @@ class ExtZeroRatedMobileAccess {
 					'onchange' => 'javascript:window.location = this.options[this.selectedIndex].value;',
 				)
 			);
+			$output .=	Html::element( 'option',
+						array( 'value' => '' ),
+								wfMsg( 'zero-rated-mobile-access-language-selection' ) );
 			foreach ( $languageNames as $languageCode => $languageName ) {
 				$output .=	Html::element( 'option',
 							array( 'value' => '//' . $languageCode . '.m.wikipedia.org/' ),
