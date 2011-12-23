@@ -2134,15 +2134,33 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'mwe-clipedit-crop' => '裁切圖像',
+	'mwe-clipedit-apply_crop' => '對圖像進行裁剪',
+	'mwe-clipedit-reset_crop' => '重新裁剪',
 	'mwe-clipedit-insert_image_page' => '插入到頁面',
+	'mwe-clipedit-insert_into_sequence' => '插入到序列',
+	'mwe-clipedit-preview_insert' => '預覽插入',
 	'mwe-clipedit-cancel_image_insert' => '取消插入',
 	'mwe-clipedit-sc_attributes' => '編輯剪輯細節',
+	'mwe-clipedit-sc_inoutpoints' => '設置進出點',
 	'mwe-clipedit-sc_overlays' => '重疊',
 	'mwe-clipedit-sc_audio' => '音訊控制',
+	'mwe-clipedit-sc_duration' => '期限',
 	'mwe-clipedit-template_properties' => '模板屬性',
 	'mwe-clipedit-custom_title' => '自訂標題',
 	'mwe-clipedit-edit_properties' => '編輯屬性',
 	'mwe-clipedit-other_properties' => '其他屬性',
+	'mwe-clipedit-resource_page' => '資源頁：',
+	'mwe-clipedit-set_in_out_points' => '設置進出點',
+	'mwe-clipedit-start_time' => '開始時間',
+	'mwe-clipedit-end_time' => '結束時間',
+	'mwe-clipedit-preview_inout' => '預覽進出點',
+	'mwe-clipedit-edit-tools' => '編輯工具',
+	'mwe-clipedit-inline-description' => '說明',
+	'mwe-clipedit-edit-video-tools' => '編輯視頻工具',
+	'mwe-clipedit-duration' => '期限：',
+	'mwe-clipedit-layout' => '布局',
+	'mwe-clipedit-layout_right' => '右側圖像布局',
+	'mwe-clipedit-layout_left' => '左側圖像布局',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬)

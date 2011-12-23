@@ -692,6 +692,7 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'addmediawizard-desc' => '加入由Kaltura和維基媒體基金會所開發的媒體精靈。',
+	'addmediawizard-loading' => '正在加載添加媒體嚮導',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)
