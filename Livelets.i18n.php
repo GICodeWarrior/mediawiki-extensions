@@ -241,3 +241,8 @@ $messages['zh-hans'] = array(
 	'livelets-desc' => '允许将被引用的页加载主页面内容之后，可以使用 Ajax 动态更新',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'livelets-desc' => '允許將被引用的頁加載主頁面內容之後，可以使用 Ajax 動態更新',
+);
+
