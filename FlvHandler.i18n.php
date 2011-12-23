@@ -380,6 +380,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
+	'flvhandler_desc' => 'Dozvoli dodavanje fleš video-snimaka (.flv) kao standardne datoteke (npr. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
 	'flv-long-desc' => 'Fleš video, $1 × $2 piksela, veličina fajla: $3',
 );
 
@@ -447,5 +448,11 @@ $messages['vi'] = array(
 $messages['zh-hans'] = array(
 	'flvhandler_desc' => '允许将 Flash 视频文件(.flv)添加为标准文件(例如：<nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
 	'flv-long-desc' => 'Flash 视频，$1 × $2 像素，文件大小：$3',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'flvhandler_desc' => '允許將 Flash 視頻文件(.flv)添加為標準文件(例如：<nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => 'Flash 視頻，$1 × $2 像素，文件大小：$3',
 );
 
