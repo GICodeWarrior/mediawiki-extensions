@@ -555,6 +555,8 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'stalepages-summary' => '這是在最近$1天內未曾編輯的頁面單。',
+	'stalepages' => '已失效的頁面',
+	'stalepages-desc' => '列出最近未被編輯的[[Special:Stalepages|list of pages]]',
+	'stalepages-summary' => '這是一個不在最後的 $1 天中進行編輯的頁面的列表。',
 );
 
