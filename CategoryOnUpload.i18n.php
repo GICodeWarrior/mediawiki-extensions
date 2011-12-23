@@ -710,6 +710,7 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'categoryonupload-desc' => 'Traži od korisnika da izabere kategoriju kada šalje fajl',
 	'categoryonupload-label' => 'Kategorija:',
+	'categoryonupload-none' => '-',
 );
 
 /** Seeltersk (Seeltersk)
