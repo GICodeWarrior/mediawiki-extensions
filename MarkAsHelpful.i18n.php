@@ -33,6 +33,18 @@ This is a feature in development. See [[mw:MarkAsHelpful]] for background inform
 	'mah-action-error' => 'Generic error message',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'markashelpful-desc' => 'Pourchas a ra un etrefas implijer evit merkañ an evezhiadennoù evel talvoudus',
+	'mah-mark-text' => 'Merkañ evel talvoudus',
+	'mah-you-marked-text' => "Soñjal a ra deoc'h ez eo talvoudus",
+	'mah-someone-marked-text' => 'Soñjal a ra {{GENDER:$1|$1}} ez eo talvoudus',
+	'mah-undo-mark-text' => 'dizober',
+	'mah-action-error' => "Ur fazi a zo bet oc'h ober an obererezh-mañ",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -40,7 +52,7 @@ $messages['de'] = array(
 	'markashelpful-desc' => 'Ermöglicht eine Benutzeroberfläche mit der Kommentare als hilfreich markiert werden können',
 	'mah-mark-text' => 'Als hilfreich markieren',
 	'mah-you-marked-text' => 'Du meinst, dass dieser Kommentar hilfreich ist.',
-	'mah-someone-marked-text' => '$1 meint, dass dieser Kommentar hilfreich ist.',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1}} meint, dass dieser Kommentar hilfreich ist.',
 	'mah-undo-mark-text' => 'rückgängig machen',
 	'mah-action-error' => 'Beim Ausführen dieser Aktion ist ein Fehler aufgetreten.',
 );
@@ -52,6 +64,18 @@ $messages['de-formal'] = array(
 	'mah-you-marked-text' => 'Sie meinen, dass dieser Kommentar hilfreich ist.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'markashelpful-desc' => 'Staja wužywarski pówjerch k dispoziciji, aby se komentary ako pomocniwe markěrowali',
+	'mah-mark-text' => 'Ako pomocniwe markěrowaś',
+	'mah-you-marked-text' => 'Maš to za pomocniwe',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1}} ma to za pomoclnwe',
+	'mah-undo-mark-text' => 'anulěrowaś',
+	'mah-action-error' => 'Pśi wuwjeźenju akcije jo zmólka nastała',
+);
+
 /** French (Français)
  * @author Gomoko
  */
@@ -59,7 +83,7 @@ $messages['fr'] = array(
 	'markashelpful-desc' => 'Fournit une interface utilisateur pour marquer les commentaires comme utiles',
 	'mah-mark-text' => 'Marquer comme utile',
 	'mah-you-marked-text' => 'Vous pensez que ceci est utile',
-	'mah-someone-marked-text' => '$1pense que cela est utile',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1}} pense que cela est utile',
 	'mah-undo-mark-text' => 'annuler',
 	'mah-action-error' => 'Il y a eu une erreur en exécutant cette action',
 );
@@ -83,7 +107,7 @@ $messages['hsb'] = array(
 	'markashelpful-desc' => 'Staja wužiwarski powjerch k dispoziciji, zo bychu so komentary jako pomocliwe markěrowali',
 	'mah-mark-text' => 'Jako pomocliwy markěrować',
 	'mah-you-marked-text' => 'Maš to za pomocliwe',
-	'mah-someone-marked-text' => '$1 ma to za pomocliwe',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1}} ma to za pomocliwe',
 	'mah-undo-mark-text' => 'cofnyć',
 	'mah-action-error' => 'Při wuwjedźenju akcije je zmylk wustupił',
 );
@@ -93,6 +117,7 @@ $messages['hsb'] = array(
  */
 $messages['lb'] = array(
 	'mah-mark-text' => 'Dëst als nëtzlech markéieren',
+	'mah-you-marked-text' => 'Dir mengt datt dat nëtzlech ass',
 	'mah-undo-mark-text' => 'réckgängeg maachen',
 );
 
@@ -103,7 +128,7 @@ $messages['mk'] = array(
 	'markashelpful-desc' => 'Овозможува кориснички посредник за означување на коментари како корисни (т.е. од помош)',
 	'mah-mark-text' => 'Означете го ова како корисно',
 	'mah-you-marked-text' => 'Сметате дека ова е корисно',
-	'mah-someone-marked-text' => '$1 смета дека ова е корисно',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1}} смета дека ова е корисно',
 	'mah-undo-mark-text' => 'врати',
 	'mah-action-error' => 'Се појави грешка при извршувањето на дејството',
 );
