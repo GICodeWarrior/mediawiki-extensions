@@ -528,6 +528,11 @@ $messages['fy'] = array(
 	'editmsg-search' => 'Sykje',
 );
 
+/** Simplified Gan script (‪赣语(简体)‬) */
+$messages['gan-hans'] = array(
+	'editmsg-search' => '寻吖',
+);
+
 /** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
@@ -1816,6 +1821,9 @@ $messages['zh-hant'] = array(
 	'editmessages' => '編輯訊息',
 	'editmsg-target' => '目標訊息：',
 	'editmsg-search' => '搜尋',
+	'editmsg-get-patch' => '生成的修補程序',
 	'editmsg-new-search' => '新的搜尋',
+	'editmsg-apply-patch' => '應用修補程序',
+	'editmsg-patch-success' => '成功進行修補。',
 );
 
