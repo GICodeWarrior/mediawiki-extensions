@@ -35,7 +35,7 @@ $messages['en'] = array(
 	// Groups
 	'group-contestadmin' => 'Contest admins',
 	'group-contestadmin-member' => '{{GENDER:$1|contest administrator}}',
-	'grouppage-contestadmin' => '{{ns:project}}:Contest_administrators',
+	'grouppage-contestadmin' => '{{ns:project}}:Contest administrators',
 
 	'group-contestant' => 'Contestant',
 	'group-contestant-member' => '{{GENDER:$1|Contestant}}',
@@ -43,7 +43,7 @@ $messages['en'] = array(
 
 	'group-contestjudge' => 'Contest judges',
 	'group-contestjudge-member' => '{{GENDER:$1|contest judge}}',
-	'grouppage-contestjudge' => '{{ns:project}}:Contest_judges',
+	'grouppage-contestjudge' => '{{ns:project}}:Contest judges',
 
 	// Preferences
 	'prefs-contest' => 'Contests',
