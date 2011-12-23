@@ -4669,6 +4669,7 @@ $1',
 	'sig-anonymous' => "''Anonimno''",
 	'sig-private' => "''Privatno''",
 	'sign-sigdetails' => 'Detalji o potpisu',
+	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|razgovor]] • <!--
 -->[[Special:Contributions/$1|doprinosi]] • <!--
@@ -5429,6 +5430,7 @@ $messages['zh-hant'] = array(
 	'sign-viewfield-email' => '電郵',
 	'sign-viewfield-age' => '年齡',
 	'sign-viewfield-options' => '選項',
+	'sign-signatures' => '簽名',
 	'sign-closed' => '已關閉',
 	'sign-viewfield-reviewcomment' => '評論',
 	'sign-review-comment' => '評論',

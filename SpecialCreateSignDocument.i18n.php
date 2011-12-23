@@ -2189,6 +2189,7 @@ $messages['zh-hans'] = array(
 	'createsigndoc-optional' => '可选',
 	'createsigndoc-create' => '创造',
 	'createsigndoc-error-generic' => '错误：$1',
+	'createsigndoc-error-pagenoexist' => '错误：页面 [[$1]] 不存在。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -2201,6 +2202,7 @@ $messages['zh-hant'] = array(
 	'createsigndocument' => '啟用文件簽名',
 	'createsigndoc-pagename' => '頁面：',
 	'createsigndoc-email' => '電郵地址：',
+	'createsigndoc-address' => '家的地址',
 	'createsigndoc-phone' => '電話號碼：',
 	'createsigndoc-bday' => '出生日期：',
 	'createsigndoc-hidden' => '隱藏',
