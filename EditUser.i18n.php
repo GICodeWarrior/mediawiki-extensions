@@ -492,6 +492,11 @@ $messages['fy'] = array(
 	'edituser-dosearch' => 'Sykje',
 );
 
+/** Simplified Gan script (‪赣语(简体)‬) */
+$messages['gan-hans'] = array(
+	'edituser-dosearch' => '寻吖',
+);
+
 /** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
@@ -1325,10 +1330,10 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'edituser-desc' => 'Omogućava privilegovanim korisnicima da menjaju podešavanja drugih korisnika',
 	'edituser' => 'Izmeni korisnika',
-	'edituser-username' => 'Ime',
+	'edituser-username' => 'Korisničko ime:',
 	'edituser-dosearch' => 'Pretraga',
-	'edituser-nouser' => 'Željeni korisnik ne postoji',
-	'edituser-exempt' => 'Željeni korisnik ne može da bude izmenjen',
+	'edituser-nouser' => 'Korisnik „$1“ ne postoji.',
+	'edituser-exempt' => 'Ne mogu da uredim korisnika „$1“.',
 	'right-edituser' => 'Izmeni podešavanja drugih korisnika',
 	'right-edituser-exempt' => 'Drugi ne mogu da menjaju podešavanja ovog korisnika',
 );
@@ -1599,10 +1604,10 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'edituser-desc' => '允許特許用戶改變其他用戶的個人偏好',
 	'edituser' => '編輯使用者',
-	'edituser-username' => '用戶名',
+	'edituser-username' => '用戶名：',
 	'edituser-dosearch' => '搜尋',
-	'edituser-nouser' => '指定的用戶不存在',
-	'edituser-exempt' => '指定的用戶無法被編輯',
+	'edituser-nouser' => '用戶 $1 不存在。',
+	'edituser-exempt' => '用戶 $1 不能被編輯。',
 	'right-edituser' => '編輯其他用戶的偏好設定',
 	'right-edituser-exempt' => '他人無法編輯這個使用者的偏好設定',
 );
