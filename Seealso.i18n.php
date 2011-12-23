@@ -630,6 +630,12 @@ $messages['sr-ec'] = array(
 	'seealso-desc' => "Преведени наслови ''See also'' користећи ознаку <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'seealso' => 'Takođe pogledajte',
+	'seealso-desc' => "Prevedeni naslovi ''See also'' koristeći oznaku <code><nowiki><seealso></nowiki></code>",
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
