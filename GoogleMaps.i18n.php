@@ -2250,6 +2250,11 @@ $wgGoogleMapsMessages['ga'] = array(
 	'gm-zoom-control' => 'Nascleanúint',
 );
 
+/** Simplified Gan script (‪赣语(简体)‬) */
+$wgGoogleMapsMessages['gan-hans'] = array(
+	'gm-search' => '寻吖',
+);
+
 /** Traditional Gan script (‪贛語(繁體)‬)
  * @author Symane
  */
@@ -5573,6 +5578,8 @@ $wgGoogleMapsMessages['sr-el'] = array(
 	'gm-no-results' => 'Nema rezultata',
 	'gm-searching' => 'pretraživanje...',
 	'gm-map' => 'Mapa',
+	'gm-note' => 'Napomena: ne zaboravite da umnožite šta želite da sačuvate na stranici (ispod) pre nego što kliknete na „Učitaj mapu“, „Sačuvaj“ ili „Pregledaj“!',
+	'gm-instructions' => 'Ispod su viki markeri za stvaranje mape iznad.',
 	'gm-are-you-sure' => 'Jeste li sigurni?',
 	'gm-clear-all-points' => 'Obriši sve bodove',
 	'gm-refresh-points' => 'Osveži tačke',
@@ -5580,6 +5587,7 @@ $wgGoogleMapsMessages['sr-el'] = array(
 	'gm-height' => 'Visina',
 	'gm-scale-control' => 'Skaliranje',
 	'gm-overview-control' => 'Pregled',
+	'gm-selector-control' => 'Izbor mape ili satelita',
 	'gm-zoom-control' => 'Navigacija',
 	'gm-large' => 'Velika',
 	'gm-medium' => 'Srednja',
@@ -5601,6 +5609,7 @@ $wgGoogleMapsMessages['sr-el'] = array(
 	'gm-color-path' => 'promeni boju',
 	'gm-color-fill' => 'izmeni ispunjavajuću boju',
 	'gm-add-fill' => 'ispuni površinu',
+	'gm-remove-fill' => 'ukloni popunjavanje',
 	'gm-fill-color' => 'Boja ispunjavanja',
 	'gm-line-color' => 'Boja linije',
 	'gm-opacity' => 'Neprozračnost',
