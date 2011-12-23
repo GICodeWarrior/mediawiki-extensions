@@ -1594,21 +1594,29 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'amazonplus-desc' => 'Široko podesiva ekstenzija za prikaz informacija sa Amazona',
-	'amazonplus-nores' => 'Greška: Nema nađenih rezultata!',
-	'amazonplus-noidres' => 'Greška: Nije nađen ID proizvoda!',
-	'amazonplus-fgcerr' => 'Greška: Podaci sa Amazona su nedostupni!',
-	'amazonplus-slserr' => 'Greška: Podaci sa Amazona nisu mogli biti parsirani!',
-	'amazonplus-used' => 'polovno',
-	'amazonplus-german' => 'Nemački jezik',
-	'amazonplus-french' => 'Francuski jezik',
-	'amazonplus-japanese' => 'Japanski jezik',
-	'amazonplus-amazon' => 'cena na Amazonu',
+	'amazonplus-desc' => 'Dodatak za prikaz informacija s Amazona',
+	'amazonplus-nores' => 'Greška: Nema pronađenih rezultata!',
+	'amazonplus-noidres' => 'Greška: Nije pronađena identifikacija proizvoda!',
+	'amazonplus-fgcerr' => 'Greška: Podaci s Amazona su nedostupni!',
+	'amazonplus-slserr' => 'Greška: Podaci s Amazona nisu raščlanjeni!',
+	'amazonplus-used' => 'korišćeno',
+	'amazonplus-german' => 'Nemački',
+	'amazonplus-french' => 'Francuski',
+	'amazonplus-japanese' => 'Japanski',
+	'amazonplus-amazon' => 'Cena na Amazonu',
 	'amazonplus-new' => 'novo',
-	'amazonplus-none' => 'Nema više raspoloživih primeraka ovog poizvoda',
+	'amazonplus-status' => '($1)',
+	'amazonplus-none' => 'Nema više raspoloživih primeraka ovog proizvoda.',
+	'amazonplus-currency' => '$3$1 $2$4',
 	'amazonplus-cp-none' => 'Ništa',
+	'amazonplus-cp-usd' => 'USD',
+	'amazonplus-cp-cad' => 'CAD',
+	'amazonplus-cp-gbp' => 'GBP',
+	'amazonplus-cp-eur' => 'EUR',
+	'amazonplus-cp-jpy' => 'JPY',
 	'amazonplus-more' => 'više',
 	'amazonplus-less' => 'manje',
 );
