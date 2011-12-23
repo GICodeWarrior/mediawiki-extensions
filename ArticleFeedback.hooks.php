@@ -109,124 +109,114 @@ class ArticleFeedbackHooks {
 	 * @return bool
 	 */
 	public static function loadExtensionSchemaUpdates( $updater = null ) {
-		if ( $updater === null ) {
-			global $wgExtNewTables;
-			$wgExtNewTables[] = array(
-				'article_feedback',
-				dirname( __FILE__ ) . '/sql/ArticleFeedback.sql'
-			);
-		} else {
-			$dir = dirname( __FILE__ );
-			$db = $updater->getDB();
+		$dir = dirname( __FILE__ );
+		$db = $updater->getDB();
 
-			if ( $db->tableExists( 'article_assessment' ) ) {
-				// Rename tables
-				$updater->addExtensionUpdate( array(
-					'addTable',
-					'article_feedback',
-					$dir . '/sql/RenameTables.sql',
-					true
-				) );
-			} else {
-				// Initial install tables
-				$updater->addExtensionUpdate( array(
-					'addTable',
-					'article_feedback',
-					$dir . '/sql/ArticleFeedback.sql',
-					true
-				) );
-			}
+		// Initial install tables
+		$updater->addExtensionUpdate( array(
+			'addTable',
+			'article_feedback',
+			$dir . '/sql/ArticleFeedback.sql',
+			true
+		) );
 
-			if ( !$db->indexExists( 'article_feedback', 'aa_page_id', __METHOD__ ) ) {
-				$updater->addExtensionUpdate( array(
-					'addIndex',
-					'article_feedback',
-					'aa_page_id',
-					$dir . '/sql/AddArticleFeedbackPageIndex.sql',
-					true
-				) );
-			}
+		$updater->addExtensionUpdate( array(
+			'addTable',
+			'article_feedback',
+			$dir . '/sql/RenameTables.sql',
+			true
+		) );
 
-			$updater->addExtensionUpdate( array(
-				'addField',
-				'article_feedback',
-				'aa_design_bucket',
-				$dir . '/sql/AddRatingBucket.sql',
-				true
-			) );
-
-			$updater->addExtensionUpdate( array(
-				'addField',
-				'article_feedback_properties',
-				'afp_value_text',
-				$dir . '/sql/AddPropertiesValueText.sql',
-				true
-			) );
-
-			$updater->addExtensionUpdate( array(
-				'addTable',
-				'article_feedback_properties',
-				$dir . '/sql/AddPropertiesTable.sql',
-				true
-			) );
-			$updater->addExtensionUpdate( array(
-				'applyPatch',
-				$dir . '/sql/FixAnonTokenSchema.sql',
-				true
-			) );
-			$updater->addExtensionUpdate( array(
-				'applyPatch',
-				$dir . '/sql/FixPropertiesAnonTokenSchema.sql',
-				true
-			) );
-			$updater->addExtensionUpdate( array(
-				'addTable',
-				'article_feedback_revisions',
-				$dir . '/sql/AddRevisionsTable.sql',
-				true
-			) );
-
-			// add article_feedback_stats_type if necessaray
-			$updater->addExtensionUpdate( array(
-				'addTable',
-				'article_feedback_stats_types',
-				$dir . '/sql/AddArticleFeedbackStatsTypeTable.sql',
-				true
-			) );
-
-			$updater->addExtensionUpdate( array(
-				'addTable',
-				'article_feedback_stats',
-				$dir . '/sql/AddArticleFeedbackStatsTable.sql',
-				true
-			) );
-
-			// migrate article_feedback_stats_highs_lows to article_feedback_stats
-			if ( $db->tableExists( 'article_feedback_stats_highs_lows' ) ) {
-				$updater->addExtensionUpdate( array(
-					'applyPatch',
-					$dir . '/sql/MigrateArticleFeedbackStatsHighsLows.sql',
-					true
-				) );
-			}
-
+		if ( !$db->indexExists( 'article_feedback', 'aa_page_id', __METHOD__ ) ) {
 			$updater->addExtensionUpdate( array(
 				'addIndex',
 				'article_feedback',
-				'article_feedback_timestamp',
-				$dir . '/sql/AddArticleFeedbackTimestampIndex.sql',
-				true
-			) );
-
-			// This change recreates the PK on a new field. Check for that new field's existence
-			$updater->addExtensionUpdate( array(
-				'addField',
-				'article_feedback',
-				'aa_id',
-				$dir . '/sql/RecreatePK.sql',
+				'aa_page_id',
+				$dir . '/sql/AddArticleFeedbackPageIndex.sql',
 				true
 			) );
 		}
+
+		$updater->addExtensionUpdate( array(
+			'addField',
+			'article_feedback',
+			'aa_design_bucket',
+			$dir . '/sql/AddRatingBucket.sql',
+			true
+		) );
+
+		$updater->addExtensionUpdate( array(
+			'addField',
+			'article_feedback_properties',
+			'afp_value_text',
+			$dir . '/sql/AddPropertiesValueText.sql',
+			true
+		) );
+
+		$updater->addExtensionUpdate( array(
+			'addTable',
+			'article_feedback_properties',
+			$dir . '/sql/AddPropertiesTable.sql',
+			true
+		) );
+		$updater->addExtensionUpdate( array(
+			'applyPatch',
+			$dir . '/sql/FixAnonTokenSchema.sql',
+			true
+		) );
+		$updater->addExtensionUpdate( array(
+			'applyPatch',
+			$dir . '/sql/FixPropertiesAnonTokenSchema.sql',
+			true
+		) );
+		$updater->addExtensionUpdate( array(
+			'addTable',
+			'article_feedback_revisions',
+			$dir . '/sql/AddRevisionsTable.sql',
+			true
+		) );
+
+		// add article_feedback_stats_type if necessaray
+		$updater->addExtensionUpdate( array(
+			'addTable',
+			'article_feedback_stats_types',
+			$dir . '/sql/AddArticleFeedbackStatsTypeTable.sql',
+			true
+		) );
+
+		$updater->addExtensionUpdate( array(
+			'addTable',
+			'article_feedback_stats',
+			$dir . '/sql/AddArticleFeedbackStatsTable.sql',
+			true
+		) );
+
+		// migrate article_feedback_stats_highs_lows to article_feedback_stats
+		if ( $db->tableExists( 'article_feedback_stats_highs_lows' ) ) {
+			$updater->addExtensionUpdate( array(
+				'applyPatch',
+				$dir . '/sql/MigrateArticleFeedbackStatsHighsLows.sql',
+				true
+			) );
+		}
+
+		$updater->addExtensionUpdate( array(
+			'addIndex',
+			'article_feedback',
+			'article_feedback_timestamp',
+			$dir . '/sql/AddArticleFeedbackTimestampIndex.sql',
+			true
+		) );
+
+		// This change recreates the PK on a new field. Check for that new field's existence
+		$updater->addExtensionUpdate( array(
+			'addField',
+			'article_feedback',
+			'aa_id',
+			$dir . '/sql/RecreatePK.sql',
+			true
+		) );
+
 		return true;
 	}
 
