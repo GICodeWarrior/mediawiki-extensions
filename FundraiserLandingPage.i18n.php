@@ -20,6 +20,13 @@ $messages['de'] = array(
 	'fundraiserlandingpage-desc' => 'Ermögliche die Nutzung von URL-Parametern als Vorlagenvariablen',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'fundraiserlandingpage-desc' => 'Võtab aadressiribalt parameetrid ja annab need mallimuutujatena edasi määratud mallile.',
+);
+
 /** French (Français)
  * @author Gomoko
  */
@@ -103,6 +110,13 @@ $messages['nl'] = array(
  */
 $messages['pms'] = array(
 	'fundraiserlandingpage-desc' => "A pija ij paràmetr d'anliura e a-j passa a lë stamp spessificà com variàbil dë stamp",
+);
+
+/** Russian (Русский)
+ * @author Eugrus
+ */
+$messages['ru'] = array(
+	'fundraiserlandingpage-desc' => 'Использует параметры URL и передает их в указанный шаблон как переменные шаблона.',
 );
 
 /** Slovenian (Slovenščina)
