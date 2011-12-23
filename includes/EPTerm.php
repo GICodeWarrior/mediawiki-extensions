@@ -94,7 +94,7 @@ class EPTerm extends EPDBObject {
 	 * @param IContextSource $context
 	 * @param array $args
 	 */
-	public static function displayAddNewControl( IContextSource $context, array $courses ) {
+	public static function displayAddNewControl( IContextSource $context, array $args ) {
 		$out = $context->getOutput();
 
 		$out->addHTML( Html::openElement(
@@ -113,8 +113,13 @@ class EPTerm extends EPDBObject {
 
 		$out->addHTML( Html::element( 'label', array( 'for' => 'newcourse' ), wfMsg( 'ep-terms-newcourse' ) ) );
 		
-		$select = new XmlSelect( 'newcourse', 'newcourse' );
-		$select->addOptions( EPCourse::getCourseOptions( $courses ) );
+		$select = new XmlSelect(
+			'newcourse',
+			'newcourse',
+			array_key_exists( 'course', $args ) ? $args['course'] : false
+		);
+		
+		$select->addOptions( EPCourse::getCourseOptions( EPCourse::getEditableCourses( $context->getUser() ) ) );
 		$out->addHTML( $select->getHTML() );
 		
 		$out->addHTML( '&#160;' . Xml::inputLabel( wfMsg( 'ep-terms-newyear' ), 'newyear', 'newyear', 10 ) );

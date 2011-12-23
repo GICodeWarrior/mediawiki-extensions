@@ -41,11 +41,11 @@ class SpecialCourse extends SpecialEPPage {
 		
 		if ( $course === false ) {
 			if ( $this->getUser()->isAllowed( 'epadmin' ) || $this->getUser()->isAllowed( 'epmentor' ) ) {
-				$out->addWikiMsg( 'ep-course-create', 'parsemag', $this->subPage );
+				$out->addWikiMsg( 'ep-course-create', $this->subPage );
 				EPCourse::displayAddNewRegion( $this->getContext(), array( 'name' => $this->subPage ) );
 			}
 			else {
-				$out->addWikiMsg( 'ep-course-none', 'parsemag', $this->subPage );
+				$out->addWikiMsg( 'ep-course-none', $this->subPage );
 			}
 		}
 		else {
@@ -58,7 +58,7 @@ class SpecialCourse extends SpecialEPPage {
 	}
 	
 	/**
-	 * Display the orgs info.
+	 * Display the course info.
 	 * 
 	 * @since 0.1
 	 * 

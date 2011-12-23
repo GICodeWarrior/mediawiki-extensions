@@ -34,8 +34,40 @@ class SpecialTerm extends SpecialEPPage {
 		parent::execute( $subPage );
 
 		$out = $this->getOutput();
-
-		// TODO: AUTH
+		
+		$out->setPageTitle( wfMsgExt( 'ep-term-title', 'parsemag', $this->subPage ) );
+		
+		$term = EPTerm::selectRow( null, array( 'id' => $this->subPage ) );
+		
+		if ( $term === false ) {
+			if ( $this->getUser()->isAllowed( 'epadmin' ) || $this->getUser()->isAllowed( 'epmentor' ) ) {
+				$out->addWikiMsg( 'ep-term-create', $this->subPage );
+				EPTerm::displayAddNewRegion( $this->getContext(), array( 'id' => $this->subPage ) );
+			}
+			else {
+				$out->addWikiMsg( 'ep-term-none', $this->subPage );
+			}
+		}
+		else {
+			$this->displayInfo( $term );
+			
+			$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-term-students' ) ) );
+			
+			// TODO
+		}
+	}
+	
+	/**
+	 * Display the terms info.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param EPTerm $term
+	 */
+	protected function displayInfo( EPTerm $term ) {
+		$out = $this->getOutput();
+		
+		
 	}
 
 }
