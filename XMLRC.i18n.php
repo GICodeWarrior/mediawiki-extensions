@@ -267,6 +267,11 @@ $messages['sr-ec'] = array(
 	'xmlrc-desc' => 'Шаље обавештења о изменама као XML, преко протокола UDP, Џабер или на друге начине',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'xmlrc-desc' => 'Šalje obaveštenja o izmenama kao XML, preko protokola UDP, Džaber ili na druge načine',
+);
+
 /** Telugu (తెలుగు)
  * @author RanjithSutari
  */
