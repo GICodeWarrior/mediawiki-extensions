@@ -1344,6 +1344,12 @@ $messages['sr-ec'] = array(
 	'slippymap_tagname' => 'slippymap',
 );
 
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$messages['sr-el'] = array(
+	'slippymap_extname' => 'SlippyMap',
+	'slippymap_tagname' => 'slippymap',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.
@@ -1453,6 +1459,7 @@ $messages['yi'] = array(
  */
 $messages['zh-hans'] = array(
 	'slippymap_error' => '$1错误：$2',
+	'slippymap_clicktoactivate' => '点击以启动地图',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
