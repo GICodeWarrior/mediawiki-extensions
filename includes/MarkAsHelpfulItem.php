@@ -49,7 +49,7 @@ class MarkAsHelpfulItem {
 	/**
 	 * Setter method
 	 * @param $key string - the name of the property
-	 * @param $value mixed - the valud of the property
+	 * @param $value mixed - the value of the property
 	 */
 	public function setProperty( $key, $value ) {
 		if ( array_key_exists( $key, $this->property ) ) {
@@ -201,8 +201,8 @@ class MarkAsHelpfulItem {
 	}
 
 	/**
-	 * Unmark an item as helpful, we don't allow anonymous user to unarmk an item
-	 * @param $currentUser Object - the current user who is browsing the site
+	 * Unmark an item as helpful, we don't allow anonymous user to unmark an item
+	 * @param $currentUser User - the current user who is browsing the site
 	 */
 	public function unmark( $currentUser ) {
 
@@ -263,7 +263,7 @@ class MarkAsHelpfulItem {
 				$conds['mah_user_id'] = 0;
 			} else {
 				$conds['mah_user_id'] = $user->getId();
-				$conds['mah_user_ip'] = NULL;
+				$conds['mah_user_ip'] = null;
 			}
 		} else {
 			// Invalid User object, we can't allow this user to mark an item
@@ -310,7 +310,7 @@ class MarkAsHelpfulItem {
 
 		$list = array();
 
-		foreach ( $res AS $val ) {
+		foreach ( $res as $val ) {
 			$list[$val->user_id] = array( 'user_name' => $val->user_name,
 				                      'user_id' => $val->user_id,
 				                      'user_ip' => $val->mah_user_ip );
