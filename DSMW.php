@@ -20,7 +20,7 @@
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-    die( 'Not a valid entry point.' );
+	die( 'Not a valid entry point.' );
 }
 
 require_once "$IP/includes/GlobalFunctions.php";
@@ -60,13 +60,13 @@ $wgAutoloadClasses['logoot'] = "$wgDSMWIP/logootComponent/logoot.php";
 $wgAutoloadClasses['LogootId'] = "$wgDSMWIP/logootComponent/LogootId.php";
 $wgAutoloadClasses['LogootPosition'] = "$wgDSMWIP/logootComponent/LogootPosition.php";
 $wgAutoloadClasses['Diff1']
-        = $wgAutoloadClasses['_DiffEngine1']
-        = $wgAutoloadClasses['_DiffOp1']
-        = $wgAutoloadClasses['_DiffOp_Add1']
-        = $wgAutoloadClasses['_DiffOp_Change1']
-        = $wgAutoloadClasses['_DiffOp_Copy1']
-        = $wgAutoloadClasses['_DiffOp_Delete1']
-        = "$wgDSMWIP/logootComponent/DiffEngine.php";
+	= $wgAutoloadClasses['_DiffEngine1']
+	= $wgAutoloadClasses['_DiffOp1']
+	= $wgAutoloadClasses['_DiffOp_Add1']
+	= $wgAutoloadClasses['_DiffOp_Change1']
+	= $wgAutoloadClasses['_DiffOp_Copy1']
+	= $wgAutoloadClasses['_DiffOp_Delete1']
+	= "$wgDSMWIP/logootComponent/DiffEngine.php";
 
 $wgAutoloadClasses['LogootIns'] = "$wgDSMWIP/logootComponent/LogootIns.php";
 $wgAutoloadClasses['LogootDel'] = "$wgDSMWIP/logootComponent/LogootDel.php";
@@ -101,10 +101,10 @@ $wgHooks['EditPageBeforeConflictDiff'][] = 'DSMWHooks::onEditConflict';
 $wgHooks['UploadComplete'][] = 'DSMWHooks::onUploadComplete';
 
 $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][] = array(
-    'path' => __FILE__,
-    'name' => 'Distributed&#160;Semantic&#160;MediaWiki',
-    'version' => DSMW_VERSION,
-    'author' => array(
+	'path' => __FILE__,
+	'name' => 'Distributed&#160;Semantic&#160;MediaWiki',
+	'version' => DSMW_VERSION,
+	'author' => array(
 		'[http://www.loria.fr/~mullejea Jean–Philippe&#160;Muller]',
 		'[http://www.loria.fr/~molli Pascal&#160;Molli]',
 		'[http://www.loria.fr/~skaf Hala&#160;Skaf–Molli]',
@@ -113,7 +113,7 @@ $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other']
 		'[http://www.loria.fr/~weiss Stéphane&#160;Weiss]',
 		'[http://m3p.gforge.inria.fr/pmwiki/pmwiki.php?n=Site.Team others]'
 	),
-    'url' => 'http://www.dsmw.org',
+	'url' => 'http://www.dsmw.org',
 	'descriptionmsg' => 'dsmw-desc'
 );
 
@@ -124,21 +124,21 @@ $queryModules = array(
 );
 
 if ( compareMWVersion( $wgVersion ) == -1 ) {
-    $wgApiQueryMetaModules = $queryModules; 
+	$wgApiQueryMetaModules = $queryModules;
 } else {
-    $wgAPIMetaModules = $queryModules;
+	$wgAPIMetaModules = $queryModules;
 }
 
 if ( compareMWVersion( $wgVersion, '1.16.0' ) == -1 ) {
-    $wgAPIModules += array(
-    	'upload' => 'ApiUpload',
-        'ApiQueryImageInfo' => 'ApiQueryImageInfo',
-    );
-    
-    $wgAutoloadLocalClasses['UploadBase'] = dirname( __FILE__ ) . '/api/upload/UploadBase.php';
-    $wgAutoloadLocalClasses['UploadFromFile'] = dirname( __FILE__ ) . '/api/upload/UploadFromFile.php';
-    $wgAutoloadLocalClasses['UploadFromStash'] = dirname( __FILE__ ) . '/api/upload/UploadFromStash.php';
-    $wgAutoloadLocalClasses['UploadFromUrl'] = dirname( __FILE__ ) . '/api/upload/UploadFromUrl.php';
+	$wgAPIModules += array(
+		'upload' => 'ApiUpload',
+		'ApiQueryImageInfo' => 'ApiQueryImageInfo',
+	);
+
+	$wgAutoloadLocalClasses['UploadBase'] = dirname( __FILE__ ) . '/api/upload/UploadBase.php';
+	$wgAutoloadLocalClasses['UploadFromFile'] = dirname( __FILE__ ) . '/api/upload/UploadFromFile.php';
+	$wgAutoloadLocalClasses['UploadFromStash'] = dirname( __FILE__ ) . '/api/upload/UploadFromStash.php';
+	$wgAutoloadLocalClasses['UploadFromUrl'] = dirname( __FILE__ ) . '/api/upload/UploadFromUrl.php';
 }
 
 // To ensure Maps remains compatible with pre 1.16.
@@ -147,13 +147,13 @@ if ( !class_exists( 'Html' ) ) {
 }
 
 function dsmwgSetupFunction() {
-    global $smwgNamespacesWithSemanticLinks;
+	global $smwgNamespacesWithSemanticLinks;
 
-    $smwgNamespacesWithSemanticLinks += array(
-        PATCH => true,
-        PUSHFEED => true,
-        PULLFEED => true,
-        CHANGESET => true
+	$smwgNamespacesWithSemanticLinks += array(
+		PATCH => true,
+		PUSHFEED => true,
+		PULLFEED => true,
+		CHANGESET => true
 	);
 }
 
