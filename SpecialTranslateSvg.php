@@ -14,6 +14,7 @@ class SpecialTranslateSvg extends SpecialPage {
 	private $number = 0;
 	private $added = array();
 	private $modified = array();
+	private $thumb = null;
 
 	function __construct() {
 		parent::__construct( 'TranslateSvg' );
@@ -33,27 +34,30 @@ class SpecialTranslateSvg extends SpecialPage {
 		} else {
 			$file = wfFindFile( $title );
 
-			if ( $file && $file->exists() ){ 
+			if ( $file && $file->exists() ){
 				$this->svg = new DOMDocument( '1.0' );
-				$this->svg->load( $file->getPath() );
+				$this->svg->load( $file->getLocalRefPath() );
 				$this->xpath = new DOMXpath( $this->svg );
 				$this->xpath->registerNamespace( 'svg', 'http://www.w3.org/2000/svg' );
-				if( !$this->makeTranslationReady() ){
-					die( "Could not be made translation ready." ); //TODO: internationalise.
-				}
-				$this->extractTranslations();
-				$this->tidyTranslations();
-				$params = $request->getQueryValues();
-				if( count( $params ) > 2 && isset( $params['title'] ) && isset( $params['file'] ) ){
-					unset( $params['title'] );
-					$filename = $params['file'];
-					unset( $params['file'] );
-					$this->updateTranslations( $params );
-					$this->updateSVG();
-					$this->saveSVG( $file->getPath(), $filename );
-					$file->purgeThumbnails();
+				if( $this->makeTranslationReady() ){
+					$this->extractTranslations();
+					$this->tidyTranslations();
+					$params = $request->getQueryValues();
+					if( count( $params ) > 2 && isset( $params['title'] ) && isset( $params['file'] ) ){
+						unset( $params['title'] );
+						$filename = $params['file'];
+						unset( $params['file'] );
+						$this->updateTranslations( $params );
+						$this->updateSVG();
+						$this->saveSVG( $file->getLocalRefPath(), $filename );
+						$file->purgeThumbnails();
+					} else {
+						$this->thumb = Linker::makeThumbLinkObj( $title, $file, $label = '', '', 
+							$align = 'right', array( 'width' => 250, 'height' => 250) );
+						$this->printTranslations( $file->getName() );
+					}
 				} else {
-					$this->printTranslations( $file->getName() );
+					$this->getOutput()->addHTML( '<p>This file could not be translated, sorry.</p>' );
 				}
 			} else {
 				$this->getOutput()->setStatusCode( 404 );
@@ -91,7 +95,7 @@ class SpecialTranslateSvg extends SpecialPage {
 			$ancestorswitches = $this->xpath->query( "ancestor::svg:switch", $text );
 			if( $ancestorswitches->length == 0 ){
 				$switch = $this->svg->createElement( 'switch' );
-				$text->parentNode->appendChild( $switch );
+				$text->parentNode->insertBefore( $switch, $text );
 				$switch->appendChild( $text ); //Move node into sibling <switch> element
 			} else {
 				if( $text->parentNode->nodeName !== "switch" ){
@@ -111,7 +115,25 @@ class SpecialTranslateSvg extends SpecialPage {
 					//Repair by trimming excess <tspan>s
 					$attrs = ( $child->hasAttributes() ) ? $child->attributes : array();
 					foreach ($attrs as $num => $attr){
-						$text->setAttribute( $attr->name, $attr->value );
+						$parentattr = trim( $text->getAttribute( $attr->name ) );
+						switch( $attr->name ){
+							case 'x':
+							case 'y':
+							case '':
+								$text->setAttribute( $attr->name, $attr->value ); //Overwrite
+								break;
+							case 'style':
+								$merged = $parentattr;
+								if( substr( $merged, -1 ) !== ';' ){
+									$merged .= ';';
+								}
+								$merged .= $attr->value;
+								break;
+							case 'id':
+								break; //Ignore
+							default:
+								return false;
+						}
 					}
 					$text->appendChild( $child->childNodes->item( 0 ) );
 					$text->removeChild( $child );
@@ -166,8 +188,14 @@ class SpecialTranslateSvg extends SpecialPage {
 	 */
 	function printTranslations( $filename ){
 		global $wgScript;
+		
+		$languages = Language::getLanguageNames();
+		$languages['fallback'] = wfMsg( 'translatesvg-fallbackdesc');
+		$languages['qqq'] = wfMsg( 'translatesvg-qqqdesc' );
+			
 		$this->getOutput()->addModules( 'ext.translateSvg' );
-		$html = Html::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'id' => 'specialtranslatesvg' ) ) .
+		$html = $this->thumb .
+			Html::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'id' => 'specialtranslatesvg' ) ) .
 			Html::hidden( 'file', $filename ) .
 			Html::hidden( 'title', $this->getTitle()->getPrefixedText() );
 
@@ -227,7 +255,7 @@ class SpecialTranslateSvg extends SpecialPage {
 			return $this->translations[$language][$num];
 		} else {
 			$fallback = $this->getFallback( $num );
-			if( preg_match( '/^[0-9 .,]+$/', trim( $fallback['text'] ) ) ){
+			if( preg_match( '/^[0-9 .,-]+$/', trim( $fallback['text'] ) ) ){
 				return $fallback;
 			} else {
 				return array( 'text' => '', $fallback['x'], $fallback['y'] );
@@ -257,9 +285,13 @@ class SpecialTranslateSvg extends SpecialPage {
 		foreach( $params as $name=>$value ){
 			list( $lang, $num, $param ) = explode( '-', $name );
 			if( !isset( $this->translations[ $lang ][ $num ] ) ){
-				$this->translations[ $lang ][ $num ] = $this->getFallback( $num );
+				if( $lang !== 'qqq' ){
+					$this->translations[ $lang ][ $num ] = $this->getFallback( $num );
+				} else {
+					$this->translations[ $lang ][ $num ] = array();
+				}
 			}
-			$this->translations[ $lang ][ $num ][$param] = $value;
+			$this->translations[ $lang ][ $num ][ $param ] = $value;
 		}
 
 		$reverse = array();

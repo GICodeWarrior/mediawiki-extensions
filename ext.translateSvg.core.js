@@ -91,7 +91,7 @@ function getRemoveLink(){
 
 function getExisting( fallback ){
 	//No need to check for an existing translation since we're creating a new language box
-	if( fallback.match( /^[0-9 .,]+$/ ) ){
+	if( fallback.match( /^[0-9 .,-]+$/ ) ){
 		return fallback;
 	} else {
 		return '';
