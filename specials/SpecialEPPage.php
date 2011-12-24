@@ -166,5 +166,60 @@ abstract class SpecialEPPage extends SpecialPage {
 		
 		return $items;
 	}
+	
+	/**
+	 * Display the summary data.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param EPDBObject $item
+	 * @param boolean $collapsed
+	 */
+	protected function displaySummary( EPDBObject $item, $collapsed = true ) {
+		$out = $this->getOutput();
+		
+		$class = 'wikitable ep-summary mw-collapsible';
+		
+		if ( $collapsed ) {
+			$class.= ' mw-collapsed';
+		}
+		
+		$out->addHTML( Html::openElement( 'table', array( 'class' => $class ) ) );
+		
+		$out->addHTML( '<tr>' . Html::element( 'th', array( 'colspan' => 2 ), wfMsg( 'ep-item-summary' ) ) . '</tr>' );
+		
+		foreach ( $this->getSummaryData( $item ) as $stat => $value ) {
+			$out->addHTML( '<tr>' );
+
+			$out->addHTML( Html::element(
+				'th',
+				array( 'class' => 'ep-summary-name' ),
+				wfMsg( strtolower( get_called_class() ) . '-summary-' . $stat )
+			) );
+
+			$out->addHTML( Html::element(
+				'td',
+				array( 'class' => 'ep-summary-value' ),
+				$value
+			) );
+
+			$out->addHTML( '</tr>' );
+		}
+
+		$out->addHTML( Html::closeElement( 'table' ) );
+	}
+	
+	/**
+	 * Gets the summary data.
+	 *
+	 * @since 0.1
+	 *
+	 * @param EPDBObject $item
+	 *
+	 * @return array
+	 */
+	protected function getSummaryData( EPDBObject $item ) {
+		return array();
+	}
 
 }

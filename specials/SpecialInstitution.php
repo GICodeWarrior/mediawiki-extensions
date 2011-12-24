@@ -55,7 +55,7 @@ class SpecialInstitution extends SpecialEPPage {
 				}
 			}
 			else {
-				$this->displayInfo( $org );
+				$this->displaySummary( $org );
 				
 				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-institution-courses' ) ) );
 				
@@ -65,16 +65,22 @@ class SpecialInstitution extends SpecialEPPage {
 	}
 	
 	/**
-	 * Display the orgs info.
-	 * 
+	 * Gets the summary data.
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param EPOrg $org
+	 *
+	 * @return array
 	 */
-	protected function displayInfo( EPOrg $org ) {
-		$out = $this->getOutput();
-		
-		
+	protected function getSummaryData( EPDBObject $org ) {
+		$stats = array();
+
+		$stats['name'] = $org->getField( 'name' );
+		$stats['city'] = $org->getField( 'city' );
+		$stats['country'] = $org->getField( 'country' );
+
+		return $stats;
 	}
 	
 }

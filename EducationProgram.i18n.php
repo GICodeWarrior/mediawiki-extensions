@@ -156,6 +156,9 @@ $messages['en'] = array(
 	'ep-institution-create' => 'There is no institution with name "$1" yet, but you can create it.',
 	'ep-institution-title' => 'Institution: $1',
 	'ep-institution-courses' => 'Courses',
+	'specialinstitution-summary-name' => 'Name',
+	'specialinstitution-summary-city' => 'City',
+	'specialinstitution-summary-country' => 'Country',
 
 	// Special:Course
 	'ep-course-title' => 'Course: $1',
@@ -174,6 +177,9 @@ $messages['en'] = array(
 	'ep-nav-courses' => 'Courses list',
 	'ep-nav-terms' => 'Terms list',
 	'ep-nav-mycourses' => 'My courses',
+
+	// Misc
+	'ep-item-summary' => 'Summary',
 );
 
 /** Message documentation (Message documentation)
