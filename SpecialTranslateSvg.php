@@ -1,6 +1,14 @@
 <?php
 class SpecialTranslateSvg extends SpecialPage {
+
+	/**
+	 * @var DOMDocument
+	 */
 	private $svg = '';
+
+	/**
+	 * @var DOMXpath
+	 */
 	private $xpath = null;
 	private $translations = array();
 	private $number = 0;
@@ -71,6 +79,10 @@ class SpecialTranslateSvg extends SpecialPage {
 			Html::closeElement( 'form' )
 		);
 	}
+
+	/**
+	 * @return bool
+	 */
 	function makeTranslationReady() {
 		$texts = $this->svg->getElementsByTagName( "text" );
 		$length = $texts->length;
@@ -110,6 +122,7 @@ class SpecialTranslateSvg extends SpecialPage {
 		}
 		return true;
 	}
+
 	function extractTranslations(){
 		$switches = $this->svg->getElementsByTagName( "switch" );
 		$this->number = $switches->length;
@@ -121,10 +134,10 @@ class SpecialTranslateSvg extends SpecialPage {
 				$text = $texts->item( $j );
 				$attributes = array( 'text' => $text->textContent );
 				$attrs = ( $text->hasAttributes() ) ? $text->attributes : array();
-				foreach ($attrs as $num => $attr){
+				foreach ($attrs as $attr){
 					$attributes[$attr->name] = $attr->value;
 				}
-				$this->translations [ $i ][] = $attributes;
+				$this->translations[$i][] = $attributes;
 			}
 		}
 	}
@@ -148,6 +161,9 @@ class SpecialTranslateSvg extends SpecialPage {
 		$this->translations = $new;
 	}
 
+	/**
+	 * @param $filename string
+	 */
 	function printTranslations( $filename ){
 		global $wgScript;
 		$this->getOutput()->addModules( 'ext.translateSvg' );
@@ -184,6 +200,10 @@ class SpecialTranslateSvg extends SpecialPage {
 		$this->getOutput()->addHTML( $html );
 	}
 
+	/**
+	 * @param $num
+	 * @return
+	 */
 	function getFallback( $num ){
 		if( isset( $this->translations['fallback'][$num] ) ){
 			return $this->translations['fallback'][$num];
@@ -192,13 +212,16 @@ class SpecialTranslateSvg extends SpecialPage {
 		}
 	}
 
-	/*
-		Return the existing translation of a text: the starting point that the translator works with.
-		Autofill is annoying at best, but it's useful for numbers. Hence scrub all non-numeric text (but
-		keep other properties).
-		This function is useful when translations are missing for zero or more but not all text elements.
-		For the equivalent function for when they are missing for all text, see the JavaScript function.
-	*/
+	/**
+	 * Return the existing translation of a text: the starting point that the translator works with.
+	 * Autofill is annoying at best, but it's useful for numbers. Hence scrub all non-numeric text (but
+	 * keep other properties).
+	 * This function is useful when translations are missing for zero or more but not all text elements.
+	 * For the equivalent function for when they are missing for all text, see the JavaScript function.
+	 * @param $num
+	 * @param $language string
+	 * @return array
+	 */
 	function getExisting( $num, $language ){
 		if( isset( $this->translations[$language][$num] ) ){
 			return $this->translations[$language][$num];
@@ -212,6 +235,10 @@ class SpecialTranslateSvg extends SpecialPage {
 		}
 	}
 
+	/**
+	 * @param $num
+	 * @return string
+	 */
 	function getDescriptor( $num ){
 		$qqq = '';
 		if( isset( $this->translations['qqq'][$num]['text'] ) ){
@@ -223,6 +250,9 @@ class SpecialTranslateSvg extends SpecialPage {
 		return $qqq;
 	}
 
+	/**
+	 * @param $params array
+	 */
 	function updateTranslations( $params ){
 		foreach( $params as $name=>$value ){
 			list( $lang, $num, $param ) = explode( '-', $name );
@@ -293,6 +323,12 @@ class SpecialTranslateSvg extends SpecialPage {
 			$fallbacks->item( $i )->parentNode->appendChild( $fallbacks->item( $i ) );
 		}
 	}
+
+	/**
+	 * @param $filepath string
+	 * @param $filename string
+	 * @return
+	 */
 	function saveSVG( $filepath, $filename ){
 		$mUpload = new TranslateSvgUpload();
 		$temp = tempnam( wfTempDir(), 'trans' );
