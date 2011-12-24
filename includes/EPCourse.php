@@ -155,8 +155,14 @@ class EPCourse extends EPDBObject {
 	 * 
 	 * @param IContextSource $context
 	 * @param array $args
+	 * 
+	 * @return boolean
 	 */
 	public static function displayAddNewControl( IContextSource $context, array $args = array() ) {
+		if ( !$context->getUser()->isAllowed( 'epmentor' ) ) {
+			return false;
+		}
+		
 		$out = $context->getOutput();
 
 		$out->addHTML( Html::openElement(
@@ -207,6 +213,8 @@ class EPCourse extends EPDBObject {
 		$out->addHTML( Html::hidden( 'newEditToken', $context->getUser()->editToken() ) );
 
 		$out->addHTML( '</fieldset></form>' );
+		
+		return true;
 	}
 	
 	/**
