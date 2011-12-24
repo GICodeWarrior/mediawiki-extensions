@@ -92,7 +92,7 @@ class ApiDeleteEducation extends ApiBase {
 	 * @return User
 	 */
 	public function getUser() {
-		return version_compare( $GLOBALS['wgVersion'], '1.18c', '>' ) ? parent::getUser() : $GLOBALS['wgUser'];
+		return method_exists( 'ApiBase', 'getUser' ) ? parent::getUser() : $GLOBALS['wgUser'];
 	}
 	
 	public function needsToken() {

@@ -56,7 +56,7 @@ abstract class EPPager extends TablePager {
 		
 		$this->mDefaultDirection = true;
 		
-		if ( version_compare( $GLOBALS['wgVersion'], '1.18c', '>' ) ) {
+		if ( method_exists( 'TablePager', 'getUser' ) ) {
 			parent::__construct( $context );
 		}
 		else {
