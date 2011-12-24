@@ -1,13 +1,9 @@
 <?php
 class SpecialTranslateSvg extends SpecialPage {
-
-	/**
-	 * @var SimpleXMLElement
-	 */
 	private $svg = '';
+	private $xpath = null;
 	private $translations = array();
 	private $number = 0;
-	private $num = 0; //iterator
 	private $added = array();
 	private $modified = array();
 
@@ -29,10 +25,14 @@ class SpecialTranslateSvg extends SpecialPage {
 		} else {
 			$file = wfFindFile( $title );
 
-			if ( $file && $file->exists() ){
-				$this->svg = new SimpleXMLElement( $file->getPath(), 0, true );
-				$this->svg->registerXPathNamespace( 'svg', 'http://www.w3.org/2000/svg' );
-				$this->makeTranslationReady();
+			if ( $file && $file->exists() ){ 
+				$this->svg = new DOMDocument( '1.0' );
+				$this->svg->load( $file->getPath() );
+				$this->xpath = new DOMXpath( $this->svg );
+				$this->xpath->registerNamespace( 'svg', 'http://www.w3.org/2000/svg' );
+				if( !$this->makeTranslationReady() ){
+					die( "Could not be made translation ready." ); //TODO: internationalise.
+				}
 				$this->extractTranslations();
 				$this->tidyTranslations();
 				$params = $request->getQueryValues();
@@ -71,47 +71,60 @@ class SpecialTranslateSvg extends SpecialPage {
 			Html::closeElement( 'form' )
 		);
 	}
-
 	function makeTranslationReady() {
-		$result = $this->svg->xpath("//svg:text");
-		foreach( $result as &$text ){
-			$text->registerXPathNamespace( 'svg', 'http://www.w3.org/2000/svg' );
-			$ancestorswitches = $text->xpath("ancestor::svg:switch");
-			if( count($ancestorswitches) == 0 ){
-				$parent = $text->xpath("parent::*");
-				$parent = $parent[0];
-				$switch = $parent->addChild('switch');
-				$newtext = $switch->addChild( 'text', $text[0] );
-				foreach( $text->attributes() as $attrname=>$attrvalue ){
-					$newtext->addAttribute( $attrname, $attrvalue );
+		$texts = $this->svg->getElementsByTagName( "text" );
+		$length = $texts->length;
+		for( $i = 0; $i < $length; $i++){
+			$text = $texts->item( $i );
+			$ancestorswitches = $this->xpath->query( "ancestor::svg:switch", $text );
+			if( $ancestorswitches->length == 0 ){
+				$switch = $this->svg->createElement( 'switch' );
+				$text->parentNode->appendChild( $switch );
+				$switch->appendChild( $text ); //Move node into sibling <switch> element
+			} else {
+				if( $text->parentNode->nodeName !== "switch" ){
+					return false; //Deep heirarchies cause us problems later
 				}
-				$dom=dom_import_simplexml($text);
-				$dom->parentNode->removeChild($dom);
-				unset( $dom );
+			}
+			if( $text->childNodes->length > 1 ){
+				return false; //Complex use of <tspan>s not yet supported.
+			}
+			if( $text->childNodes->length === 1 && $text->childNodes->item( 0 )->nodeType !== 3 ){
+				$child = $text->childNodes->item( 0 );
+				if( $child->nodeName === 'tspan'
+					&& $child->childNodes->length === 1
+					&& $child->childNodes->item( 0 )->nodeType === 3
+					&& $this->svg->getElementsByTagName( 'style' )->length === 0 )
+				{
+					//Repair by trimming excess <tspan>s
+					$attrs = ( $child->hasAttributes() ) ? $child->attributes : array();
+					foreach ($attrs as $num => $attr){
+						$text->setAttribute( $attr->name, $attr->value );
+					}
+					$text->appendChild( $child->childNodes->item( 0 ) );
+					$text->removeChild( $child );
+				} else {
+					return false;
+				}
 			}
 		}
+		return true;
 	}
-
 	function extractTranslations(){
-		$result = $this->svg->xpath("//svg:switch");
-		$this->number = count( $result );
+		$switches = $this->svg->getElementsByTagName( "switch" );
+		$this->number = $switches->length;
 		for( $i = 0; $i < $this->number; $i++ ){
-			$switch = $result[$i];
-			$switch->registerXPathNamespace( 'svg', 'http://www.w3.org/2000/svg' );
-			$existing = $switch->xpath("svg:text");
-			foreach( $existing as $child ){
-				$child = (array)$child;
-				if( isset( $child[0] ) ){
-					$text = $child[0];
-				} else {
-					$text = '';
+			$switch = $switches->item( $i );
+			$texts = $switch->getElementsByTagName( "text" );
+			$count = $texts->length;
+			for( $j = 0; $j < $count; $j++ ){
+				$text = $texts->item( $j );
+				$attributes = array( 'text' => $text->textContent );
+				$attrs = ( $text->hasAttributes() ) ? $text->attributes : array();
+				foreach ($attrs as $num => $attr){
+					$attributes[$attr->name] = $attr->value;
 				}
-				if( isset( $child['@attributes'] ) ){
-					$attr = $child['@attributes'];
-				} else {
-					$attr = array();
-				}
-				$this->translations [ $i ][] = array_merge( $attr, array( 'text'=>$text) );
+				$this->translations [ $i ][] = $attributes;
 			}
 		}
 	}
@@ -158,7 +171,7 @@ class SpecialTranslateSvg extends SpecialPage {
 				$grouphtml = $label . $desc . '&#160;&#160;&#160;' . $input;
 				if( $language !== 'qqq' ){
 					$grouphtml .= Html::element( 'br' ) .
-							"&#160;&#160;&#160;" . Xml::inputLabel( wfMsg( 'translatesvg-xcoordinate-pre' ), $language.'-'.$i.'-x', $language.'-'.$i.'-x', 5, $existing['x'] ) .
+							"&#160;&#160;&#160;" . Xml::inputLabel( wfMsg( 'translatesvg-xcoordinate-pre' ), $language.'-'.$i.'-x', $language.'-'.$i.'-x', 5, $existing['x'] ) . 
 							"&#160;&#160;&#160;" . Xml::inputLabel( wfMsg( 'translatesvg-ycoordinate-pre' ), $language.'-'.$i.'-y', $language.'-'.$i.'-y', 5, $existing['y'] );
 				}
 				$groups[] = $grouphtml;
@@ -191,11 +204,10 @@ class SpecialTranslateSvg extends SpecialPage {
 			return $this->translations[$language][$num];
 		} else {
 			$fallback = $this->getFallback( $num );
-			$fallback = trim( $fallback['text'] );
-			if( preg_match( '/^[0-9 .,]+$/', $fallback ) ){
+			if( preg_match( '/^[0-9 .,]+$/', trim( $fallback['text'] ) ) ){
 				return $fallback;
 			} else {
-				return '';
+				return array( 'text' => '', $fallback['x'], $fallback['y'] );
 			}
 		}
 	}
@@ -215,7 +227,7 @@ class SpecialTranslateSvg extends SpecialPage {
 		foreach( $params as $name=>$value ){
 			list( $lang, $num, $param ) = explode( '-', $name );
 			if( !isset( $this->translations[ $lang ][ $num ] ) ){
-				$this->translations[ $lang ][ $num ] = $this->getfallback( $num );
+				$this->translations[ $lang ][ $num ] = $this->getFallback( $num );
 			}
 			$this->translations[ $lang ][ $num ][$param] = $value;
 		}
@@ -232,12 +244,11 @@ class SpecialTranslateSvg extends SpecialPage {
 		}
 		$this->translations = $reverse;
 	}
-
 	function updateSVG(){
-		$result = $this->svg->xpath("//svg:switch");
+		$switches = $this->svg->getElementsByTagName( "switch" );
+		$this->number = $switches->length;
 		for( $i = 0; $i < $this->number; $i++ ){
-			$switch = $result[$i];
-			$switch->registerXPathNamespace( 'svg', 'http://www.w3.org/2000/svg' );
+			$switch = $switches->item( $i );
 			foreach( $this->translations[$i] as $translation ){
 				$language = $translation['systemLanguage'];
 				if( $language === 'fallback' ){
@@ -245,50 +256,51 @@ class SpecialTranslateSvg extends SpecialPage {
 				} else {
 					$path = "svg:text[@systemLanguage='$language']";
 				}
-				$existing = $switch->xpath( $path );
-				if( count( $existing ) == 1 ){
+				$existing = $this->xpath->query( $path, $switch );
+				if( $existing->length == 1 ){
+					$existing = $existing->item( 0 );
 					// Update of existing translation
-					$old = array( (string)$existing[0][0], (string)$existing[0]['x'], (string)$existing[0]['y']);
+					$old = array( $existing->textContent, $existing->getAttribute( 'x' ), $existing->getAttribute( 'y' ) );
 					$new = array( $translation['text'], $translation['x'], $translation['y']);
 					if( $old !== $new ){
 						$this->modified[$language] = '';
-						$existing[0]['x'] = $translation['x'];
-						$existing[0]['y'] = $translation['y'];
-						$existing[0][0] = $translation['text'];
+						$existing->setAttribute( 'x', $translation['x'] );
+						$existing->setAttribute( 'y', $translation['y'] );
+						$existing->textContent = $translation['text'];
 					}
+				} else if( $existing->length > 1 ) {
+					//TODO
 				} else {
 					$this->added[$language] = 'added';
-					$newtext = $switch->addChild('text', $translation['text']);
+					$textContent = $this->svg->createTextNode( $translation['text'] );
+					$newtext = $this->svg->createElement( 'text' );
+					$newtext->appendChild( $textContent );
+					$switch->appendChild( $newtext );
 					unset( $translation['text'] );
 					if( $translation['systemLanguage'] == 'fallback' ){
 						unset( $translation['systemLanguage'] );
 					}
 					foreach( $translation as $attrkey=>$attrvalue ){
-						$newtext->addAttribute( $attrkey, $attrvalue );
+						$newtext->setAttribute( $attrkey, $attrvalue );
 					}
 				}
 			}
-			// Always move fallback to end
-			$fallback = $switch->xpath("svg:text[not(@systemLanguage)]");
-			foreach( $fallback as $canon ){
-				$dom=dom_import_simplexml($canon);
-				$dom->parentNode->appendChild($dom);
-				$dom->parentNode->removeChild($dom);
-				unset( $dom );
-			}
+		}
+		// Move fallbacks to the end of their switch elements
+		$fallbacks = $this->xpath->query("//svg:text[not(@systemLanguage)]");
+		$count = $fallbacks->length;
+		for( $i = 0; $i < $count; $i++ ){
+			$fallbacks->item( $i )->parentNode->appendChild( $fallbacks->item( $i ) );
 		}
 	}
-
 	function saveSVG( $filepath, $filename ){
-
 		$mUpload = new TranslateSvgUpload();
 		$temp = tempnam( wfTempDir(), 'trans' );
-		$dom = new DOMDocument('1.0');
-		$dom->preserveWhiteSpace = false;
-		$dom->formatOutput = true;
-		$dom->loadXML($this->svg->asXML());
-		$dom->save( $temp );
-		unset( $dom );
+
+		$this->svg->preserveWhiteSpace = false;
+		$this->svg->formatOutput = true;
+		$this->svg->loadXML( $this->svg->saveXML() );
+		$this->svg->save( $temp );
 
 		$mUpload->initializePathInfo( $filename, $temp, filesize( $filepath ), true );
 
