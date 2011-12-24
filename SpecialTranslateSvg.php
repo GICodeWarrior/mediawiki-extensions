@@ -56,7 +56,7 @@ class SpecialTranslateSvg extends SpecialPage {
 						$this->printTranslations( $file->getName() );
 					}
 				} else {
-					$this->getOutput()->addHTML( '<p>This file could not be translated, sorry.</p>' ); //TODO: internationalise
+					$this->getOutput()->addHTML( Html::element( 'p', null, wfMessage( 'translatesvg-unsuccessful' )->parse() ) );
 				}
 			} else {
 				$this->getOutput()->setStatusCode( 404 );
@@ -89,6 +89,9 @@ class SpecialTranslateSvg extends SpecialPage {
 	function makeTranslationReady() {
 		$texts = $this->svg->getElementsByTagName( "text" );
 		$length = $texts->length;
+		if( $length === 0 ){
+			return false; //Nothing to translate!
+		}
 		for( $i = 0; $i < $length; $i++){
 			$text = $texts->item( $i );
 			$ancestorswitches = $this->xpath->query( "ancestor::svg:switch", $text );
@@ -195,6 +198,7 @@ class SpecialTranslateSvg extends SpecialPage {
 		$languages = Language::getLanguageNames();
 		$languages['fallback'] = wfMsg( 'translatesvg-fallbackdesc');
 		$languages['qqq'] = wfMsg( 'translatesvg-qqqdesc' );
+		uksort($this->translations, "self::customsort");
 			
 		$this->getOutput()->addModules( 'ext.translateSvg' );
 		$html = $this->thumb .
@@ -207,7 +211,9 @@ class SpecialTranslateSvg extends SpecialPage {
 		foreach( $this->translations as $language=>$translations ){
 			$html .= Html::openElement( 'fieldset', array( 'id' => "mw-translatesvg-fieldset-$language" ) ) .
 					Html::element( 'legend', null, $languages[$language] ) . 
-					Html::openElement( 'div', array( 'class' => "mw-translatesvg-collapsible" ) );
+					Html::openElement( 'div', array( 'class' => 'mw-collapsible mw-collapsed',
+													'data-collapsetext' => wfMsg( 'translatesvg-toggle-hide' ),
+													'data-expandtext' => wfMsg( 'translatesvg-toggle-view' ) ) );
 			$groups = array();
 			for( $i = 0; $i < $this->number; $i++ ){
 				$fallback = $this->getFallback( $i );
@@ -287,7 +293,7 @@ class SpecialTranslateSvg extends SpecialPage {
 	 */
 	function updateTranslations( $params ){
 		foreach( $params as $name=>$value ){
-			list( $lang, $num, $param ) = explode( '-', $name );
+			list( $lang, $num, $param ) = explode( '-', substr( $name, 16 ) );
 			if( !isset( $this->translations[ $lang ][ $num ] ) ){
 				if( $lang !== 'qqq' ){
 					$this->translations[ $lang ][ $num ] = $this->getFallback( $num );
@@ -295,7 +301,9 @@ class SpecialTranslateSvg extends SpecialPage {
 					$this->translations[ $lang ][ $num ] = array();
 				}
 			}
-			$this->translations[ $lang ][ $num ][ $param ] = $value;
+			if( $value !== '' ){
+				$this->translations[ $lang ][ $num ][ $param ] = $value;
+			}
 		}
 
 		$reverse = array();
@@ -395,11 +403,18 @@ class SpecialTranslateSvg extends SpecialPage {
 
 		$this->mLocalFile = $mUpload->getLocalFile();
 		$watch = true; //TODO
-		unset( $this->added['fallback'] );
 		$comment = "Updating translations:";
 		if( count( $this->added ) > 0 )	$comment .= " added " . implode( ", ", array_keys( $this->added ) ) . ";";
 		if( count( $this->modified ) > 0 )	$comment .= " modified " . implode( ", ", array_keys( $this->modified ) ) . ";";
 		$comment = trim( $comment, ";" ) . ".";
+		
+		if( ( ( count( $this->added ) == 1 && isset( $this->added['qqq'] ) ) ||  count( $this->added ) == 0 )
+			&& count( $this->modified ) == 0 ){
+			//No real change, jump to save
+			$this->getOutput()->redirect( $this->mLocalFile->getTitle()->getFullURL() );
+			return;
+		}
+		
 		$status = $mUpload->performUpload( $comment, false, $watch, $this->getUser() );
 		if ( !$status->isGood() ) {
 			//TODO
@@ -410,6 +425,13 @@ class SpecialTranslateSvg extends SpecialPage {
 		// Success, redirect to description page
 		$this->getOutput()->redirect( $this->mLocalFile->getTitle()->getFullURL() );
 	}
+	static function customsort( $a, $b ) {
+		if( $a == 'qqq' ) return 1;
+		if( $b == 'qqq' ) return -1;
+		if( $a == 'fallback' ) return 1;
+		if( $b == 'fallback' ) return -1;
+		return strcasecmp($a, $b);
+    }
 }
 
 class TranslateSvgUpload extends UploadBase {

@@ -79,6 +79,10 @@ function getNewFieldset( langcode, langname ){
 		$( this ).text( langname );
 		$( this ).append( '&#160;' ).append( getRemoveLink() );
 	} );
+	newfieldset.find( 'div.mw-collapsible.mw-made-collapsible' ).first().each( function(){ 
+		$(this).find( '.mw-collapsible-toggle' ).first().remove();
+		$(this).removeClass().addClass( 'mw-collapsible mw-collapsed' ).makeCollapsible();
+	} );
 	return newfieldset;
 }
 
