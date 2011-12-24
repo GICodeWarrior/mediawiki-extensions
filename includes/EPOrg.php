@@ -202,7 +202,7 @@ class EPOrg extends EPDBObject {
 		}
 		else {
 			$context->getOutput()->addHTML( $pager->getFilterControl( true ) );
-			$context->getOutput()->addWikiMsg( 'ep-orgs-noresults' );
+			$context->getOutput()->addWikiMsg( 'ep-institutions-noresults' );
 		}
 	}
 	

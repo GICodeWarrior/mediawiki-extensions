@@ -52,7 +52,7 @@ class SpecialEditInstitution extends SpecialEPFormPage {
 			'type' => 'select',
 			'label-message' => 'educationprogram-org-edit-country',
 			'required' => true,
-			'options' => efEpGetCountryOptions(),
+			'options' => efEpGetCountryOptions( $this->getLanguage()->getCode() ),
 			'validation-callback' => array( $this, 'countryIsValid' ),
 		);
 

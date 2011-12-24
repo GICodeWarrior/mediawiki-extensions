@@ -83,6 +83,18 @@ class ApiDeleteEducation extends ApiBase {
 		return false;
 	}
 
+	/**
+	 * Get the User being used for this instance.
+	 * ApiBase extends ContextSource as of 1.19.
+	 *
+	 * @since 0.1
+	 *
+	 * @return User
+	 */
+	public function getUser() {
+		return version_compare( $GLOBALS['wgVersion'], '1.18c', '>' ) ? parent::getUser() : $GLOBALS['wgUser'];
+	}
+	
 	public function needsToken() {
 		return true;
 	}
