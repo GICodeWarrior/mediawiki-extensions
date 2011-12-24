@@ -120,5 +120,51 @@ abstract class SpecialEPPage extends SpecialPage {
 	public function getLanguage() {
 		return method_exists( get_parent_class(), 'getLanguage' ) ? parent::getLanguage() : $this->getLang();
 	}
+	
+	/**
+	 * Adds a navigation menu with the provided links.
+	 * Links should be provided in an array with:
+	 * label => Title (object)
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $links
+	 */
+	protected function displayNavigation( array $items = array() ) {
+		$links = array();
+		$items = array_merge( $this->getDefaultNavigationItems(), $items );
+		
+		foreach ( $items as $label => $target ) {
+			$links[] = Linker::linkKnown(
+				$target,
+				htmlspecialchars( $label )
+			);
+		}
+		
+		$this->getOutput()->addHTML(
+			Html::rawElement( 'p', array(), $this->getLang()->pipeList( $links ) )
+		);
+	}
+	
+	/**
+	 * Returns the default nav items for @see displayNavigation.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
+	protected function getDefaultNavigationItems() {
+		$items = array(
+			wfMsg( 'ep-nav-orgs' ) => SpecialPage::getTitleFor( 'Institutions' ),
+			wfMsg( 'ep-nav-courses' ) => SpecialPage::getTitleFor( 'Courses' ),
+			wfMsg( 'ep-nav-terms' ) => SpecialPage::getTitleFor( 'Terms' ),
+		);
+		
+		if ( $this->getUser()->isAllowed( 'epmentor' ) || EPStudent::has( array( 'user_id' => $this->getUser()->getId() ) ) ) {
+			$items[wfMsg( 'ep-nav-mycourses' )] = SpecialPage::getTitleFor( 'MyCourses' );
+		}
+		
+		return $items;
+	}
 
 }

@@ -168,6 +168,12 @@ $messages['en'] = array(
 	'ep-term-students' => 'Students',
 	'ep-term-none' => 'There is no term with id "$1". See [[Special:Terms|here]] for a list of terms.',
 	'ep-term-create' => 'There is no term with id "$1", but you can create a new one.',
+
+	// Navigation links
+	'ep-nav-orgs' => 'Institution list',
+	'ep-nav-courses' => 'Courses list',
+	'ep-nav-terms' => 'Terms list',
+	'ep-nav-mycourses' => 'My courses',
 );
 
 /** Message documentation (Message documentation)

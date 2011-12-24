@@ -41,6 +41,8 @@ class SpecialCourse extends SpecialEPPage {
 		else {
 			$out->setPageTitle( wfMsgExt( 'ep-course-title', 'parsemag', $this->subPage ) );
 		
+			$this->displayNavigation();
+			
 			$course = EPCourse::selectRow( null, array( 'name' => $this->subPage ) );
 			
 			if ( $course === false ) {

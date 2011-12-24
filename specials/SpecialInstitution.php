@@ -41,6 +41,8 @@ class SpecialInstitution extends SpecialEPPage {
 		else {
 			$out->setPageTitle( wfMsgExt( 'ep-institution-title', 'parsemag', $this->subPage ) );
 			
+			$this->displayNavigation();
+			
 			$org = EPOrg::selectRow( null, array( 'name' => $this->subPage ) );
 			
 			if ( $org === false ) {

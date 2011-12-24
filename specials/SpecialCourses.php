@@ -34,6 +34,7 @@ class SpecialCourses extends SpecialEPPage {
 		parent::execute( $subPage );
 
 		if ( $this->subPage === '' ) {
+			$this->displayNavigation();
 			EPCourse::displayAddNewRegion( $this->getContext() );
 			EPCourse::displayPager( $this->getContext() );
 		}

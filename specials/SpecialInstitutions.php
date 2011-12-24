@@ -34,6 +34,7 @@ class SpecialInstitutions extends SpecialEPPage {
 		parent::execute( $subPage );
 
 		if ( $this->subPage === '' ) {
+			$this->displayNavigation();
 			EPOrg::displayAddNewControl( $this->getContext() );
 			EPOrg::displayPager( $this->getContext() );
 		}

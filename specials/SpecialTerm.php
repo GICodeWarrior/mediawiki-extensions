@@ -41,6 +41,8 @@ class SpecialTerm extends SpecialEPPage {
 		else {
 			$out->setPageTitle( wfMsgExt( 'ep-term-title', 'parsemag', $this->subPage ) );
 		
+			$this->displayNavigation();
+			
 			$term = EPTerm::selectRow( null, array( 'id' => $this->subPage ) );
 			
 			if ( $term === false ) {

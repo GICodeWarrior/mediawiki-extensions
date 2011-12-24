@@ -34,6 +34,7 @@ class SpecialTerms extends SpecialEPPage {
 		parent::execute( $subPage );
 
 		if ( $this->subPage === '' ) {
+			$this->displayNavigation();
 			EPTerm::displayAddNewRegion( $this->getContext() );
 			EPTerm::displayPager( $this->getContext() );
 		}
@@ -41,40 +42,5 @@ class SpecialTerms extends SpecialEPPage {
 			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Term', $this->subPage )->getLocalURL() );
 		}
 	}
-	
-	/**
-	 * Display all the stuff that should be on the page.
-	 * 
-	 * @since 0.1
-	 */
-	protected function displayPage() {
-		$user = $this->getUser();
-		
-		$courses = EPCourse::getEditableCourses( $this->getUser() );
-		
-		if ( count( $courses ) > 0 ) {
-			$this->displayAddNewControl( $courses );
-		}
-		elseif ( $user->isAllowed( 'epmentor' ) ) {
-			$this->getOutput()->addWikiMsg( 'ep-terms-addcoursefirst' );
-		}
-		
-		$pager = new EPTermPager( $this->getContext() );
-		
-		if ( $pager->getNumRows() ) {
-			$this->getOutput()->addHTML(
-				$pager->getFilterControl() .
-				$pager->getNavigationBar() .
-				$pager->getBody() .
-				$pager->getNavigationBar()
-			);
-		}
-		else {
-			$this->getOutput()->addHTML( $pager->getFilterControl( true ) );
-			$this->getOutput()->addWikiMsg( 'ep-terms-noresults' );
-		}
-	}
-
-
 
 }
