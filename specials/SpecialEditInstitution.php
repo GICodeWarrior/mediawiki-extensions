@@ -59,8 +59,18 @@ class SpecialEditInstitution extends SpecialEPFormPage {
 		return $this->processFormFields( $fields );
 	}
 	
+	/**
+	 * Returns true if the country value is valid or an error message if it's not.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $value
+	 * @param array $alldata
+	 * 
+	 * @return string|true
+	 */
 	public function countryIsValid( $value, array $alldata = null ) {
-		$countries = array_keys( efEpGetCountries() );
+		$countries = array_keys( CountryNames::getNames( $this->getLang()->getCode() ) );
 		
 		if ( $this->isNew() ) {
 			array_unshift( $countries, '' );

@@ -32,7 +32,7 @@ class SpecialInstitution extends SpecialEPPage {
 	 */
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
-
+	
 		$out = $this->getOutput();
 		
 		if ( trim( $subPage ) === '' ) {
@@ -78,7 +78,9 @@ class SpecialInstitution extends SpecialEPPage {
 
 		$stats['name'] = $org->getField( 'name' );
 		$stats['city'] = $org->getField( 'city' );
-		$stats['country'] = $org->getField( 'country' );
+		
+		$countries = CountryNames::getNames( $this->getLang()->getCode() );
+		$stats['country'] = $countries[$org->getField( 'country' )];
 
 		return $stats;
 	}
