@@ -151,7 +151,6 @@ class SolrConnectorStore extends SMWStore {
 	 * $redirid will be 0.
 	 */
 	public function changeTitle( Title $oldtitle, Title $newtitle, $pageid, $redirid = 0 ) {
-
 		// TODO: Update Solr to reflect a renaming of some article
 		return self::getBaseStore()->changeTitle( $oldtitle, $newtitle, $pageid, $redirid );
 	}
@@ -171,9 +170,10 @@ class SolrConnectorStore extends SMWStore {
 	 */
 	public function getQueryResult( SMWQuery $query ) {
 		// IF YOU SEE THIS HERE PLEASE IGNORE IT!
-		// Our first aproche was it to create new SMWStore for Querying Data
-		// but we had big Problems recreating and parsing the SMW Query Syntax
-		// that we just Stoped at this Point here. Maybe we will finish it someday
+		// Our first aproche was it to create new SMWStore for querying data
+		// but we had big problems recreating and parsing the SMW query syntax
+		// that we just stopped at this point here.
+		// Maybe we will finish it someday
 		$wgSolrTalker = new SolrTalker();
 		if ( property_exists( $query, 'params' ) &&
 				array_key_exists( 'source', $query->params ) &&
@@ -186,9 +186,8 @@ class SolrConnectorStore extends SMWStore {
 
 			echo( "SOLR query: {$query->getQueryString()}\n" );
 
-			echo( "Search is Powered by Solr!" );
+			echo 'Search is Powered by Solr!';
 			echo $queryStr = urldecode( $wgSolrTalker->parseSolrQuery( $query->getQueryString() ) );
-
 
 			// Get Sort Parameters and add them to the QueryString
 			if ( $query->sort ) {
@@ -197,25 +196,21 @@ class SolrConnectorStore extends SMWStore {
 				//	  Benötigt um Festzustellen welches Feld gemeint ist bzw. welche _XYZ Endung
 				//	  an dem Ende des Feldes angehängt wurde.
 				//
-
-
 				$sort = $wgSolrTalker->findField( $query->params['sort'], $query->params['order'] );
 				$queryStr .= '&sort%3D' . $sort . '+' . trim( $query->params['order'] );
 				//  $queryStr = $queryStr . '&sort=' . trim($sort . '+' . trim($query->params['order']));
 				// TODO: Mehrer Sort parameter auslesen wenn sie vorhanden sind.
-			  }
-//			else {
+			} //else {
 //				$queryStr = $queryStr . '&sort=pagetitle';
 //			}
 
 			// TODO: Prüfen wieso nur 1 Ergebniss ausgegeben wird
 			echo 'Query Limit:' . $query->getLimit();
 
-			echo ( "SEARCHRESULT: " . $xml = $wgSolrTalker->solrQuery( $queryStr, $query->getOffset(), $query->getLimit() ) );
-			echo( "<br/>" );
-			// TODO: Move this Code to parseSolrResult
+			echo ( 'SEARCHRESULT: ' . $xml = $wgSolrTalker->solrQuery( $queryStr, $query->getOffset(), $query->getLimit() ) );
+			echo '<br/>';
+			// TODO: Move this code to parseSolrResult
 			$numFound = $xml->result['numFound'];
-			// print_r('1: ' . $xml->{"result"});
 			foreach ( $xml->result->doc as $doc ) {
 				foreach ( $doc->str as $field ) {
 					switch ( $field['name'] ) {
@@ -230,7 +225,7 @@ class SolrConnectorStore extends SMWStore {
 							break;
 					}
 				}
-				// Multivalue Felder
+				// Multivalue fields
 				foreach ( $doc->arr as $field ) {
 					switch ( $field['name'] ) {
 						case 'dbkey':
@@ -250,9 +245,9 @@ class SolrConnectorStore extends SMWStore {
 				$results[] = new SMWDIWikiPage( $dbkey, $namespace, $interwiki );
 			}
 
-			// Do we have more Results ?
+			// Do we have more results?
 			$more = false;
-			// TODO: Does this Work ?
+			// TODO: Does this work?
 			echo 'Number of Records: ' . $numFound;
 			if ( $numFound > 10 ) {
 				$more = true;
@@ -342,9 +337,7 @@ class SolrConnectorStore extends SMWStore {
 	 * @param boolean $verbose
 	 */
 	public function setup( $verbose = true ) {
-
 		// TODO: Setup data structures on the the Solr server, if necessary
-
 		return self::getBaseStore()->setup( $verbose );
 	}
 
@@ -390,9 +383,7 @@ class SolrConnectorStore extends SMWStore {
 	 * @return decimal between 0 and 1 to indicate the overall progress of the refreshing
 	 */
 	public function refreshData( &$index, $count, $namespaces = false, $usejobs = true ) {
-
 		// TODO: Do we need to do something here for Solr? Can we do something?
-
 		return self::getBaseStore()->refreshData( $index, $count, $namespaces, $usejobs );
 	}
 

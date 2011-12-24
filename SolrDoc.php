@@ -14,34 +14,35 @@
  */
 class SolrDoc {
 	private $output;
-	private $min = array ();
-	private $max = array ();
+	private $min = array();
+	private $max = array();
 
 	/**
-	 * Add a Field to the SolrDoc
+	 * Add a field to the SolrDoc
 	 *
-	 * @param type $name of the Field
-	 * @param type $value of the Field
+	 * @param $name String: name of the field
+	 * @param $value String: value of the field
 	 */
 	public function addField( $name, $value ) {
-			$this->output .= '<field name="' . $name . '">' . $value . '</field>' ;
+		$this->output .= '<field name="' . $name . '">' . $value . '</field>';
 	}
 
 	/**
-	 * This Function gets a Multivalued Field and splits it into a max and a min value for Sorting
+	 * This function gets a multivalued field and splits it into a max and a
+	 * min value for sorting
 	 *
-	 * @param type $name of the Field
-	 * @param type $value of the Field
+	 * @param $name String: name of the field
+	 * @param $value Mixed: value of the field
 	 */
 	public function addSortField( $name, $value ) {
-		// Does a min/max Field with this name exist ?
-		if ( isset ( $this->min[$name] ) && isset ( $this->max[$name] ) ) {
+		// Does a min/max field with this name exist?
+		if ( isset( $this->min[$name] ) && isset( $this->max[$name] ) ) {
 			if ( strcasecmp( $this->min[$name], $value ) > 0 ) {
-			// If the new String is Less the Old one replace them
+				// If the new string is less the old one, replace them
 				$this->min[$name] = $value;
 			}
 			if ( strcasecmp( $this->max[$name], $value ) < 0 ) {
-			// If the new String is Bigger than Old one replace them
+				// If the new string is bigger than old one, replace them
 				$this->max[$name] = $value;
 			}
 		} else {
@@ -54,10 +55,10 @@ class SolrDoc {
 		$all = $this->output;
 
 		foreach ( $this->min as $name => $value ) {
-			$all .= '<field name="' . $name . 'min">' . $value . '</field>' ;
+			$all .= '<field name="' . $name . 'min">' . $value . '</field>';
 		}
 		foreach ( $this->max as $name => $value ) {
-			$all .= '<field name="' . $name . 'max">' . $value . '</field>' ;
+			$all .= '<field name="' . $name . 'max">' . $value . '</field>';
 		}
 
 		return $all;

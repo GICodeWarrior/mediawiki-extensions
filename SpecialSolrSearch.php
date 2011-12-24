@@ -24,7 +24,7 @@ class SpecialSolrSearch extends SpecialPage {
 	 * @param $user User
 	 */
 	public function __construct() {
-		parent::__construct( "SolrSearch" );
+		parent::__construct( 'SolrSearch' );
 		global $wgRequest, $wgUser, $wgOut, $wgSolrFields;
 		$user = $wgUser;
 		$request = $wgRequest;
@@ -40,16 +40,12 @@ class SpecialSolrSearch extends SpecialPage {
 		$this->setHeaders();
 		$SpecialSolrSearch = new SpecialSolrSearch( $wgRequest, $wgUser );
 
-		# Get request data from, e.g.
-		$param = $wgRequest->getText( 'param' );
-
 		foreach ( $wgSolrFields as $set ) {
 			if ( $par == $set->getName() ) {
 				$fieldSet = $set;
 			}
 		}
-		# Do stuff
-		# ...
+
 		// Strip underscores from title parameter; most of the time we'll want
 		// text form here. But don't strip underscores from actual text params!
 		$titleParam = str_replace( '_', ' ', $par );
@@ -63,13 +59,13 @@ class SpecialSolrSearch extends SpecialPage {
 			$firstTimeHere = true;
 			foreach ( $fieldSet->getFields() as $field ) {
 				if ( $firstTimeHere ) {
-					$newLable ['solr' . trim( $field )] = trim( $lable[0] );
+					$newLable['solr' . trim( $field )] = trim( $lable[0] );
 					$firstTimeHere = false;
 				} else {
-					$newLable ['solr' . trim( $field )] = trim( next( $lable ) );
+					$newLable['solr' . trim( $field )] = trim( next( $lable ) );
 				}
 
-				$newFields ['solr' . trim( $field )] = $wgRequest->getText( 'solr' . trim( $field ) );
+				$newFields['solr' . trim( $field )] = $wgRequest->getText( 'solr' . trim( $field ) );
 			}
 			$fieldSet->setFields( $newFields );
 			$fieldSet->setLable( $newLable );
@@ -87,22 +83,21 @@ class SpecialSolrSearch extends SpecialPage {
 
 		$sk = $wgUser->getSkin();
 
-
 		$wgOut->setPageTitle( wfMsg( 'solrstore-searchFieldSets' ) );
 		$wgOut->setHTMLTitle( wfMsg( 'pagetitle', wfMsg( 'solrstore-searchFieldSets-title', 'SolrSearch: Select FieldSet' ) ) );
 
 		$wgOut->setArticleRelated( false );
-		$wgOut->addHtml( '<div class="solrsearch-fieldset">' );
-		$wgOut->addHtml( wfMsg( 'solrstore-searchFieldSets-select' ) );
-		$wgOut->addHtml( '<ul>' );
+		$wgOut->addHTML( '<div class="solrsearch-fieldset">' );
+		$wgOut->addHTML( wfMsg( 'solrstore-searchFieldSets-select' ) );
+		$wgOut->addHTML( '<ul>' );
 
 		// TODO: If no SearchSets exist, provide a shot Manual how to create some!
 		foreach ( $wgSolrFields as $set ) {
 			$name = $set->getName();
-			$wgOut->addHtml( "<li><a href=\"$wgScript/Special:SolrSearch/$name\">$name</a></li>" );
+			$wgOut->addHTML( "<li><a href=\"$wgScript/Special:SolrSearch/$name\">$name</a></li>" );
 		}
-		$wgOut->addHtml( '</ul>' );
-		$wgOut->addHtml( "</div>" );
+		$wgOut->addHTML( '</ul>' );
+		$wgOut->addHTML( '</div>' );
 
 		wfProfileOut( __METHOD__ );
 	}
@@ -124,16 +119,15 @@ class SpecialSolrSearch extends SpecialPage {
 
 		$t = Title::newFromText( $fieldSet->getName() );
 
-		// DO we have Title matches
+		// Do we have title matches?
 		$fields = $fieldSet->getFields();
 
-		// BUILD SOLR QUERY STRING FROM DA FIELDS
+		// Build Solr query string from the fields
 		if ( isset( $fields['solrsearch'] ) ) {
 			$query = $fields['solrsearch'];
 		} else {
 			$query = '';
 		}
-
 
 		foreach ( $fields as $key => $value ) {
 			if ( $key != 'solrsearch' && !empty( $value ) ) {
@@ -147,8 +141,9 @@ class SpecialSolrSearch extends SpecialPage {
 
 		$titleMatches = $search->searchTitle( $query );
 
-		if ( !( $titleMatches instanceof SearchResultTooMany ) )
+		if ( !( $titleMatches instanceof SearchResultTooMany ) ) {
 			$textMatches = $search->searchText( $query );
+		}
 
 		// did you mean... suggestions
 		if ( $textMatches && $textMatches->hasSuggestion() ) {
@@ -161,33 +156,37 @@ class SpecialSolrSearch extends SpecialPage {
 
 			$suggestionSnippet = $textMatches->getSuggestionSnippet();
 
-			if ( $suggestionSnippet == '' )
+			if ( $suggestionSnippet == '' ) {
 				$suggestionSnippet = null;
+			}
 
 			$suggestLink = $sk->linkKnown(
-					$st, $suggestionSnippet, array(), $stParams
+				$st, $suggestionSnippet, array(), $stParams
 			);
 
-			$this->didYouMeanHtml = '<div class="searchdidyoumean">' . wfMsg( 'search-suggest', $suggestLink ) . '</div>';
+			$this->didYouMeanHtml = '<div class="searchdidyoumean">' .
+				wfMsg( 'search-suggest', $suggestLink ) . '</div>';
 		}
+
 		// start rendering the page
-		$wgOut->addHtml(
-				Xml::openElement(
-						'form', array(
+		$wgOut->addHTML(
+			Xml::openElement(
+				'form',
+				array(
 					'id' => 'solrsearch',
 					'method' => 'get',
 					'action' => $wgScript
-						)
 				)
+			)
 		);
-		$wgOut->addHtml(
-				Xml::openElement( 'table', array( 'id' => 'mw-search-top-table', 'border' => 0, 'cellpadding' => 0, 'cellspacing' => 0 ) ) .
-				Xml::openElement( 'tr' ) .
-				Xml::openElement( 'td' ) . "\n" .
-				$this->shortDialog( $fieldSet ) .
-				Xml::closeElement( 'td' ) .
-				Xml::closeElement( 'tr' ) .
-				Xml::closeElement( 'table' )
+		$wgOut->addHTML(
+			Xml::openElement( 'table', array( 'id' => 'mw-search-top-table', 'border' => 0, 'cellpadding' => 0, 'cellspacing' => 0 ) ) .
+			Xml::openElement( 'tr' ) .
+			Xml::openElement( 'td' ) . "\n" .
+			$this->shortDialog( $fieldSet ) .
+			Xml::closeElement( 'td' ) .
+			Xml::closeElement( 'tr' ) .
+			Xml::closeElement( 'table' )
 		);
 
 		// Sometimes the search engine knows there are too many hits
@@ -226,14 +225,19 @@ class SpecialSolrSearch extends SpecialPage {
 		// show number of results and current offset
 		$wgOut->addHTML( $this->formHeader( $query, $num, $totalRes ) );
 
-		$wgOut->addHtml( Xml::closeElement( 'form' ) );
-		$wgOut->addHtml( "<div class='searchresults'>" );
+		$wgOut->addHTML( Xml::closeElement( 'form' ) );
+		$wgOut->addHTML( "<div class='searchresults'>" );
 
 		// prev/next links
 		if ( $num || $this->offset ) {
 			// Show the create link ahead
 			$this->showCreateLink( $t );
-			$prevnext = wfViewPrevNext( $this->offset, $this->limit, SpecialPage::getTitleFor( 'SolrSearch' ), wfArrayToCGI( array( 'solrsearch' => $query ) ), max( $titleMatchesNum, $textMatchesNum ) < $this->limit
+			$prevnext = wfViewPrevNext(
+				$this->offset,
+				$this->limit,
+				SpecialPage::getTitleFor( 'SolrSearch' ),
+				wfArrayToCGI( array( 'solrsearch' => $query ) ),
+				max( $titleMatchesNum, $textMatchesNum ) < $this->limit
 			);
 			// $wgOut->addHTML( "<p class='mw-search-pager-top'>{$prevnext}</p>\n" );
 			wfRunHooks( 'SpecialSolrSearchResults', array( $fieldSet, &$titleMatches, &$textMatches ) );
@@ -266,7 +270,7 @@ class SpecialSolrSearch extends SpecialPage {
 			$textMatches->free();
 		}
 
-		$wgOut->addHtml( "</div>" );
+		$wgOut->addHTML( '</div>' );
 
 		if ( $num || $this->offset ) {
 			$wgOut->addHTML( "<p class='mw-search-pager-bottom'>{$prevnext}</p>\n" );
@@ -289,7 +293,8 @@ class SpecialSolrSearch extends SpecialPage {
 			}
 		}
 		if ( $messageName ) {
-			$wgOut->wrapWikiMsg( "<p class=\"mw-search-createlink\">\n$1</p>", array( $messageName, wfEscapeWikiText( $t->getPrefixedText() ) ) );
+			$wgOut->wrapWikiMsg( "<p class=\"mw-search-createlink\">\n$1</p>",
+				array( $messageName, wfEscapeWikiText( $t->getPrefixedText() ) ) );
 		} else {
 			// preserve the paragraph for margins etc...
 			$wgOut->addHtml( '<p></p>' );
@@ -308,7 +313,7 @@ class SpecialSolrSearch extends SpecialPage {
 		}
 		$wgOut->setArticleRelated( false );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
-		// add javascript specific to special:search
+		// add JavaScript specific to Special:Search
 		$wgOut->addModules( 'mediawiki.legacy.search' );
 		$wgOut->addModules( 'mediawiki.special.search' );
 	}
@@ -324,13 +329,12 @@ class SpecialSolrSearch extends SpecialPage {
 
 		$fieldSets = $wgContLang->convertForSearchResult( $matches->termMatches() );
 
-		$out = "";
+		$out = '';
 		$infoLine = $matches->getInfo();
 		if ( !is_null( $infoLine ) ) {
 			$out .= "\n<!-- {$infoLine} -->\n";
 		}
 		$out .= "<ul class='mw-search-results'>\n";
-		$xxx = 0;
 		while ( $result = $matches->next() ) {
 			$out .= $this->showHit( $result, $fieldSets );
 		}
@@ -362,8 +366,9 @@ class SpecialSolrSearch extends SpecialPage {
 
 		$titleSnippet = $result->getTitleSnippet( $fieldSets );
 
-		if ( $titleSnippet == '' )
+		if ( $titleSnippet == '' ) {
 			$titleSnippet = null;
+		}
 
 		$link_t = clone $t;
 
@@ -399,28 +404,30 @@ class SpecialSolrSearch extends SpecialPage {
 		$redirect = '';
 
 		if ( !is_null( $redirectTitle ) ) {
-			if ( $redirectText == '' )
+			if ( $redirectText == '' ) {
 				$redirectText = null;
+			}
 
-			$redirect = "<span class='searchalttitle'>" .
-					wfMsg( 'search-redirect', $this->sk->linkKnown( $redirectTitle, $redirectText ) ) .
-					"</span>";
+			$redirect = '<span class="searchalttitle">' .
+				wfMsg( 'search-redirect', $this->sk->linkKnown( $redirectTitle, $redirectText ) ) .
+				'</span>';
 		}
 
 		$section = '';
 
 
 		if ( !is_null( $sectionTitle ) ) {
-			if ( $sectionText == '' )
+			if ( $sectionText == '' ) {
 				$sectionText = null;
+			}
 
-			$section = "<span class='searchalttitle'>" .
+			$section = '<span class="searchalttitle">' .
 					wfMsg( 'search-section', $this->sk->linkKnown( $sectionTitle, $sectionText ) ) .
-					"</span>";
+					'</span>';
 		}
 
 		// format text extract
-		$extract = "<div class='searchresult'>" . $result->getTextSnippet( $fieldSets ) . "</div>";
+		$extract = '<div class="searchresult">' . $result->getTextSnippet( $fieldSets ) . '</div>';
 
 		// format score
 		if ( is_null( $result->getScore() ) ) {
@@ -435,11 +442,15 @@ class SpecialSolrSearch extends SpecialPage {
 		$byteSize = $result->getByteSize();
 		$wordCount = $result->getWordCount();
 		$timestamp = $result->getTimestamp();
-		$size = wfMsgExt( 'search-result-size', array( 'parsemag', 'escape' ), $this->sk->formatSize( $byteSize ), $wgLang->formatNum( $wordCount ) );
+		$size = wfMsgExt( 'search-result-size', array( 'parsemag', 'escape' ),
+			$this->sk->formatSize( $byteSize ), $wgLang->formatNum( $wordCount ) );
 
 		if ( $t->getNamespace() == NS_CATEGORY ) {
 			$cat = Category::newFromTitle( $t );
-			$size = wfMsgExt( 'search-result-category-size', array( 'parsemag', 'escape' ), $wgLang->formatNum( $cat->getPageCount() ), $wgLang->formatNum( $cat->getSubcatCount() ), $wgLang->formatNum( $cat->getFileCount() ) );
+			$size = wfMsgExt( 'search-result-category-size', array( 'parsemag', 'escape' ),
+				$wgLang->formatNum( $cat->getPageCount() ),
+				$wgLang->formatNum( $cat->getSubcatCount() ),
+				$wgLang->formatNum( $cat->getFileCount() ) );
 		}
 
 		$date = $wgLang->timeanddate( $timestamp );
@@ -453,7 +464,7 @@ class SpecialSolrSearch extends SpecialPage {
 		}
 
 		// Include a thumbnail for media files...
-		// WE HAVE NEVER TESTED THIS HERE!!!
+		// WE HAVE NEVER TESTED THIS HERE!
 		if ( $t->getNamespace() == NS_FILE ) {
 			$img = wfFindFile( $t );
 			if ( $img ) {
@@ -464,7 +475,7 @@ class SpecialSolrSearch extends SpecialPage {
 					// Float doesn't seem to interact well with the bullets.
 					// Table messes up vertical alignment of the bullets.
 					// Bullets are therefore disabled (didn't look great anyway).
-					return "<li>" .
+					return '<li>' .
 							'<table class="searchResultImage">' .
 							'<tr>' .
 							'<td width="120" align="center" valign="top">' .
@@ -497,7 +508,13 @@ class SpecialSolrSearch extends SpecialPage {
 		// Results-info
 		if ( $resultsShown > 0 ) {
 			if ( $totalNum > 0 ) {
-				$top = wfMsgExt( 'showingresultsheader', array( 'parseinline' ), $wgLang->formatNum( $this->offset + 1 ), $wgLang->formatNum( $this->offset + $resultsShown ), $wgLang->formatNum( $totalNum ), $wgLang->formatNum( $resultsShown )
+				$top = wfMsgExt(
+					'showingresultsheader',
+					array( 'parseinline' ),
+					$wgLang->formatNum( $this->offset + 1 ),
+					$wgLang->formatNum( $this->offset + $resultsShown ),
+					$wgLang->formatNum( $totalNum ),
+					$wgLang->formatNum( $resultsShown )
 				);
 			} elseif ( $resultsShown >= $this->limit ) {
 				$top = wfShowingResults( $this->offset, $this->limit );
@@ -516,7 +533,6 @@ class SpecialSolrSearch extends SpecialPage {
 	protected function shortDialog( $fieldSet ) {
 		$searchTitle = SpecialPage::getTitleFor( 'SolrSearch' );
 
-
 		if ( $fieldSet->getName() != 'search' ) {
 			$out = Html::hidden( 'title', $searchTitle->getPrefixedText() . '/' . $fieldSet->getName() ) . "\n";
 		} else {
@@ -534,10 +550,10 @@ class SpecialSolrSearch extends SpecialPage {
 			}
 			$out .= '<td>';
 			$out .= Html::input( $key, $value, $key, array(
-						'id' => $key,
-						'size' => '50',
-						'autofocus'
-					) ) . "\n";
+				'id' => $key,
+				'size' => '50',
+				'autofocus'
+			) ) . "\n";
 			$out .= '</td></tr>';
 		}
 		$out .= '<table>';
