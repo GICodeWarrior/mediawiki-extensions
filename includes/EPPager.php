@@ -103,6 +103,30 @@ abstract class EPPager extends TablePager {
 	}
 	
 	/**
+	 * Get the WebRequest being used for this instance.
+	 * IndexPager extends ContextSource as of 1.19.
+	 *
+	 * @since 0.1
+	 *
+	 * @return WebRequest
+	 */
+	public function getRequest() {
+		return $this->context->getRequest();
+	}
+	
+	/**
+	 * Get the Title being used for this instance.
+	 * IndexPager extends ContextSource as of 1.19.
+	 *
+	 * @since 0.1
+	 *
+	 * @return Title
+	 */
+	public function getTitle() {
+		return $this->context->getTitle();
+	}
+	
+	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::formatRow()
 	 */
