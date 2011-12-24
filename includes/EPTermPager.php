@@ -25,19 +25,16 @@ class EPTermPager extends EPPager {
 
 	/**
 	 * (non-PHPdoc)
-	 * @see TablePager::getFieldNames()
+	 * @see EPPager::getFields()
 	 */
-	public function getFieldNames() {
-		$fields = parent::getFieldNameList( array(
+	public function getFields() {
+		return array(
 			'id',
 			'course_id',
 			'year',
 			'start',
 			'end',
-		) );
-		
-		$fields[0] = ''; // This is a hack to get an extra colum for the control links.
-		return $fields;
+		);
 	}
 	
 	/**

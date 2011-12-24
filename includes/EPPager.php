@@ -111,6 +111,7 @@ abstract class EPPager extends TablePager {
 		$this->currentObject = $c::newFromDBResult( $row );
 		
 		$cells = array();
+		$fields = $this->getFieldNames();
 		
 		foreach ( $this->getFieldNames() as $field => $name ) {
 			if ( $field === 0 ) {
@@ -142,6 +143,37 @@ abstract class EPPager extends TablePager {
 		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
 		return $c::getPrefixedField( 'id' );
 	}
+	
+	/**
+	 * Returns the relevant field names.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
+	public function getFieldNames() {
+		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_> 
+		$conds = $this->conds; // Indeed, this is also needed >_>
+		$fields = array_filter( $this->getFields(), function( $name ) use ( $conds ) {
+			return !array_key_exists( $name, $conds );
+		} );
+		
+		$fields = $this->getFieldNameList( $fields );
+		$fields[0] = ''; // This is a hack to get an extra colum for the control links.
+		
+		return $fields;
+	}
+	
+	/**
+	 * Returns the fields to display.
+	 * Similar to @see getFieldNames, but fields should not be prefixed, and
+	 * non-relevant fields will be removed.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
+	protected abstract function getFields();
 	
 	/**
 	 * (non-PHPdoc)

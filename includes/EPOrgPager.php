@@ -25,17 +25,14 @@ class EPOrgPager extends EPPager {
 
 	/**
 	 * (non-PHPdoc)
-	 * @see TablePager::getFieldNames()
+	 * @see EPPager::getFields()
 	 */
-	public function getFieldNames() {
-		$fields = parent::getFieldNameList( array(
+	public function getFields() {
+		return array(
 			'name',
 			'city',
 			'country',
-		) );
-
-		$fields[0] = ''; // This is a hack to get an extra colum for the control links.
-		return $fields;
+		);
 	}
 	
 	/**
