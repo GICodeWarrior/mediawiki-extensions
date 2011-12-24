@@ -35,25 +35,30 @@ class SpecialCourse extends SpecialEPPage {
 
 		$out = $this->getOutput();
 		
-		$out->setPageTitle( wfMsgExt( 'ep-course-title', 'parsemag', $this->subPage ) );
-		
-		$course = EPCourse::selectRow( null, array( 'name' => $this->subPage ) );
-		
-		if ( $course === false ) {
-			if ( $this->getUser()->isAllowed( 'epadmin' ) || $this->getUser()->isAllowed( 'epmentor' ) ) {
-				$out->addWikiMsg( 'ep-course-create', $this->subPage );
-				EPCourse::displayAddNewRegion( $this->getContext(), array( 'name' => $this->subPage ) );
-			}
-			else {
-				$out->addWikiMsg( 'ep-course-none', $this->subPage );
-			}
+		if ( trim( $subPage ) === '' ) {
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Courses' )->getLocalURL() );
 		}
 		else {
-			$this->displayInfo( $course );
+			$out->setPageTitle( wfMsgExt( 'ep-course-title', 'parsemag', $this->subPage ) );
+		
+			$course = EPCourse::selectRow( null, array( 'name' => $this->subPage ) );
 			
-			$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-course-terms' ) ) );
-			
-			EPTerm::displayPager( $this->getContext(), array( 'course_id' => $course->getId() ) );
+			if ( $course === false ) {
+				if ( $this->getUser()->isAllowed( 'epadmin' ) || $this->getUser()->isAllowed( 'epmentor' ) ) {
+					$out->addWikiMsg( 'ep-course-create', $this->subPage );
+					EPCourse::displayAddNewRegion( $this->getContext(), array( 'name' => $this->subPage ) );
+				}
+				else {
+					$out->addWikiMsg( 'ep-course-none', $this->subPage );
+				}
+			}
+			else {
+				$this->displayInfo( $course );
+				
+				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-course-terms' ) ) );
+				
+				EPTerm::displayPager( $this->getContext(), array( 'course_id' => $course->getId() ) );
+			}
 		}
 	}
 	

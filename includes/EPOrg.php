@@ -14,6 +14,22 @@
 class EPOrg extends EPDBObject {
 
 	/**
+	 * Cached array of the linked EPCourse objects.
+	 * 
+	 * @since 0.1
+	 * @var array|false
+	 */
+	protected $courses = false;
+	
+	/**
+	 * Cached array of the linked EPTerm objects.
+	 * 
+	 * @since 0.1
+	 * @var array|false
+	 */
+	protected $terms = false;
+	
+	/**
 	 * @see parent::getFieldTypes
 	 *
 	 * @since 0.1
@@ -180,6 +196,40 @@ class EPOrg extends EPDBObject {
 			$context->getOutput()->addHTML( $pager->getFilterControl( true ) );
 			$context->getOutput()->addWikiMsg( 'ep-orgs-noresults' );
 		}
+	}
+	
+	/**
+	 * Retruns the courses linked to this org. 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array|null $fields
+	 * 
+	 * @return array of EPCourse
+	 */
+	public function getCourses( array $fields = null ) {
+		if ( $this->courses === false ) {
+			$this->courses = EPCourse::select( $fields, array( 'org_id' => $this->getId() ) );
+		}
+		
+		return $this->courses;
+	}
+	
+	/**
+	 * Retruns the terms linked to this org. 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array|null $fields
+	 * 
+	 * @return array of EPTerm
+	 */
+	public function getTerms( array $fields = null ) {
+		if ( $this->terms === false ) {
+			$this->terms = EPTerm::select( $fields, array( 'org_id' => $this->getId() ) );
+		}
+		
+		return $this->terms;
 	}
 	
 }

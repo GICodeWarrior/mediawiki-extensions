@@ -35,25 +35,30 @@ class SpecialTerm extends SpecialEPPage {
 
 		$out = $this->getOutput();
 		
-		$out->setPageTitle( wfMsgExt( 'ep-term-title', 'parsemag', $this->subPage ) );
-		
-		$term = EPTerm::selectRow( null, array( 'id' => $this->subPage ) );
-		
-		if ( $term === false ) {
-			if ( $this->getUser()->isAllowed( 'epadmin' ) || $this->getUser()->isAllowed( 'epmentor' ) ) {
-				$out->addWikiMsg( 'ep-term-create', $this->subPage );
-				EPTerm::displayAddNewRegion( $this->getContext(), array( 'id' => $this->subPage ) );
-			}
-			else {
-				$out->addWikiMsg( 'ep-term-none', $this->subPage );
-			}
+		if ( trim( $subPage ) === '' ) {
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Terms' )->getLocalURL() );
 		}
 		else {
-			$this->displayInfo( $term );
+			$out->setPageTitle( wfMsgExt( 'ep-term-title', 'parsemag', $this->subPage ) );
+		
+			$term = EPTerm::selectRow( null, array( 'id' => $this->subPage ) );
 			
-			$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-term-students' ) ) );
-			
-			// TODO
+			if ( $term === false ) {
+				if ( $this->getUser()->isAllowed( 'epadmin' ) || $this->getUser()->isAllowed( 'epmentor' ) ) {
+					$out->addWikiMsg( 'ep-term-create', $this->subPage );
+					EPTerm::displayAddNewRegion( $this->getContext(), array( 'id' => $this->subPage ) );
+				}
+				else {
+					$out->addWikiMsg( 'ep-term-none', $this->subPage );
+				}
+			}
+			else {
+				$this->displayInfo( $term );
+				
+				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-term-students' ) ) );
+				
+				// TODO: students
+			}
 		}
 	}
 	

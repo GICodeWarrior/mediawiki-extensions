@@ -35,25 +35,30 @@ class SpecialInstitution extends SpecialEPPage {
 
 		$out = $this->getOutput();
 		
-		$out->setPageTitle( wfMsgExt( 'ep-institution-title', 'parsemag', $this->subPage ) );
-		
-		$org = EPOrg::selectRow( null, array( 'name' => $this->subPage ) );
-		
-		if ( $org === false ) {
-			if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
-				$out->addWikiMsg( 'ep-institution-create', $this->subPage );
-				EPOrg::displayAddNewControl( $this->getContext(), array( 'name' => $this->subPage ) );
-			}
-			else {
-				$out->addWikiMsg( 'ep-institution-none', $this->subPage );
-			}
+		if ( trim( $subPage ) === '' ) {
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Institutions' )->getLocalURL() );
 		}
 		else {
-			$this->displayInfo( $org );
+			$out->setPageTitle( wfMsgExt( 'ep-institution-title', 'parsemag', $this->subPage ) );
 			
-			$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-institution-courses' ) ) );
+			$org = EPOrg::selectRow( null, array( 'name' => $this->subPage ) );
 			
-			EPCourse::displayPager( $this->getContext(), array( 'org_id' => $org->getId() ) );
+			if ( $org === false ) {
+				if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
+					$out->addWikiMsg( 'ep-institution-create', $this->subPage );
+					EPOrg::displayAddNewControl( $this->getContext(), array( 'name' => $this->subPage ) );
+				}
+				else {
+					$out->addWikiMsg( 'ep-institution-none', $this->subPage );
+				}
+			}
+			else {
+				$this->displayInfo( $org );
+				
+				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-institution-courses' ) ) );
+				
+				EPCourse::displayPager( $this->getContext(), array( 'org_id' => $org->getId() ) );
+			}
 		}
 	}
 	

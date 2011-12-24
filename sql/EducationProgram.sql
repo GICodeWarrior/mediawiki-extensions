@@ -27,6 +27,7 @@ CREATE UNIQUE INDEX /*i*/ep_course_name ON /*_*/ep_courses (course_name);
 CREATE TABLE IF NOT EXISTS /*_*/ep_terms (
   term_id                    INT unsigned        NOT NULL auto_increment PRIMARY KEY,
   term_course_id             INT unsigned        NOT NULL, -- Foreign key on ep_courses.course_id
+  term_org_id                INT unsigned        NOT NULL, -- Foreign key on ep_orgs.org_id. Helper field, not strictly needed.
   term_year                  SMALLINT unsigned   NOT NULL, -- Yeah in which the term takes place
   term_start                 varbinary(14)       NOT NULL, -- Start time of the term
   term_end                   varbinary(14)       NOT NULL -- End time of the term

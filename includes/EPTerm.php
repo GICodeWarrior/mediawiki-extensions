@@ -15,6 +15,22 @@
 class EPTerm extends EPDBObject {
 
 	/**
+	 * Field for caching the linked course.
+	 * 
+	 * @since 0.1
+	 * @var EPCourse|false
+	 */
+	protected $course = false;
+	
+	/**
+	 * Field for caching the linked org.
+	 * 
+	 * @since 0.1
+	 * @var EPOrg|false
+	 */
+	protected $org = false;
+	
+	/**
 	 * @see parent::getFieldTypes
 	 *
 	 * @since 0.1
@@ -25,6 +41,7 @@ class EPTerm extends EPDBObject {
 		return array(
 			'id' => 'id',
 			'course_id' => 'id',
+			'org_id' => 'id',
 		
 			'year' => 'int',
 			'start' => 'str', // TS_MW
@@ -46,6 +63,19 @@ class EPTerm extends EPDBObject {
 	
 	/**
 	 * (non-PHPdoc)
+	 * @see EPDBObject::insertIntoDB()
+	 */
+	protected function insertIntoDB() {
+		if ( !$this->hasField( 'org_id' ) ) {
+			$this->setField( 'org_id', $this->getCourse( 'org_id' )->getField( 'org_id' ) );
+		}
+		
+		
+		parent::insertIntoDB();
+	}
+	
+	/**
+	 * (non-PHPdoc)
 	 * @see EPDBObject::removeFromDB()
 	 */
 	public function removeFromDB() {
@@ -58,6 +88,40 @@ class EPTerm extends EPDBObject {
 		}
 		
 		return $success;
+	}
+	
+	/**
+	 * Returns the course associated with this term.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string|array|null $fields
+	 * 
+	 * @return EPCourse
+	 */
+	public function getCourse( $fields = null ) {
+		if ( $this->course === false ) {
+			$this->course = EPCourse::selectRow( $fields, array( 'id' => $this->getField( 'course_id' ) ) );
+		}
+		
+		return $this->course;
+	}
+	
+	/**
+	 * Returns the org associated with this term.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string|array|null $fields
+	 * 
+	 * @return EPOrg
+	 */
+	public function getOrg( $fields = null ) {
+		if ( $this->org === false ) {
+			$this->org = EPOrg::selectRow( $fields, array( 'id' => $this->getField( 'org_id' ) ) );
+		}
+		
+		return $this->org;
 	}
 	
 	/**

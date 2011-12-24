@@ -15,6 +15,14 @@
 class EPCourse extends EPDBObject {
 
 	/**
+	 * Field for caching the linked org.
+	 * 
+	 * @since 0.1
+	 * @var EPOrg|false
+	 */
+	protected $org = false;
+	
+	/**
 	 * @see parent::getFieldTypes
 	 *
 	 * @since 0.1
@@ -57,6 +65,23 @@ class EPCourse extends EPDBObject {
 		}
 		
 		return $success;
+	}
+	
+	/**
+	 * Returns the org associated with this course.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string|array|null $fields
+	 * 
+	 * @return EPOrg
+	 */
+	public function getOrg( $fields = null ) {
+		if ( $this->org === false ) {
+			$this->org = EPOrg::selectRow( $fields, array( 'id' => $this->getField( 'org_id' ) ) );
+		}
+		
+		return $this->org;
 	}
 	
 	/**
