@@ -20,48 +20,48 @@
  */
 class SolrSearchFieldSet {
 
-    var $mName;
-    var $mFields;
-    var $mLable;
-    var $mQuery;
+	var $mName;
+	var $mFields;
+	var $mLable;
+	var $mQuery;
 
-    public function __construct( $name, $fields = 'search', $lable = 'Alles', $query = null ) {
-        $this->mName = $name;
-        $this->mFields = explode( ';', $fields );
-        $this->mLable = explode( ';', $lable );
-        $this->mQuery = $query;
-    }
+	public function __construct( $name, $fields = 'search', $lable = 'Alles', $query = null ) {
+		$this->mName = $name;
+		$this->mFields = explode( ';', $fields );
+		$this->mLable = explode( ';', $lable );
+		$this->mQuery = $query;
+	}
 
-    public function getName() {
-        return $this->mName;
-    }
+	public function getName() {
+		return $this->mName;
+	}
 
-    public function getFields() {
-        return $this->mFields;
-    }
+	public function getFields() {
+		return $this->mFields;
+	}
 
-    public function getLable() {
-        return $this->mLable;
-    }
+	public function getLable() {
+		return $this->mLable;
+	}
 
-    public function getQuery() {
-        return $this->mQuery;
-    }
+	public function getQuery() {
+		return $this->mQuery;
+	}
 
-    public function setName( $value ) {
-        $this->mName = $value;
-    }
+	public function setName( $value ) {
+		$this->mName = $value;
+	}
 
-    public function setFields( $value ) {
-        $this->mFields = $value;
-    }
+	public function setFields( $value ) {
+		$this->mFields = $value;
+	}
 
-    public function setLable( $value ) {
-        $this->mLable = $value;
-    }
+	public function setLable( $value ) {
+		$this->mLable = $value;
+	}
 
-    public function setQuery( $value ) {
-        $this->mQuery = $value;
-    }
+	public function setQuery( $value ) {
+		$this->mQuery = $value;
+	}
 
 }
