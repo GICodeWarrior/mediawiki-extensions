@@ -2,28 +2,29 @@ jQuery( function( $ ) {
 	var languages = { isset: false };
 	
 	//Replace fake "add language" link with real one and add it
-	var paragraph = $( '<p id="newtrans"></p>' ).text( mw.msg( 'translatesvg-add' ) );
+	var paragraph = $( '<p id="mw-translatesvg-newtrans"></p>' ).text( mw.msg( 'translatesvg-add' ) );
 	var match = paragraph.html().match( /\[\[#addlanguage\|(.*?)\]\]/ );
-	paragraph.html( paragraph.html().replace( match[0], '<a id="newtranslink" href="#">' + match[1] + '</a>' ) );
+	paragraph.html( paragraph.html().replace( match[0], '<a id="mw-translatesvg-newtranslink" href="#">' + match[1] + '</a>' ) );
 	$( 'div.mw-specialpage-summary' ).append( paragraph );
 	
 	//Add in "remove" links
 	$( 'legend' ).each( function(){ 
-		var langcode = $(this).parent().attr('id');
+		var langcode = $(this).parent().attr('id').substr( 25 ); //Trim "mw-translatesvg-fieldset-"
 		if( langcode !== 'qqq' && langcode !== 'fallback' ){
 			$(this).append( '&#160;' ).append( getRemoveLink() );
 		}
 	} );
 	
-	$( '#newtranslink' )
+	
+	$( '#mw-translatesvg-newtranslink' )
 		.click( function() {
 		var langcode = prompt( mw.msg( 'translatesvg-specify' ) );
 		if( langcode !== null ){
-			if( !langcode.match( /^[a-z]+( ?:-[a-z]+ )?/ ) ){
+			if( !langcode.match( /^[a-z]+(?:-[a-z]+)?/ ) ){
 				//Not valid language code
 				return false; //TODO: more helpful?
 			}
-			if( $( 'fieldset#'+langcode ).length !== 0 ){
+			if( $( '#mw-translatesvg-fieldset-'+langcode ).length !== 0 ){
 				//Already exists
 				return false; //TODO: more helpful?
 			}
@@ -32,10 +33,10 @@ jQuery( function( $ ) {
 					//Have already loaded valid languages and this ain't one of them
 					return false; //TODO: more helpful?
 				}
-				$( 'form#specialtranslatesvg' ).prepend( getNewFieldset( langcode, languages[langcode] ) );
+				$( '#specialtranslatesvg' ).prepend( getNewFieldset( langcode, languages[langcode] ) );
 			} else {
-				var temp = $( '<fieldset id="temp"><br /></fieldset>' ).append( $.createSpinner() );
-				$( 'form#specialtranslatesvg' ).prepend( temp );
+				var temp = $( '<fieldset class="mw-translatesvg-temp"><br /></fieldset>' ).append( $.createSpinner() );
+				$( '#specialtranslatesvg' ).prepend( temp );
 				jQuery.getJSON( 
 				  mw.util.wikiScript( 'api' ), {
 					'format': 'json',
@@ -48,12 +49,12 @@ jQuery( function( $ ) {
 						languages[ data.query.languages[i]['code'] ] = data.query.languages[i]['*'];
 					}
 					if( ( langcode in languages ) ){
-						$( 'form#specialtranslatesvg' ).prepend( getNewFieldset( langcode, languages[langcode] ) );
+						$( '#specialtranslatesvg' ).prepend( getNewFieldset( langcode, languages[langcode] ) );
 					} else {
 						//Have now loaded valid languages and this ain't one of them
 						//TODO: more helpful?
 					}
-					$( 'fieldset#temp' ).remove();
+					$( '.mw-translatesvg-temp' ).remove();
 					languages.isset = true;
 				  }
 				 );
@@ -64,7 +65,7 @@ jQuery( function( $ ) {
 } );
 
 function getNewFieldset( langcode, langname ){
-	var newfieldset = $( 'fieldset#fallback' ).clone();
+	var newfieldset = $( 'fieldset#mw-translatesvg-fieldset-fallback' ).clone();
 	newfieldset.find( 'input' ).each( function (){
 		$( this ).attr( 'id', $( this ).attr( 'id' ).toString().replace( 'fallback', langcode ) );
 		$( this ).attr( 'name', $( this ).attr( 'name' ).toString().replace( 'fallback', langcode ) );
@@ -73,7 +74,7 @@ function getNewFieldset( langcode, langname ){
 	newfieldset.find( 'label' ).each( function (){
 		$( this ).attr( 'for', $( this ).attr( 'for' ).toString().replace( 'fallback', langcode ) );
 	} );
-	newfieldset.attr( 'id', langcode );
+	newfieldset.attr( 'id', "mw-translatesvg-fieldset-" + langcode );
 	newfieldset.find( 'legend' ).each( function (){
 		$( this ).text( langname );
 		$( this ).append( '&#160;' ).append( getRemoveLink() );
@@ -83,7 +84,7 @@ function getNewFieldset( langcode, langname ){
 
 function getRemoveLink(){
 	var removelink = $( '<a href="#"><abbr title="'
-				+ mw.msg( 'translatesvg-remove' )
+				+ mw.message('translatesvg-remove').escaped()
 				+ '"><small>[x]</small></abbr></a>' );
 	removelink.click( function(){ $(this).parent().parent().remove(); } );
 	return removelink;

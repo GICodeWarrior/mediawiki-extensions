@@ -43,21 +43,20 @@ class SpecialTranslateSvg extends SpecialPage {
 					$this->extractTranslations();
 					$this->tidyTranslations();
 					$params = $request->getQueryValues();
-					if( count( $params ) > 2 && isset( $params['title'] ) && isset( $params['file'] ) ){
-						unset( $params['title'] );
+					if( count( $params ) > 2 && isset( $params['title'] ) && isset( $params['file'] ) && isset( $params['step'] ) ){
 						$filename = $params['file'];
-						unset( $params['file'] );
+						unset( $params['title'], $params['file'], $params['step'] );
 						$this->updateTranslations( $params );
 						$this->updateSVG();
 						$this->saveSVG( $file->getLocalRefPath(), $filename );
 						$file->purgeThumbnails();
 					} else {
 						$this->thumb = Linker::makeThumbLinkObj( $title, $file, $label = '', '', 
-							$align = 'right', array( 'width' => 250, 'height' => 250) );
+							$align = $this->getLanguage()->alignEnd(), array( 'width' => 250, 'height' => 250 ) );
 						$this->printTranslations( $file->getName() );
 					}
 				} else {
-					$this->getOutput()->addHTML( '<p>This file could not be translated, sorry.</p>' );
+					$this->getOutput()->addHTML( '<p>This file could not be translated, sorry.</p>' ); //TODO: internationalise
 				}
 			} else {
 				$this->getOutput()->setStatusCode( 404 );
@@ -116,23 +115,27 @@ class SpecialTranslateSvg extends SpecialPage {
 					$attrs = ( $child->hasAttributes() ) ? $child->attributes : array();
 					foreach ($attrs as $num => $attr){
 						$parentattr = trim( $text->getAttribute( $attr->name ) );
-						switch( $attr->name ){
-							case 'x':
-							case 'y':
-							case '':
-								$text->setAttribute( $attr->name, $attr->value ); //Overwrite
-								break;
-							case 'style':
-								$merged = $parentattr;
-								if( substr( $merged, -1 ) !== ';' ){
-									$merged .= ';';
-								}
-								$merged .= $attr->value;
-								break;
-							case 'id':
-								break; //Ignore
-							default:
-								return false;
+						if( trim( $parentattr ) === '' ){
+							$text->setAttribute( $attr->name, $attr->value ); //Simple upmerge
+						} else {
+							//Resolve conflict. the aim is to preserve the visuals.
+							switch( $attr->name ){
+								case 'x':
+								case 'y':
+									$text->setAttribute( $attr->name, $attr->value ); //Overwrite
+									break;
+								case 'style':
+									$merged = $parentattr;
+									if( substr( $merged, -1 ) !== ';' ){
+										$merged .= ';';
+									}
+									$merged .= $attr->value;
+									break;
+								case 'id':
+									break; //Ignore
+								default:
+									return false;
+							}
 						}
 					}
 					$text->appendChild( $child->childNodes->item( 0 ) );
@@ -197,33 +200,34 @@ class SpecialTranslateSvg extends SpecialPage {
 		$html = $this->thumb .
 			Html::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'id' => 'specialtranslatesvg' ) ) .
 			Html::hidden( 'file', $filename ) .
+			Html::hidden( 'step', 'translated' ) .
 			Html::hidden( 'title', $this->getTitle()->getPrefixedText() );
 
+		$groups = array();
 		foreach( $this->translations as $language=>$translations ){
-			$languages = Language::getLanguageNames();
-			$languages['fallback'] = wfMsg( 'translatesvg-fallbackdesc');
-			$languages['qqq'] = wfMsg( 'translatesvg-qqqdesc' );
-
-			$html .= Html::openElement( 'fieldset', array( 'id' => $language ) ) .
-					Html::element( 'legend', null, $languages[$language] );
+			$html .= Html::openElement( 'fieldset', array( 'id' => "mw-translatesvg-fieldset-$language" ) ) .
+					Html::element( 'legend', null, $languages[$language] ) . 
+					Html::openElement( 'div', array( 'class' => "mw-translatesvg-collapsible" ) );
 			$groups = array();
 			for( $i = 0; $i < $this->number; $i++ ){
 				$fallback = $this->getFallback( $i );
 				$existing = $this->getExisting( $i, $language );
 				$desc = ( $language === 'qqq' ) ? '' : '&#160;' . Html::element( 'small', null, $this->getDescriptor( $i ) );
-				list( $label, $input ) = Xml::inputLabelSep( $fallback['text'], $language.'-'.$i.'-text', $language.'-'.$i.'-text', 50, $existing['text'] );
+				list( $label, $input ) = Xml::inputLabelSep( $fallback['text'], "mw-translatesvg-$language-$i-text", "mw-translatesvg-$language-$i-text", 50, $existing['text'] );
 				$grouphtml = $label . $desc . '&#160;&#160;&#160;' . $input;
 				if( $language !== 'qqq' ){
 					$grouphtml .= Html::element( 'br' ) .
-							"&#160;&#160;&#160;" . Xml::inputLabel( wfMsg( 'translatesvg-xcoordinate-pre' ), $language.'-'.$i.'-x', $language.'-'.$i.'-x', 5, $existing['x'] ) . 
-							"&#160;&#160;&#160;" . Xml::inputLabel( wfMsg( 'translatesvg-ycoordinate-pre' ), $language.'-'.$i.'-y', $language.'-'.$i.'-y', 5, $existing['y'] );
+							"&#160;&#160;&#160;" .
+							Xml::inputLabel( wfMsg( 'translatesvg-xcoordinate-pre' ), "mw-translatesvg-$language-$i-x", "mw-translatesvg-$language-$i-x", 5, $existing['x'] ) .
+							"&#160;&#160;&#160;" .
+							Xml::inputLabel( wfMsg( 'translatesvg-ycoordinate-pre' ), "mw-translatesvg-$language-$i-y", "mw-translatesvg-$language-$i-y", 5, $existing['y'] );
 				}
 				$groups[] = $grouphtml;
 			}
 			$html .= implode( Html::element( 'div', array( 'style' => 'height:10px' ) ), $groups );
-			$html .= Html::closeElement( 'fieldset' );
+			$html .= Html::closeElement( 'div' ) . Html::closeElement( 'fieldset' );
 		}
-		$html .= Xml::submitButton( 'Submit' ) . "\n" .
+		$html .= Xml::submitButton( wfMsg( 'translatesvg-submit' ) ) . "\n" .
 				Html::closeElement( 'form' );
 		$this->getOutput()->addHTML( $html );
 	}

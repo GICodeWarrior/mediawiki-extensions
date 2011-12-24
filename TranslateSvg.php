@@ -31,6 +31,7 @@ $wgResourceModules['ext.translateSvg'] = array(
 	'scripts' => array( 'ext.translateSvg.core.js' ),
 	// 'styles' => 'css/ext.translateSvg.css',
 	'messages' => array( 'translatesvg-add', 'translatesvg-addlink', 'translatesvg-specify', 'translatesvg-remove' ),
+	'dependencies' => array( 'jquery.spinner', 'jquery.makeCollapsible' ),
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteExtPath' => 'translateSvg'
 );
