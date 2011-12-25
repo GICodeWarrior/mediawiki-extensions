@@ -339,6 +339,17 @@ $messages['mr'] = array(
 	'rightfunctions-desc' => 'परवानगी आधारित पार्सर कार्ये',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'rightfunctions-desc' => 'Rettighetsbaserte parserfunksjoner',
+	'rightfunctions-casc' => '(fra etterfølgende kilder)',
+	'rightfunctions-local' => '(fra lokal side)',
+	'rightfunctions-ns' => '(fra navneromsbeskyttelse)',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -358,17 +369,6 @@ $messages['nn'] = array(
 	'rightfunctions-casc' => '(frå etterfølgjande kjelder)',
 	'rightfunctions-local' => '(frå lokal sida)',
 	'rightfunctions-ns' => '(frå namneromvern)',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'rightfunctions-desc' => 'Rettighetsbaserte parserfunksjoner',
-	'rightfunctions-casc' => '(fra etterfølgende kilder)',
-	'rightfunctions-local' => '(fra lokal side)',
-	'rightfunctions-ns' => '(fra navneromsbeskyttelse)',
 );
 
 /** Occitan (Occitan)
