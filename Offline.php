@@ -11,7 +11,7 @@ $wgExtensionCredits['other'][] = array(
 
 $dir = dirname(__FILE__);
 $wgExtensionMessagesFiles['Offline'] = $dir.'/Offline.i18n.php';
-$wgExtensionAliasesFiles['Offline'] = $dir.'/Offline.aliases.php';
+$wgExtensionMessagesFiles['OfflineAlias'] = $dir.'/Offline.aliases.php';
 
 $wgExtensionFunctions[] = 'wfOfflineInit';
 
