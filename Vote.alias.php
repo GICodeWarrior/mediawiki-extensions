@@ -198,6 +198,11 @@ $specialPageAliases['mwl'] = array(
 	'Vote' => array( 'Botar' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'Vote' => array( 'Avstemning' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'Vote' => array( 'Stemmen' ),
@@ -206,11 +211,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'Vote' => array( 'Stemmen' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'Vote' => array( 'Avstemning' ),
 );
 
 /** Occitan (Occitan) */
@@ -238,7 +238,7 @@ $specialPageAliases['ro'] = array(
 	'Vote' => array( 'Votează' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'Vote' => array( 'मत' ),
 );
@@ -317,8 +317,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'Vote' => array( '投票' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
