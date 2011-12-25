@@ -625,6 +625,24 @@ $messages['ms'] = array(
 	'cooperationstatistics-articles' => '$1 laman',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'cooperationstatistics' => 'Samarbeidsstatistikk',
+	'cooperationstatistics-desc' => 'Vis [[Special:CooperationStatistics|samarbeidsstatistikk i hovednavnerommet]].',
+	'cooperationstatistics-text' => "Vis samarbeidsstatistikk i hovednavnerommet.
+Fra [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] til [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] revisorer.<br />
+Se også [[Special:MostRevisors|'''sidene med flest revisorer''']] og [[Special:MostRevisions|sidene med flest revisjoner]].",
+	'cooperationstatistics-tablearticle' => 'Sideantall',
+	'cooperationstatistics-tablevalue' => 'Antall bidragsytere',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|side|sider}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|har|har}} {{PLURAL:$1|én bidragsyter|$1 bidragsytere}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|har|har}} {{PLURAL:$1|én bidragsyter|$1 eller færre bidragsytere}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|har|har}} $1 eller fler bidragsytere',
+	'cooperationstatistics-legendmore' => 'eller fler bidragsytere.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -648,24 +666,6 @@ Zie ook de [[Special:MostRevisors|'''pagina's met de meeste bewerkers''']] en [[
  */
 $messages['nn'] = array(
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|sida|sider}}',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'cooperationstatistics' => 'Samarbeidsstatistikk',
-	'cooperationstatistics-desc' => 'Vis [[Special:CooperationStatistics|samarbeidsstatistikk i hovednavnerommet]].',
-	'cooperationstatistics-text' => "Vis samarbeidsstatistikk i hovednavnerommet.
-Fra [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] til [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] revisorer.<br />
-Se også [[Special:MostRevisors|'''sidene med flest revisorer''']] og [[Special:MostRevisions|sidene med flest revisjoner]].",
-	'cooperationstatistics-tablearticle' => 'Sideantall',
-	'cooperationstatistics-tablevalue' => 'Antall bidragsytere',
-	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|side|sider}}',
-	'cooperationstatistics-nbusers' => '{{PLURAL:$2|har|har}} {{PLURAL:$1|én bidragsyter|$1 bidragsytere}}',
-	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|har|har}} {{PLURAL:$1|én bidragsyter|$1 eller færre bidragsytere}}',
-	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|har|har}} $1 eller fler bidragsytere',
-	'cooperationstatistics-legendmore' => 'eller fler bidragsytere.',
 );
 
 /** Occitan (Occitan)
