@@ -234,9 +234,9 @@ $specialPageAliases['lb'] = array(
 
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
-	'Configure' => array( 'Конфигурирај' ),
+	'Configure' => array( 'Постави' ),
 	'Extensions' => array( 'Додатоци' ),
-	'ViewConfig' => array( 'ВидиКонфигурација' ),
+	'ViewConfig' => array( 'ВидиПоставеност' ),
 );
 
 /** Malayalam (മലയാളം) */
@@ -258,6 +258,13 @@ $specialPageAliases['mt'] = array(
 	'ViewConfig' => array( 'UriKonfig' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'Configure' => array( 'Konfigurer' ),
+	'Extensions' => array( 'Utvidelser' ),
+	'ViewConfig' => array( 'Vis_konfigurasjon' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'Configure' => array( 'Instellingen' ),
@@ -275,13 +282,6 @@ $specialPageAliases['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
 $specialPageAliases['nn'] = array(
 	'Extensions' => array( 'Utvidingar' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'Configure' => array( 'Konfigurer' ),
-	'Extensions' => array( 'Utvidelser' ),
-	'ViewConfig' => array( 'Vis_konfigurasjon' ),
 );
 
 /** Occitan (Occitan) */
@@ -318,7 +318,7 @@ $specialPageAliases['ro'] = array(
 	'ViewConfig' => array( 'Vizualizare_configurare' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'Configure' => array( 'संरूपण' ),
 	'Extensions' => array( 'विस्तार' ),
@@ -392,8 +392,3 @@ $specialPageAliases['zh-hant'] = array(
 	'Extensions' => array( '擴展' ),
 	'ViewConfig' => array( '查看設定' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
