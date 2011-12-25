@@ -49,8 +49,8 @@ $magicWords['eo'] = array(
 
 /** Spanish (Español) */
 $magicWords['es'] = array(
-	'ogg_noplayer' => array( 0, 'noreproductor', 'noplayer' ),
-	'ogg_noicon' => array( 0, 'noicono', 'noicon' ),
+	'ogg_noplayer' => array( 0, 'noreproductor', 'sinreproductor' ),
+	'ogg_noicon' => array( 0, 'noicono', 'sinicono' ),
 );
 
 /** Japanese (日本語) */
@@ -114,6 +114,13 @@ $magicWords['ru'] = array(
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'ogg_noicon' => array( 0, 'безиконице', 'безиконе', 'без_иконице', 'без_иконе' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'ogg_noplayer' => array( 0, 'bez_plejera' ),
+	'ogg_noicon' => array( 0, 'bez_ikone' ),
+	'ogg_thumbtime' => array( 0, 'vreme_slike=$1' ),
 );
 
 /** Swedish (Svenska) */
