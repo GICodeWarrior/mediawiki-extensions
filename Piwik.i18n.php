@@ -484,7 +484,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'piwik-desc' => 'Legger til et Piwik-skript for sporing i MediaWiki og viser [[Special:Piwik|litt statistikk]]',
 	'piwik-lastvisits' => 'Siste besøk',
 	'piwik-countries' => 'Land',
