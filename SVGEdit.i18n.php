@@ -405,6 +405,17 @@ $messages['ms'] = array(
 	'svgedit-toolbar-insert' => 'Lukisan SVG',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'svgedit-editbutton-edit' => 'Rediger tegning',
+	'svgedit-editor-save-close' => 'Lagre og lukk',
+	'svgedit-editor-close' => 'Avbryt',
+	'svgedit-desc' => 'Nettleserredigering av SVG-tegninger med [http://code.google.com/p/svg-edit/ SVG-Edit]',
+	'svgedit-toolbar-insert' => 'SVG-tegning',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -418,17 +429,6 @@ $messages['nl'] = array(
 	'svgedit-edit-tab' => 'Tekening bewerken',
 	'svgedit-edit-tab-tooltip' => 'U kunt deze SVG-tekening bewerken in uw browser',
 	'svgedit-toolbar-insert' => 'SVG-tekening',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'svgedit-editbutton-edit' => 'Rediger tegning',
-	'svgedit-editor-save-close' => 'Lagre og lukk',
-	'svgedit-editor-close' => 'Avbryt',
-	'svgedit-desc' => 'Nettleserredigering av SVG-tegninger med [http://code.google.com/p/svg-edit/ SVG-Edit]',
-	'svgedit-toolbar-insert' => 'SVG-tegning',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
