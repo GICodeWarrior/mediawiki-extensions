@@ -90,8 +90,3 @@ $specialPageAliases['sk'] = array(
 $specialPageAliases['tl'] = array(
 	'StalePages' => array( 'Mga pahina hindi na sariwa' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
