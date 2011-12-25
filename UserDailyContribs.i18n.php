@@ -393,7 +393,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'userdailycontribs-desc' => 'Daglige brukerbidrag for tilleggsfunksjonen klikksporing',
 );
 
