@@ -40,7 +40,7 @@ $specialPageAliases['bs'] = array(
 
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
-	'InterwikiList' => array( 'Interwiki-Liste' ),
+	'InterwikiList' => array( 'Interwikiliste', 'Interwiki-Liste' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
@@ -183,6 +183,11 @@ $specialPageAliases['mt'] = array(
 	'InterwikiList' => array( 'ListaInterwiki' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'InterwikiList' => array( 'Interwikiliste' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'InterwikiList' => array( 'Interwikilieste' ),
@@ -191,11 +196,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'InterwikiList' => array( 'Interwikilijst' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'InterwikiList' => array( 'Interwikiliste' ),
 );
 
 /** Occitan (Occitan) */
@@ -218,7 +218,7 @@ $specialPageAliases['pt-br'] = array(
 	'InterwikiList' => array( 'Lista_de_interwikis' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'InterwikiList' => array( 'आंन्तरविकिसूची' ),
 );
@@ -262,8 +262,3 @@ $specialPageAliases['vi'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'InterwikiList' => array( '跨維基連結列表' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
