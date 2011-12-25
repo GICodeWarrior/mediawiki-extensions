@@ -91,9 +91,16 @@ $magicWords['pl'] = array(
 
 /** Russian (Русский) */
 $magicWords['ru'] = array(
-	'onlinestatus_word' => array( 'СТАТУСВСЕТИ' ),
-	'onlinestatus_word_raw' => array( 'СТАТУСВСЕТИСЫР' ),
-	'anyuseronlinestatus' => array( 0, 'любойучастникстатусвсети' ),
+	'onlinestatus_word' => array( 'СТАТУСВСЕТИ', 'СТАТУС_В_СЕТИ' ),
+	'onlinestatus_word_raw' => array( 'СТАТУСВСЕТИСЫР', 'СТАТУС_В_СЕТИ_СЫР' ),
+	'anyuseronlinestatus' => array( 0, 'любойучастникстатусвсети', 'любой_участник_статус_в_сети' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'onlinestatus_word' => array( 'MREŽNO_STANJE' ),
+	'onlinestatus_word_raw' => array( 'ČISTO_MREŽNO_STANJE' ),
+	'anyuseronlinestatus' => array( 0, 'mrežno_stanje_svakog_korisnika' ),
 );
 
 /** Swedish (Svenska) */
