@@ -301,6 +301,15 @@ $messages['mr'] = array(
 	'untidy' => 'अव्यवस्थीत',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'tidy-desc' => 'Legger til en fane for systematisering eller avsystematisering (avhengig av $wgUseTidy) som tillater overstyring av den globale innstillingen for HTML-systematisering.',
+	'tidy' => 'Systematiser kode',
+	'untidy' => 'Avsystematiser kode',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -315,15 +324,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'tidy-desc' => 'Legg til ei fane for systematisering eller avsystematisering (avhengig av $wgUseTidy) som tillet overstyring av den globale innstillinga for HTML-systematisering.',
-	'tidy' => 'Systematiser kode',
-	'untidy' => 'Avsystematiser kode',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'tidy-desc' => 'Legger til en fane for systematisering eller avsystematisering (avhengig av $wgUseTidy) som tillater overstyring av den globale innstillingen for HTML-systematisering.',
 	'tidy' => 'Systematiser kode',
 	'untidy' => 'Avsystematiser kode',
 );
