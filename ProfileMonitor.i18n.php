@@ -324,6 +324,7 @@ $messages['fi'] = array(
  * @author McDutchie
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'profiling' => 'Données d’évaluation',
@@ -333,7 +334,7 @@ $messages['fr'] = array(
 	'profiling-ok' => 'Accepter',
 	'profiling-data' => 'Données d’évaluation de « $1 »',
 	'profiling-data-process' => 'Processus',
-	'profiling-data-count' => 'Décompte',
+	'profiling-data-count' => 'Quantité',
 	'profiling-data-time' => 'Durée (totale)',
 	'profiling-data-average' => 'Durée (moyenne)',
 	'profiling-no-data' => 'Aucune donnée correspondante trouvée',
@@ -706,6 +707,23 @@ $messages['nah'] = array(
 	'profiling-ok' => 'Cualli',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'profiling' => 'Profileringsdata',
+	'profiling-desc' => '[[Special:Profiling|Spesialside]] for søk og inspeksjon av profileringsdata',
+	'profiling-process' => 'Prosesseringsstreng:',
+	'profiling-wildcard' => 'Bruk vilkårlig tegn',
+	'profiling-ok' => 'OK',
+	'profiling-data' => 'Profileringsdata for «$1»',
+	'profiling-data-process' => 'Prosess',
+	'profiling-data-count' => 'Antall',
+	'profiling-data-time' => 'Tid (alle)',
+	'profiling-data-average' => 'Tid (gj.snitt)',
+	'profiling-no-data' => 'Ingen passende resultater.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -739,23 +757,6 @@ $messages['nn'] = array(
 	'profiling-data-time' => 'Tid (alle)',
 	'profiling-data-average' => 'Tid (i snitt)',
 	'profiling-no-data' => 'Fann ingen passande resultat.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'profiling' => 'Profileringsdata',
-	'profiling-desc' => '[[Special:Profiling|Spesialside]] for søk og inspeksjon av profileringsdata',
-	'profiling-process' => 'Prosesseringsstreng:',
-	'profiling-wildcard' => 'Bruk vilkårlig tegn',
-	'profiling-ok' => 'OK',
-	'profiling-data' => 'Profileringsdata for «$1»',
-	'profiling-data-process' => 'Prosess',
-	'profiling-data-count' => 'Antall',
-	'profiling-data-time' => 'Tid (alle)',
-	'profiling-data-average' => 'Tid (gj.snitt)',
-	'profiling-no-data' => 'Ingen passende resultater.',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -963,12 +964,12 @@ $messages['sr-ec'] = array(
  * @author Rancher
  */
 $messages['sr-el'] = array(
-	'profiling-process' => 'Obradi string:',
+	'profiling-process' => 'Naredba:',
 	'profiling-ok' => 'U redu',
 	'profiling-data-process' => 'Obradi',
 	'profiling-data-count' => 'Broj',
-	'profiling-data-time' => 'Vreme (ukupno)',
-	'profiling-data-average' => 'Vreme (srednje)',
+	'profiling-data-time' => 'Vreme (sve)',
+	'profiling-data-average' => 'Vreme (prosečno)',
 );
 
 /** Seeltersk (Seeltersk)
