@@ -53,6 +53,11 @@ $specialPageAliases['fa'] = array(
 	'ExternalPages' => array( 'صفحات_خارجی' ),
 );
 
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'ExternalPages' => array( 'Páxinas_externas' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
 	'ExternalPages' => array( 'PajAndeyò' ),
@@ -108,6 +113,11 @@ $specialPageAliases['myv'] = array(
 	'ExternalPages' => array( 'УшоньЛопат' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'ExternalPages' => array( 'Eksterne_sider' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'ExternalPages' => array( 'Uutgaonde_pagina\'s' ),
@@ -116,11 +126,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'ExternalPages' => array( 'ExternePaginas', 'ExternePagina\'s' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'ExternalPages' => array( 'Eksterne_sider' ),
 );
 
 /** Portuguese (Português) */
@@ -147,8 +152,3 @@ $specialPageAliases['vec'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'ExternalPages' => array( '外部頁面' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
