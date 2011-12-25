@@ -94,5 +94,5 @@ $wgAvailableRights[] = 'viewpiwik';
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['Piwik'] = $dir . 'Piwik_specialpage.php'; # Tell MediaWiki to load the extension body.
 $wgExtensionMessagesFiles['Piwik'] = $dir . 'Piwik.i18n.php';
-$wgExtensionAliasesFiles['Piwik'] = $dir . 'Piwik.alias.php';
+$wgExtensionMessagesFiles['PiwikAlias'] = $dir . 'Piwik.alias.php';
 $wgSpecialPages['Piwik'] = 'Piwik'; # Let MediaWiki know about your new special page.
