@@ -166,7 +166,7 @@ $specialPageAliases['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['no'] = array(
+$specialPageAliases['nb'] = array(
 	'TaskList' => array( 'Oppgaveliste' ),
 	'TaskListByProject' => array( 'Oppgaveliste_per_prosjekt' ),
 );

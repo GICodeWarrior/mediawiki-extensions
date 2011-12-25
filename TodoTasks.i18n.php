@@ -1118,7 +1118,7 @@ Frå %ss varslingssystem',
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'tasklist' => 'Oppgaveliste',
 	'tasklist-parser-desc' => 'legger til <nowiki>{{#todo:}}</nowiki> for tildeling av oppgaver',
 	'tasklist-special-desc' => 'Legger til en spesialside for gjennomgang av [[Special:TaskList|oppgaver]]',
