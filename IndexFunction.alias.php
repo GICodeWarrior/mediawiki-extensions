@@ -68,6 +68,11 @@ $specialPageAliases['gag'] = array(
 	'Index' => array( 'İndeks' ),
 );
 
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'Index' => array( 'Índice' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
 	'Index' => array( 'Endèks' ),
@@ -123,7 +128,7 @@ $specialPageAliases['mr'] = array(
 	'Index' => array( 'सूची' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
 $specialPageAliases['nb'] = array(
 	'Index' => array( 'Indeks' ),
 );
@@ -167,8 +172,3 @@ $specialPageAliases['tr'] = array(
 $specialPageAliases['zh-hans'] = array(
 	'Index' => array( '索引' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
