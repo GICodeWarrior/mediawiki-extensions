@@ -497,7 +497,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'msfunc_desc' => 'En samling av matematiske og statistiske funksjoner',
 	'msfunc_nan' => 'Resultatverdien er ikke et tall',
 	'msfunc_inf' => 'Resultatverdien er uendelig',
