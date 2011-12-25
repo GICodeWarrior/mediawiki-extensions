@@ -477,7 +477,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'commentpages-desc' => 'Legger til kommentarsider for sider i hovednavnerommet',
 	'nstab-comments' => 'Kommentarer',
 );
