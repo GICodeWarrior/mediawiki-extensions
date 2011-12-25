@@ -216,19 +216,19 @@ $messages['myv'] = array(
 	'DONATE' => 'Лезксйармаконь максома',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'sidebardonatebox-desc' => 'Legger til en egendefinert donasjonsboks til sidepanelet',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'sidebardonatebox-desc' => 'Voegt een aangepast venster voor donaties toe in de menubalk',
 	'DONATE' => 'Doneren',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'sidebardonatebox-desc' => 'Legger til en egendefinert donasjonsboks til sidepanelet',
 );
 
 /** Occitan (Occitan)
