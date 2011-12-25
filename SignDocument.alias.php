@@ -130,6 +130,12 @@ $specialPageAliases['mr'] = array(
 	'CreateSignDocument' => array( 'दस्तसहीनर्मितीकरा' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'SignDocument' => array( 'Signer_dokument' ),
+	'CreateSignDocument' => array( 'Opprett_signaturdokument' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'SignDocument' => array( 'Dokument_ondertekenen' ),
@@ -140,12 +146,6 @@ $specialPageAliases['nds-nl'] = array(
 $specialPageAliases['nl'] = array(
 	'SignDocument' => array( 'DocumentOndertekenen' ),
 	'CreateSignDocument' => array( 'DocumentOndertekenenAanmaken' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'SignDocument' => array( 'Signer_dokument' ),
-	'CreateSignDocument' => array( 'Opprett_signaturdokument' ),
 );
 
 /** Pashto (پښتو) */
@@ -181,8 +181,3 @@ $specialPageAliases['tl'] = array(
 	'SignDocument' => array( 'Lagdaan ang dokumento' ),
 	'CreateSignDocument' => array( 'Likhain ang paglagda sa kasulatan' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
