@@ -60,7 +60,7 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'ImportFreeImages' => array( 'Importar_des_émâges_abades', 'ImportarDesÉmâgesAbades' ),
+	'ImportFreeImages' => array( 'Importar_des_émâges_libres', 'ImportarDesÉmâgesLibres' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -133,6 +133,11 @@ $specialPageAliases['mr'] = array(
 	'ImportFreeImages' => array( 'मुक्तचित्रेआयात' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'ImportFreeImages' => array( 'Importer_frie_bilder' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'ImportFreeImages' => array( 'Vrieje_aofbeeldingen_invoeren' ),
@@ -141,11 +146,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'ImportFreeImages' => array( 'VrijeAfbeeldingenImporteren' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'ImportFreeImages' => array( 'Importer_frie_bilder' ),
 );
 
 /** Occitan (Occitan) */
@@ -158,7 +158,7 @@ $specialPageAliases['pt'] = array(
 	'ImportFreeImages' => array( 'Importar_imagens_de_acesso_livre' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'ImportFreeImages' => array( 'आयातमुक्तछायाचित्र' ),
 );
@@ -197,8 +197,3 @@ $specialPageAliases['tr'] = array(
 $specialPageAliases['zh-hans'] = array(
 	'ImportFreeImages' => array( '导入自由图像' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
