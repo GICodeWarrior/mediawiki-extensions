@@ -389,7 +389,7 @@ $messages['bg'] = array(
 $messages['bn'] = array(
 	'badimages' => 'অচল ছবির তালিকা',
 	'badimage-desc' => 'মিডিয়াউইকির অচল ছবির তালিকা তৈরির ক্ষমতা সম্প্রসারণ করা হবে',
-	'badimages-add-btn' => 'যোগ করা হোক',
+	'badimages-add-btn' => 'যোগ',
 	'badimages-added' => '$1-কে তালিকাতে যোগ করা হয়েছে।',
 	'badimages-count' => "খারাও চিত্রের তালিকায় '''$1''' {{PLURAL:$1|টি চিত্র|টি চিত্র}} রয়েছে।",
 	'badimages-name' => 'নাম:',
@@ -1896,6 +1896,34 @@ $messages['nah'] = array(
 	'badimages-remove-btn' => 'Mìxpôpolòs',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'badimages' => 'Liste over blokkerte bilder',
+	'badimage-desc' => 'Utvider funksjonaliteten til listen over dårlige bilder i MediaWiki',
+	'badimages-add-btn' => 'Legg til',
+	'badimages-added' => '$1 ble lagt til i listen.',
+	'badimages-count' => "Det er {{PLURAL:$1|'''ett''' bilde|'''$1''' bilder}} på lista over blokkerte bilder.",
+	'badimages-name' => 'Navn:',
+	'badimages-not-added' => 'Bildet kunne ikke legges til.',
+	'badimages-not-removed' => 'Bildet kunne ikke fjernes.',
+	'badimages-reason' => 'Årsak:',
+	'badimages-remove' => '(fjern)',
+	'badimages-remove-btn' => 'Fjern',
+	'badimages-remove-confirm' => 'Bekreft at du ønsker å fjerne $1 fra listen:',
+	'badimages-removed' => '$1 ble fjernet fra listen.',
+	'badimages-subheading' => 'Nåværende objekter',
+	'badimages-unprivileged' => '(Du har ikke rettigheter til å endre listen)',
+	'badimages-log-name' => 'Liste over blokkerte bilder',
+	'badimages-log-header' => 'Dette er en logg over endringer i [[{{MediaWiki:Badimages-page}}|lista over blokkerte bilder]].',
+	'badimages-log-add' => 'la til [[$1]] på lista over blokkerte bilder',
+	'badimages-log-remove' => 'fjernet [[$1]] fra lista over blokkerte bilder',
+	'badimages-page' => 'Help:Liste over dårlige bilder',
+	'right-badimages' => 'Oppdater lista over dårlige bilder',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1992,34 +2020,6 @@ $messages['nn'] = array(
 	'badimages-log-remove' => 'fjerna [[$1]] frå lista over blokkerte bilete',
 	'badimages-page' => '{{ns:help}}:Lista over blokkerte bilete',
 	'right-badimages' => 'Oppdater lista over dårlege bilete',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Audun
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'badimages' => 'Liste over blokkerte bilder',
-	'badimage-desc' => 'Utvider funksjonaliteten til listen over dårlige bilder i MediaWiki',
-	'badimages-add-btn' => 'Legg til',
-	'badimages-added' => '$1 ble lagt til i listen.',
-	'badimages-count' => "Det er {{PLURAL:$1|'''ett''' bilde|'''$1''' bilder}} på lista over blokkerte bilder.",
-	'badimages-name' => 'Navn:',
-	'badimages-not-added' => 'Bildet kunne ikke legges til.',
-	'badimages-not-removed' => 'Bildet kunne ikke fjernes.',
-	'badimages-reason' => 'Årsak:',
-	'badimages-remove' => '(fjern)',
-	'badimages-remove-btn' => 'Fjern',
-	'badimages-remove-confirm' => 'Bekreft at du ønsker å fjerne $1 fra listen:',
-	'badimages-removed' => '$1 ble fjernet fra listen.',
-	'badimages-subheading' => 'Nåværende objekter',
-	'badimages-unprivileged' => '(Du har ikke rettigheter til å endre listen)',
-	'badimages-log-name' => 'Liste over blokkerte bilder',
-	'badimages-log-header' => 'Dette er en logg over endringer i [[{{MediaWiki:Badimages-page}}|lista over blokkerte bilder]].',
-	'badimages-log-add' => 'la til [[$1]] på lista over blokkerte bilder',
-	'badimages-log-remove' => 'fjernet [[$1]] fra lista over blokkerte bilder',
-	'badimages-page' => 'Help:Liste over dårlige bilder',
-	'right-badimages' => 'Oppdater lista over dårlige bilder',
 );
 
 /** Novial (Novial)
