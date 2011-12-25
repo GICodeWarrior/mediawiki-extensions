@@ -291,7 +291,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'wikiarticlefeeds-desc' => 'Produserer mating generert fra MediaWikisider',
 	'wikiarticlefeeds_combined_description' => 'Dette er en kombinert mating som inneholder deler fra flere kilder.',
 );
