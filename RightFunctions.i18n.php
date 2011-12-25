@@ -364,7 +364,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'rightfunctions-desc' => 'Rettighetsbaserte parserfunksjoner',
 	'rightfunctions-casc' => '(fra etterfølgende kilder)',
 	'rightfunctions-local' => '(fra lokal side)',
