@@ -40,7 +40,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 
 $wgExtensionMessagesFiles['ContributionReporting'] = $dir . 'ContributionReporting.i18n.php';
-$wgExtensionAliasesFiles['ContributionReporting'] = $dir . 'ContributionReporting.alias.php';
+$wgExtensionMessagesFiles['ContributionReportingAlias'] = $dir . 'ContributionReporting.alias.php';
 
 $wgAutoloadClasses['ContributionHistory'] = $dir . 'ContributionHistory_body.php';
 $wgAutoloadClasses['ContributionTotal'] = $dir . 'ContributionTotal_body.php';
