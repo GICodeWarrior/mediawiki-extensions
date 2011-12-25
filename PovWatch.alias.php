@@ -76,7 +76,7 @@ $specialPageAliases['nl'] = array(
 	'PovWatch' => array( 'PovVolglijst' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'PovWatch' => array( 'पक्षवृत्तीनिरिक्षा' ),
 );
@@ -100,8 +100,3 @@ $specialPageAliases['tl'] = array(
 $specialPageAliases['tr'] = array(
 	'PovWatch' => array( 'TBATakibi' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
