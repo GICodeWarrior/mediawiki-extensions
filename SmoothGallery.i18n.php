@@ -631,6 +631,26 @@ $messages['mr'] = array(
 	'smoothgallery-javascript-disabled' => 'हे प्रदर्शन पाहण्यासाठी जावास्क्रीप्टची गरज आहे.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'smoothgallery' => 'Mykt galleri',
+	'smoothgallery-desc' => 'Lar brukere opprette gallerier med bilder som er blitt lastet opp. Inneholder de fleste av SmoothGallerys valgmuligheter.',
+	'smoothgallery-title' => 'Mykt galleri',
+	'smoothgallery-smoothgallerytitle' => 'Mykt galleri: $1',
+	'smoothgallery-error' => '<b>Feil med mykt galleri:</b>',
+	'smoothgallery-gallery-not-found' => 'Det etterspurte galleriet finnes ikke.',
+	'smoothgallery-not-found' => 'Ingen bilder ble lagt til i galleriet. Legg til minst ett bilde.',
+	'smoothgallery-no-images' => 'Ingen bilder ble funnet i dette galleriet.
+Forsikre deg om at {{PLURAL:$3|bildet|bildene}} finnes.
+Følgende {{PLURAL:$2|bilde|bilder}} ble ikke funnet: $1',
+	'smoothgallery-invalid-images' => 'Følgende etterspurte {{PLURAL:$2|bilde|bilder}} var av en ugyldig type: $1',
+	'smoothgallery-unexpected-error' => 'Det var en uventet feil. Lever en feilrapport.',
+	'smoothgallery-javascript-disabled' => 'Javascript er nødvendig for å vise dette galleriet korrekt.',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -673,26 +693,6 @@ Følgjande {{PLURAL:$2|bilete|bilete}} blei ikkje funne: $1',
 	'smoothgallery-unexpected-error' => 'Ein uventa feil oppstod.
 Lever ein feilrapport.',
 	'smoothgallery-javascript-disabled' => 'Javascript er nødvendig for å visa dette galleriet på rett måte.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'smoothgallery' => 'Mykt galleri',
-	'smoothgallery-desc' => 'Lar brukere opprette gallerier med bilder som er blitt lastet opp. Inneholder de fleste av SmoothGallerys valgmuligheter.',
-	'smoothgallery-title' => 'Mykt galleri',
-	'smoothgallery-smoothgallerytitle' => 'Mykt galleri: $1',
-	'smoothgallery-error' => '<b>Feil med mykt galleri:</b>',
-	'smoothgallery-gallery-not-found' => 'Det etterspurte galleriet finnes ikke.',
-	'smoothgallery-not-found' => 'Ingen bilder ble lagt til i galleriet. Legg til minst ett bilde.',
-	'smoothgallery-no-images' => 'Ingen bilder ble funnet i dette galleriet.
-Forsikre deg om at {{PLURAL:$3|bildet|bildene}} finnes.
-Følgende {{PLURAL:$2|bilde|bilder}} ble ikke funnet: $1',
-	'smoothgallery-invalid-images' => 'Følgende etterspurte {{PLURAL:$2|bilde|bilder}} var av en ugyldig type: $1',
-	'smoothgallery-unexpected-error' => 'Det var en uventet feil. Lever en feilrapport.',
-	'smoothgallery-javascript-disabled' => 'Javascript er nødvendig for å vise dette galleriet korrekt.',
 );
 
 /** Occitan (Occitan)
@@ -880,6 +880,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'smoothgallery' => 'LakaGalerija',
@@ -895,7 +896,7 @@ Osigurajte se da {{PLURAL:$3|zahtevana slika postoji|sve zahtevane slike postoje
 {{PLURAL:$2|Sledeća slika nije nađena|Sledeće slike nisu nađene}}: $1',
 	'smoothgallery-invalid-images' => 'Tip {{PLURAL:$2|sledeće zahtevane slike|sledećih zahtevanih slika}} je bio nepoznat: $1',
 	'smoothgallery-unexpected-error' => 'Desila se neočekivana greška. Molimo obavestite administratore.',
-	'smoothgallery-javascript-disabled' => 'Javaskript je potreban da bi se galerija normalno prikazala.',
+	'smoothgallery-javascript-disabled' => 'Javaskript je potreban za pravilan prikaz galerije.',
 );
 
 /** Swedish (Svenska)
