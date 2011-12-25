@@ -660,6 +660,16 @@ $messages['nah'] = array(
 	'searchbox-namespaces' => 'Tōcātzintli:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'searchbox-desc' => 'Tillatt inkludering av søkeskjemaer',
+	'searchbox-search' => 'Søk',
+	'searchbox-go' => 'Gå',
+	'searchbox-namespaces' => 'Navnerom:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -678,16 +688,6 @@ $messages['nn'] = array(
 	'searchbox-search' => 'Søk',
 	'searchbox-go' => 'Gå',
 	'searchbox-namespaces' => 'Namnerom:',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'searchbox-desc' => 'Tillatt inkludering av søkeskjemaer',
-	'searchbox-search' => 'Søk',
-	'searchbox-go' => 'Gå',
-	'searchbox-namespaces' => 'Navnerom:',
 );
 
 /** Occitan (Occitan)
