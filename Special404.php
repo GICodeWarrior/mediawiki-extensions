@@ -25,7 +25,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname( __FILE__ );
 $wgExtensionMessagesFiles['Special404'] = $dir . '/Special404.i18n.php';
-$wgExtensionAliasesFiles['Special404'] = $dir . '/Special404.alias.php';
+$wgExtensionMessagesFiles['Special404Alias'] = $dir . '/Special404.alias.php';
 
 $wgSpecialPages['Error404'] = 'Special404';
 $wgAutoloadClasses['Special404'] = $dir . '/Special404_body.php';
