@@ -20,7 +20,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Duplicator'] = $dir . 'Duplicator.i18n.php';
-$wgExtensionAliasesFiles['Duplicator'] = $dir . 'Duplicator.alias.php';
+$wgExtensionMessagesFiles['DuplicatorAlias'] = $dir . 'Duplicator.alias.php';
 $wgAutoloadClasses['SpecialDuplicator'] = $dir . 'Duplicator.page.php';
 $wgSpecialPages['Duplicator'] = 'SpecialDuplicator';
 
