@@ -259,7 +259,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'pipeescape-desc' => 'Tolkefunksjonen <code>#!</code> som lar «|»-tegnet bare være et «|»-tegn',
 );
 
