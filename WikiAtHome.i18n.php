@@ -1281,6 +1281,45 @@ $messages['ms'] = array(
 	'wah-api-error' => 'Terdapat ralat dengan API. Sila cuba lagi nanti.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'wah-desc' => 'Aktiverer distribusjon av videoomkodingsjobber til klienter gjennom Firefogg',
+	'wah-user-desc' => 'Wiki@Home tillater samfunnsmedlemmer å donere bort ubrukt prosessortid for å hjelpe til med ressurskrevende oppgaver',
+	'wah-short-audio' => '$1-lydfil, $2',
+	'wah-short-video' => '$1-videofil, $2',
+	'wah-short-general' => '$1-mediafil, $2',
+	'wah-long-audio' => '$1-lydfil, lengde $2, $3',
+	'wah-long-video' => '$1-videofil, lengde $2, $4x$5 pixler, $3',
+	'wah-long-multiplexed' => 'multiplexet lyd-/videofil, $1, lengde $2, $4x$5 pixler, $3 totalt',
+	'wah-long-general' => 'mediafil, lengde $2, $3',
+	'wah-long-error' => 'ffmpeg kunne ikke lese denne filen: $1',
+	'wah-transcode-working' => 'Denne videoen blir bearbeidet, vennligst prøv igjen senere',
+	'wah-transcode-helpout' => 'Du kan hjelpe til med å omkode denne videoen ved å besøke [[Special:WikiAtHome|Wiki@Home]].',
+	'wah-transcode-fail' => 'Kunne ikke konvertere denne filen.',
+	'wah-javascript-off' => 'Du må aktivere JavaScript for å delta i Wiki@Home',
+	'wah-loading' => 'laster grensesnittet for Wiki@Home ...',
+	'wah-menu-jobs' => 'Oppgaver',
+	'wah-menu-stats' => 'Statistikk',
+	'wah-menu-pref' => 'Innstillinger',
+	'wah-lookingforjob' => 'Leter etter en oppgave...',
+	'wah-start-on-visit' => 'Start Wiki@Home hver gang jeg besøker dette nettstedet.',
+	'wah-jobs-while-away' => 'Bare kjør oppgaver når jeg har vært borte fra nettleseren i 20 minutt.',
+	'wah-nojobfound' => 'Ingen oppgave funnet. Prøver igjen om $1.',
+	'wah-notoken-login' => 'Er du innlogget? Om ikke, vennligst logg inn først.',
+	'wah-apioff' => 'Wiki@Home-API-en ser ut til å være av. Vennligst kontakt en wikiadministrator.',
+	'wah-doing-job' => 'Oppgave: <i>$1</i> på: <i>$2</i>',
+	'wah-downloading' => 'Nedlasting av filen er <i>$1%</i> ferdig',
+	'wah-encoding' => 'Koding av filen er <i>$1%</i> ferdig',
+	'wah-encoding-fail' => 'Koding mislyktes. Oppdater denne siden eller prøv igjen senere.',
+	'wah-uploading' => 'Opplasting av filen <i>$1</i> er ferdig',
+	'wah-uploadfail' => 'Opplastingen feilet',
+	'wah-doneuploading' => 'Opplasting ferdig. Takk for bidraget ditt.',
+	'wah-needs-firefogg' => 'For å delta i Wiki@Home må du innstallere <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Det har oppstått en feil med API-en. Vennligst prøv igjen senere.',
+);
+
 /** Dutch (Nederlands)
  * @author Reedy
  * @author SPQRobin
@@ -1344,45 +1383,6 @@ $messages['nn'] = array(
 	'wah-downloading' => 'Nedlasting av fila <i>$1%</i>  er ferdig',
 	'wah-uploadfail' => 'Opplastinga mislukkast',
 	'wah-doneuploading' => 'Opplastinga er ferdig. Takk for bidraget ditt.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'wah-desc' => 'Aktiverer distribusjon av videoomkodingsjobber til klienter gjennom Firefogg',
-	'wah-user-desc' => 'Wiki@Home tillater samfunnsmedlemmer å donere bort ubrukt prosessortid for å hjelpe til med ressurskrevende oppgaver',
-	'wah-short-audio' => '$1-lydfil, $2',
-	'wah-short-video' => '$1-videofil, $2',
-	'wah-short-general' => '$1-mediafil, $2',
-	'wah-long-audio' => '$1-lydfil, lengde $2, $3',
-	'wah-long-video' => '$1-videofil, lengde $2, $4x$5 pixler, $3',
-	'wah-long-multiplexed' => 'multiplexet lyd-/videofil, $1, lengde $2, $4x$5 pixler, $3 totalt',
-	'wah-long-general' => 'mediafil, lengde $2, $3',
-	'wah-long-error' => 'ffmpeg kunne ikke lese denne filen: $1',
-	'wah-transcode-working' => 'Denne videoen blir bearbeidet, vennligst prøv igjen senere',
-	'wah-transcode-helpout' => 'Du kan hjelpe til med å omkode denne videoen ved å besøke [[Special:WikiAtHome|Wiki@Home]].',
-	'wah-transcode-fail' => 'Kunne ikke konvertere denne filen.',
-	'wah-javascript-off' => 'Du må aktivere JavaScript for å delta i Wiki@Home',
-	'wah-loading' => 'laster grensesnittet for Wiki@Home ...',
-	'wah-menu-jobs' => 'Oppgaver',
-	'wah-menu-stats' => 'Statistikk',
-	'wah-menu-pref' => 'Innstillinger',
-	'wah-lookingforjob' => 'Leter etter en oppgave...',
-	'wah-start-on-visit' => 'Start Wiki@Home hver gang jeg besøker dette nettstedet.',
-	'wah-jobs-while-away' => 'Bare kjør oppgaver når jeg har vært borte fra nettleseren i 20 minutt.',
-	'wah-nojobfound' => 'Ingen oppgave funnet. Prøver igjen om $1.',
-	'wah-notoken-login' => 'Er du innlogget? Om ikke, vennligst logg inn først.',
-	'wah-apioff' => 'Wiki@Home-API-en ser ut til å være av. Vennligst kontakt en wikiadministrator.',
-	'wah-doing-job' => 'Oppgave: <i>$1</i> på: <i>$2</i>',
-	'wah-downloading' => 'Nedlasting av filen er <i>$1%</i> ferdig',
-	'wah-encoding' => 'Koding av filen er <i>$1%</i> ferdig',
-	'wah-encoding-fail' => 'Koding mislyktes. Oppdater denne siden eller prøv igjen senere.',
-	'wah-uploading' => 'Opplasting av filen <i>$1</i> er ferdig',
-	'wah-uploadfail' => 'Opplastingen feilet',
-	'wah-doneuploading' => 'Opplasting ferdig. Takk for bidraget ditt.',
-	'wah-needs-firefogg' => 'For å delta i Wiki@Home må du innstallere <a href="http://firefogg.org">Firefogg</a>.',
-	'wah-api-error' => 'Det har oppstått en feil med API-en. Vennligst prøv igjen senere.',
 );
 
 /** Occitan (Occitan)
@@ -1770,17 +1770,18 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'wah-short-audio' => '$1 zvučni fajl, $2',
-	'wah-short-video' => '$1 video-fajl, $2',
-	'wah-short-general' => '$1 medija-fajl, $2',
+	'wah-short-video' => '$1 video-snimak, $2',
+	'wah-short-general' => '$1 medijska datoteka, $2',
 	'wah-long-audio' => '$1 zvučni fajl, trajanje $2, $3',
 	'wah-long-video' => '$1 video-snimak, trajanje $2, $4 × $5 piksela, $3',
-	'wah-long-multiplexed' => 'multipleksovani audio/video fajl, $1, trajanje $2, $4×$5 piksela, $3 ukupno',
-	'wah-long-general' => 'medija-fajl, trajanje $2, $3',
+	'wah-long-multiplexed' => 'multipleksirani audio/video snimak, $1, trajanje $2, $4 × $5 piksela, $3',
+	'wah-long-general' => 'medijska datoteka, trajanje $2, $3',
 	'wah-long-error' => 'ffmpeg nije mogao da pročita ovaj fajl: $1',
-	'wah-transcode-working' => 'Ovaj video se trenutno obrađuje. Pokušajte opet kasnije',
+	'wah-transcode-working' => 'Video-snimak se obrađuje. Pokušajte kasnije.',
 	'wah-javascript-off' => 'Morate omogućiti JavaScript, da biste učestvovali u Wiki@Home',
 	'wah-loading' => 'učitavanje Wiki@Home interfejsa ...',
 	'wah-menu-pref' => 'Postavke',
