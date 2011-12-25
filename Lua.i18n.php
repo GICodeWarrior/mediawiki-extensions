@@ -539,7 +539,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'lua_desc' => 'Utvider fortolkeren med støtte for innvevde blokker av [http://lua.org/ Lua]-kode',
 	'lua_error' => 'Feil på linje $1',
 	'lua_extension_notfound' => 'Lua-utvidelsen ikke konfigurert',
