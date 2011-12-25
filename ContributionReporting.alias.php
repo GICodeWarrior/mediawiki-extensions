@@ -43,6 +43,13 @@ $specialPageAliases['bs'] = array(
 	'ContributionTotal' => array( 'DoprinosiUkupno' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'ContributionHistory' => array( 'Beitragsverlauf' ),
+	'ContributionStatistics' => array( 'Beitragsstatistiken' ),
+	'ContributionTotal' => array( 'Beitragsanzahl' ),
+);
+
 /** Lower Sorbian (Dolnoserbski) */
 $specialPageAliases['dsb'] = array(
 	'ContributionHistory' => array( 'Stawizny_pśinoskow' ),
@@ -207,6 +214,13 @@ $specialPageAliases['mt'] = array(
 	'ContributionTotal' => array( 'TotalKontribuzzjoni' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'ContributionHistory' => array( 'Bidragshistorikk' ),
+	'ContributionStatistics' => array( 'Bidragsstatistikk' ),
+	'ContributionTotal' => array( 'Totale_bidrag' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'ContributionHistory' => array( 'Donasiegeschiedenisse' ),
@@ -219,13 +233,6 @@ $specialPageAliases['nl'] = array(
 	'ContributionHistory' => array( 'Donatiehistorie' ),
 	'ContributionStatistics' => array( 'Donatiestatistieken' ),
 	'ContributionTotal' => array( 'Donatietotaal' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'ContributionHistory' => array( 'Bidragshistorikk' ),
-	'ContributionStatistics' => array( 'Bidragsstatistikk' ),
-	'ContributionTotal' => array( 'Totale_bidrag' ),
 );
 
 /** Occitan (Occitan) */
@@ -270,7 +277,7 @@ $specialPageAliases['ro'] = array(
 	'ContributionTotal' => array( 'Totalul_contribuțiilor' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'ContributionHistory' => array( 'योगदानैतिहास' ),
 	'ContributionStatistics' => array( 'योगदानसांख्यिकी' ),
@@ -351,8 +358,3 @@ $specialPageAliases['zh-hant'] = array(
 	'ContributionStatistics' => array( '貢獻統計' ),
 	'ContributionTotal' => array( '貢獻總計' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
