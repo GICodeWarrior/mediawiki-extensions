@@ -197,18 +197,18 @@ $messages['ms'] = array(
 	'arrays-desc' => 'Menyimpan dan mengira tatasusunan bernama',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'arrays-desc' => 'Benoemde verzamelingen opslaan en berekenen',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'arrays-desc' => 'Lagre og beregne navngitte tabeller',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'arrays-desc' => 'Benoemde verzamelingen opslaan en berekenen',
 );
 
 /** Polish (Polski)
