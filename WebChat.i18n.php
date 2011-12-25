@@ -514,6 +514,20 @@ Pengguna tanpa nama diberi nama samaran janaan automatik yang boleh ditukar.',
 	'right-webchat' => 'Dibenarkan menggunakan [[Special:WebChat|sembang web]]',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'webchat' => 'Nettprat',
+	'webchat-desc' => 'Legger til en [[Special:WebChat|spesialside]] for å prate i sanntid med andre wikibrukere',
+	'webchat-header' => 'Denne spesialsiden tillater deg å samarbeide med andre brukere av wikien i sanntid.
+For å koble på, bare trykk på «Koble til»-knappen.
+Dersom du logget på vil brukernavnet ditt allerede være fylt inn.
+Anonyme brukere blir automatisk gitt et generert navn, men dette kan endres.',
+	'right-webchat' => 'Tillatt å bruke [[Special:WebChat|nettpraten]]',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -540,20 +554,6 @@ For å kopla deg til, trykk på «Kopla til»-knappen.
 Om du er logga inn vil kallenamnet ditt alt vera fylt inn.
 Anonyme brukarar vert gjevne automatisk genererte kallenamn, men desse kan ein endra.',
 	'right-webchat' => 'Kan nytta [[Special:WebChat|nettprat]]',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Harald Khan
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'webchat' => 'Nettprat',
-	'webchat-desc' => 'Legger til en [[Special:WebChat|spesialside]] for å prate i sanntid med andre wikibrukere',
-	'webchat-header' => 'Denne spesialsiden tillater deg å samarbeide med andre brukere av wikien i sanntid.
-For å koble på, bare trykk på «Koble til»-knappen.
-Dersom du logget på vil brukernavnet ditt allerede være fylt inn.
-Anonyme brukere blir automatisk gitt et generert navn, men dette kan endres.',
-	'right-webchat' => 'Tillatt å bruke [[Special:WebChat|nettpraten]]',
 );
 
 /** Occitan (Occitan)
