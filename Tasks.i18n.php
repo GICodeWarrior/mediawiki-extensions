@@ -2762,7 +2762,7 @@ $messages['nn'] = array(
  * @author Audun
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'tasks' => 'Oppgaver',
 	'tasks_desc' => 'Et programtillegg for å håndtere oppgaver',
 	'tasks_tab' => 'Oppgaver',
