@@ -23,6 +23,26 @@ $specialPageAliases['br'] = array(
 	'EmailUsers' => array( 'PostelImplijerien' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'EmailUsers' => array( 'Benutzern_mailen' ),
+);
+
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'EmailUsers' => array( 'نامه_به_کاربران' ),
+);
+
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'EmailUsers' => array( 'Enviar_correos' ),
+);
+
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'EmailUsers' => array( '複数利用者への電子メール送信' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $specialPageAliases['km'] = array(
 	'EmailUsers' => array( 'ផ្ញើអ៊ីមែលទៅអ្នកប្រើប្រាស់' ),
@@ -67,8 +87,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'EmailUsers' => array( '電郵多個用戶' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
