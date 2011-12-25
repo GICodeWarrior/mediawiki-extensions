@@ -139,25 +139,31 @@ $magicWords['eo'] = array(
 
 /** Spanish (Español) */
 $magicWords['es'] = array(
-	'mean' => array( 0, 'media', 'mean' ),
-	'tan' => array( 0, 'tg', 'tan' ),
-	'atan' => array( 0, 'arctg', 'atg', 'atan', 'arctan' ),
-	'tanh' => array( 0, 'tgh', 'tanh' ),
-	'atanh' => array( 0, 'argtanh', 'artgtgh', 'arctgh', 'atanh', 'arctanh' ),
-	'cot' => array( 0, 'cotg', 'ctg', 'cot' ),
-	'acot' => array( 0, 'acotg', 'arccotg', 'acot', 'arccot' ),
-	'acosh' => array( 0, 'argcosh', 'acosh', 'arccosh' ),
-	'sin' => array( 0, 'sen', 'sin' ),
-	'asin' => array( 0, 'asen', 'arcsen', 'asin', 'arcsin' ),
-	'sinh' => array( 0, 'senh', 'sinh' ),
-	'asinh' => array( 0, 'asenh', 'argsenh', 'arcsenh', 'asinh', 'arcsinh' ),
-	'csc' => array( 0, 'cosec', 'csc' ),
-	'acsc' => array( 0, 'arccosec', 'acosec', 'acsc', 'arccsc' ),
+	'median' => array( 0, 'mediana' ),
+	'mean' => array( 0, 'media' ),
+	'tan' => array( 0, 'tg' ),
+	'atan' => array( 0, 'arctg', 'atg' ),
+	'tanh' => array( 0, 'tgh' ),
+	'atanh' => array( 0, 'argtanh', 'argtgh', 'arctgh' ),
+	'cot' => array( 0, 'cotg', 'ctg' ),
+	'acot' => array( 0, 'acotg', 'arccotg' ),
+	'acosh' => array( 0, 'argcosh' ),
+	'sin' => array( 0, 'sen' ),
+	'asin' => array( 0, 'asen', 'arcsen' ),
+	'sinh' => array( 0, 'senh' ),
+	'asinh' => array( 0, 'asenh', 'argsenh', 'arcsenh' ),
+	'csc' => array( 0, 'cosec' ),
+	'acsc' => array( 0, 'arccosec', 'acosec' ),
 );
 
 /** French (Français) */
 $magicWords['fr'] = array(
 	'mean' => array( 0, 'moyenne' ),
+);
+
+/** Franco-Provençal (Arpetan) */
+$magicWords['frp'] = array(
+	'mean' => array( 0, 'moyena' ),
 );
 
 /** Italian (Italiano) */
@@ -287,10 +293,41 @@ $magicWords['ru'] = array(
 	'const' => array( 0, 'конст' ),
 	'median' => array( 0, 'медиана' ),
 	'mean' => array( 0, 'среднее' ),
-	'tan' => array( 0, 'tg' ),
-	'atan' => array( 0, 'arctg' ),
+	'exp' => array( 0, 'эксп' ),
+	'log' => array( 0, 'лог' ),
+	'ln' => array( 0, 'логнат' ),
+	'tan' => array( 0, 'танг' ),
+	'atan' => array( 0, 'арктанг' ),
 	'cot' => array( 0, 'ctg' ),
 	'acot' => array( 0, 'arcctg' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'const' => array( 0, 'const' ),
+	'median' => array( 0, 'median' ),
+	'mean' => array( 0, 'mean' ),
+	'exp' => array( 0, 'exp' ),
+	'log' => array( 0, 'log' ),
+	'ln' => array( 0, 'ln' ),
+	'tan' => array( 0, 'tan' ),
+	'atan' => array( 0, 'atan', 'arctan' ),
+	'tanh' => array( 0, 'tanh' ),
+	'atanh' => array( 0, 'atanh', 'arctanh' ),
+	'cot' => array( 0, 'cot' ),
+	'acot' => array( 0, 'acot', 'arccot' ),
+	'cos' => array( 0, 'cos' ),
+	'acos' => array( 0, 'acos', 'arccos' ),
+	'cosh' => array( 0, 'cosh' ),
+	'acosh' => array( 0, 'acosh', 'arccosh' ),
+	'sec' => array( 0, 'sec' ),
+	'asec' => array( 0, 'asec', 'arcsec' ),
+	'sin' => array( 0, 'sin' ),
+	'asin' => array( 0, 'asin', 'arcsin' ),
+	'sinh' => array( 0, 'sinh' ),
+	'asinh' => array( 0, 'asinh', 'arcsinh' ),
+	'csc' => array( 0, 'csc' ),
+	'acsc' => array( 0, 'acsc', 'arccsc' ),
 );
 
 /** Swedish (Svenska) */
