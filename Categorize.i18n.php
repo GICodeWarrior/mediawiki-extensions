@@ -196,16 +196,6 @@ $messages['ms'] = array(
 	'categorize-advice' => 'Klik pada label yang ingin anda atributkan kepada laman ini:',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'categorize-desc' => 'Voegt een invoerveld toe aan de bewerkings- en uploadpagina waarmee gebruiker categorieën kunnen toevoegen',
-	'categorize-title' => 'Kenniskwalificatie',
-	'categorize-footer' => 'Neem contact met een [[Special:ListUsers/sysop|beheerder]] als u een label wilt toevoegen.',
-	'categorize-advice' => 'Klik op de labels als u een eigenschap aan deze pagina wilt toevoegen:',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
@@ -214,6 +204,16 @@ $messages['nb'] = array(
 	'categorize-title' => 'Kunnskapskvalifisering',
 	'categorize-footer' => 'Hvis du ønsker å legge til en etikett, vennligst kontakt en [[Special:ListUsers/sysop|administrator]].',
 	'categorize-advice' => 'Klikk på etikettene som du ønsker å knytte til denne siden:',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'categorize-desc' => 'Voegt een invoerveld toe aan de bewerkings- en uploadpagina waarmee gebruiker categorieën kunnen toevoegen',
+	'categorize-title' => 'Kenniskwalificatie',
+	'categorize-footer' => 'Neem contact met een [[Special:ListUsers/sysop|beheerder]] als u een label wilt toevoegen.',
+	'categorize-advice' => 'Klik op de labels als u een eigenschap aan deze pagina wilt toevoegen:',
 );
 
 /** Polish (Polski)
@@ -246,6 +246,16 @@ $messages['pt-br'] = array(
 	'categorize-title' => 'Qualificação de conhecimento',
 	'categorize-footer' => 'Se quiser adicionar uma categoria, contate um [[Special:ListUsers/sysop|administrador]].',
 	'categorize-advice' => 'Clique sobre as categorias que deseja atribuir a esta página:',
+);
+
+/** Russian (Русский)
+ * @author Eleferen
+ */
+$messages['ru'] = array(
+	'categorize-desc' => 'Добавляет поле ввода для редактирования и загрузки страниц, которое позволяет пользователям указывать категории',
+	'categorize-title' => 'Квалификация знаний',
+	'categorize-footer' => 'Если Вы хотите добавить метку, пожалуйста, свяжитесь с [[Special:ListUsers/sysop|администратором]].',
+	'categorize-advice' => 'Нажмите на метки, которые Вы хотите присвоить данной странице:',
 );
 
 /** Swedish (Svenska)
