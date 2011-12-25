@@ -19,7 +19,7 @@ if( !defined( 'MEDIAWIKI' ) )
 $dir = dirname(__FILE__) . '/';
 
 $wgExtensionMessagesFiles['MassBlank'] = $dir . 'MassBlank.i18n.php';
-$wgExtensionAliasesFiles['MassBlank'] = $dir . 'MassBlank.alias.php';
+$wgExtensionMessagesFiles['MassBlankAlias'] = $dir . 'MassBlank.alias.php';
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
