@@ -218,7 +218,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'groupssidebar-desc' => 'Denne utvidelsen tillater sideadminer å inkludere sidebar-element for spesifikke brukergrupper',
 );
 
