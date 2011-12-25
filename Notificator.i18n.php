@@ -188,9 +188,10 @@ $messages['es'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Gomoko
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'notificator' => 'Notificator',
+	'notificator' => 'Notificateur',
 	'notificator-desc' => 'Notifie quelqu’un par courriel sur les modifications apportées à une page quand un bouton sur cette page est cliqué.',
 	'notificator-db-table-does-not-exist' => 'Table de la base de données « notificator » n’existe pas. Le script de maintenance update.php doit être exécuté avant que l’extension Notificator soit utilisable.',
 	'notificator-e-mail-address' => 'adresse électronique',
@@ -404,6 +405,31 @@ $messages['pt'] = array(
 	'notificator-error-sending-e-mail' => 'Ocorreu um erro ao enviar a notificação por correio electrónico a $1.',
 	'notificator-error-parameter-missing' => 'Erro: Parâmetro em falta.',
 	'notificator-notified-already' => '$1 já foi notificado acerca desta página ou da alteração desta página.',
+);
+
+/** Russian (Русский)
+ * @author Eleferen
+ */
+$messages['ru'] = array(
+	'notificator' => 'Notificator',
+	'notificator-desc' => 'Уведомление кого-либо по электронной почте об изменениях на странице при нажатии на кнопку на этой странице.',
+	'notificator-db-table-does-not-exist' => 'Таблицы «notificator» не существует в базе данных. Необходимо запустить Update.php для того, чтобы использовать расширение «Notificator».',
+	'notificator-e-mail-address' => 'адрес электронной почты',
+	'notificator-notify' => 'Уведомление',
+	'notificator-notify-address-or-name' => 'Уведомление $1',
+	'notificator-return-to' => 'Вернуться к',
+	'notificator-special-page-accessed-directly' => 'Нельзя получить доступ к этой специальной странице. Она предназначена для использования через кнопку Notificator.',
+	'notificator-e-mail-address-invalid' => 'Предоставленный адрес электронной почты является недопустимым.',
+	'notificator-notification-not-sent' => 'Уведомление не отправлено.',
+	'notificator-change-tag' => 'изменить',
+	'notificator-new-tag' => 'новый',
+	'notificator-notification-text-changes' => '$1 уведомляет Вас о следующих изменения в $2:',
+	'notificator-notification-text-new' => '$1 хочет уведомить Вас о $2.',
+	'notificator-following-e-mail-sent-to' => 'Следующее сообщение по электронной почте было отправлено $1:',
+	'notificator-subject' => 'Тема:',
+	'notificator-error-sending-e-mail' => 'Произошла ошибка при отправке e-mail уведомления для $1.',
+	'notificator-error-parameter-missing' => 'Ошибка: Отсутствует параметр.',
+	'notificator-notified-already' => '$1 уже получил уведомление об этой странице или изменениях на этой странице.',
 );
 
 /** Swedish (Svenska)
