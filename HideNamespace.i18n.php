@@ -201,18 +201,18 @@ $messages['ms'] = array(
 	'hidens-desc' => 'Menyorokkan ruang nama dalam pengatas dan tajuk apabila laman berada dalam ruang nama yang dinyatakan, atau apabila fungsi penghurai <code><nowiki>{{#hidens:}}</nowiki></code> dipanggil',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'hidens-desc' => 'Verbergt de naamruimte in de paginanaam van de browser en op de pagina als een pagina in zich in de aangegeven naamruimte bevindt of als de parserfunctie <code><nowiki>{{#hidens:}}</nowiki></code> wordt aangeroepen',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'hidens-desc' => 'Skjuler navnerom i overskriften og tittelen når en side er i et spesifisert navnerom eller når tolkefunksjonen <code><nowiki>{{#hidens:}}</nowiki></code> kalles',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'hidens-desc' => 'Verbergt de naamruimte in de paginanaam van de browser en op de pagina als een pagina in zich in de aangegeven naamruimte bevindt of als de parserfunctie <code><nowiki>{{#hidens:}}</nowiki></code> wordt aangeroepen',
 );
 
 /** Polish (Polski)
