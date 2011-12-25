@@ -380,7 +380,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'skinperpage-desc' => 'Legger til en <code>&lt;skin&gt;</code>-tagg for å kunne bruke ulike utseender per side',
 );
 
