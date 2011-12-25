@@ -259,7 +259,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'redirect-desc' => 'Tillater enkel konfigurering av omdirigeringer ved [[MediaWiki:Redirect-addnewaccount|kontooppretting]] og [[MediaWiki:Redirect-userlogoutcomplete|utlogging]]',
 );
 
