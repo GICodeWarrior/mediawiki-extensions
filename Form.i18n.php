@@ -1166,7 +1166,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'form-desc' => 'Et [[Special:Form|skjema]] for å opprette nye sider',
 	'form' => 'Skjema',
 	'formnoname' => 'Intet skjemanavn',
