@@ -200,6 +200,13 @@ $messages['ms'] = array(
 	'svgzoom-desc' => 'Menambahkan kebolehan menyorot dan mengezum pada MediaWiki apabila menggunakan fail SVG',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'svgzoom-desc' => 'Legger til panorerings- og zoomegenskaper i MediaWiki når SVG-filer vises',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -212,13 +219,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'svgzoom-desc' => 'Legg til panorerings- og zoomfunksjonar i MediaWiki for SVG-filer',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'svgzoom-desc' => 'Legger til panorerings- og zoomegenskaper i MediaWiki når SVG-filer vises',
 );
 
 /** Occitan (Occitan)
@@ -285,9 +285,11 @@ $messages['sr-ec'] = array(
 	'svgzoom-desc' => 'Додаје могућност панорамирања и увећавања SVG датотека',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
-	'svgzoom-desc' => 'Dodaje MedijaVikiju mogućnost skrolovanja po i uvećavanja SVG slika',
+	'svgzoom-desc' => 'Dodaje mogućnost panoramiranja i uvećavanja SVG datoteka',
 );
 
 /** Swedish (Svenska)
