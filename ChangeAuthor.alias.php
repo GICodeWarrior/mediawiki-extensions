@@ -198,6 +198,11 @@ $specialPageAliases['myv'] = array(
 	'ChangeAuthor' => array( 'ПолавтомсСёрмадыцянть' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'ChangeAuthor' => array( 'Endre_forfatter' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'ChangeAuthor' => array( 'Auteur_wiezigen' ),
@@ -211,11 +216,6 @@ $specialPageAliases['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
 $specialPageAliases['nn'] = array(
 	'ChangeAuthor' => array( 'Endra_forfattar' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'ChangeAuthor' => array( 'Endre_forfatter' ),
 );
 
 /** Occitan (Occitan) */
@@ -238,7 +238,7 @@ $specialPageAliases['ro'] = array(
 	'ChangeAuthor' => array( 'Schimbă_autor' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'ChangeAuthor' => array( 'सम्पादकपरिवर्तयति' ),
 );
@@ -273,7 +273,7 @@ $specialPageAliases['vec'] = array(
 	'ChangeAuthor' => array( 'CanbiaAutor' ),
 );
 
-/** Veps (Vepsan kel') */
+/** Veps (Vepsän kel') */
 $specialPageAliases['vep'] = array(
 	'ChangeAuthor' => array( 'VajehtadaAvtorad' ),
 );
@@ -287,8 +287,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'ChangeAuthor' => array( '更改作者' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
