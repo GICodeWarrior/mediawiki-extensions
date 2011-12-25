@@ -185,7 +185,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'parserwiki-desc' => 'Gjør det mulig å definere en grammatikk i en wiki og deretter bruke denne grammatikken til å legge inn informasjon til den samme wikien',
 );
 
