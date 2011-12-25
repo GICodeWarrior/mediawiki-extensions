@@ -689,6 +689,7 @@ $messages['lt'] = array(
 	'commentbox-name' => 'Pavadinimas:',
 	'commentbox-log' => 'Nauji komentarai',
 	'commentbox-first-comment-heading' => '== Komentarai ==',
+	'commentbox-errorpage-title' => 'Klaida kuriant komentarą',
 	'commentbox-error-page-nonexistent' => 'Puslapis neegzistuoja',
 );
 
@@ -772,6 +773,26 @@ $messages['myv'] = array(
 	'commentbox-first-comment-heading' => '== Арсемат-мельть ==',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ * @author Simny
+ */
+$messages['nb'] = array(
+	'commentbox-desc' => 'Legger til en kommentarboks til enkelte sider',
+	'commentbox-intro' => '== Legg til en kommentar... ==
+Har du en kommentar til denne siden? Legg den til her eller <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} endre siden direkte]</span>.',
+	'commentbox-savebutton' => 'Lagre kommentar',
+	'commentbox-name' => 'Navn:',
+	'commentbox-name-explanation' => '<small>(Tips: Du slipper å skrive inn navnet ditt manuelt her dersom du [[Special:UserLogin|logger inn]].)</small>',
+	'commentbox-log' => 'Nye kommentarer',
+	'commentbox-first-comment-heading' => '== Kommentarer ==',
+	'commentbox-regex' => '/\\n==\\s*Kommentarer\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Det oppsto en feil under oppretting av kommentaren',
+	'commentbox-error-page-nonexistent' => 'Denne siden finnes ikke!',
+	'commentbox-error-namespace' => 'Kommentarer er ikke tillatt i dette navnerommet!',
+	'commentbox-error-empty-comment' => 'Tomme kommentarer er ikke tillatt!',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -810,26 +831,6 @@ Har du ein kommentar til denne sida? Legg han til her eller <span class="plainli
 	'commentbox-error-page-nonexistent' => 'Denne sida finst ikkje.',
 	'commentbox-error-namespace' => 'Kommentarar er ikkje tillatne i dette namnerommet.',
 	'commentbox-error-empty-comment' => 'Tomme kommentarar er ikkje tillatne.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- * @author Simny
- */
-$messages['nb'] = array(
-	'commentbox-desc' => 'Legger til en kommentarboks til enkelte sider',
-	'commentbox-intro' => '== Legg til en kommentar... ==
-Har du en kommentar til denne siden? Legg den til her eller <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} endre siden direkte]</span>.',
-	'commentbox-savebutton' => 'Lagre kommentar',
-	'commentbox-name' => 'Navn:',
-	'commentbox-name-explanation' => '<small>(Tips: Du slipper å skrive inn navnet ditt manuelt her dersom du [[Special:UserLogin|logger inn]].)</small>',
-	'commentbox-log' => 'Nye kommentarer',
-	'commentbox-first-comment-heading' => '== Kommentarer ==',
-	'commentbox-regex' => '/\\n==\\s*Kommentarer\\s*==\\s*\\n/i',
-	'commentbox-errorpage-title' => 'Det oppsto en feil under oppretting av kommentaren',
-	'commentbox-error-page-nonexistent' => 'Denne siden finnes ikke!',
-	'commentbox-error-namespace' => 'Kommentarer er ikke tillatt i dette navnerommet!',
-	'commentbox-error-empty-comment' => 'Tomme kommentarer er ikke tillatt!',
 );
 
 /** Occitan (Occitan)
@@ -1072,7 +1073,9 @@ $messages['sr-ec'] = array(
 	'commentbox-error-empty-comment' => 'Празни коментари нису могући!',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'commentbox-desc' => 'Dodaje kutijice za komentare na izvesne strane',
 	'commentbox-intro' => '== Dodavanje komentara... ==
@@ -1082,7 +1085,7 @@ Da li želite da komentarišete ovu stranu? Dodajte Vaš komentar ili <span clas
 	'commentbox-log' => 'Novi komentari',
 	'commentbox-first-comment-heading' => '== Komentari ==',
 	'commentbox-errorpage-title' => 'Greška tokom pravljenja komentara',
-	'commentbox-error-page-nonexistent' => 'Ova strana ne postoji!',
+	'commentbox-error-page-nonexistent' => 'Ova stranica ne postoji.',
 	'commentbox-error-namespace' => 'Komentari nisu dozvoljeni u ovom imenskom prostoru!',
 	'commentbox-error-empty-comment' => 'Prazni komentari nisu mogući!',
 );
