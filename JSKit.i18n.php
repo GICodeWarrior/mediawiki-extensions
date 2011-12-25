@@ -279,7 +279,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'jskit-desc' => 'Integrerer js-kit-verktøy på en wikiside',
 );
 
