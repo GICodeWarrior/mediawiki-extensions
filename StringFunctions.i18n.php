@@ -310,7 +310,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'stringfunctions-desc' => 'Utvider parseren med string-funksjoner',
 );
 
