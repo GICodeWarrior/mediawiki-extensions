@@ -801,6 +801,32 @@ $messages['ms'] = array(
 	'livetranslate-importtms-param-miscmatch' => 'Salah padan antara jumlah lokasi dan jenis',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'livetranslate-desc' => 'Aktiverer live-oversettelse av sideinnhold ved hjelp av tjenesten Google Translate',
+	'livetranslate-translate-to' => 'Oversett denne siden til',
+	'livetranslate-button-translate' => 'Oversett',
+	'livetranslate-button-translating' => 'Oversetter...',
+	'livetranslate-button-revert' => 'Vis opprinnelig',
+	'livetranslate-dictionary-error' => 'Kunne ikke få tak i sanntidsoversettelsesordlisten. Ingen ord vil bli behandlet som spesielle under oversettelsesprosessen.',
+	'livetranslate-dictionary-empty' => 'Det er ingen ord i ordlisten ennå. Klikk på «rediger»-fanen for å legge til noen.',
+	'livetranslate-dictionary-count' => 'Det er {{PLURAL:$1|ett ord|$1 ord}} i $2 {{PLURAL:$2|språk|språk}}. Klikk på «rediger»-fanen for å legge til flere.',
+	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Dette språket|Disse språkene}} er for øyeblikket ikke satt som tillatte oversettelsesmål: $1. Endre tillatte språk i din wikis konfigurasjon eller fjern disse fra ordlisten.',
+	'livetranslate-tmtype-gcsv' => 'Google CSV',
+	'livetranslate-special-button' => 'Lagre og oppdater',
+	'livetranslate-special-type' => 'Type',
+	'livetranslate-special-location' => 'Plassering',
+	'livetranslate-special-remove' => 'Fjern',
+	'livetranslate-special-local' => 'Lokal',
+	'livetranslate-special-add-tm' => 'Legg til et nytt oversettelsesminne',
+	'livetranslate-special-current-tms' => 'Eksisterende oversettelsesminner',
+	'livetranslate-special-tms-update' => 'Oppdater oversettelsesminner',
+	'livetranslate-special-update' => 'Oppdater oversettelsesminner',
+	'livetranslate-importtms-param-miscmatch' => 'Avvik mellom antall plasseringer og typer',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author SPQRobin
@@ -837,32 +863,6 @@ $messages['nl'] = array(
 	'livetranslate-special-tms-update' => 'Vertaalgeheugens bijwerken',
 	'livetranslate-special-update' => 'Vertaalgeheugens bijwerken',
 	'livetranslate-importtms-param-miscmatch' => 'Er is een verschil tussen het aantal locaties en typen',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'livetranslate-desc' => 'Aktiverer live-oversettelse av sideinnhold ved hjelp av tjenesten Google Translate',
-	'livetranslate-translate-to' => 'Oversett denne siden til',
-	'livetranslate-button-translate' => 'Oversett',
-	'livetranslate-button-translating' => 'Oversetter...',
-	'livetranslate-button-revert' => 'Vis opprinnelig',
-	'livetranslate-dictionary-error' => 'Kunne ikke få tak i sanntidsoversettelsesordlisten. Ingen ord vil bli behandlet som spesielle under oversettelsesprosessen.',
-	'livetranslate-dictionary-empty' => 'Det er ingen ord i ordlisten ennå. Klikk på «rediger»-fanen for å legge til noen.',
-	'livetranslate-dictionary-count' => 'Det er {{PLURAL:$1|ett ord|$1 ord}} i $2 {{PLURAL:$2|språk|språk}}. Klikk på «rediger»-fanen for å legge til flere.',
-	'livetranslate-dictionary-unallowed-langs' => '{{PLURAL:$2|Dette språket|Disse språkene}} er for øyeblikket ikke satt som tillatte oversettelsesmål: $1. Endre tillatte språk i din wikis konfigurasjon eller fjern disse fra ordlisten.',
-	'livetranslate-tmtype-gcsv' => 'Google CSV',
-	'livetranslate-special-button' => 'Lagre og oppdater',
-	'livetranslate-special-type' => 'Type',
-	'livetranslate-special-location' => 'Plassering',
-	'livetranslate-special-remove' => 'Fjern',
-	'livetranslate-special-local' => 'Lokal',
-	'livetranslate-special-add-tm' => 'Legg til et nytt oversettelsesminne',
-	'livetranslate-special-current-tms' => 'Eksisterende oversettelsesminner',
-	'livetranslate-special-tms-update' => 'Oppdater oversettelsesminner',
-	'livetranslate-special-update' => 'Oppdater oversettelsesminner',
-	'livetranslate-importtms-param-miscmatch' => 'Avvik mellom antall plasseringer og typer',
 );
 
 /** Deitsch (Deitsch)
