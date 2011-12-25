@@ -520,7 +520,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'commentspammer-save-blocked' => 'IP-adressa di mistenkes for å være en kommentarforsøpler, så siden kan ikke lagres. [[Special:UserLogin|Logg inn eller opprett en konto]] for å unngå dette.',
 	'commentspammer-desc' => 'Avviser endringer fra mistenkte spammere på en DNS-svarteliste.',
 	'commentspammer-log-msg' => 'redigering på [[:$2]] av [[Special:Contributions/$1|$1]].',
