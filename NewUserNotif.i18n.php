@@ -534,7 +534,7 @@ Ein ny brukarkonto, $2, blei oppretta på $3 $4.',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'newusernotifsubj' => 'Beskjed om ny bruker for $1',
 	'newusernotif-desc' => 'Sender beskjed på e-post når kontoer opprettes',
 	'newusernotifbody' => 'Hei, $1. En ny brukerkonto, $2, ble opprettet på $3 $4.',
