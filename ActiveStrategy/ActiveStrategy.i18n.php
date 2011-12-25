@@ -407,16 +407,6 @@ $messages['ms'] = array(
 	'nedits' => '$1 suntingan',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'activestrategy' => 'Actieve strategie',
-	'active-strategy-desc' => "Geeft het aantal bewerkingen aan pagina's voor strategische planning weer",
-	'active-strategy-intro' => "Aantal bewerkingen aan taskforcepagina's in de afgelopen {{PLURAL:$1|dag|$1 dagen}}.",
-	'nedits' => '$1 {{PLURAL:$1|bewerking|bewerkingen}}',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
  * @author Nghtwlkr
@@ -426,6 +416,16 @@ $messages['nb'] = array(
 	'active-strategy-desc' => 'Viser antall redigeringer på arbeidsgruppesider',
 	'active-strategy-intro' => 'Antall redigeringer på arbeidsgruppesider {{PLURAL:$1|den siste $1 dag|de siste $1 dager}}.',
 	'nedits' => '$1 {{PLURAL:$1|redigering|redigeringer}}',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'activestrategy' => 'Actieve strategie',
+	'active-strategy-desc' => "Geeft het aantal bewerkingen aan pagina's voor strategische planning weer",
+	'active-strategy-intro' => "Aantal bewerkingen aan taskforcepagina's in de afgelopen {{PLURAL:$1|dag|$1 dagen}}.",
+	'nedits' => '$1 {{PLURAL:$1|bewerking|bewerkingen}}',
 );
 
 /** Occitan (Occitan)
