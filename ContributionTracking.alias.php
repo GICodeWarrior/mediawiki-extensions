@@ -28,6 +28,11 @@ $specialPageAliases['bs'] = array(
 	'ContributionTracking' => array( 'DoprinosiPracenje' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'ContributionTracking' => array( 'Beitragstracking' ),
+);
+
 /** Lower Sorbian (Dolnoserbski) */
 $specialPageAliases['dsb'] = array(
 	'ContributionTracking' => array( 'Slědowanje_pśinoskow' ),
@@ -113,6 +118,11 @@ $specialPageAliases['mr'] = array(
 	'ContributionTracking' => array( 'योगदानमागमूस' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'ContributionTracking' => array( 'Bidragssporing' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'ContributionTracking' => array( 'Donasies_volgen' ),
@@ -123,17 +133,12 @@ $specialPageAliases['nl'] = array(
 	'ContributionTracking' => array( 'DonatiesVolgen' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'ContributionTracking' => array( 'Bidragssporing' ),
-);
-
 /** Polish (Polski) */
 $specialPageAliases['pl'] = array(
 	'ContributionTracking' => array( 'Przekierowanie_do_systemu_płatnościowego' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'ContributionTracking' => array( 'योगदानउन्नयति' ),
 );
@@ -167,8 +172,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'ContributionTracking' => array( '跟蹤貢獻' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
