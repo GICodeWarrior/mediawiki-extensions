@@ -1775,7 +1775,7 @@ Talet på '''vurderingar per dag''' <span style=\"color:red;\">''(raudt)''</span
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'ratinghistory' => 'Sidens vurderingshistorikk',
 	'ratinghistory-leg' => 'Vurderingshistorikkdata for [[:$1|$1]]',
 	'ratinghistory-tab' => 'vurdering',

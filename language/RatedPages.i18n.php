@@ -598,7 +598,7 @@ $messages['nn'] = array(
  * @author Laaknor
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'ratedpages' => 'Leservurderte sider',
 	'ratedpages-leg' => 'Finn sider med et stort antall vurderinger',
 	'ratedpages-list' => 'Nedenfor er en liste over sider sortert etter lesernes vurdering av dem',
