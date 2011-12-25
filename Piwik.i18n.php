@@ -456,6 +456,18 @@ $messages['nah'] = array(
 	'piwik-browsers' => 'Ācalpāpanōni',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'piwik-desc' => 'Legger til et Piwik-skript for sporing i MediaWiki og viser [[Special:Piwik|litt statistikk]]',
+	'piwik-lastvisits' => 'Siste besøk',
+	'piwik-countries' => 'Land',
+	'piwik-browsers' => 'Nettlesere',
+	'right-viewpiwik' => 'Vis [[Special:Piwik|Piwik-statistikk]]',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -477,18 +489,6 @@ $messages['nn'] = array(
 	'piwik-lastvisits' => 'Siste vitjingar',
 	'piwik-countries' => 'Land',
 	'piwik-browsers' => 'Nettlesarar',
-	'right-viewpiwik' => 'Vis [[Special:Piwik|Piwik-statistikk]]',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'piwik-desc' => 'Legger til et Piwik-skript for sporing i MediaWiki og viser [[Special:Piwik|litt statistikk]]',
-	'piwik-lastvisits' => 'Siste besøk',
-	'piwik-countries' => 'Land',
-	'piwik-browsers' => 'Nettlesere',
 	'right-viewpiwik' => 'Vis [[Special:Piwik|Piwik-statistikk]]',
 );
 
@@ -634,13 +634,14 @@ $messages['sr-ec'] = array(
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Liangent
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'piwik-desc' => 'Ubacuje Piwik skriptu u MedijaViki strane zarad praćenja i dodaje [[Special:Piwik|statistike]]',
 	'piwik' => 'Pivik',
 	'piwik-lastvisits' => 'Poslednje posete',
 	'piwik-countries' => 'Zemlje',
-	'piwik-browsers' => 'Brauzeri',
+	'piwik-browsers' => 'Pregledači',
 	'right-viewpiwik' => 'Pregled [[Special:Piwik|Piwik statistika]]',
 );
 
