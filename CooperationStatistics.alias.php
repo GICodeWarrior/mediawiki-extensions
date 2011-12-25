@@ -26,6 +26,11 @@ $specialPageAliases['br'] = array(
 	'CooperationStatistics' => array( 'Stadegoù_Kenlabourat' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'CooperationStatistics' => array( 'Kooperationsstatistiken' ),
+);
+
 /** Esperanto (Esperanto) */
 $specialPageAliases['eo'] = array(
 	'CooperationStatistics' => array( 'Kunlaborostatistiko' ),
@@ -44,6 +49,11 @@ $specialPageAliases['fa'] = array(
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
 	'CooperationStatistics' => array( 'Yhteistyötilastot' ),
+);
+
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'CooperationStatistics' => array( 'Estatísticas_de_cooperación' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */
@@ -101,6 +111,11 @@ $specialPageAliases['mr'] = array(
 	'CooperationStatistics' => array( 'सहकार्यसांख्यिकी' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'CooperationStatistics' => array( 'Samarbeidsstatistikk' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'CooperationStatistics' => array( 'Samenwarkingsstaotistieken' ),
@@ -109,11 +124,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'CooperationStatistics' => array( 'Samenwerkingsstatistieken' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'CooperationStatistics' => array( 'Samarbeidsstatistikk' ),
 );
 
 /** Polish (Polski) */
@@ -145,8 +155,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'CooperationStatistics' => array( '合作統計' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
