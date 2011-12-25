@@ -14,21 +14,12 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author SVG
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'ReassignEdits' => array( 'ReassignEdits', 'ReassignUserEdits' ),
 );
 
-/** German (Deutsch)
- * @author SVG
- */
+/** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'ReassignEdits' => array( 'Bearbeitungen_übertragen', 'Benutzerbearbeitungen_übertragen' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
