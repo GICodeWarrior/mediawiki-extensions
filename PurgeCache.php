@@ -26,7 +26,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['PurgeCache'] = $dir . 'PurgeCache.i18n.php';
-$wgExtensionAliasesFiles['PurgeCache'] = $dir . 'PurgeCache.alias.php';
+$wgExtensionMessagesFiles['PurgeCacheAlias'] = $dir . 'PurgeCache.alias.php';
 $wgAutoloadClasses['SpecialPurgeCache'] = $dir . 'PurgeCache_body.php';
 
 $wgSpecialPages['PurgeCache'] = 'SpecialPurgeCache';
