@@ -23,7 +23,7 @@ $wgExtensionCredits['other'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['ResourceLoaderTests'] = $dir . 'ResourceLoaderTests.i18n.php';
-$wgExtensionAliasesFiles[ 'ResourceLoaderTests' ] = $dir . 'ResourceLoaderTests.alias.php';
+$wgExtensionMessagesFiles['ResourceLoaderTestsAlias'] = $dir . 'ResourceLoaderTests.alias.php';
 $wgAutoloadClasses[ 'SpecialResourceLoaderTests' ] = $dir . 'ResourceLoaderTests.page.php';
 $wgSpecialPages[ 'ResourceLoaderTests' ] = 'SpecialResourceLoaderTests';
 
