@@ -259,7 +259,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'logofunctions-desc' => 'Legg til tolkefunksjon om wikiens logo',
 	'logofunctions-filenotexist' => 'Feil: [[File:$1]] finnes ikke',
 );
