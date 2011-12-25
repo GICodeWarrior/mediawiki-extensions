@@ -188,7 +188,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'editpagetracking-desc' => 'Det blir registrert første gang hver bruker ser på redigeringssiden',
 );
 
