@@ -222,7 +222,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'nsfilerepo-desc' => 'Gir navneromsbaserte funksjoner til opplastede filer',
 );
 
