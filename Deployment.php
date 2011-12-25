@@ -28,7 +28,7 @@ $wgExtensionCredits['other'][] = array(
 
 // Register the internationalization and aliasing files.
 $wgExtensionMessagesFiles['Deployment'] 		= dirname( __FILE__ ) . '/Deployment.i18n.php';
-$wgExtensionAliasesFiles['Deployment'] 			= dirname( __FILE__ ) . '/Deployment.alias.php';
+$wgExtensionMessagesFiles['DeploymentAlias']	= dirname( __FILE__ ) . '/Deployment.alias.php';
 
 // Load classes.
 $egDeployIncIp = dirname( __FILE__ ) . '/includes/';
