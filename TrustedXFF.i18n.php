@@ -341,7 +341,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'trustedxff-desc' => 'Behandling av en liste over pålitelige proxyadresser ([http://meta.wikimedia.org/wiki/XFF_project XFF-prosjektet])',
 );
 
