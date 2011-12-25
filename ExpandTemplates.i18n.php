@@ -1449,6 +1449,25 @@ $messages['nan'] = array(
 	'expand_templates_remove_comments' => 'Comments the̍h tiāu',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'expandtemplates' => 'Utvid maler',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Utvider maler, parserfunksjoner og variabler]] for å vise resultatråteksten og forhåndsvise siden slik den blir',
+	'expand_templates_intro' => 'Denne siden tar en tekst og utvider alle maler brukt i teksten. Den utvider også alle funksjoner som <nowiki>{{</nowiki>#if:…}}, og variabler som <nowiki>{{</nowiki>CURRENTDAY}}. <!--It does this by calling the relevant parser stage from MediaWiki itself.-->',
+	'expand_templates_title' => 'Konteksttittel, for {{FULLPAGENAME}}, etc.:',
+	'expand_templates_input' => 'Skriv inn tekst:',
+	'expand_templates_output' => 'Resultat',
+	'expand_templates_xml_output' => 'XML-resultat',
+	'expand_templates_ok' => 'OK',
+	'expand_templates_remove_comments' => 'Fjern kommentarer',
+	'expand_templates_remove_nowiki' => 'Ikke vis <nowiki>-merkelapper i resultatet',
+	'expand_templates_generate_xml' => 'Vis parsetre som XML',
+	'expand_templates_preview' => 'Forhåndsvisning',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1530,25 +1549,6 @@ Dette gjer ho ved å kalla dei relevante parsersetega frå MediaWiki sjølv.',
 	'expand_templates_preview' => 'Førehandsvising',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'expandtemplates' => 'Utvid maler',
-	'expandtemplates-desc' => '[[Special:ExpandTemplates|Utvider maler, parserfunksjoner og variabler]] for å vise resultatråteksten og forhåndsvise siden slik den blir',
-	'expand_templates_intro' => 'Denne siden tar en tekst og utvider alle maler brukt i teksten. Den utvider også alle funksjoner som <nowiki>{{</nowiki>#if:…}}, og variabler som <nowiki>{{</nowiki>CURRENTDAY}}. <!--It does this by calling the relevant parser stage from MediaWiki itself.-->',
-	'expand_templates_title' => 'Konteksttittel, for {{FULLPAGENAME}}, etc.:',
-	'expand_templates_input' => 'Skriv inn tekst:',
-	'expand_templates_output' => 'Resultat',
-	'expand_templates_xml_output' => 'XML-resultat',
-	'expand_templates_ok' => 'OK',
-	'expand_templates_remove_comments' => 'Fjern kommentarer',
-	'expand_templates_remove_nowiki' => 'Ikke vis <nowiki>-merkelapper i resultatet',
-	'expand_templates_generate_xml' => 'Vis parsetre som XML',
-	'expand_templates_preview' => 'Forhåndsvisning',
-);
-
 /** Northern Sotho (Sesotho sa Leboa)
  * @author Mohau
  */
@@ -1575,9 +1575,12 @@ $messages['oc'] = array(
 );
 
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
  * @author Psubhashish
  */
 $messages['or'] = array(
+	'expand_templates_input' => 'ଇନପୁଟ ବିଷୟ:',
+	'expand_templates_output' => 'ପରିଣାମ',
 	'expand_templates_ok' => 'ଠିକ ଅଛି',
 );
 
