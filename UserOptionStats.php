@@ -36,6 +36,6 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname( __FILE__ );
 $wgAutoloadClasses['SpecialUserOptionStats'] = "$dir/SpecialUserOptionStats.php";
 $wgExtensionMessagesFiles['UserOptionStats'] = "$dir/UserOptionStats.i18n.php";
-$wgExtensionAliasesFiles['UserOptionStats'] = "$dir/UserOptionStats.alias.php";
+$wgExtensionMessagesFiles['UserOptionStatsAlias'] = "$dir/UserOptionStats.alias.php";
 $wgSpecialPages['UserOptionStats'] = 'SpecialUserOptionStats';
 $wgSpecialPageGroups['UserOptionStats'] = 'wiki';
