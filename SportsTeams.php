@@ -58,7 +58,7 @@ $wgResourceModules['ext.sportsTeams.userProfile'] = $sportsTeamsResourceTemplate
 // Set up everything
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['SportsTeams'] = $dir . 'SportsTeams.i18n.php';
-$wgExtensionAliasesFiles['SportsTeams'] = $dir . 'SportsTeams.alias.php';
+$wgExtensionMessagesFiles['SportsTeamsAlias'] = $dir . 'SportsTeams.alias.php';
 
 // Autoload the classes
 $wgAutoloadClasses['SportsTeams'] = $dir . 'SportsTeamsClass.php';
