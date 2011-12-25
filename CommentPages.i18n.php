@@ -451,6 +451,14 @@ $messages['myv'] = array(
 	'nstab-comments' => 'Мельть-арьсемат',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'commentpages-desc' => 'Legger til kommentarsider for sider i hovednavnerommet',
+	'nstab-comments' => 'Kommentarer',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -472,14 +480,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'commentpages-desc' => 'Legg til kommentarsider for sider i hovudnamnerommet',
 	'nstab-comments' => 'Kommentarar',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'commentpages-desc' => 'Legger til kommentarsider for sider i hovednavnerommet',
-	'nstab-comments' => 'Kommentarer',
 );
 
 /** Occitan (Occitan)
