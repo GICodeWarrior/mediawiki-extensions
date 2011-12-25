@@ -351,19 +351,6 @@ $messages['mk'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Избрани се премногу примачи ({{PLURAL:$1|највеќе $1|највеќе $1}}).',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'emailusers-desc' => 'Maakt het mogelijk om e-mail te verzenden naar meerdere ontvangers',
-	'right-sendbatchemail' => 'E-mails sturen aan meerdere ontvangers',
-	'emailusers' => 'Gebruikers e-mailen',
-	'emailusers-target-reverse' => 'Naar alle gebruikers verzenden behalve de geselecteerde gebruikers',
-	'emailusers-norecipient' => 'Er is niemand die u een e-mail kunt sturen.',
-	'emailusers-norecipientselected' => 'Er zijn geen ontvangers geselecteerd.',
-	'emailusers-toomanyrecipientsselected' => 'Er zijn te veel ontvangers geselecteerd. U mag maximaal {{PLURAL:$1|$1 ontvanger|$1 ontvangers}} selecteren.',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
@@ -375,6 +362,19 @@ $messages['nb'] = array(
 	'emailusers-norecipient' => 'Det finnes ingen du kan sende e-post til.',
 	'emailusers-norecipientselected' => 'Ingen mottakere er valgt.',
 	'emailusers-toomanyrecipientsselected' => 'For mange mottakere er valgt ({{PLURAL:$1|maximum $1|maximum $1}}).',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'emailusers-desc' => 'Maakt het mogelijk om e-mail te verzenden naar meerdere ontvangers',
+	'right-sendbatchemail' => 'E-mails sturen aan meerdere ontvangers',
+	'emailusers' => 'Gebruikers e-mailen',
+	'emailusers-target-reverse' => 'Naar alle gebruikers verzenden behalve de geselecteerde gebruikers',
+	'emailusers-norecipient' => 'Er is niemand die u een e-mail kunt sturen.',
+	'emailusers-norecipientselected' => 'Er zijn geen ontvangers geselecteerd.',
+	'emailusers-toomanyrecipientsselected' => 'Er zijn te veel ontvangers geselecteerd. U mag maximaal {{PLURAL:$1|$1 ontvanger|$1 ontvangers}} selecteren.',
 );
 
 /** Polish (Polski)
