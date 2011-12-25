@@ -1104,7 +1104,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'player' => 'Avspiller',
 	'player-desc' => 'Inkludert multimediespiller med vanlige programtillegg for nettlesere og en [[Special:Player|spesialside]]',
 	'player-title' => 'Avspiller',
