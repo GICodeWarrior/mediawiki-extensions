@@ -27,6 +27,13 @@ $messages['et'] = array(
 	'fundraiserlandingpage-desc' => 'Võtab aadressiribalt parameetrid ja annab need mallimuutujatena edasi määratud mallile.',
 );
 
+/** Finnish (Suomi)
+ * @author Olli
+ */
+$messages['fi'] = array(
+	'fundraiserlandingpage-desc' => 'Ottaa osoitemuuttujat ja lähettää ne tietylle mallineelle muuttujina',
+);
+
 /** French (Français)
  * @author Gomoko
  */
@@ -68,6 +75,13 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'fundraiserlandingpage-desc' => 'Prende parametros de URL e los passa al patrono specificate como variabiles de patrono',
+);
+
+/** Italian (Italiano)
+ * @author F. Cosoleto
+ */
+$messages['it'] = array(
+	'fundraiserlandingpage-desc' => 'Accetta parametri URL e li passa al template specificato come variabili di template',
 );
 
 /** Japanese (日本語)
