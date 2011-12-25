@@ -639,6 +639,19 @@ $messages['nah'] = array(
 	'createbox-create' => 'Ticchīhuāz',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'createbox-desc' => 'Spesialisert tekstboks for sideoppretting',
+	'createbox-create' => 'Opprett',
+	'createbox-exists' => "Beklager, «'''{{FULLPAGENAME}}'''» finnes fra før.
+
+Du kan ikke opprette denne siden, men du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigere den], [{{fullurl:{{FULLPAGENAME}}}} lese den] eller opprette en annen siden med hjelp av boksen nedenfor.
+
+<createbox>break=no</createbox>",
+);
+
 /** Nepali (नेपाली)
  * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
@@ -670,19 +683,6 @@ $messages['nn'] = array(
 	'createbox-exists' => "Orsak, «'''{{FULLPAGENAME}}'''» finst frå før.
 
 Du kan ikkje oppretta denne sida, men du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} endra ho], [{{fullurl:{{FULLPAGENAME}}}} lesa ho] eller oppretta ei anna sida ved hjelp av boksen nedanfor.
-
-<createbox>break=no</createbox>",
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'createbox-desc' => 'Spesialisert tekstboks for sideoppretting',
-	'createbox-create' => 'Opprett',
-	'createbox-exists' => "Beklager, «'''{{FULLPAGENAME}}'''» finnes fra før.
-
-Du kan ikke opprette denne siden, men du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigere den], [{{fullurl:{{FULLPAGENAME}}}} lese den] eller opprette en annen siden med hjelp av boksen nedenfor.
 
 <createbox>break=no</createbox>",
 );
