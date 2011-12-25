@@ -1042,6 +1042,37 @@ $messages['nah'] = array(
 	'tasklistemail' => 'Mahuizoh %',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'tasklist' => 'Oppgaveliste',
+	'tasklist-parser-desc' => 'legger til <nowiki>{{#todo:}}</nowiki> for tildeling av oppgaver',
+	'tasklist-special-desc' => 'Legger til en spesialside for gjennomgang av [[Special:TaskList|oppgaver]]',
+	'tasklistbyproject' => 'Oppgaveliste etter prosjekt',
+	'tasklistunknownproject' => 'Ukjent prosjekt',
+	'tasklistunspecuser' => 'Bruker ikke angitt',
+	'tasklistincorrectuser' => 'Ukorrekt brukernavn',
+	'tasklistemail' => 'Kjære %s',
+	'tasklistemailsubject' => '[%s] Oppgavelisteendring',
+	'tasklistmytasks' => 'Mine oppgaver',
+	'tasklistbyprojectbad' => "'''%s''' er ikke et gyldig prosjekt. For en liste over gyldige prosjekter, se [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Tildelte oppgaver for '''%s'''",
+	'tasklistchooseproj' => 'Velg prosjekt:',
+	'tasklistprojdisp' => 'Vis',
+	'tasklistbyname' => '== Oppgaveliste for %s ==',
+	'tasklistnowguseprojects' => 'Du har satt $wgUseProjects til «false» og kan ikke bruke denne siden.',
+	'tasklistnoprojects' => "FEIL: Det ser ut som om du har slått på '''\$wgUseProjects''' uten å opprette [[MediaWiki:TodoTasksValidProjects]]. Se [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installasjonsintruksjonene] for flere detaljer.",
+	'tasklistemailbody' => ',
+
+Noen har gitt deg en ny oppgave på %s.
+
+Gå til %s for å se den fullstendige oppgavelisten din.
+
+Fra %ss varslingssystem',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1112,37 +1143,6 @@ Noko har gjeve deg ei ny oppgåve på %s.
 Gå til %s for å sjå den fullstendige oppgåvelista da.
 
 Frå %ss varslingssystem',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'tasklist' => 'Oppgaveliste',
-	'tasklist-parser-desc' => 'legger til <nowiki>{{#todo:}}</nowiki> for tildeling av oppgaver',
-	'tasklist-special-desc' => 'Legger til en spesialside for gjennomgang av [[Special:TaskList|oppgaver]]',
-	'tasklistbyproject' => 'Oppgaveliste etter prosjekt',
-	'tasklistunknownproject' => 'Ukjent prosjekt',
-	'tasklistunspecuser' => 'Bruker ikke angitt',
-	'tasklistincorrectuser' => 'Ukorrekt brukernavn',
-	'tasklistemail' => 'Kjære %s',
-	'tasklistemailsubject' => '[%s] Oppgavelisteendring',
-	'tasklistmytasks' => 'Mine oppgaver',
-	'tasklistbyprojectbad' => "'''%s''' er ikke et gyldig prosjekt. For en liste over gyldige prosjekter, se [[MediaWiki:TodoTasksValidProjects]].",
-	'tasklistbyprojname' => "Tildelte oppgaver for '''%s'''",
-	'tasklistchooseproj' => 'Velg prosjekt:',
-	'tasklistprojdisp' => 'Vis',
-	'tasklistbyname' => '== Oppgaveliste for %s ==',
-	'tasklistnowguseprojects' => 'Du har satt $wgUseProjects til «false» og kan ikke bruke denne siden.',
-	'tasklistnoprojects' => "FEIL: Det ser ut som om du har slått på '''\$wgUseProjects''' uten å opprette [[MediaWiki:TodoTasksValidProjects]]. Se [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installasjonsintruksjonene] for flere detaljer.",
-	'tasklistemailbody' => ',
-
-Noen har gitt deg en ny oppgave på %s.
-
-Gå til %s for å se den fullstendige oppgavelisten din.
-
-Fra %ss varslingssystem',
 );
 
 /** Occitan (Occitan)
@@ -1429,11 +1429,12 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'tasklist' => 'Spisak poslova',
-	'tasklist-parser-desc' => 'Dodaje <nowiki>{{#todo:}}</nowiki> parser funkciju za davanje zadataka',
-	'tasklist-special-desc' => 'Dodaje specijalnu stranu za pregled [[Special:TaskList|dodeljenih zadataka]]',
+	'tasklist-parser-desc' => 'Dodaje raščlanjivačku funkciju <nowiki>{{#todo:}}</nowiki> za dodeljivanje zadataka',
+	'tasklist-special-desc' => 'Dodaje posebnu stranicu za pregled [[Special:TaskList|dodeljenih zadataka]]',
 	'tasklistbyproject' => 'Spisak zadataka po projektu',
 	'tasklistunknownproject' => 'Nepoznati projekat',
 	'tasklistunspecuser' => 'Neodređeni korisnik',
