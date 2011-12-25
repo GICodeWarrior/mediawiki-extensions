@@ -22,7 +22,7 @@ $magicWords['arz'] = array(
 
 /** Spanish (Español) */
 $magicWords['es'] = array(
-	'sgallery' => array( 0, 'galerías', 'galerias', 'sgallery' ),
+	'sgallery' => array( 0, 'galerías', 'galerias' ),
 );
 
 /** Japanese (日本語) */
@@ -53,4 +53,9 @@ $magicWords['nl'] = array(
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'sgallery' => array( 0, 'сгалерија' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'sgallery' => array( 0, 'sgalerija' ),
 );
