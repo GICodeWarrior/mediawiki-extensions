@@ -613,6 +613,17 @@ $messages['nah'] = array(
 	'filelist-show-list' => 'Tiquittāz mochi',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'filelist' => 'Filliste',
+	'filelist-desc' => '[[Special:Filelist|Spesialside]] som viser en liste over opplastede filer',
+	'filelist-show-list' => 'Vis liste',
+	'filelist-show-gallery' => 'Vis gallery',
+	'filelist-image-desc' => 'beskrivelse',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -641,17 +652,6 @@ $messages['nn'] = array(
 	'filelist-show-list' => 'Vis liste',
 	'filelist-show-gallery' => 'Vis galleri',
 	'filelist-image-desc' => 'skildring',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'filelist' => 'Filliste',
-	'filelist-desc' => '[[Special:Filelist|Spesialside]] som viser en liste over opplastede filer',
-	'filelist-show-list' => 'Vis liste',
-	'filelist-show-gallery' => 'Vis gallery',
-	'filelist-image-desc' => 'beskrivelse',
 );
 
 /** Occitan (Occitan)
@@ -818,9 +818,10 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'filelist' => 'Spisak fajlova',
+	'filelist' => 'Spisak datoteka',
 	'filelist-desc' => '[[Special:Filelist|Specijalna strana]] za spiskove poslatih fajlova',
 	'filelist-show-list' => 'Prikaži spisak',
 	'filelist-show-gallery' => 'Prikaži galeriju',
