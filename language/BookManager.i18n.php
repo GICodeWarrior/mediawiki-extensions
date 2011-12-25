@@ -446,7 +446,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'bookmanager-desc' => 'Verktøy for bøker',
 	'bm-booktools-section' => 'Verktøy for bok',
 	'bm-randomchapter-link' => 'Tilfeldig kapittel',
