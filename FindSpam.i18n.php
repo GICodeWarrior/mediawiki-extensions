@@ -765,7 +765,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'findspam' => 'Finn forsøpling',
 	'findspam-desc' => 'Legger til en [[Special:FindSpam|spesialside]] som lar deg finne spam som er blitt lagt til nylig',
 	'findspam-ip' => 'IP-adresse:',
