@@ -21,7 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['CrossNamespaceLinks'] = $dir . 'CrossNamespaceLinks.i18n.php';
-$wgExtensionAliasesFiles['CrossNameSpaceLinks'] = $dir . 'CrossNamespaceLinks.alias.php';
+$wgExtensionMessagesFiles['CrossNameSpaceLinksAlias'] = $dir . 'CrossNamespaceLinks.alias.php';
 $wgAutoloadClasses['CrossNamespaceLinks'] = $dir . 'CrossNamespaceLinks_body.php';
 $wgHooks['wgQueryPages'][] = 'wfSpecialCrossNamespaceLinksHook';
 $wgSpecialPages['CrossNamespaceLinks'] = 'CrossNamespaceLinks';
