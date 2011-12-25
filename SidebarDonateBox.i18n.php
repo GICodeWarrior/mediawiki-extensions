@@ -227,7 +227,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'sidebardonatebox-desc' => 'Legger til en egendefinert donasjonsboks til sidepanelet',
 );
 
