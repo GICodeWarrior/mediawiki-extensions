@@ -649,6 +649,27 @@ $messages['mk'] = array(
 	'framedvideo-desc' => 'Овозможува вметнување на видеоклипови од разни мрежни места со помош на ознаката <code>&lt;video&gt;</code>',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
+ */
+$messages['nb'] = array(
+	'framedvideo_errors' => 'Flere feil har oppstått!',
+	'framedvideo_error' => 'En feil har oppstått!',
+	'framedvideo_error_unknown_type' => 'Ukjent videotjeneste id ("$1"): sjekk "type" parameteret.',
+	'framedvideo_error_no_id_given' => 'Manglende "id" parameter.',
+	'framedvideo_error_height_required' => 'Videotypen "$1" krever "height" parameteren.',
+	'framedvideo_error_height_required_not_only_width' => 'Videotypen "$1" krever "height" parametern, ikke bare "width" parameteren.',
+	'framedvideo_error_width_too_big' => 'Gitt verdi for "width" parametern er for høy.',
+	'framedvideo_error_height_too_big' => 'Gitt verdi for "height" parametern er for stor.',
+	'framedvideo_error_no_integer' => 'Gitt verdi for "$1" er ikke et positivt tall.',
+	'framedvideo_error_limit' => 'Den høyeste tillatte verdien er $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Verdien "full" i "size" parameteren er ikke tillatt for videotjeneste-id-en "$1".',
+	'framedvideo_helppage' => 'Help:Video',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Mer om syntaks]].',
+	'framedvideo_error_height_and_width_required' => 'Videotypen "$1" krever "height" og "width2" eller "width" parametrene.',
+	'framedvideo-desc' => 'Tillater inkludering av videoer fra forskjellige nettsteder ved bruk av <code>&lt;video&gt;</code>-markering',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -689,27 +710,6 @@ $messages['nn'] = array(
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Meir om syntaks]].',
 	'framedvideo_error_height_and_width_required' => 'Videotypen «$1» krev «height» og «width2» eller «width» mellom parametrane.',
 	'framedvideo-desc' => 'Tillèt inkludering av videoar frå ymse nettstader ved å nytta <code>&lt;video&gt;</code>-merket.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Audun
- */
-$messages['nb'] = array(
-	'framedvideo_errors' => 'Flere feil har oppstått!',
-	'framedvideo_error' => 'En feil har oppstått!',
-	'framedvideo_error_unknown_type' => 'Ukjent videotjeneste id ("$1"): sjekk "type" parameteret.',
-	'framedvideo_error_no_id_given' => 'Manglende "id" parameter.',
-	'framedvideo_error_height_required' => 'Videotypen "$1" krever "height" parameteren.',
-	'framedvideo_error_height_required_not_only_width' => 'Videotypen "$1" krever "height" parametern, ikke bare "width" parameteren.',
-	'framedvideo_error_width_too_big' => 'Gitt verdi for "width" parametern er for høy.',
-	'framedvideo_error_height_too_big' => 'Gitt verdi for "height" parametern er for stor.',
-	'framedvideo_error_no_integer' => 'Gitt verdi for "$1" er ikke et positivt tall.',
-	'framedvideo_error_limit' => 'Den høyeste tillatte verdien er $1.',
-	'framedvideo_error_full_size_not_allowed' => 'Verdien "full" i "size" parameteren er ikke tillatt for videotjeneste-id-en "$1".',
-	'framedvideo_helppage' => 'Help:Video',
-	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Mer om syntaks]].',
-	'framedvideo_error_height_and_width_required' => 'Videotypen "$1" krever "height" og "width2" eller "width" parametrene.',
-	'framedvideo-desc' => 'Tillater inkludering av videoer fra forskjellige nettsteder ved bruk av <code>&lt;video&gt;</code>-markering',
 );
 
 /** Occitan (Occitan)
