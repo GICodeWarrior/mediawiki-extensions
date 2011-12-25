@@ -205,6 +205,11 @@ $specialPageAliases['mt'] = array(
 	'CreatePage' => array( 'OħloqPaġna' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'CreatePage' => array( 'Opprett_side' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'CreatePage' => array( 'Pagina_anmaken' ),
@@ -213,11 +218,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'CreatePage' => array( 'PaginaAanmaken' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'CreatePage' => array( 'Opprett_side' ),
 );
 
 /** Polish (Polski) */
@@ -232,10 +232,10 @@ $specialPageAliases['ps'] = array(
 
 /** Portuguese (Português) */
 $specialPageAliases['pt'] = array(
-	'CreatePage' => array( 'Criar página' ),
+	'CreatePage' => array( 'Criar_página' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'CreatePage' => array( 'पृष्ठस्यसृजन' ),
 );
@@ -309,8 +309,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'CreatePage' => array( '創建頁面' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
