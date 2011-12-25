@@ -31,7 +31,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['MultipleUpload'] = $dir . 'MultiUpload.body.php';
 $wgAutoloadClasses['MultipleUploadForm'] = $dir . 'MultiUpload.body.php';
 $wgExtensionMessagesFiles['MultiUpload'] = $dir . 'MultiUpload.i18n.php';
-$wgExtensionAliasesFiles['MultiUpload'] = $dir . 'MultiUpload.alias.php';
+$wgExtensionMessagesFiles['MultiUploadAlias'] = $dir . 'MultiUpload.alias.php';
 $wgSpecialPages['MultipleUpload'] = 'MultipleUpload';
 $wgSpecialPageGroups['MultipleUpload'] = 'media';
 
