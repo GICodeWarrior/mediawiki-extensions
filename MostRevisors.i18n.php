@@ -680,7 +680,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'mostrevisors' => 'Sider med flest bidragsytere',
 	'mostrevisors-desc' => 'List opp [[Special:MostRevisors|sider med flest bidragsytere]]',
 	'mostrevisors-header' => "'''Denne siden lister opp {{PLURAL:$1|den siden|de $1 sidene}} med flest bidragsytere på denne wikien.'''",
