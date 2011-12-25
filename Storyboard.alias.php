@@ -77,6 +77,11 @@ $specialPageAliases['ml'] = array(
 	'StorySubmission' => array( 'കഥസമർപ്പിക്കൽ' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'Story' => array( 'Historie' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'StoryReview' => array( 'Verhaalkontrole' ),
@@ -91,11 +96,6 @@ $specialPageAliases['nl'] = array(
 	'StorySubmission' => array( 'VerhaalInzenden' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'Story' => array( 'Historie' ),
-);
-
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
 	'Story' => array( '故事' ),
@@ -107,8 +107,3 @@ $specialPageAliases['zh-hant'] = array(
 	'Story' => array( '故事' ),
 	'StorySubmission' => array( '上傳故事' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
