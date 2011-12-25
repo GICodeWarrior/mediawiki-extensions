@@ -28,6 +28,11 @@ $specialPageAliases['ht'] = array(
 	'WikiSync' => array( 'WikiSenkro' ),
 );
 
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'WikiSync' => array( 'Synchronisation_inter_wikis' ),
+);
+
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
 	'WikiSync' => array( 'ВикиУсогласување' ),
@@ -52,8 +57,3 @@ $specialPageAliases['nl'] = array(
 $specialPageAliases['tr'] = array(
 	'WikiSync' => array( 'VikiSenkronizasyon' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
