@@ -21,7 +21,7 @@ $wgExtensionMessagesFiles['MetavidWiki'] = $mvgIP . '/languages/MV_Messages.php'
 require_once( $mvgIP . '/languages/MV_Language.php' );
 
 // Register special page aliases file
-$wgExtensionAliasesFiles['MetavidWiki'] = $mvgIP . '/languages/MV_Aliases.php';
+$wgExtensionMessagesFiles['MetavidWikiAlias'] = $mvgIP . '/languages/MV_Aliases.php';
 
 $markerList = array();
 $mvGlobalJSVariables = array();
