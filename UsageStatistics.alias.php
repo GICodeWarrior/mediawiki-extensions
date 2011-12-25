@@ -63,7 +63,7 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'SpecialUserStats' => array( 'Statistiques_utilisator', 'StatistiquesUtilisator' ),
+	'SpecialUserStats' => array( 'Statistiques_usanciér', 'StatistiquesUsanciér' ),
 );
 
 /** Gagauz (Gagauz) */
@@ -156,6 +156,11 @@ $specialPageAliases['mr'] = array(
 	'SpecialUserStats' => array( 'सदस्यसांख्य्की', 'विशेषसदस्यसांख्य्की' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'SpecialUserStats' => array( 'Brukerstatistikk' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'SpecialUserStats' => array( 'Gebrukersgegevens' ),
@@ -166,11 +171,6 @@ $specialPageAliases['nl'] = array(
 	'SpecialUserStats' => array( 'Gebruikersgegevens', 'Gebruikersstatistieken' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'SpecialUserStats' => array( 'Brukerstatistikk' ),
-);
-
 /** Occitan (Occitan) */
 $specialPageAliases['oc'] = array(
 	'SpecialUserStats' => array( 'EstatisticasUtilizaire' ),
@@ -178,10 +178,10 @@ $specialPageAliases['oc'] = array(
 
 /** Portuguese (Português) */
 $specialPageAliases['pt'] = array(
-	'SpecialUserStats' => array( 'Estatísticas de utilizadores' ),
+	'SpecialUserStats' => array( 'Estatísticas_de_utilizadores' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'SpecialUserStats' => array( 'सदस्यसांख्यिकी' ),
 );
@@ -225,8 +225,3 @@ $specialPageAliases['tr'] = array(
 $specialPageAliases['vec'] = array(
 	'SpecialUserStats' => array( 'StatìstegheUtente' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
