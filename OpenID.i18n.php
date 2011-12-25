@@ -4355,7 +4355,7 @@ Du ville ikkje ha kunna logga inn utan ein OpenID.',
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'openid-desc' => 'Logg inn på wikien med en [//openid.net/ OpenID] og logg inn på andre sider som bruker OpenID med kontoen herfra',
 	'openidlogin' => 'Logg inn med OpenID',
 	'openidserver' => 'OpenID-tjener',

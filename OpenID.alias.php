@@ -120,7 +120,7 @@ $specialPageAliases['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['no'] = array(
+$specialPageAliases['nb'] = array(
 	'OpenIDLogin' => array( 'OpenID-innlogging' ),
 	'OpenIDConvert' => array( 'OpenID-konvertering' ),
 	'OpenIDServer' => array( 'OpenID-tjener' ),
