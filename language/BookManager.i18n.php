@@ -430,19 +430,6 @@ $messages['mzn'] = array(
 	'bm-printversion-inexistent-book' => 'کتاب پیدا نیّه. لطفاً ایسم اتا کتاب که اینجه دره ره بنویسین تا ونه نسخهٔ قابل چاپ ره بَیرین.',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'bookmanager-desc' => 'Hulpmiddelen voor boeken',
-	'bm-booktools-section' => 'Hulpmiddelen voor boek',
-	'bm-randomchapter-link' => 'Willekeurige hoofdstuk',
-	'bm-printversion' => 'Afdrukbare versie',
-	'bm-printversion-desc' => 'Maakt een [[Special:PrintVersion|afdrukbare versie]] van een boek',
-	'bm-printversion-no-book' => 'Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
-	'bm-printversion-inexistent-book' => 'Het boek is niet aangetroffen. Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -454,6 +441,19 @@ $messages['nb'] = array(
 	'bm-printversion-desc' => 'Genererer en [[Special:PrintVersion|utskriftsversjon]] av en bok',
 	'bm-printversion-no-book' => 'Skriv inn navnet på en bok for å få dens utskriftsversjon.',
 	'bm-printversion-inexistent-book' => 'Bok ikke funnet. Skriv inn navnet på en eksisterende bok for å få dens utskriftsversjon.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'bookmanager-desc' => 'Hulpmiddelen voor boeken',
+	'bm-booktools-section' => 'Hulpmiddelen voor boek',
+	'bm-randomchapter-link' => 'Willekeurige hoofdstuk',
+	'bm-printversion' => 'Afdrukbare versie',
+	'bm-printversion-desc' => 'Maakt een [[Special:PrintVersion|afdrukbare versie]] van een boek',
+	'bm-printversion-no-book' => 'Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
+	'bm-printversion-inexistent-book' => 'Het boek is niet aangetroffen. Voer de naam van een bestaand boek in om de afdrukbare versie te downloaden.',
 );
 
 /** Deitsch (Deitsch)
