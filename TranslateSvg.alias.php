@@ -8,9 +8,12 @@
 
 $specialPageAliases = array();
 
-/** English
- * @author Harry Burt
- */
+/** English (English) */
 $specialPageAliases['en'] = array(
 	'TranslateSvg' => array( 'TranslateSVG', 'TranslateSvg' ),
+);
+
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'TranslateSvg' => array( 'SVGVertalen' ),
 );
