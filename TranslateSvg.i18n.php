@@ -48,9 +48,9 @@ $messages['qqq'] = array(
 	'translatesvg-qqqdesc' => 'The heading of the section that contains descriptions of the context of each translation (i.e. translations into the language with code "qqq"). Comparable to other language headings such as "English", "Deutsch", etc.',
 	'translatesvg-nodesc' => 'The text that appears next to a translation when no description (translation into language qqq) exists.',
 	'translatesvg-remove' => 'Tooltip for a link attached to each translation language group which remove all form elements relating to the language group it is attached to',
-	'translatesvg-unsuccessful'    => 'A very general error message (bold and italics may be used to draw attention to it)',
-	'translatesvg-toggle-view'     => 'A toggle label; clicking on it causes extra form elements to appear',
-	'translatesvg-toggle-hide'     => 'A toggle label; clicking on it causes form elements to disappear'
+	'translatesvg-unsuccessful' => 'A very general error message (bold and italics may be used to draw attention to it)',
+	'translatesvg-toggle-view' => 'A toggle label; clicking on it causes extra form elements to appear',
+	'translatesvg-toggle-hide' => 'A toggle label; clicking on it causes form elements to disappear',
 );
 
 /** Breton (Brezhoneg)
@@ -87,6 +87,9 @@ $messages['de'] = array(
 	'translatesvg-qqqdesc' => 'Ratschläge für Übersetzer',
 	'translatesvg-nodesc' => '(keine Beschreibung)',
 	'translatesvg-remove' => 'Alle Übersetzungen in dieser Sprache entfernen',
+	'translatesvg-unsuccessful' => "Diese Datei konnte leider '''nicht''' übersetzt werden.",
+	'translatesvg-toggle-view' => 'Alle Übersetzungen in dieser Sprache ansehen',
+	'translatesvg-toggle-hide' => 'Alle Übersetzungen in dieser Sprache ausblenden',
 );
 
 /** German (formal address) (‪Deutsch (Sie-Form)‬)
@@ -94,6 +97,28 @@ $messages['de'] = array(
  */
 $messages['de-formal'] = array(
 	'translatesvg-add' => 'Sofern Ihre Sprache nicht bereits hier aufgeführt ist, können Sie sie [[#addlanguage|hinzufügen]].',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'translatesvg-desc' => 'Stoj pówjerch za pśełožowanje SVG-datajow pó specifikaciji SVG1.1 k dispoziciji',
+	'translatesvg-legend' => 'Datajowy puśik',
+	'translatesvg-page' => 'Dataja:',
+	'translatesvg-submit' => 'Wótpósłaś',
+	'translatesvg-summary' => 'Toś ten specialny bok śi zmóžnja, psełožki pśidaś, wópóraś a změniś, kótarež su w danej SVG-dataji zasajźone.',
+	'translatesvg-add' => 'Jolic twója rěc hyšći njejo pódana, móžoš ju [[#addlanguage|pśidaś]].',
+	'translatesvg-xcoordinate-pre' => 'X-coordinate (horizontal):',
+	'translatesvg-ycoordinate-pre' => 'Y-koordinata (wertikalny):',
+	'translatesvg-specify' => 'Nowy rěcny code pódaś (na př.  dsb,  de, en, fr, es ...)',
+	'translatesvg-fallbackdesc' => 'Standard (žedna rěc pódana)',
+	'translatesvg-qqqdesc' => 'Rady za pśełožowarjow',
+	'translatesvg-nodesc' => '(žedno wopisanje)',
+	'translatesvg-remove' => 'Wšykne pśełožki w toś tej rěcy wótpóraś',
+	'translatesvg-unsuccessful' => "Toś ta dataja '''njedajo se''' bóžko pśełožowas.",
+	'translatesvg-toggle-view' => 'Pśełožki  w toś tej rěcy pokazaś',
+	'translatesvg-toggle-hide' => 'Pśełožki  w toś tej rěcy schowaś',
 );
 
 /** Finnish (Suomi)
@@ -105,21 +130,25 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Gomoko
+ * @author Od1n
  */
 $messages['fr'] = array(
 	'translatesvg-desc' => 'Fournit une interface de style natif pour traduire les SVGs en ligne conformément à la spécification SVG1.1',
 	'translatesvg-legend' => 'Chemin du fichier',
-	'translatesvg-page' => 'Fichier:',
+	'translatesvg-page' => 'Fichier :',
 	'translatesvg-submit' => 'Suivant',
 	'translatesvg-summary' => "Cette page spéciale vous permet d'ajouter, supprimer et modifier les traductions intégrées dans un fichier d'image SVG donné.",
 	'translatesvg-add' => "Si votre langue n'est pas déjà répertoriée, vous pouvez [[#addlanguage|l'ajouter]].",
-	'translatesvg-xcoordinate-pre' => 'Coordonnée X (horizontal):',
-	'translatesvg-ycoordinate-pre' => 'Coordonnée Y (vertical):',
+	'translatesvg-xcoordinate-pre' => 'Coordonnée X (horizontal) :',
+	'translatesvg-ycoordinate-pre' => 'Coordonnée Y (vertical) :',
 	'translatesvg-specify' => 'Spécifiez le nouveau code de langue (par ex. en, fr, de, es,...)',
 	'translatesvg-fallbackdesc' => 'Par défaut (aucune langue spécifiée)',
 	'translatesvg-qqqdesc' => 'Conseil aux traducteurs',
 	'translatesvg-nodesc' => '(aucune description)',
 	'translatesvg-remove' => 'Supprimer toutes les traductions dans cette langue.',
+	'translatesvg-unsuccessful' => "Ce fichier '''n’a pas pu être traduit''', désolé.",
+	'translatesvg-toggle-view' => 'Voir les traductions dans cette langue',
+	'translatesvg-toggle-hide' => 'Cacher les traductions dans cette langue',
 );
 
 /** Galician (Galego)
@@ -139,6 +168,31 @@ $messages['gl'] = array(
 	'translatesvg-qqqdesc' => 'Consello para os tradutores',
 	'translatesvg-nodesc' => '(sen descrición)',
 	'translatesvg-remove' => 'Eliminar todas as traducións nesta lingua',
+	'translatesvg-unsuccessful' => "Sentímolo, este ficheiro '''non se pode traducir'''.",
+	'translatesvg-toggle-view' => 'Ollar todas as traducións nesta lingua',
+	'translatesvg-toggle-hide' => 'Agochar todas as traducións nesta lingua',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'translatesvg-desc' => 'Steji powjerch za přełožowanje SVG-datajow po specifikaciji SVG1.1 k dispoziciji',
+	'translatesvg-legend' => 'Datajowy pućik',
+	'translatesvg-page' => 'Dataja:',
+	'translatesvg-submit' => 'Wotpósłać',
+	'translatesvg-summary' => 'Tuta specialna strona ći zmóžnja, přełožki přidać, wotstronić a změnić, kotrež su w datej SVG-dataji zasadźene.',
+	'translatesvg-add' => 'Jeli twoja rěč hišće njeje podata, móžeš ju [[#addlanguage|přidać]].',
+	'translatesvg-xcoordinate-pre' => 'X-koordinata (horicontalny):',
+	'translatesvg-ycoordinate-pre' => 'Y-koordinata (wertikalny):',
+	'translatesvg-specify' => 'Nowy rěčny kod podać (na př.  hsb,  de, en, fr, es ...)',
+	'translatesvg-fallbackdesc' => 'Standard (žana rěč podata)',
+	'translatesvg-qqqdesc' => 'Rady za přełožowarjow',
+	'translatesvg-nodesc' => '(žane wopisanje)',
+	'translatesvg-remove' => 'Wšě přełožki w tutej rěči wotstronić',
+	'translatesvg-unsuccessful' => "Tuta dataja '''njeda so''' bohužel přełožować.",
+	'translatesvg-toggle-view' => 'Přełožki  w tutej rěči pokazać',
+	'translatesvg-toggle-hide' => 'Přełožki  w tutej rěči schować',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -148,8 +202,10 @@ $messages['lb'] = array(
 	'translatesvg-page' => 'Fichier:',
 	'translatesvg-submit' => 'Lass',
 	'translatesvg-add' => 'Wann Är Sprooch net schonn an der Lëscht dran ass, kënnt Dir se [[#addlanguage|derbäisetzen]].',
+	'translatesvg-fallbackdesc' => 'Standard (keng Sprooch ass spezifizéiert)',
 	'translatesvg-qqqdesc' => 'Tuyau fir Iwwersetzer',
 	'translatesvg-nodesc' => '(keng Beschreiwung)',
+	'translatesvg-remove' => 'All Iwwersetzungen an dëser Sprooch ewechhuelen',
 );
 
 /** Macedonian (Македонски)
@@ -169,6 +225,9 @@ $messages['mk'] = array(
 	'translatesvg-qqqdesc' => 'Совет за преведувачите',
 	'translatesvg-nodesc' => '(нема опис)',
 	'translatesvg-remove' => 'Отстрани ги сите преводи на овој јазик',
+	'translatesvg-unsuccessful' => "Нажалост, податотекава '''не можеше да се преведе'''.",
+	'translatesvg-toggle-view' => 'Прикажи преводи на овој јазик',
+	'translatesvg-toggle-hide' => 'Скриј преводи на овој јазик',
 );
 
 /** Dutch (Nederlands)
@@ -189,6 +248,9 @@ $messages['nl'] = array(
 	'translatesvg-qqqdesc' => 'Advies aan vertalers',
 	'translatesvg-nodesc' => '(geen beschrijving)',
 	'translatesvg-remove' => 'Alle vertalingen in deze taal verwijderen',
+	'translatesvg-unsuccessful' => 'Dit bestand kan niet vertaald worden.',
+	'translatesvg-toggle-view' => 'Vertalingen in deze taal bekijken',
+	'translatesvg-toggle-hide' => 'Vertalen in deze taal verbergen',
 );
 
 /** Telugu (తెలుగు)
