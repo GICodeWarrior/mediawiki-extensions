@@ -64,7 +64,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['ExternalPages'] = $dir . 'ExternalPages.i18n.php';
-$wgExtensionAliasesFiles['ExternalPages'] = $dir . 'ExternalPages.alias.php';
+$wgExtensionMessagesFiles['ExternalPagesAlias'] = $dir . 'ExternalPages.alias.php';
 
 $wgAutoloadClasses['ExternalPages'] = $dir . 'ExternalPages_body.php';
 
