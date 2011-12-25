@@ -1138,7 +1138,7 @@ ID\'en du må oppgje er tala og bokstavane mellom  «$2» og «$3».',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'imstatus-desc' => 'Legg til merkelapper for å vise forskjellige påloggingsstatuser i direktemeldingsprogram (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
 	'imstatus_syntax' => 'Syntaks',
 	'imstatus_default' => 'Standard',
