@@ -612,6 +612,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
+ * @author Olli
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -624,6 +625,7 @@ Jos olet kirjautuneena sisään, voit poistaa tämän varoituksen käytöstä as
 	'vector-editwarning-preference' => 'Varoita minua, kun poistun muokkaussivulta tallentamatta muutoksia',
 	'vector-simplesearch-search' => 'Etsi',
 	'vector-simplesearch-containing' => 'sisältää...',
+	'vector-noexperiments-preference' => 'Älä ota minua mukaan ominaisuuskokeiluihin',
 );
 
 /** Faroese (Føroyskt)
@@ -1267,6 +1269,24 @@ $messages['nah'] = array(
 	'vector-simplesearch-search' => 'Tlatēmoliztli',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Laaknor
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'vector' => 'Brukergrensesnittsforbedringer for Vector',
+	'vector-desc' => 'Forbedrer elementer i brukergrensesnittet for Vector-utseendet.',
+	'vector-collapsiblenav-preference' => 'Aktiver sammenlegging av element i navigeringsmenyen i drakten Vector',
+	'vector-collapsiblenav-more' => 'Flere språk',
+	'vector-editwarning-warning' => 'Ved å forlate siden vil du miste alle endringer du har utført.
+Denne advarselen kan slås av under Redigering i instillingene dine.',
+	'vector-editwarning-preference' => 'Si ifra dersom jeg forlater en side jeg har gjort redigeringer på men ikke har lagret siden.',
+	'vector-simplesearch-search' => 'Søk',
+	'vector-simplesearch-containing' => 'inneholder …',
+	'vector-noexperiments-preference' => 'Eksluder meg fra funksjonseksperimenter',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -1306,24 +1326,6 @@ Denne åtvaringa kan slåast av under Endring i instillingane dine.',
 	'vector-editwarning-preference' => 'Gje ei åtvaring om eg går ut av ei redigeringsside og ikkje alle endringar er lagra',
 	'vector-simplesearch-search' => 'Søk',
 	'vector-simplesearch-containing' => 'inneheld ...',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Laaknor
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'vector' => 'Brukergrensesnittsforbedringer for Vector',
-	'vector-desc' => 'Forbedrer elementer i brukergrensesnittet for Vector-utseendet.',
-	'vector-collapsiblenav-preference' => 'Aktiver sammenlegging av element i navigeringsmenyen i drakten Vector',
-	'vector-collapsiblenav-more' => 'Flere språk',
-	'vector-editwarning-warning' => 'Ved å forlate siden vil du miste alle endringer du har utført.
-Denne advarselen kan slås av under Redigering i instillingene dine.',
-	'vector-editwarning-preference' => 'Si ifra dersom jeg forlater en side jeg har gjort redigeringer på men ikke har lagret siden.',
-	'vector-simplesearch-search' => 'Søk',
-	'vector-simplesearch-containing' => 'inneholder …',
-	'vector-noexperiments-preference' => 'Eksluder meg fra funksjonseksperimenter',
 );
 
 /** Occitan (Occitan)
@@ -1664,6 +1666,7 @@ $messages['sr-ec'] = array(
 	'vector-editwarning-preference' => 'Упозори ме када напустим страницу која није сачувана',
 	'vector-simplesearch-search' => 'Претрага',
 	'vector-simplesearch-containing' => 'садржи...',
+	'vector-noexperiments-preference' => 'Изузми ме из пробних могућности',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
