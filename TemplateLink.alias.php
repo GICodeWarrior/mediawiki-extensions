@@ -123,6 +123,11 @@ $specialPageAliases['myv'] = array(
 	'TemplateLink' => array( 'ЛопаПарцунСюлмавомаПене' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'TemplateLink' => array( 'Mallenke' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'TemplateLink' => array( 'Malverwiezing' ),
@@ -133,12 +138,7 @@ $specialPageAliases['nl'] = array(
 	'TemplateLink' => array( 'Sjabloonverwijzing' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'TemplateLink' => array( 'Mallenke' ),
-);
-
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'TemplateLink' => array( 'बिंबधरसम्बद्धम्' ),
 );
@@ -167,8 +167,3 @@ $specialPageAliases['tt-cyrl'] = array(
 $specialPageAliases['vi'] = array(
 	'TemplateLink' => array( 'Liên_kiết_bản_mẫu' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
