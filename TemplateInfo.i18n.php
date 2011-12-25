@@ -245,6 +245,14 @@ $messages['mk'] = array(
 	'templateinfo-header' => 'XML-определбата за овој шаблон е:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'templateinfo-desc' => 'Støtter maler som definerer datastrukturen sin gjennom XML-markering',
+	'templateinfo-header' => 'XML-definisjonen for denne malen er:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -259,14 +267,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'templateinfo-desc' => 'Støttar malar som definerer datastrukturen sin gjennom XML-markering.',
 	'templateinfo-header' => 'XML-definisjonen til denne malen er:',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'templateinfo-desc' => 'Støtter maler som definerer datastrukturen sin gjennom XML-markering',
-	'templateinfo-header' => 'XML-definisjonen for denne malen er:',
 );
 
 /** Occitan (Occitan)
