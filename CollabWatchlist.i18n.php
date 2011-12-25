@@ -940,7 +940,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'collabwatchlisttagselect' => 'Tagg',
 	'collabwatchlisttagcomment' => 'Kommentar',
 	'collabwatchlistsettagbutton' => 'Angi tagg',
