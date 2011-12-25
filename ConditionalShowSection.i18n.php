@@ -240,6 +240,13 @@ $messages['ms'] = array(
 	'conditionalshowsection-desc' => 'Membubuh tag cshow untuk menunjukkan/menyorokkan sebahagian teks wiki secara bersyarat',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'conditionalshowsection-desc' => 'Bruk cshow-merkelappen for å velge vis/skjul en seksjon av wikitekst',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -252,13 +259,6 @@ $messages['nds-nl'] = array(
  */
 $messages['nl'] = array(
 	'conditionalshowsection-desc' => 'Voegt de tag <code><nowiki>cshow</nowiki></code> toe om conditioneel een paragraaf wikitekst weer te geven of te verbergen',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'conditionalshowsection-desc' => 'Bruk cshow-merkelappen for å velge vis/skjul en seksjon av wikitekst',
 );
 
 /** Occitan (Occitan)
@@ -342,9 +342,10 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Liangent
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'conditionalshowsection-desc' => 'Dodaje cshow tag za uslovno prikazivanje i skrivanje odeljaka viki-teksta.',
+	'conditionalshowsection-desc' => 'Dodavanje oznake cshow za uslovno prikazivanje/sakrivanje delova vikiteksta.',
 );
 
 /** Swedish (Svenska)
