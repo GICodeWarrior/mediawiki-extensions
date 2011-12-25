@@ -234,6 +234,13 @@ $messages['ms'] = array(
 	'redirect-desc' => 'Memudahkan konfigurasi lencongan pada [[MediaWiki:Redirect-addnewaccount|pembukaan akaun]] dan [[MediaWiki:Redirect-userlogoutcomplete|log keluar]]',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'redirect-desc' => 'Tillater enkel konfigurering av omdirigeringer ved [[MediaWiki:Redirect-addnewaccount|kontooppretting]] og [[MediaWiki:Redirect-userlogoutcomplete|utlogging]]',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -254,13 +261,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'redirect-desc' => 'Tillèt enkel konfigurering av omdirigeringar ved [[MediaWiki:Redirect-addnewaccount|kontooppretting]] og [[MediaWiki:Redirect-userlogoutcomplete|utlogging]]',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'redirect-desc' => 'Tillater enkel konfigurering av omdirigeringer ved [[MediaWiki:Redirect-addnewaccount|kontooppretting]] og [[MediaWiki:Redirect-userlogoutcomplete|utlogging]]',
 );
 
 /** Occitan (Occitan)
