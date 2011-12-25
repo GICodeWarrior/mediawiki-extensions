@@ -1039,7 +1039,7 @@ $messages['nn'] = array(
  * @author Harald Khan
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'scanset-desc' => 'Vis bilder av skannede sider fra Andreas Grosz’ CD-/DVD-sett',
 	'scanset_no_name' => 'Feil: Du må angi navnet på et ScanSet, f.eks. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'Feil: Ugyldig eller manglende ScanSet.',
