@@ -68,6 +68,6 @@ $wgAutoloadClasses['SpecialPrefStats'] = $dir . 'SpecialPrefStats.php';
 $wgSpecialPages['PrefStats'] = 'SpecialPrefStats';
 $wgSpecialPageGroups['PrefStats'] = 'wiki';
 $wgExtensionMessagesFiles['PrefStats'] = $dir . 'PrefStats.i18n.php';
-$wgExtensionAliasesFiles['PrefStats'] = $dir . 'PrefStats.alias.php';
+$wgExtensionMessagesFiles['PrefStatsAlias'] = $dir . 'PrefStats.alias.php';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'PrefStatsHooks::loadExtensionSchemaUpdates';
 $wgHooks['UserSaveOptions'][] = 'PrefStatsHooks::userSaveOptions';
