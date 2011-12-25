@@ -43,7 +43,7 @@ $specialPageAliases['mr'] = array(
 	'Piwik' => array( 'पायविकि' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'Piwik' => array( 'पिविकि' ),
 );
@@ -52,8 +52,3 @@ $specialPageAliases['sa'] = array(
 $specialPageAliases['te'] = array(
 	'Piwik' => array( 'పివిక్' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
