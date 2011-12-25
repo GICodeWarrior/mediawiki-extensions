@@ -165,6 +165,13 @@ $messages['ps'] = array(
 	'swb_browse_go' => 'ورځه',
 );
 
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'swb_browse_more' => '…',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
