@@ -1417,6 +1417,35 @@ $messages['nah'] = array(
 	'importusers-realname' => 'melāhuac motōcā',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Laaknor
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'importusers' => 'Importer brukere',
+	'importusers-desc' => '[[Special:ImportUsers|Importer brukere]] fra CSV-fil; tegnkoding: UTF-8',
+	'importusers-uploadfile' => 'Last opp fil',
+	'importusers-form-caption' => 'Sett inn CSV-fil (UTF-8):',
+	'importusers-form-file' => 'Brukerfilformat (CSV):',
+	'importusers-form-replace-present' => 'Erstatt eksisterende brukere',
+	'importusers-form-button' => 'Importer',
+	'importusers-user-added' => "Brukeren '''$1''' har blitt lagt til.",
+	'importusers-user-present-update' => "Brukeren '''$1''' finnes allerede. Oppdatert.",
+	'importusers-user-present-not-update' => "Brukeren '''$1''' finnes allerede. Ikke oppdatert.",
+	'importusers-user-invalid-format' => 'Brukerdataene på linje #$1 har ugyldig format eller er blank. Hoppet over.',
+	'importusers-log' => 'Brukerimporteringslogg',
+	'importusers-log-summary' => 'Sammendrag',
+	'importusers-log-summary-all' => 'Alle: $1',
+	'importusers-log-summary-added' => 'Lagt til: $1',
+	'importusers-log-summary-updated' => 'Oppdatert: $1',
+	'importusers-login-name' => 'Innloggingsnavn',
+	'importusers-password' => 'passord',
+	'importusers-email' => 'e-post',
+	'importusers-realname' => 'virkelig navn',
+	'right-import_users' => 'Importerer flere brukere samtidig',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1472,35 +1501,6 @@ $messages['nn'] = array(
 	'importusers-email' => 'e-post',
 	'importusers-realname' => 'verkeleg namn',
 	'right-import_users' => 'Importera fleire brukarar samstundes',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Laaknor
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'importusers' => 'Importer brukere',
-	'importusers-desc' => '[[Special:ImportUsers|Importer brukere]] fra CSV-fil; tegnkoding: UTF-8',
-	'importusers-uploadfile' => 'Last opp fil',
-	'importusers-form-caption' => 'Sett inn CSV-fil (UTF-8):',
-	'importusers-form-file' => 'Brukerfilformat (CSV):',
-	'importusers-form-replace-present' => 'Erstatt eksisterende brukere',
-	'importusers-form-button' => 'Importer',
-	'importusers-user-added' => "Brukeren '''$1''' har blitt lagt til.",
-	'importusers-user-present-update' => "Brukeren '''$1''' finnes allerede. Oppdatert.",
-	'importusers-user-present-not-update' => "Brukeren '''$1''' finnes allerede. Ikke oppdatert.",
-	'importusers-user-invalid-format' => 'Brukerdataene på linje #$1 har ugyldig format eller er blank. Hoppet over.',
-	'importusers-log' => 'Brukerimporteringslogg',
-	'importusers-log-summary' => 'Sammendrag',
-	'importusers-log-summary-all' => 'Alle: $1',
-	'importusers-log-summary-added' => 'Lagt til: $1',
-	'importusers-log-summary-updated' => 'Oppdatert: $1',
-	'importusers-login-name' => 'Innloggingsnavn',
-	'importusers-password' => 'passord',
-	'importusers-email' => 'e-post',
-	'importusers-realname' => 'virkelig navn',
-	'right-import_users' => 'Importerer flere brukere samtidig',
 );
 
 /** Occitan (Occitan)
