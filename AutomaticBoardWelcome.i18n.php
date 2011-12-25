@@ -153,7 +153,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'automaticboardwelcome-desc' => 'Sender automatisk [[MediaWiki:User-board-welcome-message|en velkomstmelding] til nye brukeres brukertavler et opprettelse av konto',
 );
 
