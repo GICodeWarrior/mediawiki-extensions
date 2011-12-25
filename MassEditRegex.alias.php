@@ -18,6 +18,11 @@ $specialPageAliases['ar'] = array(
 	'MassEditRegex' => array( 'ريجيكس_التعديلات_الكمية' ),
 );
 
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'MassEditRegex' => array( 'Modificar_in_massa_con_regex' ),
+);
+
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
 	'MassEditRegex' => array( 'РегуларенИзразЗаМасовноУредување' ),
@@ -32,8 +37,3 @@ $specialPageAliases['nds-nl'] = array(
 $specialPageAliases['nl'] = array(
 	'MassEditRegex' => array( 'BulkRegexBewerken' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
