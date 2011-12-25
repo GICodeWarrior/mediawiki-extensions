@@ -816,7 +816,7 @@ $messages['nn'] = array(
  * @author Harald Khan
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'crossnamespacelinks' => 'Lenker mellom navnerom',
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Lister opp lenker mellom navnerom]] som ikke burde finnes på {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'Denne siden gir ei liste over lenker fra sider i hovednavnerommet til sider i andre navnerom (utenom navnerommene {{ns:special}}, {{ns:talk}}, {{ns:project}} og {{ns:template}}), som det er frarådd å bruke.',

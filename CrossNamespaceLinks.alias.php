@@ -179,7 +179,7 @@ $specialPageAliases['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['no'] = array(
+$specialPageAliases['nb'] = array(
 	'CrossNamespaceLinks' => array( 'Lenker_mellom_navnerom' ),
 );
 
