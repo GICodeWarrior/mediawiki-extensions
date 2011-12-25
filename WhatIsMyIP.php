@@ -39,7 +39,7 @@ $wgGroupPermissions['*']['whatismyip'] = true;
 // Set up the special page
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['WhatIsMyIP'] = $dir . 'WhatIsMyIP.i18n.php';
-$wgExtensionAliasesFiles['WhatIsMyIP'] = $dir . 'WhatIsMyIP.alias.php';
+$wgExtensionMessagesFiles['WhatIsMyIPAlias'] = $dir . 'WhatIsMyIP.alias.php';
 $wgAutoloadClasses['WhatIsMyIP'] = $dir . 'WhatIsMyIP_body.php';
 $wgSpecialPages['WhatIsMyIP'] = 'WhatIsMyIP';
 // Special page group for MediaWiki 1.13+
