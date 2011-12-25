@@ -540,7 +540,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'userimages-desc' => 'Genererer gallerier av brukeropplastede bilder med <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Bilder lastet opp av $1',
 	'userimages-noname' => 'Ugyldig eller manglende angitt brukernavn.',
