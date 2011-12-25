@@ -869,7 +869,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  * @author Simny
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'security' => 'Sikkerhetslogg',
 	'security-desc' => 'Utvider MediaWiki sin funksjon for sidevern til å tillate restriksjoner mot innsyn i sideinnhold',
 	'security-logpage' => 'Sikkerhetslogg',
