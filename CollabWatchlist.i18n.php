@@ -783,6 +783,7 @@ $messages['lt'] = array(
 	'collabwatchlistedit-normal-title' => 'Redaguoti kategorijas',
 	'collabwatchlistedit-tags-raw-submit' => 'Išsaugoti',
 	'collabwatchlistdelete-submit' => 'Ištrinti',
+	'collabwatchlistnew-name' => 'Sąrašo pavadinimas',
 	'collabwatchlistnew-submit' => 'Sukurti',
 	'collabwatchlistedit-normal-submit' => 'Išsaugoti',
 );
@@ -865,6 +866,19 @@ $messages['ms'] = array(
 	'collabwatchlisttagcomment' => 'Komen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['nb'] = array(
+	'collabwatchlisttagselect' => 'Tagg',
+	'collabwatchlisttagcomment' => 'Kommentar',
+	'collabwatchlistsettagbutton' => 'Angi tagg',
+	'collabwatchlisttools-view' => 'Visning',
+	'collabwatchlisttools-edit' => 'Rediger kategorier',
+	'collabwatchlisttools-rawCategories' => 'Rå redigeringskategorier',
+	'collabwatchlisttools-rawTags' => 'Rå redigeringstagger',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -937,19 +951,6 @@ $messages['nl'] = array(
 	'tog-collabwatchlisthidelistusers' => 'Bewerkingen van gebruikers van de gezamenlijke volglijst verbergen',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Event
- */
-$messages['nb'] = array(
-	'collabwatchlisttagselect' => 'Tagg',
-	'collabwatchlisttagcomment' => 'Kommentar',
-	'collabwatchlistsettagbutton' => 'Angi tagg',
-	'collabwatchlisttools-view' => 'Visning',
-	'collabwatchlisttools-edit' => 'Rediger kategorier',
-	'collabwatchlisttools-rawCategories' => 'Rå redigeringskategorier',
-	'collabwatchlisttools-rawTags' => 'Rå redigeringstagger',
-);
-
 /** Oriya (ଓଡ଼ିଆ)
  * @author Psubhashish
  */
@@ -994,6 +995,23 @@ $messages['pl'] = array(
 	'collabwatchlistedit-raw-added' => '{{PLURAL:$1|1 strona lub kategoria została dodana|$1 strony lub kategorie zostały dodane|$1 stron lub kategorii zostało dodanych}}:',
 	'collabwatchlistedit-raw-removed' => '{{PLURAL:$1|1 strona lub kategoria została usunięta|$1 strony lub kategorie zostały usunięte|$1 stron lub kategorii zostało usuniętych}}:',
 	'collabwatchlistedit-normal-submit' => 'Zapisz',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'collabwatchlisttools-delete' => 'ړنګول',
+	'collabwatchlistsall' => 'ټول لړليکونه',
+	'collabwatchlistedit-users-raw-submit' => 'خوندي کول',
+	'collabwatchlistedit-raw-titles' => 'وېشنيزې:',
+	'collabwatchlistedit-users-raw-titles' => 'کارنان:',
+	'collabwatchlistedit-normal-title' => 'وېشنيزې سمول',
+	'collabwatchlistedit-tags-raw-submit' => 'خوندي کول',
+	'collabwatchlistdelete-submit' => 'ړنګول',
+	'collabwatchlistnew-name' => 'د لړليک نوم',
+	'collabwatchlistnew-submit' => 'جوړول',
+	'collabwatchlistedit-normal-submit' => 'خوندي کول',
 );
 
 /** Portuguese (Português)
