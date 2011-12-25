@@ -1313,7 +1313,7 @@ Denne åtvaringa kan slåast av under Endring i instillingane dine.',
  * @author Laaknor
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'vector' => 'Brukergrensesnittsforbedringer for Vector',
 	'vector-desc' => 'Forbedrer elementer i brukergrensesnittet for Vector-utseendet.',
 	'vector-collapsiblenav-preference' => 'Aktiver sammenlegging av element i navigeringsmenyen i drakten Vector',
