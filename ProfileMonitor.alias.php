@@ -23,9 +23,19 @@ $specialPageAliases['arz'] = array(
 	'ProfileMonitor' => array( 'مراقب_الپروفايل' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'ProfileMonitor' => array( 'Profilmonitor' ),
+);
+
 /** Lower Sorbian (Dolnoserbski) */
 $specialPageAliases['dsb'] = array(
 	'ProfileMonitor' => array( 'Profiklowy monitor' ),
+);
+
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'ProfileMonitor' => array( 'نمایشگر_پروفایل' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
@@ -58,6 +68,11 @@ $specialPageAliases['mk'] = array(
 	'ProfileMonitor' => array( 'НадзорНаПрофили' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'ProfileMonitor' => array( 'Profilmonitor' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'ProfileMonitor' => array( 'Profielkiekscharm' ),
@@ -68,12 +83,7 @@ $specialPageAliases['nl'] = array(
 	'ProfileMonitor' => array( 'ProfilingMonitor' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'ProfileMonitor' => array( 'Profilmonitor' ),
-);
-
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'ProfileMonitor' => array( 'व्यक्तिविवरणावेक्षते' ),
 );
@@ -92,8 +102,3 @@ $specialPageAliases['tl'] = array(
 $specialPageAliases['tr'] = array(
 	'ProfileMonitor' => array( 'ProfilMonitörü' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
