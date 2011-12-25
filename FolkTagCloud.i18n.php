@@ -151,18 +151,18 @@ $messages['ms'] = array(
 	'folktagcloud-desc' => 'Membubuh sifat Semantic Mediawiki untuk mengetag laman-laman dengan label-label tentuan pengguna dan tag penghurai untuk memaparkannya dalam awan tag',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'folktagcloud-desc' => "Voegt een eigenschap voor Semantic MediaWiki toe voor het labelen van pagina's met gebruikersgedefinieerde labels voor weergave in een woordwolk",
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'folktagcloud-desc' => 'Legger til en Semantic MediaWiki-egenskap for merking av sider med brukerdefinerte etiketter og en tolkemerkelapp for å vise dem i en merkelappsky',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'folktagcloud-desc' => "Voegt een eigenschap voor Semantic MediaWiki toe voor het labelen van pagina's met gebruikersgedefinieerde labels voor weergave in een woordwolk",
 );
 
 /** Piedmontese (Piemontèis)
