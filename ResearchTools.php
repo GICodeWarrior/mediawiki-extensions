@@ -22,7 +22,7 @@ $wgExtensionCredits['other'][] = array(
 );
 $dir = dirname( __FILE__ );
 $wgExtensionMessagesFiles['ResearchTools'] = "$dir/ResearchTools.i18n.php";
-$wgExtensionAliasesFiles['ResearchTools'] = "$dir/ResearchTools.alias.php";
+$wgExtensionMessagesFiles['ResearchToolsAlias'] = "$dir/ResearchTools.alias.php";
 $wgAutoloadClasses['ResearchToolsHooks'] = "$dir/ResearchTools.hooks.php";
 $wgAutoloadClasses['SpecialResearchTools'] = "$dir/SpecialResearchTools.php";
 $wgAutoloadClasses['ResearchToolsPage'] = "$dir/ResearchToolsPage.php";
