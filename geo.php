@@ -61,7 +61,7 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgExtensionAliasesFiles['Geo'] = $dir . 'Geo.alias.php';
+$wgExtensionMessagesFiles['GeoAlias'] = $dir . 'Geo.alias.php';
 $wgAutoloadClasses['SpecialGeo'] = $dir . 'Specialgeo_body.php';
 $wgSpecialPages['Geo'] = 'SpecialGeo';
 
