@@ -423,7 +423,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'usercontactlink-baduser' => 'ukorrekt brukernavn',
 	'usercontactlinks-desc' => 'Gir muligheten til å lenke til andre brukernavn med syntaksen ^^^bruker^^^.',
 );
