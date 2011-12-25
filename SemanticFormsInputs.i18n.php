@@ -632,6 +632,27 @@ $messages['ms'] = array(
 	'semanticformsinputs-next' => 'Berikutnya',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'semanticformsinputs-desc' => 'Ekstra inndatatyper for [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
+	'semanticformsinputs-wrongformat' => 'Feil format.',
+	'semanticformsinputs-close' => 'Lukk',
+	'semanticformsinputs-prev' => 'Forrige',
+	'semanticformsinputs-next' => 'Neste',
+	'semanticformsinputs-today' => 'I dag',
+	'semanticformsinputs-malformedregexp' => 'Feilutformet regulæruttrykk: $1',
+	'semanticformsinputs-datepicker-dateformat' => 'Datoformatstreng. Se [http://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters online documentation] for nærmere informasjon.',
+	'semanticformsinputs-datepicker-weekstart' => 'Første ukedag (0 - søndag, 1 - mandag, ...).',
+	'semanticformsinputs-datepicker-firstdate' => 'Første valgbare dato (med "yyyy/mm/dd"-format).',
+	'semanticformsinputs-datepicker-lastdate' => 'Siste valgbare dato (med "yyyy/mm/dd"-format).',
+	'semanticformsinputs-datepicker-disabledaysofweek' => 'Liste av dager som ikke kan velges (f. eks. helg: 6, 0).',
+	'semanticformsinputs-datepicker-highlightdaysofweek' => 'Liste av dager som skal fremheves (f. eks. helg: 6, 0).',
+	'semanticformsinputs-datepicker-disabledates' => 'Komma-separert liste av skjulte datoer/datobaserte tidsrom (datoer gitt i "yyyy/mm/dd"-format, tidsrom i "yyyy/mm/dd-yyyy/mm/dd"-format).',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Saruman
@@ -669,27 +690,6 @@ $messages['nl'] = array(
 	'semanticformsinputs-regexp-message' => 'Het foutbericht dat moet worden weergegeven als het vergelijken mislukt. De standaardinstelling is "Verkeerde opmaak!" (of het equivalent in de geldende landinstelling).',
 	'semanticformsinputs-menuselect-structure' => 'De menustructuur als een ongeordende lijst.',
 	'semanticformsinputs-menuselect-enableinputfield' => 'Moet de gebruiker het invoerveld rechtstreeks kunnen invullen?',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Event
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'semanticformsinputs-desc' => 'Ekstra inndatatyper for [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
-	'semanticformsinputs-wrongformat' => 'Feil format.',
-	'semanticformsinputs-close' => 'Lukk',
-	'semanticformsinputs-prev' => 'Forrige',
-	'semanticformsinputs-next' => 'Neste',
-	'semanticformsinputs-today' => 'I dag',
-	'semanticformsinputs-malformedregexp' => 'Feilutformet regulæruttrykk: $1',
-	'semanticformsinputs-datepicker-dateformat' => 'Datoformatstreng. Se [http://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters online documentation] for nærmere informasjon.',
-	'semanticformsinputs-datepicker-weekstart' => 'Første ukedag (0 - søndag, 1 - mandag, ...).',
-	'semanticformsinputs-datepicker-firstdate' => 'Første valgbare dato (med "yyyy/mm/dd"-format).',
-	'semanticformsinputs-datepicker-lastdate' => 'Siste valgbare dato (med "yyyy/mm/dd"-format).',
-	'semanticformsinputs-datepicker-disabledaysofweek' => 'Liste av dager som ikke kan velges (f. eks. helg: 6, 0).',
-	'semanticformsinputs-datepicker-highlightdaysofweek' => 'Liste av dager som skal fremheves (f. eks. helg: 6, 0).',
-	'semanticformsinputs-datepicker-disabledates' => 'Komma-separert liste av skjulte datoer/datobaserte tidsrom (datoer gitt i "yyyy/mm/dd"-format, tidsrom i "yyyy/mm/dd-yyyy/mm/dd"-format).',
 );
 
 /** Deitsch (Deitsch)
@@ -784,6 +784,8 @@ $messages['ru'] = array(
  * @author Rancher
  */
 $messages['sr-ec'] = array(
+	'semanticformsinputs-dateformatlong' => 'd MM yy',
+	'semanticformsinputs-dateformatshort' => 'dd.mm.yy',
 	'semanticformsinputs-firstdayofweek' => '1',
 );
 
