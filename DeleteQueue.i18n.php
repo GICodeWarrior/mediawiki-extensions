@@ -4949,7 +4949,7 @@ Du kan [{{fullurl:{{FULLPAGENAME}}|action=delvote}} leggja inn di eiga støtta f
  * @author Nghtwlkr
  * @author Simny
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'deletequeue-desc' => 'Skaper et [[Special:DeleteQueue|købasert system for å håndtere sletting]]',
 	'deletequeue-action-queued' => 'Sletting',
 	'deletequeue-action' => 'Foreslå sletting',
