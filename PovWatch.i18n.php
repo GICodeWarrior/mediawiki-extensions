@@ -1642,6 +1642,46 @@ $messages['nah'] = array(
 	'povwatch_added' => 'ōmocēntili',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Utvidelse for å [[Special:PovWatch|plassere sider på andre brukeres overvåkningsliste]]',
+	'povwatch_no_session' => 'Feil: Kunne ikke levere skjema på grunn av øktdatatap.',
+	'povwatch_not_allowed_push' => 'Du er ikke en PovWatch-administrator, du kan ikke plassere sider på overvåkningslister.',
+	'povwatch_already_subscribed' => 'Du abonnerer allerede på PovWatch',
+	'povwatch_subscribed' => 'Du abonnerer nå på PovWatch',
+	'povwatch_not_subscribed' => 'Du abonnerer ikke på PovWatch, så du kan ikke avslutte noe abonnement.',
+	'povwatch_unsubscribed' => 'Du har nå avsluttet abonnementet på PovWatch',
+	'povwatch_invalid_title' => 'Den gitte tittelen var ugyldig',
+	'povwatch_pushed' => '[[$1]] har blitt plassert på {{PLURAL:$2|éi overvåkningsliste|$2 overvåkningslister}}.',
+	'povwatch_intro' => 'PovWatch er en tjeneste som lar kontroversielle sider bli plassert på abonnerende administratorers overvåkningslister.
+
+En log over nylige plasseringer er tilgjengelig på [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'En [[Special:PovWatch/subscribers|liste over abonnenter]] er tilgjengelig.',
+	'povwatch_subscriber_list_intro' => '<strong>Abonnentliste</strong>',
+	'povwatch_not_allowed_subscribers' => 'Du kan ikke se listen over PovWatch-abonnenter.',
+	'povwatch_unknown_subpage' => 'Ukjent underside.',
+	'povwatch_push' => 'Plasser',
+	'povwatch_push_intro' => 'Bruk skjemaet nedenfor for å plassere sider på abonnenters overvåkningslister.
+Vær forsiktig når du skriver inn tittelen; også ikke-eksisterende sider kan legges til, og det er ingen måte å fjerne en tittel på med en gang den er plassert.',
+	'povwatch_title' => 'Tittel:',
+	'povwatch_comment' => 'Kommentar:',
+	'povwatch_no_log' => 'Det er ingen elementer i loggen.',
+	'povwatch_no_subscribers' => 'Det er ingen abonnenter.',
+	'povwatch_unsubscribe_intro' => 'Du abonnerer på PovWatch. Klikk på knappen nedenfor for å avslutte abonnementet.',
+	'povwatch_unsubscribe' => 'Avslutt abonnement',
+	'povwatch_subscribe_intro' => 'Du abonnerer ikke på PovWatch. Klikk på knappen nedenfor for å abonnere.',
+	'povwatch_subscribe' => 'Abonner',
+	'povwatch_added' => 'lagt til',
+	'right-povwatch_admin' => 'Administrere brukerrettigheter for hvem som kan legge til sider i andre brukeres overvåkningslister',
+	'right-povwatch_user' => 'Legge til sider i andres overvåkningslister',
+	'action-povwatch_admin' => 'administrere brukerrettigheter for PovWatch',
+	'action-povwatch_user' => 'legge denne siden til overvåkningslista til en annen bruker',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1771,46 +1811,6 @@ Trykk på knappen nedanfor for å abonnera.',
 	'right-povwatch_user' => 'Leggja til sider i overvakingslistene til andre brukarar.',
 	'action-povwatch_admin' => 'handsama brukarrettar for PovWatch',
 	'action-povwatch_user' => 'leggja til denne sida på overvakingslista til ein annan brukar',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Harald Khan
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'povwatch' => 'PovWatch',
-	'povwatch_desc' => 'Utvidelse for å [[Special:PovWatch|plassere sider på andre brukeres overvåkningsliste]]',
-	'povwatch_no_session' => 'Feil: Kunne ikke levere skjema på grunn av øktdatatap.',
-	'povwatch_not_allowed_push' => 'Du er ikke en PovWatch-administrator, du kan ikke plassere sider på overvåkningslister.',
-	'povwatch_already_subscribed' => 'Du abonnerer allerede på PovWatch',
-	'povwatch_subscribed' => 'Du abonnerer nå på PovWatch',
-	'povwatch_not_subscribed' => 'Du abonnerer ikke på PovWatch, så du kan ikke avslutte noe abonnement.',
-	'povwatch_unsubscribed' => 'Du har nå avsluttet abonnementet på PovWatch',
-	'povwatch_invalid_title' => 'Den gitte tittelen var ugyldig',
-	'povwatch_pushed' => '[[$1]] har blitt plassert på {{PLURAL:$2|éi overvåkningsliste|$2 overvåkningslister}}.',
-	'povwatch_intro' => 'PovWatch er en tjeneste som lar kontroversielle sider bli plassert på abonnerende administratorers overvåkningslister.
-
-En log over nylige plasseringer er tilgjengelig på [[Special:PovWatch/log]].',
-	'povwatch_subscriber_list' => 'En [[Special:PovWatch/subscribers|liste over abonnenter]] er tilgjengelig.',
-	'povwatch_subscriber_list_intro' => '<strong>Abonnentliste</strong>',
-	'povwatch_not_allowed_subscribers' => 'Du kan ikke se listen over PovWatch-abonnenter.',
-	'povwatch_unknown_subpage' => 'Ukjent underside.',
-	'povwatch_push' => 'Plasser',
-	'povwatch_push_intro' => 'Bruk skjemaet nedenfor for å plassere sider på abonnenters overvåkningslister.
-Vær forsiktig når du skriver inn tittelen; også ikke-eksisterende sider kan legges til, og det er ingen måte å fjerne en tittel på med en gang den er plassert.',
-	'povwatch_title' => 'Tittel:',
-	'povwatch_comment' => 'Kommentar:',
-	'povwatch_no_log' => 'Det er ingen elementer i loggen.',
-	'povwatch_no_subscribers' => 'Det er ingen abonnenter.',
-	'povwatch_unsubscribe_intro' => 'Du abonnerer på PovWatch. Klikk på knappen nedenfor for å avslutte abonnementet.',
-	'povwatch_unsubscribe' => 'Avslutt abonnement',
-	'povwatch_subscribe_intro' => 'Du abonnerer ikke på PovWatch. Klikk på knappen nedenfor for å abonnere.',
-	'povwatch_subscribe' => 'Abonner',
-	'povwatch_added' => 'lagt til',
-	'right-povwatch_admin' => 'Administrere brukerrettigheter for hvem som kan legge til sider i andre brukeres overvåkningslister',
-	'right-povwatch_user' => 'Legge til sider i andres overvåkningslister',
-	'action-povwatch_admin' => 'administrere brukerrettigheter for PovWatch',
-	'action-povwatch_user' => 'legge denne siden til overvåkningslista til en annen bruker',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -2227,10 +2227,11 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'povwatch_invalid_title' => 'Navedeni naslov je neispravan',
-	'povwatch_unknown_subpage' => 'Nepoznata podstrana.',
+	'povwatch_unknown_subpage' => 'Nepoznata podstranica.',
 	'povwatch_title' => 'Naslov:',
 	'povwatch_added' => 'dodato',
 );
