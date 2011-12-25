@@ -31,7 +31,7 @@ $wgSpecialPageGroups['Disabledusers'] = 'users';
 
 // Messages
 $wgExtensionMessagesFiles['PasswordReset'] = $dir . 'PasswordReset.i18n.php';
-$wgExtensionAliasesFiles['PasswordReset'] = $dir . 'PasswordReset.alias.php';
+$wgExtensionMessagesFiles['PasswordResetAlias'] = $dir . 'PasswordReset.alias.php';
 
 // Hooks
 $wgHooks['GetBlockedStatus'][] = 'PasswordReset::GetBlockedStatus';
