@@ -23,6 +23,11 @@ $specialPageAliases['arz'] = array(
 	'LastUserLogin' => array( 'آخر_دخول_لليوزر' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'LastUserLogin' => array( 'Letztmalige_Benutzeranmeldung' ),
+);
+
 /** Spanish (Español) */
 $specialPageAliases['es'] = array(
 	'LastUserLogin' => array( 'Último_usuario_que_ha_entrado' ),
@@ -83,6 +88,11 @@ $specialPageAliases['ml'] = array(
 	'LastUserLogin' => array( 'അവസാന‌‌ഉപയോക്തൃപ്രവേശം' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'LastUserLogin' => array( 'Siste_brukerinnlogging' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'LastUserLogin' => array( 'Leste_gebrukersanmelding' ),
@@ -91,11 +101,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'LastUserLogin' => array( 'LaasteGebruikeraanmelding' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'LastUserLogin' => array( 'Siste_brukerinnlogging' ),
 );
 
 /** Turkish (Türkçe) */
@@ -112,8 +117,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'LastUserLogin' => array( '最後用戶登入' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
