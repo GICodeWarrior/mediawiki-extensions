@@ -500,7 +500,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'ajaxquerypages-desc' => 'Legger til noe AJAX på spørringssider som [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
