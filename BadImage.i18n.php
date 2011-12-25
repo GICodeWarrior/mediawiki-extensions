@@ -1998,7 +1998,7 @@ $messages['nn'] = array(
  * @author Audun
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'badimages' => 'Liste over blokkerte bilder',
 	'badimage-desc' => 'Utvider funksjonaliteten til listen over dårlige bilder i MediaWiki',
 	'badimages-add-btn' => 'Legg til',
