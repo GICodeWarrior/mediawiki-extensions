@@ -3381,6 +3381,93 @@ $messages['nah'] = array(
 	'sign-viewfield-email' => 'E-mail',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'signdocument' => 'Signer dokument',
+	'sign-nodocselected' => 'Vennligst velg dokumentet du ønsker å signere.',
+	'sign-selectdoc' => 'Dokument:',
+	'sign-docheader' => 'Bruk dette skjemaet for å signere dokumentet «[[$1]]» vist nedenunder.
+Vennligst les gjennom hele dokumentet, og om du ønsker å vise din støtte for det, fyll inn de nødvendige feltene for å signere.',
+	'sign-error-nosuchdoc' => 'Dokumentet du etterspurte ($1) finnes ikke.',
+	'sign-realname' => 'Navn:',
+	'sign-address' => 'Hjemmeadresse:',
+	'sign-city' => 'By:',
+	'sign-state' => 'Delstat, fylke, etc.:',
+	'sign-zip' => 'Postnummer:',
+	'sign-country' => 'Land:',
+	'sign-phone' => 'Telefonnummer:',
+	'sign-bday' => 'Alder:',
+	'sign-email' => 'E-postadresse:',
+	'sign-indicates-req' => '<small><i><span style="color:red">*</span> indikerer felt som må fylles ut.</i></small>',
+	'sign-hide-note' => '<small><i><span style="color:red">**</span> Merk: Informasjon som ikke listes opp vil fortsatt kunne ses av moderatorer.</i></small>',
+	'sign-list-anonymous' => 'List opp anonymt',
+	'sign-list-hideaddress' => 'Ikke list opp adresse',
+	'sign-list-hideextaddress' => 'Ikke list opp by, stat, postnummer eller land',
+	'sign-list-hidephone' => 'Ikke list opp telefonnummer',
+	'sign-list-hidebday' => 'Ikke list opp alder',
+	'sign-list-hideemail' => 'Ikke list opp e-post',
+	'sign-submit' => 'Signer dokumentet',
+	'sign-information' => '<div class="noarticletext">Takk for at du har tatt deg tiden til å lese gjennom dokumentet. Om du er enig med det, vis din støtte ved å fylle inn de nødvendige feltene nedenfor og klikke «Signer dokumentet». Forsikre deg om at personlig informasjon er korrekt, og at vi har en måte å kontakte deg på for å bekrefte din identitet. Merk at din IP-adresse og annen identifiserbar informasjon vil bli brukt av moderatorer for å eliminere duplikatsignaturer og bekrefte korrektheten av din personlige informasjon. Siden bruken av åpne og anonymiserende proxyer hindrer vår evne til å gjøre dette, vil signaturer fra slike proxyer trolig ikke telles. Om du er tilkoblet via en proxytjener, koble fra denne og bruk en vanlig tilkobling når du signerer.</div>
+
+$1',
+	'sig-success' => 'Du har signert dokumentet.',
+	'sign-view-selectfields' => "'''Felter som vises:'''",
+	'sign-viewfield-entryid' => 'Innskrifts-ID',
+	'sign-viewfield-timestamp' => 'Tidsmerke',
+	'sign-viewfield-realname' => 'Navn',
+	'sign-viewfield-address' => 'Adresse',
+	'sign-viewfield-city' => 'By',
+	'sign-viewfield-state' => 'Delstat, fylke, etc.',
+	'sign-viewfield-country' => 'Land',
+	'sign-viewfield-zip' => 'Postnummer',
+	'sign-viewfield-ip' => 'IP-adresse',
+	'sign-viewfield-agent' => 'Brukeragent',
+	'sign-viewfield-phone' => 'Telefonnummer',
+	'sign-viewfield-email' => 'E-post',
+	'sign-viewfield-age' => 'Alder',
+	'sign-viewfield-options' => 'Alternativer',
+	'sign-viewsigs-intro' => 'Under vises de oppsamlede signaturene for <span class="plainlinks">[{{fullurl:Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen' => 'Signering er slått på for dette dokumentet.',
+	'sign-sigadmin-close' => 'Slå av signering',
+	'sign-sigadmin-currentlyclosed' => 'Signering er slått av for dette dokumentet.',
+	'sign-sigadmin-open' => 'Slå på signering',
+	'sign-signatures' => 'Signaturer',
+	'sign-sigadmin-closesuccess' => 'Signering ble slått av.',
+	'sign-sigadmin-opensuccess' => 'Signering ble slått på.',
+	'sign-viewsignatures' => 'vis signaturer',
+	'sign-closed' => 'stengt',
+	'sign-error-closed' => 'Signering av dette dokumentet er slått av.',
+	'sig-anonymous' => "''Anonym''",
+	'sig-private' => "''Privat''",
+	'sign-sigdetails' => 'Signaturdetaljer',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|diskusjon]] • <!--
+-->[[Special:Contributions/$1|bidrag]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBL-er] • <!--
+-->[[Special:BlockIP/$1|blokker]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blokkeringslogg] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} sjekk IP])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'Strøket',
+	'sign-viewfield-reviewedby' => 'Gjennomgangsperson',
+	'sign-viewfield-reviewcomment' => 'Kommentar',
+	'sign-detail-uniquequery' => 'Lignende entiteter',
+	'sign-detail-uniquequery-run' => 'Kjør spørring',
+	'sign-detail-strike' => 'Stryk signatur',
+	'sign-reviewsig' => 'Se over signatur',
+	'sign-review-comment' => 'Kommentar',
+	'sign-submitreview' => 'Send inn gjennomgang',
+	'sign-uniquequery-similarname' => 'Lignende navn',
+	'sign-uniquequery-similaraddress' => 'Lignende adresse',
+	'sign-uniquequery-similarphone' => 'Lignende telefonnummer',
+	'sign-uniquequery-similaremail' => 'Lignende e-postadresse',
+	'sign-uniquequery-1signed2' => '[{{fullurl:Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signerte [{{fullurl:Special:SignDocument|doc=$4&viewsigs}} $2].',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -3559,93 +3646,6 @@ $1',
 	'sign-uniquequery-similaraddress' => 'Liknande adressa',
 	'sign-uniquequery-similarphone' => 'Liknande telefonnummer',
 	'sign-uniquequery-similaremail' => 'Liknande e-postadressa',
-	'sign-uniquequery-1signed2' => '[{{fullurl:Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signerte [{{fullurl:Special:SignDocument|doc=$4&viewsigs}} $2].',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'signdocument' => 'Signer dokument',
-	'sign-nodocselected' => 'Vennligst velg dokumentet du ønsker å signere.',
-	'sign-selectdoc' => 'Dokument:',
-	'sign-docheader' => 'Bruk dette skjemaet for å signere dokumentet «[[$1]]» vist nedenunder.
-Vennligst les gjennom hele dokumentet, og om du ønsker å vise din støtte for det, fyll inn de nødvendige feltene for å signere.',
-	'sign-error-nosuchdoc' => 'Dokumentet du etterspurte ($1) finnes ikke.',
-	'sign-realname' => 'Navn:',
-	'sign-address' => 'Hjemmeadresse:',
-	'sign-city' => 'By:',
-	'sign-state' => 'Delstat, fylke, etc.:',
-	'sign-zip' => 'Postnummer:',
-	'sign-country' => 'Land:',
-	'sign-phone' => 'Telefonnummer:',
-	'sign-bday' => 'Alder:',
-	'sign-email' => 'E-postadresse:',
-	'sign-indicates-req' => '<small><i><span style="color:red">*</span> indikerer felt som må fylles ut.</i></small>',
-	'sign-hide-note' => '<small><i><span style="color:red">**</span> Merk: Informasjon som ikke listes opp vil fortsatt kunne ses av moderatorer.</i></small>',
-	'sign-list-anonymous' => 'List opp anonymt',
-	'sign-list-hideaddress' => 'Ikke list opp adresse',
-	'sign-list-hideextaddress' => 'Ikke list opp by, stat, postnummer eller land',
-	'sign-list-hidephone' => 'Ikke list opp telefonnummer',
-	'sign-list-hidebday' => 'Ikke list opp alder',
-	'sign-list-hideemail' => 'Ikke list opp e-post',
-	'sign-submit' => 'Signer dokumentet',
-	'sign-information' => '<div class="noarticletext">Takk for at du har tatt deg tiden til å lese gjennom dokumentet. Om du er enig med det, vis din støtte ved å fylle inn de nødvendige feltene nedenfor og klikke «Signer dokumentet». Forsikre deg om at personlig informasjon er korrekt, og at vi har en måte å kontakte deg på for å bekrefte din identitet. Merk at din IP-adresse og annen identifiserbar informasjon vil bli brukt av moderatorer for å eliminere duplikatsignaturer og bekrefte korrektheten av din personlige informasjon. Siden bruken av åpne og anonymiserende proxyer hindrer vår evne til å gjøre dette, vil signaturer fra slike proxyer trolig ikke telles. Om du er tilkoblet via en proxytjener, koble fra denne og bruk en vanlig tilkobling når du signerer.</div>
-
-$1',
-	'sig-success' => 'Du har signert dokumentet.',
-	'sign-view-selectfields' => "'''Felter som vises:'''",
-	'sign-viewfield-entryid' => 'Innskrifts-ID',
-	'sign-viewfield-timestamp' => 'Tidsmerke',
-	'sign-viewfield-realname' => 'Navn',
-	'sign-viewfield-address' => 'Adresse',
-	'sign-viewfield-city' => 'By',
-	'sign-viewfield-state' => 'Delstat, fylke, etc.',
-	'sign-viewfield-country' => 'Land',
-	'sign-viewfield-zip' => 'Postnummer',
-	'sign-viewfield-ip' => 'IP-adresse',
-	'sign-viewfield-agent' => 'Brukeragent',
-	'sign-viewfield-phone' => 'Telefonnummer',
-	'sign-viewfield-email' => 'E-post',
-	'sign-viewfield-age' => 'Alder',
-	'sign-viewfield-options' => 'Alternativer',
-	'sign-viewsigs-intro' => 'Under vises de oppsamlede signaturene for <span class="plainlinks">[{{fullurl:Special:SignDocument|doc=$2}} $1]</span>.',
-	'sign-sigadmin-currentlyopen' => 'Signering er slått på for dette dokumentet.',
-	'sign-sigadmin-close' => 'Slå av signering',
-	'sign-sigadmin-currentlyclosed' => 'Signering er slått av for dette dokumentet.',
-	'sign-sigadmin-open' => 'Slå på signering',
-	'sign-signatures' => 'Signaturer',
-	'sign-sigadmin-closesuccess' => 'Signering ble slått av.',
-	'sign-sigadmin-opensuccess' => 'Signering ble slått på.',
-	'sign-viewsignatures' => 'vis signaturer',
-	'sign-closed' => 'stengt',
-	'sign-error-closed' => 'Signering av dette dokumentet er slått av.',
-	'sig-anonymous' => "''Anonym''",
-	'sig-private' => "''Privat''",
-	'sign-sigdetails' => 'Signaturdetaljer',
-	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
--->[[User:$1|$1]] ([[User talk:$1|diskusjon]] • <!--
--->[[Special:Contributions/$1|bidrag]] • <!--
--->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
--->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
--->[http://www.robtex.com/rbls/$1.html RBL-er] • <!--
--->[[Special:BlockIP/$1|blokker]] • <!--
--->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blokkeringslogg] • <!--
--->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} sjekk IP])<!--
---></span>',
-	'sign-viewfield-stricken' => 'Strøket',
-	'sign-viewfield-reviewedby' => 'Gjennomgangsperson',
-	'sign-viewfield-reviewcomment' => 'Kommentar',
-	'sign-detail-uniquequery' => 'Lignende entiteter',
-	'sign-detail-uniquequery-run' => 'Kjør spørring',
-	'sign-detail-strike' => 'Stryk signatur',
-	'sign-reviewsig' => 'Se over signatur',
-	'sign-review-comment' => 'Kommentar',
-	'sign-submitreview' => 'Send inn gjennomgang',
-	'sign-uniquequery-similarname' => 'Lignende navn',
-	'sign-uniquequery-similaraddress' => 'Lignende adresse',
-	'sign-uniquequery-similarphone' => 'Lignende telefonnummer',
-	'sign-uniquequery-similaremail' => 'Lignende e-postadresse',
 	'sign-uniquequery-1signed2' => '[{{fullurl:Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signerte [{{fullurl:Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
@@ -4620,7 +4620,7 @@ Pročitajte celi dokument i, ako želite da potvrdite da ga se sa njegovim sadr�
 	'sign-country' => 'Zemlja:',
 	'sign-phone' => 'Telefonski broj:',
 	'sign-bday' => 'Starost:',
-	'sign-email' => 'E-pošta:',
+	'sign-email' => 'E-adresa:',
 	'sign-indicates-req' => '<small><i><span style="color:red">*</span> označava obavezno polje.</i></small>',
 	'sign-hide-note' => '<small><i><span style="color:red">**</span> Napomena: neprikazane informacije će još uvek biti vidljive moderatorima.</i></small>',
 	'sign-list-anonymous' => 'Prikaži kao anonimno',
@@ -4628,7 +4628,7 @@ Pročitajte celi dokument i, ako želite da potvrdite da ga se sa njegovim sadr�
 	'sign-list-hideextaddress' => 'Ne prikazuj grad, državu, poštanski kod, ili zemlju',
 	'sign-list-hidephone' => 'Ne prijazuj telefon',
 	'sign-list-hidebday' => 'Ne prikazuj starost',
-	'sign-list-hideemail' => 'Ne prikazuj imejl',
+	'sign-list-hideemail' => 'Ne prikazuj e-adresu',
 	'sign-submit' => 'Potpiši dokument',
 	'sign-information' => '<div class="noarticletext">Hvala Vam što ste odvojili vremen da pročitate ovaj dokument.
 Ako se slažete s njim, molimo Vas da pokažete vašu podršku popunjavanjem obaveznih polja ispod i klikom na dugme "Potpiši dokument".
@@ -4642,7 +4642,7 @@ $1',
 	'sig-success' => 'Uspešno ste potpisali dokument.',
 	'sign-view-selectfields' => "'''Polja za prikaz:'''",
 	'sign-viewfield-entryid' => 'ID unosa',
-	'sign-viewfield-timestamp' => 'Vremenska marka',
+	'sign-viewfield-timestamp' => 'Vreme i datum',
 	'sign-viewfield-realname' => 'Ime',
 	'sign-viewfield-address' => 'Adresa',
 	'sign-viewfield-city' => 'Grad',
@@ -4650,7 +4650,7 @@ $1',
 	'sign-viewfield-country' => 'Zemlja',
 	'sign-viewfield-zip' => 'Poštanski kod',
 	'sign-viewfield-ip' => 'IP adresa',
-	'sign-viewfield-agent' => 'Brauzer korisnika',
+	'sign-viewfield-agent' => 'Korisnički agent',
 	'sign-viewfield-phone' => 'Telefon',
 	'sign-viewfield-email' => 'E-pošta',
 	'sign-viewfield-age' => 'Starost',
@@ -4672,10 +4672,10 @@ $1',
 	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|razgovor]] • <!--
--->[[Special:Contributions/$1|doprinosi]] • <!--
--->[<a href="http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on">http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on</a> WHOIS] • <!--
--->[<a href="http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on">http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on</a> RDNS] • <!--
--->[<a href="http://www.robtex.com/rbls/$1.html">http://www.robtex.com/rbls/$1.html</a> RBLs] • <!--
+-->[[Special:Contributions/$1|prilozi]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBL] • <!--
 -->[[Special:BlockIP/$1|blokiraj korisnika]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} istorija blokiranja] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
@@ -4688,7 +4688,7 @@ $1',
 	'sign-uniquequery-similarname' => 'Slično ime',
 	'sign-uniquequery-similaraddress' => 'Slična adresa',
 	'sign-uniquequery-similarphone' => 'Sličan telefon',
-	'sign-uniquequery-similaremail' => 'Sličan imejl',
+	'sign-uniquequery-similaremail' => 'Slična e-pošta',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] potpisan [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
