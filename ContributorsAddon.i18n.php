@@ -343,7 +343,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'contributorsaddon-desc' => 'Legger til JavaScript-sprettoppvinduer med lenker til «hovedbidragsytere»',
 );
 
