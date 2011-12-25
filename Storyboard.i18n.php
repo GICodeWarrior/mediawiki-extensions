@@ -1803,6 +1803,66 @@ $messages['myv'] = array(
 	'storyboard-location' => 'Косо аштят',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'storyboard-anerroroccured' => 'En feil oppsto: $1',
+	'storyboard-unpublished' => 'Upubliserte',
+	'storyboard-published' => 'Publiserte',
+	'storyboard-hidden' => 'Skjulte',
+	'storyboard-unpublish' => 'Upubliser',
+	'storyboard-publish' => 'Publiser',
+	'storyboard-hide' => 'Skjul',
+	'storyboard-option-unpublished' => 'upublisert',
+	'storyboard-option-published' => 'publisert',
+	'storyboard-option-hidden' => 'skjult',
+	'story' => 'Historie',
+	'storyboard-submittedbyon' => 'Insendt av $1 den $2, $3.',
+	'storyboard-viewstories' => 'Vis historier',
+	'storyboard-canedit' => 'Du kan [$1 endre] og publisere denne historien.',
+	'storyboard-createdandmodified' => 'Opprettet $1, $2 og sist endret $3, $4',
+	'storyboard-authorname' => 'Forfatters navn',
+	'storyboard-authorlocation' => 'Forfatters plassering',
+	'storyboard-authoroccupation' => 'Forfatters yrke',
+	'storyboard-authoremail' => 'Forfatters e-postadresse',
+	'storyboard-thestory' => 'Historien',
+	'storyboard-storystate' => 'Status',
+	'storyboard-language' => 'Språk',
+	'storyboard-storymetadata' => 'Innsendt av $1 den $2, $3.',
+	'storyboard-storymetadatafrom' => 'Innsendt av $1 fra $2 den $3, $4.',
+	'storyboard-yourname' => 'Ditt navn (nødvendig)',
+	'storyboard-location' => 'Din plassering',
+	'storyboard-occupation' => 'Ditt yrke',
+	'storyboard-story' => 'Din historie',
+	'storyboard-photo' => 'Har du et bilde av degselv?
+Hvorfor ikke dele det?',
+	'storyboard-email' => 'Din e-postadresse (nødvendig)',
+	'storyboard-storytitle' => 'En kort, beskrivende tittel (nødvendig)',
+	'storyboard-agreement' => 'Jeg er enig med publiseringen og bruken av denne historien under lisensvilkårene i [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Navngivelse-Del på samme vilkår]',
+	'storyboard-charsleft' => '({{PLURAL:$1|ett|$1}} tegn igjen)',
+	'storyboard-cannotbelonger' => 'Historien din er <b>$1</b> tegn for {{PLURAL:$1|langt|lang}}!',
+	'storyboard-charsneeded' => '(trenger {{PLURAL:$1|ett|$1}} tegn til)',
+	'storyboard-needtoagree' => 'Du må godta publiseringen av historien din for å sende den inn.',
+	'storyboard-submissioncomplete' => 'Innsending fullført',
+	'storyboard-submissionincomplete' => 'Innsending mislyktes',
+	'storyboard-alreadyexists' => '«$1» er allerede tatt.',
+	'storyboard-alreadyexistschange' => '«{0}» er allerede tatt, velg en annen tittel.',
+	'storyboard-changetitle' => 'Endre tittelen.',
+	'storyboard-charstomany' => '$1 tegn for mange!',
+	'storyboard-morecharsneeded' => '$1 flere tegn trengs',
+	'storyboard-charactersleft' => '$1 tegn igjen',
+	'storyboard-deleteimage' => 'Slett bilde',
+	'storyboard-done' => 'Ferdig',
+	'storyboard-working' => 'Jobber...',
+	'storyboard-imagedeletionconfirm' => 'Er du sikker på at du vil slette denne historiens bilde?',
+	'storyboard-imagedeleted' => 'Bilde slettet',
+	'storyboard-showimage' => 'Vis bilde',
+	'storyboard-hideimage' => 'Skjul bilde',
+	'storyboard-deletestory' => 'Fjern',
+	'storyboard-storydeletionconfirm' => 'Er du sikker på at du vil slette denne historien?',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Siebrand
@@ -1894,66 +1954,6 @@ $messages['nn'] = array(
 	'storyboard-charactersleft' => '$1 teikn igjen',
 	'storyboard-deleteimage' => 'Slett bilete',
 	'storyboard-deletestory' => 'Fjern',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'storyboard-anerroroccured' => 'En feil oppsto: $1',
-	'storyboard-unpublished' => 'Upubliserte',
-	'storyboard-published' => 'Publiserte',
-	'storyboard-hidden' => 'Skjulte',
-	'storyboard-unpublish' => 'Upubliser',
-	'storyboard-publish' => 'Publiser',
-	'storyboard-hide' => 'Skjul',
-	'storyboard-option-unpublished' => 'upublisert',
-	'storyboard-option-published' => 'publisert',
-	'storyboard-option-hidden' => 'skjult',
-	'story' => 'Historie',
-	'storyboard-submittedbyon' => 'Insendt av $1 den $2, $3.',
-	'storyboard-viewstories' => 'Vis historier',
-	'storyboard-canedit' => 'Du kan [$1 endre] og publisere denne historien.',
-	'storyboard-createdandmodified' => 'Opprettet $1, $2 og sist endret $3, $4',
-	'storyboard-authorname' => 'Forfatters navn',
-	'storyboard-authorlocation' => 'Forfatters plassering',
-	'storyboard-authoroccupation' => 'Forfatters yrke',
-	'storyboard-authoremail' => 'Forfatters e-postadresse',
-	'storyboard-thestory' => 'Historien',
-	'storyboard-storystate' => 'Status',
-	'storyboard-language' => 'Språk',
-	'storyboard-storymetadata' => 'Innsendt av $1 den $2, $3.',
-	'storyboard-storymetadatafrom' => 'Innsendt av $1 fra $2 den $3, $4.',
-	'storyboard-yourname' => 'Ditt navn (nødvendig)',
-	'storyboard-location' => 'Din plassering',
-	'storyboard-occupation' => 'Ditt yrke',
-	'storyboard-story' => 'Din historie',
-	'storyboard-photo' => 'Har du et bilde av degselv?
-Hvorfor ikke dele det?',
-	'storyboard-email' => 'Din e-postadresse (nødvendig)',
-	'storyboard-storytitle' => 'En kort, beskrivende tittel (nødvendig)',
-	'storyboard-agreement' => 'Jeg er enig med publiseringen og bruken av denne historien under lisensvilkårene i [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Navngivelse-Del på samme vilkår]',
-	'storyboard-charsleft' => '({{PLURAL:$1|ett|$1}} tegn igjen)',
-	'storyboard-cannotbelonger' => 'Historien din er <b>$1</b> tegn for {{PLURAL:$1|langt|lang}}!',
-	'storyboard-charsneeded' => '(trenger {{PLURAL:$1|ett|$1}} tegn til)',
-	'storyboard-needtoagree' => 'Du må godta publiseringen av historien din for å sende den inn.',
-	'storyboard-submissioncomplete' => 'Innsending fullført',
-	'storyboard-submissionincomplete' => 'Innsending mislyktes',
-	'storyboard-alreadyexists' => '«$1» er allerede tatt.',
-	'storyboard-alreadyexistschange' => '«{0}» er allerede tatt, velg en annen tittel.',
-	'storyboard-changetitle' => 'Endre tittelen.',
-	'storyboard-charstomany' => '$1 tegn for mange!',
-	'storyboard-morecharsneeded' => '$1 flere tegn trengs',
-	'storyboard-charactersleft' => '$1 tegn igjen',
-	'storyboard-deleteimage' => 'Slett bilde',
-	'storyboard-done' => 'Ferdig',
-	'storyboard-working' => 'Jobber...',
-	'storyboard-imagedeletionconfirm' => 'Er du sikker på at du vil slette denne historiens bilde?',
-	'storyboard-imagedeleted' => 'Bilde slettet',
-	'storyboard-showimage' => 'Vis bilde',
-	'storyboard-hideimage' => 'Skjul bilde',
-	'storyboard-deletestory' => 'Fjern',
-	'storyboard-storydeletionconfirm' => 'Er du sikker på at du vil slette denne historien?',
 );
 
 /** Occitan (Occitan)
@@ -2434,7 +2434,7 @@ $messages['sr-ec'] = array(
 	'storyboard-storymetadata' => 'Послато од $1, на $2, $3.',
 	'storyboard-storymetadatafrom' => 'Послато од $1 из $2, на $3, $4.',
 	'storyboard-yourname' => 'Важе име (потребно)',
-	'storyboard-location' => 'Ваша локација',
+	'storyboard-location' => 'Место живљења',
 	'storyboard-occupation' => 'Ваше занимање',
 	'storyboard-story' => 'Ваша прича',
 	'storyboard-photo' => 'Имате ли своју слику?
@@ -2457,7 +2457,9 @@ $messages['sr-ec'] = array(
 	'storyboard-deletestory' => 'Обриши',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'storyboard-anerroroccured' => 'Došlo je do greške: $1',
 	'storyboard-unpublished' => 'Povučeno iz objave',
@@ -2501,7 +2503,7 @@ Zašto je ne biste pokazali?',
 	'storyboard-done' => 'Urađeno',
 	'storyboard-working' => 'Obrada u toku...',
 	'storyboard-imagedeleted' => 'Slika obrisana',
-	'storyboard-showimage' => 'Pokaži sliku',
+	'storyboard-showimage' => 'Prikaži sliku',
 	'storyboard-hideimage' => 'Sakrij sliku',
 	'storyboard-deletestory' => 'Obriši',
 );
