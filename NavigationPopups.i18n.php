@@ -276,7 +276,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'navigationpopups-desc' => 'Laster Lupins ballongnavigasjonsskript i MediaWiki',
 );
 
