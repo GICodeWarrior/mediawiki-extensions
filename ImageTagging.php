@@ -45,7 +45,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ImageTagPage'] = $dir . 'ImageTagPage.php';
 $wgAutoloadClasses['TaggedImages'] = $dir . 'ImageTagging_body.php';
 $wgExtensionMessagesFiles['ImageTagging'] = $dir . 'ImageTagging.i18n.php';
-$wgExtensionAliasesFiles['ImageTagging'] = $dir . 'ImageTagging.alias.php';
+$wgExtensionMessagesFiles['ImageTaggingAlias'] = $dir . 'ImageTagging.alias.php';
 $wgSpecialPages['TaggedImages'] = 'TaggedImages';
 
 /********************
