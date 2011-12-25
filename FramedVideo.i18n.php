@@ -694,7 +694,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Audun
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'framedvideo_errors' => 'Flere feil har oppstått!',
 	'framedvideo_error' => 'En feil har oppstått!',
 	'framedvideo_error_unknown_type' => 'Ukjent videotjeneste id ("$1"): sjekk "type" parameteret.',
