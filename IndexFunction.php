@@ -39,7 +39,7 @@ $wgSpecialPages['Index'] = 'SpecialIndex';
 $wgSpecialPageGroups['Index'] = 'pages';
 
 # i18n
-$wgExtensionAliasesFiles['IndexFunction'] = $dir . 'IndexFunction.alias.php';
+$wgExtensionMessagesFiles['IndexFunctionAlias'] = $dir . 'IndexFunction.alias.php';
 $wgExtensionMessagesFiles['IndexFunction'] = $dir . 'IndexFunction.i18n.php';
 
 # Register classes with the autoloader
