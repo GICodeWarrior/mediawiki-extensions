@@ -38,6 +38,11 @@ $specialPageAliases['es'] = array(
 	'PurgeCache' => array( 'Purgar_caché' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'PurgeCache' => array( 'پاکسازی_حافظهٔ_نهان' ),
+);
+
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
 	'PurgeCache' => array( 'Pyyhi_välimuistiversio' ),
@@ -128,6 +133,11 @@ $specialPageAliases['mt'] = array(
 	'PurgeCache' => array( 'ŻvojtaCache' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'PurgeCache' => array( 'Oppdater_mellomlager' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'PurgeCache' => array( 'Kas_leegmaken' ),
@@ -138,17 +148,12 @@ $specialPageAliases['nl'] = array(
 	'PurgeCache' => array( 'CacheLegen' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'PurgeCache' => array( 'Oppdater_mellomlager' ),
-);
-
 /** Occitan (Occitan) */
 $specialPageAliases['oc'] = array(
 	'PurgeCache' => array( 'Purgar l\'amagatal', 'Purgar amagatal', 'PurgarAmagatal' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'PurgeCache' => array( 'पुनातिसंगणकसंस्मृति' ),
 );
@@ -177,8 +182,3 @@ $specialPageAliases['tl'] = array(
 $specialPageAliases['tr'] = array(
 	'PurgeCache' => array( 'ÖnbellekBoşalt', 'ÖnbellekTemizle' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
