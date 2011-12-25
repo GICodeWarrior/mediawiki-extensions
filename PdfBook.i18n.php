@@ -345,7 +345,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'pdfbook-action' => 'Skriv ut som PDF',
 	'pdfbook-log' => '$1 eksportert som en PDF-bok',
 	'pdfbook-desc' => 'Komponerer en bok fra sider i en kategori og eksporterer dem som en PDF-bok',
