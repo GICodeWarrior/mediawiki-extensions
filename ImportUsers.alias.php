@@ -70,7 +70,7 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'ImportUsers' => array( 'Importar_des_utilisators', 'ImportarDesUtilisators' ),
+	'ImportUsers' => array( 'Importar_des_usanciérs', 'ImportarDesUsanciérs' ),
 );
 
 /** Galician (Galego) */
@@ -178,6 +178,11 @@ $specialPageAliases['mt'] = array(
 	'ImportUsers' => array( 'ImportaUtenti' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'ImportUsers' => array( 'Importer_brukere' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'ImportUsers' => array( 'Gebrukers_invoeren' ),
@@ -191,11 +196,6 @@ $specialPageAliases['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
 $specialPageAliases['nn'] = array(
 	'ImportUsers' => array( 'Importer_brukarar' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'ImportUsers' => array( 'Importer_brukere' ),
 );
 
 /** Occitan (Occitan) */
@@ -218,7 +218,7 @@ $specialPageAliases['pt'] = array(
 	'ImportUsers' => array( 'Importar_utilizadores' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'ImportUsers' => array( 'आयातयोजक:' ),
 );
@@ -267,8 +267,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'ImportUsers' => array( '導入用戶' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
