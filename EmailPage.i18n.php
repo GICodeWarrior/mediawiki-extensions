@@ -927,38 +927,6 @@ $messages['nah'] = array(
 	'ea-send' => 'Ticquihuāz',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'e-mailpage' => 'Pagina e-mailen',
-	'ea-desc' => 'Stuur een gerenderde pagina naar een e-mailadres of een lijst van adressen met behulp van [http://phpmailer.sourceforge.net phpmailer].',
-	'ea-heading' => '=== Pagina [[$1]] e-mailen ===',
-	'ea-group-info' => 'Daarnaast kun u de pagina naar leden van een groep sturen',
-	'ea-pagesend' => 'Pagina "$1" is vanuit $2 verstuurd',
-	'ea-nopage' => 'Geef een pagina op om te versturen, bijvoorbeeld [[Special:e-mailpage/Hoofdpagina]].',
-	'ea-norecipients' => 'Er is geen geldig e-mailadres opgegeven!',
-	'ea-listrecipients' => '=== Lijst met $1 {{PLURAL:$1|ontvanger|ontvangers}} ===',
-	'ea-error' => "'''Fout bij het versturen van [[$1]]:''' ''$2''",
-	'ea-denied' => 'U hebt geen rechten om deze handeling uit te voeren',
-	'ea-sent' => "Pagina [[$1]] is verstuurd naar '''$2''' {{PLURAL:$2|ontvanger|ontvangers}} door [[User:$3|$3]].",
-	'ea-compose' => 'Inhoud samenstellen',
-	'ea-show' => 'Ontvangers weergeven',
-	'ea-from' => 'Van:',
-	'ea-to' => 'Aan:',
-	'ea-to-info' => "E-mailadressen kunnen gescheiden worden door een of meer puntkomma's, komma's sterretjes of regeleinden",
-	'ea-cc' => 'CC:',
-	'ea-send' => 'Verzenden',
-	'ea-subject' => 'Onderwerp:',
-	'ea-message' => 'Bericht:',
-	'ea-message-info' => 'Voor inhoud optionele wikitekst toevoegen',
-	'ea-style' => 'Stijl:',
-	'ea-selectcss' => 'U kunt een stylesheet selecteren',
-	'ea-data' => 'Gegevens',
-	'ea-selectrecord' => 'Deze sjablonen kunnen gebruikt worden om velden te vullen in de berichtinhoud',
-	'ea-allusers' => 'Alle gebruikers',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Nghtwlkr
@@ -990,6 +958,38 @@ $messages['nb'] = array(
 	'ea-data' => 'Data',
 	'ea-selectrecord' => 'Disse malene kan brukes til å fylle ut felt i meldingsinnholdet',
 	'ea-allusers' => 'Alle brukere',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'e-mailpage' => 'Pagina e-mailen',
+	'ea-desc' => 'Stuur een gerenderde pagina naar een e-mailadres of een lijst van adressen met behulp van [http://phpmailer.sourceforge.net phpmailer].',
+	'ea-heading' => '=== Pagina [[$1]] e-mailen ===',
+	'ea-group-info' => 'Daarnaast kun u de pagina naar leden van een groep sturen',
+	'ea-pagesend' => 'Pagina "$1" is vanuit $2 verstuurd',
+	'ea-nopage' => 'Geef een pagina op om te versturen, bijvoorbeeld [[Special:e-mailpage/Hoofdpagina]].',
+	'ea-norecipients' => 'Er is geen geldig e-mailadres opgegeven!',
+	'ea-listrecipients' => '=== Lijst met $1 {{PLURAL:$1|ontvanger|ontvangers}} ===',
+	'ea-error' => "'''Fout bij het versturen van [[$1]]:''' ''$2''",
+	'ea-denied' => 'U hebt geen rechten om deze handeling uit te voeren',
+	'ea-sent' => "Pagina [[$1]] is verstuurd naar '''$2''' {{PLURAL:$2|ontvanger|ontvangers}} door [[User:$3|$3]].",
+	'ea-compose' => 'Inhoud samenstellen',
+	'ea-show' => 'Ontvangers weergeven',
+	'ea-from' => 'Van:',
+	'ea-to' => 'Aan:',
+	'ea-to-info' => "E-mailadressen kunnen gescheiden worden door een of meer puntkomma's, komma's sterretjes of regeleinden",
+	'ea-cc' => 'CC:',
+	'ea-send' => 'Verzenden',
+	'ea-subject' => 'Onderwerp:',
+	'ea-message' => 'Bericht:',
+	'ea-message-info' => 'Voor inhoud optionele wikitekst toevoegen',
+	'ea-style' => 'Stijl:',
+	'ea-selectcss' => 'U kunt een stylesheet selecteren',
+	'ea-data' => 'Gegevens',
+	'ea-selectrecord' => 'Deze sjablonen kunnen gebruikt worden om velden te vullen in de berichtinhoud',
+	'ea-allusers' => 'Alle gebruikers',
 );
 
 /** Occitan (Occitan)
