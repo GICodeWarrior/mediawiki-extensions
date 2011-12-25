@@ -532,7 +532,7 @@ U hebt het volgende geprobeerd: '''$1'''",
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'rt-desc' => 'Fancy grensesnitt til RT (Request Tracker)',
 	'rt-inactive' => 'RT-utvidelsen er ikke aktiv',
 	'rt-badquery' => 'RT-utvidelsen støtte på en feil når den forsøkte å kommunisere med RT-databasen',
