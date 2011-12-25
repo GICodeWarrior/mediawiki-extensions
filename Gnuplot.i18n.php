@@ -328,7 +328,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'gnuplot-desc' => 'Legger til taggen <code><nowiki><gnuplot></nowiki></code> for å bruke Gnuplot',
 );
 
