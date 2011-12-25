@@ -96,7 +96,7 @@ $magicWords['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$magicWords['no'] = array(
+$magicWords['nb'] = array(
 	'icon' => array( 0, 'ikon' ),
 );
 

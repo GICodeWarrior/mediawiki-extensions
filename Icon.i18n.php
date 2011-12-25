@@ -521,7 +521,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'icon-badimage' => 'Dårlig bilde',
 	'icon-badwidth' => 'Dårlig bredde',
 	'icon-desc' => 'Lar deg bruke bilder som ikoner og ikonlenker',
