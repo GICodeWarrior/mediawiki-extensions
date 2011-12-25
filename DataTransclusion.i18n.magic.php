@@ -26,6 +26,11 @@ $magicWords['arc'] = array(
 	'record' => array( 0, 'ܣܓܠ' ),
 );
 
+/** German (Deutsch) */
+$magicWords['de'] = array(
+	'record' => array( 0, 'verbund' ),
+);
+
 /** Esperanto (Esperanto) */
 $magicWords['eo'] = array(
 	'record' => array( 0, 'rikordo' ),
@@ -54,6 +59,11 @@ $magicWords['ru'] = array(
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'record' => array( 0, 'белешка' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'record' => array( 0, 'beleška' ),
 );
 
 /** Vietnamese (Tiếng Việt) */
