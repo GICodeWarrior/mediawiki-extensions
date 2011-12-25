@@ -95,7 +95,7 @@ $messages['gl'] = array(
 	'markashelpful-desc' => 'Proporciona unha interface de usuario para marcar comentarios como útiles',
 	'mah-mark-text' => 'Marcar isto como útil',
 	'mah-you-marked-text' => 'Pensa que isto é útil',
-	'mah-someone-marked-text' => '$1 pensa que isto é útil',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1}} pensa que isto é útil',
 	'mah-undo-mark-text' => 'desfacer',
 	'mah-action-error' => 'Houbo un erro ao levar a cabo a acción',
 );
@@ -118,7 +118,9 @@ $messages['hsb'] = array(
 $messages['lb'] = array(
 	'mah-mark-text' => 'Dëst als nëtzlech markéieren',
 	'mah-you-marked-text' => 'Dir mengt datt dat nëtzlech ass',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1}} mengt, datt dës Bemierkung hëllefräich ass.',
 	'mah-undo-mark-text' => 'réckgängeg maachen',
+	'mah-action-error' => 'Et gouf e Feeler wéi dës Aktioun gemaach gouf',
 );
 
 /** Macedonian (Македонски)
