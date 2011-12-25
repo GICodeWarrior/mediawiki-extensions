@@ -43,6 +43,11 @@ $specialPageAliases['frp'] = array(
 	'Error404' => array( 'Èrror404' ),
 );
 
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'Error404' => array( 'Erro404' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
 	'Error404' => array( 'Erè404' ),
@@ -75,7 +80,7 @@ $specialPageAliases['nds-nl'] = array(
 
 /** Polish (Polski) */
 $specialPageAliases['pl'] = array(
-	'Error404' => array( 'Błąd_404', '404' ),
+	'Error404' => array( 'Błąd_404' ),
 );
 
 /** Vietnamese (Tiếng Việt) */
@@ -92,8 +97,3 @@ $specialPageAliases['yue'] = array(
 $specialPageAliases['zh-hans'] = array(
 	'Error404' => array( '404错误' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
