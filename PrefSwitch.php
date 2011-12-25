@@ -165,7 +165,7 @@ $wgAutoloadClasses = array_merge(
 	)
 );
 $wgExtensionMessagesFiles['PrefSwitch'] = dirname( __FILE__ ) . '/PrefSwitch.i18n.php';
-$wgExtensionAliasesFiles['PrefSwitch'] = dirname( __FILE__ ) . '/PrefSwitch.alias.php';
+$wgExtensionMessagesFiles['PrefSwitchAlias'] = dirname( __FILE__ ) . '/PrefSwitch.alias.php';
 $wgSpecialPages['PrefSwitch'] = 'SpecialPrefSwitch';
 $wgSpecialPageGroups['PrefSwitch'] = 'wiki';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'PrefSwitchHooks::loadExtensionSchemaUpdates';
