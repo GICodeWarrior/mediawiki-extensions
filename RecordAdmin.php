@@ -16,7 +16,7 @@ $wgRecordAdminExtPath = preg_replace( "|^.*(/extensions/.*$)|", "$wgScriptPath$1
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['RecordAdmin'] = $dir . 'RecordAdmin.i18n.php';
-$wgExtensionAliasesFiles['RecordAdmin']  = $dir . 'RecordAdmin.alias.php';
+$wgExtensionMessagesFiles['RecordAdminAlias']  = $dir . 'RecordAdmin.alias.php';
 $wgAutoloadClasses['RecordAdmin']        = $dir . 'RecordAdmin_body.php';
 
 $wgRecordAdminTableMagic = 'recordtable';
