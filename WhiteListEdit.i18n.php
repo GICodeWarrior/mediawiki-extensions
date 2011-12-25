@@ -2637,7 +2637,7 @@ Denne sida kan berre nyttast på avgrensa brukarar.",
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'whitelistedit-desc' => 'Redigering av tilgangsrettigheter for begrensede brukere',
 	'whitelistedit' => 'Rettighetsredigering for hvitliste',
 	'whitelist' => 'Hvitelistede sider',
