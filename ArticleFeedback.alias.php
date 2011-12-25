@@ -23,6 +23,11 @@ $specialPageAliases['el'] = array(
 	'ArticleFeedback' => array( 'ΑνατροφοδότησηΆρθρου' ),
 );
 
+/** Spanish (Español) */
+$specialPageAliases['es'] = array(
+	'ArticleFeedback' => array( 'EvaluaciónArtículos' ),
+);
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'ArticleFeedback' => array( 'بازخورد_مقاله' ),
@@ -56,6 +61,11 @@ $specialPageAliases['ia'] = array(
 /** Indonesian (Bahasa Indonesia) */
 $specialPageAliases['id'] = array(
 	'ArticleFeedback' => array( 'Umpan_balik_artikel' ),
+);
+
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'ArticleFeedback' => array( '記事評価' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -93,6 +103,11 @@ $specialPageAliases['sv'] = array(
 	'ArticleFeedback' => array( 'Artikelbedömning' ),
 );
 
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'ArticleFeedback' => array( 'MaddeDeğerlendirmesi', 'MaddeDeğerlendirme', 'MaddeGeribildirimi' ),
+);
+
 /** Vietnamese (Tiếng Việt) */
 $specialPageAliases['vi'] = array(
 	'ArticleFeedback' => array( 'Phản_hồi_bài' ),
@@ -107,8 +122,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'ArticleFeedback' => array( '文章回應' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
