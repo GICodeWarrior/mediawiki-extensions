@@ -358,7 +358,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'tooltip-desc' => 'Legger til taggene <code>&lt;tooltip&gt;</code> og <code>{{#tooltip:}}</code>',
 );
 
