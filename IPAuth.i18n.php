@@ -301,7 +301,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'ipauth-desc' => 'Automatisk innlogging fra faste IP-adresser',
 );
 
