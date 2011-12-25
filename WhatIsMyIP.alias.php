@@ -85,7 +85,7 @@ $specialPageAliases['frp'] = array(
 
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
-	'WhatIsMyIP' => array( 'Cal_é_a_miña_IP' ),
+	'WhatIsMyIP' => array( 'Cal_é_o_meu_enderezo_IP' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -168,6 +168,11 @@ $specialPageAliases['mr'] = array(
 	'WhatIsMyIP' => array( 'माझाअंकपत्ताकाय' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'WhatIsMyIP' => array( 'Min_IP' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'WhatIsMyIP' => array( 'Wat_is_mien_IP-adres' ),
@@ -176,11 +181,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'WhatIsMyIP' => array( 'WatIsMijnIPAdres' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'WhatIsMyIP' => array( 'Min_IP' ),
 );
 
 /** Occitan (Occitan) */
@@ -200,10 +200,10 @@ $specialPageAliases['ps'] = array(
 
 /** Portuguese (Português) */
 $specialPageAliases['pt'] = array(
-	'WhatIsMyIP' => array( 'Qual é o meu IP' ),
+	'WhatIsMyIP' => array( 'Qual_é_o_meu_IP' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'WhatIsMyIP' => array( 'मदियअङ्कसंकेतकिमस्ती' ),
 );
@@ -252,8 +252,3 @@ $specialPageAliases['vec'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'WhatIsMyIP' => array( '我的IP' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
