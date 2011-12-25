@@ -25,7 +25,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['BadImageList'] = $dir . 'BadImage.class.php';
 $wgAutoloadClasses['BadImageManipulator'] = $dir . 'BadImage.page.php';
 $wgExtensionMessagesFiles['BadImages'] = $dir . 'BadImage.i18n.php';
-$wgExtensionAliasesFiles['BadImages'] = $dir . 'BadImage.alias.php';
+$wgExtensionMessagesFiles['BadImagesAlias'] = $dir . 'BadImage.alias.php';
 
 $wgSpecialPages['Badimages'] = 'BadImageManipulator';
 $wgSpecialPageGroups['Badimages'] = 'media';
