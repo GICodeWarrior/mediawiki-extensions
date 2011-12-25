@@ -470,6 +470,18 @@ $messages['mk'] = array(
 	'right-admanager' => '[[Special:AdManager|Поставки за рекламирање]]',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'admanager' => 'Pengurus Iklan',
+	'admanagerzones' => 'Zon Pengurus Iklan',
+	'admanager_labelPage' => 'Tajuk laman',
+	'admanager_noads' => 'Jangan paparkan iklan',
+	'admanager_zonenum' => 'Bil. Zon: $1',
+	'admanager_zonenotnumber' => 'Ralat! $1 bukan bilangan.',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -625,5 +637,12 @@ $messages['uk'] = array(
 	'admanager_gotoads' => '[[Special:AdManager|Редагувати розміщення оголошень]]',
 	'admanager_gotozones' => '[[Special:AdManagerZones|Редагувати зони оголошень]]',
 	'right-admanager' => '[[Special:AdManager|Керування конфігурацією реклами]]',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hzy980512
+ */
+$messages['zh-hans'] = array(
+	'admanager' => '广告管理器',
 );
 
