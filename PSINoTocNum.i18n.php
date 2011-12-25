@@ -260,6 +260,13 @@ $messages['ms'] = array(
 	'psinotocnum-desc' => 'Kata sakti baru "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'psinotocnum-desc' => 'Legger til det magiske ordet «<nowiki>__NOTOCNUM__</nowiki>»',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -279,13 +286,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'psinotocnum-desc' => 'Legg til det nye magiste ordet «<nowiki>__NOTOCNUM__</nowiki>»',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'psinotocnum-desc' => 'Legger til det magiske ordet «<nowiki>__NOTOCNUM__</nowiki>»',
 );
 
 /** Occitan (Occitan)
@@ -368,9 +368,10 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'psinotocnum-desc' => 'Nova magična reč "<nowiki>__NOTOCNUM__</nowiki>"',
+	'psinotocnum-desc' => 'Nova magična reč „<nowiki>__NOTOCNUM__</nowiki>“',
 );
 
 /** Seeltersk (Seeltersk)
