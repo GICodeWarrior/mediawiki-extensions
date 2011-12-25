@@ -471,20 +471,20 @@ $messages['myv'] = array(
 	'addmediawizard-desc' => 'Поладомс медиа мастерэнть, теизь Kaltura ды "Викимедиа" Фондась вейтьсэ',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'addmediawizard-desc' => 'Wizard media toevoegen, ontwikkeld in een samenwerking tussen Kaltura en de Wikimedia Foundation',
-	'addmediawizard-loading' => 'Bezig met het laden van de Wizard media toevoegen',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'addmediawizard-desc' => 'Legg til mediaveiviser, utviklet i samarbeid mellom Kaltura og Wikimedia Foundation',
 	'addmediawizard-loading' => 'Laster legg til mediaveiviser',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'addmediawizard-desc' => 'Wizard media toevoegen, ontwikkeld in een samenwerking tussen Kaltura en de Wikimedia Foundation',
+	'addmediawizard-loading' => 'Bezig met het laden van de Wizard media toevoegen',
 );
 
 /** Occitan (Occitan)

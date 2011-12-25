@@ -1320,6 +1320,41 @@ $messages['myv'] = array(
 	'mwe-clipedit-edit-tools' => 'Витнемань-петнемань кедьйонкст',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'mwe-clipedit-crop' => 'Beskjær bilde',
+	'mwe-clipedit-apply_crop' => 'Legg beskjæring til bilde',
+	'mwe-clipedit-reset_crop' => 'Tilbakestill beskjæring',
+	'mwe-clipedit-insert_image_page' => 'Sett inn i side',
+	'mwe-clipedit-insert_into_sequence' => 'Sett inn i sekvens',
+	'mwe-clipedit-preview_insert' => 'Forhåndsvis innsetting',
+	'mwe-clipedit-cancel_image_insert' => 'Avbryt innsetting',
+	'mwe-clipedit-sc_attributes' => 'Rediger klippdetalj',
+	'mwe-clipedit-sc_inoutpoints' => 'Sett inn-ut-punkt',
+	'mwe-clipedit-sc_overlays' => 'Transparenter',
+	'mwe-clipedit-sc_audio' => 'Lydkontroll',
+	'mwe-clipedit-sc_duration' => 'Varighet',
+	'mwe-clipedit-template_properties' => 'Malegenskaper',
+	'mwe-clipedit-custom_title' => 'Egendefinert tittel',
+	'mwe-clipedit-edit_properties' => 'Rediger egenskaper',
+	'mwe-clipedit-other_properties' => 'Andre egenskaper',
+	'mwe-clipedit-resource_page' => 'Ressursside:',
+	'mwe-clipedit-set_in_out_points' => 'Sett inn-ut-punkt',
+	'mwe-clipedit-start_time' => 'Starttid',
+	'mwe-clipedit-end_time' => 'Sluttid',
+	'mwe-clipedit-preview_inout' => 'Forhåndsvis inn-ut-punkt',
+	'mwe-clipedit-edit-tools' => 'Redigeringsverktøy',
+	'mwe-clipedit-inline-description' => 'Undertekst',
+	'mwe-clipedit-edit-video-tools' => 'Rediger video-verktøy:',
+	'mwe-clipedit-duration' => 'Varighet',
+	'mwe-clipedit-layout' => 'Oppsett',
+	'mwe-clipedit-layout_right' => 'Bildeoppsett høyre side',
+	'mwe-clipedit-layout_left' => 'Bildeoppsett venstre side',
+);
+
 /** Nepali (नेपाली)
  * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
@@ -1362,41 +1397,6 @@ $messages['nl'] = array(
 	'mwe-clipedit-layout' => 'Vormgeving',
 	'mwe-clipedit-layout_right' => 'Afbeelding rechts',
 	'mwe-clipedit-layout_left' => 'Afbeelding links',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'mwe-clipedit-crop' => 'Beskjær bilde',
-	'mwe-clipedit-apply_crop' => 'Legg beskjæring til bilde',
-	'mwe-clipedit-reset_crop' => 'Tilbakestill beskjæring',
-	'mwe-clipedit-insert_image_page' => 'Sett inn i side',
-	'mwe-clipedit-insert_into_sequence' => 'Sett inn i sekvens',
-	'mwe-clipedit-preview_insert' => 'Forhåndsvis innsetting',
-	'mwe-clipedit-cancel_image_insert' => 'Avbryt innsetting',
-	'mwe-clipedit-sc_attributes' => 'Rediger klippdetalj',
-	'mwe-clipedit-sc_inoutpoints' => 'Sett inn-ut-punkt',
-	'mwe-clipedit-sc_overlays' => 'Transparenter',
-	'mwe-clipedit-sc_audio' => 'Lydkontroll',
-	'mwe-clipedit-sc_duration' => 'Varighet',
-	'mwe-clipedit-template_properties' => 'Malegenskaper',
-	'mwe-clipedit-custom_title' => 'Egendefinert tittel',
-	'mwe-clipedit-edit_properties' => 'Rediger egenskaper',
-	'mwe-clipedit-other_properties' => 'Andre egenskaper',
-	'mwe-clipedit-resource_page' => 'Ressursside:',
-	'mwe-clipedit-set_in_out_points' => 'Sett inn-ut-punkt',
-	'mwe-clipedit-start_time' => 'Starttid',
-	'mwe-clipedit-end_time' => 'Sluttid',
-	'mwe-clipedit-preview_inout' => 'Forhåndsvis inn-ut-punkt',
-	'mwe-clipedit-edit-tools' => 'Redigeringsverktøy',
-	'mwe-clipedit-inline-description' => 'Undertekst',
-	'mwe-clipedit-edit-video-tools' => 'Rediger video-verktøy:',
-	'mwe-clipedit-duration' => 'Varighet',
-	'mwe-clipedit-layout' => 'Oppsett',
-	'mwe-clipedit-layout_right' => 'Bildeoppsett høyre side',
-	'mwe-clipedit-layout_left' => 'Bildeoppsett venstre side',
 );
 
 /** Occitan (Occitan)
@@ -1784,7 +1784,9 @@ $messages['sr-ec'] = array(
 	'mwe-clipedit-layout_left' => 'Изглед с леве стране слике',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'mwe-clipedit-crop' => 'Iseci sliku',
 	'mwe-clipedit-apply_crop' => 'Primeni isecanje slike',
@@ -1808,8 +1810,8 @@ $messages['sr-el'] = array(
 	'mwe-clipedit-end_time' => 'Završno vreme',
 	'mwe-clipedit-preview_inout' => 'Pregledaj u-van tačke',
 	'mwe-clipedit-edit-tools' => 'Uredi alatke',
-	'mwe-clipedit-inline-description' => 'Naslov',
-	'mwe-clipedit-edit-video-tools' => 'Uredi video alatke:',
+	'mwe-clipedit-inline-description' => 'Natpis',
+	'mwe-clipedit-edit-video-tools' => 'Alatke za uređivanje video-snimaka:',
 	'mwe-clipedit-duration' => 'Trajanje:',
 	'mwe-clipedit-layout' => 'Izgled',
 	'mwe-clipedit-layout_right' => 'Izgled s desne strane slike',
