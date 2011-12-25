@@ -1733,7 +1733,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'specialuserstats' => 'Bruksstatistikk',
 	'usagestatistics' => 'Bruksstatistikk',
 	'usagestatistics-desc' => 'Vis statistikk for individuelle brukere og for hele wikien',
