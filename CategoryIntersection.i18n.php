@@ -578,6 +578,19 @@ $messages['nah'] = array(
 	'categoryintersection-mincategories' => 'Maski san òme tlaìxmatkàtlàlilòmë xikintlàli.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'categoryintersection' => 'Kategorisnitt',
+	'categoryintersection-desc' => 'Håndtering av en tabell med nøkkelverdien til de [[Special:CategoryIntersection|kategorisnitt]] som en side er medlem i.',
+	'categoryintersection-doit' => 'Vis sider som tilhører alle disse kategoriene',
+	'categoryintersection-maxcategories' => 'Det største antall kategorier som man kan søke i er $1.',
+	'categoryintersection-mincategories' => 'Du må ta med minst to kategorier.',
+	'categoryintersection-results' => 'Søket ga $1 {{PLURAL:$1|resultat|resultater}}.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -606,19 +619,6 @@ $messages['nn'] = array(
 	'categoryintersection-doit' => 'Vis sider som høyrer til i alle desse kategoriane',
 	'categoryintersection-maxcategories' => 'Det høgste talet på kategoriar som ein kan søkja i er $1.',
 	'categoryintersection-results' => 'Søket ga {{PLURAL:$1|eitt resultat|$1 resultat}}.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'categoryintersection' => 'Kategorisnitt',
-	'categoryintersection-desc' => 'Håndtering av en tabell med nøkkelverdien til de [[Special:CategoryIntersection|kategorisnitt]] som en side er medlem i.',
-	'categoryintersection-doit' => 'Vis sider som tilhører alle disse kategoriene',
-	'categoryintersection-maxcategories' => 'Det største antall kategorier som man kan søke i er $1.',
-	'categoryintersection-mincategories' => 'Du må ta med minst to kategorier.',
-	'categoryintersection-results' => 'Søket ga $1 {{PLURAL:$1|resultat|resultater}}.',
 );
 
 /** Occitan (Occitan)
@@ -792,12 +792,13 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'categoryintersection' => 'Presek kategorija',
 	'categoryintersection-desc' => 'Održava tabelu sa heš vrednostima za [[Special:CategoryIntersection|preseke kategorija]] unutar strane',
-	'categoryintersection-doit' => 'Daj spisak strana u svim ovim kategorijama',
-	'categoryintersection-maxcategories' => 'Maksimalan dozvoljen broj kategorija u preseku je $1.',
+	'categoryintersection-doit' => 'Svrstava strane u svim ovim kategorijama',
+	'categoryintersection-maxcategories' => 'Najveći mogući broj kategorija u preseku je $1.',
 	'categoryintersection-mincategories' => 'Morate da uključite najmanje dve kategorije.',
 	'categoryintersection-results' => 'Pretraga je vratila $1 {{PLURAL:$1|rezultat|rezultata}}.',
 );
