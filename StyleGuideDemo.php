@@ -31,7 +31,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['HTMLStyleForm'] = $dir . 'HTMLStyleForm.php';
 $wgAutoloadClasses['SpecialStyleGuideDemo'] = $dir . 'SpecialStyleGuideDemo.php';
 $wgExtensionMessagesFiles['StyleGuideDemo'] = $dir . 'StyleGuideDemo.i18n.php';
-$wgExtensionAliasesFiles['StyleGuideDemo'] = $dir . 'StyleGuideDemo.alias.php';
+$wgExtensionMessagesFiles['StyleGuideDemoAlias'] = $dir . 'StyleGuideDemo.alias.php';
 
 // Special Page
 $wgSpecialPages['StyleGuideDemo'] = 'SpecialStyleGuideDemo';
