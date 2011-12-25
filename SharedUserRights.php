@@ -34,7 +34,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAvailableRights[] = 'userrights-shared';
 $wgAutoloadClasses['SharedUserRights'] = $dir . 'SharedUserRights_body.php';
 $wgExtensionMessagesFiles['SharedUserRights'] = $dir . 'SharedUserRights.i18n.php';
-$wgExtensionAliasesFiles['SharedUserRights'] = $dir . 'SharedUserRights.alias.php';
+$wgExtensionMessagesFiles['SharedUserRightsAlias'] = $dir . 'SharedUserRights.alias.php';
 $wgSpecialPages['SharedUserRights'] = 'SharedUserRights';
 $wgSpecialPageGroups['SharedUserRights'] = 'users';
 
