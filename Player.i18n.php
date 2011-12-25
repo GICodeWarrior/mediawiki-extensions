@@ -476,7 +476,7 @@ $messages['fr'] = array(
 	'player-title' => 'Lecteur',
 	'player-playertitle' => 'Lecteur : $1',
 	'player-file' => 'Nom du fichier',
-	'player-play' => 'Lire',
+	'player-play' => 'Lecture',
 	'player-not-allowed' => 'format non autorisé',
 	'player-not-found' => 'fichier introuvable',
 	'player-invalid-title' => 'titre non valide',
@@ -1062,6 +1062,25 @@ $messages['nah'] = array(
 	'player-goto-file' => 'tlahcuilōlli',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'player' => 'Avspiller',
+	'player-desc' => 'Inkludert multimediespiller med vanlige programtillegg for nettlesere og en [[Special:Player|spesialside]]',
+	'player-title' => 'Avspiller',
+	'player-playertitle' => 'Avspiller: $1',
+	'player-file' => 'Filnavn',
+	'player-play' => 'Spill av',
+	'player-not-allowed' => 'ikke tillatt format',
+	'player-not-found' => 'fil ikke funnet',
+	'player-invalid-title' => 'ugyldig tittel',
+	'player-clicktoplay' => 'Spill av $1',
+	'player-goto-player' => 'avspiller',
+	'player-goto-page' => 'Side',
+	'player-goto-file' => 'fil',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1097,25 +1116,6 @@ $messages['nn'] = array(
 	'player-invalid-title' => 'ugyldig tittel',
 	'player-clicktoplay' => 'Spel av $1',
 	'player-goto-player' => 'avspelar',
-	'player-goto-page' => 'Side',
-	'player-goto-file' => 'fil',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'player' => 'Avspiller',
-	'player-desc' => 'Inkludert multimediespiller med vanlige programtillegg for nettlesere og en [[Special:Player|spesialside]]',
-	'player-title' => 'Avspiller',
-	'player-playertitle' => 'Avspiller: $1',
-	'player-file' => 'Filnavn',
-	'player-play' => 'Spill av',
-	'player-not-allowed' => 'ikke tillatt format',
-	'player-not-found' => 'fil ikke funnet',
-	'player-invalid-title' => 'ugyldig tittel',
-	'player-clicktoplay' => 'Spill av $1',
-	'player-goto-player' => 'avspiller',
 	'player-goto-page' => 'Side',
 	'player-goto-file' => 'fil',
 );
@@ -1380,22 +1380,23 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
-	'player' => 'Plejer',
+	'player' => 'Izvođač',
 	'player-desc' => 'Ugrađeni plejer za multimedijalne fajlove, koji koristi ustaljene plaginove za brauzere, i [[Special:Player|specijalnu stranu]]',
-	'player-title' => 'Plejer',
-	'player-playertitle' => 'Plejer: $1',
-	'player-file' => 'Naziv fajla',
+	'player-title' => 'Izvođač',
+	'player-playertitle' => 'Izvođač: $1',
+	'player-file' => 'Naziv datoteke',
 	'player-play' => 'Pusti',
 	'player-not-allowed' => 'nedozvoljen format',
-	'player-not-found' => 'fajl nije pronađen',
-	'player-invalid-title' => 'pogrešan naslov',
+	'player-not-found' => 'datoteka nije pronađena',
+	'player-invalid-title' => 'neispravan naslov',
 	'player-clicktoplay' => 'Pusti $1',
-	'player-goto-player' => 'plejer',
+	'player-goto-player' => 'izvođač',
 	'player-goto-page' => 'Stranica',
-	'player-goto-file' => 'fajl',
+	'player-goto-file' => 'datoteka',
 );
 
 /** Seeltersk (Seeltersk)
