@@ -1763,6 +1763,37 @@ $messages['myv'] = array(
 	'inlinecategorizer-remove-category-summary' => 'Нардамс категориянть "$1"',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author EivindJ
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'inlinecategorizer-add-category' => 'Legg til kategori',
+	'inlinecategorizer-add-category-submit' => 'Legg til',
+	'inlinecategorizer-add-category-summary' => 'Legg til kategorien «$1»',
+	'inlinecategorizer-api-error' => 'API-en returnerte en feilmelding: $1: $2',
+	'inlinecategorizer-api-unknown-error' => 'API-et returnerte en ukjent feil.',
+	'inlinecategorizer-cancel' => 'Avbryt redigeringer',
+	'inlinecategorizer-cancel-all' => 'Avbryt alle endringer',
+	'inlinecategorizer-category-already-present' => 'Denne siden tilhører allerede kategorien $1',
+	'inlinecategorizer-category-hook-error' => 'En lokal funksjon hindret endringene fra å bli lagret',
+	'inlinecategorizer-category-question' => 'Hvorfor ønsker du å gjøre følgende endringer:',
+	'inlinecategorizer-confirm-ok' => 'OK',
+	'inlinecategorizer-confirm-save' => 'Lagre',
+	'inlinecategorizer-confirm-save-all' => 'Lagre alle endringer',
+	'inlinecategorizer-confirm-title' => 'Bekreft handling',
+	'inlinecategorizer-edit-category' => 'Rediger kategori',
+	'inlinecategorizer-edit-category-error' => 'Det var ikke mulig å redigere kategorien «$1».
+Dette skjer vanligvis når kategorien har blitt lagt til siden gjennom en mal.',
+	'inlinecategorizer-edit-category-summary' => 'Endre kategori «$1» til «$2»',
+	'inlinecategorizer-error-title' => 'Feil',
+	'inlinecategorizer-remove-category' => 'Fjern kategori',
+	'inlinecategorizer-remove-category-error' => 'Det var umulig å fjerne kategorien «$1».
+Dette skjer som regel fordi kategorien har blitt lagt til via en mal.',
+	'inlinecategorizer-remove-category-summary' => 'Fjern kategorien «$1»',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Purodha
  * @author Servien
@@ -1838,37 +1869,6 @@ $messages['nn'] = array(
 	'inlinecategorizer-remove-category-error' => 'Det var ikkje mogleg å fjerna kategorien.
 Det skuldast som oftast at kategorien er vorte lagd til i sida inni ein mal.',
 	'inlinecategorizer-remove-category-summary' => 'Fjern kategorien "$1"',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author EivindJ
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'inlinecategorizer-add-category' => 'Legg til kategori',
-	'inlinecategorizer-add-category-submit' => 'Legg til',
-	'inlinecategorizer-add-category-summary' => 'Legg til kategorien «$1»',
-	'inlinecategorizer-api-error' => 'API-en returnerte en feilmelding: $1: $2',
-	'inlinecategorizer-api-unknown-error' => 'API-et returnerte en ukjent feil.',
-	'inlinecategorizer-cancel' => 'Avbryt redigeringer',
-	'inlinecategorizer-cancel-all' => 'Avbryt alle endringer',
-	'inlinecategorizer-category-already-present' => 'Denne siden tilhører allerede kategorien $1',
-	'inlinecategorizer-category-hook-error' => 'En lokal funksjon hindret endringene fra å bli lagret',
-	'inlinecategorizer-category-question' => 'Hvorfor ønsker du å gjøre følgende endringer:',
-	'inlinecategorizer-confirm-ok' => 'OK',
-	'inlinecategorizer-confirm-save' => 'Lagre',
-	'inlinecategorizer-confirm-save-all' => 'Lagre alle endringer',
-	'inlinecategorizer-confirm-title' => 'Bekreft handling',
-	'inlinecategorizer-edit-category' => 'Rediger kategori',
-	'inlinecategorizer-edit-category-error' => 'Det var ikke mulig å redigere kategorien «$1».
-Dette skjer vanligvis når kategorien har blitt lagt til siden gjennom en mal.',
-	'inlinecategorizer-edit-category-summary' => 'Endre kategori «$1» til «$2»',
-	'inlinecategorizer-error-title' => 'Feil',
-	'inlinecategorizer-remove-category' => 'Fjern kategori',
-	'inlinecategorizer-remove-category-error' => 'Det var umulig å fjerne kategorien «$1».
-Dette skjer som regel fordi kategorien har blitt lagt til via en mal.',
-	'inlinecategorizer-remove-category-summary' => 'Fjern kategorien «$1»',
 );
 
 /** Occitan (Occitan)
