@@ -617,7 +617,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  * @author Simny
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'plotters-desc' => 'Lar brukere bruke egendefinerte JavaScript i jsplot-merkelapper',
 	'plotters' => 'Plottere',
 	'plotters-title' => 'Plottere',
