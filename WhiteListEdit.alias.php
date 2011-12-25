@@ -86,6 +86,7 @@ $specialPageAliases['frp'] = array(
 /** Galician (Galego) */
 $specialPageAliases['gl'] = array(
 	'WhiteList' => array( 'Lista_branca' ),
+	'WhiteListEdit' => array( 'Editar_a_lista_branca' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -178,6 +179,12 @@ $specialPageAliases['mr'] = array(
 	'WhiteListEdit' => array( 'श्वेतसुचीसंपादन' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'WhiteList' => array( 'Hvitliste' ),
+	'WhiteListEdit' => array( 'Rediger_hvitliste' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'WhiteList' => array( 'Witte_lieste' ),
@@ -188,12 +195,6 @@ $specialPageAliases['nds-nl'] = array(
 $specialPageAliases['nl'] = array(
 	'WhiteList' => array( 'WitteLijst' ),
 	'WhiteListEdit' => array( 'WitteLijstBewerken' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'WhiteList' => array( 'Hvitliste' ),
-	'WhiteListEdit' => array( 'Rediger_hvitliste' ),
 );
 
 /** Occitan (Occitan) */
@@ -215,11 +216,11 @@ $specialPageAliases['ps'] = array(
 
 /** Portuguese (Português) */
 $specialPageAliases['pt'] = array(
-	'WhiteList' => array( 'Lista branca' ),
-	'WhiteListEdit' => array( 'Editar lista branca' ),
+	'WhiteList' => array( 'Lista_branca' ),
+	'WhiteListEdit' => array( 'Editar_lista_branca' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'WhiteList' => array( 'धवलसूची' ),
 	'WhiteListEdit' => array( 'धवलसूचीसम्पादनम्‌' ),
@@ -270,8 +271,3 @@ $specialPageAliases['zh-hant'] = array(
 	'WhiteList' => array( '白名單' ),
 	'WhiteListEdit' => array( '白名單編輯' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
