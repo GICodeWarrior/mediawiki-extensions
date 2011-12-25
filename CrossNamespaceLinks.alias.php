@@ -68,6 +68,11 @@ $specialPageAliases['fi'] = array(
 	'CrossNamespaceLinks' => array( 'Nimiavaruuksien_väliset_linkit' ),
 );
 
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'CrossNamespaceLinks' => array( 'Ligazóns_entre_espazos_de_nomes' ),
+);
+
 /** Swiss German (Alemannisch) */
 $specialPageAliases['gsw'] = array(
 	'CrossNamespaceLinks' => array( 'Syte mit Gleicher in andri Namensryym' ),
@@ -163,6 +168,11 @@ $specialPageAliases['mt'] = array(
 	'CrossNamespaceLinks' => array( 'ĦoloqSpazjiTal-Isem', 'ĦoloqSpazjiIsem' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'CrossNamespaceLinks' => array( 'Lenker_mellom_navnerom' ),
+);
+
 /** Low German (Plattdüütsch) */
 $specialPageAliases['nds'] = array(
 	'CrossNamespaceLinks' => array( 'Lenken in annere Naamrüüm' ),
@@ -176,11 +186,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'CrossNamespaceLinks' => array( 'VerwijzingenTussenNaamruimten' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'CrossNamespaceLinks' => array( 'Lenker_mellom_navnerom' ),
 );
 
 /** Polish (Polski) */
@@ -198,7 +203,7 @@ $specialPageAliases['pt-br'] = array(
 	'CrossNamespaceLinks' => array( 'Links_espalhados_em_diversos_espaços_nominais', 'Links_espalhados_em_diversos_domínios', 'Ligações_espalhadas_em_diversos_espaços_nominais' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'CrossNamespaceLinks' => array( 'आन्तरनामविश्वसम्बद्ध:' ),
 );
@@ -232,8 +237,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'CrossNamespaceLinks' => array( '跨名字空間的連結' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
