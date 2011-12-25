@@ -551,7 +551,7 @@ Voorbeelden:
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'flagpage' => 'Flagg en side',
 	'flagpage-desc' => 'Flagg en side med forhåndsdefinerte maler',
 	'flagpage-templatelist' => '<!--
