@@ -315,7 +315,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'nll-desc' => 'Enkel formatering av lister på naturlige språk',
 	'nll-lastseparator' => '&#32;og&#32;',
 );
