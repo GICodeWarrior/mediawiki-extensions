@@ -246,14 +246,6 @@ $messages['ms'] = array(
 	'semanticinternalobjects-internalproperty' => 'Harta dalaman',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'semanticinternalobjects-desc' => 'Interne objecten in Semantic MediaWiki instellen',
-	'semanticinternalobjects-internalproperty' => 'Interne eigenschap',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  * @author Nghtwlkr
@@ -261,6 +253,14 @@ $messages['nl'] = array(
 $messages['nb'] = array(
 	'semanticinternalobjects-desc' => 'Innstilling for interne objekter i Semantic MediaWiki',
 	'semanticinternalobjects-internalproperty' => 'Intern egenskap',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'semanticinternalobjects-desc' => 'Interne objecten in Semantic MediaWiki instellen',
+	'semanticinternalobjects-internalproperty' => 'Interne eigenschap',
 );
 
 /** Occitan (Occitan)
