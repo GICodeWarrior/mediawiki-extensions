@@ -1055,7 +1055,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'edituser-desc' => 'Lar priviligerte brukere redigere andre brukeres innstillinger',
 	'edituser' => 'Rediger bruker',
 	'edituser-username' => 'Brukernavn:',
