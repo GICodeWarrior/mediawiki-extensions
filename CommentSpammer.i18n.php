@@ -489,6 +489,18 @@ Sila [[Special:UserLogin|log masuk atau buka akaun]] untuk mengelakkan perkara b
 	'cspammer-log-page' => 'Log spammer komen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'commentspammer-save-blocked' => 'IP-adressa di mistenkes for å være en kommentarforsøpler, så siden kan ikke lagres. [[Special:UserLogin|Logg inn eller opprett en konto]] for å unngå dette.',
+	'commentspammer-desc' => 'Avviser endringer fra mistenkte spammere på en DNS-svarteliste.',
+	'commentspammer-log-msg' => 'redigering på [[:$2]] av [[Special:Contributions/$1|$1]].',
+	'commentspammer-log-msg-info' => 'Sist forsøplet for $1 {{PLURAL:$1|dag|dager}} siden, trusselnivået er $2, og fornærmelseskoden er $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Se detaljer] eller [[Special:Blockip/$4|blokkert]].',
+	'cspammerlogpagetext' => 'Register over redigeringer som har blitt godtatt eller nektet basert på hvorvidt kilden var en kjent kommentarforsøpler.',
+	'cspammer-log-page' => 'Kommentarforsøplerlogg',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -515,18 +527,6 @@ $messages['nn'] = array(
 	'commentspammer-log-msg-info' => 'Sist spamma for {{PLURAL:$1|éin dag|$1 dagar}} sia, trusselnivået er $2, og krenkjekoden $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Sjå detaljar] eller [[Special:Blockip/$4|blokker]].',
 	'cspammerlogpagetext' => 'Register over endringar som har blitt godtekne eller nekta bastert på kor vidt kjelda var ein kjent kommentarspammar.',
 	'cspammer-log-page' => 'Kommentarspammarlogg',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'commentspammer-save-blocked' => 'IP-adressa di mistenkes for å være en kommentarforsøpler, så siden kan ikke lagres. [[Special:UserLogin|Logg inn eller opprett en konto]] for å unngå dette.',
-	'commentspammer-desc' => 'Avviser endringer fra mistenkte spammere på en DNS-svarteliste.',
-	'commentspammer-log-msg' => 'redigering på [[:$2]] av [[Special:Contributions/$1|$1]].',
-	'commentspammer-log-msg-info' => 'Sist forsøplet for $1 {{PLURAL:$1|dag|dager}} siden, trusselnivået er $2, og fornærmelseskoden er $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Se detaljer] eller [[Special:Blockip/$4|blokkert]].',
-	'cspammerlogpagetext' => 'Register over redigeringer som har blitt godtatt eller nektet basert på hvorvidt kilden var en kjent kommentarforsøpler.',
-	'cspammer-log-page' => 'Kommentarforsøplerlogg',
 );
 
 /** Occitan (Occitan)
