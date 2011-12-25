@@ -1952,6 +1952,51 @@ $messages['nah'] = array(
 	'crosswikiunblock-reason' => 'Īxtlamatiliztli:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'crosswikiblock-desc' => 'Gjør det mulig å blokkere brukere på andre wikier ved hjelp av en [[Special:Crosswikiblock|spesialside]]',
+	'crosswikiblock' => 'Blokker brukere på andre wikier',
+	'crosswikiblock-header' => 'Denne siden gjør at man kan blokkere brukere på andre wikier. Sjekk om du har tillatelse til å gjøre det på denne wikien, og at du følger alle retningslinjene.',
+	'crosswikiblock-target' => 'IP-adresse eller brukernavn og målwiki:',
+	'crosswikiblock-expiry' => 'Varighet:',
+	'crosswikiblock-reason' => 'Årsak:',
+	'crosswikiblock-submit' => 'Blokker denne brukeren',
+	'crosswikiblock-anononly' => 'Blokker kun anonyme brukere',
+	'crosswikiblock-nocreate' => 'Hindre kontoopprettelse',
+	'crosswikiblock-autoblock' => 'Blokker forrige IP-adresse brukt av denne brukeren automatisk, samt alle IP-adresser brukeren forsøker å redigere med i framtiden',
+	'crosswikiblock-noemail' => 'Forhindre brukeren fra å sende e-post',
+	'crosswikiunblock' => 'Avblokker brukeren på andre wikier',
+	'crosswikiunblock-header' => 'Denne siden lar deg avblokkere brukere på andre wikier. Sjekk om du har lov til å gjøre dette på den lokale wikien i henhold til deres retningslinjer.',
+	'crosswikiunblock-user' => 'Brukernavn, IP-adresse eller blokkerings-ID og målwiki:',
+	'crosswikiunblock-reason' => 'Årsak:',
+	'crosswikiunblock-submit' => 'Avblokker brukeren',
+	'crosswikiunblock-success' => "Brukeren '''$1''' ble avblokkert.
+
+Tilbake til:
+* [[Special:CrosswikiBlock|Blokkeringsskjema]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Ingen brukernavn ble skrevet inn',
+	'crosswikiblock-local' => 'Lokale blokkeringer støttes ikke av dette grensesnittet. Bruk [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => 'Databasen $1 finnes ikke',
+	'crosswikiblock-noname' => '«$1» er ikke et gyldig brukernavn.',
+	'crosswikiblock-nouser' => 'Brukeren «$3» ble ikke funnet.',
+	'crosswikiblock-noexpiry' => 'Ugyldig utløpstid: $1.',
+	'crosswikiblock-noreason' => 'Ingen begrunnelse gitt.',
+	'crosswikiblock-notoken' => 'Ugyldig redigeringstegn.',
+	'crosswikiblock-alreadyblocked' => '«$3» er allerede blokkert.',
+	'crosswikiblock-noblock' => 'Denne brukeren er ikke blokkert.',
+	'crosswikiblock-success' => "'''$3''' er blokkert.
+
+Tilbake til:
+* [[Special:CrosswikiBlock|Blokkeringsskjemaet]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Lokale blokkeringer støttes ikke via dette grensesnittet. Bruk [[Special:IPBlockList|{{int:ipblocklist}}]].',
+	'right-crosswikiblock' => 'Blokker og avblokker brukere på andre wikier',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -2057,51 +2102,6 @@ Attende til:
 * [[$4]]",
 	'crosswikiunblock-local' => 'Lokale avblokkeringar er ikkje støtta av dette grensesnittet. Nytt [[Special:IPBlockList|{{int:ipblocklist}}]]',
 	'right-crosswikiblock' => 'Blokker og avblokker brukarar på andre wikiar',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'crosswikiblock-desc' => 'Gjør det mulig å blokkere brukere på andre wikier ved hjelp av en [[Special:Crosswikiblock|spesialside]]',
-	'crosswikiblock' => 'Blokker brukere på andre wikier',
-	'crosswikiblock-header' => 'Denne siden gjør at man kan blokkere brukere på andre wikier. Sjekk om du har tillatelse til å gjøre det på denne wikien, og at du følger alle retningslinjene.',
-	'crosswikiblock-target' => 'IP-adresse eller brukernavn og målwiki:',
-	'crosswikiblock-expiry' => 'Varighet:',
-	'crosswikiblock-reason' => 'Årsak:',
-	'crosswikiblock-submit' => 'Blokker denne brukeren',
-	'crosswikiblock-anononly' => 'Blokker kun anonyme brukere',
-	'crosswikiblock-nocreate' => 'Hindre kontoopprettelse',
-	'crosswikiblock-autoblock' => 'Blokker forrige IP-adresse brukt av denne brukeren automatisk, samt alle IP-adresser brukeren forsøker å redigere med i framtiden',
-	'crosswikiblock-noemail' => 'Forhindre brukeren fra å sende e-post',
-	'crosswikiunblock' => 'Avblokker brukeren på andre wikier',
-	'crosswikiunblock-header' => 'Denne siden lar deg avblokkere brukere på andre wikier. Sjekk om du har lov til å gjøre dette på den lokale wikien i henhold til deres retningslinjer.',
-	'crosswikiunblock-user' => 'Brukernavn, IP-adresse eller blokkerings-ID og målwiki:',
-	'crosswikiunblock-reason' => 'Årsak:',
-	'crosswikiunblock-submit' => 'Avblokker brukeren',
-	'crosswikiunblock-success' => "Brukeren '''$1''' ble avblokkert.
-
-Tilbake til:
-* [[Special:CrosswikiBlock|Blokkeringsskjema]]
-* [[$2]]",
-	'crosswikiblock-nousername' => 'Ingen brukernavn ble skrevet inn',
-	'crosswikiblock-local' => 'Lokale blokkeringer støttes ikke av dette grensesnittet. Bruk [[Special:BlockIP|{{int:blockip}}]]',
-	'crosswikiblock-dbnotfound' => 'Databasen $1 finnes ikke',
-	'crosswikiblock-noname' => '«$1» er ikke et gyldig brukernavn.',
-	'crosswikiblock-nouser' => 'Brukeren «$3» ble ikke funnet.',
-	'crosswikiblock-noexpiry' => 'Ugyldig utløpstid: $1.',
-	'crosswikiblock-noreason' => 'Ingen begrunnelse gitt.',
-	'crosswikiblock-notoken' => 'Ugyldig redigeringstegn.',
-	'crosswikiblock-alreadyblocked' => '«$3» er allerede blokkert.',
-	'crosswikiblock-noblock' => 'Denne brukeren er ikke blokkert.',
-	'crosswikiblock-success' => "'''$3''' er blokkert.
-
-Tilbake til:
-* [[Special:CrosswikiBlock|Blokkeringsskjemaet]]
-* [[$4]]",
-	'crosswikiunblock-local' => 'Lokale blokkeringer støttes ikke via dette grensesnittet. Bruk [[Special:IPBlockList|{{int:ipblocklist}}]].',
-	'right-crosswikiblock' => 'Blokker og avblokker brukere på andre wikier',
 );
 
 /** Novial (Novial)
