@@ -784,7 +784,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'languageselector' => 'Språk',
 	'languageselector-desc' => 'Valg av språk på alle sider, også for gjester',
 	'languageselector-setlang' => 'sett',
