@@ -939,6 +939,36 @@ $messages['mk'] = array(
 	'right-refreshspecial' => 'Ажурирање на специјални страници',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'refreshspecial' => 'Oppdater spesialsider',
+	'refreshspecial-desc' => 'Muliggjør [[Special:RefreshSpecial|manuell oppdatering]] av spesialsider',
+	'refreshspecial-title' => 'Oppdater spesialsider',
+	'refreshspecial-help' => "Denne spesialsiden tilbyr metoder for å manuelt oppdatere spesialsider.
+Når du har valgt alle sidene du vil oppdatere, klikk på «Oppdater valgte»-knappen for å gjennomføre oppdateringen på de valgte spesialsidene.
+'''Advarsel:''' Oppdateringen kan ta en stund på større wikier.",
+	'refreshspecial-button' => 'Oppdater valgte',
+	'refreshspecial-fail' => 'Merk minst én spesialside for oppdatering',
+	'refreshspecial-refreshing' => 'oppdaterer spesialsider',
+	'refreshspecial-skipped' => 'billig, hoppet over',
+	'refreshspecial-choice' => 'oppdaterer spesialsider',
+	'refreshspecial-js-disabled' => "(''Du kan ikke merke alle sider om JavaScript er slått av'')",
+	'refreshspecial-select-all-pages' => 'Merk alle sider',
+	'refreshspecial-link-back' => 'Tilbake til utvidelsen',
+	'refreshspecial-none-selected' => 'Du har ikke merket noen spesialsider. Tilbakestiller til standardvalg.',
+	'refreshspecial-db-error' => 'Mislyktes: databasefeil',
+	'refreshspecial-no-page' => 'Ingen slik spesialside',
+	'refreshspecial-slave-lagged' => 'Forsinkelse i slavetjeneren, venter ...',
+	'refreshspecial-reconnected' => 'Tilkoblet på nytt.',
+	'refreshspecial-reconnecting' => 'Tilkobling mislyktes, prøver igjen om ti sekunder ...',
+	'refreshspecial-page-result' => 'fikk {{PLURAL:$1|én rad|$1 rader}} i',
+	'refreshspecial-total-display' => 'Oppdaterte {{PLURAL:$1|én side|$1 sider}} med totalt {{PLURAL:$2|én rad|$2 rader}} på tiden $3 (total skriptkjøretid er $4)',
+	'right-refreshspecial' => 'Oppdater spesialsider',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -996,36 +1026,6 @@ Når du har valt kva sider du ønskjer å oppdatera, klikk på 'Oppdater valte' 
 	'refreshspecial-page-result' => 'fekk {{PLURAL:$1|éi rekkja|$1 rekkjer}} i',
 	'refreshspecial-total-display' => 'Oppdaterte {{PLURAL:$1|éi sida|$1 sider}} med totalt {{PLURAL:$2|éi rekkja|$2 rekkjer}} med tida $3 (total skriptkøyretid er $4)',
 	'right-refreshspecial' => 'Oppdatera spesialsider',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'refreshspecial' => 'Oppdater spesialsider',
-	'refreshspecial-desc' => 'Muliggjør [[Special:RefreshSpecial|manuell oppdatering]] av spesialsider',
-	'refreshspecial-title' => 'Oppdater spesialsider',
-	'refreshspecial-help' => "Denne spesialsiden tilbyr metoder for å manuelt oppdatere spesialsider.
-Når du har valgt alle sidene du vil oppdatere, klikk på «Oppdater valgte»-knappen for å gjennomføre oppdateringen på de valgte spesialsidene.
-'''Advarsel:''' Oppdateringen kan ta en stund på større wikier.",
-	'refreshspecial-button' => 'Oppdater valgte',
-	'refreshspecial-fail' => 'Merk minst én spesialside for oppdatering',
-	'refreshspecial-refreshing' => 'oppdaterer spesialsider',
-	'refreshspecial-skipped' => 'billig, hoppet over',
-	'refreshspecial-choice' => 'oppdaterer spesialsider',
-	'refreshspecial-js-disabled' => "(''Du kan ikke merke alle sider om JavaScript er slått av'')",
-	'refreshspecial-select-all-pages' => 'Merk alle sider',
-	'refreshspecial-link-back' => 'Tilbake til utvidelsen',
-	'refreshspecial-none-selected' => 'Du har ikke merket noen spesialsider. Tilbakestiller til standardvalg.',
-	'refreshspecial-db-error' => 'Mislyktes: databasefeil',
-	'refreshspecial-no-page' => 'Ingen slik spesialside',
-	'refreshspecial-slave-lagged' => 'Forsinkelse i slavetjeneren, venter ...',
-	'refreshspecial-reconnected' => 'Tilkoblet på nytt.',
-	'refreshspecial-reconnecting' => 'Tilkobling mislyktes, prøver igjen om ti sekunder ...',
-	'refreshspecial-page-result' => 'fikk {{PLURAL:$1|én rad|$1 rader}} i',
-	'refreshspecial-total-display' => 'Oppdaterte {{PLURAL:$1|én side|$1 sider}} med totalt {{PLURAL:$2|én rad|$2 rader}} på tiden $3 (total skriptkjøretid er $4)',
-	'right-refreshspecial' => 'Oppdater spesialsider',
 );
 
 /** Occitan (Occitan)
@@ -1300,22 +1300,23 @@ $messages['sr-ec'] = array(
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
  * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
-	'refreshspecial-button' => 'Osveži naznačeno',
-	'refreshspecial-fail' => 'Treba da naznačite makar jednu specijalnu stranu za osvežavanje.',
-	'refreshspecial-refreshing' => 'Osvežavanje specijalnih strana',
-	'refreshspecial-choice' => 'osvežavanje specijalnih strana',
-	'refreshspecial-js-disabled' => '(<i>Ne možete da naznačite sve strane kada je JavaScript onemogućen</i>)',
+	'refreshspecial-button' => 'Osveži izabrano',
+	'refreshspecial-fail' => 'Izaberite barem jednu posebnu stranicu za osvežavanje.',
+	'refreshspecial-refreshing' => 'osvežavam posebne stranice',
+	'refreshspecial-choice' => 'osvežavam posebne stranice',
+	'refreshspecial-js-disabled' => '(<i>Ne možete izabrati sve stranice kada je onemogućen javaskript</i>)',
 	'refreshspecial-select-all-pages' => 'Izaberi sve stranice',
-	'refreshspecial-link-back' => 'Vrati se na specijalnu stranu',
-	'refreshspecial-none-selected' => 'Možda niste označili ni jednu specijalnu stranu. Vraćanje na podrazumevan izbor.',
-	'refreshspecial-db-error' => 'Nije uspelo: Greška u bazi podataka',
-	'refreshspecial-no-page' => 'Nema takve specijalne strane',
-	'refreshspecial-reconnected' => 'Rekonektovan.',
-	'refreshspecial-reconnecting' => 'Konekcija nije uspela, rekonekcija za 10 sekundi...',
-	'refreshspecial-page-result' => '{{PLURAL:$1|dobijen|dobijeno}} $1 {{PLURAL:$1|red|redova}} u',
+	'refreshspecial-link-back' => 'Nazad na posebnu stranicu',
+	'refreshspecial-none-selected' => 'Niste izabrali nijednu posebnu stranicu. Vraćam na podrazumevani izbor.',
+	'refreshspecial-db-error' => 'Neuspešno: greška u bazi podataka',
+	'refreshspecial-no-page' => 'Nema takve posebne stranice',
+	'refreshspecial-reconnected' => 'Prepovezano.',
+	'refreshspecial-reconnecting' => 'Ne mogu da se povežem. Prepovezivanje za deset sekundi…',
+	'refreshspecial-page-result' => '{{PLURAL:$1|dobijen je|dobijena su|dobijeno je}} $1 {{PLURAL:$1|red|reda|redova}} u',
 );
 
 /** Seeltersk (Seeltersk)
