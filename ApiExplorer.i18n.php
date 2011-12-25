@@ -193,10 +193,13 @@ $messages['pl'] = array(
 );
 
 /** Russian (Русский)
+ * @author Eleferen
  * @author Engineering
  */
 $messages['ru'] = array(
+	'apiexplorer' => 'API Explorer',
 	'apiexplorer-desc' => 'Страница для интерактивного изучения документации MediaWiki API',
+	'apiexplorer-intro' => 'На этой странице отображена документации по API текущей вики. Пожалуйста, нажмите на функцию ниже, чтобы увидеть больше информации о том, какие параметры можно использовать при каждом вызове. Также см. [http://www.mediawiki.org/wiki/API:Main_page общую документацию по MediaWiki API].',
 	'apiexplorer-loading' => 'Загрузка функций...',
 );
 
