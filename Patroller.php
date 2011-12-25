@@ -21,7 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['Patroller'] = $dir . 'Patroller.i18n.php';
-$wgExtensionAliasesFiles['Patroller'] = $dir . 'Patroller.alias.php';
+$wgExtensionMessagesFiles['PatrollerAlias'] = $dir . 'Patroller.alias.php';
 $wgAutoloadClasses['Patroller'] = $dir . 'Patroller.class.php';
 $wgSpecialPages['Patrol'] = 'Patroller';
 
