@@ -21,9 +21,14 @@ $specialPageAliases['arz'] = array(
 	'MostRevisors' => array( 'اكتر_مراجعين' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'MostRevisors' => array( 'Meiste_Sichter' ),
+);
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
-	'MostRevisors' => array( 'بیش‌ترین_تجدیدنظرکننده‌ها' ),
+	'MostRevisors' => array( 'بیش‌ترین_نسخه‌ها' ),
 );
 
 /** Haitian (Kreyòl ayisyen) */
@@ -66,6 +71,11 @@ $specialPageAliases['ml'] = array(
 	'MostRevisors' => array( 'ഏറ്റവുംകൂടുതൽസംശോധനംചെയ്തവർ' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'MostRevisors' => array( 'Flest_bidragsytere' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'MostRevisors' => array( 'Meeste_bewarkers' ),
@@ -74,11 +84,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'MostRevisors' => array( 'MeesteBewerkers' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'MostRevisors' => array( 'Flest_bidragsytere' ),
 );
 
 /** Slovak (Slovenčina) */
@@ -95,8 +100,3 @@ $specialPageAliases['tr'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'MostRevisors' => array( '最多版本' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
