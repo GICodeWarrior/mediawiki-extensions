@@ -15,6 +15,6 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['ShowProcesslist'] = $dir . 'ShowProcesslist.i18n.php';
-$wgExtensionAliasesFiles['ShowProcesslist'] = $dir . 'ShowProcesslist.alias.php';
+$wgExtensionMessagesFiles['ShowProcesslistAlias'] = $dir . 'ShowProcesslist.alias.php';
 $wgAutoloadClasses['SpecialShowProcesslist'] = $dir . 'ShowProcesslist_body.php';
 $wgSpecialPages['ShowProcesslist'] = 'SpecialShowProcesslist';
