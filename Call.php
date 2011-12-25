@@ -16,7 +16,7 @@ EOT;
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['Call'] = $dir . 'Call_body.php';
 $wgExtensionMessagesFiles['Call'] = $dir . 'Call.i18n.php';
-$wgExtensionAliasesFiles['Call'] = $dir . 'Call.alias.php';
+$wgExtensionMessagesFiles['CallAlias'] = $dir . 'Call.alias.php';
 $wgSpecialPages['Call'] = 'Call';
 
 $wgExtensionCredits['specialpage'][] = array(
