@@ -323,7 +323,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'microid-desc' => 'Legger til [http://www.microid.org/ MicroID] på brukersider for å bekrefte kontoer med eksterne tjenester',
 	'tog-microid' => 'Publiser en <a href="http://microid.org/">MicroID</a> for å bekrefte kontoen for eksterne tjenester',
 );
