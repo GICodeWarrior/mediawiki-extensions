@@ -23,7 +23,7 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgExtensionAliasesFiles['Watchers'] = $dir . 'Watchers.alias.php';
+$wgExtensionMessagesFiles['WatchersAlias'] = $dir . 'Watchers.alias.php';
 $wgExtensionMessagesFiles['Watchers'] = $dir . 'Watchers.i18n.php';
 $wgAutoloadClasses['SpecialWatchers'] = $dir . 'Watchers_body.php';
 
