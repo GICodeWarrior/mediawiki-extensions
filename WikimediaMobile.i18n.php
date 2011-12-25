@@ -303,7 +303,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'wikimediamobile-desc' => 'MediaWiki-støttefunksjoner for Wikimedia-mobilprosjektet, vertet av http://github.com/hcatlin/wikimedia-mobile',
 );
 
