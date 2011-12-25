@@ -429,6 +429,18 @@ $messages['nah'] = array(
 	'logentry-invalidpage' => 'Ahcualli āmatl: $1',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'logentry-append' => 'Legg til',
+	'logentry-parserhook-desc' => 'Denne merkelapputvidelsen gir et skjema for å legge til merkelapper før eller etter på loggsider',
+	'logentry-specialpage-desc' => 'Denne merkelapputvidelsen tilbyr utførelse av å legge til merkelapper på loggsider',
+	'logentry' => 'Loggelement',
+	'logentry-invalidpage' => 'Ugyldig side',
+	'logentry-invalidtoken' => 'Ugyldig symbol',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -451,18 +463,6 @@ $messages['nn'] = array(
 	'logentry' => 'Loggelement',
 	'logentry-invalidpage' => 'Ugyldig sida',
 	'logentry-invalidtoken' => 'Ugyldig token',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'logentry-append' => 'Legg til',
-	'logentry-parserhook-desc' => 'Denne merkelapputvidelsen gir et skjema for å legge til merkelapper før eller etter på loggsider',
-	'logentry-specialpage-desc' => 'Denne merkelapputvidelsen tilbyr utførelse av å legge til merkelapper på loggsider',
-	'logentry' => 'Loggelement',
-	'logentry-invalidpage' => 'Ugyldig side',
-	'logentry-invalidtoken' => 'Ugyldig symbol',
 );
 
 /** Occitan (Occitan)
@@ -562,6 +562,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Eleferen
  * @author Ferrer
  * @author Александр Сигачёв
  */
@@ -570,7 +571,7 @@ $messages['ru'] = array(
 	'logentry-parserhook-desc' => 'Этот тег-расширение предоставляет форму для добавления записей в начало или конец страницы в виде журнала',
 	'logentry-specialpage-desc' => 'Этот тег-расширение предоставляет механизм добавления на страницу записей в виде журнала',
 	'logentry' => 'ЗаписьЖурнала',
-	'logentry-invalidpage' => 'Неправильная страница',
+	'logentry-invalidpage' => 'Недопустимая страница: $1',
 	'logentry-invalidtoken' => 'Неправильный токен',
 );
 
