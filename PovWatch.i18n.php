@@ -1777,7 +1777,7 @@ Trykk på knappen nedanfor for å abonnera.',
  * @author Harald Khan
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'povwatch' => 'PovWatch',
 	'povwatch_desc' => 'Utvidelse for å [[Special:PovWatch|plassere sider på andre brukeres overvåkningsliste]]',
 	'povwatch_no_session' => 'Feil: Kunne ikke levere skjema på grunn av øktdatatap.',
