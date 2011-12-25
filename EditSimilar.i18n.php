@@ -514,7 +514,7 @@ Sjekk {{PLURAL:$2|denne relaterte sida|desse relaterte sidene}}: $1.',
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'editsimilar-desc' => 'Oppfordrer brukere til å redigere lignende sider etter å ha lagret en side',
 	'editsimilar-thanks' => 'Takk for bidraget ditt.
 Sjekk {{PLURAL:$2|denne relaterte siden|disse relaterte sidene}}: $1.',
