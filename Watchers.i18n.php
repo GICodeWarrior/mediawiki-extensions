@@ -792,7 +792,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'watchers' => 'Overvåkende',
 	'watchers-desc' => 'Viser [[Special:Watchers|hvilke brukere som overvåker en viss side]]',
 	'watchers_link_title' => 'Hvem overvåker denne siden?',
