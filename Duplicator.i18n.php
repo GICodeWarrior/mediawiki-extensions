@@ -1262,7 +1262,7 @@ Noverande grensa er $3.',
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'duplicator' => 'Kopier en side',
 	'duplicator-desc' => 'Opprett uavhengige [[Special:Duplicate|kopier av sider]] med full redigeringshistorikk',
 	'duplicator-toolbox' => 'Kopier denne siden',
