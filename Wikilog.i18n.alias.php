@@ -58,7 +58,7 @@ $specialPageAliases['ml'] = array(
 	'Wikilog' => array( 'വിക്കിരേഖ', 'വിക്കിരേഖകൾ' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
 $specialPageAliases['nb'] = array(
 	'Wikilog' => array( 'Wikilogg' ),
 );
@@ -72,8 +72,3 @@ $specialPageAliases['pt'] = array(
 $specialPageAliases['tr'] = array(
 	'Wikilog' => array( 'VikiGünlük' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;

@@ -8,9 +8,7 @@
 
 $magicWords = array();
 
-/** English (English)
- * @author Juliano F. Ravasi
- */
+/** English (English) */
 $magicWords['en'] = array(
 	'wl-settings' => array( 0, 'wl-settings' ),
 	'wl-publish' => array( 0, 'wl-publish' ),
@@ -73,6 +71,18 @@ $magicWords['ce'] = array(
 	'wlk-more' => array( 0, 'дуккха', 'more' ),
 );
 
+/** German (Deutsch) */
+$magicWords['de'] = array(
+	'wl-settings' => array( 0, 'wl-einstellungen' ),
+	'wl-publish' => array( 0, 'wl-veröffentlichung' ),
+	'wl-author' => array( 0, 'wl-autor' ),
+	'wl-tags' => array( 0, 'wl-stichwörter' ),
+	'wlk-subtitle' => array( 0, 'untertitel' ),
+	'wlk-summary' => array( 'zusammenfassung' ),
+	'wlk-hidden' => array( 0, 'versteckt' ),
+	'wlk-more' => array( 0, 'mehr' ),
+);
+
 /** Esperanto (Esperanto) */
 $magicWords['eo'] = array(
 	'wlk-icon' => array( 0, 'bildsimbolo' ),
@@ -83,15 +93,15 @@ $magicWords['eo'] = array(
 
 /** Spanish (Español) */
 $magicWords['es'] = array(
-	'wl-settings' => array( 0, 'configuracion-wl', 'configuración-wl', 'wl-settings' ),
-	'wl-publish' => array( 0, 'publicar-wl', 'wl-publish' ),
-	'wl-author' => array( 0, 'autor-wl', 'wl-author' ),
-	'wl-tags' => array( 0, 'etiquetas-wl', 'wl-tags' ),
-	'wl-info' => array( 0, 'informacion-wl', 'información-wl', 'wl-info' ),
-	'wlk-subtitle' => array( 0, 'subtitulo', 'subtítulo', 'subtitle' ),
-	'wlk-summary' => array( '1', 'resumen', 'summary' ),
-	'wlk-hidden' => array( 0, 'escondido', 'hidden' ),
-	'wlk-more' => array( 0, 'más', 'mas', 'more' ),
+	'wl-settings' => array( 0, 'configuracion-wl', 'configuración-wl' ),
+	'wl-publish' => array( 0, 'publicar-wl' ),
+	'wl-author' => array( 0, 'autor-wl' ),
+	'wl-tags' => array( 0, 'etiquetas-wl' ),
+	'wl-info' => array( 0, 'informacion-wl', 'información-wl' ),
+	'wlk-subtitle' => array( 0, 'subtitulo', 'subtítulo' ),
+	'wlk-summary' => array( 'resumen' ),
+	'wlk-hidden' => array( 0, 'escondido', 'oculto' ),
+	'wlk-more' => array( 0, 'más', 'mas' ),
 );
 
 /** French (Français) */
@@ -99,6 +109,12 @@ $magicWords['fr'] = array(
 	'wlk-subtitle' => array( 0, 'soustitre' ),
 	'wlk-summary' => array( 'sommaire' ),
 	'wlk-hidden' => array( 0, 'caché' ),
+);
+
+/** Franco-Provençal (Arpetan) */
+$magicWords['frp'] = array(
+	'wlk-summary' => array( 'somèro' ),
+	'wlk-hidden' => array( 0, 'cachiê' ),
 );
 
 /** Igbo (Igbo) */
@@ -168,6 +184,14 @@ $magicWords['myv'] = array(
 	'wlk-hidden' => array( 0, 'кекшезь' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$magicWords['nb'] = array(
+	'wlk-subtitle' => array( 0, 'undertekst' ),
+	'wlk-summary' => array( 'sammendrag' ),
+	'wlk-hidden' => array( 0, 'gjemt' ),
+	'wlk-more' => array( 0, 'mer' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $magicWords['nds-nl'] = array(
 	'wl-publish' => array( 0, 'wl-publiseren' ),
@@ -186,14 +210,6 @@ $magicWords['nl'] = array(
 	'wlk-summary' => array( 'samenvatting' ),
 	'wlk-hidden' => array( 0, 'verborgen' ),
 	'wlk-more' => array( 0, 'meer' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$magicWords['nb'] = array(
-	'wlk-subtitle' => array( 0, 'undertekst' ),
-	'wlk-summary' => array( 'sammendrag' ),
-	'wlk-hidden' => array( 0, 'gjemt' ),
-	'wlk-more' => array( 0, 'mer' ),
 );
 
 /** Oriya (ଓଡ଼ିଆ) */
@@ -275,6 +291,20 @@ $magicWords['sr-ec'] = array(
 	'wlk-summary' => array( 'сажетак' ),
 	'wlk-hidden' => array( 0, 'сакривено' ),
 	'wlk-more' => array( 0, 'више' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'wl-settings' => array( 0, 'wl-postavke' ),
+	'wl-publish' => array( 0, 'wl-objava' ),
+	'wl-author' => array( 0, 'wl-autor' ),
+	'wl-tags' => array( 0, 'wl-oznake' ),
+	'wl-info' => array( 0, 'wl-podaci' ),
+	'wlk-logo' => array( 0, 'logotip' ),
+	'wlk-subtitle' => array( 0, 'podnaslov' ),
+	'wlk-summary' => array( 'sažetak', 'opis' ),
+	'wlk-hidden' => array( 0, 'sakriveno' ),
+	'wlk-more' => array( 0, 'više' ),
 );
 
 /** Swedish (Svenska) */
