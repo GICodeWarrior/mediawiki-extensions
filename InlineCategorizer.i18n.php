@@ -1845,7 +1845,7 @@ Det skuldast som oftast at kategorien er vorte lagd til i sida inni ein mal.',
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'inlinecategorizer-add-category' => 'Legg til kategori',
 	'inlinecategorizer-add-category-submit' => 'Legg til',
 	'inlinecategorizer-add-category-summary' => 'Legg til kategorien «$1»',
