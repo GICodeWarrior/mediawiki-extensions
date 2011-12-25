@@ -222,7 +222,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'customusersignup-desc' => 'Tillater brukertilpassede meldinger under opprettelsen av brukerkontoer',
 );
 
