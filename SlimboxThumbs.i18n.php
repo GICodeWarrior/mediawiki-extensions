@@ -174,7 +174,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'slimboxthumbs-desc' => 'Viser bilder i full størrelse med [http://www.digitalia.be/software/slimbox2 Slimbox 2] når man klikker på miniatyrbilder',
 );
 
