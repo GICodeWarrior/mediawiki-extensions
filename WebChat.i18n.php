@@ -546,7 +546,7 @@ Anonyme brukarar vert gjevne automatisk genererte kallenamn, men desse kan ein e
  * @author Harald Khan
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'webchat' => 'Nettprat',
 	'webchat-desc' => 'Legger til en [[Special:WebChat|spesialside]] for å prate i sanntid med andre wikibrukere',
 	'webchat-header' => 'Denne spesialsiden tillater deg å samarbeide med andre brukere av wikien i sanntid.
