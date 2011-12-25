@@ -77,7 +77,7 @@ $specialPageAliases['oc'] = array(
 	'RecordAdmin' => array( 'GerirEnregistrament', 'Gerir Enregistrament' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'RecordAdmin' => array( 'प्रचालकअङ्कन' ),
 );
@@ -101,8 +101,3 @@ $specialPageAliases['tl'] = array(
 $specialPageAliases['tr'] = array(
 	'RecordAdmin' => array( 'HizmetliKaydı', 'YöneticiKaydı' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
