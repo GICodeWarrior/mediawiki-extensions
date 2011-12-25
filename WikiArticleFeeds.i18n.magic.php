@@ -30,6 +30,11 @@ $magicWords['mk'] = array(
 	'itemtags' => array( 0, 'ознакизаставки' ),
 );
 
+/** Malayalam (മലയാളം) */
+$magicWords['ml'] = array(
+	'itemtags' => array( 0, 'ഇനംറ്റാഗുകൾ' ),
+);
+
 /** Marathi (मराठी) */
 $magicWords['mr'] = array(
 	'itemtags' => array( 0, 'आयटमखूणा', 'कलमखूणा', 'itemtags' ),
@@ -48,4 +53,9 @@ $magicWords['nl'] = array(
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'itemtags' => array( 0, 'ознакеставке', 'ознаке_ставке' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'itemtags' => array( 0, 'oznakestavke', 'oznake_stavke' ),
 );
