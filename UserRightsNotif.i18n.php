@@ -825,7 +825,7 @@ $2',
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'userrightsnotifysubject' => 'Endring av gruppemedlemskap på $1',
 	'userrightsnotifybody' => 'Hei $1.
 
