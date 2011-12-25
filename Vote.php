@@ -25,7 +25,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['Vote'] = $dir . 'Vote.i18n.php';
-$wgExtensionAliasesFiles['Vote'] = $dir . 'Vote.alias.php';
+$wgExtensionMessagesFiles['VoteAlias'] = $dir . 'Vote.alias.php';
 $wgAutoloadClasses['SpecialVote'] = $dir . 'Vote.page.php';
 $wgSpecialPages['Vote'] = 'SpecialVote';
 
