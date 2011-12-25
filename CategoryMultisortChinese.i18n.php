@@ -513,7 +513,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'categorymultisortchinese-desc' => 'Lar kategorier vises med forskjellige sorteringer for kinesiske skrifter',
 	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
 	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Bopomofo',
