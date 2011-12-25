@@ -35,4 +35,4 @@ $wgSpecialPages['ImportUsers'] = 'SpecialImportUsers';
 $wgSpecialPageGroups['ImportUsers'] = 'users';
 $wgAutoloadClasses['SpecialImportUsers'] = $dir . 'ImportUsers_body.php';
 $wgExtensionMessagesFiles['ImportUsers'] = $dir . 'ImportUsers.i18n.php';
-$wgExtensionAliasesFiles['ImportUsers'] = $dir . 'ImportUsers.alias.php';
+$wgExtensionMessagesFiles['ImportUsersAlias'] = $dir . 'ImportUsers.alias.php';
