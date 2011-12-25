@@ -2875,7 +2875,7 @@ Versjonar av sider som vert fjerna vil ikkje vere tilgjengelege for nokon via ne
  * @author Laaknor
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'hiderevision' => 'Fjern revisjoner permanent',
 	'hiderevision-desc' => 'Skjul enkeltrevisjoner fra alle brukere av juridiske grunner, etc.',
 	'group-oversight' => 'Revisjonsslettere',
