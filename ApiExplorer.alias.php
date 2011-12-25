@@ -13,8 +13,12 @@ $specialPageAliases['en'] = array(
 	'ApiExplorer' => array( 'ApiExplorer' ),
 );
 
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'ApiExplorer' => array( 'ApiИстражувач' ),
+);
 
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'ApiExplorer' => array( 'ApiVerkennen' ),
+);
