@@ -322,7 +322,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'apisvgproxy-desc' => 'Sender SVG-filer via en mellomtjener fra et (muligens eksternt) fillager til det lokale domenet',
 );
 
