@@ -58,6 +58,11 @@ $specialPageAliases['ml'] = array(
 	'MassBlank' => array( 'കൂട്ടശൂന്യമാക്കൽ' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'MassBlank' => array( 'Masseblanking' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'MassBlank' => array( 'Massaal_leegmaken' ),
@@ -66,11 +71,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'MassBlank' => array( 'MassaalLeegmaken' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'MassBlank' => array( 'Masseblanking' ),
 );
 
 /** Polish (Polski) */
@@ -87,8 +87,3 @@ $specialPageAliases['tr'] = array(
 $specialPageAliases['vi'] = array(
 	'MassBlank' => array( 'Tẩy_trống_hàng_loạt' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
