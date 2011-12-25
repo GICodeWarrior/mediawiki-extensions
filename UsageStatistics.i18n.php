@@ -1646,6 +1646,41 @@ $messages['myv'] = array(
 	'usagestatisticscumulative-text' => 'весемезэ',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'specialuserstats' => 'Bruksstatistikk',
+	'usagestatistics' => 'Bruksstatistikk',
+	'usagestatistics-desc' => 'Vis statistikk for individuelle brukere og for hele wikien',
+	'usagestatisticsfor' => '<h2>Bruksstatistikk for [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Bruksstatistikk for alle brukere</h2>',
+	'usagestatisticsinterval' => 'Intervall:',
+	'usagestatisticsnamespace' => 'Navnerom:',
+	'usagestatisticsexcluderedirects' => 'Ikke ta med omdirigeringer',
+	'usagestatistics-namespace' => 'Dette er statistikk for navnerommet [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Omdirigeringer]] har ikke blitt medregnet.',
+	'usagestatisticstype' => 'Type:',
+	'usagestatisticsstart' => 'Startdato:',
+	'usagestatisticsend' => 'Sluttdato:',
+	'usagestatisticssubmit' => 'Generer statistikk',
+	'usagestatisticsnostart' => 'Vennligst angi en starttid',
+	'usagestatisticsnoend' => 'Vennligst angi en sluttid',
+	'usagestatisticsbadstartend' => '<b>Ugyldig <i>start-</i> og/eller <i>slutttid</i>!</b>',
+	'usagestatisticsintervalday' => 'Dag',
+	'usagestatisticsintervalweek' => 'Uke',
+	'usagestatisticsintervalmonth' => 'Måned',
+	'usagestatisticsincremental' => 'Økende',
+	'usagestatisticsincremental-text' => 'økende',
+	'usagestatisticscumulative' => 'Kumulativ',
+	'usagestatisticscumulative-text' => 'kumulativ',
+	'usagestatisticscalselect' => 'Velg',
+	'usagestatistics-editindividual' => 'Redigeringsstatistikk for $1',
+	'usagestatistics-editpages' => 'Sidestatistikk for $1',
+	'right-viewsystemstats' => 'Vis [[Special:UserStats|wikibrukerstatistikk]]',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1727,41 +1762,6 @@ $messages['nn'] = array(
 	'usagestatistics-editindividual' => 'Redigeringsstatistikk for $1',
 	'usagestatistics-editpages' => 'Sidestatistikk for $1',
 	'right-viewsystemstats' => 'Vis [[Special:UserStats|wikibrukarstatistikk]]',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'specialuserstats' => 'Bruksstatistikk',
-	'usagestatistics' => 'Bruksstatistikk',
-	'usagestatistics-desc' => 'Vis statistikk for individuelle brukere og for hele wikien',
-	'usagestatisticsfor' => '<h2>Bruksstatistikk for [[User:$1|$1]]</h2>',
-	'usagestatisticsforallusers' => '<h2>Bruksstatistikk for alle brukere</h2>',
-	'usagestatisticsinterval' => 'Intervall:',
-	'usagestatisticsnamespace' => 'Navnerom:',
-	'usagestatisticsexcluderedirects' => 'Ikke ta med omdirigeringer',
-	'usagestatistics-namespace' => 'Dette er statistikk for navnerommet [[Special:Allpages/$1|$2]].',
-	'usagestatistics-noredirects' => '[[Special:ListRedirects|Omdirigeringer]] har ikke blitt medregnet.',
-	'usagestatisticstype' => 'Type:',
-	'usagestatisticsstart' => 'Startdato:',
-	'usagestatisticsend' => 'Sluttdato:',
-	'usagestatisticssubmit' => 'Generer statistikk',
-	'usagestatisticsnostart' => 'Vennligst angi en starttid',
-	'usagestatisticsnoend' => 'Vennligst angi en sluttid',
-	'usagestatisticsbadstartend' => '<b>Ugyldig <i>start-</i> og/eller <i>slutttid</i>!</b>',
-	'usagestatisticsintervalday' => 'Dag',
-	'usagestatisticsintervalweek' => 'Uke',
-	'usagestatisticsintervalmonth' => 'Måned',
-	'usagestatisticsincremental' => 'Økende',
-	'usagestatisticsincremental-text' => 'økende',
-	'usagestatisticscumulative' => 'Kumulativ',
-	'usagestatisticscumulative-text' => 'kumulativ',
-	'usagestatisticscalselect' => 'Velg',
-	'usagestatistics-editindividual' => 'Redigeringsstatistikk for $1',
-	'usagestatistics-editpages' => 'Sidestatistikk for $1',
-	'right-viewsystemstats' => 'Vis [[Special:UserStats|wikibrukerstatistikk]]',
 );
 
 /** Occitan (Occitan)
@@ -2224,8 +2224,8 @@ $messages['sr-el'] = array(
 	'usagestatisticsstart' => 'Početni datum:',
 	'usagestatisticsend' => 'Završni datum:',
 	'usagestatisticssubmit' => 'Generiši statistike',
-	'usagestatisticsnostart' => 'Molimo Vas da zadate početni datum',
-	'usagestatisticsnoend' => 'Molimo Vas da zadate završni datum',
+	'usagestatisticsnostart' => 'Unesite početni datum',
+	'usagestatisticsnoend' => 'Unesite završni datum',
 	'usagestatisticsbadstartend' => '<b>Loš <i>početni</i> i/ili <i>završni</i> datum!</b>',
 	'usagestatisticsintervalday' => 'Dan',
 	'usagestatisticsintervalweek' => 'Nedelja',
