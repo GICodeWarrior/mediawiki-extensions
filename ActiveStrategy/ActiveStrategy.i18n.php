@@ -421,7 +421,7 @@ $messages['nl'] = array(
  * @author Laaknor
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'activestrategy' => 'Aktiv strategi',
 	'active-strategy-desc' => 'Viser antall redigeringer på arbeidsgruppesider',
 	'active-strategy-intro' => 'Antall redigeringer på arbeidsgruppesider {{PLURAL:$1|den siste $1 dag|de siste $1 dager}}.',
