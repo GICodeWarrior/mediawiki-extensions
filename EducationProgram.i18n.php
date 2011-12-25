@@ -168,6 +168,9 @@ $messages['en'] = array(
 	'ep-course-terms' => 'Terms',
 	'ep-course-none' => 'There is no course with name "$1". See [[Special:Courses|here]] for a list of courses.',
 	'ep-course-create' => 'There is no course with name "$1" yet, but you can create it.',
+	'specialcourse-summary-name' => 'Name',
+	'specialcourse-summary-org' => 'Institution',
+	'ep-course-description' => 'Description',
 
 	// Special:Term
 	'ep-term-title' => 'Term: $1',

@@ -55,7 +55,11 @@ class SpecialCourse extends SpecialEPPage {
 				}
 			}
 			else {
-				$this->displayInfo( $course );
+				$this->displaySummary( $course );
+				
+				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-course-description' ) ) );
+				
+				$out->addHTML( '<p>' . $this->getOutput()->parse( $course->getField( 'description' ) ) . '</p>' );
 				
 				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-course-terms' ) ) );
 				
@@ -65,16 +69,21 @@ class SpecialCourse extends SpecialEPPage {
 	}
 	
 	/**
-	 * Display the course info.
-	 * 
+	 * Gets the summary data.
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param EPCourse $course
+	 *
+	 * @return array
 	 */
-	protected function displayInfo( EPCourse $course ) {
-		$out = $this->getOutput();
-		
-		
+	protected function getSummaryData( EPDBObject $course ) {
+		$stats = array();
+
+		$stats['name'] = $course->getField( 'name' );
+		$stats['org'] = EPOrg::selectFieldsRow( 'name', array( 'id' => $course->getField( 'org_id' ) ) );
+
+		return $stats;
 	}
 
 }
