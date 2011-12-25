@@ -605,7 +605,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'block_title_error_page_title' => 'Blokkert tittel',
 	'blocktitles-desc' => 'Gir en enkel måte å forhindre lagring eller oppretting av sider med visse titler',
 	'block_title_error' => 'Beklager, det er ikke lov å lagre en side med denne tittelen.',
