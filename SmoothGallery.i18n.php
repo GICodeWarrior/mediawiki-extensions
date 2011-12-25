@@ -679,7 +679,7 @@ Lever ein feilrapport.',
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'smoothgallery' => 'Mykt galleri',
 	'smoothgallery-desc' => 'Lar brukere opprette gallerier med bilder som er blitt lastet opp. Inneholder de fleste av SmoothGallerys valgmuligheter.',
 	'smoothgallery-title' => 'Mykt galleri',
