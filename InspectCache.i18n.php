@@ -138,6 +138,7 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Wikitanvir
  * @author Zaheen
  */
@@ -146,7 +147,7 @@ $messages['bn'] = array(
 	'inspectcache-general' => 'সাধারণ ক্যাশে',
 	'inspectcache-parser' => 'পার্সার ক্যাশে',
 	'inspectcache-message' => 'বার্তা ক্যাশে',
-	'inspectcache-delete' => 'মুছে ফেলা হোক',
+	'inspectcache-delete' => 'অপসারণ',
 	'inspectcache-deleted' => 'অপসারিত ক্যাশে',
 	'inspectcache-list' => 'তালিকা',
 	'right-inspectcache' => 'ক্যাশে সংযোজনসমূহ প্রদর্শন ও অপসারণ করো',
@@ -758,6 +759,23 @@ $messages['nah'] = array(
 	'inspectcache-delete' => 'Ticpolōz',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'inspectcache' => 'Inspiser mellomlagring',
+	'inspectcache-desc' => 'Et enkelt feilsøkingsverktøy for å inspisere innholdet i det delte mellomlageret',
+	'inspectcache-general' => 'Generell mellomlagring',
+	'inspectcache-parser' => 'Parsermellomlagring',
+	'inspectcache-message' => 'Mellomlagring av meldinger',
+	'inspectcache-get' => 'Skaff',
+	'inspectcache-delete' => 'Slett',
+	'inspectcache-deleted' => 'Slettet mellomlagring',
+	'inspectcache-list' => 'Liste',
+	'right-inspectcache' => 'Vis og slett hurtiglageroppføringer',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -789,23 +807,6 @@ $messages['nn'] = array(
 	'inspectcache-delete' => 'Slett',
 	'inspectcache-deleted' => 'Sletta mellomlageret',
 	'inspectcache-list' => 'Lista',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'inspectcache' => 'Inspiser mellomlagring',
-	'inspectcache-desc' => 'Et enkelt feilsøkingsverktøy for å inspisere innholdet i det delte mellomlageret',
-	'inspectcache-general' => 'Generell mellomlagring',
-	'inspectcache-parser' => 'Parsermellomlagring',
-	'inspectcache-message' => 'Mellomlagring av meldinger',
-	'inspectcache-get' => 'Skaff',
-	'inspectcache-delete' => 'Slett',
-	'inspectcache-deleted' => 'Slettet mellomlagring',
-	'inspectcache-list' => 'Liste',
-	'right-inspectcache' => 'Vis og slett hurtiglageroppføringer',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
