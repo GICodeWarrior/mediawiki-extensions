@@ -361,7 +361,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'woopra-desc' => 'Gjør at [http://woopra.com/ Woopra Live Tracking Software] fungere med MediaWiki',
 );
 
