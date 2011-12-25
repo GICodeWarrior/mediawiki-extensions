@@ -564,7 +564,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'articletocategory2-desc' => 'Plasserer en innmatingsboks på hver kategoriside som tillater opprettelse av nye sider direkte i denne kategorien',
 	'articletocategory2-create-article-under-category-text' => 'Legg en side til denne kategorien',
 	'articletocategory2-create-article-under-category-button' => 'Opprett',
