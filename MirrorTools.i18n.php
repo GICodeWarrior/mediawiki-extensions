@@ -283,7 +283,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'mirrortools' => 'Speilverktøy',
 	'mirrortools-desc' => 'Lar redigeringer via API gjøres under ethvert brukernavn',
 	'right-mirroredit' => 'Rediger via API under ethvert brukernavn',
