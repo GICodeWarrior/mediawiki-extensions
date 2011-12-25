@@ -363,6 +363,14 @@ $messages['ms'] = array(
 	'dontswitchmeover-pref' => 'Jangan benarkan kulit saya berubah apabila kulit asali berubah',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['nb'] = array(
+	'dontswitchmeover-desc' => 'Preferanse for brukere for å spesifisere om de vil beholde utseende-innstillingen sin når standardutseende endres.',
+	'dontswitchmeover-pref' => 'Ikke bytt utseende mitt når standardutseende endres',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Siebrand
@@ -370,14 +378,6 @@ $messages['ms'] = array(
 $messages['nl'] = array(
 	'dontswitchmeover-desc' => 'Voorkeur voor gebruikers om aan te geven of voorkeuren behouden moeten worden als de standaardvoorkeuren wijzigen',
 	'dontswitchmeover-pref' => 'Mijn uiterlijk niet wijzigen als het standaarduiterlijk gewijzigd wordt',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Laaknor
- */
-$messages['nb'] = array(
-	'dontswitchmeover-desc' => 'Preferanse for brukere for å spesifisere om de vil beholde utseende-innstillingen sin når standardutseende endres.',
-	'dontswitchmeover-pref' => 'Ikke bytt utseende mitt når standardutseende endres',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
