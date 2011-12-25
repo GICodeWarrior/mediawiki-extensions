@@ -352,7 +352,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'googleadsense-desc' => 'Legger til [http://google.com/adsense Google AdSense] til sidepanelet',
 );
 
