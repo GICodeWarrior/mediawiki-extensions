@@ -907,7 +907,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'onlinestatus-desc' => 'Legger til en innstilling for å vise om brukeren er logget på wikien eller ikke',
 	'onlinestatus-js-anon' => 'Feil: du må være logget inn for å bruke denne funksjonen',
 	'onlinestatus-js-changed' => 'Statusen din er endret til «$1»',
