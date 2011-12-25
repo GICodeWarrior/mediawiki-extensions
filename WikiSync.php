@@ -48,7 +48,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__);
 $wgExtensionMessagesFiles['WikiSync'] = $dir . '/WikiSync.i18n.php';
-$wgExtensionAliasesFiles['WikiSync'] = $dir . '/WikiSync.alias.php';
+$wgExtensionMessagesFiles['WikiSyncAlias'] = $dir . '/WikiSync.alias.php';
 $wgSpecialPages['WikiSync'] = 'WikiSyncPage';
 $wgSpecialPageGroups['WikiSync'] = 'pagetools';
 
