@@ -1210,7 +1210,7 @@ Als u een verwijzing ergens anders vandaan hebt gevolgd, <a href="$1">meld dan a
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'toolbase-replag-years' => 'år',
 	'toolbase-replag-months' => 'måneder',
 	'toolbase-replag-weeks' => 'uker',

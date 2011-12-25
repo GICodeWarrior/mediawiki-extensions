@@ -825,7 +825,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'ts-citegen-Title' => 'Sitat-malgenerator',
 	'ts-citegen-Send' => 'Generer',
 	'ts-citegen-Input-title' => 'Inndata',

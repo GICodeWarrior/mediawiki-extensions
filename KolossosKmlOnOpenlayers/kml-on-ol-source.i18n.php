@@ -535,7 +535,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'ts-kml-on-ol-options' => 'Alternativer',
 	'ts-kml-on-ol-languages' => 'Språk',
 	'ts-kml-on-ol-thumbnails' => 'Miniatyrbilder',
