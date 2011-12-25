@@ -675,7 +675,7 @@ $messages['nl'] = array(
  * @author Event
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'semanticformsinputs-desc' => 'Ekstra inndatatyper for [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
 	'semanticformsinputs-wrongformat' => 'Feil format.',
 	'semanticformsinputs-close' => 'Lukk',
