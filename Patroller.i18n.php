@@ -1499,6 +1499,35 @@ $messages['nah'] = array(
 	'group-patroller' => 'Tlapîpiànimë',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'patrol' => 'Patruljer redigeringer',
+	'patrol-desc' => 'Forbedret patruljeringsgrensesnitt med arbeidsfordeling',
+	'patrol-endorse' => 'Godkjenn',
+	'patrol-revert' => 'Tilbakestill',
+	'patrol-revert-reason' => 'Årsak:',
+	'patrol-skip' => 'Hopp over',
+	'patrol-reverting' => 'Tilbakestiller: $1',
+	'patrol-nonefound' => 'Ingen redigeringer passende for patruljering kunne finnes.',
+	'patrol-endorsed-ok' => 'Redigeringen ble merket som patruljert.',
+	'patrol-endorsed-failed' => 'Redigeringen kunne ikke merkes som patruljert.',
+	'patrol-reverted-ok' => 'Redigeringen ble tilbakestilt.',
+	'patrol-reverted-failed' => 'Redigeringen kunne ikke tilbakestilles.',
+	'patrol-skipped-ok' => 'Ignorerer redigering.',
+	'patrol-reasons' => '* Enkel vandalisme
+* Nybegynnertest
+* Se diskusjonsside',
+	'patrol-another' => 'Vis en annen redigering, om tilgjenglig.',
+	'patrol-stopped' => 'Du har valgt å ikke patruljere en annen redigering. $1',
+	'patrol-resume' => 'Klikk her for å fortsette.',
+	'group-patroller' => 'Patruljører',
+	'group-patroller-member' => 'patruljør',
+	'grouppage-patroller' => '{{ns:project}}:Patruljør',
+	'right-patroller' => 'Patruljere sider',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -1572,35 +1601,6 @@ $messages['nn'] = array(
 	'group-patroller-member' => 'endringsvaktar',
 	'grouppage-patroller' => '{{ns:project}}:Endringsvaktar',
 	'right-patroller' => 'Patruljera sider',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'patrol' => 'Patruljer redigeringer',
-	'patrol-desc' => 'Forbedret patruljeringsgrensesnitt med arbeidsfordeling',
-	'patrol-endorse' => 'Godkjenn',
-	'patrol-revert' => 'Tilbakestill',
-	'patrol-revert-reason' => 'Årsak:',
-	'patrol-skip' => 'Hopp over',
-	'patrol-reverting' => 'Tilbakestiller: $1',
-	'patrol-nonefound' => 'Ingen redigeringer passende for patruljering kunne finnes.',
-	'patrol-endorsed-ok' => 'Redigeringen ble merket som patruljert.',
-	'patrol-endorsed-failed' => 'Redigeringen kunne ikke merkes som patruljert.',
-	'patrol-reverted-ok' => 'Redigeringen ble tilbakestilt.',
-	'patrol-reverted-failed' => 'Redigeringen kunne ikke tilbakestilles.',
-	'patrol-skipped-ok' => 'Ignorerer redigering.',
-	'patrol-reasons' => '* Enkel vandalisme
-* Nybegynnertest
-* Se diskusjonsside',
-	'patrol-another' => 'Vis en annen redigering, om tilgjenglig.',
-	'patrol-stopped' => 'Du har valgt å ikke patruljere en annen redigering. $1',
-	'patrol-resume' => 'Klikk her for å fortsette.',
-	'group-patroller' => 'Patruljører',
-	'group-patroller-member' => 'patruljør',
-	'grouppage-patroller' => '{{ns:project}}:Patruljør',
-	'right-patroller' => 'Patruljere sider',
 );
 
 /** Novial (Novial)
@@ -1715,7 +1715,7 @@ $messages['pms'] = array(
 	'patrol-stopped' => "A l'ha sërnù dë nen patojé n'àotra modìfica. $1",
 	'patrol-resume' => "Ch'a bata ambelessì për andé anans da andova a l'era.",
 	'group-patroller' => 'Gent ëd patoja',
-	'group-patroller-member' => 'ëd patoja',
+	'group-patroller-member' => '{{GENDER:$1|ëd patoja}}',
 	'grouppage-patroller' => '{{ns:project}}:patoja',
 	'right-patroller' => 'Verìrica le pàgine',
 );
