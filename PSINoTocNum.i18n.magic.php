@@ -20,6 +20,11 @@ $magicWords['arz'] = array(
 	'MAG_NOTOCNUM' => array( 0, '__لا_أرقام_جدول__', '__NOTOCNUM__' ),
 );
 
+/** German (Deutsch) */
+$magicWords['de'] = array(
+	'MAG_NOTOCNUM' => array( 0, '__KEINEÜERSCHRIFTENNUMMERN__' ),
+);
+
 /** Esperanto (Esperanto) */
 $magicWords['eo'] = array(
 	'MAG_NOTOCNUM' => array( 0, '__NENOMBRUINDEKSON__', '__NNI__' ),
@@ -27,7 +32,7 @@ $magicWords['eo'] = array(
 
 /** Spanish (Español) */
 $magicWords['es'] = array(
-	'MAG_NOTOCNUM' => array( 0, '__NONUMTOC__', '__NONUMTDC__', '__NOTOCNUM__' ),
+	'MAG_NOTOCNUM' => array( 0, '__NONUMTOC__', '__NONUMTDC__' ),
 );
 
 /** Japanese (日本語) */
@@ -53,4 +58,9 @@ $magicWords['nl'] = array(
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'MAG_NOTOCNUM' => array( 0, '__БЕЗНАБРАЈАЊА__', 'БЕЗ_НАБРАЈАЊА' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'MAG_NOTOCNUM' => array( 0, '__BEZNABRAJANJA__', 'BEZ_NABRAJANJA' ),
 );
