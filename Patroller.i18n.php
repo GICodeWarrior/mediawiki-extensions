@@ -1577,7 +1577,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'patrol' => 'Patruljer redigeringer',
 	'patrol-desc' => 'Forbedret patruljeringsgrensesnitt med arbeidsfordeling',
 	'patrol-endorse' => 'Godkjenn',
