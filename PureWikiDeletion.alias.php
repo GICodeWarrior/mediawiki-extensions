@@ -56,7 +56,7 @@ $specialPageAliases['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['no'] = array(
+$specialPageAliases['nb'] = array(
 	'PureWikiDeletion' => array( 'Ren_wikisletting' ),
 	'RandomExcludeBlank' => array( 'Tilfeldig_ekskludert_tomme' ),
 );

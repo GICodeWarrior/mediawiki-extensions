@@ -679,7 +679,7 @@ Zie $2 voor een overzicht van recent leeggemaakte pagina's.",
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'purewikideletion' => 'Ren wikisletting',
 	'randomexcludeblank' => 'Tilfeldig side (ekskludert tomme)',
 	'purewikideletion-desc' => 'Gjør blant annet at lenker til tomme sider blir røde',
