@@ -526,7 +526,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'editsubpages-desc' => 'Lar administratorer låse opp en side og alle dens undersider for endringer av uregistrerte via [[MediaWiki:Unlockedpages]]',
 	'unlockedpages' => ' #<!-- la denne linja være som den er --><pre>
 # Skriv inn sider du vil låse opp nedenfor på formen
