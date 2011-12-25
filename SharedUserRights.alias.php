@@ -100,6 +100,11 @@ $specialPageAliases['mt'] = array(
 	'SharedUserRights' => array( 'DrittjietUtentiMaqsuma' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'SharedUserRights' => array( 'Delte_brukerrettigheter' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'SharedUserRights' => array( 'Edeelden_gebrukersrechten' ),
@@ -108,11 +113,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'SharedUserRights' => array( 'GedeeldeGebruikersrechten' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'SharedUserRights' => array( 'Delte_brukerrettigheter' ),
 );
 
 /** Slovak (Slovenčina) */
@@ -134,8 +134,3 @@ $specialPageAliases['tl'] = array(
 $specialPageAliases['tr'] = array(
 	'SharedUserRights' => array( 'PaylaşılanKullanıcıHakları' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
