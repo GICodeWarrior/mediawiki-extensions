@@ -374,6 +374,8 @@ $messages['et'] = array(
 	'contrib-tracking-continue' => 'Kui sind ei suunata automaatselt, klõpsa nuppu, et annetus lõpule viia.',
 	'contrib-tracking-redirect' => 'Sind suunatakse automaatselt, et annetus lõpule viia.',
 	'contrib-tracking-button' => 'Jätka',
+	'contrib-tracking-item-name-onetime' => 'Ühekordne annetus',
+	'contrib-tracking-item-name-recurring' => 'Korduv igakuine annetus',
 );
 
 /** Basque (Euskara)
@@ -404,6 +406,7 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nedergard
  * @author Nike
  * @author Olli
  * @author Tarmo
@@ -414,8 +417,8 @@ $messages['fi'] = array(
 	'contrib-tracking-error' => 'Virhe',
 	'contrib-tracking-error-text' => 'Lähetetty lomake oli viallinen',
 	'contrib-tracking-submitting' => 'Lähetetään maksujen käsittelyyn...',
-	'contrib-tracking-continue' => 'Jos sinua ei ohjata eteenpäin automaattisesti, viimeistele lahjoituksesi PayPalissa napsauttamalla.',
-	'contrib-tracking-redirect' => 'Sinut ohjataan automaattisesti PayPaliin lahjoituksen lähettämiseksi.',
+	'contrib-tracking-continue' => 'Jos sinua ei ohjata eteenpäin automaattisesti, viimeistele lahjoituksesi napsauttamalla painiketta.',
+	'contrib-tracking-redirect' => 'Sinut ohjataan automaattisesti lahjoituksen lähettämiseksi.',
 	'contrib-tracking-button' => 'Jatka',
 	'contrib-tracking-item-name-onetime' => 'Kertaluonteinen lahjoitus',
 	'contrib-tracking-item-name-recurring' => 'Jatkuva kuukausilahjoitus',
@@ -863,6 +866,24 @@ $messages['nah'] = array(
 	'contrib-tracking-error' => 'Ahcuallōtl',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Finnrind
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'contributiontracking-desc' => 'Bidragssporing for Wikimedias innsamling',
+	'contributiontracking' => 'Bidragssporing',
+	'contrib-tracking-error' => 'Feil',
+	'contrib-tracking-error-text' => 'Ugyldig skjema',
+	'contrib-tracking-submitting' => 'Sender til betalingshåndtering...',
+	'contrib-tracking-continue' => 'Om du ikke omdirigeres automatisk, klikk på knappen for å gjennomføre donasjonen hos PayPal.',
+	'contrib-tracking-redirect' => 'Du vil automatisk bli omdirigert til PayPal for å fullføre donasjonen din.',
+	'contrib-tracking-button' => 'Fortsett',
+	'contrib-tracking-item-name-onetime' => 'Engangsdonasjon',
+	'contrib-tracking-item-name-recurring' => 'Regelmessige månedlige donasjoner',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -906,24 +927,6 @@ $messages['nn'] = array(
 	'contrib-tracking-button' => 'Hald fram',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Finnrind
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'contributiontracking-desc' => 'Bidragssporing for Wikimedias innsamling',
-	'contributiontracking' => 'Bidragssporing',
-	'contrib-tracking-error' => 'Feil',
-	'contrib-tracking-error-text' => 'Ugyldig skjema',
-	'contrib-tracking-submitting' => 'Sender til betalingshåndtering...',
-	'contrib-tracking-continue' => 'Om du ikke omdirigeres automatisk, klikk på knappen for å gjennomføre donasjonen hos PayPal.',
-	'contrib-tracking-redirect' => 'Du vil automatisk bli omdirigert til PayPal for å fullføre donasjonen din.',
-	'contrib-tracking-button' => 'Fortsett',
-	'contrib-tracking-item-name-onetime' => 'Engangsdonasjon',
-	'contrib-tracking-item-name-recurring' => 'Regelmessige månedlige donasjoner',
-);
-
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -938,12 +941,14 @@ $messages['oc'] = array(
 );
 
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
  * @author Odisha1
  * @author Psubhashish
  */
 $messages['or'] = array(
 	'contrib-tracking-error' => 'ଭୁଲ',
 	'contrib-tracking-button' => 'ଚାଲୁରଖ',
+	'contrib-tracking-item-name-onetime' => 'ଥର-ଟିଏ ଦାନ',
 );
 
 /** Deitsch (Deitsch)
@@ -1316,7 +1321,7 @@ $messages['vec'] = array(
 	'contrib-tracking-button' => 'Và vanti',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
@@ -1325,8 +1330,11 @@ $messages['vep'] = array(
 	'contrib-tracking-error' => 'Petuz',
 	'contrib-tracking-error-text' => 'Forman vär alištuz',
 	'contrib-tracking-submitting' => 'Oigendamine maksuiden processorale...',
-	'contrib-tracking-continue' => 'Ku teid ei udesoigendanuded avtomatižešti, paindat kingiteshe, miše lahjoita rahoid PayPal-saital.',
+	'contrib-tracking-continue' => 'Ku teid ei udesoigendanuded avtomatižešti, paindat kingiteshe, miše tehta lahjočend.',
+	'contrib-tracking-redirect' => 'Teid kaimdas avtomatižešti, miše tö voižit tehta tond',
 	'contrib-tracking-button' => 'Jatkta',
+	'contrib-tracking-item-name-onetime' => 'Kerdaline tond',
+	'contrib-tracking-item-name-recurring' => 'Kuine tond',
 );
 
 /** Vietnamese (Tiếng Việt)
