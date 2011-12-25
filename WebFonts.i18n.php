@@ -438,7 +438,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Bygg inn fonter i sider',
 	'webfonts-load' => 'Velg font',
