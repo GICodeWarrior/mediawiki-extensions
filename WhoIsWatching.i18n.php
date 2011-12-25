@@ -608,7 +608,7 @@ Ver venleg og bruk sida [[MediaWiki:Number_of_watching_users_pageview]] for å l
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'whoiswatching' => 'Hvem overvåker en wikiside',
 	'whoiswatching-desc' => 'Viser en liste over brukere som overvåker en side',
 	'specialwhoiswatchingthepage' => 'Hvem overvåker %s',
