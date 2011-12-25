@@ -524,6 +524,18 @@ $messages['nah'] = array(
 	'prefs-category' => 'Tlaìxmatkàtlàlilòtl',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'categorymultisort-desc' => 'Tillater kategorier å bli vist med forskjellige sorteringsnøkler',
+	'categorymultisort-defaultsortkey-name' => 'Standard',
+	'categorymultisort-sortkey' => 'Sorteringsnøkkel:',
+	'categorymultisort-go' => 'Gå',
+	'categorymultisort-default-sortkey' => 'Standard sorteringsnøkkel:',
+	'prefs-category' => 'Kategori',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -541,18 +553,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Standard',
-	'prefs-category' => 'Kategori',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'categorymultisort-desc' => 'Tillater kategorier å bli vist med forskjellige sorteringsnøkler',
-	'categorymultisort-defaultsortkey-name' => 'Standard',
-	'categorymultisort-sortkey' => 'Sorteringsnøkkel:',
-	'categorymultisort-go' => 'Gå',
-	'categorymultisort-default-sortkey' => 'Standard sorteringsnøkkel:',
 	'prefs-category' => 'Kategori',
 );
 
