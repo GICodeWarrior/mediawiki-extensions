@@ -309,7 +309,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'randomrootpage' => 'Tilfeldig rotside',
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Spesialside]] som henter en tilfeldig rotside',
 );
