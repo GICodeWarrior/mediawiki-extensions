@@ -58,6 +58,11 @@ $specialPageAliases['fi'] = array(
 	'DeleteQueue' => array( 'Poistojono' ),
 );
 
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'DeleteQueue' => array( 'Borrar_unha_fila' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'DeleteQueue' => array( 'Lisćina_wušmórnjenjow' ),
@@ -123,6 +128,11 @@ $specialPageAliases['myv'] = array(
 	'DeleteQueue' => array( 'НардамсПуло' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'DeleteQueue' => array( 'Slettingskø' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'DeleteQueue' => array( 'Vortdowachtrie' ),
@@ -131,11 +141,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'DeleteQueue' => array( 'Verwijderingswachtrij', 'Verwijderverzoeken' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'DeleteQueue' => array( 'Slettingskø' ),
 );
 
 /** Polish (Polski) */
@@ -148,7 +153,7 @@ $specialPageAliases['pt'] = array(
 	'DeleteQueue' => array( 'Apagar_fila' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'DeleteQueue' => array( 'अनुपङ्क्तिपरित्याग' ),
 );
@@ -182,8 +187,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'DeleteQueue' => array( '刪除隊列' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
