@@ -56,7 +56,7 @@ class SpecialTranslateSvg extends SpecialPage {
 						$this->printTranslations( $file->getName() );
 					}
 				} else {
-					$this->getOutput()->addHTML( Html::element( 'p', null, wfMessage( 'translatesvg-unsuccessful' )->parse() ) );
+					$this->getOutput()->addWikiMsg( 'translatesvg-unsuccessful' );
 				}
 			} else {
 				$this->getOutput()->setStatusCode( 404 );
@@ -99,53 +99,51 @@ class SpecialTranslateSvg extends SpecialPage {
 				$switch = $this->svg->createElement( 'switch' );
 				$text->parentNode->insertBefore( $switch, $text );
 				$switch->appendChild( $text ); //Move node into sibling <switch> element
-			} else {
-				if( $text->parentNode->nodeName !== "switch" ){
-					return false; //Deep heirarchies cause us problems later
-				}
+			} else if( $text->parentNode->nodeName !== "switch" ){
+				return false; //Deep heirarchies cause us problems later
 			}
 			if( $text->childNodes->length > 1 ){
 				return false; //Complex use of <tspan>s not yet supported.
 			}
 			if( $text->childNodes->length === 1 && $text->childNodes->item( 0 )->nodeType !== 3 ){
 				$child = $text->childNodes->item( 0 );
-				if( $child->nodeName === 'tspan'
-					&& $child->childNodes->length === 1
-					&& $child->childNodes->item( 0 )->nodeType === 3
-					&& $this->svg->getElementsByTagName( 'style' )->length === 0 )
+				if( !$child->nodeName === 'tspan'
+					|| !$child->childNodes->length === 1
+					|| !$child->childNodes->item( 0 )->nodeType === 3
+					|| !$this->svg->getElementsByTagName( 'style' )->length === 0 )
 				{
-					//Repair by trimming excess <tspan>s
-					$attrs = ( $child->hasAttributes() ) ? $child->attributes : array();
-					foreach ($attrs as $num => $attr){
-						$parentattr = trim( $text->getAttribute( $attr->name ) );
-						if( trim( $parentattr ) === '' ){
-							$text->setAttribute( $attr->name, $attr->value ); //Simple upmerge
-						} else {
-							//Resolve conflict. the aim is to preserve the visuals.
-							switch( $attr->name ){
-								case 'x':
-								case 'y':
-									$text->setAttribute( $attr->name, $attr->value ); //Overwrite
-									break;
-								case 'style':
-									$merged = $parentattr;
-									if( substr( $merged, -1 ) !== ';' ){
-										$merged .= ';';
-									}
-									$merged .= $attr->value;
-									break;
-								case 'id':
-									break; //Ignore
-								default:
-									return false;
-							}
-						}
-					}
-					$text->appendChild( $child->childNodes->item( 0 ) );
-					$text->removeChild( $child );
-				} else {
 					return false;
 				}
+				//Repair by trimming excess <tspan>s
+				$attrs = ( $child->hasAttributes() ) ? $child->attributes : array();
+				foreach ($attrs as $attr){
+					$parentattr = trim( $text->getAttribute( $attr->name ) );
+					if( trim( $parentattr ) === '' ){
+						$text->setAttribute( $attr->name, $attr->value ); //Simple upmerge
+					} else {
+						//Resolve conflict. the aim is to preserve the visuals.
+						switch( $attr->name ){
+							case 'x':
+							case 'y':
+								$text->setAttribute( $attr->name, $attr->value ); //Overwrite
+								break;
+							case 'style':
+								$merged = $parentattr;
+								if( substr( $merged, -1 ) !== ';' ){
+									$merged .= ';';
+								}
+								$merged .= $attr->value;
+								$text->setAttribute( $attr->name, $merged );								
+								break;
+							case 'id':
+								break; //Ignore
+							default:
+								return false;
+						}
+					}
+				}
+				$text->appendChild( $child->childNodes->item( 0 ) );
+				$text->removeChild( $child );
 			}
 		}
 		return true;
@@ -212,8 +210,8 @@ class SpecialTranslateSvg extends SpecialPage {
 			$html .= Html::openElement( 'fieldset', array( 'id' => "mw-translatesvg-fieldset-$language" ) ) .
 					Html::element( 'legend', null, $languages[$language] ) . 
 					Html::openElement( 'div', array( 'class' => 'mw-collapsible mw-collapsed',
-													'data-collapsetext' => wfMsg( 'translatesvg-toggle-hide' ),
-													'data-expandtext' => wfMsg( 'translatesvg-toggle-view' ) ) );
+						'data-collapsetext' => wfMsg( 'translatesvg-toggle-hide' ),
+						'data-expandtext' => wfMsg( 'translatesvg-toggle-view' ) ) );
 			$groups = array();
 			for( $i = 0; $i < $this->number; $i++ ){
 				$fallback = $this->getFallback( $i );
