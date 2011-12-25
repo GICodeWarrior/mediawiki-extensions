@@ -443,7 +443,7 @@ $messages['nn'] = array(
  * @author EivindJ
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'antibot-desc' => 'Enkel struktur for kontroll av spamroboter',
 );
 
