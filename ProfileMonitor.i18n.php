@@ -744,7 +744,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'profiling' => 'Profileringsdata',
 	'profiling-desc' => '[[Special:Profiling|Spesialside]] for søk og inspeksjon av profileringsdata',
 	'profiling-process' => 'Prosesseringsstreng:',
