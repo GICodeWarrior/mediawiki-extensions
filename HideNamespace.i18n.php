@@ -211,7 +211,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'hidens-desc' => 'Skjuler navnerom i overskriften og tittelen når en side er i et spesifisert navnerom eller når tolkefunksjonen <code><nowiki>{{#hidens:}}</nowiki></code> kalles',
 );
 
