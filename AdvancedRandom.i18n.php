@@ -481,6 +481,16 @@ $messages['nah'] = array(
 	'advancedrandom' => 'Huehca ōmpa zāzotlamantli',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author EivindJ
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'advancedrandom' => 'Avansert tilfeldig side',
+	'advancedrandom-desc' => 'Finn en tilfeldig side der det på selve siden eller diskusjonssiden blir lenket til en angitt side, kan for eksempel brukes med [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] for å få en tilfeldig utmerket artikkel, eller som [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] for å få en tilfeldig GFDL-fil.',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -523,16 +533,6 @@ Kan gebruikt worden als [[{{#special:advancedrandom}}/{{ns:template}}:Uitgelicht
 $messages['nn'] = array(
 	'advancedrandom' => 'Avansert tilfeldig side',
 	'advancedrandom-desc' => 'Finn ei tilfeldig side der det på sjølve sida eller diskusjonssida vert lenka til ei oppgjeve side, kan brukast til dømes med [[{{#special:advancedrandom}}/{{ns:template}}:Utvald side/{{ns:talk}}]] for å få ei tilfeldig utvald side eller med [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] for å få ei tilfeldig GFDL-fil.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author EivindJ
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'advancedrandom' => 'Avansert tilfeldig side',
-	'advancedrandom-desc' => 'Finn en tilfeldig side der det på selve siden eller diskusjonssiden blir lenket til en angitt side, kan for eksempel brukes med [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] for å få en tilfeldig utmerket artikkel, eller som [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] for å få en tilfeldig GFDL-fil.',
 );
 
 /** Occitan (Occitan)
@@ -654,11 +654,12 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'advancedrandom' => 'Napredno biranje slučajnog članka',
-	'advancedrandom-desc' => 'Izabire slučajnu stranu iz bilo kog imenskog prostora, iz sadržaja ili razgovora o njemu, na koju linkuje.
-Može da se koristi kao [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] da bi se dobila strana koja uključuje navedeni šablon, ili slično [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], itd.',
+	'advancedrandom-desc' => 'Izabire slučajnu stranicu iz bilo kog imenskog prostora, iz sadržaja ili razgovora o njemu, na koju linkuje.
+Može da se koristi kao [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] da bi se dobila stranica koja uključuje navedeni šablon, ili slično [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], itd.',
 );
 
 /** Seeltersk (Seeltersk)
