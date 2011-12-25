@@ -846,7 +846,9 @@ $messages['lb'] = array(
 $messages['lt'] = array(
 	'chemicalsources' => 'Cheminiai šaltiniai',
 	'chemFunctions_ListPage' => 'Cheminiai šaltiniai',
+	'chemFunctions_CAS' => 'CAS numeris',
 	'chemFunctions_Formula' => 'Formulė',
+	'chemFunctions_Name' => 'IUPAC Pavadinimas',
 );
 
 /** Malagasy (Malagasy)
@@ -936,6 +938,26 @@ $messages['nah'] = array(
 	'chemFunctions_ListPage' => 'Payelizyōtl tlahtōlcaquiliztilōni',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'chemicalsources' => 'Kjemiske kilder',
+	'chemicalsource-desc' => 'Legger til elementet <nowiki><chemform></nowiki> for kjemiske formler',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Spesialside]] for kjemiske kilder',
+	'chemFunctions_ListPage' => 'Kjemiske kilder',
+	'chemFunctions_DataList' => 'Nedenunder er en liste over lenker til nettsted som kan gi nyttig informasjon om den kjemikaliet du leter etter.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula ved NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS ved Oxford University (UK) (ikke søkbar)</a><br />',
+	'chemFunctions_CAS' => 'CAS-nummer',
+	'chemFunctions_ATCCode' => 'ATC-kode',
+	'chemFunctions_ECNumber' => 'EC-nummer',
+	'chemFunctions_Formula' => 'Formel',
+	'chemFunctions_Name' => 'IUPAC-navn',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Inndatafeil!',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -983,26 +1005,6 @@ $messages['nn'] = array(
 	'chemFunctions_Formula' => 'Formel',
 	'chemFunctions_Name' => 'IUPAC-namn',
 	'chemFunctions_ChemFormInputError' => 'Chemform: inntekst-feil!',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'chemicalsources' => 'Kjemiske kilder',
-	'chemicalsource-desc' => 'Legger til elementet <nowiki><chemform></nowiki> for kjemiske formler',
-	'chemicalsources-desc' => '[[Special:ChemicalSources|Spesialside]] for kjemiske kilder',
-	'chemFunctions_ListPage' => 'Kjemiske kilder',
-	'chemFunctions_DataList' => 'Nedenunder er en liste over lenker til nettsted som kan gi nyttig informasjon om den kjemikaliet du leter etter.<br /><br />
-* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula ved NIST</a><br />
-* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS ved Oxford University (UK) (ikke søkbar)</a><br />',
-	'chemFunctions_CAS' => 'CAS-nummer',
-	'chemFunctions_ATCCode' => 'ATC-kode',
-	'chemFunctions_ECNumber' => 'EC-nummer',
-	'chemFunctions_Formula' => 'Formel',
-	'chemFunctions_Name' => 'IUPAC-navn',
-	'chemFunctions_ChemFormInputError' => 'Chemform: Inndatafeil!',
 );
 
 /** Occitan (Occitan)
@@ -1276,10 +1278,11 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'chemicalsources' => 'Hemijski izvori',
-	'chemicalsource-desc' => 'Dodaje tag <nowiki><chemform></nowiki>, za hemijske formule',
+	'chemicalsource-desc' => 'Dodaje oznaku <nowiki><chemform></nowiki> za hemijske formule',
 	'chemFunctions_ListPage' => 'Hemijski izvori',
 	'chemFunctions_DataList' => 'Ovde se nalazi spisak veza ka sajtovima koji prožaju informacije o hemojskom jedinjenju koju tražite.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Jedinjenje $MIXCASNameFormula na NIST</a><br />
