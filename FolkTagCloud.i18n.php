@@ -161,7 +161,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'folktagcloud-desc' => 'Legger til en Semantic MediaWiki-egenskap for merking av sider med brukerdefinerte etiketter og en tolkemerkelapp for å vise dem i en merkelappsky',
 );
 
