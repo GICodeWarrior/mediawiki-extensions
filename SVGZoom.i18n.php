@@ -217,7 +217,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'svgzoom-desc' => 'Legger til panorerings- og zoomegenskaper i MediaWiki når SVG-filer vises',
 );
 
