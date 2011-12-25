@@ -250,7 +250,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'filepagemasking-desc' => 'Skriver om «.xxx» til «_xxx» i lenker til filbeskrivelsessider',
 );
 
