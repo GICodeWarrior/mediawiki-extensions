@@ -315,7 +315,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'getfamily-desc' => 'Genererer en familiefil for pywikipediabot',
 	'getfamily' => 'Få pywikipediabot-familie',
 	'getfamily-interwikierror' => 'Feil: ikke riktig oppsatt interwiki, kontakt din lokale admin.',
