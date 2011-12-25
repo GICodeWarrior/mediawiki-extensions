@@ -290,7 +290,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'rdfio-desc' => 'Utvidet RDF Import/Eksport-funksjonalitet, inkludert SPARQL-endepunkt, for Semantic MediaWiki',
 	'rdfimport' => 'RDF Import',
 	'rdfio-arc2admin-desc' => 'Administrasjonsside for ARC2 RDF Store for Semantic MediaWiki',
