@@ -452,6 +452,17 @@ $messages['ms'] = array(
 	'externalpages-no-page' => 'Laman tidak dinyatakan',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'externalpages' => 'Eksterne sider',
+	'externalpages-desc' => 'Henter og viser sider fra andre WMF-steder',
+	'externalpages-bad-page' => 'Ugyldig side spesifisert',
+	'externalpages-no-page' => 'Ingen side spesifisert',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -467,17 +478,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'externalpages' => 'Eksterne sider',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Laaknor
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'externalpages' => 'Eksterne sider',
-	'externalpages-desc' => 'Henter og viser sider fra andre WMF-steder',
-	'externalpages-bad-page' => 'Ugyldig side spesifisert',
-	'externalpages-no-page' => 'Ingen side spesifisert',
 );
 
 /** Occitan (Occitan)
