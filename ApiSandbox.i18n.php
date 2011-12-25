@@ -735,7 +735,7 @@ Zie de [//www.mediawiki.org/wiki/API API-documentatie] voor verdere details over
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'apisb-desc' => 'Tillater å feilsøke [//www.mediawiki.org/wiki/API MediaWiki API]-kall fra nettleseren',
 	'apisandbox' => 'API-sandkasse',
 	'apisb-no-js' => "'''Feil''': denne funksjonen krever JavaScript.",
