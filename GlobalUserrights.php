@@ -25,7 +25,7 @@ $wgExtensionCredits['specialpage'][] = array(
 // Set up the new special page
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['GlobalUserrights'] = $dir . 'GlobalUserrights.i18n.php';
-$wgExtensionAliasesFiles['GlobalUserrights'] = $dir . 'GlobalUserrights.alias.php';
+$wgExtensionMessagesFiles['GlobalUserrightsAlias'] = $dir . 'GlobalUserrights.alias.php';
 $wgAutoloadClasses['GlobalUserrights'] = $dir . 'GlobalUserrights_body.php';
 $wgSpecialPages['GlobalUserrights'] = 'GlobalUserrights';
 $wgSpecialPageGroups['GlobalUserrights'] = 'users';
