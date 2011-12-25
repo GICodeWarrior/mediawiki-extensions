@@ -89,7 +89,7 @@ $dir = dirname( __FILE__ ) . '/';
 
 $wgExtensionMessagesFiles['WhiteListEdit'] = $dir . 'WhiteListEdit.i18n.php';
 $wgExtensionMessagesFiles['WhiteList']     = $dir . 'WhiteListEdit.i18n.php';
-$wgExtensionAliasesFiles['WhiteList']      = $dir . 'WhiteListEdit.alias.php';
+$wgExtensionMessagesFiles['WhiteListAlias']= $dir . 'WhiteListEdit.alias.php';
 $wgAutoloadClasses['WhiteListEdit']        = $dir . 'WhiteListEdit_body.php';
 $wgAutoloadClasses['WhiteList']            = $dir . 'WhiteListEdit_body.php';
 $wgAutoloadClasses['WhiteListExec']        = $dir . 'WhiteListAuth.php';
