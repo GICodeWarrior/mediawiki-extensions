@@ -219,7 +219,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'peoplecategories-desc' => 'Endrer vist sidenavn fra «Fornavn Etternavn» til «Etternavn, Fornavn» på spesifiserte kategorisider',
 );
 
