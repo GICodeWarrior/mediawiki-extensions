@@ -947,6 +947,39 @@ $messages['ms'] = array(
 	'index-submit' => 'Serahkan',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ * @author Simny
+ */
+$messages['nb'] = array(
+	'indexfunc-desc' => 'Parserfunksjone for å opprette automatiske omdirigeringer og pekersider',
+	'indexfunc-badtitle' => 'Ugyldig tittel: «$1»',
+	'indexfunc-editwarning' => 'Advarsel:
+Denne tittelen brukes i innholdsfortegnelsen for følgende {{PLURAL:$2|side|sider}}:
+$1
+Forsikre deg om at siden du forsøker å opprette ikke allerede eksisterer under en annen tittel.
+Dersom du oppretter denne siden, fjern denne tittelen fra <nowiki>{{#index:}}</nowiki> {{PLURAL:$2|siden|sidene}} over.',
+	'indexfunc-index-exists' => 'Siden «$1» finnes allerede',
+	'indexfunc-movewarn' => 'Advarsel:
+«$1» brukes i innholdsfortegnelsen for følgende {{PLURAL:$3|side|sider}}:
+$2
+Fjern «$1» fra <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|siden|sidene}} over.',
+	'index' => 'Registersøk',
+	'index-legend' => 'Søk i registeret',
+	'index-search' => 'Søk:',
+	'index-submit' => 'Send',
+	'index-disambig-start' => "'''$1''' kan referere til flere sider:",
+	'index-emptylist' => 'Det er ingen sider koblet til «$1»',
+	'index-expand-detail' => 'Vis sider registrert under denne tittelen',
+	'index-hide-detail' => 'Gjem listen over sider',
+	'index-no-results' => 'Søket ga ingen treff',
+	'index-search-explain' => 'Denne siden bruker registersøk.
+
+Skriv inn de første tegnene og trykk på send-knappen for å søke etter sidetitler og registerinnlegg som starter med søkestrengen',
+	'index-details-explain' => 'Innlegg med piler er registerinnlegg.
+Klikk på pilen for å vise alle sider registrert under den tittelen.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -983,39 +1016,6 @@ Klik op de pijl om alle onder die paginaam geïndexeerde pagina's weer te geven.
 $messages['nn'] = array(
 	'index-search' => 'Søk:',
 	'index-submit' => 'Send',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- * @author Simny
- */
-$messages['nb'] = array(
-	'indexfunc-desc' => 'Parserfunksjone for å opprette automatiske omdirigeringer og pekersider',
-	'indexfunc-badtitle' => 'Ugyldig tittel: «$1»',
-	'indexfunc-editwarning' => 'Advarsel:
-Denne tittelen brukes i innholdsfortegnelsen for følgende {{PLURAL:$2|side|sider}}:
-$1
-Forsikre deg om at siden du forsøker å opprette ikke allerede eksisterer under en annen tittel.
-Dersom du oppretter denne siden, fjern denne tittelen fra <nowiki>{{#index:}}</nowiki> {{PLURAL:$2|siden|sidene}} over.',
-	'indexfunc-index-exists' => 'Siden «$1» finnes allerede',
-	'indexfunc-movewarn' => 'Advarsel:
-«$1» brukes i innholdsfortegnelsen for følgende {{PLURAL:$3|side|sider}}:
-$2
-Fjern «$1» fra <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|siden|sidene}} over.',
-	'index' => 'Registersøk',
-	'index-legend' => 'Søk i registeret',
-	'index-search' => 'Søk:',
-	'index-submit' => 'Send',
-	'index-disambig-start' => "'''$1''' kan referere til flere sider:",
-	'index-emptylist' => 'Det er ingen sider koblet til «$1»',
-	'index-expand-detail' => 'Vis sider registrert under denne tittelen',
-	'index-hide-detail' => 'Gjem listen over sider',
-	'index-no-results' => 'Søket ga ingen treff',
-	'index-search-explain' => 'Denne siden bruker registersøk.
-
-Skriv inn de første tegnene og trykk på send-knappen for å søke etter sidetitler og registerinnlegg som starter med søkestrengen',
-	'index-details-explain' => 'Innlegg med piler er registerinnlegg.
-Klikk på pilen for å vise alle sider registrert under den tittelen.',
 );
 
 /** Occitan (Occitan)
