@@ -30,7 +30,7 @@ $dir = dirname(__FILE__) . '/';
  
 // Register the internalization and aliasing files
 $wgExtensionMessagesFiles['ExtensionManagement'] = $dir . 'ExtensionManagement.i18n.php';
-$wgExtensionAliasesFiles['ExtensionManagement'] = $dir . 'ExtensionManagement.alias.php';
+$wgExtensionMessagesFiles['ExtensionManagementAlias'] = $dir . 'ExtensionManagement.alias.php';
 
 // Load classes
 $wgAutoloadClasses['ExtensionManagement'] = $dir . 'ExtensionManagement.php';
