@@ -332,7 +332,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Simny
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'clientside-desc' => 'Ordner med funkjoner for å opprette koder i klientsideformat, for eksempel HTML, CSS og JavaScript',
 );
 
