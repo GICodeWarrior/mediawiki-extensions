@@ -42,7 +42,7 @@ $wgHooks['ArticleSaveComplete'][] = 'wfPlottersArticleSaveComplete';
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['Plotters'] = $dir . 'Plotters.i18n.php';
-$wgExtensionAliasesFiles['Plotters'] = $dir . 'Plotters.alias.php';
+$wgExtensionMessagesFiles['PlottersAlias'] = $dir . 'Plotters.alias.php';
 $wgAutoloadClasses['Plotters'] = $dir . 'PlottersClass.php';
 $wgAutoloadClasses['PlottersParser'] = $dir . 'PlottersParser.php';
 $wgAutoloadClasses['SpecialPlotters'] = $dir . 'SpecialPlotters.php';
