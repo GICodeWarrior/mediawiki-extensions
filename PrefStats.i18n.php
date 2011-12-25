@@ -2002,6 +2002,38 @@ $messages['nah'] = array(
 	'prefstats-factor-fourweeks' => 'nāhui chicuēyilhuitl',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ * @author Simny
+ * @author Stigmj
+ */
+$messages['nb'] = array(
+	'prefstats' => 'Statistikk over innstillinger',
+	'prefstats-desc' => 'Statistikk over tallet på brukere som har visse innstillinger',
+	'prefstats-title' => 'Statistikk over innstillinger',
+	'prefstats-list-intro' => 'For tiden blir følgende innstillinger sporet.
+Klikk på en for å se statistikk om den.',
+	'prefstats-noprefs' => 'Ingen preferanser blir sporet. Konfigurer $wgPrefStatsTrackPrefs for å spore preferanser',
+	'prefstats-counters' => '* {{PLURAL:$1|Én bruker|$1 brukere}} har aktivert denne innstillingen siden sporingen ble startet
+** {{PLURAL:$2|Én bruker|$2 brukere}} har den fortsatt aktivert
+** {{PLURAL:$3|Én bruker|$3 brukere}} har deaktivert den igjen',
+	'prefstats-counters-expensive' => '* {{PLURAL:$1|Én bruker|$1 brukere}} har aktivert denne innstillingen siden sporingen ble startet
+** {{PLURAL:$2|Én bruker|$2 brukere}} har den fortsatt aktivert
+** {{PLURAL:$3|Én bruker|$3 brukere}} har deaktivert den igjen
+* Sammenlagt har {{PLURAL:$4|én bruker|$4 brukere}} innstillingen aktivert',
+	'prefstats-xaxis' => 'Varighet (timer)',
+	'prefstats-factors' => 'Vis etter $1',
+	'prefstats-factor-hour' => 'time',
+	'prefstats-factor-sixhours' => 'seks timer',
+	'prefstats-factor-day' => 'dag',
+	'prefstats-factor-week' => 'uke',
+	'prefstats-factor-twoweeks' => 'to uker',
+	'prefstats-factor-fourweeks' => 'fire uker',
+	'prefstats-factor-default' => 'tilbake til standardskalering',
+	'prefstats-legend-out' => 'Valgt vekk',
+	'prefstats-legend-in' => 'Valgt',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -2081,38 +2113,6 @@ Endra oppsettet til $wgPrefStatsTrackPrefs for å spora innstillingar.',
 	'prefstats-factor-default' => 'tilbake til standardskalering',
 	'prefstats-legend-out' => 'Valde vekk',
 	'prefstats-legend-in' => 'Valde',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Laaknor
- * @author Simny
- * @author Stigmj
- */
-$messages['nb'] = array(
-	'prefstats' => 'Statistikk over innstillinger',
-	'prefstats-desc' => 'Statistikk over tallet på brukere som har visse innstillinger',
-	'prefstats-title' => 'Statistikk over innstillinger',
-	'prefstats-list-intro' => 'For tiden blir følgende innstillinger sporet.
-Klikk på en for å se statistikk om den.',
-	'prefstats-noprefs' => 'Ingen preferanser blir sporet. Konfigurer $wgPrefStatsTrackPrefs for å spore preferanser',
-	'prefstats-counters' => '* {{PLURAL:$1|Én bruker|$1 brukere}} har aktivert denne innstillingen siden sporingen ble startet
-** {{PLURAL:$2|Én bruker|$2 brukere}} har den fortsatt aktivert
-** {{PLURAL:$3|Én bruker|$3 brukere}} har deaktivert den igjen',
-	'prefstats-counters-expensive' => '* {{PLURAL:$1|Én bruker|$1 brukere}} har aktivert denne innstillingen siden sporingen ble startet
-** {{PLURAL:$2|Én bruker|$2 brukere}} har den fortsatt aktivert
-** {{PLURAL:$3|Én bruker|$3 brukere}} har deaktivert den igjen
-* Sammenlagt har {{PLURAL:$4|én bruker|$4 brukere}} innstillingen aktivert',
-	'prefstats-xaxis' => 'Varighet (timer)',
-	'prefstats-factors' => 'Vis etter $1',
-	'prefstats-factor-hour' => 'time',
-	'prefstats-factor-sixhours' => 'seks timer',
-	'prefstats-factor-day' => 'dag',
-	'prefstats-factor-week' => 'uke',
-	'prefstats-factor-twoweeks' => 'to uker',
-	'prefstats-factor-fourweeks' => 'fire uker',
-	'prefstats-factor-default' => 'tilbake til standardskalering',
-	'prefstats-legend-out' => 'Valgt vekk',
-	'prefstats-legend-in' => 'Valgt',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
