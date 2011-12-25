@@ -2334,7 +2334,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'pollresults' => 'Resultater fra spørreundersøkelsen på denne siden',
 	'qp_desc' => 'Tillater opprettelse av spørreundersøkelser',
 	'qp_desc-sp' => '[[Special:PollResults|Spesialside]] for visning av resultater fra spørreundersøkelsene',
