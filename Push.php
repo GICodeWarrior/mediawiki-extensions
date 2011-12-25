@@ -43,7 +43,7 @@ $egPushIP = dirname( __FILE__ );
 unset( $useExtensionPath );
 
 $wgExtensionMessagesFiles['Push'] 			= $egPushIP . '/Push.i18n.php';
-$wgExtensionAliasesFiles['Push'] 			= $egPushIP . '/Push.alias.php';
+$wgExtensionMessagesFiles['PushAlias'] 			= $egPushIP . '/Push.alias.php';
 
 $wgAutoloadClasses['PushHooks'] 			= $egPushIP . '/Push.hooks.php';
 $wgAutoloadClasses['ApiPush'] 				= $egPushIP . '/api/ApiPush.php';
