@@ -32,7 +32,7 @@ $wgGroupPermissions['bureaucrat']['refreshspecial'] = true;
 // Set up the new special page
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['RefreshSpecial'] = $dir . 'RefreshSpecial.i18n.php';
-$wgExtensionAliasesFiles['RefreshSpecial'] = $dir . 'RefreshSpecial.alias.php';
+$wgExtensionMessagesFiles['RefreshSpecialAlias'] = $dir . 'RefreshSpecial.alias.php';
 $wgAutoloadClasses['RefreshSpecial'] = $dir. 'RefreshSpecial.body.php';
 $wgSpecialPages['RefreshSpecial'] = 'RefreshSpecial';
 $wgSpecialPageGroups['RefreshSpecial'] = 'wiki';
