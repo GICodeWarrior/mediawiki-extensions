@@ -29,7 +29,7 @@ if( isset( $_SERVER['SERVER_ADDR'] ) ) $wgEmailPageAllowRemoteAddr[] = $_SERVER[
 $dir = dirname( __FILE__ );
 $wgAutoloadClasses['SpecialEmailPage'] = "$dir/EmailPage_body.php";
 $wgExtensionMessagesFiles['E-mailPage'] = "$dir/EmailPage.i18n.php";
-$wgExtensionAliasesFiles['E-mailPage']  = "$dir/EmailPage.alias.php";
+$wgExtensionMessagesFiles['E-mailPageAlias']  = "$dir/EmailPage.alias.php";
 $wgSpecialPages['E-mailPage']           = "SpecialEmailPage";
 
 $wgExtensionCredits['specialpage'][] = array(
