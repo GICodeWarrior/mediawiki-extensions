@@ -1641,6 +1641,35 @@ $messages['nah'] = array(
 	'changeauthor-pagenameform-go' => 'Yāuh',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author EivindJ
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'changeauthor' => 'Endre revisjonens opphavsperson',
+	'changeauthor-desc' => 'Gjør det mulig å endre opphavsperson for sideversjoner',
+	'changeauthor-title' => 'Endre en revisjons opphavsmann',
+	'changeauthor-search-box' => 'Søk i revisjoner',
+	'changeauthor-pagename-or-revid' => 'Sidenavn eller revisjons-ID:',
+	'changeauthor-pagenameform-go' => 'Gå',
+	'changeauthor-comment' => 'Kommentar:',
+	'changeauthor-changeauthors-multi' => 'Endre {{PLURAL:$1|forfatter|forfattere}}',
+	'changeauthor-explanation-multi' => 'Med dette skjemaet kan du endre hvem som angis som opphavspersoner til revisjoner. Bare endre ett eller flere av brukernavnene i listen nedenfor, legg til en (valgfri) kommentar, og klikk knappen «Endre opphavsperson(er)».',
+	'changeauthor-changeauthors-single' => 'Endre opphavsperson',
+	'changeauthor-explanation-single' => 'Med dette skjemaet kan du endre på hvem som angis som opphavspersonen til en revisjon. Bare endre brukernavnet nedenfor, legg til en (valgfri) kommentar, og klikk knappen «Endre opphavsperson».',
+	'changeauthor-invalid-username' => 'Ugyldig brukernavn «$1».',
+	'changeauthor-nosuchuser' => 'Ingen bruker ved navnet «$1».',
+	'changeauthor-revview' => 'Revisjon #$1 av $2',
+	'changeauthor-nosuchtitle' => 'Det er ingen side ved navn «$1».',
+	'changeauthor-weirderror' => 'En merkelig feil oppsto. Vennligst prøv igjen. Om denne feilen vedvarer er det trolig noe galt med databasen.',
+	'changeauthor-invalidform' => 'Bruk skjemaet på [[Special:ChangeAuthor|spesialsiden]] i stedet for å bruke et egendefinert skjema.',
+	'changeauthor-success' => 'Forespørselen har blitt utført.',
+	'changeauthor-logentry' => 'Endret opphavsperson til $2 av $1 fra $3 til $4',
+	'changeauthor-logpagename' => 'Logg for opphavspersonsendringer',
+	'right-changeauthor' => 'Endre forfatteren av en versjon',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1711,35 +1740,6 @@ Om denne feilen held fram med å dukka opp, kan det vera noko gale med databasen
 	'changeauthor-logentry' => 'Endra forfattaren av $2 av $1 frå $3 til $4',
 	'changeauthor-logpagename' => 'Logg for endring av forfattar',
 	'right-changeauthor' => 'Endra forfattaren av ein versjon',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author EivindJ
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'changeauthor' => 'Endre revisjonens opphavsperson',
-	'changeauthor-desc' => 'Gjør det mulig å endre opphavsperson for sideversjoner',
-	'changeauthor-title' => 'Endre en revisjons opphavsmann',
-	'changeauthor-search-box' => 'Søk i revisjoner',
-	'changeauthor-pagename-or-revid' => 'Sidenavn eller revisjons-ID:',
-	'changeauthor-pagenameform-go' => 'Gå',
-	'changeauthor-comment' => 'Kommentar:',
-	'changeauthor-changeauthors-multi' => 'Endre {{PLURAL:$1|forfatter|forfattere}}',
-	'changeauthor-explanation-multi' => 'Med dette skjemaet kan du endre hvem som angis som opphavspersoner til revisjoner. Bare endre ett eller flere av brukernavnene i listen nedenfor, legg til en (valgfri) kommentar, og klikk knappen «Endre opphavsperson(er)».',
-	'changeauthor-changeauthors-single' => 'Endre opphavsperson',
-	'changeauthor-explanation-single' => 'Med dette skjemaet kan du endre på hvem som angis som opphavspersonen til en revisjon. Bare endre brukernavnet nedenfor, legg til en (valgfri) kommentar, og klikk knappen «Endre opphavsperson».',
-	'changeauthor-invalid-username' => 'Ugyldig brukernavn «$1».',
-	'changeauthor-nosuchuser' => 'Ingen bruker ved navnet «$1».',
-	'changeauthor-revview' => 'Revisjon #$1 av $2',
-	'changeauthor-nosuchtitle' => 'Det er ingen side ved navn «$1».',
-	'changeauthor-weirderror' => 'En merkelig feil oppsto. Vennligst prøv igjen. Om denne feilen vedvarer er det trolig noe galt med databasen.',
-	'changeauthor-invalidform' => 'Bruk skjemaet på [[Special:ChangeAuthor|spesialsiden]] i stedet for å bruke et egendefinert skjema.',
-	'changeauthor-success' => 'Forespørselen har blitt utført.',
-	'changeauthor-logentry' => 'Endret opphavsperson til $2 av $1 fra $3 til $4',
-	'changeauthor-logpagename' => 'Logg for opphavspersonsendringer',
-	'right-changeauthor' => 'Endre forfatteren av en versjon',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
