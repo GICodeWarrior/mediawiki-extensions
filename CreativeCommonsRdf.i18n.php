@@ -153,7 +153,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'creativecommonsrdf-desc' => 'CreativeCommons RDF-metadata',
 );
 
