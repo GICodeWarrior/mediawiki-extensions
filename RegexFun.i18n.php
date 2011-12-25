@@ -101,16 +101,6 @@ $messages['ms'] = array(
 	'regexfun-limit-exceed' => 'Had maksimum $1 kendalian ungkapan nalar "Regex Fun" tercapai.',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- * @author Tjcool007
- */
-$messages['nl'] = array(
-	'regexfun-desc' => "Voegt parserfuncties toe die mogelijk maken om reguliere expressies te gebruiken in wikipagina's",
-	'regexfun-invalid' => 'De reguliere expressie "$1" is ongeldig.',
-	'regexfun-limit-exceed' => 'Het maximale aantal af te handelen reguliere expressies is bereikt ($1).',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
@@ -118,5 +108,15 @@ $messages['nb'] = array(
 	'regexfun-desc' => 'Legg til parserfunksjoner som tillater bruk av regulæruttrykk på wikisider',
 	'regexfun-invalid' => 'Regulæruttrykket "$1" er ugyldig.',
 	'regexfun-limit-exceed' => 'Det maksimalt antallet på {{PLURAL:$1|$1 "Regex Fun"-regulæruttrykk|$1 "Regex Fun"-regulæruttrykk}} er nådd.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ * @author Tjcool007
+ */
+$messages['nl'] = array(
+	'regexfun-desc' => "Voegt parserfuncties toe die mogelijk maken om reguliere expressies te gebruiken in wikipagina's",
+	'regexfun-invalid' => 'De reguliere expressie "$1" is ongeldig.',
+	'regexfun-limit-exceed' => 'Het maximale aantal van {{PLURAL:$1|$1|$1}} af te handelen reguliere expressies is bereikt.',
 );
 
