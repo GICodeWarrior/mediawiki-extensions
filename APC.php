@@ -27,7 +27,7 @@ $wgAutoloadClasses['APCHostMode'] = $dir . 'APCHostMode.php';
 $wgAutoloadClasses['APCCacheMode'] = $dir . 'APCCacheMode.php';
 
 $wgExtensionMessagesFiles['APC'] = $dir . 'APC.i18n.php';
-$wgExtensionAliasesFiles['APC'] = $dir . 'APC.alias.php';
+$wgExtensionMessagesFiles['APCAlias'] = $dir . 'APC.alias.php';
 $wgSpecialPages['APC'] = 'SpecialAPC';
 $wgSpecialPageGroups['APC'] = 'wiki';
 
