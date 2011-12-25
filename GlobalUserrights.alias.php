@@ -55,7 +55,7 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'GlobalUserrights' => array( 'Drêts_ux_utilisators_globâls', 'DrêtsUxUtilisatorsGlobâls' ),
+	'GlobalUserrights' => array( 'Drêts_ux_usanciérs_globâls', 'DrêtsUxUsanciérsGlobâls' ),
 );
 
 /** Galician (Galego) */
@@ -143,6 +143,11 @@ $specialPageAliases['mr'] = array(
 	'GlobalUserrights' => array( 'वैश्विकसदस्यअधिकार' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'GlobalUserrights' => array( 'Globale_brukerrettigheter2' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'GlobalUserrights' => array( 'Globle_gebrukersrechten' ),
@@ -156,11 +161,6 @@ $specialPageAliases['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
 $specialPageAliases['nn'] = array(
 	'GlobalUserrights' => array( 'Brukarrettar_globalt' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'GlobalUserrights' => array( 'Globale_brukerrettigheter2' ),
 );
 
 /** Occitan (Occitan) */
@@ -183,7 +183,7 @@ $specialPageAliases['ro'] = array(
 	'GlobalUserrights' => array( 'Drepturiglobaleutilizator' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'GlobalUserrights' => array( 'वैश्विकयोजकाधिकार' ),
 );
@@ -222,8 +222,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'GlobalUserrights' => array( '全域用戶組權限' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
