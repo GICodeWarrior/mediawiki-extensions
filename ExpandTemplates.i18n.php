@@ -1534,7 +1534,7 @@ Dette gjer ho ved å kalla dei relevante parsersetega frå MediaWiki sjølv.',
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'expandtemplates' => 'Utvid maler',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Utvider maler, parserfunksjoner og variabler]] for å vise resultatråteksten og forhåndsvise siden slik den blir',
 	'expand_templates_intro' => 'Denne siden tar en tekst og utvider alle maler brukt i teksten. Den utvider også alle funksjoner som <nowiki>{{</nowiki>#if:…}}, og variabler som <nowiki>{{</nowiki>CURRENTDAY}}. <!--It does this by calling the relevant parser stage from MediaWiki itself.-->',

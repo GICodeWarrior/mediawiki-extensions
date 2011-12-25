@@ -219,7 +219,7 @@ $specialPageAliases['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['no'] = array(
+$specialPageAliases['nb'] = array(
 	'ExpandTemplates' => array( 'Utvid_maler' ),
 );
 
