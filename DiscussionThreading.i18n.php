@@ -533,6 +533,18 @@ $messages['myv'] = array(
 	'discussionthreading-threadnewsection' => 'од',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'discussionthreading-desc' => 'Legg til tråding på diskusjonssider',
+	'discussionthreading-replysection' => 'svar',
+	'discussionthreading-replysectionhint' => 'Svar på denne posten',
+	'discussionthreading-threadnewsection' => 'ny',
+	'discussionthreading-threadnewsectionhint' => 'Start en ny tråd',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -553,18 +565,6 @@ $messages['nn'] = array(
 	'discussionthreading-replysectionhint' => 'Svar på dette innlegget',
 	'discussionthreading-threadnewsection' => 'ny',
 	'discussionthreading-threadnewsectionhint' => 'Start ein ny tråd',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'discussionthreading-desc' => 'Legg til tråding på diskusjonssider',
-	'discussionthreading-replysection' => 'svar',
-	'discussionthreading-replysectionhint' => 'Svar på denne posten',
-	'discussionthreading-threadnewsection' => 'ny',
-	'discussionthreading-threadnewsectionhint' => 'Start en ny tråd',
 );
 
 /** Occitan (Occitan)
