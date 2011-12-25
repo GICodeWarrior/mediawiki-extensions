@@ -28,9 +28,19 @@ $specialPageAliases['bg'] = array(
 	'PrefStats' => array( 'Статистики_за_настройките' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'PrefStats' => array( 'Einstellungsstatistiken' ),
+);
+
 /** Estonian (Eesti) */
 $specialPageAliases['et'] = array(
 	'PrefStats' => array( 'Eelistuste_arvandmed' ),
+);
+
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'PrefStats' => array( 'Estatísticas_das_preferencias' ),
 );
 
 /** Hebrew (עברית) */
@@ -88,6 +98,11 @@ $specialPageAliases['ms'] = array(
 	'PrefStats' => array( 'Statistik_keutamaan' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'PrefStats' => array( 'Innstillingsstatistikk' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'PrefStats' => array( 'Veurkeurenstaotistieken' ),
@@ -98,14 +113,9 @@ $specialPageAliases['nl'] = array(
 	'PrefStats' => array( 'Voorkeurenstatistieken' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'PrefStats' => array( 'Innstillingsstatistikk' ),
-);
-
 /** Portuguese (Português) */
 $specialPageAliases['pt'] = array(
-	'PrefStats' => array( 'Estatísticas de preferências' ),
+	'PrefStats' => array( 'Estatísticas_de_preferências' ),
 );
 
 /** Slovak (Slovenčina) */
@@ -132,8 +142,3 @@ $specialPageAliases['yi'] = array(
 $specialPageAliases['yue'] = array(
 	'PrefStats' => array( '設定統計' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
