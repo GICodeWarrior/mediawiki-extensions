@@ -375,7 +375,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'dontswitchmeover-desc' => 'Preferanse for brukere for å spesifisere om de vil beholde utseende-innstillingen sin når standardutseende endres.',
 	'dontswitchmeover-pref' => 'Ikke bytt utseende mitt når standardutseende endres',
 );
