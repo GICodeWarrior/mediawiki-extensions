@@ -153,7 +153,7 @@ $wgAutoloadClasses['ApiArticleFeedback'] = $dir . 'api/ApiArticleFeedback.php';
 $wgAutoloadClasses['ArticleFeedbackHooks'] = $dir . 'ArticleFeedback.hooks.php';
 $wgAutoloadClasses['SpecialArticleFeedback'] = $dir . 'SpecialArticleFeedback.php';
 $wgExtensionMessagesFiles['ArticleFeedback'] = $dir . 'ArticleFeedback.i18n.php';
-$wgExtensionAliasesFiles['ArticleFeedback'] = $dir . 'ArticleFeedback.alias.php';
+$wgExtensionMessagesFiles['ArticleFeedbackAlias'] = $dir . 'ArticleFeedback.alias.php';
 
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleFeedbackHooks::loadExtensionSchemaUpdates';
