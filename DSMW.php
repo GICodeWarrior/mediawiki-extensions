@@ -51,7 +51,7 @@ $wgGroupPermissions['*']['upload'] = true;
 $wgAllowCopyUploads = true;
 
 $wgExtensionMessagesFiles['DSMW'] = dirname( __FILE__ ) . '/DSMW.i18n.php';
-$wgExtensionAliasesFiles['DSMW'] = dirname( __FILE__ ) . '/DSMW.alias.php';
+$wgExtensionMessagesFiles['DSMWAlias'] = dirname( __FILE__ ) . '/DSMW.alias.php';
 
 $wgAutoloadClasses['DSMWHooks'] = dirname( __FILE__ )  . '/DSMW.hooks.php';
 
