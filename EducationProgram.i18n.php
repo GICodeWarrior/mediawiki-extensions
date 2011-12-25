@@ -162,6 +162,7 @@ $messages['en'] = array(
 	'specialinstitution-summary-name' => 'Name',
 	'specialinstitution-summary-city' => 'City',
 	'specialinstitution-summary-country' => 'Country',
+	'ep-institution-nav-edit' => 'Edit this institution',
 
 	// Special:Course
 	'ep-course-title' => 'Course: $1',
@@ -171,6 +172,7 @@ $messages['en'] = array(
 	'specialcourse-summary-name' => 'Name',
 	'specialcourse-summary-org' => 'Institution',
 	'ep-course-description' => 'Description',
+	'ep-course-nav-edit' => 'Edit this course',
 
 	// Special:Term
 	'ep-term-title' => 'Term: $1',
@@ -184,6 +186,7 @@ $messages['en'] = array(
 	'specialterm-summary-end' => 'End',
 	'ep-term-description' => 'description',
 	'specialterm-summary-token' => 'Enrollment token',
+	'ep-term-nav-edit' => 'Edit this term',
 
 	// Navigation links
 	'ep-nav-orgs' => 'Institution list',

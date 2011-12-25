@@ -40,12 +40,12 @@ class SpecialTerm extends SpecialEPPage {
 		}
 		else {
 			$out->setPageTitle( wfMsgExt( 'ep-term-title', 'parsemag', $this->subPage ) );
-		
-			$this->displayNavigation();
 			
 			$term = EPTerm::selectRow( null, array( 'id' => $this->subPage ) );
 			
 			if ( $term === false ) {
+				$this->displayNavigation();
+				
 				if ( $this->getUser()->isAllowed( 'epadmin' ) || $this->getUser()->isAllowed( 'epmentor' ) ) {
 					$out->addWikiMsg( 'ep-term-create', $this->subPage );
 					EPTerm::displayAddNewRegion( $this->getContext(), array( 'id' => $this->subPage ) );
@@ -55,6 +55,14 @@ class SpecialTerm extends SpecialEPPage {
 				}
 			}
 			else {
+				$links = array();
+				
+				if ( $term->useCanManage( $this->getUser() ) ) {
+					$links[wfMsg( 'ep-term-nav-edit' )] = SpecialPage::getTitleFor( 'EditTerm', $this->subPage );
+				}
+				
+				$this->displayNavigation( $links );
+				
 				$this->displaySummary( $term );
 				
 				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-term-description' ) ) );

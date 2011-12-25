@@ -264,5 +264,30 @@ class EPCourse extends EPDBObject {
 			$context->getOutput()->addWikiMsg( 'ep-courses-noresults' );
 		}
 	}
+	
+	/**
+	 * Returns if the provided user can manage the course or not.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param User $user
+	 * 
+	 * @return boolean
+	 */
+	public function useCanManage( User $user ) {
+		if ( $user->isAllowed( 'epadmin' ) ) {
+			return true;
+		}
+		
+		if ( $user->isAllowed( 'epmentor' ) ) {
+			$mentor = EPMentor::selectRow( 'id', array( 'user_id' => $user->getId() ) );
+			
+			if ( $mentor !== false ) {
+				return $mentor->hasCourse( array( 'id' => $this->getId() ) );
+			}
+		}
+		
+		return false;
+	}
 
 }

@@ -41,11 +41,11 @@ class SpecialInstitution extends SpecialEPPage {
 		else {
 			$out->setPageTitle( wfMsgExt( 'ep-institution-title', 'parsemag', $this->subPage ) );
 			
-			$this->displayNavigation();
-			
 			$org = EPOrg::selectRow( null, array( 'name' => $this->subPage ) );
 			
 			if ( $org === false ) {
+				$this->displayNavigation();
+				
 				if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
 					$out->addWikiMsg( 'ep-institution-create', $this->subPage );
 					EPOrg::displayAddNewControl( $this->getContext(), array( 'name' => $this->subPage ) );
@@ -55,6 +55,14 @@ class SpecialInstitution extends SpecialEPPage {
 				}
 			}
 			else {
+				$links = array();
+				
+				if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
+					$links[wfMsg( 'ep-institution-nav-edit' )] = SpecialPage::getTitleFor( 'EditInstitution', $this->subPage );
+				}
+				
+				$this->displayNavigation( $links );
+				
 				$this->displaySummary( $org );
 				
 				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-institution-courses' ) ) );

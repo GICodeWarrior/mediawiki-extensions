@@ -41,11 +41,11 @@ class SpecialCourse extends SpecialEPPage {
 		else {
 			$out->setPageTitle( wfMsgExt( 'ep-course-title', 'parsemag', $this->subPage ) );
 		
-			$this->displayNavigation();
-			
 			$course = EPCourse::selectRow( null, array( 'name' => $this->subPage ) );
 			
 			if ( $course === false ) {
+				$this->displayNavigation();
+				
 				if ( $this->getUser()->isAllowed( 'epadmin' ) || $this->getUser()->isAllowed( 'epmentor' ) ) {
 					$out->addWikiMsg( 'ep-course-create', $this->subPage );
 					EPCourse::displayAddNewRegion( $this->getContext(), array( 'name' => $this->subPage ) );
@@ -55,6 +55,14 @@ class SpecialCourse extends SpecialEPPage {
 				}
 			}
 			else {
+				$links = array();
+				
+				if ( $course->useCanManage( $this->getUser() ) ) {
+					$links[wfMsg( 'ep-course-nav-edit' )] = SpecialPage::getTitleFor( 'EditCourse', $this->subPage );
+				}
+				
+				$this->displayNavigation( $links );
+				
 				$this->displaySummary( $course );
 				
 				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-course-description' ) ) );
