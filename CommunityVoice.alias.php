@@ -118,6 +118,11 @@ $specialPageAliases['myv'] = array(
 	'CommunityVoice' => array( 'ВейтьсэньВайгель' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'CommunityVoice' => array( 'Brukermedvirkning' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'CommunityVoice' => array( 'Gemeenschapsstemme' ),
@@ -126,11 +131,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'CommunityVoice' => array( 'Gemeenschapsstem' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'CommunityVoice' => array( 'Brukermedvirkning' ),
 );
 
 /** Polish (Polski) */
@@ -167,8 +167,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'CommunityVoice' => array( '社群聲音' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
