@@ -1349,7 +1349,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'wah-desc' => 'Aktiverer distribusjon av videoomkodingsjobber til klienter gjennom Firefogg',
 	'wah-user-desc' => 'Wiki@Home tillater samfunnsmedlemmer å donere bort ubrukt prosessortid for å hjelpe til med ressurskrevende oppgaver',
 	'wah-short-audio' => '$1-lydfil, $2',
