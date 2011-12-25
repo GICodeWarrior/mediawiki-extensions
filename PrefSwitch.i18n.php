@@ -5555,7 +5555,7 @@ For å hjelpa oss med å betra dei, fyll gjerne ut den valfrie undersøkinga und
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'prefswitch' => 'Preferansebryter for Brukervennlighetsinitiativet',
 	'prefswitch-desc' => 'Tillat brukere å bytte preferansesett',
 	'prefswitch-link-anon' => 'Nye funksjoner',
