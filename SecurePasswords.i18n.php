@@ -534,6 +534,22 @@ $messages['nah'] = array(
 	'securepasswords-word' => 'ahmo tlahtōl',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'securepasswords-desc' => 'Oppretter sikrere passordhasher og legger til en funksjon for sjekking av passordstyrke',
+	'securepasswords-valid' => 'Passordet ditt er ugyldig eller for kort.
+Det må: $1.',
+	'securepasswords-minlength' => 'være minst {{PLURAL:$1|ett tegn|$1 tegn}} langt',
+	'securepasswords-lowercase' => 'inneholde minst én liten bokstav',
+	'securepasswords-uppercase' => 'inneholde minst én stor bokstav',
+	'securepasswords-digit' => 'inneholde minst ett tall',
+	'securepasswords-special' => 'inneholde minst ett spesialtegn (spesialtegnene er: $1)',
+	'securepasswords-username' => 'være forskjellig fra brukernavnet ditt',
+	'securepasswords-word' => 'ikke være et ord',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -564,22 +580,6 @@ Det må: $1.',
 	'securepasswords-special' => 'innehalda minst eitt spesialteikn (spesialteikna er: $1)',
 	'securepasswords-username' => 'ikkje vera det same som brukarnamnet ditt',
 	'securepasswords-word' => 'ikkje vera eit ord',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'securepasswords-desc' => 'Oppretter sikrere passordhasher og legger til en funksjon for sjekking av passordstyrke',
-	'securepasswords-valid' => 'Passordet ditt er ugyldig eller for kort.
-Det må: $1.',
-	'securepasswords-minlength' => 'være minst {{PLURAL:$1|ett tegn|$1 tegn}} langt',
-	'securepasswords-lowercase' => 'inneholde minst én liten bokstav',
-	'securepasswords-uppercase' => 'inneholde minst én stor bokstav',
-	'securepasswords-digit' => 'inneholde minst ett tall',
-	'securepasswords-special' => 'inneholde minst ett spesialtegn (spesialtegnene er: $1)',
-	'securepasswords-username' => 'være forskjellig fra brukernavnet ditt',
-	'securepasswords-word' => 'ikke være et ord',
 );
 
 /** Occitan (Occitan)
@@ -739,14 +739,16 @@ $messages['sr-ec'] = array(
 	'securepasswords-word' => 'не може да буде реч',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'securepasswords-desc' => 'Stvara bezbednije disperzije lozinki i dodaje proveru snage lozinke',
 	'securepasswords-valid' => 'Vaša lozinka je neispravna ili prekratka.
 Ona mora: $1.',
 	'securepasswords-minlength' => 'biti dugačka najmanje $1 {{PLURAL:$1|znak|znakova}}.',
 	'securepasswords-lowercase' => 'sadrži najmanje jedno malo slovo',
-	'securepasswords-uppercase' => 'sadržati najmanje 1 veliko slovo',
+	'securepasswords-uppercase' => 'sadrži najmanje jedno veliko slovo',
 	'securepasswords-digit' => 'sadržati najmanje 1 cifru',
 	'securepasswords-special' => 'sadržati najmanje 1 specijalni znak (specijalni znaci su: $1)',
 	'securepasswords-username' => 'da se razlikuje od korisničkog imena',
