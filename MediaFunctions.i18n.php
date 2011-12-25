@@ -431,7 +431,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'mediafunctions-desc' => 'Parserfunksjoner for å hente informasjon om mediefiler',
 	'mediafunctions-invalid-title' => '«$1» er en ugyldig tittel',
 	'mediafunctions-not-exist' => '«$1» eksisterer ikke',
