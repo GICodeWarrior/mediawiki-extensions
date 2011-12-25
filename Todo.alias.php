@@ -22,6 +22,16 @@ $specialPageAliases['br'] = array(
 	'Todo' => array( 'DaOber' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'Todo' => array( 'Aufgabe' ),
+);
+
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'Todo' => array( 'برای_انجام' ),
+);
+
 /** French (Français) */
 $specialPageAliases['fr'] = array(
 	'Todo' => array( 'ÀFaire', 'À_faire' ),
@@ -35,6 +45,11 @@ $specialPageAliases['frp'] = array(
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
 	'Todo' => array( 'PouFè' ),
+);
+
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'Todo' => array( 'A_facer' ),
 );
 
 /** Macedonian (Македонски) */
@@ -61,8 +76,3 @@ $specialPageAliases['nl'] = array(
 $specialPageAliases['pl'] = array(
 	'Todo' => array( 'Do_zrobienia' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
