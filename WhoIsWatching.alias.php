@@ -156,6 +156,11 @@ $specialPageAliases['mr'] = array(
 	'WhoIsWatching' => array( 'कोणकोणबघतय' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'WhoIsWatching' => array( 'Hvem_overvåker' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'WhoIsWatching' => array( 'Wee_volgt' ),
@@ -164,11 +169,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'WhoIsWatching' => array( 'WieVolgt' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'WhoIsWatching' => array( 'Hvem_overvåker' ),
 );
 
 /** Polish (Polski) */
@@ -181,7 +181,7 @@ $specialPageAliases['ps'] = array(
 	'WhoIsWatching' => array( 'څوک يې ګوري' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'WhoIsWatching' => array( 'अन्यकतम्‌पश्यति' ),
 );
@@ -220,8 +220,3 @@ $specialPageAliases['tr'] = array(
 $specialPageAliases['yi'] = array(
 	'WhoIsWatching' => array( 'ווער_פאסט_אויף' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
