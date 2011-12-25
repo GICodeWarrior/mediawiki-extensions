@@ -19,4 +19,4 @@ $wgSpecialPages['UserDebugInfo'] = 'SpecialUserDebugInfo';
 $wgSpecialPageGroups['UserDebugInfo'] = 'other';
 
 $wgExtensionMessagesFiles['UserDebugInfo'] = $dir . 'UserDebugInfo.i18n.php';
-$wgExtensionAliasesFiles['UserDebugInfo'] = $dir . 'UserDebugInfo.alias.php';
+$wgExtensionMessagesFiles['UserDebugInfoAlias'] = $dir . 'UserDebugInfo.alias.php';
