@@ -2515,7 +2515,7 @@ Sett inn følgjande kode på ei side for å inkludere videoen på ei side på wi
  * @author Jon Harald Søby
  * @author Laaknor
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'youtubeauthsub' => 'Last opp YouTube-video',
 	'youtubeauthsub-desc' => 'Lar brukere [[Special:YouTubeAuthSub|laste opp videoer]] på YouTube',
 	'youtubeauthsub_info' => 'Fyll inn følgende informasjon for å laste opp en video på YouTube for å bruke den på en side:',
