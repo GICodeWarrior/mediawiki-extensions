@@ -114,7 +114,7 @@ $specialPageAliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$specialPageAliases['no'] = array(
+$specialPageAliases['nb'] = array(
 	'Contact' => array( 'Kontakt', 'Kontaktside' ),
 );
 
