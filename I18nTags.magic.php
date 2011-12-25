@@ -62,7 +62,7 @@ $magicWords['eo'] = array(
 
 /** Spanish (Español) */
 $magicWords['es'] = array(
-	'languagename' => array( 0, 'nombreidioma', 'nombredeidioma', 'languagename' ),
+	'languagename' => array( 0, 'nombreidioma', 'nombredeidioma' ),
 );
 
 /** Estonian (Eesti) */
@@ -77,7 +77,7 @@ $magicWords['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $magicWords['frp'] = array(
-	'languagename' => array( 0, 'nom_de_lengoua', 'nomlangue', 'languagename' ),
+	'languagename' => array( 0, 'nom_de_lengoua' ),
 );
 
 /** Italian (Italiano) */
@@ -120,6 +120,11 @@ $magicWords['mr'] = array(
 	'languagename' => array( 0, 'भाषानाव', 'languagename' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$magicWords['nb'] = array(
+	'languagename' => array( 0, 'språknavn' ),
+);
+
 /** Dutch (Nederlands) */
 $magicWords['nl'] = array(
 	'languagename' => array( 0, 'taalnaam' ),
@@ -128,11 +133,6 @@ $magicWords['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
 $magicWords['nn'] = array(
 	'languagename' => array( 0, 'språknamn', 'languagename' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$magicWords['nb'] = array(
-	'languagename' => array( 0, 'språknavn' ),
 );
 
 /** Polish (Polski) */
@@ -152,7 +152,7 @@ $magicWords['ro'] = array(
 
 /** Russian (Русский) */
 $magicWords['ru'] = array(
-	'languagename' => array( 0, 'названиеязыка' ),
+	'languagename' => array( 0, 'названиеязыка', 'название_языка' ),
 );
 
 /** Albanian (Shqip) */
@@ -163,6 +163,11 @@ $magicWords['sq'] = array(
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'languagename' => array( 0, 'имејезика', 'име_језика' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'languagename' => array( 0, 'imejezika', 'ime_jezika' ),
 );
 
 /** Swedish (Svenska) */
