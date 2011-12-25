@@ -60,7 +60,7 @@ $specialPageAliases['fr'] = array(
 
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
-	'EditUser' => array( 'Changiér_l\'utilisator', 'ChangiérLUtilisator' ),
+	'EditUser' => array( 'Changiér_l\'usanciér', 'ChangiérLUsanciér' ),
 );
 
 /** Galician (Galego) */
@@ -173,6 +173,11 @@ $specialPageAliases['myv'] = array(
 	'EditUser' => array( 'ВитницяПетниця' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'EditUser' => array( 'Rediger_bruker' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'EditUser' => array( 'Gebruker_bewarken' ),
@@ -181,11 +186,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'EditUser' => array( 'GebruikerBewerken' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'EditUser' => array( 'Rediger_bruker' ),
 );
 
 /** Occitan (Occitan) */
@@ -200,7 +200,7 @@ $specialPageAliases['pl'] = array(
 
 /** Portuguese (Português) */
 $specialPageAliases['pt'] = array(
-	'EditUser' => array( 'Editar utilizador' ),
+	'EditUser' => array( 'Editar_utilizador' ),
 );
 
 /** Romanian (Română) */
@@ -208,7 +208,7 @@ $specialPageAliases['ro'] = array(
 	'EditUser' => array( 'Modificare_utilizator' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'EditUser' => array( 'सम्पादन्‌योजक' ),
 );
@@ -262,8 +262,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'EditUser' => array( '編輯用戶' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
