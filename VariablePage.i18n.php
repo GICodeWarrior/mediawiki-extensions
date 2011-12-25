@@ -75,6 +75,13 @@ $messages['bg'] = array(
 	'variablepage-navlink_text' => 'Даряване',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'variablepage-navlink_text' => 'দান করুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Gwendal
  */
@@ -353,15 +360,6 @@ $messages['myv'] = array(
 	'variablepage-navlink_text' => 'Лезксйармаконь максома',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'variablepage' => 'Variabele pagina',
-	'variablepage-navlink_text' => 'Donaties',
-	'variablepage-desc' => "Lichtgewicht variabele doorverwijzing voor pagina's",
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -369,6 +367,15 @@ $messages['nb'] = array(
 	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => 'Doner',
 	'variablepage-desc' => 'Lettvektsomdirigeringer av variabelsider',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'variablepage' => 'Variabele pagina',
+	'variablepage-navlink_text' => 'Donaties',
+	'variablepage-desc' => "Lichtgewicht variabele doorverwijzing voor pagina's",
 );
 
 /** Polish (Polski)
