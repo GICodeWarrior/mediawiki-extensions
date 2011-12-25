@@ -301,7 +301,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'tspoll-desc' => 'Inkluder [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] som en HTML-tagg',
 	'tspoll-fetch-error' => 'Feil under henting av nettadressen!',
 	'tspoll-id-error' => 'Ingen ID er gitt!',
