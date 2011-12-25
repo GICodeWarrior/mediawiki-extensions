@@ -501,7 +501,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'pageby-desc' => 'Viser bidragsytere på innholdssider med taggen <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'Side opprettet av $1 $2',
 	'pageby-last' => 'Sist <a href="$3">endret</a> av $1 $2',
