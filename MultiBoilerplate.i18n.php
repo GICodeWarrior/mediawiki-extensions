@@ -505,7 +505,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'multiboilerplate-desc' => 'Viser en boks på toppen av redigeringssiden for å velge og laste en standardtekst',
 	'multiboilerplate-legend' => 'Velg standardtekst',
 	'multiboilerplate-submit' => 'Last',
