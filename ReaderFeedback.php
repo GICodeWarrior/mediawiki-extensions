@@ -84,7 +84,7 @@ $wgPHPlotDir = $dir . 'phplot-5.0.5';
 
 $wgAutoloadClasses['ReaderFeedback'] = $dir.'ReaderFeedback.class.php';
 $wgAutoloadClasses['ReaderFeedbackHooks'] = $dir.'ReaderFeedback.hooks.php';
-$wgExtensionAliasesFiles['ReaderFeedback'] = $langDir . 'ReaderFeedback.alias.php';
+$wgExtensionMessagesFiles['ReaderFeedbackAlias'] = $langDir . 'ReaderFeedback.alias.php';
 
 # Load reader feedback UI
 $wgExtensionMessagesFiles['ReaderFeedback'] = $langDir . 'ReaderFeedback.i18n.php';
