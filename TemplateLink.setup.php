@@ -38,7 +38,7 @@ $wgExtensionCredits['parserhook'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['TemplateLink'] = $dir . 'TemplateLink.i18n.php';
-$wgExtensionAliasesFiles['TemplateLink'] = $dir . 'TemplateLink.alias.php';
+$wgExtensionMessagesFiles['TemplateLinkAlias'] = $dir . 'TemplateLink.alias.php';
 $wgAutoloadClasses['TemplateLink'] = $dir . 'TemplateLink.body.php'; # Tell MediaWiki to load the extension body.
 $wgSpecialPages['TemplateLink'] = 'TemplateLink'; # Let MediaWiki know about your new special page.
 
