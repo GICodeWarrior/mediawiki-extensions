@@ -20,6 +20,11 @@ $specialPageAliases['ar'] = array(
 	'PackageForceAdmin' => array( 'إداري_قوة_الحزمة' ),
 );
 
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'PackageForceAdmin' => array( 'Administration_PackageForce' ),
+);
+
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
 	'PackageForce' => array( 'パッケージ強化' ),
@@ -47,8 +52,3 @@ $specialPageAliases['tr'] = array(
 	'PackageForce' => array( 'PaketGücü' ),
 	'PackageForceAdmin' => array( 'PaketGücüHizmetlisi', 'PaketGücüYöneticisi' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
