@@ -39,3 +39,8 @@ $magicWords['mk'] = array(
 $magicWords['nl'] = array(
 	'set_internal' => array( 0, 'intern_instellen' ),
 );
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'set_internal' => array( 0, 'postavi_unutrašnje' ),
+);
