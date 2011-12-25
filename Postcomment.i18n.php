@@ -737,7 +737,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'postcomment-desc' => 'Lar brukere poste kommentarer direkte til diskusjonssider.',
 	'postcomment_discussionprotected' => 'Denne diskusjonssiden har blitt beskyttet fra videre posting.',
 	'postcomment_notloggedin' => 'Du er ikke logget inn.',
