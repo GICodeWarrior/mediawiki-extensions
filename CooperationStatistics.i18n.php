@@ -653,7 +653,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'cooperationstatistics' => 'Samarbeidsstatistikk',
 	'cooperationstatistics-desc' => 'Vis [[Special:CooperationStatistics|samarbeidsstatistikk i hovednavnerommet]].',
 	'cooperationstatistics-text' => "Vis samarbeidsstatistikk i hovednavnerommet.
