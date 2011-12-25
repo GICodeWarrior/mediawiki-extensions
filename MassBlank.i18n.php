@@ -507,6 +507,14 @@ $messages['ms'] = array(
 	'massblank-blankcomment' => 'Sebab:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'massblank-nopages' => 'Ingen nye sider av [[Special:Contributions/$1|$1]] i siste endringer.',
+	'massblank-blankcomment' => 'Årsak:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -529,14 +537,6 @@ Voer de gebruikersnaam of het IP-adres in voor een lijst van leeg te maken pagin
  * @author Nghtwlkr
  */
 $messages['nn'] = array(
-	'massblank-blankcomment' => 'Årsak:',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'massblank-nopages' => 'Ingen nye sider av [[Special:Contributions/$1|$1]] i siste endringer.',
 	'massblank-blankcomment' => 'Årsak:',
 );
 
