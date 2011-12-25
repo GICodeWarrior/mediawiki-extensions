@@ -416,7 +416,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'donationform-desc' => 'Legger til taggen <code>&lt;donateform&gt;</code> for donasjoner via PayPal',
 	'donationform-submit' => 'Doner med PayPal',
 );
