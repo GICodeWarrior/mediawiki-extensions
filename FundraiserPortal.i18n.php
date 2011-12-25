@@ -867,7 +867,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Simny
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'fundraiserportal' => 'Doneringsportal',
 	'fundraiserportal-desc' => 'Legger til en "Vær så snill- Gi oss ditt bidrag"-portal på toppen av sideverktøylinja.',
 	'fundraiserportal-plain-button' => 'Støtt Wikipedia!',
