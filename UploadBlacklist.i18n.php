@@ -359,7 +359,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'uploadblacklist-desc' => 'Legg til en funksjon for å svarteliste enkelte opplastinger',
 );
 
