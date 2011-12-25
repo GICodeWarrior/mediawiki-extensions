@@ -810,7 +810,7 @@ Operatøren for sida kan ikkje ta ansvar for innhaldet i slike kommentarar.',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'talkhere-desc' => 'Legger til diskusjonssiden på innholdssiden',
 	'talkhere-foottext' => 'Kommentarene ovenfor ble lagt igjen av besøkende.
 
