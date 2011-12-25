@@ -898,7 +898,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'metadataedit-desc' => 'Legg kategorier, språklenker og tillatte maler i en egen tekstboks under redigering av sider',
 	'metadata_help' => 'Metadata:',
 );
