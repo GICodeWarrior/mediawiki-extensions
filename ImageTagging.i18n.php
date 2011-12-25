@@ -1595,7 +1595,7 @@ Vent til den førre handlinga er ferdig.',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'taggedimages' => 'Merkede bilder',
 	'imagetagging-desc' => 'Lar en bruker velge områder på et bilde og lenke dette området til en side',
 	'imagetagging-addimagetag' => 'Merk dette bildet',
