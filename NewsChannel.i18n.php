@@ -544,6 +544,19 @@ $messages['ms'] = array(
 	'newschannel_submit_button' => 'Cipta suapan',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'newschannel' => 'Nyhtskanal',
+	'newschannel-desc' => 'Implementerer en nyhetskanal som en dynamisk [[Special:NewsChannel|spesialside]]',
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Grense:',
+	'newschannel_include_category' => 'Ekstra kategori:',
+	'newschannel_exclude_category' => 'Ekskluder kategori:',
+	'newschannel_submit_button' => 'Opprett nyhetskilde',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -568,19 +581,6 @@ $messages['nn'] = array(
 	'newschannel_include_category' => 'Ekstra kategori:',
 	'newschannel_exclude_category' => 'Ekskluder kategori:',
 	'newschannel_submit_button' => 'Opprett nyhendekjelda',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'newschannel' => 'Nyhtskanal',
-	'newschannel-desc' => 'Implementerer en nyhetskanal som en dynamisk [[Special:NewsChannel|spesialside]]',
-	'newschannel_format' => 'Format:',
-	'newschannel_limit' => 'Grense:',
-	'newschannel_include_category' => 'Ekstra kategori:',
-	'newschannel_exclude_category' => 'Ekskluder kategori:',
-	'newschannel_submit_button' => 'Opprett nyhetskilde',
 );
 
 /** Occitan (Occitan)
@@ -796,14 +796,17 @@ $messages['uk'] = array(
 	'newschannel_submit_button' => 'Вивести',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
 	'newschannel' => 'Uzištusiden kanal',
+	'newschannel-desc' => "Sädab uzištusiden kanalan, kudamb nägub kuti [[Special:NewsChannel|specialine lehtpol']].",
 	'newschannel_format' => 'Uzištusiden format:',
 	'newschannel_limit' => 'Tantoižiden uzištusiden lugumär:',
 	'newschannel_include_category' => 'Ližakategorii:',
+	'newschannel_exclude_category' => 'Heitta poiš kategorii:',
+	'newschannel_submit_button' => 'Ozutada',
 );
 
 /** Vietnamese (Tiếng Việt)
