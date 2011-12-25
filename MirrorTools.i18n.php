@@ -266,6 +266,18 @@ $messages['mk'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Корисници на огледална алатка',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'mirrortools' => 'Speilverktøy',
+	'mirrortools-desc' => 'Lar redigeringer via API gjøres under ethvert brukernavn',
+	'right-mirroredit' => 'Rediger via API under ethvert brukernavn',
+	'group-MirrorTools' => 'Speilverktøybrukere',
+	'group-MirrorTools-member' => 'speilverktøybruker',
+	'grouppage-MirrorTools' => '{{ns:project}}:Speilverktøybrukere',
+);
+
 /** Dutch (Nederlands)
  * @author Kjell
  * @author SPQRobin
@@ -278,18 +290,6 @@ $messages['nl'] = array(
 	'group-MirrorTools' => 'Mirrortool-gebruikers',
 	'group-MirrorTools-member' => '{{GENDER:$1|Mirrortool-gebruiker}}',
 	'grouppage-MirrorTools' => '{{ns:project}}:Mirrortool-gebruikers',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'mirrortools' => 'Speilverktøy',
-	'mirrortools-desc' => 'Lar redigeringer via API gjøres under ethvert brukernavn',
-	'right-mirroredit' => 'Rediger via API under ethvert brukernavn',
-	'group-MirrorTools' => 'Speilverktøybrukere',
-	'group-MirrorTools-member' => 'speilverktøybruker',
-	'grouppage-MirrorTools' => '{{ns:project}}:Speilverktøybrukere',
 );
 
 /** Polish (Polski)
@@ -350,7 +350,7 @@ $messages['ru'] = array(
 	'mirrortools-desc' => 'Позволяет вносить изменения через API, под любым именем пользователя',
 	'right-mirroredit' => 'Править через API под любым именем пользователя',
 	'group-MirrorTools' => 'Пользователи инструмента зеркалирования',
-	'group-MirrorTools-member' => 'пользователь инструмента зеркалирования',
+	'group-MirrorTools-member' => '{{GENDER:$1|пользователь инструмента зеркалирования}}',
 	'grouppage-MirrorTools' => '{{ns:project}}: Пользователи инструмента зеркалирования',
 );
 
