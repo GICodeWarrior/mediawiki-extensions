@@ -37,7 +37,7 @@ $wgSpecialPages['AjaxTest'] = 'AjaxTestPage';
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['AjaxTest'] = $dir . 'AjaxTest.i18n.php';
-$wgExtensionAliasesFiles['AjaxTest'] = $dir . 'AjaxTest.alias.php';
+$wgExtensionMessagesFiles['AjaxTestAlias'] = $dir . 'AjaxTest.alias.php';
 $wgAutoloadClasses['AjaxTestPage'] = $dir . 'AjaxTestPage.php';
 
 /**
