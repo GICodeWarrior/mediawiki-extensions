@@ -272,6 +272,14 @@ $messages['ms'] = array(
 	'flv-long-desc' => 'Flash Video, $1 × $2 piksel, saiz fail: $3',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'flvhandler_desc' => 'Tillat Flash Video-filer (.flv) å bli lagt til som standardfiler (f.eks. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => 'Flash Video, $1 x $2 pixler, filstørrelse: $3',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -286,14 +294,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'flvhandler_desc' => 'Tillat Flash Video-filer (.flv) å verta nytta som standardfiler (t.d. <nowiki>[[</nowiki>{{ns:file}}:Film.flv<nowiki>]]</nowiki>)',
 	'flv-long-desc' => 'Flash Video, $1 × $2 pikslar, filstorleik: $3',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'flvhandler_desc' => 'Tillat Flash Video-filer (.flv) å bli lagt til som standardfiler (f.eks. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
-	'flv-long-desc' => 'Flash Video, $1 x $2 pixler, filstørrelse: $3',
 );
 
 /** Occitan (Occitan)
