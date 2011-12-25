@@ -195,12 +195,13 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Wikitanvir
  * @author Zaheen
  */
 $messages['bn'] = array(
 	'edituser' => 'ব্যবহারকারী সম্পাদনা',
-	'edituser-username' => 'ব্যবহারকারীর নাম:',
+	'edituser-username' => 'ব্যবহারকারী নাম:',
 	'edituser-dosearch' => 'অনুসন্ধান',
 );
 
@@ -1010,6 +1011,21 @@ $messages['nah'] = array(
 	'edituser-dosearch' => 'Titlatēmōz',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'edituser-desc' => 'Lar priviligerte brukere redigere andre brukeres innstillinger',
+	'edituser' => 'Rediger bruker',
+	'edituser-username' => 'Brukernavn:',
+	'edituser-dosearch' => 'Søk',
+	'edituser-nouser' => 'Brukeren «$1» finnes ikke.',
+	'edituser-exempt' => 'Brukeren «$1» kan ikke redigeres.',
+	'right-edituser' => 'Rediger innstillingene til andre brukere',
+	'right-edituser-exempt' => 'Andre kan ikke redigere denne brukerens innstillinger',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1049,21 +1065,6 @@ $messages['nn'] = array(
 	'edituser-exempt' => 'Brukaren «$1» kan ikkje bli endra.',
 	'right-edituser' => 'Redigera innstillingane til andre brukarar',
 	'right-edituser-exempt' => 'Innstilingane deira kan ikkje bli endra av andre',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'edituser-desc' => 'Lar priviligerte brukere redigere andre brukeres innstillinger',
-	'edituser' => 'Rediger bruker',
-	'edituser-username' => 'Brukernavn:',
-	'edituser-dosearch' => 'Søk',
-	'edituser-nouser' => 'Brukeren «$1» finnes ikke.',
-	'edituser-exempt' => 'Brukeren «$1» kan ikke redigeres.',
-	'right-edituser' => 'Rediger innstillingene til andre brukere',
-	'right-edituser-exempt' => 'Andre kan ikke redigere denne brukerens innstillinger',
 );
 
 /** Occitan (Occitan)
