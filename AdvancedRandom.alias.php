@@ -123,6 +123,11 @@ $specialPageAliases['mr'] = array(
 	'AdvancedRandom' => array( 'प्रगताविशीष्ट' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'AdvancedRandom' => array( 'Avansert_tilfeldig_side' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'AdvancedRandom' => array( 'Uutebreid_willekeurig' ),
@@ -133,17 +138,12 @@ $specialPageAliases['nl'] = array(
 	'AdvancedRandom' => array( 'UitgebreidWillekeurig' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'AdvancedRandom' => array( 'Avansert_tilfeldig_side' ),
-);
-
 /** Romanian (Română) */
 $specialPageAliases['ro'] = array(
 	'AdvancedRandom' => array( 'Aleatoriu_avansat' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'AdvancedRandom' => array( 'प्रगताअविशीष्ट' ),
 );
@@ -177,8 +177,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'AdvancedRandom' => array( '高級隨機頁面' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
