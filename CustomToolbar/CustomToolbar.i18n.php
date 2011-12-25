@@ -2087,7 +2087,7 @@ Kontroller innstillingane dine for sprettoppvindaugo.',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'ct-desc' => 'Legger til en verktøymeny som kan utvides',
 	'ct_bold_sample' => 'Fet tekst',
 	'ct_bold_tip_ins' => 'Sett inn fet tekst',

@@ -439,7 +439,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'formatchanges-desc' => 'Omformaterer [[Special:RecentChanges|siste endringer]]',
 	'formatchanges-anonymous' => 'Anonym',
 	'formatchanges-createdby' => '$1 - opprettet av $2 ($3)',

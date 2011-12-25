@@ -806,7 +806,7 @@ Vil du endra denne?',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'createpage' => 'Opprett en side',
 	'uwcreatepage-desc' => 'Legg til en [[Special:CreatePage|spesialside]] for å opprettelse av nye sider',
 	'createpage_submitbutton' => 'Send',

@@ -448,7 +448,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'catboxattop-desc' => 'Legger til en kategoriboks oppe til høyre på sider',
 	'catboxattop-categories' => 'Kategorier',
 );

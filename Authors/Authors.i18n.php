@@ -466,7 +466,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'authors-desc' => 'Legger til en liste over forfattere til sider',
 	'authors_authors' => 'Forfattere',
 	'authors_anonymous' => 'Anonym',

@@ -305,7 +305,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'mootools12core-desc' => 'Legger til [http://mootools.net mootools-1.2-core-yc.js], et kompakt rammeverk i JavaScript, på hver side',
 );
 

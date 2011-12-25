@@ -1129,7 +1129,7 @@ Legg til nokre med verktya i menyen.',
  * @author Audun
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'gep-desc' => 'Supplementerer endringssiden for å bli mer brukervennlig',
 	'gep-emailsubject' => '[$1] Kategoriforslag: $2',
 	'gep-emailbody' => 'Brukeren «$1» foreslo kategorien «$2» for siden «$3».',

@@ -291,7 +291,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'csshooks-desc' => 'Legger til CSS til en sides HTML for bedre stil',
 );
 

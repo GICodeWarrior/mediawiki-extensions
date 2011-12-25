@@ -294,7 +294,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'javascript-desc' => 'Legger til uniwiki.js på hver side med JavaScript som deles mellom Uniwiki-utvidelser',
 );
 

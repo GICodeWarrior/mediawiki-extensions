@@ -674,7 +674,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'layouts-desc' => 'Befolker nyopprettede sider med redigerbare «utforminger» for å fremme en fellesstruktur for sider',
 	'layouts_title' => 'Opprett en side',
 	'layouts_chooselayout' => 'Velg et utseende for $1:',
