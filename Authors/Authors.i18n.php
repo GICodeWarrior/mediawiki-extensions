@@ -444,6 +444,15 @@ $messages['nah'] = array(
 	'authors_anonymous' => 'Ahtōcāitl',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'authors-desc' => 'Legger til en liste over forfattere til sider',
+	'authors_authors' => 'Forfattere',
+	'authors_anonymous' => 'Anonym',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -460,15 +469,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'authors-desc' => 'Legg til ei lista over forfattarar til sider',
 	'authors_authors' => 'Forfattarar',
-	'authors_anonymous' => 'Anonym',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'authors-desc' => 'Legger til en liste over forfattere til sider',
-	'authors_authors' => 'Forfattere',
 	'authors_anonymous' => 'Anonym',
 );
 
@@ -622,9 +622,10 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'authors-desc' => 'Dopunjuje spisak doprinosioca strana',
+	'authors-desc' => 'Dopunjuje spisak doprinosioca stranica',
 	'authors_authors' => 'Autori',
 	'authors_anonymous' => 'Anonimno',
 );

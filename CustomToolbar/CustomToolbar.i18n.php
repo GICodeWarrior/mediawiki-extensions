@@ -1973,6 +1973,54 @@ $messages['myv'] = array(
 	'ct_submit' => 'Адя!',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'ct-desc' => 'Legger til en verktøymeny som kan utvides',
+	'ct_bold_sample' => 'Fet tekst',
+	'ct_bold_tip_ins' => 'Sett inn fet tekst',
+	'ct_bold_tip_wrap' => 'Gjør denne teksten fet',
+	'ct_bold_caption' => 'Fet',
+	'ct_italic_sample' => 'Kursiv tekst',
+	'ct_italic_tip_ins' => 'Sett inn kursiv tekst',
+	'ct_italic_tip_wrap' => 'Gjør denne teksten kursiv',
+	'ct_italic_caption' => 'Kursiv',
+	'ct_internal_sample' => 'Sidenavn',
+	'ct_internal_tip_ins' => 'Sett inn en intern lenke',
+	'ct_internal_tip_wrap' => 'Gjør denne teksten til en intern lenke',
+	'ct_internal_caption' => 'Intern lenke',
+	'ct_external_tip_ins' => 'Sett inn en ekstern lenke',
+	'ct_external_tip_wrap' => 'Gjør denne teksten til en ekstern lenke',
+	'ct_external_caption' => 'Ekstern lenke',
+	'ct_image_tip' => 'Sett inn et bilde',
+	'ct_image_caption' => 'Legg til et bilde',
+	'ct_attachment_tip' => 'Sett inn et vedlegg',
+	'ct_attachment_caption' => 'Legg til et vedlegg',
+	'ct_math_sample' => 'Sett in LaTeX-formel her',
+	'ct_math_tip_ins' => 'Sett inn matematisk formel (LaTeX)',
+	'ct_math_tip_wrap' => 'Gjør denne teksten til en matematisk formel (LaTeX)',
+	'ct_math_caption' => 'Formel',
+	'ct_nowiki_sample' => 'Sett inn uformatert tekst her',
+	'ct_nowiki_tip_ins' => 'Ignorer wikiformatering',
+	'ct_nowiki_tip_wrap' => 'Ignorer wikiformatering for denne teksten',
+	'ct_nowiki_caption' => 'Ingen wikitekst',
+	'ct_horizontal_tip' => 'Sett inn en horisantal linje (bruk sparsomt)',
+	'ct_horizontal_caption' => 'Horisontal linje',
+	'ct_upload' => 'Last opp $1',
+	'ct_select' => 'Velg $1 for å laste opp:',
+	'ct_caption' => 'Legg til bildetekst (valgfritt):',
+	'ct_link' => 'Legg til lenkenavn (valgfritt):',
+	'ct_submit' => 'Gå!',
+	'ct_close' => 'Lukk vinduet',
+	'ct_success' => 'Filopplasting vellykket!',
+	'ct_popupblocked' => 'Sprettoppvinduet for opplastingen ble hindret fra å åpne. Vennligst sjekk innstillingene dine for sprettoppvinduer.',
+	'ct_user_user' => 'Bruker',
+	'ct_user_tip' => 'Sett inn en lenke til en brukerside',
+	'ct_user_caption' => 'Brukerlenke',
+	'ct_user_sample' => 'Brukernavn',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -2082,54 +2130,6 @@ Kontroller innstillingane dine for sprettoppvindaugo.',
 	'ct_user_tip' => 'Set inn ei lenkja til ei brukarsida',
 	'ct_user_caption' => 'Brukarlenkja',
 	'ct_user_sample' => 'Brukarnamn',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'ct-desc' => 'Legger til en verktøymeny som kan utvides',
-	'ct_bold_sample' => 'Fet tekst',
-	'ct_bold_tip_ins' => 'Sett inn fet tekst',
-	'ct_bold_tip_wrap' => 'Gjør denne teksten fet',
-	'ct_bold_caption' => 'Fet',
-	'ct_italic_sample' => 'Kursiv tekst',
-	'ct_italic_tip_ins' => 'Sett inn kursiv tekst',
-	'ct_italic_tip_wrap' => 'Gjør denne teksten kursiv',
-	'ct_italic_caption' => 'Kursiv',
-	'ct_internal_sample' => 'Sidenavn',
-	'ct_internal_tip_ins' => 'Sett inn en intern lenke',
-	'ct_internal_tip_wrap' => 'Gjør denne teksten til en intern lenke',
-	'ct_internal_caption' => 'Intern lenke',
-	'ct_external_tip_ins' => 'Sett inn en ekstern lenke',
-	'ct_external_tip_wrap' => 'Gjør denne teksten til en ekstern lenke',
-	'ct_external_caption' => 'Ekstern lenke',
-	'ct_image_tip' => 'Sett inn et bilde',
-	'ct_image_caption' => 'Legg til et bilde',
-	'ct_attachment_tip' => 'Sett inn et vedlegg',
-	'ct_attachment_caption' => 'Legg til et vedlegg',
-	'ct_math_sample' => 'Sett in LaTeX-formel her',
-	'ct_math_tip_ins' => 'Sett inn matematisk formel (LaTeX)',
-	'ct_math_tip_wrap' => 'Gjør denne teksten til en matematisk formel (LaTeX)',
-	'ct_math_caption' => 'Formel',
-	'ct_nowiki_sample' => 'Sett inn uformatert tekst her',
-	'ct_nowiki_tip_ins' => 'Ignorer wikiformatering',
-	'ct_nowiki_tip_wrap' => 'Ignorer wikiformatering for denne teksten',
-	'ct_nowiki_caption' => 'Ingen wikitekst',
-	'ct_horizontal_tip' => 'Sett inn en horisantal linje (bruk sparsomt)',
-	'ct_horizontal_caption' => 'Horisontal linje',
-	'ct_upload' => 'Last opp $1',
-	'ct_select' => 'Velg $1 for å laste opp:',
-	'ct_caption' => 'Legg til bildetekst (valgfritt):',
-	'ct_link' => 'Legg til lenkenavn (valgfritt):',
-	'ct_submit' => 'Gå!',
-	'ct_close' => 'Lukk vinduet',
-	'ct_success' => 'Filopplasting vellykket!',
-	'ct_popupblocked' => 'Sprettoppvinduet for opplastingen ble hindret fra å åpne. Vennligst sjekk innstillingene dine for sprettoppvinduer.',
-	'ct_user_user' => 'Bruker',
-	'ct_user_tip' => 'Sett inn en lenke til en brukerside',
-	'ct_user_caption' => 'Brukerlenke',
-	'ct_user_sample' => 'Brukernavn',
 );
 
 /** Occitan (Occitan)
@@ -2837,6 +2837,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
@@ -2845,7 +2846,7 @@ $messages['sr-el'] = array(
 	'ct_bold_tip_ins' => 'Ubaci podebljan tekst',
 	'ct_bold_tip_wrap' => 'Učini ovaj tekst podebljanim',
 	'ct_bold_caption' => 'Podebljano',
-	'ct_italic_sample' => 'Tekst u kurzivu',
+	'ct_italic_sample' => 'Kurziv',
 	'ct_italic_tip_ins' => 'Unbaci tekst u kurzivu',
 	'ct_italic_tip_wrap' => 'Prebaci ovaj tekst u kurziv',
 	'ct_italic_caption' => 'Kurziv',
@@ -2859,15 +2860,15 @@ $messages['sr-el'] = array(
 	'ct_image_tip' => 'Ubaci sliku',
 	'ct_image_caption' => 'Dodaj sliku',
 	'ct_attachment_tip' => 'Ubaci prikačeni fajl',
-	'ct_attachment_caption' => 'Prikači fajl',
-	'ct_math_sample' => 'Ubaci LaTeX formulu ovde',
-	'ct_math_tip_ins' => 'Ubaci matematičku formulu (LaTeX)',
+	'ct_attachment_caption' => 'Dodaj prilog',
+	'ct_math_sample' => 'Ubacite formulu LaTeX ovde',
+	'ct_math_tip_ins' => 'Ubaci matematičku formulu',
 	'ct_math_tip_wrap' => 'Učini ovaj tekst matematičkom formulom (LaTeX)',
 	'ct_math_caption' => 'Formula',
-	'ct_nowiki_sample' => 'Ubaci neformatiran tekst ovde',
-	'ct_nowiki_tip_ins' => 'Ignoriši Viki-formatiranje',
+	'ct_nowiki_sample' => 'Ubacite neoblikovan tekst ovde',
+	'ct_nowiki_tip_ins' => 'Zanemari viki oblikovanje',
 	'ct_nowiki_tip_wrap' => 'Ignoriši Viki-formatiranje nad ovim tekstom',
-	'ct_horizontal_tip' => 'Ubaci horizontalnu liniju (koristiti štedljivo)',
+	'ct_horizontal_tip' => 'Ubaci vodoravnu liniju',
 	'ct_horizontal_caption' => 'Horizontalna linija',
 	'ct_upload' => 'Pošalji $1',
 	'ct_select' => 'Izaberi $1 za slanje:',
@@ -2875,10 +2876,10 @@ $messages['sr-el'] = array(
 	'ct_link' => 'Dodaj naziv linka (neobavezno):',
 	'ct_submit' => 'Idi!',
 	'ct_close' => 'Zatvori prozor',
-	'ct_success' => 'Slanje datoteke je izvršeno!',
+	'ct_success' => 'Datoteka je poslata.',
 	'ct_user_user' => 'Korisnik',
 	'ct_user_tip' => 'Ubaci link ka korisničkoj strani',
-	'ct_user_caption' => 'Korisnički link',
+	'ct_user_caption' => 'Korisnička veza',
 	'ct_user_sample' => 'Korisničko ime',
 );
 

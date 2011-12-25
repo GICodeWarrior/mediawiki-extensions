@@ -429,6 +429,14 @@ $messages['nah'] = array(
 	'catboxattop-categories' => 'Tlaìxmatkàtlàlilòmë',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'catboxattop-desc' => 'Legger til en kategoriboks oppe til høyre på sider',
+	'catboxattop-categories' => 'Kategorier',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -443,14 +451,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'catboxattop-desc' => 'Legg til ein kategoriboks oppe til høgre på sider',
 	'catboxattop-categories' => 'Kategoriar',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'catboxattop-desc' => 'Legger til en kategoriboks oppe til høyre på sider',
-	'catboxattop-categories' => 'Kategorier',
 );
 
 /** Occitan (Occitan)

@@ -755,6 +755,22 @@ $messages['myv'] = array(
 	'createpage_submitbutton' => 'Максомс',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'createpage' => 'Opprett en side',
+	'uwcreatepage-desc' => 'Legg til en [[Special:CreatePage|spesialside]] for å opprettelse av nye sider',
+	'createpage_submitbutton' => 'Send',
+	'createpage_instructions' => 'Skriv inn tittelen til siden du ønsker å opprette:',
+	'createpage_entertitle' => 'Vennligst skriv inn en tittel for siden din.',
+	'createpage_titleexists' => 'En side med tittelen [[$1]] finnes allerede.
+Vil du redigere den eksisterende siden?',
+	'createpage_tryagain' => 'Nei. Jeg vil opprette en ny side med en annen tittel.',
+	'createpage_editexisting' => 'Ja. Jeg vil bidra til siden som finnes fra før.',
+	'createpage-badtitle' => '«$1» kan ikke brukes som tittel for siden',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -801,22 +817,6 @@ Vil du endra denne?',
 	'createpage_tryagain' => 'Nei. Eg vil oppretta ei ny sida med ein annan tittel.',
 	'createpage_editexisting' => 'Ja. Eg vil bidra til sida som finst frå før.',
 	'createpage-badtitle' => '«$1» kan ikkje bli nytta som sidetittel',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'createpage' => 'Opprett en side',
-	'uwcreatepage-desc' => 'Legg til en [[Special:CreatePage|spesialside]] for å opprettelse av nye sider',
-	'createpage_submitbutton' => 'Send',
-	'createpage_instructions' => 'Skriv inn tittelen til siden du ønsker å opprette:',
-	'createpage_entertitle' => 'Vennligst skriv inn en tittel for siden din.',
-	'createpage_titleexists' => 'En side med tittelen [[$1]] finnes allerede.
-Vil du redigere den eksisterende siden?',
-	'createpage_tryagain' => 'Nei. Jeg vil opprette en ny side med en annen tittel.',
-	'createpage_editexisting' => 'Ja. Jeg vil bidra til siden som finnes fra før.',
-	'createpage-badtitle' => '«$1» kan ikke brukes som tittel for siden',
 );
 
 /** Occitan (Occitan)
@@ -1058,6 +1058,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
@@ -1065,7 +1066,7 @@ $messages['sr-el'] = array(
 	'uwcreatepage-desc' => 'Dodaje [[Special:CreatePage|posebnu stranicu]] za pravljenje novih stranica',
 	'createpage_submitbutton' => 'Pošalji',
 	'createpage_instructions' => 'Unesi naslov koga želiš da napraviš:',
-	'createpage_entertitle' => 'Molimo Vas da unesete naslov za Vaš članak.',
+	'createpage_entertitle' => 'Unesite naslov stranice.',
 	'createpage_titleexists' => 'Članak sa naslovom [[$1]] već postoji.
 Da li biste želeli da izmenite postojeći članak?',
 	'createpage_tryagain' => 'Ne. Želim da napravim novi članak sa njegovim sopstvenim naslovom.',
@@ -1227,13 +1228,14 @@ $messages['vec'] = array(
 	'createpage-badtitle' => 'No se pol doparar "$1" come titolo de pagina',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
 	'createpage' => "Säta lehtpol'",
 	'uwcreatepage-desc' => 'Ližadab [[Special:CreatePage|specialižen lehtpolen]] uzid lehtpolid sätes',
 	'createpage_submitbutton' => 'Oigeta',
+	'createpage_entertitle' => 'Olgat hüväd, kirjutagat teiden lehtpolen nimi.',
 );
 
 /** Vietnamese (Tiếng Việt)

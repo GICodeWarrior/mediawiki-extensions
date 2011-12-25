@@ -642,6 +642,20 @@ $messages['myv'] = array(
 	'layouts_unknown' => 'Апак содань',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'layouts-desc' => 'Befolker nyopprettede sider med redigerbare «utforminger» for å fremme en fellesstruktur for sider',
+	'layouts_title' => 'Opprett en side',
+	'layouts_chooselayout' => 'Velg et utseende for $1:',
+	'layouts_nolayout' => 'Inget utseende',
+	'layouts_continue' => 'Fortsett',
+	'layouts_choosecategory' => 'Velg en kategori for $1:',
+	'layouts_unknown' => 'Ukjent',
+	'layouts_tagline' => "Denne siden ble opprettet med utseende '''$1'''.",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -669,20 +683,6 @@ $messages['nn'] = array(
 	'layouts_choosecategory' => 'Vel ein kategori for $1:',
 	'layouts_unknown' => 'Ukjend',
 	'layouts_tagline' => "Denne sida vart oppretta med utforminga '''$1'''.",
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'layouts-desc' => 'Befolker nyopprettede sider med redigerbare «utforminger» for å fremme en fellesstruktur for sider',
-	'layouts_title' => 'Opprett en side',
-	'layouts_chooselayout' => 'Velg et utseende for $1:',
-	'layouts_nolayout' => 'Inget utseende',
-	'layouts_continue' => 'Fortsett',
-	'layouts_choosecategory' => 'Velg en kategori for $1:',
-	'layouts_unknown' => 'Ukjent',
-	'layouts_tagline' => "Denne siden ble opprettet med utseende '''$1'''.",
 );
 
 /** Occitan (Occitan)
@@ -1008,13 +1008,16 @@ $messages['uk'] = array(
 	'layouts_choosecategory' => 'Вибір категорії для $1:',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Triple-ADHD-AS
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
 	'layouts_title' => "Säta lehtpol'",
+	'layouts_chooselayout' => 'Valikat maket $1-n täht:',
+	'layouts_nolayout' => 'Eile maketad',
 	'layouts_continue' => 'Jatkata',
+	'layouts_choosecategory' => 'Valikat kategorii $1-n täht:',
 	'layouts_unknown' => 'Tundmatoi',
 );
 

@@ -281,6 +281,13 @@ $messages['ms'] = array(
 	'mootools12core-desc' => 'Menambahkan [http://mootools.net mootools-1.2-core-yc.js], sejenis rangka kerja JavaScript yang padat, pada setiap laman',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'mootools12core-desc' => 'Legger til [http://mootools.net mootools-1.2-core-yc.js], et kompakt rammeverk i JavaScript, på hver side',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -300,13 +307,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'mootools12core-desc' => 'Legg til [http://mootools.net mootools-1.2-core-yc.js] på kvar sida, eit kompakt JavaScript-rammeverk',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'mootools12core-desc' => 'Legger til [http://mootools.net mootools-1.2-core-yc.js], et kompakt rammeverk i JavaScript, på hver side',
 );
 
 /** Occitan (Occitan)
@@ -398,9 +398,10 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'mootools12core-desc' => 'Dodaje svakoj strani [<a href="http://mootools.net">http://mootools.net</a> mootools-1.2-core-yc.js], kompaktni javaskript frejmvork',
+	'mootools12core-desc' => 'Na svaku stranicu dodaje [http://mootools.net mootools-1.2-core-yc.js], javaskriptov radni okvir',
 );
 
 /** Seeltersk (Seeltersk)

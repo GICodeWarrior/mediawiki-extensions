@@ -270,6 +270,13 @@ $messages['ms'] = array(
 	'javascript-desc' => 'Menambahkan uniwiki.js pada setiap laman yang mengandungi kod JavaScript yang dikongsi sesama sambungan Uniwiki',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'javascript-desc' => 'Legger til uniwiki.js på hver side med JavaScript som deles mellom Uniwiki-utvidelser',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -289,13 +296,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'javascript-desc' => 'Legg til uniwiki.js på kvar sida med JavaScript som vert delt mellom Uniwiki-utvidingar',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'javascript-desc' => 'Legger til uniwiki.js på hver side med JavaScript som deles mellom Uniwiki-utvidelser',
 );
 
 /** Occitan (Occitan)
@@ -385,9 +385,10 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'javascript-desc' => 'Dodaje uniwiki.js na svaku stranu koja sadrži javaskript kod koji se koristi između više Univiki ekstenzija',
+	'javascript-desc' => 'Dodaje uniwiki.js na svaku stranicu koja sadrži javaskriptu i koristi se između više Univiki proširenja',
 );
 
 /** Seeltersk (Seeltersk)

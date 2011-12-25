@@ -1065,6 +1065,32 @@ $messages['mzn'] = array(
 	'gep-categories' => 'رج‌ئون',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'gep-desc' => 'Supplementerer endringssiden for å bli mer brukervennlig',
+	'gep-emailsubject' => '[$1] Kategoriforslag: $2',
+	'gep-emailbody' => 'Brukeren «$1» foreslo kategorien «$2» for siden «$3».',
+	'gep-emailfailure' => 'Beklager, forslaget ditt kunne ikke bli behandlet.',
+	'gep-emailsuccess' => 'Takk for at du foreslo kategorien: $1.',
+	'gep-categories' => 'Kategorier',
+	'gep-addcategory' => 'Legg til en kategori',
+	'gep-addcategorybutton' => 'Legg til',
+	'gep-suggestcategory' => 'Foreslå en kategori',
+	'gep-suggestcategorybutton' => 'Send',
+	'gep-sections' => 'Avsnitt',
+	'gep-sectionnotdisabled' => 'Dette avsnittet kan ikke deaktiveres',
+	'gep-addsection' => 'Legg til et avsnitt',
+	'gep-addsectionbutton' => 'Legg til',
+	'gep-classicmode' => 'Klassisk modus',
+	'gep-genericmode' => 'Omfattende modus',
+	'gep-nosectioninstructions' => 'Det er ingen avsnitt på denne siden.
+Legg til noen med verktøyene i menyen.',
+	'gep-nocategories' => 'Vennligst velg minst én kategori før du lagrer',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -1123,32 +1149,6 @@ $messages['nn'] = array(
 Legg til nokre med verktya i menyen.',
 	'gep-nocategories' => 'Vel minst ein kategori før du lagrar',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Audun
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'gep-desc' => 'Supplementerer endringssiden for å bli mer brukervennlig',
-	'gep-emailsubject' => '[$1] Kategoriforslag: $2',
-	'gep-emailbody' => 'Brukeren «$1» foreslo kategorien «$2» for siden «$3».',
-	'gep-emailfailure' => 'Beklager, forslaget ditt kunne ikke bli behandlet.',
-	'gep-emailsuccess' => 'Takk for at du foreslo kategorien: $1.',
-	'gep-categories' => 'Kategorier',
-	'gep-addcategory' => 'Legg til en kategori',
-	'gep-addcategorybutton' => 'Legg til',
-	'gep-suggestcategory' => 'Foreslå en kategori',
-	'gep-suggestcategorybutton' => 'Send',
-	'gep-sections' => 'Avsnitt',
-	'gep-sectionnotdisabled' => 'Dette avsnittet kan ikke deaktiveres',
-	'gep-addsection' => 'Legg til et avsnitt',
-	'gep-addsectionbutton' => 'Legg til',
-	'gep-classicmode' => 'Klassisk modus',
-	'gep-genericmode' => 'Omfattende modus',
-	'gep-nosectioninstructions' => 'Det er ingen avsnitt på denne siden.
-Legg til noen med verktøyene i menyen.',
-	'gep-nocategories' => 'Vennligst velg minst én kategori før du lagrer',
 );
 
 /** Occitan (Occitan)
@@ -1744,10 +1744,11 @@ $messages['uk'] = array(
 	'gep-nocategories' => 'Будь ласка, виберіть перед збереженням хоча б одну категорію',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'gep-emailfailure' => 'Pakičem armahtust, no teiden nevond jäb kävutamata.',
 	'gep-categories' => 'Kategorijad',
 	'gep-addcategory' => 'Ližata kategorii',
 	'gep-addcategorybutton' => 'Ližata',
