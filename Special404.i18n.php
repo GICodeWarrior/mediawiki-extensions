@@ -378,7 +378,7 @@ Misschien wilt u de [[{{MediaWiki:Mainpage}}|hoofdpagina]] bekijken.',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'special404-desc' => 'Gir et mål for 404 Not found-feil',
 	'error404' => '404 Ikke funnet',
 	'special404-body' => 'URLen du søkte ble ikke funnet.
