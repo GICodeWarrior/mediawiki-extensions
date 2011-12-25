@@ -54,6 +54,7 @@ $specialPageAliases['ia'] = array(
 	'OpenIDConvert' => array( 'Converter_a_OpenID' ),
 	'OpenIDServer' => array( 'Servitor_OpenID' ),
 	'OpenIDXRDS' => array( 'XRDS_OpenID' ),
+	'OpenIDDashboard' => array( 'Pannello_de_OpenID' ),
 );
 
 /** Japanese (日本語) */
@@ -104,6 +105,14 @@ $specialPageAliases['ml'] = array(
 	'OpenIDServer' => array( 'ഓപ്പൺഐ.ഡി.സെർവർ' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'OpenIDLogin' => array( 'OpenID-innlogging' ),
+	'OpenIDConvert' => array( 'OpenID-konvertering' ),
+	'OpenIDServer' => array( 'OpenID-tjener' ),
+	'OpenIDXRDS' => array( 'OpenID-XRDS' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'OpenIDLogin' => array( 'Open_ID_anmelden' ),
@@ -119,14 +128,6 @@ $specialPageAliases['nl'] = array(
 	'OpenIDConvert' => array( 'OpenIDConverteren' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'OpenIDLogin' => array( 'OpenID-innlogging' ),
-	'OpenIDConvert' => array( 'OpenID-konvertering' ),
-	'OpenIDServer' => array( 'OpenID-tjener' ),
-	'OpenIDXRDS' => array( 'OpenID-XRDS' ),
-);
-
 /** Polish (Polski) */
 $specialPageAliases['pl'] = array(
 	'OpenIDLogin' => array( 'Logowanie_OpenID' ),
@@ -135,7 +136,7 @@ $specialPageAliases['pl'] = array(
 	'OpenIDXRDS' => array( 'DXRDS_OpenID' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'OpenIDLogin' => array( 'उद्घटपरिचयपत्रप्रवेश' ),
 	'OpenIDConvert' => array( 'उद्घटपरिचयपत्रांतर' ),
@@ -178,8 +179,3 @@ $specialPageAliases['zh-hans'] = array(
 	'OpenIDConvert' => array( '转换OpenID' ),
 	'OpenIDServer' => array( 'OpenID服务器' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
