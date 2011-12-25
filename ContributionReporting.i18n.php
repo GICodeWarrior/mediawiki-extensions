@@ -1371,6 +1371,7 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author AK
  * @author Consta
  * @author Crazymadlover
  * @author Glavkos
@@ -1381,6 +1382,7 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'contributionreporting-desc' => 'Live αναφορά περί του έρανου του Wikimedia',
 	'contributiontotal' => 'Συνολική συνεισφορά',
+	'dailytotal' => 'Ημερίσιο σύνολο',
 	'contributionhistory' => 'Ιστορικό συνεισφορών',
 	'contrib-hist-header' => 'Σχόλια δωρητών από όλο τον κόσμο',
 	'contrib-hist-name' => 'Όνομα',
@@ -1677,6 +1679,9 @@ $messages['et'] = array(
 	'fundraiserstats-tab-maximums' => 'Maksimumid (USD)',
 	'fundraiserstats-tab-ytd' => 'Sel aastal (USD)',
 	'fundraiserstats-instructions' => 'Ükskõik millise päeva arvandmete nägemiseks libista kursor üle selle päeva tulba. Iga aasta on graafikul erinevat värvi.',
+	'fundraiserstats-customize' => 'Kohanda',
+	'fundraiserstats-show-years' => 'Näita järgmisi aastaid:',
+	'fundraiserstats-time-zone' => 'Ajavöönd:',
 );
 
 /** Basque (Euskara)
@@ -1863,6 +1868,7 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nedergard
  * @author Nike
  * @author Olli
  * @author Silvonen
@@ -1873,6 +1879,9 @@ $messages['fa'] = array(
 $messages['fi'] = array(
 	'contributionreporting-desc' => 'Reaaliaikainen raportti Wikimedian varainkeruusta.',
 	'contributiontotal' => 'Lahjoitukset yhteensä',
+	'dailytotal' => 'Päiväkohtainen kokonaismäärä',
+	'disablednotice' => 'Lahjoitusraportointi',
+	'disablednotice-disabled' => 'Tämä sivu on poistettu tilapäisesti käytöstä. Yritä myöhemmin uudelleen.',
 	'contributionhistory' => 'Lahjoitushistoria',
 	'contrib-hist-header' => 'Lahjoittajien kommentteja eri puolilta maailmaa',
 	'contrib-hist-name' => 'Nimi',
@@ -2826,11 +2835,15 @@ $messages['io'] = array(
  * @author Blaisorblade
  * @author BrokenArrow
  * @author Darth Kule
+ * @author F. Cosoleto
  * @author Karika
  */
 $messages['it'] = array(
 	'contributionreporting-desc' => 'Aggiornamento in tempo reale sulla raccolta fondi Wikimedia',
 	'contributiontotal' => 'Totale contributi',
+	'dailytotal' => 'Totale giornaliero',
+	'disablednotice' => 'Notificazione dei contributi',
+	'disablednotice-disabled' => 'Questa pagina è stata temporaneamente disabilitata, riprovare più tardi.',
 	'contributionhistory' => 'Cronologia dei contributi',
 	'contrib-hist-header' => 'Commenti dei donatori da tutto il mondo',
 	'contrib-hist-name' => 'Nome',
@@ -2873,6 +2886,7 @@ $messages['it'] = array(
 	'contribstats-conversion' => 'Tasso di conversione (%)',
 	'contribstats-template' => 'Template',
 	'contribstats-nodata' => 'Nessun dato fornito',
+	'contribstats-landingpage' => 'Pagina di destinazione',
 	'contribstats-donatepage' => 'Pagina di donazione',
 	'contribstats-average' => 'Media',
 	'contribstats-imperfect-data' => "Questi dati non sono perfetti, poiché il monitoraggio dei donatori senza l'utilizzo di session tracking ha delle limitazioni.",
@@ -2891,7 +2905,9 @@ $messages['it'] = array(
 	'fundraiserstats-tab-contributions' => 'Numero di contributi',
 	'fundraiserstats-tab-averages' => 'Medie (USD)',
 	'fundraiserstats-tab-maximums' => 'Massimi (USD)',
+	'fundraiserstats-instructions' => 'Per visualizzare le statistiche per un giorno, posizionare il cursore sopra la barra per quel giorno. Ogni anno ha un colore differente sul grafico.',
 	'fundraiserstats-customize' => 'Personalizza',
+	'fundraiserstats-show-years' => 'Mostra gli anni seguenti:',
 	'fundraiserstats-time-zone' => 'Fuso orario:',
 );
 
@@ -3312,6 +3328,7 @@ $messages['lb'] = array(
 	'contributionreporting-desc' => 'Live-Reportage vun der Wikimedia-Spendenaktioun',
 	'contributiontotal' => 'Total vun den Donen',
 	'dailytotal' => 'Total vum Dag',
+	'disablednotice' => 'Rapport iwwert Donen',
 	'disablednotice-disabled' => 'Dës Säit gouf temporär desaktivéiert. Probéiert et w.e.g. méi spéit nach eng kéier.',
 	'contributionhistory' => 'Evolutioun vun den Donen',
 	'contrib-hist-header' => 'Bemierkunge vun Donateuren aus der ganzer Welt',
@@ -3857,6 +3874,84 @@ $messages['nah'] = array(
 	'fundraiserstats-day' => 'Tōnalli $1 īpan $2',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'contributionreporting-desc' => 'Fortløpende rapportering om Wikimedias innsamling',
+	'contributiontotal' => 'Bidrag totalt',
+	'contributionhistory' => 'Bidragshistorikk',
+	'contrib-hist-header' => 'Giverkommentarer fra verden rundt',
+	'contrib-hist-name' => 'Navn',
+	'contrib-hist-date' => 'Tid og dato',
+	'contrib-hist-amount' => 'Beløp',
+	'contrib-hist-next' => 'Tidligere donasjoner',
+	'contrib-hist-previous' => 'Nyere donasjoner',
+	'contrib-hist-anonymous' => 'Anonym',
+	'contributionstatistics' => 'Bidragsstatistikk',
+	'contribstats-desc' => 'Viser statistikk for bidrag til Wikimedia Foundation',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Totalt i dag|Døgntotaler for de siste $1 dagene}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Totalt denne måneden|Månedstotaler for de siste $1 månedene}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Totalt for én måned|Månedstotaler for $1 måneder}}',
+	'contribstats-currency-range-totals' => 'Valutatotaler (fra $1 til $2)',
+	'contribstats-contribution-range-breakdown' => 'Bidrag sortert etter verdi (fra $1 til $2)',
+	'contribstats-currency-totals' => 'Valutatotaler for bokføringsåret $1',
+	'contribstats-contribution-breakdown' => 'Bidrag sortert etter verdi i bokføringsåret $1',
+	'contribstats-day' => 'Dag',
+	'contribstats-month' => 'Måned',
+	'contribstats-currency' => 'Valuta',
+	'contribstats-amount' => 'Beløp (USD)',
+	'contribstats-contributions' => 'Bidrag',
+	'contribstats-total' => 'Totalt (USD)',
+	'contribstats-avg' => 'Gjennomsnitt (USD)',
+	'contribstats-max' => 'Maksimum (USD)',
+	'contribstats-percentage-ytd' => 'Prosentandel (hittil i år)',
+	'contribstats-total-ytd' => 'Totalt (hittil i år)',
+	'contribstats-value-exactly' => 'Nøyaktig $1',
+	'contribstats-value-under' => 'Under $1',
+	'contribstats-value-from' => 'Fra $1–$2',
+	'contribstats-value-over' => 'Over $1',
+	'contributiontrackingstatistics' => 'Gavestatistikk',
+	'contribstats-day-totals' => 'Totalt for dagen',
+	'contribstats-week' => 'Uke',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Totalt denne uka|Ukesummer for de siste $1 ukene}}',
+	'contribstats-payment-type' => 'Betalingstype',
+	'contribstats-banner' => 'Banner',
+	'contribstats-payment-type-hits' => 'Betalingstypetreff',
+	'contribstats-clicks' => 'Klikk',
+	'contribstats-donations' => 'Donasjoner',
+	'contribstats-conversion' => 'Konverteringsgrad (%)',
+	'contribstats-template' => 'Mal',
+	'contribstats-nodata' => 'Ingen data oppgitt',
+	'contribstats-landingpage' => 'Målside',
+	'contribstats-donatepage' => 'Donasjonsside',
+	'contribstats-average' => 'Gjennomsnitt',
+	'contribstats-imperfect-data' => 'Disse dataene er ikke perfekte siden sporing av donorer uten bruk av sesjonssporing har sine begrensninger.',
+	'contribstats-paypal-donations' => 'PayPal-donasjoner',
+	'contribstats-credit-card' => 'Kredittkort',
+	'contribstats-fraud-note' => 'Enkelte falske donasjoner finnes.',
+	'contribstats-unaudited' => 'Dette er ureviderte totatsummer.',
+	'fundraiserstatistics' => 'Innsamlingsstatistikk',
+	'fundraiserstats-date' => 'Dato',
+	'fundraiserstats-day' => 'Dag $1 av $2',
+	'fundraiserstats-contributions' => 'Bidrag',
+	'fundraiserstats-total' => 'Totalt (USD)',
+	'fundraiserstats-avg' => 'Gjennomsnitt (USD)',
+	'fundraiserstats-ytd' => 'Oppsamlet totalt (USD)',
+	'fundraiserstats-max' => 'Maksimum (USD)',
+	'fundraiserstats-tab-totals' => 'Totalt (USD)',
+	'fundraiserstats-tab-contributions' => 'Antall bidrag',
+	'fundraiserstats-tab-averages' => 'Gjennomsnitt (USD)',
+	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
+	'fundraiserstats-tab-ytd' => 'Året til idag (USD)',
+	'fundraiserstats-instructions' => 'For å se statistikk for en dag, hold musepekeren over linjen for den dagen. Hvert år har en egen farge i diagrammet.',
+	'fundraiserstats-customize' => 'Tilpass',
+	'fundraiserstats-show-years' => 'Vis de følgende årene:',
+	'fundraiserstats-time-zone' => 'Tidssone:',
+	'fundraiserstats-utc' => '(fra UTC)',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -4054,84 +4149,6 @@ $messages['nn'] = array(
 	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'contributionreporting-desc' => 'Fortløpende rapportering om Wikimedias innsamling',
-	'contributiontotal' => 'Bidrag totalt',
-	'contributionhistory' => 'Bidragshistorikk',
-	'contrib-hist-header' => 'Giverkommentarer fra verden rundt',
-	'contrib-hist-name' => 'Navn',
-	'contrib-hist-date' => 'Tid og dato',
-	'contrib-hist-amount' => 'Beløp',
-	'contrib-hist-next' => 'Tidligere donasjoner',
-	'contrib-hist-previous' => 'Nyere donasjoner',
-	'contrib-hist-anonymous' => 'Anonym',
-	'contributionstatistics' => 'Bidragsstatistikk',
-	'contribstats-desc' => 'Viser statistikk for bidrag til Wikimedia Foundation',
-	'contribstats-daily-totals' => '{{PLURAL:$1|Totalt i dag|Døgntotaler for de siste $1 dagene}}',
-	'contribstats-monthly-totals' => '{{PLURAL:$1|Totalt denne måneden|Månedstotaler for de siste $1 månedene}}',
-	'contribstats-month-range-totals' => '{{PLURAL:$1|Totalt for én måned|Månedstotaler for $1 måneder}}',
-	'contribstats-currency-range-totals' => 'Valutatotaler (fra $1 til $2)',
-	'contribstats-contribution-range-breakdown' => 'Bidrag sortert etter verdi (fra $1 til $2)',
-	'contribstats-currency-totals' => 'Valutatotaler for bokføringsåret $1',
-	'contribstats-contribution-breakdown' => 'Bidrag sortert etter verdi i bokføringsåret $1',
-	'contribstats-day' => 'Dag',
-	'contribstats-month' => 'Måned',
-	'contribstats-currency' => 'Valuta',
-	'contribstats-amount' => 'Beløp (USD)',
-	'contribstats-contributions' => 'Bidrag',
-	'contribstats-total' => 'Totalt (USD)',
-	'contribstats-avg' => 'Gjennomsnitt (USD)',
-	'contribstats-max' => 'Maksimum (USD)',
-	'contribstats-percentage-ytd' => 'Prosentandel (hittil i år)',
-	'contribstats-total-ytd' => 'Totalt (hittil i år)',
-	'contribstats-value-exactly' => 'Nøyaktig $1',
-	'contribstats-value-under' => 'Under $1',
-	'contribstats-value-from' => 'Fra $1–$2',
-	'contribstats-value-over' => 'Over $1',
-	'contributiontrackingstatistics' => 'Gavestatistikk',
-	'contribstats-day-totals' => 'Totalt for dagen',
-	'contribstats-week' => 'Uke',
-	'contribstats-weekly-totals' => '{{PLURAL:$1|Totalt denne uka|Ukesummer for de siste $1 ukene}}',
-	'contribstats-payment-type' => 'Betalingstype',
-	'contribstats-banner' => 'Banner',
-	'contribstats-payment-type-hits' => 'Betalingstypetreff',
-	'contribstats-clicks' => 'Klikk',
-	'contribstats-donations' => 'Donasjoner',
-	'contribstats-conversion' => 'Konverteringsgrad (%)',
-	'contribstats-template' => 'Mal',
-	'contribstats-nodata' => 'Ingen data oppgitt',
-	'contribstats-landingpage' => 'Målside',
-	'contribstats-donatepage' => 'Donasjonsside',
-	'contribstats-average' => 'Gjennomsnitt',
-	'contribstats-imperfect-data' => 'Disse dataene er ikke perfekte siden sporing av donorer uten bruk av sesjonssporing har sine begrensninger.',
-	'contribstats-paypal-donations' => 'PayPal-donasjoner',
-	'contribstats-credit-card' => 'Kredittkort',
-	'contribstats-fraud-note' => 'Enkelte falske donasjoner finnes.',
-	'contribstats-unaudited' => 'Dette er ureviderte totatsummer.',
-	'fundraiserstatistics' => 'Innsamlingsstatistikk',
-	'fundraiserstats-date' => 'Dato',
-	'fundraiserstats-day' => 'Dag $1 av $2',
-	'fundraiserstats-contributions' => 'Bidrag',
-	'fundraiserstats-total' => 'Totalt (USD)',
-	'fundraiserstats-avg' => 'Gjennomsnitt (USD)',
-	'fundraiserstats-ytd' => 'Oppsamlet totalt (USD)',
-	'fundraiserstats-max' => 'Maksimum (USD)',
-	'fundraiserstats-tab-totals' => 'Totalt (USD)',
-	'fundraiserstats-tab-contributions' => 'Antall bidrag',
-	'fundraiserstats-tab-averages' => 'Gjennomsnitt (USD)',
-	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
-	'fundraiserstats-tab-ytd' => 'Året til idag (USD)',
-	'fundraiserstats-instructions' => 'For å se statistikk for en dag, hold musepekeren over linjen for den dagen. Hvert år har en egen farge i diagrammet.',
-	'fundraiserstats-customize' => 'Tilpass',
-	'fundraiserstats-show-years' => 'Vis de følgende årene:',
-	'fundraiserstats-time-zone' => 'Tidssone:',
-	'fundraiserstats-utc' => '(fra UTC)',
-);
-
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -4205,11 +4222,46 @@ $messages['oc'] = array(
 );
 
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
  * @author Odisha1
  */
 $messages['or'] = array(
+	'contributiontotal' => 'ଅବଦାନ ସମୂହ',
+	'dailytotal' => 'ପୁରା ଦିନରେ',
+	'contributionhistory' => 'ଅବଦାନ ଇତିହାସ',
 	'contrib-hist-name' => 'ନାମ',
+	'contrib-hist-date' => 'ସମୟ ଓ ତାରିଖ',
+	'contrib-hist-amount' => 'ପରିମାଣ',
+	'contrib-hist-next' => 'ପୂର୍ବ ଦାନ',
+	'contrib-hist-previous' => 'ନୁଆ ଦାନ',
+	'contrib-hist-anonymous' => 'ଅଜଣା',
+	'contributionstatistics' => 'ଅବଦାନ ଆକଳନ',
+	'contribstats-day' => 'ଦିନ',
 	'contribstats-month' => 'ମାସ',
+	'contribstats-currency' => 'ମୁଦ୍ରା',
+	'contribstats-amount' => 'ପରିମାଣ (USD)',
+	'contribstats-contributions' => 'ଅବଦାନସମୂହ',
+	'contribstats-total' => 'ପୁରା ପରିମାଣ (USD)',
+	'contribstats-avg' => 'ହାରାହାରି (USD)',
+	'contribstats-max' => 'ଅଧିକତମ ଦାନ',
+	'contribstats-percentage-ytd' => 'ପ୍ରତିଶତ (YTD)',
+	'contribstats-total-ytd' => 'ପୁରା ପରିମାଣ (YTD)',
+	'contribstats-week' => 'ସପ୍ତାହ',
+	'contribstats-banner' => 'ସୂଚନା ଫଳକ',
+	'contribstats-average' => 'ହାରାହାରି',
+	'contribstats-credit-card' => 'କ୍ରେଡ଼ିଟ କାର୍ଡ଼',
+	'fundraiserstats-date' => 'ତାରିଖ',
+	'fundraiserstats-day' => 'ଦିନ $1 ର $2',
+	'fundraiserstats-contributions' => 'ଅବଦାନସମୂହ',
+	'fundraiserstats-total' => 'ପୁରା ପରିମାଣ (USD)',
+	'fundraiserstats-avg' => 'ହାରାହାରି (USD)',
+	'fundraiserstats-ytd' => 'ସଞ୍ଚିତ ପରିମାଣ (USD)',
+	'fundraiserstats-max' => 'ଅଧିକତମ (USD)',
+	'fundraiserstats-tab-contributions' => 'ଅବଦାନସମୂହର ସଂଖ୍ୟା',
+	'fundraiserstats-tab-averages' => 'ହାରାହାରି (USD)',
+	'fundraiserstats-tab-maximums' => 'ଅଧିକତମ (USD)',
+	'fundraiserstats-time-zone' => 'ସମୟ ମଣ୍ଡଳ:',
+	'fundraiserstats-utc' => '(UTC ଠାରୁ)',
 );
 
 /** Ossetic (Ирон)
@@ -6099,6 +6151,7 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Anakmalaysia
  * @author Chenxiaoqino
  * @author Chenzw
  * @author Hydra
@@ -6109,6 +6162,8 @@ $messages['zh-hans'] = array(
 	'contributionreporting-desc' => '现场报告维基媒体筹款活动',
 	'contributiontotal' => '贡献汇总',
 	'dailytotal' => '日总计',
+	'disablednotice' => '贡献汇报',
+	'disablednotice-disabled' => '本页面已被暂时停用，请稍后再试。',
 	'contributionhistory' => '贡献历史',
 	'contrib-hist-header' => '世界各地的捐助者评论',
 	'contrib-hist-name' => '名称',
