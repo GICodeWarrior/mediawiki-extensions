@@ -27,6 +27,11 @@ $specialPageAliases['ht'] = array(
 	'SemanticProjectManagement' => array( 'JesyonPwojèSemantik' ),
 );
 
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'SemanticProjectManagement' => array( 'Gestion_semantic_de_projectos' ),
+);
+
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
 	'SemanticProjectManagement' => array( 'РаководењеСоСемантичкиПроект' ),
@@ -46,8 +51,3 @@ $specialPageAliases['nl'] = array(
 $specialPageAliases['tr'] = array(
 	'SemanticProjectManagement' => array( 'SemantikProjeYönetimi' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
