@@ -38,6 +38,6 @@ $wgGroupPermissions['povwatch'] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['PovWatch'] = $dir . 'PovWatch.i18n.php';
-$wgExtensionAliasesFiles['PovWatch'] = $dir . 'PovWatch.alias.php';
+$wgExtensionMessagesFiles['PovWatchAlias'] = $dir . 'PovWatch.alias.php';
 $wgAutoloadClasses['SpecialPovWatch'] = $dir . 'PovWatch_body.php';
 $wgSpecialPages['PovWatch'] = 'SpecialPovWatch';
