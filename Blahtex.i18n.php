@@ -2718,7 +2718,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'math_noblahtex' => 'Kan ikke kjøre blahtex, som burde være på $1',
 	'blahtext-desc' => 'MathML-resultat for &lt;math&gt;-tagger',
 	'math_AmbiguousInfix' => 'Tvetydig plassering av «$1» (prøv å bruke ekstra parenteser «{ ... }» for å gjøre entydig)',
