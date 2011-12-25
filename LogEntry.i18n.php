@@ -456,7 +456,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'logentry-append' => 'Legg til',
 	'logentry-parserhook-desc' => 'Denne merkelapputvidelsen gir et skjema for å legge til merkelapper før eller etter på loggsider',
 	'logentry-specialpage-desc' => 'Denne merkelapputvidelsen tilbyr utførelse av å legge til merkelapper på loggsider',
