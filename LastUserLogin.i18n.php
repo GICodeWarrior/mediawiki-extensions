@@ -590,7 +590,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'lastuserlogin' => 'Siste brukerinnlogging',
 	'lastuserlogin-desc' => 'Viser den siste gangen en bruker logget inn',
 	'lastuserlogin_userid' => 'Brukernavn',
