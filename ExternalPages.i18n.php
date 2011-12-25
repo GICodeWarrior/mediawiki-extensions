@@ -473,7 +473,7 @@ $messages['nn'] = array(
  * @author Laaknor
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'externalpages' => 'Eksterne sider',
 	'externalpages-desc' => 'Henter og viser sider fra andre WMF-steder',
 	'externalpages-bad-page' => 'Ugyldig side spesifisert',
