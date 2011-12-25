@@ -156,10 +156,13 @@ $messages['ia'] = array(
  */
 $messages['lb'] = array(
 	'reassignedits' => 'Ännerunge vu Benotzer iwwerdroen',
+	'reassignedits-desc' => "Erlaabt et fir Ännerunge vun engem ale Benotzer op en neien z'iwwerdroen",
 	'reassignedits-error-invalid' => 'De Benotzernumm "<nowiki>$1</nowiki>" ass net valabel.',
 	'reassignedits-new' => 'Neie Benotzernumm',
 	'reassignedits-old' => 'Ale Benotzernumm',
+	'reassignedits-submit' => 'Späicheren',
 	'reassignedits-success' => 'D\'Ännerunge vum "<nowiki>$1</nowiki>" goufen als Ännerunge vum Benotzer "<nowiki>$2</nowiki>" derbäigesat.',
+	'reassignedits-summary' => 'Ännerunge vun engem ale Benotzer op en neien iwwerdroen.',
 	'reassignedits-updatelog-title' => 'Benotzernumm an de Logicher aktualiséieren',
 	'reassignedits-updatelog-user' => 'Benotzernumm vum aktive Benotzer an de Logbicher aktualiséieren',
 	'right-reassignedits' => 'Ännerunge vun engem ale Benotzer op en neie Benotzer iwwerdroen',
