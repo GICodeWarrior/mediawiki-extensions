@@ -313,7 +313,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'geolite-desc' => 'Lettvekts GeoIp-omdirigering',
 );
 
