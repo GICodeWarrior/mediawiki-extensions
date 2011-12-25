@@ -963,7 +963,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'e-mailpage' => 'Send side som e-post',
 	'ea-desc' => 'Send HTML-side til en eller flere e-postadresser ved hjelp av [http://phpmailer.sourceforge.net/ phpmailer].',
 	'ea-heading' => '=== Send siden [[$1]] som e-post ===',
