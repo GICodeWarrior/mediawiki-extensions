@@ -467,7 +467,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'protectsection_desc' => 'Lar godkjente brukere beskytte deler av en side ved å bruke taggen <code>&lt;protect&gt;</code>',
 	'protectsection_add_remove' => 'Du prøvde å legge til eller fjerne en beskyttet seksjon',
 	'protectsection_modify' => 'Du prøvde å endre beskyttet tekst',
