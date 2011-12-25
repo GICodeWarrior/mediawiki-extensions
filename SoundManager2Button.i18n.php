@@ -14,7 +14,7 @@ $messages['en'] = array(
 	'soundmanager2button-play' => 'Play',
 );
 
-# Message documentation (Message documentation)
+/** Message documentation (Message documentation) */
 $messages['qqq'] = array(
 	'soundmanager2button-desc' => '{{desc}}',
 	'soundmanager2button-play' => 'Play button text, primarily for screenreaders.',
@@ -38,10 +38,11 @@ $messages['dsb'] = array(
 
 /** French (Français)
  * @author Seb35
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'soundmanager2button-desc' => 'Inclut un lecteur MP3 SoundManager 2 dans une page wiki',
-	'soundmanager2button-play' => 'Lire',
+	'soundmanager2button-play' => 'Lecture',
 );
 
 /** Galician (Galego)
