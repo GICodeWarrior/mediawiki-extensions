@@ -264,7 +264,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'templateinfo-desc' => 'Støtter maler som definerer datastrukturen sin gjennom XML-markering',
 	'templateinfo-header' => 'XML-definisjonen for denne malen er:',
 );
