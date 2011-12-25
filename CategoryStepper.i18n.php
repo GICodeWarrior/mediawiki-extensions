@@ -546,7 +546,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Lejonel
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'categorystepper-desc' => 'Viser en rute for kategoriblaing (lenker til neste og foregående side) på sider i en gruppe av kategorier',
 	'categorystepper-end' => '(Kategorislutt)',
 	'categorystepper-start' => '(Kategoristart)',
