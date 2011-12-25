@@ -530,7 +530,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'advancedrandom' => 'Avansert tilfeldig side',
 	'advancedrandom-desc' => 'Finn en tilfeldig side der det på selve siden eller diskusjonssiden blir lenket til en angitt side, kan for eksempel brukes med [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] for å få en tilfeldig utmerket artikkel, eller som [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] for å få en tilfeldig GFDL-fil.',
 );
