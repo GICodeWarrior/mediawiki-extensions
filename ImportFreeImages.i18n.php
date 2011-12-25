@@ -976,6 +976,26 @@ $messages['nah'] = array(
 	'importfreeimages_next' => 'Niman $1',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'importfreeimages' => 'Imperter frie bilder',
+	'importfreeimages-desc' => 'Gir muligheten til å [[Special:ImportFreeImages|importere fri bilder]] fra [http://flickr.com flickr]',
+	'importfreeimages_description' => 'Denne siden lar deg søke i bilder med riktig lisens på Flickr og importere dem til wikien din.',
+	'importfreeimages_nophotosfound' => 'Ingen bilder ble funnet for søket «$1». Prøv igjen.',
+	'importfreeimages_owner' => 'Skaper',
+	'importfreeimages_importthis' => 'importer',
+	'importfreeimages_next' => 'Neste $1',
+	'importfreeimages_size_square' => 'Kvadrat',
+	'importfreeimages_size_thumbnail' => 'Miniatyrbilde',
+	'importfreeimages_size_small' => 'Liten',
+	'importfreeimages_size_medium' => 'Medium',
+	'importfreeimages_size_large' => 'Stor',
+	'importfreeimages_size_original' => 'Opprinnelig',
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $messages['nds-nl'] = array(
 	'importfreeimages_next' => 'Volgende $1',
@@ -1018,26 +1038,6 @@ $messages['nn'] = array(
 	'importfreeimages_size_medium' => 'Middels',
 	'importfreeimages_size_large' => 'Stor',
 	'importfreeimages_size_original' => 'Original',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'importfreeimages' => 'Imperter frie bilder',
-	'importfreeimages-desc' => 'Gir muligheten til å [[Special:ImportFreeImages|importere fri bilder]] fra [http://flickr.com flickr]',
-	'importfreeimages_description' => 'Denne siden lar deg søke i bilder med riktig lisens på Flickr og importere dem til wikien din.',
-	'importfreeimages_nophotosfound' => 'Ingen bilder ble funnet for søket «$1». Prøv igjen.',
-	'importfreeimages_owner' => 'Skaper',
-	'importfreeimages_importthis' => 'importer',
-	'importfreeimages_next' => 'Neste $1',
-	'importfreeimages_size_square' => 'Kvadrat',
-	'importfreeimages_size_thumbnail' => 'Miniatyrbilde',
-	'importfreeimages_size_small' => 'Liten',
-	'importfreeimages_size_medium' => 'Medium',
-	'importfreeimages_size_large' => 'Stor',
-	'importfreeimages_size_original' => 'Opprinnelig',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
