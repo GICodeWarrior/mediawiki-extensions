@@ -820,6 +820,30 @@ $messages['myv'] = array(
 	'security-type-namespace' => 'лемпотмо',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ * @author Simny
+ */
+$messages['nb'] = array(
+	'security' => 'Sikkerhetslogg',
+	'security-desc' => 'Utvider MediaWiki sin funksjon for sidevern til å tillate restriksjoner mot innsyn i sideinnhold',
+	'security-logpage' => 'Sikkerhetslogg',
+	'security-logpagetext' => 'Dette er en handlingslogg blokkert av [http://www.mediawiki.org/wiki/Extension:SimpleSecurity SimpleSecurity-utvidelsen].',
+	'badaccess-read' => "'''Advarsel:''' «$1» blir henvist hit, men du har ikke tilstrekkelige rettigheter til å nå den.",
+	'security-info' => 'Det finnes $1 på denne siden',
+	'security-info-toggle' => 'sikkerhetsrelaterte begrensninger',
+	'security-inforestrict' => '$1 er avgrenset til $2',
+	'security-desc-LS' => '(gjelder fordi denne siden er i «$2 $1»)',
+	'security-desc-PR' => '(kan settes fra «beskytt»-fanen)',
+	'security-infosysops' => 'Ingen restriksjoner er virksomme fordi du er medlem av administratorgruppen',
+	'security-manygroups' => 'gruppene $1 og $2',
+	'security-unchain' => 'Endre handligene individuelt',
+	'security-type-category' => 'kategori',
+	'security-type-namespace' => 'navnerom',
+	'security-restricttogroup' => 'Tilgang til innholdet er begrenset til medlemmer av «$1»',
+	'restriction-read' => 'Les',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -862,30 +886,6 @@ $messages['nn'] = array(
 	'security-unchain' => 'Endra handlingar individuelt',
 	'security-type-category' => 'kategori',
 	'security-type-namespace' => 'namnerom',
-	'restriction-read' => 'Les',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- * @author Simny
- */
-$messages['nb'] = array(
-	'security' => 'Sikkerhetslogg',
-	'security-desc' => 'Utvider MediaWiki sin funksjon for sidevern til å tillate restriksjoner mot innsyn i sideinnhold',
-	'security-logpage' => 'Sikkerhetslogg',
-	'security-logpagetext' => 'Dette er en handlingslogg blokkert av [http://www.mediawiki.org/wiki/Extension:SimpleSecurity SimpleSecurity-utvidelsen].',
-	'badaccess-read' => "'''Advarsel:''' «$1» blir henvist hit, men du har ikke tilstrekkelige rettigheter til å nå den.",
-	'security-info' => 'Det finnes $1 på denne siden',
-	'security-info-toggle' => 'sikkerhetsrelaterte begrensninger',
-	'security-inforestrict' => '$1 er avgrenset til $2',
-	'security-desc-LS' => '(gjelder fordi denne siden er i «$2 $1»)',
-	'security-desc-PR' => '(kan settes fra «beskytt»-fanen)',
-	'security-infosysops' => 'Ingen restriksjoner er virksomme fordi du er medlem av administratorgruppen',
-	'security-manygroups' => 'gruppene $1 og $2',
-	'security-unchain' => 'Endre handligene individuelt',
-	'security-type-category' => 'kategori',
-	'security-type-namespace' => 'navnerom',
-	'security-restricttogroup' => 'Tilgang til innholdet er begrenset til medlemmer av «$1»',
 	'restriction-read' => 'Les',
 );
 
