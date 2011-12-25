@@ -22,7 +22,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['WhoIsWatching'] = $dir . 'WhoIsWatching_body.php';
 $wgExtensionMessagesFiles['WhoIsWatching'] = $dir . 'WhoIsWatching.i18n.php';
-$wgExtensionAliasesFiles['WhoIsWatching'] = $dir . 'WhoIsWatching.alias.php';
+$wgExtensionMessagesFiles['WhoIsWatchingAlias'] = $dir . 'WhoIsWatching.alias.php';
 $wgSpecialPages['WhoIsWatching'] = 'WhoIsWatching';
 
 require_once( "$IP/includes/SpecialPage.php" );
