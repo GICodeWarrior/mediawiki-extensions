@@ -1198,6 +1198,29 @@ $messages['myv'] = array(
 	'editmsg-search' => 'Вешнэмс',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Nettbasert redigering]] av et stort antall Messages*.php-filer',
+	'editmessages' => 'Rediger beskjeder',
+	'editmsg-target' => 'Målbeskjed:',
+	'editmsg-search' => 'Søk',
+	'editmsg-show-list' => 'Vis verdier for beskjednavnet «$1»',
+	'editmsg-get-patch' => 'Lag oppdatering',
+	'editmsg-new-search' => 'Nytt søk',
+	'editmsg-warning-parse1' => '* Regulært uttrykk for beskjednavn passer ikke: $1',
+	'editmsg-warning-parse2' => '* Sitattegn forventet etter pil: $1',
+	'editmsg-warning-parse3' => '* Slutten på verditekst ikke funnet: $1',
+	'editmsg-warning-file' => '* Fillesingsfeil ble funnet for følgende {{PLURAL:$2|språk|språk}}: $1',
+	'editmsg-warning-mismatch' => '* Originalteksten hadde ikke den forventede verdien for følgende {{PLURAL:$2|språk|språk}}: $1',
+	'editmsg-apply-patch' => 'Bruk oppdatering',
+	'editmsg-no-patch' => 'Kunne ikke utføre «patch»-kommando',
+	'editmsg-patch-failed' => 'Oppdatering mislyktes med avslutningsstatus $1',
+	'editmsg-patch-success' => 'Oppdatert.',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1270,29 +1293,6 @@ $messages['nn'] = array(
 	'editmsg-apply-patch' => 'Gjer oppdatering verksam',
 	'editmsg-no-patch' => 'Kunne ikkje utføra «patch»-kommando',
 	'editmsg-patch-failed' => 'Oppdatering mislukkast med avslutningsstatus $1',
-	'editmsg-patch-success' => 'Oppdatert.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'editmessages-desc' => '[[Special:EditMessages|Nettbasert redigering]] av et stort antall Messages*.php-filer',
-	'editmessages' => 'Rediger beskjeder',
-	'editmsg-target' => 'Målbeskjed:',
-	'editmsg-search' => 'Søk',
-	'editmsg-show-list' => 'Vis verdier for beskjednavnet «$1»',
-	'editmsg-get-patch' => 'Lag oppdatering',
-	'editmsg-new-search' => 'Nytt søk',
-	'editmsg-warning-parse1' => '* Regulært uttrykk for beskjednavn passer ikke: $1',
-	'editmsg-warning-parse2' => '* Sitattegn forventet etter pil: $1',
-	'editmsg-warning-parse3' => '* Slutten på verditekst ikke funnet: $1',
-	'editmsg-warning-file' => '* Fillesingsfeil ble funnet for følgende {{PLURAL:$2|språk|språk}}: $1',
-	'editmsg-warning-mismatch' => '* Originalteksten hadde ikke den forventede verdien for følgende {{PLURAL:$2|språk|språk}}: $1',
-	'editmsg-apply-patch' => 'Bruk oppdatering',
-	'editmsg-no-patch' => 'Kunne ikke utføre «patch»-kommando',
-	'editmsg-patch-failed' => 'Oppdatering mislyktes med avslutningsstatus $1',
 	'editmsg-patch-success' => 'Oppdatert.',
 );
 
