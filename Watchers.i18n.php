@@ -753,6 +753,25 @@ $messages['nah'] = array(
 	'watchers' => 'Tlachiyalōnih',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Boivie
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'watchers' => 'Overvåkende',
+	'watchers-desc' => 'Viser [[Special:Watchers|hvilke brukere som overvåker en viss side]]',
+	'watchers_link_title' => 'Hvem overvåker denne siden?',
+	'watchers_error_article' => '<b>Feil:</b> Siden finnes ikke.',
+	'watchers-error-invalid-page' => "'''Feil:''' «$1» er en ugyldig sidetittel.",
+	'watchers_header' => '{{PLURAL:$2|Person|Personer}} som overvåker «[[:$1]]»',
+	'watchers_noone_watches' => 'Ingen overvåker siden [[:$1]].',
+	'watchers_x_or_more' => '$1 eller flere {{PLURAL:$1|personer|personer}} overvåker denne siden.',
+	'watchers_less_than_x' => 'Mindre enn $1 {{PLURAL:$1|personer|personer}} overvåker denne siden.',
+	'watchers-num' => '$1 {{PLURAL:$1|bruker|brukere}} har siden [[:$2]] på sin overvåkningsliste.',
+	'right-watchers-list' => '[[Special:Watchers|Liste over brukere som overvåker en bestemt side]]',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Siebrand
@@ -785,25 +804,6 @@ $messages['nn'] = array(
 	'watchers_noone_watches' => 'Ingen overvaker sida [[:$1]].',
 	'watchers_x_or_more' => '$1 eller fleire {{PLURAL:$1|brukarar|brukarar}} overvakar denne sida.',
 	'watchers_less_than_x' => 'Mindre enn $1 {{PLURAL:$1|brukarar|brukar}} overvaker denne sida.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Boivie
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'watchers' => 'Overvåkende',
-	'watchers-desc' => 'Viser [[Special:Watchers|hvilke brukere som overvåker en viss side]]',
-	'watchers_link_title' => 'Hvem overvåker denne siden?',
-	'watchers_error_article' => '<b>Feil:</b> Siden finnes ikke.',
-	'watchers-error-invalid-page' => "'''Feil:''' «$1» er en ugyldig sidetittel.",
-	'watchers_header' => '{{PLURAL:$2|Person|Personer}} som overvåker «[[:$1]]»',
-	'watchers_noone_watches' => 'Ingen overvåker siden [[:$1]].',
-	'watchers_x_or_more' => '$1 eller flere {{PLURAL:$1|personer|personer}} overvåker denne siden.',
-	'watchers_less_than_x' => 'Mindre enn $1 {{PLURAL:$1|personer|personer}} overvåker denne siden.',
-	'watchers-num' => '$1 {{PLURAL:$1|bruker|brukere}} har siden [[:$2]] på sin overvåkningsliste.',
-	'right-watchers-list' => '[[Special:Watchers|Liste over brukere som overvåker en bestemt side]]',
 );
 
 /** Occitan (Occitan)
