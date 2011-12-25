@@ -211,7 +211,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'minify-desc' => 'Minimerer CSS- og JavaScript-utdata fra action=raw',
 );
 
