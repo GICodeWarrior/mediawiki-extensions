@@ -989,7 +989,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'chemicalsources' => 'Kjemiske kilder',
 	'chemicalsource-desc' => 'Legger til elementet <nowiki><chemform></nowiki> for kjemiske formler',
 	'chemicalsources-desc' => '[[Special:ChemicalSources|Spesialside]] for kjemiske kilder',
