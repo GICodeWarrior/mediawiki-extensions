@@ -430,7 +430,7 @@ Dette lèt deg nytta brukarsida di som ein OpenID.',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'linkopenid-desc' => 'Gjør det mulig for brukere å lenke kontoen sin til en ekstern OpenID',
 	'linkopenid-prefstext-pre' => 'Om du har en OpenID fra en ekstern leverandør kan du oppgi det her.
 Dette lar deg bruke din brukerside som en OpenID i tillegg.',
