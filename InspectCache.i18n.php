@@ -795,7 +795,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'inspectcache' => 'Inspiser mellomlagring',
 	'inspectcache-desc' => 'Et enkelt feilsøkingsverktøy for å inspisere innholdet i det delte mellomlageret',
 	'inspectcache-general' => 'Generell mellomlagring',
