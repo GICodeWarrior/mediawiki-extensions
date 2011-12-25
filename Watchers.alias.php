@@ -158,6 +158,11 @@ $specialPageAliases['mr'] = array(
 	'Watchers' => array( 'प्रेक्षक' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'Watchers' => array( 'Overvåkere' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'Watchers' => array( 'Volgers' ),
@@ -166,11 +171,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'Watchers' => array( 'Volgers' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'Watchers' => array( 'Overvåkere' ),
 );
 
 /** Polish (Polski) */
@@ -183,7 +183,7 @@ $specialPageAliases['ps'] = array(
 	'Watchers' => array( 'کتونکي' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'Watchers' => array( 'पश्यक्‌' ),
 );
@@ -222,8 +222,3 @@ $specialPageAliases['vec'] = array(
 $specialPageAliases['yi'] = array(
 	'Watchers' => array( 'אויפפאסער' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
