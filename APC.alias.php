@@ -43,12 +43,7 @@ $specialPageAliases['mk'] = array(
 	'APC' => array( 'АПК' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'APC' => array( 'एपीसिपश्यति' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
