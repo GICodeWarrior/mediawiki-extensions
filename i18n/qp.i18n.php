@@ -2209,6 +2209,75 @@ $messages['ms'] = array(
 	'qp_users_link' => 'Pengguna',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'pollresults' => 'Resultater fra spørreundersøkelsen på denne siden',
+	'qp_desc' => 'Tillater opprettelse av spørreundersøkelser',
+	'qp_desc-sp' => '[[Special:PollResults|Spesialside]] for visning av resultater fra spørreundersøkelsene',
+	'qp_result_NA' => 'Ikke besvart',
+	'qp_result_error' => 'Syntaksfeil',
+	'qp_vote_button' => 'Stem',
+	'qp_vote_again_button' => 'Endre din stemme',
+	'qp_polls_list' => 'List opp alle spørreundersøkelser',
+	'qp_users_list' => 'List opp alle brukere',
+	'qp_browse_to_poll' => 'Bla igjennom til $1',
+	'qp_browse_to_user' => 'Bla igjennom til $1',
+	'qp_votes_count' => '{{PLURAL:$1|Én stemme|$1 stemmer}}',
+	'qp_source_link' => 'Kilde',
+	'qp_stats_link' => 'Statistikk',
+	'qp_users_link' => 'Brukere',
+	'qp_voice_link' => 'Brukerstemme',
+	'qp_voice_link_inv' => 'Brukerstemme?',
+	'qp_user_polls_link' => 'Deltok i {{PLURAL:$1|én spørreundersøkelse|$1 spørreundersøkelser}}',
+	'qp_user_missing_polls_link' => 'Ingen deltakelse',
+	'qp_not_participated_link' => 'Ikke deltatt',
+	'qp_order_by_username' => 'Sorter etter brukernavn',
+	'qp_order_by_polls_count' => 'Sorter etter antall spørreundersøkelser',
+	'qp_results_line_qupl' => 'Side «$1» Spørreundersøkelse «$2»: $3',
+	'qp_results_line_qpl' => 'Side «$1» Spørreundersøkelse «$2»: $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Side «$2» Spørreundersøkelse «$3» ]',
+	'qp_export_to_xls' => 'Eksporter statistikk til XLS-format',
+	'qp_voices_to_xls' => 'Eksporter stemmer til XLS-format',
+	'qp_users_answered_questions' => '{{PLURAL:$1|Én bruker|$1 brukere}} besvarte spørsmålene',
+	'qp_func_no_such_poll' => 'Ingen slik spørreundersøkelse ($1)',
+	'qp_func_missing_question_id' => 'Vennligst oppgi en eksisterende spørsmåls-ID (starter fra 1) for spørreundersøkelsen $1',
+	'qp_func_invalid_question_id' => 'Ugyldig spørsmåls-id=$2 (ikke et tall) for spørreundersøkelsen $1',
+	'qp_func_missing_proposal_id' => 'Vennligst oppgi en eksisterende forslags-id (starter fra 0) for spørreundersøkelsen $1, spørsmål $2',
+	'qp_func_invalid_proposal_id' => 'Ugyldig forslags-id=$3 (ikke et tall) for spørreundersøkelsen $1, spørsmål $2',
+	'qp_error_no_such_poll' => 'Ingen slik spørreundersøkelse ($1).
+Vær sikker på at spørreundersøkelsen ble deklarert og lagret, vær også sikker på at tegnet # blir brukt som addresse avgrenser',
+	'qp_error_in_question_header' => 'Ugyldig spørsmålsoverskrift: $1',
+	'qp_error_id_in_stats_mode' => 'Kan ikke deklarere en ID for spørreundersøkelsen i statistikkmodus',
+	'qp_error_dependance_in_stats_mode' => 'Kan ikke deklarere kjede av avhengigheter for spørreundersøkelsen i statistikkmodus',
+	'qp_error_no_stats' => 'Ingen statistiske data er tilgjengelig fordi ingen har stemt for denne spørreundersøkelsen enda (address=$1)',
+	'qp_error_address_in_decl_mode' => 'Kan ikke få en adresse for spørreundersøkelsen i deklareringsmodus',
+	'qp_error_question_not_implemented' => 'Spørsmål av en slik type er ikke implementert: $1',
+	'qp_error_invalid_question_type' => 'Ugyldig spørsmålstype: $1',
+	'qp_error_type_in_stats_mode' => 'Spørsmålstypen kan ikke defineres i statistisk visningsmodus: $1',
+	'qp_error_no_poll_id' => 'Spørreundersøkelsesmerkelappen har ingen definerte id-atributter.',
+	'qp_error_invalid_poll_id' => 'Ugyldig spørreundersøkelses-id (id=$1).
+Spørreundersøkelses-id kan kun inneholde bokstaver, tall og mellomrom',
+	'qp_error_already_used_poll_id' => 'Spørreundersøkelses-id-en har allerede blitt brukt på denne siden (id=$1).',
+	'qp_error_invalid_dependance_value' => 'Spørreundersøkelsens (id=$1) kjede av avhengigheter har en ugyldig verdi av avhengighetsatributter (dependance="$2")',
+	'qp_error_missed_dependance_title' => 'Spørreundersøkelsen (id=$1) avhenger av en annen spørreundersøkelse (id=$3) fra side [[$2]], men tittelen [[$2]] ble ikke funnet.
+Enten fjern avhengighetsatributten, eller gjenopprett [[$2]]',
+	'qp_error_missed_dependance_poll' => 'Spørreundersøkelsen (id=$1) avhenger av en annen spørreundersøkelse (id=$3) på side $2, men den spørreundersøkelsen finnes ikke eller har ikke blitt lagret enda.
+Enten fjern avhengighetsatributten eller opprett spørreundersøkelsen med id=$3 på siden $2 og lagre den.
+For å lagre en spørreundersøkelse, send den mens du ikke svarer på noen forslagsspørsmål.',
+	'qp_error_vote_dependance_poll' => 'Vennligst stem for spørreundersøkelsen $1 først.',
+	'qp_error_too_many_spans' => 'For mange kategorigrupper for det totale antall underkategorier definert',
+	'qp_error_unanswered_span' => 'Ubesvart underkategori',
+	'qp_error_non_unique_choice' => 'Dette spørsmålet krever unikt forslagssvar',
+	'qp_error_category_name_empty' => 'Kategorinavn er tomt',
+	'qp_error_proposal_text_empty' => 'Forslagstekst er tom',
+	'qp_error_too_few_categories' => 'Minst to kategorier må defineres',
+	'qp_error_too_few_spans' => 'Hver kategorigruppe må inneholde minst to underkategorier',
+	'qp_error_no_answer' => 'Ubesvart forslag',
+	'qp_error_unique' => 'Spørsmål av typen unique() har flere forslag enn mulige definerte svar: umulig å gjennomføre',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Purodha
@@ -2329,75 +2398,6 @@ $messages['nn'] = array(
 	'qp_users_list' => 'List opp alle brukarar',
 	'qp_source_link' => 'Kjelde',
 	'qp_stats_link' => 'Statistikk',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'pollresults' => 'Resultater fra spørreundersøkelsen på denne siden',
-	'qp_desc' => 'Tillater opprettelse av spørreundersøkelser',
-	'qp_desc-sp' => '[[Special:PollResults|Spesialside]] for visning av resultater fra spørreundersøkelsene',
-	'qp_result_NA' => 'Ikke besvart',
-	'qp_result_error' => 'Syntaksfeil',
-	'qp_vote_button' => 'Stem',
-	'qp_vote_again_button' => 'Endre din stemme',
-	'qp_polls_list' => 'List opp alle spørreundersøkelser',
-	'qp_users_list' => 'List opp alle brukere',
-	'qp_browse_to_poll' => 'Bla igjennom til $1',
-	'qp_browse_to_user' => 'Bla igjennom til $1',
-	'qp_votes_count' => '{{PLURAL:$1|Én stemme|$1 stemmer}}',
-	'qp_source_link' => 'Kilde',
-	'qp_stats_link' => 'Statistikk',
-	'qp_users_link' => 'Brukere',
-	'qp_voice_link' => 'Brukerstemme',
-	'qp_voice_link_inv' => 'Brukerstemme?',
-	'qp_user_polls_link' => 'Deltok i {{PLURAL:$1|én spørreundersøkelse|$1 spørreundersøkelser}}',
-	'qp_user_missing_polls_link' => 'Ingen deltakelse',
-	'qp_not_participated_link' => 'Ikke deltatt',
-	'qp_order_by_username' => 'Sorter etter brukernavn',
-	'qp_order_by_polls_count' => 'Sorter etter antall spørreundersøkelser',
-	'qp_results_line_qupl' => 'Side «$1» Spørreundersøkelse «$2»: $3',
-	'qp_results_line_qpl' => 'Side «$1» Spørreundersøkelse «$2»: $3, $4, $5, $6',
-	'qp_header_line_qpul' => '$1 [ Side «$2» Spørreundersøkelse «$3» ]',
-	'qp_export_to_xls' => 'Eksporter statistikk til XLS-format',
-	'qp_voices_to_xls' => 'Eksporter stemmer til XLS-format',
-	'qp_users_answered_questions' => '{{PLURAL:$1|Én bruker|$1 brukere}} besvarte spørsmålene',
-	'qp_func_no_such_poll' => 'Ingen slik spørreundersøkelse ($1)',
-	'qp_func_missing_question_id' => 'Vennligst oppgi en eksisterende spørsmåls-ID (starter fra 1) for spørreundersøkelsen $1',
-	'qp_func_invalid_question_id' => 'Ugyldig spørsmåls-id=$2 (ikke et tall) for spørreundersøkelsen $1',
-	'qp_func_missing_proposal_id' => 'Vennligst oppgi en eksisterende forslags-id (starter fra 0) for spørreundersøkelsen $1, spørsmål $2',
-	'qp_func_invalid_proposal_id' => 'Ugyldig forslags-id=$3 (ikke et tall) for spørreundersøkelsen $1, spørsmål $2',
-	'qp_error_no_such_poll' => 'Ingen slik spørreundersøkelse ($1).
-Vær sikker på at spørreundersøkelsen ble deklarert og lagret, vær også sikker på at tegnet # blir brukt som addresse avgrenser',
-	'qp_error_in_question_header' => 'Ugyldig spørsmålsoverskrift: $1',
-	'qp_error_id_in_stats_mode' => 'Kan ikke deklarere en ID for spørreundersøkelsen i statistikkmodus',
-	'qp_error_dependance_in_stats_mode' => 'Kan ikke deklarere kjede av avhengigheter for spørreundersøkelsen i statistikkmodus',
-	'qp_error_no_stats' => 'Ingen statistiske data er tilgjengelig fordi ingen har stemt for denne spørreundersøkelsen enda (address=$1)',
-	'qp_error_address_in_decl_mode' => 'Kan ikke få en adresse for spørreundersøkelsen i deklareringsmodus',
-	'qp_error_question_not_implemented' => 'Spørsmål av en slik type er ikke implementert: $1',
-	'qp_error_invalid_question_type' => 'Ugyldig spørsmålstype: $1',
-	'qp_error_type_in_stats_mode' => 'Spørsmålstypen kan ikke defineres i statistisk visningsmodus: $1',
-	'qp_error_no_poll_id' => 'Spørreundersøkelsesmerkelappen har ingen definerte id-atributter.',
-	'qp_error_invalid_poll_id' => 'Ugyldig spørreundersøkelses-id (id=$1).
-Spørreundersøkelses-id kan kun inneholde bokstaver, tall og mellomrom',
-	'qp_error_already_used_poll_id' => 'Spørreundersøkelses-id-en har allerede blitt brukt på denne siden (id=$1).',
-	'qp_error_invalid_dependance_value' => 'Spørreundersøkelsens (id=$1) kjede av avhengigheter har en ugyldig verdi av avhengighetsatributter (dependance="$2")',
-	'qp_error_missed_dependance_title' => 'Spørreundersøkelsen (id=$1) avhenger av en annen spørreundersøkelse (id=$3) fra side [[$2]], men tittelen [[$2]] ble ikke funnet.
-Enten fjern avhengighetsatributten, eller gjenopprett [[$2]]',
-	'qp_error_missed_dependance_poll' => 'Spørreundersøkelsen (id=$1) avhenger av en annen spørreundersøkelse (id=$3) på side $2, men den spørreundersøkelsen finnes ikke eller har ikke blitt lagret enda.
-Enten fjern avhengighetsatributten eller opprett spørreundersøkelsen med id=$3 på siden $2 og lagre den.
-For å lagre en spørreundersøkelse, send den mens du ikke svarer på noen forslagsspørsmål.',
-	'qp_error_vote_dependance_poll' => 'Vennligst stem for spørreundersøkelsen $1 først.',
-	'qp_error_too_many_spans' => 'For mange kategorigrupper for det totale antall underkategorier definert',
-	'qp_error_unanswered_span' => 'Ubesvart underkategori',
-	'qp_error_non_unique_choice' => 'Dette spørsmålet krever unikt forslagssvar',
-	'qp_error_category_name_empty' => 'Kategorinavn er tomt',
-	'qp_error_proposal_text_empty' => 'Forslagstekst er tom',
-	'qp_error_too_few_categories' => 'Minst to kategorier må defineres',
-	'qp_error_too_few_spans' => 'Hver kategorigruppe må inneholde minst to underkategorier',
-	'qp_error_no_answer' => 'Ubesvart forslag',
-	'qp_error_unique' => 'Spørsmål av typen unique() har flere forslag enn mulige definerte svar: umulig å gjennomføre',
 );
 
 /** Pälzisch (Pälzisch)
@@ -2878,21 +2878,23 @@ $messages['sr-ec'] = array(
 	'qp_results_line_qucl' => '$1: $2 $3',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'qp_parentheses' => '($1)',
 	'qp_full_category_name' => '$1($2)',
 	'qp_desc' => 'Omogućava pokretanje anketa',
-	'qp_result_NA' => 'Nije odgovoreno',
+	'qp_result_NA' => 'Neodgovoreno',
 	'qp_result_error' => 'Sintaksna greška',
 	'qp_vote_button' => 'Glasaj',
-	'qp_vote_again_button' => 'Promenite svoj glas',
+	'qp_vote_again_button' => 'Preglasaj',
 	'qp_polls_list' => 'Prikaži sve ankete',
 	'qp_users_list' => 'Prikaži sve korisnike',
-	'qp_votes_count' => '$1 {{PLURAL:$1|glas|glasa|glasa|glasa|glasova}}',
+	'qp_votes_count' => '$1 {{PLURAL:$1|glas|glasa|glasova}}',
 	'qp_stats_link' => 'Statistike',
 	'qp_users_link' => 'Korisnici',
-	'qp_user_polls_link' => 'Učestvovao u $1 {{PLURAL:$1|anketi|anketa}}',
+	'qp_user_polls_link' => '{{GENDER:$2|Učestvovao|Učestvovala|Učestvovao}} u $1 {{PLURAL:$1|anketi|ankete|anketa}}',
 	'qp_results_line_qpul' => '$1: $2',
 	'qp_header_line_qucl' => '$1. $2<br />$3 ??? $4',
 	'qp_results_line_qucl' => '$1: $2 $3',
