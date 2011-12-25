@@ -25,7 +25,7 @@ $wgExtensionCredits['specialpage'][] = array(
 // Set extension files.
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['CooperationStatistics'] = $dir . 'CooperationStatistics.i18n.php';
-$wgExtensionAliasesFiles['CooperationStatistics'] = $dir . 'CooperationStatistics.alias.php';
+$wgExtensionMessagesFiles['CooperationStatisticsAlias'] = $dir . 'CooperationStatistics.alias.php';
 $wgAutoloadClasses['CooperationStatistics'] = $dir . 'CooperationStatistics_body.php';
 $wgSpecialPages['CooperationStatistics'] = 'CooperationStatistics';
 $wgSpecialPageGroups['CooperationStatistics'] = 'wiki';
