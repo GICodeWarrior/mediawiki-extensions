@@ -47,6 +47,21 @@ $specialPageAliases['hsn'] = array(
 	'PrintVersion' => array( '打印版本' ),
 );
 
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'PrintVersion' => array( 'Version_pro_imprimer' ),
+);
+
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'PrintVersion' => array( 'Versione_Stampabile' ),
+);
+
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'PrintVersion' => array( '印刷版' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'PrintVersion' => array( 'Drockversioun' ),
@@ -72,12 +87,14 @@ $specialPageAliases['nl'] = array(
 	'PrintVersion' => array( 'AfdrukbareVersie' ),
 );
 
-/** Portuguese (Português)
- * @author Raylton P. Sousa <raylton.sousa@gmail.com>
- * @author Helder.wiki
- */
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'PrintVersion' => array( 'Wersja_do_druku' ),
+);
+
+/** Portuguese (Português) */
 $specialPageAliases['pt'] = array(
-	'PrintVersion' => array( 'Versão para impressão' ),
+	'PrintVersion' => array( 'Versão_para_impressão' ),
 );
 
 /** Turkish (Türkçe) */
@@ -94,8 +111,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'PrintVersion' => array( '列印版本' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
