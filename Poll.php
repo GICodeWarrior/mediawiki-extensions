@@ -50,7 +50,7 @@ $wgGroupPermissions['sysop']['polladmin'] = true;
 // Set up the new special pages
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['PollNY'] = $dir . 'Poll.i18n.php';
-$wgExtensionAliasesFiles['PollNY'] = $dir . 'Poll.alias.php';
+$wgExtensionMessagesFiles['PollNYAlias'] = $dir . 'Poll.alias.php';
 // Namespace translations
 $wgExtensionMessagesFiles['PollNYNamespaces'] = $dir . 'Poll.namespaces.php';
 
