@@ -222,7 +222,7 @@ $specialPageAliases['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['no'] = array(
+$specialPageAliases['nb'] = array(
 	'ContributionHistory' => array( 'Bidragshistorikk' ),
 	'ContributionStatistics' => array( 'Bidragsstatistikk' ),
 	'ContributionTotal' => array( 'Totale_bidrag' ),
