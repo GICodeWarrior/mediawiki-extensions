@@ -577,6 +577,19 @@ $messages['nah'] = array(
 	'specialwhoiswatchingthepage' => 'Āquin tēchiya %',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'whoiswatching' => 'Hvem overvåker en wikiside',
+	'whoiswatching-desc' => 'Viser en liste over brukere som overvåker en side',
+	'specialwhoiswatchingthepage' => 'Hvem overvåker %s',
+	'specialwhoiswatchingusage' => 'Denne spesialsiden kan ikke brukes selvstendig. Bruk siden [[MediaWiki:Number_of_watching_users_pageview]] for å definere et inngangspunkt for denne spesialsiden.',
+	'specialwhoiswatchingaddusers' => 'Legg til siden i brukeres overvåkningsliste',
+	'specialwhoiswatchingaddbtn' => 'Legg til valgte brukere',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -602,19 +615,6 @@ $messages['nn'] = array(
 Ver venleg og bruk sida [[MediaWiki:Number_of_watching_users_pageview]] for å legge inn tilgangspunkt til denne spesialsida.',
 	'specialwhoiswatchingaddusers' => 'Legg sida på overvakingslista til andre brukarar',
 	'specialwhoiswatchingaddbtn' => 'Legg til utvalde brukarar',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'whoiswatching' => 'Hvem overvåker en wikiside',
-	'whoiswatching-desc' => 'Viser en liste over brukere som overvåker en side',
-	'specialwhoiswatchingthepage' => 'Hvem overvåker %s',
-	'specialwhoiswatchingusage' => 'Denne spesialsiden kan ikke brukes selvstendig. Bruk siden [[MediaWiki:Number_of_watching_users_pageview]] for å definere et inngangspunkt for denne spesialsiden.',
-	'specialwhoiswatchingaddusers' => 'Legg til siden i brukeres overvåkningsliste',
-	'specialwhoiswatchingaddbtn' => 'Legg til valgte brukere',
 );
 
 /** Occitan (Occitan)
@@ -782,13 +782,14 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'whoiswatching' => 'Ko prati viki stranu',
 	'whoiswatching-desc' => 'Prikazuje spisak korisničkih imena koja prate odrećenu stranicu',
 	'specialwhoiswatchingthepage' => 'Ko prati %s',
-	'specialwhoiswatchingusage' => 'Ova specijalna strana ne može biti korišćena sama za sebe, već joj treba ulazna tačka.
-Molimo Vas, koristite stranu [[MediaWiki:Number_of_watching_users_pageview]] da biste definisali ovu ulaznu tačku.',
+	'specialwhoiswatchingusage' => 'Ova posebna stranica ne može biti korišćena sama za sebe, već joj treba ulazna tačka.
+Molimo Vas, koristite stranicu [[MediaWiki:Number_of_watching_users_pageview]] da biste definisali ovu ulaznu tačku.',
 	'specialwhoiswatchingaddusers' => 'Dodaj korisnike koji će pratiti ovu stranu',
 	'specialwhoiswatchingaddbtn' => 'Dodaj označene korisnike',
 );
