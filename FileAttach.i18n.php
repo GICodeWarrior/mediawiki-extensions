@@ -280,7 +280,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'fileattach-desc' => 'Tillater filer å bli lastet opp til aktuell side',
 	'fileattach-attachments' => 'Filvedlegg',
 	'fileattach-attachfile' => 'Legg ved fil',
