@@ -128,3 +128,14 @@ $magicWords['ru'] = array(
 	'mediaexif' => array( 0, 'exifмедиа' ),
 	'mediapages' => array( 0, 'медиастраницы' ),
 );
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'mediamime' => array( 0, 'mime_datoteke' ),
+	'mediasize' => array( 0, 'veličina_datoteke' ),
+	'mediaheight' => array( 0, 'visina_datoteke' ),
+	'mediawidth' => array( 0, 'širina_datoteke' ),
+	'mediadimensions' => array( 0, 'dimenzije_datoteke' ),
+	'mediaexif' => array( 0, 'exif_datoteke' ),
+	'mediapages' => array( 0, 'stranice_sa_datotekama' ),
+);
