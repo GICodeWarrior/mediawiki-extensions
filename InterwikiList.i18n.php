@@ -578,7 +578,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'interwikilist' => 'Interwikiliste',
 	'interwikilist-desc' => 'Legger til en [[Special:Interwikilist|spesialside]] for å vise tilgjengelige interwikilenker',
 	'interwikilist-linkname' => 'Interwikilenke',
