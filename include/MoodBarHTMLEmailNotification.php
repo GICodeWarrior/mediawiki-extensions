@@ -5,11 +5,11 @@
  * This is a hacksish solution till we revamp the email system 
  */
 class MoodBarHTMLEmailNotification {
-	
+
 	protected $to, $subject, $body, $replyto, $from;
 	protected $timestamp, $composed_common, $response, $feedback;
 	protected $mime_boundary;
-	
+
 	/**
 	 * @var Title
 	 */
@@ -20,11 +20,11 @@ class MoodBarHTMLEmailNotification {
 	 */
 	protected $editor;
 	protected $targetUser;
-	
+
 	public function __construct() {
 		$this->mime_boundary = 'PHP_Alt_Boundary_'. md5( time() );	
 	}
-	
+
 	/**
 	 * Send emails corresponding to the user $editor editing the page $title.
 	 * Also updates wl_notificationtimestamp.
@@ -41,7 +41,7 @@ class MoodBarHTMLEmailNotification {
 		global $wgEnotifUseJobQ, $wgEnotifUserTalk;
 
 		if ( $title->getNamespace() != NS_USER_TALK || !$wgEnotifUserTalk || 
-		     !$this->canSendUserTalkEmail( $editor, $title ) ) {
+			!$this->canSendUserTalkEmail( $editor, $title ) ) {
 			return;
 		}
 
@@ -59,7 +59,7 @@ class MoodBarHTMLEmailNotification {
 			$this->actuallyNotifyOnRespond( $editor, $title, $timestamp, $feedback, $response );
 		}
 	}
-	
+
 	/**
 	 * Immediate version of notifyOnRespond().
 	 *
@@ -73,7 +73,6 @@ class MoodBarHTMLEmailNotification {
 	 * @param $feedabck integer feedback id
 	 */
 	public function actuallyNotifyOnRespond( $editor, $title, $timestamp, $feedback, $response ) {
-
 		global $wgEnotifUserTalk;
 
 		wfProfileIn( __METHOD__ );
@@ -92,9 +91,9 @@ class MoodBarHTMLEmailNotification {
 		if ( $wgEnotifUserTalk && $this->canSendUserTalkEmail( $editor, $title ) ) {
 			$this->compose( $this->targetUser );
 		}
-		
+
 		wfProfileOut( __METHOD__ );
-		
+
 	}
 	
 	/**
@@ -112,8 +111,7 @@ class MoodBarHTMLEmailNotification {
 				wfDebug( __METHOD__ . ": user talk page edited, but user does not exist\n" );
 			} elseif ( $this->targetUser->getId() == $editor->getId() ) {
 				wfDebug( __METHOD__ . ": user edited their own talk page, no notification sent\n" );
-			} elseif ( $this->targetUser->getOption( 'enotifusertalkpages' ) )
-			{
+			} elseif ( $this->targetUser->getOption( 'enotifusertalkpages' ) ) {
 				if ( $this->targetUser->isEmailConfirmed() ) {
 					wfDebug( __METHOD__ . ": sending talk page update notification\n" );
 					return true;
@@ -144,37 +142,37 @@ class MoodBarHTMLEmailNotification {
 		} else {
 			$pageEditor = $wgEnotifUseRealName ? $this->editor->getRealName() : $this->editor->getName();
 		}
-		
+
 		// build the subject	
-		$this->subject = wfMessage( 'moodbar-enotif-subject')->params( $pageEditor )->escaped();
+		$this->subject = wfMessage( 'moodbar-enotif-subject' )->params( $pageEditor )->escaped();
 
 		// build the body
-		$messageCache       = MessageCache::singleton();
-		$targetUserName     = $this->targetUser->getName();
-		$FeedbackUrl        = SpecialPage::getTitleFor( 'FeedbackDashboard', $this->feedback )->getPrefixedText();
-		$editorTalkPage     = $this->editor->getTalkPage()->getPrefixedText();
-		$targetUserTalkPage = $this->targetUser->getTalkPage()->getCanonicalUrl();
+		$messageCache		= MessageCache::singleton();
+		$targetUserName		= $this->targetUser->getName();
+		$FeedbackUrl		= SpecialPage::getTitleFor( 'FeedbackDashboard', $this->feedback )->getPrefixedText();
+		$editorTalkPage		= $this->editor->getTalkPage()->getPrefixedText();
+		$targetUserTalkPage	= $this->targetUser->getTalkPage()->getCanonicalUrl();
 		//text version
-		$textBody = wfMessage( 'moodbar-enotif-body')->params( $targetUserName, 
-                                                                       $FeedbackUrl, 
-                                                                       $editorTalkPage,
-                                                                       $this->response,
-                                                                       $targetUserTalkPage,
-                                                                       $pageEditor )->escaped();                                                 
-                $textBody = MessageCache::singleton()->transform( $textBody, false, null, $this->title );                                                  
-		
-                //html version, this ugly as we have to make wiki link clickable in emails
+		$textBody = wfMessage( 'moodbar-enotif-body' )->params( $targetUserName, 
+			$FeedbackUrl, 
+			$editorTalkPage,
+			$this->response,
+			$targetUserTalkPage,
+			$pageEditor )->escaped();
+		$textBody = MessageCache::singleton()->transform( $textBody, false, null, $this->title );
+
+		//html version, this ugly as we have to make wiki link clickable in emails
 		$action = $wgRequest->getVal( 'action' );
 		$wgRequest->setVal( 'action', 'render' );
-	        $htmlBody = wfMsgExt( 'moodbar-enotif-body', array( 'parse' ), $targetUserName, 
-                                                                       $FeedbackUrl, 
-                                                                       $editorTalkPage,
-                                                                       '<div style="margin-left:20px; margin-right:20px;">' .$this->response . '</div>',
-                                                                       $targetUserTalkPage,
-                                                                       $pageEditor );                                                 
-		$wgRequest->setVal( 'action', $action );                                                     
-	
-		//assemable the email body
+		$htmlBody = wfMsgExt( 'moodbar-enotif-body', array( 'parse' ), $targetUserName, 
+			$FeedbackUrl, 
+			$editorTalkPage,
+			'<div style="margin-left:20px; margin-right:20px;">' .$this->response . '</div>',
+			$targetUserTalkPage,
+			$pageEditor );
+		$wgRequest->setVal( 'action', $action );
+
+		// assemble the email body
 		$this->body = <<<HTML
 --$this->mime_boundary
 Content-Type: text/plain; charset=UTF-8
@@ -194,7 +192,7 @@ Content-Transfer-Encoding: 8bit
 
 --$this->mime_boundary--
 HTML;
-			
+
 		# Reveal the page editor's address as REPLY-TO address only if
 		# the user has not opted-out and the option is enabled at the
 		# global configuration level.
@@ -215,24 +213,21 @@ HTML;
 			$this->replyto = new MailAddress( $wgNoReplyAddress );
 		}
 	}
-	
+
 	/**
 	 * Compose a mail to a given user and either queue it for sending, or send it now,
 	 * depending on settings.
 	 * @param $user User
 	 */
 	protected function compose( $user ) {
-		
-		global $wgContLang, $wgEnotifUseRealName;
-		
 		if ( !$this->composed_common ) {
 			$this->composeCommonMailtext();
 		}
-		
+
 		$to = new MailAddress( $user );
 
 		return UserMailer::send( $to, $this->from, $this->subject, $this->body, $this->replyto, $contentType = 'multipart/alternative; boundary=' . $this->mime_boundary );
 
 	}
-	
+
 }
