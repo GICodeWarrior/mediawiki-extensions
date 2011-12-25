@@ -298,7 +298,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'tab0-desc' => 'Legger til en «0»-arkfane som lenker til redigeringssiden for den første seksjonen av siden',
 );
 
