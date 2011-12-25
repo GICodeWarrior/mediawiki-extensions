@@ -316,7 +316,7 @@ class qp_Setup {
 	 */
 	static function init() {
 		global $wgScriptPath;
-		global $wgExtensionMessagesFiles, $wgExtensionAliasesFiles;
+		global $wgExtensionMessagesFiles;
 		global $wgSpecialPages;
 		global $wgHooks;
 		global $wgExtraNamespaces, $wgNamespaceProtection;
@@ -337,7 +337,7 @@ class qp_Setup {
 		# localized namespace names
 		$wgExtensionMessagesFiles['QPollNamespaces'] = self::$ExtDir . '/i18n/qp.namespaces.php';
 		# localized special page titles
-		$wgExtensionAliasesFiles['QPoll'] = self::$ExtDir . '/i18n/qp.alias.php';
+		$wgExtensionMessagesFiles['QPollAlias'] = self::$ExtDir . '/i18n/qp.alias.php';
 
 		# extension setup, hooks handling and content transformation
 		self::autoLoad( array(
