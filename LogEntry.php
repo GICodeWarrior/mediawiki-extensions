@@ -50,7 +50,7 @@ $dir = dirname( __FILE__ ) . '/';
 
 // Internationalization
 $wgExtensionMessagesFiles['LogEntry'] = $dir . 'LogEntry.i18n.php';
-$wgExtensionAliasesFiles['LogEntry'] = $dir . 'LogEntry.alias.php';
+$wgExtensionMessagesFiles['LogEntryAlias'] = $dir . 'LogEntry.alias.php';
 
 // Register auto load for the special page class
 $wgAutoloadClasses['LogEntryHooks'] = $dir . 'LogEntry.hooks.php';
