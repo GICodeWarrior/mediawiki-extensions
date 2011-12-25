@@ -128,6 +128,11 @@ $specialPageAliases['mr'] = array(
 	'Player' => array( 'खेळाडू' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'Player' => array( 'Medieavspiller' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'Player' => array( 'Mediaspeuler' ),
@@ -136,11 +141,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'Player' => array( 'Mediaspeler' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'Player' => array( 'Medieavspiller' ),
 );
 
 /** Occitan (Occitan) */
@@ -158,7 +158,7 @@ $specialPageAliases['ps'] = array(
 	'Player' => array( 'غږونکی' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'Player' => array( 'खेळाडू' ),
 );
@@ -187,8 +187,3 @@ $specialPageAliases['tr'] = array(
 $specialPageAliases['tt-cyrl'] = array(
 	'Player' => array( 'Плейер' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
