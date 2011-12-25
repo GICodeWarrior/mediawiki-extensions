@@ -5189,7 +5189,7 @@ Den nyaste versjonen ($2) finst på http://pecl.php.net/package/APC/$2',
  * @author Harald Khan
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'apc' => 'APC-informasjon',
 	'apc-desc' => '[[Special:APC|Vis og behandle APC-mellomlageret]] med MediaWiki',
 	'right-apc' => 'Bruke alle funksjoner i [[Special:APC|APC]]',
