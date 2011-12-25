@@ -1157,6 +1157,32 @@ $messages['mk'] = array(
 	'toolbase-error-toomanyedits' => '$1 има $2 уредувања. Оваа алатка има максимум од $3 уредувања.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'toolbase-replag-years' => 'år',
+	'toolbase-replag-months' => 'måneder',
+	'toolbase-replag-weeks' => 'uker',
+	'toolbase-replag-days' => 'dager',
+	'toolbase-replag-hours' => 'timer',
+	'toolbase-replag-minutes' => 'minutter',
+	'toolbase-replag-seconds' => 'sekunder',
+	'toolbase-footer-exectime' => 'Utført på $1 sekunder',
+	'toolbase-footer-source' => 'Vis kilde',
+	'toolbase-footer-language' => 'Endre språk',
+	'toolbase-footer-translate' => 'Oversett',
+	'toolbase-navigation' => 'Navigasjon',
+	'toolbase-navigation-homepage' => 'Hjemmeside',
+	'toolbase-navigation-user_id' => 'Finn bruker-ID',
+	'toolbase-userid-submit' => 'Hent bruker-ID',
+	'toolbase-userid-title' => 'Finn en bruker-ID',
+	'toolbase-autoedits-submit' => 'Kalkuler',
+	'toolbase-form-wiki' => 'Wiki',
+	'toolbase-error-nouser' => '$1 er ikke en gyldig bruker',
+	'toolbase-error-nowiki' => '$1.$2.org er ikke en gyldig wiki',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1205,32 +1231,6 @@ Als u een verwijzing ergens anders vandaan hebt gevolgd, <a href="$1">meld dan a
 	'toolbase-error-nouser' => '$1 is geen geldige gebruiker',
 	'toolbase-error-nowiki' => '$1.$2.org is geen geldige wiki',
 	'toolbase-error-toomanyedits' => '$1 heeft $2 bewerkingen gemaakt. Dit hulpprogramma heeft een maximum van $3 bewerkingen.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'toolbase-replag-years' => 'år',
-	'toolbase-replag-months' => 'måneder',
-	'toolbase-replag-weeks' => 'uker',
-	'toolbase-replag-days' => 'dager',
-	'toolbase-replag-hours' => 'timer',
-	'toolbase-replag-minutes' => 'minutter',
-	'toolbase-replag-seconds' => 'sekunder',
-	'toolbase-footer-exectime' => 'Utført på $1 sekunder',
-	'toolbase-footer-source' => 'Vis kilde',
-	'toolbase-footer-language' => 'Endre språk',
-	'toolbase-footer-translate' => 'Oversett',
-	'toolbase-navigation' => 'Navigasjon',
-	'toolbase-navigation-homepage' => 'Hjemmeside',
-	'toolbase-navigation-user_id' => 'Finn bruker-ID',
-	'toolbase-userid-submit' => 'Hent bruker-ID',
-	'toolbase-userid-title' => 'Finn en bruker-ID',
-	'toolbase-autoedits-submit' => 'Kalkuler',
-	'toolbase-form-wiki' => 'Wiki',
-	'toolbase-error-nouser' => '$1 er ikke en gyldig bruker',
-	'toolbase-error-nowiki' => '$1.$2.org er ikke en gyldig wiki',
 );
 
 /** Deitsch (Deitsch)

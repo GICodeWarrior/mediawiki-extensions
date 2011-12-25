@@ -364,6 +364,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author Od1n
  * @author Sherbrooke
  */
 $messages['fr'] = array(
@@ -377,7 +378,7 @@ $messages['fr'] = array(
 	'ts-citegen-Option-add-list' => 'Créer une wikiliste des modèles de citation',
 	'ts-citegen-Output-title' => 'Résultats',
 	'ts-citegen-Output-select-disclaimer' => 'Choisir une langue pour un modèle ne garantit pas que ce modèle est disponible dans cette langue. Ce champ montre les langues disponibles pour tous les modèles reconnus, par exemple, il peut afficher le modèle en français car seul {{Cite book}} est reconnu.',
-	'ts-citegen-Wrong-input' => '%s: pas identifié comme une entrée correcte.',
+	'ts-citegen-Wrong-input' => '%s : pas identifié comme une entrée correcte.',
 	'ts-citegen-Parsers' => 'Analyseurs syntaxiques',
 	'ts-citegen-Skins' => 'Sortie',
 	'ts-citegen-Skin-skins' => 'Habillages',
@@ -394,8 +395,8 @@ $messages['fr'] = array(
 	'ts-citegen-Other-languages' => 'Autres langues',
 	'ts-citegen-Save-it' => 'Requête en cours',
 	'ts-citegen-Errors-title' => 'Erreurs',
-	'ts-citegen-Unavailable-SQL' => "Erreur: le ''toolserver'' de la base de données n'est pas disponible. MySQL a retourné: %s",
-	'ts-citegen-base-disabled' => "Erreur: la base de données %s n'est pas disponible",
+	'ts-citegen-Unavailable-SQL' => "Erreur : le ''toolserver'' de la base de données n'est pas disponible. MySQL a retourné : %s",
+	'ts-citegen-base-disabled' => "Erreur : la base de données %s n'est pas disponible",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -787,41 +788,6 @@ $messages['ms'] = array(
 	'ts-citegen-Errors-title' => 'Ralat',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'ts-citegen-Title' => 'Citaatsjabloongenerator',
-	'ts-citegen-Send' => 'Aanmaken',
-	'ts-citegen-Input-title' => 'Invoer',
-	'ts-citegen-Input-text' => 'Dit is een citaatsjabloongenerator. Hiermee kunt u de citaatsjablonen in verschillende taalversies van Wikipedia invullen. Vul de gegevens (%s) in de velden hieronder in en het programma probeert dan de sjablonen in te vullen. Het maakt niet uit in welke velden u de invoergegevens plaatst. Het script probeert automatisch het juiste sjabloon te gebruiken voor de ingevoerde gegevens.',
-	'ts-citegen-Option-append-author-link' => 'De wikiverwijzingen van de auteur aan het sjabloon toevoegen',
-	'ts-citegen-Option-append-newlines' => 'Nieuwe regel beginnen na iedere parameter',
-	'ts-citegen-Option-add-references' => 'Het label <ref> toevoegen om citaatsjablonen',
-	'ts-citegen-Option-add-list' => 'Een wikilijst met citaatsjablonen aanmaken',
-	'ts-citegen-Output-title' => 'Resultaat',
-	'ts-citegen-Output-select-disclaimer' => 'Het kiezen van een sjabloontaal is geen garantie dat een bepaald sjabloon in die taal beschikbaar is. In dit veld worden de beschikbare talen voor alle ondersteunde sjablonen weergegeven; het kan bijvoorbeeld zijn dat Frans wordt weergegeven omdat alleen {{Cite book}} wordt ondersteund.',
-	'ts-citegen-Wrong-input' => '%s: dit lijkt geen geldige invoer.',
-	'ts-citegen-Parsers' => 'Parsers',
-	'ts-citegen-Skins' => 'Uitvoer',
-	'ts-citegen-Skin-skins' => 'Vormgevingen',
-	'ts-citegen-Skin-outputformat' => 'Uitvoeropmaak',
-	'ts-citegen-Template-lang' => 'Sjabloontaal',
-	'ts-citegen-Sources-title' => 'Bronnen',
-	'ts-citegen-Sources-text' => 'Hieronder staat een lijst met gebruikte bronnen.',
-	'ts-citegen-Sidebar-title' => 'Citaatgenerator',
-	'ts-citegen-Sidebar-add-Firefox' => 'Toevoegen aan het menu',
-	'ts-citegen-Sidebar-add-Opera' => 'Toevoegen aan de hotlist',
-	'ts-citegen-Sidebar-add-IE-Mac' => 'Toevoegen aan de paginahouder',
-	'ts-citegen-Sidebar-add-IE-Mac-details' => 'Als deze pagina is geladen, kunt u uw Page Holder openen, klikken op "Toevoegen" en daarna de knop Page Holder Favorites gebruiken om deze op te slaan als een Page Holder Favorite.',
-	'ts-citegen-Tools' => 'Hulpmiddelen',
-	'ts-citegen-Other-languages' => 'Andere talen',
-	'ts-citegen-Save-it' => 'Huidige zoekopdracht',
-	'ts-citegen-Errors-title' => 'Fouten',
-	'ts-citegen-Unavailable-SQL' => 'Fout: de Toolserverdatabase is niet beschikbaar. MySQL gaf de volgende foutmelding: %s',
-	'ts-citegen-base-disabled' => 'Fout: de database database %s is niet beschikbaar.',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -855,6 +821,41 @@ $messages['nb'] = array(
 	'ts-citegen-Errors-title' => 'Feil',
 	'ts-citegen-Unavailable-SQL' => 'Feil: Verktøytjenerdatabasen er ikke tilgjengelig. MySQL returnerte: %s',
 	'ts-citegen-base-disabled' => 'Feil: % s-databasen er ikke tilgjengelig',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'ts-citegen-Title' => 'Citaatsjabloongenerator',
+	'ts-citegen-Send' => 'Aanmaken',
+	'ts-citegen-Input-title' => 'Invoer',
+	'ts-citegen-Input-text' => 'Dit is een citaatsjabloongenerator. Hiermee kunt u de citaatsjablonen in verschillende taalversies van Wikipedia invullen. Vul de gegevens (%s) in de velden hieronder in en het programma probeert dan de sjablonen in te vullen. Het maakt niet uit in welke velden u de invoergegevens plaatst. Het script probeert automatisch het juiste sjabloon te gebruiken voor de ingevoerde gegevens.',
+	'ts-citegen-Option-append-author-link' => 'De wikiverwijzingen van de auteur aan het sjabloon toevoegen',
+	'ts-citegen-Option-append-newlines' => 'Nieuwe regel beginnen na iedere parameter',
+	'ts-citegen-Option-add-references' => 'Het label <ref> toevoegen om citaatsjablonen',
+	'ts-citegen-Option-add-list' => 'Een wikilijst met citaatsjablonen aanmaken',
+	'ts-citegen-Output-title' => 'Resultaat',
+	'ts-citegen-Output-select-disclaimer' => 'Het kiezen van een sjabloontaal is geen garantie dat een bepaald sjabloon in die taal beschikbaar is. In dit veld worden de beschikbare talen voor alle ondersteunde sjablonen weergegeven; het kan bijvoorbeeld zijn dat Frans wordt weergegeven omdat alleen {{Cite book}} wordt ondersteund.',
+	'ts-citegen-Wrong-input' => '%s: dit lijkt geen geldige invoer.',
+	'ts-citegen-Parsers' => 'Parsers',
+	'ts-citegen-Skins' => 'Uitvoer',
+	'ts-citegen-Skin-skins' => 'Vormgevingen',
+	'ts-citegen-Skin-outputformat' => 'Uitvoeropmaak',
+	'ts-citegen-Template-lang' => 'Sjabloontaal',
+	'ts-citegen-Sources-title' => 'Bronnen',
+	'ts-citegen-Sources-text' => 'Hieronder staat een lijst met gebruikte bronnen.',
+	'ts-citegen-Sidebar-title' => 'Citaatgenerator',
+	'ts-citegen-Sidebar-add-Firefox' => 'Toevoegen aan het menu',
+	'ts-citegen-Sidebar-add-Opera' => 'Toevoegen aan de hotlist',
+	'ts-citegen-Sidebar-add-IE-Mac' => 'Toevoegen aan de paginahouder',
+	'ts-citegen-Sidebar-add-IE-Mac-details' => 'Als deze pagina is geladen, kunt u uw Page Holder openen, klikken op "Toevoegen" en daarna de knop Page Holder Favorites gebruiken om deze op te slaan als een Page Holder Favorite.',
+	'ts-citegen-Tools' => 'Hulpmiddelen',
+	'ts-citegen-Other-languages' => 'Andere talen',
+	'ts-citegen-Save-it' => 'Huidige zoekopdracht',
+	'ts-citegen-Errors-title' => 'Fouten',
+	'ts-citegen-Unavailable-SQL' => 'Fout: de Toolserverdatabase is niet beschikbaar. MySQL gaf de volgende foutmelding: %s',
+	'ts-citegen-base-disabled' => 'Fout: de database database %s is niet beschikbaar.',
 );
 
 /** Deitsch (Deitsch)

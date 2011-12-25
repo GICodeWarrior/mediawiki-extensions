@@ -496,6 +496,18 @@ $messages['mzn'] = array(
 	'ts-kml-on-ol-help' => 'راهنما',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'ts-kml-on-ol-options' => 'Alternativer',
+	'ts-kml-on-ol-languages' => 'Språk',
+	'ts-kml-on-ol-thumbnails' => 'Miniatyrbilder',
+	'ts-kml-on-ol-help' => 'Hjelp',
+	'ts-kml-on-ol-all' => 'Alle',
+	'ts-kml-on-ol-map-by' => 'Kart av',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -530,18 +542,6 @@ $messages['nn'] = array(
 	'ts-kml-on-ol-help' => 'Hjelp',
 	'ts-kml-on-ol-all' => 'Alle',
 	'ts-kml-on-ol-map-by' => 'Kartet er frå',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'ts-kml-on-ol-options' => 'Alternativer',
-	'ts-kml-on-ol-languages' => 'Språk',
-	'ts-kml-on-ol-thumbnails' => 'Miniatyrbilder',
-	'ts-kml-on-ol-help' => 'Hjelp',
-	'ts-kml-on-ol-all' => 'Alle',
-	'ts-kml-on-ol-map-by' => 'Kart av',
 );
 
 /** Deitsch (Deitsch)
