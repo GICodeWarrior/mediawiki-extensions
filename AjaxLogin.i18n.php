@@ -922,6 +922,23 @@ $messages['myv'] = array(
 	'ajaxlogin-create' => 'Шкамс-теемс совамотарка',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'ajaxlogin-desc' => 'En dynamisk boks som lar brukere logge inn og huske passord',
+	'ajaxLogin1' => 'For å fullføre innloggingen må du skrive inn et nytt passord.
+Dette vil føre deg vekk fra denne redigeringssiden, og du kan miste den nåværende redigeringen.',
+	'ajaxLogin2' => 'Er du sikker?
+Du kan miste alle endringene du gjorde på denne siden om du forlater denne siden nå.',
+	'ajaxlogin-create' => 'Opprett en konto',
+	'al-nosuchuser' => 'Det finnes ingen bruker med navnet "$1".
+Brukernavnet skiller mellom store og små bokstaver.
+Kontroller stavingen.',
+	'al-createblocked' => 'Din IP-adresse er blokkert fra kontooppretting.',
+	'al-throttled' => 'Du har hatt for mange passordforsøk. Vent $1 {{PLURAL:$1|sekund|sekunder}} før du prøver igjen.',
+);
+
 /** Nepali (नेपाली)
  * @author Bhawani Gautam
  * @author Bhawani Gautam Rhk
@@ -983,23 +1000,6 @@ Du kan missa alle endringane du gjorde på denne sida om du går ut av ho no.',
 	'al-nosuchuser' => 'Det er ikkje nokon brukar med namnet "$1".
 Brukarnamnet kan innehalda store og små bokstavar.
 Sjekk stavinga di av brukarnamnet.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'ajaxlogin-desc' => 'En dynamisk boks som lar brukere logge inn og huske passord',
-	'ajaxLogin1' => 'For å fullføre innloggingen må du skrive inn et nytt passord.
-Dette vil føre deg vekk fra denne redigeringssiden, og du kan miste den nåværende redigeringen.',
-	'ajaxLogin2' => 'Er du sikker?
-Du kan miste alle endringene du gjorde på denne siden om du forlater denne siden nå.',
-	'ajaxlogin-create' => 'Opprett en konto',
-	'al-nosuchuser' => 'Det finnes ingen bruker med navnet "$1".
-Brukernavnet skiller mellom store og små bokstaver.
-Kontroller stavingen.',
-	'al-createblocked' => 'Din IP-adresse er blokkert fra kontooppretting.',
-	'al-throttled' => 'Du har hatt for mange passordforsøk. Vent $1 {{PLURAL:$1|sekund|sekunder}} før du prøver igjen.',
 );
 
 /** Occitan (Occitan)
@@ -1219,18 +1219,19 @@ $messages['sr-ec'] = array(
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Liangent
  * @author Michaello
+ * @author Rancher
  * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
-	'ajaxlogin-desc' => 'Dinamička kutijica, koja omogućava korisnicima da se uloguju i podsete se lozinke.',
-	'ajaxLogin1' => 'Da biste se ulogovali, morate uneti lozinku.
-Ova akcija će vas odvesti sa ove strane za ozmeni članka i mogli biste da izgubite svoje nesnimljene izmene.',
+	'ajaxlogin-desc' => 'Dinamička kutija koja omogućava korisnicima da se prijave na sajt i podsete se lozinke',
+	'ajaxLogin1' => 'Da biste se prijavili, morate uneti lozinku.
+Ova radnja će vas odvesti sa stranice za uređivanje članka,  a tako možete da izgubite svoje izmene.',
 	'ajaxLogin2' => 'Da li ste sigurni?
-Mogli biste da izgubite sve nesnimljene izmene na ovoj strani ako je sada napustite.',
+Mogli biste da izgubite sve izmene na ovoj stranici ako je sada napustite.',
 	'ajaxlogin-create' => 'Otvori nalog',
-	'al-nosuchuser' => 'Nema korisnika pod imenom "$1".
-Korisnička imena razlikuju veličinu slova.
-Proverite da li ste ga dobro ukucali.',
+	'al-nosuchuser' => 'Nema korisnika pod imenom „$1“.
+Korisnička imena se razlikuju po malim i velikim slovima.
+Proverite da li ste dobro ukucali.',
 );
 
 /** Sundanese (Basa Sunda)
