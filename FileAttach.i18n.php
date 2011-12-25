@@ -266,17 +266,6 @@ $messages['myv'] = array(
 	'fileattach-uploadheading' => 'Поладомс файланть $1-с',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'fileattach-desc' => 'Maakt het mogelijk bestanden te uploaden in de huidige pagina',
-	'fileattach-attachments' => 'Bestandsbijlagen',
-	'fileattach-attachfile' => 'Bestand bijvoegen',
-	'fileattach-uploadheading' => 'Bestand toevoegen aan $1',
-	'fileattach-editcomment' => 'Het bestand [[File:$1|$1]] is toegevoegd',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
@@ -286,6 +275,17 @@ $messages['nb'] = array(
 	'fileattach-attachfile' => 'Legg ved fil',
 	'fileattach-uploadheading' => 'Legg ved fil til $1',
 	'fileattach-editcomment' => 'Fil [[File:$1|$1]] vedlagt',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'fileattach-desc' => 'Maakt het mogelijk bestanden te uploaden in de huidige pagina',
+	'fileattach-attachments' => 'Bestandsbijlagen',
+	'fileattach-attachfile' => 'Bestand bijvoegen',
+	'fileattach-uploadheading' => 'Bestand toevoegen aan $1',
+	'fileattach-editcomment' => 'Het bestand [[File:$1|$1]] is toegevoegd',
 );
 
 /** Piedmontese (Piemontèis)
