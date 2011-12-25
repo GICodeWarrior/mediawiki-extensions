@@ -646,7 +646,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'filelist' => 'Filliste',
 	'filelist-desc' => '[[Special:Filelist|Spesialside]] som viser en liste over opplastede filer',
 	'filelist-show-list' => 'Vis liste',
