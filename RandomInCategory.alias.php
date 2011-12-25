@@ -46,6 +46,11 @@ $specialPageAliases['es'] = array(
 	'RandomInCategory' => array( 'Aleatorio_en_categoría' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'RandomInCategory' => array( 'اتفاقی_در_رده' ),
+);
+
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
 	'RandomInCategory' => array( 'Satunnainen_sivu_luokasta' ),
@@ -116,6 +121,11 @@ $specialPageAliases['ml'] = array(
 	'RandomInCategory' => array( 'വർഗ്ഗത്തിൽനിന്ന്ക്രമരഹിതം' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'RandomInCategory' => array( 'Tilfeldig_fra_kategori' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'RandomInCategory' => array( 'Willekeurig_in_kategorie' ),
@@ -126,17 +136,12 @@ $specialPageAliases['nl'] = array(
 	'RandomInCategory' => array( 'WillekeurigeUitCategorie' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'RandomInCategory' => array( 'Tilfeldig_fra_kategori' ),
-);
-
 /** Occitan (Occitan) */
 $specialPageAliases['oc'] = array(
 	'RandomInCategory' => array( 'Pagina a l\'azard dins una categoria' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'RandomInCategory' => array( 'अविशिष्टवर्ग' ),
 );
@@ -155,8 +160,3 @@ $specialPageAliases['tl'] = array(
 $specialPageAliases['tr'] = array(
 	'RandomInCategory' => array( 'RastgeleKategori', 'RastgeleUlam' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
