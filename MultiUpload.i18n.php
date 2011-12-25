@@ -1171,6 +1171,30 @@ $messages['nah'] = array(
 	'multipleupload' => 'Titlahcuilōlquetzāz',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'multipleupload' => 'Last opp flere filer',
+	'multiupload-desc' => 'Gjør det mulig å [[Special:MultipleUpload|laste opp flere filer på én gang]]',
+	'multipleupload-ignoreallwarnings' => "Ignorer '''alle advarsler''' og lagre filene likevel.",
+	'multipleupload-saveallfiles' => 'Lagre alle filer',
+	'multipleupload-addresswarnings' => 'Vennligst addresser alle advarsler før du laster opp filene igjen.',
+	'multipleupload-page' => '{{ns:project}}:Retningslinjer for filsletting',
+	'multipleupload-text' => "Last opp flere filer her.
+
+Velg «Naviger» og velg de filene du ønsker å laste opp. Du kan laste opp mellom 1 og $1 filer på én gang.
+
+Du kan skrive inn et valgfritt '''målnavn''' og oppgi et '''sammendrag''' for å beskrive filen.
+
+Upassende filer vil bli slettet umiddelbart, se [[{{MediaWiki:Multipleupload-page}}|retningslinjene for filsletting]].",
+	'multiupload-fileuploaded' => 'Fil lastet opp.',
+	'multiupload-toolbox' => 'Last opp flere filer',
+	'multiupload-no-files' => 'Velg minst én fil som skal lastes opp',
+	'multiupload-blank' => 'Ingen fil er valgt',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author SPQRobin
@@ -1222,30 +1246,6 @@ Upassande filer vil bli sletta med ein gong, sjå [[{{MediaWiki:Multipleupload-p
 	'multiupload-toolbox' => 'Last opp fleire filer',
 	'multiupload-no-files' => 'Vel minst éi fil som skal verta lasta opp',
 	'multiupload-blank' => 'Inga fil vald',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'multipleupload' => 'Last opp flere filer',
-	'multiupload-desc' => 'Gjør det mulig å [[Special:MultipleUpload|laste opp flere filer på én gang]]',
-	'multipleupload-ignoreallwarnings' => "Ignorer '''alle advarsler''' og lagre filene likevel.",
-	'multipleupload-saveallfiles' => 'Lagre alle filer',
-	'multipleupload-addresswarnings' => 'Vennligst addresser alle advarsler før du laster opp filene igjen.',
-	'multipleupload-page' => '{{ns:project}}:Retningslinjer for filsletting',
-	'multipleupload-text' => "Last opp flere filer her.
-
-Velg «Naviger» og velg de filene du ønsker å laste opp. Du kan laste opp mellom 1 og $1 filer på én gang.
-
-Du kan skrive inn et valgfritt '''målnavn''' og oppgi et '''sammendrag''' for å beskrive filen.
-
-Upassende filer vil bli slettet umiddelbart, se [[{{MediaWiki:Multipleupload-page}}|retningslinjene for filsletting]].",
-	'multiupload-fileuploaded' => 'Fil lastet opp.',
-	'multiupload-toolbox' => 'Last opp flere filer',
-	'multiupload-no-files' => 'Velg minst én fil som skal lastes opp',
-	'multiupload-blank' => 'Ingen fil er valgt',
 );
 
 /** Occitan (Occitan)
