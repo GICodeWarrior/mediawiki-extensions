@@ -575,6 +575,15 @@ $messages['nah'] = array(
 	'block_title_error_page_title' => 'Tōcāitl ōmotzacuili',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'block_title_error_page_title' => 'Blokkert tittel',
+	'blocktitles-desc' => 'Gir en enkel måte å forhindre lagring eller oppretting av sider med visse titler',
+	'block_title_error' => 'Beklager, det er ikke lov å lagre en side med denne tittelen.',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -600,15 +609,6 @@ $messages['nn'] = array(
 	'block_title_error_page_title' => 'Sperra tittel',
 	'blocktitles-desc' => 'Gjev ein enkel måte å unngå at sider med visse titlar blir lagra eller oppretta.',
 	'block_title_error' => 'Orsak, det er ikkje lov å lagra ei sida med denne tittelen.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'block_title_error_page_title' => 'Blokkert tittel',
-	'blocktitles-desc' => 'Gir en enkel måte å forhindre lagring eller oppretting av sider med visse titler',
-	'block_title_error' => 'Beklager, det er ikke lov å lagre en side med denne tittelen.',
 );
 
 /** Occitan (Occitan)
@@ -763,10 +763,11 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'block_title_error_page_title' => 'Blokiran naslov',
-	'blocktitles-desc' => 'Pruža jednostavan način sprečavanja pravljenja ili snimanja strana sa neodgovarajućim naslovima',
+	'blocktitles-desc' => 'Pruža jednostavan način sprečavanja pravljenja ili snimanja stranica sa neodgovarajućim naslovima',
 	'block_title_error' => 'Žao nam je, naslov ove stranice nije moguće snimiti.',
 );
 
