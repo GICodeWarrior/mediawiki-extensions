@@ -989,7 +989,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  * @author Simny
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'indexfunc-desc' => 'Parserfunksjone for å opprette automatiske omdirigeringer og pekersider',
 	'indexfunc-badtitle' => 'Ugyldig tittel: «$1»',
 	'indexfunc-editwarning' => 'Advarsel:
