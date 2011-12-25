@@ -116,7 +116,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'categorysortheaders-desc' => 'Tillatt å angi egendefinerte, initielle flertegns sorteringsoverskrifter for å liste sidene under i kategorier med bruk av syntaksen  <nowiki>[[Kategori:Foo|^Overskrift^Usynlig del av sorteringsnøkkel]]</nowiki>',
 );
 
