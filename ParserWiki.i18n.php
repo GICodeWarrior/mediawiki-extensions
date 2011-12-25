@@ -175,18 +175,18 @@ $messages['ms'] = array(
 	'parserwiki-desc' => 'Membolehkan penakrifan nahu dalam wiki agar nahu itu digunakan untuk menginput maklumat ke dalam wiki yang sama',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'parserwiki-desc' => 'Maakt het mogelijk grammatica te definiëren en deze grammatica dan te gebruiken om informatie in te voeren',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'parserwiki-desc' => 'Gjør det mulig å definere en grammatikk i en wiki og deretter bruke denne grammatikken til å legge inn informasjon til den samme wikien',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'parserwiki-desc' => 'Maakt het mogelijk grammatica te definiëren en deze grammatica dan te gebruiken om informatie in te voeren',
 );
 
 /** Occitan (Occitan)
