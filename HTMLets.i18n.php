@@ -333,7 +333,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'htmlets-desc' => 'Lar deg bruke HTML-fragmenter fra filer ved bruk av taggen <code>&lt;htmlet&gt;</code>',
 	'htmlets-filenotfound' => 'Finner ikke HTML-filen $1',
 	'htmlets-loadfailed' => 'Kunne ikke laste HTML-filen $1',
