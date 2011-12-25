@@ -38,7 +38,7 @@ $wgExtensionCredits['specialpage'][] = array(
 // Autoload the new classes and set up the new special page
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['AdvancedSearch'] = $dir . 'AdvancedSearch.i18n.php';
-$wgExtensionAliasesFiles['AdvancedSearch'] = $dir . 'AdvancedSearch.alias.php';
+$wgExtensionMessagesFiles['AdvancedSearchAlias'] = $dir . 'AdvancedSearch.alias.php';
 $wgAutoloadClasses['AdvancedSearch'] = $dir . 'AdvancedSearch.body.php';
 $wgAutoloadClasses['AdvancedSearchPager'] = $dir . 'AdvancedSearchPager.php';
 $wgAutoloadClasses['AdvancedSearchCategoryIntersector'] = $dir . 'AdvancedSearchCategoryIntersector.php';
