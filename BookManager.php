@@ -44,7 +44,7 @@ $wgSpecialPageGroups['PrintVersion'] = 'other';
 
 $wgExtensionMessagesFiles['BookManager'] = $dir . '/language/BookManager.i18n.php';
 $wgExtensionMessagesFiles['BookManagerMagic'] = $dir . '/language/BookManager.i18n.magic.php';
-$wgExtensionAliasesFiles['BookManager'] = $dir . '/language/BookManager.alias.php';
+$wgExtensionMessagesFiles['BookManagerAlias'] = $dir . '/language/BookManager.alias.php';
 
 
 
