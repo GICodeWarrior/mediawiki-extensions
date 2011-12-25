@@ -273,7 +273,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'editsectionhilitelink-desc' => 'Uthev den aktuelle delen av en side når du fører musepekeren over lenken til endringen',
 );
 
