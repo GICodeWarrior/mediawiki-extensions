@@ -400,7 +400,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'oai-desc' => 'Gir tilgang til grensesnittet til [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
