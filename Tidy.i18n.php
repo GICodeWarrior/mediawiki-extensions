@@ -322,7 +322,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'tidy-desc' => 'Legger til en fane for systematisering eller avsystematisering (avhengig av $wgUseTidy) som tillater overstyring av den globale innstillingen for HTML-systematisering.',
 	'tidy' => 'Systematiser kode',
 	'untidy' => 'Avsystematiser kode',
