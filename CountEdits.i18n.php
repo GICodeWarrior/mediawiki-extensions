@@ -1206,7 +1206,7 @@ Ikkje vurder ein bidragsytar etter talet på endringar av han/ho.",
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'countedits' => 'Tell redigeringer',
 	'countedits-desc' => '[[Special:CountEdits|Spesialside]] om teller antall redigeringer av brukere, og gir en liste over de ti mest aktive brukerne',
 	'countedits-warning' => "'''Advarsel:''' Ikke sku hunden på hårene. Ikke døm en bidragsyter på antall redigeringer.",
