@@ -240,7 +240,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'frontbackforced-desc' => 'Legger til saker foran og bak lenker til sider og implementerer tvungne wikilenker',
 	'frontbackforced-front' => '_(foran_sak)',
 	'frontbackforced-back' => '_(bak_sak)',
