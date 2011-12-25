@@ -215,7 +215,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'mwembed-desc' => 'Gir støtte for mwEmbed-moduler og -utvidelser',
 );
 
