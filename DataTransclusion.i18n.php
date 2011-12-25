@@ -498,29 +498,6 @@ $messages['mr'] = array(
 	'datatransclusion-bad-template-name' => 'चुकीचे साचानाव:$1',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'datatransclusion-desc' => 'Importeren en renderen van gegevens uit externe bronnen',
-	'datatransclusion-missing-source' => 'Er is geen gegevensbron aangegeven.
-Een tweede of "bron"-argument is vereist.',
-	'datatransclusion-unknown-source' => 'Er is een ongeldige gegevensbron aangegeven.
-$1 is niet bekend.',
-	'datatransclusion-missing-key' => 'Geen sleutel aangegeven.
-$2 zijn geldige sleutels in gegevensbron $1.',
-	'datatransclusion-bad-argument-by' => 'Ongeldig sleutelveld aangegeven.
-"$2" is geen sleutelveld in gegevensbron "$1".
-Geldige {{PLURAL:$4|sleutel is|sleutels zijn}}: $3.',
-	'datatransclusion-missing-argument-key' => 'Er is geen sleutelwaarde aangegeven.
-Een tweede argument of "sleutel" is verplicht.',
-	'datatransclusion-missing-argument-template' => 'Geen sjabloon aangegeven.
-Een eerste argument of "template"-argument is verplicht.',
-	'datatransclusion-record-not-found' => 'Er is geen overeenkomstig gegeven $2 = $3 gevonden in de gegevensbron $1.',
-	'datatransclusion-bad-template-name' => 'Ongeldige sjabloonnaam: $1.',
-	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>  bestaat niet.',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -542,6 +519,29 @@ Første eller «mal»-argument kreves.',
 	'datatransclusion-record-not-found' => 'Ingen oppføringer samsvarende $2 = $3 ble funnet i datakilden $1.',
 	'datatransclusion-bad-template-name' => 'Dårlig malnavn: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> finnes ikke.',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'datatransclusion-desc' => 'Importeren en renderen van gegevens uit externe bronnen',
+	'datatransclusion-missing-source' => 'Er is geen gegevensbron aangegeven.
+Een tweede of "bron"-argument is vereist.',
+	'datatransclusion-unknown-source' => 'Er is een ongeldige gegevensbron aangegeven.
+$1 is niet bekend.',
+	'datatransclusion-missing-key' => 'Geen sleutel aangegeven.
+$2 zijn geldige sleutels in gegevensbron $1.',
+	'datatransclusion-bad-argument-by' => 'Ongeldig sleutelveld aangegeven.
+"$2" is geen sleutelveld in gegevensbron "$1".
+Geldige {{PLURAL:$4|sleutel is|sleutels zijn}}: $3.',
+	'datatransclusion-missing-argument-key' => 'Er is geen sleutelwaarde aangegeven.
+Een tweede argument of "sleutel" is verplicht.',
+	'datatransclusion-missing-argument-template' => 'Geen sjabloon aangegeven.
+Een eerste argument of "template"-argument is verplicht.',
+	'datatransclusion-record-not-found' => 'Er is geen overeenkomstig gegeven $2 = $3 gevonden in de gegevensbron $1.',
+	'datatransclusion-bad-template-name' => 'Ongeldige sjabloonnaam: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>  bestaat niet.',
 );
 
 /** Polish (Polski)
