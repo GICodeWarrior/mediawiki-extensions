@@ -160,6 +160,11 @@ $specialPageAliases['mt'] = array(
 	'MediaSearch' => array( 'FittexMedja' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'MediaSearch' => array( 'Mediesøk' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'MediaSearch' => array( 'Media_zeuken' ),
@@ -188,17 +193,12 @@ $specialPageAliases['nl'] = array(
 	'MvVideoFeed' => array( 'MvVideofeed' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'MediaSearch' => array( 'Mediesøk' ),
-);
-
 /** Portuguese (Português) */
 $specialPageAliases['pt'] = array(
 	'MediaSearch' => array( 'Pesquisa_de_multimédia' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'MediaSearch' => array( 'मिडीयाशोध' ),
 	'Mv_Add_Stream' => array( 'मेवि_वृद्धी_प्रवाह' ),
@@ -273,8 +273,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'MediaSearch' => array( '媒體文件搜索' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
