@@ -460,6 +460,19 @@ $messages['mt'] = array(
 	'purgecache-button' => "Erġa' ġedded",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'purgecache' => 'Slett mellomlager',
+	'purgecache-desc' => '[[Special:PurgeCache|Spesialside]] brukt for å slette OBJETCACHE-tabellen',
+	'purgecache-warning' => 'Dette vil slette mellomlagertabellene.',
+	'purgecache-purged' => 'Mellomlageret har blitt slettet.',
+	'purgecache-button' => 'Slett',
+	'right-purgecache' => 'Rens OBJECTCACHE-tabellen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -482,19 +495,6 @@ $messages['nn'] = array(
 	'purgecache-warning' => 'Dette slettar mellomlagringa.',
 	'purgecache-purged' => 'Mellomlagringa er sletta.',
 	'purgecache-button' => 'Slett mellomlagring',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Audun
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'purgecache' => 'Slett mellomlager',
-	'purgecache-desc' => '[[Special:PurgeCache|Spesialside]] brukt for å slette OBJETCACHE-tabellen',
-	'purgecache-warning' => 'Dette vil slette mellomlagertabellene.',
-	'purgecache-purged' => 'Mellomlageret har blitt slettet.',
-	'purgecache-button' => 'Slett',
-	'right-purgecache' => 'Rens OBJECTCACHE-tabellen',
 );
 
 /** Occitan (Occitan)
@@ -627,12 +627,13 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'purgecache' => 'Osveži keš',
-	'purgecache-warning' => 'Ovo će osvežiti keš',
-	'purgecache-purged' => 'Keš je osvežen.',
-	'purgecache-button' => 'Osveži',
+	'purgecache' => 'Očisti keš',
+	'purgecache-warning' => 'Ovo će očistiti keš tabela.',
+	'purgecache-purged' => 'Keš je očišćen.',
+	'purgecache-button' => 'Očisti',
 );
 
 /** Seeltersk (Seeltersk)
