@@ -22,9 +22,29 @@ $specialPageAliases['de'] = array(
 	'FlagPage' => array( 'Seite_markieren' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'FlagPage' => array( 'پرچم_صفحه' ),
+);
+
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'FlagPage' => array( 'Marcar_unha_páxina' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
 	'FlagPage' => array( 'MakePaj' ),
+);
+
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'FlagPage' => array( 'Marcar_pagina' ),
+);
+
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'FlagPage' => array( 'ページにフラグを設定' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -61,8 +81,3 @@ $specialPageAliases['tr'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'FlagPage' => array( '檢舉此頁' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
