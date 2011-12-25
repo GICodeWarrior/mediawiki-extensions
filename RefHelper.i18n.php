@@ -1085,6 +1085,42 @@ $messages['ms'] = array(
 	'refhelper-search' => 'Cari',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'refhelper' => 'Referansehjelper',
+	'refsearch' => 'Referansesøk',
+	'refhelper-desc' => 'Hjelper til med å opprette sider for referanser',
+	'refhelper-refsearch' => 'Referansesøk',
+	'refhelper-refcreate_legend' => 'Opprett ny referanse',
+	'refhelper-refsearch_legend' => 'Søk i PubMed for referanser',
+	'refhelper-refcreate_another' => 'Opprett enda en referanse',
+	'refhelper-refcreate_autocomment' => 'Automatisert sideopprettelse.',
+	'refhelper-refcreate_success' => 'Siden [[$1]] finnes ikke og har blitt opprettet.',
+	'refhelper-refcreate_failure' => 'Siden [[$1]] finnes allerede!',
+	'refhelper-label_workspace' => 'Arbeidsområde (kopier og lim inn-område):',
+	'refhelper-label_authorforename' => "Forfatter $1's første navn:",
+	'refhelper-label_authorsurname' => 'Etternavn:',
+	'refhelper-title' => 'Tittel:',
+	'refhelper-journal' => 'Tidsskrift:',
+	'refhelper-volume' => 'Volum:',
+	'refhelper-pages' => 'Sider:',
+	'refhelper-year' => 'År:',
+	'refhelper-refname' => 'Referansenavn:',
+	'refhelper-category' => 'Kategori $1:',
+	'refhelper-create' => 'Opprett',
+	'refhelper-search' => 'Søk',
+	'refhelper-toolbox_link_create' => 'Opprett referanse',
+	'refhelper-toolbox_link_search' => 'Opprett referanse fra søk',
+	'refhelper-newarticle_nocitation' => 'Det er foreløpig ingen siteringer med dette navnet.',
+	'refhelper-newarticle_suggestions' => 'Det er ingen samsvarende siteringer fra forslagene under. Du kan opprette denne siden ved å klikke på den tilhørende «Opprett»-knappen.
+
+<h2>Forslag</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Dessverre kunne jeg ikke foreslå noen referanser.
+Du kan [[Special:RefHelper|legge til referanser manuelt]] eller [[Special:RefSearch|søke etter siteringer å legge til]].',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1134,42 +1170,6 @@ $messages['nn'] = array(
 	'refhelper-category' => 'Kategori $1:',
 	'refhelper-create' => 'Opprett',
 	'refhelper-search' => 'Søk',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'refhelper' => 'Referansehjelper',
-	'refsearch' => 'Referansesøk',
-	'refhelper-desc' => 'Hjelper til med å opprette sider for referanser',
-	'refhelper-refsearch' => 'Referansesøk',
-	'refhelper-refcreate_legend' => 'Opprett ny referanse',
-	'refhelper-refsearch_legend' => 'Søk i PubMed for referanser',
-	'refhelper-refcreate_another' => 'Opprett enda en referanse',
-	'refhelper-refcreate_autocomment' => 'Automatisert sideopprettelse.',
-	'refhelper-refcreate_success' => 'Siden [[$1]] finnes ikke og har blitt opprettet.',
-	'refhelper-refcreate_failure' => 'Siden [[$1]] finnes allerede!',
-	'refhelper-label_workspace' => 'Arbeidsområde (kopier og lim inn-område):',
-	'refhelper-label_authorforename' => "Forfatter $1's første navn:",
-	'refhelper-label_authorsurname' => 'Etternavn:',
-	'refhelper-title' => 'Tittel:',
-	'refhelper-journal' => 'Tidsskrift:',
-	'refhelper-volume' => 'Volum:',
-	'refhelper-pages' => 'Sider:',
-	'refhelper-year' => 'År:',
-	'refhelper-refname' => 'Referansenavn:',
-	'refhelper-category' => 'Kategori $1:',
-	'refhelper-create' => 'Opprett',
-	'refhelper-search' => 'Søk',
-	'refhelper-toolbox_link_create' => 'Opprett referanse',
-	'refhelper-toolbox_link_search' => 'Opprett referanse fra søk',
-	'refhelper-newarticle_nocitation' => 'Det er foreløpig ingen siteringer med dette navnet.',
-	'refhelper-newarticle_suggestions' => 'Det er ingen samsvarende siteringer fra forslagene under. Du kan opprette denne siden ved å klikke på den tilhørende «Opprett»-knappen.
-
-<h2>Forslag</h2>',
-	'refhelper-newarticle_nosuggestions' => 'Dessverre kunne jeg ikke foreslå noen referanser.
-Du kan [[Special:RefHelper|legge til referanser manuelt]] eller [[Special:RefSearch|søke etter siteringer å legge til]].',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
@@ -1462,17 +1462,19 @@ $messages['sr-ec'] = array(
 	'refhelper-toolbox_link_create' => 'Направи навод',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'refhelper-label_authorsurname' => 'Prezime:',
 	'refhelper-title' => 'Naslov:',
-	'refhelper-journal' => 'Žurnal:',
-	'refhelper-pages' => 'Strane:',
+	'refhelper-journal' => 'Časopis:',
+	'refhelper-pages' => 'Stranice:',
 	'refhelper-year' => 'Godina:',
 	'refhelper-category' => 'Kategorija $1:',
 	'refhelper-create' => 'Napravi',
 	'refhelper-search' => 'Pretraži',
-	'refhelper-toolbox_link_create' => 'Napravi referencu',
+	'refhelper-toolbox_link_create' => 'Napravi navod',
 );
 
 /** Swedish (Svenska)
