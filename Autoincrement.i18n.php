@@ -303,6 +303,13 @@ $messages['ms'] = array(
 	'autoincrement-desc' => 'Cangkuk pembolehubah yang menambahkan pembolehubah autotokok <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['nb'] = array(
+	'autoincrement-desc' => 'En utvidelse som automatisk øker variabelen <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -315,13 +322,6 @@ $messages['nds-nl'] = array(
  */
 $messages['nl'] = array(
 	'autoincrement-desc' => 'Voegt een variabele <nowiki>{{AUTOINCREMENT}}</nowiki> toe die automatisch wordt opgehoogd',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Laaknor
- */
-$messages['nb'] = array(
-	'autoincrement-desc' => 'En utvidelse som automatisk øker variabelen <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
 /** Occitan (Occitan)
@@ -397,9 +397,10 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Liangent
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'autoincrement-desc' => 'Zakačka (hook) koja dodalje samouvećavajuću promenljivu <nowiki>{{AUTOINCREMENT}}</nowiki>',
+	'autoincrement-desc' => 'Zakačka koja dodaje samouvećavajuću promenljivu <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
 /** Swedish (Svenska)
