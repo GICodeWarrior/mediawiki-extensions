@@ -56,7 +56,7 @@ $wgSpecialPageGroups['WikiBhasha'] = 'wiki';
 
 $wgAutoloadClasses['WikiBhasha'] = $dir . 'WikiBhasha_body.php'; # Location of the wikibhasha class (Tell MediaWiki to load this file)
 $wgExtensionMessagesFiles['WikiBhasha'] = $dir . 'WikiBhasha.i18n.php'; # Location of a messages file (Tell MediaWiki to load this file)
-$wgExtensionAliasesFiles['WikiBhasha'] = $dir . 'WikiBhasha.alias.php'; # Location of a messages file (Tell MediaWiki to load this file)
+$wgExtensionMessagesFiles['WikiBhashaAlias'] = $dir . 'WikiBhasha.alias.php'; # Location of a messages file (Tell MediaWiki to load this file)
 
 $wgHooks['MonoBookTemplateToolboxEnd'][] = array( $wbExtClass, 'wikiBhashaToolbox' );
 $wgHooks['BeforePageDisplay'][] = array( $wbExtClass, 'wbToolbarIcon' );
