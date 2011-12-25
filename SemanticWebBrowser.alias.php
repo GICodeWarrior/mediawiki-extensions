@@ -7,9 +7,19 @@
  * @ingroup SWBLanguage
  */
 
+$specialPageAliases = array();
 
 /** English (English) */
-
 $specialPageAliases['en'] = array(
 	'BrowseWiki' => array( 'BrowseWiki' ),
+);
+
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'BrowseWiki' => array( 'Wiki_browsen' ),
+);
+
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'BrowseWiki' => array( 'WikiDoorbladeren' ),
 );
