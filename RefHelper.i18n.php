@@ -1139,7 +1139,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'refhelper' => 'Referansehjelper',
 	'refsearch' => 'Referansesøk',
 	'refhelper-desc' => 'Hjelper til med å opprette sider for referanser',
