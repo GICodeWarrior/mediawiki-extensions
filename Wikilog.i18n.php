@@ -5062,7 +5062,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'wikilog-desc' => 'Legger til bloggefunksjoner og oppretter en wiki-blogg-hybrid',
 	'wikilog-auto' => 'Wikilog Auto',
 	'wikilog-help' => '{{ns:Help}}:Wikilogg',

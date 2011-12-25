@@ -189,7 +189,7 @@ $magicWords['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$magicWords['no'] = array(
+$magicWords['nb'] = array(
 	'wlk-subtitle' => array( 0, 'undertekst' ),
 	'wlk-summary' => array( 'sammendrag' ),
 	'wlk-hidden' => array( 0, 'gjemt' ),
