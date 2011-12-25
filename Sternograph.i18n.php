@@ -120,6 +120,16 @@ $messages['nl'] = array(
 	'sternograph-speaker-is' => 'Het sprekerblok <$1> moet het teken $2 bevatten.',
 );
 
+/** Russian (Русский)
+ * @author Eleferen
+ */
+$messages['ru'] = array(
+	'sternograph-desc' => '<nowiki><sterno></nowiki>теги для записи произнесённых слов (воспроизведение, обсуждение, др.)',
+	'sternograph-empty' => 'Тег <$1> не может быть пустым.',
+	'sternograph-nested' => 'Тег <$1> не может быть вложенным.',
+	'sternograph-speaker-is' => 'Строка в блок спикера должна содержать $2 символа.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
