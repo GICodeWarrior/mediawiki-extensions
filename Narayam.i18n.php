@@ -233,6 +233,37 @@ $messages['az'] = array(
 	'narayam-bn-nkb' => 'Bengali NKB',
 );
 
+/** Bashkir (Башҡортса)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'narayam-am' => 'Амхар транслитерацияһы',
+	'narayam-as' => 'Ассам транслитерацияһы',
+	'narayam-as-avro' => 'Ассам Avro',
+	'narayam-as-bornona' => 'Ассам Bornona',
+	'narayam-as-inscript' => 'Ассам InScript',
+	'narayam-ber-tfng' => 'Тифинаг (транслитерация)',
+	'narayam-brx-inscript' => 'Бодо InScript',
+	'narayam-eo' => 'Эсперанто',
+	'narayam-hi' => 'Хинди (транслитерация)',
+	'narayam-hi-inscript' => 'Хинди өсөн InScript',
+	'narayam-kn' => 'Каннада (транслитерация)',
+	'narayam-kn-inscript' => 'Каннада InScript',
+	'narayam-ml' => 'Малай (транслитерация)',
+	'narayam-ml-inscript' => 'Малай InScript',
+	'narayam-mr' => 'Маратхи (транслитерация)',
+	'narayam-mr-inscript' => 'Маратхи InScript',
+	'narayam-ne' => 'Непаль (транслитерация)',
+	'narayam-ne-inscript' => 'Непаль InScript',
+	'narayam-or' => 'Одия (транслитерация)',
+	'narayam-or-lekhani' => 'Одия Лекхани',
+	'narayam-or-inscript' => 'Ория InScript',
+	'narayam-pa-phonetic' => 'Фонетик гурмукхи пенджаби',
+	'narayam-pa-inscript' => 'Gurmukhi Punjabi InScript',
+	'narayam-sa' => 'Санскрит (транслитерация)',
+	'narayam-sa-inscript' => 'Санскрит InScript',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -650,32 +681,53 @@ $messages['fi'] = array(
 	'narayam-checkbox-tooltip' => 'Ota syöttötapa käyttöön ja pois',
 	'narayam-disable-preference' => 'Poista Narayam-syöttötavat käytöstä',
 	'narayam-more-imes' => 'Lisää syöttötapoja',
-	'narayam-am' => 'Amhara-translitterointi',
-	'narayam-as' => 'Assami-translitterointi',
+	'narayam-am' => 'Amhara translitterointi',
+	'narayam-as' => 'Assami translitterointi',
 	'narayam-as-avro' => 'Assami Avro',
 	'narayam-as-bornona' => 'Assami Bornona',
 	'narayam-as-inscript' => 'Assami InScript',
+	'narayam-ber-tfng' => 'Tifinagh translitterointi',
+	'narayam-brx-inscript' => 'Bodo InScript',
 	'narayam-eo' => 'Esperanto',
+	'narayam-hi' => 'Hindi translitterointi',
 	'narayam-hi-inscript' => 'Hindi InScript',
-	'narayam-kn' => 'Kannada-translitterointi',
+	'narayam-kn' => 'Kannada translitterointi',
 	'narayam-kn-inscript' => 'Kannada InScript',
-	'narayam-ml' => 'Malajalam-translitterointi',
+	'narayam-ml' => 'Malajalam translitterointi',
 	'narayam-ml-inscript' => 'Malajalam InScript',
-	'narayam-ne' => 'Nepali-translitterointi',
+	'narayam-mr' => 'Marathi translitterointi',
+	'narayam-mr-inscript' => 'Marathi InScript',
+	'narayam-ne' => 'Nepali translitterointi',
 	'narayam-ne-inscript' => 'Nepali InScript',
-	'narayam-or' => 'Orija-translitterointi',
+	'narayam-or' => 'Orija translitterointi',
+	'narayam-or-lekhani' => 'Orija Lekhani',
 	'narayam-or-inscript' => 'Orija InScript',
-	'narayam-sa' => 'Sanskrit-translitterointi',
+	'narayam-pa-phonetic' => 'Gurmukhi pandžabi foneettinen',
+	'narayam-pa-inscript' => 'Gurmukhi pandžabi InScript',
+	'narayam-sa' => 'Sanskrit translitterointi',
 	'narayam-sa-inscript' => 'Sanskrit InScript',
 	'narayam-si-singlish' => 'Sinhala Singlish',
 	'narayam-si-wijesekara' => 'Sinhala Wijesekara',
 	'narayam-ta-99' => 'Tamil99',
-	'narayam-ta' => 'Tamil-translitterointi',
-	'narayam-ta-bamini' => 'Tamil Bamini',
+	'narayam-ta-inscript' => 'Tamili InScript',
+	'narayam-ta' => 'Tamili translitterointi',
+	'narayam-ta-bamini' => 'Tamili Bamini',
+	'narayam-tcy' => 'Tulu translitterointi',
 	'narayam-te-inscript' => 'Telugu InScript',
 	'narayam-bn-avro' => 'Bengali Avro',
 	'narayam-bn-inscript' => 'Bengali InScript',
 	'narayam-bn-nkb' => 'Bengali NKB',
+	'narayam-ur' => 'Urdu standardi',
+	'narayam-de' => 'Saksa',
+	'narayam-gu' => 'Gudžarati translitterointi',
+	'narayam-gu-inscript' => 'Gudžarati InScript',
+	'narayam-ru-standard' => 'Venäjä standardi',
+	'narayam-sah-standard' => 'Jakuutti standardi',
+	'narayam-hne-inscript' => 'Chhattisgarhi InScript',
+	'narayam-mai-inscript' => 'Maithili InScript',
+	'narayam-gom-deva' => 'Goan Konkani-Devanagari translitterointi',
+	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari InScript',
+	'narayam-he-standard-2011' => 'Heprea standardi 2011',
 );
 
 /** French (Français)
@@ -989,6 +1041,7 @@ $messages['he'] = array(
 	'narayam-ta-inscript' => 'טמילית InScript',
 	'narayam-ta' => 'טמילית – תעתיק',
 	'narayam-ta-bamini' => 'טמילית – Bamini',
+	'narayam-tcy' => 'טולו תעתיק',
 	'narayam-te-inscript' => 'טלוגו – InScript',
 	'narayam-bn-avro' => 'בנגלית – Avro',
 	'narayam-bn-inscript' => 'בנגלית – InScript',
@@ -1169,12 +1222,35 @@ $messages['id'] = array(
 /** Italian (Italiano)
  * @author Aushulz
  * @author Beta16
+ * @author F. Cosoleto
  */
 $messages['it'] = array(
 	'narayam-desc' => 'Permette di aggiungere metodi di input personalizzati per i campi di input',
 	'narayam-toggle-ime' => 'Abilita ($1)',
+	'narayam-menu' => 'Metodo di input',
 	'narayam-help' => 'Aiuto',
+	'narayam-as' => 'Assamese (translitterazione)',
+	'narayam-as-avro' => 'Assamese (Avro)',
+	'narayam-as-inscript' => 'Assamese (InScript)',
+	'narayam-ber-tfng' => 'Tifinagh (translitterazione)',
+	'narayam-brx-inscript' => 'Bodo (InScript)',
 	'narayam-eo' => 'Esperanto',
+	'narayam-hi' => 'Hindi (translitterazione)',
+	'narayam-hi-inscript' => 'Hindi (InScript)',
+	'narayam-kn' => 'Kannada (translitterazione)',
+	'narayam-kn-inscript' => 'Kannada (InScript)',
+	'narayam-ml' => 'Malayalam (translitterazione)',
+	'narayam-ml-inscript' => 'Malayalam (InScript)',
+	'narayam-mr' => 'Marathi (translitterazione)',
+	'narayam-mr-inscript' => 'Marathi (InScript)',
+	'narayam-ne' => 'Nepalese (translitterazione)',
+	'narayam-ne-inscript' => 'Nepalese (InScript)',
+	'narayam-pa-inscript' => 'Punjabi in Gurmukhi (InScript)',
+	'narayam-sa' => 'Sanscrito (translitterazione)',
+	'narayam-sa-inscript' => 'Sanscrito (InScript)',
+	'narayam-bn-avro' => 'Bengalese (Avro)',
+	'narayam-bn-inscript' => 'Bengalese (InScript)',
+	'narayam-bn-nkb' => 'Bengalese (NKB)',
 );
 
 /** Japanese (日本語)
@@ -1550,6 +1626,19 @@ $messages['ms'] = array(
 	'narayam-he-standard-2011' => 'Piawaian Ibrani 2011',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ * @author Nghtwlkr
+ * @author Sjurhamre
+ */
+$messages['nb'] = array(
+	'narayam-desc' => 'Gjør det mulgi å lage egendefinerte inndatametorer for inndatafelt',
+	'narayam-toggle-ime' => 'Aktiver ($1)',
+	'narayam-help' => 'Hjelp',
+	'narayam-help-page' => 'Help:Skriving',
+	'narayam-eo' => 'Esperanto',
+);
+
 /** Dutch (Nederlands)
  * @author GerardM
  * @author SPQRobin
@@ -1614,20 +1703,8 @@ $messages['nl'] = array(
 	'narayam-he-standard-2011' => 'Hebreeuws standaard 2011',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Event
- * @author Nghtwlkr
- * @author Sjurhamre
- */
-$messages['nb'] = array(
-	'narayam-desc' => 'Gjør det mulgi å lage egendefinerte inndatametorer for inndatafelt',
-	'narayam-toggle-ime' => 'Aktiver ($1)',
-	'narayam-help' => 'Hjelp',
-	'narayam-help-page' => 'Help:Skriving',
-	'narayam-eo' => 'Esperanto',
-);
-
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
  * @author Psubhashish
  */
 $messages['or'] = array(
@@ -1635,8 +1712,24 @@ $messages['or'] = array(
 	'narayam-menu' => 'ନିବେଶ (Press Ctrl+M for Odia Typing)',
 	'narayam-help' => 'ସହଯୋଗ',
 	'narayam-help-page' => 'Help:ଟାଇପ କରିବା',
+	'narayam-as-inscript' => 'ଆସାମିଜ ଇନସ୍କ୍ରିପ୍ଟ',
+	'narayam-brx-inscript' => 'ବୋଡ଼ୋ ଇନସ୍କ୍ରିପ୍ଟ',
+	'narayam-hi-inscript' => 'ହିନ୍ଦୀ ଇନସ୍କ୍ରିପ୍ଟ',
+	'narayam-kn-inscript' => 'କନ୍ନଡ଼ ଇନସ୍କ୍ରିପ୍ଟ',
+	'narayam-ml-inscript' => 'ମାଲାୟଲମ ଇନସ୍କ୍ରିପ୍ଟ',
+	'narayam-mr-inscript' => 'ମରାଠୀ ଇନସ୍କ୍ରିପ୍ଟ',
+	'narayam-ne-inscript' => 'ନେପାଳୀ ଇନସ୍କ୍ରିପ୍ଟ',
 	'narayam-or' => 'Odia Transliteration',
+	'narayam-or-lekhani' => 'ଓଡ଼ିଆ ଲେଖନୀ',
 	'narayam-or-inscript' => 'Odia InScript',
+	'narayam-pa-inscript' => 'ଗୁରୁମୁଖି ପଞ୍ଜାବୀ ଇନସ୍କ୍ରିପ୍ଟ',
+	'narayam-sa-inscript' => 'ସଂସ୍କୃତ ଇନସ୍କ୍ରିପ୍ଟ',
+	'narayam-ta-99' => 'ତାମିଲ୯୯',
+	'narayam-ta-inscript' => 'ତାମିଲ ଇନସ୍କ୍ରିପ୍ଟ',
+	'narayam-te-inscript' => 'ତେଲୁଗୁ ଇନସ୍କ୍ରିପ୍ଟ',
+	'narayam-bn-inscript' => 'ବେଙ୍ଗଲି ଇନସ୍କ୍ରିପ୍ଟ',
+	'narayam-gu-inscript' => 'ଗୁଜରାଟୀ ଇନସ୍କ୍ରିପ୍ଟ',
+	'narayam-mai-inscript' => 'ମୈଥିଳି ଇନସ୍କ୍ରିପ୍ଟ',
 );
 
 /** Deitsch (Deitsch)
@@ -1889,12 +1982,12 @@ $messages['ru'] = array(
 	'narayam-as' => 'Ассамская транслитерации',
 	'narayam-as-avro' => 'Ассамский Avro',
 	'narayam-as-bornona' => 'Ассамский Bornona',
-	'narayam-as-inscript' => 'Ассамский инскрипт',
+	'narayam-as-inscript' => 'Ассамский InScript',
 	'narayam-ber-tfng' => 'Тифинаг (транслитерация)',
 	'narayam-brx-inscript' => 'Bodo InScript',
 	'narayam-eo' => 'Эсперанто',
 	'narayam-hi' => 'Хинди (транслитерация)',
-	'narayam-hi-inscript' => 'Хинди инскрипт',
+	'narayam-hi-inscript' => 'InScript для Хинди',
 	'narayam-kn' => 'Транслитерация каннада',
 	'narayam-kn-inscript' => 'Каннада инскрипт',
 	'narayam-ml' => 'Малайская транслитерация',
@@ -1906,11 +1999,14 @@ $messages['ru'] = array(
 	'narayam-or' => 'Ория транслитерация',
 	'narayam-or-lekhani' => 'Odiya Lekhani',
 	'narayam-or-inscript' => 'Ория инскрипт',
+	'narayam-pa-phonetic' => 'Фонетическая гурмукхи пенджаби',
+	'narayam-pa-inscript' => 'Gurmukhi Punjabi InScript',
 	'narayam-sa' => 'Санскритская транслитерация',
 	'narayam-sa-inscript' => 'Санскрит инскрипт',
 	'narayam-si-singlish' => 'Сингальский Синглиш',
 	'narayam-si-wijesekara' => 'Сингальский Виджесекера',
 	'narayam-ta-99' => 'Tamil99',
+	'narayam-ta-inscript' => 'Tamil InScript',
 	'narayam-ta' => 'Тамильская транслитерация',
 	'narayam-ta-bamini' => 'Тамильский Bamini',
 	'narayam-tcy' => 'Тамильская транслитерация',
@@ -1918,9 +2014,13 @@ $messages['ru'] = array(
 	'narayam-bn-avro' => 'Бенгальский Avro',
 	'narayam-bn-inscript' => 'Бенгальский инскрипт',
 	'narayam-bn-nkb' => 'Бенгальский NKB',
+	'narayam-ur' => 'стандартная урду',
 	'narayam-de' => 'Немецкий',
 	'narayam-gu' => 'Транслитерация гуджарати',
 	'narayam-gu-inscript' => 'Gujarati InScript',
+	'narayam-ru-standard' => 'русская стандартная',
+	'narayam-sah-standard' => 'стандартная саха',
+	'narayam-hne-inscript' => 'Chhattisgarhi InScript',
 	'narayam-mai-inscript' => 'Maithili InScript',
 	'narayam-gom-deva' => 'Транслитерация деванагари гоайского конкани',
 	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari InScript',
@@ -2239,6 +2339,7 @@ $messages['tl'] = array(
 
 /** Ukrainian (Українська)
  * @author Dim Grits
+ * @author Тест
  */
 $messages['uk'] = array(
 	'narayam-desc' => 'Дозволяє додавати користувацькі методи вводу для полів введення',
@@ -2269,6 +2370,8 @@ $messages['uk'] = array(
 	'narayam-bn-avro' => 'Бенгальська',
 	'narayam-bn-inscript' => 'Бенгальська Inscript',
 	'narayam-bn-nkb' => 'Бенгальська НКБ',
+	'narayam-de' => 'Німецька',
+	'narayam-ru-standard' => 'Російська стандартна',
 );
 
 /** Urdu (اردو)
@@ -2351,7 +2454,7 @@ $messages['vi'] = array(
  */
 $messages['zh-hans'] = array(
 	'narayam-desc' => '允许添加自定义输入的方法的输入字段。',
-	'narayam-toggle-ime' => '启用  ($1)',
+	'narayam-toggle-ime' => '启用（$1）',
 	'narayam-menu' => '输入法',
 	'narayam-menu-tooltip' => '控制Narayam输入法编辑器（IME）',
 	'narayam-help' => '帮助',
@@ -2359,28 +2462,53 @@ $messages['zh-hans'] = array(
 	'narayam-checkbox-tooltip' => '要打开和关闭切换输入的法',
 	'narayam-disable-preference' => '停用Narayam输入法编辑器（IME）',
 	'narayam-more-imes' => '更多输入法',
-	'narayam-as' => '阿萨姆音译',
-	'narayam-as-avro' => '阿萨姆Avro',
+	'narayam-am' => '阿姆哈拉文转写',
+	'narayam-as' => '阿萨姆文转写',
+	'narayam-as-avro' => '阿萨姆文Avro',
+	'narayam-as-bornona' => '阿萨姆文Bornona',
+	'narayam-as-inscript' => '阿萨姆文InScript',
+	'narayam-ber-tfng' => '提非纳文转写',
+	'narayam-brx-inscript' => '博多文InScript',
 	'narayam-eo' => '世界语',
-	'narayam-hi-inscript' => '印地语 InScript',
-	'narayam-kn' => '卡纳达语音译',
-	'narayam-kn-inscript' => '卡纳达语 InScript',
-	'narayam-ml' => '马拉雅拉姆语音译',
-	'narayam-ml-inscript' => '马拉雅拉姆语 InScript',
+	'narayam-hi' => '印地文转写',
+	'narayam-hi-inscript' => '印地文InScript',
+	'narayam-kn' => '卡纳达文转写',
+	'narayam-kn-inscript' => '卡纳达文InScript',
+	'narayam-ml' => '马拉雅拉姆文转写',
+	'narayam-ml-inscript' => '马拉雅拉姆文InScript',
+	'narayam-mr' => '马拉地文转写',
+	'narayam-mr-inscript' => '马拉地文InScript',
 	'narayam-ne' => '尼泊尔文转写',
 	'narayam-ne-inscript' => '尼泊尔文InScript',
-	'narayam-or' => '奥里亚文音译',
-	'narayam-or-inscript' => '奥里亚文 InScript',
-	'narayam-sa' => '梵语的音译',
-	'narayam-sa-inscript' => '梵语 InScript',
-	'narayam-si-singlish' => '僧伽罗语新式',
-	'narayam-si-wijesekara' => '僧伽罗语维杰塞克拉',
-	'narayam-ta-99' => '泰米尔99',
-	'narayam-ta' => '泰米尔音译',
-	'narayam-te-inscript' => '泰卢固文 InScript',
-	'narayam-bn-avro' => '孟加拉文阿夫罗',
-	'narayam-bn-inscript' => '孟加拉文 InScript',
-	'narayam-bn-nkb' => '孟加拉文 NKB',
+	'narayam-or' => '奥里亚文转写',
+	'narayam-or-lekhani' => '奥里亚文Lekhani',
+	'narayam-or-inscript' => '奥里亚文InScript',
+	'narayam-pa-phonetic' => '果鲁穆奇旁遮普文拼音',
+	'narayam-pa-inscript' => '果鲁穆奇旁遮普文InScript',
+	'narayam-sa' => '梵文转写',
+	'narayam-sa-inscript' => '梵文InScript',
+	'narayam-si-singlish' => '僧伽罗文新式',
+	'narayam-si-wijesekara' => '僧伽罗文维杰塞克拉',
+	'narayam-ta-99' => '泰米尔文99',
+	'narayam-ta-inscript' => '泰米尔文InScript',
+	'narayam-ta' => '泰米尔文转写',
+	'narayam-ta-bamini' => '泰米尔文Bamini',
+	'narayam-tcy' => '图卢文转写',
+	'narayam-te-inscript' => '泰卢固文InScript',
+	'narayam-bn-avro' => '孟加拉文Avro',
+	'narayam-bn-inscript' => '孟加拉文InScript',
+	'narayam-bn-nkb' => '孟加拉文NKB',
+	'narayam-ur' => '乌尔都文标准',
+	'narayam-de' => '德文',
+	'narayam-gu' => '古吉拉特文转写',
+	'narayam-gu-inscript' => '古吉拉特文InScript',
+	'narayam-ru-standard' => '俄文标准',
+	'narayam-sah-standard' => '雅库特文标准',
+	'narayam-hne-inscript' => '切蒂斯格尔文InScript',
+	'narayam-mai-inscript' => '迈蒂利文InScript',
+	'narayam-gom-deva' => '果阿孔卡尼天城文转写',
+	'narayam-gom-deva-inscript' => '果阿孔卡尼天城文InScript',
+	'narayam-he-standard-2011' => '希伯来文2011年标准',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
