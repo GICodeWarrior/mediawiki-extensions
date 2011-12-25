@@ -38,6 +38,11 @@ $specialPageAliases['fi'] = array(
 	'CategoryBrowser' => array( 'Luokkaselain' ),
 );
 
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'CategoryBrowser' => array( 'Navegador_de_categorías' ),
+);
+
 /** 湘语 (湘语) */
 $specialPageAliases['hsn'] = array(
 	'CategoryBrowser' => array( '类别浏览器' ),
@@ -78,6 +83,11 @@ $specialPageAliases['mk'] = array(
 	'CategoryBrowser' => array( 'ПрелистувачНаКатегории' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'CategoryBrowser' => array( 'Kategorinavigasjon' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'CategoryBrowser' => array( 'Kategorieën_deurblaojen' ),
@@ -88,9 +98,9 @@ $specialPageAliases['nl'] = array(
 	'CategoryBrowser' => array( 'CategorieenDoorbladeren' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'CategoryBrowser' => array( 'Kategorinavigasjon' ),
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'CategoryBrowser' => array( 'Przeglądarka_kateogrii' ),
 );
 
 /** Turkish (Türkçe) */
@@ -112,8 +122,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'CategoryBrowser' => array( '分類瀏覽器' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
