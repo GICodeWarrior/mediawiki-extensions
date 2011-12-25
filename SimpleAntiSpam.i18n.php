@@ -583,7 +583,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'simpleantispam' => 'Redigeringen din utløste antispammekanismen',
 	'simpleantispam-label' => "Antispamsjekk.
 '''IKKE''' fyll inn dette feltet!",
