@@ -515,6 +515,14 @@ $messages['nah'] = array(
 	'categoryonupload-label' => 'Tlaìxmatkàtlàlilòtl:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'categoryonupload-desc' => 'Ber brukere om å velge en kategori når du laster opp filer',
+	'categoryonupload-label' => 'Kategori:',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -545,14 +553,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'categoryonupload-desc' => 'Ber brukarar om å velja ein kategori når dei lastar opp filer',
-	'categoryonupload-label' => 'Kategori:',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'categoryonupload-desc' => 'Ber brukere om å velge en kategori når du laster opp filer',
 	'categoryonupload-label' => 'Kategori:',
 );
 
