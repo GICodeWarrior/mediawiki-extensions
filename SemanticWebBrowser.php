@@ -15,11 +15,11 @@ require_once dirname( __FILE__ ) . '/SWB_Settings.php';
 // include for toolbox
 global $swbgToolboxBrowseSemWeb, $wgHooks, $wgAutoloadClasses, $swbgIP,
        $wgFooterIcons, $wgExtensionFunctions, $wgSpecialPageGroups,
-       $wgExtensionMessagesFiles, $wgExtensionAliasesFiles, $wgSpecialPages,
-       $smwgNamespace, $wgServer, $wgAPIModules, $wgExtensionAliasesFiles;
+       $wgExtensionMessagesFiles, $wgSpecialPages,
+       $smwgNamespace, $wgServer, $wgAPIModules;
 
 $wgExtensionMessagesFiles['SemanticWebBrowser'] = $swbgIP . 'SemanticWebBrowser.i18n.php';
-$wgExtensionAliasesFiles['SemanticWebBrowser']  = $swbgIP . 'SemanticWebBrowser.alias.php';
+$wgExtensionMessagesFiles['SemanticWebBrowserAlias']  = $swbgIP . 'SemanticWebBrowser.alias.php';
 
 // Special Page for Browse Wiki
 $wgAutoloadClasses['SWBSpecialBrowseWiki']      = $swbgIP . 'specials/SearchTriple/SWB_SpecialBrowseWiki.php';
