@@ -246,7 +246,7 @@ De huidige waardering van gebruikers wordt weergegeven als er al gewaardeerd is.
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'ratings-desc' => 'Tillater brukere å gi karakter på ulike "egenskaper" for sider',
 	'right-rate' => 'Gi karakter på en bestemt egenskap for en side',
 	'ratings-starsratings-desc' => 'Viser en enkel stjernebasert kontroll som tillater brukeren å gi karakterer på bestemte egenskaper for en side.',
