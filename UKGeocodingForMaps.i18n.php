@@ -226,7 +226,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'ukgeocoding_name' => 'Geokoding av UK for Maps',
 	'ukgeocoding_desc' => 'Utvider Maps med en display_uk_point-tolkefunksjon med Google Maps-implementasjon',
 	'ukgeocoding_couldNotGeocode' => 'En eller fler postkoder kunne ikke geokodes og har blitt utelatt fra kartet.',
