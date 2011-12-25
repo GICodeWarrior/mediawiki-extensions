@@ -225,11 +225,12 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'countedits' => 'সম্পাদনা গণনা করো',
-	'countedits-username' => 'ব্যবহারকারীর নাম:',
+	'countedits-username' => 'ব্যবহারকারী নাম:',
 	'countedits-ok' => 'ঠিক আছে',
 	'countedits-nosuchuser' => '$1 নামে কোনো ব্যবহারকারী নেই।',
 	'countedits-resultheader' => '$1-এর জন্য ফলাফল',
@@ -1136,6 +1137,23 @@ $messages['nah'] = array(
 	'countedits-resulttext' => '$1 {{PLURAL:$2|ōquichīuh|ōquinchīuh}} $2 tlapatlaliztli',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'countedits' => 'Tell redigeringer',
+	'countedits-desc' => '[[Special:CountEdits|Spesialside]] om teller antall redigeringer av brukere, og gir en liste over de ti mest aktive brukerne',
+	'countedits-warning' => "'''Advarsel:''' Ikke sku hunden på hårene. Ikke døm en bidragsyter på antall redigeringer.",
+	'countedits-username' => 'Brukernavn:',
+	'countedits-ok' => 'OK',
+	'countedits-nosuchuser' => 'Det er ingen bruker ved navnet $1.',
+	'countedits-resultheader' => 'Resultater for $1',
+	'countedits-resulttext' => '$1 har gjort {{PLURAL:$2|én redigering|$2 redigeringer}}',
+	'countedits-mostactive' => 'Mest aktive bidragsytere',
+	'countedits-nocontribs' => 'Det har ikke vært noen redigeringer på denne wikien.',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1200,23 +1218,6 @@ Ikkje vurder ein bidragsytar etter talet på endringar av han/ho.",
 	'countedits-resulttext' => '$1 har gjort {{PLURAL:$2|éi endring|$2 endringar}}',
 	'countedits-mostactive' => 'Mest aktive bidragsytarar',
 	'countedits-nocontribs' => 'Det har ikkje blitt gjort endringar på denne wikien.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'countedits' => 'Tell redigeringer',
-	'countedits-desc' => '[[Special:CountEdits|Spesialside]] om teller antall redigeringer av brukere, og gir en liste over de ti mest aktive brukerne',
-	'countedits-warning' => "'''Advarsel:''' Ikke sku hunden på hårene. Ikke døm en bidragsyter på antall redigeringer.",
-	'countedits-username' => 'Brukernavn:',
-	'countedits-ok' => 'OK',
-	'countedits-nosuchuser' => 'Det er ingen bruker ved navnet $1.',
-	'countedits-resultheader' => 'Resultater for $1',
-	'countedits-resulttext' => '$1 har gjort {{PLURAL:$2|én redigering|$2 redigeringer}}',
-	'countedits-mostactive' => 'Mest aktive bidragsytere',
-	'countedits-nocontribs' => 'Det har ikke vært noen redigeringer på denne wikien.',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
