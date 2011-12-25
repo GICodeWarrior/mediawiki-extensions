@@ -304,7 +304,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'random-users-avatars-title' => 'Møt brukerne',
 	'random-users-avatars-desc' => 'Legger til taggen <code>&lt;randomuserswithavatars&gt;</code> for å vise avatarene for tilfeldig valgte brukere',
 );
