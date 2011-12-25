@@ -67,6 +67,15 @@ $messages['fr'] = array(
 	'right-createbogususerpage' => 'Créer des pages utilisateur pour des utilisateurs qui ne sont pas enregistrés sur ce wiki',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'nobogususerpages-desc' => 'Restrinxe a creación das páxinas de usuario daqueles usuarios que non teñen ningunha conta rexistrada',
+	'badaccess-bogususerpage' => 'O usuario desta páxina de usuario non existe. Non pode crear páxinas de usuario falsas.',
+	'right-createbogususerpage' => 'Crear páxinas de usuario de usuarios que non están rexistrados neste wiki',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
