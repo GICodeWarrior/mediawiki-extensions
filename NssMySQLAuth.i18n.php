@@ -805,7 +805,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  * @author Simny
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'accountmanager' => 'Administrer konto',
 	'am-username' => 'brukernavn',
 	'am-email' => 'e-post',
