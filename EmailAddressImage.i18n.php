@@ -349,7 +349,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'emailaddressimage-desc' => 'Legger til <code>&lt;email&gt;</code> for å vise en e-postadresse som bilde',
 );
 
