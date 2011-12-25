@@ -160,7 +160,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'geequbox-desc' => 'Genererer lysbokseffekter ved hjelp av utvidelsen jQuery lightbox',
 );
 
