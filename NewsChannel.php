@@ -87,6 +87,6 @@ $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['NewsChannel'] = $dir . 'NewsChannel_body.php';
 $wgAutoloadClasses['LinkNewsChannel'] = $dir . 'NewsChannel.class.php';
 $wgExtensionMessagesFiles['NewsChannel'] = $dir . 'NewsChannel.i18n.php';
-$wgExtensionAliasesFiles['NewsChannel'] = $dir . 'NewsChannel.alias.php';
+$wgExtensionMessagesFiles['NewsChannelAlias'] = $dir . 'NewsChannel.alias.php';
 $wgSpecialPages['NewsChannel'] = 'NewsChannel';
 $wgHooks['BeforePageDisplay'][] = 'LinkNewsChannel::ExtensionFeeds';
