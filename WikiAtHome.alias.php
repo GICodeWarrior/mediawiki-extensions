@@ -68,6 +68,11 @@ $specialPageAliases['mr'] = array(
 	'SpecialWikiAtHome' => array( 'घरचाविकि' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'SpecialWikiAtHome' => array( 'Hjemmewiki' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'SpecialWikiAtHome' => array( 'Wiki_thuus' ),
@@ -78,17 +83,7 @@ $specialPageAliases['nl'] = array(
 	'SpecialWikiAtHome' => array( 'WikiThuis' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'SpecialWikiAtHome' => array( 'Hjemmewiki' ),
-);
-
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'SpecialWikiAtHome' => array( 'EvdeViki' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
