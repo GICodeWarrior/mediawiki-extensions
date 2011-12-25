@@ -37,24 +37,53 @@ class EPMentor extends EPDBObject {
 	
 	/**
 	 * Returns the orgs this mentor is part of.
+	 * Caches the result when no conditions are provided and all fields are selected.
 	 * 
 	 * @since 0.1
 	 * 
 	 * @param array|null $fields
+	 * @param array $conditions
 	 * 
 	 * @return array of EPOrg
 	 */
-	public function getOrgs( array $fields = null ) {
-		if ( $this->orgs === false ) {
-			$this->orgs = EPOrg::select(
-				$fields,
-				array( array( 'ep_mentors_per_org', 'mentor_id' ), $this->getId() ),
-				array(),
-				array( 'orgs' => array( 'INNER JOIN', array( array( array( 'ep_mentors_per_org', 'org_id' ), array( 'orgs', 'id' ) ) ) ) )
-			);
+	public function getOrgs( array $fields = null, array $conditions = array() ) {
+		if ( count( $conditions ) !== 0 ) {
+			return $this->doGetOrgs( $fields, $conditions );
 		}
 		
-		return $this->orgs;
+		if ( $this->orgs === false ) {
+			$orgs = $this->doGetOrgs( $fields, $conditions );
+			
+			if ( is_null( $fields ) ) {
+				$this->orgs = $orgs;
+			}
+		}
+		
+		return $orgs;
+	}
+	
+	/**
+	 * Returns the orgs this mentor is part of.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array|null $fields
+	 * @param array $conditions
+	 * 
+	 * @return array of EPOrg
+	 */
+	protected function doGetOrgs( $fields, array $conditions ) {
+		$conditions = array_merge(
+			array( array( 'ep_mentors_per_org', 'mentor_id' ), $this->getId() ),
+			$conditions
+		);
+		
+		return EPOrg::select(
+			$fields,
+			$conditions,
+			array(),
+			array( 'orgs' => array( 'INNER JOIN', array( array( array( 'ep_mentors_per_org', 'org_id' ), array( 'orgs', 'id' ) ) ) ) )
+		);
 	}
 	
 	/**
@@ -63,13 +92,18 @@ class EPMentor extends EPDBObject {
 	 * @since 0.1
 	 * 
 	 * @param array|null $fields
+	 * @param array $conditions
 	 * 
 	 * @return array of EPCourse
 	 */
-	public function getCourses( array $fields = null ) {
-		return array_reduce( $this->getOrgs(), function( array $courses, EPOrg $org ) use ( $fields ) {
-			return array_merge( $courses, $org->getCourses( $fields ) );
-		}, array() );
+	public function getCourses( array $fields = null, array $conditions = array() ) {
+		return array_reduce(
+			$this->getOrgs( $fields, $conditions ),
+			function( array $courses, EPOrg $org ) use ( $fields ) {
+				return array_merge( $courses, $org->getCourses( $fields ) );
+			},
+			array()
+		);
 	}
 	
 	/**
@@ -78,13 +112,18 @@ class EPMentor extends EPDBObject {
 	 * @since 0.1
 	 * 
 	 * @param array|null $fields
+	 * @param array $conditions
 	 * 
 	 * @return array of EPTerm
 	 */
-	public function getTerms( array $fields = null ) {
-		return array_reduce( $this->getOrgs(), function( array $terms, EPOrg $org ) use ( $fields ) {
-			return array_merge( $terms, $org->getTerms( $fields ) );
-		}, array() );
+	public function getTerms( array $fields = null, array $conditions = array() ) {
+		return array_reduce(
+			$this->getOrgs( $fields, $conditions ),
+			function( array $terms, EPOrg $org ) use ( $fields ) {
+				return array_merge( $terms, $org->getTerms( $fields ) );
+			}, 
+			array()
+		);
 	}
 	
 	/**
@@ -97,7 +136,7 @@ class EPMentor extends EPDBObject {
 	 * @return boolean
 	 */
 	public function hasCourse( array $conditions = array() ) {
-		return true; // TODO
+		return count( $this->getCourses( 'id', $conditions ) ) > 0;
 	}
 	
 	/**
@@ -110,7 +149,7 @@ class EPMentor extends EPDBObject {
 	 * @return boolean
 	 */
 	public function hasTerm( array $conditions = array() ) {
-		return true; // TODO
+		return count( $this->getTerms( 'id', $conditions ) ) > 0;
 	}
 
 }
