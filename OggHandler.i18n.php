@@ -372,14 +372,30 @@ $messages['az'] = array(
 );
 
 /** Bashkir (Башҡортса)
+ * @author Haqmar
  * @author Рустам Нурыев
  */
 $messages['ba'] = array(
+	'ogg-desc' => 'Ogg Theora һәм Vorbis файлдарын JavaScript-уйнатыусы ҡулланған эшкәртеүсе',
+	'ogg-short-audio' => 'Тауыш файлы Ogg $1, $2',
+	'ogg-short-video' => 'Видео-файл Ogg $1, $2',
+	'ogg-short-general' => 'Медиа-файл Ogg $1, $2',
+	'ogg-long-audio' => '(тауыш файлы Ogg $1, оҙонлоҡ $2, $3)',
+	'ogg-long-video' => 'видео-файл Ogg $1, оҙонлоҡ $2, $4×$5 {{PLURAL:$5|пиксель}}, $3',
+	'ogg-long-multiplexed' => 'мультиплекс аудио/видео-файл Ogg, $1, оҙонлоҡ $2, $4×$5 {{PLURAL:$5|пиксель}}, барыһы $3',
+	'ogg-long-general' => '(медиа-файл Ogg, оҙонлоҡ $2, $3)',
+	'ogg-long-error' => '(яңылыш ogg-файл: $1)',
+	'ogg-play' => 'Уйнатырға',
 	'ogg-pause' => 'Туҡтатып тору',
 	'ogg-stop' => 'Туҡтатыу',
 	'ogg-play-video' => 'Видеояҙманы ҡарау',
 	'ogg-play-sound' => 'Көйҙе тыңлау',
 	'ogg-no-player' => 'Ғәфү итегеҙ, ләкин һеҙнең системағыҙ был файлдар төрен аса алмай, зинһар кәрәк булған программаларҙы  <ahref="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">үҙегеҙгә күсереп алыгыҙ</a>.',
+	'ogg-player-oggPlugin' => 'Ogg модуль',
+	'ogg-player-thumbnail' => 'Хәрәкәтһеҙ рәсем генә',
+	'ogg-player-soundthumb' => 'Уйнатыусы юҡ',
+	'ogg-player-selected' => '(һайланған)',
+	'ogg-use-player' => 'Ҡулланыласаҡ уйнатыусы:',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -2250,11 +2266,19 @@ $messages['lt'] = array(
  * @author Xil
  */
 $messages['lv'] = array(
+	'ogg-short-audio' => 'Ogg $1 skaņas fails, $2',
+	'ogg-short-video' => 'Ogg $1 video fails, $2',
+	'ogg-short-general' => 'Ogg $1 multimediju fails, $2',
+	'ogg-long-audio' => 'Ogg $1 skaņas fails, garums $2, $3',
+	'ogg-long-video' => 'Ogg $1 video fails, garums $2, $4×$5 pikseļi, $3',
+	'ogg-long-general' => 'Ogg multimediju fails, garums $2, $3',
+	'ogg-long-error' => 'Nepareizs ogg fails: $1',
 	'ogg-play' => 'Atskaņot',
 	'ogg-pause' => 'Pauze',
 	'ogg-stop' => 'Apstādināt',
 	'ogg-play-video' => 'Atskaņot videoklipu',
 	'ogg-play-sound' => 'Atskaņot skaņu',
+	'ogg-player-oggPlugin' => 'Pārlūka spraudnis',
 	'ogg-player-selected' => '(izvēlēts)',
 	'ogg-dismiss' => 'Aizvērt',
 	'ogg-download' => 'Lejupielādēt failu',
@@ -2456,6 +2480,43 @@ $messages['nah'] = array(
 	'ogg-desc-link' => 'Inīn tlahcuilōltechcopa',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author AVRS
+ * @author Jon Harald Søby
+ * @author Laaknor
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'ogg-desc' => 'Gjør at Ogg Theora- og Ogg Vorbis-filer kan kjøres med hjelp av JavaScript-avspiller.',
+	'ogg-short-audio' => 'Ogg $1 lydfil, $2',
+	'ogg-short-video' => 'Ogg $1 videofil, $2',
+	'ogg-short-general' => 'Ogg $1 mediefil, $2',
+	'ogg-long-audio' => '(Ogg $1 lydfil, lengde $2, $3)',
+	'ogg-long-video' => 'Ogg $1 videofil, lengde $2, $4×$5 piksler, $3',
+	'ogg-long-multiplexed' => '(Sammensatt ogg lyd-/videofil, $1, lengde $2, $4×$5 piksler, $3 til sammen)',
+	'ogg-long-general' => '(Ogg mediefil, lengde $2, $3)',
+	'ogg-long-error' => '(Ugyldig ogg-fil: $1)',
+	'ogg-play' => 'Spill',
+	'ogg-pause' => 'Pause',
+	'ogg-stop' => 'Stopp',
+	'ogg-play-video' => 'Spill av video',
+	'ogg-play-sound' => 'Spill av lyd',
+	'ogg-no-player' => 'Beklager, systemet ditt har ingen medieavspillere som støtter filformatet. Vennligst <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned en avspiller</a> som støtter formatet.',
+	'ogg-no-xiphqt' => 'Du har ingen XiphQT-komponent for QuickTime. QuickTime kan ikke spille Ogg-filer uten denne komponenten. <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned XiphQT</a> eller velg en annen medieavspiller.',
+	'ogg-player-videoElement' => 'Innebygd nettleserstøtte',
+	'ogg-player-oggPlugin' => 'Programtillegg for nettleser',
+	'ogg-player-thumbnail' => 'Kun stillbilder',
+	'ogg-player-soundthumb' => 'Ingen medieavspiller',
+	'ogg-player-selected' => '(valgt)',
+	'ogg-use-player' => 'Bruk avspiller:',
+	'ogg-more' => 'Mer …',
+	'ogg-dismiss' => 'Lukk',
+	'ogg-download' => 'Last ned fil',
+	'ogg-desc-link' => 'Om denne filen',
+	'ogg-oggThumb-version' => 'OggHandler krever oggThumb versjon $1 eller senere.',
+	'ogg-oggThumb-failed' => 'oggThumb klarte ikke å opprette miniatyrbildet.',
+);
+
 /** Low German (Plattdüütsch)
  * @author AVRS
  * @author Slomox
@@ -2598,43 +2659,6 @@ $messages['nn'] = array(
 	'ogg-dismiss' => 'Lat att',
 	'ogg-download' => 'Last ned fila',
 	'ogg-desc-link' => 'Om denne fila',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author AVRS
- * @author Jon Harald Søby
- * @author Laaknor
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'ogg-desc' => 'Gjør at Ogg Theora- og Ogg Vorbis-filer kan kjøres med hjelp av JavaScript-avspiller.',
-	'ogg-short-audio' => 'Ogg $1 lydfil, $2',
-	'ogg-short-video' => 'Ogg $1 videofil, $2',
-	'ogg-short-general' => 'Ogg $1 mediefil, $2',
-	'ogg-long-audio' => '(Ogg $1 lydfil, lengde $2, $3)',
-	'ogg-long-video' => 'Ogg $1 videofil, lengde $2, $4×$5 piksler, $3',
-	'ogg-long-multiplexed' => '(Sammensatt ogg lyd-/videofil, $1, lengde $2, $4×$5 piksler, $3 til sammen)',
-	'ogg-long-general' => '(Ogg mediefil, lengde $2, $3)',
-	'ogg-long-error' => '(Ugyldig ogg-fil: $1)',
-	'ogg-play' => 'Spill',
-	'ogg-pause' => 'Pause',
-	'ogg-stop' => 'Stopp',
-	'ogg-play-video' => 'Spill av video',
-	'ogg-play-sound' => 'Spill av lyd',
-	'ogg-no-player' => 'Beklager, systemet ditt har ingen medieavspillere som støtter filformatet. Vennligst <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned en avspiller</a> som støtter formatet.',
-	'ogg-no-xiphqt' => 'Du har ingen XiphQT-komponent for QuickTime. QuickTime kan ikke spille Ogg-filer uten denne komponenten. <a href="http://mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned XiphQT</a> eller velg en annen medieavspiller.',
-	'ogg-player-videoElement' => 'Innebygd nettleserstøtte',
-	'ogg-player-oggPlugin' => 'Programtillegg for nettleser',
-	'ogg-player-thumbnail' => 'Kun stillbilder',
-	'ogg-player-soundthumb' => 'Ingen medieavspiller',
-	'ogg-player-selected' => '(valgt)',
-	'ogg-use-player' => 'Bruk avspiller:',
-	'ogg-more' => 'Mer …',
-	'ogg-dismiss' => 'Lukk',
-	'ogg-download' => 'Last ned fil',
-	'ogg-desc-link' => 'Om denne filen',
-	'ogg-oggThumb-version' => 'OggHandler krever oggThumb versjon $1 eller senere.',
-	'ogg-oggThumb-failed' => 'oggThumb klarte ikke å opprette miniatyrbildet.',
 );
 
 /** Occitan (Occitan)
