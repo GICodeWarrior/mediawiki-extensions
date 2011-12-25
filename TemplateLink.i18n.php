@@ -402,6 +402,16 @@ $messages['myv'] = array(
 	'templatelink_newtitle' => '$1 (сюлмавома пе вельде совавтозь)',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'templatelink' => 'Mallenke',
+	'templatelink_desc' => 'Denne utvidelsen kan vise en mal som en ny side',
+	'templatelink_empty' => 'Du må angi en parameter.',
+	'templatelink_newtitle' => '$1 (inkluderes)',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -420,16 +430,6 @@ $messages['nn'] = array(
 	'templatelink_desc' => 'Denne utvidinga kan vise ein mal som ei ny side',
 	'templatelink_empty' => 'Du må gje ein parameter.',
 	'templatelink_newtitle' => '$1 (vert inkludert)',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'templatelink' => 'Mallenke',
-	'templatelink_desc' => 'Denne utvidelsen kan vise en mal som en ny side',
-	'templatelink_empty' => 'Du må angi en parameter.',
-	'templatelink_newtitle' => '$1 (inkluderes)',
 );
 
 /** Occitan (Occitan)
