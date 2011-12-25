@@ -199,7 +199,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'xmlrc-desc' => 'Sender varsler om endringer som XML, via UDP, Jabber eller på andre måter',
 );
 
