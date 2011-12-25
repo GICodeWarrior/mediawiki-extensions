@@ -208,6 +208,11 @@ $specialPageAliases['myv'] = array(
 	'ExpandTemplates' => array( 'ПоладомсЛопаПарцунт' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'ExpandTemplates' => array( 'Utvid_maler' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'ExpandTemplates' => array( 'Mallen_substitueren' ),
@@ -216,11 +221,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'ExpandTemplates' => array( 'SjablonenSubstitueren' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'ExpandTemplates' => array( 'Utvid_maler' ),
 );
 
 /** Occitan (Occitan) */
@@ -243,7 +243,7 @@ $specialPageAliases['pt'] = array(
 	'ExpandTemplates' => array( 'Expandir_predefinições' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'ExpandTemplates' => array( 'बिंबधरविस्तारकरोसि' ),
 );
@@ -292,8 +292,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'ExpandTemplates' => array( '展開模板' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
