@@ -29,6 +29,11 @@ $specialPageAliases['cs'] = array(
 	'UserOptionStats' => array( 'Statistika_uživatelského_nastavení' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'UserOptionStats' => array( 'Statistik_zu_Benutzereinstellungen' ),
+);
+
 /** Lower Sorbian (Dolnoserbski) */
 $specialPageAliases['dsb'] = array(
 	'UserOptionStats' => array( 'Statistika wužywarskich opcijow' ),
@@ -46,7 +51,7 @@ $specialPageAliases['ht'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
-	'UserOptionStats' => array( 'Statsticas_de_optiones_de_usator' ),
+	'UserOptionStats' => array( 'Statisticas_de_optiones_de_usator' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
@@ -84,6 +89,11 @@ $specialPageAliases['mr'] = array(
 	'UserOptionStats' => array( 'सदस्यपर्यायसांख्यिकी' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'UserOptionStats' => array( 'Brukervalgstatistikk' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'UserOptionStats' => array( 'Gebrukersinstellingenstaotistieken' ),
@@ -94,14 +104,9 @@ $specialPageAliases['nl'] = array(
 	'UserOptionStats' => array( 'Gebruikersinstellingenstatistieken' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'UserOptionStats' => array( 'Brukervalgstatistikk' ),
-);
-
 /** Portuguese (Português) */
 $specialPageAliases['pt'] = array(
-	'UserOptionStats' => array( 'Estatísticas da opções de utilizador' ),
+	'UserOptionStats' => array( 'Estatísticas_da_opções_de_utilizador' ),
 );
 
 /** Slovak (Slovenčina) */
@@ -113,8 +118,3 @@ $specialPageAliases['sk'] = array(
 $specialPageAliases['tr'] = array(
 	'UserOptionStats' => array( 'KullanıcıSeçenekİstatistikleri' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
