@@ -44,7 +44,7 @@ $magicWords['ce'] = array(
 
 /** Spanish (Español) */
 $magicWords['es'] = array(
-	'transliterate' => array( 'transliterar', 'transliterate' ),
+	'transliterate' => array( 'transliterar' ),
 );
 
 /** Japanese (日本語) */
@@ -101,6 +101,12 @@ $magicWords['ru'] = array(
 $magicWords['sr-ec'] = array(
 	'transliterate' => array( 'пресловљавање' ),
 	'tr_prefix' => array( 'Пресловљавач:' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'transliterate' => array( 'preslovljavanje' ),
+	'tr_prefix' => array( 'Preslovljivač:' ),
 );
 
 /** Vietnamese (Tiếng Việt) */
