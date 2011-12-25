@@ -225,18 +225,18 @@ $messages['nah'] = array(
 	'categorymembersonsidebar-desc' => 'Kintlàlia ìyànalòwàn in tlaìxmatkatlàlilòtl ìpan in nekochpalli',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'categorymembersonsidebar-desc' => 'Voegt categorieleden toe aan de zijbalk',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'categorymembersonsidebar-desc' => 'Legger til kategorimedlemmer på sidepanelet',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'categorymembersonsidebar-desc' => 'Voegt categorieleden toe aan de zijbalk',
 );
 
 /** Polish (Polski)
