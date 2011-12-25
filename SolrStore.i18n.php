@@ -102,3 +102,14 @@ $messages['nl'] = array(
 	'solrstore-searchFieldSets-title' => 'SolrSearch: SearchSet selecteren',
 );
 
+/** Russian (Русский)
+ * @author Eleferen
+ */
+$messages['ru'] = array(
+	'solrstore-desc' => 'Семантический поиск с использованием ресурсов полнотекстовой поисковой системы',
+	'solrsearch' => 'SolrSearch',
+	'solrstore-searchFieldSets' => 'SolrSearch',
+	'solrstore-searchFieldSets-select' => 'Выберите, пожалуйста, SearchSet',
+	'solrstore-searchFieldSets-title' => 'SolrSearch: Выбор SearchSet',
+);
+
