@@ -39,7 +39,7 @@ $wgHooks['ParserTestTables'][] = 'efCategoryIntersectionParserTestTables';
 
 $wgAutoloadClasses['CategoryIntersection'] = $dir . 'CategoryIntersection_body.php'; # Tell MediaWiki to load the extension body.
 $wgExtensionMessagesFiles['CategoryIntersection'] = $dir . 'CategoryIntersection.i18n.php';
-$wgExtensionAliasesFiles['CategoryIntersection'] = $dir . 'CategoryIntersection.alias.php';
+$wgExtensionMessagesFiles['CategoryIntersectionAlias'] = $dir . 'CategoryIntersection.alias.php';
 $wgSpecialPages['CategoryIntersection'] = 'CategoryIntersection'; # Let MediaWiki know about your new special page.
 
 function CategoryIntersectionGetHashValues ( $categories ) {
