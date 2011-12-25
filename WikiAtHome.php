@@ -29,7 +29,7 @@ foreach($tmpExt as $ext){
 }
 
 $wgExtensionMessagesFiles['WikiAtHome'] = "$exDir/WikiAtHome.i18n.php";
-$wgExtensionAliasesFiles['WikiAtHome'] = "$exDir/WikiAtHome.alias.php";
+$wgExtensionMessagesFiles['WikiAtHomeAlias'] = "$exDir/WikiAtHome.alias.php";
 
 //special pages
 $wgAutoloadClasses['SpecialWikiAtHome']		= "$exDir/SpecialWikiAtHome.php";
