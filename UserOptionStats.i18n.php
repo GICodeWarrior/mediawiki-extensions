@@ -566,7 +566,7 @@ $messages['nn'] = array(
  * @author Audun
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'useroptionstats' => 'Statistikk for brukervalg',
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Spesialside]] for rapporter om bruk av MediaWiki brukervalg',
 	'uos-warn' => 'PHPlot er ikke installert!',
