@@ -365,7 +365,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'editown-desc' => "Brukere uten ''editall''-rettigheter kan kun redigere sider de selv har opprettet",
 );
 
