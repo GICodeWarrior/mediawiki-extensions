@@ -388,7 +388,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'purge' => 'gjenoppfrisk',
 	'purge-desc' => 'Legger til en fane for gjenoppfrisking på alle vanlige sider, og slår av gjenoppfriskingssjekken for anonyme brukere, hvilket gjør at mellomlageret kan oppdateres raskere',
 );
