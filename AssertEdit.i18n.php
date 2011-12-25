@@ -618,7 +618,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'assert_edit_title' => 'Redigeringsforsikring mislyktes.',
 	'assertedit-desc' => 'Legger til redigeringsforsikring til bruk for roboter',
 	'assert_edit_message' => 'Den spesifiserte redigeringsforsikringen ($1) mislyktes.',
