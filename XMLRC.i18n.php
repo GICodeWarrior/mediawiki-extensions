@@ -189,18 +189,18 @@ $messages['ms'] = array(
 	'xmlrc-desc' => 'Menghantar pemberitahuan mengenai perubahan sebagai XML, melalui UDP, Jabber atau kaedah-kaedah lain',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'xmlrc-desc' => 'Stuurt berichten over wijzigingen als XML via UDP, Jabber of op andere manieren',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'xmlrc-desc' => 'Sender varsler om endringer som XML, via UDP, Jabber eller på andre måter',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'xmlrc-desc' => 'Stuurt berichten over wijzigingen als XML via UDP, Jabber of op andere manieren',
 );
 
 /** Polish (Polski)
