@@ -369,6 +369,13 @@ $messages['ms'] = array(
 	'oairepository' => 'Kepustakaan OAI',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'oai-desc' => 'Gir tilgang til grensesnittet til [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -395,13 +402,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'oai-desc' => 'Gjev tilgjenge til [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-grensesnittet',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'oai-desc' => 'Gir tilgang til grensesnittet til [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
 /** Occitan (Occitan)
