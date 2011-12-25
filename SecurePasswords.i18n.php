@@ -569,7 +569,7 @@ Det må: $1.',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'securepasswords-desc' => 'Oppretter sikrere passordhasher og legger til en funksjon for sjekking av passordstyrke',
 	'securepasswords-valid' => 'Passordet ditt er ugyldig eller for kort.
 Det må: $1.',
