@@ -616,6 +616,27 @@ $messages['ms'] = array(
 	'pf-header-approve' => 'Luluskan',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'PackageForceAdmin',
+	'pf-desc' => '[[Special:PackageForce|Last ned pakker]] med nyttige maler/osv.',
+	'pf-only-admins-allowed' => "Denne siden er bare for brukere med rettigheten 'packageforce-admin'",
+	'pf-admin-menu-default' => 'Standard',
+	'pf-admin-menu-unsortedtemplates' => 'Maler ikke sortert ennå',
+	'pf-admin-link-view-documentation' => 'Vis dokumentasjon knyttet til denne siden.',
+	'pf-admin-link-editlink-page' => 'Rediger siden',
+	'pf-admin-link-approve' => 'Godkjenn siden',
+	'pf-header-documentation' => 'Dokumentasjon',
+	'pf-header-in_packages' => 'Pakker',
+	'pf-header-edit' => 'Rediger lenke',
+	'pf-header-type' => 'Sidetype',
+	'pf-header-page_title' => 'Tittel',
+	'pf-header-approve' => 'Godkjenn',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -647,27 +668,6 @@ $messages['nn'] = array(
 	'pf-header-documentation' => 'Dokumentasjon',
 	'pf-header-in_packages' => 'Pakkar',
 	'pf-header-page_title' => 'Tittel',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'packageforce' => 'PackageForce',
-	'packageforceadmin' => 'PackageForceAdmin',
-	'pf-desc' => '[[Special:PackageForce|Last ned pakker]] med nyttige maler/osv.',
-	'pf-only-admins-allowed' => "Denne siden er bare for brukere med rettigheten 'packageforce-admin'",
-	'pf-admin-menu-default' => 'Standard',
-	'pf-admin-menu-unsortedtemplates' => 'Maler ikke sortert ennå',
-	'pf-admin-link-view-documentation' => 'Vis dokumentasjon knyttet til denne siden.',
-	'pf-admin-link-editlink-page' => 'Rediger siden',
-	'pf-admin-link-approve' => 'Godkjenn siden',
-	'pf-header-documentation' => 'Dokumentasjon',
-	'pf-header-in_packages' => 'Pakker',
-	'pf-header-edit' => 'Rediger lenke',
-	'pf-header-type' => 'Sidetype',
-	'pf-header-page_title' => 'Tittel',
-	'pf-header-approve' => 'Godkjenn',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
