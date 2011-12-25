@@ -773,7 +773,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'showprocesslist' => 'Vis prosessliste',
 	'showprocesslist-desc' => 'Vis resultatet av [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'ID',
