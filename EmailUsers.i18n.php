@@ -367,7 +367,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'emailusers-desc' => 'Tillater brukere å sende e-post til flere mottakere',
 	'right-sendbatchemail' => 'Send e-post samtidig til flere mottakere',
 	'emailusers' => 'E-post-brukere',
