@@ -361,20 +361,6 @@ Mungkin anda ingin melihat:
 * [[{{MediaWiki:Mainpage}}|Laman utama]]',
 );
 
-/** Dutch (Nederlands)
- * @author SPQRobin
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'special404-desc' => 'Biedt een doelpagina voor foutmeldingen van het type "404 Niet gevonden"',
-	'error404' => '404 Niet gevonden',
-	'special404-body' => 'De URL die u hebt opgevraagd is niet aangetroffen.
-
-Bedoelde u {{fullurl:$1}}?
-
-Misschien wilt u de [[{{MediaWiki:Mainpage}}|hoofdpagina]] bekijken.',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -387,6 +373,20 @@ Mente du å skrive {{fullurl:$1}}?
 
 Kanskje du vil se på:
 * [[{{MediaWiki:Mainpage}}|Hovedsiden]]',
+);
+
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'special404-desc' => 'Biedt een doelpagina voor foutmeldingen van het type "404 Niet gevonden"',
+	'error404' => '404 Niet gevonden',
+	'special404-body' => 'De URL die u hebt opgevraagd is niet aangetroffen.
+
+Bedoelde u {{fullurl:$1}}?
+
+Misschien wilt u de [[{{MediaWiki:Mainpage}}|hoofdpagina]] bekijken.',
 );
 
 /** Polish (Polski)
