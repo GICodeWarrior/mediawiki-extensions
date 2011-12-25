@@ -419,6 +419,15 @@ $messages['ms'] = array(
 	'right-forcepreviewexempt' => 'Boleh menyimpan tanpa menggunakan Pralihat',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'forcepreview' => 'Lagre side (forhåndsvis først)',
+	'forcepreview-desc' => 'Tvinger brukere til å forhåndsvise siden dersom de ikke har riktige rettigheter',
+	'right-forcepreviewexempt' => 'Kan lagre uten å måtte se forhåndsvisning først',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -435,15 +444,6 @@ $messages['nn'] = array(
 	'forcepreview' => 'Lagra sida (førehandsvis først)',
 	'forcepreview-desc' => 'Tvingar brukarar til å førehandsvisa sida dersom dei ikkje har dei rette rettane.',
 	'right-forcepreviewexempt' => 'Kan lagra utan å måtta førehandsvisa',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'forcepreview' => 'Lagre side (forhåndsvis først)',
-	'forcepreview-desc' => 'Tvinger brukere til å forhåndsvise siden dersom de ikke har riktige rettigheter',
-	'right-forcepreviewexempt' => 'Kan lagre uten å måtte se forhåndsvisning først',
 );
 
 /** Occitan (Occitan)
