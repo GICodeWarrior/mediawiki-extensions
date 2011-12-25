@@ -126,6 +126,11 @@ $specialPageAliases['mr'] = array(
 	'EmergencyDeSysop' => array( 'तातडीनेप्रचालकरद्दीकरण' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'EmergencyDeSysop' => array( 'Nødrettighetsfjerning' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'EmergencyDeSysop' => array( 'Noodgreep_beheerdersrechten_ontnemen' ),
@@ -134,11 +139,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'EmergencyDeSysop' => array( 'NoodgreepBeheerdersrechtenVerwijderen' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'EmergencyDeSysop' => array( 'Nødrettighetsfjerning' ),
 );
 
 /** Occitan (Occitan) */
@@ -151,7 +151,7 @@ $specialPageAliases['pl'] = array(
 	'EmergencyDeSysop' => array( 'Awaryjne_odebranie_uprawnień_administratora' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'EmergencyDeSysop' => array( 'आपत्कालप्रचालकनिष्कासन' ),
 );
@@ -175,8 +175,3 @@ $specialPageAliases['tr'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'EmergencyDeSysop' => array( '緊急解除管理員權限' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
