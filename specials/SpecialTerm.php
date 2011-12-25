@@ -55,7 +55,11 @@ class SpecialTerm extends SpecialEPPage {
 				}
 			}
 			else {
-				$this->displayInfo( $term );
+				$this->displaySummary( $term );
+				
+				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-term-description' ) ) );
+				
+				$out->addHTML( $this->getOutput()->parse( $term->getField( 'description' ) ) );
 				
 				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-term-students' ) ) );
 				
@@ -65,16 +69,28 @@ class SpecialTerm extends SpecialEPPage {
 	}
 	
 	/**
-	 * Display the terms info.
-	 * 
+	 * Gets the summary data.
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param EPTerm $term
+	 *
+	 * @return array
 	 */
-	protected function displayInfo( EPTerm $term ) {
-		$out = $this->getOutput();
+	protected function getSummaryData( EPDBObject $term ) {
+		$stats = array();
+
+		$stats['org'] = EPOrg::selectFieldsRow( 'name', array( 'id' => $term->getField( 'org_id' ) ) );
+		$stats['course'] = EPCourse::selectFieldsRow( 'name', array( 'id' => $term->getField( 'course_id' ) ) );
+		$stats['year'] = $term->getField( 'year' ); // TODO: how to properly i18n this?
+		$stats['start'] = $this->getLanguage()->timeanddate( $term->getField( 'start' ), true );
+		$stats['end'] = $this->getLanguage()->timeanddate( $term->getField( 'end' ), true );
 		
+		if ( $term->useCanManage( $this->getUser() ) ) {
+			$stats['token'] = $term->getField( 'token' );
+		}
 		
+		return $stats;
 	}
 
 }

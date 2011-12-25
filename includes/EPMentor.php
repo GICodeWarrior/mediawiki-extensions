@@ -97,7 +97,7 @@ class EPMentor extends EPDBObject {
 	 * @return boolean
 	 */
 	public function hasCourse( array $conditions = array() ) {
-		return true;
+		return true; // TODO
 	}
 	
 	/**

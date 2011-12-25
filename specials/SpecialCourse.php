@@ -59,7 +59,7 @@ class SpecialCourse extends SpecialEPPage {
 				
 				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-course-description' ) ) );
 				
-				$out->addHTML( '<p>' . $this->getOutput()->parse( $course->getField( 'description' ) ) . '</p>' );
+				$out->addHTML( $this->getOutput()->parse( $course->getField( 'description' ) ) );
 				
 				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-course-terms' ) ) );
 				

@@ -177,6 +177,13 @@ $messages['en'] = array(
 	'ep-term-students' => 'Students',
 	'ep-term-none' => 'There is no term with id "$1". See [[Special:Terms|here]] for a list of terms.',
 	'ep-term-create' => 'There is no term with id "$1", but you can create a new one.',
+	'specialterm-summary-org' => 'Institution',
+	'specialterm-summary-course' => 'Course',
+	'specialterm-summary-year' => 'Year',
+	'specialterm-summary-start' => 'Start',
+	'specialterm-summary-end' => 'End',
+	'ep-term-description' => 'description',
+	'specialterm-summary-token' => 'Enrollment token',
 
 	// Navigation links
 	'ep-nav-orgs' => 'Institution list',
