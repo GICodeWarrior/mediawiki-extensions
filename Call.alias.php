@@ -168,6 +168,11 @@ $specialPageAliases['mr'] = array(
 	'Call' => array( 'कॉल' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'Call' => array( 'Kall' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'Call' => array( 'Anreupen' ),
@@ -178,17 +183,12 @@ $specialPageAliases['nl'] = array(
 	'Call' => array( 'Aanroepen' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'Call' => array( 'Kall' ),
-);
-
 /** Occitan (Occitan) */
 $specialPageAliases['oc'] = array(
 	'Call' => array( 'Ampèl', 'Ampèls', 'Apelar' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'Call' => array( 'आमन्त्र्' ),
 );
@@ -223,7 +223,7 @@ $specialPageAliases['tr'] = array(
 	'Call' => array( 'Çağrı', 'Çağır' ),
 );
 
-/** Veps (Vepsan kel') */
+/** Veps (Vepsän kel') */
 $specialPageAliases['vep'] = array(
 	'Call' => array( 'SätaPagin' ),
 );
@@ -232,8 +232,3 @@ $specialPageAliases['vep'] = array(
 $specialPageAliases['vi'] = array(
 	'Call' => array( 'Gọi' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
