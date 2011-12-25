@@ -281,6 +281,15 @@ $messages['ms'] = array(
 	'tspoll-id-error' => 'ID belum diberikan!',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'tspoll-desc' => 'Inkluder [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] som en HTML-tagg',
+	'tspoll-fetch-error' => 'Feil under henting av nettadressen!',
+	'tspoll-id-error' => 'Ingen ID er gitt!',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -296,15 +305,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'tspoll-fetch-error' => 'Feil under henting av nettadressa!',
 	'tspoll-id-error' => 'Ingen ID er oppgjeven!',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'tspoll-desc' => 'Inkluder [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] som en HTML-tagg',
-	'tspoll-fetch-error' => 'Feil under henting av nettadressen!',
-	'tspoll-id-error' => 'Ingen ID er gitt!',
 );
 
 /** Occitan (Occitan)
