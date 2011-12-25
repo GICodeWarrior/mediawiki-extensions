@@ -14,7 +14,7 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname(__FILE__) . '/';
 
 $wgExtensionMessagesFiles['ApiSandbox'] = $dir . 'ApiSandbox.i18n.php';
-$wgExtensionAliasesFiles['ApiSandbox']  = $dir . 'ApiSandbox.alias.php';
+$wgExtensionMessagesFiles['ApiSandboxAlias']  = $dir . 'ApiSandbox.alias.php';
 
 $wgAutoloadClasses['SpecialApiSandbox'] = $dir . 'SpecialApiSandbox.php';
 
