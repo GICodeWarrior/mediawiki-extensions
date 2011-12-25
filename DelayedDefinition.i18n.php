@@ -306,7 +306,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'delayeddefinition-desc' => 'Legger til &lt;define&gt; og &lt;display&gt; for å tillate at koden blir omplassert',
 	'delaydef-error-missing-def' => 'Feil: Definisjonen nødvendig for &lt;display name="$1"&gt; ble ikke funnet.',
 	'delaydef-error-no-name' => 'Feil: Ingen navneparameter spesifisert.',
