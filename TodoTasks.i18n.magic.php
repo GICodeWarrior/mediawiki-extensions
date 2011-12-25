@@ -25,6 +25,11 @@ $magicWords['br'] = array(
 	'todo' => array( 0, 'daober' ),
 );
 
+/** German (Deutsch) */
+$magicWords['de'] = array(
+	'todo' => array( 0, 'aufgabe' ),
+);
+
 /** Esperanto (Esperanto) */
 $magicWords['eo'] = array(
 	'todo' => array( 0, 'farenda' ),
@@ -32,7 +37,7 @@ $magicWords['eo'] = array(
 
 /** Spanish (Español) */
 $magicWords['es'] = array(
-	'todo' => array( 0, 'porhacer', 'quehaceres', 'todo' ),
+	'todo' => array( 0, 'porhacer', 'quehaceres' ),
 );
 
 /** French (Français) */
@@ -88,6 +93,11 @@ $magicWords['nl'] = array(
 /** Polish (Polski) */
 $magicWords['pl'] = array(
 	'todo' => array( 0, 'do_zrobienia' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'todo' => array( 0, 'zadaci' ),
 );
 
 /** Swedish (Svenska) */

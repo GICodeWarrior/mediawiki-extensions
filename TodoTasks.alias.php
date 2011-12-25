@@ -153,6 +153,12 @@ $specialPageAliases['mr'] = array(
 	'TaskListByProject' => array( 'प्रकल्पान्वयेकार्यसुची' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'TaskList' => array( 'Oppgaveliste' ),
+	'TaskListByProject' => array( 'Oppgaveliste_per_prosjekt' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'TaskList' => array( 'Takelieste' ),
@@ -165,19 +171,13 @@ $specialPageAliases['nl'] = array(
 	'TaskListByProject' => array( 'TakenlijstPerProject' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'TaskList' => array( 'Oppgaveliste' ),
-	'TaskListByProject' => array( 'Oppgaveliste_per_prosjekt' ),
-);
-
 /** Polish (Polski) */
 $specialPageAliases['pl'] = array(
 	'TaskList' => array( 'Lista_zadań' ),
 	'TaskListByProject' => array( 'Lista_zadań_dla_projektów' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'TaskList' => array( 'कार्यसूची' ),
 	'TaskListByProject' => array( 'प्रकल्पकार्यसूची' ),
@@ -200,8 +200,3 @@ $specialPageAliases['tr'] = array(
 	'TaskList' => array( 'GörevListesi' ),
 	'TaskListByProject' => array( 'ProjeyeGöreGörevListesi' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
