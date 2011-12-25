@@ -41,6 +41,12 @@ $specialPageAliases['mk'] = array(
 	'PopulateBlankedPagesTable' => array( 'ПополниТабелаНаИспразнетиСтраници' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'PureWikiDeletion' => array( 'Ren_wikisletting' ),
+	'RandomExcludeBlank' => array( 'Tilfeldig_ekskludert_tomme' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'PureWikiDeletion' => array( 'Pure_wiki_vortdoon' ),
@@ -54,14 +60,3 @@ $specialPageAliases['nl'] = array(
 	'RandomExcludeBlank' => array( 'WillekeurigZonderLeeg' ),
 	'PopulateBlankedPagesTable' => array( 'TabelLegePagina\'sVullen', 'TabelLegePaginasVullen' ),
 );
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'PureWikiDeletion' => array( 'Ren_wikisletting' ),
-	'RandomExcludeBlank' => array( 'Tilfeldig_ekskludert_tomme' ),
-);
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
