@@ -163,6 +163,11 @@ $specialPageAliases['mt'] = array(
 	'FindSpam' => array( 'FittexSpam' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'FindSpam' => array( 'Finn_spam' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'FindSpam' => array( 'Ongewunste_verwiezingen_vienen' ),
@@ -171,11 +176,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'FindSpam' => array( 'SpamVinden' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'FindSpam' => array( 'Finn_spam' ),
 );
 
 /** Polish (Polski) */
@@ -193,7 +193,7 @@ $specialPageAliases['ro'] = array(
 	'FindSpam' => array( 'Găsește_spam' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'FindSpam' => array( 'समाप्नोतिअतिपत्राचार' ),
 );
@@ -232,8 +232,3 @@ $specialPageAliases['tr'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'FindSpam' => array( '破壞尋找' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
