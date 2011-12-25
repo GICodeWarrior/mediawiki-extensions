@@ -148,6 +148,11 @@ $specialPageAliases['mr'] = array(
 	'CountEdits' => array( 'संपादनमोजणी' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'CountEdits' => array( 'Tell_redigeringer' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'CountEdits' => array( 'Bewarkingen_tellen' ),
@@ -156,11 +161,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'CountEdits' => array( 'BewerkingenTellen' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'CountEdits' => array( 'Tell_redigeringer' ),
 );
 
 /** Occitan (Occitan) */
@@ -178,7 +178,7 @@ $specialPageAliases['pt'] = array(
 	'CountEdits' => array( 'Contagem_de_edições' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'CountEdits' => array( 'सम्पादन्‌गणन' ),
 );
@@ -232,8 +232,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'CountEdits' => array( '編輯計算' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
