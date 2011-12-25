@@ -1899,7 +1899,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'storyboard-anerroroccured' => 'En feil oppsto: $1',
 	'storyboard-unpublished' => 'Upubliserte',
 	'storyboard-published' => 'Publiserte',
