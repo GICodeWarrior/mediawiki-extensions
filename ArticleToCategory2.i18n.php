@@ -538,6 +538,19 @@ $messages['myv'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Шкамс',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'articletocategory2-desc' => 'Plasserer en innmatingsboks på hver kategoriside som tillater opprettelse av nye sider direkte i denne kategorien',
+	'articletocategory2-create-article-under-category-text' => 'Legg en side til denne kategorien',
+	'articletocategory2-create-article-under-category-button' => 'Opprett',
+	'articletocategory2-create-category-under-category-text' => 'Legg en kategori til denne kategorien',
+	'articletocategory2-create-category-under-category-button' => 'Opprett',
+	'right-ArticleToCategory2' => 'Legg side til kategorien',
+	'right-ArticleToCategory2AddCat' => 'Legg kategori til kategorien',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -559,19 +572,6 @@ $messages['nn'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Opprett',
 	'articletocategory2-create-category-under-category-text' => 'Legg ein kategori til denne kategorien',
 	'articletocategory2-create-category-under-category-button' => 'Opprett',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'articletocategory2-desc' => 'Plasserer en innmatingsboks på hver kategoriside som tillater opprettelse av nye sider direkte i denne kategorien',
-	'articletocategory2-create-article-under-category-text' => 'Legg en side til denne kategorien',
-	'articletocategory2-create-article-under-category-button' => 'Opprett',
-	'articletocategory2-create-category-under-category-text' => 'Legg en kategori til denne kategorien',
-	'articletocategory2-create-category-under-category-button' => 'Opprett',
-	'right-ArticleToCategory2' => 'Legg side til kategorien',
-	'right-ArticleToCategory2AddCat' => 'Legg kategori til kategorien',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
