@@ -37,7 +37,7 @@ $wgAutoloadClasses['WebChat'] = $dir . 'WebChat_body.php';
 
 // Extension messages.
 $wgExtensionMessagesFiles['WebChat'] =  $dir . 'WebChat.i18n.php';
-$wgExtensionAliasesFiles['WebChat'] =  $dir . 'WebChat.alias.php';
+$wgExtensionMessagesFiles['WebChatAlias'] =  $dir . 'WebChat.alias.php';
 
 // Default configuration.
 $wgWebChatServer  = '';
