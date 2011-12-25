@@ -489,7 +489,7 @@ $messages['nl'] = array(
  * @author Laaknor
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'clicktracking' => 'Klikksporing for brukervennlighetsprosjektet.',
 	'clicktracking-desc' => 'Sporer klikk som ikke forårsaker lasting av ny side.',
 );
