@@ -1455,6 +1455,43 @@ $messages['myv'] = array(
 	'article-comments-title-string' => 'коняксозо',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'article-comments-desc' => 'Slå på kommentarseksjoner på innholdssider',
+	'article-comments-title-string' => 'tittel',
+	'article-comments-name-string' => 'Navn',
+	'article-comments-name-field' => 'Navn (påkrevd):',
+	'article-comments-url-field' => 'Nettsted:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Kommentar',
+	'article-comments-comment-field' => 'Kommentar:',
+	'article-comments-submit-button' => 'Lagre',
+	'article-comments-leave-comment-link' => 'Legg igjen en kommentar ...',
+	'article-comments-invalid-field' => '$1 forutsatt at <nowiki>[$2]</nowiki> er ugyldig.',
+	'article-comments-required-field' => '$1-feltet er påkrevd.',
+	'article-comments-submission-failed' => 'Kommentering mislyktes',
+	'article-comments-failure-reasons' => 'Beklager, kommentaren din mislyktes på grunn av følgende {{PLURAL:$1|årsak|årsaker}}:',
+	'article-comments-no-comments' => 'Beklager, siden «[[$1]]» er ikke åpen for kommentarer nå',
+	'article-comments-talk-page-starter' => '<noinclude>Kommentarer på [[$1]]
+<comments />
+---- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 sa ...',
+	'article-comments-summary' => 'Kommentar av $1 – via ArticleComments-utvidelsen',
+	'article-comments-submission-succeeded' => 'Kommentering lyktes',
+	'article-comments-submission-success' => 'Du har kommentert «[[$1]]»',
+	'article-comments-submission-view-all' => 'Du kan vise [[$1|alle kommentarer på den siden]]',
+	'article-comments-user-is-blocked' => 'Kontoen din er blokkert fra å redigere «[[$1]]».',
+	'article-comments-comment-bad-mode' => 'Ugyldig modis for kommentarer.
+Tilgjengelige moduser er «plain», «normal» og «wiki».',
+	'article-comments-comment-missing-name-parameter' => 'Mangler navn',
+	'article-comments-comment-missing-date-parameter' => 'Mangler kommentardato',
+	'article-comments-no-spam' => 'Minst ett av feltene ble merket som spam.',
+	'processcomment' => 'Prosesser artikkelkommentar',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1515,43 +1552,6 @@ $messages['nn'] = array(
 	'article-comments-submit-button' => 'Lagre',
 	'article-comments-leave-comment-link' => 'Legg igjen ein kommentar ...',
 	'article-comments-commenter-said' => '$1 sa ...',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'article-comments-desc' => 'Slå på kommentarseksjoner på innholdssider',
-	'article-comments-title-string' => 'tittel',
-	'article-comments-name-string' => 'Navn',
-	'article-comments-name-field' => 'Navn (påkrevd):',
-	'article-comments-url-field' => 'Nettsted:',
-	'article-comments-url-string' => 'URL',
-	'article-comments-comment-string' => 'Kommentar',
-	'article-comments-comment-field' => 'Kommentar:',
-	'article-comments-submit-button' => 'Lagre',
-	'article-comments-leave-comment-link' => 'Legg igjen en kommentar ...',
-	'article-comments-invalid-field' => '$1 forutsatt at <nowiki>[$2]</nowiki> er ugyldig.',
-	'article-comments-required-field' => '$1-feltet er påkrevd.',
-	'article-comments-submission-failed' => 'Kommentering mislyktes',
-	'article-comments-failure-reasons' => 'Beklager, kommentaren din mislyktes på grunn av følgende {{PLURAL:$1|årsak|årsaker}}:',
-	'article-comments-no-comments' => 'Beklager, siden «[[$1]]» er ikke åpen for kommentarer nå',
-	'article-comments-talk-page-starter' => '<noinclude>Kommentarer på [[$1]]
-<comments />
----- __NOEDITSECTION__</noinclude>',
-	'article-comments-commenter-said' => '$1 sa ...',
-	'article-comments-summary' => 'Kommentar av $1 – via ArticleComments-utvidelsen',
-	'article-comments-submission-succeeded' => 'Kommentering lyktes',
-	'article-comments-submission-success' => 'Du har kommentert «[[$1]]»',
-	'article-comments-submission-view-all' => 'Du kan vise [[$1|alle kommentarer på den siden]]',
-	'article-comments-user-is-blocked' => 'Kontoen din er blokkert fra å redigere «[[$1]]».',
-	'article-comments-comment-bad-mode' => 'Ugyldig modis for kommentarer.
-Tilgjengelige moduser er «plain», «normal» og «wiki».',
-	'article-comments-comment-missing-name-parameter' => 'Mangler navn',
-	'article-comments-comment-missing-date-parameter' => 'Mangler kommentardato',
-	'article-comments-no-spam' => 'Minst ett av feltene ble merket som spam.',
-	'processcomment' => 'Prosesser artikkelkommentar',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
