@@ -1479,7 +1479,7 @@ $messages['nn'] = array(
  * @author Laaknor
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'importusers' => 'Importer brukere',
 	'importusers-desc' => '[[Special:ImportUsers|Importer brukere]] fra CSV-fil; tegnkoding: UTF-8',
 	'importusers-uploadfile' => 'Last opp fil',
