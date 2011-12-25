@@ -559,7 +559,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'discussionthreading-desc' => 'Legg til tråding på diskusjonssider',
 	'discussionthreading-replysection' => 'svar',
 	'discussionthreading-replysectionhint' => 'Svar på denne posten',
