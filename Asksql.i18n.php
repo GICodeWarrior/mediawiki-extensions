@@ -901,6 +901,21 @@ Selalunya ini boleh membebankan lagi pelayan, jadi tolong jangan terlalu kerap m
 	'right-asksql' => 'Mengemukakan pertanyaan SQL',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'asksql' => 'SQL-spørring',
+	'asksql-desc' => 'Gjør SQL-spørringer gjennom en [[Special:Asksql|spesialside]]',
+	'asksqltext' => "Bruk skjemaet under for å foreta en direkte spørring av databasen. Bruk enkle anførselstegn ('som dette') for å merke strenger. Dette kan putte press på tjenerytelsen, så bruk funksjonen med varsomhet.",
+	'sqlislogged' => 'Merk at alle spørringer logges.',
+	'sqlquery' => 'Skriv inn spørring',
+	'querybtn' => 'Utfør',
+	'selectonly' => 'Kun lesespørringer godtas',
+	'querysuccessful' => 'Spørring vellykket',
+	'right-asksql' => 'Gjøre SQL-spørringer',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -933,21 +948,6 @@ Dette kan ofte leggja press på tenarytinga, so nytt funksjonen med varsemd.",
 	'selectonly' => 'Berre leseførespurnader går gjennom.',
 	'querysuccessful' => 'Førespurnad vellykka',
 	'right-asksql' => 'Gjennomføra SQL-førespurnader',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'asksql' => 'SQL-spørring',
-	'asksql-desc' => 'Gjør SQL-spørringer gjennom en [[Special:Asksql|spesialside]]',
-	'asksqltext' => "Bruk skjemaet under for å foreta en direkte spørring av databasen. Bruk enkle anførselstegn ('som dette') for å merke strenger. Dette kan putte press på tjenerytelsen, så bruk funksjonen med varsomhet.",
-	'sqlislogged' => 'Merk at alle spørringer logges.',
-	'sqlquery' => 'Skriv inn spørring',
-	'querybtn' => 'Utfør',
-	'selectonly' => 'Kun lesespørringer godtas',
-	'querysuccessful' => 'Spørring vellykket',
-	'right-asksql' => 'Gjøre SQL-spørringer',
 );
 
 /** Occitan (Occitan)
@@ -1193,6 +1193,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'asksql' => 'SQL upit',
@@ -1202,9 +1203,9 @@ Koristite apostrofe ('kao ovo') da ograničite bukvalne niske.
 Ovo često može dovesti do značajnog opterećenja servera, zato koristite ovu funkciju pažljivo.",
 	'sqlislogged' => 'Upamtite da su svi upiti zabeleženi.',
 	'sqlquery' => 'Unesi upit',
-	'querybtn' => 'Postavi upit',
+	'querybtn' => 'Pošalji upit',
 	'selectonly' => 'Dozvoljeni su upiti koji se samo mogu čitati.',
-	'querysuccessful' => 'Upit uspešan',
+	'querysuccessful' => 'Upit je uspešan',
 	'right-asksql' => 'Napravi SQL upite',
 );
 
