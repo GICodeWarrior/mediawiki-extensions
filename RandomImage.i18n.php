@@ -293,7 +293,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'randomimage-desc' => 'Gir en tilfeldig mediefil ved å bruke <code>&lt;randomimage /&gt;</code>',
 );
 
