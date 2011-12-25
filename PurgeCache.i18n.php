@@ -488,7 +488,7 @@ $messages['nn'] = array(
  * @author Audun
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'purgecache' => 'Slett mellomlager',
 	'purgecache-desc' => '[[Special:PurgeCache|Spesialside]] brukt for å slette OBJETCACHE-tabellen',
 	'purgecache-warning' => 'Dette vil slette mellomlagertabellene.',
