@@ -31,7 +31,7 @@ include_once 'Distribution_Settings.php';
 
 // Register the internationalization and aliasing files.
 $wgExtensionMessagesFiles['Distribution'] = dirname( __FILE__ ) . '/Distribution.i18n.php';
-$wgExtensionAliasesFiles['Distribution'] = dirname( __FILE__ ) . '/Distribution.alias.php';
+$wgExtensionMessagesFiles['DistributionAlias'] = dirname( __FILE__ ) . '/Distribution.alias.php';
 
 // Load classes.
 $wgAutoloadClasses['DistributionRelease'] = dirname( __FILE__ ) . '/includes/DistributionRelease.php';
