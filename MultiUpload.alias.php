@@ -123,6 +123,11 @@ $specialPageAliases['ml'] = array(
 	'MultipleUpload' => array( 'വിവിധ_അപ്‌ലോഡുകൾ' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'MultipleUpload' => array( 'Last_opp_mange_filer' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'MultipleUpload' => array( 'Meerdere_bestaanden_opsturen' ),
@@ -131,11 +136,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'MultipleUpload' => array( 'MultiUploaden' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'MultipleUpload' => array( 'Last_opp_mange_filer' ),
 );
 
 /** Occitan (Occitan) */
@@ -153,7 +153,7 @@ $specialPageAliases['pt-br'] = array(
 	'MultipleUpload' => array( 'Carregamentos_em_massa' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'MultipleUpload' => array( 'अनेकभारंन्यस्यति' ),
 );
@@ -192,8 +192,3 @@ $specialPageAliases['yue'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'MultipleUpload' => array( '大量上傳' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
