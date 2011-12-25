@@ -33,6 +33,11 @@ $specialPageAliases['bs'] = array(
 	'RefreshSpecial' => array( 'PosebnoOsvjezavanje' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'RefreshSpecial' => array( 'تازه‌سازی_ویژه' ),
+);
+
 /** Finnish (Suomi) */
 $specialPageAliases['fi'] = array(
 	'RefreshSpecial' => array( 'Toimintosivujen_päivitys' ),
@@ -78,6 +83,11 @@ $specialPageAliases['mk'] = array(
 	'RefreshSpecial' => array( 'ПревчитајСпецијални' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'RefreshSpecial' => array( 'Oppdater_spesialsider' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'RefreshSpecial' => array( 'Spesiaal_verniejen' ),
@@ -86,11 +96,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'RefreshSpecial' => array( 'SpeciaalVerversen' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'RefreshSpecial' => array( 'Oppdater_spesialsider' ),
 );
 
 /** Slovak (Slovenčina) */
@@ -107,8 +112,3 @@ $specialPageAliases['tl'] = array(
 $specialPageAliases['tr'] = array(
 	'RefreshSpecial' => array( 'ÖzelYenile' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
