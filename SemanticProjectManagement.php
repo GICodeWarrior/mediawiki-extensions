@@ -58,7 +58,7 @@ $wgAvailableRights[] = 'SPMsetup';
 
 $wgAutoloadClasses['SemanticProjectManagement'] = $spmgIP. '/includes/SPM_SpecialPage.php';
 $wgExtensionMessagesFiles['SemanticProjectManagement'] = $spmgIP . '/includes/SPM_Messages.php';
-$wgExtensionAliasesFiles['SemanticProjectManagement'] = $spmgIP . '/includes/SPM_Alias.php';
+$wgExtensionMessagesFiles['SemanticProjectManagementAlias'] = $spmgIP . '/includes/SPM_Alias.php';
 $wgSpecialPages['SemanticProjectManagement'] = 'SemanticProjectManagement';
 
 // FIXME: Can be removed when new style magic words are used (introduced in r52503)
