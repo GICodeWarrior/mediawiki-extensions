@@ -1548,7 +1548,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'categorybrowser' => 'Kategorileser',
 	'categorybrowser-desc' => 'Tilbyr en [[Special:CategoryBrowser|spesialside]] til å filtrere ut de mest populære kategoriene og til å navigere dem ved hjelp av et AJAX-grensesnitt',
 	'cb_requires_javascript' => 'Kategorileserutvidelsen krever at JavaScript er aktivert i nettleseren.',
