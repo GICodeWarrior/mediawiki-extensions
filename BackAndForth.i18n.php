@@ -713,7 +713,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'backforth-next' => 'Neste ($1)',
 	'backandforth-desc' => 'Legger til lenker til «Neste» og «Forrige» alfabetiske side på toppen av sider',
 	'backforth-prev' => 'Forrige ($1)',
