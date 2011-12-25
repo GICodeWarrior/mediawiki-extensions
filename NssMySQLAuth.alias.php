@@ -135,6 +135,11 @@ $specialPageAliases['ml'] = array(
 	'AccountManager' => array( 'അംഗത്വകൈകാര്യോപകരണം' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'AccountManager' => array( 'Kontobehandling' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'AccountManager' => array( 'Gebrukersbeheer' ),
@@ -143,11 +148,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'AccountManager' => array( 'Gebruikersbeheer' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'AccountManager' => array( 'Kontobehandling' ),
 );
 
 /** Occitan (Occitan) */
@@ -170,7 +170,7 @@ $specialPageAliases['pt-br'] = array(
 	'AccountManager' => array( 'Gerenciador_de_contas' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'AccountManager' => array( 'उपयोजकसंज्ञाप्रबन्धक' ),
 );
@@ -214,8 +214,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'AccountManager' => array( '帳戶負責人' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
