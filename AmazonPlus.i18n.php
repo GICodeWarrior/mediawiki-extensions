@@ -1247,7 +1247,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'amazonplus-desc' => 'En utvidelse med store tilpassningsmuligheter for å vise Amazon-informasjon',
 	'amazonplus-nores' => 'Feil: Fant ingen resultater!',
 	'amazonplus-noidres' => 'Feil: Kunne ikke finne en produkt-ID!',
