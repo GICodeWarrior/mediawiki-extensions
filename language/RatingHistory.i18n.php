@@ -1702,6 +1702,41 @@ $messages['nah'] = array(
 	'ratinghistory-svg' => 'Tiquittāz quemeh SVG',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'ratinghistory' => 'Sidens vurderingshistorikk',
+	'ratinghistory-leg' => 'Vurderingshistorikkdata for [[:$1|$1]]',
+	'ratinghistory-tab' => 'vurdering',
+	'ratinghistory-link' => 'Sidevurdering',
+	'ratinghistory-thanks' => "''<span style=\"color:darkred;\">Takk for at du tar deg tid til å anmelde denne siden!</span>''",
+	'ratinghistory-period' => 'Tidsperiode:',
+	'ratinghistory-month' => 'siste måned',
+	'ratinghistory-3months' => 'siste 3 måneder',
+	'ratinghistory-year' => 'siste år',
+	'ratinghistory-3years' => 'siste tre år',
+	'ratinghistory-ave' => 'Snitt: $1',
+	'ratinghistory-chart' => 'Leservurderinger over tid',
+	'ratinghistory-purge' => 'oppdater mellomlager',
+	'ratinghistory-table' => 'Oversikt over leservurderinger',
+	'ratinghistory-users' => 'Brukere som vurderte siden',
+	'ratinghistory-graph' => '$2 av «$3» ({{PLURAL:$1|én vurdering|$1 vurderinger}})',
+	'ratinghistory-svg' => 'Vis som SVG',
+	'ratinghistory-table-rating' => 'Vurdering',
+	'ratinghistory-table-votes' => 'Stemmer',
+	'ratinghistory-none' => 'Det er ikke nok leservurderinger til å vise grafer ennå.',
+	'ratinghistory-ratings' => "'''Forklaring:''' '''(1)''' – dårlig; '''(2)''' – lav; '''(3)''' – middels; '''(4)''' – høy; '''(5)''' – meget god;",
+	'ratinghistory-legend' => "Det '''daglige antall vurderinger''' <span style=\"color:red;\">''(rød)''</span>, den '''daglige gjennomsnittsvurderingen''' <span style=\"color:blue;\">''(blå)''</span> og '''løpende gjennomsnittsvurdering''' <span style=\"color:green;\">''(grønn)''</span> vises i grafen under etter dato.
+Den '''løpende gjennomsnittsvurderingen''' er rett og slett gjennomsnittet av all de daglige vurderingene ''innen'' denne tidsperioden for hver dag.
+Vurderingene er som følger:
+
+'''[1]''' - Veldig dårlig; '''[2]''' - Dårlig; '''[3]''' - OK; '''[4]''' - Bra; '''[5]''' - Veldig bra;",
+	'ratinghistory-graph-scale' => "'''Vurderinger per dag''' <span style=\"color:red;\">''(rød)''</span> vist i forholdet ''1:\$1''.",
+	'right-feedback' => 'Bruke tilbakemeldingsskjemaet for å vurdere en side',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author Tvdm
@@ -1771,41 +1806,6 @@ Talet på '''vurderingar per dag''' <span style=\"color:red;\">''(raudt)''</span
 	'right-feedback' => 'Nytta tilbakemeldingsskjemaet for å vurdera ei sida',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'ratinghistory' => 'Sidens vurderingshistorikk',
-	'ratinghistory-leg' => 'Vurderingshistorikkdata for [[:$1|$1]]',
-	'ratinghistory-tab' => 'vurdering',
-	'ratinghistory-link' => 'Sidevurdering',
-	'ratinghistory-thanks' => "''<span style=\"color:darkred;\">Takk for at du tar deg tid til å anmelde denne siden!</span>''",
-	'ratinghistory-period' => 'Tidsperiode:',
-	'ratinghistory-month' => 'siste måned',
-	'ratinghistory-3months' => 'siste 3 måneder',
-	'ratinghistory-year' => 'siste år',
-	'ratinghistory-3years' => 'siste tre år',
-	'ratinghistory-ave' => 'Snitt: $1',
-	'ratinghistory-chart' => 'Leservurderinger over tid',
-	'ratinghistory-purge' => 'oppdater mellomlager',
-	'ratinghistory-table' => 'Oversikt over leservurderinger',
-	'ratinghistory-users' => 'Brukere som vurderte siden',
-	'ratinghistory-graph' => '$2 av «$3» ({{PLURAL:$1|én vurdering|$1 vurderinger}})',
-	'ratinghistory-svg' => 'Vis som SVG',
-	'ratinghistory-table-rating' => 'Vurdering',
-	'ratinghistory-table-votes' => 'Stemmer',
-	'ratinghistory-none' => 'Det er ikke nok leservurderinger til å vise grafer ennå.',
-	'ratinghistory-ratings' => "'''Forklaring:''' '''(1)''' – dårlig; '''(2)''' – lav; '''(3)''' – middels; '''(4)''' – høy; '''(5)''' – meget god;",
-	'ratinghistory-legend' => "Det '''daglige antall vurderinger''' <span style=\"color:red;\">''(rød)''</span>, den '''daglige gjennomsnittsvurderingen''' <span style=\"color:blue;\">''(blå)''</span> og '''løpende gjennomsnittsvurdering''' <span style=\"color:green;\">''(grønn)''</span> vises i grafen under etter dato.
-Den '''løpende gjennomsnittsvurderingen''' er rett og slett gjennomsnittet av all de daglige vurderingene ''innen'' denne tidsperioden for hver dag.
-Vurderingene er som følger:
-
-'''[1]''' - Veldig dårlig; '''[2]''' - Dårlig; '''[3]''' - OK; '''[4]''' - Bra; '''[5]''' - Veldig bra;",
-	'ratinghistory-graph-scale' => "'''Vurderinger per dag''' <span style=\"color:red;\">''(rød)''</span> vist i forholdet ''1:\$1''.",
-	'right-feedback' => 'Bruke tilbakemeldingsskjemaet for å vurdere en side',
-);
-
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -1838,6 +1838,13 @@ Las notacions son las seguentas :
 '''(1)''' - Marrit ; '''(2)''' - Mediòcre ; '''(3)''' - Mejan ; '''(4)''' - Bon ; '''(5)''' - Excellent.",
 	'ratinghistory-graph-scale' => "'''Evaluacions per jorn''' <span style=\"color:red;\">''(roge)''</span> afichadas a l'escala ''1:\$1''.",
 	'right-feedback' => 'Utilizar lo formulari de somission per notar una pagina',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
+ */
+$messages['or'] = array(
+	'ratinghistory-month' => 'ପୂର୍ବ ମାସ',
 );
 
 /** Deitsch (Deitsch)

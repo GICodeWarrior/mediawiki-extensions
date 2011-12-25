@@ -1911,6 +1911,49 @@ $messages['nah'] = array(
 	'readerfeedback-finished' => '¡Tlazohcāmati!',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author EivindJ
+ * @author H92
+ * @author Harald Khan
+ * @author Jon Harald Søby
+ * @author Kph
+ * @author Laaknor
+ * @author Meno25
+ * @author Nghtwlkr
+ * @author Stigmj
+ */
+$messages['nb'] = array(
+	'readerfeedback-desc' => 'Sidebedømmelse gir mulighet for lese å gi tilbakemeldinger innen flere kategorier',
+	'readerfeedback' => 'Hva synes du om denne siden?',
+	'readerfeedback-text' => "''Vennligst ta noen minutter for å vurdere denne siden nedenfor. Din tilbakemelding er verdifull og hjelper oss med å forbedre nettstedet vårt.''",
+	'readerfeedback-reliability' => 'Pålitelighet',
+	'readerfeedback-completeness' => 'Fullstendighet',
+	'readerfeedback-npov' => 'Nøytralitet',
+	'readerfeedback-presentation' => 'Presentasjon',
+	'readerfeedback-overall' => 'Helhetsinntrykk',
+	'readerfeedback-level-none' => '(usikker)',
+	'readerfeedback-level-0' => 'Veldig dårlig',
+	'readerfeedback-level-1' => 'Dårlig',
+	'readerfeedback-level-2' => 'OK',
+	'readerfeedback-level-3' => 'Bra',
+	'readerfeedback-level-4' => 'Veldig bra',
+	'readerfeedback-submit' => 'Send',
+	'readerfeedback-main' => 'Kun innholdssider kan vurderes.',
+	'readerfeedback-success' => "'''Takk for at du anmeldte denne siden!''' ([$2 se resultat]) ([$3 kommentarer eller spørsmål?]).",
+	'readerfeedback-voted' => "'''Det ser ut til at du allerede har anmeldt denne siden''' ([$2 se resultat]) ([$3 kommentarer eller spørsmål?]).",
+	'readerfeedback-error' => "'''En feil oppsto mens siden ble anmeldt''' ([$2 se resultat]) ([$3 kommentarer eller spørsmål?]).",
+	'readerfeedback-submitting' => 'Sender …',
+	'readerfeedback-finished' => 'Takk!',
+	'readerfeedback-tagfilter' => 'Tagg:',
+	'readerfeedback-tierfilter' => 'Karakter:',
+	'readerfeedback-tier-high' => 'Høy',
+	'readerfeedback-tier-medium' => 'Middels',
+	'readerfeedback-tier-poor' => 'Dårlig',
+	'tooltip-ca-ratinghist' => 'Leservurderinger av denne siden',
+	'specialpages-group-feedback' => 'Mening fra leser',
+	'readerfeedback-tt-review' => 'Send vurdering',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author SPQRobin
@@ -1980,49 +2023,6 @@ $messages['nn'] = array(
 	'specialpages-group-feedback' => 'Meining frå lesar',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author EivindJ
- * @author H92
- * @author Harald Khan
- * @author Jon Harald Søby
- * @author Kph
- * @author Laaknor
- * @author Meno25
- * @author Nghtwlkr
- * @author Stigmj
- */
-$messages['nb'] = array(
-	'readerfeedback-desc' => 'Sidebedømmelse gir mulighet for lese å gi tilbakemeldinger innen flere kategorier',
-	'readerfeedback' => 'Hva synes du om denne siden?',
-	'readerfeedback-text' => "''Vennligst ta noen minutter for å vurdere denne siden nedenfor. Din tilbakemelding er verdifull og hjelper oss med å forbedre nettstedet vårt.''",
-	'readerfeedback-reliability' => 'Pålitelighet',
-	'readerfeedback-completeness' => 'Fullstendighet',
-	'readerfeedback-npov' => 'Nøytralitet',
-	'readerfeedback-presentation' => 'Presentasjon',
-	'readerfeedback-overall' => 'Helhetsinntrykk',
-	'readerfeedback-level-none' => '(usikker)',
-	'readerfeedback-level-0' => 'Veldig dårlig',
-	'readerfeedback-level-1' => 'Dårlig',
-	'readerfeedback-level-2' => 'OK',
-	'readerfeedback-level-3' => 'Bra',
-	'readerfeedback-level-4' => 'Veldig bra',
-	'readerfeedback-submit' => 'Send',
-	'readerfeedback-main' => 'Kun innholdssider kan vurderes.',
-	'readerfeedback-success' => "'''Takk for at du anmeldte denne siden!''' ([$2 se resultat]) ([$3 kommentarer eller spørsmål?]).",
-	'readerfeedback-voted' => "'''Det ser ut til at du allerede har anmeldt denne siden''' ([$2 se resultat]) ([$3 kommentarer eller spørsmål?]).",
-	'readerfeedback-error' => "'''En feil oppsto mens siden ble anmeldt''' ([$2 se resultat]) ([$3 kommentarer eller spørsmål?]).",
-	'readerfeedback-submitting' => 'Sender …',
-	'readerfeedback-finished' => 'Takk!',
-	'readerfeedback-tagfilter' => 'Tagg:',
-	'readerfeedback-tierfilter' => 'Karakter:',
-	'readerfeedback-tier-high' => 'Høy',
-	'readerfeedback-tier-medium' => 'Middels',
-	'readerfeedback-tier-poor' => 'Dårlig',
-	'tooltip-ca-ratinghist' => 'Leservurderinger av denne siden',
-	'specialpages-group-feedback' => 'Mening fra leser',
-	'readerfeedback-tt-review' => 'Send vurdering',
-);
-
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -2056,6 +2056,18 @@ $messages['oc'] = array(
 	'tooltip-ca-ratinghist' => "Apreciacions dels lectors d'aquesta pagina",
 	'specialpages-group-feedback' => 'Opinion del lector',
 	'readerfeedback-tt-review' => 'Sometre la revision',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
+ */
+$messages['or'] = array(
+	'readerfeedback-reliability' => 'ବିଶ୍ଵସନୀୟତା',
+	'readerfeedback-npov' => 'ନିରପେକ୍ଷତା',
+	'readerfeedback-overall' => 'ସବୁ ମିଶିକରି',
+	'readerfeedback-submit' => 'ଦାଖଲ କରିବା',
+	'readerfeedback-finished' => 'ଆପଣଙ୍କୁ ଧନ୍ୟବାଦ!',
+	'readerfeedback-tier-medium' => 'ମଧ୍ୟମ',
 );
 
 /** Polish (Polski)

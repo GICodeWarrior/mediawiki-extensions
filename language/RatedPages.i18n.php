@@ -527,6 +527,13 @@ $messages['lt'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|apžvalga|apžvalgos}}',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'ratedpages-none' => 'Šajā sarakstā nav lapu',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -571,6 +578,21 @@ $messages['myv'] = array(
 	'ratedpages-graphs' => 'питнень путомадо дата',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
+ * @author Jon Harald Søby
+ * @author Laaknor
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'ratedpages' => 'Leservurderte sider',
+	'ratedpages-leg' => 'Finn sider med et stort antall vurderinger',
+	'ratedpages-list' => 'Nedenfor er en liste over sider sortert etter lesernes vurdering av dem',
+	'ratedpages-none' => 'Det er ingen sider i denne listen',
+	'ratedpages-graphs' => 'vurderingsdata',
+	'ratedpages-count' => '$1 {{PLURAL:$1|anmeldelse|anmeldelser}}',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -590,21 +612,6 @@ $messages['nn'] = array(
 	'ratedpages-list' => 'Nedanfor er ei lista over sider sorterte etter lesarane sine vurderingar av dei.',
 	'ratedpages-none' => 'Det finst ingen sider i denne lista',
 	'ratedpages-graphs' => 'vuderingsdata',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Harald Khan
- * @author Jon Harald Søby
- * @author Laaknor
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'ratedpages' => 'Leservurderte sider',
-	'ratedpages-leg' => 'Finn sider med et stort antall vurderinger',
-	'ratedpages-list' => 'Nedenfor er en liste over sider sortert etter lesernes vurdering av dem',
-	'ratedpages-none' => 'Det er ingen sider i denne listen',
-	'ratedpages-graphs' => 'vurderingsdata',
-	'ratedpages-count' => '$1 {{PLURAL:$1|anmeldelse|anmeldelser}}',
 );
 
 /** Occitan (Occitan)
