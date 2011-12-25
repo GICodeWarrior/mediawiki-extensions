@@ -46,6 +46,8 @@ class EPTerm extends EPDBObject {
 			'year' => 'int',
 			'start' => 'str', // TS_MW
 			'end' => 'str', // TS_MW
+			'description' => 'str',
+			'token' => 'str',
 		);
 	}
 	
@@ -58,6 +60,8 @@ class EPTerm extends EPDBObject {
 			'year' => substr( wfTimestamp( TS_MW ), 0, 4 ),
 			'start' => wfTimestamp( TS_MW ),
 			'end' => wfTimestamp( TS_MW ),
+			'description' => '',
+			'token' => '',
 		);
 	}
 	

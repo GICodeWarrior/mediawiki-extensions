@@ -44,6 +44,17 @@ class SpecialEditTerm extends SpecialEPFormPage {
 			},
 		);
 		
+		$fields['token'] = array (
+			'type' => 'text',
+			'label-message' => 'ep-term-edit-token',
+			'maxlength' => 255,
+			'required' => true,
+			'size' => 20,
+			'validation-callback' => function ( $value, array $alldata = null ) {
+				return strlen( $value ) < 2 ? wfMsgExt( 'ep-term-invalid-token', 'parsemag', 2 ) : true;
+			},
+		);
+		
 		$fields['year'] = array (
 			'type' => 'int',
 			'label-message' => 'ep-term-edit-year',
@@ -63,6 +74,16 @@ class SpecialEditTerm extends SpecialEPFormPage {
 			'class' => 'EPHTMLDateField',
 			'label-message' => 'ep-term-edit-end',
 			'required' => true,
+		);
+		
+		$fields['description'] = array (
+			'type' => 'textarea',
+			'label-message' => 'ep-term-edit-description',
+			'required' => true,
+			'validation-callback' => function ( $value, array $alldata = null ) {
+				return strlen( $value ) < 10 ? wfMsgExt( 'ep-term-invalid-description', 'parsemag', 10 ) : true;
+			},
+			'rows' => 10
 		);
 		
 		return $this->processFormFields( $fields );

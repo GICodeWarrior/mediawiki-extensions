@@ -143,9 +143,12 @@ $messages['en'] = array(
 	'ep-term-edit-course' => 'Course',
 	'ep-term-edit-start' => 'Start date',
 	'ep-term-edit-end' => 'End date',
+	'ep-term-edit-token' => 'Enrollment token',
+	'ep-term-edit-description' => 'Description',
 
-	'ep-term-invalid-year' => 'The year needs to be number.',
 	'ep-term-invalid-course' => 'This course does not exist.',
+	'ep-term-invalid-token' => 'The token needs to be at least contain $1 {{PLURAL:$1|character|characters}}.',
+	'ep-term-invalid-description' => 'The description needs to be at least contain $1 {{PLURAL:$1|character|characters}}.',
 
 	// ep.pager
 	'ep-pager-confirm-delete' => 'Are you sure you want to delete this item?',

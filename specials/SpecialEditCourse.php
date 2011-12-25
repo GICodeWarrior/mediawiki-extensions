@@ -33,6 +33,7 @@ class SpecialEditCourse extends SpecialEPFormPage {
 		$fields['name'] = array (
 			'type' => 'text',
 			'label-message' => 'ep-course-edit-name',
+			'maxlength' => 255,
 			'required' => true,
 			'validation-callback' => function ( $value, array $alldata = null ) {
 				return strlen( $value ) < 5 ? wfMsgExt( 'ep-course-invalid-name', 'parsemag', 5 ) : true;

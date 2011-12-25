@@ -33,6 +33,7 @@ class SpecialEditInstitution extends SpecialEPFormPage {
 		$fields['name'] = array (
 			'type' => 'text',
 			'label-message' => 'educationprogram-org-edit-name',
+			'maxlength' => 255,
 			'required' => true,
 			'validation-callback' => function ( $value, array $alldata = null ) {
 				return strlen( $value ) < 2 ? wfMsg( 'educationprogram-org-invalid-name' ) : true;
@@ -51,6 +52,7 @@ class SpecialEditInstitution extends SpecialEPFormPage {
 		$fields['country'] = array (
 			'type' => 'select',
 			'label-message' => 'educationprogram-org-edit-country',
+			'maxlength' => 255,
 			'required' => true,
 			'options' => efEpGetCountryOptions( $this->getLanguage()->getCode() ),
 			'validation-callback' => array( $this, 'countryIsValid' ),
