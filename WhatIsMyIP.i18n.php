@@ -650,7 +650,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'whatismyip' => 'Hva er IP-adressen min',
 	'whatismyip-desc' => 'Viser nåværende brukers [[Special:WhatIsMyIP|IP-adresse]]',
 	'whatismyip-out' => 'Din IP-adresse:',
