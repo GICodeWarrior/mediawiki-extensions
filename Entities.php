@@ -25,4 +25,4 @@ $wgAutoloadClasses['SpecialEntities'] = dirname( __FILE__ ) . '/SpecialEntities.
 $wgSpecialPages['Entities'] = 'SpecialEntities';
 $wgSpecialPageGroups['Entities'] = 'wiki';
 $wgExtensionMessagesFiles['Entities'] = dirname( __FILE__ ) . '/Entities.i18n.php';
-$wgExtensionAliasesFiles['Entities'] = dirname( __FILE__ ) . '/Entities.alias.php';
+$wgExtensionMessagesFiles['EntitiesAlias'] = dirname( __FILE__ ) . '/Entities.alias.php';
