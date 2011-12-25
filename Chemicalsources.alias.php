@@ -50,7 +50,7 @@ $specialPageAliases['eo'] = array(
 
 /** Spanish (Español) */
 $specialPageAliases['es'] = array(
-	'ChemicalSources' => array( 'Fuentes_para_Químicas' ),
+	'ChemicalSources' => array( 'Fuentes_para_Química' ),
 );
 
 /** Persian (فارسی) */
@@ -133,6 +133,11 @@ $specialPageAliases['mt'] = array(
 	'ChemicalSources' => array( 'SorsiKimiċi' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'ChemicalSources' => array( 'Kjemiske_kilder' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'ChemicalSources' => array( 'Scheikundige_bronnen' ),
@@ -141,11 +146,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'ChemicalSources' => array( 'ScheikundigeBronnen' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'ChemicalSources' => array( 'Kjemiske_kilder' ),
 );
 
 /** Polish (Polski) */
@@ -158,7 +158,7 @@ $specialPageAliases['ps'] = array(
 	'ChemicalSources' => array( 'کيميايي_سرچينې' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'ChemicalSources' => array( 'रसायनस्रोत' ),
 );
@@ -183,7 +183,7 @@ $specialPageAliases['tr'] = array(
 	'ChemicalSources' => array( 'KimyasalKaynaklar' ),
 );
 
-/** Veps (Vepsan kel') */
+/** Veps (Vepsän kel') */
 $specialPageAliases['vep'] = array(
 	'ChemicalSources' => array( 'HimižedPurtked' ),
 );
@@ -197,8 +197,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'ChemicalSources' => array( '化學源' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
