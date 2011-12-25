@@ -50,15 +50,10 @@ $specialPageAliases['lad'] = array(
 
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
-	'Plotters' => array( 'Цртачи' ),
+	'Plotters' => array( 'Исцртувачи' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
 $specialPageAliases['nb'] = array(
 	'Plotters' => array( 'Plottere' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;

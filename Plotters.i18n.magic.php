@@ -27,7 +27,7 @@ $magicWords['eo'] = array(
 
 /** Spanish (Español) */
 $magicWords['es'] = array(
-	'plot' => array( 0, 'gráfico', 'plot' ),
+	'plot' => array( 0, 'gráfico' ),
 );
 
 /** Japanese (日本語) */
@@ -53,4 +53,9 @@ $magicWords['ru'] = array(
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'plot' => array( 0, 'нацрт' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'plot' => array( 0, 'nacrt' ),
 );
