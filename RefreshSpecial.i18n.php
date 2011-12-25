@@ -1002,7 +1002,7 @@ Når du har valt kva sider du ønskjer å oppdatera, klikk på 'Oppdater valte' 
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'refreshspecial' => 'Oppdater spesialsider',
 	'refreshspecial-desc' => 'Muliggjør [[Special:RefreshSpecial|manuell oppdatering]] av spesialsider',
 	'refreshspecial-title' => 'Oppdater spesialsider',
