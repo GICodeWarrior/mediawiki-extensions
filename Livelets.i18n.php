@@ -173,7 +173,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'livelets-desc' => 'Tillater sider å bli transkludert som gjør at de laster etter hovedsideinnholdet og kan oppdateres dynamisk med Ajax',
 );
 
