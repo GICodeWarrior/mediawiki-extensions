@@ -402,6 +402,15 @@ $messages['nah'] = array(
 	'mediafunctions-not-exist' => '"$1" ahmo ia',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'mediafunctions-desc' => 'Parserfunksjoner for å hente informasjon om mediefiler',
+	'mediafunctions-invalid-title' => '«$1» er en ugyldig tittel',
+	'mediafunctions-not-exist' => '«$1» eksisterer ikke',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -426,15 +435,6 @@ $messages['nn'] = array(
 	'mediafunctions-desc' => 'Parserfunksjonar for å henta informasjon om mediefiler.',
 	'mediafunctions-invalid-title' => '«$1» er ikkje ein gyldig tittel',
 	'mediafunctions-not-exist' => '«$1» finst ikkje',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'mediafunctions-desc' => 'Parserfunksjoner for å hente informasjon om mediefiler',
-	'mediafunctions-invalid-title' => '«$1» er en ugyldig tittel',
-	'mediafunctions-not-exist' => '«$1» eksisterer ikke',
 );
 
 /** Occitan (Occitan)
