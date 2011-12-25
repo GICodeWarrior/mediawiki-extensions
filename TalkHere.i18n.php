@@ -768,6 +768,22 @@ $messages['nah'] = array(
 	'talkhere-collapse' => 'tictlātīz tlahcuilōni',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'talkhere-desc' => 'Legger til diskusjonssiden på innholdssiden',
+	'talkhere-foottext' => 'Kommentarene ovenfor ble lagt igjen av besøkende.
+
+Sidens operatører kan ikke ta ansvar for innholdet i slike kommentarer.',
+	'talkhere-talkpage' => 'diskusjonsside',
+	'talkhere-notalk' => "''(ingen kommentarer ennå)''",
+	'talkhere-addcomment' => 'legg til kommentar',
+	'talkhere-beforeinput' => 'Du kan legge til en kommentar nedenfor',
+	'talkhere-loading' => 'laster redigerer...',
+	'talkhere-collapse' => 'skjul redigerer',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -805,22 +821,6 @@ Operatøren for sida kan ikkje ta ansvar for innhaldet i slike kommentarar.',
 	'talkhere-beforeinput' => 'Du kan legge til ein kommentar nedanfor',
 	'talkhere-loading' => 'lastar redigerar...',
 	'talkhere-collapse' => 'skjul redigerar',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'talkhere-desc' => 'Legger til diskusjonssiden på innholdssiden',
-	'talkhere-foottext' => 'Kommentarene ovenfor ble lagt igjen av besøkende.
-
-Sidens operatører kan ikke ta ansvar for innholdet i slike kommentarer.',
-	'talkhere-talkpage' => 'diskusjonsside',
-	'talkhere-notalk' => "''(ingen kommentarer ennå)''",
-	'talkhere-addcomment' => 'legg til kommentar',
-	'talkhere-beforeinput' => 'Du kan legge til en kommentar nedenfor',
-	'talkhere-loading' => 'laster redigerer...',
-	'talkhere-collapse' => 'skjul redigerer',
 );
 
 /** Occitan (Occitan)
@@ -996,6 +996,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'talkhere-desc' => 'Ubacuje stranu za razgovor u članak',
@@ -1007,7 +1008,7 @@ Operatori sajta ne mogu biti smatrani odgovornim za sadržaj ovih komentara.',
 	'talkhere-addcomment' => 'dodajte komentar',
 	'talkhere-beforeinput' => 'Možete da dodate komentar ispod',
 	'talkhere-loading' => 'učitavanje editora…',
-	'talkhere-collapse' => 'sakrij editor',
+	'talkhere-collapse' => 'sakrij uređivač',
 );
 
 /** Seeltersk (Seeltersk)
