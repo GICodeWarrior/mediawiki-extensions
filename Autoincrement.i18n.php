@@ -320,7 +320,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'autoincrement-desc' => 'En utvidelse som automatisk øker variabelen <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
