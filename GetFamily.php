@@ -30,7 +30,7 @@ $wgExtensionCredits['specialpage'][] = array(
 // Set up the new special page
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['GetFamily'] = $dir . 'GetFamily.i18n.php';
-// FIXME: add $wgExtensionAliasesFiles
+// FIXME: Add $wgExtensionMessagesFiles for special page aliases.
 $wgSpecialPages['GetFamily'] = 'SpecialGetFamily';
 
 // New user right
