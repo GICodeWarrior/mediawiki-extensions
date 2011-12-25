@@ -30,7 +30,7 @@ $magicWords['ce'] = array(
 
 /** Spanish (Español) */
 $magicWords['es'] = array(
-	'autoincrement' => array( 0, 'AUTOINCREMENTO', 'AUTOINCREMENTAR', 'AUTOINCREMENT' ),
+	'autoincrement' => array( 0, 'AUTOINCREMENTO', 'AUTOINCREMENTAR' ),
 );
 
 /** Japanese (日本語) */
@@ -76,6 +76,11 @@ $magicWords['ru'] = array(
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'autoincrement' => array( 0, 'САМОУВЕЋАЊЕ' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'autoincrement' => array( 0, 'SAMOUVEĆAVANJE' ),
 );
 
 /** Swedish (Svenska) */
