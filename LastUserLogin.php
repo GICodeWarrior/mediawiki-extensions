@@ -48,7 +48,7 @@ $wgGroupPermissions['sysop']['lastlogin'] = true;
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['LastUserLogin'] = $dir . 'LastUserLogin_body.php';
 $wgExtensionMessagesFiles['LastUserLogin'] = $dir . 'LastUserLogin.i18n.php';
-$wgExtensionAliasesFiles['LastUserLogin'] = $dir . 'LastUserLogin.alias.php';
+$wgExtensionMessagesFiles['LastUserLoginAlias'] = $dir . 'LastUserLogin.alias.php';
 $wgSpecialPages['LastUserLogin'] = 'LastUserLogin';
 $wgSpecialPageGroups['LastUserLogin'] = 'users';
 
