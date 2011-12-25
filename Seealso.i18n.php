@@ -501,6 +501,14 @@ $messages['nah'] = array(
 	'seealso' => 'Nō xiquitta',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'seealso' => 'Se også',
+	'seealso-desc' => 'Oversatte «Se også»-overskrifter med bruk av taggen <code><nowiki><seealso></nowiki></code>',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -515,14 +523,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'seealso' => 'Sjå òg',
 	'seealso-desc' => "Omsatte 'sjå òg'-overskrifter ved bruk av merket <code><nowiki><seealso></nowiki></code>",
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'seealso' => 'Se også',
-	'seealso-desc' => 'Oversatte «Se også»-overskrifter med bruk av taggen <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Occitan (Occitan)
