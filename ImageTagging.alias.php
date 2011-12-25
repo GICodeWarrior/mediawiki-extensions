@@ -43,6 +43,11 @@ $specialPageAliases['fa'] = array(
 	'ImageTagging' => array( 'برچسب_تصویر' ),
 );
 
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'ImageTagging' => array( 'Etiquetado_de_imaxes' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'ImageTagging' => array( 'Markěrowanje_wobrazow' ),
@@ -103,6 +108,11 @@ $specialPageAliases['mr'] = array(
 	'ImageTagging' => array( 'सचित्रखूणा' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'ImageTagging' => array( 'Bildetagging' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'ImageTagging' => array( 'Aofbeeldingen_annoteren' ),
@@ -111,11 +121,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'ImageTagging' => array( 'AfbeeldingAnnoteren' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'ImageTagging' => array( 'Bildetagging' ),
 );
 
 /** Polish (Polski) */
@@ -128,7 +133,7 @@ $specialPageAliases['pt'] = array(
 	'ImageTagging' => array( 'Categorização_de_imagens' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'ImageTagging' => array( 'छायाचित्रवीजक' ),
 );
@@ -152,8 +157,3 @@ $specialPageAliases['tl'] = array(
 $specialPageAliases['tr'] = array(
 	'ImageTagging' => array( 'DosyaEtiketleme' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
