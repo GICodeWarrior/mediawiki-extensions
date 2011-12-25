@@ -66,7 +66,7 @@ $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses[ 'SpecialVariablePage' ] = $dir . 'VariablePage.body.php';
 $wgExtensionMessagesFiles[ 'VariablePage' ] = $dir . 'VariablePage.i18n.php';
-$wgExtensionAliasesFiles[ 'VariablePage' ] = $dir . 'VariablePage.alias.php';
+$wgExtensionMessagesFiles[ 'VariablePageAlias' ] = $dir . 'VariablePage.alias.php';
 $wgSpecialPages[ 'VariablePage' ] = 'SpecialVariablePage';
 $wgSpecialPageGroups[ 'VariablePage' ] = 'contribution';
 
