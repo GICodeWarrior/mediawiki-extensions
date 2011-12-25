@@ -577,6 +577,32 @@ $messages['mk'] = array(
 	'plotters-errors' => '{{PLURAL:$1|Грешка кај плотерите|Грешки кај плотерите}}:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ * @author Simny
+ */
+$messages['nb'] = array(
+	'plotters-desc' => 'Lar brukere bruke egendefinerte JavaScript i jsplot-merkelapper',
+	'plotters' => 'Plottere',
+	'plotters-title' => 'Plottere',
+	'plotters-pagetext' => 'Under er en liste over spesielle plottere brukere kan bruke i sine jsplot-merkelapper, som definert av [[MediaWiki:Plotters-definition]].
+Denne oversikten gir enkel tilgang til systemmeldingssider som definerer hver plotters beskrivelse og kode.',
+	'plotters-uses' => 'Bruker',
+	'plotters-missing-script' => 'Ingen skript ble definert.',
+	'plotters-missing-arguments' => 'Ingen argument spesifisert.',
+	'plotters-excessively-long-scriptname' => 'Skriptnavnet er for langt.
+Vennligst definer et skript med et navn som er maksimalt 255 tegn langt.',
+	'plotters-excessively-long-preprocessorname' => 'Forprossesornavnet er for langt.
+Definer en forpressesor med et navn som er maks 255 tegn langt.',
+	'plotters-excessively-long-name' => 'Plottnavnet er for langt.
+Vennligst definer et plottnavn som er maksimalt 255 tegn langt.',
+	'plotters-excessively-long-tableclass' => 'Tabellklassen er for lang.
+Vennligst definer en tabellklasse som er maksimalt 255 tegn langt.',
+	'plotters-no-data' => 'Ingen data var tilgjengelig.',
+	'plotters-invalid-renderer' => 'En ugyldig gjengiver ble valgt.',
+	'plotters-errors' => '{{PLURAL:$1|Plotterfeil|Plotterfeil}}:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -611,32 +637,6 @@ $messages['nn'] = array(
 	'plotters-missing-script' => 'Inkje skript var definert.',
 	'plotters-missing-arguments' => 'Ingen argument spesifiserte.',
 	'plotters-no-data' => 'Ingen data var tilrettelagt.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- * @author Simny
- */
-$messages['nb'] = array(
-	'plotters-desc' => 'Lar brukere bruke egendefinerte JavaScript i jsplot-merkelapper',
-	'plotters' => 'Plottere',
-	'plotters-title' => 'Plottere',
-	'plotters-pagetext' => 'Under er en liste over spesielle plottere brukere kan bruke i sine jsplot-merkelapper, som definert av [[MediaWiki:Plotters-definition]].
-Denne oversikten gir enkel tilgang til systemmeldingssider som definerer hver plotters beskrivelse og kode.',
-	'plotters-uses' => 'Bruker',
-	'plotters-missing-script' => 'Ingen skript ble definert.',
-	'plotters-missing-arguments' => 'Ingen argument spesifisert.',
-	'plotters-excessively-long-scriptname' => 'Skriptnavnet er for langt.
-Vennligst definer et skript med et navn som er maksimalt 255 tegn langt.',
-	'plotters-excessively-long-preprocessorname' => 'Forprossesornavnet er for langt.
-Definer en forpressesor med et navn som er maks 255 tegn langt.',
-	'plotters-excessively-long-name' => 'Plottnavnet er for langt.
-Vennligst definer et plottnavn som er maksimalt 255 tegn langt.',
-	'plotters-excessively-long-tableclass' => 'Tabellklassen er for lang.
-Vennligst definer en tabellklasse som er maksimalt 255 tegn langt.',
-	'plotters-no-data' => 'Ingen data var tilgjengelig.',
-	'plotters-invalid-renderer' => 'En ugyldig gjengiver ble valgt.',
-	'plotters-errors' => '{{PLURAL:$1|Plotterfeil|Plotterfeil}}:',
 );
 
 /** Occitan (Occitan)
@@ -842,12 +842,14 @@ $messages['sr-ec'] = array(
 	'plotters-no-data' => 'Нема наведених података.',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'plotters' => 'Ploteri',
 	'plotters-title' => 'Ploteri',
-	'plotters-uses' => 'Korišćenje',
-	'plotters-no-data' => 'Nisu dostavljeni nikakvi podaci.',
+	'plotters-uses' => 'Upotrebe',
+	'plotters-no-data' => 'Nema navedenih podataka.',
 );
 
 /** Swedish (Svenska)
