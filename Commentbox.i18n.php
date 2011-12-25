@@ -816,7 +816,7 @@ Har du ein kommentar til denne sida? Legg han til her eller <span class="plainli
  * @author Nghtwlkr
  * @author Simny
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'commentbox-desc' => 'Legger til en kommentarboks til enkelte sider',
 	'commentbox-intro' => '== Legg til en kommentar... ==
 Har du en kommentar til denne siden? Legg den til her eller <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} endre siden direkte]</span>.',
