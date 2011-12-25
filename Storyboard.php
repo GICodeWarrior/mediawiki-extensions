@@ -38,7 +38,7 @@ require_once( $egStoryboardDir . 'Storyboard_Settings.php' );
 
 // Register the initernationalization and aliasing files of Storyboard.
 $wgExtensionMessagesFiles['Storyboard'] = $egStoryboardDir . 'Storyboard.i18n.php';
-$wgExtensionAliasesFiles['Storyboard'] = $egStoryboardDir . 'Storyboard.alias.php';
+$wgExtensionMessagesFiles['StoryboardAlias'] = $egStoryboardDir . 'Storyboard.alias.php';
 
 // Load classes
 $wgAutoloadClasses['StoryboardUtils'] = $egStoryboardDir . 'Storyboard_Utils.php';
