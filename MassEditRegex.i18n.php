@@ -1112,6 +1112,48 @@ $messages['mk'] = array(
 	'right-masseditregex' => 'Замена на содржини на страници користејќи регуларни изрази',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'masseditregex' => 'Masseredigering ved bruk av regulære uttrykk',
+	'masseditregex-desc' => 'Bruk regulære uttrykk for å [[Special:MassEditRegex|redigere mange sider i en handling]]',
+	'masseditregextext' => 'Skriv inn ett eller fler regulære uttrykk (en per linje) for treff, og ett eller flere uttrykk å erstatte hvert treff med.
+Det første treff-uttrykket, om vellykket, vil bli erstattet med det første erstatt-uttrykket, og så videre.
+Se [http://php.net/manual/en/function.preg-replace.php PHP-funksjonen preg_replace()] for detaljer.',
+	'masseditregex-pagelisttxt' => 'Sider å redigere (ikke bruk et navnerom: prefiks):',
+	'masseditregex-matchtxt' => 'Søk etter:',
+	'masseditregex-replacetxt' => 'Erstatt med:',
+	'masseditregex-executebtn' => 'Utfør',
+	'masseditregex-err-nopages' => 'Du må oppgi minst en side å endre.',
+	'masseditregex-before' => 'Før',
+	'masseditregex-after' => 'Etter',
+	'masseditregex-max-preview-diffs' => 'Forhåndsvisning har blitt begrenset til {{PLURAL:$1|det første treffet|de $1 første treffene}}.',
+	'masseditregex-num-changes' => '$1: {{PLURAL:$2|én endring|$2 endringer}}',
+	'masseditregex-page-not-exists' => '$1 finnes ikke',
+	'masseditregex-num-articles-changed' => '{{PLURAL:$1|én side|$1 sider}} endret',
+	'masseditregex-view-full-summary' => 'Vis fullstendig endringssammendrag',
+	'masseditregex-hint-intro' => 'Her er noen hint og eksempler for utføring av vanlige oppgaver:',
+	'masseditregex-hint-headmatch' => 'Treff',
+	'masseditregex-hint-headreplace' => 'Erstatt',
+	'masseditregex-hint-headeffect' => 'Effekt',
+	'masseditregex-hint-toappend' => 'Legg til noe tekst på slutten av siden - flott for å legge sider til i kategorier',
+	'masseditregex-hint-remove' => 'Fjern noe tekst fra alle sidene i listen',
+	'masseditregex-hint-removecat' => 'Fjern alle kategorier fra en side (merk at hakeparantesene i wikikoden unnslipper.)
+Erstatningsverdiene bør ikke unnslippes.',
+	'masseditregex-listtype-intro' => 'Dette er en liste over:',
+	'masseditregex-listtype-pagenames' => 'Sidenavn (endre disse sidene)',
+	'masseditregex-listtype-pagename-prefixes' => 'Sidenavnprefiks (endre sider som har navn som begynner med denne teksten)',
+	'masseditregex-listtype-categories' => 'Kategorinavn (endre hver side innen disse kategoriene; navneromvalg ignoreres)',
+	'masseditregex-listtype-backlinks' => 'Lenker hit (rediger sider som lenker til disse)',
+	'masseditregex-namespace-intro' => 'Alle disse sidene er i dette navnerommet:',
+	'masseditregex-exprnomatch' => 'Uttrykket «$1» traff ingen sider.',
+	'masseditregex-badregex' => 'Ugyldig regulært uttrykk:',
+	'masseditregex-editfailed' => 'Endring feilet:',
+	'masseditregex-tooltip-execute' => 'Utfør disse endringene på hver side',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1155,48 +1197,6 @@ Voor de te vervangen tekst is escapen niet nodig.',
 	'masseditregex-editfailed' => 'Bewerking mislukt:',
 	'masseditregex-tooltip-execute' => 'Deze wijzigingen op iedere pagina toepassen',
 	'right-masseditregex' => 'Pagina-inhoud vervangen met behulp van reguliere expressies',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'masseditregex' => 'Masseredigering ved bruk av regulære uttrykk',
-	'masseditregex-desc' => 'Bruk regulære uttrykk for å [[Special:MassEditRegex|redigere mange sider i en handling]]',
-	'masseditregextext' => 'Skriv inn ett eller fler regulære uttrykk (en per linje) for treff, og ett eller flere uttrykk å erstatte hvert treff med.
-Det første treff-uttrykket, om vellykket, vil bli erstattet med det første erstatt-uttrykket, og så videre.
-Se [http://php.net/manual/en/function.preg-replace.php PHP-funksjonen preg_replace()] for detaljer.',
-	'masseditregex-pagelisttxt' => 'Sider å redigere (ikke bruk et navnerom: prefiks):',
-	'masseditregex-matchtxt' => 'Søk etter:',
-	'masseditregex-replacetxt' => 'Erstatt med:',
-	'masseditregex-executebtn' => 'Utfør',
-	'masseditregex-err-nopages' => 'Du må oppgi minst en side å endre.',
-	'masseditregex-before' => 'Før',
-	'masseditregex-after' => 'Etter',
-	'masseditregex-max-preview-diffs' => 'Forhåndsvisning har blitt begrenset til {{PLURAL:$1|det første treffet|de $1 første treffene}}.',
-	'masseditregex-num-changes' => '$1: {{PLURAL:$2|én endring|$2 endringer}}',
-	'masseditregex-page-not-exists' => '$1 finnes ikke',
-	'masseditregex-num-articles-changed' => '{{PLURAL:$1|én side|$1 sider}} endret',
-	'masseditregex-view-full-summary' => 'Vis fullstendig endringssammendrag',
-	'masseditregex-hint-intro' => 'Her er noen hint og eksempler for utføring av vanlige oppgaver:',
-	'masseditregex-hint-headmatch' => 'Treff',
-	'masseditregex-hint-headreplace' => 'Erstatt',
-	'masseditregex-hint-headeffect' => 'Effekt',
-	'masseditregex-hint-toappend' => 'Legg til noe tekst på slutten av siden - flott for å legge sider til i kategorier',
-	'masseditregex-hint-remove' => 'Fjern noe tekst fra alle sidene i listen',
-	'masseditregex-hint-removecat' => 'Fjern alle kategorier fra en side (merk at hakeparantesene i wikikoden unnslipper.)
-Erstatningsverdiene bør ikke unnslippes.',
-	'masseditregex-listtype-intro' => 'Dette er en liste over:',
-	'masseditregex-listtype-pagenames' => 'Sidenavn (endre disse sidene)',
-	'masseditregex-listtype-pagename-prefixes' => 'Sidenavnprefiks (endre sider som har navn som begynner med denne teksten)',
-	'masseditregex-listtype-categories' => 'Kategorinavn (endre hver side innen disse kategoriene; navneromvalg ignoreres)',
-	'masseditregex-listtype-backlinks' => 'Lenker hit (rediger sider som lenker til disse)',
-	'masseditregex-namespace-intro' => 'Alle disse sidene er i dette navnerommet:',
-	'masseditregex-exprnomatch' => 'Uttrykket «$1» traff ingen sider.',
-	'masseditregex-badregex' => 'Ugyldig regulært uttrykk:',
-	'masseditregex-editfailed' => 'Endring feilet:',
-	'masseditregex-tooltip-execute' => 'Utfør disse endringene på hver side',
 );
 
 /** Occitan (Occitan)
@@ -1438,10 +1438,12 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Eleferen
  * @author Rubin
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'action-masseditregex' => 'выполнить массовое изменение',
 	'masseditregex' => 'Множественное редактирование посредством регулярных выражений',
 	'masseditregex-desc' => 'Использование регулярных выражений для [[Special:MassEditRegex|правки множества страниц за одно действие]]',
 	'masseditregextext' => 'Введите одно или несколько регулярных выражений (по одному на строке) для поиска соответствий, а также одно или несколько выражений для замены соответствий.
@@ -1477,6 +1479,7 @@ $messages['ru'] = array(
 	'masseditregex-badregex' => 'Ошибочное регулярное выражение:',
 	'masseditregex-editfailed' => 'Ошибка редактирования:',
 	'masseditregex-tooltip-execute' => 'Применить эти изменения для каждой страницы',
+	'right-masseditregex' => 'Заменить содержимое страницы, с помощью регулярных выражений',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
