@@ -24,7 +24,7 @@ $wgExtensionCredits['other'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['CreatePage'] = $dir . '/CreatePage.i18n.php';
-$wgExtensionAliasesFiles['CreatePage'] = $dir . 'CreatePage.alias.php';
+$wgExtensionMessagesFiles['CreatePageAlias'] = $dir . 'CreatePage.alias.php';
 $wgAutoloadClasses['SpecialCreatePage'] = $dir . '/CreatePage_body.php';
 $wgSpecialPages['CreatePage'] = 'SpecialCreatePage';
 $wgSpecialPageGroups['CreatePage'] = 'pagetools';
