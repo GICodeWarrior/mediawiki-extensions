@@ -284,7 +284,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'embedvideo-desc' => 'Legger til en tolkefunksjon for å bygge inn videoer fra populære kilder',
 	'embedvideo-missing-params' => 'EmbedVideo mangler en nødvendig parameter.',
 	'embedvideo-bad-params' => 'EmbedVideo mottok en dårlig parameter.',
