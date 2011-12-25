@@ -809,6 +809,7 @@ OpenID позволява влизането в много различни са
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Ehsanulhb
  * @author Wikitanvir
  */
@@ -835,7 +836,7 @@ $messages['bn'] = array(
 	'openidchooselegend' => 'ব্যবহারকারী নামের পছন্দ',
 	'openidchoosenick' => 'আপনার ডাকনাম ($1)',
 	'openidchoosefull' => 'আপনার পূর্ণ নাম ($1)',
-	'openidchooseusername' => 'ব্যবহারকারীর নাম:',
+	'openidchooseusername' => 'ব্যবহারকারী নাম:',
 	'openidchoosepassword' => 'শব্দচাবি:',
 	'openidconvertsuccess' => 'সফলভাবে ওপেনআইডিতে রূপান্তর করা হয়েছে',
 	'openiddelete-button' => 'নিশ্চিত করুন',
@@ -4139,6 +4140,101 @@ $messages['nah'] = array(
 	'openidchoosepassword' => 'Motlahtōlichtacāyo',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'openid-desc' => 'Logg inn på wikien med en [//openid.net/ OpenID] og logg inn på andre sider som bruker OpenID med kontoen herfra',
+	'openidlogin' => 'Logg inn med OpenID',
+	'openidserver' => 'OpenID-tjener',
+	'openidxrds' => 'Yadis-fil',
+	'openidconvert' => 'OpenID-konvertering',
+	'openiderror' => 'Bekreftelsesfeil',
+	'openiderrortext' => 'En feil oppsto under bekrefting av OpenID-adressen.',
+	'openidconfigerror' => 'Oppsettsfeil med OpenID',
+	'openidconfigerrortext' => 'Lagringsoppsettet for OpenID på denne wikien er ugyldig.
+Vennligst kontakt en [[Special:ListUsers/sysop|administrator]].',
+	'openidpermission' => 'Tillatelsesfeil med OpenID',
+	'openidpermissiontext' => 'Du kan ikke logge inn på denne tjeneren med OpenID-en du oppga.',
+	'openidcancel' => 'Bekreftelse avbrutt',
+	'openidcanceltext' => 'Bekreftelsen av OpenID-adressen ble avbrutt.',
+	'openidfailure' => 'Bekreftelse mislyktes',
+	'openidfailuretext' => 'Bekreftelse av OpenID-adressen mislyktes. Feilbeskjed: «$1»',
+	'openidsuccess' => 'Bekreftelse lyktes',
+	'openidsuccesstext' => 'Bekreftelse av OpenID-adressen lyktes.',
+	'openidusernameprefix' => 'OpenID-bruker',
+	'openidserverlogininstructions' => 'Skriv inn passordet ditt nedenfor for å logge på $3 som $2 (brukerside $1).',
+	'openidtrustinstructions' => 'Sjekk om du ønsker å dele data med $1.',
+	'openidallowtrust' => 'La $1 stole på denne kontoen.',
+	'openidnopolicy' => 'Siden har ingen personvernerklæring.',
+	'openidpolicy' => 'Sjekk <a href="_new" href="$1">personvernerklæringen</a> for mer informasjon.',
+	'openidoptional' => 'Valgfri',
+	'openidrequired' => 'Påkrevd',
+	'openidnickname' => 'Kallenavn',
+	'openidfullname' => 'Fullt navn',
+	'openidemail' => 'E-postadresse',
+	'openidlanguage' => 'Språk',
+	'openidtimezone' => 'Tidssone',
+	'openidchooselegend' => 'Velg brukernavn',
+	'openidchooseinstructions' => 'Alle brukere må ha et kallenavn; du kan velge blant valgene nedenfor.',
+	'openidchoosenick' => 'Ditt kallenavn ($1)',
+	'openidchoosefull' => 'Fullt navn ($1)',
+	'openidchooseurl' => 'Et navn tatt fra din OpenID ($1)',
+	'openidchooseauto' => 'Et automatisk opprettet navn ($1)',
+	'openidchoosemanual' => 'Et valgfritt navn:',
+	'openidchooseexisting' => 'En eksisterende konto på denne wikien',
+	'openidchooseusername' => 'Brukernavn:',
+	'openidchoosepassword' => 'Passord:',
+	'openidconvertinstructions' => 'Dette skjemaet lar deg endre brukerkontoen din til å bruke en OpenID-adresse eller å legge til flere OpenID-adresser.',
+	'openidconvertoraddmoreids' => 'Konverter til OpenID eller legg til en annen OpenID-adresse',
+	'openidconvertsuccess' => 'Konverterte til OpenID',
+	'openidconvertsuccesstext' => 'Du har konvertert din OpenID til $1.',
+	'openidconvertyourstext' => 'Det er allerede din OpenID.',
+	'openidconvertothertext' => 'Den OpenID-en tilhører noen andre.',
+	'openidalreadyloggedin' => "'''$1, du er allerede logget inn.'''
+
+Om du ønsker å bruke OpenID i framtiden, kan du [[Special:OpenIDConvert|konvertere kontoen din til å bruke OpenID]].",
+	'openidnousername' => 'Intet brukernavn oppgitt.',
+	'openidbadusername' => 'Ugyldig brukernavn oppgitt.',
+	'openidautosubmit' => 'Denne siden inneholder et skjema som vil leveres automatisk om du har JavaScript slått på.
+Om ikke, trykk på «Continue» (Fortsett).',
+	'openidclientonlytext' => 'Du kan ikke bruke kontoer fra denne wikien som OpenID på en annen side.',
+	'openidloginlabel' => 'OpenID-adresse',
+	'openidlogininstructions' => '{{SITENAME}} støtter [//openid.net/ OpenID]-standarden for enhetlig innlogging på forskjellige nettsteder.
+OpenID lar deg logge inn på mange forskjellige nettsider uten at du må bruke forskjellige passord på hver.
+(Se [//nn.wikipedia.org/wiki/OpenID Wikipedia-artikkelen om OpenID] for mer informasjon.)
+
+Om du allerede har en konto på {{SITENAME}}, kan du [[Special:UserLogin|logga på]] som vanlig med brukarnavnet og passordet ditt.
+For å bruke OpenID i fremtiden, kan du [[Special:OpenIDConvert|konvertere kontoen din til OpenID]] etter at du har logget inn på vanlig måte.
+
+Det er mange [http://wiki.openid.net/Public_OpenID_providers leverandører av OpenID], og du kan allerede ha en OpenID-aktivert konto et annet sted.',
+	'openidupdateuserinfo' => 'Oppdater min personlige informasjon:',
+	'openiddelete' => 'Slett OpenID',
+	'openiddelete-text' => 'Ved å klikke på «{{int:openiddelete-button}}»-knappen vil du fjerne OpenID $1 fra din konto.
+Du vil ikke lenger ha mulighet til å logge inn med denne OpenID.',
+	'openiddelete-button' => 'Bekreft',
+	'openiddeleteerrornopassword' => 'Du kan ikke slette alle dine OpenID-er fordi kontoen din ikke har noe passord.
+Du ville ikke kunne logge inn uten en OpenID.',
+	'openiddeleteerroropenidonly' => 'Du kan ikke slette alle dine OpenID-er fordi du kun kan logge inn med en OpenID.
+Du ville ikke kunne logge inn uten en OpenID.',
+	'openiddelete-sucess' => 'OpenID-en har blitt fjernet fra din konto.',
+	'openiddelete-error' => 'En feil oppsto i prosessen med å fjerne OpenID-en fra din konto.',
+	'openid-prefstext' => '[//openid.net/ OpenID] innstillinger',
+	'openid-pref-hide' => 'Skjul OpenID på brukersiden din om du logger inn med en.',
+	'openid-pref-update-userinfo-on-login' => 'Oppdater den følgende informasjonen fra OpenID-persona hver gang jeg logger inn:',
+	'openid-urls-desc' => 'OpenID-er knyttet til din brukerkonto:',
+	'openid-urls-action' => 'Handling',
+	'openid-urls-delete' => 'Slett',
+	'openid-add-url' => 'Legg til en ny OpenID',
+	'openid-login-or-create-account' => 'Logg inn eller lag en ny konto',
+	'openid-provider-label-openid' => 'Skriv inn din OpenID-nettadresse',
+	'openid-provider-label-google' => 'Logg inn med din Google-konto',
+	'openid-provider-label-yahoo' => 'Logg inn med din Yahoo-konto',
+	'openid-provider-label-aol' => 'Skriv inn ditt AOL-skjermnavn',
+	'openid-provider-label-other-username' => 'Skriv inn ditt $1-brukernavn',
+);
+
 /** Nepali (नेपाली) */
 $messages['ne'] = array(
 	'openidemail' => 'इमेल ठेगाना',
@@ -4349,101 +4445,6 @@ Du ville ikkje ha kunna logga inn utan ein OpenID.',
 	'openid-provider-label-yahoo' => 'Logg inn med Yahoo-kontoen din',
 	'openid-provider-label-aol' => 'Skriv inn AOL-skjermnamnet ditt',
 	'openid-provider-label-other-username' => 'Skriv inn $1-brukarnamnet ditt',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'openid-desc' => 'Logg inn på wikien med en [//openid.net/ OpenID] og logg inn på andre sider som bruker OpenID med kontoen herfra',
-	'openidlogin' => 'Logg inn med OpenID',
-	'openidserver' => 'OpenID-tjener',
-	'openidxrds' => 'Yadis-fil',
-	'openidconvert' => 'OpenID-konvertering',
-	'openiderror' => 'Bekreftelsesfeil',
-	'openiderrortext' => 'En feil oppsto under bekrefting av OpenID-adressen.',
-	'openidconfigerror' => 'Oppsettsfeil med OpenID',
-	'openidconfigerrortext' => 'Lagringsoppsettet for OpenID på denne wikien er ugyldig.
-Vennligst kontakt en [[Special:ListUsers/sysop|administrator]].',
-	'openidpermission' => 'Tillatelsesfeil med OpenID',
-	'openidpermissiontext' => 'Du kan ikke logge inn på denne tjeneren med OpenID-en du oppga.',
-	'openidcancel' => 'Bekreftelse avbrutt',
-	'openidcanceltext' => 'Bekreftelsen av OpenID-adressen ble avbrutt.',
-	'openidfailure' => 'Bekreftelse mislyktes',
-	'openidfailuretext' => 'Bekreftelse av OpenID-adressen mislyktes. Feilbeskjed: «$1»',
-	'openidsuccess' => 'Bekreftelse lyktes',
-	'openidsuccesstext' => 'Bekreftelse av OpenID-adressen lyktes.',
-	'openidusernameprefix' => 'OpenID-bruker',
-	'openidserverlogininstructions' => 'Skriv inn passordet ditt nedenfor for å logge på $3 som $2 (brukerside $1).',
-	'openidtrustinstructions' => 'Sjekk om du ønsker å dele data med $1.',
-	'openidallowtrust' => 'La $1 stole på denne kontoen.',
-	'openidnopolicy' => 'Siden har ingen personvernerklæring.',
-	'openidpolicy' => 'Sjekk <a href="_new" href="$1">personvernerklæringen</a> for mer informasjon.',
-	'openidoptional' => 'Valgfri',
-	'openidrequired' => 'Påkrevd',
-	'openidnickname' => 'Kallenavn',
-	'openidfullname' => 'Fullt navn',
-	'openidemail' => 'E-postadresse',
-	'openidlanguage' => 'Språk',
-	'openidtimezone' => 'Tidssone',
-	'openidchooselegend' => 'Velg brukernavn',
-	'openidchooseinstructions' => 'Alle brukere må ha et kallenavn; du kan velge blant valgene nedenfor.',
-	'openidchoosenick' => 'Ditt kallenavn ($1)',
-	'openidchoosefull' => 'Fullt navn ($1)',
-	'openidchooseurl' => 'Et navn tatt fra din OpenID ($1)',
-	'openidchooseauto' => 'Et automatisk opprettet navn ($1)',
-	'openidchoosemanual' => 'Et valgfritt navn:',
-	'openidchooseexisting' => 'En eksisterende konto på denne wikien',
-	'openidchooseusername' => 'Brukernavn:',
-	'openidchoosepassword' => 'Passord:',
-	'openidconvertinstructions' => 'Dette skjemaet lar deg endre brukerkontoen din til å bruke en OpenID-adresse eller å legge til flere OpenID-adresser.',
-	'openidconvertoraddmoreids' => 'Konverter til OpenID eller legg til en annen OpenID-adresse',
-	'openidconvertsuccess' => 'Konverterte til OpenID',
-	'openidconvertsuccesstext' => 'Du har konvertert din OpenID til $1.',
-	'openidconvertyourstext' => 'Det er allerede din OpenID.',
-	'openidconvertothertext' => 'Den OpenID-en tilhører noen andre.',
-	'openidalreadyloggedin' => "'''$1, du er allerede logget inn.'''
-
-Om du ønsker å bruke OpenID i framtiden, kan du [[Special:OpenIDConvert|konvertere kontoen din til å bruke OpenID]].",
-	'openidnousername' => 'Intet brukernavn oppgitt.',
-	'openidbadusername' => 'Ugyldig brukernavn oppgitt.',
-	'openidautosubmit' => 'Denne siden inneholder et skjema som vil leveres automatisk om du har JavaScript slått på.
-Om ikke, trykk på «Continue» (Fortsett).',
-	'openidclientonlytext' => 'Du kan ikke bruke kontoer fra denne wikien som OpenID på en annen side.',
-	'openidloginlabel' => 'OpenID-adresse',
-	'openidlogininstructions' => '{{SITENAME}} støtter [//openid.net/ OpenID]-standarden for enhetlig innlogging på forskjellige nettsteder.
-OpenID lar deg logge inn på mange forskjellige nettsider uten at du må bruke forskjellige passord på hver.
-(Se [//nn.wikipedia.org/wiki/OpenID Wikipedia-artikkelen om OpenID] for mer informasjon.)
-
-Om du allerede har en konto på {{SITENAME}}, kan du [[Special:UserLogin|logga på]] som vanlig med brukarnavnet og passordet ditt.
-For å bruke OpenID i fremtiden, kan du [[Special:OpenIDConvert|konvertere kontoen din til OpenID]] etter at du har logget inn på vanlig måte.
-
-Det er mange [http://wiki.openid.net/Public_OpenID_providers leverandører av OpenID], og du kan allerede ha en OpenID-aktivert konto et annet sted.',
-	'openidupdateuserinfo' => 'Oppdater min personlige informasjon:',
-	'openiddelete' => 'Slett OpenID',
-	'openiddelete-text' => 'Ved å klikke på «{{int:openiddelete-button}}»-knappen vil du fjerne OpenID $1 fra din konto.
-Du vil ikke lenger ha mulighet til å logge inn med denne OpenID.',
-	'openiddelete-button' => 'Bekreft',
-	'openiddeleteerrornopassword' => 'Du kan ikke slette alle dine OpenID-er fordi kontoen din ikke har noe passord.
-Du ville ikke kunne logge inn uten en OpenID.',
-	'openiddeleteerroropenidonly' => 'Du kan ikke slette alle dine OpenID-er fordi du kun kan logge inn med en OpenID.
-Du ville ikke kunne logge inn uten en OpenID.',
-	'openiddelete-sucess' => 'OpenID-en har blitt fjernet fra din konto.',
-	'openiddelete-error' => 'En feil oppsto i prosessen med å fjerne OpenID-en fra din konto.',
-	'openid-prefstext' => '[//openid.net/ OpenID] innstillinger',
-	'openid-pref-hide' => 'Skjul OpenID på brukersiden din om du logger inn med en.',
-	'openid-pref-update-userinfo-on-login' => 'Oppdater den følgende informasjonen fra OpenID-persona hver gang jeg logger inn:',
-	'openid-urls-desc' => 'OpenID-er knyttet til din brukerkonto:',
-	'openid-urls-action' => 'Handling',
-	'openid-urls-delete' => 'Slett',
-	'openid-add-url' => 'Legg til en ny OpenID',
-	'openid-login-or-create-account' => 'Logg inn eller lag en ny konto',
-	'openid-provider-label-openid' => 'Skriv inn din OpenID-nettadresse',
-	'openid-provider-label-google' => 'Logg inn med din Google-konto',
-	'openid-provider-label-yahoo' => 'Logg inn med din Yahoo-konto',
-	'openid-provider-label-aol' => 'Skriv inn ditt AOL-skjermnavn',
-	'openid-provider-label-other-username' => 'Skriv inn ditt $1-brukernavn',
 );
 
 /** Occitan (Occitan)
