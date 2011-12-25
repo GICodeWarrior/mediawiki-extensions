@@ -572,6 +572,15 @@ $messages['ms'] = array(
 	'assert_edit_message' => 'Penegasan yang dinyatakan ($1) gagal.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'assert_edit_title' => 'Redigeringsforsikring mislyktes.',
+	'assertedit-desc' => 'Legger til redigeringsforsikring til bruk for roboter',
+	'assert_edit_message' => 'Den spesifiserte redigeringsforsikringen ($1) mislyktes.',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -613,15 +622,6 @@ $messages['nn'] = array(
 	'assert_edit_title' => 'Redigeringsforsikring mislukkast',
 	'assertedit-desc' => 'Legg til redigeringsforsikring til bruk for robotar',
 	'assert_edit_message' => 'Den spesifiserte redigeringsforsikringa ($1) mislukkast.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'assert_edit_title' => 'Redigeringsforsikring mislyktes.',
-	'assertedit-desc' => 'Legger til redigeringsforsikring til bruk for roboter',
-	'assert_edit_message' => 'Den spesifiserte redigeringsforsikringen ($1) mislyktes.',
 );
 
 /** Occitan (Occitan)
@@ -841,6 +841,15 @@ $messages['sv'] = array(
 	'assert_edit_title' => 'Försäkran misslyckades',
 	'assertedit-desc' => 'Ger robotar möjlighet att använda redigeringsförsäkringar',
 	'assert_edit_message' => 'Den försäkran som angavs ($1) misslyckades.',
+);
+
+/** Tamil (தமிழ்)
+ * @author Shanmugamp7
+ */
+$messages['ta'] = array(
+	'assert_edit_title' => 'உறுதியாக சொல்வது தோல்வியடைந்தது',
+	'assertedit-desc' => 'Bots மூலம் பயன்படுத்தும் திருத்து பேச்சுக்களையும்  சேர்.',
+	'assert_edit_message' => 'குறிப்பிட்ட assertion ( $1 ) தோல்வியடைந்தது.',
 );
 
 /** Telugu (తెలుగు)
