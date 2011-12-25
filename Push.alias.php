@@ -25,9 +25,24 @@ $specialPageAliases['br'] = array(
 	'Push' => array( 'Bountañ' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'Push' => array( 'Transfer' ),
+);
+
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'Push' => array( 'پوش' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
 	'Push' => array( 'Pouse' ),
+);
+
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'Push' => array( 'Transferer' ),
 );
 
 /** Macedonian (Македонски) */
@@ -44,8 +59,3 @@ $specialPageAliases['nds-nl'] = array(
 $specialPageAliases['nl'] = array(
 	'Push' => array( 'Doorsturen' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
