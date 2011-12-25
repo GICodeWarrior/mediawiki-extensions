@@ -291,18 +291,18 @@ $messages['ms'] = array(
 	'ipauth-desc' => 'Log masuk secara automatik dari alamat IP yang tetap',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'ipauth-desc' => 'Automatisch aanmelden van vaste IP-adressen',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'ipauth-desc' => 'Automatisk innlogging fra faste IP-adresser',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'ipauth-desc' => 'Automatisch aanmelden van vaste IP-adressen',
 );
 
 /** Occitan (Occitan)
