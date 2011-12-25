@@ -30,7 +30,7 @@ $wgExtensionCredits['specialpage'][] = array (
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['ThemeDesigner'] = $dir . 'ThemeDesigner.i18n.php';
-$wgExtensionAliasesFiles['ThemeDesigner'] = $dir . 'ThemeDesigner.alias.php';
+$wgExtensionMessagesFiles['ThemeDesignerAlias'] = $dir . 'ThemeDesigner.alias.php';
 $wgAutoloadClasses['SpecialThemeDesigner'] = $dir . 'SpecialThemeDesigner.php';
 $wgSpecialPages['ThemeDesigner']           = 'SpecialThemeDesigner';
 $wgSpecialPageGroups['ThemeDesigner']      = 'wiki';
