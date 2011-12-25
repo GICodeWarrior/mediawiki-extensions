@@ -23,9 +23,19 @@ $specialPageAliases['br'] = array(
 	'ResearchTools' => array( 'OstilhoùKlask' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'ResearchTools' => array( 'ابزارهای_تحقیق' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
 	'ResearchTools' => array( 'ZoutiPouChache' ),
+);
+
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'ResearchTools' => array( 'Instrumentos_de_investigation' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -62,8 +72,3 @@ $specialPageAliases['tr'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'ResearchTools' => array( '調查工具' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
