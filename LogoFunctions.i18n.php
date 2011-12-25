@@ -248,20 +248,20 @@ $messages['ms'] = array(
 	'logofunctions-filenotexist' => 'Ralat: [[File:$1]] tidak wujud',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'logofunctions-desc' => 'Voegt een parserfunctie toe om het logo van de wiki in te stellen',
-	'logofunctions-filenotexist' => 'Fout: [[File:$1]] bestaat niet',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'logofunctions-desc' => 'Legg til tolkefunksjon om wikiens logo',
 	'logofunctions-filenotexist' => 'Feil: [[File:$1]] finnes ikke',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'logofunctions-desc' => 'Voegt een parserfunctie toe om het logo van de wiki in te stellen',
+	'logofunctions-filenotexist' => 'Fout: [[File:$1]] bestaat niet',
 );
 
 /** Polish (Polski)
