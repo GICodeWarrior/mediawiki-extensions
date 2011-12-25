@@ -42,7 +42,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $wgDir = dirname( __FILE__ ) . '/';
 $wgCollabWatchlistIncludes = $wgDir . 'includes/';
 $wgExtensionMessagesFiles['CollabWatchlist'] = $wgDir . 'CollabWatchlist.i18n.php';
-$wgExtensionAliasesFiles['CollabWatchlist'] = $wgDir . 'CollabWatchlist.alias.php';
+$wgExtensionMessagesFiles['CollabWatchlistAlias'] = $wgDir . 'CollabWatchlist.alias.php';
 
 $wgAutoloadClasses['CollabWatchlistHooks'] = "$wgDir/CollabWatchlist.hooks.php";
 $wgAutoloadClasses['CollabWatchlist'] = "$wgDir/CollabWatchlist.class.php";
