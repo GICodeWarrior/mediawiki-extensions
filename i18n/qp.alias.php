@@ -18,6 +18,21 @@ $specialPageAliases['ar'] = array(
 	'PollResults' => array( 'نتائج_الاستقصاء' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'PollResults' => array( 'Abstimmungsergebnisse' ),
+);
+
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'PollResults' => array( 'دریافت_پاسخ' ),
+);
+
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'PollResults' => array( 'Resultatos_de_sondages' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'PollResults' => array( 'Resultater_vun_der_Ëmfro' ),
@@ -42,8 +57,3 @@ $specialPageAliases['nl'] = array(
 $specialPageAliases['ru'] = array(
 	'PollResults' => array( 'Результаты_опросов' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
