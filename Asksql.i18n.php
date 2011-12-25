@@ -938,7 +938,7 @@ Dette kan ofte leggja press på tenarytinga, so nytt funksjonen med varsemd.",
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'asksql' => 'SQL-spørring',
 	'asksql-desc' => 'Gjør SQL-spørringer gjennom en [[Special:Asksql|spesialside]]',
 	'asksqltext' => "Bruk skjemaet under for å foreta en direkte spørring av databasen. Bruk enkle anførselstegn ('som dette') for å merke strenger. Dette kan putte press på tjenerytelsen, så bruk funksjonen med varsomhet.",
