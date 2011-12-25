@@ -1442,7 +1442,7 @@ brukar3|Tredje brukernamn',
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'vote' => 'Avstemning',
 	'vote-desc' => 'Gir enkle avstemningsmuligheter',
 	'vote-header' => "Du kan stemme på '''(eksempelbruker)''' her!",
