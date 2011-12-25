@@ -111,6 +111,11 @@ $specialPageAliases['mr'] = array(
 	'ShowProcesslist' => array( 'प्रक्रीयासूचीदाखवा' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'ShowProcesslist' => array( 'Vis_prosessliste' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'ShowProcesslist' => array( 'Proceslieste_weergeven' ),
@@ -119,11 +124,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'ShowProcesslist' => array( 'ProceslijstWeergeven' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'ShowProcesslist' => array( 'Vis_prosessliste' ),
 );
 
 /** Polish (Polski) */
@@ -145,8 +145,3 @@ $specialPageAliases['tl'] = array(
 $specialPageAliases['tr'] = array(
 	'ShowProcesslist' => array( 'İşlemListesiniGöster' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
