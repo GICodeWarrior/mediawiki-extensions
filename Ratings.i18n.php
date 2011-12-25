@@ -225,6 +225,22 @@ $messages['mk'] = array(
 	'ratings-no-votes-yet' => 'Сè уште никој го нема оценето ова.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['nb'] = array(
+	'ratings-desc' => 'Tillater brukere å gi karakter på ulike "egenskaper" for sider',
+	'right-rate' => 'Gi karakter på en bestemt egenskap for en side',
+	'ratings-starsratings-desc' => 'Viser en enkel stjernebasert kontroll som tillater brukeren å gi karakterer på bestemte egenskaper for en side.',
+	'ratings-par-page' => 'Siden som karakteren gjelder.',
+	'ratings-par-tag' => 'Karaktertaggen. Taggen viser hvilken "egenskap" for siden som får karakter.',
+	'ratings-par-showdisabled' => 'Vis karakterene for brukere som ikke tillates å gi karakterer (i lesemodus).',
+	'ratings-par-incsummary' => 'Vise et sammendrag av de aktuelle stemmene over karakterelementet?',
+	'ratings-votesummary-desc' => 'Viser et kort sammendrag over karakterstemmene for den angitte siden med egenskapspar.',
+	'ratings-current-score' => 'Aktuell brukerkarakter: $1 (basert på $2 {{PLURAL:$2|karakter|karakterer}})',
+	'ratings-no-votes-yet' => 'Ingen har gitt karakter på denne så langt.',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -241,22 +257,6 @@ De huidige waardering van gebruikers wordt weergegeven als er al gewaardeerd is.
 	'ratings-votesummary-desc' => 'Geeft een korte samenvatting van de stemmen voor de opgegeven pagina en eigenschapspaar weer.',
 	'ratings-current-score' => 'Huidige gebruikerswaardering: $1 ($2 {{PLURAL:$2|waardering|waarderingen}})',
 	'ratings-no-votes-yet' => 'Dit onderdeel is nog door niemand gewaardeerd.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Event
- */
-$messages['nb'] = array(
-	'ratings-desc' => 'Tillater brukere å gi karakter på ulike "egenskaper" for sider',
-	'right-rate' => 'Gi karakter på en bestemt egenskap for en side',
-	'ratings-starsratings-desc' => 'Viser en enkel stjernebasert kontroll som tillater brukeren å gi karakterer på bestemte egenskaper for en side.',
-	'ratings-par-page' => 'Siden som karakteren gjelder.',
-	'ratings-par-tag' => 'Karaktertaggen. Taggen viser hvilken "egenskap" for siden som får karakter.',
-	'ratings-par-showdisabled' => 'Vis karakterene for brukere som ikke tillates å gi karakterer (i lesemodus).',
-	'ratings-par-incsummary' => 'Vise et sammendrag av de aktuelle stemmene over karakterelementet?',
-	'ratings-votesummary-desc' => 'Viser et kort sammendrag over karakterstemmene for den angitte siden med egenskapspar.',
-	'ratings-current-score' => 'Aktuell brukerkarakter: $1 (basert på $2 {{PLURAL:$2|karakter|karakterer}})',
-	'ratings-no-votes-yet' => 'Ingen har gitt karakter på denne så langt.',
 );
 
 /** Piedmontese (Piemontèis)
