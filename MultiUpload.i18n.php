@@ -1228,7 +1228,7 @@ Upassande filer vil bli sletta med ein gong, sjå [[{{MediaWiki:Multipleupload-p
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'multipleupload' => 'Last opp flere filer',
 	'multiupload-desc' => 'Gjør det mulig å [[Special:MultipleUpload|laste opp flere filer på én gang]]',
 	'multipleupload-ignoreallwarnings' => "Ignorer '''alle advarsler''' og lagre filene likevel.",

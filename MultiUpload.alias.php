@@ -134,7 +134,7 @@ $specialPageAliases['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['no'] = array(
+$specialPageAliases['nb'] = array(
 	'MultipleUpload' => array( 'Last_opp_mange_filer' ),
 );
 
