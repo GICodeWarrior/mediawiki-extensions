@@ -624,6 +624,17 @@ $messages['nah'] = array(
 	'right-whatismyip' => 'Tiquittāz [[Special:WhatIsMyIP|nonehhuiyān noIP tlapōhualli]]',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'whatismyip' => 'Hva er IP-adressen min',
+	'whatismyip-desc' => 'Viser nåværende brukers [[Special:WhatIsMyIP|IP-adresse]]',
+	'whatismyip-out' => 'Din IP-adresse:',
+	'right-whatismyip' => 'Vis [[Special:WhatIsMyIP|min egen IP-adresse]]',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -644,17 +655,6 @@ $messages['nn'] = array(
 	'whatismyip-desc' => 'Viser [[Special:WhatIsMyIP|IP-adressa]] til den noverande brukaren',
 	'whatismyip-out' => 'IP-adressa di:',
 	'right-whatismyip' => 'Syn [[Special:WhatIsMyIP|mi eiga IP-adresse]]',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'whatismyip' => 'Hva er IP-adressen min',
-	'whatismyip-desc' => 'Viser nåværende brukers [[Special:WhatIsMyIP|IP-adresse]]',
-	'whatismyip-out' => 'Din IP-adresse:',
-	'right-whatismyip' => 'Vis [[Special:WhatIsMyIP|min egen IP-adresse]]',
 );
 
 /** Occitan (Occitan)
