@@ -4,7 +4,7 @@ class SearchOracleText extends SearchOracle {
 
 
 	public function update( $id, $title, $text ) {
-		global $wgExIndexMIMETypes;
+		global $wgExIndexMIMETypes, $wgExIndexOnHTTP;
 
 		parent::update( $id, $title, $text );
 
@@ -13,14 +13,14 @@ class SearchOracleText extends SearchOracle {
 		if ( in_array( $file->getMimeType(), $wgExIndexMIMETypes ) ) {
 			$dbw = wfGetDB(DB_MASTER);
 			//$dbw->query("CALL CTXSYS.CTX_OUTPUT.START_LOG('wiki_ctx.log')"); //use for INTERNAL debuging ONLY!!!
-			
+
 			$url = $wgExIndexOnHTTP ? preg_replace( '/^https:/i', 'http:', $file->getFullUrl() ) : $file->getFullUrl();
 			$dbw->update('searchindex',
 				array( 'si_url' => $url ), 
 				array( 'si_page' => $id ),
 				'SearchIndexUpdate:update' );
 			wfDebugLog( 'OracleTextSearch', 'Updated si_url for page ' . $id );
-			
+
 			$index = $dbw->getProperty('mTablePrefix')."si_url_idx";
 			$dbw->query( "CALL ctx_ddl.sync_index('$index')" );
 			wfDebugLog( 'OracleTextSearch', 'Synced index: '.$index);
@@ -29,7 +29,7 @@ class SearchOracleText extends SearchOracle {
 
 	function parseQuery( $filteredText, $fulltext ) {
 		$match = parent::parseQuery( $filteredText, $fulltext );
-		
+
 		if ( $fulltext ) {
 			$field = $this->getIndexField($fulltext);
 			$searchon = preg_replace( "/ CONTAINS\($field, ('.*'), 1\) > 0 /", "\\1", $match);
