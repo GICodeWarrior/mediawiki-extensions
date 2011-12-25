@@ -345,6 +345,15 @@ $messages['mr'] = array(
 	'stalepages-summary' => 'गेल्या $1 दिवसांत संपादन न झालेल्या पानांची यादी खाली दिलेली आहे.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'stalepages' => 'Foreldede sider',
+	'stalepages-desc' => 'Skaper en [[Special:Stalepages|liste over sider]] som ikke har blitt redigert i det siste',
+	'stalepages-summary' => 'Dette er en liste over sider som ikke har blitt redigert {{PLURAL:$1|dette døgnet|de siste $1 dagene}}.',
+);
+
 /** Low German (Plattdüütsch)
  * @author Purodha
  */
@@ -370,15 +379,6 @@ $messages['nn'] = array(
 	'stalepages' => 'Forelda sider',
 	'stalepages-desc' => 'Oppretter ei [[Special:Stalepages|liste over sider]] som ikkje er endra i det siste',
 	'stalepages-summary' => 'Dette er ei liste over sider som ikkje har vortne endra {{PLURAL:$1|den siste dagen|dei siste $1 dagane}}.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'stalepages' => 'Foreldede sider',
-	'stalepages-desc' => 'Skaper en [[Special:Stalepages|liste over sider]] som ikke har blitt redigert i det siste',
-	'stalepages-summary' => 'Dette er en liste over sider som ikke har blitt redigert {{PLURAL:$1|dette døgnet|de siste $1 dagene}}.',
 );
 
 /** Occitan (Occitan)
