@@ -935,6 +935,32 @@ $messages['nah'] = array(
 	'call' => 'Ticnōtzāz',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'call' => 'Kall opp',
+	'call-desc' => 'Gir mulighet til å skape linker til maler (eller vanlige wikisider) med angitte parametre. Lenkene kan brukes i nettleserens adressefelt eller i wikitekst.',
+	'call-text' => 'Utvidelsen Kall opp (Call) forventer seg at en wikiside og valgfrie parametere for den siden angis som et argument.<br /><br />
+
+Eksempel 1: &nbsp; <tt>[[{{#special:call}}/My Template,parm1=value1]]</tt><br />
+Eksempel 2: &nbsp; <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br /><br />
+Eksempel 3: &nbsp; <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br /><br />
+Eksempel 4 (URL for adressefeltet): &nbsp; <tt>http://mittdomene/minwiki/index.php?{{#special:call}}/:My Page,parm1=value1</tt><br /><br />
+
+<i>Kall opp</i>-tillegget anroper den angitte siden og sender med parameterne.<br />
+Du kommer til å se den anropte sidens innhold og tittel, men siden som vises er en spesialside og kan derfor ikke redigeres.<br />
+Innholdet som vises kan variere avhengig av verdiene til de parameterne som sendes med.<br /><br />
+
+<i>Kall opp</i>-utvidelsen kan brukes for å skape interaktive applikasjoner med MediaWiki.<br />
+Se for eksempel <a href="http://semeb.com/dpldemo/Template:Catlist">grensesnittet for DPL</a> ..<br />
+Om du har noen problemer kan du prøve <b>{{#special:call}}/DebuG</b>.',
+	'call-save' => "Resultatet av denne oppkallingen ville blitt lagret på en side ved navn ''$1''.",
+	'call-save-success' => 'Følgende tekst har blitt lagret på siden <big>[[$1]]</big>.',
+	'call-save-failed' => 'Følgende tekst har IKKE blitt lagret på siden <big>[[$1]]</big> fordi siden allerede finnes.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1001,32 +1027,6 @@ Om du har problem, kan du prøva <b>{{#special:call}}/DebuG</b>.',
 	'call-save' => "Resultatet av denne oppkallinga ville blitt lagra på ei sida med namnet ''$1''.",
 	'call-save-success' => 'Følgjande tekst har blitt lagra på sida <big>[[$1]]</big>.',
 	'call-save-failed' => 'Følgjande tekst har IKKJE blitt lagra på sida <big>[[$1]]</big> av di sida allereie finst.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'call' => 'Kall opp',
-	'call-desc' => 'Gir mulighet til å skape linker til maler (eller vanlige wikisider) med angitte parametre. Lenkene kan brukes i nettleserens adressefelt eller i wikitekst.',
-	'call-text' => 'Utvidelsen Kall opp (Call) forventer seg at en wikiside og valgfrie parametere for den siden angis som et argument.<br /><br />
-
-Eksempel 1: &nbsp; <tt>[[{{#special:call}}/My Template,parm1=value1]]</tt><br />
-Eksempel 2: &nbsp; <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br /><br />
-Eksempel 3: &nbsp; <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br /><br />
-Eksempel 4 (URL for adressefeltet): &nbsp; <tt>http://mittdomene/minwiki/index.php?{{#special:call}}/:My Page,parm1=value1</tt><br /><br />
-
-<i>Kall opp</i>-tillegget anroper den angitte siden og sender med parameterne.<br />
-Du kommer til å se den anropte sidens innhold og tittel, men siden som vises er en spesialside og kan derfor ikke redigeres.<br />
-Innholdet som vises kan variere avhengig av verdiene til de parameterne som sendes med.<br /><br />
-
-<i>Kall opp</i>-utvidelsen kan brukes for å skape interaktive applikasjoner med MediaWiki.<br />
-Se for eksempel <a href="http://semeb.com/dpldemo/Template:Catlist">grensesnittet for DPL</a> ..<br />
-Om du har noen problemer kan du prøve <b>{{#special:call}}/DebuG</b>.',
-	'call-save' => "Resultatet av denne oppkallingen ville blitt lagret på en side ved navn ''$1''.",
-	'call-save-success' => 'Følgende tekst har blitt lagret på siden <big>[[$1]]</big>.',
-	'call-save-failed' => 'Følgende tekst har IKKE blitt lagret på siden <big>[[$1]]</big> fordi siden allerede finnes.',
 );
 
 /** Occitan (Occitan)
@@ -1258,12 +1258,14 @@ $messages['sr-ec'] = array(
 	'call-save-failed' => 'Следећи текст није сачуван на страници <big>[[$1]]</big> јер та страница већ постоји.',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'call' => 'Poziv',
-	'call-desc' => 'Napravite hipervezu ka šablonu (ili na običnu viki stranicu) s parametrima u prolazu.
-Može se koristiti na komandnoj liniji pregledača ili u viki tekstu',
-	'call-save' => "Odredišna datoteka ovog poziva bi bila sačuvana na stranicu pod nazivom ''$1''.",
+	'call-desc' => 'Pravljenje veze ka šablonu (ili do obične stranice vikija) s parametrom u prolazu.
+Može se koristiti na komandnoj liniji pregledača ili unutar viki teksta',
+	'call-save' => "Odredišna datoteka ovog poziva bila bi sačuvana na stranicu pod nazivom ''$1''.",
 	'call-save-success' => 'Sledeći tekst je sačuvan u stranici <big>[[$1]]</big>.',
 	'call-save-failed' => 'Sledeći tekst nije sačuvan na stranici <big>[[$1]]</big> jer ta stranica već postoji.',
 );
