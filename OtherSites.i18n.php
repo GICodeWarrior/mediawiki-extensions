@@ -364,7 +364,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'othersites' => 'andre sider',
 	'othersites-desc' => 'Flytter interwikilenker som ikke er andre språk til sin egen boks',
 );
