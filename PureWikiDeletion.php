@@ -43,7 +43,7 @@ $wgAutoloadClasses['RandomExcludeBlank'] = "$dir/SpecialPureWikiDeletion.php";
 $wgAutoloadClasses['AllPagesExcludeBlank'] = "$dir/SpecialPureWikiDeletion.php";
 $wgAutoloadClasses['PopulateBlankedPagesTable'] = "$dir/SpecialPureWikiDeletion.php";
 $wgExtensionMessagesFiles['PureWikiDeletion'] = $dir . 'PureWikiDeletion.i18n.php';
-$wgExtensionAliasesFiles['PureWikiDeletion'] = $dir . 'PureWikiDeletion.alias.php';
+$wgExtensionMessagesFiles['PureWikiDeletionAlias'] = $dir . 'PureWikiDeletion.alias.php';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'PureWikiDeletionHooks::PureWikiDeletionCreateTable';
 $wgHooks['ArticleSaveComplete'][] = 'PureWikiDeletionHooks::PureWikiDeletionSaveCompleteHook';
