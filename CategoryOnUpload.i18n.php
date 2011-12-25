@@ -551,7 +551,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'categoryonupload-desc' => 'Ber brukere om å velge en kategori når du laster opp filer',
 	'categoryonupload-label' => 'Kategori:',
 );
