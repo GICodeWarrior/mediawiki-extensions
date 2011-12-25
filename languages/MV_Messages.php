@@ -7693,7 +7693,7 @@ For alle metadata i eit kategoriområde, søk etter $1',
  * @author Laaknor
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video Metadata Editor & Media Search]',
 	'metavid' => 'Metavid-side',
 	'mv_missing_stream' => 'Mangler dataflyt: $1',
