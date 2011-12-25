@@ -19,7 +19,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname(__FILE__);
 
 $wgExtensionMessagesFiles['EmergencyDeSysop'] = "$dir/EmergencyDeSysop.i18n.php";
-$wgExtensionAliasesFiles['EmergencyDeSysop'] = "$dir/EmergencyDeSysop.alias.php"; 
+$wgExtensionMessagesFiles['EmergencyDeSysopAlias'] = "$dir/EmergencyDeSysop.alias.php"; 
 $wgAutoloadClasses['SpecialEmergencyDeSysop'] = "$dir/SpecialEmergencyDeSysop.php";
 
 $wgSpecialPages['EmergencyDeSysop'] = 'SpecialEmergencyDeSysop';
