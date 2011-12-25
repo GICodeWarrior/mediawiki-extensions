@@ -205,18 +205,18 @@ $messages['ms'] = array(
 	'mwembed-desc' => 'Memberikan sokongan untuk modul-modul dan sambungan-sambungan mwEmbed',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'mwembed-desc' => 'MwEmbed biedt ondersteuning voor module en uitbreidingen van mwEmbed',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'mwembed-desc' => 'Gir støtte for mwEmbed-moduler og -utvidelser',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'mwembed-desc' => 'MwEmbed biedt ondersteuning voor module en uitbreidingen van mwEmbed',
 );
 
 /** Polish (Polski)
