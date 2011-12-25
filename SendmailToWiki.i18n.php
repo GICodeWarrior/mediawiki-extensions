@@ -487,7 +487,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'sendmailtowiki-desc' => 'Legg inn wikiinnhold gjennom en dedikert dynamisk e-postadresse',
 	'prefs-sendmailtowiki' => 'Legger til innhold via e-post',
 	'sendmailtowiki-inemail' => 'Dedikert e-postadresse:',
