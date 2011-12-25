@@ -113,6 +113,7 @@ $specialPageAliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $specialPageAliases['ia'] = array(
+	'RatedPages' => array( 'Paginas_evalutate' ),
 	'RatingHistory' => array( 'Historia_de_evalutationes' ),
 	'ReaderFeedback' => array( 'Reactiones_de_lectores' ),
 );
@@ -154,6 +155,12 @@ $specialPageAliases['ml'] = array(
 	'ReaderFeedback' => array( 'വായനക്കാരുടെഅഭിപ്രായങ്ങൾ' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'RatingHistory' => array( 'Vurderingshistorikk' ),
+	'ReaderFeedback' => array( 'Tilbakemeldinger' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'RatedPages' => array( 'Ewardeerden_pagina\'s' ),
@@ -174,12 +181,6 @@ $specialPageAliases['nn'] = array(
 	'ReaderFeedback' => array( 'Vurderingshistorikk' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'RatingHistory' => array( 'Vurderingshistorikk' ),
-	'ReaderFeedback' => array( 'Tilbakemeldinger' ),
-);
-
 /** Polish (Polski) */
 $specialPageAliases['pl'] = array(
 	'RatingHistory' => array( 'Historia_oceniania_strony' ),
@@ -188,8 +189,8 @@ $specialPageAliases['pl'] = array(
 
 /** Portuguese (Português) */
 $specialPageAliases['pt'] = array(
-	'RatingHistory' => array( 'Histórico de avaliações' ),
-	'ReaderFeedback' => array( 'Opinião do leitor' ),
+	'RatingHistory' => array( 'Histórico_de_avaliações' ),
+	'ReaderFeedback' => array( 'Opinião_do_leitor' ),
 );
 
 /** Brazilian Portuguese (Português do Brasil) */
@@ -198,7 +199,7 @@ $specialPageAliases['pt-br'] = array(
 	'ReaderFeedback' => array( 'Opinião do leitor' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'RatingHistory' => array( 'मुल्यांकनइतिहास' ),
 	'ReaderFeedback' => array( 'वाचकप्रतिक्रिया' ),
@@ -238,8 +239,3 @@ $specialPageAliases['tr'] = array(
 	'RatingHistory' => array( 'DerecelendirmeGeçmişi', 'PuanlamaGeçmişi' ),
 	'ReaderFeedback' => array( 'OkuyucuGeribildirimi' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
