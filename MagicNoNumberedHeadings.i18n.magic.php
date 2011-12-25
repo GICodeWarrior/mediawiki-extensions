@@ -35,7 +35,7 @@ $magicWords['de'] = array(
 
 /** Spanish (Español) */
 $magicWords['es'] = array(
-	'MAG_NONUMBEREDHEADINGS' => array( 0, '__ENCABEZADOSNOENUMERADOS__', '__NONUMBEREDHEADINGS__' ),
+	'MAG_NONUMBEREDHEADINGS' => array( 0, '__ENCABEZADOSNOENUMERADOS__', '__NONUMERARENCABEZADOS__' ),
 );
 
 /** Colognian (Ripoarisch) */
@@ -76,6 +76,11 @@ $magicWords['pl'] = array(
 /** Russian (Русский) */
 $magicWords['ru'] = array(
 	'MAG_NONUMBEREDHEADINGS' => array( 0, '__БЕЗНОМЕРОВЗАГОЛОВКОВ__' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'MAG_NONUMBEREDHEADINGS' => array( 0, '__BEZNUMERISANIHNASLOVA__', '__BEZ_NUMERISANIH_NASLOVA__' ),
 );
 
 /** Swedish (Svenska) */
