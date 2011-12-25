@@ -286,6 +286,13 @@ $messages['ms'] = array(
 	'stringfunctions-desc' => 'Meningkatkan penghurai dengan fungsi rentetan',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['nb'] = array(
+	'stringfunctions-desc' => 'Utvider parseren med string-funksjoner',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -305,13 +312,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'stringfunctions-desc' => 'Utvidar parseren med string-funksjonar',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Laaknor
- */
-$messages['nb'] = array(
-	'stringfunctions-desc' => 'Utvider parseren med string-funksjoner',
 );
 
 /** Occitan (Occitan)
@@ -402,9 +402,10 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'stringfunctions-desc' => 'Obogaćuje parser funkcijama za stringove',
+	'stringfunctions-desc' => 'Proširuje raščlanjivač s funkcijama za rad sa niskama',
 );
 
 /** Seeltersk (Seeltersk)
