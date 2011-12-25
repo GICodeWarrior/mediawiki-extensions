@@ -26,6 +26,11 @@ $specialPageAliases['bs'] = array(
 	'InspectCache' => array( 'ProvjeriKes' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'InspectCache' => array( 'Cache_einsehen' ),
+);
+
 /** Lower Sorbian (Dolnoserbski) */
 $specialPageAliases['dsb'] = array(
 	'InspectCache' => array( 'Cache_inspicěrowaś' ),
@@ -126,6 +131,11 @@ $specialPageAliases['mr'] = array(
 	'InspectCache' => array( 'सयतपासा' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'InspectCache' => array( 'Inspiser_mellomlager' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'InspectCache' => array( 'Kas_naokieken' ),
@@ -134,11 +144,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'InspectCache' => array( 'CacheInspecteren' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'InspectCache' => array( 'Inspiser_mellomlager' ),
 );
 
 /** Occitan (Occitan) */
@@ -156,7 +161,7 @@ $specialPageAliases['pt'] = array(
 	'InspectCache' => array( 'Inspeccionar_cache' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'InspectCache' => array( 'संगणकसंस्मृतिपरिक्षती' ),
 );
@@ -190,8 +195,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'InspectCache' => array( '檢查快取' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
