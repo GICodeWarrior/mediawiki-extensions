@@ -258,7 +258,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'preloader-desc' => 'Gir egendefinerbar forhåndslastet tekst for nye sider i de enkelte navnerommene',
 );
 
