@@ -1506,7 +1506,7 @@ $4',
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'todo' => 'Oppgaveliste',
 	'todo-desc' => 'Eksperimentell personlig utvidelse for [[Special:Todo|oppgavelister]].',
 	'todo-tab' => 'oppgaver',
