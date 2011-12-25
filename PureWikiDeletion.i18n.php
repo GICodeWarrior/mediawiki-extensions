@@ -646,6 +646,32 @@ $messages['ms'] = array(
 	'purewikideletion-blanknologin' => 'Belum log masuk',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'purewikideletion' => 'Ren wikisletting',
+	'randomexcludeblank' => 'Tilfeldig side (ekskludert tomme)',
+	'purewikideletion-desc' => 'Gjør blant annet at lenker til tomme sider blir røde',
+	'purewikideletion-pref-watchblank' => 'Legg til sider jeg tømmer i overvåkningslisten min',
+	'purewikideletion-blanked' => "En tidligere versjon av denne siden ble tømt av [[User:$1|$1]] ([[User talk:$1|diskusjon]]) ([[Special:Contributions/$1|bidrag]]) $5 $6.
+
+Begrunnelsen for tømmingen var: ''<nowiki>$3</nowiki>''.
+
+Du kan [{{fullurl:{{FULLPAGENAMEE}}|action=history}} vis sidens historikk], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} redigere den siste versjonen] eller starte på nytt i boksen nedenfor.",
+	'blank-log' => 'tom',
+	'blank-log-name' => 'Tømmingslogg',
+	'blank-log-header' => 'Nedenfor er en liste over sidetømminger og gjenopprettinger.',
+	'blank-log-entry-blank' => 'tømte $1',
+	'blank-log-entry-unblank' => 'gjenopprettet $1',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|tømmingslogg]]',
+	'purewikideletion-blanknologin' => 'Ikke innlogget',
+	'purewikideletion-blanknologintext' => 'Du må være registrert bruker og [[Special:UserLogin|innlogget]] for å tømme en side.',
+	'purewikideletion-unblanknologintext' => 'Du må være en registrert bruker og [[Special:UserLogin|innlogget]] for å gjenopprette en side.',
+	'purewikideletion-blankedtext' => '[[$1]] har blitt tømt.
+Se $2 for en oversikt over de nyeste tømmingene.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -674,32 +700,6 @@ U kunt de [{{fullurl:{{FULLPAGENAMEE}}|action=history}} geschiedenis van de pagi
 Zie $2 voor een overzicht van recent leeggemaakte pagina's.",
 	'purewikideletion-population-done' => 'De tabel blanked_page is gevuld.',
 	'right-purewikideletion' => "[[Special:PopulateBlankedPagesTable|De tabel met leggemaakte pagina's vullen]]",
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'purewikideletion' => 'Ren wikisletting',
-	'randomexcludeblank' => 'Tilfeldig side (ekskludert tomme)',
-	'purewikideletion-desc' => 'Gjør blant annet at lenker til tomme sider blir røde',
-	'purewikideletion-pref-watchblank' => 'Legg til sider jeg tømmer i overvåkningslisten min',
-	'purewikideletion-blanked' => "En tidligere versjon av denne siden ble tømt av [[User:$1|$1]] ([[User talk:$1|diskusjon]]) ([[Special:Contributions/$1|bidrag]]) $5 $6.
-
-Begrunnelsen for tømmingen var: ''<nowiki>$3</nowiki>''.
-
-Du kan [{{fullurl:{{FULLPAGENAMEE}}|action=history}} vis sidens historikk], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} redigere den siste versjonen] eller starte på nytt i boksen nedenfor.",
-	'blank-log' => 'tom',
-	'blank-log-name' => 'Tømmingslogg',
-	'blank-log-header' => 'Nedenfor er en liste over sidetømminger og gjenopprettinger.',
-	'blank-log-entry-blank' => 'tømte $1',
-	'blank-log-entry-unblank' => 'gjenopprettet $1',
-	'blank-log-link' => '[[{{#Special:Log}}/blank|tømmingslogg]]',
-	'purewikideletion-blanknologin' => 'Ikke innlogget',
-	'purewikideletion-blanknologintext' => 'Du må være registrert bruker og [[Special:UserLogin|innlogget]] for å tømme en side.',
-	'purewikideletion-unblanknologintext' => 'Du må være en registrert bruker og [[Special:UserLogin|innlogget]] for å gjenopprette en side.',
-	'purewikideletion-blankedtext' => '[[$1]] har blitt tømt.
-Se $2 for en oversikt over de nyeste tømmingene.',
 );
 
 /** Polish (Polski)
@@ -879,9 +879,11 @@ $messages['sr-ec'] = array(
 	'purewikideletion-blanknologin' => 'Нисте пријављени',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
-	'purewikideletion-blanknologin' => 'Niste ulogovani',
+	'purewikideletion-blanknologin' => 'Niste prijavljeni',
 );
 
 /** Telugu (తెలుగు)
