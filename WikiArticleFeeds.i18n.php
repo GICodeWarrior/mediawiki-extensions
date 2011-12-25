@@ -271,6 +271,14 @@ $messages['ms'] = array(
 	'wikiarticlefeeds_combined_description' => 'Ini ialah suapan gabungan yang mengandungi perkara-perkara daripada beberapa sumber suapan.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'wikiarticlefeeds-desc' => 'Produserer mating generert fra MediaWikisider',
+	'wikiarticlefeeds_combined_description' => 'Dette er en kombinert mating som inneholder deler fra flere kilder.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -286,14 +294,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'wikiarticlefeeds-desc' => 'Produserer mating generert frå MediaWiki-sider',
 	'wikiarticlefeeds_combined_description' => 'Dette er ein kombinert feed, som inneheld delar frå fleire feed-kjelder.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'wikiarticlefeeds-desc' => 'Produserer mating generert fra MediaWikisider',
-	'wikiarticlefeeds_combined_description' => 'Dette er en kombinert mating som inneholder deler fra flere kilder.',
 );
 
 /** Occitan (Occitan)
@@ -385,10 +385,12 @@ $messages['sr-ec'] = array(
 	'wikiarticlefeeds_combined_description' => 'Ово је комбиновани довод који садржи ставке из неколико извора.',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'wikiarticlefeeds-desc' => 'Izrađuje fidove proizvedene kod MedijaViki strana',
-	'wikiarticlefeeds_combined_description' => 'Ovo je kombinovani fid, koji sadrži elemente nekoliko izvornih fidova.',
+	'wikiarticlefeeds_combined_description' => 'Ovo je kombinovani dovod koji sadrži stavke iz nekoliko izvora.',
 );
 
 /** Swedish (Svenska)
