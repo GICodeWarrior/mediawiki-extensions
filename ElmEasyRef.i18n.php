@@ -181,7 +181,7 @@ $messages['nl'] = array(
  * @author Event
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'elm-easyref-desc' => 'Legg inn nedtrekksfelt for å vise referanseinnholdet',
 	'elm-easyref-ref' => 'Referanse $1',
 	'elm-easyref-close' => 'Lukk',
