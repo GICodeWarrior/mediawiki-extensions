@@ -2088,7 +2088,7 @@ Endra oppsettet til $wgPrefStatsTrackPrefs for å spora innstillingar.',
  * @author Simny
  * @author Stigmj
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'prefstats' => 'Statistikk over innstillinger',
 	'prefstats-desc' => 'Statistikk over tallet på brukere som har visse innstillinger',
 	'prefstats-title' => 'Statistikk over innstillinger',
