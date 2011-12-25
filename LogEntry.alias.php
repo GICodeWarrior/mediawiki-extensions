@@ -113,6 +113,11 @@ $specialPageAliases['mt'] = array(
 	'LogEntry' => array( 'DaħlaReġistru' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'LogEntry' => array( 'Loggelement' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'LogEntry' => array( 'Logboekregel' ),
@@ -123,17 +128,12 @@ $specialPageAliases['nl'] = array(
 	'LogEntry' => array( 'Logboekregel' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'LogEntry' => array( 'Loggelement' ),
-);
-
 /** Portuguese (Português) */
 $specialPageAliases['pt'] = array(
 	'LogEntry' => array( 'Entrada_no_registo' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'LogEntry' => array( 'अंकनप्रविष्टि' ),
 );
@@ -152,8 +152,3 @@ $specialPageAliases['tl'] = array(
 $specialPageAliases['tr'] = array(
 	'LogEntry' => array( 'GünlükGirdisi', 'KayıtGirdisi' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
