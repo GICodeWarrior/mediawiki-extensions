@@ -296,6 +296,13 @@ $messages['ms'] = array(
 	'geolite-desc' => 'Lightweight GeoIp Redirection',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'geolite-desc' => 'Lettvekts GeoIp-omdirigering',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -308,13 +315,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'geolite-desc' => 'Lettvekts-GeoIp-omdirigering',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'geolite-desc' => 'Lettvekts GeoIp-omdirigering',
 );
 
 /** Occitan (Occitan)
