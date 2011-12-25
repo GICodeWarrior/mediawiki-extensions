@@ -267,6 +267,27 @@ $messages['pl'] = array(
 	'fptc-no-suggestion' => 'Nie znaleziono podpowiedzi',
 );
 
+/** Russian (Русский)
+ * @author Eleferen
+ */
+$messages['ru'] = array(
+	'freqpatterntagcloud-desc' => '[[Special:FreqPatternTagCloud|Специальная страница]] для построения облака тегов на основе атрибутов и поиска похожих значений атрибутов',
+	'fptc-categoryname' => 'Категория',
+	'fptc-context-menu-browse' => 'Просмотреть страницы с этим значением',
+	'fptc-context-menu-similar-tags' => 'Аналогичные теги:',
+	'fptc-form-attribute-name' => 'Свойство:',
+	'fptc-form-submit-button' => 'Отправить',
+	'fptc-invalid-attribute' => 'Введённое свойство является недопустимым.',
+	'fptc-insufficient-rights-for-maintenance' => 'Вы должны войти в качестве администратора для просмотра этой страницы.',
+	'fptc-refresh-frequent-patterns' => 'Обновить данные',
+	'fptc-refreshed-frequent-patterns' => 'Частые шаблонные правила обновлены.',
+	'fptc-search-attribute-name' => 'Поиск объекта',
+	'fptc-search-button' => 'Найти',
+	'fptc-search-suggestion-value' => 'Подобно «%s»:',
+	'fptc-suggestion' => 'Возможно, вы имели в виду:',
+	'fptc-no-suggestion' => 'Ссылок не найдено',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
