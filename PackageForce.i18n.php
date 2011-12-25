@@ -652,7 +652,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'packageforce' => 'PackageForce',
 	'packageforceadmin' => 'PackageForceAdmin',
 	'pf-desc' => '[[Special:PackageForce|Last ned pakker]] med nyttige maler/osv.',
