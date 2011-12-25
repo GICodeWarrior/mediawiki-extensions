@@ -27,7 +27,7 @@ $wgSpecialPages['TradeTrack'] = 'SpecialTradeTrack';
 $wgSpecialPageGroups['TradeTrack'] = 'other';
 
 $wgExtensionMessagesFiles['TradeTrack'] = $dir . "/TradeTrack.i18n.php";
-$wgExtensionAliasesFiles['TradeTrack'] = $dir . "/TradeTrack.alias.php";
+$wgExtensionMessagesFiles['TradeTrackAlias'] = $dir . "/TradeTrack.alias.php";
 
 $wgTradeTrackEmailCommercial = "bharris@wikimedia.org";  // Who gets commercial requests (Kul)
 $wgTradeTrackEmailNonCommercial = "bharris@wikimedia.org"; // Who gets non-commercial requests (Mike)
