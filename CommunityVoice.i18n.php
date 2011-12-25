@@ -769,7 +769,7 @@ $messages['nn'] = array(
  * @author Laaknor
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'communityvoice' => 'Felleskapets stemme',
 	'communityvoice-desc' => 'Redskap for deltagelse i felleskapet',
 	'communityvoice-ratings' => 'Vurderinger',
