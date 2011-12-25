@@ -8247,7 +8247,7 @@ Opprett ho eller endra ho for å nytta denne utvidinga.',
  * @author Laaknor
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'configure' => 'Konfigurer wikien',
 	'configure-desc' => 'Tillat autoriserte brukere å konfigurere wikien via et nettbasert grensesnitt',
 	'configure-desc-group' => 'Gruppe',

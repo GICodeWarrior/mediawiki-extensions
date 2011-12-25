@@ -15090,7 +15090,7 @@ $messages['nn'] = array(
  * @author Laaknor
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'configure-setting-wgSitename' => 'Sidenavn',
 	'configure-setting-wgActionPaths' => 'URLer per handling',
 	'configure-setting-wgActionPaths-key' => 'Handling',
