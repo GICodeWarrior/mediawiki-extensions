@@ -159,7 +159,7 @@ $specialPageAliases['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['no'] = array(
+$specialPageAliases['nb'] = array(
 	'GlobalUserrights' => array( 'Globale_brukerrettigheter2' ),
 );
 

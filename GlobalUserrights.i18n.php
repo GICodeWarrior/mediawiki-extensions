@@ -519,7 +519,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'globaluserrights' => 'Håndtering av globale brukerrettigheter',
 	'gur-desc' => 'Enkel administrasjon av [[Special:GlobalUserRights|globale brukerrettigheter]]',
 	'gur-rightslog-name' => 'Logg for globale rettigheter',
