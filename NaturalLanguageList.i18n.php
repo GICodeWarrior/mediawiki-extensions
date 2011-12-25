@@ -297,6 +297,14 @@ $messages['nah'] = array(
 	'nll-lastseparator' => '&#32;īhuān&#32;',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'nll-desc' => 'Enkel formatering av lister på naturlige språk',
+	'nll-lastseparator' => '&#32;og&#32;',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -309,14 +317,6 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  */
 $messages['nn'] = array(
-	'nll-lastseparator' => '&#32;og&#32;',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'nll-desc' => 'Enkel formatering av lister på naturlige språk',
 	'nll-lastseparator' => '&#32;og&#32;',
 );
 
