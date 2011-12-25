@@ -36,7 +36,7 @@ $wgAutoloadClasses['SpecialRegisterForWikimania'] = "$d/specials/SpecialRegister
  * i18n
  */
 $wgExtensionMessagesFiles['wikimania'] = "$d/lang/Wikimania.i18n.php";
-$wgExtensionAliasesFiles['wikimania'] = "$d/lang/Wikimania.alias.php";
+$wgExtensionMessagesFiles['wikimaniaAlias'] = "$d/lang/Wikimania.alias.php";
 
 /**
  * Special pages
