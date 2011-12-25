@@ -126,7 +126,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'sdt-desc' => 'Tilleggsdatatyper for Semantic MediaWiki med utvidelser',
 	'sdt-duration' => 'Varighet',
 );
