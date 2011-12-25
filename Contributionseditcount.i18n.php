@@ -517,7 +517,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'contributionseditcount' => 'Denne brukeren har gjort {{PLURAL:$1|én redigering|$1 redigeringer}}.',
 	'contributionseditcount-desc' => 'Viser en redigeringsteller på [[Special:Contributions|bidragsoversikten]]',
 );
