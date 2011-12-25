@@ -48,7 +48,7 @@ $wgAutoloadClasses['ImportFreeImages'] = $dir . 'ImportFreeImages.body.php';
 $wgAutoloadClasses['SpecialImportFreeImages'] = $dir . 'SpecialImportFreeImages.php';
 $wgAutoloadClasses['UploadFreeImage'] = $dir . 'UploadFreeImage.php';
 $wgExtensionMessagesFiles['ImportFreeImages'] = $dir . 'ImportFreeImages.i18n.php';
-$wgExtensionAliasesFiles['ImportFreeImages'] = $dir . 'ImportFreeImages.alias.php';
+$wgExtensionMessagesFiles['ImportFreeImagesAlias'] = $dir . 'ImportFreeImages.alias.php';
 
 $wgSpecialPages['ImportFreeImages'] = 'SpecialImportFreeImages';
 // Special page group for MW 1.13+
