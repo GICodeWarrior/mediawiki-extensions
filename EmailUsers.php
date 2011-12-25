@@ -18,7 +18,7 @@ $wgAutoloadClasses['SpecialEmailUsers'] = $dir . 'SpecialEmailUsers.php';
 
 $wgExtensionMessagesFiles['EmailUsers'] = $dir . 'EmailUsers.i18n.php';
 
-$wgExtensionAliasesFiles['EmailUsers'] = $dir . 'EmailUsers.alias.php';
+$wgExtensionMessagesFiles['EmailUsersAlias'] = $dir . 'EmailUsers.alias.php';
 
 $wgSpecialPages['EmailUsers'] = 'SpecialEmailUsers';
 
