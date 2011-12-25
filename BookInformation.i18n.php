@@ -1331,6 +1331,24 @@ $messages['nah'] = array(
 	'bookinfo-result-author' => 'Chīhualōni:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'bookinfo-header' => 'Bokinformasjon',
+	'bookinformation-desc' => 'Utvider [[Special:Booksources|siden med bokkilder]] med informasjon fra en nettjeneste',
+	'bookinfo-result-title' => 'Tittel:',
+	'bookinfo-result-author' => 'Forfatter:',
+	'bookinfo-result-publisher' => 'Utgiver:',
+	'bookinfo-result-year' => 'År:',
+	'bookinfo-error-invalidisbn' => 'Ugyldig ISBN angitt.',
+	'bookinfo-error-nosuchitem' => 'Boken eksisterer ikke, eller kunne ikke finnes.',
+	'bookinfo-error-nodriver' => 'Kunne ikke sette i gang en passende bokinformasjonsdriver.',
+	'bookinfo-error-noresponse' => 'Ingen respons eller tidsavbrudd.',
+	'bookinfo-purchase' => 'Kjøp denne boken fra $1',
+	'bookinfo-provider' => 'Dataleverandør: $1',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1380,24 +1398,6 @@ $messages['nn'] = array(
 	'bookinfo-error-nodriver' => 'Kunne ikkje setja i gang ein passande bokinformasjonsdrivar.',
 	'bookinfo-error-noresponse' => 'Ingen respons eller tidsavbrot.',
 	'bookinfo-purchase' => 'Kjøp boka frå $1',
-	'bookinfo-provider' => 'Dataleverandør: $1',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'bookinfo-header' => 'Bokinformasjon',
-	'bookinformation-desc' => 'Utvider [[Special:Booksources|siden med bokkilder]] med informasjon fra en nettjeneste',
-	'bookinfo-result-title' => 'Tittel:',
-	'bookinfo-result-author' => 'Forfatter:',
-	'bookinfo-result-publisher' => 'Utgiver:',
-	'bookinfo-result-year' => 'År:',
-	'bookinfo-error-invalidisbn' => 'Ugyldig ISBN angitt.',
-	'bookinfo-error-nosuchitem' => 'Boken eksisterer ikke, eller kunne ikke finnes.',
-	'bookinfo-error-nodriver' => 'Kunne ikke sette i gang en passende bokinformasjonsdriver.',
-	'bookinfo-error-noresponse' => 'Ingen respons eller tidsavbrudd.',
-	'bookinfo-purchase' => 'Kjøp denne boken fra $1',
 	'bookinfo-provider' => 'Dataleverandør: $1',
 );
 
@@ -1724,9 +1724,10 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'bookinfo-header' => 'Informacije za knjigu',
+	'bookinfo-header' => 'Podaci o knjizi',
 	'bookinfo-result-title' => 'Naslov:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Izdavač:',
