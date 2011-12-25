@@ -338,7 +338,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'honeypot-desc' => 'Gir integrering for [http://projecthoneypot.org/ Project Honey Pot] på MediaWiki-nettsteder',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Antall nylige hendelser IP-adressa har satt i verk ifølge Project Honey Pot',
 );
