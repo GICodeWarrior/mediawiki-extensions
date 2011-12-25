@@ -1006,7 +1006,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'slippymap_desc' => 'Legger til et <tt>&lt;slippymap%gt;</tt>-element som gjør det mulig å bygge inn statiske & dynamiske kart. Støtter flere karttjenester, inkludert [http://openstreetmap.org OpenStreetMap] og NASA Worldwind.',
 	'slippymap_error' => '$1-feil: $2',
 	'slippymap_errors' => '$1-feil:',
