@@ -253,7 +253,7 @@ function OpenIDGetServerPath() {
 $dir = $path . '/';
 
 $wgExtensionMessagesFiles['OpenID'] = $dir . 'OpenID.i18n.php';
-$wgExtensionAliasesFiles['OpenID'] = $dir . 'OpenID.alias.php';
+$wgExtensionMessagesFiles['OpenIDAlias'] = $dir . 'OpenID.alias.php';
 
 $wgAutoloadClasses['OpenIDHooks'] = $dir . 'OpenID.hooks.php';
 
