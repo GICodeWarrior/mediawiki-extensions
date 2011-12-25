@@ -1619,7 +1619,7 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  * @author Sjurhamre
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'narayam-desc' => 'Gjør det mulgi å lage egendefinerte inndatametorer for inndatafelt',
 	'narayam-toggle-ime' => 'Aktiver ($1)',
 	'narayam-help' => 'Hjelp',
