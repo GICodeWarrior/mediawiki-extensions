@@ -36,7 +36,7 @@ $dir = dirname( __FILE__ );
 $wgExtensionMessagesFiles['PackageForce'] = "$dir/PackageForce.i18n.php";
 #$wgExtensionMessagesFiles['PackageForceMagic'] = "$dir/PackageForce.i18n.magic.php";
 
-$wgExtensionAliasesFiles['PackageForce'] = "$dir/PackageForce.alias.php";
+$wgExtensionMessagesFiles['PackageForceAlias'] = "$dir/PackageForce.alias.php";
 $wgSpecialPages['PackageForce'] = 'PackageForceSpecial';
 $wgSpecialPages['PackageForceAdmin'] = 'PackageForceAdminSpecial';
 
