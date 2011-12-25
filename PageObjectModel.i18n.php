@@ -170,7 +170,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'pageobjectmodel-desc' => 'Legger til et sett av klasser for abstraksjon av MediaWiki-syntaks for enkel utvinning og manipulering av sider inni andre program',
 );
 
