@@ -27,6 +27,11 @@ $specialPageAliases['ht'] = array(
 	'VariablePage' => array( 'PajVariab' ),
 );
 
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'VariablePage' => array( 'Pagina_variabile' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'VariablePage' => array( 'Variabel_Säit' ),
@@ -42,6 +47,11 @@ $specialPageAliases['ml'] = array(
 	'VariablePage' => array( 'ചരതാൾ' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'VariablePage' => array( 'Variabelside' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'VariablePage' => array( 'Variabele_pagina' ),
@@ -52,17 +62,7 @@ $specialPageAliases['nl'] = array(
 	'VariablePage' => array( 'VariabelePagina' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'VariablePage' => array( 'Variabelside' ),
-);
-
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'VariablePage' => array( 'DeğişkenSayfası' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
