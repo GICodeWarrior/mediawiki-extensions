@@ -2055,7 +2055,7 @@ $1',
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'inplace_access_disabled' => 'Tilgangen til denne tjenesten har blitt slått av for alle klienter.',
 	'inplace_access_denied' => 'Denne tjenesten begrenses av klientens IP.',
 	'inplace_scaler_no_temp' => 'Ingen gyldig midlertidig mappe, sett $wgLocalTmpDirectory til en skrivbar mappe.',
