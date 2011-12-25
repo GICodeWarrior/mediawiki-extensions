@@ -423,7 +423,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'svgedit-editbutton-edit' => 'Rediger tegning',
 	'svgedit-editor-save-close' => 'Lagre og lukk',
 	'svgedit-editor-close' => 'Avbryt',
