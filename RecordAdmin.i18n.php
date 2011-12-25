@@ -1664,7 +1664,7 @@ $messages['nn'] = array(
  * @author Event
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'recordadmin' => 'Oppføringshåndtering',
 	'recordadmin-desc' => 'Søk, spørringer, skjema og rapportering av wikidata hentet fra malparametre',
 	'recordadmin-specialdesc' => 'En [[Special:RecordAdmin|spesialside]] for å finne og opprette sider ved å bruke tilknyttede skjema',
