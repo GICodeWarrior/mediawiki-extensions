@@ -163,18 +163,18 @@ $messages['ms'] = array(
 	'livelets-desc' => 'Membolehkan laman untuk ditransklusi yang dimuatkan selepas kandungan utama laman dan boleh dikemas kini secara dinamik dengan Ajax',
 );
 
-/** Dutch (Nederlands)
- * @author McDutchie
- */
-$messages['nl'] = array(
-	'livelets-desc' => "Staat het transcluderen van pagina's toe die geladen worden na de hoofdinhoud van de pagina en via AJAX dynamisch bijgewerkt kunnen worden",
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'livelets-desc' => 'Tillater sider å bli transkludert som gjør at de laster etter hovedsideinnholdet og kan oppdateres dynamisk med Ajax',
+);
+
+/** Dutch (Nederlands)
+ * @author McDutchie
+ */
+$messages['nl'] = array(
+	'livelets-desc' => "Staat het transcluderen van pagina's toe die geladen worden na de hoofdinhoud van de pagina en via AJAX dynamisch bijgewerkt kunnen worden",
 );
 
 /** Polish (Polski)
