@@ -1409,6 +1409,45 @@ $messages['nah'] = array(
 	'todo-list-cancel' => 'Ticcuepāz',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'todo' => 'Oppgaveliste',
+	'todo-desc' => 'Eksperimentell personlig utvidelse for [[Special:Todo|oppgavelister]].',
+	'todo-tab' => 'oppgaver',
+	'todo-new-queue' => 'ny',
+	'todo-mail-subject' => 'Fullførte oppgave på $1s oppgaveliste',
+	'todo-mail-body' => 'Du ba om en e-postbekreftelse om fullføringen av en oppgave på $1s oppgaveliste.
+
+Oppgave: $2
+Fullført: $3
+
+Oppgaven er merket som fullført, med denne kommentaren:
+$4',
+	'todo-invalid-item' => 'Manglende eller ugyldig oppgave',
+	'todo-update-else-item' => 'Prøver å oppdatere en annen persons oppgaver',
+	'todo-unrecognize-type' => 'Type ikke gjenkjent',
+	'todo-user-invalide' => 'Oppgaven gitt til ugydlig, manglende eller upassende bruker.',
+	'todo-item-list' => 'Dine oppgaver',
+	'todo-no-item' => 'Ingen oppgaver.',
+	'todo-invalid-owner' => 'Ugyldig oppgaveeier.',
+	'todo-add-queue' => 'Legg til kø…',
+	'todo-move-queue' => 'Flytt til kø…',
+	'todo-list-for' => 'Oppgaveliste for $1',
+	'todo-list-change' => 'Endre',
+	'todo-list-cancel' => 'Avbryt',
+	'todo-new-item' => 'Ny oppgave',
+	'todo-not-updated' => 'Kunne ikke oppdatere databaseoppføringen',
+	'todo-issue-summary' => 'Sammendrag:',
+	'todo-form-details' => 'Detaljer:',
+	'todo-form-email' => 'Skriv inn e-postadressen din her for å mottå beskjed på e-post når oppgaven er fullført:',
+	'todo-form-submit' => 'Utfør',
+	'right-todo' => 'Ha en å gjøre-liste',
+	'right-todosubmit' => 'Begrens en brukers å gjøre-listerettigheter',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1500,45 +1539,6 @@ $4',
 	'todo-form-details' => 'Detaljar:',
 	'todo-form-email' => 'Skriv inn e-postadressa din her for å motta melding på e-post når oppgava er fullført:',
 	'todo-form-submit' => 'Utfør',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'todo' => 'Oppgaveliste',
-	'todo-desc' => 'Eksperimentell personlig utvidelse for [[Special:Todo|oppgavelister]].',
-	'todo-tab' => 'oppgaver',
-	'todo-new-queue' => 'ny',
-	'todo-mail-subject' => 'Fullførte oppgave på $1s oppgaveliste',
-	'todo-mail-body' => 'Du ba om en e-postbekreftelse om fullføringen av en oppgave på $1s oppgaveliste.
-
-Oppgave: $2
-Fullført: $3
-
-Oppgaven er merket som fullført, med denne kommentaren:
-$4',
-	'todo-invalid-item' => 'Manglende eller ugyldig oppgave',
-	'todo-update-else-item' => 'Prøver å oppdatere en annen persons oppgaver',
-	'todo-unrecognize-type' => 'Type ikke gjenkjent',
-	'todo-user-invalide' => 'Oppgaven gitt til ugydlig, manglende eller upassende bruker.',
-	'todo-item-list' => 'Dine oppgaver',
-	'todo-no-item' => 'Ingen oppgaver.',
-	'todo-invalid-owner' => 'Ugyldig oppgaveeier.',
-	'todo-add-queue' => 'Legg til kø…',
-	'todo-move-queue' => 'Flytt til kø…',
-	'todo-list-for' => 'Oppgaveliste for $1',
-	'todo-list-change' => 'Endre',
-	'todo-list-cancel' => 'Avbryt',
-	'todo-new-item' => 'Ny oppgave',
-	'todo-not-updated' => 'Kunne ikke oppdatere databaseoppføringen',
-	'todo-issue-summary' => 'Sammendrag:',
-	'todo-form-details' => 'Detaljer:',
-	'todo-form-email' => 'Skriv inn e-postadressen din her for å mottå beskjed på e-post når oppgaven er fullført:',
-	'todo-form-submit' => 'Utfør',
-	'right-todo' => 'Ha en å gjøre-liste',
-	'right-todosubmit' => 'Begrens en brukers å gjøre-listerettigheter',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -1945,7 +1945,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'todo' => 'Spisak stvari za uraditi',
-	'todo-desc' => 'Ekstenzija za eksperimentalan lični [[Special:Todo|spisak stvari za uraditi]]',
+	'todo-desc' => 'Eksperimentalno [[Special:Todo|todo list]] proširenje',
 	'todo-tab' => 'za uraditi',
 	'todo-new-queue' => 'novo',
 	'todo-unrecognize-type' => 'Nepoznat tip',
@@ -1953,7 +1953,7 @@ $messages['sr-el'] = array(
 	'todo-add-queue' => 'Dodaj red…',
 	'todo-move-queue' => 'Premesti u red…',
 	'todo-list-for' => 'Spisak stvari za uraditi, za $1',
-	'todo-list-change' => 'Promeni',
+	'todo-list-change' => 'Izmeni',
 	'todo-list-cancel' => 'Otkaži',
 	'todo-form-details' => 'Detalji:',
 	'todo-form-submit' => 'Pošanji upit',
