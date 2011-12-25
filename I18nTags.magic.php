@@ -131,7 +131,7 @@ $magicWords['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$magicWords['no'] = array(
+$magicWords['nb'] = array(
 	'languagename' => array( 0, 'språknavn' ),
 );
 
