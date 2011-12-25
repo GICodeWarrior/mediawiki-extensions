@@ -271,3 +271,22 @@ que resultou no erro: "$2"!',
 	'sql2wiki-err-feature_not_supported' => 'SQL>Wiki: A funcionalidade não está disponível em bases de dados do tipo $1!',
 );
 
+/** Russian (Русский)
+ * @author Eleferen
+ */
+$messages['ru'] = array(
+	'sql2wiki' => 'SQL2Wiki',
+	'sql2wiki-desc' => 'Отображает данные SQL непосредственно в содержимом страницы',
+	'sql2wiki-special' => 'Запуск кода SQL2Wiki в одно нажатие',
+	'sql2wiki-cache_refresh' => 'Обновить',
+	'sql2wiki-err-invalid_db_id' => 'SQL2Wiki: Отсутствует или недопустимый идентификатор базы данных',
+	'sql2wiki-err-invalid_type' => 'SQL2Wiki: Отсутствует или недопустимый тип',
+	'sql2wiki-err-failed_to_connect' => 'SQL2Wiki: Не удалось подключиться к $1!',
+	'sql2wiki-err-failed_to_execute' => 'SQL2Wiki: Не удалось выполнить инструкцию:
+
+«$1»
+
+с сообщением об ошибке: «$2»!',
+	'sql2wiki-err-feature_not_supported' => 'SQL2Wiki: Функция не поддерживается в базах данных типа $1!',
+);
+
