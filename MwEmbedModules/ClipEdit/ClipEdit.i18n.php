@@ -1368,7 +1368,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'mwe-clipedit-crop' => 'Beskjær bilde',
 	'mwe-clipedit-apply_crop' => 'Legg beskjæring til bilde',
 	'mwe-clipedit-reset_crop' => 'Tilbakestill beskjæring',

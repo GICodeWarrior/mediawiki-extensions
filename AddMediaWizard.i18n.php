@@ -482,7 +482,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'addmediawizard-desc' => 'Legg til mediaveiviser, utviklet i samarbeid mellom Kaltura og Wikimedia Foundation',
 	'addmediawizard-loading' => 'Laster legg til mediaveiviser',
 );

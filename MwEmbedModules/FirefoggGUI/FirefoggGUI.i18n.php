@@ -3615,7 +3615,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'fogg-wont-upload-to-server' => 'Merk: Din videofil vil bli kodet lokalt og lastes ikke opp til noen tjener.',
 	'fogg-save_local_file' => 'Lagre Ogg',
 	'fogg-help-sticky' => 'Hjelp (klikk for å feste)',

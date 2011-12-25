@@ -4894,7 +4894,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 av $2',
 	'mwe-upload-unknown-size' => 'Ukjent størrelse',
 	'mwe-cancel-confim' => 'Er du sikker på at du vil avbryte?',
