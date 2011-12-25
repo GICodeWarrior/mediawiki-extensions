@@ -524,7 +524,7 @@ Een eerste argument of "template"-argument is verplicht.',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'datatransclusion-desc' => 'Import og gjengivelse av dataoppføringer fra eksterne datakilder',
 	'datatransclusion-missing-source' => 'Ingen datakilde oppgitt.
 Andre eller «kilde»-argument kreves.',
