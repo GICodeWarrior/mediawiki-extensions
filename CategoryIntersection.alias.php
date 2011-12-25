@@ -70,7 +70,7 @@ $specialPageAliases['eo'] = array(
 
 /** Spanish (Español) */
 $specialPageAliases['es'] = array(
-	'CategoryIntersection' => array( 'IntersecciónDeCategoría' ),
+	'CategoryIntersection' => array( 'IntersecciónDeCategorías' ),
 );
 
 /** Persian (فارسی) */
@@ -188,6 +188,11 @@ $specialPageAliases['mr'] = array(
 	'CategoryIntersection' => array( 'वर्ग_चौक' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'CategoryIntersection' => array( 'Kategorisnitt' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'CategoryIntersection' => array( 'Kategoriedeursnee' ),
@@ -196,11 +201,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'CategoryIntersection' => array( 'Categoriedoorsnede' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'CategoryIntersection' => array( 'Kategorisnitt' ),
 );
 
 /** Occitan (Occitan) */
@@ -233,7 +233,7 @@ $specialPageAliases['ru'] = array(
 	'CategoryIntersection' => array( 'Пересечение категорий' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'CategoryIntersection' => array( 'वर्गविभाजन' ),
 );
@@ -292,8 +292,3 @@ $specialPageAliases['uk'] = array(
 $specialPageAliases['vi'] = array(
 	'CategoryIntersection' => array( 'Thể_loại_giao_nhau' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
