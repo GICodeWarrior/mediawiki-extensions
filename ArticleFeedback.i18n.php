@@ -5252,7 +5252,7 @@ $messages['nn'] = array(
  * @author Sjurhamre
  * @author Stigmj
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'articlefeedback' => 'Panelbord for artikkelvurdering',
 	'articlefeedback-desc' => 'Artikkelvurdering (pilotversjon)',
 	'articlefeedback-survey-question-origin' => 'Hvilken side var du på når du startet denne undersøkelsen?',
