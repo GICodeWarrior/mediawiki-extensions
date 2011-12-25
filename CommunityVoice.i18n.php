@@ -733,6 +733,22 @@ $messages['ms'] = array(
 	'communityvoice-ratings-error-no-title' => 'Atribut tajuk tiada dalam tag penilaian.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'communityvoice' => 'Felleskapets stemme',
+	'communityvoice-desc' => 'Redskap for deltagelse i felleskapet',
+	'communityvoice-ratings' => 'Vurderinger',
+	'communityvoice-ratings-scale-status-sending' => 'Sender...',
+	'communityvoice-ratings-scale-status-error' => 'Feil under sending!',
+	'communityvoice-ratings-scale-status-thanks' => 'Takk for at du stemte!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|én stemme|$2 stemmer}} avgitt)',
+	'communityvoice-ratings-error-no-category' => 'Kategoriattributt mangler i vurderingsmerke.',
+	'communityvoice-ratings-error-no-title' => 'Tittelattributt mangler i vurderingsmerke.',
+);
+
 /** Dutch (Nederlands)
  * @author Fryed-peach
  * @author Siebrand
@@ -763,22 +779,6 @@ $messages['nn'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|éi røyst avgjeven|$2 røyster avgjevne}})',
 	'communityvoice-ratings-error-no-category' => 'Kategoriattributt manglar i vurderingsmerke.',
 	'communityvoice-ratings-error-no-title' => 'Tittelattributt manglar i vurderingsmerke.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Laaknor
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'communityvoice' => 'Felleskapets stemme',
-	'communityvoice-desc' => 'Redskap for deltagelse i felleskapet',
-	'communityvoice-ratings' => 'Vurderinger',
-	'communityvoice-ratings-scale-status-sending' => 'Sender...',
-	'communityvoice-ratings-scale-status-error' => 'Feil under sending!',
-	'communityvoice-ratings-scale-status-thanks' => 'Takk for at du stemte!',
-	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2|én stemme|$2 stemmer}} avgitt)',
-	'communityvoice-ratings-error-no-category' => 'Kategoriattributt mangler i vurderingsmerke.',
-	'communityvoice-ratings-error-no-title' => 'Tittelattributt mangler i vurderingsmerke.',
 );
 
 /** Occitan (Occitan)
