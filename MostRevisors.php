@@ -23,7 +23,7 @@ $wgMostRevisorsLinkContributors = True;
 // Set extension files.
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['MostRevisors'] = $dir . 'MostRevisors.i18n.php';
-$wgExtensionAliasesFiles['MostRevisors'] = $dir . 'MostRevisors.alias.php';
+$wgExtensionMessagesFiles['MostRevisorsAlias'] = $dir . 'MostRevisors.alias.php';
 $wgAutoloadClasses['MostRevisors'] = $dir . 'MostRevisors_body.php';
 $wgSpecialPages['MostRevisors'] = 'MostRevisors';
 $wgSpecialPageGroups['MostRevisors'] = 'wiki';
