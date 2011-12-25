@@ -255,7 +255,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'gotocategory-desc' => 'Sjekker søkeord opp mot kategorinavnerommet for «Gå»-funksjonaliteten i søkeboksen',
 );
 
