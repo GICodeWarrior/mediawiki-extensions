@@ -26,7 +26,7 @@ $wgHooks['LanguageGetMagic'][]           = 'notificator_Magic';
 $wgSpecialPages['Notificator'] = 'SpecialNotificator';
 
 $wgExtensionMessagesFiles['Notificator'] =  $dir . '/Notificator.i18n.php';
-$wgExtensionAliasesFiles['Notificator'] = $dir . '/Notificator.alias.php';
+$wgExtensionMessagesFiles['NotificatorAlias'] = $dir . '/Notificator.alias.php';
 
 // Setting default here, to avoid register_globals vulnerabilites
 $ngFromAddress = $wgPasswordSenderName . '<' . $wgPasswordSender . '>';
