@@ -1252,7 +1252,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'passwordreset' => 'Passordresetting',
 	'passwordreset-desc' => "[[Special:PasswordReset|Nullstill brukeres passord]] &ndash; krever 'passwordreset'-rettigheter",
 	'passwordreset-invalidusername' => 'Ugyldig brukernavn',
