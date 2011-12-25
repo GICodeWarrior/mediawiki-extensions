@@ -289,6 +289,13 @@ $messages['ms'] = array(
 	'metakeywords-desc' => 'Benarkan konfigurasi tag <code>&lt;meta "keywords"&gt;</code> and <code>&lt;meta "description"&gt;</code> bagi setiap ruang nama',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'metakeywords-desc' => 'Muliggjør konfigurering av <code>&lt;meta "keywords"&gt;</code> og <code>&lt;meta "description"&gt;</code>-tagger per navnerom',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -313,13 +320,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'metakeywords-desc' => 'Mogleggjer konfigurering av <code>&lt;meta "keywords"&gt;</code> og <code>&lt;meta "description"&gt;</code>-merke per namnerom',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'metakeywords-desc' => 'Muliggjør konfigurering av <code>&lt;meta "keywords"&gt;</code> og <code>&lt;meta "description"&gt;</code>-tagger per navnerom',
 );
 
 /** Occitan (Occitan)
