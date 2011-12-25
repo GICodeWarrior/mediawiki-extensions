@@ -1021,7 +1021,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'errorhandler-desc' => 'Feilhåndtering for MediaWiki',
 	'errorhandler-errors' => 'Feil:',
 	'errorhandler-error-fatal' => 'Alvorlig feil',
