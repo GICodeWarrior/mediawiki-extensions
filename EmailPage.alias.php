@@ -23,6 +23,16 @@ $specialPageAliases['arz'] = array(
 	'E-mailPage' => array( 'مراسلة_الصفحة' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'E-mailPage' => array( 'Seite_mailen' ),
+);
+
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'E-mailPage' => array( 'صفحهٔ_پست_الکترونیکی' ),
+);
+
 /** French (Français) */
 $specialPageAliases['fr'] = array(
 	'E-mailPage' => array( 'EnvoyerPage', 'Envoyer Page' ),
@@ -53,6 +63,11 @@ $specialPageAliases['hu'] = array(
 	'E-mailPage' => array( 'Szócikk_elküldése_e-mailben' ),
 );
 
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'E-mailPage' => array( '電子メールでページを送信' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $specialPageAliases['lb'] = array(
 	'E-mailPage' => array( 'E-Mail-Säiten' ),
@@ -63,6 +78,11 @@ $specialPageAliases['mk'] = array(
 	'E-mailPage' => array( 'СтраницаЗаЕ-пошта' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'E-mailPage' => array( 'Send side som e-post' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'E-mailPage' => array( 'Pagina_per_netpost_sturen' ),
@@ -71,11 +91,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'E-mailPage' => array( 'PaginaE-mailen', 'PaginaEmailen' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'E-mailPage' => array( 'Send side som e-post' ),
 );
 
 /** Pashto (پښتو) */
@@ -92,8 +107,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'E-mailPage' => array( '電郵頁面' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
