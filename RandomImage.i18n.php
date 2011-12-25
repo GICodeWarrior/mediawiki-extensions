@@ -269,6 +269,13 @@ $messages['ms'] = array(
 	'randomimage-desc' => 'Membekalkan pemilih media rawak menggunakan <code>&lt;randomimage /&gt;</code>',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'randomimage-desc' => 'Gir en tilfeldig mediefil ved å bruke <code>&lt;randomimage /&gt;</code>',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -288,13 +295,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'randomimage-desc' => 'Gjev ei tilfeldig mediefil ved å nytte <code>&lt;randomimage /&gt;</code>',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'randomimage-desc' => 'Gir en tilfeldig mediefil ved å bruke <code>&lt;randomimage /&gt;</code>',
 );
 
 /** Occitan (Occitan)
@@ -385,9 +385,10 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'randomimage-desc' => 'Prikazuje slučajno izabranu sliku pomoću taga <code>&lt;randomimage /&gt;</code>',
+	'randomimage-desc' => 'Prikazuje slučajnog birača datoteka koristeći <code>&lt;randomimage /&gt;</code>',
 );
 
 /** Seeltersk (Seeltersk)
