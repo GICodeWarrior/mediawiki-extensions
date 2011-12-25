@@ -6,6 +6,7 @@
  * @file
  * @author Simon Bachenberg
  */
+
 $specialPageAliases = array();
 
 /** English (English) */
@@ -14,7 +15,11 @@ $specialPageAliases['en'] = array(
 );
 
 /** German (Deutsch) */
-$specialPageAliases['de'] = array( 
+$specialPageAliases['de'] = array(
 	'solrsearch' => array( 'SolrSearch', 'SpecialSolrSearch' ),
 );
 
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'solrsearch' => array( 'SolrZoeken' ),
+);
