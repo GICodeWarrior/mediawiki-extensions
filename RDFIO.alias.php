@@ -29,6 +29,18 @@ $specialPageAliases['de'] = array(
 	'RDFImport' => array( 'RDF_importieren' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'RDFImport' => array( 'درونریزی_آردی‌اف' ),
+);
+
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'SPARQLEndpoint' => array( 'Puncto_de_accesso_a_SPARQL' ),
+	'SpecialARC2Admin' => array( 'Administration_ARC2' ),
+	'RDFImport' => array( 'Importation_RDF' ),
+);
+
 /** Macedonian (Македонски) */
 $specialPageAliases['mk'] = array(
 	'SPARQLEndpoint' => array( 'SPARQLЗавршеток' ),
@@ -55,8 +67,3 @@ $specialPageAliases['vi'] = array(
 	'SpecialARC2Admin' => array( 'Quản_lý_ARC2', 'Quản_lí_ARC2' ),
 	'RDFImport' => array( 'Nhập_RDF' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
