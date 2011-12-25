@@ -858,7 +858,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'abc-desc' => 'Lager taggen <code>&lt;abc&gt;</code> for å formatere ABC-musikk',
 	'abcdownload' => 'Last ned:',
 );
