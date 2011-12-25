@@ -579,7 +579,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'categorywatch-desc' => 'Utvider overvåkningslistens funsjonalitet til å også omfatte innholdet i kategorier',
 	'categorywatch-emailsubject' => 'Aktivitet i den overvåkede kategorien «$1»',
 	'categorywatch-catmovein' => 'flyttet $1 til kategorien $2 fra $3',
