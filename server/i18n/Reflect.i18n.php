@@ -517,7 +517,7 @@ U kunt via de volgende verwijzing de reactie in context bekijken: <$4>.',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'reflect-desc' => 'Forbedring av trådede kommentarer',
 	'reflect-bulleted' => 'Hei $1,
 
