@@ -128,6 +128,11 @@ $specialPageAliases['mr'] = array(
 	'Patroller' => array( 'गस्तदार' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'Patroller' => array( 'Patruljør' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'Patroller' => array( 'Naokieken' ),
@@ -136,11 +141,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'Patroller' => array( 'Controleren' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'Patroller' => array( 'Patruljør' ),
 );
 
 /** Occitan (Occitan) */
@@ -153,7 +153,7 @@ $specialPageAliases['ro'] = array(
 	'Patroller' => array( 'Patrulă' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'Patroller' => array( 'पॅटरोलर' ),
 );
@@ -182,8 +182,3 @@ $specialPageAliases['tl'] = array(
 $specialPageAliases['tr'] = array(
 	'Patroller' => array( 'Devriye' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
