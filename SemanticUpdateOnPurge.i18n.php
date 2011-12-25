@@ -92,7 +92,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'suop-desc' => 'Oppdater semantiske attributter for en wikiside når siden blir ryddet',
 );
 
