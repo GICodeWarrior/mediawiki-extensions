@@ -2789,7 +2789,7 @@ Nog een fijne dag!
  * @author Event
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'moodbar-close' => '(lukk)',
 	'moodbar-type-happy-title' => 'Glad',
 	'moodbar-type-sad-title' => 'Trist',
