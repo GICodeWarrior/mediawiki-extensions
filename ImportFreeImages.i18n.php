@@ -1024,7 +1024,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'importfreeimages' => 'Imperter frie bilder',
 	'importfreeimages-desc' => 'Gir muligheten til å [[Special:ImportFreeImages|importere fri bilder]] fra [http://flickr.com flickr]',
 	'importfreeimages_description' => 'Denne siden lar deg søke i bilder med riktig lisens på Flickr og importere dem til wikien din.',
