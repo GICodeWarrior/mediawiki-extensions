@@ -425,7 +425,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'templatelink' => 'Mallenke',
 	'templatelink_desc' => 'Denne utvidelsen kan vise en mal som en ny side',
 	'templatelink_empty' => 'Du må angi en parameter.',
