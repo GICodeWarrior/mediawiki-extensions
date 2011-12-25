@@ -9629,7 +9629,7 @@ Vel ei samling til å eksportera. Skriv inn i språktekstruta i ei kommaseparere
  * @author Nghtwlkr
  * @author Simny
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'wikidata-desc' => 'Legger til en wiki-liknende database for ulike typer innhold.',
 	'wikidata-handler-namespace-move-error' => 'Sider i navnerom som kontrolleres av Wikidata-tillegget kan ikke flyttes.',
 	'languages' => 'Wikidata: Språkbehandler',

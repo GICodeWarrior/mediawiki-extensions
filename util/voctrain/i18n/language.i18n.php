@@ -3782,7 +3782,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'voctrain_Hello_World' => 'HALLO, WIKI!',
 	'voctrain_Permission_Denied' => 'Adgang nektet',
 	'voctrain_try_again_' => 'prøve igjen?',
