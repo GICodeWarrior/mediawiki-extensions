@@ -12,8 +12,9 @@
 		
 		$( '#bodyContent' ).find( '[type="submit"]' ).button();
 		
-		$( '#cancelEdit' ).click( function() {
+		$( '#cancelEdit' ).click( function( event ) {
 			window.location = $( this ).attr( 'target-url' );
+			event.preventDefault();
 		} );
 		
 	} );
