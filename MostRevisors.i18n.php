@@ -649,6 +649,25 @@ $messages['mt'] = array(
 	'mostrevisors-submit' => 'Mur',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'mostrevisors' => 'Sider med flest bidragsytere',
+	'mostrevisors-desc' => 'List opp [[Special:MostRevisors|sider med flest bidragsytere]]',
+	'mostrevisors-header' => "'''Denne siden lister opp {{PLURAL:$1|den siden|de $1 sidene}} med flest bidragsytere på denne wikien.'''",
+	'mostrevisors-limitlinks' => 'Vis inntil $1 sider',
+	'mostrevisors-namespace' => 'Navnerom:',
+	'mostrevisors-none' => 'Ingen oppføringer ble funnet.',
+	'mostrevisors-ns-header' => "'''Denne siden lister opp {{PLURAL:$1|den siden|de $1 sidene}} med flest bidragsytere i navnerommet $2.'''",
+	'mostrevisors-showing' => 'Lister opp {{PLURAL:$1|én side|$1 sider}}:',
+	'mostrevisors-submit' => 'Gå',
+	'mostrevisors-showredir' => 'Vis omdirigeringssider',
+	'mostrevisors-hideredir' => 'Gjem omdirigeringssider',
+	'mostrevisors-users' => '- {{PLURAL:$1|én bidragsyter|$1 bidragsytere}}',
+	'mostrevisors-viewcontributors' => 'Vis hovedbidragsytere',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -675,25 +694,6 @@ $messages['nn'] = array(
 	'mostrevisors-limitlinks' => 'Vis opptil $1 sider',
 	'mostrevisors-namespace' => 'Namnerom:',
 	'mostrevisors-submit' => 'Gå',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'mostrevisors' => 'Sider med flest bidragsytere',
-	'mostrevisors-desc' => 'List opp [[Special:MostRevisors|sider med flest bidragsytere]]',
-	'mostrevisors-header' => "'''Denne siden lister opp {{PLURAL:$1|den siden|de $1 sidene}} med flest bidragsytere på denne wikien.'''",
-	'mostrevisors-limitlinks' => 'Vis inntil $1 sider',
-	'mostrevisors-namespace' => 'Navnerom:',
-	'mostrevisors-none' => 'Ingen oppføringer ble funnet.',
-	'mostrevisors-ns-header' => "'''Denne siden lister opp {{PLURAL:$1|den siden|de $1 sidene}} med flest bidragsytere i navnerommet $2.'''",
-	'mostrevisors-showing' => 'Lister opp {{PLURAL:$1|én side|$1 sider}}:',
-	'mostrevisors-submit' => 'Gå',
-	'mostrevisors-showredir' => 'Vis omdirigeringssider',
-	'mostrevisors-hideredir' => 'Gjem omdirigeringssider',
-	'mostrevisors-users' => '- {{PLURAL:$1|én bidragsyter|$1 bidragsytere}}',
-	'mostrevisors-viewcontributors' => 'Vis hovedbidragsytere',
 );
 
 /** Occitan (Occitan)
