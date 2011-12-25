@@ -788,7 +788,7 @@ $messages['nn'] = array(
  * @author Harald Khan
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'randomincategory' => 'Tilfeldig side fra en kategori',
 	'randomincategory-desc' => '[[Special:Randomincategory|Spesialside]] for å få en tilfeldig side fra en kategori',
 	'randomincategory-toolbox' => 'Tilfeldig side',
