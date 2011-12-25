@@ -73,6 +73,11 @@ $specialPageAliases['frp'] = array(
 	'Badimages' => array( 'Crouyes_émâges', 'CrouyesÉmâges' ),
 );
 
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'Badimages' => array( 'Imaxes_incorrectas' ),
+);
+
 /** Swiss German (Alemannisch) */
 $specialPageAliases['gsw'] = array(
 	'Badimages' => array( 'Bilder wu nit gwinscht sin' ),
@@ -168,6 +173,11 @@ $specialPageAliases['mt'] = array(
 	'Badimages' => array( 'StampiĦżiena' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'Badimages' => array( 'Dårlige_bilder' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'Badimages' => array( 'Zwarte_lieste_van_bestaanden' ),
@@ -181,11 +191,6 @@ $specialPageAliases['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
 $specialPageAliases['nn'] = array(
 	'Badimages' => array( 'Dårlege_bilete' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'Badimages' => array( 'Dårlige_bilder' ),
 );
 
 /** Occitan (Occitan) */
@@ -203,7 +208,7 @@ $specialPageAliases['ps'] = array(
 	'Badimages' => array( 'بد_انځورونه' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'Badimages' => array( 'कुचित्र:' ),
 );
@@ -240,15 +245,10 @@ $specialPageAliases['tr'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $specialPageAliases['zh-hans'] = array(
-	'Badimages' => array( '糟糕图像' ),
+	'Badimages' => array( '劣质图像' ),
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */
 $specialPageAliases['zh-hant'] = array(
 	'Badimages' => array( '壞圖像' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
