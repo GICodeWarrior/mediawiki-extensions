@@ -26,7 +26,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['MassEditRegex'] = $dir . 'MassEditRegex.i18n.php';
-$wgExtensionAliasesFiles['MassEditRegex'] = $dir . 'MassEditRegex.alias.php';
+$wgExtensionMessagesFiles['MassEditRegexAlias'] = $dir . 'MassEditRegex.alias.php';
 $wgAutoloadClasses['MassEditRegex'] = $dir . 'MassEditRegex.class.php';
 $wgSpecialPages['MassEditRegex'] = 'MassEditRegex';
 $wgSpecialPageGroups['MassEditRegex'] = 'pagetools';
