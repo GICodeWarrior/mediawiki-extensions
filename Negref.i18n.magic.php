@@ -22,10 +22,15 @@ $magicWords['arz'] = array(
 
 /** Spanish (Español) */
 $magicWords['es'] = array(
-	'negref' => array( 0, 'refneg', 'negref' ),
+	'negref' => array( 0, 'refneg' ),
 );
 
 /** Macedonian (Македонски) */
 $magicWords['mk'] = array(
 	'negref' => array( 0, 'нагодинав' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'negref' => array( 0, 'negref' ),
 );
