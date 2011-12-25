@@ -336,6 +336,13 @@ $messages['ms'] = array(
 	'woopra-desc' => 'Benarkan [http://www.woopra.com/ Woopra Live Tracking Software] untuk menjalankan kerja pemasukan MediaWiki',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'woopra-desc' => 'Gjør at [http://woopra.com/ Woopra Live Tracking Software] fungere med MediaWiki',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -356,13 +363,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'woopra-desc' => 'Gjør at [http://woopra.com/ Woopra Live Tracking Software] fungerer med MediaWiki',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'woopra-desc' => 'Gjør at [http://woopra.com/ Woopra Live Tracking Software] fungere med MediaWiki',
 );
 
 /** Occitan (Occitan)
@@ -472,9 +472,10 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
-	'woopra-desc' => 'Omogućava [<a href="http://www.woopra.com/">http://www.woopra.com/</a> Woopra Softveru za praćenje uživo] da radi sa Vašom instalacijom MedijaVikija.',
+	'woopra-desc' => 'Omogućava [http://www.woopra.com/ Woopra Softveru za praćenje uživo] da radi sa Vašom instalacijom MedijaVikija.',
 );
 
 /** Seeltersk (Seeltersk)
