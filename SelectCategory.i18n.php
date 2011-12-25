@@ -402,7 +402,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'selectcategory-title' => 'Velg kategorier',
 	'selectcategory-desc' => 'Lar brukeren velge fra eksisterende kategorier når han/hun redigerer en side',
 	'selectcategory-subtitle' => 'Shift+klikk for å velge flere sammenhengende alternativer, Ctrl+klikk for å velge ikke-sammenhengende alternativer.',
