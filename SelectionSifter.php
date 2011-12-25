@@ -28,7 +28,7 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 
 $wgExtensionMessagesFiles['SelectionSifter'] = $dir . 'SelectionSifter.i18n.php';
-$wgExtensionAliasesFiles['SelectionSifter'] = $dir . 'SelectionSifter.alias.php';
+$wgExtensionMessagesFiles['SelectionSifterAlias'] = $dir . 'SelectionSifter.alias.php';
 
 $wgAutoloadClasses['SelectionSifterHooks'] = $dir . 'SelectionSifter.hooks.php';
 $wgAutoloadClasses['Statistics'] = $dir . 'models/Statistics.php';
