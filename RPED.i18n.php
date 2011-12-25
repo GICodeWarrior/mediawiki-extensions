@@ -242,7 +242,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'rped' => 'Eksistensdeteksjon av eksterne sider',
 	'rped-desc' => 'Lenker wikilenker til Wikipedia om siden ikke finnes på den lokale wikien men finnes på Wikipedia',
 	'rped-wikipedia-url' => 'http://no.wikipedia.org/wiki/$1',
