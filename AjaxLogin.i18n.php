@@ -988,7 +988,7 @@ Sjekk stavinga di av brukarnamnet.',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'ajaxlogin-desc' => 'En dynamisk boks som lar brukere logge inn og huske passord',
 	'ajaxLogin1' => 'For å fullføre innloggingen må du skrive inn et nytt passord.
 Dette vil føre deg vekk fra denne redigeringssiden, og du kan miste den nåværende redigeringen.',
