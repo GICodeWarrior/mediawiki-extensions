@@ -1521,7 +1521,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'article-comments-desc' => 'Slå på kommentarseksjoner på innholdssider',
 	'article-comments-title-string' => 'tittel',
 	'article-comments-name-string' => 'Navn',
