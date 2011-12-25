@@ -737,6 +737,22 @@ $messages['nah'] = array(
 	'showprocesslist-user' => 'Tlatequitiltilīlli',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'showprocesslist' => 'Vis prosessliste',
+	'showprocesslist-desc' => 'Vis resultatet av [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-id' => 'ID',
+	'showprocesslist-user' => 'Bruker',
+	'showprocesslist-host' => 'Vert',
+	'showprocesslist-db' => 'database',
+	'showprocesslist-command' => 'Kommando',
+	'showprocesslist-time' => 'Tid',
+	'showprocesslist-state' => 'Tilstand',
+	'showprocesslist-info' => 'Info',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -768,22 +784,6 @@ $messages['nn'] = array(
 	'showprocesslist-time' => 'Tid',
 	'showprocesslist-state' => 'Stode',
 	'showprocesslist-info' => 'Informasjon',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'showprocesslist' => 'Vis prosessliste',
-	'showprocesslist-desc' => 'Vis resultatet av [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
-	'showprocesslist-id' => 'ID',
-	'showprocesslist-user' => 'Bruker',
-	'showprocesslist-host' => 'Vert',
-	'showprocesslist-db' => 'database',
-	'showprocesslist-command' => 'Kommando',
-	'showprocesslist-time' => 'Tid',
-	'showprocesslist-state' => 'Tilstand',
-	'showprocesslist-info' => 'Info',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)
@@ -1022,12 +1022,13 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'showprocesslist' => 'Pokaži spisak procesa',
 	'showprocesslist-desc' => 'Prikaži izlaz za [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-user' => 'Korisnik',
-	'showprocesslist-host' => 'Host',
+	'showprocesslist-host' => 'Domaćin',
 	'showprocesslist-db' => 'Baza podataka',
 	'showprocesslist-command' => 'Komanda',
 	'showprocesslist-time' => 'Vreme',
