@@ -257,7 +257,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'conditionalshowsection-desc' => 'Bruk cshow-merkelappen for å velge vis/skjul en seksjon av wikitekst',
 );
 
