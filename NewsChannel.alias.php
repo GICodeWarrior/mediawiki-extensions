@@ -55,7 +55,7 @@ $specialPageAliases['dsb'] = array(
 
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
-	'NewsChannel' => array( 'کانال_خبری' ),
+	'NewsChannel' => array( 'کانال_اخبار' ),
 );
 
 /** Finnish (Suomi) */
@@ -71,6 +71,11 @@ $specialPageAliases['fr'] = array(
 /** Franco-Provençal (Arpetan) */
 $specialPageAliases['frp'] = array(
 	'NewsChannel' => array( 'Chêna_de_novèles', 'ChênaDeNovèles' ),
+);
+
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'NewsChannel' => array( 'Canal_de_novas' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -138,6 +143,11 @@ $specialPageAliases['ml'] = array(
 	'NewsChannel' => array( 'വാർത്താചാനൽ' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'NewsChannel' => array( 'Nyhetskanal' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'NewsChannel' => array( 'Niej_kanaal' ),
@@ -146,11 +156,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'NewsChannel' => array( 'Nieuwskanaal' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'NewsChannel' => array( 'Nyhetskanal' ),
 );
 
 /** Occitan (Occitan) */
@@ -173,7 +178,7 @@ $specialPageAliases['pt-br'] = array(
 	'NewsChannel' => array( 'Canal_de_notícias' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'NewsChannel' => array( 'वृत्तवाहिनी' ),
 );
@@ -217,8 +222,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'NewsChannel' => array( '新聞頻道' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
