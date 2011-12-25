@@ -646,7 +646,7 @@ $messages['nn'] = array(
  * @author Boivie
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'minipreview-desc' => 'Miniforhåndsvisning viser små forhåndsvisninger av media i samme kategorier eller fra samme sider',
 	'minipreview-files_in_category' => 'Totalt $1 {{PLURAL:$1|fil|filer}} i denne kategorien.',
 	'minipreview-files_in_gallery' => 'Totalt $1 {{PLURAL:$1|fil|filer}} i dette galleriet.',
