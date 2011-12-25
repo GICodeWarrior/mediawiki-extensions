@@ -284,7 +284,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'psinotocnum-desc' => 'Legger til det magiske ordet «<nowiki>__NOTOCNUM__</nowiki>»',
 );
 
