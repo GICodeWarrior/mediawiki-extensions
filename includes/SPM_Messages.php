@@ -246,7 +246,7 @@ $messages['nl'] = array(
  * @author Event
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'spm_wbs_link' => 'MS Project XML-eksport',
 	'spm_printername_wbs' => 'MS Project-eksport',
 	'spm-name' => 'Semantic Project Management',
