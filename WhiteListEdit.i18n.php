@@ -2491,6 +2491,67 @@ $messages['nah'] = array(
 	'whitelistnever' => 'aīcmah',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'whitelistedit-desc' => 'Redigering av tilgangsrettigheter for begrensede brukere',
+	'whitelistedit' => 'Rettighetsredigering for hvitliste',
+	'whitelist' => 'Hvitelistede sider',
+	'mywhitelistpages' => 'Mine sider',
+	'whitelistfor' => '<span style="text-align: center;">Nåværende informasjon for <b>$1</b></span>',
+	'whitelisttablemodify' => 'Endre',
+	'whitelisttablemodifyall' => 'Alle',
+	'whitelisttablemodifynone' => 'Ingen',
+	'whitelisttablepage' => 'Wikiside',
+	'whitelisttabletype' => 'Tilgangstype',
+	'whitelisttableexpires' => 'Utgår',
+	'whitelisttablemodby' => 'Sist endret av',
+	'whitelisttablemodon' => 'Sist endret',
+	'whitelisttableedit' => 'Rediger',
+	'whitelisttableview' => 'Vis',
+	'whitelisttablenewdate' => 'Ny dato:',
+	'whitelisttablechangedate' => 'Endre utgangsdato',
+	'whitelisttablesetedit' => 'Sett til redigering',
+	'whitelisttablesetview' => 'Sett til visning',
+	'whitelisttableremove' => 'Fjern',
+	'whitelistnewpagesfor' => 'Legg til nye sider på hvitelisten til <b>$1</b><br />Bruk enten * eller % som jokertegn',
+	'whitelistnewtabledate' => 'Utgangsdato:',
+	'whitelistnewtableedit' => 'Sett til redigering',
+	'whitelistnewtableview' => 'Sett til visning',
+	'whitelistnowhitelistedusers' => 'Det finnes ingen brukere i gruppen «{{MediaWiki:Group-restricted}}».
+Du må [[Special:UserRights|legge brukere til gruppen]] før du kan legge til sider til en brukers hvitliste.',
+	'whitelistnewtableprocess' => 'Prosess',
+	'whitelistnewtablereview' => 'Gå gjennom',
+	'whitelistselectrestricted' => '== ANgi navn på begrenset bruker ==',
+	'whitelistpagelist' => '{{SITENAME}}-sider for $1',
+	'whitelistnocalendar' => '<span class="error">Det virker som om [http://mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], en forutsetning for denne utvidelsen, ikke har blitt installert ordentlig.</span>',
+	'whitelistoverview' => '== Oversikt over endringer for $1 ==',
+	'whitelistoverviewcd' => "* Endrer dato for [[:$2|$2]] til '''$1'''",
+	'whitelistoverviewsa' => "* Setter tilgang for [[:$2|$2]] til '''$1'''",
+	'whitelistoverviewrm' => '* Fjerner tilgang til [[:$1|$1]]',
+	'whitelistoverviewna' => "* Legger til [[:$1|$1]] til hviteliste med tilgang '''$2''' og utløpsdato '''$3'''.",
+	'whitelistrequest' => 'Etterspør tilgang til flere sider',
+	'whitelistrequestmsg' => '$1 har etterspurt tilgang til følgende {{PLURAL:$3|side|sider}}:
+
+$2',
+	'whitelistrequestconf' => 'Etterspørsel om nye sider har blitt sendt til $1',
+	'whitelistnonrestricted' => "'''$1''' er ikke en begrenset bruker.
+Denne siden kan kun brukes på begrensede brukere.",
+	'whitelistnever' => 'aldri',
+	'whitelistnummatches' => ' - $1 {{PLURAL:$1|treff}}',
+	'right-editwhitelist' => 'Endre hvitlisten for eksisterende brukere',
+	'right-restricttowhitelist' => 'Endre og vis sider som bare er på hvitlisten',
+	'action-editwhitelist' => 'endre hvitlisten for eksisterende brukere',
+	'action-restricttowhitelist' => 'endre og vis sider som bare er på hvitlisten',
+	'group-restricted' => 'Begrensede brukere',
+	'group-restricted-member' => 'Begrenset bruker',
+	'group-manager' => 'Håndterere',
+	'group-manager-member' => 'Håndterer',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -2630,67 +2691,6 @@ Denne sida kan berre nyttast på avgrensa brukarar.",
 	'group-restricted-member' => 'Avgrensa brukar',
 	'group-manager' => 'Handsamarar',
 	'group-manager-member' => 'Handsamar',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Audun
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'whitelistedit-desc' => 'Redigering av tilgangsrettigheter for begrensede brukere',
-	'whitelistedit' => 'Rettighetsredigering for hvitliste',
-	'whitelist' => 'Hvitelistede sider',
-	'mywhitelistpages' => 'Mine sider',
-	'whitelistfor' => '<span style="text-align: center;">Nåværende informasjon for <b>$1</b></span>',
-	'whitelisttablemodify' => 'Endre',
-	'whitelisttablemodifyall' => 'Alle',
-	'whitelisttablemodifynone' => 'Ingen',
-	'whitelisttablepage' => 'Wikiside',
-	'whitelisttabletype' => 'Tilgangstype',
-	'whitelisttableexpires' => 'Utgår',
-	'whitelisttablemodby' => 'Sist endret av',
-	'whitelisttablemodon' => 'Sist endret',
-	'whitelisttableedit' => 'Rediger',
-	'whitelisttableview' => 'Vis',
-	'whitelisttablenewdate' => 'Ny dato:',
-	'whitelisttablechangedate' => 'Endre utgangsdato',
-	'whitelisttablesetedit' => 'Sett til redigering',
-	'whitelisttablesetview' => 'Sett til visning',
-	'whitelisttableremove' => 'Fjern',
-	'whitelistnewpagesfor' => 'Legg til nye sider på hvitelisten til <b>$1</b><br />Bruk enten * eller % som jokertegn',
-	'whitelistnewtabledate' => 'Utgangsdato:',
-	'whitelistnewtableedit' => 'Sett til redigering',
-	'whitelistnewtableview' => 'Sett til visning',
-	'whitelistnowhitelistedusers' => 'Det finnes ingen brukere i gruppen «{{MediaWiki:Group-restricted}}».
-Du må [[Special:UserRights|legge brukere til gruppen]] før du kan legge til sider til en brukers hvitliste.',
-	'whitelistnewtableprocess' => 'Prosess',
-	'whitelistnewtablereview' => 'Gå gjennom',
-	'whitelistselectrestricted' => '== ANgi navn på begrenset bruker ==',
-	'whitelistpagelist' => '{{SITENAME}}-sider for $1',
-	'whitelistnocalendar' => '<span class="error">Det virker som om [http://mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], en forutsetning for denne utvidelsen, ikke har blitt installert ordentlig.</span>',
-	'whitelistoverview' => '== Oversikt over endringer for $1 ==',
-	'whitelistoverviewcd' => "* Endrer dato for [[:$2|$2]] til '''$1'''",
-	'whitelistoverviewsa' => "* Setter tilgang for [[:$2|$2]] til '''$1'''",
-	'whitelistoverviewrm' => '* Fjerner tilgang til [[:$1|$1]]',
-	'whitelistoverviewna' => "* Legger til [[:$1|$1]] til hviteliste med tilgang '''$2''' og utløpsdato '''$3'''.",
-	'whitelistrequest' => 'Etterspør tilgang til flere sider',
-	'whitelistrequestmsg' => '$1 har etterspurt tilgang til følgende {{PLURAL:$3|side|sider}}:
-
-$2',
-	'whitelistrequestconf' => 'Etterspørsel om nye sider har blitt sendt til $1',
-	'whitelistnonrestricted' => "'''$1''' er ikke en begrenset bruker.
-Denne siden kan kun brukes på begrensede brukere.",
-	'whitelistnever' => 'aldri',
-	'whitelistnummatches' => ' - $1 {{PLURAL:$1|treff}}',
-	'right-editwhitelist' => 'Endre hvitlisten for eksisterende brukere',
-	'right-restricttowhitelist' => 'Endre og vis sider som bare er på hvitlisten',
-	'action-editwhitelist' => 'endre hvitlisten for eksisterende brukere',
-	'action-restricttowhitelist' => 'endre og vis sider som bare er på hvitlisten',
-	'group-restricted' => 'Begrensede brukere',
-	'group-restricted-member' => 'Begrenset bruker',
-	'group-manager' => 'Håndterere',
-	'group-manager-member' => 'Håndterer',
 );
 
 /** Occitan (Occitan)
@@ -3400,14 +3400,14 @@ $2',
  * @author Rancher
  */
 $messages['sr-el'] = array(
-	'mywhitelistpages' => 'Moje strane',
+	'mywhitelistpages' => 'Moje stranice',
 	'whitelisttablemodifyall' => 'Sve',
 	'whitelisttablemodifynone' => 'Nema',
 	'whitelisttablepage' => 'Viki članak',
 	'whitelisttabletype' => 'Tip pristupa',
 	'whitelisttableexpires' => 'Ističe na',
 	'whitelisttablemodby' => 'Poslednja izmena',
-	'whitelisttablemodon' => 'Poslednja izmena na',
+	'whitelisttablemodon' => 'Poslednja izmena',
 	'whitelisttableedit' => 'Uredi',
 	'whitelisttableview' => 'Pregled',
 	'whitelisttablenewdate' => 'Novi datum:',
@@ -3419,15 +3419,15 @@ $messages['sr-el'] = array(
 	'whitelistoverviewcd' => "* Menjanje datuma na '''$1''' za [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Postavljanje pristupa na '''$1''' za [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Uklanjanje pristupa za [[:$1|$1]]',
-	'whitelistrequest' => 'Zahtevanje pristupa za više strana',
+	'whitelistrequest' => 'Zahtevanje pristupa za više stranica',
 	'whitelistrequestmsg' => '$1 je zahtevao pristup {{PLURAL:$3|sledećoj strani|sledećim stranama}}:
 
 $2',
-	'whitelistrequestconf' => 'Zahtev za novim stranama je poslat $1',
+	'whitelistrequestconf' => 'Zahtev za novim stranicama je poslat $1',
 	'whitelistnever' => 'nikad',
 	'group-restricted' => 'Ograničeni korisnici',
 	'group-restricted-member' => '{{GENDER:$1|ograničen korisnik|ograničena korisnica|ograničen korisnik}}',
-	'group-manager' => 'Menadžeri',
+	'group-manager' => 'Upravljači',
 	'group-manager-member' => '{{GENDER:$1|rukovodilac|rukovoditeljka|rukovodilac}}',
 );
 
