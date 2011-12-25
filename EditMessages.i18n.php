@@ -1277,7 +1277,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'editmessages-desc' => '[[Special:EditMessages|Nettbasert redigering]] av et stort antall Messages*.php-filer',
 	'editmessages' => 'Rediger beskjeder',
 	'editmsg-target' => 'Målbeskjed:',
