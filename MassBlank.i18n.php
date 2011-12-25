@@ -535,7 +535,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'massblank-nopages' => 'Ingen nye sider av [[Special:Contributions/$1|$1]] i siste endringer.',
 	'massblank-blankcomment' => 'Årsak:',
 );
