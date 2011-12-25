@@ -60,7 +60,7 @@ define( 'PICTUREGAME_FLAG_PROTECT', 2 );
 // Set up the new special page and autoload classes
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['PictureGame'] = $dir . 'PictureGame.i18n.php';
-$wgExtensionAliasesFiles['PictureGame'] = $dir . 'PictureGame.alias.php';
+$wgExtensionMessagesFiles['PictureGameAlias'] = $dir . 'PictureGame.alias.php';
 $wgAutoloadClasses['PictureGameHome'] = $dir . 'PictureGameHome.body.php';
 $wgSpecialPages['PictureGameHome'] = 'PictureGameHome';
 
