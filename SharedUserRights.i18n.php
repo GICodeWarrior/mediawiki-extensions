@@ -439,7 +439,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Simny
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'shareduserrights' => 'Administrering av delte brukerrettigheter',
 	'gblrights-desc' => 'Enkel [[Special:SharedUserRights|administrering av globale brukerrettigheter]]',
 	'gblrights-logpage' => 'Logg over globale rettigheter',
