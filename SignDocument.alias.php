@@ -143,7 +143,7 @@ $specialPageAliases['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['no'] = array(
+$specialPageAliases['nb'] = array(
 	'SignDocument' => array( 'Signer_dokument' ),
 	'CreateSignDocument' => array( 'Opprett_signaturdokument' ),
 );

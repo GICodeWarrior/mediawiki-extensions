@@ -463,7 +463,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  * @author Simny
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'signaturelogpage' => 'Signaturlogg',
 	'signature-desc' => 'Slår på [[Special:SignDocument|dokumentsignering]]',
 	'signaturelogpagetext' => 'Dette er en logg over [[Special:SignDocument|alle signaturer lagt til dokumenter]].',

@@ -1460,7 +1460,7 @@ Du kan [{{fullurl:{{#Special:SignDocument}}|doc=$2}} testa det].',
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'createsigndocument' => 'Slå på dokumentsignering',
 	'createsigndoc-head' => "Bruk dette skjemaet for å opprette et «signaturdokument» for denne siden, slik at brukere kan [[Special:SignDocument|signere den]]. Vennligst oppgi sidens navn, hvilken brukergruppe som skal kunne signere den, hvilke felter som skal være synlige for brukerne, hvilke som skal være valgfrie, minimumsalder for å kunne signere dokumentet (om denne ikke oppgis, er det ingen grense), og en kjapp introduksjonstekst som beskriver dokumentet og gir instruksjoner til brukerne.
 

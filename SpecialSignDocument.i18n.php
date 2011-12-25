@@ -3565,7 +3565,7 @@ $1',
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'signdocument' => 'Signer dokument',
 	'sign-nodocselected' => 'Vennligst velg dokumentet du ønsker å signere.',
 	'sign-selectdoc' => 'Dokument:',
