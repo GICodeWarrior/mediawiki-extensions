@@ -1718,7 +1718,7 @@ Om denne feilen held fram med å dukka opp, kan det vera noko gale med databasen
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'changeauthor' => 'Endre revisjonens opphavsperson',
 	'changeauthor-desc' => 'Gjør det mulig å endre opphavsperson for sideversjoner',
 	'changeauthor-title' => 'Endre en revisjons opphavsmann',
