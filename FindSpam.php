@@ -30,7 +30,7 @@ $wgGroupPermissions['sysop']['findspam'] = true;
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['FindSpamPage'] = $dir . 'FindSpam_body.php';
 $wgExtensionMessagesFiles['FindSpam'] = $dir . 'FindSpam.i18n.php';
-$wgExtensionAliasesFiles['FindSpam'] = $dir . 'FindSpam.alias.php';
+$wgExtensionMessagesFiles['FindSpamAlias'] = $dir . 'FindSpam.alias.php';
 $wgSpecialPages['FindSpam'] = 'FindSpamPage';
 // Special page group for MW 1.13+
 $wgSpecialPageGroups['FindSpam'] = 'spam';
