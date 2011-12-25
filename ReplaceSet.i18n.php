@@ -278,7 +278,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'replaceset-desc' => 'Legger til parserfunksjonen <nowiki>{{#replaceset}}</nowiki> som brukes for å erstatte seksjoner av tekst med formattert data',
 	'replaceset-error-calllimit' => 'Begrensningen i antall kall til funksjonen ReplaceSet har blitt nådd.',
 	'replaceset-error-regexnoend' => 'Det regulære uttrykket "$1" mangler en avsluttende avgrenser \'$2\'',
