@@ -136,6 +136,13 @@ $messages['ia'] = array(
 	'editpagetracking-desc' => 'Registra le prime vice que cata usator visualisa le pagina de modification',
 );
 
+/** Italian (Italiano)
+ * @author F. Cosoleto
+ */
+$messages['it'] = array(
+	'editpagetracking-desc' => 'Registra la prima volta che ciascun utente visualizza la pagina di modifica',
+);
+
 /** Japanese (日本語)
  * @author Schu
  */
@@ -178,18 +185,18 @@ $messages['ms'] = array(
 	'editpagetracking-desc' => 'Merakam kali pertama setiap pengguna melihat laman penyuntingan',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'editpagetracking-desc' => 'Legt de eerste keer dat iedere gebruiker de bewerkingspagina bekijkt vast',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
 $messages['nb'] = array(
 	'editpagetracking-desc' => 'Det blir registrert første gang hver bruker ser på redigeringssiden',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'editpagetracking-desc' => 'Legt de eerste keer dat iedere gebruiker de bewerkingspagina bekijkt vast',
 );
 
 /** Polish (Polski)
