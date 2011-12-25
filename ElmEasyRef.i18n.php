@@ -168,15 +168,6 @@ $messages['ms'] = array(
 	'elm-easyref-close' => 'Tutup',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'elm-easyref-desc' => 'Voegt een pop-upveld toe om de inhoud van een referentie weer te geven',
-	'elm-easyref-ref' => 'Referentie $1',
-	'elm-easyref-close' => 'Sluiten',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  * @author Nghtwlkr
@@ -185,6 +176,15 @@ $messages['nb'] = array(
 	'elm-easyref-desc' => 'Legg inn nedtrekksfelt for å vise referanseinnholdet',
 	'elm-easyref-ref' => 'Referanse $1',
 	'elm-easyref-close' => 'Lukk',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'elm-easyref-desc' => 'Voegt een pop-upveld toe om de inhoud van een referentie weer te geven',
+	'elm-easyref-ref' => 'Referentie $1',
+	'elm-easyref-close' => 'Sluiten',
 );
 
 /** Pashto (پښتو)
