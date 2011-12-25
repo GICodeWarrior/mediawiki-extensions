@@ -2606,7 +2606,7 @@ $messages['nn'] = array(
  * @author Laaknor
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'ogg-desc' => 'Gjør at Ogg Theora- og Ogg Vorbis-filer kan kjøres med hjelp av JavaScript-avspiller.',
 	'ogg-short-audio' => 'Ogg $1 lydfil, $2',
 	'ogg-short-video' => 'Ogg $1 videofil, $2',
