@@ -1386,7 +1386,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'bookinfo-header' => 'Bokinformasjon',
 	'bookinformation-desc' => 'Utvider [[Special:Booksources|siden med bokkilder]] med informasjon fra en nettjeneste',
 	'bookinfo-result-title' => 'Tittel:',
