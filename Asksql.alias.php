@@ -118,6 +118,11 @@ $specialPageAliases['mr'] = array(
 	'Asksql' => array( 'एसक्यूएलविचारा' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'Asksql' => array( 'SQL-spørring' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'Asksql' => array( 'SQL-zeukopdrachte' ),
@@ -126,11 +131,6 @@ $specialPageAliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'Asksql' => array( 'SQLZoekopdracht' ),
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'Asksql' => array( 'SQL-spørring' ),
 );
 
 /** Occitan (Occitan) */
@@ -148,7 +148,7 @@ $specialPageAliases['ro'] = array(
 	'Asksql' => array( 'Întreabăsql' ),
 );
 
-/** Sanskrit (संस्कृत) */
+/** Sanskrit (संस्कृतम्) */
 $specialPageAliases['sa'] = array(
 	'Asksql' => array( 'एस्‌क्यूएल्‌पृच्छा' ),
 );
@@ -177,8 +177,3 @@ $specialPageAliases['zh-hans'] = array(
 $specialPageAliases['zh-hant'] = array(
 	'Asksql' => array( 'SQL查詢' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
