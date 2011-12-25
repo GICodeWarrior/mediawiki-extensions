@@ -375,7 +375,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'stalepages' => 'Foreldede sider',
 	'stalepages-desc' => 'Skaper en [[Special:Stalepages|liste over sider]] som ikke har blitt redigert i det siste',
 	'stalepages-summary' => 'Dette er en liste over sider som ikke har blitt redigert {{PLURAL:$1|dette døgnet|de siste $1 dagene}}.',
