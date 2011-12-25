@@ -316,7 +316,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'cassandra-desc' => 'Lagre revisjonstekst i databasen [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
