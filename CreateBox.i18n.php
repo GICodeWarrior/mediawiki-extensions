@@ -677,7 +677,7 @@ Du kan ikkje oppretta denne sida, men du kan [{{fullurl:{{FULLPAGENAME}}|action=
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'createbox-desc' => 'Spesialisert tekstboks for sideoppretting',
 	'createbox-create' => 'Opprett',
 	'createbox-exists' => "Beklager, «'''{{FULLPAGENAME}}'''» finnes fra før.
