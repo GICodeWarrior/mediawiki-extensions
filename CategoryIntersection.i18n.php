@@ -612,7 +612,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'categoryintersection' => 'Kategorisnitt',
 	'categoryintersection-desc' => 'Håndtering av en tabell med nøkkelverdien til de [[Special:CategoryIntersection|kategorisnitt]] som en side er medlem i.',
 	'categoryintersection-doit' => 'Vis sider som tilhører alle disse kategoriene',
