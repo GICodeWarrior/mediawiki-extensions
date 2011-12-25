@@ -813,6 +813,14 @@ $messages['nah'] = array(
 	'abcdownload' => 'Motẻmowìs:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'abc-desc' => 'Lager taggen <code>&lt;abc&gt;</code> for å formatere ABC-musikk',
+	'abcdownload' => 'Last ned:',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -852,14 +860,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'abc-desc' => 'Legg til <code>&lt;abc&gt;</code>-merket for å formatera ABC-musikk',
-	'abcdownload' => 'Last ned:',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'abc-desc' => 'Lager taggen <code>&lt;abc&gt;</code> for å formatere ABC-musikk',
 	'abcdownload' => 'Last ned:',
 );
 
