@@ -15,6 +15,11 @@ $specialPageAliases['ar'] = array(
 	'RefHelper' => array( 'مساعد_المراجع' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'RefHelper' => array( 'کمک‌کننده_ارجاع' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $specialPageAliases['ht'] = array(
 	'RefHelper' => array( 'ÈdRef' ),
@@ -45,6 +50,11 @@ $specialPageAliases['ml'] = array(
 	'RefHelper' => array( 'അവലംബസഹായി' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$specialPageAliases['nb'] = array(
+	'RefHelper' => array( 'Referansehjelper' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $specialPageAliases['nds-nl'] = array(
 	'RefHelper' => array( 'Refhulpe' ),
@@ -55,17 +65,7 @@ $specialPageAliases['nl'] = array(
 	'RefHelper' => array( 'RefHulp' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$specialPageAliases['nb'] = array(
-	'RefHelper' => array( 'Referansehjelper' ),
-);
-
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'RefHelper' => array( 'RefYardımcısı' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
