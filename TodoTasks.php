@@ -44,7 +44,7 @@ $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['TaskList'] = $dir . 'TodoTasks_body.php';
 $wgExtensionMessagesFiles['TaskList'] = $dir . 'TodoTasks.i18n.php';
 $wgExtensionMessagesFiles['TaskListMagic'] = $dir . 'TodoTasks.i18n.magic.php';
-$wgExtensionAliasesFiles['TaskList'] = $dir . 'TodoTasks.alias.php';
+$wgExtensionMessagesFiles['TaskListAlias'] = $dir . 'TodoTasks.alias.php';
 $wgSpecialPages['TaskList'] = 'TaskList';
 
 if ($wgUseProjects) {
