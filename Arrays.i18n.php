@@ -176,6 +176,13 @@ $messages['lb'] = array(
 	'arrays-desc' => 'Späicheren a Benotze vun definéierten Tabellen',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'arrays-desc' => 'Beneumde verzamelinge opsjloon en berekene',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Ignas693
  */
