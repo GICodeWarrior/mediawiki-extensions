@@ -2158,10 +2158,17 @@ $messages['ps'] = array(
 	'readerfeedback-completeness' => 'بشپړتابه',
 	'readerfeedback-overall' => 'ټولټال',
 	'readerfeedback-level-none' => '(ناډاډه)',
+	'readerfeedback-level-0' => 'خراب',
+	'readerfeedback-level-1' => 'ټيټ',
+	'readerfeedback-level-3' => 'لوړ',
+	'readerfeedback-level-4' => 'وتلی',
 	'readerfeedback-submit' => 'سپارل',
 	'readerfeedback-submitting' => 'د سپارلو په حال کې ...',
 	'readerfeedback-finished' => 'مننه!',
 	'readerfeedback-tierfilter' => 'ارزونه:',
+	'readerfeedback-tier-high' => 'لوړ',
+	'readerfeedback-tier-medium' => 'منځوی',
+	'readerfeedback-tier-poor' => 'خراب',
 );
 
 /** Portuguese (Português)
@@ -2430,6 +2437,13 @@ $messages['sah'] = array(
 	'tooltip-ca-ratinghist' => 'Ааҕааччы бу сирэйи сыанабыла',
 	'specialpages-group-feedback' => 'Ааҕааччылар санаалара',
 	'readerfeedback-tt-review' => 'Тургутууну ыыт',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'readerfeedback-level-3' => 'Bonu',
 );
 
 /** Serbo-Croatian (Srpskohrvatski)
