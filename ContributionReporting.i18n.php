@@ -2909,6 +2909,7 @@ $messages['it'] = array(
 	'fundraiserstats-customize' => 'Personalizza',
 	'fundraiserstats-show-years' => 'Mostra gli anni seguenti:',
 	'fundraiserstats-time-zone' => 'Fuso orario:',
+	'fundraiserstats-utc' => '(da UTC)',
 );
 
 /** Japanese (日本語)
@@ -3843,6 +3844,22 @@ $messages['ms'] = array(
 	'fundraiserstats-show-years' => 'Tunjukkan tahun-tahun berikut:',
 	'fundraiserstats-time-zone' => 'Zon waktu:',
 	'fundraiserstats-utc' => '(dari UTC)',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'contributiontotal' => "Total ta' kontributi",
+	'dailytotal' => 'Total tal-ġurnata',
+	'contributionhistory' => 'Kronoloġija tal-kontribuzzjoni',
+	'contrib-hist-name' => 'Isem',
+	'contrib-hist-date' => 'Ħin u data',
+	'contrib-hist-amount' => 'Ammont',
+	'contrib-hist-next' => 'Donazzjonijiet preċedenti',
+	'contrib-hist-previous' => 'Donazzjonijiet suċċessivi',
+	'contrib-hist-anonymous' => 'Anonimu',
+	'contributionstatistics' => 'Statistika tal-kontribuzzjonijiet',
 );
 
 /** Erzya (Эрзянь)
@@ -5038,6 +5055,9 @@ $messages['sah'] = array(
  */
 $messages['scn'] = array(
 	'contrib-hist-name' => 'Nomu',
+	'contribstats-day' => 'Jornu',
+	'contribstats-month' => 'Misi',
+	'contribstats-currency' => 'Munita',
 	'contribstats-week' => 'Simana',
 );
 
