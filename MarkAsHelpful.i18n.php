@@ -116,6 +116,7 @@ $messages['hsb'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'markashelpful-desc' => 'E Benotzerinterface fir Bemierkungen als hëllefräich ze markéieren',
 	'mah-mark-text' => 'Dëst als nëtzlech markéieren',
 	'mah-you-marked-text' => 'Dir mengt datt dat nëtzlech ass',
 	'mah-someone-marked-text' => '{{GENDER:$1|$1}} mengt, datt dës Bemierkung hëllefräich ass.',
