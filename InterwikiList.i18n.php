@@ -551,6 +551,18 @@ $messages['myv'] = array(
 	'interwikilist-filter' => 'Сувтеметь-мезть',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'interwikilist' => 'Interwikiliste',
+	'interwikilist-desc' => 'Legger til en [[Special:Interwikilist|spesialside]] for å vise tilgjengelige interwikilenker',
+	'interwikilist-linkname' => 'Interwikilenke',
+	'interwikilist-target' => 'Måladresse',
+	'interwikilist-filter' => 'Filtrer liste',
+	'interwikilist-prefix' => 'Interwikiprefiks:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -572,18 +584,6 @@ $messages['nn'] = array(
 	'interwikilist-linkname' => 'Interwikilenkja',
 	'interwikilist-target' => 'Måladressa',
 	'interwikilist-filter' => 'Filtrer lista',
-	'interwikilist-prefix' => 'Interwikiprefiks:',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'interwikilist' => 'Interwikiliste',
-	'interwikilist-desc' => 'Legger til en [[Special:Interwikilist|spesialside]] for å vise tilgjengelige interwikilenker',
-	'interwikilist-linkname' => 'Interwikilenke',
-	'interwikilist-target' => 'Måladresse',
-	'interwikilist-filter' => 'Filtrer liste',
 	'interwikilist-prefix' => 'Interwikiprefiks:',
 );
 
@@ -883,6 +883,7 @@ $messages['vi'] = array(
  */
 $messages['yi'] = array(
 	'interwikilist' => 'אינטערוויקי ליסטע',
+	'interwikilist-desc' => 'לייגט צו א [[Special:Interwikilist|באזונדערן בלאט]] צו באקוקן דערגרייכלעכע אינטערוויקי לינקען',
 	'interwikilist-linkname' => 'אינטערוויקי לינק',
 	'interwikilist-target' => 'ציל URL',
 	'interwikilist-filter' => 'פֿילטערן ליסטע',
