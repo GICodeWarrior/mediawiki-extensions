@@ -424,6 +424,13 @@ $messages['vi'] = array(
 	'ipauth-desc' => 'Tự động đăng nhập từ địa chỉ IP cố định',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'ipauth-desc' => 'אויטאמאטיש ארײַנלאגירן פון סטאבילע IP-אדרעסן',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'ipauth-desc' => '自动从固定的 IP 位址登入',
