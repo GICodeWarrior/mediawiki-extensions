@@ -754,6 +754,15 @@ $messages['nah'] = array(
 	'languageselector' => 'Tlâtòlli',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'languageselector' => 'Språk',
+	'languageselector-desc' => 'Valg av språk på alle sider, også for gjester',
+	'languageselector-setlang' => 'sett',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -781,15 +790,6 @@ $messages['nn'] = array(
 	'languageselector-setlang' => 'set',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'languageselector' => 'Språk',
-	'languageselector-desc' => 'Valg av språk på alle sider, også for gjester',
-	'languageselector-setlang' => 'sett',
-);
-
 /** Northern Sotho (Sesotho sa Leboa)
  * @author Mohau
  */
@@ -804,6 +804,15 @@ $messages['oc'] = array(
 	'languageselector' => 'Lenga',
 	'languageselector-desc' => 'Selector de lenga sus cada pagina, quitament pels visitaires.',
 	'languageselector-setlang' => 'Definir',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
+ */
+$messages['or'] = array(
+	'languageselector' => 'ଭାଷା',
+	'languageselector-desc' => 'ଭାଷା ଚୟନକାରୀ ସବୁ ପୃଷ୍ଠାରେ, ଅତିଥି ମାନଙ୍କ ପାଇଁ ମଧ୍ୟ',
+	'languageselector-setlang' => 'ସେଟ କରନ୍ତୁ',
 );
 
 /** Ossetic (Ирон)
