@@ -16,8 +16,3 @@ $specialPageAliases = array();
 $specialPageAliases['en'] = array(
 	'LiveTranslate' => array( 'LiveTranslate' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
