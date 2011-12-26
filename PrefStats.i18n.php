@@ -2577,11 +2577,16 @@ $messages['sc'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Aushulz
  * @author Melos
  */
 $messages['scn'] = array(
 	'prefstats' => 'Statistichi dê prifirenzi',
 	'prefstats-title' => 'Statistichi dê prifirenzi',
+	'prefstats-factor-day' => 'jornu',
+	'prefstats-factor-week' => 'simana',
+	'prefstats-factor-twoweeks' => 'dui simani',
+	'prefstats-factor-fourweeks' => 'quattru simani',
 );
 
 /** Sinhala (සිංහල)
