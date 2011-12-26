@@ -2874,6 +2874,10 @@ $messages['ps'] = array(
 	'ogg-short-audio' => 'Ogg $1 غږيزه دوتنه، $2',
 	'ogg-short-video' => 'Ogg $1 ويډيويي دوتنه، $2',
 	'ogg-short-general' => 'Ogg $1 رسنيزه دوتنه، $2',
+	'ogg-long-audio' => 'Ogg $1 غږيزه دوتنه، اوږدوالی $2، $3',
+	'ogg-long-video' => 'Ogg $1 ويډيويي دوتنه، اوږدوالی $2، $4×$5 پېکسل، $3',
+	'ogg-long-general' => 'Ogg رسنيزه دوتنه، اوږدوالی $2، $3',
+	'ogg-long-error' => 'ناسمه ogg دوتنه: $1',
 	'ogg-play' => 'غږول',
 	'ogg-stop' => 'درول',
 	'ogg-play-video' => 'ويډيو غږول',
@@ -3177,6 +3181,13 @@ $messages['sah'] = array(
 	'ogg-desc-link' => 'Бу билэ туһунан',
 	'ogg-oggThumb-version' => 'OggHandler oggThumb $1 эбэтэр ордук версиятын наадыйар',
 	'ogg-oggThumb-failed' => 'oggThumb миниатюраны кыайан оҥорбото.',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'ogg-dismiss' => 'Chiùi',
 );
 
 /** Samogitian (Žemaitėška)
