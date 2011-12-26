@@ -1286,6 +1286,21 @@ $messages['oc'] = array(
 	'amazonplus-less' => 'mens',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
+ */
+$messages['or'] = array(
+	'amazonplus-used' => 'ବ୍ୟବହୃତ',
+	'amazonplus-german' => 'ଜର୍ମାନ',
+	'amazonplus-french' => 'ଫ୍ରେଞ୍ଚ',
+	'amazonplus-japanese' => 'ଜାପାନୀ',
+	'amazonplus-amazon' => 'ଆମାଜୋନ ମୂଲ୍ୟ',
+	'amazonplus-new' => 'ନୂଆ',
+	'amazonplus-cp-none' => 'ଜମାନାହି',
+	'amazonplus-more' => 'ଅଧିକ',
+	'amazonplus-less' => 'କମ',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
@@ -1353,7 +1368,7 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'amazonplus-nores' => 'ستونزه: پايلې و نه موندل شوې!',
 	'amazonplus-used' => 'کارېدلی',
-	'amazonplus-german' => 'آلماني',
+	'amazonplus-german' => 'جرمني',
 	'amazonplus-french' => 'فرانسوي',
 	'amazonplus-japanese' => 'جاپاني',
 	'amazonplus-amazon' => 'د آمېزون بيه',
