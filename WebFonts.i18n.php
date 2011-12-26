@@ -142,6 +142,8 @@ $messages['da'] = array(
 	'webfonts-load' => 'Vælg skrifttype',
 	'webfonts-reset' => 'Nulstil',
 	'webfonts-enable-preference' => 'Aktiver integrering af skrifttyper (WebFonts)',
+	'webfonts-menu-tooltip' => 'Vælg en skrifttype for siden',
+	'webfonts-help' => 'Hjælp',
 );
 
 /** German (Deutsch)
@@ -427,6 +429,19 @@ $messages['lb'] = array(
 	'webfonts-help' => 'Hëllef',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Sloet fonts oppe pagina in',
+	'webfonts-load' => 'Selecteer fonts',
+	'webfonts-reset' => 'Stèl óbbenuids in',
+	'webfonts-enable-preference' => 'Sjakel insloeting fonts aan (WebFonts)',
+	'webfonts-menu-tooltip' => 'Selecteer fonts veure pagina',
+	'webfonts-help' => 'Hölp',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -574,6 +589,15 @@ $messages['ro'] = array(
 	'webfonts-enable-preference' => 'Activează încorporarea fonturilor (WebFonts)',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'webfonts-load' => "Scacchie 'u font",
+	'webfonts-reset' => 'Azzere',
+	'webfonts-help' => 'Ajute',
+);
+
 /** Russian (Русский)
  * @author Eugrus
  * @author Lockal
@@ -598,6 +622,21 @@ $messages['sa'] = array(
 	'webfonts-load' => 'वर्णानि चयनं करोतु',
 	'webfonts-reset' => 'पुनर्स्थापयतु',
 	'webfonts-enable-preference' => 'वर्णस्थापना (वेबफ़ॉन्ट) सक्रियं करोतु',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'webfonts-help' => 'Aiutu',
+);
+
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'webfonts-reset' => 'ප්‍රත්‍යාරම්භ කරන්න',
+	'webfonts-help' => 'උදව්',
 );
 
 /** Slovenian (Slovenščina)
