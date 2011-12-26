@@ -262,6 +262,28 @@ $messages['ba'] = array(
 	'narayam-pa-inscript' => 'Gurmukhi Punjabi InScript',
 	'narayam-sa' => 'Санскрит (транслитерация)',
 	'narayam-sa-inscript' => 'Санскрит InScript',
+	'narayam-si-singlish' => 'Сингаль Синглишы',
+	'narayam-si-wijesekara' => 'Сингаль Виджесекераһы',
+	'narayam-ta-99' => 'Tamil99',
+	'narayam-ta-inscript' => 'Тамиль InScript',
+	'narayam-ta' => 'Тамиль (транслитерация)',
+	'narayam-ta-bamini' => 'Тамиль Bamini',
+	'narayam-tcy' => 'Тулу (транслитерация)',
+	'narayam-te-inscript' => 'Телугу InScript',
+	'narayam-bn-avro' => 'Бенгаль Avro',
+	'narayam-bn-inscript' => 'Бенгаль InScript',
+	'narayam-bn-nkb' => 'Бенгаль NKB',
+	'narayam-ur' => 'стандарт урду',
+	'narayam-de' => 'Немец',
+	'narayam-gu' => 'Гуджарати (транслитерация)',
+	'narayam-gu-inscript' => 'Гуджарати InScript',
+	'narayam-ru-standard' => 'Урыҫ стандарт',
+	'narayam-sah-standard' => 'Саха стандарт',
+	'narayam-hne-inscript' => 'Чхаттисгархи InScript',
+	'narayam-mai-inscript' => 'Маитхили InScript',
+	'narayam-gom-deva' => 'Гоан Конкани-Деванагари (транслитерация )',
+	'narayam-gom-deva-inscript' => 'Гоан Конкани-Деванагари InScript',
+	'narayam-he-standard-2011' => 'Йәһүд стандарт 2011',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
@@ -1229,8 +1251,13 @@ $messages['it'] = array(
 	'narayam-toggle-ime' => 'Abilita ($1)',
 	'narayam-menu' => 'Metodo di input',
 	'narayam-help' => 'Aiuto',
+	'narayam-checkbox-tooltip' => 'Attiva o disattiva il metodo di input',
+	'narayam-disable-preference' => "Disabilita l'editor del metodo d'input (IME) di Narayam",
+	'narayam-more-imes' => "Altri metodi d'input",
+	'narayam-am' => 'Amarica (translitterazione)',
 	'narayam-as' => 'Assamese (translitterazione)',
 	'narayam-as-avro' => 'Assamese (Avro)',
+	'narayam-as-bornona' => 'Assamese (Bornona)',
 	'narayam-as-inscript' => 'Assamese (InScript)',
 	'narayam-ber-tfng' => 'Tifinagh (translitterazione)',
 	'narayam-brx-inscript' => 'Bodo (InScript)',
@@ -1248,9 +1275,26 @@ $messages['it'] = array(
 	'narayam-pa-inscript' => 'Punjabi in Gurmukhi (InScript)',
 	'narayam-sa' => 'Sanscrito (translitterazione)',
 	'narayam-sa-inscript' => 'Sanscrito (InScript)',
+	'narayam-si-singlish' => 'Singalese (Singlish)',
+	'narayam-si-wijesekara' => 'Singalese (Wijesekara)',
+	'narayam-ta-99' => 'Tamil (Tamil99)',
+	'narayam-ta-inscript' => 'Tamil (InScript)',
+	'narayam-ta' => 'Tamil (translitterazione)',
+	'narayam-ta-bamini' => 'Tamil (Bamini)',
+	'narayam-tcy' => 'Tulu (translitterazione)',
+	'narayam-te-inscript' => 'Telugu (InScript)',
 	'narayam-bn-avro' => 'Bengalese (Avro)',
 	'narayam-bn-inscript' => 'Bengalese (InScript)',
 	'narayam-bn-nkb' => 'Bengalese (NKB)',
+	'narayam-ur' => 'Urdu (standard)',
+	'narayam-de' => 'Tedesco',
+	'narayam-gu' => 'Gujarati (translitterazione)',
+	'narayam-gu-inscript' => 'Gujarati (InScript)',
+	'narayam-ru-standard' => 'Russo (standard)',
+	'narayam-sah-standard' => 'Sacha (standard)',
+	'narayam-hne-inscript' => 'Chhattisgarhi (InScript)',
+	'narayam-mai-inscript' => 'Maithili (InScript)',
+	'narayam-he-standard-2011' => 'Ebreo (standard 2011)',
 );
 
 /** Japanese (日本語)
@@ -1819,8 +1863,11 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'narayam-toggle-ime' => '($1) چارنول',
 	'narayam-help' => 'لارښود',
 	'narayam-eo' => 'اېسپېرانتو',
+	'narayam-de' => 'جرمني',
+	'narayam-ru-standard' => 'معياري روسي',
 );
 
 /** Portuguese (Português)
@@ -2084,6 +2131,13 @@ $messages['sah'] = array(
 	'narayam-bn-avro' => 'Бэнгээл Авро',
 	'narayam-bn-inscript' => 'Бэнгээл инскрипт',
 	'narayam-bn-nkb' => 'Бэнгээл NKB',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'narayam-help' => 'Aiutu',
 );
 
 /** Sinhala (සිංහල)
