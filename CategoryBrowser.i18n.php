@@ -1585,6 +1585,7 @@ $messages['nn'] = array(
 );
 
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
  * @author Odisha1
  * @author Psubhashish
  */
@@ -1592,6 +1593,9 @@ $messages['or'] = array(
 	'cb_previous_items_link' => 'ପୂର୍ବବର୍ତ୍ତୀ',
 	'cb_next_items_link' => 'ପର',
 	'cb_cat_files' => 'ଫାଇଲ',
+	'cb_edit_left_hint' => 'ଯଦି ସମ୍ଭବ, ବାମକୁ ଘୁଞ୍ଚାନ୍ତୁ',
+	'cb_edit_right_hint' => 'ଯଦି ସମ୍ଭବ, ଡାହାଣକୁ ଘୁଞ୍ଚାନ୍ତୁ',
+	'cb_edit_remove_hint' => 'ଯଦି ସମ୍ଭବ, ଲିଭାନ୍ତୁ',
 );
 
 /** Deitsch (Deitsch)
