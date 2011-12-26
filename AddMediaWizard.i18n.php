@@ -628,8 +628,10 @@ $messages['ta'] = array(
 
 /** Telugu (తెలుగు)
  * @author Chaduvari
+ * @author Ravichandra
  */
 $messages['te'] = array(
+	'addmediawizard-desc' => 'మాధ్యమాలను చేర్చే ఉపకరణం, కల్తూరా మరియు వికీమీడియా ఫౌండేషన్ భాగస్వామ్యంతో అభివృద్ధి చేయబడినది.',
 	'addmediawizard-loading' => 'మీడియాను చేర్చే విజార్డును లోడు చేస్తున్నాం',
 );
 

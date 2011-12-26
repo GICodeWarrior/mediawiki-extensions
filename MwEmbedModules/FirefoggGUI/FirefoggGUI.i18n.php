@@ -5393,6 +5393,7 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'fogg-date-title' => 'דאַטע',
 	'fogg-copyright-title' => 'קאפירעכט',
 	'fogg-license-title' => 'ליצענץ',
 );
