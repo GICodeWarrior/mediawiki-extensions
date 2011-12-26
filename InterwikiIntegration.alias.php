@@ -19,8 +19,3 @@ $specialPageAliases['en'] = array(
 $specialPageAliases['ar'] = array(
 	'PopulateInterwikiIntegrationTable'   => array( 'ملء_جدول_الإنترويكي' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
