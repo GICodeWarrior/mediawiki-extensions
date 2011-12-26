@@ -145,6 +145,16 @@ $messages['lb'] = array(
 	'apiexplorer-loading' => 'Fonctioune lueden ...',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'apiexplorer' => 'API-verkènner',
+	'apiexplorer-desc' => 'Pagina óm de documentatie van de MediaWiki-API interactief te verkènne',
+	'apiexplorer-intro' => "Dees pagina gif de dokkemèntatie veur de API van de hujige wiki waer. Klik op 'n ongerstaande funktie óm mier infermasie te zeen euver welke parameters gebruuk kónne waere. Zuuch ouch de [http://www.mediawiki.org/wiki/API:Main_page algemein dokkemèntatie van de MediaWiki-API].",
+	'apiexplorer-loading' => "Bezig mit 't laje van funkties...",
+);
+
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  */
