@@ -5405,10 +5405,31 @@ Una version novèla $2 es disponibla a http://pecl.php.net/package/APC/$2',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
  * @author Odisha1
  */
 $messages['or'] = array(
+	'viewapc-display-value' => 'ମୂଲ୍ୟ',
+	'viewapc-display-filename' => 'ଫାଇଲନାମ',
+	'viewapc-display-device' => 'ଯନ୍ତ୍ର',
 	'viewapc-display-info' => 'ନାମ',
+	'viewapc-display-ttl' => 'ସାରିବା ସମୟ',
+	'viewapc-display-type' => 'ପ୍ରକାର',
+	'viewapc-display-mtime' => 'ବଦଳାଯାଇଥିବା',
+	'viewapc-display-creation_time' => 'ତିଆରି କରାଯାଇଥିବା',
+	'viewapc-display-deletion_time' => 'ଲିଭାଯାଇଥିବା',
+	'viewapc-display-no-delete' => 'ଲିଭାଯାଇନଥିବା',
+	'viewapc-display-stored-value' => 'ସାଇତାଯାଇଥିବା ମୂଲ୍ୟ',
+	'viewapc-display-too-big' => "''ବିଷୟବସ୍ତୁ ଦେଖାଇବା ପାଇଁ ବହୁତ ବଡ ହୋଇଯାଉଛି ।''",
+	'viewapc-ls-header-modified' => 'ଶେଷଥର ବଦଳାଯାଇଥିଲା',
+	'viewapc-ls-header-created' => 'ତିଆରି କରାଯାଇଥିଲା',
+	'viewapc-ls-header-deleted' => 'ଲିଭାଯାଇଛି',
+	'viewapc-ls-header-timeout' => 'ସମୟ ସରିଯାଇଛି',
+	'viewapc-ls-delete' => '[ଏବେ ଲିଭାନ୍ତୁ]',
+	'viewapc-ls-scope-active' => 'ସଚଳ',
+	'viewapc-ls-scope-deleted' => 'ଲିଭାଯାଇଛି',
+	'viewapc-ls-scope-both' => 'ଉଭୟ',
+	'viewapc-ls-sort-size' => 'ଆକାର',
 	'viewapc-ls-sort-name' => 'ନାମ',
 	'viewapc-ls-limit-none' => 'ସବୁ',
 );
