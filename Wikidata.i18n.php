@@ -3070,6 +3070,13 @@ Vielleicht kamen Sie direkt zu dieser Seite?',
 	'ow_db_consistency_not_found' => '<h2>Fehler</h2>Die Datenbank ist nicht mehr konsistent. Wikidata kann keine gültigen Daten zu der ID finden. Bitte kontaktieren Sie den Server-Administrator.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Erdemaslancan
+ */
+$messages['diq'] = array(
+	'ow_transaction_operation' => 'Operasyon',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -14764,6 +14771,7 @@ $messages['yi'] = array(
 	'langman_langname' => 'שפראַך נאָמען:',
 	'langman_wikimedia' => 'וויקימעדיע קאד',
 	'langman_addlang' => 'צולייגן שפראַך',
+	'datasearch_language' => 'שפראַך:',
 	'ow_save' => 'אויפֿהיטן',
 	'ow_history' => 'היסטאריע',
 	'ow_transaction_user' => 'באַניצער נאָמען:',
