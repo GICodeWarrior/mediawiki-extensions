@@ -18,8 +18,3 @@ $specialPageAliases['en'] = array(
 	'DSMWAdmin' => array( 'DSMWAdmin' ),
 	'DSMWGeneralExhibits' => array( 'DSMWGeneralExhibits' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
