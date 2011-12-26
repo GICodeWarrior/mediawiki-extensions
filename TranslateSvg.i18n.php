@@ -202,10 +202,14 @@ $messages['lb'] = array(
 	'translatesvg-page' => 'Fichier:',
 	'translatesvg-submit' => 'Lass',
 	'translatesvg-add' => 'Wann Är Sprooch net schonn an der Lëscht dran ass, kënnt Dir se [[#addlanguage|derbäisetzen]].',
+	'translatesvg-specify' => 'En neie Sproochcode uginn (z. Bsp. en, fr, de, es, fr, ...)',
 	'translatesvg-fallbackdesc' => 'Standard (keng Sprooch ass spezifizéiert)',
 	'translatesvg-qqqdesc' => 'Tuyau fir Iwwersetzer',
 	'translatesvg-nodesc' => '(keng Beschreiwung)',
 	'translatesvg-remove' => 'All Iwwersetzungen an dëser Sprooch ewechhuelen',
+	'translatesvg-unsuccessful' => "Dëse Fichier '''konnt net iwwersat ginn''', sorry.",
+	'translatesvg-toggle-view' => 'Iwwersetzungen an dëser Sprooch weisen',
+	'translatesvg-toggle-hide' => 'Iwwersetzungen an dëser Sprooch verstoppen',
 );
 
 /** Macedonian (Македонски)
