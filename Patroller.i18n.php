@@ -224,6 +224,7 @@ $messages['az'] = array(
 
 /** Bashkir (Башҡортса)
  * @author Assele
+ * @author Haqmar
  */
 $messages['ba'] = array(
 	'patrol' => 'Тикшереү',
@@ -246,7 +247,7 @@ $messages['ba'] = array(
 	'patrol-stopped' => 'Һеҙ икенсе өлгөнө тикшермәҫкә булдығыҙ. $1',
 	'patrol-resume' => 'Дауам итер өсөн, ошонда баҫығыҙ.',
 	'group-patroller' => 'Тикшереүселәр',
-	'group-patroller-member' => 'тикшереүсе',
+	'group-patroller-member' => '{{GENDER:$1|патруль}}',
 	'grouppage-patroller' => '{{ns:project}}:Тикшерелеүсе',
 	'right-patroller' => 'Биттәрҙе тикшереү',
 );
