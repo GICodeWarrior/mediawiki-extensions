@@ -6732,6 +6732,7 @@ $wgGoogleMapsMessages['yi'] = array(
 	'gm-save-path' => 'אויפֿהיטן',
 	'gm-color-path' => 'ענדערן קאליר',
 	'gm-line-width' => 'ברייט',
+	'gm-back' => 'צוריק',
 	'gm-earth' => 'ערד',
 	'gm-moon' => 'לבנה',
 	'gm-mars' => 'מאַרס',
