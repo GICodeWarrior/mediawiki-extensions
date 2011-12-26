@@ -35,7 +35,7 @@ $messages['qqq'] = array(
 $messages['de'] = array(
 	'regexfun-desc' => 'Ergänzt Parserfunktionen, die die Verwendung regulärer Ausdrücke auf Wiki-Seiten ermöglichen',
 	'regexfun-invalid' => '„$1“ ist kein gültiger regulärer Ausdruck.',
-	'regexfun-limit-exceed' => 'Die maximale Anzahl von $1, durch „Regex Fun“ behandelten, regulären Ausdrücken ist erreicht.',
+	'regexfun-limit-exceed' => 'Die maximale Anzahl von {{PLURAL:$1|einem verarbeitbaren regulären Ausdruck|$1 verarbeitbaren regulären Ausdrücken}} ist erreicht.',
 );
 
 /** French (Français)
@@ -44,7 +44,7 @@ $messages['de'] = array(
 $messages['fr'] = array(
 	'regexfun-desc' => "Ajoute les fonctions d'analyse permettant l'utilisation d'expressions régulières dans les pages du wiki",
 	'regexfun-invalid' => 'L\'expression régulière "$1" n\'est pas valide.',
-	'regexfun-limit-exceed' => 'Le nombre maximal de $1 expressions régulières gérées "Regex Fun" a été atteint.',
+	'regexfun-limit-exceed' => 'Le nombre maximal de {{PLURAL:$1|$1 gestion d\'expression régulière "Regex Fun"|$1 gestions d\'expression régulière "Regex Fun"}} a été atteint.',
 );
 
 /** Galician (Galego)
@@ -89,7 +89,7 @@ $messages['ja'] = array(
 $messages['mk'] = array(
 	'regexfun-desc' => 'Додава парсерски функции што овозможуваат употреба на регуларни изрази во вики-страници',
 	'regexfun-invalid' => 'Регуларниот израз „$1“ е неважечки.',
-	'regexfun-limit-exceed' => 'Достигнат е максимумот од $1 регуларни изрази сработени со „Regex Fun“.',
+	'regexfun-limit-exceed' => '{{PLURAL:$1|Достигнат е максимумот од $1 регуларен израз сработен со „Regex Fun“.|Достигнат е максимумот од $1 регуларни изрази сработени со „Regex Fun“.}}',
 );
 
 /** Malay (Bahasa Melayu)
