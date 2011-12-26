@@ -475,6 +475,17 @@ $messages['ms'] = array(
 	'pageby-anon' => '<i>tanpa nama</i>',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'pageby-desc' => 'Viser bidragsytere på innholdssider med taggen <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'Side opprettet av $1 $2',
+	'pageby-last' => 'Sist <a href="$3">endret</a> av $1 $2',
+	'pageby-contributors' => 'Bidragsytere:',
+	'pageby-anon' => '<i>anonym</i>',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -495,17 +506,6 @@ $messages['nn'] = array(
 	'pageby-first' => 'Sida oppretta av $1 $2',
 	'pageby-last' => 'Sist <a href="$3">endra</a> av $1 $2',
 	'pageby-contributors' => 'Forfattarar:',
-	'pageby-anon' => '<i>anonym</i>',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'pageby-desc' => 'Viser bidragsytere på innholdssider med taggen <code><nowiki><pageby></nowiki></code>',
-	'pageby-first' => 'Side opprettet av $1 $2',
-	'pageby-last' => 'Sist <a href="$3">endret</a> av $1 $2',
-	'pageby-contributors' => 'Bidragsytere:',
 	'pageby-anon' => '<i>anonym</i>',
 );
 
@@ -765,6 +765,7 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'pageby-desc' => 'ווײַזט בײַשטײַערער אין א וויקי בלאט ניצנדיק דעם טאג <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'בלאַט באַשאַפֿן דורך $1, $2',
 	'pageby-last' => 'צו לעצט <a href="$3">מאדיפיצירט</a> דורך $1, $2',
 	'pageby-contributors' => 'בײַשטײַערער:',
