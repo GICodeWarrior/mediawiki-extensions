@@ -233,8 +233,3 @@ $specialPageAliases['tr'] = array(
 $specialPageAliases['vec'] = array(
 	'HideRevision' => array( 'ScondiRevision' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
