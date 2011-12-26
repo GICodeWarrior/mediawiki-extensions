@@ -931,6 +931,13 @@ $messages['tr'] = array(
 	'wikitweet-status0' => 'Sohbet',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'wikitweet-status' => 'Статус:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
