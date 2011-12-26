@@ -1201,6 +1201,35 @@ Méiglech sinn "plain", "normal" a "wiki".',
 	'processcomment' => "D'Bemierkung zum Artikel gëtt verschafft",
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'article-comments-desc' => "Maak 't mäögelik óm opmerkinge te plaatse bie paragrafe op pagina's",
+	'article-comments-title-string' => 'titel',
+	'article-comments-name-string' => 'Naam:',
+	'article-comments-name-field' => 'Naam (verplich):',
+	'article-comments-url-field' => 'Website:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Opmirking',
+	'article-comments-comment-field' => 'Opmirking:',
+	'article-comments-submit-button' => 'Opsjlaon',
+	'article-comments-leave-comment-link' => 'Opmirking plaatse...',
+	'article-comments-invalid-field' => 'De opgegaeve $1 <nowiki>[$2]</nowiki> is ongeljig.',
+	'article-comments-required-field' => "'t Veld $1 is verplich.",
+	'article-comments-submission-failed' => "'t Opsjlaon van de opmirking is mislök.",
+	'article-comments-failure-reasons' => "'t Opsjlaon van dien opmirking is mislök óm de volgende {{PLURAL:$1|raej|raej}}:",
+	'article-comments-no-comments' => 'Bie de pagina "[[$1]]" kinne op \'t memènt gein opmirkinge geplaats waere.',
+	'article-comments-talk-page-starter' => '<noinclude>Opmirkinge bie [[$1]]
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 sjreef ...',
+	'article-comments-summary' => 'Opmirking van $1',
+	'article-comments-submission-succeeded' => 'De opmirking is opgesjlage',
+	'article-comments-submission-success' => 'De höbs \'n opmirking bie "[[$1]]" opgesjlage',
+	'article-comments-submission-view-all' => 'De kans [[$1|alle opmirkinge bie die pagina]] bekieke',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  * @author Ignas693
