@@ -77,8 +77,6 @@ $wgAutoloadClasses['DSMWPatch']					= dirname( __FILE__ ) . '/includes/DSMW_Patc
 
 $wgAutoloadClasses['ApiQueryPatch'] = "$wgDSMWIP/api/ApiQueryPatch.php";
 $wgAutoloadClasses['ApiQueryChangeSet'] = "$wgDSMWIP/api/ApiQueryChangeSet.php";
-$wgAutoloadClasses['ApiUpload'] = "$wgDSMWIP/api/upload/ApiUpload.php";
-$wgAutoloadClasses['ApiQueryImageInfo'] = "$wgDSMWIP/api/upload/ApiQueryImageInfo.php";
 
 $wgAutoloadClasses['ApiPatchPush'] = "$wgDSMWIP/api/ApiPatchPush.php";
 $wgAutoloadClasses['utils'] = "$wgDSMWIP/files/utils.php";
@@ -117,34 +115,9 @@ $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other']
 	'descriptionmsg' => 'dsmw-desc'
 );
 
-$queryModules = array(
-	'patch' => 'ApiQueryPatch',
-	'changeSet' => 'ApiQueryChangeSet',
-	'patchPushed' => 'ApiPatchPush'
-);
-
-if ( compareMWVersion( $wgVersion ) == -1 ) {
-	$wgApiQueryMetaModules = $queryModules;
-} else {
-	$wgAPIMetaModules = $queryModules;
-}
-
-if ( compareMWVersion( $wgVersion, '1.16.0' ) == -1 ) {
-	$wgAPIModules += array(
-		'upload' => 'ApiUpload',
-		'ApiQueryImageInfo' => 'ApiQueryImageInfo',
-	);
-
-	$wgAutoloadLocalClasses['UploadBase'] = dirname( __FILE__ ) . '/api/upload/UploadBase.php';
-	$wgAutoloadLocalClasses['UploadFromFile'] = dirname( __FILE__ ) . '/api/upload/UploadFromFile.php';
-	$wgAutoloadLocalClasses['UploadFromStash'] = dirname( __FILE__ ) . '/api/upload/UploadFromStash.php';
-	$wgAutoloadLocalClasses['UploadFromUrl'] = dirname( __FILE__ ) . '/api/upload/UploadFromUrl.php';
-}
-
-// To ensure Maps remains compatible with pre 1.16.
-if ( !class_exists( 'Html' ) ) {
-	$wgAutoloadClasses['Html'] = dirname( __FILE__ ) . '/compat/Html.php';
-}
+$wgAPIMetaModules['patch'] = 'ApiQueryPatch';
+$wgAPIMetaModules['changeSet'] = 'ApiQueryChangeSet';
+$wgAPIMetaModules['patchPushed'] = 'ApiPatchPush';
 
 function dsmwgSetupFunction() {
 	global $smwgNamespacesWithSemanticLinks;
