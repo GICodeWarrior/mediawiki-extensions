@@ -17,8 +17,3 @@ $specialPageAliases['en'] = array(
 $specialPageAliases['fi'] = array(
 	'AdvancedSearch' => array( 'Kehittynyt haku' )
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
