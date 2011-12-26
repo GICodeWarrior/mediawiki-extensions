@@ -47,8 +47,3 @@ $specialPageAliases['nl'] = array(
 $specialPageAliases['tt-cyrl'] = array(
 	'PrefSwitch' => array( 'Юзабилити_проектын_сынап_карау' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
