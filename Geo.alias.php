@@ -23,8 +23,3 @@ $specialPageAliases['ar'] = array(
 $specialPageAliases['arz'] = array(
 	'Geo' => array( 'جيو' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
