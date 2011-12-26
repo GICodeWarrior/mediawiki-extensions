@@ -8669,6 +8669,7 @@ Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Ansumang
+ * @author Jnanaranjan Sahu
  * @author Jose77
  * @author Odisha1
  * @author Psubhashish
@@ -8711,6 +8712,14 @@ $messages['or'] = array(
 	'configure-view-all-versions' => 'ସଙ୍କଳନଗୁଡ଼ିକର ପୁରା ତାଲିକା',
 	'configure-throttle-action-edit' => 'ବଦଳାଇବେ',
 	'configure-throttle-action-rollback' => 'ପୁରାପୁରି ପଛକୁ ଫେରିଯିବେ',
+	'configure-throttle-count' => 'ଅନୁମୋଦିତ କାମଗୁଡିକ :',
+	'configure-throttle-period' => 'ପୁନଃସ୍ଥାପିତ ସମୟ (ସେକେଣ୍ଡରେ) :',
+	'configure-throttle-summary' => '$1 କାମଗୁଡିକ $2 ସେକେଣ୍ଡରେ',
+	'configure-throttle-group' => 'ପ୍ରକାର',
+	'configure-throttle-limit' => 'ସୀମା',
+	'configure-throttle-none' => 'ସୀମାହୀନ',
+	'configure-condition-operator-or' => 'କିମ୍ବା',
+	'configure-condition-operator-and' => 'ଏବଂ',
 );
 
 /** Ossetic (Ирон)
