@@ -152,8 +152,3 @@ $specialPageAliases['tet'] = array(
 $specialPageAliases['th'] = array(
 	'Contact' => array( 'ติดต่อ' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
