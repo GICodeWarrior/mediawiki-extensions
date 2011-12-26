@@ -35,7 +35,7 @@ jQuery( function( $ ) {
 				}
 				$( '#specialtranslatesvg' ).prepend( getNewFieldset( langcode, languages[langcode] ) );
 			} else {
-				var temp = $( '<fieldset class="mw-translatesvg-temp"><br /></fieldset>' ).append( $.createSpinner() );
+				var temp = $( '<fieldset><br /></fieldset>' ).append( $.createSpinner( 'translatesvg-temp') );
 				$( '#specialtranslatesvg' ).prepend( temp );
 				jQuery.getJSON( 
 				  mw.util.wikiScript( 'api' ), {
@@ -54,7 +54,7 @@ jQuery( function( $ ) {
 						//Have now loaded valid languages and this ain't one of them
 						//TODO: more helpful?
 					}
-					$( '.mw-translatesvg-temp' ).remove();
+					temp.remove();
 					languages.isset = true;
 				  }
 				 );
