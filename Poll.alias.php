@@ -17,8 +17,3 @@ $specialPageAliases['en'] = array(
 $specialPageAliases['de'] = array(
 	'Poll' => array( 'Umfrage' ),
 );
-
-/**
- * For backwards compatibility with MediaWiki 1.15 and earlier.
- */
-$aliases =& $specialPageAliases;
