@@ -1116,6 +1116,13 @@ $messages['sah'] = array(
 	'contrib-tracking-item-name-recurring' => 'Ый аайы төлөбүр',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'contrib-tracking-button' => 'Camina',
+);
+
 /** Sinhala (සිංහල)
  * @author බිඟුවා
  */
