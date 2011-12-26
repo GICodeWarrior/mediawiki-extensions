@@ -700,6 +700,36 @@ $messages['lb'] = array(
 	'apisb-query-meta' => 'Meta-Informatioun',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'apisb-desc' => "Maak 't mäögelik óm [//www.mediawiki.org/wiki/API API-verzeuke veur MediaWiki] vanoet 'ne browser te debugge",
+	'apisandbox' => 'API-zandjbak',
+	'apisb-no-js' => "'''Fout''': dees funktie vereis JavaScript.",
+	'apisb-intro' => "Gebroek dees pagina óm te experimentere mit de '''MediaWiki API'''.
+Zuuch de [//www.mediawiki.org/wiki/API API-dokkemèntatie] veur mier details euver 't gebroek van de API.",
+	'apisb-api-disabled' => 'API is oetgesjakeld op deze site.',
+	'apisb-parameters' => 'Parameters',
+	'apisb-result' => 'Rizzeltaat',
+	'apisb-request-url' => 'Verzeuk-URL:',
+	'apisb-request-post' => 'POST-gegaeves:',
+	'apisb-select-action' => 'Hanjeling selektere',
+	'apisb-select-query' => 'Wat is dien vraog?',
+	'apisb-select-value' => 'Selekteer waerde',
+	'apisb-loading' => 'Laje…',
+	'apisb-load-error' => "Fout bie 't laje van de API-besjrieving",
+	'apisb-request-error' => "Fout bie 't oetveure van 't API-verzeuk",
+	'apisb-namespaces-error' => "Fout bie 't laje van de naamruumdes",
+	'apisb-ns-main' => '(Hoofnaamruumde)',
+	'apisb-submit' => 'Verzeuk oetveure',
+	'apisb-query-prop' => 'Eigensjappe',
+	'apisb-query-list' => 'Lieste',
+	'apisb-query-meta' => 'Meta-infermasie',
+	'apisb-generic-parameters' => 'Algemein parameters',
+	'apisb-generator-parameters' => 'Generator',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  * @author Ignas693
@@ -1021,6 +1051,8 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'apisb-parameters' => 'Parametre',
 	'apisb-result' => 'Resultate',
+	'apisb-request-url' => 'URL richieste:',
+	'apisb-request-post' => "POST d'u date:",
 	'apisb-select-action' => "Scacchie l'azione",
 	'apisb-select-value' => "Scacchie 'nu valore",
 	'apisb-loading' => 'Stoche a careche…',
@@ -1028,6 +1060,9 @@ $messages['roa-tara'] = array(
 	'apisb-submit' => "Fà 'na richieste",
 	'apisb-query-prop' => 'probbietà',
 	'apisb-query-list' => 'Elenghe',
+	'apisb-query-meta' => "'Mbormaziune sus a le Meta",
+	'apisb-generic-parameters' => 'Parametre generiche',
+	'apisb-generator-parameters' => 'Generatore',
 );
 
 /** Russian (Русский)
@@ -1060,6 +1095,21 @@ $messages['ru'] = array(
 	'apisb-query-meta' => 'Мета-информация',
 	'apisb-generic-parameters' => 'Общие параметры',
 	'apisb-generator-parameters' => 'Генератор',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'apisb-ns-main' => '(Principali)',
+	'apisb-submit' => 'Addumanna',
+);
+
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'apisb-result' => 'ප්‍රතිඵලය',
 );
 
 /** Slovak (Slovenčina)
