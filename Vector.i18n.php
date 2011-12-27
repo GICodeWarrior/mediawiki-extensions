@@ -777,6 +777,15 @@ $messages['he'] = array(
 	'vector-noexperiments-preference' => 'אל תכללו אותי בניסויים בעתיד',
 );
 
+/** Hindi (हिन्दी)
+ * @author Ansumang
+ */
+$messages['hi'] = array(
+	'vector-collapsiblenav-more' => 'और अधिक भाषाएं',
+	'vector-simplesearch-search' => 'खोज',
+	'vector-noexperiments-preference' => 'मुझे सुविधा प्रयोगों से बाहर निकालें',
+);
+
 /** Croatian (Hrvatski)
  * @author Anton008
  * @author Excaliboor
@@ -925,6 +934,7 @@ Ef þú ert skráður inn, þá getur þú óvirkjað þessi skilaboð í „Bre
 
 /** Italian (Italiano)
  * @author Beta16
+ * @author F. Cosoleto
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
@@ -934,7 +944,7 @@ $messages['it'] = array(
 	'vector-collapsiblenav-more' => 'Più lingue',
 	'vector-editwarning-warning' => 'Lasciare questa pagina potrebbe costarti la perdita di tutti i cambiamenti effettuati.
 Se sei loggato, puoi disattivare questo avviso nella sezione "Casella di modifica" delle tue preferenze.',
-	'vector-editwarning-preference' => 'Avvisa quando lascio una pagina di modifica con modifiche non salvate',
+	'vector-editwarning-preference' => 'Avvisa quando si lascia una pagina di modifica con modifiche non salvate',
 	'vector-simplesearch-search' => 'Ricerca',
 	'vector-simplesearch-containing' => 'contenente...',
 	'vector-noexperiments-preference' => 'Escludimi dalle funzionalità sperimentali',
