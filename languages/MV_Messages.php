@@ -3734,6 +3734,9 @@ $messages['gl'] = array(
 	'mv_flash_low_quality' => 'Web secuencial - Vídeo flash',
 	'mv_archive_org_mp4' => 'Archive.org MP4 encapsulou o fluxo H.264',
 	'mv_archive_org_link' => 'Liga con mpeg2 orixinais de Archive.org',
+	'ao_file_MPEG2' => 'Archive.org - MPEG-2 orixinal',
+	'ao_file_flash_flv' => 'Archive.org - Vídeo Flash',
+	'ao_file_Ogg_Video' => 'Archive.org - Vídeo Ogg',
 	'mv_error_stream_missing' => '<span class="error">Erro: non hai ningún ficheiro de vídeo asociado a este fluxo.</span><br />
 Por favor, comuníquello a un [[{{MediaWiki:Grouppage-sysop}}|administrador do sitio]].',
 	'mv_stream_added' => 'Engadiu o fluxo "$1"',
