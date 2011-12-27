@@ -32,7 +32,6 @@ $wgExtensionCredits['other'][] = array(
 define( 'LANGUAGE_SELECTOR_USE_CONTENT_LANG',    0 ); #no detection
 define( 'LANGUAGE_SELECTOR_PREFER_CONTENT_LANG', 1 ); #use content language if accepted by the client
 define( 'LANGUAGE_SELECTOR_PREFER_CLIENT_LANG',  2 ); #use language most preferred by the client
-define( 'LANGUAGE_SELECTOR_ADJUST_CONTENT',      3 );
 
 /**
 * Language detection mode for anonymous visitors.
@@ -90,31 +89,6 @@ $wgResourceModules['ext.languageSelector'] = array(
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['LanguageSelector'] = $dir . 'LanguageSelector.i18n.php';
 $wgJSAutoloadClasses['LanguageSelector'] = 'extensions/LanguageSelector/LanguageSelector.js';
-$wgHooks['BeforeInitialize'][] = 'wfLanguageSelectorAdjustContent';
-
-function wfLanguageSelectorAdjustContent( &$title, &$article, &$output, &$user, $request, $this ) {
-  global $wgLanguageSelectorRequestedLanguage, $wgLanguageNames, $wgLanguageSelectorAdjustContent;
-  if( isset($wgLanguageSelectorRequestedLanguage) && strlen($wgLanguageSelectorRequestedLanguage)>0){
-    if( isset($wgLanguageSelectorAdjustContent) && $wgLanguageSelectorAdjustContent=== LANGUAGE_SELECTOR_ADJUST_CONTENT){
-      $langstr="/".$wgLanguageSelectorRequestedLanguage;
-      $searchstr="#/(". implode('|',array_keys($wgLanguageNames)) ."$)#";
-      if(preg_match($searchstr,$title->mTextform)){
-        $title->mTextform =preg_replace($searchstr,$langstr, $title->mTextform);
-        $title->mUrlform =preg_replace($searchstr,$langstr, $title->mUrlform);
-        $title->mDbkeyform =preg_replace($searchstr,$langstr, $title->mDbkeyform);
-        $title->mUserCaseDBKey =preg_replace($searchstr,$langstr, $title->mUserCaseDBKey);
-      }else{
-        if($_GET['setlang']== $wgLanguageSelectorRequestedLanguage){
-          $title->mTextform.=$langstr;
-          $title->mUrlform.=$langstr;
-          $title->mDbkeyform.=$langstr;
-          $title->mUserCaseDBKey.=$langstr;
-        }
-      }
-    }
-  }
-  return true;
-}
 
 /**
  * @param  $parser Parser
