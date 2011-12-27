@@ -15,7 +15,7 @@ $messages['en'] = array(
 	'markashelpful-desc' => 'Provides a user interface to mark comments as helpful',
 	'mah-mark-text' => 'Mark as helpful',
 	'mah-you-marked-text' => 'You think this is helpful',
-	'mah-someone-marked-text' => '{{GENDER:$1|$1}} thinks this is helpful',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1 thinks this is helpful}}',
 	'mah-undo-mark-text' => 'undo',
 	'mah-action-error' => 'There was an error performing this action',
 );
@@ -28,7 +28,7 @@ $messages['qqq'] = array(
 This is a feature in development. See [[mw:MarkAsHelpful]] for background information.',
 	'mah-mark-text' => 'Text to prompt the user to mark this item as helpful',
 	'mah-you-marked-text' => 'Text displayed to the logged in user if they mark an item helpful',
-	'mah-someone-marked-text' => 'Text displayed as to who marked this is helpful, shown if not the user who marked {$1 is the username}',
+	'mah-someone-marked-text' => '$1 is the username that can be used for GENDER. $1 displays username who marked as helpful',
 	'mah-undo-mark-text' => 'Text for the the undo mark link',
 	'mah-action-error' => 'Generic error message',
 );
