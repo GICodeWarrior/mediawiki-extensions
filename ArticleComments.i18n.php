@@ -1228,6 +1228,13 @@ $messages['li'] = array(
 	'article-comments-submission-succeeded' => 'De opmirking is opgesjlage',
 	'article-comments-submission-success' => 'De höbs \'n opmirking bie "[[$1]]" opgesjlage',
 	'article-comments-submission-view-all' => 'De kans [[$1|alle opmirkinge bie die pagina]] bekieke',
+	'article-comments-user-is-blocked' => 'Dien gebroekers-account is op dit memènt geblokeerd veur \'t bewirke vaan "[[$1]]".',
+	'article-comments-comment-bad-mode' => 'Dao is \'n ongeljige modus opgegaeve veur de opmirking.
+Besjikbaar zien "plain", "normal" en "wiki".',
+	'article-comments-comment-missing-name-parameter' => 'De naam mis',
+	'article-comments-comment-missing-date-parameter' => 'De datum veur de opmirking mis',
+	'article-comments-no-spam' => "Tenminste ein van de opgesjlage velde had 'n inhauwd dee es spam is aangemerk.",
+	'processcomment' => 'Opmirking verwirke',
 );
 
 /** Lithuanian (Lietuvių)
@@ -2129,6 +2136,24 @@ $messages['ur'] = array(
  */
 $messages['yi'] = array(
 	'article-comments-title-string' => 'קעפל',
+	'article-comments-name-string' => 'נאָמען',
+	'article-comments-name-field' => 'נאָמען (נייטיק):',
+	'article-comments-url-field' => 'וועבזײַטל:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'הערה',
+	'article-comments-comment-field' => 'הערה:',
+	'article-comments-submit-button' => 'אײַנגעבן',
+	'article-comments-leave-comment-link' => 'לאזן א הערה …',
+	'article-comments-invalid-field' => 'דאס $1 <nowiki>[$2]</nowiki> איז אומגילטיק.',
+	'article-comments-no-comments' => 'אנטשולדיקט, דער בלאט "[[$1]]" נעמט נישט קיין הערות דערווײַל.',
+	'article-comments-talk-page-starter' => '<noinclude>הערות אויף "[[$1]]"
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 זאגט ...',
+	'article-comments-submission-success' => 'איר האט אײַנגעגעבן א הערה צו "[[$1]]" מיט דערפֿאלג',
+	'article-comments-submission-view-all' => 'איר קענט באקוקן [[$1|אלע הערות אויף דעם בלאט]]',
+	'article-comments-comment-missing-name-parameter' => 'נאמען פֿעלט',
+	'article-comments-comment-missing-date-parameter' => 'הערה דאטע פֿעלט',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
