@@ -48,7 +48,8 @@
 
 			$.ajax({
 				type: 'get',
-				url: mw.util.wikiScript('api') + '?' + Math.random(Date.now), // added randomness to prevent ie7 cache
+				url: mw.util.wikiScript('api'),
+				cache: false,
 				data: request,
 				success: function( data ) {
 
@@ -71,8 +72,9 @@
 		/*
 		 * API call to mark or unmark an item as helpful.
 		 */
-		markItem: function( $item, action ) {
-			var		props = mah.getItemProperties( $item ),
+		markItem: function( $clicked, action ) {
+			var		$item = $clicked.parent().parent(),
+					props = mah.getItemProperties( $item ),
 					clientData = $.client.profile(),
 					request;
 			props.mahaction = action;
@@ -104,16 +106,14 @@
 	 * Click Event for marking an item as helpful.
 	 */
 	$( '.markashelpful-mark' ).live( 'click', function() {
-		var $item = $( this ).parent().parent();
-		mah.markItem( $item, 'mark' );
+		mah.markItem( $(this), 'mark' );
 	} );
 
 	/*
 	 * Click Event for removing helpful status from an item.
 	 */
 	$( '.markashelpful-undo' ).live( 'click', function() {
-		var $item = $( this ).parent().parent();
-		mah.markItem( $item, 'unmark' );
+		mah.markItem( $(this), 'unmark' );
 	} );
 
 	// Initialize MarkAsHelpful
