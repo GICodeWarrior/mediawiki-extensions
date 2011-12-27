@@ -82,6 +82,7 @@ $wgAutoloadClasses['SpecialStudent'] 				= dirname( __FILE__ ) . '/specials/Spec
 $wgAutoloadClasses['SpecialStudents'] 				= dirname( __FILE__ ) . '/specials/SpecialStudents.php';
 $wgAutoloadClasses['SpecialTerm'] 					= dirname( __FILE__ ) . '/specials/SpecialTerm.php';
 $wgAutoloadClasses['SpecialTerms'] 					= dirname( __FILE__ ) . '/specials/SpecialTerms.php';
+$wgAutoloadClasses['SpecialEnroll'] 				= dirname( __FILE__ ) . '/specials/SpecialEnroll.php';
 
 // Special pages
 $wgSpecialPages['MyCourses'] 						= 'SpecialMyCourses';
@@ -97,6 +98,7 @@ $wgSpecialPages['EducationProgram'] 				= 'SpecialEducationProgram';
 $wgSpecialPages['EditCourse'] 						= 'SpecialEditCourse';
 $wgSpecialPages['EditInstitution'] 					= 'SpecialEditInstitution';
 $wgSpecialPages['EditTerm'] 						= 'SpecialEditTerm';
+$wgSpecialPages['Enroll'] 	    					= 'SpecialEnroll';
 
 $wgSpecialPageGroups['MyCourses'] 					= 'education';
 $wgSpecialPageGroups['Institution'] 				= 'education';

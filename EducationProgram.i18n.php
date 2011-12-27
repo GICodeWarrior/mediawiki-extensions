@@ -61,6 +61,7 @@ $messages['en'] = array(
 	'special-editterm-edit' => 'Edit term',
 	'special-editcourse-add' => 'Add course',
 	'special-editcourse-edit' => 'Edit course',
+	'special-enroll' => 'Enroll',
 
 	// Special:Institutions
 	'ep-institutions-nosuchinstitution' => 'There is no institution with name "$1". Existing institutions are listed below.',

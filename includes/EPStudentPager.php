@@ -26,14 +26,14 @@ class EPStudentPager extends EPPager {
 		parent::__construct( $context, $conds, 'EPStudent' );
 	}
 
-	/**
+		/**
 	 * (non-PHPdoc)
-	 * @see TablePager::getFieldNames()
+	 * @see EPPager::getFields()
 	 */
-	public function getFieldNames() {
-		return parent::getFieldNameList( array(
+	public function getFields() {
+		return array(
 			// TODO
-		) ); 
+		); 
 	}
 	
 	/**
