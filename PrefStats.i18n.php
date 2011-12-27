@@ -1206,6 +1206,24 @@ $messages['he'] = array(
 	'prefstats-legend-in' => 'הפעלת ההעדפה',
 );
 
+/** Hindi (हिन्दी)
+ * @author Ansumang
+ */
+$messages['hi'] = array(
+	'prefstats' => 'वरीयता के आँकड़े',
+	'prefstats-xaxis' => 'अवधि (घंटे)',
+	'prefstats-factors' => 'दृश्य प्रति: $1',
+	'prefstats-factor-hour' => 'घंटे',
+	'prefstats-factor-sixhours' => 'छह घंटे',
+	'prefstats-factor-day' => 'दिन',
+	'prefstats-factor-week' => 'सप्ताह',
+	'prefstats-factor-twoweeks' => 'दो सप्ताह',
+	'prefstats-factor-fourweeks' => 'चार सप्ताह',
+	'prefstats-factor-default' => 'मूल स्केल को बापिस',
+	'prefstats-legend-out' => 'बाहर का विकल्प चुनना',
+	'prefstats-legend-in' => 'में चुना',
+);
+
 /** Croatian (Hrvatski)
  * @author Ex13
  */
@@ -2295,6 +2313,7 @@ $messages['pnb'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'prefstats-title' => 'د غوره توبونو شمار',
 	'prefstats-xaxis' => 'موده (ساعتونه)',
 	'prefstats-factor-hour' => 'ساعت',
 	'prefstats-factor-sixhours' => 'شپږ ساعته',
