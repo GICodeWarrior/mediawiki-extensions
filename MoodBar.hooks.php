@@ -28,25 +28,23 @@ class MoodBarHooks {
 	 */
 	public static function onMarkItemAsHelpful( $mahaction, $type, $item, $User, &$isAbleToMark ) {
 		
+		if ( $User->isAnon() ) {
+			$isAbleToMark = false;
+			return true;
+		}
+		
 		if ( $type == 'mbresponse' ) {
 			
 			switch ( $mahaction ) {
 				
 				case 'mark':
 					$dbr = wfGetDB( DB_SLAVE );
-					
-					$conds = array( 'mbf_id = mbfr_mbf_id', 'mbfr_id' => intval( $item ) );
-					
-					if ( !$User->isAnon() ) {
-						$conds['mbf_user_id'] = $User->getId();		
-					}
-					else {
-						$conds['mbf_user_ip'] = $User->getName();
-					}
-					
+						
 					$res = $dbr->selectRow( array( 'moodbar_feedback', 'moodbar_feedback_response' ), 
 								array( 'mbf_id' ),
-								$conds,
+								array( 'mbf_id = mbfr_mbf_id', 
+								       'mbfr_id' => intval( $item ), 
+								       'mbf_user_id' => $User->getId() ),
 								__METHOD__ );	
 					
 					if ( $res === false ) {
