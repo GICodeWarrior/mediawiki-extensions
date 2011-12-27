@@ -119,6 +119,13 @@ $messages['nl'] = array(
 	'fundraiserlandingpage-desc' => 'Accepteert URL-parameters en geeft deze door aan het opgegeven sjabloon als sjabloonvariabelen',
 );
 
+/** Polish (Polski)
+ * @author Olgak85
+ */
+$messages['pl'] = array(
+	'fundraiserlandingpage-desc' => 'Pobiera parametry adresu URL i przekazuje je do określonego szablonu jako zmienne szablonów',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
