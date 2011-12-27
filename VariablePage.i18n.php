@@ -326,6 +326,13 @@ $messages['lt'] = array(
 	'variablepage-navlink_text' => 'Aukoti',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'variablepage-navlink_text' => 'Ziedot',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -462,6 +469,13 @@ $messages['rue'] = array(
 	'variablepage-desc' => 'Проста перемінлива сторінка напрямлїня',
 );
 
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'variablepage-navlink_text' => 'පරිත්‍යාග කරන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -512,6 +526,13 @@ $messages['tl'] = array(
 	'variablepage' => 'Pabagubaong Pahina',
 	'variablepage-navlink_text' => 'Mag-abuloy',
 	'variablepage-desc' => 'Magaang na pabagubaong muling pagiiba ng pupuntahan ng pahina',
+);
+
+/** Turkish (Türkçe)
+ * @author Cekli829
+ */
+$messages['tr'] = array(
+	'variablepage-navlink_text' => 'Bağışla',
 );
 
 /** Ukrainian (Українська)
