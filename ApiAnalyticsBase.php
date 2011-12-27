@@ -348,8 +348,8 @@ abstract class ApiAnalyticsBase extends ApiBase {
 			'data' => array(
 					' timeseries        - returns ordered list of value pairs, one for each month within range',
 					' timeseriesindexed - like timeseries, but each month\'s value will be relative to oldest month\'s value which is always 100',
-					' percentagegrowthlastmonth, percentagegrowthlastyear, percentagegrowthfullperiod',
-					' - growth percentages are relative to oldest value (80->100=25%) although trivial, requesting these metrics through API ensures all clients use same calculation',
+					' percentagegrowthlastmonth, percentagegrowthlastyear, percentagegrowthfullperiod - growth percentages are relative to oldest' .
+							'   value (80->100=25%) although trivial, requesting these metrics through API ensures all clients use same calculation',
 			),
 			'reportlanguage' => 'Language code, used to expand region and country codes into region and country name',
 			'selectregions' => array(

@@ -12,6 +12,6 @@ class EditorsByGeographyMetric extends GenericMetricBase {
 	}
 
 	protected function getExamples() {
-		return "";
+		return false;
 	}
 }
