@@ -54,6 +54,13 @@ $messages['ast'] = array(
 	'webfonts-enable-preference' => 'Activar la incorporación de fontes (WebFonts)',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'webfonts-help' => 'Kömək',
+);
+
 /** Bashkir (Башҡортса)
  * @author Haqmar
  */
@@ -185,19 +192,38 @@ $messages['el'] = array(
 	'webfonts-help' => 'Βοήθεια',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'webfonts' => 'Retaj Tiparoj',
+	'webfonts-desc' => 'Enmeti tiparojn en paĝoj',
+	'webfonts-load' => 'Elekti tiparon',
+	'webfonts-reset' => 'Restarigi',
+	'webfonts-enable-preference' => 'Ŝalti enmetadon de tiparoj (WebFonts)',
+	'webfonts-menu-tooltip' => 'Elektu tiparon por la paĝo',
+	'webfonts-help' => 'Helpo',
+);
+
 /** Spanish (Español)
  * @author Fitoschido
+ * @author Imre
+ * @author Platonides
  */
 $messages['es'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Incrustar tipografías en las páginas',
 	'webfonts-load' => 'Seleccionar tipografía',
 	'webfonts-reset' => 'Restablecer',
+	'webfonts-enable-preference' => 'Activar la incrustación de tipografías (WebFonts)',
+	'webfonts-menu-tooltip' => 'Escoger una fuente para la página',
+	'webfonts-help' => 'Ayuda',
 );
 
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Huji
+ * @author Rmashhadi
  * @author ZxxZxxZ
  */
 $messages['fa'] = array(
@@ -207,6 +233,7 @@ $messages['fa'] = array(
 	'webfonts-reset' => 'بازنشانی',
 	'webfonts-enable-preference' => 'فعال‌کردن جاسازی قلم (وب‌قلم)',
 	'webfonts-menu-tooltip' => 'انتخاب قلم برای صفحه',
+	'webfonts-help' => 'کمک',
 );
 
 /** Finnish (Suomi)
@@ -294,6 +321,7 @@ $messages['he'] = array(
 );
 
 /** Hindi (हिन्दी)
+ * @author Ansumang
  * @author Bhawani Gautam
  */
 $messages['hi'] = array(
@@ -302,6 +330,8 @@ $messages['hi'] = array(
 	'webfonts-load' => 'फ़ॉन्ट का चयन करें',
 	'webfonts-reset' => 'पुनर्स्थापित करें',
 	'webfonts-enable-preference' => 'फ़ॉन्ट एम्बेडिंग (WebFonts) को सक्षम करें',
+	'webfonts-menu-tooltip' => 'पृष्ठ के लिए फ़ॉन्ट का चयन करें',
+	'webfonts-help' => 'सहायता',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -334,6 +364,7 @@ $messages['ia'] = array(
 	'webfonts-reset' => 'Reinitialisar',
 	'webfonts-enable-preference' => 'Activar le incorporation de typos de litteras (WebFonts)',
 	'webfonts-menu-tooltip' => 'Selige un typo de litteras pro le pagina',
+	'webfonts-help' => 'Adjuta',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -544,10 +575,17 @@ $messages['or'] = array(
 );
 
 /** Polish (Polski)
+ * @author Olgak85
  * @author Woytecr
  */
 $messages['pl'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Czcionki osadzone na stronach',
 	'webfonts-load' => 'Wybierz czcionkę',
+	'webfonts-reset' => 'Reset',
+	'webfonts-enable-preference' => 'Włącz osadzanie czcionek',
+	'webfonts-menu-tooltip' => 'Wybierz czcionkę dla strony',
+	'webfonts-help' => 'Pomoc',
 );
 
 /** Piedmontese (Piemontèis)
@@ -595,6 +633,7 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'webfonts-load' => "Scacchie 'u font",
 	'webfonts-reset' => 'Azzere',
+	'webfonts-menu-tooltip' => "Scacchie 'nu font pa pàgene",
 	'webfonts-help' => 'Ajute',
 );
 
@@ -635,6 +674,9 @@ $messages['scn'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'webfonts' => 'ජාලක්ෂර',
+	'webfonts-desc' => 'පිටු මත එබ්බවූ අක්ෂර',
+	'webfonts-load' => 'අක්ෂරය තෝරන්න',
 	'webfonts-reset' => 'ප්‍රත්‍යාරම්භ කරන්න',
 	'webfonts-help' => 'උදව්',
 );
@@ -695,7 +737,15 @@ $messages['ta'] = array(
 	'webfonts-load' => 'எழுத்துரு மாற்ற',
 	'webfonts-reset' => 'இயல்பு எழுத்துரு',
 	'webfonts-enable-preference' => 'எழுத்துரு புதைத்தல் (இணைய எழுத்துருக்களை) பயன்படுத்துக',
+	'webfonts-menu-tooltip' => 'பக்கத்திற்கான எழுத்துருவை தேர்வு செய்க',
 	'webfonts-help' => 'உதவி',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'webfonts-help' => 'సహాయం',
 );
 
 /** Tagalog (Tagalog)
