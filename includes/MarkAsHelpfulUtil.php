@@ -5,6 +5,15 @@
  */
 class MarkAsHelpfulUtil {
 
+	/**
+	 * Generate 'mark as helpful' template for current user
+	 * @param $user Object - The current user
+	 * @param $isAbleToMark bool - flag to check if the user is able to mark the item as helpful
+	 * @param $helpfulUserList array - list of users who have marked this item as helpful
+	 * @param $type string - the object type
+	 * @param $item int - the object id
+	 * @return html | empty text
+	 */
 	public static function getMarkAsHelpfulTemplate( $user, $isAbleToMark, $helpfulUserList, $type, $item ) {
 		
 		if ( $user->isAnon() ) {
@@ -29,23 +38,31 @@ class MarkAsHelpfulUtil {
 		
 	}
 	
+	/**
+	 * The template to display in this format: {{user name or ip}} thinks this is helpful
+	 * @param $helpfulUserList array - List of users that mark the item as helpful
+	 * @return string html | empty text
+	 */
 	private static function otherMarkedTemplate( $helpfulUserList ) {
+		
 		if ( count( $helpfulUserList ) == 0 ) {
 			return '';
 		}
 
-		$userList = '';
-
-		foreach ( $helpfulUserList as $val ) {
-			$userList .= $val['user_name'] . ' ';
+		reset( $helpfulUserList );
+		
+		$user = current( $helpfulUserList );
+		
+		// show the first user 'in mark as helpful' template
+		if ( $user['user_name'] ) {
+			$data = wfMessage( 'mah-someone-marked-text' )->params( $user['user_name'] )->escaped();	
 		}
-
-		$data = '';
-
-		if ( $userList ) {
-			$data = wfMessage( 'mah-someone-marked-text' )->params( $userList )->escaped();
+		else {
+			$data = wfMessage( 'mah-someone-marked-text' )->params( $user['user_ip'] )->escaped();
 		}
-
+		
+		// Add other user in user list to a hidden div, this is for future enhancement
+		
 		return <<<HTML
 			<div class='mw-mah-wrapper'>
 				<span class='mah-helpful-marked-state'>
@@ -55,6 +72,12 @@ class MarkAsHelpfulUtil {
 HTML;
 	}
 	
+	/**
+	 * The template to display in this format: You think this is helpful
+	 * @Todo future enhancement: We may pass the list of other users as well 
+	 *       so we can put them in hidden div
+	 * @return string html
+	 */
 	private static function ownerMarkedTemplate() {
 		$mahMarkedText = wfMessage( 'mah-you-marked-text' )->escaped();
 		$undoLinkText = wfMessage( 'mah-undo-mark-text' )->escaped();
@@ -69,6 +92,10 @@ HTML;
 HTML;
 	}
 
+	/**
+	 * The template to request a user to mark an item as helpful
+	 * @return string html
+	 */
 	private static function requestToMarkTemplate() {
 		$mahLinkText = wfMessage( 'mah-mark-text' )->escaped();
 		return <<<HTML
