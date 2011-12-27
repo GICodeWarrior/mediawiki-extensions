@@ -1443,6 +1443,7 @@ $messages['he'] = array(
 
 /** Hindi (हिन्दी)
  * @author AVRS
+ * @author Ansumang
  * @author Kaustubh
  * @author Shyam
  */
@@ -1466,8 +1467,8 @@ $messages['hi'] = array(
 	'ogg-no-xiphqt' => 'आपके पास QuickTime के लिए XiphQT घटक प्रतीत नहीं हो रहा है।
 QuickTime बिना इस घटक के Ogg files चलने में असमर्थ है।
 कृपया <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT डाउनलोड करें</a> अथवा अन्य चालक चुनें।',
-	'ogg-player-videoElement' => '<video> घटक',
-	'ogg-player-oggPlugin' => 'ऑग प्लगीन',
+	'ogg-player-videoElement' => 'मूल ब्राउज़र समर्थन',
+	'ogg-player-oggPlugin' => 'ब्राउज़र प्लगइन',
 	'ogg-player-thumbnail' => 'सिर्फ स्थिर चित्र',
 	'ogg-player-soundthumb' => 'प्लेअर नहीं हैं',
 	'ogg-player-selected' => '(चुने हुए)',
@@ -2280,9 +2281,11 @@ $messages['lv'] = array(
 	'ogg-play-sound' => 'Atskaņot skaņu',
 	'ogg-player-oggPlugin' => 'Pārlūka spraudnis',
 	'ogg-player-selected' => '(izvēlēts)',
+	'ogg-more' => 'Vairāk...',
 	'ogg-dismiss' => 'Aizvērt',
 	'ogg-download' => 'Lejupielādēt failu',
 	'ogg-desc-link' => 'Par šo failu',
+	'ogg-oggThumb-version' => 'OggHandler nepieciešama oggThumb $1 vai jaunāka versija.',
 );
 
 /** Macedonian (Македонски)
@@ -2879,6 +2882,7 @@ $messages['ps'] = array(
 	'ogg-long-general' => 'Ogg رسنيزه دوتنه، اوږدوالی $2، $3',
 	'ogg-long-error' => 'ناسمه ogg دوتنه: $1',
 	'ogg-play' => 'غږول',
+	'ogg-pause' => 'درول',
 	'ogg-stop' => 'درول',
 	'ogg-play-video' => 'ويډيو غږول',
 	'ogg-play-sound' => 'غږ غږول',
@@ -4009,10 +4013,12 @@ $messages['wa'] = array(
 );
 
 /** Yiddish (ייִדיש)
+ * @author Imre
  * @author פוילישער
  */
 $messages['yi'] = array(
 	'ogg-play' => 'שפּיל',
+	'ogg-dismiss' => 'שליסן',
 );
 
 /** Yoruba (Yorùbá)
