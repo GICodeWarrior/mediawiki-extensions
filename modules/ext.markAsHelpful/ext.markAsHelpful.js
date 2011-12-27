@@ -7,16 +7,18 @@
 (function( $ ) {
 
 	var mah = mw.mah = {
-		ids: [],
-		selector: '[class^=markashelpful-]',  //only selector for now
+		loadedItems: [],
+		selector: '.markashelpful-item',  //class of element(s) to apply MarkAsHelpful to.
 
 		init: function() {
-			var	props;
+			var	props, thisItem;
 			$( mah.selector ).each( function ( i, e ) {
 				props = mah.getItemProperties( $(this) );
-				//be sure to only load once per item id
-				if( $.inArray( props.item, mah.ids ) === -1 ) {
-					mah.ids.push( props.item );
+				thisItem = props.type + props.item; //create an item reference to place in the loaded items array.
+	
+				//load once per type+id because user can copy / paste element on the talk page and load the same item many times.
+				if( $.inArray( thisItem, mah.loadedItems ) === -1 ) {
+					mah.loadedItems.push( thisItem );
 					mah.loadItem( $( this ) );
 				}
 			}); 
@@ -26,11 +28,10 @@
 		 * Return object of item properties
 		 */
 		getItemProperties: function( $item ) {
-			var		tag = $item.attr( 'class' ),
-					properties = {
-						'item': tag.split( '-' )[2], // item id
-						'type': tag.split( '-' )[1]  // item type (eg, mbresponse)
-					};
+			var	properties = {
+					'item': $item.data('markashelpful-item'), // item id
+					'type': $item.data('markashelpful-type')  // item type (eg, mbresponse)
+				};
 			return properties;
 		},
 
