@@ -3860,6 +3860,56 @@ $messages['mt'] = array(
 	'contrib-hist-previous' => 'Donazzjonijiet suċċessivi',
 	'contrib-hist-anonymous' => 'Anonimu',
 	'contributionstatistics' => 'Statistika tal-kontribuzzjonijiet',
+	'contribstats-desc' => 'Turi statistiċi għall-kontribuzzjonijiet magħmul lill-Fondazzjoni Wikimedia',
+	'contribstats-day' => 'Jum',
+	'contribstats-month' => 'Xahar',
+	'contribstats-currency' => 'Valuta',
+	'contribstats-amount' => 'Ammont (USD)',
+	'contribstats-contributions' => 'Kontribuzzjonijiet',
+	'contribstats-total' => 'Total (USD)',
+	'contribstats-avg' => 'Medja (USD)',
+	'contribstats-max' => 'L-ogħla donazzjoni',
+	'contribstats-percentage-ytd' => 'Persentaġġ (YTD)',
+	'contribstats-total-ytd' => 'Total (YTD)',
+	'contribstats-value-exactly' => 'Eżattament $1',
+	'contribstats-value-under' => 'Inqas minn $1',
+	'contribstats-value-from' => 'Bejn $1 - $2',
+	'contribstats-value-over' => 'Aktar minn $1',
+	'contributiontrackingstatistics' => 'Monitoraġġ tal-istatistika tal-kontribuzzjonijiet',
+	'contribstats-day-totals' => 'Total għal kull jum',
+	'contribstats-week' => 'Ġimgħa',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Total għal din il-ġimgħa|Totali għal kull ġimgħa għall-aħħar $1 ġimgħat}}',
+	'contribstats-payment-type' => "Tip ta' ħlas",
+	'contribstats-banner' => 'Banner',
+	'contribstats-clicks' => 'Klikk',
+	'contribstats-donations' => 'Donazzjonijiet',
+	'contribstats-conversion' => "Rata ta' konverżjoni (%)",
+	'contribstats-template' => 'Mudell',
+	'contribstats-nodata' => 'L-ebda informazzjoni provduta',
+	'contribstats-landingpage' => "Paġna ta' destinazzjoni",
+	'contribstats-donatepage' => "Paġna ta' donazzjoni",
+	'contribstats-average' => 'Medja',
+	'contribstats-paypal-donations' => 'Donazzjonijiet tal-PayPal',
+	'contribstats-credit-card' => "Karta ta' kreditu",
+	'contribstats-fraud-note' => 'Jeżistu xi donazzjonijiet frawdolenti.',
+	'contribstats-unaudited' => 'Dawn huma totali mhux verifikati.',
+	'fundraiserstatistics' => "Statistika tal-ġbir ta' fondi",
+	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-day' => 'Jum $1 minn $2',
+	'fundraiserstats-contributions' => 'Kontribuzzjonijiet',
+	'fundraiserstats-total' => 'Total (USD)',
+	'fundraiserstats-avg' => 'Medja (USD)',
+	'fundraiserstats-ytd' => 'Total kumulattiv (USD)',
+	'fundraiserstats-max' => 'Massimu (USD)',
+	'fundraiserstats-tab-totals' => 'Totali (USD)',
+	'fundraiserstats-tab-contributions' => "Numru ta' kontribuzzjonijiet",
+	'fundraiserstats-tab-averages' => 'Medji (USD)',
+	'fundraiserstats-tab-maximums' => 'Massimi (USD)',
+	'fundraiserstats-instructions' => "Sabiex tara l-istatistika għal jum partikulari, poġġi l-maws fuq il-linja. Kull sena hija rappreżentata b'kulur differenti fuq il-grafika.",
+	'fundraiserstats-customize' => 'Ippersonalizza',
+	'fundraiserstats-show-years' => 'Uri s-snin segwenti:',
+	'fundraiserstats-time-zone' => 'Żona tal-ħin:',
+	'fundraiserstats-utc' => '(mill-UTC)',
 );
 
 /** Erzya (Эрзянь)
@@ -4307,6 +4357,7 @@ $messages['pdc'] = array(
  * @author Leinad
  * @author Maikking
  * @author Odder
+ * @author Olgak85
  * @author Qblik
  * @author Sp5uhe
  * @author Wpedzich
@@ -4314,6 +4365,9 @@ $messages['pdc'] = array(
 $messages['pl'] = array(
 	'contributionreporting-desc' => 'Bieżące sprawozdanie na temat zebranych funduszy dla Wikimedia',
 	'contributiontotal' => 'Łączna suma darowizn',
+	'dailytotal' => 'Podsumowanie dzienne',
+	'disablednotice' => 'Raport z działalności',
+	'disablednotice-disabled' => 'Ta strona została chwilowo wyłączona. Prosimy spróbuj ponownie później.',
 	'contributionhistory' => 'Historia darowizn',
 	'contrib-hist-header' => 'Komentarze darczyńców z całego świata',
 	'contrib-hist-name' => 'Nazwa',
@@ -4392,6 +4446,9 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'contributionreporting-desc' => 'Rapòrt an linia an sla racòlta fond Wikimedia',
 	'contributiontotal' => 'Total dle contribussion',
+	'dailytotal' => 'Total dël di',
+	'disablednotice' => 'Arpòrt ëd contribussion',
+	'disablednotice-disabled' => "Sta pagina a l'é stàita disabilità temporaneament. Për piasì preuva torna pi tard.",
 	'contributionhistory' => 'Stòria dle contribussion',
 	'contrib-hist-header' => 'Coment dij donator da tut ël mond',
 	'contrib-hist-name' => 'Nòm',
@@ -5059,6 +5116,32 @@ $messages['scn'] = array(
 	'contribstats-month' => 'Misi',
 	'contribstats-currency' => 'Munita',
 	'contribstats-week' => 'Simana',
+);
+
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'contrib-hist-name' => 'නම',
+	'contrib-hist-date' => 'දිනය සහ වෙලාව',
+	'contrib-hist-amount' => 'වටිනාකම',
+	'contrib-hist-anonymous' => 'නිර්නාමික',
+	'contribstats-day' => 'දිනය',
+	'contribstats-month' => 'මාසය',
+	'contribstats-currency' => 'ව්‍යවහාර මුදල',
+	'contribstats-contributions' => 'දායකත්වයන්',
+	'contribstats-week' => 'සතිය',
+	'contribstats-payment-type' => 'ගෙවන විධිය',
+	'contribstats-banner' => 'බැනරය',
+	'contribstats-donations' => 'පරිත්‍යාග',
+	'contribstats-template' => 'සැකිල්ල',
+	'contribstats-donatepage' => 'පරිත්‍යාග පිටුව',
+	'contribstats-paypal-donations' => 'පේපැල් පරිත්‍යාගයන්',
+	'contribstats-credit-card' => 'ණය පත',
+	'fundraiserstats-date' => 'දිනය',
+	'fundraiserstats-contributions' => 'දායකත්වයන්',
+	'fundraiserstats-tab-contributions' => 'දායකත්වයන් ගණන',
+	'fundraiserstats-time-zone' => 'වේලා කලාපය:',
 );
 
 /** Slovak (Slovenčina)
@@ -5874,6 +5957,7 @@ $messages['tt-cyrl'] = array(
 $messages['uk'] = array(
 	'contributionreporting-desc' => 'Поточні відомості про збір пожертвувань на користь Вікімедіі',
 	'contributiontotal' => 'Всього пожертвувань',
+	'disablednotice-disabled' => 'Цю сторінку тимчасово вимкнуто. Будь ласка, повторіть спробу пізніше.',
 	'contributionhistory' => 'Історія пожертвувань',
 	'contrib-hist-header' => 'Коментарі донорів з усього світу',
 	'contrib-hist-name' => 'Ім`я',
@@ -6264,6 +6348,8 @@ $messages['zh-hant'] = array(
 	'contributionreporting-desc' => '維基媒體現場募捐活動報告',
 	'contributiontotal' => '貢獻匯總',
 	'dailytotal' => '日總計',
+	'disablednotice' => '貢獻匯報',
+	'disablednotice-disabled' => '本頁面已被暫時停用，請稍後再試。',
 	'contributionhistory' => '歷史貢獻',
 	'contrib-hist-header' => '捐助者來自世界各地的評論',
 	'contrib-hist-name' => '名稱',
