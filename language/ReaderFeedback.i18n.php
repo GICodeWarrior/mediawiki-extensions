@@ -2454,10 +2454,21 @@ $messages['sh'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
  * @author බිඟුවා
  */
 $messages['si'] = array(
+	'readerfeedback-level-0' => 'දුර්වල',
+	'readerfeedback-level-1' => 'අවම',
+	'readerfeedback-level-2' => 'සතුටුදායක',
+	'readerfeedback-level-3' => 'ඉහළ',
+	'readerfeedback-level-4' => 'අති විශිෂ්ට',
+	'readerfeedback-submit' => 'යොමන්න',
+	'readerfeedback-submitting' => 'යොමු කරමින් …',
 	'readerfeedback-finished' => 'ස්තුතියි!',
+	'readerfeedback-tier-high' => 'ඉහළ',
+	'readerfeedback-tier-medium' => 'මධ්‍යම',
+	'readerfeedback-tier-poor' => 'දුර්වල',
 );
 
 /** Slovak (Slovenčina)

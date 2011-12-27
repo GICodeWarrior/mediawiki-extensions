@@ -2193,6 +2193,17 @@ $messages['sah'] = array(
 	'right-feedback' => 'Сирэйи сыаналыырга отзыв форматын туттуу',
 );
 
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'ratinghistory-link' => 'පිටු තරාතිරම',
+	'ratinghistory-month' => 'පසුගිය මාසය',
+	'ratinghistory-3months' => 'පසුගිය මාස 3',
+	'ratinghistory-year' => 'පසුගිය වර්ෂය',
+	'ratinghistory-3years' => 'පසුගිය වර්ෂ 3',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Mormegil
