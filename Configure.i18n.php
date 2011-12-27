@@ -12346,6 +12346,7 @@ $messages['wuu'] = array(
  */
 $messages['yi'] = array(
 	'configure-desc-group' => 'גרופע',
+	'configure-form-reason' => 'אורזאַך:',
 	'configure-js-remove' => 'אויסמעקן',
 	'configure-old-changes' => 'ענדערונגען',
 	'configure-section-pages' => 'בלעטער',
