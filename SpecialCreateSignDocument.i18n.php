@@ -696,7 +696,7 @@ Pour cette raison, soyez absolument certain que le document soit suffisamment st
 	'createsigndoc-bday' => 'Date de naissance :',
 	'createsigndoc-minage' => 'Âge minimum :',
 	'createsigndoc-introtext' => 'Introduction :',
-	'createsigndoc-hidden' => 'Caché',
+	'createsigndoc-hidden' => 'Masqué',
 	'createsigndoc-optional' => 'Optionnel',
 	'createsigndoc-create' => 'Créer',
 	'createsigndoc-error-generic' => 'Erreur : $1',
