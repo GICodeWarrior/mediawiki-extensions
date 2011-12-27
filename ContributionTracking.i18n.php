@@ -961,6 +961,7 @@ $messages['pdc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Olgak85
  * @author Sp5uhe
  */
 $messages['pl'] = array(
@@ -969,8 +970,8 @@ $messages['pl'] = array(
 	'contrib-tracking-error' => 'Błąd',
 	'contrib-tracking-error-text' => 'Niewłaściwy format danych wejściowych',
 	'contrib-tracking-submitting' => 'Przesyłanie danych do systemu płatności...',
-	'contrib-tracking-continue' => 'Jeśli nie {{GENDER:|zostałeś przeniesiony|zostałaś przeniesiona|przeniesiono Cię}} automatycznie, kliknij przycisk aby dokończyć wpłacanie darowizny za pomocą systemu PayPal.',
-	'contrib-tracking-redirect' => 'Zostaniesz automatycznie przeniesiony do PayPal aby wykonać wpłatę.',
+	'contrib-tracking-continue' => 'Jeżeli nie {{GENDER:|zostałeś przekierowany|zostałaś przekierowana|przeniesiono Cię}} automatycznie, kliknij przycisk aby dokończyć wpłacanie darowizny za pomocą systemu PayPal.',
+	'contrib-tracking-redirect' => 'Zostaniesz automatycznie przekierowany do PayPal aby dokończyć wpłatę.',
 	'contrib-tracking-button' => 'Kontynuuj',
 	'contrib-tracking-item-name-onetime' => 'Jednorazowa darowizna',
 	'contrib-tracking-item-name-recurring' => 'Powtarzająca się comiesięczna darowizna',
@@ -986,8 +987,8 @@ $messages['pms'] = array(
 	'contrib-tracking-error' => 'Eror',
 	'contrib-tracking-error-text' => 'Spedission ëd forma nen bon-a',
 	'contrib-tracking-submitting' => 'Spedission al motor ëd pagament ...',
-	'contrib-tracking-continue' => "S'it ses pa rediressionà automaticament, sgnaca ël boton për completé toa donassion a PayPal.",
-	'contrib-tracking-redirect' => 'A sarà anviarà automaticament su PayPal për completé soa donassion.',
+	'contrib-tracking-continue' => "S'it ses pa rediressionà automaticament, sgnaca ël boton për completé toa donassion.",
+	'contrib-tracking-redirect' => 'A sarà anviarà automaticament për completé soa donassion.',
 	'contrib-tracking-button' => 'Continua',
 	'contrib-tracking-item-name-onetime' => 'Donassion sìngola',
 	'contrib-tracking-item-name-recurring' => 'Donassion arcorenta mensil',
