@@ -152,9 +152,12 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'apisb-result' => 'ফলাফল',
+	'apisb-select-value' => 'মান নির্বাচন',
 	'apisb-loading' => 'লোডিং...',
 	'apisb-ns-main' => '(প্রধান)',
+	'apisb-submit' => 'অনুরোধ রাখুন',
 	'apisb-query-list' => 'তালিকা',
+	'apisb-query-meta' => 'মেটা তথ্য',
 );
 
 /** Breton (Brezhoneg)
@@ -268,22 +271,28 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Lucas
+ * @author Yekrats
  */
 $messages['eo'] = array(
+	'apisb-parameters' => 'Parametroj',
 	'apisb-result' => 'Rezulto',
+	'apisb-request-url' => 'Mendi URL-on.',
 	'apisb-select-action' => 'Elekti agojn',
 	'apisb-select-value' => 'Elekti valoron',
 	'apisb-loading' => 'Ŝarĝante...',
+	'apisb-ns-main' => '(Ĉefa)',
 	'apisb-query-prop' => 'Ecoj',
 	'apisb-query-list' => 'Listoj',
 );
 
 /** Spanish (Español)
  * @author Fitoschido
+ * @author Imre
  * @author Pvgreenzebra
  */
 $messages['es'] = array(
 	'apisb-desc' => 'Permite depurar llamadas a la [//www.mediawiki.org/wiki/API API de MediaWiki] desde el navegador',
+	'apisandbox' => 'Zona de pruebas API',
 	'apisb-no-js' => "'''Error ''': esta característica requiere JavaScript.",
 	'apisb-api-disabled' => 'La API está desactivada en este sitio.',
 	'apisb-parameters' => 'Parámetros',
@@ -302,6 +311,7 @@ $messages['es'] = array(
 	'apisb-query-prop' => 'Propiedades',
 	'apisb-query-list' => 'Listas',
 	'apisb-query-meta' => 'información de Meta',
+	'apisb-generator-parameters' => 'Generador',
 );
 
 /** Estonian (Eesti)
@@ -509,6 +519,13 @@ $messages['he'] = array(
 	'apisb-generator-parameters' => 'מחולל',
 );
 
+/** Hindi (हिन्दी)
+ * @author Ansumang
+ */
+$messages['hi'] = array(
+	'apisb-result' => 'परिणाम',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -630,6 +647,7 @@ Lihat [//www.mediawiki.org/wiki/API dokumentasi API] untuk perincian lanjut peng
 /** Italian (Italiano)
  * @author Aushulz
  * @author Beta16
+ * @author F. Cosoleto
  * @author Gianfranco
  * @author Rippitippi
  */
@@ -645,8 +663,9 @@ Per ulteriori dettagli di utilizzo delle API, fai riferimento alla [//www.mediaw
 	'apisb-request-url' => 'URL di richiesta:',
 	'apisb-request-post' => 'Dati POST:',
 	'apisb-select-action' => 'Seleziona azione',
+	'apisb-select-query' => 'Che cosa?',
 	'apisb-select-value' => 'Selezionare il valore',
-	'apisb-loading' => 'Caricamento in corso ...',
+	'apisb-loading' => 'Caricamento in corso...',
 	'apisb-load-error' => 'Errore durante il caricamento descrizione API',
 	'apisb-request-error' => "Errore durante l'elaborazione della richiesta API",
 	'apisb-namespaces-error' => 'Errore durante il caricamento dei namespace',
@@ -657,6 +676,22 @@ Per ulteriori dettagli di utilizzo delle API, fai riferimento alla [//www.mediaw
 	'apisb-query-meta' => 'Informazioni meta',
 	'apisb-generic-parameters' => 'Parametri generici',
 	'apisb-generator-parameters' => 'Generatore',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'apisb-parameters' => '변수',
+	'apisb-result' => '결과',
+	'apisb-request-url' => '요청 URL:',
+	'apisb-request-post' => 'POST 데이터:',
+	'apisb-loading' => '로딩중...',
+	'apisb-submit' => '요청하기',
+	'apisb-query-prop' => '속성',
+	'apisb-query-list' => '목록',
+	'apisb-query-meta' => '메타 정보',
+	'apisb-generic-parameters' => '일반 매개변수',
 );
 
 /** Colognian (Ripoarisch)
@@ -926,23 +961,35 @@ $messages['pdc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Olgak85
  * @author Sp5uhe
  * @author Woytecr
  */
 $messages['pl'] = array(
+	'apisb-desc' => 'Pozwala debugować [//www.mediawiki.org/wiki/API MediaWiki API] zgłoszenia błędów z przeglądarki',
+	'apisandbox' => 'API sandbox (środowisko testowe)',
 	'apisb-no-js' => "'''Błąd''' – ta funkcja wymaga JavaScript.",
+	'apisb-intro' => "Użyj tej strony do eksperymentowania z '''MediaWiki API'' '.
+Więcej szczegółów na temat użycia interfejsu API można znaleźć w [//www.mediawiki.org/wiki/API API dokumentacji].",
+	'apisb-api-disabled' => 'API jest wyłączone na tej stronie.',
 	'apisb-parameters' => 'Parametry',
 	'apisb-result' => 'Rezultat',
 	'apisb-request-url' => 'Żądanie URL:',
 	'apisb-request-post' => 'Dane POST:',
 	'apisb-select-action' => 'Wybierz działanie',
+	'apisb-select-query' => 'Podaj zapytanie?',
 	'apisb-select-value' => 'Wybierz wartość',
 	'apisb-loading' => 'Trwa ładowanie…',
+	'apisb-load-error' => 'Błąd podczas ładowania opisu API.',
+	'apisb-request-error' => 'Błąd podczas wykonywania żądania API.',
+	'apisb-namespaces-error' => 'Błąd ładowania obszaru nazw.',
 	'apisb-ns-main' => '(główna)',
 	'apisb-submit' => 'Wykonaj żądanie',
 	'apisb-query-prop' => 'Właściwości',
 	'apisb-query-list' => 'Listy',
 	'apisb-query-meta' => 'Matainformacje',
+	'apisb-generic-parameters' => 'Parametry podstawowe',
+	'apisb-generator-parameters' => 'Generator',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1109,7 +1156,14 @@ $messages['scn'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'apisb-parameters' => 'පරාමිතීන්',
 	'apisb-result' => 'ප්‍රතිඵලය',
+	'apisb-select-action' => 'කාර්ය තෝරන්න',
+	'apisb-select-value' => 'අගය තෝරන්න',
+	'apisb-loading' => 'පූරණය වෙමින්...',
+	'apisb-ns-main' => '(ප්‍රධාන)',
+	'apisb-query-prop' => 'ගුණ',
+	'apisb-query-list' => 'ලැයිස්තු',
 );
 
 /** Slovak (Slovenčina)
@@ -1339,11 +1393,15 @@ $messages['zh-hans'] = array(
 	'apisb-generator-parameters' => '生成器',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Anakmalaysia
+ */
 $messages['zh-hant'] = array(
 	'apisb-desc' => '允許調試 [//www.mediawiki.org/wiki/API MediaWiki API] 從瀏覽器的調用',
 	'apisandbox' => 'API 沙箱',
 	'apisb-no-js' => "'''錯誤'''：此功能需要 JavaScript。",
+	'apisb-intro' => '使用這個頁面來試驗“Mediawiki應用程式介面（API）”。
+欲知API使用詳情，請參閱[//www.mediawiki.org/wiki/API API文檔]。',
 	'apisb-api-disabled' => '此站點上禁用了 API。',
 	'apisb-parameters' => '參數',
 	'apisb-result' => '結果',
@@ -1361,5 +1419,7 @@ $messages['zh-hant'] = array(
 	'apisb-query-prop' => '屬性',
 	'apisb-query-list' => '列表',
 	'apisb-query-meta' => 'Meta 信息',
+	'apisb-generic-parameters' => '泛型參數',
+	'apisb-generator-parameters' => '生成器',
 );
 
