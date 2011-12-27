@@ -410,6 +410,15 @@ $messages['id'] = array(
 	'assert_edit_message' => 'Penegasan yang dimaksud ($1) gagal.',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'assert_edit_title' => 'Napaay ti panagtalgedan',
+	'assertedit-desc' => 'Agnayon kadagiti pagtalgedan a pinagurnos nga us-usaren dagiti bots',
+	'assert_edit_message' => 'Ti nainaganan a pagtalgedan ($1) ket napaay.',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */
