@@ -641,6 +641,7 @@ $messages['fi'] = array(
  * @author PieRRoMaN
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'importusers' => 'Importer des utilisateurs',
@@ -662,7 +663,7 @@ Mise à jour effectuée.",
 	'importusers-log-summary-updated' => 'Mis à jour : $1',
 	'importusers-login-name' => 'Nom d’utilisateur',
 	'importusers-password' => 'mot de passe',
-	'importusers-email' => 'adresse courriel',
+	'importusers-email' => 'courriel',
 	'importusers-realname' => 'nom réel',
 	'right-import_users' => 'Importer des utilisateurs en masse',
 );
