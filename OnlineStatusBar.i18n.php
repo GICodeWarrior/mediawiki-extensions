@@ -130,6 +130,7 @@ $messages['dsb'] = array(
  * @author Crochet.david
  * @author DavidL
  * @author Gomoko
+ * @author Verdy p
  * @author Zebulon84
  */
 $messages['fr'] = array(
@@ -146,7 +147,8 @@ $messages['fr'] = array(
 	'onlinestatusbar-status-busy' => 'Occupé',
 	'onlinestatusbar-status-away' => 'Parti',
 	'onlinestatusbar-status-offline' => 'Absent',
-	'onlinestatusbar-status-hidden' => 'Caché',
+	'onlinestatusbar-status-uknown' => 'statut inconnu',
+	'onlinestatusbar-status-hidden' => 'Masqué',
 );
 
 /** Franco-Provençal (Arpetan)
