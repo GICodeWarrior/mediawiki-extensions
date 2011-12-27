@@ -418,6 +418,21 @@ $messages['lb'] = array(
 	'admanager_return' => "Zréck op d'[[Special:AdManager|Gestioun vun de Reklammen]]",
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'admanager' => 'Advertentiebehier',
+	'admanagerzones' => 'Zones veur advertentiebehier',
+	'admanager-desc' => "Veug 'n [[Special:AdManager|speciaal pagina]] bie die systeemwèrkers in sjtaot sjtelt om de zone veur pagina's of categorieë in te sjtèlle",
+	'admanager_docu' => "De kins 'n advertentiezone van 'n pagina of volledige categorie biedoon of ewegsjaffe door de naam devaan bie te doon of eweg te sjaffe.",
+	'admanagerzones_docu' => "Veur jeder advertentiezone op 'n eige regel in.",
+	'admanager_invalidtargetpage' => 'Gein pagina gevónje mit de naam "$1".',
+	'admanager_invalidtargetcategory' => 'Gein categorie gevónje mit de naam "$1".',
+	'admanager_notable' => "Fout! 'n Vereiste databasetabel is neet gevónje! Veur iers update.php oet.",
+	'admanager_noAdManagerZones' => 'Fout! De mós advertentiezones toeveuge. Veur ze in op de [[Special:AdManagerZones|speciaal pagina]].',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  */
