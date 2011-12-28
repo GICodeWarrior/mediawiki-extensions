@@ -1773,6 +1773,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Rafael Vargas
  */
 $messages['pt-br'] = array(
 	'patrol' => 'Patrulha de edições',
@@ -1795,7 +1796,7 @@ $messages['pt-br'] = array(
 	'patrol-stopped' => 'Você optou por não patrulhar uma outra edição. $1',
 	'patrol-resume' => 'Clique aqui para continuar.',
 	'group-patroller' => 'Patrulhadores',
-	'group-patroller-member' => 'Patrulhador',
+	'group-patroller-member' => '{{GENDER:$1|Patrulhador|Patrulhadora}}',
 	'grouppage-patroller' => '{{ns:project}}:Patrulhador',
 	'right-patroller' => 'Patrulhar páginas',
 );
