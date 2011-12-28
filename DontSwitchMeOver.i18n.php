@@ -261,6 +261,14 @@ $messages['id'] = array(
 	'dontswitchmeover-pref' => 'Jangan izinkan kulit saya diubah ketika kulit baku berubah',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'dontswitchmeover-desc' => 'Kaykayatan para dagiti agar-aramat ti aginagan ti ania man a kayatda tapno maitaginayon ti kasasaad ti kudil no ti kinasigud a kudil ket masukatan.',
+	'dontswitchmeover-pref' => 'Di palubosan a masukatan ti kudil ko no agsukat ti kinasigud a kudil',
+);
+
 /** Italian (Italiano)
  * @author Blaisorblade
  */
