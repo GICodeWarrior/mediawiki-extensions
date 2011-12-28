@@ -69,6 +69,16 @@ $messages['gl'] = array(
 	'global.js' => '/* O JavaScript que se coloque aquí afectará a todas as aparencias dos wikis */',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'sharedcssjs-desc' => 'Zmóžnja wužiwanje globalnych CSS- a JS-datajow za wiki abo jednotliwych wužiwarjow z centralneho wikija',
+	'sharedcssjs-error' => 'Tuta strona zapřijima so z centralneho wikija a móže so tam wobdźěłać.',
+	'global.css' => '/* Tutón CSS nałožuje so na wšě drasty na wšěch wikijach wikifarmy */',
+	'global.js' => '/* Tutón JavaScript tu začita so za wužiwarjow na kóždej stronje we wikifarmje */',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
