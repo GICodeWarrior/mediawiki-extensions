@@ -776,12 +776,14 @@ $messages['sl'] = array(
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
+ * @author Rancher
  * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'ratedpages-list' => 'Испод се налази списак сортиран по оценама читалаца.',
 	'ratedpages-none' => 'Нема страница у овом списку',
+	'ratedpages-graphs' => 'подаци за оцењивање',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
