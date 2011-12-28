@@ -53,6 +53,19 @@ $messages['de'] = array(
 	'shoutbox-illegal-height' => 'Es wurde der ungültige <i>height</i>-Parameter „<tt>$1</tt>“ angegeben.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'shoutbox-desc' => 'Dodawa parserowu funkciju za zasajźenje swójskeje pintofle',
+	'shoutbox-missing-params' => 'Pintofli trěbny parameter felujo.',
+	'shoutbox-bad-params' => 'Pintofla jo njepłaśiwy parameter dostała.',
+	'shoutbox-unparsable-param-string' => 'Pintofla jo njepśedźěłujobny parameter "<tt>$1</tt>" dostała.',
+	'shoutbox-bad-id' => 'Pintofla jo wopacny ID "<tt>$1</tt>" dostała.',
+	'shoutbox-illegal-width' => 'Pintofla jo njedowólony parameter width "<tt>$1</tt>" dostała.',
+	'shoutbox-illegal-height' => 'Pintofla jo njedowólony parameter height "<tt>$1</tt>" dostała.',
+);
+
 /** French (Français)
  * @author Gomoko
  */
@@ -77,6 +90,19 @@ $messages['gl'] = array(
 	'shoutbox-bad-id' => 'A caixa de mensaxes curtas recibiu a identificación incorrecta "<tt>$1</tt>".',
 	'shoutbox-illegal-width' => 'A caixa de mensaxes curtas recibiu o parámetro de largo incorrecto "$1".',
 	'shoutbox-illegal-height' => 'A caixa de mensaxes curtas recibiu o parámetro de alto incorrecto "$1".',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'shoutbox-desc' => 'Přidawa parserowu funkciju za zasadźenje swójskeje pinsćěny',
+	'shoutbox-missing-params' => 'Pinsćěnje trěbny parameter faluje.',
+	'shoutbox-bad-params' => 'Pinsćěna je njepłaćiwy parameter dóstała.',
+	'shoutbox-unparsable-param-string' => 'Pinsćěna je njepředźěłujomny parameter "<tt>$1</tt>" dóstała.',
+	'shoutbox-bad-id' => 'Pinsćěna je wopačny ID "<tt>$1</tt>" dóstała.',
+	'shoutbox-illegal-width' => 'Pinsćěna je njedowoleny parameter width "<tt>$1</tt>" dóstała.',
+	'shoutbox-illegal-height' => 'Pinsćěna je njedowoleny parameter height "<tt>$1</tt>" dóstała.',
 );
 
 /** Interlingua (Interlingua)
