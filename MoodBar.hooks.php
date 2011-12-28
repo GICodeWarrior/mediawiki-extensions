@@ -124,7 +124,7 @@ class MoodBarHooks {
 	/**
 	 * Runs MoodBar schema updates#
 	 *
-	 * @param $updater DatabasEUpdater
+	 * @param $updater DatabaseUpdater
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
 		$dir = dirname(__FILE__) . '/sql/';
