@@ -53,6 +53,28 @@ $messages['qqq'] = array(
 	'translatesvg-toggle-hide' => 'A toggle label; clicking on it causes form elements to disappear',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'translatesvg-desc' => "Ufre una interfaz d'estilu nativu pa traducir en llinia ficheros SVG cola especificación SVG1.1.",
+	'translatesvg-legend' => 'Camín al ficheru',
+	'translatesvg-page' => 'Ficheru:',
+	'translatesvg-submit' => 'Dir',
+	'translatesvg-summary' => "Esta páxina especial te permite amestar, desaniciar y camudar les traducciones inxertaes nun ficheru d'imaxe SVG determináu.",
+	'translatesvg-add' => 'Si la to llingua inda nun apaez na llista, pues [[#addlanguage|amestala]].',
+	'translatesvg-xcoordinate-pre' => 'Coordenada X (horizontal):',
+	'translatesvg-ycoordinate-pre' => 'Coordenada Y (vertical):',
+	'translatesvg-specify' => "Conseña'l códigu de la nueva llingua (p. ex. en, fr, de, es,...)",
+	'translatesvg-fallbackdesc' => 'Predeterminada (nun se conseñó la llingua)',
+	'translatesvg-qqqdesc' => 'Conseyu pa traductores',
+	'translatesvg-nodesc' => '(ensin descripción)',
+	'translatesvg-remove' => 'Desaniciar toles traducciones a esta llingua',
+	'translatesvg-unsuccessful' => "Esti ficheru '''nun se pue traducir''', sentímoslo.",
+	'translatesvg-toggle-view' => 'Ver les traducciones a esta llingua',
+	'translatesvg-toggle-hide' => 'Anubrir les traducciones a esta llingua',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
