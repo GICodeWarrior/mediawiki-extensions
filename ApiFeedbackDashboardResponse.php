@@ -1,22 +1,22 @@
 <?php
 
 class ApiFeedbackDashboardResponse extends ApiBase {
-	
+
 	private $EnotifUserTalk;
 	private $EnotifWatchlist;
-	
+
 	public function execute() {
 		global $wgRequest, $wgUser;
-		
+
 		if ( $wgUser->isAnon() ) {
 			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
 		}
 		if ( $wgUser->isBlocked( false ) ) {
 			$this->dieUsageMsg( array( 'blockedtext' ) );
 		}
-		
+
 		$params = $this->extractRequestParams();
-	
+
 		//Response Object
 		$item = MBFeedbackResponseItem::create( array() );
 
@@ -27,73 +27,73 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 			}
 		}
 
-		$item->setProperties( $setParams );	
+		$item->setProperties( $setParams );
 		$item->save();
-		
+
 		$commenter = $item->getProperty('feedbackitem')->getProperty('user');
-		
+
 		if ( $commenter !== null && $commenter->isAnon() == false ) {
 			$talkPage = $commenter->getTalkPage();
-			 
+
 			$response = Parser::cleanSigInSig($params['response']);
-			
+
 			$feedback_link = wfMessage('moodbar-feedback-response-title')->inContentLanguage()->
-			                 	params( SpecialPage::getTitleFor( 'FeedbackDashboard', $item->getProperty('feedback') )->
-			                 	getPrefixedText() )->escaped();
-			
+				params( SpecialPage::getTitleFor( 'FeedbackDashboard', $item->getProperty('feedback') )->
+				getPrefixedText() )->escaped();
+
 			$summary = wfMessage('moodbar-feedback-edit-summary')->inContentLanguage()->
-         					rawParams( $item->getProperty('feedback'),  $response)->escaped();                	
-	
-         		$this->disableUserTalkEmailNotification();						
-			
+				rawParams( $item->getProperty('feedback'),  $response)->escaped();
+
+			$this->disableUserTalkEmailNotification();
+
 			$id = intval( $item->getProperty( 'id' ) );
 			$api = new ApiMain( new FauxRequest( array(
 				'action' => 'edit',
 				'title'  => $talkPage->getFullText(),
-				'appendtext' => ( $talkPage->exists() ? "\n\n" : '' ) . 
-						$feedback_link . "\n" . 
-						'<span id="feedback-dashboard-response-' . $id . '"></span>' . "\n\n" . 
+				'appendtext' => ( $talkPage->exists() ? "\n\n" : '' ) .
+						$feedback_link . "\n" .
+						'<span id="feedback-dashboard-response-' . $id . '"></span>' . "\n\n" .
 						$response . "\n\n~~~~\n\n" .
 						'<span class="markashelpful-item" data-markashelpful-item="' . $id . '" data-markashelpful-type="mbresponse"></span>',
 				'token'  => $params['token'],
 				'summary' => $summary,
 				'notminor' => true,
 			), true, array( 'wsEditToken' => $wgRequest->getSessionData( 'wsEditToken' ) ) ), true );
-	
+
 			$api->execute();
-			
+
 			$this->restoreUserTalkEmailNotification();
-			
-			global $wgLang;	
-			
+
+			global $wgLang;
+
 			$EMailNotif = new MoodBarHTMLEmailNotification();
 			$EMailNotif->notifyOnRespond( $wgUser, $talkPage, wfTimestampNow(), $item->getProperty('feedback'), $wgLang->truncate( $response, 250 ) );
-			
+
 		}
-		
+
 		$result = array( 'result' => 'success' );
-		$this->getResult()->addValue( null, $this->getModuleName(), $result );		
+		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
-	
+
 	/**
-	 * temporarily disable the talk page email notification 
+	 * temporarily disable the talk page email notification
 	 * for user and watchers
 	 */
 	private function disableUserTalkEmailNotification() {
 		global $wgEnotifUserTalk, $wgEnotifWatchlist;
 
 		$this->EnotifUserTalk  = $wgEnotifUserTalk;
-		$this->EnotifWatchlist = $wgEnotifWatchlist;	
-		
-         	$wgEnotifUserTalk = $wgEnotifWatchlist = false;
+		$this->EnotifWatchlist = $wgEnotifWatchlist;
+
+			$wgEnotifUserTalk = $wgEnotifWatchlist = false;
 	}
-	
+
 	/**
 	 * restore the default state of talk page email notification
 	 */
 	private function restoreUserTalkEmailNotification() {
 		global $wgEnotifUserTalk, $wgEnotifWatchlist;
-		
+
 		if ( !is_null( $this->EnotifUserTalk ) ) {
 			$wgEnotifUserTalk = $this->EnotifUserTalk;
 		}
@@ -101,7 +101,7 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 			$wgEnotifWatchlist = $this->EnotifWatchlist;
 		}
 	}
-	
+
 	public function needsToken() {
 		return true;
 	}
@@ -160,5 +160,5 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 	public function getDescription() {
 		return 'Allows users to submit response to a feedback about their experiences on the site';
 	}
-	
+
 }

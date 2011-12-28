@@ -2,69 +2,65 @@
 
 
 class ApiMoodBarSetUserEmail extends ApiBase {
-	
+
 	public function execute() {
 		global $wgUser, $wgAuth, $wgEnableEmail, $wgEmailAuthentication;
-		
+
 		if ( $wgUser->isAnon() ) {
 			$this->dieUsage( "You don't have permission to do that", 'permission-denied' );
 		}
-	
+
 		$params = $this->extractRequestParams();
 
 		$error = false;
-		
+
 		switch ( $params['mbaction']) {
-		
+
 			case 'setemail':
 				if ( !$wgAuth->allowPropChange( 'emailaddress' ) ) {
-					$error =  wfMsgExt( 'cannotchangeemail', 'parseinline' );	
-				}
-				else {
+					$error =  wfMsgExt( 'cannotchangeemail', 'parseinline' );
+				} else {
 					//only set email if user does not have email on profile yet
 					if ( !$wgUser->getEmail() ) {
-						
+
 						if ( !isset( $params['email'] ) || !Sanitizer::validateEmail( $params['email'] ) ) {
 							$error = wfMsgExt( 'invalidemailaddress', 'parseinline' ) ;
 						}
 						else {
 							list( $status, $info ) = self::trySetUserEmail( $wgUser, $params['email'] );
-							
+
 							// Status Object
 							if ( $status !== true ) {
 								$error =  $status->getWikiText( $info );
-							}
-							else {
-								$wgUser->saveSettings();	
+							} else {
+								$wgUser->saveSettings();
 							}
 						}
-						
+
 					}
 				}
-			break;
-			
+				break;
+
 			case 'resendverification':
 				//only sends the email if the email has not been verified
 				if ( $wgEnableEmail && $wgEmailAuthentication && $wgUser->getEmail() && !$wgUser->isEmailConfirmed() ) {
 					$status = $wgUser->sendConfirmationMail( 'set' );
 					if ( !$status->isGood() ) {
 						$error =  $status->getWikiText( 'mailerror' );
-					}	
+					}
 				}
-			break;
-			
+				break;
+
 			default:
 				throw new MWApiMoodBarSetUserEmailInvalidActionException( "Action {$params['mbaction']} not implemented" );
-			break;
-				
 		}
-		
+
 		if ( $error === false ) {
 			$result = array( 'result' => 'success' );
 		} else {
 			$result = array( 'result' => 'error', 'error' => $error );
 		}
-		
+
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
@@ -95,8 +91,6 @@ class ApiMoodBarSetUserEmail extends ApiBase {
 		return array( true, $info );
 	}
 
-	
-	
 	public function needsToken() {
 		return true;
 	}
@@ -114,11 +108,11 @@ class ApiMoodBarSetUserEmail extends ApiBase {
 					'resendverification',
 				),
 			),
-			
+
 			'email' => array(
 				ApiBase::PARAM_TYPE => 'string'
 			),
-			
+
 			'token' => array(
 				ApiBase::PARAM_REQUIRED => true,
 			),

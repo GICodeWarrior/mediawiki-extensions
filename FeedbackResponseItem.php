@@ -13,17 +13,17 @@ class MBFeedbackResponseItem {
 			// Feedback response essentials
 			'id', // ID in the database for response
 			'feedback', // ID in the database for moodbar_feedback
-			'feedbackitem', // the feedback that the user responds to 
+			'feedbackitem', // the feedback that the user responds to
 			'user', // user object
 			'anonymize',
-	                'commenter-editcount', // Number of edit for the user writes the feedback
-	                'user-editcount', // Number of edit for the responder
-	                'response', // The response itself
-	                'timestamp', // When response was received
-	                'system', // Operating System
-	                'useragent' , // User-Agent header
-	                'locale', // The locale of the user's browser
-	                'editmode' // Whether or not the user was editing	
+			'commenter-editcount', // Number of edit for the user writes the feedback
+			'user-editcount', // Number of edit for the responder
+			'response', // The response itself
+			'timestamp', // When response was received
+			'system', // Operating System
+			'useragent' , // User-Agent header
+			'locale', // The locale of the user's browser
+			'editmode' // Whether or not the user was editing
 		);
 	/**
 	 * Default constructor.
@@ -57,7 +57,7 @@ class MBFeedbackResponseItem {
 	 */
 	protected function initialiseNew( $info ) {
 		global $wgUser;
-		
+
 		$template = array(
 			'user' => $wgUser,
 			'timestamp' => wfTimestampNow(),
@@ -94,12 +94,12 @@ class MBFeedbackResponseItem {
 			'system' => 'mbfr_system_type',
 			'locale' => 'mbfr_locale',
 			'editmode' => 'mbfr_editing',
-			'commenter-editcount', 
-	                'user-editcount'
+			'commenter-editcount',
+			'user-editcount'
 		);
-		
+
 		$properties = array();
-		
+
 		foreach( $propMappings as $property => $field ) {
 			if ( isset( $row->$field ) ) {
 				$properties[$property] = $row->$field;
@@ -117,7 +117,7 @@ class MBFeedbackResponseItem {
 		}
 
 		$this->setProperties( $properties );
-		
+
 	}
 
 	/**
@@ -205,21 +205,19 @@ class MBFeedbackResponseItem {
 	 * @return The MBFeedbackItem's new ID.
 	 */
 	public function save() {
-		
+
 		$user = $this->getProperty('user');
-		
+
 		// Add edit count if necessary
-		if ( $this->getProperty('user-editcount') === null && $user !== null )
-		{
+		if ( $this->getProperty('user-editcount') === null && $user !== null ) {
 			$this->setProperty( 'user-editcount', $user->isAnon() ? 0 : $user->getEditCount() );
-			
-		}	
-		
+		}
+
 		if($this->getProperty('commenter-editcount') === null) {
 			$commenter =  $this->getProperty('feedbackitem')->getProperty('user');
 			$this->setProperty( 'commenter-editcount', $commenter->isAnon() ? 0 :  $commenter->getEditCount() );
 		}
-		
+
 		$dbw = wfGetDB( DB_MASTER );
 
 		$row = array(
@@ -237,8 +235,7 @@ class MBFeedbackResponseItem {
 		if($user->isAnon()) {
 			$row['mbfr_user_id'] = 0;
 			$row['mbfr_user_ip'] = $user->getName();
-		}
-		else {
+		} else {
 			$row['mbfr_user_id'] = $user->getId();
 		}
 
@@ -260,7 +257,7 @@ class MBFeedbackResponseItem {
 	public static function getValidTypes() {
 		return self::$validTypes;
 	}
-	
+
 	/**
 	 * Set the Feedback Item this Response is associated to
 	 * @param $mbf_id mbfr_mbf_id in moodbar_feedback_response table
@@ -268,17 +265,17 @@ class MBFeedbackResponseItem {
 	 */
 	protected function setFeedbackItem($mbf_id) {
 		$dbr = wfGetDB( DB_SLAVE );
-		
+
 		$row = $dbr->selectRow( 'moodbar_feedback', '*',
 			array( 'mbf_id' => $mbf_id ), __METHOD__ );
-		
+
 		if( $row !== false ) {
-			$this->setProperties( array ( 'feedbackitem' => MBFeedbackItem::load( $row ) ) );	
+			$this->setProperties( array ( 'feedbackitem' => MBFeedbackItem::load( $row ) ) );
 			return true;
 		}
 		else {
-			return false;	
-		}	
+			return false;
+		}
 	}
 
 }
