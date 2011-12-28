@@ -943,6 +943,16 @@ $messages['sah'] = array(
 	'communityvoice-ratings-error-no-title' => 'Рейтиҥ тиэгэр аатын атрибуута суох.',
 );
 
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'communityvoice' => 'ප්‍රජාවේ කැමැත්ත',
+	'communityvoice-ratings' => 'තරාතිරම්',
+	'communityvoice-ratings-scale-status-sending' => 'යවමින්...',
+	'communityvoice-ratings-scale-status-error' => 'යැවීමේ දෝෂය!',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
