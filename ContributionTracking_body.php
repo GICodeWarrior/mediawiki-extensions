@@ -16,6 +16,8 @@ class ContributionTracking extends UnlistedSpecialPage {
 
 		$this->setHeaders();
 
+		$wgOut->setPageTitle('');
+
 		$gateway = $wgRequest->getText( 'gateway' );
 		if ( !in_array( $gateway, array( 'paypal', 'moneybookers' ) ) ) {
 			$wgOut->showErrorPage( 'contrib-tracking-error', 'contrib-tracking-error-text' );
