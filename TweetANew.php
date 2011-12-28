@@ -22,15 +22,15 @@
  * Thank you to Raymond and others mentioned in TweetANew.i18n.php for translation work
  *
  */
- 
+
 /**
  * Exit if called outside of MediaWiki
  */
  if( !defined( 'MEDIAWIKI' ) ) {
-        echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-        die( 1 );
+	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
+	die( 1 );
 }
- 
+
 /**
  * SETTINGS
  * --------
@@ -73,59 +73,59 @@
  *			  English example = ''
  *
  */
- 
- $wgTweetANewTweet = array(
-		'New' => true,
-		'Edit' => true,
-		'lessminold' => 5,
-		'SkipMinor' => true,
-		'Auto' => true,
-	);
-	 
- $wgTweetANewTwitter = array(
-		'ConsumerKey' => '',
-		'ConsumerSecret' => '',
-		'AccessToken' => '',
-		'AccessTokenSecret' => '',
-	);
-	
- $wgTweetANewBitly = array(
-		'Enable' => false,
-		'Login' => '',
-		'API' => '',
-	);
-	
+
+$wgTweetANewTweet = array(
+	'New' => true,
+	'Edit' => true,
+	'lessminold' => 5,
+	'SkipMinor' => true,
+	'Auto' => true,
+);
+
+$wgTweetANewTwitter = array(
+	'ConsumerKey' => '',
+	'ConsumerSecret' => '',
+	'AccessToken' => '',
+	'AccessTokenSecret' => '',
+);
+
+$wgTweetANewBitly = array(
+	'Enable' => false,
+	'Login' => '',
+	'API' => '',
+);
+
 $wgTweetANewText = array(
-		'New' => '',
-		'Edit' => '',
-	);
- 
+	'New' => '',
+	'Edit' => '',
+);
+
 /**
  * Class and localisation
  *
  */
- 
- $dir = dirname(__FILE__) . '/';
- $wgAutoloadClasses['TweetANew'] = $dir . 'TweetANew.body.php';
- $wgExtensionMessagesFiles['TweetANew'] = $dir . 'TweetANew.i18n.php';
- 
+
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['TweetANew'] = $dir . 'TweetANew.body.php';
+$wgExtensionMessagesFiles['TweetANew'] = $dir . 'TweetANew.i18n.php';
+
 /**
  * Credits
  *
  */
- 
+
  $wgExtensionCredits['other'][] = array(
-        'name'           => 'TweetANew',
-        'version'        => '1.0.20111227-experimental',
-        'author'         => '[https:www.mediawiki.org/wiki/User:Varnent Gregory Varnum] merging extensions by [https://www.mediawiki.org/wiki/User:Joa_ds Joachim De Schrijver], Andrew Fitzgerald, Wendell Gaudencio, and Rohit Keshwani',
-        'description'    => 'Tweets when an article is created or edited - based on your settings.',
-        'url'            => 'https://www.mediawiki.org/wiki/Extension:TweetANew',
- );   
- 
+	'name'           => 'TweetANew',
+	'version'        => '1.0.20111227-experimental',
+	'author'         => '[https:www.mediawiki.org/wiki/User:Varnent Gregory Varnum] merging extensions by [https://www.mediawiki.org/wiki/User:Joa_ds Joachim De Schrijver], Andrew Fitzgerald, Wendell Gaudencio, and Rohit Keshwani',
+	'description'    => 'Tweets when an article is created or edited - based on your settings.',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:TweetANew',
+);
+
 /**
  * Call the hooks
  *
  */
- 
+
 $wgHooks['ArticleInsertComplete'][] = 'TweetANew::TweetANewNewArticle';
 $wgHooks['ArticleSaveComplete'][] = 'TweetANew::TweetANewEditMade';

@@ -8,7 +8,7 @@ if (!defined('MEDIAWIKI')) die();
  * @license LGPL
  * ToDo - many listed below - general removal of duplication and overall cleanup
  */
- 
+
 // TweetANew
 class TweetANew {
 	/**
@@ -21,7 +21,7 @@ class TweetANew {
 	 */
 	public static function make_bitly_url($url,$login,$appkey)     {
 		global $wgTweetANewBitly;
-		
+
 		# Check setting to enable/disable use of bit.ly
 		if ( $wgTweetANewBitly['Enable'] ) { 
 			# Generate url for bitly
@@ -31,10 +31,10 @@ class TweetANew {
 			return $response;
 		}
 	}
-	
+
 	# ToDo - TweetANewNewEditOption function for when auto-tweet is disabled to display checkbox on edit/create page to tweet new/edited pages
-		
-    /**
+
+	/**
 	 * Function for tweeting new articles
 	 *
 	 * @param $article
@@ -50,9 +50,9 @@ class TweetANew {
 	 */
 	public static function TweetANewNewArticle($article, $user, $text, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision){
 		global $wgTweetANewBitly,$wgTweetANewTwitter,$wgTweetANewTweet;
- 
- 		# ToDo - Check if $wgTweetANewTweet['Auto'] is enabled
- 
+
+		# ToDo - Check if $wgTweetANewTweet['Auto'] is enabled
+
 		# Make connection to Twitter
 		require_once('lib/tmhOAuth.php'); // include connection
 		$connection = new tmhOAuth(array(
@@ -67,7 +67,7 @@ class TweetANew {
 			# Shorten URL using bitly
 			$short = self::make_bitly_url($article->getTitle()->getFullURL(),$wgTweetANewBitly['Login'],$wgTweetANewBitly['API']);
 		}
- 		else {
+		else {
 			# Generate url without use of bitly
 			$short = $article->getTitle()->getFullURL();
 		}
@@ -83,7 +83,7 @@ class TweetANew {
 		return true;
 	}
 
-    /**
+	/**
 	 * Function for tweeting edited articles
 	 *
 	 * @param $article
@@ -100,7 +100,7 @@ class TweetANew {
 	public static function TweetANewEditMade(&$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId, &$redirect){
 		global $wgTweetANewBitly,$wgTweetANewTwitter,$wgTweetANewTweet,$wgArticle;
 
- 		# ToDo - Check if $wgTweetANewTweet['Auto'] is enabled
+		# ToDo - Check if $wgTweetANewTweet['Auto'] is enabled
 
 		# Determine the time and date of last modification - skip if newer than $wgTweetANewTweet['lessminold'] setting
 		# ToDo - there must be a cleaner way of doing this
@@ -114,11 +114,11 @@ class TweetANew {
 		if(isset($wgTweetANewTweet['lessminold'])) if ($edittimediv < ($wgTweetANewTweet['lessminold'] * 60)) return true;
 
 		# Only proceed if this is not the first edit to the article, in which case it's new and TweetANewNewArticle is used instead
-        if ($wgArticle->estimateRevisionCount() == 1 ) return true;
+		if ($wgArticle->estimateRevisionCount() == 1 ) return true;
 
 		# Check $wgTweetANewTweet['SkipMinor'] setting to see if minor edits should be skipped
 		if ($minoredit !== 0 && $wgTweetANewTweet['SkipMinor']) return true;
-		
+
 		# ToDo - If !$wgTweetANewTweet['SkipMinor'] and $wgTweetANewTweet['TagMinor'] add "m" to tweet
 
 		# Make connection to Twitter
@@ -136,7 +136,7 @@ class TweetANew {
 				$to_shorten = $article->getTitle()->getFullURL();
 				$short = self::make_bitly_url($to_shorten,$wgTweetANewBitly['Login'],$wgTweetANewBitly['API']);
 		}
- 		else {
+		else {
 			# Generate url without use of bitly
 			$short = $article->getTitle()->getFullURL();
 		}
