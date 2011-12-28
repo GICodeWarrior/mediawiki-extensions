@@ -134,6 +134,29 @@ $messages['arz'] = array(
 	'slippymap_resetview' => 'إعادة ضبط الرؤية',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'slippymap_desc' => 'Amiesta una etiqueta <tt>&lt;slippymap&gt;</tt> que permite inxertar mapes estáticos y dinámicos. Tien sofitu pa múltiples servicios de mapes, incluyendo [http://openstreetmap.org OpenStreetMap] y NASA Worldwind',
+	'slippymap_error' => 'Error de $1: $2',
+	'slippymap_errors' => 'Errores en $1:',
+	'slippymap_error_tag_content_given' => "La etiqueta <tt>&lt;$1&gt;</tt> sólo toma argumentos d'atributu (&lt;$1 [...]/&gt;), non entraes de testu (&lt;$1&gt; ... &lt;/$1&gt;)",
+	'slippymap_error_missing_arguments' => "Nun-y disti dengún atributu a la etiqueta &lt;$1&gt;, llee la [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax información d'usu] pa deprender cómo llamala.",
+	'slippymap_error_missing_attribute_lat' => "Falta l'atributu <tt>lat</tt> (pa la llatitú).",
+	'slippymap_error_missing_attribute_lon' => "Falta l'atributu <tt>lon</tt> (pa la llonxitú).",
+	'slippymap_error_missing_attribute_zoom' => "Falta l'atributu <tt>zoom</tt> (pal nivel d'ampliación).",
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>lat</tt> (llatitú), el valor dau tien de ser un númberu válidu.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>lon</tt> (llonxitú), el valor dau tien de ser un númberu válidu.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>zoom</tt>, el valor dau tien de ser un númberu válidu.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>width</tt>, el valor dau tien de ser un númberu válidu.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>height</tt>, el valor dau tien de ser un númberu válidu.',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>mode</tt>, los moos válidos son $2.',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>layer</tt>, les capes válides son $2.',
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>marker</tt>, los marcadores válidos son $2.',
+	'slippymap_error_unknown_attribute' => "L'atributu <tt>$1</tt> ye desconocíu.",
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */
