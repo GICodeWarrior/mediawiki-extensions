@@ -16,6 +16,7 @@ $wgExtensionCredits['other'][] = array(
 // Object model
 $wgAutoloadClasses['MBFeedbackItem'] = dirname(__FILE__).'/FeedbackItem.php';
 $wgAutoloadClasses['MBFeedbackResponseItem'] = dirname(__FILE__).'/FeedbackResponseItem.php';
+$wgAutoloadClasses['MWFeedbackResponseItemPropertyException'] = dirname(__FILE__).'/FeedbackResponseItem.php';
 $wgAutoloadClasses['MoodBarFormatter'] = dirname(__FILE__).'/Formatter.php';
 $wgAutoloadClasses['MoodBarHTMLEmailNotification'] = dirname(__FILE__).'/include/MoodBarHTMLEmailNotification.php';
 $wgAutoloadClasses['MoodBarHTMLMailerJob'] = dirname( __FILE__ ) . '/include/MoodBarHTMLMailerJob.php';
@@ -30,6 +31,7 @@ $wgAPIModules['feedbackdashboard'] = 'ApiFeedbackDashboard';
 $wgAutoloadClasses['ApiFeedbackDashboardResponse'] = dirname(__FILE__).'/ApiFeedbackDashboardResponse.php';
 $wgAPIModules['feedbackdashboardresponse'] = 'ApiFeedbackDashboardResponse';
 $wgAutoloadClasses['ApiMoodBarSetUserEmail'] = dirname(__FILE__).'/ApiMoodBarSetUserEmail.php';
+$wgAutoloadClasses['MWApiMoodBarSetUserEmailInvalidActionException'] = dirname(__FILE__).'/ApiMoodBarSetUserEmail.php';
 $wgAPIModules['moodbarsetuseremail'] = 'ApiMoodBarSetUserEmail';
 
 // Hooks
@@ -209,11 +211,11 @@ $wgResourceModules['ext.moodBar.dashboard'] = $mbResourceTemplate + array(
 		'response-back-text',
 		'response-preview-text',
 		'response-preview-text',
-		'response-ajax-action-head', 
+		'response-ajax-action-head',
 		'response-ajax-action-body',
 		'response-ajax-success-head',
 		'response-ajax-success-body',
-		'response-ajax-error-head', 
+		'response-ajax-error-head',
 		'response-ajax-error-body',
 	),
 );
@@ -254,3 +256,4 @@ $wgMoodBarConfig = array(
 	'privacyUrl' => 'about:blank',
 	'disableExpiration' => 365,
 );
+
