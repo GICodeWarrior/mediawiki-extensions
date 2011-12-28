@@ -3075,6 +3075,7 @@ Vielleicht kamen Sie direkt zu dieser Seite?',
  */
 $messages['diq'] = array(
 	'ow_transaction_operation' => 'Operasyon',
+	'ow_Language' => 'Zuwan',
 );
 
 /** Lower Sorbian (Dolnoserbski)
