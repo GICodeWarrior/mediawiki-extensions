@@ -400,6 +400,13 @@ Auf öffentlichen Wikis muss der Parameter <code>$egPushDirectFileUploads</code>
 Auf nichtöffentlichen Wikis muss der über die Dokumentationsseite zu dieser Softwareerweiterung erhältliche Patch angewendet oder die MediaWiki-Installation selbst aktualisiert werden.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Erdemaslancan
+ */
+$messages['diq'] = array(
+	'push-tab-no-used-templates' => '(Na pela dı şabloni çinyê)',
+);
+
 /** Finnish (Suomi)
  * @author Tofu II
  */
