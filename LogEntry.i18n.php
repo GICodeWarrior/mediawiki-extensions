@@ -654,13 +654,15 @@ $messages['uk'] = array(
 	'logentry-append' => 'Додати',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
 	'logentry-append' => 'Ližata',
+	'logentry-parserhook-desc' => 'Nece teg-laskend andab forman kirjutuzlehtpolen augotišhe vai lophu ližates (aiglehtesen formas)',
+	'logentry-specialpage-desc' => 'Nece teg-laskend andab forman kirjutuzlehtpolele ližates (aiglehtesen formas)',
 	'logentry' => 'AiglehtesenKirjutez',
-	'logentry-invalidpage' => "Vär lehtpol'",
+	'logentry-invalidpage' => "Laskmatoi lehtpol': $1",
 	'logentry-invalidtoken' => 'Vär token',
 );
 
