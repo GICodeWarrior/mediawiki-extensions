@@ -8,7 +8,7 @@
 
 	var mah = mw.mah = {
 		loadedItems: [],
-		selector: '.markashelpful-item',  //class of element(s) to apply MarkAsHelpful to.
+		selector: '[class^=markashelpful]',  //class of element(s) to apply MarkAsHelpful to.
 
 		init: function() {
 			var	props, thisItem;
@@ -28,10 +28,13 @@
 		 * Return object of item properties
 		 */
 		getItemProperties: function( $item ) {
-			var	properties = {
-					'item': $item.data('markashelpful-item'), // item id
-					'type': $item.data('markashelpful-type')  // item type (eg, mbresponse)
-				};
+			var		tag = $item.attr( 'class' ),
+					//item properties are stored in classname to prevent parser from stripping out non html 5 objects.  
+					//(eg data-markashelpful-item)
+					properties = {
+						'item': tag.split( '-' )[2], // item id
+						'type': tag.split( '-' )[1]  // item type (eg, mbresponse)
+					};
 			return properties;
 		},
 
