@@ -18,6 +18,9 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '1.7'
 );
 
+// Add permission required to access Special:PasswordReset and Special:Disabledusers
+$wgAvailableRights[] = 'passwordreset';
+
 $dir = dirname(__FILE__) . '/';
 // Autoload Classes
 $wgAutoloadClasses['PasswordReset'] = $dir . 'PasswordReset_body.php';
