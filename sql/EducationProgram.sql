@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS /*_*/ep_terms (
 CREATE INDEX /*i*/ep_term_year ON /*_*/ep_terms (term_year);
 CREATE INDEX /*i*/ep_term_start ON /*_*/ep_terms (term_start);
 CREATE INDEX /*i*/ep_term_end ON /*_*/ep_terms (term_end);
+CREATE UNIQUE INDEX /*i*/ep_trem_period ON /*_*/ep_terms (term_org_id, term_start, term_start);
 
 -- Students. In essence this is an extension to the user table.
 CREATE TABLE IF NOT EXISTS /*_*/ep_students (

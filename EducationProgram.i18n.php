@@ -190,6 +190,16 @@ $messages['en'] = array(
 	'specialterm-summary-token' => 'Enrollment token',
 	'ep-term-nav-edit' => 'Edit this term',
 
+	// Special:Enroll
+	'ep-enroll-login-first' => 'Before you can enroll in this course, you need to login.',
+	'ep-enroll-login-and-entroll' => 'Login with an existing account & enroll',
+	'ep-enroll-signup-and-entroll' => 'Create a new account & enroll',
+	'ep-enroll-not-allowed' => 'Your account is not allowed to enroll',
+	'ep-enroll-invalid-id' => 'The term you tried to enroll for does not exist. A list of existing terms can be found [[Special:Terms|here]].',
+	'ep-enroll-no-id' => 'You need to specify a term to enroll for. A list of existing terms can be found [[Special:Terms|here]].',
+	'ep-enroll-no-token' => 'You need to provide the token needed to enroll for this term.',
+	'ep-enroll-invalid-token' => 'The token you provided is invalid.',
+	
 	// Navigation links
 	'ep-nav-orgs' => 'Institution list',
 	'ep-nav-courses' => 'Courses list',
