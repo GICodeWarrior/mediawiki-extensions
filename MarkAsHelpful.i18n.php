@@ -49,7 +49,7 @@ $messages['br'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'markashelpful-desc' => 'Ermöglicht eine Benutzeroberfläche mit der Kommentare als hilfreich markiert werden können',
+	'markashelpful-desc' => 'Ermöglicht eine Benutzeroberfläche, mit der Kommentare als hilfreich markiert werden können',
 	'mah-mark-text' => 'Als hilfreich markieren',
 	'mah-you-marked-text' => 'Du meinst, dass dieser Kommentar hilfreich ist.',
 	'mah-someone-marked-text' => '{{GENDER:$1|$1}} meint, dass dieser Kommentar hilfreich ist.',
