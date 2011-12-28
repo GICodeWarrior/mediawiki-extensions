@@ -57,6 +57,7 @@ class MarkAsHelpfulItem {
 
 	/**
 	 * get the owner of the 'mark as helpful' item
+	 * @return User
 	 */
 	public function getUser() {
 		if ( !$this->user ) {
@@ -196,7 +197,6 @@ class MarkAsHelpfulItem {
 	 * @param $currentUser User - the current user who is browsing the site
 	 */
 	public function unmark( $currentUser ) {
-
 		if ( $currentUser->isAnon() ) {
 			return;
 		}
@@ -207,32 +207,24 @@ class MarkAsHelpfulItem {
 			if ( !$this->loadedFromDatabase ) {
 				if ( !$this->loadFromDatabase( array( 'mah_id' => $this->getProperty( 'mah_id' ) ) ) ) {
 					return;
-				}		
+				}
 			}
 
 			$user = $this->getUser();
 
-			if ( $user ) {
+			if ( !$user || $user->isAnon() ) {
+				return;
+			}
+			if ( $currentUser->getId() == $user->getId() ) {
+				$dbw = wfGetDB( DB_MASTER );
 
-				if ( !$user->isAnon() ) {
-
-					if (  $currentUser->getId() == $user->getId() ) {
-
-						$dbw = wfGetDB( DB_MASTER );
-
-						$dbw->delete(
-							'mark_as_helpful',
-							array( 'mah_id' => $this->getProperty( 'mah_id' ) ),
-							__METHOD__
-						);
-
-					}
-
-				}
-
+				$dbw->delete(
+					'mark_as_helpful',
+					array( 'mah_id' => $this->getProperty( 'mah_id' ) ),
+					__METHOD__
+				);
 			}
 		}
-
 	}
 
 	/**
@@ -264,7 +256,7 @@ class MarkAsHelpfulItem {
 
 		foreach ( $res as $val ) {
 			$list[$val->user_id] = array( 'user_name' => $val->user_name,
-				                      'user_id' => $val->user_id );
+				'user_id' => $val->user_id );
 		}
 
 		return $list;
@@ -273,3 +265,4 @@ class MarkAsHelpfulItem {
 
 class MWMarkAsHelpFulItemPropertyException extends MWException {}
 class MWMarkAsHelpFulItemSearchKeyException extends MWException {}
+

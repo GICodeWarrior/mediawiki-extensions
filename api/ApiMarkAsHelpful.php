@@ -32,7 +32,7 @@ class ApiMarkAsHelpful extends ApiBase {
 				$item = new MarkAsHelpfulItem();
 				$item->loadFromRequest( $params );
 				$item->mark();
-			break;
+				break;
 
 			case 'unmark':
 				$item = new MarkAsHelpfulItem();
@@ -45,15 +45,13 @@ class ApiMarkAsHelpful extends ApiBase {
 
 				if ( $status ) {
 					$item->unmark( $wgUser );
+				} else {
+					$error = true;
 				}
-				else {
-					$error = true;	
-				}
-			break;
+				break;
 
 			default:
 				throw new MWApiMarkAsHelpfulInvalidActionException( "Action {$params['mbaction']} not implemented" );
-			break;
 		}
 
 		if ( $error === false ) {
@@ -134,3 +132,4 @@ class ApiMarkAsHelpful extends ApiBase {
 }
 
 class MWApiMarkAsHelpfulInvalidActionException extends MWException {}
+

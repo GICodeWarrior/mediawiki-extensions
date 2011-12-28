@@ -9,7 +9,7 @@ class ApiGetMarkAsHelpfulItem extends ApiBase {
 
 		// check if current user has permission to mark this item,
 		$isAbleToMark = true; 
-		
+
 		wfRunHooks( 'onMarkItemAsHelpful', array( 'mark', $params['type'], $params['item'], $wgUser, &$isAbleToMark ) );
 
 		$HelpfulUserList = MarkAsHelpfulItem::getMarkAsHelpfulList( $params['type'], $params['item'] );
@@ -31,7 +31,7 @@ class ApiGetMarkAsHelpfulItem extends ApiBase {
 
 	public function getAllowedParams() {
 		global $wgMarkAsHelpfulType;
-		
+
 		return array(
 			'type' => array(
 				ApiBase::PARAM_REQUIRED => true,
@@ -66,3 +66,4 @@ class ApiGetMarkAsHelpfulItem extends ApiBase {
 }
 
 class MWApiGetMarkAsHelpfulItemInvalidActionException extends MWException {}
+

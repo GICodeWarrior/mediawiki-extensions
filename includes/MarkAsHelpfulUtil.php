@@ -26,16 +26,13 @@ class MarkAsHelpfulUtil {
 			} else {
 				if ( $isAbleToMark ) {
 					$html = self::requestToMarkTemplate();
-				}
-				else {
+				} else {
 					$html = self::otherMarkedTemplate( $helpfulUserList );
 				}
 
 			}
 		}
-
 		return $html;
-		
 	}
 	
 	/**
@@ -44,7 +41,6 @@ class MarkAsHelpfulUtil {
 	 * @return string html | empty text
 	 */
 	private static function otherMarkedTemplate( $helpfulUserList ) {
-		
 		if ( count( $helpfulUserList ) == 0 ) {
 			return '';
 		}
@@ -66,7 +62,7 @@ class MarkAsHelpfulUtil {
 			</div>
 HTML;
 	}
-	
+
 	/**
 	 * The template to display in this format: You think this is helpful
 	 * @Todo future enhancement: We may pass the list of other users as well 
@@ -101,5 +97,5 @@ HTML;
 			</div>
 HTML;
 	}
-	
 }
+
