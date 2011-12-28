@@ -20,6 +20,14 @@ $messages['qqq'] = array(
 	'soundmanager2button-play' => 'Play button text, primarily for screenreaders.',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'soundmanager2button-desc' => 'Inxerta un reproductor MP3 SoundManager 2 nuna páxina de la wiki',
+	'soundmanager2button-play' => 'Reproducir',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
