@@ -93,6 +93,13 @@ $messages['de'] = array(
 	'tspoll-id-error' => 'Keine ID angegeben!',
 );
 
+/** Zazaki (Zazaki)
+ * @author Erdemaslancan
+ */
+$messages['diq'] = array(
+	'tspoll-fetch-error' => 'URL! amyayış de xeta',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
