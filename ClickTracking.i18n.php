@@ -476,14 +476,6 @@ $messages['mt'] = array(
 	'clicktracking-desc' => "Moniteraġġ tal-klikks għall-moniteraġġ ta' avvenimenti li ma jikkawżawx riffriskar tal-paġna",
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'clicktracking' => 'Klikvolgen voor het Bruikbaarheidsinitiatief',
-	'clicktracking-desc' => 'Klikvolgen voor het volgens van handelingen die niet het oproepen van een nieuwe pagina tot gevolg hebben',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Laaknor
@@ -494,12 +486,28 @@ $messages['nb'] = array(
 	'clicktracking-desc' => 'Sporer klikk som ikke forårsaker lasting av ny side.',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'clicktracking' => 'Klikvolgen voor het Bruikbaarheidsinitiatief',
+	'clicktracking-desc' => 'Klikvolgen voor het volgens van handelingen die niet het oproepen van een nieuwe pagina tot gevolg hebben',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
 	'clicktracking' => "Seguit de clics de l'iniciativa d'utilizabilitat",
 	'clicktracking-desc' => 'Seguit de clics, visant a tracar los eveniments que causan pas un recargament de pagina',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'clicktracking' => 'ବ୍ୟବହାର ଆରମ୍ଭ କ୍ଲିକ ହିସାବ ରଖିବା',
+	'clicktracking-desc' => 'ପୃଷ୍ଠାକୁ ଆଉଥରେ ସତେଜ କରୁନଥିବା ଟ୍ରାକିଙ୍ଗ ଘଟଣାମାନଙ୍କୁ ପରଖିବା ପାଇଁ ଟ୍ରାକିଙ୍ଗ ଉପରେ କ୍ଲିକ କରନ୍ତୁ',
 );
 
 /** Polish (Polski)
@@ -611,6 +619,14 @@ $messages['sk'] = array(
 $messages['sl'] = array(
 	'clicktracking' => 'Sledenje klikom Iniciative za uporabnost',
 	'clicktracking-desc' => 'Sledenje klikom, namenjeno odkrivanju dogodkov, ki preprečujejo osvežitev strani med urejanjem',
+);
+
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'clicktracking' => 'Праћење кликова у Иницијативи за употребљивост',
+	'clicktracking-desc' => 'Праћење кликова, намењено за праћење догађаја који не узрокују поновно учитавање странице',
 );
 
 /** Sundanese (Basa Sunda)
