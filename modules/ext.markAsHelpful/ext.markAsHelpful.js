@@ -47,11 +47,12 @@
 						'action': 'getmarkashelpfulitem',
 						'item': props.item,
 						'type': props.type,
+						'page': mw.config.get( 'wgPageName' ),
 						'format': 'json'
 					};
 
 			$.ajax({
-				type: 'get',
+				type: 'POST',
 				url: mw.util.wikiScript('api'),
 				cache: false,
 				data: request,
