@@ -2002,6 +2002,7 @@ $messages['sr-el'] = array(
 $messages['sv'] = array(
 	'categorybrowser' => 'Kategoriläsare',
 	'cb_cat_name_filter' => 'Sök efter kategori med namn:',
+	'cb_cat_name_filter_clear' => 'Tryck för att rensa filter för kategorinamn',
 	'cb_cat_name_filter_ci' => 'Okänslig för versaler',
 	'cb_copy_line_hint' => 'Använd [+] och [>+] knapparna för att kopiera och klistra in aktörerna i det valda uttrycket',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|underkategori|underkategorier}}',
