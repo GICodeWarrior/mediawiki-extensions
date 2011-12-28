@@ -111,3 +111,4 @@ $messages['nl'] = array(
 	'badaccess-bogususerpage' => 'De gebruiker voor deze gebruikerspagina bestaat niet. U hebt geen rechten om deze gebruikerspagina aan te maken.',
 	'right-createbogususerpage' => "Gebruikerspagina's aanmaken voor gebruikers die niet bekend zijn in deze wiki",
 );
+
