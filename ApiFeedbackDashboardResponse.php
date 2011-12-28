@@ -50,11 +50,11 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 			$api = new ApiMain( new FauxRequest( array(
 				'action' => 'edit',
 				'title'  => $talkPage->getFullText(),
-				'appendtext' => ( $talkPage->exists() ? "\n\n" : '' ) .
-						$feedback_link . "\n" .
-						'<span id="feedback-dashboard-response-' . $id . '"></span>' . "\n\n" .
+				'appendtext' => ( $talkPage->exists() ? "\n\n" : '' ) . 
+						$feedback_link . "\n" . 
+						'<span id="feedback-dashboard-response-' . $item->getProperty('id') . '">&nbsp;</span>' . "\n\n" . 
 						$response . "\n\n~~~~\n\n" .
-						'<span class="markashelpful-item" data-markashelpful-item="' . $id . '" data-markashelpful-type="mbresponse"></span>',
+						'<span class="markashelpful-item" data-markashelpful-item="' . $item->getProperty('id') . '" data-markashelpful-type="mbresponse">&nbsp;</span>',
 				'token'  => $params['token'],
 				'summary' => $summary,
 				'notminor' => true,
