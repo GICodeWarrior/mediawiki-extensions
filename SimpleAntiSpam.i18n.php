@@ -410,6 +410,16 @@ Masukan ini '''DILARANG'''!",
 	'simpleantispam-desc' => 'Tambahkan pemeriksaan spam/bot sederhana ke formulir-formulir',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'simpleantispam' => 'Ti inurnos mo ket kinalbit na ti kontra-spam a mekanismo',
+	'simpleantispam-label' => "Kontra-spam a panagkita.
+ '''Saan''' mo a suratan daytoy!",
+	'simpleantispam-desc' => 'Agnayon ti nalaka a spam/bot panagkita iti nakabuklan',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -551,6 +561,16 @@ $messages['ms'] = array(
 	'simpleantispam-desc' => 'Menambah pemeriksaan spam/bot ringkas di borang sunting',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'simpleantispam' => 'Redigeringen din utløste antispammekanismen',
+	'simpleantispam-label' => "Antispamsjekk.
+'''IKKE''' fyll inn dette feltet!",
+	'simpleantispam-desc' => 'Legger til en enkel spam-/robot-sjekk på skjemaer',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -578,16 +598,6 @@ $messages['nn'] = array(
 	'simpleantispam-label' => "Antispam-kontroll.
 '''IKKJE''' fyll ut dette feltet!",
 	'simpleantispam-desc' => 'Legg til ein enkel spam-/robotsjekk på skjema',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'simpleantispam' => 'Redigeringen din utløste antispammekanismen',
-	'simpleantispam-label' => "Antispamsjekk.
-'''IKKE''' fyll inn dette feltet!",
-	'simpleantispam-desc' => 'Legger til en enkel spam-/robot-sjekk på skjemaer',
 );
 
 /** Occitan (Occitan)
