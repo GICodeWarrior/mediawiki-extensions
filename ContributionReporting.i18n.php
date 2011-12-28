@@ -1791,10 +1791,13 @@ $messages['ext'] = array(
  * @author Mjbmr
  * @author Sahim
  * @author Wayiran
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'contributionreporting-desc' => 'گزارش زنده از جذب سرمایهٔ ویکی‌مدیا',
 	'contributiontotal' => 'جمع کمک‌ها',
+	'disablednotice' => 'گزارش مشارکت',
+	'disablednotice-disabled' => 'این صفحه موقتاً غیر فعال شده‌است. لطفاً بعداً امتحان کنید.',
 	'contributionhistory' => 'تاریخچه مشارکت',
 	'contrib-hist-header' => 'نظرات کمک کنندگان از سراسر جهان',
 	'contrib-hist-name' => 'نام',
@@ -2394,6 +2397,42 @@ $messages['he'] = array(
 	'fundraiserstats-show-years' => 'הצג את השנים הבאות:',
 	'fundraiserstats-time-zone' => 'אזור זמן:',
 	'fundraiserstats-utc' => '(מ־UTC)',
+);
+
+/** Hindi (हिन्दी)
+ * @author Ansumang
+ */
+$messages['hi'] = array(
+	'contributionhistory' => 'योगदान इतिहास',
+	'contrib-hist-name' => 'नाम',
+	'contrib-hist-date' => 'दिनांक और समय',
+	'contrib-hist-amount' => 'राशि',
+	'contribstats-day' => 'दिन',
+	'contribstats-month' => 'महीना',
+	'contribstats-currency' => 'मुद्रा',
+	'contribstats-amount' => 'राशि (USD)',
+	'contribstats-contributions' => 'योगदान',
+	'contribstats-avg' => 'औसत (USD)',
+	'contribstats-percentage-ytd' => 'प्रतिशत (YTD)',
+	'contribstats-total-ytd' => 'कुल (YTD)',
+	'contribstats-value-exactly' => 'बिल्कुल $1',
+	'contribstats-value-under' => 'के नीचे $1',
+	'contribstats-day-totals' => 'दिन के लिए कुल',
+	'contribstats-week' => 'सप्ताह',
+	'contribstats-payment-type' => 'शुल्क प्रकार',
+	'contribstats-banner' => 'बैनर',
+	'contribstats-clicks' => 'क्लिकस',
+	'contribstats-donations' => 'दान',
+	'contribstats-template' => 'साँचा',
+	'contribstats-average' => 'औसत',
+	'contribstats-credit-card' => 'क्रेडिट कार्ड',
+	'fundraiserstats-date' => 'दिनांक',
+	'fundraiserstats-day' => 'दिन  $1 के $2',
+	'fundraiserstats-total' => 'कुल (USD)',
+	'fundraiserstats-avg' => 'औसत (USD)',
+	'fundraiserstats-customize' => 'अनुकूलित करें',
+	'fundraiserstats-time-zone' => 'समय मंडल:',
+	'fundraiserstats-utc' => '(UTC से)',
 );
 
 /** Croatian (Hrvatski)
@@ -4447,8 +4486,8 @@ $messages['pms'] = array(
 	'contributionreporting-desc' => 'Rapòrt an linia an sla racòlta fond Wikimedia',
 	'contributiontotal' => 'Total dle contribussion',
 	'dailytotal' => 'Total dël di',
-	'disablednotice' => 'Arpòrt ëd contribussion',
-	'disablednotice-disabled' => "Sta pagina a l'é stàita disabilità temporaneament. Për piasì preuva torna pi tard.",
+	'disablednotice' => 'Rapòrt ëd contribussion',
+	'disablednotice-disabled' => "Costa pàgina a l'é stàita al moment disabilità. Për piasì, ch'a preuva torna pi tard.",
 	'contributionhistory' => 'Stòria dle contribussion',
 	'contrib-hist-header' => 'Coment dij donator da tut ël mond',
 	'contrib-hist-name' => 'Nòm',
@@ -4800,6 +4839,7 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'contributionreporting-desc' => "Dirette sus 'a raccolte funne de Wikimedia",
 	'contributiontotal' => 'Condrebbute totele',
+	'dailytotal' => 'Totale sciurnaliere',
 	'contributionhistory' => 'Storie de le condrebbute',
 	'contrib-hist-header' => "Commènde de le donatore jndre totte 'u munne",
 	'contrib-hist-name' => 'Nome',
@@ -5122,6 +5162,7 @@ $messages['scn'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'dailytotal' => 'දෛනික එකතුව',
 	'contrib-hist-name' => 'නම',
 	'contrib-hist-date' => 'දිනය සහ වෙලාව',
 	'contrib-hist-amount' => 'වටිනාකම',
@@ -5135,12 +5176,23 @@ $messages['si'] = array(
 	'contribstats-banner' => 'බැනරය',
 	'contribstats-donations' => 'පරිත්‍යාග',
 	'contribstats-template' => 'සැකිල්ල',
+	'contribstats-nodata' => 'දත්ත ඉදිරිපත් කොට නොමැත',
+	'contribstats-landingpage' => 'ගොඩබස්නා පිටුව',
 	'contribstats-donatepage' => 'පරිත්‍යාග පිටුව',
+	'contribstats-average' => 'සාමාන්‍යය',
 	'contribstats-paypal-donations' => 'පේපැල් පරිත්‍යාගයන්',
 	'contribstats-credit-card' => 'ණය පත',
 	'fundraiserstats-date' => 'දිනය',
 	'fundraiserstats-contributions' => 'දායකත්වයන්',
+	'fundraiserstats-total' => 'එකතුව (එජඩො)',
+	'fundraiserstats-avg' => 'සාමාන්‍ය (එජඩො)',
+	'fundraiserstats-ytd' => 'සමුච්චිත එකතුව (එජඩො)',
+	'fundraiserstats-max' => 'උපරිම (එජඩො)',
 	'fundraiserstats-tab-contributions' => 'දායකත්වයන් ගණන',
+	'fundraiserstats-tab-averages' => 'සාමාන්‍යයන් (එජඩො)',
+	'fundraiserstats-tab-maximums' => 'උපරිමයන් (එජඩො)',
+	'fundraiserstats-customize' => 'රුචිකරණය',
+	'fundraiserstats-show-years' => 'පහත වර්ෂයන් පෙන්වන්න:',
 	'fundraiserstats-time-zone' => 'වේලා කලාපය:',
 );
 
@@ -5307,11 +5359,26 @@ $messages['sl'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'contributionreporting-desc' => 'Уживо обавештавање о прикупљању средстава за Викимедију',
+	'contributiontotal' => 'Укупан износ прилога',
+	'dailytotal' => 'Укупно за дан',
+	'disablednotice' => 'Извештаји за прилоге',
+	'disablednotice-disabled' => 'Ова страница је привремено онемогућена. Покушајте касније.',
+	'contributionhistory' => 'Историја прилога',
+	'contrib-hist-header' => 'Коментари даваоца широм света',
 	'contrib-hist-name' => 'Име',
 	'contrib-hist-date' => 'Време и датум',
 	'contrib-hist-amount' => 'Износ:',
 	'contrib-hist-next' => 'Претходне донације',
+	'contrib-hist-previous' => 'Новији прилози',
 	'contrib-hist-anonymous' => 'Анонимно',
+	'contributionstatistics' => 'Статистике прилога',
+	'contribstats-desc' => 'Приказује статистике новчаних прилога за Задужбину Викимедија',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Укупно за данас|Укупно за протеклих $1 дана}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Укупно за овај месец|Укупно за протеклих $1 месеци}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Укупно за $1 месец|Укупно за $1 месеца|Укупно за $1 месеци}}',
+	'contribstats-currency-range-totals' => 'Укупни износи по валути (од $1 до $2)',
+	'contribstats-contribution-range-breakdown' => 'Разврстан преглед прилога по вредности (од $1 до $2)',
 	'contribstats-day' => 'Дан',
 	'contribstats-month' => 'Месец',
 	'contribstats-currency' => 'Валута',
@@ -5328,15 +5395,36 @@ $messages['sr-ec'] = array(
 	'contribstats-value-over' => 'Преко $1',
 	'contribstats-day-totals' => 'Укупно за дан',
 	'contribstats-week' => 'Недеља',
+	'contribstats-payment-type' => 'Врста плаћања',
 	'contribstats-banner' => 'Плакат',
+	'contribstats-payment-type-hits' => 'Погоци врста плаћања',
+	'contribstats-clicks' => 'Кликови',
+	'contribstats-donations' => 'Прилози',
+	'contribstats-conversion' => 'Стопа стицања учесника (%)',
 	'contribstats-template' => 'Шаблон',
+	'contribstats-nodata' => 'Нема наведених података',
+	'contribstats-landingpage' => 'Циљна страница',
+	'contribstats-donatepage' => 'Страница за давање прилога',
 	'contribstats-average' => 'Просек',
+	'contribstats-paypal-donations' => 'Прилози преко Пејпала',
+	'contribstats-credit-card' => 'Кредитна картица',
+	'contribstats-fraud-note' => 'Неки прилози су преваре.',
+	'contribstats-unaudited' => 'Ово су непроверени износи.',
+	'fundraiserstatistics' => 'Статистике за прикупљање средстава',
 	'fundraiserstats-date' => 'Датум',
 	'fundraiserstats-day' => 'Дан $1 од $2',
+	'fundraiserstats-contributions' => 'Прилози',
 	'fundraiserstats-total' => 'Укупно (USD)',
 	'fundraiserstats-avg' => 'Просечно (USD)',
-	'fundraiserstats-max' => 'Максимум (USD)',
+	'fundraiserstats-ytd' => 'Кумулативни износ (USD)',
+	'fundraiserstats-max' => 'Највише (USD)',
+	'fundraiserstats-tab-totals' => 'Укупни износи (USD)',
 	'fundraiserstats-tab-contributions' => 'Број доприноса',
+	'fundraiserstats-tab-averages' => 'Просеци (USD)',
+	'fundraiserstats-tab-maximums' => 'Највиши (USD)',
+	'fundraiserstats-tab-ytd' => 'Од почетка године (USD)',
+	'fundraiserstats-customize' => 'Прилагоди',
+	'fundraiserstats-show-years' => 'Прикажи следеће године:',
 	'fundraiserstats-time-zone' => 'Временска зона:',
 	'fundraiserstats-utc' => '(према UTC-у)',
 );
@@ -5388,10 +5476,12 @@ $messages['sr-el'] = array(
  * @author Najami
  * @author Per
  * @author Tobulos1
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'contributionreporting-desc' => 'Liverapportering av Wikimedias insamling',
 	'contributiontotal' => 'Totalt bidrag',
+	'disablednotice-disabled' => 'Denna sida har tillfälligt inaktiverats. Var god försök igen senare.',
 	'contributionhistory' => 'Bidragshistorik',
 	'contrib-hist-header' => 'Kommentarer från bidragsgivare världen runt',
 	'contrib-hist-name' => 'Namn',
