@@ -229,6 +229,17 @@ Sie können diese Seite nicht anlegen, aber Sie können sie [{{fullurl:{{FULLPAG
 <createbox>break=no</createbox>",
 );
 
+/** Zazaki (Zazaki)
+ * @author Erdemaslancan
+ */
+$messages['diq'] = array(
+	'createbox-exists' => "Xeta, \"'''{{FULLPAGENAME}}'''\" xora esta.
+
+Feqet şıma şenê [{{fullurl:{{FULLPAGENAME}}|action=edit}} bıvurnê],  ya zi [{{fullurl:{{FULLPAGENAME}}}} buwanê], ya na  dora cêrêna peşti gerênra şıma şenê  zewmi pela vırazê.
+
+<createbox>break=no</createbox>",
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
