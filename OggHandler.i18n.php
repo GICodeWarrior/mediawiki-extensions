@@ -396,6 +396,8 @@ $messages['ba'] = array(
 	'ogg-player-soundthumb' => 'Уйнатыусы юҡ',
 	'ogg-player-selected' => '(һайланған)',
 	'ogg-use-player' => 'Ҡулланыласаҡ уйнатыусы:',
+	'ogg-more' => 'Тағы...',
+	'ogg-dismiss' => 'Ябырға',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -1689,6 +1691,43 @@ $messages['ig'] = array(
 	'ogg-dismiss' => 'Mèchié',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'ogg-desc' => 'Agtengngel para dagiti Ogg Theora ken Vorbis a papeles, nga addaan ti JavaScript a pagay-ayam.',
+	'ogg-short-audio' => 'Ogg $1 mangeg a papeles, $2',
+	'ogg-short-video' => 'Ogg $1 mabuya a papeles, $2',
+	'ogg-short-general' => 'Ogg $1 media a papeles, $2',
+	'ogg-long-audio' => 'Ogg $1 mangeg a papeles, kaatiddog $2, $3',
+	'ogg-long-video' => 'Ogg $1 mabuya a papeles, lkaatiddog $2, $4×$5 pixels, $3',
+	'ogg-long-multiplexed' => 'Ogg multiplexed a mangeg/mabuya a  papeles, $1, kaatiddog $2, $4×$5 pixels, $3 amin-amin',
+	'ogg-long-general' => 'Ogg media a papeles, kaatiddog $2, $3',
+	'ogg-long-error' => 'Imbalido nga ogg a papeles: $1',
+	'ogg-play' => 'Ayayamen',
+	'ogg-pause' => 'Pasardengan',
+	'ogg-stop' => 'Isardeng',
+	'ogg-play-video' => 'Ay-ayamen ti mabuya',
+	'ogg-play-sound' => 'Ay-ayamen ti mangeg',
+	'ogg-no-player' => 'Pasensian a, ti sistemam ket kasla awan ti natapayaan na nga agpa-ayayam a software.
+Pangngaasi a <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">mangipan ti agpa-ayayam</a>.',
+	'ogg-no-xiphqt' => 'Kasla awanen ka ti XiphQT  a banag para iti QuickTime
+Ti QuickTime ket saan nga agy-ayam iti Ogg a papeles nga awanen daytoy a banag.
+Pangngaasi a <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">mangipan ti XiphQT</a> wenno agpili iti sabali a pagay-ayam.',
+	'ogg-player-videoElement' => 'Patneng a pagbasabasa tapayaen',
+	'ogg-player-oggPlugin' => 'Pagbasabasa a pasullat',
+	'ogg-player-thumbnail' => 'Saan a nakuti nga imahen laeng',
+	'ogg-player-soundthumb' => 'Awan ti pagay-ayam',
+	'ogg-player-selected' => '(napili)',
+	'ogg-use-player' => 'Usaren ti pagay-ayam:',
+	'ogg-more' => 'Adu pay...',
+	'ogg-dismiss' => 'Irikep',
+	'ogg-download' => 'Mangipan ti papeles',
+	'ogg-desc-link' => 'Maipanggep daytoy nga imahen',
+	'ogg-oggThumb-version' => 'Ti OggHandler ket masapul na ti oggThumb a bersion $1 wenno ti naududi.',
+	'ogg-oggThumb-failed' => 'Napaay ti oggThumb nga agaramid ti imahen.',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -2267,6 +2306,7 @@ $messages['lt'] = array(
  * @author Xil
  */
 $messages['lv'] = array(
+	'ogg-desc' => 'Ogg Theora un Vorbis failu apstrādātājs ar JavaScript atskaņotāju',
 	'ogg-short-audio' => 'Ogg $1 skaņas fails, $2',
 	'ogg-short-video' => 'Ogg $1 video fails, $2',
 	'ogg-short-general' => 'Ogg $1 multimediju fails, $2',
@@ -3564,10 +3604,21 @@ $messages['sw'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author Shanmugamp7
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'ogg-play' => 'ஓட்டு',
+	'ogg-pause' => 'இடைநிறுத்து',
 	'ogg-stop' => 'நிறுத்து',
+	'ogg-play-video' => 'காணொளியை ஓடவிடு',
+	'ogg-play-sound' => 'ஒலி ஓடவிடு',
+	'ogg-player-videoElement' => 'சொந்த மேய்வான் ஆதரவு',
+	'ogg-player-oggPlugin' => 'மேய்வான் செருகுநிரல்',
+	'ogg-player-thumbnail' => 'நிழற்படம் மட்டும்',
+	'ogg-player-soundthumb' => 'ஓடல் மென்பொருள் இல்லை',
+	'ogg-player-selected' => '(தேர்ந்தெடுத்தது)',
+	'ogg-use-player' => 'ஓடல் மென்பொருள் பயன்படுத்தவும்:',
 	'ogg-more' => 'மேலும்...',
 	'ogg-dismiss' => 'மூடுக',
 	'ogg-download' => 'கோப்பை பதிவிறக்கம் செய்',
