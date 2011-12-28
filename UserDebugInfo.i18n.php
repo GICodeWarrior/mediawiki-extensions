@@ -140,6 +140,11 @@ $messages['gsw'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'userdebuginfo' => 'Wužiwarske informacije za zwěsćenje zmylkow',
+	'userdebuginfo-desc' => 'Zwobraznja informacije wo aktualnym wužiwarju, kotrež su snano wužitne za zwěsćenje zmylkow',
+	'userdebuginfo-useragent' => 'HTTP - program wužiwarja',
+	'userdebuginfo-remotehost' => 'HTTP - zdaleny host wužiwarja',
+	'userdebuginfo-remoteaddr' => 'HTTP - IP-adresa wužiwarja',
 	'userdebuginfo-key' => 'Kluč',
 	'userdebuginfo-value' => 'Hódnota',
 	'userdebuginfo-language' => 'Rěč',
