@@ -590,12 +590,13 @@ $messages['he'] = array(
 );
 
 /** Hindi (हिन्दी)
+ * @author Ansumang
  * @author Kaustubh
  */
 $messages['hi'] = array(
 	'edituser-desc' => 'कुछ विशिष्ट सदस्योंको अन्य सदस्योंकी वरीयतायें बदलनेकी अनुमति देता हैं',
 	'edituser' => 'सदस्य संपादन करें',
-	'edituser-username' => 'नाम',
+	'edituser-username' => 'सदस्यनाम:',
 	'edituser-dosearch' => 'खोजें',
 	'edituser-nouser' => 'दिया हुआ सदस्य अस्तित्वमें नहीं हैं',
 	'edituser-exempt' => 'दिये हुए सदस्यको संपादित नहीं कर सकतें',
@@ -1396,7 +1397,7 @@ $messages['ta'] = array(
 $messages['te'] = array(
 	'edituser-desc' => 'అనుమతులు ఉన్న వాడుకరులను ఇతర వాడుకరుల అభిరుచులను మార్చడానికి వీలు కలిగిస్తుంది',
 	'edituser' => 'వాడుకరిని మార్చండి',
-	'edituser-username' => 'వాడుకరిపేరు:',
+	'edituser-username' => 'వాడుకరి పేరు:',
 	'edituser-dosearch' => 'వెతుకు',
 	'edituser-nouser' => 'వాడుకరి $1 లేనేలేరు.',
 	'edituser-exempt' => 'వాడుకరి $1 లో మార్పులు చెయ్యలేరు.',
@@ -1532,14 +1533,19 @@ $messages['ur'] = array(
 	'right-edituser-exempt' => 'دوسرے صارفِ ہٰذا کی ترجیحات تدوین نہیں کرسکتے',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Triple-ADHD-AS
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'edituser-desc' => 'Laskeb priviligiruidud ühtnijoile koheta toižiden ühtnijoiden järgendused.',
 	'edituser' => 'Redaktiruida kävutajad',
-	'edituser-username' => 'Nimi',
+	'edituser-username' => 'Kävutajan nimi:',
+	'edituser-dosearch' => 'Ectä',
+	'edituser-nouser' => 'Ei ole mugošt kävutajad: "$1".',
+	'edituser-exempt' => 'Ei voi redaktiruida "$1"-kävutajad.',
 	'right-edituser' => 'Redaktiruida toižiden kävutajiden järgendused',
+	'right-edituser-exempt' => 'Toižile ei sa redaktiruida necen kävutajan järgendusid.',
 );
 
 /** Vietnamese (Tiếng Việt)
