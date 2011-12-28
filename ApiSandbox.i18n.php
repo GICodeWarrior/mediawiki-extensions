@@ -274,6 +274,8 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'apisandbox' => 'API testejo',
+	'apisb-api-disabled' => 'API estas malŝalta en ĉi tiu retejo.',
 	'apisb-parameters' => 'Parametroj',
 	'apisb-result' => 'Rezulto',
 	'apisb-request-url' => 'Mendi URL-on.',
@@ -281,19 +283,25 @@ $messages['eo'] = array(
 	'apisb-select-value' => 'Elekti valoron',
 	'apisb-loading' => 'Ŝarĝante...',
 	'apisb-ns-main' => '(Ĉefa)',
+	'apisb-submit' => 'Fari mendon',
 	'apisb-query-prop' => 'Ecoj',
 	'apisb-query-list' => 'Listoj',
+	'apisb-generator-parameters' => 'Generanto',
 );
 
 /** Spanish (Español)
  * @author Fitoschido
  * @author Imre
+ * @author Platonides
  * @author Pvgreenzebra
  */
 $messages['es'] = array(
 	'apisb-desc' => 'Permite depurar llamadas a la [//www.mediawiki.org/wiki/API API de MediaWiki] desde el navegador',
 	'apisandbox' => 'Zona de pruebas API',
 	'apisb-no-js' => "'''Error ''': esta característica requiere JavaScript.",
+	'apisb-intro' => "Utiliza está página para experimentar con el '''API de MediaWiki'''.
+
+Consulte [//www.mediawiki.org/wiki/API la documentación] para más detalles sobre su uso.",
 	'apisb-api-disabled' => 'La API está desactivada en este sitio.',
 	'apisb-parameters' => 'Parámetros',
 	'apisb-result' => 'Resultado',
@@ -311,6 +319,7 @@ $messages['es'] = array(
 	'apisb-query-prop' => 'Propiedades',
 	'apisb-query-list' => 'Listas',
 	'apisb-query-meta' => 'información de Meta',
+	'apisb-generic-parameters' => 'Parámetros genéricos',
 	'apisb-generator-parameters' => 'Generador',
 );
 
@@ -523,7 +532,14 @@ $messages['he'] = array(
  * @author Ansumang
  */
 $messages['hi'] = array(
+	'apisb-parameters' => 'पारामीटर्स',
 	'apisb-result' => 'परिणाम',
+	'apisb-request-url' => 'अनुरोध URL:',
+	'apisb-select-action' => 'क्रिया चयन करें',
+	'apisb-select-value' => 'मूल्य चयन करें',
+	'apisb-ns-main' => '(मुख्य)',
+	'apisb-query-list' => 'सूचियाँ',
+	'apisb-query-meta' => 'मेटा जानकारी',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -940,16 +956,30 @@ Zie de [//www.mediawiki.org/wiki/API API-documentatie] voor verdere details over
 /** Oriya (ଓଡ଼ିଆ)
  * @author Ansumang
  * @author Odisha1
+ * @author Psubhashish
  */
 $messages['or'] = array(
+	'apisb-desc' => 'ବ୍ରାଉଜରରୁ [//www.mediawiki.org/wiki/API MediaWiki API]ରେ ଥିବା ଅସୁବିଧାକୁ ସୁଧାରିବା ପାଇଁ ଅନୁମତି ଦେବେ',
+	'apisandbox' => 'API ପରଖଘର',
+	'apisb-no-js' => "'''ଭୁଲ''': ଏହି ସୁବିଧା ପାଇଁ JavaScript ଲୋଡ଼ା ।",
+	'apisb-api-disabled' => 'API ଟି ଏହି ସାଇଟରେ ଅଚଳ କରାଯାଇଛି ।',
+	'apisb-parameters' => 'ମୂଲ୍ୟଙ୍କ',
 	'apisb-result' => 'ପରିଣାମ',
-	'apisb-select-action' => 'କାମ ଚୟନ କରିବେ',
+	'apisb-request-url' => 'URL ଅନୁରୋଧ କରିବେ:',
+	'apisb-request-post' => 'POST ତଥ୍ୟ:',
+	'apisb-select-action' => 'କାମ ବାଛିବେ',
+	'apisb-select-query' => 'ପ୍ରଶ୍ନଟି କଣ?',
 	'apisb-select-value' => 'ମୂଲ୍ୟ ବାଛିବେ',
 	'apisb-loading' => 'ଲୋଡ଼ ହେଉଛି...',
+	'apisb-load-error' => 'API ବିବରଣୀ ଲୋଡ଼ କରିବାରେ ଅସୁବିଧା',
+	'apisb-request-error' => 'API ଅନୁରୋଧ କାର୍ଯ୍ୟକାରୀ କରିବାରେ ଅସୁବିଧା',
+	'apisb-namespaces-error' => 'ନେମସ୍ପେସ ଲୋଡ଼ କରିବାରେ ଅସୁବିଧା',
 	'apisb-ns-main' => '(ମୂଳ)',
 	'apisb-submit' => 'ଅନୁରୋଧ କରିବେ',
+	'apisb-query-prop' => 'ସଜାଣି',
 	'apisb-query-list' => 'ତାଲିକା',
 	'apisb-query-meta' => 'ମେଟା ତଥ୍ୟ',
+	'apisb-generic-parameters' => 'ସାଧାରଣ ମୂଲ୍ୟାଙ୍କ',
 	'apisb-generator-parameters' => 'ଉତ୍ପାଦକ',
 );
 
@@ -993,31 +1023,32 @@ Więcej szczegółów na temat użycia interfejsu API można znaleźć w [//www.
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'apisb-desc' => 'A përmëtt ëd fé ël debuh ëd le ciamà [//www.mediawiki.org/wiki/API MediaWiki API] da browser',
-	'apisandbox' => 'Sandbox API',
-	'apisb-no-js' => "'''Eror''': sta funsion a veul JavaScript",
-	'apisb-intro' => "Dòvra sta pagina për sperimenté con '''MediaWiki API'''.
-Fà riferiment a [//www.mediawiki.org/wiki/API la documentassion API] për àutr detaj dël dovragi API.",
-	'apisb-api-disabled' => "API a l'é disabilità su sto sit.",
+	'apisb-desc' => 'A përmëtt ëd gavé ij bigat a le ciamà [//www.mediawiki.org/wiki/API API ëd MediaWiki] a parte dal navigador',
+	'apisandbox' => 'Spassi dle preuve API',
+	'apisb-no-js' => "'''Eror''': sta funsion a l'ha damanca ëd JavaScript",
+	'apisb-intro' => "Ch'a deuvra sta pàgina për sperimenté con '''MediaWiki API'''.
+Ch'a fasa riferiment a [//www.mediawiki.org/wiki/API la documentassion ëd l'API] për d'àutri detaj an sl'utilisassion ëd l'API.",
+	'apisb-api-disabled' => "API a l'é disabilità ansima a 's sit.",
 	'apisb-parameters' => 'Paràmetr',
 	'apisb-result' => 'Arzultà',
 	'apisb-request-url' => "Anliura d'arcesta:",
 	'apisb-request-post' => 'Dat ëd POST:',
-	'apisb-select-action' => 'Selessioné assion',
-	'apisb-select-query' => 'Lòn che ciamé?',
-	'apisb-select-value' => 'Selessioné valor',
+	'apisb-select-action' => "Selessioné n'assion",
+	'apisb-select-query' => "Lòn ch'a-i é da ciamé?",
+	'apisb-select-value' => 'Selessioné ël valor',
 	'apisb-loading' => 'A caria ...',
-	'apisb-load-error' => "Eror an cariand descrission dl'API",
+	'apisb-load-error' => "Eror an cariand la descrission dl'API",
 	'apisb-request-error' => "Eror fasend la ciamà dl'API",
-	'apisb-namespaces-error' => 'Eror cariand spassi nominaj',
+	'apisb-namespaces-error' => 'Eror cariand jë spassi nominaj',
 	'apisb-ns-main' => '(Prinsipal)',
-	'apisb-submit' => 'Fé arcesta',
+	'apisb-submit' => "Fé l'arcesta",
 	'apisb-query-prop' => 'Proprietà',
 	'apisb-query-list' => 'Liste',
-	'apisb-query-meta' => 'Meta anformassion',
+	'apisb-query-meta' => 'Meta-anformassion',
 	'apisb-generic-parameters' => 'Paràmetr genérich',
 	'apisb-generator-parameters' => 'Generator',
 );
@@ -1063,9 +1094,33 @@ Consulte a [//www.mediawiki.org/wiki/API documentação da API] para informaçõ
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Giro720
+ * @author Rafael Vargas
  */
 $messages['pt-br'] = array(
 	'apisb-desc' => 'Permite depurar chamadas do [//www.mediawiki.org/wiki/API API do MediaWiki] a partir do navegador',
+	'apisandbox' => 'Caixa de areia da API',
+	'apisb-no-js' => "'''Erro''': este recurso requer JavaScript.",
+	'apisb-intro' => "Use esta página para experimentar com '''API MediaWiki'''.
+Consulte [//www.mediawiki.org/wiki/API the API documentation] para obter mais detalhes de uso da API.",
+	'apisb-api-disabled' => 'A API está desabilitada neste site.',
+	'apisb-parameters' => 'Parâmetros',
+	'apisb-result' => 'Resultado',
+	'apisb-request-url' => 'URL solicitante:',
+	'apisb-request-post' => 'Dados POST:',
+	'apisb-select-action' => 'Selecione a ação',
+	'apisb-select-query' => 'Qual é a consulta?',
+	'apisb-select-value' => 'Selecione o valor',
+	'apisb-loading' => 'Carregando...',
+	'apisb-load-error' => 'Erro ao carregar a descrição da API',
+	'apisb-request-error' => 'Erro na requisição de API',
+	'apisb-namespaces-error' => 'Erro carregando namespaces',
+	'apisb-ns-main' => '(Principal)',
+	'apisb-submit' => 'Fazer requisição',
+	'apisb-query-prop' => 'Propriedades',
+	'apisb-query-list' => 'Listas',
+	'apisb-query-meta' => 'Meta informação',
+	'apisb-generic-parameters' => 'Parâmetros genéricos',
+	'apisb-generator-parameters' => 'Gerador',
 );
 
 /** Romanian (Română)
@@ -1101,8 +1156,12 @@ $messages['roa-tara'] = array(
 	'apisb-request-url' => 'URL richieste:',
 	'apisb-request-post' => "POST d'u date:",
 	'apisb-select-action' => "Scacchie l'azione",
+	'apisb-select-query' => "Ce ha 'nderrogà?",
 	'apisb-select-value' => "Scacchie 'nu valore",
 	'apisb-loading' => 'Stoche a careche…',
+	'apisb-load-error' => "Errore jndr'à 'u carecamende d'a descrizione de l'API",
+	'apisb-request-error' => "Errore in esecuzione d'a richieste de l'API",
+	'apisb-namespaces-error' => 'Errore de caricamende de le namespace',
 	'apisb-ns-main' => '(Prengepàle)',
 	'apisb-submit' => "Fà 'na richieste",
 	'apisb-query-prop' => 'probbietà',
@@ -1156,14 +1215,22 @@ $messages['scn'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'apisandbox' => 'API වැලිපිල්ල',
 	'apisb-parameters' => 'පරාමිතීන්',
 	'apisb-result' => 'ප්‍රතිඵලය',
 	'apisb-select-action' => 'කාර්ය තෝරන්න',
 	'apisb-select-value' => 'අගය තෝරන්න',
 	'apisb-loading' => 'පූරණය වෙමින්...',
+	'apisb-load-error' => 'API විස්තරය පූරණය වීමේ දෝෂය',
+	'apisb-request-error' => 'API අයදුම රඟ දැක්වීමේ දෝෂය',
+	'apisb-namespaces-error' => 'නාමඅවකාශ පූර්ණය කිරීමේ දෝෂය',
 	'apisb-ns-main' => '(ප්‍රධාන)',
+	'apisb-submit' => 'අයදුමක් සිදු කරන්න',
 	'apisb-query-prop' => 'ගුණ',
 	'apisb-query-list' => 'ලැයිස්තු',
+	'apisb-query-meta' => 'මෙටා තොරතුරු',
+	'apisb-generic-parameters' => 'ප්‍රජාතීය පරාමිතීන්',
+	'apisb-generator-parameters' => 'උත්පාදකය',
 );
 
 /** Slovak (Slovenčina)
@@ -1214,6 +1281,31 @@ $messages['sl'] = array(
 	'apisb-query-meta' => 'Metapodatki',
 	'apisb-generic-parameters' => 'Generični parametri',
 	'apisb-generator-parameters' => 'Generator',
+);
+
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'apisb-api-disabled' => 'АПИ је онемогућен на овом сајту.',
+	'apisb-parameters' => 'Параметри',
+	'apisb-result' => 'Резултат',
+	'apisb-request-url' => 'Адреса захтева:',
+	'apisb-request-post' => 'POST подаци:',
+	'apisb-select-action' => 'Изаберите радњу',
+	'apisb-select-query' => 'Шта да претражим?',
+	'apisb-select-value' => 'Изаберите вредност',
+	'apisb-loading' => 'Учитавам…',
+	'apisb-load-error' => 'Грешка при учитавању описа АПИ-ја',
+	'apisb-request-error' => 'Грешка при извршавању захтева од АПИ-ја',
+	'apisb-namespaces-error' => 'Грешка при учитавању именских простора',
+	'apisb-ns-main' => '(главно)',
+	'apisb-submit' => 'Постави захтев',
+	'apisb-query-prop' => 'Својства',
+	'apisb-query-list' => 'Спискови',
+	'apisb-query-meta' => 'Метаподаци',
+	'apisb-generic-parameters' => 'Општи параметри',
+	'apisb-generator-parameters' => 'Стварач',
 );
 
 /** Swedish (Svenska)
