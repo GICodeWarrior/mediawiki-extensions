@@ -213,6 +213,13 @@ $messages['ru'] = array(
 	'apiexplorer-loading' => 'Загрузка функций...',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'apiexplorer-loading' => 'Läser in funktioner...',
+);
+
 /** Ukrainian (Українська)
  * @author Sodmy
  */
