@@ -25,16 +25,23 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 // Object model
 $wgAutoloadClasses['MarkAsHelpfulItem'] = $dir . 'includes/MarkAsHelpfulItem.php';
+$wgAutoloadClasses['MWMarkAsHelpFulItemPropertyException'] = $dir . 'includes/MarkAsHelpfulItem.php';
+$wgAutoloadClasses['MWMarkAsHelpFulItemSearchKeyException'] = $dir . 'includes/MarkAsHelpfulItem.php';
+
 $wgAutoloadClasses['MarkAsHelpfulUtil'] = $dir . 'includes/MarkAsHelpfulUtil.php';
 
 // API
 $wgAutoloadClasses['ApiMarkAsHelpful'] = $dir . 'api/ApiMarkAsHelpful.php';
+$wgAutoloadClasses['MWApiGetMarkAsHelpfulItemInvalidActionException'] = $dir . 'api/ApiMarkAsHelpful.php';
 $wgAPIModules['markashelpful'] = 'ApiMarkAsHelpful';
+
 $wgAutoloadClasses['ApiGetMarkAsHelpfulItem'] = $dir . 'api/ApiGetMarkAsHelpfulItem.php';
+$wgAutoloadClasses['MWApiMarkAsHelpfulInvalidActionException'] = $dir . 'api/ApiGetMarkAsHelpfulItem.php';
 $wgAPIModules['getmarkashelpfulitem'] = 'ApiGetMarkAsHelpfulItem';
 
 // Hooks
 $wgAutoloadClasses['MarkAsHelpfulHooks'] = $dir . 'MarkAsHelpful.hooks.php';
+
 $wgHooks['BeforePageDisplay'][] = 'MarkAsHelpfulHooks::onPageDisplay';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'MarkAsHelpfulHooks::onLoadExtensionSchemaUpdates';
 $wgHooks['MakeGlobalVariablesScript'][] = 'MarkAsHelpfulHooks::makeGlobalVariablesScript';
@@ -64,3 +71,4 @@ $wgResourceModules['ext.markAsHelpful'] = $mahResourceTemplate + array(
 		'mediawiki.util'
 	),
 );
+
