@@ -53,6 +53,16 @@ $messages['de'] = array(
 	'sternograph-speaker-is' => 'Die Zeilen des <$1>-Blocks müssen das Zeichen „$2“ enthalten.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'sternograph-desc' => 'Zmóžnja elementy <nowiki><sterno></nowiki> za pisanje powědanych słowow (źiwadłowe graśa, interviewy atd.)',
+	'sternograph-empty' => 'Element <$1> njesmějo prozny byś.',
+	'sternograph-nested' => 'Element <$1> njemóžo se zašachtelikaś.',
+	'sternograph-speaker-is' => 'Smužki powědarskego bloka <$1> musy $2 {{PLURAL:$2|znamuško|znamušce|znamuška|znamuškow}} měś.',
+);
+
 /** French (Français)
  * @author Gomoko
  */
@@ -71,6 +81,16 @@ $messages['gl'] = array(
 	'sternograph-empty' => 'A etiqueta <$1> non pode estar baleira.',
 	'sternograph-nested' => 'A etiqueta <$1> non pode estar aniñada.',
 	'sternograph-speaker-is' => 'As liñas do bloque de discurso <$1> deben conter o carácter "$2".',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'sternograph-desc' => 'Zmóžnja elementy <nowiki><sterno></nowiki> za pisanje rěčanych słowow (dźiwadłowe hry, interviewy atd.)',
+	'sternograph-empty' => 'Element <$1> njesmě prózdny być.',
+	'sternograph-nested' => 'Element <$1> njemóže so zakašćikować.',
+	'sternograph-speaker-is' => 'Linki rěčniskeho bloka <$1> dyrbi $2 znamješkow měć.',
 );
 
 /** Interlingua (Interlingua)
