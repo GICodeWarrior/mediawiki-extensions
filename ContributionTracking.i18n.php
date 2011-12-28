@@ -390,6 +390,7 @@ $messages['eu'] = array(
  * @author Huji
  * @author Komeil 4life
  * @author Mjbmr
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'contributiontracking-desc' => 'پی‌گیری کمک‌های انجام شده به جذب سرمایهٔ ویکی‌مدیا',
@@ -397,8 +398,8 @@ $messages['fa'] = array(
 	'contrib-tracking-error' => 'خطا',
 	'contrib-tracking-error-text' => 'اطلاعات ارسالی فرم غیر مجاز است',
 	'contrib-tracking-submitting' => 'ارسال به پردازش کنندهٔ پرداخت...',
-	'contrib-tracking-continue' => 'اگر به طور خودکار به صفحهٔ مورد نظر هدایت نشدید، برای تکمیل کمک مالی خود در PayPal بر روی دکمه کلیک کنید.',
-	'contrib-tracking-redirect' => 'شما به طور خودکار برای تکمیل کمک مالی‌تان به پی‌پال هدایت خواهید شد.',
+	'contrib-tracking-continue' => 'اگر به طور خودکار به صفحهٔ مورد نظر هدایت نشدید، برای تکمیل کمک مالی خود بر روی دکمه کلیک کنید.',
+	'contrib-tracking-redirect' => 'شما به طور خودکار برای تکمیل کمک مالی‌تان تغییرمسیر داده خواهید شد.',
 	'contrib-tracking-button' => 'ادامه',
 	'contrib-tracking-item-name-onetime' => 'یک بار کمک مالی',
 	'contrib-tracking-item-name-recurring' => 'دورهٔ اهدای کمک مالی ماهانه',
@@ -531,6 +532,14 @@ $messages['he'] = array(
 	'contrib-tracking-button' => 'המשך',
 	'contrib-tracking-item-name-onetime' => 'תרומה חד־פעמית',
 	'contrib-tracking-item-name-recurring' => 'תרומה חודשית חוזרת',
+);
+
+/** Hindi (हिन्दी)
+ * @author Ansumang
+ */
+$messages['hi'] = array(
+	'contrib-tracking-error' => 'त्रुटि',
+	'contrib-tracking-button' => 'जारी रखें',
 );
 
 /** Croatian (Hrvatski)
@@ -987,7 +996,7 @@ $messages['pms'] = array(
 	'contrib-tracking-error' => 'Eror',
 	'contrib-tracking-error-text' => 'Spedission ëd forma nen bon-a',
 	'contrib-tracking-submitting' => 'Spedission al motor ëd pagament ...',
-	'contrib-tracking-continue' => "S'it ses pa rediressionà automaticament, sgnaca ël boton për completé toa donassion.",
+	'contrib-tracking-continue' => "S'a l'é pa ridiressionà automaticament, ch'a sgnaca an sël boton për completé soa donassion.",
 	'contrib-tracking-redirect' => 'A sarà anviarà automaticament për completé soa donassion.',
 	'contrib-tracking-button' => 'Continua',
 	'contrib-tracking-item-name-onetime' => 'Donassion sìngola',
@@ -1168,10 +1177,13 @@ $messages['sl'] = array(
  * @author Јованвб
  */
 $messages['sr-ec'] = array(
+	'contributiontracking-desc' => 'Праћење дарованих прилога за програм прикупљања средстава Викимедије',
 	'contributiontracking' => 'Праћење доприноса',
 	'contrib-tracking-error' => 'Грешка',
 	'contrib-tracking-error-text' => 'Неисправно подношење обрасца',
 	'contrib-tracking-submitting' => 'Шаљем обрасцу за плаћање…',
+	'contrib-tracking-continue' => 'Ако не будете преусмерени, кликните на дугме да завршите давање прилога.',
+	'contrib-tracking-redirect' => 'Бићете преусмерени да бисте завршили давање прилога.',
 	'contrib-tracking-button' => 'Настави',
 	'contrib-tracking-item-name-onetime' => 'Једнократан прилог',
 	'contrib-tracking-item-name-recurring' => 'Месечни прилог',
@@ -1193,6 +1205,7 @@ $messages['sr-el'] = array(
 /** Swedish (Svenska)
  * @author Boivie
  * @author Tobulos1
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'contributiontracking-desc' => 'Bidragsspårning för Wikimedia-insamlingen',
@@ -1200,8 +1213,8 @@ $messages['sv'] = array(
 	'contrib-tracking-error' => 'Fel',
 	'contrib-tracking-error-text' => 'Ogiltigt skickande av formulär',
 	'contrib-tracking-submitting' => 'Skickar till betalningshanterare...',
-	'contrib-tracking-continue' => 'Om du inte kommer vidare automatiskt, klicka på knappen för att slutföra din donation hos PayPal.',
-	'contrib-tracking-redirect' => 'Du kommer att omdirigeras automatiskt till PayPal för att slutföra din donation.',
+	'contrib-tracking-continue' => 'Om du omdirigeras automatiskt, klicka på knappen för att slutföra din donation.',
+	'contrib-tracking-redirect' => 'Du kommer att omdirigeras automatiskt för att slutföra din donation.',
 	'contrib-tracking-button' => 'Fortsätt',
 	'contrib-tracking-item-name-onetime' => 'Engångs-donation',
 	'contrib-tracking-item-name-recurring' => 'Återkommande månatlig donation',
