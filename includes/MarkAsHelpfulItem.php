@@ -10,11 +10,9 @@ class MarkAsHelpfulItem {
 		'mah_type' => null,
 		'mah_item' => null,
 		'mah_user_id' => null,
-		'mah_user_ip' => null,
 		'mah_user_editcount' => null,
 		'mah_namespace' => null,
 		'mah_title' => null,
-		'mah_active' => null,
 		'mah_timestamp' => null,
 		'mah_system_type' => null,
 		'mah_user_agent' => null,
@@ -65,9 +63,7 @@ class MarkAsHelpfulItem {
 			if ( $this->loadedFromDatabase ) {
 				if ( $this->getProperty( 'mah_user_id' ) ) {
 					$this->user = User::newFromId( $this->getProperty( 'mah_user_id' ) );
-				} elseif ( $this->getProperty( 'mah_user_ip' ) ) {
-					$this->user = User::newFromName( $this->getProperty( 'mah_user_ip' ) );
-				}
+				} 
 			} else {
 				global $wgUser;
 
@@ -99,12 +95,11 @@ class MarkAsHelpfulItem {
 		}
 
 		if ( $wgUser->isAnon() ) {
-			$this->setProperty( 'mah_user_ip', $wgUser->getName() );
-			$this->setProperty( 'mah_user_editcount', 0 );
-		} else {
-			$this->setProperty( 'mah_user_id', $wgUser->getId() );
-			$this->setProperty( 'mah_user_editcount', $wgUser->getEditCount() );
+			throw new MWMarkAsHelpFulItemPropertyException( 'User not logged in!' );
 		}
+		
+		$this->setProperty( 'mah_user_id', $wgUser->getId() );
+		$this->setProperty( 'mah_user_editcount', $wgUser->getEditCount() );
 
 		if ( isset( $params['page'] ) ) {
 			$page = Title::newFromText( $params['page'] );
@@ -117,7 +112,6 @@ class MarkAsHelpfulItem {
 			}
 		}
 
-		$this->setProperty( 'mah_active', '1' );
 		$this->setProperty( 'mah_timestamp', wfTimestampNow() );
 
 		if ( isset( $params['system'] ) ) {
@@ -148,7 +142,7 @@ class MarkAsHelpfulItem {
 
 		$searchKey = implode( ',', $searchKey );
 
-		$allowableSearchKey = array( 'mah_id', 'mah_item,mah_type,mah_user_id,mah_user_ip' );
+		$allowableSearchKey = array( 'mah_id', 'mah_item,mah_type,mah_user_id' );
 
 		if ( !in_array( $searchKey, $allowableSearchKey ) ) {
 			throw new MWMarkAsHelpFulItemSearchKeyException( 'Invalid search key!' );
@@ -178,13 +172,9 @@ class MarkAsHelpfulItem {
 	/**
 	 * To mark an item as helpful, this function should be called after either loadFromRequest() or setProperty()
 	 * data must be validated if called from setProperty()
-	 *
 	 */
 	public function mark() {
-		if ( $this->userHasMarked() ) {
-			return;
-		}
-
+		
 		$dbw = wfGetDB( DB_MASTER );
 
 		$row = array();
@@ -196,8 +186,9 @@ class MarkAsHelpfulItem {
 		}
 
 		$this->property['mah_id'] = $dbw->nextSequenceValue( 'mark_as_helpful_mah_id' );
-		$dbw->insert( 'mark_as_helpful', $row, __METHOD__ );
+		$dbw->insert( 'mark_as_helpful', $row, __METHOD__, array( 'IGNORE' ) );
 		$this->setProperty( 'mah_id', $dbw->insertId() );
+		
 	}
 
 	/**
@@ -212,10 +203,11 @@ class MarkAsHelpfulItem {
 
 		if ( $this->getProperty( 'mah_id' ) ) {
 
-			if ( !$this->getProperty( 'mah_type' ) ) {
+			// Attempt to load from database if not loaded yet
+			if ( !$this->loadedFromDatabase ) {
 				if ( !$this->loadFromDatabase( array( 'mah_id' => $this->getProperty( 'mah_id' ) ) ) ) {
 					return;
-				}
+				}		
 			}
 
 			$user = $this->getUser();
@@ -244,48 +236,6 @@ class MarkAsHelpfulItem {
 	}
 
 	/**
-	 * Check if this 'mark as helpful' recrod exists already
-	 * @return bool
-	 */
-	public function userHasMarked() {
-		$dbr = wfGetDB( DB_SLAVE );
-
-		$conds = array(
-			'mah_type' => $this->getProperty( 'mah_type' ),
-			'mah_item' => intval( $this->getProperty( 'mah_item' ) )
-		);
-
-		$user = $this->getUser();
-
-		if ( $user ) {
-			if ( $user->isAnon() ) {
-				$conds['mah_user_ip'] = $user->getName();
-				$conds['mah_user_id'] = 0;
-			} else {
-				$conds['mah_user_id'] = $user->getId();
-				$conds['mah_user_ip'] = null;
-			}
-		} else {
-			// Invalid User object, we can't allow this user to mark an item
-			return true;
-		}
-
-		$res = $dbr->selectRow(
-			array( 'mark_as_helpful' ),
-			array( 'mah_id' ),
-			$conds,
-			__METHOD__
-		);
-
-		// user has not marked this item
-		if ( $res === false ) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	/**
 	 * Get a list of all users that marked this item as helpful
 	 * @param $type string - the object type
 	 * @param $item int - the object id
@@ -299,21 +249,22 @@ class MarkAsHelpfulItem {
 			'mah_item' => intval( $item )
 		);
 
+		$conds[] = 'mah_user_id = user_id';
+		
+		// Grab only one record for the 1st phase
 		$res = $dbr->select(
 			array( 'mark_as_helpful', 'user' ),
-			array( 'mah_id', 'user_id', 'user_name', 'mah_user_ip' ),
+			array( 'mah_id', 'user_id', 'user_name' ),
 			$conds,
 			__METHOD__,
-			array(),
-			array( 'user' => array( 'LEFT JOIN', 'mah_user_id=user_id' ) )
+			array( 'LIMIT' => 1 ) 
 		);
 
 		$list = array();
 
 		foreach ( $res as $val ) {
 			$list[$val->user_id] = array( 'user_name' => $val->user_name,
-				                      'user_id' => $val->user_id,
-				                      'user_ip' => $val->mah_user_ip );
+				                      'user_id' => $val->user_id );
 		}
 
 		return $list;

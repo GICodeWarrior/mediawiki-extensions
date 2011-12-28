@@ -54,12 +54,7 @@ class MarkAsHelpfulUtil {
 		$user = current( $helpfulUserList );
 		
 		// show the first user 'in mark as helpful' template
-		if ( $user['user_name'] ) {
-			$data = wfMessage( 'mah-someone-marked-text' )->params( $user['user_name'] )->escaped();	
-		}
-		else {
-			$data = wfMessage( 'mah-someone-marked-text' )->params( $user['user_ip'] )->escaped();
-		}
+		$data = wfMessage( 'mah-someone-marked-text' )->params( $user['user_name'] )->escaped();	
 		
 		// Add other user in user list to a hidden div, this is for future enhancement
 		

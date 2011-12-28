@@ -9,8 +9,8 @@ class ApiMarkAsHelpful extends ApiBase {
 			$this->dieUsageMsg( array( 'blockedtext' ) );
 		}
 
-		// Disallow anonymous user to unmark an 'Mark As Helpful' item
-		if ( $wgUser->isAnon() && $params['mahaction'] === 'unmark' ) {
+		// Disallow anonymous user to mark/unmark an 'Mark As Helpful' item
+		if ( $wgUser->isAnon() ) {
 			$this->noPermissionError();
 		}
 
@@ -39,15 +39,15 @@ class ApiMarkAsHelpful extends ApiBase {
 
 				$conds = array( 'mah_type' => $params['type'],
 						'mah_item' => $params['item'],
-						'mah_user_id' => $wgUser->getId(),
-						'mah_user_ip' => null );
+						'mah_user_id' => $wgUser->getId() );
 
 				$status = $item->loadFromDatabase( $conds );
 
 				if ( $status ) {
 					$item->unmark( $wgUser );
-				} else {
-					$error = wfMessage( 'mah-action-error' )->escaped();
+				}
+				else {
+					$error = true;	
 				}
 			break;
 
@@ -58,9 +58,8 @@ class ApiMarkAsHelpful extends ApiBase {
 
 		if ( $error === false ) {
 			$result = array( 'result' => 'success' );
-		}
-		else {
-			$result = array( 'result' => 'error', 'error' => $error );
+		} else {
+			$result = array( 'result' => 'error', 'error' => 'mah-action-error' );
 		}
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
