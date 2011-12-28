@@ -9,6 +9,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'usersignup' => 'User signup',
 	'signupapi-desc' => 'Cleans up the [[Special:UserLogin|login page]] from signup related stuff and adds an API for signup',
 	'signupapi-ok' => 'OK',
 	'signupapi-noname' => 'No username was specified',
