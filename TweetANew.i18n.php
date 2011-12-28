@@ -1,4 +1,11 @@
 <?php
+/**
+ * Internationalisation file for extension TweetANew
+ *
+ * @addtogroup Extensions
+ * @license GPL
+ */
+ 
 $messages = array();
 $messages['en'] = array( 
 	'action-sendtotwitter' => 'Tweet about this edit',
