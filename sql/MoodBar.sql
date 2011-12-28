@@ -1,20 +1,20 @@
 CREATE TABLE /*_*/moodbar_feedback (
 	mbf_id int unsigned NOT NULL PRIMARY KEY auto_increment, -- Primary key
 	mbf_type varchar(32) binary NOT NULL, -- Type of feedback
-	
+
 	-- User who provided the feedback
 	mbf_user_id int unsigned NOT NULL, -- User ID, or zero
 	mbf_user_ip varchar(255) binary NULL, -- If anonymous, user's IP address
 	mbf_user_editcount int unsigned NOT NULL, -- Edit count of the user
-	
+
 	-- Page where the feedback was received
 	-- Nullable.
 	mbf_namespace int,
 	mbf_title varchar(255) binary,
-	
+
 	-- The feedback itself
 	mbf_comment varchar(255) binary,
-	
+
 	-- Options and context
 	-- Whether or not the feedback item is hidden
 	-- 0 = No; 255 = Yes (other values reserved for partial hiding)

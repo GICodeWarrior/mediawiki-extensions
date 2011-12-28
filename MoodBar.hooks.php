@@ -15,52 +15,52 @@ class MoodBarHooks {
 
 		return true;
 	}
-	
+
 	/**
 	 * Determines if this user has right to mark an feedback response as helpful, only the user who wrote the
 	 * feedback can mark the response as helpful
 	 * @param $mahaction string - mark/unmark
 	 * @param $type string - the object type to be marked
-	 * @param $item int - an item of $type to be marked 
+	 * @param $item int - an item of $type to be marked
 	 * @param $User User Object - the User in current session
 	 * @param $isAbleToMark bool - determine whether the user is able to mark the item
 	 * @return bool
 	 */
 	public static function onMarkItemAsHelpful( $mahaction, $type, $item, $User, &$isAbleToMark ) {
-		
+
 		if ( $User->isAnon() ) {
 			$isAbleToMark = false;
 			return true;
 		}
-		
+
 		if ( $type == 'mbresponse' ) {
-			
+
 			switch ( $mahaction ) {
-				
+
 				case 'mark':
 					$dbr = wfGetDB( DB_SLAVE );
-						
-					$res = $dbr->selectRow( array( 'moodbar_feedback', 'moodbar_feedback_response' ), 
+
+					$res = $dbr->selectRow( array( 'moodbar_feedback', 'moodbar_feedback_response' ),
 								array( 'mbf_id' ),
-								array( 'mbf_id = mbfr_mbf_id', 
-								       'mbfr_id' => intval( $item ), 
-								       'mbf_user_id' => $User->getId() ),
-								__METHOD__ );	
-					
+								array( 'mbf_id = mbfr_mbf_id',
+										'mbfr_id' => intval( $item ),
+										'mbf_user_id' => $User->getId() ),
+								__METHOD__ );
+
 					if ( $res === false ) {
 						$isAbleToMark = false;
 					}
-				break;
-				
+					break;
+
 				case 'unmark':
 				default:
 					//We will leve the MarkAsHelpFul extension to check if the user has unmark right
-				break;
+					break;
 			}
 		}
-		
+
 		return true;
-		
+
 	}
 
 	/**
@@ -127,45 +127,31 @@ class MoodBarHooks {
 	 * @param $updater DatabasEUpdater
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
-		$updater->addExtensionUpdate( array( 'addTable', 'moodbar_feedback',
-			dirname(__FILE__).'/sql/MoodBar.sql', true ) );
+		$dir = dirname(__FILE__) . '/sql/';
+		$updater->addExtensionTable( 'moodbar_feedback', $dir . 'MoodBar.sql' );
 
-		$updater->addExtensionUpdate( array( 'addField', 'moodbar_feedback',
-			'mbf_user_editcount', dirname(__FILE__).'/sql/mbf_user_editcount.sql', true )
-		);
+		$updater->addExtensionField( 'moodbar_feedback', 'mbf_user_editcount', $dir . 'mbf_user_editcount.sql' );
 
-		$db = $updater->getDB();
-		if ( $db->tableExists( 'moodbar_feedback' ) &&
-				$db->indexExists( 'moodbar_feedback', 'type_timestamp', __METHOD__ ) )
-		{
-			$updater->addExtensionUpdate( array( 'addIndex', 'moodbar_feedback',
-				'mbf_type_timestamp_id', dirname( __FILE__ ) . '/sql/AddIDToIndexes.sql', true )
-			);
-		}
+		$updater->addExtensionIndex( 'moodbar_feedback', 'mbf_type_timestamp_id', $dir . 'AddIDToIndexes.sql' );
+
 		$updater->addExtensionUpdate( array( 'dropIndex', 'moodbar_feedback',
-			'mbf_timestamp', dirname( __FILE__ ) . '/sql/AddIDToIndexes2.sql', true )
+			'mbf_userid_ip_timestamp',  $dir . 'AddIDToIndexes2.sql', true )
 		);
 
-		$updater->addExtensionUpdate( array( 'addIndex', 'moodbar_feedback',
-			'mbf_timestamp_id', dirname( __FILE__ ) . '/sql/mbf_timestamp_id.sql', true )
-		);
+		$updater->addExtensionIndex( 'moodbar_feedback', 'mbfr_timestamp_id',  $dir . 'mbf_timestamp_id.sql' );
 
-		$updater->addExtensionUpdate( array( 'addField', 'moodbar_feedback',
-			'mbf_hidden_state', dirname(__FILE__).'/sql/mbf_hidden_state.sql', true ) );
-		
-		$updater->addExtensionUpdate( array( 'addTable', 'moodbar_feedback_response',
-			dirname(__FILE__).'/sql/moodbar_feedback_response.sql', true ) );
+		$updater->addExtensionField( 'moodbar_feedback', 'mbf_hidden_state', $dir . 'mbf_hidden_state.sql' );
 
-		$updater->addExtensionUpdate( array( 'addIndex', 'moodbar_feedback_response',
-			'mbfr_timestamp_id', dirname( __FILE__ ) . '/sql/mbfr_timestamp_id_index.sql', true )
-		);
-		
+		$updater->addExtensionTable( 'moodbar_feedback_response', $dir . 'moodbar_feedback_response.sql' );
+
+		$updater->addExtensionIndex( 'moodbar_feedback_response', 'mbfr_timestamp_id',  $dir . 'mbfr_timestamp_id_index.sql' );
+
 		return true;
 	}
 
 	/**
 	 * Gets the MoodBar testing bucket that a user is in.
-	 * @param $user The user to check
+	 * @param $user User The user to check
 	 * @return array of bucket names
 	 */
 	public static function getUserBuckets( $user ) {

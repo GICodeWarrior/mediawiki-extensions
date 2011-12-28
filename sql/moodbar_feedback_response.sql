@@ -1,18 +1,18 @@
 CREATE TABLE /*_*/moodbar_feedback_response (
 	mbfr_id int unsigned NOT NULL PRIMARY KEY auto_increment, -- Primary key
-	
+
 	mbfr_mbf_id int unsigned NOT NULL, -- Primary key of moodbar_feedback table
-	
+
 	-- User who provided the response
 	mbfr_user_id int unsigned NOT NULL, -- User ID, or zero
 	mbfr_user_ip varbinary(40) NULL, -- If anonymous, user's IP address
-	
+
 	mbfr_commenter_editcount int unsigned NOT NULL, -- number of edit for the user who writes the feedback
 	mbfr_user_editcount int unsigned NOT NULL, -- number of edit for the responder
-	
+
 	-- The response itself
 	mbfr_response_text text NOT NULL,
-	
+
 	-- Options and context
 	mbfr_timestamp varchar(14) binary NOT NULL, -- When response was received
 	mbfr_anonymous tinyint unsigned NOT NULL DEFAULT 0, -- Anonymity
@@ -23,3 +23,4 @@ CREATE TABLE /*_*/moodbar_feedback_response (
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/mbfr_mbf_id ON /*_*/moodbar_feedback_response (mbfr_mbf_id);
+CREATE INDEX /*i*/mbfr_timestamp_id ON /*_*/moodbar_feedback_response (mbfr_mbf_id, mbfr_timestamp, mbfr_id);
