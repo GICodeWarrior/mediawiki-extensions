@@ -212,18 +212,18 @@ $messages['ms'] = array(
 	'customusersignup-desc' => 'Membolehkan mesej yang boleh diubahsuai ketika proses pembukaan akaun',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'customusersignup-desc' => 'Maakt het mogelijk aangepaste berichten weer te geven tijdens het aanmaken van gebruikers',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
 $messages['nb'] = array(
 	'customusersignup-desc' => 'Tillater brukertilpassede meldinger under opprettelsen av brukerkontoer',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'customusersignup-desc' => 'Maakt het mogelijk aangepaste berichten weer te geven tijdens het aanmaken van gebruikers',
 );
 
 /** Polish (Polski)
@@ -295,6 +295,13 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'customusersignup-desc' => 'Omogoča prilagodljiva sporočila med postopkom ustvarjanja računa',
+);
+
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'customusersignup-desc' => 'Даје могућност за приказ прилагодљивих порука у току отварања налога',
 );
 
 /** Tagalog (Tagalog)
