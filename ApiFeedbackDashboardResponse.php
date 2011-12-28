@@ -52,7 +52,7 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 				'title'  => $talkPage->getFullText(),
 				'appendtext' => ( $talkPage->exists() ? "\n\n" : '' ) . 
 						$feedback_link . "\n" . 
-						'<span id="feedback-dashboard-response-' . $id . '">&nbsp;</span>' . "\n\n" . 
+						'<span id="feedback-dashboard-response-' . $id . '"></span>' . "\n\n" . 
 						$response . "\n\n~~~~\n\n" .
 						'<span class="markashelpful-item" data-markashelpful-item="' . $id . '" data-markashelpful-type="mbresponse">&nbsp;</span>',
 				'token'  => $params['token'],
