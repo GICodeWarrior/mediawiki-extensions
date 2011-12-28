@@ -52,6 +52,8 @@ $messages['ast'] = array(
 	'webfonts-load' => 'Seleiciona la fonte',
 	'webfonts-reset' => 'Reaniciar',
 	'webfonts-enable-preference' => 'Activar la incorporación de fontes (WebFonts)',
+	'webfonts-menu-tooltip' => 'Seleicionar una fonte pa la páxina',
+	'webfonts-help' => 'Ayuda',
 );
 
 /** Azerbaijani (Azərbaycanca)
@@ -348,10 +350,12 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dj
  * @author Misibacsi
  */
 $messages['hu'] = array(
 	'webfonts-load' => 'Válassza ki a betűtípus',
+	'webfonts-help' => 'Segítség',
 );
 
 /** Interlingua (Interlingua)
@@ -385,7 +389,9 @@ $messages['ilo'] = array(
 	'webfonts-desc' => 'Ikabil dagiti kita ti letra kadagiti panid',
 	'webfonts-load' => 'Agpili ti kita ti letra',
 	'webfonts-reset' => 'Isubli',
-	'webfonts-enable-preference' => 'Ipabalin ti pinagikabil ti kita ti letra (WebFonts)',
+	'webfonts-enable-preference' => 'Pakabaelan na ti agikabil ti kita ti letra (WebFonts)',
+	'webfonts-menu-tooltip' => 'Agpili ti kita ti letra para iti panid',
+	'webfonts-help' => 'Tulong',
 );
 
 /** Italian (Italiano)
@@ -489,14 +495,15 @@ $messages['mk'] = array(
 /** Malayalam (മലയാളം)
  * @author Praveenp
  * @author Santhosh
+ * @author Vssun
  */
 $messages['ml'] = array(
-	'webfonts' => 'വെബ്ഫോണ്ടുകള്‍',
-	'webfonts-desc' => 'മീഡിയവിക്കി താളുകളില്‍ ഫോണ്ടുകള്‍ എംബെഡ് ചെയ്യുക',
-	'webfonts-load' => 'ഫോണ്ടുകള്‍',
+	'webfonts' => 'വെബ്ഫോണ്ടുകൾ',
+	'webfonts-desc' => 'മീഡിയവിക്കി താളുകളിൽ ഫോണ്ടുകൾ എംബെഡ് ചെയ്യുക',
+	'webfonts-load' => 'ഫോണ്ടുകൾ',
 	'webfonts-reset' => 'പഴയപടിയാക്കുക',
 	'webfonts-enable-preference' => 'ഫോണ്ട് എംബെഡ് ചെയ്യുക.(വെബ്ഫോണ്ട്സ്)',
-	'webfonts-menu-tooltip' => 'താളിനുവേണ്ടി ഒരു ഫോണ്ട് തിരഞ്ഞെടുക്കുക',
+	'webfonts-menu-tooltip' => 'ഈ താളിനുവേണ്ടി ഒരു ഫോണ്ട് തിരഞ്ഞെടുക്കുക',
 	'webfonts-help' => 'സഹായം',
 );
 
@@ -598,7 +605,7 @@ $messages['pms'] = array(
 	'webfonts-load' => "Ch'a selession-a un tipo ëd caràter",
 	'webfonts-reset' => 'Spian-a',
 	'webfonts-enable-preference' => "Abilité l'anseriment ëd tipo ëd caràter (Caràter dl'aragnà)",
-	'webfonts-menu-tooltip' => 'Seession-a un font për la pagina',
+	'webfonts-menu-tooltip' => 'Selessioné un tipo ëd caràter për la pàgina',
 	'webfonts-help' => 'Agiut',
 );
 
@@ -607,6 +614,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'webfonts-load' => 'ليکبڼه ټاکل',
+	'webfonts-reset' => 'بياايښودل',
 	'webfonts-help' => 'لارښود',
 );
 
@@ -620,6 +628,19 @@ $messages['pt'] = array(
 	'webfonts-reset' => 'Reiniciar',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Rafael Vargas
+ */
+$messages['pt-br'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Incorporar as fontes nas páginas',
+	'webfonts-load' => 'Selecione a fonte',
+	'webfonts-reset' => 'Restaurar',
+	'webfonts-enable-preference' => 'Habilitar incorporação de fontes (WebFonts)',
+	'webfonts-menu-tooltip' => 'Selecione uma fonte para a página',
+	'webfonts-help' => 'Ajuda',
+);
+
 /** Romanian (Română)
  * @author Minisarm
  */
@@ -631,8 +652,11 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => "'Ngapsule le font jndr'à pàgene",
 	'webfonts-load' => "Scacchie 'u font",
 	'webfonts-reset' => 'Azzere',
+	'webfonts-enable-preference' => "Abbilite 'u 'ngapsulamende de le font (WebFonts)",
 	'webfonts-menu-tooltip' => "Scacchie 'nu font pa pàgene",
 	'webfonts-help' => 'Ajute',
 );
