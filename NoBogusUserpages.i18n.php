@@ -37,7 +37,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'nobogususerpages-desc' => '{{desc}}',
-	'badaccess-bogususerpage' => 'Error message: {{msg-mw|badaccess-bogususerpage}}',
+	'badaccess-bogususerpage' => 'Error message which will be shown when an userpage does not exist and the user does not have permission to create a bogus userpage',
 	'right-createbogususerpage' => '{{doc-right|createbogususerpage}}',
 );
 
@@ -111,4 +111,3 @@ $messages['nl'] = array(
 	'badaccess-bogususerpage' => 'De gebruiker voor deze gebruikerspagina bestaat niet. U hebt geen rechten om deze gebruikerspagina aan te maken.',
 	'right-createbogususerpage' => "Gebruikerspagina's aanmaken voor gebruikers die niet bekend zijn in deze wiki",
 );
-
