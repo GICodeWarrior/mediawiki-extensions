@@ -431,6 +431,21 @@ $messages['li'] = array(
 	'admanager_invalidtargetcategory' => 'Gein categorie gevónje mit de naam "$1".',
 	'admanager_notable' => "Fout! 'n Vereiste databasetabel is neet gevónje! Veur iers update.php oet.",
 	'admanager_noAdManagerZones' => 'Fout! De mós advertentiezones toeveuge. Veur ze in op de [[Special:AdManagerZones|speciaal pagina]].',
+	'admanager_labelPage' => 'Paginaname',
+	'admanager_labelCategory' => 'Categoriename',
+	'admanager_submit' => 'Opsjlaon',
+	'admanager_noads' => 'Gein advertenties weergaeve',
+	'admanager_Page' => "Pagina's",
+	'admanager_Category' => 'Categorieë',
+	'admanager_added' => 'Dien verangeringe zeen opgesjlage',
+	'admanager_noadsset' => '$1 is ingesjtèld om gein advertenties weer te gaeve',
+	'admanager_addedzone' => 'Zone toegeveug',
+	'admanager_zonenum' => 'Zonenómmer: $1',
+	'admanager_zonenotnumber' => 'Fout: $1 is gein getal.',
+	'admanager_return' => 'Trök nao [[Special:AdManager|advertentiebehier]]',
+	'admanager_gotoads' => '[[Special:AdManager|Advertentieplaatsing bewirke]]',
+	'admanager_gotozones' => '[[Special:AdManagerZones|Advertentiezones bewirke]]',
+	'right-admanager' => '[[Special:AdManager|Advertentie-insjtèllinge behiere]]',
 );
 
 /** Lithuanian (Lietuvių)
