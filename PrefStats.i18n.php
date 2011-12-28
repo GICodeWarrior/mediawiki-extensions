@@ -1397,6 +1397,37 @@ $messages['ig'] = array(
 	'prefstats-factor-fourweeks' => 'izù ànȯ',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'prefstats' => 'Dagiti estadistika ti kakaykayatan',
+	'prefstats-desc' => 'Suruten na dagiti estadistika a maipanggep no kasano ti kaadu dagiti agar-aramat ti addaan ti maysa a kita a kakaykayatan ti napakabaelan',
+	'prefstats-title' => 'Dagiti estadistika ti kakaykayatan',
+	'prefstats-list-intro' => 'Agdama, dagiti sumaganad a kakaykayatan ket masusurot.
+Agtakla iti maysa tapno makita dagiti estadistika a maipanggep ditoy.',
+	'prefstats-noprefs' => 'Awan dagiti kakaykayatan iti agdama a masusurot.
+Pabalinen ti $wgPrefStatsTrackPrefs tapno masurot dagiti kaykayat.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|ti agar-aramat ket addaan ti|dagiti agar-aramat ket addaan ti}} napakabaelan daytoy a kaykayat manipud idi naipasiglat ti estadistika ti kakaykayatan
+** $2 {{PLURAL:$2|ti agar-aramat ket|dagiti agar-aramat ket}} napakabaelan da pay laeng
+** $3 {{PLURAL:$3|tiagar-aramat ket|dagiti agar-aramat ket}} naibaldado  dan manipud idi',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|ti agar-aramat ket addaan ti|dagiti agar-aramat ket addaan ti}} napakabaelan daytoy a kaykayat manipud idi naipasiglat ti estadistika ti kakaykayatan
+** $2 {{PLURAL:$2|ti agar-aramat ket|dagiti agar-aramat ket}} napakabaelan da pay laeng
+** $3 {{PLURAL:$3|tiagar-aramat ket|dagiti agar-aramat ket}} naibaldado  dan manipud idi
+* Iti dagup, $4 {{PLURAL:$4|ti agar-aramat ket|dagiti agar-aramat ket}} napakabaelan da daytoy a kakaykayatan',
+	'prefstats-xaxis' => 'Kabayag (oras)',
+	'prefstats-factors' => 'Kita tunggal maysa: $1',
+	'prefstats-factor-hour' => 'oras',
+	'prefstats-factor-sixhours' => 'innem nga oras',
+	'prefstats-factor-day' => 'aldaw',
+	'prefstats-factor-week' => 'lawas',
+	'prefstats-factor-twoweeks' => 'dua a lawas',
+	'prefstats-factor-fourweeks' => 'uppat a lawas',
+	'prefstats-factor-default' => 'agsubli ti kinasigud a panagrukod',
+	'prefstats-legend-out' => 'Saan a nagpili',
+	'prefstats-legend-in' => 'Nagpili',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
