@@ -817,6 +817,8 @@ Doe verlus mäögelik dien hujige bewirkinge es doe dees pagina noe verleuts.',
 	'al-nosuchuser' => 'De gebroeker "$1" besteit neet.
 Gebroekersname zeen houflèttergeveulig.
 Kiek nans naoë sjriefwies.',
+	'al-createblocked' => 'Vanaaf dit IP-adres maoge gein gebroekers waere aangemaak.',
+	'al-throttled' => "De höbs teväöl neet-gesjlaagde aanmel-poginge oetgeveurd in 'ne korte tied. Wach $1 {{PLURAL:$1|seconde|seconde}} ierdets te 't obbenuuts perbeers.",
 );
 
 /** Lithuanian (Lietuvių)
