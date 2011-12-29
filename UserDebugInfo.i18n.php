@@ -189,6 +189,13 @@ $messages['mk'] = array(
 	'userdebuginfo-language' => 'Јазик',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'userdebuginfo-key' => 'Kunci',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
