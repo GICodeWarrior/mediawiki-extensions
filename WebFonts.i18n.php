@@ -24,11 +24,12 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Singhalawap
  */
 $messages['qqq'] = array(
-	'webfonts' => 'The extension name - WebFonts',
+	'webfonts' => 'වෙබ්-ෆොන්‍ට',
 	'webfonts-desc' => 'short description of the extension',
-	'webfonts-load' => 'The text shown in the webfont link',
+	'webfonts-load' => 'ෆොන්‍ටය තෝරාගන්න',
 	'webfonts-reset' => '{{Identical|Reset}}',
 	'webfonts-menu-tooltip' => 'Tooltip text displayed in the webfont link',
 	'webfonts-help' => 'Text for the help link.
@@ -134,12 +135,17 @@ $messages['bs'] = array(
 );
 
 /** Czech (Česky)
+ * @author Mormegil
  * @author Utar
  */
 $messages['cs'] = array(
 	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Vkládání písem do stránek',
+	'webfonts-load' => 'Vybrat písmo',
 	'webfonts-reset' => 'Resetovat',
-	'webfonts-help' => 'Pomoc',
+	'webfonts-enable-preference' => 'Povolit vkládání písem (WebFonts)',
+	'webfonts-menu-tooltip' => 'Vybrat písmo pro tuto stránku',
+	'webfonts-help' => 'Nápověda',
 );
 
 /** Danish (Dansk)
@@ -532,6 +538,13 @@ $messages['ms'] = array(
 	'webfonts-help' => 'Bantuan',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'webfonts-load' => 'Agħżel it-tipa',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -702,6 +715,8 @@ $messages['si'] = array(
 	'webfonts-desc' => 'පිටු මත එබ්බවූ අක්ෂර',
 	'webfonts-load' => 'අක්ෂරය තෝරන්න',
 	'webfonts-reset' => 'ප්‍රත්‍යාරම්භ කරන්න',
+	'webfonts-enable-preference' => 'අක්ෂර එබ්බවීම සක්‍රිය කරන්න (ජලාක්ෂර)',
+	'webfonts-menu-tooltip' => 'පිටුව සඳහා අක්ෂරයක් තෝරන්න',
 	'webfonts-help' => 'උදව්',
 );
 
@@ -798,6 +813,13 @@ $messages['uk'] = array(
 	'webfonts-reset' => 'Скинути',
 	'webfonts-menu-tooltip' => 'Виберіть шрифт для сторінки',
 	'webfonts-help' => 'Допомога',
+);
+
+/** Veps (Vepsän kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'webfonts-help' => 'Abu',
 );
 
 /** Vietnamese (Tiếng Việt)
