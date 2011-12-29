@@ -1104,6 +1104,13 @@ $messages['ig'] = array(
 	'group-patroller-member' => 'onye na léfuru ihe anyà',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'group-patroller' => 'Dagiti agpatpattrulia',
+);
+
 /** Icelandic (Íslenska)
  * @author Jóna Þórunn
  */
