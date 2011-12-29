@@ -436,6 +436,13 @@ $messages['oc'] = array(
 	'active-strategy-intro' => 'Nombre de modificacions de las paginas del grop de trabalh al cors {{PLURAL:$1|del darrièr jorn|dels $1 darrièrs jorns}}.',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
+ */
+$messages['or'] = array(
+	'nedits' => '$1 {{PLURAL:$1|ସମ୍ପାଦନ|ସମ୍ପାଦନ}}',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
