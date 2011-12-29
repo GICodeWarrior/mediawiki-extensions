@@ -460,6 +460,19 @@ $messages['lb'] = array(
 	'right-ArticleToCategory2AddCat' => "Kategorie bäi d'Kategorie derbäisetzen",
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'articletocategory2-desc' => "Plaats 'n invoerkader op jeder categoriepagina wat 't mäögelik maak direk 'n nuuj pagina in die categorie aan te make",
+	'articletocategory2-create-article-under-category-text' => "Doog 'n pagina bie bie dees categorie",
+	'articletocategory2-create-article-under-category-button' => 'Aanmake',
+	'articletocategory2-create-category-under-category-text' => "Doog 'n subcategorie bie bie dees categorie",
+	'articletocategory2-create-category-under-category-button' => 'Aanmake',
+	'right-ArticleToCategory2' => "Doog 'n pagina bie bie dees categorie",
+	'right-ArticleToCategory2AddCat' => "Doog 'n categorie bie bie dees categorie",
+);
+
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  * @author Ignas693
