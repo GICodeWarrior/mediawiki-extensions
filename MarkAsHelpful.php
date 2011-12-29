@@ -32,11 +32,12 @@ $wgAutoloadClasses['MarkAsHelpfulUtil'] = $dir . 'includes/MarkAsHelpfulUtil.php
 
 // API
 $wgAutoloadClasses['ApiMarkAsHelpful'] = $dir . 'api/ApiMarkAsHelpful.php';
-$wgAutoloadClasses['MWApiGetMarkAsHelpfulItemInvalidActionException'] = $dir . 'api/ApiMarkAsHelpful.php';
+$wgAutoloadClasses['MWApiGetMarkAsHelpfulItemInvalidPageException'] = $dir . 'api/ApiGetMarkAsHelpfulItem.php';
 $wgAPIModules['markashelpful'] = 'ApiMarkAsHelpful';
 
 $wgAutoloadClasses['ApiGetMarkAsHelpfulItem'] = $dir . 'api/ApiGetMarkAsHelpfulItem.php';
-$wgAutoloadClasses['MWApiMarkAsHelpfulInvalidActionException'] = $dir . 'api/ApiGetMarkAsHelpfulItem.php';
+$wgAutoloadClasses['MWApiMarkAsHelpfulInvalidActionException'] = $dir . 'api/ApiMarkAsHelpful.php';
+$wgAutoloadClasses['MWApiMarkAsHelpfulInvalidPageException'] = $dir . 'api/ApiMarkAsHelpful.php';
 $wgAPIModules['getmarkashelpfulitem'] = 'ApiGetMarkAsHelpfulItem';
 
 // Hooks

@@ -16,12 +16,21 @@ class ApiMarkAsHelpful extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
-		$isAbleToMark = true;
+		$page = Title::newFromText( $params['page'] );
+
+		if ( !$page ) {
+			throw new MWApiMarkAsHelpfulInvalidPageException( 'Invalid page!' );
+		}
+		
+		// check if current user has permission to mark the item,
+		$isAbleToMark = false; 
+		// check if the page has permission to request the item
+		$isAbleToShow = false;
 
 		// Gives other extension the last chance to specify mark as helpful permission rules
-		wfRunHooks( 'onMarkItemAsHelpful', array( $params['mahaction'], $params['type'], $params['item'], $wgUser, &$isAbleToMark ) );
+		wfRunHooks( 'onMarkItemAsHelpful', array( $params['type'], $params['item'], $wgUser, &$isAbleToMark, $page, &$isAbleToShow ) );
 
-		if ( !$isAbleToMark ) {
+		if ( !$isAbleToShow || !$isAbleToMark ) {
 			$this->noPermissionError();
 		}
 
@@ -132,4 +141,4 @@ class ApiMarkAsHelpful extends ApiBase {
 }
 
 class MWApiMarkAsHelpfulInvalidActionException extends MWException {}
-
+class MWApiMarkAsHelpfulInvalidPageException extends MWException {}

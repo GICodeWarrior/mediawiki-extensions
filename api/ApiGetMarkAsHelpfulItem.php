@@ -7,22 +7,41 @@ class ApiGetMarkAsHelpfulItem extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
-		// check if current user has permission to mark this item,
-		$isAbleToMark = true; 
+		$page = Title::newFromText( $params['page'] );
 
-		wfRunHooks( 'onMarkItemAsHelpful', array( 'mark', $params['type'], $params['item'], $wgUser, &$isAbleToMark ) );
+		if ( !$page ) {
+			throw new MWApiGetMarkAsHelpfulItemInvalidPageException( 'Invalid page!' );
+		}
 
-		$HelpfulUserList = MarkAsHelpfulItem::getMarkAsHelpfulList( $params['type'], $params['item'] );
+		// check if current user has permission to mark the item,
+		$isAbleToMark = false; 
+		// check if the page has permission to request the item
+		$isAbleToShow = false;
 
-		if ( $params['prop'] == 'metadata') {
-			$data = $HelpfulUserList;
-			$format = 'metadata';
-		} else {
-			$data = MarkAsHelpfulUtil::getMarkAsHelpfulTemplate(
-				$wgUser, $isAbleToMark, $HelpfulUserList, $params['type'],
-				$params['item']
-			);
-			$format = 'formatted';
+		wfRunHooks( 'onMarkItemAsHelpful', array( $params['type'], $params['item'], $wgUser, &$isAbleToMark, $page, &$isAbleToShow ) );
+
+		if ( $isAbleToShow ) {
+			$HelpfulUserList = MarkAsHelpfulItem::getMarkAsHelpfulList( $params['type'], $params['item'] );
+
+			if ( $params['prop'] == 'metadata') {
+				$data = $HelpfulUserList;
+				$format = 'metadata';
+			} else {
+				$data = MarkAsHelpfulUtil::getMarkAsHelpfulTemplate(
+					$wgUser, $isAbleToMark, $HelpfulUserList, $params['type'],
+					$params['item']
+				);
+				$format = 'formatted';
+			}
+		}
+		else {
+			$data = '';
+
+			if ( $params['prop'] == 'metadata') {
+				$format = 'metadata';
+			} else {
+				$format = 'formatted';
+			}	
 		}
 
 		$result = array( 'result' => 'success', $format => $data );
@@ -44,6 +63,9 @@ class ApiGetMarkAsHelpfulItem extends ApiBase {
 			'prop' => array(
 				ApiBase::PARAM_TYPE => array( 'metadata', 'formatted' ),
 			),
+			'page' => array(
+				ApiBase::PARAM_REQUIRED => true,
+			),
 		);
 	}
 
@@ -56,6 +78,7 @@ class ApiGetMarkAsHelpfulItem extends ApiBase {
 			'type' => 'The object type that is being marked as helpful',
 			'item' => 'The object item that is being marked as helpful',
 			'prop' => 'Which property to get',
+			'page' => 'The page which is requesting the item',
 		);
 	}
 
@@ -65,5 +88,4 @@ class ApiGetMarkAsHelpfulItem extends ApiBase {
 
 }
 
-class MWApiGetMarkAsHelpfulItemInvalidActionException extends MWException {}
-
+class MWApiGetMarkAsHelpfulItemInvalidPageException extends MWException {}
