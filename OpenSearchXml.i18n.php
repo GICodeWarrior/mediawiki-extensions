@@ -313,6 +313,13 @@ $messages['ms'] = array(
 	'opensearchxml-desc' => 'Antara muka XML [http://www.opensearch.org OpenSearch] untuk pengekstrakan teks',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'opensearchxml-desc' => 'Grensesnitt for [http://opensearch.org/ OpenSearch]',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -334,18 +341,18 @@ $messages['nn'] = array(
 	'opensearchxml-desc' => 'XML-grensesnitt for [http://opensearch.org/ OpenSearch]',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'opensearchxml-desc' => 'Grensesnitt for [http://opensearch.org/ OpenSearch]',
-);
-
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
 	'opensearchxml-desc' => "Interfàcia XML per [http://www.opensearch.org OpenSearch] amb d'extraches del tèxte",
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] ଟେକ୍ସଟ ଏକ୍ସଟ୍ରାକ୍ଟ ପାଇଁ XML ଇଣ୍ଟରଫେସ ଯୋଗାଇଥାଏ',
 );
 
 /** Polish (Polski)
