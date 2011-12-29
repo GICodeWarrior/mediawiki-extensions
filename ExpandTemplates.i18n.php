@@ -1582,6 +1582,8 @@ $messages['or'] = array(
 	'expand_templates_input' => 'ଇନପୁଟ ବିଷୟ:',
 	'expand_templates_output' => 'ପରିଣାମ',
 	'expand_templates_ok' => 'ଠିକ ଅଛି',
+	'expand_templates_remove_comments' => 'ମତାମତ ହଟାନ୍ତୁ',
+	'expand_templates_preview' => 'ଦେଖଣା',
 );
 
 /** Ossetic (Ирон)
