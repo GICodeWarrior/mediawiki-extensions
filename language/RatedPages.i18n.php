@@ -750,6 +750,13 @@ $messages['sah'] = array(
 	'ratedpages-count' => '$1 сыанабыл',
 );
 
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'ratedpages-graphs' => 'තරාතිරම් දත්ත',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

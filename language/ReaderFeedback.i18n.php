@@ -2067,6 +2067,7 @@ $messages['or'] = array(
 	'readerfeedback-overall' => 'ସବୁ ମିଶିକରି',
 	'readerfeedback-submit' => 'ଦାଖଲ କରିବା',
 	'readerfeedback-finished' => 'ଆପଣଙ୍କୁ ଧନ୍ୟବାଦ!',
+	'readerfeedback-tagfilter' => 'ଟାଗ:',
 	'readerfeedback-tier-medium' => 'ମଧ୍ୟମ',
 );
 
@@ -2458,17 +2459,29 @@ $messages['sh'] = array(
  * @author බිඟුවා
  */
 $messages['si'] = array(
+	'readerfeedback-reliability' => 'විශ්වසනීයත්වය',
+	'readerfeedback-completeness' => 'පූර්ණත්වය',
+	'readerfeedback-npov' => 'මධ්‍යස්ථතාව',
+	'readerfeedback-presentation' => 'ප්‍රදර්ශනය',
+	'readerfeedback-overall' => 'සමස්ත',
+	'readerfeedback-level-none' => '(අවිශ්වාශ)',
 	'readerfeedback-level-0' => 'දුර්වල',
 	'readerfeedback-level-1' => 'අවම',
 	'readerfeedback-level-2' => 'සතුටුදායක',
 	'readerfeedback-level-3' => 'ඉහළ',
 	'readerfeedback-level-4' => 'අති විශිෂ්ට',
 	'readerfeedback-submit' => 'යොමන්න',
+	'readerfeedback-main' => 'අන්තර්ගත පිටු පමණක් තරාතිරම් කල හැක.',
 	'readerfeedback-submitting' => 'යොමු කරමින් …',
 	'readerfeedback-finished' => 'ස්තුතියි!',
+	'readerfeedback-tagfilter' => 'ටැගය:',
+	'readerfeedback-tierfilter' => 'තරාතිරම:',
 	'readerfeedback-tier-high' => 'ඉහළ',
 	'readerfeedback-tier-medium' => 'මධ්‍යම',
 	'readerfeedback-tier-poor' => 'දුර්වල',
+	'tooltip-ca-ratinghist' => 'මෙම පිටුව කියවන්නාගේ තරාතිරම්',
+	'specialpages-group-feedback' => 'නරඹන්නාගේ අදහස',
+	'readerfeedback-tt-review' => 'නිරීක්ෂණය යොමන්න',
 );
 
 /** Slovak (Slovenčina)

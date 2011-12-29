@@ -1551,12 +1551,19 @@ De '''gemiddelde waardering van de aangegaeve periode''' is 't gemiddelde van al
  */
 $messages['lt'] = array(
 	'ratinghistory' => 'Puslapio vertinimų istoriją',
+	'ratinghistory-tab' => 'reitingas',
+	'ratinghistory-link' => 'Puslapio reitingas',
 	'ratinghistory-period' => 'Laikotarpis:',
 	'ratinghistory-month' => 'Praeitas mėnuo',
 	'ratinghistory-3months' => 'Praeiti 3 mėnesiai',
 	'ratinghistory-year' => 'pernai',
 	'ratinghistory-3years' => 'pastaruosius 3 metus',
+	'ratinghistory-ave' => 'Vid: $1',
+	'ratinghistory-users' => 'Vartotojai, kurie davė vertinimus',
+	'ratinghistory-svg' => 'Žiūrėti kaip SVG',
+	'ratinghistory-table-rating' => 'Reitingas',
 	'ratinghistory-table-votes' => 'Balsai',
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Prastas; '''(2)''' - Žemas; '''(3)''' - Geras; '''(4)''' - Aukštas; '''(5)''' - Puikus;",
 );
 
 /** Latvian (Latviešu)
@@ -1844,6 +1851,7 @@ Las notacions son las seguentas :
  * @author Ansumang
  */
 $messages['or'] = array(
+	'ratinghistory-period' => 'ସମୟ ଅବଧି:',
 	'ratinghistory-month' => 'ପୂର୍ବ ମାସ',
 );
 
@@ -2197,11 +2205,19 @@ $messages['sah'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'ratinghistory' => 'පිටු තරාතිරම් ඉතිහාසය',
+	'ratinghistory-leg' => '[[:$1|$1]] සඳහා තරාතිරම් ඉතිහාස දත්ත',
+	'ratinghistory-tab' => 'තරාතිරම',
 	'ratinghistory-link' => 'පිටු තරාතිරම',
+	'ratinghistory-period' => 'කාලපරිච්ඡේදය:',
 	'ratinghistory-month' => 'පසුගිය මාසය',
 	'ratinghistory-3months' => 'පසුගිය මාස 3',
 	'ratinghistory-year' => 'පසුගිය වර්ෂය',
 	'ratinghistory-3years' => 'පසුගිය වර්ෂ 3',
+	'ratinghistory-purge' => 'කෑෂය විමෝචනය කරන්න',
+	'ratinghistory-svg' => 'SVG ලෙස නරඹන්න',
+	'ratinghistory-table-rating' => 'තරාතිරම',
+	'ratinghistory-table-votes' => 'මනාප',
 );
 
 /** Slovak (Slovenčina)
