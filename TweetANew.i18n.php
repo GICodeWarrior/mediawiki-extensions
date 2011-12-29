@@ -13,9 +13,11 @@ $messages = array();
  */
 $messages['en'] = array( 
 	'tweetanew-desc'			=> 'Tweets when an article is created or edited.  Depending on preferences set for the entire wiki, either automatically or from the edit page.',
-	'action-sendtotwitter'		=> 'Tweet about this edit',
-	'accesskey-sendtotwitter'	=> 'e',
-	'tooltip-sendtotwitter'		=> 'Send information about this edit to Twitter [alt-e]',
+	'tweetanew-accesskey'		=> 'e',
+	'tweetanew-newaction'		=> 'Tweet about this new article',
+	'tweetanew-newtooltip'		=> 'Send information about this new article to Twitter [alt-e]',
+	'tweetanew-editaction'		=> 'Tweet about this edit',
+	'tweetanew-edittooltip'		=> 'Send information about this edit to Twitter [alt-e]',
 	'tweetanew-minoredit'		=> 'm',
 	'tweetanew-authorcredit'	=> 'by',
 	'tweetanew-newdefault'		=> 'NEW ARTICLE: $1 - $2',
@@ -28,15 +30,16 @@ $messages['en'] = array(
 	'tweetanew-edit3'			=> 'Check out $2 - it has some new content on $1',
 );
 
-
 /** Message documentation (Message documentation)
  * @author Gregory Varnum
  */
 $messages['qqq'] = array(
 	'tweetanew-desc' 			=> '{{desc}}',
-	'action-sendtotwitter' 		=> 'Used in editpage as description for option to tweet, if auto-tweet is disabled for that type of article (edit or new)',
-	'accesskey-sendtotwitter' 	=> 'Access key used for option to tweet from editpage, if otherwise enabled',
-	'tooltip-sendtotwitter' 	=> 'Tooltip describing option to tweet form editpage, if otherwise enabled',
+	'tweetanew-accesskey'	 	=> 'Access key used for option to tweet from editpage, if otherwise enabled',
+	'tweetanew-newaction'	 	=> 'Used in editpage as description for option to tweet, if auto-tweet is disabled for new articles',
+	'tweetanew-newtooltip'	 	=> 'Tooltip describing option to tweet about new article from edit page, if otherwise enabled',
+	'tweetanew-editaction'		=> 'Used in editpage as description for option to tweet, if auto-tweet is disabled for edits',
+	'tweetanew-edittooltip'	 	=> 'Tooltip describing option to tweet about edit from edit page, if otherwise enabled',
 	'tweetanew-minoredit' 		=> 'Indicator used when edit is marked as minor, if minor edits are not already skipped - skip following indicator can be removed using MinorSpace setting',
 	'tweetanew-authorcredit' 	=> 'Used to provide credit to author of edit or new article',
 	'tweetanew-newdefault' 		=> 'Default tweet message used for new articles, if random messages are disabled. Parameters:

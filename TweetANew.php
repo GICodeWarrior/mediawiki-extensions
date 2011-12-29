@@ -49,21 +49,6 @@
  * $wgTweetANewTweet['SkipMinor']
  *			- Skip minor edits
  			  Default is true
- * $wgTweetANewTwitter['ConsumerKey']
- *			- Consumer key provided at https://dev.twitter.com/apps - be sure to have write and read permissions
- * $wgTweetANewTwitter['ConsumerSecret']
- *			- Consumer secret provided at https://dev.twitter.com/apps - be sure to have write and read permissions
- * $wgTweetANewTwitter['AccessToken']
- *			- Access token provided by the OAuth tool at https://dev.twitter.com/apps - be sure to have write and read permissions
- * $wgTweetANewTwitter['AccessTokenSecret']
- *			- Access token secret provided by the OAuth tool at https://dev.twitter.com/apps - be sure to have write and read permissions
- * $wgTweetANewBitly['Enable']
- * 			- Display URL as bitly link - allowing you to track usage via your bitly account
- *			  Default is false
- * $wgTweetANewBitly['Login']
- *			- If bitly link display is enabled, enter your bitly user account - signup at: http://bitly.com/a/sign_up
- * $wgTweetANewBitly['API']
- *			- If bitly link display is enabled, enter your bitly API key - find your API key at: http://bitly.com/a/your_api_key
  * $wgTweetANewText['Minor']
  *			- Indicate in tweet if edit is marked as minor - only applies if $wgTweetANewTweet['SkipMinor'] = false
  *			  Default is false
@@ -97,6 +82,27 @@
  * $wgTweetANewText['RealName']
  *			- Determine if user's real name will be displayed instead of their username
  *			  Default is false
+ * $wgTweetANewEditpage['Enable']
+ *			- Determine if checkbox to tweet from edit page if $wgTweetANewTweet['New'] = false or $wgTweetANewTweet['Edit'] = false
+ *			  Default is false
+ * $wgTweetANewEditpage['Checked']
+ *			- Determine if checkbox to tweet from edit page is automatically checked
+ *			  Default is false
+ * $wgTweetANewTwitter['ConsumerKey']
+ *			- Consumer key provided at https://dev.twitter.com/apps - be sure to have write and read permissions
+ * $wgTweetANewTwitter['ConsumerSecret']
+ *			- Consumer secret provided at https://dev.twitter.com/apps - be sure to have write and read permissions
+ * $wgTweetANewTwitter['AccessToken']
+ *			- Access token provided by the OAuth tool at https://dev.twitter.com/apps - be sure to have write and read permissions
+ * $wgTweetANewTwitter['AccessTokenSecret']
+ *			- Access token secret provided by the OAuth tool at https://dev.twitter.com/apps - be sure to have write and read permissions
+ * $wgTweetANewBitly['Enable']
+ * 			- Display URL as bitly link - allowing you to track usage via your bitly account
+ *			  Default is false
+ * $wgTweetANewBitly['Login']
+ *			- If bitly link display is enabled, enter your bitly user account - signup at: http://bitly.com/a/sign_up
+ * $wgTweetANewBitly['API']
+ *			- If bitly link display is enabled, enter your bitly API key - find your API key at: http://bitly.com/a/your_api_key
  *
  */
 
@@ -104,8 +110,26 @@ $wgTweetANewTweet = array(
 	'New' => true,
 	'Edit' => true,
 	'LessMinutesOld' => 5,
-	'SkipMinor' => false,
-	'Auto' => true,
+	'SkipMinor' => true,
+);
+
+$wgTweetANewText = array(
+	'Minor' => false, // Only applies if $wgTweetANewTweet['SkipMinor'] = false
+	'MinorSpace' => true, // Only applies if $wgTweetANewTweet['SkipMinor'] = false and $wgTweetANewTweet['Minor'] = true
+	'NewRandom' => true,
+	'NewRandomMax' => 3,
+	'NewAuthor' => false,
+	'NewSummary' => false,
+	'EditRandom' => true,
+	'EditRandomMax' => 3,
+	'EditAuthor' => false,
+	'EditSummary' => false,
+	'RealName' => false,
+);
+
+$wgTweetANewEditpage = array(
+	'Enable' => false, // Only applies if $wgTweetANewTweet['New'] = false or $wgTweetANewTweet['Edit'] = false
+	'Checked' => false, // Only applies if $wgTweetANewEditpage['Enable'] = true
 );
 
 $wgTweetANewTwitter = array(
@@ -119,20 +143,6 @@ $wgTweetANewBitly = array(
 	'Enable' => false,
 	'Login' => '',
 	'API' => '',
-);
-
-$wgTweetANewText = array(
-	'Minor' => true, // Only applies if $wgTweetANewTweet['SkipMinor'] = false
-	'MinorSpace' => true, // Only applies if $wgTweetANewTweet['SkipMinor'] = false and $wgTweetANewTweet['Minor'] = true
-	'NewRandom' => true,
-	'NewRandomMax' => 3,
-	'NewAuthor' => true,
-	'NewSummary' => true,
-	'EditRandom' => true,
-	'EditRandomMax' => 3,
-	'EditAuthor' => true,
-	'EditSummary' => true,
-	'RealName' => true,
 );
 
 /**
@@ -164,3 +174,45 @@ $wgExtensionMessagesFiles['TweetANew'] = $dir . 'TweetANew.i18n.php';
 
 $wgHooks['ArticleInsertComplete'][] = 'TweetANew::TweetANewNewArticle';
 $wgHooks['ArticleSaveComplete'][] = 'TweetANew::TweetANewEditMade';
+$wgHooks['EditPageBeforeEditChecks'][] = 'efTweetANewEditCheckBox';
+
+/**
+ * Function for tweeting about new or edited articles when auto-tweet if disabled
+ *
+ * @param $editpage
+ * @param $checkboxes
+ * @param $tabindex
+ * @return bool
+ */
+function efTweetANewEditCheckBox( &$editpage, &$checkboxes, &$tabindex) {	
+	global $wgTweetANewEditpage, $wgTweetANewTweet;
+
+	# Check if article is new - if checkboxes are enabled and if auto-tweets of edits are disabled
+ 	if (  $editpage->mTitle->exists() && $wgTweetANewEditpage['Enable'] && !$wgTweetANewTweet['Edit'] ) {
+		$attribs = array(
+			'tabindex'  => ++$tabindex,
+			'accesskey' => wfMsg( 'tweetanew-accesskey' ),
+			'id'        => 'wpTweetANewEdit',
+		);
+
+		# Prepare checkbox
+		$checkboxes['twitter'] =
+					Xml::check( 'wpTweetANewEdit', $wgTweetANewEditpage['Checked'], $attribs ) .
+					"&nbsp;<label for='wpTweetANewEdit' title='". wfMsg('tweetanew-edittooltip')."'>".wfMsg('tweetanew-editaction')."</label>";
+	}
+
+	# Check if article is new - if checkboxes are enabled and if auto-tweets of new articles are disabled	
+	elseif ( $wgTweetANewEditpage['Enable'] && !$wgTweetANewTweet['New'] ) {
+		$attribs = array(
+			'tabindex'  => ++$tabindex,
+			'accesskey' => wfMsg( 'tweetanew-accesskey' ),
+			'id'        => 'wpTweetANew',
+		);
+
+		# Prepare checkbox
+		$checkboxes['twitter'] =
+					Xml::check( 'wpTweetANew', $wgTweetANewEditpage['Checked'], $attribs ) .
+					"&nbsp;<label for='wpTweetANew' title='". wfMsg('tweetanew-newtooltip')."'>".wfMsg('tweetanew-newaction')."</label>";
+	}
+	return true;
+}
