@@ -9,17 +9,13 @@ class NarayamHooks {
 
 	/// Hook: BeforePageDisplay
 	public static function addModules( $out, $skin ) {
-		if ( $out->getUser()->getOption( 'narayamDisable' ) ) {
-			return true;
+		if ( $out->getUser()->getOption( 'narayamEnable' ) ) {
+			$schemes = array_values( self::getSchemes () );
+			if ( count( $schemes ) ) {
+				$out->addModules( $schemes );
+				$out->addModules( 'ext.narayam' );
+			}
 		}
-
-		$schemes = array_values( self::getSchemes () );
-
-		if ( count( $schemes ) ) {
-			$out->addModules( $schemes );
-			$out->addModules( 'ext.narayam' );
-		}
-
 		return true;
 	}
 
@@ -35,10 +31,6 @@ class NarayamHooks {
 	/// Hook: MakeGlobalVariablesScript
 	public static function addVariables( &$vars ) {
 		global $wgUser, $wgNarayamSchemes, $wgNarayamUseBetaMapping;
-
-		if ( $wgUser->getOption( 'narayamDisable' ) ) {
-			return true;
-		}
 
 		$vars['wgNarayamAvailableSchemes'] = self::getSchemes(); // Note: scheme names must be keys, not values
 		$allSchemes = $wgNarayamSchemes;
@@ -99,13 +91,24 @@ class NarayamHooks {
 	/// Hook: GetPreferences
 	public static function addPreference( $user, &$preferences ) {
 		// A checkbox in preferences to disable Narayam
-		$preferences['narayamDisable'] = array(
+		$preferences['narayamEnable'] = array(
 			'type' => 'toggle',
-			'label-message' => 'narayam-disable-preference',
+			'label-message' => 'narayam-enable-preference',
 			'section' => 'editing/advancedediting', // under 'Advanced options' section of 'Editing' tab
+			'default' => $user->getOption( 'narayamEnable' )
 		);
 
 		return true;
 	}
-
+	/**
+	 * UserGetDefaultOptions hook handler.
+	 * @param $defaultOptions array
+	 * @return bool
+	 */
+	public static function addDefaultOptions( &$defaultOptions ) {
+		global $wgNarayamEnabledByDefault;
+		// By default, the preference page option to enable Narayam is set to wgNarayamEnabledByDefault value.
+		$defaultOptions['narayamEnable'] = $wgNarayamEnabledByDefault;
+		return true;
+	 }
 }

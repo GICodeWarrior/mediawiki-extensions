@@ -168,9 +168,12 @@ $wgHooks['BeforePageDisplay'][] = 'NarayamHooks::addModules';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'NarayamHooks::addConfig';
 $wgHooks['MakeGlobalVariablesScript'][] = 'NarayamHooks::addVariables';
 $wgHooks['GetPreferences'][] = 'NarayamHooks::addPreference';
+$wgHooks['UserGetDefaultOptions'][] = 'NarayamHooks::addDefaultOptions';
 
 // Autoloader
 $wgAutoloadClasses['NarayamHooks'] = $dir . '/Narayam.hooks.php';
+
+$wgNarayamEnabledByDefault = true;
 
 // ResourceLoader module registration
 $narayamTpl = array(
