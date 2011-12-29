@@ -411,6 +411,13 @@ $messages['oc'] = array(
 	'oai-desc' => 'Provesís una interfàcia de depaus [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] ଭଣ୍ଡାର ଇଣ୍ଟରଫେସ ଯୋଗାଇଥାଏ',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -445,6 +452,7 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'oai-desc' => "Veje su [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] pe le interfacce d'u repository",
+	'oairepository' => 'Archivije OAI',
 );
 
 /** Russian (Русский)
