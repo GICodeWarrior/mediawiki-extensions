@@ -43,9 +43,9 @@ class MoodBarHooks {
 					$res = $dbr->selectRow( array( 'moodbar_feedback', 'moodbar_feedback_response' ),
 								array( 'mbf_id' ),
 								array( 'mbf_id = mbfr_mbf_id',
-										'mbfr_id' => intval( $item ),
-										'mbf_user_id' => $User->getId() ),
-								__METHOD__ );
+									'mbfr_id' => intval( $item ),
+									'mbf_user_id' => $User->getId()
+								), __METHOD__ );
 
 					if ( $res === false ) {
 						$isAbleToMark = false;
@@ -127,24 +127,24 @@ class MoodBarHooks {
 	 * @param $updater DatabaseUpdater
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
-		$dir = dirname(__FILE__) . '/sql/';
-		$updater->addExtensionTable( 'moodbar_feedback', $dir . 'MoodBar.sql' );
+		$dir = dirname(__FILE__) . '/sql';
+		$updater->addExtensionTable( 'moodbar_feedback', "$dir/MoodBar.sql" );
 
-		$updater->addExtensionField( 'moodbar_feedback', 'mbf_user_editcount', $dir . 'mbf_user_editcount.sql' );
+		$updater->addExtensionField( 'moodbar_feedback', 'mbf_user_editcount', "$dir/mbf_user_editcount.sql" );
 
-		$updater->addExtensionIndex( 'moodbar_feedback', 'mbf_type_timestamp_id', $dir . 'AddIDToIndexes.sql' );
+		$updater->addExtensionIndex( 'moodbar_feedback', 'mbf_type_timestamp_id', "$dir/AddIDToIndexes.sql" );
 
 		$updater->addExtensionUpdate( array( 'dropIndex', 'moodbar_feedback',
-			'mbf_userid_ip_timestamp',  $dir . 'AddIDToIndexes2.sql', true )
+			'mbf_userid_ip_timestamp', "$dir/AddIDToIndexes2.sql", true )
 		);
 
-		$updater->addExtensionIndex( 'moodbar_feedback', 'mbfr_timestamp_id',  $dir . 'mbf_timestamp_id.sql' );
+		$updater->addExtensionIndex( 'moodbar_feedback', 'mbfr_timestamp_id', "$dir/mbf_timestamp_id.sql" );
 
-		$updater->addExtensionField( 'moodbar_feedback', 'mbf_hidden_state', $dir . 'mbf_hidden_state.sql' );
+		$updater->addExtensionField( 'moodbar_feedback', 'mbf_hidden_state', "$dir/mbf_hidden_state.sql" );
 
-		$updater->addExtensionTable( 'moodbar_feedback_response', $dir . 'moodbar_feedback_response.sql' );
+		$updater->addExtensionTable( 'moodbar_feedback_response', "$dir/moodbar_feedback_response.sql" );
 
-		$updater->addExtensionIndex( 'moodbar_feedback_response', 'mbfr_timestamp_id',  $dir . 'mbfr_timestamp_id_index.sql' );
+		$updater->addExtensionIndex( 'moodbar_feedback_response', 'mbfr_timestamp_id', "$dir/mbfr_timestamp_id_index.sql" );
 
 		return true;
 	}
@@ -155,12 +155,12 @@ class MoodBarHooks {
 	 * @return array of bucket names
 	 */
 	public static function getUserBuckets( $user ) {
-		$id = $user->getID();
+		//$id = $user->getID();
 		$buckets = array();
 
 		// No show-time bucketing yet. This method is a stub.
 
-		sort($buckets);
+		//sort($buckets);
 		return $buckets;
 	}
 }
