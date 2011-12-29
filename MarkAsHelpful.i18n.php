@@ -76,6 +76,30 @@ $messages['dsb'] = array(
 	'mah-action-error' => 'Pśi wuwjeźenju akcije jo zmólka nastała',
 );
 
+/** Spanish (Español)
+ * @author Platonides
+ */
+$messages['es'] = array(
+	'markashelpful-desc' => 'Proporciona una interfaz para indicar los comentarios que son útiles',
+	'mah-mark-text' => 'Marcar como útil',
+	'mah-you-marked-text' => 'Piensas que este comentario resulta útil.',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1 piensa que este comentario resulta útil}}',
+	'mah-undo-mark-text' => 'deshacer',
+	'mah-action-error' => 'Se produjo un error al realizar esta acción',
+);
+
+/** Finnish (Suomi)
+ * @author Nedergard
+ */
+$messages['fi'] = array(
+	'markashelpful-desc' => 'Tarjoaa käyttöliittymän, jonka avulla kommentteja voidaan merkitä hyödyllisiksi',
+	'mah-mark-text' => 'Merkitse hyödylliseksi',
+	'mah-you-marked-text' => 'Omasta mielestäsi tämä on hyödyllinen',
+	'mah-someone-marked-text' => '{{GENDER:$1|Käyttäjän $1 mielestä tämä on hyödyllinen}}',
+	'mah-undo-mark-text' => 'kumoa',
+	'mah-action-error' => 'Toiminnon suorittamisessa tapahtui virhe',
+);
+
 /** French (Français)
  * @author Gomoko
  */
@@ -112,6 +136,25 @@ $messages['hsb'] = array(
 	'mah-action-error' => 'Při wuwjedźenju akcije je zmylk wustupił',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'markashelpful-desc' => 'Forni un interfacie usator pro marcar commentos como utile',
+	'mah-mark-text' => 'Marcar como utile',
+	'mah-you-marked-text' => 'Tu pensa que isto es utile',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1 pensa que isto es utile}}',
+	'mah-undo-mark-text' => 'disfacer',
+	'mah-action-error' => 'Un error occurreva durante le execution de iste action',
+);
+
+/** Italian (Italiano)
+ * @author F. Cosoleto
+ */
+$messages['it'] = array(
+	'mah-action-error' => "Si è verificato un errore nell'esecuzione di questa azione",
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -136,6 +179,18 @@ $messages['mk'] = array(
 	'mah-action-error' => 'Се појави грешка при извршувањето на дејството',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'markashelpful-desc' => 'Menyediakan antara muka pengguna untuk menandai komen sebagai membantu',
+	'mah-mark-text' => 'Tanda sebagai membantu',
+	'mah-you-marked-text' => 'Anda berpendapat bahawa ini membantu',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1 berpendapat bahawa ini membantu}}',
+	'mah-undo-mark-text' => 'buat asal',
+	'mah-action-error' => 'Ralat terjadi ketika melakukan tindakan ini',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -146,5 +201,67 @@ $messages['nl'] = array(
 	'mah-someone-marked-text' => '{{GENDER:$1|$1}} denkt dat dit nuttig is',
 	'mah-undo-mark-text' => 'ongedaan maken',
 	'mah-action-error' => 'Er is een fout opgetreden tijdens het uitvoeren van deze handeling',
+);
+
+/** Polish (Polski)
+ * @author Olgak85
+ */
+$messages['pl'] = array(
+	'markashelpful-desc' => 'Udostępnia interfejs użytkownika do oznaczania komentarzy jako pomocne',
+	'mah-mark-text' => 'Oznacz jako przydatne',
+	'mah-you-marked-text' => 'Ty uważasz, że jest to pomocne.',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1 oznaczył to jako pomocne|$1 oznaczyła to jako pomocne}}',
+	'mah-undo-mark-text' => 'Cofnij',
+	'mah-action-error' => 'Wystąpił błąd podczas wykonywania tej akcji',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'markashelpful-desc' => "A dà n'antërfacia utent për marché ij coment com ùtij",
+	'mah-mark-text' => 'Marca com ùtil',
+	'mah-you-marked-text' => 'It pense che sòn a sia ùtil',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1 a pensa che sòn a sia ùtil}}',
+	'mah-undo-mark-text' => "buta 'me ch'a l'era",
+	'mah-action-error' => "A l'é stàit-ie n'eror an fasend st'assion",
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'mah-mark-text' => 'Signe cumme utile',
+	'mah-you-marked-text' => 'Tu pinze ca jè utile',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1 penze ca jè utile}}',
+	'mah-undo-mark-text' => 'annulle',
+	'mah-action-error' => "S'ha verificate 'n'errore facenne st'azione",
+);
+
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'mah-mark-text' => 'ප්‍රයෝජනවත් ලෙස සලකුණු කරන්න',
+	'mah-you-marked-text' => 'ඔබ සිතනවා මෙය ප්‍රයෝජනවත් කියා',
+	'mah-undo-mark-text' => 'අහෝසිය',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'mah-undo-mark-text' => 'скасувати',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'markashelpful-desc' => 'Cung cấp giao diện cho phép đánh dấu bình luận là hữu ích',
+	'mah-mark-text' => 'Đanh dấu là hữu ích',
+	'mah-you-marked-text' => 'Bạn coi mục này là hữu ích',
+	'mah-someone-marked-text' => '$1 coi mục này là hữu ích',
+	'mah-undo-mark-text' => 'hoàn tác',
 );
 
