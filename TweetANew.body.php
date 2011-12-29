@@ -14,22 +14,25 @@ class TweetANew {
 	/**
 	 * Function for connecting to and preparing bitly
 	 *
-	 * @param $url
+	 * @param $longurl
 	 * @param $login
 	 * @param $appkey
 	 * @return string
 	 */
-	public static function make_bitly_url($url,$login,$appkey)     {
+	public static function make_final_url($longurl,$login,$appkey)     {
 		global $wgTweetANewBitly;
 
-		# Check setting to enable/disable use of bit.ly
+		# Check setting to enable/disable use of bitly
 		if ( $wgTweetANewBitly['Enable'] ) { 
 			# Generate url for bitly
-			$bitly = "https://api-ssl.bitly.com/v3/shorten?longUrl=".urlencode($url)."&login=".$login."&apiKey=".$appkey."&format=txt";
+			$bitly = "https://api-ssl.bitly.com/v3/shorten?longUrl=".urlencode($longurl)."&login=".$login."&apiKey=".$appkey."&format=txt";
 			# Get the url
 			$response = file_get_contents($bitly);
-			return $response;
 		}
+		else {
+			$response = $longurl;
+		}
+		return $response;
 	}
 
 	# ToDo - TweetANewNewEditOption function for when auto-tweet is disabled to display checkbox on edit/create page to tweet new/edited pages
@@ -49,9 +52,12 @@ class TweetANew {
 	 * @return bool
 	 */
 	public static function TweetANewNewArticle($article, $user, $text, $summary, $minoredit, $watchthis, $sectionanchor, $flags, $revision){
-		global $wgTweetANewBitly,$wgTweetANewTwitter,$wgTweetANewTweet;
+		global $wgTweetANewTweet,$wgTweetANewText,$wgTweetANewTwitter;
 
 		# ToDo - Check if $wgTweetANewTweet['Auto'] is enabled
+
+		# Check if page is in content namespace
+		if ( !MWNamespace::isContent( $article->getTitle()->getNamespace() ) ) return true;
 
 		# Make connection to Twitter
 		require_once('lib/tmhOAuth.php'); // include connection
@@ -62,24 +68,58 @@ class TweetANew {
 			'user_secret'     => $wgTweetANewTwitter['AccessTokenSecret'],
 		)); 
 
-		# Check setting to enable/disable use of bit.ly
-		if ( $wgTweetANewBitly['Enable'] ) { 
-			# Shorten URL using bitly
-			$short = self::make_bitly_url($article->getTitle()->getFullURL(),$wgTweetANewBitly['Login'],$wgTweetANewBitly['API']);
+		# Generate final url
+		$finalurl = self::make_final_url($article->getTitle()->getFullURL(),$wgTweetANewBitly['Login'],$wgTweetANewBitly['API']);
+
+		# Generate $author based on $wgTweetANewText['RealName']
+		if ( $wgTweetANewText['RealName'] ) {
+			$author = $user->getRealName();
 		}
 		else {
-			# Generate url without use of bitly
-			$short = $article->getTitle()->getFullURL();
+			$author = $user->getName();
 		}
+
+		# Generate a random tweet texts based if $wgTweetANewText['NewRandom'] is true
+		if ( $wgTweetANewText['NewRandom'] ) {		
+			# Setup switcher using max number set by $wgTweetANewText['NewRandomMax']
+			$switcher = rand( 1, $wgTweetANewText['NewRandomMax'] );
+			# Parse random text
+			$tweet_text .= wfMsg( 'tweetanew-new' . $switcher, array ( $article->getTitle()->getText(), $finalurl ) );
+		}
+		else {
+			# Use default tweet message format
+			$tweet_body = wfMsg( 'tweetanew-newdefault', array ( $article->getTitle()->getText(), $finalurl ) );
+			$tweet_text .= $tweet_body;
+		}
+
+		# Add author info if $wgTweetANewText['NewAuthor'] is true
+		if ( $wgTweetANewText['NewAuthor'] ) {
+			$tweet_text .= ' '. wfMsg( 'tweetanew-authorcredit' ) .' '. $author;
+		}
+
+		# Add summary if $wgTweetANewText['NewSummary'] is true and summary text is entered
+		if ( $summary && $wgTweetANewText['NewSummary'] ) {
+			$tweet_text .= ' - ' . $summary;
+		}
+
+		# Calculate length of tweet factoring in longURL
+		if (strlen($finalurl) > 20) {
+			$tweet_text_count = (strlen($finalurl) - 20) + 140;
+		}
+		else {
+			$tweet_text_count = 140;
+		}
+
+		# Check if length of tweet is beyond 140 characters and shorten if necessary
+		if (strlen($tweet_text) > $tweet_text_count) {
+			$tweet_text = substr($tweet_text,0, $tweet_text_count);
+		}
+
 		# Make tweet message
-		$tweet_text = "NEW ARTICLE: ".$article->getTitle()->getText()." ".$short; 
-		# Check if page is in content namespace
-		if ( MWNamespace::isContent( $article->getTitle()->getNamespace() ) ) {
-			$connection->request('POST', 
-				$connection->url('1/statuses/update'),
-				array('status' => $tweet_text)
-			); 
-		}
+		$connection->request('POST', 
+			$connection->url('1/statuses/update'),
+			array('status' => $tweet_text)
+		); 
 		return true;
 	}
 
@@ -98,9 +138,12 @@ class TweetANew {
 	 * @return bool
 	 */
 	public static function TweetANewEditMade(&$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId, &$redirect){
-		global $wgTweetANewBitly,$wgTweetANewTwitter,$wgTweetANewTweet,$wgArticle;
+		global $wgTweetANewTweet,$wgTweetANewText,$wgTweetANewTwitter,$wgArticle;
 
 		# ToDo - Check if $wgTweetANewTweet['Auto'] is enabled
+
+		# Check if page is in content namespace
+		if ( !MWNamespace::isContent( $article->getTitle()->getNamespace() ) ) return true;
 
 		# Determine the time and date of last modification - skip if newer than $wgTweetANewTweet['lessminold'] setting
 		# ToDo - there must be a cleaner way of doing this
@@ -111,45 +154,84 @@ class TweetANew {
 		$edittimelast = mktime(substr($edittime[1],8,2),substr($edittime[1],10,2),substr($edittime[1],12),substr($edittime[1],4,2),substr($edittime[1],6,2),substr($edittime[1],0,4));
 		$edittimediv = $edittimenow - $edittimelast;
 		$mailtext['time_since_last_edit'] = $edittimediv;
-		if(isset($wgTweetANewTweet['lessminold'])) if ($edittimediv < ($wgTweetANewTweet['lessminold'] * 60)) return true;
+		if( isset( $wgTweetANewTweet['LessMinutesOld'] ) ) if ($edittimediv < ($wgTweetANewTweet['LessMinutesOld'] * 60) ) return true;
 
 		# Only proceed if this is not the first edit to the article, in which case it's new and TweetANewNewArticle is used instead
-		if ($wgArticle->estimateRevisionCount() == 1 ) return true;
+		if ( $wgArticle->estimateRevisionCount() == 1 ) return true;
 
 		# Check $wgTweetANewTweet['SkipMinor'] setting to see if minor edits should be skipped
-		if ($minoredit !== 0 && $wgTweetANewTweet['SkipMinor']) return true;
-
-		# ToDo - If !$wgTweetANewTweet['SkipMinor'] and $wgTweetANewTweet['TagMinor'] add "m" to tweet
+		if ( $minoredit !== 0 && $wgTweetANewTweet['SkipMinor'] ) return true;
 
 		# Make connection to Twitter
 		require_once('lib/tmhOAuth.php'); // include connection
-		$connection = new tmhOAuth(array(
+		$connection = new tmhOAuth( array (
 			'consumer_key'    => $wgTweetANewTwitter['ConsumerKey'],
 			'consumer_secret' => $wgTweetANewTwitter['ConsumerSecret'],
 			'user_token'      => $wgTweetANewTwitter['AccessToken'],
 			'user_secret'     => $wgTweetANewTwitter['AccessTokenSecret'],
-		)); 
+		) ); 
 
-		# Check setting to enable/disable use of bitly
-		if ( $wgTweetANewBitly['Enable'] ) { 
-			# Shorten URL using bitly
-				$to_shorten = $article->getTitle()->getFullURL();
-				$short = self::make_bitly_url($to_shorten,$wgTweetANewBitly['Login'],$wgTweetANewBitly['API']);
+		# Generate final url
+		$finalurl = self::make_final_url($article->getTitle()->getFullURL(),$wgTweetANewBitly['Login'],$wgTweetANewBitly['API']);
+
+		# Generate $author based on $wgTweetANewText['RealName']
+		if ( $wgTweetANewText['RealName'] ) {
+			$author = $user->getRealName();
 		}
 		else {
-			# Generate url without use of bitly
-			$short = $article->getTitle()->getFullURL();
+			$author = $user->getName();
 		}
+
+		# Add prefix indication that edit is minor if $wgTweetANewText['Minor'] is true and !$wgTweetANewTweet['SkipMinor'] is false
+		if ( $minoredit !== 0 && $wgTweetANewText['Minor'] ) {
+			$tweet_text = wfMsg( 'tweetanew-minoredit' );
+			# Add a space after the indicator if $wgTweetANewText['MinorSpace'] is true
+			if ( $minoredit !== 0 && $wgTweetANewText['MinorSpace'] ) {
+				$tweet_text .= '&nbsp;';
+			}
+		}
+
+		# Generate a random tweet texts based if $wgTweetANewText['EditRandom'] is true
+		if ( $wgTweetANewText['EditRandom'] ) {		
+			# Setup switcher using max number set by $wgTweetANewText['EditRandomMax']
+			$switcher = rand( 1, $wgTweetANewText['EditRandomMax'] );
+			# Parse random text
+			$tweet_text .= wfMsg( 'tweetanew-edit' . $switcher, array ( $article->getTitle()->getText(), $finalurl ) );
+		}
+		else {
+			# Use default tweet message format
+			$tweet_body = wfMsg( 'tweetanew-editdefault', array ( $article->getTitle()->getText(), $finalurl ) );
+			$tweet_text .= $tweet_body;
+		}
+
+		# Add author info if $wgTweetANewText['EditAuthor'] is true
+		if ( $wgTweetANewText['EditAuthor'] ) {
+			$tweet_text .= ' '. wfMsg( 'tweetanew-authorcredit' ) .' '. $author;
+		}
+
+		# Add summary if $wgTweetANewText['EditSummary'] is true and summary text is entered
+		if ( $summary && $wgTweetANewText['EditSummary'] ) {
+			$tweet_text .= ' - ' . $summary;
+		}
+
+		# Calculate length of tweet factoring in longURL
+		if (strlen($finalurl) > 20) {
+			$tweet_text_count = (strlen($finalurl) - 20) + 140;
+		}
+		else {
+			$tweet_text_count = 140;
+		}
+
+		# Check if length of tweet is beyond 140 characters and shorten if necessary
+		if (strlen($tweet_text) > $tweet_text_count) {
+			$tweet_text = substr($tweet_text,0, $tweet_text_count);
+		}
+
 		# Make tweet message
-		# ToDo - localisation integration - pick between various defaults, a rotator and LocalSettings.php overrifde
-		$tweet_text = "UPDATED ARTICLE: ".$article->getTitle()->getText()." ".$short; 
-		# Check if page is in content namespace
-		if ( MWNamespace::isContent( $article->getTitle()->getNamespace() ) ) {
-			$connection->request('POST', 
-				$connection->url('1/statuses/update'),
-				array('status' => $tweet_text)
-			); 
-		}
+		$connection->request('POST', 
+			$connection->url('1/statuses/update'),
+			array('status' => $tweet_text)
+		); 
 		return true;
 	}
 }
