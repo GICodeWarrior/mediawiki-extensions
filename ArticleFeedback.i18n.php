@@ -1736,6 +1736,7 @@ $3
 );
 
 /** Esperanto (Esperanto)
+ * @author Blahma
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -1760,7 +1761,7 @@ $messages['eo'] = array(
 	'articlefeedback-error' => 'Eraro okazis. Bonvolu reprovi baldaŭ.',
 	'articlefeedback-form-switch-label' => 'Taksi ĉi tiun paĝon',
 	'articlefeedback-form-panel-title' => 'Taksi ĉi tiun paĝon',
-	'articlefeedback-form-panel-explanation' => 'Kio estas?',
+	'articlefeedback-form-panel-explanation' => 'Kio estas tio ĉi?',
 	'articlefeedback-form-panel-explanation-link' => 'Project:ArticleFeedback',
 	'articlefeedback-form-panel-clear' => 'Forigi ĉi tiun taksadon',
 	'articlefeedback-form-panel-expertise' => 'Mi estas fake sperta pri ĉi tiu temo (nedeviga)',
@@ -3400,7 +3401,7 @@ $messages['hu'] = array(
 	'articlefeedback-survey-submit' => 'Értékelés elküldése',
 	'articlefeedback-survey-title' => 'Kérjük, válaszolj néhány kérdésre',
 	'articlefeedback-survey-thanks' => 'Köszönjük a kérdőív kitöltését!',
-	'articlefeedback-survey-disclaimer' => 'A beküldéssel egyet értesz az alábbiakkel: $1.',
+	'articlefeedback-survey-disclaimer' => 'A beküldéssel egyetértesz az alábbiakkal: $1.',
 	'articlefeedback-survey-disclaimerlink' => 'feltételek',
 	'articlefeedback-error' => 'Hiba történt. Kérlek, próbálkozz később.',
 	'articlefeedback-form-switch-label' => 'Szócikk értékelése',
@@ -5622,6 +5623,7 @@ $messages['or'] = array(
 	'articlefeedback-form-switch-label' => 'ଏହି ପୃଷ୍ଠାଟିକୁ ତଉଲିବେ',
 	'articlefeedback-form-panel-title' => 'ଏହି ପୃଷ୍ଠାଟିକୁ ତଉଲିବେ',
 	'articlefeedback-form-panel-explanation' => 'ଏହା କଣ ?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ଲେଖାମତାମତ',
 	'articlefeedback-form-panel-clear' => 'ଏହି ତଉଲକୁ ହଟାଇବେ',
 	'articlefeedback-form-panel-expertise' => 'ମୋର ଏହି ଲେଖା ବାବଦରେ ବହୁତ ଜ୍ଞାନ ଅଛି (ଇଚ୍ଛାଧୀନ)',
 	'articlefeedback-form-panel-expertise-studies' => 'ମୁଁ ଏହି ପ୍ରସଙ୍ଗରେ ମହାବିଦ୍ୟାଳୟ/ବିଶ୍ଵବିଦ୍ୟାଳୟରୁ ସ୍ନାତୋକ ପାଇଛି',
@@ -5655,8 +5657,10 @@ $messages['or'] = array(
 	'articlefeedback-field-complete-tooltip-5' => 'ବିସ୍ତୀର୍ଣ ବିବରଣୀ ଅଛି',
 	'articlefeedback-field-objective-label' => 'ଉଦ୍ଧେଶ୍ୟ',
 	'articlefeedback-field-objective-tooltip-1' => 'ଅତ୍ୟନ୍ତ ପକ୍ଷପାତମୂଳକ',
+	'articlefeedback-field-objective-tooltip-2' => 'ମଝାମଝି ପକ୍ଷପାତମୂଳକ',
 	'articlefeedback-field-objective-tooltip-3' => 'ଅଳ୍ପ ପକ୍ଷପାତମୂଳକ',
 	'articlefeedback-field-objective-tooltip-4' => 'ଜଣାଯାଉନଥିବା ପକ୍ଷପାତ',
+	'articlefeedback-field-objective-tooltip-5' => 'ପୁରାପୁରି ପକ୍ଷପାତମୂଳକ',
 	'articlefeedback-field-wellwritten-label' => 'ଭଲ ଲେଖା',
 	'articlefeedback-field-wellwritten-tip' => 'ଆପଣଙ୍କୁ ଲାଗୁଛି କି ଏହି ପ୍ରୁଷ୍ଠାଟି ଭଲ ଭାବେ ସଜଡା ଯାଇଛି ଓ ଲେଖାଯାଇଛି ?',
 	'articlefeedback-field-wellwritten-tooltip-1' => 'ବିସ୍ତ୍ରୁତ ବିବରଣୀ ନାହିଁ',
@@ -6382,6 +6386,7 @@ $messages['roa-tara'] = array(
 	'articlefeedback-form-panel-expertise-studies' => "Tènghe 'nu grade de scole/università 'mbortande",
 	'articlefeedback-form-panel-expertise-profession' => "Jè parte d'a professiona meje",
 	'articlefeedback-form-panel-expertise-hobby' => "Queste jè 'na passiona profonda meje",
+	'articlefeedback-form-panel-helpimprove-email-placeholder' => 'email@esembie.org',
 	'articlefeedback-form-panel-helpimprove-privacy' => "'mbormaziune sus a le regole p'a privacy",
 	'articlefeedback-form-panel-submit' => 'Conferme le pundegge',
 	'articlefeedback-form-panel-pending' => "'U vote tune non g'ha state confermate",
@@ -6436,7 +6441,30 @@ Pe piacere pruève arrete.",
 	'articleFeedback-table-caption-recentlows' => 'Urteme discese',
 	'articleFeedback-table-heading-page' => 'Pàgene',
 	'articleFeedback-table-heading-average' => 'Medie',
+	'articlefeedback-table-noratings' => '-',
 	'articleFeedback-copy-above-highlow-tables' => "Quiste jè 'na caratteristeche sperimendale. Pe piacere vide ce manne 'nu feedback sus a [$1 pàgene de le 'ngazzaminde].",
+	'articlefeedback-emailcapture-response-body' => "Cià!
+
+Grazie purcé è avute inderesse a dà 'na màne pe migliorà {{SITENAME}}.
+
+Pe piacere pigghiate 'nu mumende pe confermà 'a mail toje cazzanne 'u collegamende aqquà sotte:
+
+$1
+
+Tu puè pure 'ndrucà:
+
+$2
+
+E sckaffe 'u seguende codece de conferme:
+
+$3
+
+Rumanime in condatte e te decime cumme ne puè dà 'na mane pe migliorà {{SITENAME}}.
+
+Ce tu non g'è mannate sta richieste, pe piacere no sce penzanne a sta e-mail e nuje no te manname cchiù ninde.
+
+Statte bbuène e grazie,
+'A squadre de {{SITENAME}}",
 );
 
 /** Russian (Русский)
@@ -7467,6 +7495,9 @@ Tack och lycka till!
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'articlefeedback-desc' => 'கட்டுரை கருத்து',
+	'articlefeedback-survey-question-whyrated' => 'தயவுசெய்து நீங்கள் எதற்காக இந்த பக்கத்தை இன்று மதிப்பீடு செய்தீர்கள் என்பதை எங்களுக்கு தெரிவியுங்கள்.(அனைத்து பொருந்தக்கூடியவற்றையும் சரிபார்க்கவும்):',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'நான் பக்கத்தின் ஒட்டுமொத்த மதிப்பீட்டுக்கு பங்களிக்க விரும்பினேன்',
 	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'இந்த தளத்திற்கு நான் பங்களிக்க வேண்டும் {{SITENAME}}',
 	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'நான் என்னுடைய கருத்துக்களை மற்றவர்களுடன் பகிர்ந்துகொள்ள விரும்புகிறேன்',
 	'articlefeedback-survey-answer-whyrated-other' => 'மற்றவை',
@@ -7475,6 +7506,21 @@ $messages['ta'] = array(
 	'articlefeedback-survey-submit' => 'சமர்ப்பி',
 	'articlefeedback-survey-title' => 'தயவு செய்து ஒரு சில கேள்விகளுக்கு பதில் அளியுங்கள்',
 	'articlefeedback-survey-thanks' => 'ஆய்வுக்கான படிவத்தை பூர்த்தி செய்தமைக்கு நன்றி.',
+	'articlefeedback-form-switch-label' => 'இப்பக்கத்தை மதிப்பிடு',
+	'articlefeedback-form-panel-title' => 'இப்பக்கத்தை மதிப்பிடு',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'கருத்து தனியுரிமை அறிக்கை',
+	'articlefeedback-form-panel-submit' => 'மதிப்பீடுகளை சமர்ப்பிக்கவும்',
+	'articlefeedback-form-panel-pending' => 'உங்கள் மதிப்பீடுகள் இதுவரை சமர்ப்பிக்கப்படவில்லை.',
+	'articlefeedback-form-panel-success' => 'வெற்றிகரமாக சேமிக்கப்பட்டது',
+	'articlefeedback-form-panel-expiry-title' => 'உங்கள் மதிப்பீடு காலாவதியாகிவிட்டது.',
+	'articlefeedback-form-panel-expiry-message' => 'தயவுசெய்து மறுபடியும் இந்த பக்கத்தை ஆய்வு செய்து புதிய மதிப்பீட்டைச் சமர்ப்பிக்கவும்.',
+	'articlefeedback-report-switch-label' => 'பக்க மதிப்பீடுகளை காண்',
+	'articlefeedback-report-panel-title' => 'பக்க மதிப்பீடுகள்',
+	'articlefeedback-report-panel-description' => 'நடப்பு சராசரி மதிப்பீடுகள்.',
+	'articlefeedback-report-empty' => 'மதிப்பீடுகள் இல்லை',
+	'articlefeedback-report-ratings' => '$1 மதிப்பீடுகள்',
+	'articlefeedback-field-trustworthy-label' => 'நம்பகத்தன்மை',
+	'articlefeedback-field-objective-label' => 'நோக்கம்',
 	'articlefeedback-pitch-join-message' => 'நீங்கள் ஒரு கணக்கை உருவாக்க விரும்புகிறீர்களா?',
 );
 
