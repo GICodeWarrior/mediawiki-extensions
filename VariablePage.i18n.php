@@ -385,6 +385,13 @@ $messages['nl'] = array(
 	'variablepage-desc' => "Lichtgewicht variabele doorverwijzing voor pagina's",
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
+ */
+$messages['or'] = array(
+	'variablepage-navlink_text' => 'ଦାନ',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
