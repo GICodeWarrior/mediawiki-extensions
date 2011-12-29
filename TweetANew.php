@@ -159,11 +159,12 @@ $wgExtensionMessagesFiles['TweetANew'] = $dir . 'TweetANew.i18n.php';
  *
  */
 
- $wgExtensionCredits['other'][] = array(
+$wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
 	'name'           => 'TweetANew',
 	'version'        => '1.0.20111228-experimental',
 	'author'         => '[https://www.mediawiki.org/wiki/User:Varnent Gregory Varnum] merging extensions by [https://www.mediawiki.org/wiki/User:Joa_ds Joachim De Schrijver], Andrew Fitzgerald, Wendell Gaudencio, and Rohit Keshwani',
-	'description'    => 'Tweets when an article is created or edited.  Depending on preferences set for the entire wiki, either automatically or from the edit page.',
+	'descriptionmsg' => 'tweetanew-desc',
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:TweetANew',
 );
 
