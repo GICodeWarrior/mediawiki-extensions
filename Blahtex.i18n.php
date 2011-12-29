@@ -2258,6 +2258,40 @@ $messages['lb'] = array(
 	'math_WrongFontEncoding' => 'D\'Symbol "$1" däerf net an der Zeechecodéierung "$2" virkommen',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'math_noblahtex' => "Blahtex kin neet oetgeveurd waere. 't Program zouw hie móte sjtoon: $1",
+	'blahtext-desc' => 'MathML-oetveur veur &lt;math&gt; tags',
+	'math_AmbiguousInfix' => 'Dobbelzinnige plaatsing van "$1" (perbeer \'t outomatis op te losse mit accolades "{...}" om de dobbelzinnigheid eweg te numme)',
+	'math_CannotChangeDirectory' => 'Kin de wirkmap neet verangere',
+	'math_CannotCreateTexFile' => 'Kin gein tex-besjtand aanmake',
+	'math_CannotRunDvipng' => 'Kin dvipng neet oetveure',
+	'math_CannotRunLatex' => 'Kin latex neet oetveure',
+	'math_CannotWritePngDirectory' => 'Kin neet sjrieve nao de oetveurmap veur PNG',
+	'math_CannotWriteTexFile' => "Kin neet sjrieve nao 't tex-besjtand",
+	'math_CasesRowTooBig' => 'Dao kinne mer twie illemènte in jeder rie van \'n blok "cases" stoon',
+	'math_DoubleSubscript' => 'Dao zeen twie subscripts aan dezelfde basis gekoppeld.
+Slechs eint is toegesjtande.',
+	'math_DoubleSuperscript' => 'Dao zeen twie superscripts aan dezelfde basis gekoppeld.
+Slechs eint is toegesjtande.',
+	'math_IllegalCharacter' => 'Ongeljig teike in de inveur',
+	'math_IllegalCommandInMathMode' => '\'t Commando "$1" is neet toegesjtande in math-modus',
+	'math_IllegalCommandInMathModeWithHint' => '\'t Commando "$1" is ongeljig in math-modus. Mesjiens wils te "$2" gebroeke?',
+	'math_IllegalCommandInTextMode' => '\'t Commando "$1" is ongeljig in tekstmodus',
+	'math_IllegalCommandInTextModeWithHint' => '\'t Commando "$1" is ongeljig in teks-modus. Mesjiens wils te "$2" gebroeke?',
+	'math_IllegalDelimiter' => 'Ongeljig sjeidingsteike nao "$1"',
+	'math_IllegalFinalBackslash' => 'Ongeljige backslash "\\" aan \'t ènj van de inveur',
+	'math_IllegalNestedFontEncodings' => "Commando's veur de codering van lèttertypes kinne neet waere genes",
+	'math_IllegalRedefinition' => '\'t Commando "$1" is al gedefinieerd; de kins \'t neet herdefiniëre',
+	'math_InvalidColour' => 'De kleur "$1" is ongeljig',
+	'math_InvalidUtf8Input' => 'De inveurteks waor gein geljige UTF-8',
+	'math_LatexFontNotSpecified' => 'Gein LaTeX lèttertype woort opgegaeve veur "$1"',
+	'math_LatexPackageUnavailable' => 'Neet mäögelik um PNG te rendere, ómdet \'t LaTeX pakket "$1" neet besjikbaar is',
+	'math_MismatchedBeginAndEnd' => 'De commando\'s "$1" en "$2" kómme neet euverein',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  * @author Ignas693
