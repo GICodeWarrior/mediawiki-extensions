@@ -137,7 +137,7 @@ class EPHTMLDateField extends HTMLTextField {
 	}
 	
 	function getInputHTML( $value ) {
-		$value = explode( 'T',  wfTimestamp( TS_ISO_8601, $value ) );
+		$value = explode( 'T',  wfTimestamp( TS_ISO_8601, strtotime( $value ) ) );
 		return parent::getInputHTML( $value[0] );
 	}
 	

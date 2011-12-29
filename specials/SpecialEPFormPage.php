@@ -234,7 +234,14 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	protected function getFormFields() {
 		$fields = array();
 
-		$fields['id'] = array ( 'type' => 'hidden' );
+		$fields['id'] = array( 'type' => 'hidden' );
+		
+		// This sort of sucks as well. Meh, HTMLForm is odd.
+		if ( $this->getRequest()->wasPosted()
+			&& $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) 
+			&& $this->getRequest()->getCheck( 'wpitem-id' ) ) {
+			$fields['id']['default'] = $this->getRequest()->getInt( 'wpitem-id' ); 
+		}
 		
 		return $fields;
 	}
