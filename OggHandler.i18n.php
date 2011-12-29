@@ -3608,11 +3608,20 @@ $messages['sw'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'ogg-short-audio' => 'Ogg  $1  ஒலி கோப்பு ,$2',
+	'ogg-short-video' => 'Ogg  $1  வீடியோ கோப்பு$2',
+	'ogg-short-general' => 'Ogg  $1  ஊடக கோப்பு$2',
+	'ogg-long-audio' => 'Ogg  $1  ஒலி கோப்பு, நீளம்  $2 ,$3',
+	'ogg-long-video' => 'Ogg  $1  வீடியோ கோப்பு, நீளம்  $2 ,  $4 × $5  பிக்சல்கள்,$3',
+	'ogg-long-general' => 'Ogg  ஊடக கோப்பு நீளம்   $2 ,$3',
+	'ogg-long-error' => 'செல்லாத ogg கோப்பு:$1',
 	'ogg-play' => 'ஓட்டு',
 	'ogg-pause' => 'இடைநிறுத்து',
 	'ogg-stop' => 'நிறுத்து',
 	'ogg-play-video' => 'காணொளியை ஓடவிடு',
 	'ogg-play-sound' => 'ஒலி ஓடவிடு',
+	'ogg-no-player' => 'மன்னிக்கவும், உங்கள் கணினியில் எந்த ஒரு ஆதரவு ஓடல்  மென்பொருளும் இருப்பதாக தெரியவில்லை.
+தயவுசெய்து <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ஒரு ஓடல்  மென்பொருளை தகவலிறக்கம் செய்யவும்</a>.',
 	'ogg-player-videoElement' => 'சொந்த மேய்வான் ஆதரவு',
 	'ogg-player-oggPlugin' => 'மேய்வான் செருகுநிரல்',
 	'ogg-player-thumbnail' => 'நிழற்படம் மட்டும்',
@@ -3623,6 +3632,8 @@ $messages['ta'] = array(
 	'ogg-dismiss' => 'மூடுக',
 	'ogg-download' => 'கோப்பை பதிவிறக்கம் செய்',
 	'ogg-desc-link' => 'இந்த கோப்பைப் பற்றி',
+	'ogg-oggThumb-version' => 'OggHandler ஆனது oggThumb பதிப்பு  $1 அதற்கு மேல் உள்ளவற்றை வேண்டுகிறது.',
+	'ogg-oggThumb-failed' => 'இந்த சிறுஉருவம் உருவாக்க oggThumb தோல்வியுற்றது.',
 );
 
 /** Telugu (తెలుగు)
