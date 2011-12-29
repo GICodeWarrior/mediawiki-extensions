@@ -850,6 +850,15 @@ $messages['nap'] = array(
 	'metadata_help' => 'Metadate:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'metadataedit-desc' => 'Legg kategorier, språklenker og tillatte maler i en egen tekstboks under redigering av sider',
+	'metadata_help' => 'Metadata:',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -892,15 +901,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'metadata_help' => 'Utvida informasjon:',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'metadataedit-desc' => 'Legg kategorier, språklenker og tillatte maler i en egen tekstboks under redigering av sider',
-	'metadata_help' => 'Metadata:',
 );
 
 /** Occitan (Occitan)
@@ -1289,10 +1289,11 @@ $messages['vec'] = array(
 	'metadata_help' => 'Metadati:',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'metadataedit-desc' => "Pangat kategorijad, kel'kosketused da lasktud šablonad erižhe tekstnellikho, konz redaktiruit lehtpolid",
 	'metadata_help' => 'Metaandmused:',
 );
 
