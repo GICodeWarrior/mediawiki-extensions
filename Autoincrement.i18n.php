@@ -275,6 +275,13 @@ $messages['lb'] = array(
 	'autoincrement-desc' => 'Eng Variabel <nowiki>{{AUTOINCREMENT}}</nowiki>  déi sech op all Opruf nach eng Kéier derbäisetzt',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'autoincrement-desc' => "Doog 'n variabele <nowiki>{{AUTOINCREMENT}}</nowiki> bie die automatis opgehuug waert",
+);
+
 /** Lithuanian (Lietuvių)
  * @author Garas
  */
