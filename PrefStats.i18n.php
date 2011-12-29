@@ -1211,6 +1211,7 @@ $messages['he'] = array(
  */
 $messages['hi'] = array(
 	'prefstats' => 'वरीयता के आँकड़े',
+	'prefstats-title' => 'पसंद आँकड़े',
 	'prefstats-xaxis' => 'अवधि (घंटे)',
 	'prefstats-factors' => 'दृश्य प्रति: $1',
 	'prefstats-factor-hour' => 'घंटे',
@@ -2889,11 +2890,13 @@ Bonyeza kitu ili kuangalia takwimu zake.',
 );
 
 /** Tamil (தமிழ்)
+ * @author Shanmugamp7
  * @author TRYPPN
  * @author செல்வா
  */
 $messages['ta'] = array(
 	'prefstats' => 'விருப்பங்களின் புள்ளிவிவரங்கள்',
+	'prefstats-desc' => 'எவ்வளவு பயனீட்டாளர்கள்   சில விருப்பங்களை செயலாக்கியுள்ளனர் என்பதை பற்றி புள்ளிவிவரம் மூலம் அறியவும்.',
 	'prefstats-title' => 'விருப்பங்களின் புள்ளிவிவரங்கள்',
 	'prefstats-xaxis' => 'இடைப்பட்ட நேரம் (hours)',
 	'prefstats-factor-hour' => 'மணி',
