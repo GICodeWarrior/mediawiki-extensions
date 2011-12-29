@@ -90,8 +90,9 @@ $messages['br'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'signupapi-desc' => 'Bereinigt bestehende Inhalte und Funktionen der [[Special:UserLogin|Spezialseite Anmelden]] und fügt stattdessen eine Programmierschnittstelle zur Anmeldung hinzu',
-	'signupapi-ok' => 'OK',
+	'usersignup' => 'Benutzerregistrierung',
+	'signupapi-desc' => 'Bereinigt bestehende Inhalte und Funktionen der [[Special:UserLogin|Spezialseite Anmelden]] und fügt stattdessen eine Programmierschnittstelle zur Registrierung hinzu',
+	'signupapi-ok' => 'Okay',
 	'signupapi-noname' => 'Es wurde kein Benutzername angegeben.',
 	'signupapi-userexists' => 'Der Benutzer ist bereits vorhanden.',
 	'signupapi-enterpassword' => 'Du musst ein Passwort eingeben.',
@@ -118,6 +119,7 @@ $messages['de-formal'] = array(
  * @author Sherbrooke
  */
 $messages['fr'] = array(
+	'usersignup' => "Inscription de l'utilisateur",
 	'signupapi-desc' => 'Nettoie la page [[Special:UserLogin|page de connexion]] des informations utilisées à la création de compte et insère un API pour la création de compte',
 	'signupapi-ok' => 'OK',
 	'signupapi-noname' => "Aucun nom d'utilisateur n'a été spécifié",
@@ -153,7 +155,8 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'signupapi-desc' => 'Limpa a [[Special:UserLogin|páxina de acceso ao sistema]] de información empregada para a creación de contas e engade un API para a creación de contas',
+	'usersignup' => 'Rexistro de usuario',
+	'signupapi-desc' => 'Limpa a [[Special:UserLogin|páxina de acceso ao sistema]] de información empregada para a creación de contas e engade unha API para a creación de contas',
 	'signupapi-ok' => 'Aceptar',
 	'signupapi-noname' => 'Non especificou ningún nome de usuario',
 	'signupapi-userexists' => 'O usuario existe',
@@ -235,6 +238,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'usersignup' => 'Корисничка пријава',
 	'signupapi-desc' => 'Ја чисти [[Special:UserLogin|страницата за најава]] од содржините за пријава и додава API за пријавување',
 	'signupapi-ok' => 'ОК',
 	'signupapi-noname' => 'Немате наведено корисничко име',
@@ -272,6 +276,7 @@ $messages['ms'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'usersignup' => 'Gebruiker registreren',
 	'signupapi-desc' => 'Schoont de [[Special:UserLogin|aanmeldpagina]] en voegt een API voor aanmelden toe',
 	'signupapi-ok' => 'OK',
 	'signupapi-noname' => 'Er is geen gebruikersnaam opgegeven',
@@ -283,7 +288,7 @@ $messages['nl'] = array(
 	'signupapi-strong' => 'Sterk',
 	'signupapi-badretype' => 'De ingevoerde wachtwoorden verschillen van elkaar.',
 	'signupapi-passwordsmatch' => 'De wachtwoorden zijn gelijk.',
-	'signupapi-invalidemailaddress' => 'E-mailadres is ongeldig',
+	'signupapi-invalidemailaddress' => 'Het e-mailadres is ongeldig.',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
