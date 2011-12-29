@@ -420,6 +420,18 @@ $messages['ms'] = array(
 	'bm-printversion-inexistent-book' => 'Buku tidak dijumpai. Sila isikan nama buku yang wujud untuk mendapatkan versi cetakannya.',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'bookmanager-desc' => 'Għodda għal kotba',
+	'bm-booktools-section' => 'Għodda tal-ktieb',
+	'bm-randomchapter-link' => 'Kapitlu kwalunkwe',
+	'bm-printversion' => 'Verżjoni għall-ipprintjar',
+	'bm-printversion-desc' => 'Tiġġenera [[Special:PrintVersion|verżjoni għall-ipprintjar]] għal ktieb',
+	'bm-printversion-no-book' => "Jekk jogħġbok daħħal isem ta' ktieb sabiex iġġib il-verżjoni għall-ipprintjar.",
+);
+
 /** Mazanderani (مازِرونی)
  * @author محک
  */
