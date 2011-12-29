@@ -969,6 +969,26 @@ $messages['nah'] = array(
 	'scanset_prev' => '&lt; Achto',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ * @author Harald Khan
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'scanset-desc' => 'Vis bilder av skannede sider fra Andreas Grosz’ CD-/DVD-sett',
+	'scanset_no_name' => 'Feil: Du må angi navnet på et ScanSet, f.eks. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Feil: Ugyldig eller manglende ScanSet.',
+	'scanset_unrecognised_index_format' => 'Feil: Ukjent indeksformat',
+	'scanset_opendir_error' => 'Feil: Kan ikke åpne mappen $1',
+	'scanset_no_files' => 'Feil: Ingen filer i mappen som ble oppgitt.',
+	'scanset_no_volumes' => 'Feil: Ingen volummapper funnet',
+	'scanset_missing_index_file' => 'Feil: Indeksfil $1 ikke funnet',
+	'scanset_index_file_error' => 'Feil: Feil i indeksfilformat på linje $1',
+	'scanset_invalid_volume' => 'Feil: Ugyldig volum',
+	'scanset_next' => 'Neste &gt;',
+	'scanset_prev' => '&lt; Forrige',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1034,26 +1054,6 @@ $messages['nn'] = array(
 	'scanset_prev' => '&lt; Førre',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Event
- * @author Harald Khan
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'scanset-desc' => 'Vis bilder av skannede sider fra Andreas Grosz’ CD-/DVD-sett',
-	'scanset_no_name' => 'Feil: Du må angi navnet på et ScanSet, f.eks. &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name' => 'Feil: Ugyldig eller manglende ScanSet.',
-	'scanset_unrecognised_index_format' => 'Feil: Ukjent indeksformat',
-	'scanset_opendir_error' => 'Feil: Kan ikke åpne mappen $1',
-	'scanset_no_files' => 'Feil: Ingen filer i mappen som ble oppgitt.',
-	'scanset_no_volumes' => 'Feil: Ingen volummapper funnet',
-	'scanset_missing_index_file' => 'Feil: Indeksfil $1 ikke funnet',
-	'scanset_index_file_error' => 'Feil: Feil i indeksfilformat på linje $1',
-	'scanset_invalid_volume' => 'Feil: Ugyldig volum',
-	'scanset_next' => 'Neste &gt;',
-	'scanset_prev' => '&lt; Forrige',
-);
-
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -1070,6 +1070,14 @@ $messages['oc'] = array(
 	'scanset_invalid_volume' => 'Error : Volum invalid',
 	'scanset_next' => 'Seguent &gt;',
 	'scanset_prev' => '&lt; Precedent',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
+ */
+$messages['or'] = array(
+	'scanset_next' => 'ଆଗାମୀ &gt;',
+	'scanset_prev' => '&lt; ପୂର୍ବ',
 );
 
 /** Ossetic (Ирон)
@@ -1271,9 +1279,12 @@ $messages['sah'] = array(
 
 /** Sinhala (සිංහල)
  * @author Singhalawap
+ * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
 	'scanset_opendir_error' => 'දෝශය:$1 නාමාවලිය විවෘත කල නොහැක',
+	'scanset_next' => 'පසු &gt;',
+	'scanset_prev' => '&lt; පෙර',
 );
 
 /** Slovak (Slovenčina)
