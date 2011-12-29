@@ -671,6 +671,7 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nedergard
  * @author Nike
  * @author Olli
  */
@@ -696,15 +697,15 @@ $messages['fi'] = array(
 	'article-comments-commenter-said' => '$1 sanoi...',
 	'article-comments-summary' => 'Kommentin antoi $1 - ArticleComments-lisäosan avulla',
 	'article-comments-submission-succeeded' => 'Kommentin lähetys onnistui',
-	'article-comments-submission-success' => 'Olet lähettänyt kommentin artikkeliin "[[$1]]" onnistuneesti',
+	'article-comments-submission-success' => 'Kommentin lähetys sivulle "[[$1]]" onnistui',
 	'article-comments-submission-view-all' => 'Voit [[$1|katsoa kaikki sivun kommentit]]',
-	'article-comments-user-is-blocked' => 'Käyttäjätililläsi ei tällä hetkellä voi muokata sivua "[[$1]]".',
+	'article-comments-user-is-blocked' => 'Käyttäjätunnuksesi ei tällä hetkellä voi muokata sivua [[$1]].',
 	'article-comments-comment-bad-mode' => 'Kommentille annettiin kelpaamaton tila.
 Saatavilla ovat "plain", "normal" ja "wiki".',
 	'article-comments-comment-missing-name-parameter' => 'Puuttuva nimi',
 	'article-comments-comment-missing-date-parameter' => 'Puuttuva kommentointipäivä',
 	'article-comments-no-spam' => 'Vähintään yksi lähetetyistä kentistä merkittiin roskapostiksi.',
-	'processcomment' => 'Käsittele artikkelin kommentti',
+	'processcomment' => 'Käsittele sivun kommenttia',
 );
 
 /** French (Français)
