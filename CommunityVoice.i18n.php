@@ -796,6 +796,17 @@ $messages['oc'] = array(
 	'communityvoice-ratings-error-no-title' => "L'atribut de títol es absent dins la balisa de notacion.",
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Psubhashish
+ */
+$messages['or'] = array(
+	'communityvoice-ratings' => 'ଲୋକପ୍ରିୟତା',
+	'communityvoice-ratings-scale-status-sending' => 'ପଠାଉଛି...',
+	'communityvoice-ratings-scale-status-error' => 'ପଠାଇବାରେ ଅସୁବିଧା!',
+	'communityvoice-ratings-scale-status-thanks' => 'ମତ ଦେବା ନିମନ୍ତେ ସାଧୁବାଦ!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 ଗୋଟି {{PLURAL:$2|ମତ|ମତ}}ଦାନ)',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -948,9 +959,11 @@ $messages['sah'] = array(
  */
 $messages['si'] = array(
 	'communityvoice' => 'ප්‍රජාවේ කැමැත්ත',
+	'communityvoice-desc' => 'ප්‍රජා සහභාගිත්ව මෙවලම්',
 	'communityvoice-ratings' => 'තරාතිරම්',
 	'communityvoice-ratings-scale-status-sending' => 'යවමින්...',
 	'communityvoice-ratings-scale-status-error' => 'යැවීමේ දෝෂය!',
+	'communityvoice-ratings-scale-status-thanks' => 'මනාපය ලබා දුන්නට තුති!',
 );
 
 /** Slovak (Slovenčina)
