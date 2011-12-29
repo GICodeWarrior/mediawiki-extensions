@@ -2413,7 +2413,7 @@ $messages['uk'] = array(
 	'recordadmin-properties' => 'Властивості',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
@@ -2427,7 +2427,7 @@ $messages['vep'] = array(
 	'recordadmin-created' => 'Sätud',
 	'recordadmin-modified' => 'Toižetadud',
 	'recordadmin-actions' => 'Tegendad',
-	'recordadmin-needscontent' => 'Ližata südäimišt...',
+	'recordadmin-needscontent' => 'Ližata südäiolend...',
 );
 
 /** Vietnamese (Tiếng Việt)
