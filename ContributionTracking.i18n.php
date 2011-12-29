@@ -1134,10 +1134,12 @@ $messages['scn'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
  * @author බිඟුවා
  */
 $messages['si'] = array(
 	'contrib-tracking-error' => 'දෝෂය',
+	'contrib-tracking-button' => 'ඉදිරියට යන්න',
 );
 
 /** Slovak (Slovenčina)
