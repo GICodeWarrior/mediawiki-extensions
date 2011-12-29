@@ -1235,7 +1235,13 @@ $messages['vep'] = array(
 	'createpage' => "Säta lehtpol'",
 	'uwcreatepage-desc' => 'Ližadab [[Special:CreatePage|specialižen lehtpolen]] uzid lehtpolid sätes',
 	'createpage_submitbutton' => 'Oigeta',
+	'createpage_instructions' => "Ku tahtoit säta lehtpol', kirjutagat sen nimi:",
 	'createpage_entertitle' => 'Olgat hüväd, kirjutagat teiden lehtpolen nimi.',
+	'createpage_titleexists' => "Lehtpol' [[$1]]-nimenke om jo olmas.
+Tahtoižit redaktiruida olijad lehtpol't?",
+	'createpage_tryagain' => "Ei. Tahtoižin säta uz' lehtpol' toižen nimenke.",
+	'createpage_editexisting' => "Ka. Tahtoižin redaktiruida olijad lehtpol't.",
+	'createpage-badtitle' => '"$1"-nimed ei sa kävutada kut lehtpolen pälkirjutez',
 );
 
 /** Vietnamese (Tiếng Việt)

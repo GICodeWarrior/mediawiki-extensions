@@ -1013,12 +1013,14 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'layouts-desc' => 'Täutab uded lehtesed redaktiruidud "šablonil", miše lehtpoliden tipine struktur oliži ühtejitte.',
 	'layouts_title' => "Säta lehtpol'",
 	'layouts_chooselayout' => 'Valikat maket $1-n täht:',
 	'layouts_nolayout' => 'Eile maketad',
 	'layouts_continue' => 'Jatkata',
 	'layouts_choosecategory' => 'Valikat kategorii $1-n täht:',
 	'layouts_unknown' => 'Tundmatoi',
+	'layouts_tagline' => "Nece lehtpol' sätihe '''$1'''-maketan abul.",
 );
 
 /** Vietnamese (Tiếng Việt)

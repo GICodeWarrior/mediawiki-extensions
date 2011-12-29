@@ -1748,7 +1748,11 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'gep-desc' => 'Lehtpolen redaktiruindan režiman ližad, kudambad kebnenzoittas radod',
+	'gep-emailsubject' => '[$1] Rekomenduidud kategorii: $2',
+	'gep-emailbody' => '"$1"-kävutai nevoi ”$3”-saitan täht ”$2”-kategorijan.',
 	'gep-emailfailure' => 'Pakičem armahtust, no teiden nevond jäb kävutamata.',
+	'gep-emailsuccess' => 'Kitam, miše nevot meile $1-kategorijan.',
 	'gep-categories' => 'Kategorijad',
 	'gep-addcategory' => 'Ližata kategorii',
 	'gep-addcategorybutton' => 'Ližata',
@@ -1760,6 +1764,9 @@ $messages['vep'] = array(
 	'gep-addsectionbutton' => 'Ližata',
 	'gep-classicmode' => 'Klassine režim',
 	'gep-genericmode' => 'Ühthine režim',
+	'gep-nosectioninstructions' => 'Necil lehtpolel ei ole jagusid.
+Ližakat niid menüazegiden abul.',
+	'gep-nocategories' => "Olgat hüväd, valikat hot' üks' kategorii edel mušthopanendad",
 );
 
 /** Vietnamese (Tiếng Việt)

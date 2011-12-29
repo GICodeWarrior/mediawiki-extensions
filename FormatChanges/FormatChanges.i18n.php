@@ -416,6 +416,16 @@ $messages['nah'] = array(
 	'formatchanges-anonymous' => 'Ahtōcāitl',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'formatchanges-desc' => 'Omformaterer [[Special:RecentChanges|siste endringer]]',
+	'formatchanges-anonymous' => 'Anonym',
+	'formatchanges-createdby' => '$1 - opprettet av $2 ($3)',
+	'formatchanges-editedby' => '$1 - endret av $2 ($3)',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -434,16 +444,6 @@ $messages['nn'] = array(
 	'formatchanges-anonymous' => 'Anonym',
 	'formatchanges-createdby' => '$1 - oppretta av $2 $3',
 	'formatchanges-editedby' => '$1 - endra av $2 $3',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'formatchanges-desc' => 'Omformaterer [[Special:RecentChanges|siste endringer]]',
-	'formatchanges-anonymous' => 'Anonym',
-	'formatchanges-createdby' => '$1 - opprettet av $2 ($3)',
-	'formatchanges-editedby' => '$1 - endret av $2 ($3)',
 );
 
 /** Occitan (Occitan)
@@ -665,11 +665,14 @@ $messages['uk'] = array(
 	'formatchanges-editedby' => '$1 - відредаговано $2 ($3)',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'formatchanges-desc' => 'Toižetab [[Special:RecentChanges|veresed redakcijad]]',
 	'formatchanges-anonymous' => 'Anonim',
+	'formatchanges-createdby' => '$1 — lehtpolen tegi $2 aigal $3',
+	'formatchanges-editedby' => '$1 — lehtpolen redaktirui $2 aigal $3',
 );
 
 /** Vietnamese (Tiếng Việt)
