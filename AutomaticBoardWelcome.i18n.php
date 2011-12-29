@@ -115,6 +115,13 @@ $messages['lb'] = array(
 	'automaticboardwelcome-desc' => "Schreift automatesch [[MediaWiki:User-board-welcome-message|e Begréissungs-Message]] op d'Benotzersäit vun neie Benotzer esoubal si hire Kont opgemaach hunn",
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'automaticboardwelcome-desc' => "Plaats outematis 'n [[MediaWiki:User-board-welcome-message|welkomsberich]] op 't gebroekersbord van nuuj gebroekers nao 't aanmake van 'n account",
+);
+
 /** Lithuanian (Lietuvių)
  * @author Ignas693
  */
@@ -143,18 +150,18 @@ $messages['ms'] = array(
 	'automaticboardwelcome-desc' => 'Mengepos [[MediaWiki:User-board-welcome-message|ucapan selamat datang]] secara automatik pada papan pengguna pengguna baru selepas pembukaan akaun',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'automaticboardwelcome-desc' => 'Plaatst een [[MediaWiki:User-board-welcome-message|welkomstbericht]] op het gebruikersbord van nieuwe gebruikers',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
 $messages['nb'] = array(
 	'automaticboardwelcome-desc' => 'Sender automatisk [[MediaWiki:User-board-welcome-message|en velkomstmelding] til nye brukeres brukertavler et opprettelse av konto',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'automaticboardwelcome-desc' => 'Plaatst een [[MediaWiki:User-board-welcome-message|welkomstbericht]] op het gebruikersbord van nieuwe gebruikers',
 );
 
 /** Polish (Polski)
