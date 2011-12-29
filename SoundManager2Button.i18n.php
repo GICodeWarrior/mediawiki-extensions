@@ -69,6 +69,13 @@ $messages['hsb'] = array(
 	'soundmanager2button-play' => 'Wothrać',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'soundmanager2button-play' => 'Ofspillen',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
