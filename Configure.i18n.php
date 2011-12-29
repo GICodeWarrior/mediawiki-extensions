@@ -7779,6 +7779,7 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'configure-desc-key' => 'Kunci',
 	'configure-desc-val' => 'Nilai',
 	'configure-edit-core' => 'MediaWiki',
 	'configure-ext-settings' => 'Tetapan',
@@ -8701,7 +8702,7 @@ $messages['or'] = array(
 	'configure-error' => 'ସଜାଣିଟି ସାଇତା ଯାଇପାରିବ ନାହିଁ',
 	'configure-js-add' => 'ନୂଆ ନିବେଶଟିଏ ଯୋଡ଼ିବେ',
 	'configure-js-group-exists' => 'ଭୁଲ: ଏହି ଗୋଠଟି ଆଗରୁ ରହିଅଛି ।',
-	'configure-js-remove' => 'ଲିଭେଇବେ',
+	'configure-js-remove' => 'ଲିଭାଇବେ',
 	'configure-old-changes' => 'ବଦଳସବୁ',
 	'configure-section-pages' => 'ପୃଷ୍ଠା',
 	'configure-section-email' => 'ଇ-ମେଲ',
