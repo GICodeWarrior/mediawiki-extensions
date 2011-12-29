@@ -211,14 +211,17 @@
 		}
 		$(center).queue(function() {
 			$(bottomContainer).css({width: centerWidth, top: top + centerHeight, marginLeft: -centerWidth/2, visibility: "hidden", display: ""});
-			$(image).css({display: "none", visibility: "", opacity: ""}).fadeIn(options.imageFadeDuration, animateCaption);
+			$(image).css({display: "none", visibility: "", opacity: ""}).fadeIn(options.imageFadeDuration);
+			animateCaption();
 		});
 	}
 
 	function animateCaption() {
 		if (prevImage >= 0) $(prevLink).show();
 		if (nextImage >= 0) $(nextLink).show();
-		$(bottom).css("marginTop", -bottom.offsetHeight).animate({marginTop: 0}, options.captionAnimationDuration);
+		if (options.captionAnimationDuration) {
+			$(bottom).css("marginTop", -bottom.offsetHeight).animate({marginTop: 0}, options.captionAnimationDuration);
+		}
 		bottomContainer.style.visibility = "";
 	}
 
