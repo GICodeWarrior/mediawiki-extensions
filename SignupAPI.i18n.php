@@ -28,6 +28,7 @@ $messages['en'] = array(
  * @author EugeneZelenko
  */
 $messages['qqq'] = array(
+	'usersignup' => 'This message is the page title of the special page [[Special:UserSignup]]',
 	'signupapi-ok' => '{{Identical|OK}}',
 	'signupapi-medium' => '{{Identical|Medium}}',
 );
