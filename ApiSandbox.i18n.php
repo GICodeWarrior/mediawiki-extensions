@@ -270,22 +270,34 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Blahma
  * @author Lucas
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'apisb-desc' => 'Permesas sencimigadon de vokoj al [//www.mediawiki.org/wiki/API MediaWiki API] el la retumilo',
 	'apisandbox' => 'API testejo',
+	'apisb-no-js' => "'''Eraro''': tiu ĉi funkcio postulas Ĝavaskripton.",
+	'apisb-intro' => "Uzu tiun ĉi paĝon por eksperimenti kun '''MediaWiki API'''.
+Vidu [//www.mediawiki.org/wiki/API la API-dokumentadon] por pli da detaloj pri la uzo de API.",
 	'apisb-api-disabled' => 'API estas malŝalta en ĉi tiu retejo.',
 	'apisb-parameters' => 'Parametroj',
 	'apisb-result' => 'Rezulto',
 	'apisb-request-url' => 'Mendi URL-on.',
+	'apisb-request-post' => 'POST-datumoj:',
 	'apisb-select-action' => 'Elekti agojn',
+	'apisb-select-query' => 'Kion peti?',
 	'apisb-select-value' => 'Elekti valoron',
 	'apisb-loading' => 'Ŝarĝante...',
+	'apisb-load-error' => 'Okazis eraro dum ŝargado de la API-priskribo',
+	'apisb-request-error' => 'Okazis eraro dum efektivigo de la API-peto',
+	'apisb-namespaces-error' => 'Okazis eraro dum ŝargado de la nomspacoj',
 	'apisb-ns-main' => '(Ĉefa)',
 	'apisb-submit' => 'Fari mendon',
 	'apisb-query-prop' => 'Ecoj',
 	'apisb-query-list' => 'Listoj',
+	'apisb-query-meta' => 'Metainformoj',
+	'apisb-generic-parameters' => 'Komunaj parametroj',
 	'apisb-generator-parameters' => 'Generanto',
 );
 
@@ -386,7 +398,7 @@ $messages['fa'] = array(
  * @author Olli
  */
 $messages['fi'] = array(
-	'apisb-desc' => ' [//www.mediawiki.org/wiki/API MediaWiki API] -kyselyjen virheenkorjausmahdollisuus',
+	'apisb-desc' => '[//www.mediawiki.org/wiki/API MediaWiki API] -kyselyjen virheenkorjausmahdollisuus',
 	'apisandbox' => 'API-hiekkalaatikko',
 	'apisb-no-js' => "'''Virhe:''' Tämä ominaisuus vaatii JavaScriptin.",
 	'apisb-intro' => "Tämä on '''MediaWiki API:n''' hiekkalaatikko.
@@ -698,11 +710,23 @@ Per ulteriori dettagli di utilizzo delle API, fai riferimento alla [//www.mediaw
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'apisandbox' => 'API 실험실',
+	'apisb-no-js' => "'''오류''': 이 기능을 쓰려면 자바스크립트가 필요합니다.",
+	'apisb-intro' => "'''미디어위키 API'''를 시험해보려면 이 페이지를 이용해보세요.
+사용법에 대해서는 [//www.mediawiki.org/wiki/API API 사용법]을 참고해보십시오.",
+	'apisb-api-disabled' => '이 사이트에서는 API가 꺼져 있습니다.',
 	'apisb-parameters' => '변수',
 	'apisb-result' => '결과',
 	'apisb-request-url' => '요청 URL:',
 	'apisb-request-post' => 'POST 데이터:',
+	'apisb-select-action' => '동작을 선택하세요',
+	'apisb-select-query' => '어떤 쿼리를 요청할까요?',
+	'apisb-select-value' => '값을 선택하세요',
 	'apisb-loading' => '로딩중...',
+	'apisb-load-error' => 'API 설명을 불러오는 중 오류가 발생했습니다',
+	'apisb-request-error' => 'API 요청을 수행하는 중 오류가 발생했습니다',
+	'apisb-namespaces-error' => '이름공간을 불러오는 중 오류가 발생했습니다',
+	'apisb-ns-main' => '(문서)',
 	'apisb-submit' => '요청하기',
 	'apisb-query-prop' => '속성',
 	'apisb-query-list' => '목록',
@@ -991,6 +1015,7 @@ $messages['pdc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Beau
  * @author Olgak85
  * @author Sp5uhe
  * @author Woytecr
@@ -999,7 +1024,7 @@ $messages['pl'] = array(
 	'apisb-desc' => 'Pozwala debugować [//www.mediawiki.org/wiki/API MediaWiki API] zgłoszenia błędów z przeglądarki',
 	'apisandbox' => 'API sandbox (środowisko testowe)',
 	'apisb-no-js' => "'''Błąd''' – ta funkcja wymaga JavaScript.",
-	'apisb-intro' => "Użyj tej strony do eksperymentowania z '''MediaWiki API'' '.
+	'apisb-intro' => "Użyj tej strony do eksperymentowania z '''MediaWiki API'''.
 Więcej szczegółów na temat użycia interfejsu API można znaleźć w [//www.mediawiki.org/wiki/API API dokumentacji].",
 	'apisb-api-disabled' => 'API jest wyłączone na tej stronie.',
 	'apisb-parameters' => 'Parametry',
@@ -1151,6 +1176,9 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'apisb-desc' => "Permette de verificà le chiamate de [//www.mediawiki.org/wiki/API MediaWiki API] da 'u browser",
+	'apisandbox' => "Sandbox de l'API",
+	'apisb-no-js' => "'''Errore''': sta funzionalità vole 'u JavaScript.",
 	'apisb-parameters' => 'Parametre',
 	'apisb-result' => 'Resultate',
 	'apisb-request-url' => 'URL richieste:',
@@ -1216,8 +1244,10 @@ $messages['scn'] = array(
  */
 $messages['si'] = array(
 	'apisandbox' => 'API වැලිපිල්ල',
+	'apisb-api-disabled' => 'මෙම අඩවියෙහි API අක්‍රීය කොට ඇත.',
 	'apisb-parameters' => 'පරාමිතීන්',
 	'apisb-result' => 'ප්‍රතිඵලය',
+	'apisb-request-url' => 'URL ලිපිනය අයදින්න:',
 	'apisb-select-action' => 'කාර්ය තෝරන්න',
 	'apisb-select-value' => 'අගය තෝරන්න',
 	'apisb-loading' => 'පූරණය වෙමින්...',
@@ -1335,6 +1365,16 @@ Kolla på [//www.mediawiki.org/wiki/API API-dokumentationen] för fler detaljer 
 	'apisb-query-list' => 'Listor',
 	'apisb-query-meta' => 'Metainformation',
 	'apisb-generator-parameters' => 'Generator',
+);
+
+/** Tamil (தமிழ்)
+ * @author Shanmugamp7
+ */
+$messages['ta'] = array(
+	'apisb-query-prop' => 'பண்புகள்',
+	'apisb-query-list' => 'பட்டியல்கள்',
+	'apisb-query-meta' => 'Meta தகவல்',
+	'apisb-generic-parameters' => 'பொதுவானஅளவுருக்கள்',
 );
 
 /** Telugu (తెలుగు)
