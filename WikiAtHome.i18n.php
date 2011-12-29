@@ -806,7 +806,7 @@ $messages['gl'] = array(
 	'wah-uploadfail' => 'Fallou a carga',
 	'wah-doneuploading' => 'Completouse a carga. Grazas pola súa contribución.',
 	'wah-needs-firefogg' => 'Para participar no Wiki@Home ten que instalar o <a href="http://firefogg.org">Firefogg</a>.',
-	'wah-api-error' => 'Houbo un erro co API. Por favor, inténteo de novo máis tarde.',
+	'wah-api-error' => 'Houbo un erro coa API. Por favor, inténteo de novo máis tarde.',
 );
 
 /** Swiss German (Alemannisch)
