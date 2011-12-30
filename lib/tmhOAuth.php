@@ -608,5 +608,3 @@ class tmhOAuth {
     return $code;
   }
 }
-
-?>
