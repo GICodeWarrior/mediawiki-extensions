@@ -586,9 +586,9 @@ jQuery(function( $ ) {
 			.find('.fbd-ajax-text')
 			.html( body )
 			.end();
-			setTimeout(function(){
-				reloadItem($el, true);	
-			}, 2000);
+		setTimeout(function(){
+			reloadItem($el, true);	
+		}, 2000);
 	} 
 	// On-load stuff
 	
