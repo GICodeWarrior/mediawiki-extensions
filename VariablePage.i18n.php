@@ -480,6 +480,7 @@ $messages['rue'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'variablepage' => 'විචල්‍යපිටුව',
 	'variablepage-navlink_text' => 'පරිත්‍යාග කරන්න',
 );
 
