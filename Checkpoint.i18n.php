@@ -336,6 +336,16 @@ $messages['lb'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Kontrollpunkt späicheren]])',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'checkpoint' => 'Opsjlaon en doorgaon mit bewirke',
+	'checkpoint-desc' => "Maak 't mäögelik 'n bewirking op te sjlaon en door te gaon mit bewirke",
+	'checkpoint-tooltip' => "Diene voortgank opsjlaon en doorgaon mit 't bewirke van de pagina",
+	'checkpoint-notice' => '([[{{ns:project}}:Tössesjtappe|tössesjtap opsjlaon]])',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  */
@@ -371,16 +381,6 @@ $messages['ms'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|simpan cekpoin]])',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'checkpoint' => 'Opslaan en doorgaan met bewerken',
-	'checkpoint-desc' => 'Maakt het mogelijk om een bewerking op te slaan en door te gaan met bewerken',
-	'checkpoint-tooltip' => 'Uw voortgang opslaan en doorgaan met het bewerken van de pagina',
-	'checkpoint-notice' => '([[{{ns:project}}:Tussenstappen|tussenstap opslaan]])',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -389,6 +389,16 @@ $messages['nb'] = array(
 	'checkpoint-desc' => 'Gjør det mulig å lagre en endring og fortsette redigeringen',
 	'checkpoint-tooltip' => 'Lagre fremgangen din og fortsett redigeringen av siden',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|lagre sjekkpunkt]])',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'checkpoint' => 'Opslaan en doorgaan met bewerken',
+	'checkpoint-desc' => 'Maakt het mogelijk om een bewerking op te slaan en door te gaan met bewerken',
+	'checkpoint-tooltip' => 'Uw voortgang opslaan en doorgaan met het bewerken van de pagina',
+	'checkpoint-notice' => '([[{{ns:project}}:Tussenstappen|tussenstap opslaan]])',
 );
 
 /** Occitan (Occitan)
