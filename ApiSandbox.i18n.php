@@ -549,9 +549,14 @@ $messages['hi'] = array(
 	'apisb-request-url' => 'अनुरोध URL:',
 	'apisb-select-action' => 'क्रिया चयन करें',
 	'apisb-select-value' => 'मूल्य चयन करें',
+	'apisb-loading' => 'लोड हो रहा है...',
 	'apisb-ns-main' => '(मुख्य)',
+	'apisb-submit' => 'अनुरोध करना',
+	'apisb-query-prop' => 'गुणधर्म',
 	'apisb-query-list' => 'सूचियाँ',
 	'apisb-query-meta' => 'मेटा जानकारी',
+	'apisb-generic-parameters' => 'जेनेरिक पैरामीटर्स',
+	'apisb-generator-parameters' => 'जेनरेटर',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -670,6 +675,36 @@ Lihat [//www.mediawiki.org/wiki/API dokumentasi API] untuk perincian lanjut peng
 	'apisb-query-prop' => 'Properti',
 	'apisb-query-list' => 'Daftar',
 	'apisb-query-meta' => 'Informasi meta',
+);
+
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'apisb-desc' => 'Agpalubos ti panag-kkat ti kiteb [//www.mediawiki.org/wiki/API MediaWiki API] a dagiti mangaw-awag manipud idiay pagbasabasa',
+	'apisandbox' => 'API a pagpsubokan',
+	'apisb-no-js' => "''Biddut''': daytoy a langa ket makasapul ti JavaScript.",
+	'apisb-intro' => "Usaren daytoy a panid ti panagsubok iti '''MediaWiki API'''.
+Agituron idiay [//www.mediawiki.org/wiki/API the API dokumentasion] para iti adadu pay a detalye iti panag-usar ti API.",
+	'apisb-api-disabled' => 'Ti API ket nabaldodo iti daytoy a pagsaadan.',
+	'apisb-parameters' => 'Dagiti parametro',
+	'apisb-result' => 'Nagbanagan',
+	'apisb-request-url' => 'Agkiddaw ti URL:',
+	'apisb-request-post' => 'POST data:',
+	'apisb-select-action' => 'Agpili ti aramid',
+	'apisb-select-query' => 'Ania ti damdamagen?',
+	'apisb-select-value' => 'Agpili ti kuwenta',
+	'apisb-loading' => 'Agkarkarga...',
+	'apisb-load-error' => 'Biddut ti panagkarga ti deskripsion ti API',
+	'apisb-request-error' => 'Biddut i panagtungpal ti kiniddaw nga API',
+	'apisb-namespaces-error' => 'Biddut ti panag-karga dagiti nagan ti lugar',
+	'apisb-ns-main' => '(Umuna)',
+	'apisb-submit' => 'Agaramid ti kiddaw',
+	'apisb-query-prop' => 'Dagiti tagikua',
+	'apisb-query-list' => 'Dagiti listaan',
+	'apisb-query-meta' => 'Pakaammo a meta',
+	'apisb-generic-parameters' => 'Dagiti kadawyan a parametro',
+	'apisb-generator-parameters' => 'Agpaandar',
 );
 
 /** Italian (Italiano)
@@ -1083,8 +1118,12 @@ Ch'a fasa riferiment a [//www.mediawiki.org/wiki/API la documentassion ëd l'API
  */
 $messages['ps'] = array(
 	'apisb-result' => 'پايله',
+	'apisb-request-url' => 'د URL غوښتنه کول:',
+	'apisb-select-action' => 'چاره ټاکل',
+	'apisb-select-value' => 'ارزښت ټاکل',
 	'apisb-loading' => 'د برسېرېدلو په حال کې...',
 	'apisb-ns-main' => '(آرنی)',
+	'apisb-submit' => 'غوښته کول',
 	'apisb-query-prop' => 'ځانتياوې',
 	'apisb-query-list' => 'لړليکونه',
 );
@@ -1248,7 +1287,9 @@ $messages['si'] = array(
 	'apisb-parameters' => 'පරාමිතීන්',
 	'apisb-result' => 'ප්‍රතිඵලය',
 	'apisb-request-url' => 'URL ලිපිනය අයදින්න:',
+	'apisb-request-post' => 'POST දත්ත:',
 	'apisb-select-action' => 'කාර්ය තෝරන්න',
+	'apisb-select-query' => 'ප්‍රශ්නය කුමක්ද?',
 	'apisb-select-value' => 'අගය තෝරන්න',
 	'apisb-loading' => 'පූරණය වෙමින්...',
 	'apisb-load-error' => 'API විස්තරය පූරණය වීමේ දෝෂය',
@@ -1371,6 +1412,8 @@ Kolla på [//www.mediawiki.org/wiki/API API-dokumentationen] för fler detaljer 
  * @author Shanmugamp7
  */
 $messages['ta'] = array(
+	'apisb-parameters' => 'அளவுருக்கள்',
+	'apisb-result' => 'முடிவு',
 	'apisb-query-prop' => 'பண்புகள்',
 	'apisb-query-list' => 'பட்டியல்கள்',
 	'apisb-query-meta' => 'Meta தகவல்',
