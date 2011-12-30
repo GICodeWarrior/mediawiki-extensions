@@ -234,7 +234,7 @@ HTML;
 	
 	/**
 	 * Build the link for Email, add clickTracking if available
-	 * @return array - the links to be tracked in used in email
+	 * @return array - the links to be tracked in email
 	 */
 	protected function buildEmailLink() {
 		$pageObject = array( 'feedbackPage' => SpecialPage::getTitleFor( 'FeedbackDashboard', $this->feedback ),
