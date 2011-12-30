@@ -11,7 +11,7 @@
  * @license GPL
  *
  * Version 1.0 and above based on merging extensions TweetANew v0.2 by Joachim De Schrijver, Wiki2twitter by Wendell Gaudencio,
- *    SendToTwitter by Rohit Keshwani and SendToTwitter2 by Rohit Keshwani, Andrew Fitzgerald. 
+ *    SendToTwitter by Rohit Keshwani and SendToTwitter2 by Rohit Keshwani, Andrew Fitzgerald.
  *
  * Some code inspired by the Mail2Facebook extension by Thiemo Schuff
  *
@@ -36,7 +36,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
  * SETTINGS
  * --------
  * The following variables may be reset in your LocalSettings.php file.
- * 
+ *
  * $wgTweetANewTweet['New']
  * 			- Automatically tweet about new articles
  *			  Default is true
@@ -189,7 +189,7 @@ $wgHooks['EditPageBeforeEditChecks'][] = 'efTweetANewEditCheckBox';
  * @param $tabindex
  * @return bool
  */
-function efTweetANewEditCheckBox( &$editpage, &$checkboxes, &$tabindex) {	
+function efTweetANewEditCheckBox( &$editpage, &$checkboxes, &$tabindex) {
 	global $wgTweetANewEditpage, $wgTweetANewTweet;
 
 	# Check if article is new - if checkboxes are enabled and if auto-tweets of edits are disabled
@@ -205,7 +205,7 @@ function efTweetANewEditCheckBox( &$editpage, &$checkboxes, &$tabindex) {
 					Xml::check( 'wpTweetANewEdit', $wgTweetANewEditpage['Checked'], $attribs ) .
 					"&nbsp;<label for='wpTweetANewEdit' title='". wfMsg('tweetanew-edittooltip')."'>".wfMsg('tweetanew-editaction')."</label>";
 	}
-	# Check if article is new - if checkboxes are enabled and if auto-tweets of new articles are disabled	
+	# Check if article is new - if checkboxes are enabled and if auto-tweets of new articles are disabled
 	elseif ( $wgTweetANewEditpage['Enable'] && !$wgTweetANewTweet['New'] ) {
 		$attribs = array(
 			'tabindex'  => ++$tabindex,

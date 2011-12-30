@@ -42,8 +42,8 @@ class TweetANew {
 	/**
 	 * Function for tweeting new articles
 	 *
-	 * @param $article
-	 * @param $user
+	 * @param $article Article
+	 * @param $user User
 	 * @param $text
 	 * @param $summary
 	 * @return bool
@@ -88,7 +88,7 @@ class TweetANew {
 				# Setup switcher using max number set by $wgTweetANewText['NewRandomMax']
 				$switcher = rand( 1, $wgTweetANewText['NewRandomMax'] );
 				# Parse random text
-				$tweet_text .= wfMsg( 'tweetanew-new' . $switcher,
+				$tweet_text = wfMsg( 'tweetanew-new' . $switcher,
 					array( $article->getTitle()->getText(), $finalurl )
 				);
 			} else {
@@ -96,7 +96,7 @@ class TweetANew {
 				$tweet_body = wfMsg( 'tweetanew-newdefault',
 					array( $article->getTitle()->getText(), $finalurl )
 				);
-				$tweet_text .= $tweet_body;
+				$tweet_text = $tweet_body;
 			}
 
 			# Add author info if $wgTweetANewText['NewAuthor'] is true
@@ -133,11 +133,11 @@ class TweetANew {
 	/**
 	 * Function for tweeting edited articles
 	 *
-	 * @param $article
-	 * @param $user
-	 * @param $text
-	 * @param $summary
-	 * @param $minoredit
+	 * @param $article Article
+	 * @param $user User
+	 * @param $text string
+	 * @param $summary string
+	 * @param $minoredit bool
 	 * @param $revision
 	 * @return bool
 	 */
@@ -163,6 +163,7 @@ class TweetANew {
 				__METHOD__,
 				array( 'ORDER BY' => 'rev_id DESC', 'LIMIT' => '2' )
 			);
+			$edittime = array();
 			foreach ( $res as $row ) {
 				$edittime[] = $row->rev_timestamp;
 			}
@@ -180,7 +181,7 @@ class TweetANew {
 			}
 
 			# Only proceed if this is not the first edit to the article, in which case it's new and TweetANewNewArticle is used instead
-			if ( !$article->mTitle->exists() ) {
+			if ( !$article->getTitle()->exists() ) {
 				return true;
 			}
 
@@ -209,6 +210,7 @@ class TweetANew {
 				$author = $user->getName();
 			}
 
+			$tweet_text = '';
 			# Add prefix indication that edit is minor if $wgTweetANewText['Minor'] is true and !$wgTweetANewTweet['SkipMinor'] is false
 			if ( $minoredit !== 0 && $wgTweetANewText['Minor'] ) {
 				$tweet_text = wfMsg( 'tweetanew-minoredit' );
@@ -265,3 +267,4 @@ class TweetANew {
 		return true;
 	}
 }
+
