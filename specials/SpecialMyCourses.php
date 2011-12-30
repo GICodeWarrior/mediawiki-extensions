@@ -44,10 +44,10 @@ class SpecialMyCourses extends SpecialEPPage {
 		}
 		else {
 			if ( $this->subPage === '' ) {
-				$this->displayCourse( $student, $this->subPage );
+				$this->displayCourses( $student );
 			}
 			else {
-				$this->displayCourses( $student );
+				$this->displayCourse( $student, $this->subPage );
 			}
 		}
 	}
@@ -57,10 +57,16 @@ class SpecialMyCourses extends SpecialEPPage {
 
 		if ( $student->hasTerm() ) {
 			if ( $this->getRequest()->getCheck( 'enrolled' ) ) {
-				$this->showSuccess( wfMessage( 'ep-mycourses-enrolled', '', '' ) ); // TODO
-			}
+				$term = EPTerm::selectRow( null, array( 'id' => $this->getRequest()->getInt( 'enrolled' ) ) );
 
-			$this->displayCourses( $student );
+				if ( $term !== false ) {
+					$this->showSuccess( wfMessage(
+						'ep-mycourses-enrolled',
+						$term->getCourse()->getField( 'name' ),
+						$term->getOrg()->getField( 'name' )
+					) ); // TODO
+				}
+			}
 		}
 		else {
 			$out->addWikiMsg( 'ep-mycourses-not-enrolled' );
