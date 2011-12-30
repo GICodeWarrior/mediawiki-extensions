@@ -62,7 +62,6 @@ class TweetANew {
 			}
 
 			# Make connection to Twitter
-			require_once( 'lib/tmhOAuth.php' ); // include connection
 			$connection = new tmhOAuth( array(
 				'consumer_key' => $wgTweetANewTwitter['ConsumerKey'],
 				'consumer_secret' => $wgTweetANewTwitter['ConsumerSecret'],
@@ -160,7 +159,7 @@ class TweetANew {
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select( 'revision',
 				array( 'rev_timestamp' ),
-				array( 'rev_page' => $article->getID() ),
+				array( 'rev_page' => $article->getId() ),
 				__METHOD__,
 				array( 'ORDER BY' => 'rev_id DESC', 'LIMIT' => '2' )
 			);
@@ -191,8 +190,6 @@ class TweetANew {
 			}
 
 			# Make connection to Twitter
-			# TODO: Can this be autoloaded?
-			require_once( 'lib/tmhOAuth.php' ); // include connection
 			$connection = new tmhOAuth( array(
 				'consumer_key' => $wgTweetANewTwitter['ConsumerKey'],
 				'consumer_secret' => $wgTweetANewTwitter['ConsumerSecret'],

@@ -151,7 +151,11 @@ $wgTweetANewBitly = array(
  */
 
 $dir = dirname(__FILE__) . '/';
+
 $wgAutoloadClasses['TweetANew'] = $dir . 'TweetANew.body.php';
+$wgAutoloadClasses['tmhOAuth'] = $dir . 'lib/tmhOAuth.php';
+$wgAutoloadClasses['tmhUtilities'] = $dir . 'lib/tmhUtilities.php';
+
 $wgExtensionMessagesFiles['TweetANew'] = $dir . 'TweetANew.i18n.php';
 
 /**
