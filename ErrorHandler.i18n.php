@@ -961,6 +961,35 @@ $messages['nah'] = array(
 	'errorhandler-trace-line' => '$1 (pāntli $2): $3',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'errorhandler-desc' => 'Feilhåndtering for MediaWiki',
+	'errorhandler-errors' => 'Feil:',
+	'errorhandler-error-fatal' => 'Alvorlig feil',
+	'errorhandler-error-warning' => 'Advarsel',
+	'errorhandler-error-parse' => 'Parserfeil',
+	'errorhandler-error-notice' => 'Melding',
+	'errorhandler-error-deprecated' => 'Nedgradert',
+	'errorhandler-error-core-error' => 'Feil i kjernen',
+	'errorhandler-error-core-warning' => 'Kjerne-advarsel',
+	'errorhandler-error-compile-error' => 'Kompileringsfeil',
+	'errorhandler-error-compile-warning' => 'Kompileringsadvarsel',
+	'errorhandler-error-user-error' => 'Brukerfeil',
+	'errorhandler-error-user-warning' => 'Brukeradvarsel',
+	'errorhandler-error-user-notice' => 'Brukermelding',
+	'errorhandler-error-user-deprecated' => 'Brukerdegradert',
+	'errorhandler-error-strict' => 'Strenge standarder',
+	'errorhandler-error-recoverable' => 'Håndterbar alvorlig feil',
+	'errorhandler-msg-text' => '$1: $2 i $3 (rad $4)',
+	'errorhandler-msg-html' => '<b>$1</b>: <i>$2</i> i <b>$3</b> (rad <b>$4</b>)',
+	'errorhandler-trace' => 'spor:',
+	'errorhandler-trace-line' => '$1 (rad $2): $3',
+	'errorhandler-trace-line-internal' => '[intern funksjon]: $1',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1017,35 +1046,6 @@ $messages['nn'] = array(
 	'errorhandler-trace-line-internal' => '[intern funksjon]: $1',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'errorhandler-desc' => 'Feilhåndtering for MediaWiki',
-	'errorhandler-errors' => 'Feil:',
-	'errorhandler-error-fatal' => 'Alvorlig feil',
-	'errorhandler-error-warning' => 'Advarsel',
-	'errorhandler-error-parse' => 'Parserfeil',
-	'errorhandler-error-notice' => 'Melding',
-	'errorhandler-error-deprecated' => 'Nedgradert',
-	'errorhandler-error-core-error' => 'Feil i kjernen',
-	'errorhandler-error-core-warning' => 'Kjerne-advarsel',
-	'errorhandler-error-compile-error' => 'Kompileringsfeil',
-	'errorhandler-error-compile-warning' => 'Kompileringsadvarsel',
-	'errorhandler-error-user-error' => 'Brukerfeil',
-	'errorhandler-error-user-warning' => 'Brukeradvarsel',
-	'errorhandler-error-user-notice' => 'Brukermelding',
-	'errorhandler-error-user-deprecated' => 'Brukerdegradert',
-	'errorhandler-error-strict' => 'Strenge standarder',
-	'errorhandler-error-recoverable' => 'Håndterbar alvorlig feil',
-	'errorhandler-msg-text' => '$1: $2 i $3 (rad $4)',
-	'errorhandler-msg-html' => '<b>$1</b>: <i>$2</i> i <b>$3</b> (rad <b>$4</b>)',
-	'errorhandler-trace' => 'spor:',
-	'errorhandler-trace-line' => '$1 (rad $2): $3',
-	'errorhandler-trace-line-internal' => '[intern funksjon]: $1',
-);
-
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -1072,6 +1072,17 @@ $messages['oc'] = array(
 	'errorhandler-trace' => 'traça :',
 	'errorhandler-trace-line' => '$1 (linha $2): $3',
 	'errorhandler-trace-line-internal' => '[foncion intèrna] : $1',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
+ */
+$messages['or'] = array(
+	'errorhandler-errors' => 'ଅସୁବିଧାଗୁଡିକ:',
+	'errorhandler-error-warning' => 'ସାବଧାନ',
+	'errorhandler-error-notice' => 'ଘୋଷଣା',
+	'errorhandler-error-user-warning' => 'ବ୍ୟବହାରକାରୀ ଚେତାବନୀ',
+	'errorhandler-error-user-notice' => 'ବ୍ୟବହାରକାରୀ ଘୋଷଣା',
 );
 
 /** Deitsch (Deitsch)
