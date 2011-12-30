@@ -378,8 +378,9 @@ jQuery(function( $ ) {
 					.find('.fbd-item-response-collapsed')
 					.parent()
 					.removeClass('responder-expanded');
-			
-				$( this ).find('.fbd-response-form').remove();	
+				//remove disabled prop to prevent memory leaks in IE < 9
+				$( '.fbd-response-preview, .fbd-response-submit').removeProp('disabled');
+				$( this ).find('.fbd-response-form').remove();
 			}	
 		});
 	}
@@ -439,11 +440,11 @@ jQuery(function( $ ) {
 						$('<div>').attr('class', 'ula small').html( ula ).hide())
 				).append(
 					$('<button>').attr( 'class', 'fbd-response-submit' ).html( mw.msg( 'moodbar-response-btn' ) + '&nbsp;<span class="fbd-item-send-response-icon"></span>' )
-						.attr( 'disabled', 'true' ).hide()
+						.prop( 'disabled', true ).hide()
 				).append(
 					$('<button>').attr('class', 'fbd-response-preview-back').text( mw.msg( 'response-back-text' ) ).hide() 
 				).append(
-					$('<button>').attr( 'class', 'fbd-response-preview').text ( mw.msg( 'response-preview-text' ) ).attr( 'disabled', 'true' )
+					$('<button>').attr( 'class', 'fbd-response-preview').text ( mw.msg( 'response-preview-text' ) ).prop( 'disabled', true )
 				).append(
 					$('<div>').attr( 'style', 'clear:both' )
 				);
@@ -674,6 +675,14 @@ jQuery(function( $ ) {
 		if(types.length === 0) { //check for 0 because onclick it will already have unchecked itself.
 			$(this).prop('checked', true);
 		}
+	});
+
+	$( '#fbd-list' ).delegate( '.fbd-item', 'hover', function (){		
+		$(this).toggleClass('fbd-hover');
+	});
+
+	$( '#fbd-list' ).delegate( '.fbd-item', 'mouseleave', function (){
+		$(this).removeClass('fbd-hover');
 	});
 
 	saveFormState();

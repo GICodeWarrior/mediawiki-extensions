@@ -187,9 +187,13 @@
 .fbd-item {
 	border-bottom: solid 1px silver;
 	position: relative;
-	margin-top:0.5em;
-	margin-bottom:0.5em;
-	padding:0;
+	padding-top:0.5em;
+	padding-right:1em;
+	cursor:pointer;
+}
+
+.fbd-hover {
+	background-color:#f1f1f1;
 }
 
 .fbd-item-emoticon {
@@ -203,7 +207,7 @@
 
 .fbd-item-emoticon-label {
 	display: block;
-	margin-top: 64px;
+	margin-top: 66px;
 	text-align: center;
 }
 
@@ -224,9 +228,13 @@
 	padding:1.5em 2em;
 }
 
+.fbd-item-response {
+	line-height: 22px;
+}
+
 .fbd-item-response-icon {
 	float: left;
-	display: block;
+	display: block;	
 	height: 56px;
 	width: 56px;
 	background-position: center center;
@@ -295,12 +303,22 @@
 
 .fbd-item-userLinks{
 	font-size: 1em;	
+	visibility:hidden;
+}
+
+.fbd-hover .fbd-item-userLinks {
+	visibility:visible;
 }
 
 .fbd-item-time {
 	font-size: 1.2em;
 	float: right;
 	display:inline; /* ie7 fix */
+	visibility:hidden;
+}
+
+.fbd-hover .fbd-item-time {
+	visibility:visible;
 }
 
 .fbd-item-message {
@@ -342,7 +360,17 @@
 	font-size: 0.8em;
 	margin-left: 0.2em;
 	margin-right: 0.2em;
+	visibility:hidden;
 }
+
+.fbd-hover .fbd-item-permalink,
+.fbd-hover .fbd-item-show,
+.fbd-hover .fbd-item-hide,
+.fbd-hover .fbd-item-reason {
+	visibility:visible;
+}
+
+
 .fbd-respond-link {
 	font-size:1.1em;
 	cursor:pointer;

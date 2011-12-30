@@ -54,7 +54,7 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 						$feedback_link . "\n" . 
 						'<span id="feedback-dashboard-response-' . $id . '"></span>' . "\n\n" . 
 						$response . "\n\n~~~~\n\n" .
-						'<span class="markashelpful-mbresponse-' . $id . '">&nbsp;</span>',
+						'<span class="markashelpful-mbresponse-' . $id . '">&#160;</span>',
 				'token'  => $params['token'],
 				'summary' => $summary,
 				'notminor' => true,
