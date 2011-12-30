@@ -73,9 +73,8 @@ class EPTerm extends EPDBObject {
 		if ( !$this->hasField( 'org_id' ) ) {
 			$this->setField( 'org_id', $this->getCourse( 'org_id' )->getField( 'org_id' ) );
 		}
-		
-		
-		parent::insertIntoDB();
+
+		return parent::insertIntoDB();
 	}
 	
 	/**

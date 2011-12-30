@@ -61,6 +61,8 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	 * @see SpecialPage::getDescription
 	 *
 	 * @since 0.1
+	 *
+	 * @return string
 	 */
 	public function getDescription() {
 		$action = $this->isNew() ? 'add' : 'edit';
@@ -253,6 +255,8 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	 * @since 0.1
 	 * 
 	 * @param array $fields
+	 *
+	 * @return array
 	 */
 	protected function processFormFields( array $fields ) {
 		if ( $this->item !== false ) {
@@ -341,19 +345,20 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 		foreach ( $unknownValues as $name => $value ) {
 			$this->handleUnknownField( $item, $name, $value );
 		}
-		
+
 		$success = $item->writeToDB();
 
 		if ( $success ) {
 			return true;
 		}
 		else {
+			die('meh');
 			return array(); // TODO
 		}
 	}
 	
 	/**
-	 * Gets called for evey unknown submitted value, so they can be dealth with if needed.
+	 * Gets called for evey unknown submitted value, so they can be dealt with if needed.
 	 * 
 	 * @since 0.1
 	 * 

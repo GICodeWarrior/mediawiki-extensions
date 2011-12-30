@@ -53,11 +53,13 @@
 		} );
 
 		$( '.ep-pager-delete-selected' ).click( function() {
-			var selectAllCheckbox = $( '#ep-pager-select-all-' + $( this ).attr( 'data-pager-id' ) );
+            var $deleteButton = $( this );
+			var $selectAllCheckbox = $( '#ep-pager-select-all-' + $( this ).attr( 'data-pager-id' ) );
+            var $table = $selectAllCheckbox.closest( 'table' );
 
 			var ids = [];
 
-			selectAllCheckbox.closest( 'table' ).find( 'input[type=checkbox]:checked' ).each( function( i, element ) {
+            $table.find( 'input[type=checkbox]:checked' ).each( function( i, element ) {
 				ids.push( $( element ).val() );
 			} );
 
@@ -74,13 +76,19 @@
 				},
 				function( result ) {
 					if ( result.success ) {
-						for ( i in ids ) {
-							if ( ids.hasOwnProperty( i ) ) {
-								console.log('#select-' + pagerId + '-' + ids[i]);
-								console.log($( '#select-' + pagerId + '-' + ids[i] ));
-								$( '#select-' + pagerId + '-' + ids[i] ).closest( 'tr' ).remove();
-							}
-						}
+                        if ( ids.length > 0 && ( $table.find( 'tr' ).length - ids.length > 1 ) ) {
+                            for ( i in ids ) {
+                                if ( ids.hasOwnProperty( i ) ) {
+                                    $( '#select-' + pagerId + '-' + ids[i] ).closest( 'tr' ).remove();
+                                }
+                            }
+                        }
+                        else {
+                            $table.slideUp( 'slow', function() {
+                                $table.remove();
+                                $deleteButton.closest( 'fieldset' ).remove();
+                            } );
+                        }
 					}
 					else {
 						alert( mw.msg( 'ep-pager-delete-selected-fail' ) ); // TODO
@@ -91,4 +99,4 @@
 		
 	} );
 	
-})( window.jQuery, window.mediaWiki, window.educationProgram );
+})( window.jQuery, window.mediaWiki, window.educationProgram )
