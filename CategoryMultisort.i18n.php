@@ -449,6 +449,18 @@ $messages['lb'] = array(
 	'prefs-category' => 'Kategorie',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'categorymultisort-desc' => "Maak 't mäögelik categorieë te betrachte mit versjillige sorteerwieze",
+	'categorymultisort-defaultsortkey-name' => 'Sjtandaard',
+	'categorymultisort-sortkey' => 'Sorteerwieze:',
+	'categorymultisort-go' => 'OK',
+	'categorymultisort-default-sortkey' => 'Sjtandaard sorteerwieze:',
+	'prefs-category' => 'Categorie',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  * @author Ignas693
