@@ -183,6 +183,13 @@ $messages['lb'] = array(
 	'categorymembersonsidebar-desc' => "Setzt d'Membere vun der Kategorie an d'Säiteläischt",
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'categorymembersonsidebar-desc' => 'Deit categorielejer bie aon de ziebalk',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Ignas693
  */
