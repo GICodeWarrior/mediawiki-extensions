@@ -3,7 +3,7 @@
  * MediaWiki extension to update a Twitter account each time an article is created or edited - depending on yours settings.
  * Excludes files or content outside of article namespaces.
  * Optional use of bit.ly to shorten and track URLs.
- * Installation instructions can be found on
+ * Installation and configuration instructions can be found on
  * https://www.mediawiki.org/wiki/Extension:TweetANew
  *
  * @addtogroup Extensions
@@ -19,8 +19,8 @@
  *    This lives at: https://github.com/themattharris/tmhOAuth
  *    The most recent edition (as of this version's publish date) is included with this extension.
  *
- * Thank you to Johnduhart, Reedy, and SPQRobin for feedback, bug reporting and cleaning up code
- * Thank you to Raymond and others mentioned in TweetANew.i18n.php for translation work
+ * Thank you to Johnduhart, Reedy, SPQRobin and krinkle for feedback, bug reporting and cleaning up code
+ * Thank you to Raymond, Crochet.david, Gomoko, Toliño, Bjankuloski06, Inholland, SPQRobin and others mentioned in TweetANew.i18n.php for translation work
  *
  */
 
@@ -48,7 +48,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
  *			  Default is 5
  * $wgTweetANewTweet['SkipMinor']
  *			- Skip minor edits
- 			  Default is true
+ *			  Default is true
  * $wgTweetANewText['Minor']
  *			- Indicate in tweet if edit is marked as minor - only applies if $wgTweetANewTweet['SkipMinor'] = false
  *			  Default is false
@@ -166,7 +166,7 @@ $wgExtensionMessagesFiles['TweetANew'] = $dir . 'TweetANew.i18n.php';
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'TweetANew',
-	'version'        => '1.0.20111228-experimental',
+	'version'        => '1.0.20111229-beta',
 	'author'         => '[https://www.mediawiki.org/wiki/User:Varnent Gregory Varnum] merging extensions by [https://www.mediawiki.org/wiki/User:Joa_ds Joachim De Schrijver], Andrew Fitzgerald, Wendell Gaudencio, and Rohit Keshwani',
 	'descriptionmsg' => 'tweetanew-desc',
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:TweetANew',

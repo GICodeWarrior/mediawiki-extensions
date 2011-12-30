@@ -11,45 +11,17 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // TweetANew
 class TweetANew {
-	/**
-	 * Function for connecting to and preparing bitly
-	 *
-	 * @param $longurl
-	 * @param $login
-	 * @param $appkey
-	 * @return string
-	 */
-	public static function make_final_url( $longurl, $login, $appkey ) {
-		global $wgTweetANewBitly;
-
-		# Check setting to enable/disable use of bitly
-		if ( $wgTweetANewBitly['Enable'] ) {
-			# Generate url for bitly
-			$bitly = "https://api-ssl.bitly.com/v3/shorten?longUrl="
-				. urlencode( $longurl ) . "&login=" . $login
-				. "&apiKey=" . $appkey . "&format=txt";
-
-			# Get the url
-			$response = file_get_contents( $bitly );
-		} else {
-			$response = $longurl;
-		}
-		return $response;
-	}
-
-	# ToDo - TweetANewNewEditOption function for when auto-tweet is disabled to display checkbox on edit/create page to tweet new/edited pages
 
 	/**
 	 * Function for tweeting new articles
 	 *
 	 * @param $article Article
 	 * @param $user User
-	 * @param $text
 	 * @param $summary
 	 * @return bool
 	 */
-	public static function TweetANewNewArticle( $article, $user, $text, $summary ) {
-		global $wgTweetANewTweet, $wgTweetANewText, $wgTweetANewTwitter, $wgTweetANewBitly, $wgRequest;
+	public static function TweetANewNewArticle( $article, $user, $summary ) {
+		global $wgTweetANewTweet, $wgTweetANewText, $wgRequest;
 
 		# Check if $wgTweetANewTweet['New'] is enabled or the Tweet checkbox was selected on the edit page
 		if ( $wgRequest->getCheck( 'wpTweetANew' ) || $wgTweetANewTweet['New'] ) {
@@ -61,19 +33,9 @@ class TweetANew {
 				return true;
 			}
 
-			# Make connection to Twitter
-			$connection = new tmhOAuth( array(
-				'consumer_key' => $wgTweetANewTwitter['ConsumerKey'],
-				'consumer_secret' => $wgTweetANewTwitter['ConsumerSecret'],
-				'user_token' => $wgTweetANewTwitter['AccessToken'],
-				'user_secret' => $wgTweetANewTwitter['AccessTokenSecret'],
-			) );
-
 			# Generate final url
 			$finalurl = self::make_final_url(
-				$article->getTitle()->getFullURL(),
-				$wgTweetANewBitly['Login'],
-				$wgTweetANewBitly['API']
+				$article->getTitle()->getFullURL()
 			);
 
 			# Generate $author based on $wgTweetANewText['RealName']
@@ -108,24 +70,13 @@ class TweetANew {
 			if ( $summary && $wgTweetANewText['NewSummary'] ) {
 				$tweet_text .= ' - ' . $summary;
 			}
-
-			# Calculate length of tweet factoring in longURL
-			if ( strlen( $finalurl ) > 20 ) {
-				$tweet_text_count = ( strlen( $finalurl ) - 20 ) + 140;
-			} else {
-				$tweet_text_count = 140;
-			}
-
-			# Check if length of tweet is beyond 140 characters and shorten if necessary
-			if ( strlen( $tweet_text ) > $tweet_text_count ) {
-				$tweet_text = substr( $tweet_text, 0, $tweet_text_count );
-			}
-
-			# Make tweet message
-			$connection->request( 'POST',
-				$connection->url( '1/statuses/update' ),
-				array( 'status' => $tweet_text )
+			
+			# Call to function for assembling and trimming tweet (if necessary) - then connecting and sending tweet to Twitter
+			self::assemble_send_tweet(
+				$tweet_text,
+				$finalurl
 			);
+
 		}
 		return true;
 	}
@@ -138,22 +89,30 @@ class TweetANew {
 	 * @param $text string
 	 * @param $summary string
 	 * @param $minoredit bool
+	 * @param $watchthis
+	 * @param $sectionanchor
+	 * @param $flags
 	 * @param $revision
+	 * @param $status
+	 * @param $baseRevId
 	 * @return bool
 	 */
-	public static function TweetANewEditMade( &$article, &$user, $text, $summary, $minoredit, $revision ) {
-		global $wgTweetANewTweet, $wgTweetANewText, $wgTweetANewTwitter, $wgTweetANewBitly, $wgRequest;
+	public static function TweetANewEditMade( &$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ) {
+		global $wgTweetANewTweet, $wgTweetANewText, $wgRequest;
 
 		# Check if $wgTweetANewTweet['Edit'] is enabled or the Tweet checkbox was selected on the edit page
 		if ( $wgRequest->getCheck( 'wpTweetANewEdit' ) || $wgTweetANewTweet['Edit'] ) {
 
-			# Check if page is in content namespace or if the Tweet checkbox was selected on the edit page
-			if ( !MWNamespace::isContent( $article->getTitle()->getNamespace() )
-				&& !$wgRequest->getCheck( 'wpTweetANewEdit' )
+			# Unless the tweet checkbox is selected, only proceeds if page is outside content namespace and if a minor edit, checks $wgTweetANewTweet['SkipMinor']
+			# Also prevents new articles from processing as TweetANewNewArticle function is used instead
+			if ( ( !MWNamespace::isContent( $article->getTitle()->getNamespace() )
+				|| ( $minoredit !== 0 && $wgTweetANewTweet['SkipMinor'] )
+				&& !$wgRequest->getCheck( 'wpTweetANewEdit' ) )
+				|| $article->estimateRevisionCount() == 1
 			) {
 				return true;
 			}
-
+			
 			# Determine the time and date of last modification - skip if newer than $wgTweetANewTweet['LessMinutesOld'] setting
 			# ToDo - there must be a cleaner way of doing this
 			$dbr = wfGetDB( DB_SLAVE );
@@ -163,6 +122,10 @@ class TweetANew {
 				__METHOD__,
 				array( 'ORDER BY' => 'rev_id DESC', 'LIMIT' => '2' )
 			);
+			$edittime = array();
+			foreach ( $res as $row ) {
+				$edittime[] = $row->rev_timestamp;
+			}
 			$edittime = array();
 			foreach ( $res as $row ) {
 				$edittime[] = $row->rev_timestamp;
@@ -180,27 +143,9 @@ class TweetANew {
 				return true;
 			}
 
-			# Only proceed if this is not the first edit to the article, in which case it's new and TweetANewNewArticle is used instead
-			if ( !$article->getTitle()->exists() ) {
-				return true;
-			}
-
-			# Check $wgTweetANewTweet['SkipMinor'] setting to see if minor edits should be skipped
-			if ( $minoredit !== 0 && $wgTweetANewTweet['SkipMinor'] ) {
-				return true;
-			}
-
-			# Make connection to Twitter
-			$connection = new tmhOAuth( array(
-				'consumer_key' => $wgTweetANewTwitter['ConsumerKey'],
-				'consumer_secret' => $wgTweetANewTwitter['ConsumerSecret'],
-				'user_token' => $wgTweetANewTwitter['AccessToken'],
-				'user_secret' => $wgTweetANewTwitter['AccessTokenSecret'],
-			) );
-
 			# Generate final url
-			$finalurl = self::make_final_url( $article->getTitle()->getFullURL(), $wgTweetANewBitly['Login'],
-				$wgTweetANewBitly['API']
+			$finalurl = self::make_final_url(
+				$article->getTitle()->getFullURL()
 			);
 
 			# Generate $author based on $wgTweetANewText['RealName']
@@ -243,27 +188,78 @@ class TweetANew {
 
 			# Add summary if $wgTweetANewText['EditSummary'] is true and summary text is entered
 			if ( $summary && $wgTweetANewText['EditSummary'] ) {
-				$tweet_text .= ' - ' . $summary;
+				$tweet_text .= ' - ' . $edittime;
+				#$tweet_text .= ' - ' . $summary;
 			}
 
-			# Calculate length of tweet factoring in longURL
-			if ( strlen( $finalurl ) > 20 ) {
-				$tweet_text_count = ( strlen( $finalurl ) - 20 ) + 140;
-			} else {
-				$tweet_text_count = 140;
-			}
-
-			# Check if length of tweet is beyond 140 characters and shorten if necessary
-			if ( strlen( $tweet_text ) > $tweet_text_count ) {
-				$tweet_text = substr( $tweet_text, 0, $tweet_text_count );
-			}
-
-			# Make tweet message
-			$connection->request( 'POST',
-				$connection->url( '1/statuses/update' ),
-				array( 'status' => $tweet_text )
+			# Call to function for assembling and trimming tweet (if necessary) - then connecting and sending tweet to Twitter
+			self::assemble_send_tweet(
+				$tweet_text,
+				$finalurl
 			);
 		}
+		return true;
+	}
+
+	/**
+	 * Function for connecting to and preparing url for shortening service - or leaving for t.co shortening if none are enabled
+	 *
+	 * @param $longurl
+	 * @return string
+	 */
+	public static function make_final_url( $longurl ) {
+		global $wgTweetANewBitly;
+		
+		# Check setting to enable/disable use of bitly
+		if ( $wgTweetANewBitly['Enable'] ) {
+			# Generate url for bitly
+			$bitly = "https://api-ssl.bitly.com/v3/shorten?longUrl="
+				. urlencode( $longurl ) . "&login=" . $wgTweetANewBitly['Login']
+				. "&apiKey=" . $wgTweetANewBitly['API'] . "&format=txt";
+
+			# Get the url
+			$response = file_get_contents( $bitly );
+		} else {
+			$response = $longurl;
+		}
+		return $response;
+	}
+
+	/**
+	 * Function for connecting to and preparing tweet for Twitter
+	 *
+	 * @param $tweet_text
+	 * @param $finalurl
+	 * @return bool
+	 */
+	public static function assemble_send_tweet( $tweet_text, $finalurl ) {
+		global $wgTweetANewTwitter;
+		
+		# Calculate length of tweet factoring in longURL
+		if ( strlen( $finalurl ) > 20 ) {
+			$tweet_text_count = ( strlen( $finalurl ) - 20 ) + 140;
+		} else {
+			$tweet_text_count = 140;
+		}
+
+		# Check if length of tweet is beyond 140 characters and shorten if necessary
+		if ( strlen( $tweet_text ) > $tweet_text_count ) {
+			$tweet_text = substr( $tweet_text, 0, $tweet_text_count );
+		}
+
+		# Make connection to Twitter
+		$connection = new tmhOAuth( array(
+			'consumer_key' => $wgTweetANewTwitter['ConsumerKey'],
+			'consumer_secret' => $wgTweetANewTwitter['ConsumerSecret'],
+			'user_token' => $wgTweetANewTwitter['AccessToken'],
+			'user_secret' => $wgTweetANewTwitter['AccessTokenSecret'],
+		) );
+
+		# Make tweet message
+		$connection->request( 'POST',
+			$connection->url( '1/statuses/update' ),
+			array( 'status' => $tweet_text )
+		);
 		return true;
 	}
 }
