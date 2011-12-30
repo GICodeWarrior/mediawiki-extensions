@@ -152,6 +152,8 @@ $messages['ia'] = array(
  * @author F. Cosoleto
  */
 $messages['it'] = array(
+	'markashelpful-desc' => "Fornisce un'interfaccia utente per contrassegnare i commenti come utili",
+	'mah-undo-mark-text' => 'annulla',
 	'mah-action-error' => "Si è verificato un errore nell'esecuzione di questa azione",
 );
 
@@ -247,10 +249,19 @@ $messages['si'] = array(
 	'mah-undo-mark-text' => 'අහෝසිය',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'mah-someone-marked-text' => '{{GENDER:$1|$1 tycker att detta är användbart}}',
+	'mah-undo-mark-text' => 'ångra',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */
 $messages['uk'] = array(
+	'markashelpful-desc' => 'Надає інтерфейс користувача для позначання корисних коментарів',
 	'mah-undo-mark-text' => 'скасувати',
 );
 
@@ -263,5 +274,24 @@ $messages['vi'] = array(
 	'mah-you-marked-text' => 'Bạn coi mục này là hữu ích',
 	'mah-someone-marked-text' => '$1 coi mục này là hữu ích',
 	'mah-undo-mark-text' => 'hoàn tác',
+);
+
+/** Yiddish (ייִדיש)
+ * @author Imre
+ */
+$messages['yi'] = array(
+	'mah-undo-mark-text' => 'אַנולירן',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Yanmiao liu
+ */
+$messages['zh-hans'] = array(
+	'markashelpful-desc' => '提供用户界面标记评论为有帮助',
+	'mah-mark-text' => '标记为有帮助',
+	'mah-you-marked-text' => '您认为有帮助',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1 认为有帮助}}',
+	'mah-undo-mark-text' => '撤销',
+	'mah-action-error' => '执行此项功能出错',
 );
 
