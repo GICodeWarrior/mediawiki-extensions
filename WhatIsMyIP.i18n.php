@@ -823,10 +823,10 @@ $messages['sq'] = array(
  * @author Rancher
  */
 $messages['sr-ec'] = array(
-	'whatismyip' => 'Која је моја IP адреса',
-	'whatismyip-desc' => 'Приказује тренутну [[Special:WhatIsMyIP|IP адресу]] корисника',
+	'whatismyip' => 'Која је моја ИП адреса',
+	'whatismyip-desc' => 'Приказује тренутну [[Special:WhatIsMyIP|ИП адресу]] корисника',
 	'whatismyip-out' => 'Ваша ИП адреса:',
-	'right-whatismyip' => 'приказ [[Special:WhatIsMyIP|сопствене IP адресе]]',
+	'right-whatismyip' => 'прегледање [[Special:WhatIsMyIP|сопствене ИП адресе]]',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬) */
