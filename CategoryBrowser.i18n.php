@@ -1249,6 +1249,45 @@ Wiesselt Äre Borwseroder maacht en Update, wa méiglech.",
 	'cb_edit_paste_right_hint' => 'Operateur an déi nächst Positioun drasetzen (wa méiglech)',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'categorybrowser' => 'Categorieë doorblajere',
+	'categorybrowser-desc' => "Maak 'n [[Special:CategoryBrowser|speciaal pagina]] besjikbaar om categorieë mit de meiste illemènte te selektere en ze te verkènne via 'n AJAX-interface",
+	'cb_requires_javascript' => "De oetbreijing veur 't doorblajere van categorieë vereis dat JavaScript is ingesjakeld in de browser.",
+	'cb_ie6_warning' => "De teksverwèrker veur condities wirk neet in Internet Explorer 6.0 of ierder versies.
+Veuraaf gedefinieerde condities kinne evels wel normaal waere betrach.
+Gebroek 'ne angere browser of wirk diene browser bie, es mäögelijk.",
+	'cb_show_no_parents_only' => 'Allein categorieë weergaeve die gein boveliggende categorieë höbbe',
+	'cb_cat_name_filter' => 'Zeuk nao categorieë op naam:',
+	'cb_cat_name_filter_clear' => 'Klik um de categorienaamfilter laeg te make',
+	'cb_cat_name_filter_ci' => 'Hooflètteróngeveulig',
+	'cb_copy_line_hint' => 'Gebroek de knoppe [+] en [>+] um de operators in de geselekteerde expressies te kopiëre en plakke',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|subcategorie|subcategorieë}}',
+	'cb_has_pages' => "$1 {{PLURAL:$1|pagina|pagina's}}",
+	'cb_has_files' => '$1 {{PLURAL:$1|besjtand|besjtande}}',
+	'cb_has_parentcategories' => 'baovenlikgende categorieë (es die bestaon)',
+	'cb_previous_items_link' => 'Veurige',
+	'cb_next_items_link' => 'Volgende',
+	'cb_next_items_stats' => '(van $1)',
+	'cb_cat_subcats' => 'subcategorieë',
+	'cb_cat_pages' => "pagina's",
+	'cb_cat_files' => 'besjtande',
+	'cb_apply_button' => 'Toepasse',
+	'cb_all_op' => 'Alle',
+	'cb_or_op' => 'of',
+	'cb_and_op' => 'en',
+	'cb_edit_left_hint' => 'Nao links verplaatse, es mäögelik',
+	'cb_edit_right_hint' => 'Nao rechts verplaatse, es mäögelik',
+	'cb_edit_remove_hint' => 'Ewegsjaffe, es mäögelik',
+	'cb_edit_copy_hint' => 'Operator nao klembord kopiëre',
+	'cb_edit_append_hint' => 'Operator nao lèste positie inveuge',
+	'cb_edit_clear_hint' => 'Hujige expressie wisse (alles selektere)',
+	'cb_edit_paste_hint' => 'Es mäögelik de operator op de hujige positie inveuge',
+	'cb_edit_paste_right_hint' => 'Es mäögelik de operator op de volgende positie inveuge',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  * @author Ignas693
