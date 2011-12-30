@@ -92,6 +92,13 @@ $messages['lb'] = array(
 	'categorysortheaders-desc' => 'Erlaabt et anescht wéi ënnert dem Titel dee gewise gëtt, Säiten a Kategorien anzekategoriséieren, an deem Dir dës Syntax benotzt: <nowiki>[[category:Foo|^Header^Invisible part of sortkey]]</nowiki>',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'categorysortheaders-desc' => "Maak 't mäögelik um aangepaste sorteervolgorde (op mierdere teikes) bie te doon aan pagina's veur opname in categorieë, mit de opmaak <nowiki>[[category:Foo:Categorienaam|ˆHeader^Oonzichbaar deil van de sorteervolgorde]]</nowiki>",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
