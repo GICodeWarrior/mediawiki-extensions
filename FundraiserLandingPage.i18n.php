@@ -154,3 +154,10 @@ $messages['vi'] = array(
 	'fundraiserlandingpage-desc' => 'Đưa các tham số URL vào bản mẫu được chỉ định như các biến bản mẫu',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Yanmiao liu
+ */
+$messages['zh-hans'] = array(
+	'fundraiserlandingpage-desc' => '采用URL参数并将其作为模板变量传递给指定的模板',
+);
+
