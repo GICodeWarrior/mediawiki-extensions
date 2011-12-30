@@ -501,7 +501,7 @@ $messages['de'] = array(
 	'narayam-help' => 'Hilfe',
 	'narayam-help-page' => 'Help:Eingabe',
 	'narayam-checkbox-tooltip' => 'Eingabemethode ein- und ausschalten',
-	'narayam-enable-preference' => 'Eingabemethoden aktivieren',
+	'narayam-enable-preference' => 'Eingabemethode aktivieren',
 	'narayam-more-imes' => 'Weitere Eingabemethoden',
 	'narayam-am' => 'Amharisch (Transliteration)',
 	'narayam-as' => 'Assamesisch (Transliteration)',
@@ -1139,6 +1139,7 @@ $messages['hsb'] = array(
 	'narayam-help' => 'Pomoc',
 	'narayam-help-page' => 'Help:Zapodaće',
 	'narayam-checkbox-tooltip' => 'Zapodawansku metodu za- a wupinać',
+	'narayam-enable-preference' => 'Zapodawansku metodu zmóžnić',
 	'narayam-more-imes' => 'Dalše zapodawanske metody',
 	'narayam-am' => 'Amhariska transliteracija',
 	'narayam-as' => 'Asamiska transliteracija',
@@ -1526,6 +1527,7 @@ $messages['mk'] = array(
 	'narayam-help' => 'Помош',
 	'narayam-help-page' => 'Help:Внос',
 	'narayam-checkbox-tooltip' => 'За вкл/искл на метод на внос',
+	'narayam-enable-preference' => 'Овозможи вносен метод',
 	'narayam-more-imes' => 'Други вносни методи',
 	'narayam-am' => 'Транслитерација на амхарски',
 	'narayam-as' => 'Транслитерација на асамски',
@@ -1662,6 +1664,7 @@ $messages['ms'] = array(
 	'narayam-help' => 'Bantuan',
 	'narayam-help-page' => 'Help:Menaip',
 	'narayam-checkbox-tooltip' => 'Untuk memasang/menutup kaedah input',
+	'narayam-enable-preference' => 'Hidupkan kaedah input',
 	'narayam-more-imes' => 'Banyak lagi kaedah input',
 	'narayam-am' => 'Alih Huruf Amhara',
 	'narayam-as' => 'Alih Huruf Assam',
@@ -1933,10 +1936,23 @@ $messages['pms'] = array(
 	'narayam-ta-99' => 'Tamil99',
 	'narayam-ta-inscript' => 'Tamil InScript',
 	'narayam-ta' => 'Trasliterassion Tamil',
+	'narayam-ta-bamini' => 'Tamil Bamini',
+	'narayam-tcy' => 'Trasliterassion Tulu',
 	'narayam-te-inscript' => 'InScript Telugu',
 	'narayam-bn-avro' => 'Avro Bengali',
 	'narayam-bn-inscript' => 'InScript Bengali',
 	'narayam-bn-nkb' => 'NKB Bengali',
+	'narayam-ur' => 'Urdu standard',
+	'narayam-de' => 'Tedesch',
+	'narayam-gu' => 'Trasliterassion Gujarathi',
+	'narayam-gu-inscript' => 'Gujarati InScript',
+	'narayam-ru-standard' => 'Russi Standard',
+	'narayam-sah-standard' => 'Sakha Standard',
+	'narayam-hne-inscript' => 'Chhattisgarhi InScript',
+	'narayam-mai-inscript' => 'Maithili InScript',
+	'narayam-gom-deva' => 'Trasliterassion Goan Konkani-Devanagari',
+	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari InScript',
+	'narayam-he-standard-2011' => 'Ebreo Standard 2011',
 );
 
 /** Pashto (پښتو)
@@ -2646,6 +2662,13 @@ $messages['vi'] = array(
 	'narayam-he-standard-2011' => 'Tiếng Hê-brơ chuẩn 2011',
 );
 
+/** Yiddish (ייִדיש)
+ * @author Imre
+ */
+$messages['yi'] = array(
+	'narayam-help' => 'הילף',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Anakmalaysia
  * @author Bencmq
@@ -2653,6 +2676,7 @@ $messages['vi'] = array(
  * @author Liangent
  * @author PhiLiP
  * @author Xiaomingyan
+ * @author Yanmiao liu
  * @author 阿pp
  */
 $messages['zh-hans'] = array(
@@ -2663,6 +2687,7 @@ $messages['zh-hans'] = array(
 	'narayam-help' => '帮助',
 	'narayam-help-page' => 'Help:打字',
 	'narayam-checkbox-tooltip' => '要打开和关闭切换输入的法',
+	'narayam-enable-preference' => '启用输入法',
 	'narayam-more-imes' => '更多输入法',
 	'narayam-am' => '阿姆哈拉语转写',
 	'narayam-as' => '阿萨姆语转写',
