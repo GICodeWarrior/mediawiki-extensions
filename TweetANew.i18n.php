@@ -67,6 +67,27 @@ $messages['qqq'] = array(
 * $2 is the final URL of the new page - shortened if a service is enabled via this extension',
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'tweetanew-desc' => 'Ermöglicht das automatisierte oder manuell ausgelöste Tweeten von neuen oder gerade bearbeiteten Seiten',
+	'tweetanew-newaction' => 'Diese neue Seite tweeten',
+	'tweetanew-newtooltip' => 'Informationen zu dieser neuen Seite an Twitter senden',
+	'tweetanew-editaction' => 'Diese Bearbeitung tweeten',
+	'tweetanew-edittooltip' => 'Informationen zu dieser Bearbeitung an Twitter senden',
+	'tweetanew-minoredit' => 'K',
+	'tweetanew-authorcredit' => 'von',
+	'tweetanew-newdefault' => 'NEUE SEITE: $1 - $2',
+	'tweetanew-new1' => 'Gerade wurde $1 erstellt: $2',
+	'tweetanew-new2' => '$1 wurde kürzlich erstellt: $2',
+	'tweetanew-new3' => 'Schaut Euch den Link $2 an - die neue Seite $1',
+	'tweetanew-editdefault' => 'AKTUALISIERTE SEITE:  $1 - $2',
+	'tweetanew-edit1' => 'Gerade wurde $1 aktualisiert: $2',
+	'tweetanew-edit2' => '$1 wurde kürzlich aktualisiert: $2',
+	'tweetanew-edit3' => 'Schaut Euch den Link $2 an - die Seite $1 wurde geändert',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Gomoko
@@ -152,3 +173,4 @@ $messages['nl'] = array(
 	'tweetanew-edit2' => '$1 is onlangs aangepast op $2',
 	'tweetanew-edit3' => 'Bekijk $2 - het heeft nieuwe inhoud op $1',
 );
+
