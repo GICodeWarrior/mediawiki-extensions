@@ -138,8 +138,6 @@ class MoodBarHTMLEmailNotification {
 		global $wgEnotifUseRealName, $wgRequest;
 
 		$this->composed_common = true;
-	
-		$keys = array();
 
 		if ( $this->editor->isAnon() ) {
 			$pageEditor = wfMsgForContent( 'enotif_anon_editor', $this->editor->getName() );
@@ -151,7 +149,6 @@ class MoodBarHTMLEmailNotification {
 		$this->subject = wfMessage( 'moodbar-enotif-subject' )->params( $pageEditor )->escaped();
 
 		// build the body
-		$messageCache   = MessageCache::singleton();
 		$targetUserName	= $this->targetUser->getName();
 		$links = $this->buildEmailLink();
 			
@@ -162,7 +159,6 @@ class MoodBarHTMLEmailNotification {
 			$this->response,
 			$links['targetUserTalkPageUrl'],
 			$pageEditor )->escaped();
-		$textBody = MessageCache::singleton()->transform( $textBody, false, null, $this->title );
 
 		//html version, this is a little bit ugly as we have to make wiki link clickable in emails
 		$action = $wgRequest->getVal( 'action' );
