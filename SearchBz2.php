@@ -87,7 +87,7 @@ class Bz2SearchResultSet extends SearchResultSet {
 		if ($result === false)
 			return false;
 
-		list ($bzfile, $title) = $result;
+		list ($bzfile, $offset, $title) = $result;
 
 		$matches = array();
 		$row = new stdClass();

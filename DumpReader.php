@@ -10,7 +10,8 @@ class DumpReader
       $results = self::index_search($title);
       if (count($results) > 0) {
 	  $archive_file = $results[0][0];
-	  $title = $results[0][1];
+	  $plaintext_offset = $results[0][1];
+	  $title = $results[0][2];
 
 	  $article_wml = self::load_all_data($title, $archive_file);
       } else {
@@ -104,9 +105,7 @@ class DumpReader
       for ($i = $matches->begin(); !$i->equals($matches->end()); $i->next())
 	  {
 		  $entry = $i->get_document()->get_data();
-		  $fsep = strpos($entry, ':');
-		  $row = array(substr($entry, 0, $fsep), substr($entry, $fsep + 1));
-		  $result[] = $row;
+		  $result[] = explode(':', $entry, 3);
       }
       # not in Xapian 1.0.X
       #$db->close();

@@ -47,7 +47,7 @@ class SpecialOffline extends SpecialPage
 	// lookup a real article in the index can be searched
 	$results = DumpReader::index_search(wfMsg('offline_test_article'));
 	if (count($results) > 0)
-		list ($bz_file, $entry_title) = $results[0];
+		list ($bz_file, $offset, $entry_title) = $results[0];
 
 	$test_index = isset($bz_file);
 	$this->printTest($test_index, 'offline_index_test');
