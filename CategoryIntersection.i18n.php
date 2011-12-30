@@ -504,6 +504,7 @@ $messages['li'] = array(
 	'categoryintersection-desc' => "Hilt 'n tabel bie mit hashwaerd veur [[Special:CategoryIntersection|categoriedoorsjneet]] veur 'n pagina",
 	'categoryintersection-doit' => "Pagina's in al dees categorieë betrachte",
 	'categoryintersection-maxcategories' => "'t Maximaal aantal categoriedoorsjneet is $1.",
+	'categoryintersection-mincategories' => 'De mós winnigstes twie categorieë opnumme.',
 	'categoryintersection-results' => 'De zeukopdrach haet $1 {{PLURAL:$1|rizzeltaat|rizzeltate}} opgelieverd.',
 );
 
