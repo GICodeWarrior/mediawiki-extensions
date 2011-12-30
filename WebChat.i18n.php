@@ -700,13 +700,13 @@ Brezimnim uporabnikom se vzdevek ustvari samodejno, vendar ga je mogoče spremen
  * @author Rancher
  */
 $messages['sr-ec'] = array(
-	'webchat' => 'Интернет ћаскање',
+	'webchat' => 'Веб ћаскање',
 	'webchat-desc' => 'Додаје посебну страницу за [[Special:WebChat|ћаскање с другим корисницима]]',
 	'webchat-header' => "Ова посебна страница омогућава вам да се дописујете у реалном времену с осталим корисницима викије.
 Да бисте се повезали, кликните на дугме ''Connect''.
 Ако сте пријављени, ваше корисничко име биће унапред попуњено.
 Анонимним корисницима је дато насумично корисничко име, али се оно може променити.",
-	'right-webchat' => 'могућност коришћења [[Special:WebChat|интернет ћаскања]]',
+	'right-webchat' => 'коришћење [[Special:WebChat|веб ћаскања]]',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬) */
