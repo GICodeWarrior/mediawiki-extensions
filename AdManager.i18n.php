@@ -543,6 +543,22 @@ $messages['nl'] = array(
 	'right-admanager' => '[[Special:AdManager|Advertentie-instellingen beheren]]',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
+ */
+$messages['or'] = array(
+	'admanager_labelPage' => 'ପୃଷ୍ଠା ଶିରୋନାମାଗୁଡିକ',
+	'admanager_labelCategory' => 'ବିଭାଗ ନାମ',
+	'admanager_submit' => 'ପଇଠ କରିବେ',
+	'admanager_noads' => 'କୌଣସି ବିଜ୍ଞାପନ ଦେଖାଇବେ ନାହିଁ',
+	'admanager_Page' => 'ପୃଷ୍ଠାଗୁଡିକ',
+	'admanager_Category' => 'ବିଭାଗଗୁଡିକ',
+	'admanager_added' => 'ଆପଣଙ୍କର ବଦଳଗୁଡିକୁ ସାଇତାଗଲା',
+	'admanager_addedzone' => 'ଯୋଡ଼ାଯାଇଥିବା ଭାଗ',
+	'admanager_zonenotnumber' => 'ଅସୁବିଧା ! $1 ଗୋଟିଏ ସଂଖ୍ୟା ନୁହେଁ ।',
+	'admanager_return' => '[[Special:AdManager|Ad Manager]]କୁ ଫେରିବେ',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
