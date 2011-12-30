@@ -730,6 +730,26 @@ $messages['ms'] = array(
 	'emergencydesysop-nogroups' => 'Tiada',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
+ */
+$messages['nb'] = array(
+	'emergencydesysop' => 'Kriseavsetting av administrator',
+	'emergencydesysop-desc' => 'Lar en administrator ofre egne privilegier for å avsette en annen administrator.',
+	'emergencydesysop-title' => 'Fjern administratorrettighetene til både gjeldende bruker og en annen administrator.',
+	'emergencydesysop-otheradmin' => 'Andre administratorer som skal avsettes',
+	'emergencydesysop-reason' => 'Grunn for avsetting',
+	'emergencydesysop-submit' => 'Utfør',
+	'emergencydesysop-incomplete' => 'Alle skjemafeltene er påkrevd, vennligst prøv igjen.',
+	'emergencydesysop-notasysop' => 'Målbrukeren er ikke en administrator.',
+	'emergencydesysop-nogroups' => 'Ingen',
+	'emergencydesysop-done' => 'Handling utført, både du og [[$1]] har blitt avsatt som administratorer.',
+	'emergencydesysop-invalidtarget' => 'Målbrukeren eksisterer ikke.',
+	'emergencydesysop-blocked' => 'Du kan ikke se denne siden når du er blokkert',
+	'emergencydesysop-noright' => 'Du har ikke de påkrevde rettighetene til å se denne siden',
+	'right-emergencydesysop' => 'Mulighet til å avsette seg selv og en annen administrator',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -771,26 +791,6 @@ $messages['nn'] = array(
 	'right-emergencydesysop' => 'Kan avsetja seg sjølv og ein annan administrator',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Audun
- */
-$messages['nb'] = array(
-	'emergencydesysop' => 'Kriseavsetting av administrator',
-	'emergencydesysop-desc' => 'Lar en administrator ofre egne privilegier for å avsette en annen administrator.',
-	'emergencydesysop-title' => 'Fjern administratorrettighetene til både gjeldende bruker og en annen administrator.',
-	'emergencydesysop-otheradmin' => 'Andre administratorer som skal avsettes',
-	'emergencydesysop-reason' => 'Grunn for avsetting',
-	'emergencydesysop-submit' => 'Utfør',
-	'emergencydesysop-incomplete' => 'Alle skjemafeltene er påkrevd, vennligst prøv igjen.',
-	'emergencydesysop-notasysop' => 'Målbrukeren er ikke en administrator.',
-	'emergencydesysop-nogroups' => 'Ingen',
-	'emergencydesysop-done' => 'Handling utført, både du og [[$1]] har blitt avsatt som administratorer.',
-	'emergencydesysop-invalidtarget' => 'Målbrukeren eksisterer ikke.',
-	'emergencydesysop-blocked' => 'Du kan ikke se denne siden når du er blokkert',
-	'emergencydesysop-noright' => 'Du har ikke de påkrevde rettighetene til å se denne siden',
-	'right-emergencydesysop' => 'Mulighet til å avsette seg selv og en annen administrator',
-);
-
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -809,6 +809,15 @@ $messages['oc'] = array(
 	'emergencydesysop-blocked' => 'Podètz pas accedir a aquesta page tant que sètz blocat(ada)',
 	'emergencydesysop-noright' => 'Avètz pas las permissions sufisentas per accedir a aquesta pagina',
 	'right-emergencydesysop' => 'Possible de desysopar mutualament un autre utilizaire.',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
+ */
+$messages['or'] = array(
+	'emergencydesysop-reason' => 'ହଟାଇବାର କାରଣ',
+	'emergencydesysop-submit' => 'ପଇଠ କରିବେ',
+	'emergencydesysop-nogroups' => 'କିଛି ନାହିଁ',
 );
 
 /** Deitsch (Deitsch)
