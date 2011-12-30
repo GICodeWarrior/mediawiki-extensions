@@ -462,6 +462,13 @@ $messages['nah'] = array(
 	'ajaxquerypages-desc' => 'Ticcēntilīz AJAX ic tiquimpōhuāz zāzanilli iuhqui [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'ajaxquerypages-desc' => 'Legger til noe AJAX på spørringssider som [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -495,13 +502,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'ajaxquerypages-desc' => 'Legg til AJAX-funksjonar på visse spesialsider, som [[Special:Shortpages|{{int:shortpages}}]].',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'ajaxquerypages-desc' => 'Legger til noe AJAX på spørringssider som [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
 /** Occitan (Occitan)
@@ -712,6 +712,13 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'ajaxquerypages-desc' => 'Thêm một số AJAX vào QueryPages như [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'ajaxquerypages-desc' => 'Àfikún AJAX díẹ́ mọ́ àwọn ojúewé ìtọrọ bíi [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
 /** Cantonese (粵語)
