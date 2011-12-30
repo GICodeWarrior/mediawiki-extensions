@@ -974,6 +974,7 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author ITshnik
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
@@ -985,6 +986,7 @@ $messages['ka'] = array(
 	'vector-editwarning-preference' => 'გამაფრთხილე, როდესაც დავტოვებ რედაქტირებად გვერდს, დაუმახსოვრებელი ცვლილებებით',
 	'vector-simplesearch-search' => 'ძიება',
 	'vector-simplesearch-containing' => 'შეიცავს...',
+	'vector-noexperiments-preference' => 'გამომრიცხე შემდგომი ექსპერიმენტებისგან.',
 );
 
 /** Kazakh (Қазақша)
