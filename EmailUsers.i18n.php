@@ -377,6 +377,16 @@ $messages['nl'] = array(
 	'emailusers-toomanyrecipientsselected' => 'Er zijn te veel ontvangers geselecteerd. U mag maximaal {{PLURAL:$1|$1 ontvanger|$1 ontvangers}} selecteren.',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
+ */
+$messages['or'] = array(
+	'right-sendbatchemail' => 'ଏକାଥରେ ଏକାଧିକ ଗ୍ରାହକଙ୍କୁ ଇ-ମେଲ ପଠାଇବେ',
+	'emailusers' => 'ଇ-ମେଲ ବ୍ୟବହାରକାରୀ',
+	'emailusers-target-reverse' => 'ବଛାଯାଇଥିବା ବ୍ୟବହାରକାରୀଙ୍କୁ ଛାଡି ଅନ୍ୟ ସମସ୍ତଙ୍କୁ ପଠାନ୍ତୁ',
+	'emailusers-norecipientselected' => 'କୌଣସି ଗ୍ରାହକ ବଛାଯାଇନାହାନ୍ତି ।',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Woytecr
