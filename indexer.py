@@ -13,6 +13,7 @@ class Indexer(object):
     self.base_dir = os.path.dirname(xmlbz2_path)
     self.xmlbz2_path = xmlbz2_path
     self.splits_dir = self.base_dir
+    self.db_dir = os.path.join(self.base_dir, "db")
     #self.splits_dir = os.path.join(self.base_dir, "wiki-splits")
 
   def Semaphored(f):
@@ -44,7 +45,7 @@ class Indexer(object):
 
   @Semaphored
   def index(self):
-    db = Db(self.splits_dir)
+    db = Db(self.db_dir)
     article_title_re = re.compile(' *<title>([^<]+)</title>')
     for dirpath, subdirs, files in os.walk(self.splits_dir):
       for f in files:
