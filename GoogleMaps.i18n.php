@@ -4370,11 +4370,15 @@ $wgGoogleMapsMessages['oc'] = array(
 );
 
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
  * @author Jose77
  * @author Psubhashish
  */
 $wgGoogleMapsMessages['or'] = array(
 	'gm-balloon-title' => 'ଶିରୋନାମା:',
+	'gm-width' => 'ଓସାର',
+	'gm-height' => 'ଉଚ୍ଚତା',
+	'gm-overview-control' => 'ନିରୀକ୍ଷଣ',
 	'gm-zoom-control' => 'ଦିଗବାରେଣି',
 	'gm-search' => 'ଖୋଜିବା',
 );
