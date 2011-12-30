@@ -112,6 +112,25 @@ $messages['de-formal'] = array(
 	'signupapi-enterpassword' => 'Sie müssen ein Passwort eingeben.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'usersignup' => 'Wužywarske registrěrowanje',
+	'signupapi-desc' => 'Rumujo [[Special:UserLogin|pśizjawjeński bok]] a pśidawa API za pśizjawjenje',
+	'signupapi-ok' => 'W pórěźe',
+	'signupapi-noname' => 'Wužywarske mě njejo se pódało',
+	'signupapi-userexists' => 'Wužywaŕ eksistěrujo',
+	'signupapi-enterpassword' => 'Musyš gronidło zapódaś',
+	'signupapi-passwordtooshort' => 'Gronidło jo pśekrotke',
+	'signupapi-weak' => 'Słabe',
+	'signupapi-medium' => 'Srědne',
+	'signupapi-strong' => 'Mócne',
+	'signupapi-badretype' => 'Gronidle, kótarejž sy zapódał, se njemakatej',
+	'signupapi-passwordsmatch' => 'Gronidle se makatej',
+	'signupapi-invalidemailaddress' => 'E-mailowa adresa jo njepłaśiwa',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Gomoko
@@ -181,6 +200,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'usersignup' => 'Wužiwarske registrowanje',
 	'signupapi-desc' => 'Porjedźa [[Special:UserLogin|přizjewjensku stronu]] a přidawa API za přizjewjenje',
 	'signupapi-ok' => 'W porjadku',
 	'signupapi-noname' => 'Wužiwarske mjeno njeje so podało',
