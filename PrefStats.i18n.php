@@ -1021,7 +1021,7 @@ Cliquez sur l’une d’entre elles pour voir les statistiques à son propos.',
  */
 $messages['frp'] = array(
 	'prefstats' => 'Statistiques de les prèferences',
-	'prefstats-desc' => 'Statistiques sur lo nombro d’utilisators qu’ont quârques prèferences activâs.',
+	'prefstats-desc' => 'Statistiques sur lo nombro d’usanciérs qu’ont quârques prèferences activâs.',
 	'prefstats-title' => 'Statistiques de les prèferences',
 	'prefstats-list-intro' => 'Ora, cetes prèferences sont siuvues.
 Clicâd dessus yona d’entre-lor por vêre les statistiques a son propôs.',
