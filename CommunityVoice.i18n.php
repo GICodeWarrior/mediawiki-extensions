@@ -1031,6 +1031,21 @@ $messages['sv'] = array(
 	'communityvoice-ratings-error-no-title' => 'Titelattribut saknas i värderingstagg.',
 );
 
+/** Tamil (தமிழ்)
+ * @author Shanmugamp7
+ */
+$messages['ta'] = array(
+	'communityvoice' => 'சமுதாய குரல்',
+	'communityvoice-desc' => 'சமுதாய பங்கேற்பு கருவிகள்',
+	'communityvoice-ratings' => 'மதிப்பீடுகள்',
+	'communityvoice-ratings-scale-status-sending' => 'அனுப்பப்படுகிறது...',
+	'communityvoice-ratings-scale-status-error' => 'அனுப்புவதில் பிழை !',
+	'communityvoice-ratings-scale-status-thanks' => 'வாக்களித்தமைக்கு நன்றி!',
+	'communityvoice-ratings-scale-stats' => '$1/ 5 ( $2  {{PLURAL:$2| வாக்கு|வாக்குகள்}}cast)',
+	'communityvoice-ratings-error-no-category' => 'பகுப்பு பண்புக்கூறு மதிப்பீடு குறிச்சொல்லில் காணவில்லை.',
+	'communityvoice-ratings-error-no-title' => 'தலைப்பு பண்புக்கூறு மதிப்பீடு குறிச்சொல்லில் காணவில்லை.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author చక్రవర్తి
