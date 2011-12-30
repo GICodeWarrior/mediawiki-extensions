@@ -490,6 +490,14 @@ $messages['oc'] = array(
 	'externalpages-no-page' => 'Cap de pagina pas indicada',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
+ */
+$messages['or'] = array(
+	'externalpages' => 'ବାହାର ପୃଷ୍ଠାଗୁଡିକ',
+	'externalpages-no-page' => 'କୌଣସି ପୃଷ୍ଠା ଦର୍ଶାଯାଇନାହିଁ',
+);
+
 /** Papiamento (Papiamentu)
  * @author Sdm1985
  */
