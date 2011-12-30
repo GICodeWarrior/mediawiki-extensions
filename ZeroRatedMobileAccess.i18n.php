@@ -24,11 +24,13 @@ $messages['en'] = array (
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Yes',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'No',
 );
+
 $messages['ja'] = array (
 	'zero-rated-mobile-access-desc' => 'ゼロ格モバイルアクセス',
 	'zero-rated-mobile-access-search' => '検索する',
 	'zero-rated-mobile-access-language-options-wiki-page' => 'Language_options',
 );
+
 $messages['qqq'] = array(
 	'zero-rated-mobile-access-desc' => '{{desc}}',
 	'zero-rated-mobile-access-search' => 'Text for search action on the search button',

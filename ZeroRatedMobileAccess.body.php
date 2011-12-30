@@ -411,19 +411,6 @@ class ExtZeroRatedMobileAccess {
 	}
 
 	/**
-	* Returns the number of seconds an item should stay in cache
-	* 
-	* @return int: Time in seconds
-	*/
-	private static function getMaxAge() {
-		wfProfileIn( __METHOD__ );
-		// add 10 seconds to cater for the time deviation between servers
-		$expiry = self::todaysStart() + 24 * 3600 - wfTimestamp() + 10;
-		wfProfileOut( __METHOD__ );
-		return min( $expiry, 3600 );
-	}
-
-	/**
 	 * Returns the Unix timestamp of current day's first second
 	 * 
 	 * @return int: Timestamp
@@ -444,6 +431,19 @@ class ExtZeroRatedMobileAccess {
 		}
 		wfProfileOut( __METHOD__ );
 		return $time;
+	}
+
+	/**
+	* Returns the number of seconds an item should stay in cache
+	* 
+	* @return int: Time in seconds
+	*/
+	private static function getMaxAge() {
+		wfProfileIn( __METHOD__ );
+		// add 10 seconds to cater for the time deviation between servers
+		$expiry = self::todaysStart() + 24 * 3600 - wfTimestamp() + 10;
+		wfProfileOut( __METHOD__ );
+		return min( $expiry, 3600 );
 	}
 
 	/**
