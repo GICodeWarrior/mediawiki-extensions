@@ -229,8 +229,8 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'usercontactlink-baduser' => 'nom d’utilisator fôx',
-	'usercontactlinks-desc' => 'Pèrmèt d’apondre simplament et avouéc consistence d’ôtros noms d’utilisators en utilisent la sintaxa ^^^user^^^.',
+	'usercontactlink-baduser' => 'nom d’usanciér fôx',
+	'usercontactlinks-desc' => 'Pèrmèt d’apondre simplament et avouéc consistence d’ôtros noms d’usanciérs en utilisent la sintaxa ^^^user^^^.',
 );
 
 /** Galician (Galego)
@@ -396,6 +396,14 @@ $messages['mt'] = array(
 	'usercontactlinks-desc' => "Jipprovdi l-abilità li jżid sempliċement u konstantament ismijiet ta' l-utent ġodda bl-użu tas-sintassi ^^^user^^^",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'usercontactlink-baduser' => 'ukorrekt brukernavn',
+	'usercontactlinks-desc' => 'Gir muligheten til å lenke til andre brukernavn med syntaksen ^^^bruker^^^.',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -418,14 +426,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'usercontactlink-baduser' => 'ukorrekt brukernamn',
 	'usercontactlinks-desc' => 'Gjev høve til å lenke til andre brukernamn med syntaksen ^^^brukar^^^.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'usercontactlink-baduser' => 'ukorrekt brukernavn',
-	'usercontactlinks-desc' => 'Gir muligheten til å lenke til andre brukernavn med syntaksen ^^^bruker^^^.',
 );
 
 /** Occitan (Occitan)
