@@ -134,7 +134,7 @@ class MoodBarHooks {
 			"$dir/AddIDToIndexes2.sql", true
 		) );
 
-		$updater->addExtensionIndex( 'moodbar_feedback', 'mbfr_timestamp_id', "$dir/mbf_timestamp_id.sql" );
+		$updater->addExtensionIndex( 'moodbar_feedback', 'mbf_timestamp_id', "$dir/mbf_timestamp_id.sql" );
 		$updater->addExtensionField( 'moodbar_feedback', 'mbf_hidden_state', "$dir/mbf_hidden_state.sql" );
 		$updater->addExtensionTable( 'moodbar_feedback_response', "$dir/moodbar_feedback_response.sql" );
 		$updater->addExtensionIndex( 'moodbar_feedback_response', 'mbfr_timestamp_id', "$dir/mbfr_timestamp_id_index.sql" );
