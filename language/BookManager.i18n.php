@@ -373,6 +373,19 @@ $messages['lb'] = array(
 	'bm-printversion-inexistent-book' => "D'Buch gouf net fonnt. Gitt w.e.g. den Numm vun engem Buch dat et gëtt a fir seng Drockversioun ze kréien.",
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'bookmanager-desc' => 'Hölpmiddele veur beuk',
+	'bm-booktools-section' => 'Hölpmiddele veur book',
+	'bm-randomchapter-link' => 'Willekäörig hoofstök',
+	'bm-printversion' => 'Aafdrökbaar versie',
+	'bm-printversion-desc' => "Maak 'n [[Special:PrintVersion|aafdrökbaar versie]] van 'n book",
+	'bm-printversion-no-book' => "Veur de naam van 'n besjtaond book in om de aafdrökbaar versie te downloade.",
+	'bm-printversion-inexistent-book' => "'t Book is neet aangetroffe. Veur de naam van 'n besjtaond book in om de aafdrökbaar versie te downloade.",
+);
+
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  * @author Ignas693
