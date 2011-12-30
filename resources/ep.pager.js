@@ -24,7 +24,7 @@
 				ep.api.remove(
 					{
 						'type': $this.attr( 'data-type' ),
-						'id': $this.attr( 'data-id' )
+						'ids': [ $this.attr( 'data-id' ) ]
 					},
 					function( result ) {
 						if ( result.success ) {
@@ -46,6 +46,47 @@
 					}
 				);
 			}
+		} );
+		
+		$( '.ep-pager-select-all' ).change( function() {
+			var a = $( this ).closest( 'table' ).find( 'input:checkbox' ).prop( 'checked', $( this ).is( ':checked' ) );
+		} );
+
+		$( '.ep-pager-delete-selected' ).click( function() {
+			var selectAllCheckbox = $( '#ep-pager-select-all-' + $( this ).attr( 'data-pager-id' ) );
+
+			var ids = [];
+
+			selectAllCheckbox.closest( 'table' ).find( 'input[type=checkbox]:checked' ).each( function( i, element ) {
+				ids.push( $( element ).val() );
+			} );
+
+			if ( ids.length < 1 || !confirm( mw.msg( 'ep-pager-confirm-delete-selected' ) ) ) {
+				return;
+			}
+
+			var pagerId = $( this ).attr( 'data-pager-id' );
+
+			ep.api.remove(
+				{
+					'type': $( this ).attr( 'data-type' ),
+					'ids': ids
+				},
+				function( result ) {
+					if ( result.success ) {
+						for ( i in ids ) {
+							if ( ids.hasOwnProperty( i ) ) {
+								console.log('#select-' + pagerId + '-' + ids[i]);
+								console.log($( '#select-' + pagerId + '-' + ids[i] ));
+								$( '#select-' + pagerId + '-' + ids[i] ).closest( 'tr' ).remove();
+							}
+						}
+					}
+					else {
+						alert( mw.msg( 'ep-pager-delete-selected-fail' ) ); // TODO
+					}
+				}
+			);
 		} );
 		
 	} );

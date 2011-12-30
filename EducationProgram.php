@@ -182,12 +182,17 @@ $wgResourceModules['ep.pager'] = $moduleTemplate + array(
 	'scripts' => array(
 		'ep.pager.js',
 	),
+	'styles' => array(
+		'ep.pager.css',
+	),
 	'dependencies' => array(
 		'ep.api',
 	),
 	'messages' => array(
 		'ep-pager-confirm-delete',
 		'ep-pager-delete-fail',
+		'ep-pager-confirm-delete-selected',
+		'ep-pager-delete-selected-fail',
 	),
 );
 

@@ -21,6 +21,16 @@ class ApiDeleteEducation extends ApiBase {
 		'student' => 'EPStudent',
 		'mentor' => 'EPMentor',
 	);
+
+	public static function getTypeForClassName( $className ) {
+		static $map = null;
+
+		if ( is_null( $map ) ) {
+			$map = array_flip( self::$typeMap );
+		}
+
+		return $map[$className];
+	}
 	
 	public function execute() {
 		$params = $this->extractRequestParams();

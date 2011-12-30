@@ -40,5 +40,36 @@ class EPStudent extends EPDBObject {
 	public static function newFromUser( User $user, $fields = null ) {
 		return self::selectRow( $fields, array( 'user_id' => $user->getId() ) );
 	}
+
+	/**
+	 * Associate the student with the provided terms.
+	 *
+	 * @since 0.1
+	 *
+	 * @param array $terms
+	 *
+	 * @return bool
+	 */
+	public function associateWithTerms( array /* of EPTerm */ $terms ) {
+		$dbw = wfGetDB( DB_MASTER );
+
+		$success = true;
+
+		$dbw->begin();
+
+		foreach ( $terms as /* EPTerm */ $term ) {
+			$success = $dbw->insert(
+				'ep_students_per_term',
+				array(
+					'spt_student_id' => $this->getId(),
+					'spt_term_id' => $term->getId(),
+				)
+			) && $success;
+		}
+
+		$dbw->commit();
+
+		return $success;
+	}
 	
 }

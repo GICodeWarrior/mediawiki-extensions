@@ -14,8 +14,8 @@ window.educationProgram = new( function() {
 			var requestArgs = {
 				'action': 'deleteeducation',
 				'format': 'json',
-				'token': mw.user.tokens.get( 'editToken' ),
-				'ids': data.id,
+				'token': window.mw.user.tokens.get( 'editToken' ),
+				'ids': data.ids.join( '|' ),
 				'type': data.type
 			};
 			

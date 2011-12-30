@@ -580,7 +580,7 @@ abstract class EPDBObject {
 	 * 
 	 * Field names can also be provdied as an array with as first element a table name, such as
 	 * $conditions = array(
-	 *     array( array( 'tablename', 'fieldname' ), $value ),
+	 *	 array( array( 'tablename', 'fieldname' ), $value ),
 	 * );
 	 *
 	 * @since 0.1

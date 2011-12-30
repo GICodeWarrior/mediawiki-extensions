@@ -14,6 +14,12 @@
 class SpecialEnroll extends SpecialEPPage {
 
 	/**
+	 * @since 0.1
+	 * @var EPTerm
+	 */
+	protected $term;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 0.1
@@ -51,9 +57,13 @@ class SpecialEnroll extends SpecialEPPage {
 				$this->showWarning( wfMessage( 'ep-enroll-invalid-token' ) );
 			}
 			else {
+				$this->term = $term;
+
+				$this->setPageTitle( $term );
+
 				if ( $this->getUser()->isLoggedIn() ) {
 					if ( $this->getUser()->isAllowed( 'epstudent' ) ) {
-						$this->showEntrollmentForm( $term );
+						$this->showEnrollmentForm( $term );
 					}
 					else {
 						$this->showWarning( wfMessage( 'ep-enroll-not-allowed' ) );
@@ -64,7 +74,22 @@ class SpecialEnroll extends SpecialEPPage {
 				}
 			}
 		}
-		
+	}
+
+	/**
+	 *
+	 *
+	 * @since 0.1
+	 *
+	 * @param EPTerm $term
+	 */
+	protected function setPageTitle( EPTerm $term ) {
+		$this->getOutput()->setPageTitle( wfMsgExt(
+			'ep-enroll-title',
+			'parsemag',
+			$term->getCourse( 'name' )->getField( 'name' ),
+			$term->getOrg( 'name' )->getField( 'name' )
+		) );
 	}
 
 	/**
@@ -78,18 +103,22 @@ class SpecialEnroll extends SpecialEPPage {
 		$out = $this->getOutput();
 		
 		$out->addWikiMsg( 'ep-enroll-login-first' );
-		
+
+		$out->addHTML( '<ul><li>' );
+
 		$out->addHTML( Linker::linkKnown(
-			SpecialPage::getTitleFor( 'UserLogin' ),
+			SpecialPage::getTitleFor( 'Userlogin' ),
 			wfMsgHtml( 'ep-enroll-login-and-entroll' ),
 			array(),
 			array(
 				'returnto' => $this->getTitle( $this->subPage )->getFullText()
 			)
 		) );
-		
+
+		$out->addHTML( '</li><li>' );
+
 		$out->addHTML( Linker::linkKnown(
-			SpecialPage::getTitleFor( 'UserLogin' ),
+			SpecialPage::getTitleFor( 'Userlogin' ),
 			wfMsgHtml( 'ep-enroll-signup-and-entroll' ),
 			array(),
 			array(
@@ -97,6 +126,8 @@ class SpecialEnroll extends SpecialEPPage {
 				'type' => 'signup'
 			)
 		) );
+
+		$out->addHTML( '</li></ul>' );
 	}
 	
 	/**
@@ -106,8 +137,80 @@ class SpecialEnroll extends SpecialEPPage {
 	 * 
 	 * @param EPTerm $term
 	 */
-	protected function showEntrollmentForm( EPTerm $term ) {
-		
+	protected function showEnrollmentForm( EPTerm $term ) {
+		$form = new HTMLForm( $this->getFormFields(), $this->getContext() );
+
+		$form->setSubmitCallback( array( $this, 'handleSubmission' ) );
+		$form->setSubmitText( wfMsg( 'educationprogram-org-submit' ) );
+		$form->setWrapperLegend( $this->msg( 'ep-enroll-legend' ) );
+
+		if ( $form->show() ) {
+			$this->onSuccess();
+		}
+	}
+
+	/**
+	 *
+	 *
+	 * @since 0.1
+	 *
+	 * @return array
+	 */
+	protected function getFormFields() {
+		$fields = array();
+
+		$fields['enroll'] = array(
+			'type' => 'hidden',
+			'default' => 1
+		);
+
+		return $fields;
+	}
+
+	/**
+	 * Process the form.  At this point we know that the user passes all the criteria in
+	 * userCanExecute().
+	 *
+	 * @param array $data
+	 *
+	 * @return Bool|Array
+	 */
+	public function handleSubmission( array $data ) {
+		$student = EPStudent::newFromUser( $this->getUser(), array( 'id' ) );
+
+		if ( $student === false ) {
+			$student = new EPStudent( array( 'user_id' => $this->getUser()->getId() ), true );
+		}
+
+		$fields = array(); // TODO
+
+		$student->setFields( $fields );
+
+		$success = $student->writeToDB();
+
+		if ( $success ) {//q($this->term);
+			$success = $student->associateWithTerms( array( $this->term ) ) && $success;
+		}
+
+		if ( $success ) {
+			return true;
+		}
+		else {
+			return array(); // TODO
+		}
+	}
+
+	/**
+	 * Gets called after the form is saved.
+	 *
+	 * @since 0.1
+	 */
+	public function onSuccess() {
+		$this->getOutput()->redirect(
+			SpecialPage::getTitleFor( 'MyCourses' )->getLocalURL( array(
+				'enrolled' => 1
+			) )
+		);
 	}
 
 }

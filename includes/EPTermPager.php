@@ -151,5 +151,15 @@ class EPTermPager extends EPPager {
 		
 		return $links;
 	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see EPPager::getMultipleItemActions()
+	 */
+	protected function getMultipleItemActions() {
+		$actions = parent::getMultipleItemActions();
+
+		return $actions;
+	}
 
 }

@@ -138,7 +138,20 @@ abstract class EPPager extends TablePager {
 		$fields = $this->getFieldNames();
 		
 		foreach ( $this->getFieldNames() as $field => $name ) {
-			if ( $field === 0 ) {
+			if ( $field === '_select' ) {
+				$value = Html::element(
+					'input',
+					array(
+						'type' => 'checkbox',
+						'value' => $this->currentObject->getId(),
+						'id' => 'select-' . $this->getInstanceNumber() . '-' . $this->currentObject->getId(),
+						'name' => 'epitemsselected',
+						'class' => 'ep-select-item',
+						'data-pager-id' => $this->getInstanceNumber(),
+					)
+				);
+			}
+			elseif ( $field === '_controls' ) {
 				$value = $this->getLanguage()->pipeList( $this->getControlLinks( $this->currentObject ) );
 			}
 			else {
@@ -183,9 +196,85 @@ abstract class EPPager extends TablePager {
 		} );
 		
 		$fields = $this->getFieldNameList( $fields );
-		$fields[0] = ''; // This is a hack to get an extra colum for the control links.
+		
+		if ( $this->hasMultipleItemControl() ) {
+			// This is a hack to get an extra colum for select all control.
+			$fields = array_merge( array( '_select' => '' ), $fields );
+		}
+		
+		$fields['_controls'] = ''; // This is a hack to get an extra colum for the control links.
 		
 		return $fields;
+	}
+	
+	/**
+	 * Returns HTML for the multiple item control.
+	 * With actions comming from @see getMultipleItemActions.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return string
+	 */
+	public function getMultipleItemControl() {
+		if ( !$this->hasMultipleItemControl() ) {
+			return '';
+		}
+		
+		$controls = array();
+
+		foreach ( $this->getMultipleItemActions() as $label => $attribs ) {
+			if ( array_key_exists( 'class', $attribs ) ) {
+				$attribs['class'] .= ' ep-pager-items-action';
+			}
+			else {
+				$attribs['class'] = 'ep-pager-items-action';
+			}
+
+			$attribs['data-pager-id'] = $this->getInstanceNumber();
+
+			$controls[] = Html::element(
+				'button',
+				$attribs,
+				$label
+			);
+		}
+
+		return
+			'<fieldset>' .
+				'<legend>' . wfMsgHtml( 'ep-pager-withselected' ) . '</legend>' .
+				implode( '', $controls ) .
+			'</fieldset>';
+	}
+	
+	/**
+	 * Return the multiple item actions the current user can do.
+	 * Override in deriving classes to add actions.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
+	protected function getMultipleItemActions() {
+		$actions = array();
+
+		if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
+			$actions[wfMsg( 'ep-pager-delete-selected' )] = array(
+				'class' => 'ep-pager-delete-selected',
+				'data-type' => ApiDeleteEducation::getTypeForClassName( $this->className )
+			);
+		}
+
+		return $actions;
+	}
+
+	/**
+	 *
+	 * @since 0.1
+	 *
+	 * @return boolean
+	 */
+	protected function hasMultipleItemControl() {
+		return count( $this->getMultipleItemActions() ) > 0;
 	}
 	
 	/**
@@ -262,8 +351,9 @@ abstract class EPPager extends TablePager {
 		$headers = array();
 		$c = $this->className;
 		
-		foreach ( $fields as $fieldName ) {
-			$headers[$c::getPrefixedField( $fieldName )] = $this->getMsg( 'header-' . $fieldName );
+		foreach ( $fields as $fieldName => $fieldLabel ) {
+			$message = $fieldLabel === '' ? '' : $this->getMsg( 'header-' . $fieldLabel );
+			$headers[$c::getPrefixedField( $fieldLabel )] = $message;
 		}
 		
 		return $headers;
@@ -463,6 +553,81 @@ abstract class EPPager extends TablePager {
 			),
 			wfMsg( 'delete' )
 		);
+	}
+
+	/**
+	 * (non-PHPdoc)
+	 * @see TablePager::getStartBody()
+	 * 
+	 * Mostly just a copy of parent class function.
+	 * Allows for having a checlbox in the selection column header.
+	 * Would obviously be better if parent class supported doing this nicer.
+	 */
+	function getStartBody() {
+		global $wgStylePath;
+		$tableClass = htmlspecialchars( $this->getTableClass() );
+		$sortClass = htmlspecialchars( $this->getSortHeaderClass() );
+	
+		$s = "<table style='border:1;' class=\"mw-datatable $tableClass\"><thead><tr>\n";
+		$fields = $this->getFieldNames();
+	
+		# Make table header
+		foreach ( $fields as $field => $name ) {
+			if ( $field === '_select' ) {
+				$s .= '<th>' . Html::element( 'input', array(
+					'type' => 'checkbox',
+					'name' => 'ep-pager-select-all-' . $this->getInstanceNumber(),
+					'id' => 'ep-pager-select-all-' . $this->getInstanceNumber(),
+					'class' => 'ep-pager-select-all',
+				) ) . "</th>\n";
+			}
+			elseif ( strval( $name ) == '' ) {
+				$s .= "<th>&#160;</th>\n";
+			} elseif ( $this->isFieldSortable( $field ) ) {
+				$query = array( 'sort' => $field, 'limit' => $this->mLimit );
+				if ( $field == $this->mSort ) {
+					# This is the sorted column
+					# Prepare a link that goes in the other sort order
+					if ( $this->mDefaultDirection ) {
+					# Descending
+					$image = 'Arr_d.png';
+				$query['asc'] = '1';
+				$query['desc'] = '';
+				$alt = htmlspecialchars( wfMsg( 'descending_abbrev' ) );
+				} else {
+					# Ascending
+					$image = 'Arr_u.png';
+				$query['asc'] = '';
+				$query['desc'] = '1';
+				$alt = htmlspecialchars( wfMsg( 'ascending_abbrev' ) );
+				}
+				$image = htmlspecialchars( "$wgStylePath/common/images/$image" );
+				$link = $this->makeLink(
+							"<img width=\"12\" height=\"12\" alt=\"$alt\" src=\"$image\" />" .
+				htmlspecialchars( $name ), $query );
+				$s .= "<th class=\"$sortClass\">$link</th>\n";
+				} else {
+					$s .= '<th>' . $this->makeLink( htmlspecialchars( $name ), $query ) . "</th>\n";
+				}
+			}
+			else {
+				$s .= '<th>' . htmlspecialchars( $name ) . "</th>\n";
+			}
+		}
+		$s .= "</tr></thead><tbody>\n";
+		return $s;
+	}
+
+	protected $instanceNumber = null;
+
+	protected function getInstanceNumber() {
+		static $instanceCount = 0;
+
+		if ( is_null( $this->instanceNumber ) ) {
+			$this->instanceNumber = $instanceCount++;
+		}
+
+		return $this->instanceNumber;
 	}
 
 }

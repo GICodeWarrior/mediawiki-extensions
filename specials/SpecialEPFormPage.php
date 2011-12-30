@@ -304,8 +304,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	
 	/**
 	 * Process the form.  At this point we know that the user passes all the criteria in
-	 * userCanExecute(), and if the data array contains 'Username', etc, then Username
-	 * resets are allowed.
+	 * userCanExecute().
 	 *
 	 * @param array $data
 	 *

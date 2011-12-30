@@ -97,6 +97,8 @@ $messages['en'] = array(
 	'ep-pager-showonly' => 'Show only items with',
 	'ep-pager-clear' => 'Clear filters',
 	'ep-pager-go' => 'Go',
+	'ep-pager-withselected' => 'With selected',
+	'ep-pager-delete-selected' => 'Delete',
 
 	// Org pager
 	'eporgpager-header-name' => 'Name',
@@ -155,6 +157,8 @@ $messages['en'] = array(
 	// ep.pager
 	'ep-pager-confirm-delete' => 'Are you sure you want to delete this item?',
 	'ep-pager-delete-fail' => 'Could not delete this item.',
+	'ep-pager-confirm-delete-selected' => 'Are you sure you want to delete the selected items?',
+	'ep-pager-delete-selected-fail' => 'Could not delete the selected items.',
 
 	// Special:Institution
 	'ep-institution-none' => 'There is no institution with name "$1". See [[Special:Institution|here]] for a list of institutions.',
@@ -191,6 +195,7 @@ $messages['en'] = array(
 	'ep-term-nav-edit' => 'Edit this term',
 
 	// Special:Enroll
+	'ep-enroll-title' => 'Enroll for $1 at $2',
 	'ep-enroll-login-first' => 'Before you can enroll in this course, you need to login.',
 	'ep-enroll-login-and-entroll' => 'Login with an existing account & enroll',
 	'ep-enroll-signup-and-entroll' => 'Create a new account & enroll',
@@ -199,6 +204,7 @@ $messages['en'] = array(
 	'ep-enroll-no-id' => 'You need to specify a term to enroll for. A list of existing terms can be found [[Special:Terms|here]].',
 	'ep-enroll-no-token' => 'You need to provide the token needed to enroll for this term.',
 	'ep-enroll-invalid-token' => 'The token you provided is invalid.',
+	'ep-enroll-legend' => 'Enroll',
 	
 	// Navigation links
 	'ep-nav-orgs' => 'Institution list',
