@@ -166,6 +166,16 @@ $messages['lb'] = array(
 	'categorize-advice' => 'Klickt op déi Etiquetten déi Dir mat dësem Artikel verbanne wëllt:',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'categorize-desc' => "Deit 'n invoorvèld bie aan de bewirkings- en uploadpagina woemit gebroekers categorieë kinne toekènne",
+	'categorize-title' => 'Kènniskwalifikatie',
+	'categorize-footer' => "Num kontak op mit 'ne [[Special:ListUsers/sysop|systeemwèrker]] es te 'n label wils biedoon.",
+	'categorize-advice' => "Klik op de labels es te 'm eigesjap aan dees pagina wils biedoon:",
+);
+
 /** Lithuanian (Lietuvių)
  * @author Ignas693
  */
