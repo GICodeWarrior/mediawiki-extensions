@@ -1014,6 +1014,23 @@ $messages['oc'] = array(
 	'ea-selectcss' => "Seleccionar un fuèlh d'estil CSS",
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
+ */
+$messages['or'] = array(
+	'ea-denied' => 'ଅନୁମତି ଦିଆଗଲାନାହିଁ',
+	'ea-show' => 'ଗ୍ରାହକ ତାଲିକା ଦେଖିବେ',
+	'ea-from' => 'କାହାଠାରୁ:',
+	'ea-to' => 'କାହାକୁ:',
+	'ea-send' => 'ପଠାଇବେ',
+	'ea-subject' => 'ବିଷୟ :',
+	'ea-message' => 'ସନ୍ଦେଶ :',
+	'ea-style' => 'ଶୈଳୀ:',
+	'ea-selectcss' => 'ଆପଣ ଗୋଟିଏ ଶୈଳୀ ବାଛିପରିବେ',
+	'ea-data' => 'ତଥ୍ୟ',
+	'ea-allusers' => 'ସମସ୍ତ ବ୍ୟବହାରକାରୀ',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
