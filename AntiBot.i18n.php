@@ -301,6 +301,13 @@ $messages['ig'] = array(
 	'antibot-desc' => 'Njide spambot dí sérém nè lé na na dór ngwóngwó',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'antibot-desc' => 'Nalaka a sukogan ti obra para iti spambot a panag-kita ken panga-kalbit kadagit karkarga',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */
@@ -402,6 +409,14 @@ $messages['ms'] = array(
 	'antibot-desc' => 'Sebuah rangka kerja perisian ringkas untuk pemeriksaan bot spam dan beban picu',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author EivindJ
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'antibot-desc' => 'Enkel struktur for kontroll av spamroboter',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -437,14 +452,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'antibot-desc' => 'Enkel struktur for spamrobotkontroll',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author EivindJ
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'antibot-desc' => 'Enkel struktur for kontroll av spamroboter',
 );
 
 /** Occitan (Occitan)
