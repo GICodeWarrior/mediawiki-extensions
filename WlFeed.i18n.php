@@ -241,18 +241,18 @@ $messages['ms'] = array(
 	'wlfeed-desc' => 'Kelas penjanaan suapan yang dipertingkat',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'wlfeed-desc' => 'Klassen voor het aanmaken van verbeterde feeds',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'wlfeed-desc' => 'Avanserte genereringsklasser for mating',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'wlfeed-desc' => 'Klassen voor het aanmaken van verbeterde feeds',
 );
 
 /** Occitan (Occitan)
@@ -321,10 +321,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'wlfeed-desc' => 'Класе за побољшане фидове',
+	'wlfeed-desc' => 'Побољшане класе за стварање довода',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬) */
