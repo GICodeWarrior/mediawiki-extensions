@@ -1109,6 +1109,7 @@ $messages['ig'] = array(
  */
 $messages['ilo'] = array(
 	'group-patroller' => 'Dagiti agpatpattrulia',
+	'group-patroller-member' => '{{GENDER:$1|agpatpatrulia}}',
 );
 
 /** Icelandic (Íslenska)
