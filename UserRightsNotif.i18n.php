@@ -439,7 +439,7 @@ $2',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'userrightsnotifysubject' => 'Changement d’apartegnence a des tropes d’utilisators dessus $1',
+	'userrightsnotifysubject' => 'Changement d’apartegnence a des tropes d’usanciérs dessus $1',
 );
 
 /** Galician (Galego)
@@ -785,6 +785,25 @@ $messages['mt'] = array(
 	'userrightsnotif-desc' => "Tibgħat nota permezz ta' posta elettronika biex tinforma lill-utenti fuq tibdil tad-drittjiet",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'userrightsnotifysubject' => 'Endring av gruppemedlemskap på $1',
+	'userrightsnotifybody' => 'Hei $1.
+
+Du informeres herved at dine gruppemedlemskap på $2 ble endret av $3 $4.
+
+Lagt til: $5
+Fjernet: $6
+
+Hilsen
+
+$2',
+	'userrightsnotif-desc' => 'Sender e-postmelding til brukere ved rettighetsendringer',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Tvdm
@@ -819,25 +838,6 @@ Fjerna: $6
 Helsing
 $2',
 	'userrightsnotif-desc' => 'Sender e-postmelding til brukarar ved endring av rettane deira',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'userrightsnotifysubject' => 'Endring av gruppemedlemskap på $1',
-	'userrightsnotifybody' => 'Hei $1.
-
-Du informeres herved at dine gruppemedlemskap på $2 ble endret av $3 $4.
-
-Lagt til: $5
-Fjernet: $6
-
-Hilsen
-
-$2',
-	'userrightsnotif-desc' => 'Sender e-postmelding til brukere ved rettighetsendringer',
 );
 
 /** Occitan (Occitan)
