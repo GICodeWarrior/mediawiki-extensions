@@ -77,7 +77,7 @@ class EPMentor extends EPDBObject {
 	 */
 	protected function doGetOrgs( $fields, array $conditions ) {
 		$conditions = array_merge(
-			array( array( 'ep_mentors_per_org', 'mentor_id' ), $this->getId() ),
+			array( array( 'ep_mentors', 'id' ), $this->getId() ),
 			$conditions
 		);
 		
@@ -85,7 +85,10 @@ class EPMentor extends EPDBObject {
 			$fields,
 			$conditions,
 			array(),
-			array( 'orgs' => array( 'INNER JOIN', array( array( array( 'ep_mentors_per_org', 'org_id' ), array( 'orgs', 'id' ) ) ) ) )
+			array(
+				'ep_mentors_per_org' => array( 'INNER JOIN', array( array( array( 'ep_mentors_per_org', 'org_id' ), array( 'orgs', 'id' ) ) ) ),
+				'ep_mentors' => array( 'INNER JOIN', array( array( array( 'ep_mentors_per_org', 'mentor_id' ), array( 'ep_mentors', 'id' ) ) ) )
+			)
 		);
 	}
 	

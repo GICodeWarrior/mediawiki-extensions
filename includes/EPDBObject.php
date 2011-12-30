@@ -552,8 +552,8 @@ abstract class EPDBObject {
 		static $prefixes = false;
 		
 		if ( $prefixes === false ) {
-			foreach ( $GLOBALS['egEPDBObjects'] as $classOrIndex => $object ) {
-				$prefixes[$object['table']] = $object['prefix'];
+			foreach ( $GLOBALS['egEPDBObjects'] as $classInfo ) {
+				$prefixes[$classInfo['table']] = $classInfo['prefix'];
 			}
 		}
 		
@@ -578,7 +578,7 @@ abstract class EPDBObject {
 	 * their values as value. The field names are prefixed with the
 	 * db field prefix.
 	 * 
-	 * Field names can also be provdied as an array with as first element a table name, such as
+	 * Field names can also be provided as an array with as first element a table name, such as
 	 * $conditions = array(
 	 *	 array( array( 'tablename', 'fieldname' ), $value ),
 	 * );
@@ -775,7 +775,7 @@ abstract class EPDBObject {
 
 		$tables = array( static::getDBTable() );
 		$joinConds = static::getProcessedJoinConds( $joinConds, $tables );
-		
+
 		$result = static::rawSelect(
 			static::getPrefixedFields( $fields ),
 			static::getPrefixedValues( $conditions ),
@@ -834,13 +834,21 @@ abstract class EPDBObject {
 					static::getPrefixedField( $joinCondPart[0] ),
 					static::getPrefixedField( $joinCondPart[1] ),
 				);
-				
+
+				if ( !in_array( $joinCondPart[0][0], $tables ) ) {
+					$tables[] = $joinCondPart[0][0];
+				}
+
+				if ( !in_array( $joinCondPart[1][0], $tables ) ) {
+					$tables[] = $joinCondPart[1][0];
+				}
+
 				$cond[1][] = implode( '=', $parts );	
 			}
 			
-			$conds = $cond;
+			$conds[] = $cond;
 		}
-		
+		//if (count($conds)) {q($conds);}
 		return $conds;
 	}
 
@@ -864,7 +872,7 @@ abstract class EPDBObject {
 
 		return count( $objects ) > 0 ? $objects[0] : false;
 	}
-	
+
 	/**
 	 * Selects the the specified fields of the first record matching the provided
 	 * conditions and returns it as an associative array, or false when nothing matches.
@@ -957,7 +965,7 @@ abstract class EPDBObject {
 
 	/**
 	 * Update the records matching the provided conditions by
-	 * setting the fields that are keys in the $values patam to
+	 * setting the fields that are keys in the $values param to
 	 * their corresponding values.
 	 *
 	 * @since 0.1

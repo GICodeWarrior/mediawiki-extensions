@@ -86,12 +86,12 @@ class EPStudent extends EPDBObject {
 	 *
 	 * @since 0.1
 	 *
-	 * @param array|null $fields
+	 * @param string|array|null $fields
 	 * @param array $conditions
 	 *
 	 * @return array of EPTerm
 	 */
-	public function getTerms( array $fields = null, array $conditions = array() ) {
+	public function getTerms( $fields = null, array $conditions = array() ) {
 		if ( count( $conditions ) !== 0 ) {
 			return $this->doGetTerms( $fields, $conditions );
 		}
@@ -115,22 +115,22 @@ class EPStudent extends EPDBObject {
 	 *
 	 * @since 0.1
 	 *
-	 * @param array|null $fields
+	 * @param string|array|null $fields
 	 * @param array $conditions
 	 *
 	 * @return array of EPTerm
 	 */
 	protected function doGetTerms( $fields, array $conditions ) {
-		$conditions = array_merge(
-			array( array( 'ep_students_per_term', 'student_id' ), $this->getId() ),
-			$conditions
-		);
+		$conditions[] = array( array( 'ep_students', 'id' ), $this->getId() );
 
 		return EPTerm::select(
 			$fields,
 			$conditions,
 			array(),
-			array( 'terms' => array( 'INNER JOIN', array( array( array( 'ep_students_per_term', 'term_id' ), array( 'terms', 'id' ) ) ) ) )
+			array(
+				'ep_students_per_term' => array( 'INNER JOIN', array( array( array( 'ep_students_per_term', 'term_id' ), array( 'ep_terms', 'id' ) ) ) ),
+				'ep_students' => array( 'INNER JOIN', array( array( array( 'ep_students_per_term', 'student_id' ), array( 'ep_students', 'id' ) ) ) )
+			)
 		);
 	}
 
