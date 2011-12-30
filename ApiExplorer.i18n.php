@@ -47,10 +47,12 @@ $messages['ast'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Renessaince
  */
 $messages['be-tarask'] = array(
 	'apiexplorer' => 'API-аглядальнік',
-	'apiexplorer-desc' => 'Старонка інтэрактыўнага агляду дакумэнтацыі цяперашняй вэрсіі MediaWiki API, якая працуе разам з гэтым усталяваньнем.',
+	'apiexplorer-desc' => 'Старонка інтэрактыўнага агляду дакумэнтацыі MediaWiki API',
+	'apiexplorer-intro' => 'На гэтай старонцы адлюстраваная дакумэнтацыя для цяперашняе Wiki API. Калі ласка, націсьніце функцыю ніжэй, каб пабачыць больш зьвестак пра тое, якія парамэтры могуць быць выкарыстаныя пры кожным выкліку. Глядзіце таксама [http://www.mediawiki.org/wiki/API:Main_page агульную дакумэнтацыю дастасоўнага праграмнага лучыва «MediaWiki API»].',
 	'apiexplorer-loading' => 'Загрузка функцыяў…',
 );
 
