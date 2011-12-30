@@ -24,12 +24,13 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Raymond
  * @author Singhalawap
  */
 $messages['qqq'] = array(
-	'webfonts' => 'වෙබ්-ෆොන්‍ට',
+	'webfonts' => 'The extension name - WebFonts',
 	'webfonts-desc' => 'short description of the extension',
-	'webfonts-load' => 'ෆොන්‍ටය තෝරාගන්න',
+	'webfonts-load' => 'The text shown in the webfont link',
 	'webfonts-reset' => '{{Identical|Reset}}',
 	'webfonts-menu-tooltip' => 'Tooltip text displayed in the webfont link',
 	'webfonts-help' => 'Text for the help link.
@@ -281,6 +282,9 @@ $messages['frp'] = array(
 	'webfonts-desc' => 'Apond les polices a les pâges.',
 	'webfonts-load' => 'Chouèsésséd una police',
 	'webfonts-reset' => 'Tornar inicialisar',
+	'webfonts-enable-preference' => 'Activar l’aponsa de les fontes (WebFonts)',
+	'webfonts-menu-tooltip' => 'Chouèsésséd una police por la pâge',
+	'webfonts-help' => 'Éde',
 );
 
 /** Galician (Galego)
@@ -423,6 +427,13 @@ $messages['ja'] = array(
 	'webfonts-desc' => 'ページにフォントを埋め込みます。',
 	'webfonts-load' => 'フォントを選択',
 	'webfonts-reset' => 'リセット',
+);
+
+/** Georgian (ქართული)
+ * @author ITshnik
+ */
+$messages['ka'] = array(
+	'webfonts-help' => 'დახმარება',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -655,9 +666,11 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author Minisarm
  */
 $messages['ro'] = array(
+	'webfonts-reset' => 'Resetează',
 	'webfonts-enable-preference' => 'Activează încorporarea fonturilor (WebFonts)',
 );
 
@@ -834,6 +847,13 @@ $messages['vi'] = array(
 	'webfonts-enable-preference' => 'Bật các phông chữ được nhúng vào (WebFonts)',
 	'webfonts-menu-tooltip' => 'Chọn phông chữ để sử dụng trong trang',
 	'webfonts-help' => 'Trợ giúp',
+);
+
+/** Yiddish (ייִדיש)
+ * @author Imre
+ */
+$messages['yi'] = array(
+	'webfonts-help' => 'הילף',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
