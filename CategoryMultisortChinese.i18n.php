@@ -438,6 +438,25 @@ $messages['lb'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Traditionell',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'categorymultisortchinese-desc' => "Maak 't mäögelik categorieë te betrachte mit versjillige sorteerwieze specifiek veur Chinese sjrifte",
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarijn: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarijn: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarijn: Wade-Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarijn: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarijn: Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantonees: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Striep',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Striep: Vereinvoudig',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Striep: Traditioneel',
+	'categorymultisort-sortkey-name-radical' => 'Radikaal',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radikaal: Vereinvoudig',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radikaal: Traditioneel',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Ignas693
  */
@@ -491,25 +510,6 @@ $messages['ms'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Akar: Tradisional',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'categorymultisortchinese-desc' => 'Maakt het mogelijk categorieën te bekijken met verschillende sorteerwijzen specifiek voor Chinese schriften',
-	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarijn: Pinyin',
-	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarijn: Bopomofo',
-	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarijn: Wade-Giles',
-	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarijn: MPS II',
-	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarijn: Tongyong',
-	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantonees: Jyutping',
-	'categorymultisort-sortkey-name-stroke' => 'Streep',
-	'categorymultisort-sortkey-name-stroke-simplified' => 'Streep: Vereenvoudigd',
-	'categorymultisort-sortkey-name-stroke-traditional' => 'Streep: Traditioneel',
-	'categorymultisort-sortkey-name-radical' => 'Radicaal',
-	'categorymultisort-sortkey-name-radical-simplified' => 'Radical: Vereenvoudigd',
-	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Traditioneel',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -527,6 +527,25 @@ $messages['nb'] = array(
 	'categorymultisort-sortkey-name-radical' => 'Radikal',
 	'categorymultisort-sortkey-name-radical-simplified' => 'Radikal: Forenklet',
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Tradisjonell',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'categorymultisortchinese-desc' => 'Maakt het mogelijk categorieën te bekijken met verschillende sorteerwijzen specifiek voor Chinese schriften',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarijn: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarijn: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarijn: Wade-Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarijn: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarijn: Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantonees: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Streep',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Streep: Vereenvoudigd',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Streep: Traditioneel',
+	'categorymultisort-sortkey-name-radical' => 'Radicaal',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radical: Vereenvoudigd',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Traditioneel',
 );
 
 /** Polish (Polski)
