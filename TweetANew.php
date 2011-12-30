@@ -27,7 +27,7 @@
 /**
  * Exit if called outside of MediaWiki
  */
- if( !defined( 'MEDIAWIKI' ) ) {
+if( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );
 }
@@ -201,7 +201,6 @@ function efTweetANewEditCheckBox( &$editpage, &$checkboxes, &$tabindex) {
 					Xml::check( 'wpTweetANewEdit', $wgTweetANewEditpage['Checked'], $attribs ) .
 					"&nbsp;<label for='wpTweetANewEdit' title='". wfMsg('tweetanew-edittooltip')."'>".wfMsg('tweetanew-editaction')."</label>";
 	}
-
 	# Check if article is new - if checkboxes are enabled and if auto-tweets of new articles are disabled	
 	elseif ( $wgTweetANewEditpage['Enable'] && !$wgTweetANewTweet['New'] ) {
 		$attribs = array(
