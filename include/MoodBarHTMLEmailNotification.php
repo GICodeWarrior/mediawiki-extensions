@@ -229,7 +229,9 @@ HTML;
 
 		$to = new MailAddress( $user );
 
-		return UserMailer::send( $to, $this->from, $this->subject, $this->body, $this->replyto, $contentType = 'multipart/alternative; boundary=' . $this->mime_boundary );
+		return UserMailer::send( $to, $this->from, $this->subject, 
+						$this->body, $this->replyto, 
+						$contentType = 'multipart/alternative; boundary=' . $this->mime_boundary );
 	}
 	
 	/**
@@ -245,7 +247,7 @@ HTML;
 		
 		// if clickTracking is not enabled, return the full canonical url for email  
 		if ( !class_exists( 'ApiClickTracking' ) ) {
-			foreach ( $pageObject AS $key => $value ) {
+			foreach ( $pageObject as $key => $value ) {
 				$links[$key.'Url'] = $value->getCanonicalURL();
 			}
 		}
@@ -258,7 +260,7 @@ HTML;
 			$clickTrackingLink = $wgServer . $wgScriptPath . '/api.php?action=clicktracking&eventid=' . 
 						wfUrlencode( $eventid ) . '&token=' . wfUrlencode( $token );
 			
-			foreach ( $pageObject AS $key => $value ) {
+			foreach ( $pageObject as $key => $value ) {
 				$links[$key.'Url'] = $clickTrackingLink . '&redirectto=' . wfUrlencode( $value->getLinkURL() ) . 
 							'&namespacenumber=' . wfUrlencode( $value->getNamespace() ); 
 			}
