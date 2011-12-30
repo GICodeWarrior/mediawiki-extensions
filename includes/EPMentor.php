@@ -57,9 +57,12 @@ class EPMentor extends EPDBObject {
 			if ( is_null( $fields ) ) {
 				$this->orgs = $orgs;
 			}
+
+			return $orgs;
 		}
-		
-		return $orgs;
+		else {
+			return $this->orgs;
+		}
 	}
 	
 	/**
@@ -140,7 +143,7 @@ class EPMentor extends EPDBObject {
 	}
 	
 	/**
-	 * Retruns if the mentor has any term matching the provided contitions. 
+	 * Retruns if the mentor has any term matching the provided conditions.
 	 * 
 	 * @since 0.1
 	 * 

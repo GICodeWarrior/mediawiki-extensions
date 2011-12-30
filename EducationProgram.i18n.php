@@ -205,7 +205,10 @@ $messages['en'] = array(
 	'ep-enroll-no-token' => 'You need to provide the token needed to enroll for this term.',
 	'ep-enroll-invalid-token' => 'The token you provided is invalid.',
 	'ep-enroll-legend' => 'Enroll',
-	
+
+	// Special:MyCourses
+	'ep-mycourses-enrolled' => 'You have successfully enrolled for $1 at $2',
+
 	// Navigation links
 	'ep-nav-orgs' => 'Institution list',
 	'ep-nav-courses' => 'Courses list',

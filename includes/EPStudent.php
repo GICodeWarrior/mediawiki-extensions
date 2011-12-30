@@ -14,6 +14,14 @@
 class EPStudent extends EPDBObject {
 
 	/**
+	 * Cached array of the linked EPTerm objects.
+	 *
+	 * @since 0.1
+	 * @var array|false
+	 */
+	protected $terms = false;
+
+	/**
 	 * @see parent::getFieldTypes
 	 *
 	 * @since 0.1
@@ -70,6 +78,73 @@ class EPStudent extends EPDBObject {
 		$dbw->commit();
 
 		return $success;
+	}
+
+	/**
+	 * Returns the orgs this mentor is part of.
+	 * Caches the result when no conditions are provided and all fields are selected.
+	 *
+	 * @since 0.1
+	 *
+	 * @param array|null $fields
+	 * @param array $conditions
+	 *
+	 * @return array of EPTerm
+	 */
+	public function getTerms( array $fields = null, array $conditions = array() ) {
+		if ( count( $conditions ) !== 0 ) {
+			return $this->doGetTerms( $fields, $conditions );
+		}
+
+		if ( $this->terms === false ) {
+			$terms = $this->doGetTerms( $fields, $conditions );
+
+			if ( is_null( $fields ) ) {
+				$this->terms = $terms;
+			}
+
+			return $terms;
+		}
+		else {
+			return $this->terms;
+		}
+	}
+
+	/**
+	 * Returns the terms this student is enrolled in.
+	 *
+	 * @since 0.1
+	 *
+	 * @param array|null $fields
+	 * @param array $conditions
+	 *
+	 * @return array of EPTerm
+	 */
+	protected function doGetTerms( $fields, array $conditions ) {
+		$conditions = array_merge(
+			array( array( 'ep_students_per_term', 'student_id' ), $this->getId() ),
+			$conditions
+		);
+
+		return EPTerm::select(
+			$fields,
+			$conditions,
+			array(),
+			array( 'terms' => array( 'INNER JOIN', array( array( array( 'ep_students_per_term', 'term_id' ), array( 'terms', 'id' ) ) ) ) )
+		);
+	}
+
+	/**
+	 * Retruns if the mentor has any term matching the provided conditions.
+	 *
+	 * @since 0.1
+	 *
+	 * @param array $conditions
+	 *
+	 * @return boolean
+	 */
+	public function hasTerm( array $conditions = array() ) {
+		return count( $this->getTerms( 'id', $conditions ) ) > 0;
 	}
 	
 }

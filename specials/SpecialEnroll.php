@@ -208,7 +208,7 @@ class SpecialEnroll extends SpecialEPPage {
 	public function onSuccess() {
 		$this->getOutput()->redirect(
 			SpecialPage::getTitleFor( 'MyCourses' )->getLocalURL( array(
-				'enrolled' => 1
+				'enrolled' => $this->term->getId()
 			) )
 		);
 	}
