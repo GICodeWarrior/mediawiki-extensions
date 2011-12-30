@@ -2610,6 +2610,7 @@ $messages['hsb'] = array(
 $messages['hu'] = array(
 	'contributionreporting-desc' => 'Élő jelentés a Wikimédia adománygyűjtéséről',
 	'contributiontotal' => 'Adományok összege',
+	'dailytotal' => 'Napi összes',
 	'contributionhistory' => 'Adományok története',
 	'contrib-hist-header' => 'Adományozói megjegyzések a világ minden tájáról',
 	'contrib-hist-name' => 'Név',
