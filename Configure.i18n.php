@@ -4847,6 +4847,7 @@ $messages['he'] = array(
 );
 
 /** Hindi (हिन्दी)
+ * @author Ansumang
  * @author Kaustubh
  */
 $messages['hi'] = array(
@@ -4857,7 +4858,7 @@ $messages['hi'] = array(
 	'configure-old-versions' => 'कोन्फ़िगरेशनके पुराने अवतरणोंकी सूची:',
 	'configure-saved' => 'कोन्फ़िगरेशन संजोया गया हैं',
 	'configure-section-general' => 'साधारण सैटिंग',
-	'configure-section-paths' => 'पाथ',
+	'configure-section-paths' => 'मार्ग',
 	'configure-section-db' => 'डाटाबेस',
 	'configure-section-email' => 'इ-मेल',
 	'configure-section-enotif' => 'इ-मेल नोटिफ़िकेशन',

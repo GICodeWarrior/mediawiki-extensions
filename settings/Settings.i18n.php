@@ -16239,11 +16239,19 @@ $messages['oc'] = array(
 );
 
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
  * @author Odisha1
  */
 $messages['or'] = array(
 	'configure-setting-wgExtraLanguageNames-value' => 'ନାମ',
 	'configure-setting-wgDebugLogGroups-value' => 'ଫାଇଲ',
+	'configure-setting-wgGroupPermissions-value' => 'ଦିଆଯାଇଥିବା ଅଧିକାରଗୁଡିକ',
+	'configure-setting-wgRevokePermissions' => 'ପ୍ରତ୍ୟେକ ଗୋଷ୍ଠୀର ସଭ୍ୟଙ୍କଠାରୁ ଅଧିକାର କାଢିନିଆଗଲା',
+	'configure-setting-wgRevokePermissions-value' => 'କାଢିନିଆଯାଇଥିବା ଅଧିକାରଗୁଡିକ',
+	'configure-setting-wgAddGroups' => 'ଯୋଡାଯାଇପାରିବା ଗୋଷ୍ଠୀଗୁଡିକ',
+	'configure-setting-wgAddGroups-value' => 'ଯୋଡାଯାଇପାରିବା ଗୋଷ୍ଠୀଗୁଡିକ',
+	'configure-setting-wgRemoveGroups' => 'ହଟାଯାଇପାରୁଥିବା ଗୋଷ୍ଠୀଗୁଡିକ',
+	'configure-setting-wgRemoveGroups-value' => 'ହଟାଯାଇପାରୁଥିବା ଗୋଷ୍ଠୀଗୁଡିକ',
 	'configure-setting-wgXhtmlNamespaces-key' => 'ନେମସ୍ପେସ',
 );
 
