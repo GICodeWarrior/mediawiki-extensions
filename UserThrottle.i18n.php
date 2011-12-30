@@ -176,7 +176,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'userthrottle-desc' => 'Limite la crèacion d’utilisators.',
+	'userthrottle-desc' => 'Limite la crèacion d’usanciérs.',
 );
 
 /** Galician (Galego)
@@ -303,6 +303,14 @@ $messages['mr'] = array(
 कृपया थोडावेळ वाट पाहून आपल्या ब्राउझरमधील 'reload' या कळीवर टिचकी द्या.",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'userthrottle-desc' => 'Begrenser antall kontoer som kan opprettes i en tidsperiode',
+	'acct_creation_global_hard_throttle_hit' => 'Kontoopretting har blitt slått av automatisk i noen sekunder for å redusere masseregistreringsangrep. Vent en liten stund og trykk «oppdater» i nettleseren din for å prøve igjen.',
+);
+
 /** Dutch (Nederlands)
  * @author Romaine
  * @author SPQRobin
@@ -319,14 +327,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'userthrottle-desc' => 'Avgrensar talet på kontoar som kan opprettast i ein tidsperiode',
 	'acct_creation_global_hard_throttle_hit' => 'Kontoopretting er slått av automatisk i nokre sekund for å redusere masseregistreringsåtak. Vent ei lita stund og trykk «oppdater» i nettlesaren din for å prøve igjen.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'userthrottle-desc' => 'Begrenser antall kontoer som kan opprettes i en tidsperiode',
-	'acct_creation_global_hard_throttle_hit' => 'Kontoopretting har blitt slått av automatisk i noen sekunder for å redusere masseregistreringsangrep. Vent en liten stund og trykk «oppdater» i nettleseren din for å prøve igjen.',
 );
 
 /** Occitan (Occitan)
