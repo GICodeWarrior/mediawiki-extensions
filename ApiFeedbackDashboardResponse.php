@@ -67,7 +67,7 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 			global $wgLang;
 
 			$EMailNotif = new MoodBarHTMLEmailNotification();
-			$EMailNotif->notifyOnRespond( $wgUser, $talkPage, wfTimestampNow(), $item->getProperty('feedback'), $wgLang->truncate( $response, 250 ) );
+			$EMailNotif->notifyOnRespond( $wgUser, $talkPage, wfTimestampNow(), $item->getProperty('feedback'), $wgLang->truncate( $response, 250 ), $item->getProperty('feedbackitem')->getProperty( 'type' ) );
 
 		}
 
