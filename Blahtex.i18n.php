@@ -2290,6 +2290,39 @@ Slechs eint is toegesjtande.',
 	'math_LatexFontNotSpecified' => 'Gein LaTeX lèttertype woort opgegaeve veur "$1"',
 	'math_LatexPackageUnavailable' => 'Neet mäögelik um PNG te rendere, ómdet \'t LaTeX pakket "$1" neet besjikbaar is',
 	'math_MismatchedBeginAndEnd' => 'De commando\'s "$1" en "$2" kómme neet euverein',
+	'math_MisplacedLimits' => '\'t Commando "$1" kin allein versjiene nao \'ne math operator (euverwaeg um "\\mathop" te gebroeke)',
+	'math_MissingCommandAfterNewcommand' => 'Neet aonwezig of illegaal nuuj commando gebroek nao "\\newcommand".
+Dao kin mer perceis ein commando gedefinieerd waere;
+\'t mót beginne mit \'ne backslash "\\" en maag allein alfabetische karakters bevatte.',
+	'math_MissingDelimiter' => 'Óntbraekend sjeiingsteike nao "$1"',
+	'math_MissingOpenBraceAfter' => 'Óntbraekende äöpenende accolade "{" nao "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Óntbraekende sloetende accolade "}" aan \'t èndj van de inveur',
+	'math_MissingOpenBraceBefore' => 'Óntbraekende äöpenende accolade "{" veur "$1"',
+	'math_MissingOrIllegalParameterCount' => 'Óntbraekende of \'n ongeljig aontal parameters in de definitie van "$1".
+Dit mót \'n inkel getal zeen tösse 1 en 9.',
+	'math_MissingOrIllegalParameterIndex' => 'Óntbraekende of ongeljige parameterindex in de definitie van "$1"',
+	'math_NonAsciiInMathMode' => 'Neet-ASCII karakter maoge inkel gebroek waere in text-modus.
+Perbeer de perbleemkarakters te plaatse in "\\text{}...".',
+	'math_NotEnoughArguments' => 'Dao woorte neet genóg argumente opgegaeve veur "$1"',
+	'math_PngIncompatibleCharacter' => "'t Is neet mäögelik om 'n korrekte PNG te make mit 't karakter $1",
+	'math_ReservedCommand' => '\'t Commando "$1" is gereserveerd veur intern gebroek door blahtex',
+	'math_SubstackRowTooBig' => 'Dao kin slechs ein ingave zeen in jeder rie van \'n "substack"-blok',
+	'math_TooManyMathmlNodes' => 'Dao zeen teväöl nodes in de boumstruktuur van MathML',
+	'math_TooManyTokens' => 'De inveur is te lang',
+	'math_UnavailableSymbolFontCombination' => '\'t Symbool "$1" is neet besjikbaar in \'t lèttertype "$2"',
+	'math_UnexpectedNextCell' => '\'t Commando "&" kin allein veurkoume in \'n "\\begin ... \\end" constructie',
+	'math_UnexpectedNextRow' => '\'t Commando "\\\\" kin allein veurkoume in \'n "\\begin ... \\end" constructie',
+	'math_UnmatchedBegin' => 'Dao is \'n "\\begin" zónger biebeheurend "\\end"',
+	'math_UnmatchedCloseBrace' => 'Dao is \'n accolade sjlete "}" zonger biebeheurende accolade äöpene "{"',
+	'math_UnmatchedEnd' => 'Dao is \'n "\\end" zónger biebeheurend "\\begin"',
+	'math_UnmatchedLeft' => 'Dao is \'n "\\left" zónger biebeheurend "\\right"',
+	'math_UnmatchedOpenBrace' => 'Dao is \'n accolade äöpene "{" zonger biebeheurende accolade sjlete "}"',
+	'math_UnmatchedOpenBracket' => 'Dao is \'n blokhaok äöpene "[" zonger biebeheurende blokhaok sjlete "]"',
+	'math_UnmatchedRight' => 'Dao is \'n "\\right" zónger biebeheurend "\\left"',
+	'math_UnrecognisedCommand' => 'Commando "$1" neet herkènd',
+	'math_WrongFontEncoding' => '\'t Symbool "$1" maog neet veurkoume in lèttertypecodering "$2"',
+	'math_WrongFontEncodingWithHint' => '\'t Symbool "$1" maog neet veurkoume in lèttertypecodering "$2".
+Perbeer \'t commando "$3{...}" te gebroeke.',
 );
 
 /** Lithuanian (Lietuvių)
