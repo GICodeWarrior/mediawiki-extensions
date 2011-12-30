@@ -5081,6 +5081,7 @@ $messages['oc'] = array(
 
 /** Oriya (ଓଡ଼ିଆ)
  * @author Ansumang
+ * @author Jnanaranjan Sahu
  * @author Odisha1
  * @author Psubhashish
  */
@@ -5089,6 +5090,14 @@ $messages['or'] = array(
 	'mwe-thumbnail-more' => 'ବିସ୍ତାର',
 	'mwe-filesource' => 'ମୂଳାଧାର:',
 	'mwe-filestatus' => 'କପିରାଇଟ ସ୍ଥିତି:',
+	'mwe-import-description' => '$2ରୁ $1 ଅଣାଯାଇଛି',
+	'mwe-upload' => 'ଫାଇଲ ଅପଲୋଡ କରିବେ',
+	'mwe-summary' => 'ସାରାଂଶ',
+	'mwe-date-of-work' => 'କାମ କରିବା ତାରିଖ',
+	'mwe-upload-in-progress' => 'ଅପଲୋଡ ଚାଲିଛି (ୱିଣ୍ଡୋ ବନ୍ଦ କରନ୍ତୁ ନାହିଁ)',
+	'mwe-uploaded-status' => 'ଉପଲୋଡ ହୋଇଯାଇଛି',
+	'mwe-uploaded-time-remaining' => 'ବଳକା ସମୟ: $1',
+	'mwe-media_search' => 'ମେଡିଆ ଖୋଜା',
 	'mwe-am-results_next' => 'ପର',
 	'mwe-am-results_prev' => 'ପୂର୍ବବର୍ତ୍ତୀ',
 	'mwe-am-layout' => 'ବିନ୍ୟାସ:',
