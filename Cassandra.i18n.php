@@ -264,6 +264,13 @@ $messages['lb'] = array(
 	'cassandra-desc' => 'Den Text vun der Versioun an enger [http://cassandra.apache.org/Apache Cassandra] Datebank späicheren',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'cassandra-desc' => "Versieteks opsjlaon in 'n [http://cassandra.apache.org/ Apache Cassandra] database",
+);
+
 /** Lithuanian (Lietuvių)
  * @author Ignas693
  */
@@ -306,18 +313,18 @@ $messages['ms'] = array(
 	'cassandra-desc' => 'Simpan teks semakan dalam pangkalan data [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'cassandra-desc' => 'Versietekst opslaan in een [http://cassandra.apache.org/ Apache Cassandra] database',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'cassandra-desc' => 'Lagre revisjonstekst i databasen [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'cassandra-desc' => 'Versietekst opslaan in een [http://cassandra.apache.org/ Apache Cassandra] database',
 );
 
 /** Polish (Polski)
