@@ -974,7 +974,7 @@ Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'moodbar-enotif-subject' => '$1 antwortete auf deine Rückmeldung.',
 	'moodbar-enotif-body' => 'Hallo $1,
 
-Willkommen bei {{SITENAME}} und vielen Dank für deine [[$2|Rückmeldung]]. Ein anderer Benutzer aus {{SITENAME}}, [[$3|$6]], hinterließ die folgende Antwort:
+Willkommen bei {{SITENAME}} und vielen Dank für deine [$2 Rückmeldung]. Ein anderer Benutzer aus {{SITENAME}}, [$3 $6], hinterließ die folgende Antwort:
 
      $4
 
@@ -1007,7 +1007,7 @@ $messages['de-formal'] = array(
 	'moodbar-enotif-subject' => '$1 antwortete auf Ihre Rückmeldung.',
 	'moodbar-enotif-body' => 'Hallo $1,
 
-Willkommen bei {{SITENAME}} und vielen Dank für Ihre [[$2|Rückmeldung]]. Ein anderer Benutzer aus {{SITENAME}}, [[$3|$6]], hinterließ die folgende Antwort:
+Willkommen bei {{SITENAME}} und vielen Dank für Ihre [$2 Rückmeldung]. Ein anderer Benutzer aus {{SITENAME}}, [$3 $6], hinterließ die folgende Antwort:
 
      $4
 
@@ -1529,7 +1529,7 @@ $messages['fi'] = array(
 	'moodbar-enotif-subject' => '$1 vastasi palautteeseesi',
 	'moodbar-enotif-body' => 'Hei $1!
 
-Tervetuloa sivustolle {{SITENAME}}, ja kiitos lähettämästäsi [[$2|palautteesta]]. Käyttäjä [[$3|$6]] sivustolla {{SITENAME}}, kirjoitti seuraavan vastauksen:
+Tervetuloa sivustolle {{SITENAME}}, ja kiitos lähettämästäsi [$2 palautteesta]. Käyttäjä [$3 $6] sivustolla {{SITENAME}}, kirjoitti seuraavan vastauksen:
 
      $4
 
@@ -1548,6 +1548,7 @@ Terveisin,
  * @author ChrisPtDe
  * @author Crochet.david
  * @author DavidL
+ * @author F. Cosoleto
  * @author Gomoko
  * @author Hashar
  * @author IAlex
@@ -1689,7 +1690,7 @@ Pour plus d'information, consultez la $1.",
 	'moodbar-enotif-subject' => '$1a répondu à vos commentaires',
 	'moodbar-enotif-body' => 'Bonjour $1!
 
-Bienvenue sur {{SITENAME}}, et merci pour votre [[$2|commentaire]]. Un autre utilisateur de {{SITENAME}}, [[$3|$6]], a écrit la réponse suivante : 
+Bienvenue sur {{SITENAME}}, et merci pour votre [$2 commentaire]. Un autre utilisateur de {{SITENAME}}, [$3 $6], a écrit la réponse suivante : 
 
      $4
 
@@ -1718,13 +1719,13 @@ $messages['frp'] = array(
 	'moodbar-intro-editing' => 'Changiér $1 m’at rendu...',
 	'moodbar-type-happy-title' => 'Herox',
 	'moodbar-type-sad-title' => 'Tristo',
-	'moodbar-type-confused-title' => 'Confondu',
+	'moodbar-type-confused-title' => 'Confu',
 	'tooltip-moodbar-what' => 'Nen savêr més sur cela fonccionalitât',
 	'moodbar-what-label' => 'Qu’est-o qu’il est ?',
 	'moodbar-what-content' => 'Ceta fonccionalitât est conçua por édiér la comunôtât a comprendre l’èxpèrience a les gens que chanjont lo seto.
 Por més d’enformacions, volyéd visitar la $1.',
 	'moodbar-what-link' => 'pâge que dècrit la fonccion',
-	'moodbar-privacy' => 'En sometent, vos accèptâd una transparence en acôrd avouéc celes $1.',
+	'moodbar-privacy' => 'En sometent, vos accèptâd la transparence en acôrd avouéc celes $1.',
 	'moodbar-privacy-link' => 'condicions',
 	'moodbar-disable-link' => 'Su pas entèrèssiê. Volyéd dèsactivar cela fonccionalitât.',
 	'moodbar-form-title' => 'Perce que ...',
@@ -1761,9 +1762,9 @@ Por més d’enformacions, volyéd visitar la $1.',
 	'moodbar-feedback-filters' => 'Filtros',
 	'moodbar-feedback-filters-type' => 'Caractèro :',
 	'moodbar-feedback-filters-type-happy' => 'Herox',
-	'moodbar-feedback-filters-type-confused' => 'Confondu',
+	'moodbar-feedback-filters-type-confused' => 'Confu',
 	'moodbar-feedback-filters-type-sad' => 'Tristo',
-	'moodbar-feedback-filters-username' => 'Nom d’usanciér',
+	'moodbar-feedback-filters-username' => 'Nom d’usanciér :',
 	'moodbar-feedback-filters-button' => 'Posicionar los filtros',
 	'moodbar-feedback-whatis' => 'Qu’est-o que cela fonccionalitât ?',
 	'moodbar-feedback-permalink' => 'fâre un lim de vers ique',
@@ -1778,9 +1779,9 @@ Por més d’enformacions, volyéd visitar la $1.',
 	'moodbar-feedback-restore' => 'refâre los avis cachiês',
 	'moodbar-action-item' => 'Chousa de l’avis :',
 	'moodbar-action-reason' => 'Rêson :',
-	'moodbar-type-happy' => 'Herox',
-	'moodbar-type-sad' => 'Tristo',
-	'moodbar-type-confused' => 'Confondu',
+	'moodbar-type-happy' => 'Hero{{GENDER:$1|x|sa}}',
+	'moodbar-type-sad' => 'Trist{{GENDER:$1|o|a}}',
+	'moodbar-type-confused' => 'Confu{{GENDER:$1||a}}',
 	'moodbar-user-anonymized' => 'Anonimisâ',
 	'moodbar-user-ip' => 'Adrèce IP',
 	'moodbar-user-user' => 'Usanciér encartâ',
@@ -1926,16 +1927,16 @@ Para obter máis información, bótelle unha ollada á $1 .',
 	'moodbar-enotif-subject' => '$1 respondeu os seus comentarios',
 	'moodbar-enotif-body' => 'Ola, $1!
 
-Benvido a {{SITENAME}} e grazas polos seus [[$2|comentarios]]. Outro usuario de {{SITENAME}}, [[$3|$6]], deixou a seguinte resposta:
+Benvido a {{SITENAME}} e grazas polos seus [$2 comentarios]. Outro usuario de {{SITENAME}}, [$3 $6], deixou a seguinte resposta:
 
      $4
 
 Lea esta mensaxe na súa [$5 páxina de conversa]
 
 Que é unha páxina de conversa?
-A súa páxina de conversa é o lugar onde os editores de {{SITENAME}} se comunican con vostede mediante mensaxes. Pode responder premendo en "Editar", desprazando o cursor debaixo do comentario, escribindo a súa resposta e catro tiles (~~~~) para asinar e gardando. Todas as páxinas de {{SITENAME}} teñen a súa páxina de conversa asociada e úsanse para moitas cousas. Leva un tempo afacerse a elas, pero é doado unha vez que se usan varias veces.
+A súa páxina de conversa é o lugar onde os editores de {{SITENAME}} se comunican con vostede mediante mensaxes. Pode responder premendo en "Editar" e desprazando o cursor debaixo do comentario; logo escriba a súa resposta e use catro tiles (~~~~) para asinar; finalmente só queda gardar. Todas as páxinas de {{SITENAME}} teñen a súa páxina de conversa asociada e úsanse para moitas cousas. Leva un tempo afacerse a elas, pero é doado unha vez que se usan varias veces.
 
-Aínda ten preguntas? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Este vídeo] (velo no [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) dá unha guía paso a paso.
+Aínda ten preguntas? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Este vídeo] (véxao no [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) dá unha guía paso a paso.
 
 Teña un bo día,
 -- {{SITENAME}}',
@@ -2122,7 +2123,7 @@ $messages['he'] = array(
 	'moodbar-enotif-subject' => 'התקבל מענה מאת $1 למשוב שלך',
 	'moodbar-enotif-body' => 'שלום $1!
 
-ברוך בואך לאתר {{SITENAME}} ותודה על [[$2|המשוב שהשארת]]. משתמש {{SITENAME}} אחר [[$3|$6]] כתב את המענה הבא:
+ברוך בואך לאתר {{SITENAME}} ותודה על [$2 המשוב שהשארת]. משתמש {{SITENAME}} אחר [$3 $6] כתב את המענה הבא:
 
      $4
 
@@ -2471,7 +2472,7 @@ Pro ulterior information, per favor visita le $1.',
 	'moodbar-enotif-subject' => '$1 respondeva a tu retroaction',
 	'moodbar-enotif-body' => 'Salute $1!
 
-Benvenite a {{SITENAME}}, e gratias pro le [[$2|retroaction]]. Un altere usator de {{SITENAME}}, [[$3|$6]], ha scribite le sequente responsa:
+Benvenite a {{SITENAME}}, e gratias pro le [$2 retroaction]. Un altere usator de {{SITENAME}}, [$3 $6], ha scribite le sequente responsa:
 
      $4
 
@@ -2605,7 +2606,7 @@ $messages['it'] = array(
 	'response-ajax-error-head' => 'Oops!',
 	'response-ajax-error-body' => "Si è verificato un errore nell'aggiungere la tua risposta. <br />Per favore prova più tardi.",
 	'moodbar-enotif-subject' => '$1 ha risposto al tuo feedback',
-	'moodbar-enotif-body' => 'Benvenuto/a $1 a {{SITENAME}} e grazie per il tuo [[$2|feedback]]. Un altro utente di {{SITENAME}}, [[$3|$6]], ti ha scritto la risposta seguente:
+	'moodbar-enotif-body' => 'Benvenuto/a $1 a {{SITENAME}} e grazie per il tuo [$2 feedback]. Un altro utente di {{SITENAME}}, [$3 $6], ti ha scritto la risposta seguente:
 
      $4
 
@@ -2985,7 +2986,7 @@ $messages['mk'] = array(
 	'moodbar-enotif-subject' => '$1 одговори на вашето мислење',
 	'moodbar-enotif-body' => 'Здраво $1!
 
-Добредојдовте на {{SITENAME}}, и ви благодариме за искажаното [[$2|мислење]]. Корисникот [[$3|$6]] напиша одговор на тоа:
+Добредојдовте на {{SITENAME}}, и ви благодариме за искажаното [$2 мислење]. Корисникот [$3 $6] напиша одговор на тоа:
 
      $4
 
@@ -3227,7 +3228,7 @@ Untuk maklumat lanjut, sila layari $1.',
 	'moodbar-enotif-subject' => '$1 membalas maklum balas anda',
 	'moodbar-enotif-body' => 'Selamat sejahtera, $1!
 
-Selamat datang ke {{SITENAME}}, dan terima kasih atas [[$2|maklum balas]] anda. Seorang lagi pengguna {{SITENAME}}, iaitu [[$3|$6]], menulis balasan yang berikut:
+Selamat datang ke {{SITENAME}}, dan terima kasih atas [$2 maklum balas] anda. Seorang lagi pengguna {{SITENAME}}, iaitu [$3 $6], menulis balasan yang berikut:
 
      $4
 
@@ -3416,7 +3417,7 @@ Ga naar de $1 voor meer informatie.',
 	'moodbar-enotif-subject' => '$1 heeft op uw terugkoppeling geantwoord',
 	'moodbar-enotif-body' => 'Hallo $1!
 
-Welkom bij {{SITENAME}} en bedankt voor uw [[$2|terugkoppeling]]. Een andere gebruiker van {{SITENAME}}, [[$3|$6]], heeft het volgende antwoord geschreven:
+Welkom bij {{SITENAME}} en bedankt voor uw [$2 terugkoppeling]. Een andere gebruiker van {{SITENAME}}, [$3 $6], heeft het volgende antwoord geschreven:
 
      $4
 
@@ -3692,7 +3693,7 @@ Więcej informacji uzyskasz na $1.',
 	'response-ajax-error-body' => 'Wystąpił błąd podczas dodawania Twojej odpowiedzi.<br />Prosimy, spróbuj ponownie później.',
 	'moodbar-enotif-subject' => '$1odpowiedzi na Twoją opinię',
 	'moodbar-enotif-body' => 'Witaj $1!
-Witamy na {{SITENAME}}, i dziękujemy za Twoją [[$2|opinię]]. Inny użytkownik  {{SITENAME}}, [[$3|$6]], napisał następująca odpowiedź:
+Witamy na {{SITENAME}}, i dziękujemy za Twoją [$2 opinię]. Inny użytkownik  {{SITENAME}}, [$3 $6], napisał następująca odpowiedź:
 
      $4
 
@@ -3843,6 +3844,21 @@ Për savèjne ëd pi, për piasì vìsita ël $1.",
 	'response-ajax-error-head' => 'Contacc!',
 	'response-ajax-error-body' => "A l'é stàit-ie n'eror an giontand toa arspòsta. <br />Për piasì preuva torna pi tard.",
 	'moodbar-enotif-subject' => "$1 a l'ha arspondù a tò artorn",
+	'moodbar-enotif-body' => "Cerea \$1!
+
+Bin ëvnù a {{SITENAME}}, e mersì për tò [artorn \$2]. N'autr utent ëd {{SITENAME}}, [\$3 \$6], a l'ha scrivù l'arspòsta ch'i ven:
+
+     \$4
+
+Varda sto mëssagi dzora a toa [[\$5 pagina ëd discussion]]
+
+Lòn ch'a l'é na pagina ëd discussion?
+Toa pagina ëd discussion a l'é la pagina che autr editor ëd {{SITENAME}} a dòvro a comuniché con ti. It peule arsponde an sgnacand \"Modìfica\", bogiand ël cursor sota ël coment, scrivend toa arspòsta e quatr tilde (~~~~) për firmé, e salvand. Tute le pagine an {{SITENAME}} a l'han pagine ëd discussion, e a son dovrà për tanti but diferent. A-i veu un pòch për pijé l'andi, ma a l'é bastansa be fé na vira ch'it ses abituà.
+
+Anco' confondù? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Sto video] (varda su [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) at dà na dimostrassion pass-a-pass.
+
+Bon-a giornà,
+-- {{SITENAME}}",
 );
 
 /** Western Punjabi (پنجابی) */
@@ -4325,7 +4341,7 @@ $messages['ru'] = array(
 	'moodbar-enotif-subject' => '$1 ответил на ваш отзыв',
 	'moodbar-enotif-body' => 'Привет $1!
 
-Добро пожаловать на {{SITENAME}} и спасибо за ваш [[$2|отзыв]]. Другой пользователь {{SITENAME}}, [[$3|$6]], ответил вам:
+Добро пожаловать на {{SITENAME}} и спасибо за ваш [$2 отзыв]. Другой пользователь {{SITENAME}}, [$3 $6], ответил вам:
 
      $4
 Посмотрите сообщение на вашей [$5 talk page] странице обсуждения.
@@ -4512,6 +4528,7 @@ $messages['si'] = array(
 	'moodbar-log-name' => 'ප්‍රතිචාර ලඝු සටහන',
 	'moodbar-log-hide' => 'සඟ [[$1]]',
 	'moodbar-log-restore' => '[[$1]] සඳහා දෘශ්‍යතාවය නැවත පිහිටුවන ලදී',
+	'moodbar-response-terms' => 'යොමු කිරීමෙන්, $1 යටතේ පාරදෘෂ්‍යතාවට ඔබ එකඟ වේ.',
 	'moodbar-response-link' => 'කොන්දේසි',
 	'response-back-text' => 'ආපසු',
 	'response-preview-text' => 'පෙරදසුන',
@@ -4661,7 +4678,7 @@ Za več informacij obiščite $1.',
 	'moodbar-enotif-subject' => '$1 je odgovoril(-a) na vašo povratno informacijo',
 	'moodbar-enotif-body' => 'Pozdravljeni, $1!
 
-Dobrodošli na {{SITENAME}} in hvala za vaš [[$2|odziv]]. Drug uporabnik {{GRAMMAR:rodilnik|{{SITENAME}}}}, [[$3|$6]], je napisal sledeči odgovor:
+Dobrodošli na {{SITENAME}} in hvala za vaš [$2 odziv]. Drug uporabnik {{GRAMMAR:rodilnik|{{SITENAME}}}}, [$3 $6], je napisal sledeči odgovor:
 
 $4
 
@@ -4933,7 +4950,7 @@ För mer information, besök $1 .',
 	'moodbar-enotif-subject' => '$1 svarade på din feedback',
 	'moodbar-enotif-body' => 'Hej $1!
 
-Välkommen till {{SITENAME}}, och tack för din [[$2|feedback]]. En annan användare på {{SITENAME}}, [[$3|$6]], skrev följande svar:
+Välkommen till {{SITENAME}}, och tack för din [$2 feedback]. En annan användare på {{SITENAME}}, [$3 $6], skrev följande svar:
 
      $4
 
@@ -5218,7 +5235,7 @@ $messages['vi'] = array(
 	'moodbar-enotif-subject' => '$1 đã hồi đáp phản hồi của bạn',
 	'moodbar-enotif-body' => 'Xin chào $1!
 
-Hoan nghênh bạn đã đến {{SITENAME}} và cám ơn vì [[$2|phản hồi]] của bạn. Một người dùng khác tại {{SITENAME}}, [[$3|$6]], đã hồi đáp phản hồi của bạn:
+Hoan nghênh bạn đã đến {{SITENAME}} và cám ơn vì [$2 phản hồi] của bạn. Một người dùng khác tại {{SITENAME}}, [$3 $6], đã hồi đáp phản hồi của bạn:
 
      $4
 
@@ -5241,7 +5258,14 @@ $messages['yi'] = array(
 	'moodbar-type-happy-title' => 'צופֿרידן',
 	'moodbar-type-sad-title' => 'אומערט',
 	'moodbar-type-confused-title' => 'צעמישט',
+	'moodbar-email-submit' => 'אײַנגעבן',
+	'moodbar-header-page' => 'בלאַט',
+	'moodbar-header-user' => 'באַניצער',
+	'moodbar-feedback-filters-username' => 'באַניצער נאָמען:',
+	'moodbar-feedback-action-confirm' => 'באַשטעטיקן',
 	'moodbar-feedback-action-cancel' => 'אַנולירן',
+	'moodbar-action-reason' => 'אורזאַך:',
+	'response-back-text' => 'צוריק',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
