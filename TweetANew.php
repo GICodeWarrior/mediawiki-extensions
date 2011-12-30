@@ -19,8 +19,9 @@
  *    This lives at: https://github.com/themattharris/tmhOAuth
  *    The most recent edition (as of this version's publish date) is included with this extension.
  *
- * Thank you to Johnduhart, Reedy, SPQRobin and krinkle for feedback, bug reporting and cleaning up code
- * Thank you to Raymond, Crochet.david, Gomoko, Toliño, Bjankuloski06, Inholland, SPQRobin and others mentioned in TweetANew.i18n.php for translation work
+ * Thank you to Johnduhart, Reedy, SPQRobin, krinkle and Nikerabbit for feedback, bug reporting and cleaning up code
+ * Thank you to Raymond, Crochet.david, Gomoko, Toliño, Bjankuloski06, Inholland, SPQRobin
+ *    and others mentioned in TweetANew.i18n.php for translation work
  *
  */
 
@@ -50,16 +51,19 @@ if( !defined( 'MEDIAWIKI' ) ) {
  *			- Skip minor edits
  *			  Default is true
  * $wgTweetANewText['Minor']
- *			- Indicate in tweet if edit is marked as minor - only applies if $wgTweetANewTweet['SkipMinor'] = false
+ *			- Indicate in tweet if edit is marked as minor
+ 			  Only applies if $wgTweetANewTweet['SkipMinor'] = false
  *			  Default is false
  * $wgTweetANewText['MinorSpace']
- *			- Include a space after minor edit indicator - only applies if $wgTweetANewTweet['SkipMinor'] = false and $wgTweetANewText['Minor'] = true
+ *			- Include a space after minor edit indicator
+ 			  Only applies if $wgTweetANewTweet['SkipMinor'] = false and $wgTweetANewText['Minor'] = true
  *			  Default is true
  * $wgTweetANewText['NewRandom']
  *			- Use a mix of random messages in body of tweets about new articles
  *			  Default is true
  * $wgTweetANewText['NewRandomMax']
- *			- Maximum number of random messages to use - set any additional (beyond 3) using [[MediaWiki:Tweetanew-new4]], [[MediaWiki:Tweetanew-new5]], etc.
+ *			- Maximum number of random messages to use
+ 			  Set any additional (beyond 3) using [[MediaWiki:Tweetanew-new4]], [[MediaWiki:Tweetanew-new5]], etc.
  *			  Default is 3
  * $wgTweetANewText['NewAuthor']
  *			- Display the author of the new article
@@ -71,7 +75,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
  *			- Use a mix of random messages in body of tweets about article edits
  *			  Default is true
  * $wgTweetANewText['EditRandomMax']
- *			- Maximum number of random messages to use - set any additional (beyond 3) using [[MediaWiki:Tweetanew-edit4]], [[MediaWiki:Tweetanew-edit5]], etc.
+ *			- Maximum number of random messages to use
+ 			  Set any additional (beyond 3) using [[MediaWiki:Tweetanew-edit4]], [[MediaWiki:Tweetanew-edit5]], etc.
  *			  Default is 3
  * $wgTweetANewText['EditAuthor']
  *			- Display the author of the edit
@@ -95,7 +100,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
  * $wgTweetANewTwitter['AccessToken']
  *			- Access token provided by the OAuth tool at https://dev.twitter.com/apps - be sure to have write and read permissions
  * $wgTweetANewTwitter['AccessTokenSecret']
- *			- Access token secret provided by the OAuth tool at https://dev.twitter.com/apps - be sure to have write and read permissions
+ *			- Access token secret provided by the OAuth tool at https://dev.twitter.com/apps
+ 			     Be sure to have write and read permissions
  * $wgTweetANewBitly['Enable']
  * 			- Display URL as bitly link - allowing you to track usage via your bitly account
  *			  Default is false
@@ -167,7 +173,8 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'TweetANew',
 	'version'        => '1.0.20111229-beta',
-	'author'         => '[https://www.mediawiki.org/wiki/User:Varnent Gregory Varnum] merging extensions by [https://www.mediawiki.org/wiki/User:Joa_ds Joachim De Schrijver], Andrew Fitzgerald, Wendell Gaudencio, and Rohit Keshwani',
+	'author'         => '[https://www.mediawiki.org/wiki/User:Varnent Gregory Varnum] after merging extensions by
+						[https://www.mediawiki.org/wiki/User:Joa_ds Joachim De Schrijver], Andrew Fitzgerald, Wendell Gaudencio, and Rohit Keshwani',
 	'descriptionmsg' => 'tweetanew-desc',
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:TweetANew',
 );

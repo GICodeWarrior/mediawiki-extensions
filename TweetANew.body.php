@@ -34,7 +34,7 @@ class TweetANew {
 			}
 
 			# Generate final url
-			$finalurl = self::make_final_url(
+			$finalurl = self::makeFinalUrl(
 				$article->getTitle()->getFullURL()
 			);
 
@@ -72,7 +72,7 @@ class TweetANew {
 			}
 			
 			# Call to function for assembling and trimming tweet (if necessary) - then connecting and sending tweet to Twitter
-			self::assemble_send_tweet(
+			self::makeSendTweet(
 				$tweet_text,
 				$finalurl
 			);
@@ -97,13 +97,15 @@ class TweetANew {
 	 * @param $baseRevId
 	 * @return bool
 	 */
-	public static function TweetANewEditMade( &$article, &$user, $text, $summary, $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ) {
+	public static function TweetANewEditMade( &$article, &$user, $text, $summary, $minoredit, $watchthis,
+		$sectionanchor, &$flags, $revision, &$status, $baseRevId ) {
 		global $wgTweetANewTweet, $wgTweetANewText, $wgRequest;
 
 		# Check if $wgTweetANewTweet['Edit'] is enabled or the Tweet checkbox was selected on the edit page
 		if ( $wgRequest->getCheck( 'wpTweetANewEdit' ) || $wgTweetANewTweet['Edit'] ) {
 
-			# Unless the tweet checkbox is selected, only proceeds if page is outside content namespace and if a minor edit, checks $wgTweetANewTweet['SkipMinor']
+			# Unless the tweet checkbox is selected, only proceeds if page is outside content namespace
+			#   and if a minor edit, checks $wgTweetANewTweet['SkipMinor']
 			# Also prevents new articles from processing as TweetANewNewArticle function is used instead
 			if ( ( !MWNamespace::isContent( $article->getTitle()->getNamespace() )
 				|| ( $minoredit !== 0 && $wgTweetANewTweet['SkipMinor'] )
@@ -113,7 +115,7 @@ class TweetANew {
 				return true;
 			}
 			
-			# Determine the time and date of last modification - skip if newer than $wgTweetANewTweet['LessMinutesOld'] setting
+			# Determine the time and date of last modification - exit if newer than $wgTweetANewTweet['LessMinutesOld']
 			# ToDo - there must be a cleaner way of doing this
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select( 'revision',
@@ -122,10 +124,6 @@ class TweetANew {
 				__METHOD__,
 				array( 'ORDER BY' => 'rev_id DESC', 'LIMIT' => '2' )
 			);
-			$edittime = array();
-			foreach ( $res as $row ) {
-				$edittime[] = $row->rev_timestamp;
-			}
 			$edittime = array();
 			foreach ( $res as $row ) {
 				$edittime[] = $row->rev_timestamp;
@@ -144,7 +142,7 @@ class TweetANew {
 			}
 
 			# Generate final url
-			$finalurl = self::make_final_url(
+			$finalurl = self::makeFinalUrl(
 				$article->getTitle()->getFullURL()
 			);
 
@@ -156,7 +154,7 @@ class TweetANew {
 			}
 
 			$tweet_text = '';
-			# Add prefix indication that edit is minor if $wgTweetANewText['Minor'] is true and !$wgTweetANewTweet['SkipMinor'] is false
+			# Add prefix indication that edit is minor if enabled by $wgTweetANewText['Minor']
 			if ( $minoredit !== 0 && $wgTweetANewText['Minor'] ) {
 				$tweet_text = wfMsg( 'tweetanew-minoredit' );
 				# Add a space after the indicator if $wgTweetANewText['MinorSpace'] is true
@@ -188,12 +186,11 @@ class TweetANew {
 
 			# Add summary if $wgTweetANewText['EditSummary'] is true and summary text is entered
 			if ( $summary && $wgTweetANewText['EditSummary'] ) {
-				$tweet_text .= ' - ' . $edittime;
-				#$tweet_text .= ' - ' . $summary;
+				$tweet_text .= ' - ' . $summary;
 			}
 
-			# Call to function for assembling and trimming tweet (if necessary) - then connecting and sending tweet to Twitter
-			self::assemble_send_tweet(
+			# Call to function for preparing and sending tweet
+			self::makeSendTweet(
 				$tweet_text,
 				$finalurl
 			);
@@ -202,23 +199,23 @@ class TweetANew {
 	}
 
 	/**
-	 * Function for connecting to and preparing url for shortening service - or leaving for t.co shortening if none are enabled
+	 * Function shortening url via outside service or leaving for t.co service if none are enabled
 	 *
 	 * @param $longurl
 	 * @return string
 	 */
-	public static function make_final_url( $longurl ) {
-		global $wgTweetANewBitly;
+	public static function makeFinalUrl( $longurl ) {
+		global $wgTweetANewBitly, $wgOut;
 		
 		# Check setting to enable/disable use of bitly
 		if ( $wgTweetANewBitly['Enable'] ) {
 			# Generate url for bitly
-			$bitly = "https://api-ssl.bitly.com/v3/shorten?longUrl="
+			$shortened = "https://api-ssl.bitly.com/v3/shorten?longUrl="
 				. urlencode( $longurl ) . "&login=" . $wgTweetANewBitly['Login']
 				. "&apiKey=" . $wgTweetANewBitly['API'] . "&format=txt";
 
 			# Get the url
-			$response = file_get_contents( $bitly );
+			$response = Http::get($shortened);
 		} else {
 			$response = $longurl;
 		}
@@ -226,14 +223,14 @@ class TweetANew {
 	}
 
 	/**
-	 * Function for connecting to and preparing tweet for Twitter
+	 * Function for connecting to Twitter, preparing and then sending tweet
 	 *
 	 * @param $tweet_text
 	 * @param $finalurl
 	 * @return bool
 	 */
-	public static function assemble_send_tweet( $tweet_text, $finalurl ) {
-		global $wgTweetANewTwitter;
+	public static function makeSendTweet( $tweet_text, $finalurl ) {
+		global $wgTweetANewTwitter, $wgLang;
 		
 		# Calculate length of tweet factoring in longURL
 		if ( strlen( $finalurl ) > 20 ) {
@@ -244,7 +241,7 @@ class TweetANew {
 
 		# Check if length of tweet is beyond 140 characters and shorten if necessary
 		if ( strlen( $tweet_text ) > $tweet_text_count ) {
-			$tweet_text = substr( $tweet_text, 0, $tweet_text_count );
+			$tweet_text = $wgLang->truncate( $tweet_text, $tweet_text_count );
 		}
 
 		# Make connection to Twitter
