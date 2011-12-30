@@ -267,4 +267,3 @@ class TweetANew {
 		return true;
 	}
 }
-

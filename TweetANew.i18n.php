@@ -152,4 +152,3 @@ $messages['nl'] = array(
 	'tweetanew-edit2' => '$1 is onlangs aangepast op $2',
 	'tweetanew-edit3' => 'Bekijk $2 - het heeft nieuwe inhoud op $1',
 );
-
