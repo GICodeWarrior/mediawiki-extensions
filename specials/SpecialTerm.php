@@ -93,9 +93,16 @@ class SpecialTerm extends SpecialEPPage {
 		$stats['year'] = $term->getField( 'year' ); // TODO: how to properly i18n this?
 		$stats['start'] = $this->getLanguage()->timeanddate( $term->getField( 'start' ), true );
 		$stats['end'] = $this->getLanguage()->timeanddate( $term->getField( 'end' ), true );
-		
+
+		foreach ( $stats as &$stat ) {
+			$stat = htmlspecialchars( $stat );
+		}
+
 		if ( $term->useCanManage( $this->getUser() ) ) {
-			$stats['token'] = $term->getField( 'token' );
+			$stats['token'] = Linker::linkKnown(
+				SpecialPage::getTitleFor( 'Enroll', $term->getId() . '/' . $term->getField( 'token' ) ),
+				htmlspecialchars( $term->getField( 'token' ) )
+			);
 		}
 		
 		return $stats;

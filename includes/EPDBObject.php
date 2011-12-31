@@ -593,8 +593,16 @@ abstract class EPDBObject {
 
 		foreach ( $values as $field => $value ) {
 			if ( is_integer( $field ) ) {
-				$field = $value[0];
-				$value = $value[1];
+				if ( is_array( $value ) ) {
+					$field = $value[0];
+					$value = $value[1];
+				}
+				else {
+					$value = explode( ' ', $value, 2 );
+					$value[0] = static::getPrefixedField( $value[0] );
+					$prefixedValues[] = implode( ' ', $value );
+					continue;
+				}
 			}
 			
 			$prefixedValues[static::getPrefixedField( $field )] = $value;

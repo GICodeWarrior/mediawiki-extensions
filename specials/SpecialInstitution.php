@@ -90,6 +90,10 @@ class SpecialInstitution extends SpecialEPPage {
 		$countries = CountryNames::getNames( $this->getLang()->getCode() );
 		$stats['country'] = $countries[$org->getField( 'country' )];
 
+		foreach ( $stats as &$stat ) {
+			$stat = htmlspecialchars( $stat );
+		}
+
 		return $stats;
 	}
 	

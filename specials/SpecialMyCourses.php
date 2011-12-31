@@ -1,7 +1,9 @@
 <?php
 
 /**
- * 
+ * Special page listing the courses that have at least one term in which the current user
+ * is or has been enrolled. When a subpage param is provided, and it's a valid course
+ * name, info for that course is shown.
  *
  * @since 0.1
  *
@@ -27,7 +29,7 @@ class SpecialMyCourses extends SpecialEPPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $arg
+	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
@@ -37,7 +39,6 @@ class SpecialMyCourses extends SpecialEPPage {
 		}
 
 		$student = EPStudent::newFromUser( $this->getUser() );
-		EPStudent::setReadDb( DB_SLAVE );
 
 		if ( $student === false ) {
 			$this->getOutput()->addWikiMsg( 'ep-mycourses-not-a-student' );
@@ -52,6 +53,13 @@ class SpecialMyCourses extends SpecialEPPage {
 		}
 	}
 
+	/**
+	 *
+	 *
+	 * @since 0.1
+	 *
+	 * @param EPStudent $student
+	 */
 	protected function displayCourses( EPStudent $student ) {
 		$out = $this->getOutput();
 
@@ -64,8 +72,21 @@ class SpecialMyCourses extends SpecialEPPage {
 						'ep-mycourses-enrolled',
 						$term->getCourse()->getField( 'name' ),
 						$term->getOrg()->getField( 'name' )
-					) ); // TODO
+					) );
 				}
+			}
+
+			$currentCourses = $student->getCurrentCourses();
+			$passedCourses = $student->getPassedCourses();
+
+			if ( count( $currentCourses ) > 0 ) {
+				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-mycourses-current' ) ) );
+				$this->displayCoursesList( $currentCourses );
+			}
+
+			if ( count( $passedCourses ) > 0 ) {
+				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-mycourses-passed' ) ) );
+				$this->displayCoursesList( $passedCourses );
 			}
 		}
 		else {
@@ -73,6 +94,29 @@ class SpecialMyCourses extends SpecialEPPage {
 		}
 	}
 
+	/**
+	 *
+	 *
+	 * @since 0.1
+	 *
+	 * @param array $courses
+	 */
+	protected function displayCoursesList( array /* of EPCourse */ $courses ) {
+		$out = $this->getOutput();
+
+		foreach ( $courses as /* EPCourse */ $course ) {
+
+		}
+	}
+
+	/**
+	 *
+	 *
+	 * @since 0.1
+	 *
+	 * @param EPStudent $student
+	 * @param string $courseName
+	 */
 	protected function displayCourse( EPStudent $student, $courseName ) {
 		$course = EPCourse::selectRow( null, array( 'name' => $courseName ) );
 

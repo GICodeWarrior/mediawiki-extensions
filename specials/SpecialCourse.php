@@ -91,6 +91,10 @@ class SpecialCourse extends SpecialEPPage {
 		$stats['name'] = $course->getField( 'name' );
 		$stats['org'] = EPOrg::selectFieldsRow( 'name', array( 'id' => $course->getField( 'org_id' ) ) );
 
+		foreach ( $stats as &$stat ) {
+			$stat = htmlspecialchars( $stat );
+		}
+
 		return $stats;
 	}
 

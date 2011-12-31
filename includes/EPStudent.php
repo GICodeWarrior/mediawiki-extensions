@@ -22,6 +22,14 @@ class EPStudent extends EPDBObject {
 	protected $terms = false;
 
 	/**
+	 * Cached array of the EPCourse objects.
+	 *
+	 * @since 0.1
+	 * @var array|false
+	 */
+	protected $courses = false;
+
+	/**
 	 * @see parent::getFieldTypes
 	 *
 	 * @since 0.1
@@ -108,6 +116,46 @@ class EPStudent extends EPDBObject {
 		else {
 			return $this->terms;
 		}
+	}
+
+	/**
+	 *
+	 *
+	 * @since 0.1
+	 *
+	 * @param null $fields
+	 * @param array $conditions
+	 * @param array $termConditions
+	 *
+	 * @return array
+	 */
+	public function getCourses( $fields = null, array $conditions = array(), array $termConditions = array() ) {
+		$courseIds = array_reduce(
+			$this->getTerms( 'course_id', $termConditions ),
+			function( array $ids, EPTerm $term ) {
+				$ids[] = $term->getField( 'course_id' );
+			},
+		array() );
+
+		if ( count( $courseIds ) < 1 ) {
+			return array();
+		}
+
+		$conditions['id'] = $courseIds;
+
+		return EPCourse::select( $fields, array( 'id' => $conditions ) );
+	}
+
+	public function getCurrentCourses( $fields = null, array $conditions = array() ) {
+		return $this->getCourses( $fields, $conditions, array(
+			'end >= ' . wfGetDB( DB_SLAVE )->addQuotes( wfTimestampNow() )
+		) );
+	}
+
+	public function getPassedCourses( $fields = null, array $conditions = array() ) {
+		return $this->getCourses( $fields, $conditions, array(
+			'end < ' . wfGetDB( DB_SLAVE )->addQuotes( wfTimestampNow() )
+		) );
 	}
 
 	/**

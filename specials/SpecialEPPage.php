@@ -199,7 +199,7 @@ abstract class SpecialEPPage extends SpecialPage {
 				wfMsg( strtolower( get_called_class() ) . '-summary-' . $stat )
 			) );
 
-			$out->addHTML( Html::element(
+			$out->addHTML( Html::rawElement(
 				'td',
 				array( 'class' => 'ep-summary-value' ),
 				$value
@@ -213,6 +213,7 @@ abstract class SpecialEPPage extends SpecialPage {
 	
 	/**
 	 * Gets the summary data.
+	 * Returned values must be escaped.
 	 *
 	 * @since 0.1
 	 *
