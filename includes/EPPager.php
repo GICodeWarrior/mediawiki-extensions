@@ -574,7 +574,7 @@ abstract class EPPager extends TablePager {
 		# Make table header
 		foreach ( $fields as $field => $name ) {
 			if ( $field === '_select' ) {
-				$s .= '<th>' . Html::element( 'input', array(
+				$s .= '<th width="30px">' . Html::element( 'input', array(
 					'type' => 'checkbox',
 					'name' => 'ep-pager-select-all-' . $this->getInstanceNumber(),
 					'id' => 'ep-pager-select-all-' . $this->getInstanceNumber(),

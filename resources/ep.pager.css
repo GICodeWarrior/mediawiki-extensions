@@ -6,6 +6,6 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
  
-td .TablePager_col__select {
-
+td.TablePager_col__select {
+	text-align: center;
 }
