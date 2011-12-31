@@ -22,6 +22,22 @@ class ApiServerAdminLogEntry extends ApiBase {
 	 * through getResult().
 	 */
 	public function execute() {
+		$user = $this->getUser();
+		if ( !$user->isAllowed( 'serveradminlog-entry' ) ) {
+			$this->dieUsage( "You don't have the right to add an entry to the admin log", 'permissiondenied' );
+		} elseif( $user->isBlocked() ) {
+			$this->dieUsageMsg( array( 'blockedtext' ) );
+		}
+
+		$entryUser = $this->getParameter( 'user' );
+		if ( $entryUser !== null ) {
+			if ( !$user->isAllowed( 'serveradminlog-spoof' ) ) {
+				$this->dieUsage( "You don't have the right to spoof log entries", 'permissiondenied' );
+			}
+		} else {
+			$entryUser = $user;
+		}
+
 		$channel = ServerAdminLogChannel::newFromCode( $this->getParameter( 'channel' ) );
 
 		if ( $channel === null ) {
@@ -30,7 +46,7 @@ class ApiServerAdminLogEntry extends ApiBase {
 
 		ServerAdminLogEntry::create(
 			$channel,
-			$this->getUser(),
+			$entryUser,
 			$this->getParameter( 'message' )
 		);
 
@@ -53,6 +69,7 @@ class ApiServerAdminLogEntry extends ApiBase {
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => 'string',
 			),
+			'user' => null,
 		);
 	}
 
@@ -65,6 +82,7 @@ class ApiServerAdminLogEntry extends ApiBase {
 		return array(
 			'channel' => 'Channel to post the log entry to. Use the code found in the URL for the channel.',
 			'message' => 'Contents of the log entry',
+			'user' => 'Username to list the entry as (requires serveradminlog-spoof right)'
 		);
 	}
 
@@ -86,6 +104,8 @@ class ApiServerAdminLogEntry extends ApiBase {
 		return array_merge( parent::getPossibleErrors(), array(
 				array( 'code' => 'invalidchannel',
 						'info' => 'Invalid channel given' ),
+				array( 'code' => 'permissiondenied',
+						'info' => 'Insufficient rights for the actions requested' ),
 		) );
 	}
 

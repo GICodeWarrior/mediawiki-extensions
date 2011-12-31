@@ -51,6 +51,19 @@ $wgExtensionMessagesFiles['ServerAdminLog'] = $dir . 'ServerAdminLog.i18n.php';
  */
 $wgAPIModules['serveradminlogentry'] = 'ApiServerAdminLogEntry';
 
+/*
+ * User rights!
+ */
+$wgAvailableRights[] = 'serveradminlog-entry';
+$wgAvailableRights[] = 'serveradminlog-spoof';
+
+$wgGroupPermissions['user']['serveradminlog-entry'] = true;
+$wgGroupPermissions['sysop']['serveradminlog-spoof'] = true;
+$wgAPIModules['serveradminlogentry'] = 'ApiServerAdminLogEntry';
+
+/*
+ * Hooks!
+ */
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efServerAdminLogSchemaUpdates';
 
 /**
