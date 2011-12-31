@@ -50,3 +50,14 @@ $wgExtensionMessagesFiles['ServerAdminLog'] = $dir . 'ServerAdminLog.i18n.php';
  * API Stuff
  */
 $wgAPIModules['serveradminlogentry'] = 'ApiServerAdminLogEntry';
+
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efServerAdminLogSchemaUpdates';
+
+/**
+ * @param $updater DatabaseUpdater
+ * @return bool
+ */
+function efServerAdminLogSchemaUpdates( $updater ) {
+	$base = dirname( __FILE__ );
+	$updater->addExtensionTable( 'sal_channel', "$base/tables.sql" );
+}
