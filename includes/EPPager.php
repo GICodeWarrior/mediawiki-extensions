@@ -172,15 +172,6 @@ abstract class EPPager extends TablePager {
 	}
 
 	/**
-	 * (non-PHPdoc)
-	 * @see TablePager::getIndexField()
-	 */
-	function getIndexField() {
-		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
-		return $c::getPrefixedField( 'id' );
-	}
-	
-	/**
 	 * Returns the relevant field names.
 	 * 
 	 * @since 0.1
