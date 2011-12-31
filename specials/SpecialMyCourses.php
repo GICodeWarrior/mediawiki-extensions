@@ -104,9 +104,35 @@ class SpecialMyCourses extends SpecialEPPage {
 	protected function displayCoursesList( array /* of EPCourse */ $courses ) {
 		$out = $this->getOutput();
 
-		foreach ( $courses as /* EPCourse */ $course ) {
+		$out->addHTML( Xml::openElement(
+			'table',
+			array( 'class' => 'wikitable sortable' )
+		) );
 
+		$headers = array(
+			Html::element( 'th', array(), wfMsg( 'ep-mycourses-header-name' ) ),
+			Html::element( 'th', array(), wfMsg( 'ep-mycourses-header-institution' ) ),
+		);
+
+		$out->addHTML( '<thead><tr>' . implode( '', $headers ) . '</tr></thead>' );
+
+		$out->addHTML( '<tbody>' );
+
+		foreach ( $courses as /* EPCourse */ $course ) {
+			$fields = array();
+
+			$fields[] = $course->getField( 'name' );
+			$fields[] = $course->getOrg()->getField( 'name' );
+
+			foreach ( $fields as &$field ) {
+				$field = Html::rawElement( 'td', array(), $field );
+			}
+
+			$out->addHTML( '<tr>' . implode( '', $fields ) . '</tr>' );
 		}
+
+		$out->addHTML( '</tbody>' );
+		$out->addHTML( '</table>' );
 	}
 
 	/**

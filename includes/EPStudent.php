@@ -126,8 +126,10 @@ class EPStudent extends EPDBObject {
 			$this->getTerms( 'course_id', $termConditions ),
 			function( array $ids, EPTerm $term ) {
 				$ids[] = $term->getField( 'course_id' );
+				return $ids;
 			},
-		array() );
+			array()
+		);
 
 		if ( count( $courseIds ) < 1 ) {
 			return array();
@@ -135,7 +137,7 @@ class EPStudent extends EPDBObject {
 
 		$conditions['id'] = array_unique( $courseIds );
 
-		return EPCourse::select( $fields, array( 'id' => $conditions ) );
+		return EPCourse::select( $fields, $conditions );
 	}
 
 	/**

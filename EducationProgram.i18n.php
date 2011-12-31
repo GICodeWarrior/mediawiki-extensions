@@ -219,6 +219,8 @@ $messages['en'] = array(
 	'ep-mycourses-not-enrolled' => 'You are not enrolled in any course. A list of courses can be found [[Special:Courses|here]].',
 	'ep-mycourses-current' => 'Active courses',
 	'ep-mycourses-passed' => 'Passed courses',
+	'ep-mycourses-header-name' => 'Name',
+	'ep-mycourses-header-institution' => 'Institution',
 
 	// Navigation links
 	'ep-nav-orgs' => 'Institution list',
