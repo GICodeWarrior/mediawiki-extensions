@@ -188,8 +188,10 @@ class SpecialEnroll extends SpecialEPPage {
 
 		$success = $student->writeToDB();
 
-		if ( $success ) {//q($this->term);
+		if ( $success ) {
 			$success = $student->associateWithTerms( array( $this->term ) ) && $success;
+			$this->getUser()->setOption( 'ep_showtoplink', true );
+			$this->getUser()->saveSettings(); // TODO: can't we just save this single option instead of everything?
 		}
 
 		if ( $success ) {

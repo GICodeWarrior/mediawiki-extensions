@@ -96,6 +96,13 @@ final class EPHooks {
 	 * @return true
 	 */
 	public static function onGetPreferences( User $user, array &$preferences ) {
+		if ( EPSettings::get( 'enableTopLink' ) ) {
+			$preferences['ep_showtoplink'] = array(
+				'type' => 'toggle',
+				'label-message' => 'ep-prefs-showtoplink',
+				'section' => 'education',
+			);
+		}
 
 		return true;
 	}

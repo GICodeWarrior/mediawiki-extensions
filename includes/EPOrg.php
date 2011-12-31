@@ -197,7 +197,8 @@ class EPOrg extends EPDBObject {
 				$pager->getFilterControl() .
 				$pager->getNavigationBar() .
 				$pager->getBody() .
-				$pager->getNavigationBar()
+				$pager->getNavigationBar() .
+				$pager->getMultipleItemControl()
 			);
 		}
 		else {

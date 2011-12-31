@@ -24,6 +24,10 @@ $messages['en'] = array(
 	'ep-item-summary' => 'Summary',
 	'ep-toplink' => 'My courses',
 
+	// Preferences
+	'prefs-education' => 'Education',
+	'ep-prefs-showtoplink' => 'Show a link to [[Special:MyCourses|your courses]] at the top of every page.',
+
 	// Rights
 	'right-epadmin' => 'Manage the education program',
 	'right-epstudent' => 'Enroll in the education program',
@@ -211,7 +215,8 @@ $messages['en'] = array(
 	'ep-enroll-legend' => 'Enroll',
 
 	// Special:MyCourses
-	'ep-mycourses-enrolled' => 'You have successfully enrolled for $1 at $2',
+	'ep-mycourses-enrolled' => 'You have successfully enrolled for $1 at $2.',
+	'ep-mycourses-not-enrolled' => 'You are not enrolled in any course. A list of courses can be found [[Special:Courses|here]].',
 
 	// Navigation links
 	'ep-nav-orgs' => 'Institution list',

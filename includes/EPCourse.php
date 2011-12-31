@@ -149,7 +149,7 @@ class EPCourse extends EPDBObject {
 	
 	/**
 	 * Adds a control to add a new course to the provided context.
-	 * Adittional arguments can be provided to set the default values for the control fields.
+	 * Additional arguments can be provided to set the default values for the control fields.
 	 * 
 	 * @since 0.1
 	 * 
@@ -256,7 +256,8 @@ class EPCourse extends EPDBObject {
 				$pager->getFilterControl() .
 				$pager->getNavigationBar() .
 				$pager->getBody() .
-				$pager->getNavigationBar()
+				$pager->getNavigationBar() .
+				$pager->getMultipleItemControl()
 			);
 		}
 		else {
