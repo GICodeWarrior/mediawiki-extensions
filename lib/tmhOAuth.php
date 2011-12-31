@@ -7,12 +7,12 @@
  * REST requests. OAuth authentication is sent using the an Authorization Header.
  *
  * @author themattharris
- * @version 0.60
+ * @version 0.57
  *
- * 29 December 2011
+ * 11 December 2011
  */
 class tmhOAuth {
-  const VERSION = 0.60;
+  const VERSION = 0.57;
 
   /**
    * Creates a new tmhOAuth object
@@ -28,40 +28,27 @@ class tmhOAuth {
     // default configuration options
     $this->config = array_merge(
       array(
-        // leave 'user_agent' blank for default, otherwise set this to
-        // something that clearly identifies your app
-        'user_agent'                 => '',
-
-        'use_ssl'                    => true,
-        'host'                       => 'api.twitter.com',
-
+        'user_agent'                 => 'tmhOAuth ' . self::VERSION . ' - //github.com/themattharris/tmhOAuth',
         'consumer_key'               => '',
         'consumer_secret'            => '',
         'user_token'                 => '',
         'user_secret'                => '',
+        'use_ssl'                    => true,
+        'host'                       => 'api.twitter.com',
+        'debug'                      => false,
         'force_nonce'                => false,
         'nonce'                      => false, // used for checking signatures. leave as false for auto
         'force_timestamp'            => false,
         'timestamp'                  => false, // used for checking signatures. leave as false for auto
-
-        // oauth signing variables that are not dynamic
         'oauth_version'              => '1.0',
-        'oauth_signature_method'     => 'HMAC-SHA1',
 
         // you probably don't want to change any of these curl values
         'curl_connecttimeout'        => 30,
         'curl_timeout'               => 10,
-
-        // for security these should always be set to true.
-        'curl_ssl_verifyhost'        => true,
-        'curl_ssl_verifypeer'        => true,
-
-        // you can get the latest cacert.pem from here http://curl.haxx.se/ca/cacert.pem
-        'curl_cainfo'                => dirname(__FILE__) . '/cacert.pem',
-        'curl_capath'                => dirname(__FILE__),
-
+        // for security you may want to set this to TRUE. If you do you need
+        // to install the servers certificate in your local certificate store.
+        'curl_ssl_verifypeer'        => false,
         'curl_followlocation'        => false, // whether to follow redirects or not
-
         // support for proxy servers
         'curl_proxy'                 => false, // really you don't want to use this if you are using streaming
         'curl_proxyuserpwd'          => false, // format username:password for proxy, if required
@@ -72,28 +59,13 @@ class tmhOAuth {
         'streaming_eol'              => "\r\n",
         'streaming_metrics_interval' => 60,
 
-        // header or querystring. You should always use header!
-        // this is just to help me debug other developers implementations
+        // header or querystring. You should always use header
+        // this is just to help me debug other developers
+        // implementations
         'as_header'                  => true,
-        'debug'                      => false,
       ),
       $config
     );
-    $this->set_user_agent();
-  }
-
-  function set_user_agent() {
-    if (!empty($this->config['user_agent']))
-      return;
-
-    if ($this->config['curl_ssl_verifyhost'] && $this->config['curl_ssl_verifypeer']) {
-      $ssl = '+SSL';
-    } else {
-      $ssl = '-SSL';
-    }
-
-    $ua = 'tmhOAuth ' . self::VERSION . $ssl . ' - //github.com/themattharris/tmhOAuth';
-    $this->config['user_agent'] = $ua;
   }
 
   /**
@@ -111,7 +83,7 @@ class tmhOAuth {
       shuffle($sequence);
 
       $prefix = $include_time ? microtime() : '';
-      $this->config['nonce'] = md5(substr($prefix . implode('', $sequence), 0, $length));
+      $this->config['nonce'] = md5(substr($prefix . implode($sequence), 0, $length));
     }
   }
 
@@ -174,7 +146,7 @@ class tmhOAuth {
       'oauth_nonce'            => $this->config['nonce'],
       'oauth_timestamp'        => $this->config['timestamp'],
       'oauth_consumer_key'     => $this->config['consumer_key'],
-      'oauth_signature_method' => $this->config['oauth_signature_method'],
+      'oauth_signature_method' => 'HMAC-SHA1',
     );
 
     // include the user token if it exists
@@ -287,11 +259,6 @@ class tmhOAuth {
     if (isset($_signing_params['oauth_callback'])) {
       $this->auth_params['oauth_callback'] = $_signing_params['oauth_callback'];
       unset($_signing_params['oauth_callback']);
-    }
-
-    if (isset($_signing_params['oauth_verifier'])) {
-      $this->auth_params['oauth_verifier'] = $_signing_params['oauth_verifier'];
-      unset($_signing_params['oauth_verifier']);
     }
 
     // request_params is already set if we're doing multipart, if not we need to set them now
@@ -568,25 +535,17 @@ class tmhOAuth {
       CURLOPT_USERAGENT      => $this->config['user_agent'],
       CURLOPT_CONNECTTIMEOUT => $this->config['curl_connecttimeout'],
       CURLOPT_TIMEOUT        => $this->config['curl_timeout'],
-      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_RETURNTRANSFER => TRUE,
       CURLOPT_SSL_VERIFYPEER => $this->config['curl_ssl_verifypeer'],
-      CURLOPT_SSL_VERIFYHOST => $this->config['curl_ssl_verifyhost'],
-
       CURLOPT_FOLLOWLOCATION => $this->config['curl_followlocation'],
       CURLOPT_PROXY          => $this->config['curl_proxy'],
       CURLOPT_ENCODING       => $this->config['curl_encoding'],
       CURLOPT_URL            => $this->url,
       // process the headers
       CURLOPT_HEADERFUNCTION => array($this, 'curlHeader'),
-      CURLOPT_HEADER         => false,
+      CURLOPT_HEADER         => FALSE,
       CURLINFO_HEADER_OUT    => true,
     ));
-
-    if ($this->config['curl_cainfo'] !== false)
-      curl_setopt($c, CURLOPT_CAINFO, $this->config['curl_cainfo']);
-
-    if ($this->config['curl_capath'] !== false)
-      curl_setopt($c, CURLOPT_CAPATH, $this->config['curl_capath']);
 
     if ($this->config['curl_proxyuserpwd'] !== false)
       curl_setopt($c, CURLOPT_PROXYUSERPWD, $this->config['curl_proxyuserpwd']);
@@ -602,7 +561,7 @@ class tmhOAuth {
       case 'GET':
         break;
       case 'POST':
-        curl_setopt($c, CURLOPT_POST, true);
+        curl_setopt($c, CURLOPT_POST, TRUE);
         break;
       default:
         curl_setopt($c, CURLOPT_CUSTOMREQUEST, $this->method);
@@ -640,16 +599,12 @@ class tmhOAuth {
     $response = curl_exec($c);
     $code = curl_getinfo($c, CURLINFO_HTTP_CODE);
     $info = curl_getinfo($c);
-    $error = curl_error($c);
-    $errno = curl_errno($c);
     curl_close($c);
 
     // store the response
     $this->response['code'] = $code;
     $this->response['response'] = $response;
     $this->response['info'] = $info;
-    $this->response['error'] = $error;
-    $this->response['errno'] = $errno;
     return $code;
   }
 }

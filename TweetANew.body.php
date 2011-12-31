@@ -245,7 +245,7 @@ class TweetANew {
 		}
 
 		# Make connection to Twitter
-		$connection = new tmhOAuth( array(
+		$tmhOAuth = new tmhOAuth( array(
 			'consumer_key' => $wgTweetANewTwitter['ConsumerKey'],
 			'consumer_secret' => $wgTweetANewTwitter['ConsumerSecret'],
 			'user_token' => $wgTweetANewTwitter['AccessToken'],
@@ -253,8 +253,8 @@ class TweetANew {
 		) );
 
 		# Make tweet message
-		$connection->request( 'POST',
-			$connection->url( '1/statuses/update' ),
+		$tmhOAuth->request( 'POST',
+			$tmhOAuth->url( '1/statuses/update' ),
 			array( 'status' => $tweet_text )
 		);
 		return true;
