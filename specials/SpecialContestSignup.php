@@ -178,7 +178,7 @@ class SpecialContestSignup extends SpecialContestPage {
 		$form->setSubmitText( wfMsg( 'contest-signup-submit' ) );
 
 		if( $form->show() ) {
-			$this->showSuccess( $contest );
+			$this->onSuccess( $contest );
 		}
 		else {
 			$this->getOutput()->addModules( 'contest.special.signup' );
@@ -201,7 +201,7 @@ class SpecialContestSignup extends SpecialContestPage {
 	 *
 	 * @param Contest $contest
 	 */
-	protected function showSuccess( Contest $contest ) {
+	protected function onSuccess( Contest $contest ) {
 		$url = SpecialPage::getTitleFor( 'MyContests', $contest->getField( 'name' ) )->getLocalURL( 'new' );
 		$this->getOutput()->redirect( $url );
 	}
