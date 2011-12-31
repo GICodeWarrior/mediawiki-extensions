@@ -1,7 +1,7 @@
 -- Channel definition table
 CREATE TABLE /*_*/sal_channel (
   salc_id int(10) unsigned NOT NULL AUTO_INCREMENT,
-  -- Code to access the chanel by
+  -- Code to access the channel by
   salc_code varbinary(255) NOT NULL,
   -- Human readable name
   salc_name varbinary(255) NOT NULL,

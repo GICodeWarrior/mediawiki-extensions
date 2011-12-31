@@ -40,7 +40,7 @@ class ServerAdminLogEntryPager extends ReverseChronologicalPager {
 			$user = Linker::link( $userPage, htmlspecialchars( $userPage->getText() ) );
 		}
 
-		// Link to the chanel name if the column is there
+		// Link to the channel name if the column is there
 		if ( isset( $row->salc_name ) ) {
 			$chanTitle = SpecialPage::getTitleFor( 'AdminLog', $row->salc_code );
 			$channel = Linker::link( $chanTitle, htmlspecialchars( $row->salc_name ) );

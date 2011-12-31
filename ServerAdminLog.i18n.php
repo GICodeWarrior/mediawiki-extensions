@@ -28,5 +28,6 @@ $messages['qqq'] = array(
 
 	// Special:AdminLog
 	'adminlog' => 'Title at the top of [[Special:AdminLog]]',
-	'serveradminlog-invalidchannel' => 'Title of the page in the '
+	'serveradminlog-invalidchannel' => 'Title of the page when an invalid channel is passed',
+	'serveradminlog-invalidchannel-msg' => 'Message for when an invalid channel is passed',
 );

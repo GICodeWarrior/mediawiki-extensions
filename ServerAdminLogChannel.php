@@ -13,7 +13,7 @@ class ServerAdminLogChannel {
 	protected $id = 0;
 
 	/**
-	 * Chanel code
+	 * Channel code
 	 *
 	 * @var string
 	 */
