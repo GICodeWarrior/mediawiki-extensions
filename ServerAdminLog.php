@@ -36,8 +36,17 @@ $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses['ServerAdminLogEntryPager'] = $dir . '/ServerAdminLogEntryPager.php';
 $wgAutoloadClasses['ServerAdminLogChannel'] = $dir . '/ServerAdminLogChannel.php';
+$wgAutoloadClasses['ServerAdminLogEntry'] = $dir . '/ServerAdminLogEntry.php';
+
+$wgAutoloadClasses['ApiServerAdminLogEntry'] = $dir . '/api/ApiServerAdminLogEntry.php';
+
 $wgAutoloadClasses['SpecialAdminLog'] = $dir . '/specials/SpecialAdminLog.php';
 
 $wgSpecialPages['AdminLog'] = 'SpecialAdminLog';
 
 $wgExtensionMessagesFiles['ServerAdminLog'] = $dir . 'ServerAdminLog.i18n.php';
+
+/*
+ * API Stuff
+ */
+$wgAPIModules['serveradminlogentry'] = 'ApiServerAdminLogEntry';
