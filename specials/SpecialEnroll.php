@@ -108,7 +108,7 @@ class SpecialEnroll extends SpecialEPPage {
 
 		$out->addHTML( Linker::linkKnown(
 			SpecialPage::getTitleFor( 'Userlogin' ),
-			wfMsgHtml( 'ep-enroll-login-and-entroll' ),
+			wfMsgHtml( 'ep-enroll-login-and-enroll' ),
 			array(),
 			array(
 				'returnto' => $this->getTitle( $this->subPage )->getFullText()
@@ -119,7 +119,7 @@ class SpecialEnroll extends SpecialEPPage {
 
 		$out->addHTML( Linker::linkKnown(
 			SpecialPage::getTitleFor( 'Userlogin' ),
-			wfMsgHtml( 'ep-enroll-signup-and-entroll' ),
+			wfMsgHtml( 'ep-enroll-signup-and-enroll' ),
 			array(),
 			array(
 				'returnto' => $this->getTitle( $this->subPage )->getFullText(),

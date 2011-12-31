@@ -18,8 +18,7 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'educationprogram-desc' => '', // TODO
-
+	'educationprogram-desc' => 'Allows for running education courses in which students can enroll.',
 
 	// Misc
 	'ep-item-summary' => 'Summary',
@@ -84,7 +83,7 @@ $messages['en'] = array(
 	'ep-courses-newname' => 'Course name:',
 	'ep-courses-add' => 'Add course',
 	'ep-courses-addorgfirst' => 'You need to [[Special:Institutions|add an institution]] before you can create any courses.',
-	'ep-courses-noorgs' => 'You are not a mentor of any insitutions yet, so cannot add any courses.',
+	'ep-courses-noorgs' => 'You are not a mentor of any institutions yet, so cannot add any courses.',
 	'ep-courses-neworg' => 'Institution',
 
 	// Special:Terms
@@ -202,8 +201,8 @@ $messages['en'] = array(
 	// Special:Enroll
 	'ep-enroll-title' => 'Enroll for $1 at $2',
 	'ep-enroll-login-first' => 'Before you can enroll in this course, you need to login.',
-	'ep-enroll-login-and-entroll' => 'Login with an existing account & enroll',
-	'ep-enroll-signup-and-entroll' => 'Create a new account & enroll',
+	'ep-enroll-login-and-enroll' => 'Login with an existing account & enroll',
+	'ep-enroll-signup-and-enroll' => 'Create a new account & enroll',
 	'ep-enroll-not-allowed' => 'Your account is not allowed to enroll',
 	'ep-enroll-invalid-id' => 'The term you tried to enroll for does not exist. A list of existing terms can be found [[Special:Terms|here]].',
 	'ep-enroll-no-id' => 'You need to specify a term to enroll for. A list of existing terms can be found [[Special:Terms|here]].',
