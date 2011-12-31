@@ -64,6 +64,9 @@ $wgResourceModules['ext.webfonts.core'] = array(
 		'webfonts-menu-tooltip',
 		'webfonts-help',
 	),
-	'dependencies' => 'jquery.cookie',
+	'dependencies' => array(
+		'jquery.cookie',
+		'mediawiki.util',
+	),
 	'position' => 'top',
 );
