@@ -131,23 +131,4 @@ class EPCoursePager extends EPPager {
 		return $links;
 	}
 	
-	public static function displayWithAddControl( IContextSource $context, array $conditions = array() ) {
-
-		
-		$pager = new self( $this->getContext() );
-		
-		if ( $pager->getNumRows() ) {
-			$this->getOutput()->addHTML(
-				$pager->getFilterControl() .
-				$pager->getNavigationBar() .
-				$pager->getBody() .
-				$pager->getNavigationBar()
-			);
-		}
-		else {
-			$this->getOutput()->addHTML( $pager->getFilterControl( true ) );
-			$this->getOutput()->addWikiMsg( 'ep-courses-noresults' );
-		}
-	}
-
 }
