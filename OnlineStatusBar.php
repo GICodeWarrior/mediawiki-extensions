@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die();
 }
 
-$wgExtensionCredits[version_compare( $wgVersion, '1.17', '>=' ) ? 'userpage tools' : 'other'][] = array(
+$wgExtensionCredits[version_compare( $wgVersion, '1.17', '>=' ) ? 'users' : 'other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Online status bar',
 	'version' => '1.0.4',
