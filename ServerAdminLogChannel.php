@@ -32,7 +32,7 @@ class ServerAdminLogChannel {
 	 * @param $code
 	 * @return null|ServerAdminLogChannel
 	 */
-	public static function getChannelByCode( $code ) {
+	public static function newFromCode( $code ) {
 		$db = wfGetDB( DB_SLAVE );
 		$row = $db->selectRow(
 			'sal_channel',

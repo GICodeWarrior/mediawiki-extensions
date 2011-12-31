@@ -50,7 +50,7 @@ class SpecialAdminLog extends IncludableSpecialPage {
 	 * @throws ErrorPageError
 	 */
 	private function showChannel( $par ) {
-		$channel = ServerAdminLogChannel::getChannelByCode( $par );
+		$channel = ServerAdminLogChannel::newFromCode( $par );
 		if ( $channel === null ) {
 			throw new ErrorPageError( 'serveradminlog-invalidchannel', 'serveradminlog-invalidchannel-msg', $par );
 		}
