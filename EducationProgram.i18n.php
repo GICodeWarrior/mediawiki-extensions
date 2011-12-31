@@ -20,6 +20,11 @@ $messages = array();
 $messages['en'] = array(
 	'educationprogram-desc' => '', // TODO
 
+
+	// Misc
+	'ep-item-summary' => 'Summary',
+	'ep-toplink' => 'My courses',
+
 	// Rights
 	'right-epadmin' => 'Manage the education program',
 	'right-epstudent' => 'Enroll in the education program',
@@ -214,9 +219,6 @@ $messages['en'] = array(
 	'ep-nav-courses' => 'Courses list',
 	'ep-nav-terms' => 'Terms list',
 	'ep-nav-mycourses' => 'My courses',
-
-	// Misc
-	'ep-item-summary' => 'Summary',
 );
 
 /** Message documentation (Message documentation)

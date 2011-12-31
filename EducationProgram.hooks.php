@@ -63,6 +63,23 @@ final class EPHooks {
 	 * @return true
 	 */
 	public static function onPersonalUrls( array &$personal_urls, Title &$title ) {
+		if ( EPSettings::get( 'enableTopLink' ) ) {
+			global $wgUser;
+
+			// Find the watchlist item and replace it by the my contests link and itself.
+			if ( $wgUser->isLoggedIn() && $wgUser->getOption( 'ep_showtoplink' ) ) {
+				$url = SpecialPage::getTitleFor( 'MyCourses' )->getLinkUrl();
+				$myCourses = array(
+					'text' => wfMsg( 'ep-toplink' ),
+					'href' => $url,
+					'active' => ( $url == $title->getLinkUrl() )
+				);
+
+				$insertUrls = array( 'mycourses' => $myCourses );
+
+				$personal_urls = wfArrayInsertAfter( $personal_urls, $insertUrls, 'preferences' );
+			}
+		}
 
 		return true;
 	}
@@ -79,7 +96,7 @@ final class EPHooks {
 	 * @return true
 	 */
 	public static function onGetPreferences( User $user, array &$preferences ) {
-		
+
 		return true;
 	}
 	

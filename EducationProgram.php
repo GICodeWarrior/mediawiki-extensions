@@ -219,7 +219,7 @@ unset( $moduleTemplate );
 $egEPSettings = array();
 
 # The default value for the user preferences.
-//$wgDefaultUserOptions[''] = false;
+$wgDefaultUserOptions['ep_showtoplink'] = false;
 
 // TODO: put somewhere decent + document
 function efEpGetCountryOptions( $langCode ) {
