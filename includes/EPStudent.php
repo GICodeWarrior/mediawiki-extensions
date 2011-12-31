@@ -22,14 +22,6 @@ class EPStudent extends EPDBObject {
 	protected $terms = false;
 
 	/**
-	 * Cached array of the EPCourse objects.
-	 *
-	 * @since 0.1
-	 * @var array|false
-	 */
-	protected $courses = false;
-
-	/**
 	 * @see parent::getFieldTypes
 	 *
 	 * @since 0.1
@@ -119,15 +111,15 @@ class EPStudent extends EPDBObject {
 	}
 
 	/**
-	 *
+	 * Returns the courses this student is linked to (via terms).
 	 *
 	 * @since 0.1
 	 *
-	 * @param null $fields
+	 * @param string|null|array $fields
 	 * @param array $conditions
 	 * @param array $termConditions
 	 *
-	 * @return array
+	 * @return array of EPCourse
 	 */
 	public function getCourses( $fields = null, array $conditions = array(), array $termConditions = array() ) {
 		$courseIds = array_reduce(
@@ -141,17 +133,37 @@ class EPStudent extends EPDBObject {
 			return array();
 		}
 
-		$conditions['id'] = $courseIds;
+		$conditions['id'] = array_unique( $courseIds );
 
 		return EPCourse::select( $fields, array( 'id' => $conditions ) );
 	}
 
+	/**
+	 * Returns the courses this student is currently enrolled in.
+	 *
+	 * @since 0.1
+	 *
+	 * @param string|null|array $fields
+	 * @param array $conditions
+	 *
+	 * @return array of EPCourse
+	 */
 	public function getCurrentCourses( $fields = null, array $conditions = array() ) {
 		return $this->getCourses( $fields, $conditions, array(
 			'end >= ' . wfGetDB( DB_SLAVE )->addQuotes( wfTimestampNow() )
 		) );
 	}
 
+	/**
+	 * Returns the courses this student was previously enrolled in.
+	 *
+	 * @since 0.1
+	 *
+	 * @param string|null|array $fields
+	 * @param array $conditions
+	 *
+	 * @return array of EPCourse
+	 */
 	public function getPassedCourses( $fields = null, array $conditions = array() ) {
 		return $this->getCourses( $fields, $conditions, array(
 			'end < ' . wfGetDB( DB_SLAVE )->addQuotes( wfTimestampNow() )
