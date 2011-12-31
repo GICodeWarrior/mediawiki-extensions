@@ -74,14 +74,6 @@ class EPOrgPager extends EPPager {
 
 	/**
 	 * (non-PHPdoc)
-	 * @see TablePager::getDefaultSort()
-	 */
-	function getDefaultSort() {
-		return 'asc';
-	}
-
-	/**
-	 * (non-PHPdoc)
 	 * @see EPPager::getSortableFields()
 	 */
 	protected function getSortableFields() {
@@ -91,7 +83,12 @@ class EPOrgPager extends EPPager {
 			'country',
 		);
 	}
-	
+
+	function getDefaultSort() {
+		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
+		return $c::getPrefixedField( 'name' );
+	}
+
 	/**
 	 * (non-PHPdoc)
 	 * @see EPPager::getFilterOptions()

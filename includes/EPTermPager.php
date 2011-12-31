@@ -83,10 +83,6 @@ class EPTermPager extends EPPager {
 		return $value;
 	}
 
-	function getDefaultSort() {
-		return 'asc';
-	}
-
 	/**
 	 * (non-PHPdoc)
 	 * @see EPPager::getSortableFields()

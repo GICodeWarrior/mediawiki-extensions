@@ -76,7 +76,8 @@ class EPCoursePager extends EPPager {
 	}
 
 	function getDefaultSort() {
-		return 'asc';
+		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
+		return $c::getPrefixedField( 'name' );
 	}
 
 	/**

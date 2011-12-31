@@ -325,6 +325,11 @@ abstract class EPPager extends TablePager {
 			$c::getPrefixedFields( $this->getSortableFields() )
 		);
 	}
+
+	function getDefaultSort() {
+		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
+		return $c::getPrefixedField( 'id' );
+	}
 	
 	/**
 	 * Takes a list of (unprefixed) field names and return them in an associative array where

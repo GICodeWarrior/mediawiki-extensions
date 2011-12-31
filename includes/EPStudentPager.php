@@ -66,10 +66,6 @@ class EPStudentPager extends EPPager {
 		return $value;
 	}
 
-	function getDefaultSort() {
-		return ''; // TODO
-	}
-
 	/**
 	 * (non-PHPdoc)
 	 * @see EPPager::getSortableFields()
