@@ -178,6 +178,7 @@ Your user talk page is the page that other {{SITENAME}} editors use to communica
 Still confused? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv This video] (watch on [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) gives you a step-by-step overview.
 
 Have a nice day,
+
 -- {{SITENAME}}',
 );
 
