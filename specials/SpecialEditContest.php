@@ -357,6 +357,7 @@ class SpecialEditContest extends FormSpecialPage {
 	 * @since 0.1
 	 *
 	 * @param integer|null $challengeId
+	 * @param boolean $isNewChallenge
 	 *
 	 * @return ContestChallenge
 	 */

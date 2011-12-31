@@ -221,6 +221,8 @@ class Contest extends ContestDBObject {
 	 *
 	 * @since 0.1
 	 *
+	 * @param boolean $forceLoad
+	 *
 	 * @return array of ContestChallenge
 	 */
 	public function getChallenges( $forceLoad = false ) {
@@ -248,6 +250,8 @@ class Contest extends ContestDBObject {
 	 * Gets the contestants for this contest.
 	 *
 	 * @since 0.1
+	 *
+	 * @param boolean $forceLoad
 	 *
 	 * @return array of ContestContestant
 	 */

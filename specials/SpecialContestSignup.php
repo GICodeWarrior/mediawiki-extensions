@@ -27,7 +27,7 @@ class SpecialContestSignup extends SpecialContestPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $arg
+	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
 		$subPage = str_replace( '_', ' ', $subPage );
@@ -58,6 +58,8 @@ class SpecialContestSignup extends SpecialContestPage {
 	 * Handle form submission.
 	 *
 	 * @since 0.1
+	 *
+	 * @param array $data
 	 *
 	 * @return true|array
 	 */
@@ -176,7 +178,7 @@ class SpecialContestSignup extends SpecialContestPage {
 		$form->setSubmitText( wfMsg( 'contest-signup-submit' ) );
 
 		if( $form->show() ) {
-			$this->showSucess( $contest );
+			$this->showSuccess( $contest );
 		}
 		else {
 			$this->getOutput()->addModules( 'contest.special.signup' );
@@ -199,7 +201,7 @@ class SpecialContestSignup extends SpecialContestPage {
 	 *
 	 * @param Contest $contest
 	 */
-	protected function showSucess( Contest $contest ) {
+	protected function showSuccess( Contest $contest ) {
 		$url = SpecialPage::getTitleFor( 'MyContests', $contest->getField( 'name' ) )->getLocalURL( 'new' );
 		$this->getOutput()->redirect( $url );
 	}

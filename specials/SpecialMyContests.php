@@ -29,7 +29,7 @@ class SpecialMyContests extends SpecialContestPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $arg
+	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
 		$subPage = str_replace( '_', ' ', $subPage );
@@ -55,7 +55,7 @@ class SpecialMyContests extends SpecialContestPage {
 	/**
 	 * On regular page view, ie no submission and no sub-page,
 	 * display a list of all contests the user is participating in,
-	 * or in case there is only one, redirect them to the submissiom
+	 * or in case there is only one, redirect them to the submission
 	 * UI of it.
 	 *
 	 * @since 0.1
@@ -330,6 +330,8 @@ class SpecialMyContests extends SpecialContestPage {
 	 *
 	 * @since 0.1
 	 *
+	 * @param array $data
+	 *
 	 * @return true|array
 	 */
 	public function handleSubmission( array $data ) {
@@ -381,6 +383,8 @@ class SpecialMyContests extends SpecialContestPage {
 	 * @since 0.1
 	 *
 	 * @param ContestContestant $contest
+	 *
+	 * @return array
 	 */
 	protected function getFormFields( ContestContestant $contestant ) {
 		$fields = array();
@@ -546,7 +550,7 @@ class SpecialMyContests extends SpecialContestPage {
 	}
 
 	/**
-	 * HTMLForm field validation-callback for the submissiom field.
+	 * HTMLForm field validation-callback for the submission field.
 	 * Warning: regexes used! o_O
 	 *
 	 * @since 0.1

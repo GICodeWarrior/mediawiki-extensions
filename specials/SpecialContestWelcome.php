@@ -27,7 +27,7 @@ class SpecialContestWelcome extends SpecialContestPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $arg
+	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
 		$subPage = str_replace( '_', ' ', $subPage );

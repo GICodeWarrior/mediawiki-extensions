@@ -43,7 +43,7 @@ abstract class SpecialContestPage extends SpecialPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $arg
+	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
 		$this->subPage = $subPage;
@@ -94,6 +94,7 @@ abstract class SpecialContestPage extends SpecialPage {
 	 * @since 0.1
 	 *
 	 * @param string $message
+	 * @param string $subst
 	 */
 	protected function showSuccess( $message, $subst = '' ) {
 		$this->getOutput()->addHTML(

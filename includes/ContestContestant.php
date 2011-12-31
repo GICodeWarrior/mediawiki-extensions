@@ -179,7 +179,7 @@ class ContestContestant extends ContestDBObject {
 	 *
 	 * @since 0.1
 	 *
-	 * @param booolean $addEmptyItem
+	 * @param boolean $addEmptyItem
 	 *
 	 * @return array
 	 */
@@ -466,7 +466,7 @@ class ContestContestant extends ContestDBObject {
 	}
 
 	/**
-	 * Handles successfull user signup for a contest.
+	 * Handles successful user signup for a contest.
 	 *
 	 * @since 0.1
 	 */
@@ -537,7 +537,7 @@ class ContestContestant extends ContestDBObject {
 	}
 
 	/**
-	 * Update the vote count and avarage vote fields.
+	 * Update the vote count and average vote fields.
 	 * This does not write the changes to the database,
 	 * if this is required, call writeToDB.
 	 *

@@ -148,7 +148,7 @@ abstract class ContestDBObject {
 	 *
 	 * @since 0.1
 	 *
-	 * @param integere|null $id
+	 * @param integer|null $id
 	 */
 	public function setId( $id ) {
 		return $this->setField( 'id', $id );
