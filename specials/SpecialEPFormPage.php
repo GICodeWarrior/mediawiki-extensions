@@ -354,7 +354,6 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 			return true;
 		}
 		else {
-			die('meh');
 			return array(); // TODO
 		}
 	}
