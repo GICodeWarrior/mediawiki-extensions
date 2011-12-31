@@ -260,10 +260,6 @@ class ContestantPager extends TablePager {
 		return 'TablePager contest-contestants';
 	}
 
-	function getIndexField() {
-		return 'contestant_id';
-	}
-
 	function getDefaultSort() {
 		return 'contestant_id';
 	}
