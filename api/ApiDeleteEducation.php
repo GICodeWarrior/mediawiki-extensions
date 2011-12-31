@@ -14,6 +14,13 @@
  */
 class ApiDeleteEducation extends ApiBase {
 
+	/**
+	 * Maps class names to values for the type parameter.
+	 *
+	 * @since 0.1
+	 *
+	 * @var array
+	 */
 	protected static $typeMap = array(
 		'org' => 'EPOrg',
 		'course' => 'EPCourse',
@@ -22,6 +29,15 @@ class ApiDeleteEducation extends ApiBase {
 		'mentor' => 'EPMentor',
 	);
 
+	/**
+	 * Returns the type param value for a class name.
+	 *
+	 * @since 0.1
+	 *
+	 * @param string $className
+	 *
+	 * @return string
+	 */
 	public static function getTypeForClassName( $className ) {
 		static $map = null;
 
@@ -57,10 +73,14 @@ class ApiDeleteEducation extends ApiBase {
 	}
 	
 	/**
+	 * Returns if the user is allowed to delete the specified object(s).
+	 *
 	 * @since 0.1
 	 * 
 	 * @param string $type
 	 * @param array $params
+	 *
+	 * @return boolean
 	 */
 	protected function userIsAllowed( $type, array $params ) {
 		$user = $this->getUser();

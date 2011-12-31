@@ -207,7 +207,7 @@ abstract class EPDBObject {
 	 *
 	 * @since 0.1
 	 *
-	 * @param integere|null $id
+	 * @param integer|null $id
 	 */
 	public function setId( $id ) {
 		return $this->setField( 'id', $id );
@@ -429,7 +429,6 @@ abstract class EPDBObject {
 	 *
 	 * @param string $name
 	 * @param mixed $value
-	 * @param boolean $haxPrefix
 	 *
 	 * @throws MWException
 	 */
@@ -943,6 +942,7 @@ abstract class EPDBObject {
 	 * @param array $conditions
 	 * @param array $options
 	 * @param array $joinConds
+	 * @param array $tables
 	 *
 	 * @return ResultWrapper
 	 */

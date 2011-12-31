@@ -100,6 +100,8 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	}
 	
 	/**
+	 * Display the form and set the item field, or redirect the user.
+	 *
 	 * @since 0.1
 	 */
 	protected function showContent() {
@@ -371,7 +373,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	}
 	
 	/**
-	 * Gets called for evey known submitted value, so they can be dealth with if needed.
+	 * Gets called for evey known submitted value, so they can be dealt with if needed.
 	 * 
 	 * @since 0.1
 	 * 

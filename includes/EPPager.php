@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Abstract class extensing the TablePager with common functions
+ * Abstract class extending the TablePager with common functions
  * for pagers listing EPDBObject deriving classes and some compatibility helpers.
  *
  * @since 0.1
@@ -135,8 +135,7 @@ abstract class EPPager extends TablePager {
 		$this->currentObject = $c::newFromDBResult( $row );
 		
 		$cells = array();
-		$fields = $this->getFieldNames();
-		
+
 		foreach ( $this->getFieldNames() as $field => $name ) {
 			if ( $field === '_select' ) {
 				$value = Html::element(
@@ -189,8 +188,7 @@ abstract class EPPager extends TablePager {
 	 * @return array
 	 */
 	public function getFieldNames() {
-		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_> 
-		$conds = $this->conds; // Indeed, this is also needed >_>
+		$conds = $this->conds; // Yeah, this is needed in PHP 5.3 >_>
 		$fields = array_filter( $this->getFields(), function( $name ) use ( $conds ) {
 			return !array_key_exists( $name, $conds );
 		} );
@@ -198,18 +196,18 @@ abstract class EPPager extends TablePager {
 		$fields = $this->getFieldNameList( $fields );
 		
 		if ( $this->hasMultipleItemControl() ) {
-			// This is a hack to get an extra colum for select all control.
+			// This is a hack to get an extra column for select all control.
 			$fields = array_merge( array( '_select' => '' ), $fields );
 		}
 		
-		$fields['_controls'] = ''; // This is a hack to get an extra colum for the control links.
+		$fields['_controls'] = ''; // This is a hack to get an extra column for the control links.
 		
 		return $fields;
 	}
 	
 	/**
 	 * Returns HTML for the multiple item control.
-	 * With actions comming from @see getMultipleItemActions.
+	 * With actions coming from @see getMultipleItemActions.
 	 * 
 	 * @since 0.1
 	 * 
@@ -520,7 +518,7 @@ abstract class EPPager extends TablePager {
 	protected abstract function getFormattedValue( $name, $value );
 	
 	/**
-	 * Returns a list of (escaped, html) links to add in an adittional column.
+	 * Returns a list of (escaped, html) links to add in an additional column.
 	 * 
 	 * @since 0.1
 	 * 
@@ -538,7 +536,7 @@ abstract class EPPager extends TablePager {
 	 * @since 0.1
 	 * 
 	 * @param string $type
-	 * @paran integer $id
+	 * @param integer $id
 	 * 
 	 * @return string
 	 */

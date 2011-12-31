@@ -16,7 +16,7 @@ abstract class SpecialEPPage extends SpecialPage {
 
 	/**
 	 * The subpage, ie the part after Special:PageName/
-	 * Emptry string if none is provided.
+	 * Empty string if none is provided.
 	 * 
 	 * @since 0.1
 	 * @var string
@@ -49,7 +49,9 @@ abstract class SpecialEPPage extends SpecialPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string|null $arg
+	 * @param string|null $subPage
+	 *
+	 * @return boolean
 	 */
 	public function execute( $subPage ) {
 		$subPage = is_null( $subPage ) ? '' : $subPage;
@@ -128,7 +130,7 @@ abstract class SpecialEPPage extends SpecialPage {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param array $links
+	 * @param array $items
 	 */
 	protected function displayNavigation( array $items = array() ) {
 		$links = array();
