@@ -474,7 +474,7 @@ $messages['fa'] = array(
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'countedits' => 'Muokkausmäärälaskuri',
+	'countedits' => 'Muokkauslaskuri',
 	'countedits-desc' => '[[Special:CountEdits|Toimintosivu]], joka laskee käyttäjien muokkauksia ja luo luettelon kymmenestä eniten muokanneesta käyttäjästä.',
 	'countedits-warning' => 'Älä arvioi kirjaa kannen perusteella. Älä arvioi käyttäjää muokkausten lukumäärän perusteella.',
 	'countedits-username' => 'Käyttäjätunnus:',
