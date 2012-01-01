@@ -67,6 +67,26 @@ $messages['qqq'] = array(
 * $2 is the final URL of the new page - shortened if a service is enabled via this extension',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'tweetanew-desc' => "Twitañ pa vez krouet ur bajenn pe pa vez degaset kemmoù enni. Diouzh ar mod m'emañ kefluniet ar penndibaboù er wiki klok e vo adalek ar bajenn skridaozañ pe ent emgefre.",
+	'tweetanew-newaction' => 'Twitañ a-zivout ar bajenn nevez-mañ.',
+	'tweetanew-newtooltip' => 'Kas titouroù war twitter a-zivout ar bajenn nevez-mañ.',
+	'tweetanew-editaction' => "Twitañ a-zivout ar c'hemm-mañ",
+	'tweetanew-edittooltip' => "Kas titouroù war twitter a-zivout ar c'hemm-mañ.",
+	'tweetanew-minoredit' => 'd',
+	'tweetanew-authorcredit' => 'gant',
+	'tweetanew-newdefault' => 'PAJENN NEVEZ : $1 - $2',
+	'tweetanew-new1' => 'Evit doare eo bet krouet $1 e $2',
+	'tweetanew-new2' => 'Krouet eo bet $1 nevez zo e $2',
+	'tweetanew-editdefault' => 'PAJENNOÙ HIZIVAET : $1 - $2',
+	'tweetanew-edit1' => 'Evit doare eo bet nevesaet $1 e $2',
+	'tweetanew-edit2' => 'Kemmet eo bet $1 nevez zo e $2',
+	'tweetanew-edit3' => 'Gwiriit $2 - tammoù boued nevez zo e $1',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -129,6 +149,21 @@ $messages['gl'] = array(
 	'tweetanew-edit1' => 'Semella que se actualizou a páxina "$1" no enderezo $2',
 	'tweetanew-edit2' => 'Actualizouse a páxina "$1" no enderezo $2',
 	'tweetanew-edit3' => 'Bótalle unha ollada a "$2", con novos contidos no enderezo $1',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'tweetanew-newaction' => 'Dës nei Säit tweeten',
+	'tweetanew-newtooltip' => 'Informatiounen iwwer des nei Säit op Twitter schécken',
+	'tweetanew-editaction' => 'Dës Ännerung tweeten',
+	'tweetanew-edittooltip' => 'Informatiounen iwwer des Ännerung op Twitter schécken',
+	'tweetanew-minoredit' => 'k',
+	'tweetanew-authorcredit' => 'vum',
+	'tweetanew-newdefault' => 'NEI SÄIT: $1 - $2',
+	'tweetanew-new3' => 'Kuckt no op $2 - et gëtt eng nei Säit iwwer $1',
+	'tweetanew-editdefault' => 'AKTUALISÉIERT SÄIT:  $1 - $2',
 );
 
 /** Macedonian (Македонски)
