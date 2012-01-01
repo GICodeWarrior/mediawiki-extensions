@@ -215,6 +215,13 @@ $messages['fi'] = array(
 	'antibot-desc' => 'Yksinkertainen roskabotti- ja haittaohjelmatunnistusjärjestelmä.',
 );
 
+/** Faroese (Føroyskt)
+ * @author EileenSanda
+ */
+$messages['fo'] = array(
+	'antibot-desc' => 'Einfaldur strukturur fyri eftirlit við spambottum',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Louperivois
