@@ -416,6 +416,13 @@ $messages['nah'] = array(
 	'didyoumean-desc' => 'Tiquincēntilīz tzonhuiliztli zāzanilhuīc īca "achi neneuhqui" in ītōca',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'didyoumean-desc' => 'Legger til lenker til sider med lignende titler',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -442,13 +449,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'didyoumean-desc' => 'Legg til lenkjer til sider med liknande titlar',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'didyoumean-desc' => 'Legger til lenker til sider med lignende titler',
 );
 
 /** Occitan (Occitan)
@@ -584,6 +584,13 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'didyoumean-desc' => 'Lägger till länkar till sidor med "liknande" titlar',
+);
+
+/** Tulu (ತುಳು)
+ * @author VASANTH S.N.
+ */
+$messages['tcy'] = array(
+	'didyoumean-desc' => 'ಇಂಚಿನನೇ ಪುಟಕು ಕೊಂಡಿ ಸೇರಾಲೆ',
 );
 
 /** Telugu (తెలుగు)
