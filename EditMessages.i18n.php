@@ -1627,6 +1627,14 @@ $messages['ta'] = array(
 	'editmsg-patch-success' => 'வெற்றிகரமாகச் சீரமைக்கப்பட்டது.',
 );
 
+/** Tulu (ತುಳು)
+ * @author VASANTH S.N.
+ */
+$messages['tcy'] = array(
+	'editmsg-search' => 'ನಾಡ್‘ಲೆ',
+	'editmsg-new-search' => 'ಪೊಸ ನಾಡಾಟ',
+);
+
 /** Telugu (తెలుగు)
  * @author Chaduvari
  * @author Veeven
