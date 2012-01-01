@@ -1282,7 +1282,14 @@ $messages['sah'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'scanset_invalid_name' => 'දෝෂය: වලංගු නොවන හෝ මඟහැරී ඇති පරිලෝකන යුගල.',
+	'scanset_unrecognised_index_format' => 'දෝෂය: නොදන්නා සුචිගත ආකෘතිය',
 	'scanset_opendir_error' => 'දෝශය:$1 නාමාවලිය විවෘත කල නොහැක',
+	'scanset_no_files' => 'දෝෂය: විශේෂණය කෙරූ නාමාවලියේ කිසිදු ගොනුවක් ඉදිරිපත් වී නොතිබුණි.',
+	'scanset_no_volumes' => 'දෝෂය: පරිමා නාමාවලියන් හමු නොවුණි',
+	'scanset_missing_index_file' => 'දෝෂය: $1 සුචිගත ගොනුව හමු නොවුණි',
+	'scanset_index_file_error' => 'දෝෂය: $1 පේළියෙහි සුචිගත ගොනු ආකෘතියේ දෝෂය',
+	'scanset_invalid_volume' => 'දෝෂය: නොදන්නා පරිමාව',
 	'scanset_next' => 'පසු &gt;',
 	'scanset_prev' => '&lt; පෙර',
 );
