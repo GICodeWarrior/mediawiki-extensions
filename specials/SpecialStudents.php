@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ * Page listing all students in a pager with filter control.
  *
  * @since 0.1
  *
@@ -27,14 +27,20 @@ class SpecialStudents extends SpecialEPPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $arg
+	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
 
 		$out = $this->getOutput();
 
-		// TODO: AUTH
+		if ( $this->subPage === '' ) {
+			$this->displayNavigation();
+			EPStudent::displayPager( $this->getContext() );
+		}
+		else {
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Student', $this->subPage )->getLocalURL() );
+		}
 	}
 
 }

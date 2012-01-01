@@ -88,12 +88,14 @@ class SpecialCourse extends SpecialEPPage {
 	protected function getSummaryData( EPDBObject $course ) {
 		$stats = array();
 
-		$stats['name'] = $course->getField( 'name' );
-		$stats['org'] = EPOrg::selectFieldsRow( 'name', array( 'id' => $course->getField( 'org_id' ) ) );
+		$stats['name'] = htmlspecialchars( $course->getField( 'name' ) );
 
-		foreach ( $stats as &$stat ) {
-			$stat = htmlspecialchars( $stat );
-		}
+		$org = EPOrg::selectFieldsRow( 'name', array( 'id' => $course->getField( 'org_id' ) ) );
+
+		$stats['org'] = Linker::linkKnown(
+			SpecialPage::getTitleFor( 'Institution', $org ),
+			htmlspecialchars( $org )
+		);
 
 		return $stats;
 	}

@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Page listing all insitutions in a pager with filter control.
- * Also has a form for adding new items for those with matching priviliges.
+ * Page listing all institutions in a pager with filter control.
+ * Also has a form for adding new items for those with matching privileges.
  *
  * @since 0.1
  *
@@ -28,7 +28,7 @@ class SpecialInstitutions extends SpecialEPPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string|null $arg
+	 * @param string|null $subPage
 	 */
 	public function execute( $subPage ) {
 		parent::execute( $subPage );

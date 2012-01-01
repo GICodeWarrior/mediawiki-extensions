@@ -88,15 +88,23 @@ class SpecialTerm extends SpecialEPPage {
 	protected function getSummaryData( EPDBObject $term ) {
 		$stats = array();
 
-		$stats['org'] = EPOrg::selectFieldsRow( 'name', array( 'id' => $term->getField( 'org_id' ) ) );
-		$stats['course'] = EPCourse::selectFieldsRow( 'name', array( 'id' => $term->getField( 'course_id' ) ) );
-		$stats['year'] = $term->getField( 'year' ); // TODO: how to properly i18n this?
-		$stats['start'] = $this->getLanguage()->timeanddate( $term->getField( 'start' ), true );
-		$stats['end'] = $this->getLanguage()->timeanddate( $term->getField( 'end' ), true );
+		$org = EPOrg::selectFieldsRow( 'name', array( 'id' => $term->getField( 'org_id' ) ) );
 
-		foreach ( $stats as &$stat ) {
-			$stat = htmlspecialchars( $stat );
-		}
+		$stats['org'] = Linker::linkKnown(
+			SpecialPage::getTitleFor( 'Institution', $org ),
+			htmlspecialchars( $org )
+		);
+
+		$course = EPCourse::selectFieldsRow( 'name', array( 'id' => $term->getField( 'course_id' ) ) );
+
+		$stats['course'] = Linker::linkKnown(
+			SpecialPage::getTitleFor( 'Course', $course ),
+			htmlspecialchars( $course )
+		);
+
+		$stats['year'] = htmlspecialchars( $term->getField( 'year' ) ); // TODO: how to properly i18n this?
+		$stats['start'] = htmlspecialchars( $this->getLanguage()->timeanddate( $term->getField( 'start' ), true ) );
+		$stats['end'] = htmlspecialchars( $this->getLanguage()->timeanddate( $term->getField( 'end' ), true ) );
 
 		if ( $term->useCanManage( $this->getUser() ) ) {
 			$stats['token'] = Linker::linkKnown(
