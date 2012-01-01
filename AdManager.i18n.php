@@ -203,6 +203,17 @@ $messages['diq'] = array(
 	'admanager_Page' => 'Peli',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'admanager_invalidtargetpage' => 'Neniu paĝo trovita laŭ titolo "$1".',
+	'admanager_labelPage' => 'Titoloj de paĝoj',
+	'admanager_labelCategory' => 'Nomoj de kategorioj',
+	'admanager_Page' => 'Paĝoj',
+	'admanager_Category' => 'Kategorioj',
+);
+
 /** Persian (فارسی)
  * @author ZxxZxxZ
  */
