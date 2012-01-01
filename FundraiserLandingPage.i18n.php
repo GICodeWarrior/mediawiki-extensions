@@ -20,6 +20,13 @@ $messages['de'] = array(
 	'fundraiserlandingpage-desc' => 'Ermögliche die Nutzung von URL-Parametern als Vorlagenvariablen',
 );
 
+/** Esperanto (Esperanto)
+ * @author Blahma
+ */
+$messages['eo'] = array(
+	'fundraiserlandingpage-desc' => 'Akceptas URL-parametrojn kaj transdonas ilin al la respektiva ŝablono kiel ŝablonajn variablojn',
+);
+
 /** Estonian (Eesti)
  * @author Pikne
  */
