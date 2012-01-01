@@ -394,8 +394,8 @@ $messages['hsb'] = array(
 	'uos-warn' => 'PHPlot njeje instalowany!',
 	'uos-choose' => 'Jednu ze slědowacych wužiwarskich opcijow wubrać: $1',
 	'uos-choose-hidden' => 'Wubjer jednu ze slědowacych schowanych wužiwarskich opcijow: $1',
-	'uos-unknown' => '*Standardnu',
-	'uos-other' => '*Druhu',
+	'uos-unknown' => '* Standard',
+	'uos-other' => '*Druhe',
 	'uos-title' => 'Distribucija hódnotow wužiwarskeje opcije $1',
 );
 
@@ -533,6 +533,20 @@ $messages['ms'] = array(
 	'uos-unknown' => '*Asali',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'useroptionstats' => 'Statistikk for brukervalg',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Spesialside]] for rapporter om bruk av MediaWiki brukervalg',
+	'uos-warn' => 'PHPlot er ikke installert!',
+	'uos-choose' => 'Velg et av de følgende brukervalgene: $1',
+	'uos-unknown' => '*Standard',
+	'uos-other' => '*Annen',
+	'uos-title' => 'Fordeling av verdier for brukervalg $1',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author SPQRobin
@@ -560,20 +574,6 @@ $messages['nn'] = array(
 	'uos-unknown' => '*Standard',
 	'uos-other' => '*Annan',
 	'uos-title' => 'Spreiing i verdiar for brukarval $1',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Audun
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'useroptionstats' => 'Statistikk for brukervalg',
-	'useroptionstats-desc' => '[[Special:UserOptionStats|Spesialside]] for rapporter om bruk av MediaWiki brukervalg',
-	'uos-warn' => 'PHPlot er ikke installert!',
-	'uos-choose' => 'Velg et av de følgende brukervalgene: $1',
-	'uos-unknown' => '*Standard',
-	'uos-other' => '*Annen',
-	'uos-title' => 'Fordeling av verdier for brukervalg $1',
 );
 
 /** Occitan (Occitan)
