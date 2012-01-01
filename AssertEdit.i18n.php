@@ -122,6 +122,15 @@ $messages['bg'] = array(
 	'assert_edit_message' => 'Зададеното твърдение ($1) не е изпълнено.',
 );
 
+/** Banjar (Bahasa Banjar)
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'assert_edit_title' => 'Panagasan gagal',
+	'assertedit-desc' => 'Manambahi panagasan babakan gasan dipuruk ulih bot',
+	'assert_edit_message' => 'Panagasan nang diajuakan ($1) gagal.',
+);
+
 /** Bengali (বাংলা)
  * @author Zaheen
  */
