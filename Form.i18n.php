@@ -245,7 +245,7 @@ $messages['br'] = array(
 	'formindexmismatch-title' => 'Ne glot ket livaoueg an anvioù gant ar patrom',
 	'formindexmismatch' => 'Ar furm skrid-mañ en deus patromoù ne glotont ket adalek $1.',
 	'formarticleexists' => 'Ar bajenn zo anezhi dija',
-	'formarticleexiststext' => 'Ar bajenn [[$1]] zo anezhi dija.',
+	'formarticleexiststext' => "Ar bajenn [[$1]] zo anezhi c'hoazh.",
 	'formbadpagename' => 'Anv fall evit ar bajenn',
 	'formbadrecaptcha' => 'Talvoudoù fall evit reCaptcha. Klaskit adarre.',
 	'formbadpagenametext' => 'Ar roadennoù hoc\'h eus lakaet a grou un anv fall evit ar bajenn,  "$1".',
@@ -422,6 +422,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'form-desc' => '[[Special:From|Formulara interfaco]] por starigi novajn paĝojn',
 	'form' => 'Formulario',
 	'formnoname' => 'Neniu nomo de kamparo',
 	'formnonametext' => 'Vi devas provizi formularan nomon, ekzemple "Special:Form/NomoDeFormularo".',
@@ -436,6 +437,7 @@ $messages['eo'] = array(
 	'formbadrecaptcha' => 'Malkorektaj valoroj por reCaptcha. Reprovu.',
 	'formrequiredfielderror' => 'La {{PLURAL:$2|kampo $1 estas deviga|kampoj $1 estas devigaj}} por ĉi tiu formulario.
 Bonvolu plenigi {{PLURAL:$2|ĝin|ilin}}.',
+	'formsavesummary' => 'Nova paĝo uzanta [[Special:Form/$1|la formularon $1]]',
 	'formsaveerror' => 'Eraro konservante formularon',
 	'formsaveerrortext' => "Estis nekonata eraro konservante paĝon '$1'.",
 );
@@ -1096,6 +1098,33 @@ $messages['nah'] = array(
 	'formbadpagename' => 'Ahcualli zāzaniltōcāitl',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'form-desc' => 'Et [[Special:Form|skjema]] for å opprette nye sider',
+	'form' => 'Skjema',
+	'formnoname' => 'Intet skjemanavn',
+	'formnonametext' => 'Du må angi et skjemanavn, som «Special:Form/Skjemanavn».',
+	'formbadname' => 'Ugyldig skjemanavn',
+	'formbadnametext' => 'Det er ingen skjema ved det navnet.',
+	'formpattern' => '$1-skjema',
+	'formtitlepattern' => 'Legger til nytt $1',
+	'formsave' => 'Lagre',
+	'formindexmismatch-title' => 'Navnemønster og malfeil',
+	'formindexmismatch' => 'Dette skjemaet har upassende navnemønstre og maler som starter på indeks $1.',
+	'formarticleexists' => 'Siden eksisterer',
+	'formarticleexiststext' => 'Siden [[$1]] eksisterer allerede.',
+	'formbadpagename' => 'Ugyldig sidenavn',
+	'formbadrecaptcha' => 'Gale verdier fro reCaptcha. Prøv igjen.',
+	'formbadpagenametext' => 'Skjemadataene du skrev inn utgjør et ugyldig sidenavn, «$1».',
+	'formrequiredfielderror' => '{{PLURAL:$2|Feltet $1 er obligatorisk|Feltene $1 er obligatoriske}} for dette skjemaet. Vær vennlig og fyll {{PLURAL:$2|det|dem}} ut.',
+	'formsavesummary' => 'Ny side vha. [[Special:Form/$1|skjemaet $1]]',
+	'formsaveerror' => 'Feil under skjemalagring',
+	'formsaveerrortext' => 'Det var en ukjent feil under lagring av siden ‘$1’.',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1160,33 +1189,6 @@ $messages['nn'] = array(
 	'formsavesummary' => 'Ny side vha. [[Special:Form/$1|skjemaet $1]]',
 	'formsaveerror' => 'Feil under skjemalagring',
 	'formsaveerrortext' => 'Det var ein ukjend feil under lagring av sida ‘$1’.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'form-desc' => 'Et [[Special:Form|skjema]] for å opprette nye sider',
-	'form' => 'Skjema',
-	'formnoname' => 'Intet skjemanavn',
-	'formnonametext' => 'Du må angi et skjemanavn, som «Special:Form/Skjemanavn».',
-	'formbadname' => 'Ugyldig skjemanavn',
-	'formbadnametext' => 'Det er ingen skjema ved det navnet.',
-	'formpattern' => '$1-skjema',
-	'formtitlepattern' => 'Legger til nytt $1',
-	'formsave' => 'Lagre',
-	'formindexmismatch-title' => 'Navnemønster og malfeil',
-	'formindexmismatch' => 'Dette skjemaet har upassende navnemønstre og maler som starter på indeks $1.',
-	'formarticleexists' => 'Siden eksisterer',
-	'formarticleexiststext' => 'Siden [[$1]] eksisterer allerede.',
-	'formbadpagename' => 'Ugyldig sidenavn',
-	'formbadrecaptcha' => 'Gale verdier fro reCaptcha. Prøv igjen.',
-	'formbadpagenametext' => 'Skjemadataene du skrev inn utgjør et ugyldig sidenavn, «$1».',
-	'formrequiredfielderror' => '{{PLURAL:$2|Feltet $1 er obligatorisk|Feltene $1 er obligatoriske}} for dette skjemaet. Vær vennlig og fyll {{PLURAL:$2|det|dem}} ut.',
-	'formsavesummary' => 'Ny side vha. [[Special:Form/$1|skjemaet $1]]',
-	'formsaveerror' => 'Feil under skjemalagring',
-	'formsaveerrortext' => 'Det var en ukjent feil under lagring av siden ‘$1’.',
 );
 
 /** Occitan (Occitan)
@@ -1578,6 +1580,13 @@ $messages['sw'] = array(
 $messages['ta'] = array(
 	'formsave' => 'சேமி',
 	'formarticleexists' => 'இப்பக்கம் உள்ளது',
+);
+
+/** Tulu (ತುಳು)
+ * @author VASANTH S.N.
+ */
+$messages['tcy'] = array(
+	'formsave' => 'ಒರಿಪಾಲೆ',
 );
 
 /** Telugu (తెలుగు)
