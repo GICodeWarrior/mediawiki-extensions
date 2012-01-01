@@ -402,11 +402,13 @@ $messages['eu'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
+ * @author Nike
  * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'security' => 'Tietoturvaloki',
+	'security-desc' => 'Laajentaa MediaWikin sivujen suojausta myös sivujen sisällön katsomisen rajoittamiseen',
 	'security-logpage' => 'Tietoturvaloki',
 	'security-info' => 'Tällä sivulla on $1',
 	'security-info-toggle' => 'turvallisuusrajoitukset',
