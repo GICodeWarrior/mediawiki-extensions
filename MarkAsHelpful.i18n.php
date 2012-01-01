@@ -76,6 +76,18 @@ $messages['dsb'] = array(
 	'mah-action-error' => 'Pśi wuwjeźenju akcije jo zmólka nastała',
 );
 
+/** Esperanto (Esperanto)
+ * @author Blahma
+ */
+$messages['eo'] = array(
+	'markashelpful-desc' => 'Provizas uzantointerfacon por marki komentojn utilaj',
+	'mah-mark-text' => 'Marki kiel utilan',
+	'mah-you-marked-text' => 'Vi opinias tion ĉi utila',
+	'mah-someone-marked-text' => '$1 opinias tion ĉi utila',
+	'mah-undo-mark-text' => 'malfari',
+	'mah-action-error' => 'Okazis eraro dum plenumo de tiu ĉi ago',
+);
+
 /** Spanish (Español)
  * @author Platonides
  */
@@ -112,6 +124,16 @@ $messages['fr'] = array(
 	'mah-action-error' => 'Il y a eu une erreur en exécutant cette action',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'mah-mark-text' => 'Marcar coment utilo',
+	'mah-you-marked-text' => 'Vos pensâd qu’o est utilo',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1}} pense qu’o est utilo',
+	'mah-undo-mark-text' => 'dèfâre',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -134,6 +156,16 @@ $messages['hsb'] = array(
 	'mah-someone-marked-text' => '{{GENDER:$1|$1}} ma to za pomocliwe',
 	'mah-undo-mark-text' => 'cofnyć',
 	'mah-action-error' => 'Při wuwjedźenju akcije je zmylk wustupił',
+);
+
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'mah-mark-text' => 'Megjelelés hasznosként',
+	'mah-you-marked-text' => 'Szerinted hasznos',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1 szerint hasznos}}',
+	'mah-undo-mark-text' => 'visszavonás',
 );
 
 /** Interlingua (Interlingua)
@@ -218,6 +250,7 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -226,7 +259,7 @@ $messages['pms'] = array(
 	'mah-you-marked-text' => 'It pense che sòn a sia ùtil',
 	'mah-someone-marked-text' => '{{GENDER:$1|$1 a pensa che sòn a sia ùtil}}',
 	'mah-undo-mark-text' => "buta 'me ch'a l'era",
-	'mah-action-error' => "A l'é stàit-ie n'eror an fasend st'assion",
+	'mah-action-error' => "A-i é staje n'eror an fasend st'assion",
 );
 
 /** Tarandíne (Tarandíne)
@@ -253,8 +286,10 @@ $messages['si'] = array(
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
+	'mah-mark-text' => 'Markera som användbar',
 	'mah-someone-marked-text' => '{{GENDER:$1|$1 tycker att detta är användbart}}',
 	'mah-undo-mark-text' => 'ångra',
+	'mah-action-error' => 'Det uppstod ett fel när denna åtgärd skulle utföras',
 );
 
 /** Ukrainian (Українська)
@@ -274,6 +309,7 @@ $messages['vi'] = array(
 	'mah-you-marked-text' => 'Bạn coi mục này là hữu ích',
 	'mah-someone-marked-text' => '$1 coi mục này là hữu ích',
 	'mah-undo-mark-text' => 'hoàn tác',
+	'mah-action-error' => 'Có lỗi khi thực hiện tác vụ này',
 );
 
 /** Yiddish (ייִדיש)
