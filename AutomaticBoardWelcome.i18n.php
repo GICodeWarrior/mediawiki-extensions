@@ -30,6 +30,13 @@ $messages['be-tarask'] = array(
 	'automaticboardwelcome-desc' => 'Аўтаматычна разьмяшчае [[MediaWiki:User-board-welcome-message|вітальнае паведамленьне]] на дошцы новага карыстальніка пасьля стварэньне рахунку',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'automaticboardwelcome-desc' => 'Diskouez ent emgefre [[MediaWiki:User-board-welcome-message|ur gemennadenn a zegemer mat]] war pajennoù an implijerien nevez krouet ur gont ganto',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  * @author Pwyll
