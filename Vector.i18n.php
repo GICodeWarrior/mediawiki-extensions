@@ -476,6 +476,7 @@ Wenn Sie angemeldet sind, können Sie das Anzeigen dieser Warnung im „Bearbeit
 );
 
 /** Zazaki (Zazaki)
+ * @author Erdemaslancan
  * @author Mirzali
  * @author Xoser
  */
@@ -487,7 +488,7 @@ $messages['diq'] = array(
 	'vector-editwarning-warning' => 'ihtimal o ke wexta şıma peli ra bıveci, vurnayiş o ke şıma kerdo, hewna şiyêro .
 eke şıma kewtê hesabê xo, no hişyari tercihanê xo ra şıma eşkeni "Ho vurnayeno" bıvındarnî .',
 	'vector-editwarning-preference' => 'wexta ke ez pelo nêqeydbiyaye ra veciyaya mı hişyar bıker',
-	'vector-simplesearch-search' => 'Cıgeyre',
+	'vector-simplesearch-search' => 'Cıgeyrê',
 	'vector-simplesearch-containing' => 'tedeestey...',
 );
 
