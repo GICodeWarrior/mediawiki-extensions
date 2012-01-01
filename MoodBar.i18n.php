@@ -985,6 +985,7 @@ Was ist eine Diskussionsseite?
 Eine Diskussionsseite ist eine Seite auf der die Benutzer eines Wikis miteinander kommunizieren, indem sie dort Nachrichten hinterlassen. Es können aktuelle Angelegenheiten diskutiert werden, Hilfestellung gegeben werden, allgemeine Nachrichten oder ein Dankeschön hinterlassen werden. Eine Diskussionsseite kann auch genutzt werden, um einfach Hallo zu sagen.
 
 Wir wünschen dir noch einen schönen Tag,
+
 -- {{SITENAME}}',
 );
 
@@ -1018,6 +1019,7 @@ Was ist eine Diskussionsseite?
 Eine Diskussionsseite ist eine Seite auf der die Benutzer eines Wikis miteinander kommunizieren, indem sie dort Nachrichten hinterlassen. Es können aktuelle Angelegenheiten diskutiert werden, Hilfestellung gegeben werden, allgemeine Nachrichten oder ein Dankeschön hinterlassen werden. Eine Diskussionsseite kann auch genutzt werden, um einfach Hallo zu sagen.
 
 Wir wünschen Ihnen noch einen schönen Tag,
+
 -- {{SITENAME}}',
 );
 
@@ -1104,6 +1106,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Blahma
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -1120,11 +1123,16 @@ $messages['eo'] = array(
 	'moodbar-type-confused-title' => 'Konfuzita',
 	'tooltip-moodbar-what' => 'Lerni pli pri ĉi tiu funkcio',
 	'moodbar-what-label' => 'Kio estas?',
+	'moodbar-respond-text' => 'Respondu al tio ĉi',
+	'moodbar-response-add' => 'Aldoni respondon',
+	'moodbar-response-desc' => 'La respondo referencos al la originala komento. Subskribo ne estas postulata.',
+	'moodbar-response-btn' => 'Sendi respondon',
 	'moodbar-what-content' => 'Ĉi tiu funkcio estas farita por helpi al la komunumo kompreni la opiniojn de ties redaktantojn
 Por pli informo, bonvolu viziti la $1n.',
 	'moodbar-what-link' => 'celpaĝo',
 	'moodbar-privacy' => 'Sendante, vi konsentas al travidebleco sub ĉi tiuj $1.',
 	'moodbar-privacy-link' => 'kondiĉoj',
+	'moodbar-privacy-link-title' => 'Uzkondiĉoj',
 	'moodbar-disable-link' => 'Mi ne interesas. Bonvolu malŝalti ĉi tiun econ.',
 	'moodbar-form-title' => 'Ĉar...',
 	'moodbar-form-note' => 'Maksimumo de 140 signoj',
@@ -1137,7 +1145,21 @@ Por pli informo, bonvolu viziti la $1n.',
 	'moodbar-error-title' => 'Ho ve!',
 	'moodbar-success-subtitle' => 'Via opinio pri via redaktado helpos al ni plibonigi $1.',
 	'moodbar-error-subtitle' => 'Io fuŝis! Bonvolu reprovu doni komenton baldaŭ.',
+	'moodbar-blocked-title' => 'Ho ve!',
+	'moodbar-blocked-subtitle' => 'Oni forbaris vin de redaktado.',
+	'moodbar-email-title' => 'Aldoni retadreson',
+	'moodbar-email-input' => 'Via retadreso',
+	'moodbar-email-desc' => 'Ni sendos al vi retmesaĝon kiam iu respondos viajn rimarkojn.',
+	'moodbar-email-submit' => 'Submeti',
+	'moodbar-updating-title' => 'Ĝisdatigante...',
+	'moodbar-updating-subtitle' => 'Ni ĝisdatigas viajn retpoŝtajn agordojn.',
+	'moodbar-email-confirm-title' => 'Konfirmi retadreson',
+	'moodbar-email-confirm-desc' => 'Vi devas konfirmi vian retadreson por povi ricevi anoncojn. Por resendigi la konfirman retmesaĝon, klaku "Resendi konfirmon".',
+	'moodbar-email-resend-confirmation' => 'Resendi konfirmon',
+	'moodbar-email-optout' => 'Ne, dankon',
+	'moodbar-tooltip-title' => 'Informu nin pri viaj spertoj kun redaktado de {{SITENAME}}.',
 	'right-moodbar-view' => 'Vidi kaj eksporti opiniojn pri MoodBar',
+	'right-moodbar-admin' => 'Ŝanĝi videblecon en la kontrolpanelo de rimarkoj',
 	'moodbar-admin-title' => 'Komenti pri MoodBar',
 	'moodbar-admin-intro' => 'Ĉi tiu paĝo permesas al vi por vidi opiniaron senditan de la MoodBar.',
 	'moodbar-admin-empty' => 'Mankas rezultoj',
@@ -1156,12 +1178,83 @@ Por pli informo, bonvolu viziti la $1n.',
 	'moodbar-header-user-editcount' => 'Konto de redaktoj',
 	'moodbar-header-namespace' => 'Nomspaco',
 	'moodbar-header-own-talk' => 'Propra diskuto-paĝo',
-	'moodbar-type-happy' => 'Ĝoja',
-	'moodbar-type-sad' => 'Malĝoja',
-	'moodbar-type-confused' => 'Konfuzita',
+	'moodbar-feedback-title' => 'Kontrolpanelo de rimarkoj',
+	'moodbar-feedback-description' => 'Tiu ĉi kontrolpanelo montras komentojn de novaj redaktantoj pri ilia sperto kun redaktado de $1. [http://en.wikipedia.org/wiki/Wikipedia:New_editor_feedback Lernu pli]',
+	'moodbar-feedback-response-title' => '==Respondo al viaj [[$1|rimarkoj]]==',
+	'moodbar-feedback-view-link' => '(Vidu la rimarkojn)',
+	'moodbar-feedback-filters' => 'Filtriloj',
+	'moodbar-feedback-filters-type' => 'Humoro:',
+	'moodbar-feedback-filters-type-happy' => 'Ĝoja',
+	'moodbar-feedback-filters-type-confused' => 'Konfuzita',
+	'moodbar-feedback-filters-type-sad' => 'Malĝoja',
+	'moodbar-feedback-filters-username' => 'Uzantonomo:',
+	'moodbar-feedback-filters-my-response' => 'Nur miaj respondoj:',
+	'moodbar-feedback-filters-button' => 'Agordi filtrilojn',
+	'moodbar-feedback-whatis' => 'Kio estas tiu ĉi funkcio?',
+	'moodbar-feedback-permalink' => 'ligilo ĉi tien',
+	'moodbar-feedback-noresults' => 'Neniuj komentoj korespondas kun viaj filtriloj.',
+	'moodbar-feedback-more' => 'Pli',
+	'moodbar-feedback-nomore' => 'Neniuj pliaj rezultoj montreblas.',
+	'moodbar-feedback-newer' => 'Pli novaj',
+	'moodbar-feedback-older' => 'Pli malnovaj',
+	'moodbar-feedback-ajaxerror' => 'Okazis eraro dum venigo de pliaj rezultoj.',
+	'moodbar-feedback-load-record-error' => 'Okazis eraro dum ŝargado de la rikordo.',
+	'moodbar-user-hidden' => '(Uzanto kaŝita)',
+	'moodbar-comment-hidden' => '(Rimarkoj kaŝitaj per ago de administranto)',
+	'moodbar-feedback-show' => 'montru kaŝitajn rimarkojn',
+	'moodbar-feedback-hide' => 'kaŝu rimarkojn',
+	'moodbar-feedback-action-confirm' => 'Konfirmi',
+	'moodbar-feedback-action-cancel' => 'Nuligi',
+	'moodbar-hidden-footer' => 'Kaŝitaj rimarkoj de $1 je $2 $3, kialo: $4 $5',
+	'moodbar-hidden-footer-without-log' => 'Kaŝitaj rimarkoj $1',
+	'moodbar-feedback-restore' => 'restarigu kaŝitajn rimarkojn',
+	'moodbar-action-item' => 'Rimarkoj:',
+	'moodbar-action-reason' => 'Kialo:',
+	'moodbar-action-reason-required' => 'Bonvolu doni kialon.',
+	'moodbar-hide-header' => 'Malvidebligi tiun ĉi eron',
+	'moodbar-restore-header' => 'Revidebligu tiun ĉi eron',
+	'moodbar-invalid-item' => 'La sistemo ne sukcesis trovi la ĝustan rimarkon.',
+	'moodbar-feedback-action-error' => 'Okazis eraro dum plenumo de tiu ĉi ago.',
+	'moodbar-feedback-response-summary' => '[[$1|$2]] [[$3|respondis]] antaŭ $4',
+	'moodbar-feedback-edit-summary' => 'Respondo al [[Special:FeedbackDashboard/$1|uzanto-rimarkoj]]: $2',
+	'moodbar-type-happy' => '{{GENDER:$1|Ĝoja}}',
+	'moodbar-type-sad' => '{{GENDER:$1|Malĝoja|Malĝoja}}',
+	'moodbar-type-confused' => '{{GENDER:$1|Konfuzita|Konfuzita}}',
+	'moodbar-type-stats' => 'Rimarkoj laŭ humoro dum la lastaj 24 horoj: Ĝoja: $1, Malĝoja: $2, Konfuzita: $3',
 	'moodbar-user-anonymized' => 'Anonima',
 	'moodbar-user-ip' => 'IP-adreso',
 	'moodbar-user-user' => 'Registrita Uzanto',
+	'moodbar-log-name' => 'Protokolo de rimarkoj',
+	'moodbar-log-header' => 'Jen la protokolo de agoj faritaj en la [[Special:FeedbackDashboard|opinia stirpanelo]].',
+	'moodbar-log-hide' => 'kaŝis [[$1]]',
+	'moodbar-log-restore' => 'revidebligis [[$1]]',
+	'moodbar-response-terms' => 'Submetante, vi konsentas kun la travidebleco laŭ tiuj ĉi $1.',
+	'moodbar-response-link' => 'kondiĉoj',
+	'response-back-text' => 'Reen',
+	'response-preview-text' => 'Antaŭrigardo',
+	'response-ajax-action-head' => 'Respondante...',
+	'response-ajax-action-body' => 'Via respondo estas aldonata.',
+	'response-ajax-success-head' => 'Dankon!',
+	'response-ajax-success-body' => 'Via respondo aldoniĝis.',
+	'response-ajax-error-head' => 'Ho ve!',
+	'response-ajax-error-body' => 'Okazis eraro dum aldonado de via respondo. <br />Bonvolu reprovi poste.',
+	'moodbar-enotif-subject' => '$1 respondis al viaj rimarkoj',
+	'moodbar-enotif-body' => 'Saluton, $1!
+
+Bonvenon al {{SITENAME}}, kaj dankon al vi pro via [$2 komento]. Alia {{SITENAME}}-uzanto, [$3 $6], skribis la jenan respondon:
+
+        $4
+
+Vidu ĉi tiu mesaĝo en via [$5 diskuto-paĝo]
+
+Kio estas diskuto-paĝo?
+Via persona diskuto-paĝo estas la paĝo kiun la aliaj {{SITENAME}}-redaktantoj uzas por komuniki kun vi. Vi povas respondi per klakante "Redakti", metante la indikilon sub la komento, tajpante vian respondon plus kvar tildojn (~~~~) por subskribi, kaj klakante la konservo-butonon. Ĉiuj paĝoj en {{SITENAME}} havas diskuto-paĝojn, kaj ili estas uzataj por multaj diversaj kialoj. Baldaŭ post tempo vi komfortiĝos kun la sistemo, sed se vi havas problemojn, petu helpon en diskuto-paĝo de alia uzanto.
+
+Ĉu vi estas daŭre konfuzita? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Ĉi tiu video] (rigardu en [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) donas al vi anglalingva ŝtupo-post-ŝtupa resumo.
+
+Fartu bone,
+
+-- {{SITENAME}}',
 );
 
 /** Spanish (Español)
@@ -1400,7 +1493,7 @@ $messages['fa'] = array(
  * @author Olli
  */
 $messages['fi'] = array(
-	'moodbar-desc' => 'Sallii tiettyjen käyttäjien antaa palautetta heidän muokkauskokemuksesta',
+	'moodbar-desc' => 'Mahdollistaa tiettyjen käyttäjien antaa palautetta heidän muokkauskokemuksesta.',
 	'moodbar-trigger-feedback' => 'Palautetta muokkaamisesta',
 	'moodbar-trigger-share' => 'Jaa kokemuksesi',
 	'moodbar-trigger-editing' => 'Muokataan $1...',
@@ -1476,7 +1569,7 @@ $messages['fi'] = array(
 	'moodbar-feedback-filters-type-happy' => 'Iloinen',
 	'moodbar-feedback-filters-type-confused' => 'Hämmentynyt',
 	'moodbar-feedback-filters-type-sad' => 'Surullinen',
-	'moodbar-feedback-filters-username' => 'Käyttäjätunnus:',
+	'moodbar-feedback-filters-username' => 'Käyttäjätunnus',
 	'moodbar-feedback-filters-my-response' => 'Vain omat vastaukset:',
 	'moodbar-feedback-filters-button' => 'Aseta suodattimet',
 	'moodbar-feedback-whatis' => 'Mikä tämä ominaisuus on?',
@@ -1526,11 +1619,11 @@ $messages['fi'] = array(
 	'response-ajax-success-head' => 'Kiitos!',
 	'response-ajax-success-body' => 'Vastauksesi on lisätty.',
 	'response-ajax-error-head' => 'Ups!',
-	'response-ajax-error-body' => 'Virhe lisättäessä vastauksesi.<br />Yritä myöhemmin uudelleen.',
+	'response-ajax-error-body' => 'Vastauksesi lisääminen epäonnistui.<br />Yritä myöhemmin uudelleen.',
 	'moodbar-enotif-subject' => '$1 vastasi palautteeseesi',
 	'moodbar-enotif-body' => 'Hei $1!
 
-Tervetuloa sivustolle {{SITENAME}}, ja kiitos lähettämästäsi [$2 palautteesta]. Käyttäjä [$3 $6] sivustolla {{SITENAME}}, kirjoitti seuraavan vastauksen:
+Tervetuloa sivustolle {{SITENAME}} ja kiitos lähettämästäsi [$2 palautteesta]. Käyttäjä [$3 $6] sivustolla {{SITENAME}}, kirjoitti seuraavan vastauksen:
 
      $4
 
@@ -1542,6 +1635,7 @@ Keskustelusivusi on sivu, jossa muut sivuston {{SITENAME}} muokkaajat keskustele
 Oletko edelleen hämmentynyt? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Tämä video] (voit katsoa sen myös [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTubessa]) antaa sinulle toivottavasti paremman kuvan ominaisuudesta.
 
 Terveisin,
+
 -- {{SITENAME}}',
 );
 
@@ -1703,6 +1797,7 @@ Votre page de discussion d\'utilisateur est la page que les autres rédacteurs d
 Encore incertain ? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Cette vidéo] (à voir sur [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) vous donne un aperçu pas à pas. 
 
 Bonne journée,
+
 -- {{SITENAME}}',
 );
 
@@ -1723,11 +1818,15 @@ $messages['frp'] = array(
 	'moodbar-type-confused-title' => 'Confu',
 	'tooltip-moodbar-what' => 'Nen savêr més sur cela fonccionalitât',
 	'moodbar-what-label' => 'Qu’est-o qu’il est ?',
+	'moodbar-respond-text' => 'Rèpondre a cen',
+	'moodbar-response-add' => 'Apondre una rèponsa',
+	'moodbar-response-btn' => 'Mandar la rèponsa',
 	'moodbar-what-content' => 'Ceta fonccionalitât est conçua por édiér la comunôtât a comprendre l’èxpèrience a les gens que chanjont lo seto.
 Por més d’enformacions, volyéd visitar la $1.',
 	'moodbar-what-link' => 'pâge que dècrit la fonccion',
 	'moodbar-privacy' => 'En sometent, vos accèptâd la transparence en acôrd avouéc celes $1.',
 	'moodbar-privacy-link' => 'condicions',
+	'moodbar-privacy-link-title' => 'Condicions d’usâjo',
 	'moodbar-disable-link' => 'Su pas entèrèssiê. Volyéd dèsactivar cela fonccionalitât.',
 	'moodbar-form-title' => 'Perce que ...',
 	'moodbar-form-note' => '140 caractèros u més',
@@ -1740,6 +1839,14 @@ Por més d’enformacions, volyéd visitar la $1.',
 	'moodbar-error-title' => 'Crenom !',
 	'moodbar-success-subtitle' => 'Partagiér voutra èxpèrience nos éde a mèlyorar $1.',
 	'moodbar-error-subtitle' => 'Quârque-ren s’est mâl passâ ! Volyéd tornar tâchiér de partagiér voutros avis ples târd.',
+	'moodbar-blocked-title' => 'Crenom !',
+	'moodbar-email-title' => 'Apondre una adrèce èlèctronica',
+	'moodbar-email-input' => 'Voutra adrèce èlèctronica',
+	'moodbar-email-submit' => 'Sometre',
+	'moodbar-updating-title' => 'Misa a jorn...',
+	'moodbar-email-confirm-title' => 'Confirmar l’adrèce èlèctronica',
+	'moodbar-email-resend-confirmation' => 'Remandar la confirmacion',
+	'moodbar-email-optout' => 'Nan, grant-marci',
 	'right-moodbar-view' => 'Fâre vêre et èxportar voutros avis MoodBar',
 	'moodbar-admin-title' => 'Avis MoodBar',
 	'moodbar-admin-intro' => 'Ceta pâge vos pèrmèt de fâre vêre los avis balyês avouéc MoodBar.',
@@ -1760,12 +1867,15 @@ Por més d’enformacions, volyéd visitar la $1.',
 	'moodbar-header-namespace' => 'Èspâço de noms',
 	'moodbar-header-own-talk' => 'Pâge de discussion a sè',
 	'moodbar-feedback-title' => 'Tablô de bôrd des avis',
+	'moodbar-feedback-response-title' => '==En rèponsa a voutron [[$1|avis]]==',
+	'moodbar-feedback-view-link' => '(Vêre los avis)',
 	'moodbar-feedback-filters' => 'Filtros',
 	'moodbar-feedback-filters-type' => 'Caractèro :',
 	'moodbar-feedback-filters-type-happy' => 'Herox',
 	'moodbar-feedback-filters-type-confused' => 'Confu',
 	'moodbar-feedback-filters-type-sad' => 'Tristo',
 	'moodbar-feedback-filters-username' => 'Nom d’usanciér :',
+	'moodbar-feedback-filters-my-response' => 'Solament mes rèponses :',
 	'moodbar-feedback-filters-button' => 'Posicionar los filtros',
 	'moodbar-feedback-whatis' => 'Qu’est-o que cela fonccionalitât ?',
 	'moodbar-feedback-permalink' => 'fâre un lim de vers ique',
@@ -1776,10 +1886,18 @@ Por més d’enformacions, volyéd visitar la $1.',
 	'moodbar-comment-hidden' => '(Avis cachiê per mesera administrativa)',
 	'moodbar-feedback-show' => 'fâre vêre los avis cachiês',
 	'moodbar-feedback-hide' => 'cachiér los avis',
+	'moodbar-feedback-action-confirm' => 'Confirmar',
+	'moodbar-feedback-action-cancel' => 'Anular',
 	'moodbar-hidden-footer' => 'Avis cachiê per $1 lo $2 a $3, rêson : $4 $5',
+	'moodbar-hidden-footer-without-log' => 'Avis cachiê $1',
 	'moodbar-feedback-restore' => 'refâre los avis cachiês',
 	'moodbar-action-item' => 'Chousa de l’avis :',
 	'moodbar-action-reason' => 'Rêson :',
+	'moodbar-action-reason-required' => 'Volyéd balyér una rêson.',
+	'moodbar-hide-header' => 'Cachiér cél èlèment a la vua',
+	'moodbar-restore-header' => 'Rètablir la visibilitât de cél èlèment',
+	'moodbar-feedback-response-summary' => '[[$1|$2]] at [[$3|rèpondu]] cen fât $4',
+	'moodbar-feedback-edit-summary' => 'Rèponsa a l’[[Special:FeedbackDashboard/$1|avis usanciér]] : $2',
 	'moodbar-type-happy' => 'Hero{{GENDER:$1|x|sa}}',
 	'moodbar-type-sad' => 'Trist{{GENDER:$1|o|a}}',
 	'moodbar-type-confused' => 'Confu{{GENDER:$1||a}}',
@@ -1789,6 +1907,15 @@ Por més d’enformacions, volyéd visitar la $1.',
 	'moodbar-log-name' => 'Jornal des avis',
 	'moodbar-log-hide' => 'at cachiê [[$1]]',
 	'moodbar-log-restore' => 'at refêt la visibilitât de [[$1]]',
+	'moodbar-response-link' => 'condicions',
+	'response-back-text' => 'Tornar',
+	'response-preview-text' => 'Prèvisualisacion',
+	'response-ajax-action-head' => 'Rèpondre...',
+	'response-ajax-action-body' => 'Voutra rèponsa est aprés étre apondua.',
+	'response-ajax-success-head' => 'Grant-marci !',
+	'response-ajax-success-body' => 'Voutra rèponsa at étâ apondua.',
+	'response-ajax-error-head' => 'Crenom !',
+	'moodbar-enotif-subject' => '$1 at rèpondu a voutron avis',
 );
 
 /** Galician (Galego)
@@ -1940,6 +2067,7 @@ A súa páxina de conversa é o lugar onde os editores de {{SITENAME}} se comuni
 Aínda ten preguntas? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Este vídeo] (véxao no [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) dá unha guía paso a paso.
 
 Teña un bo día,
+
 -- {{SITENAME}}',
 );
 
@@ -2136,6 +2264,7 @@ $messages['he'] = array(
 עדיין מבולבלים? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv הסרטון הזה] (שאפשר לראות גם ב־[http://www.youtube.com/watch?v=JdeDLRsB2Es יוטיוב]) נותן מבוא צעד־אחר־צעד.
 
 יום נעים,
+
 -- {{SITENAME}}',
 );
 
@@ -2182,6 +2311,7 @@ $messages['hi'] = array(
 	'moodbar-type-confused' => '{{GENDER:$1|उलझन में}}',
 	'moodbar-user-user' => 'पंजीकृत सदस्य',
 	'moodbar-log-name' => 'सुझाव लॉग',
+	'response-back-text' => 'पीछे',
 	'response-preview-text' => 'पूर्वावलोकन',
 	'response-ajax-success-head' => 'धन्यवाद!',
 );
@@ -2300,7 +2430,11 @@ $messages['hu'] = array(
 	'moodbar-email-submit' => 'Elküldés',
 	'moodbar-updating-title' => 'Frissítés...',
 	'moodbar-updating-subtitle' => 'Frissítjük az e-mail címedet.',
+	'moodbar-email-confirm-title' => 'E-mail cím megerősítése',
 	'moodbar-email-resend-confirmation' => 'Megerősítés újraküldése',
+	'moodbar-email-optout' => 'Nem, köszönöm',
+	'moodbar-admin-empty' => 'Nincs találat',
+	'moodbar-header-id' => 'Visszajelzés ID',
 	'moodbar-header-timestamp' => 'Időbélyeg',
 	'moodbar-header-type' => 'Típus',
 	'moodbar-header-page' => 'Lap',
@@ -2312,16 +2446,25 @@ $messages['hu'] = array(
 	'moodbar-header-user-editcount' => 'Szerkesztések száma',
 	'moodbar-header-namespace' => 'Névtér',
 	'moodbar-header-own-talk' => 'Saját vitalap',
+	'moodbar-feedback-title' => 'Visszajelzés vezérlőpult',
 	'moodbar-feedback-view-link' => '(Visszajelzés megtekintése)',
 	'moodbar-feedback-filters' => 'Szűrők',
 	'moodbar-feedback-filters-type' => 'Hangulat:',
 	'moodbar-feedback-filters-type-happy' => 'Boldog',
+	'moodbar-feedback-filters-type-confused' => 'Zavarodott',
 	'moodbar-feedback-filters-type-sad' => 'Szomorú',
 	'moodbar-feedback-filters-username' => 'Felhasználónév:',
+	'moodbar-feedback-filters-my-response' => 'Csak az én válaszaim:',
 	'moodbar-feedback-filters-button' => 'Szűrők beállítása',
+	'moodbar-feedback-whatis' => 'Mi ez a szolgáltatás?',
 	'moodbar-feedback-newer' => 'Újabb',
 	'moodbar-feedback-older' => 'Régebbi',
 	'moodbar-user-hidden' => '(Rejtett felhasználó)',
+	'moodbar-feedback-action-confirm' => 'Megerősítés',
+	'moodbar-feedback-action-cancel' => 'Mégse',
+	'moodbar-action-item' => 'Visszajelzés elem:',
+	'moodbar-action-reason' => 'Ok:',
+	'moodbar-action-reason-required' => 'Kérlek adj meg egy okot!',
 	'moodbar-feedback-response-summary' => '[[$1|$2]] [[$3|válaszolt]] $4 ezelőtt',
 	'moodbar-type-happy' => '{{GENDER:$1|Boldog}}',
 	'moodbar-type-sad' => '{{GENDER:$1|Szomorú}}',
@@ -2335,6 +2478,9 @@ $messages['hu'] = array(
 	'moodbar-response-terms' => 'A beküldéssel egyetértesz az alábbiakkal: $1.',
 	'response-back-text' => 'Vissza',
 	'response-preview-text' => 'Előnézet',
+	'response-ajax-success-head' => 'Köszönjük!',
+	'response-ajax-error-head' => 'Hupsz!',
+	'moodbar-enotif-subject' => '$1 válaszolt a visszajelzésedre',
 );
 
 /** Interlingua (Interlingua)
@@ -2485,6 +2631,7 @@ Tu pagina de discussion personal es le pagina que altere usatores de {{SITENAME}
 Confuse ancora? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Iste video] (reguardar in [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) te da un explication passo a passo.
 
 Con salutes,
+
 -- {{SITENAME}}',
 );
 
@@ -2619,6 +2766,7 @@ Si tratta di una pagina che altri collaboratori di {{SITENAME}} possono usare pe
 Ancora perplesso? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Questo video] (visibile su [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) ti offre una guida passo passo, oppure puoi dare una occhiata a [http://it.wikipedia.org/wiki/Aiuto:Pagina_di_discussione questa pagina] d\'aiuto.
 
 Buona giornata,
+
 -- {{SITENAME}}',
 );
 
@@ -2999,6 +3147,7 @@ $messages['mk'] = array(
 Сè уште сте збунети? [http://mk.wikipedia.org/wiki/Податотека:Wikipedia_basics_-_Talk_pages.ogv Ова видео] ([http://www.youtube.com/watch?v=JdeDLRsB2Es на YouTube]) ќе ве воведе во нештата чекор по чекор.
 
 Пријатен ден,
+
 -- {{SITENAME}}',
 );
 
@@ -3241,6 +3390,7 @@ Laman perbincangan pengguna anda ialah laman yang digunakan oleh para penyunting
 Masih tak faham? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Video ini] (tonton di [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) menunjukkan anda langkah demi langkah. (Bahasa Inggeris sahaja)
 
 Semoga ceria,
+
 -- {{SITENAME}}',
 );
 
@@ -3430,6 +3580,7 @@ Uw overlegpagina is de pagina waar andere gebruikers van {{SITENAME}} met u kunn
 Nog steeds in verwarring? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Deze video] (ook [http://www.youtube.com/watch?v=JdeDLRsB2Es op YouTube] beschikbaar) laat het u stop voor stap zien.
 
 Nog een fijne dag!
+
 -- {{SITENAME}}',
 );
 
@@ -3707,6 +3858,7 @@ Wszystkie strony na  {{SITENAME}}, mają talk pages, i są używane do wielu ró
 Potrzebujesz więcej informacji? Obejrzyj [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Te video] (zobacz na [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]). Jest to przewodnik krok-po-kroku.
 
 Miłego dnia,
+
 -- {{SITENAME}}',
 );
 
@@ -3784,74 +3936,74 @@ Për savèjne ëd pi, për piasì vìsita ël $1.",
 	'moodbar-header-namespace' => 'Spassi nominal',
 	'moodbar-header-own-talk' => 'Pàgina ëd discussion përsonal',
 	'moodbar-feedback-title' => 'Cruscòt dij coment',
-	'moodbar-feedback-description' => "Sto cruscòt a mosta ij coment da j'editor neuv a propòsit ëd soa esperiensa an modificand $1.
+	'moodbar-feedback-description' => "Ës cruscòt a smon ij coment dj'editor neuv a propòsit ëd soa esperiensa an modificand $1.
 [http://en.wikipedia.org/wiki/Wikipedia:New_editor_feedback Për savèjne ëd pi]",
-	'moodbar-feedback-response-title' => '==An arspòsta a tò [[$1|artorn]]==',
-	'moodbar-feedback-view-link' => "(Varda l'artorn)",
+	'moodbar-feedback-response-title' => '==An rispòsta a soa [[$1|opinion]]==',
+	'moodbar-feedback-view-link' => '(Vëdde ij coment)',
 	'moodbar-feedback-filters' => 'Filtr',
 	'moodbar-feedback-filters-type' => 'Sentiment:',
 	'moodbar-feedback-filters-type-happy' => 'Content',
 	'moodbar-feedback-filters-type-confused' => 'Confus',
 	'moodbar-feedback-filters-type-sad' => 'Scontent',
-	'moodbar-feedback-filters-username' => 'Nòm utent:',
+	'moodbar-feedback-filters-username' => 'Stranòm:',
 	'moodbar-feedback-filters-my-response' => 'Mie arspòste a son:',
-	'moodbar-feedback-filters-button' => 'Ampòsta filtr',
+	'moodbar-feedback-filters-button' => 'Buté ij filtr',
 	'moodbar-feedback-whatis' => "Lòn ch'a l'é sta funsion?",
 	'moodbar-feedback-permalink' => 'colega ambelessì',
-	'moodbar-feedback-noresults' => "A-i son pa dij coment ch'a cobio ij tò filtr.",
+	'moodbar-feedback-noresults' => "A-i é gnun coment ch'a corësponda ai sò filtr.",
 	'moodbar-feedback-more' => 'Pi',
-	'moodbar-feedback-nomore' => 'A-i son pa autr arzultà da mosté.',
+	'moodbar-feedback-nomore' => "A-i son pì nen d'arzultà da smon-e.",
 	'moodbar-feedback-newer' => 'Pi neuv',
 	'moodbar-feedback-older' => 'Pi vej',
-	'moodbar-feedback-ajaxerror' => "A l'é capitaje n'eror an recuperand pi arzultà.",
-	'moodbar-feedback-load-record-error' => "A l'é capitaje n'eror an cariand un record.",
+	'moodbar-feedback-ajaxerror' => "A l'é capitaje n'eror an recuperand pi d'arzultà.",
+	'moodbar-feedback-load-record-error' => "A l'é capitaje n'eror an cariand n'argistrassion.",
 	'moodbar-user-hidden' => '(Utent stërmà)',
-	'moodbar-comment-hidden' => '(Artorn stërmà da assion aministrativa)',
-	'moodbar-feedback-show' => 'mosta artorn stërmà',
-	'moodbar-feedback-hide' => 'stërma artorn',
+	'moodbar-comment-hidden' => "(Coment ëstërmà da n'assion aministrativa)",
+	'moodbar-feedback-show' => 'smon-e ij coment ëstërmà',
+	'moodbar-feedback-hide' => 'stërmé ij coment',
 	'moodbar-feedback-action-confirm' => 'Conferma',
 	'moodbar-feedback-action-cancel' => 'Scancela',
-	'moodbar-hidden-footer' => 'Artorn stërmà da $1 a $2 $3: $4, $5',
-	'moodbar-hidden-footer-without-log' => 'Artorn stërmà $1',
-	'moodbar-feedback-restore' => 'riprìstina artorn stërmà',
-	'moodbar-action-item' => "Element d'artorn:",
+	'moodbar-hidden-footer' => 'Coment ëstërmà ëd $1 a $2 $3, rason: $4, $5',
+	'moodbar-hidden-footer-without-log' => 'Coment ëstërmà $1',
+	'moodbar-feedback-restore' => 'riprìstiné ij coment ëstërmà',
+	'moodbar-action-item' => 'Oget dël coment:',
 	'moodbar-action-reason' => 'Rason:',
 	'moodbar-action-reason-required' => 'Për piasì dà na rason.',
 	'moodbar-hide-header' => 'Stërma sta vos da la vista',
-	'moodbar-restore-header' => 'Riprìstina la visibilità dë sto element',
-	'moodbar-invalid-item' => "Ël sistem a peul pa trové l'element d'artorn giust.",
+	'moodbar-restore-header' => "Ripristiné la visibilità ëd s'element",
+	'moodbar-invalid-item' => "Ël sistema a l'ha nen podù trové ël coment giust.",
 	'moodbar-feedback-action-error' => "A l'é capitaje n'eror an provand a fé st'assion.",
 	'moodbar-feedback-response-summary' => "[[$1|$2]] [[$3|a l'ha arspondù]] $4 fà",
-	'moodbar-feedback-edit-summary' => "Arspòsta a [[Special:FeedbackDashboard/$1|artorn d'utent]]: $2",
+	'moodbar-feedback-edit-summary' => "Rispòsta a l'[[Special:FeedbackDashboard/$1|opinion d'utent]]: $2",
 	'moodbar-type-happy' => '{{GENDER:$1|Content}}',
 	'moodbar-type-sad' => '{{GENDER:$1|Scontent}}',
 	'moodbar-type-confused' => '{{GENDER:$1|Confus}}',
-	'moodbar-type-stats' => "Artorn ëd Moodbar fàit ant j'ùltime 24 ore: Content: $1, Scontent: $2, Confus: $3",
+	'moodbar-type-stats' => "Opinion ëd la bara d'umor dàite ant j'ùltime 24 ore: Content: $1, Scontent: $2, Confus: $3",
 	'moodbar-user-anonymized' => 'Anonimisà',
 	'moodbar-user-ip' => 'Adrëssa IP',
 	'moodbar-user-user' => 'Utent registrà',
-	'moodbar-log-name' => "Registr dj'artorn",
-	'moodbar-log-header' => "Cost-sì a l'é ël registr dj'assion pijà dzora j'element d'artorn listà an sël [[Special:FeedbackDashboard|cruscòt dj'artorn]].",
+	'moodbar-log-name' => 'Registr dij coment',
+	'moodbar-log-header' => "Cost-sì a l'é ël registr dj'assion fàite ansima ai coment listà an sël [[Special:FeedbackDashboard|cruscòt dij coment]].",
 	'moodbar-log-hide' => 'stërma [[$1]]',
 	'moodbar-log-restore' => 'ripristinà la visibilità për [[$1]]',
 	'moodbar-response-terms' => 'An sgnacand, a aceta na trasparensa conforma a coste $1.',
 	'moodbar-response-link' => 'condission',
 	'response-back-text' => 'André',
 	'response-preview-text' => 'Preuva',
-	'response-ajax-action-head' => 'Rëspondend...',
-	'response-ajax-action-body' => 'Toa arspòsta a ven giontà.',
+	'response-ajax-action-head' => "An camin ch'a rëspond...",
+	'response-ajax-action-body' => "Soa rispòsta a l'é an camin a giontesse.",
 	'response-ajax-success-head' => 'Mersì!',
 	'response-ajax-success-body' => "Toa arspòsta a l'é stàita giontà.",
 	'response-ajax-error-head' => 'Contacc!',
-	'response-ajax-error-body' => "A l'é stàit-ie n'eror an giontand toa arspòsta. <br />Për piasì preuva torna pi tard.",
-	'moodbar-enotif-subject' => "$1 a l'ha arspondù a tò artorn",
+	'response-ajax-error-body' => "A-i é staje n'eror an giontand soa rispòsta. <br />Për piasì, ch'a preuva torna pi tard.",
+	'moodbar-enotif-subject' => "$1 a l'ha rëspondù ai sò coment",
 	'moodbar-enotif-body' => "Cerea \$1!
 
-Bin ëvnù a {{SITENAME}}, e mersì për tò [artorn \$2]. N'autr utent ëd {{SITENAME}}, [\$3 \$6], a l'ha scrivù l'arspòsta ch'i ven:
+Bin ëvnù a {{SITENAME}}, e mersì për tò [\$2 artorn]. N'autr utent ëd {{SITENAME}}, [\$3 \$6], a l'ha scrivù l'arspòsta ch'i ven:
 
      \$4
 
-Varda sto mëssagi dzora a toa [[\$5 pagina ëd discussion]]
+Varda sto mëssagi dzora a toa [\$5 pagina ëd discussion]
 
 Lòn ch'a l'é na pagina ëd discussion?
 Toa pagina ëd discussion a l'é la pagina che autr editor ëd {{SITENAME}} a dòvro a comuniché con ti. It peule arsponde an sgnacand \"Modìfica\", bogiand ël cursor sota ël coment, scrivend toa arspòsta e quatr tilde (~~~~) për firmé, e salvand. Tute le pagine an {{SITENAME}} a l'han pagine ëd discussion, e a son dovrà për tanti but diferent. A-i veu un pòch për pijé l'andi, ma a l'é bastansa be fé na vira ch'it ses abituà.
@@ -3859,6 +4011,7 @@ Toa pagina ëd discussion a l'é la pagina che autr editor ëd {{SITENAME}} a d�
 Anco' confondù? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Sto video] (varda su [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) at dà na dimostrassion pass-a-pass.
 
 Bon-a giornà,
+
 -- {{SITENAME}}",
 );
 
@@ -4354,6 +4507,7 @@ $messages['ru'] = array(
 [http://ru.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Это видео] (смотрите на [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) послужит вам пошаговым обзором.
 
 Хорошего вам дня,
+
 -- {{SITENAME}}',
 );
 
@@ -4625,7 +4779,7 @@ Za več informacij obiščite $1.',
 	'moodbar-feedback-filters-type-happy' => 'Veselo',
 	'moodbar-feedback-filters-type-confused' => 'Zmedeno',
 	'moodbar-feedback-filters-type-sad' => 'Žalostno',
-	'moodbar-feedback-filters-username' => 'Uporabniško ime',
+	'moodbar-feedback-filters-username' => 'Uporabniško ime:',
 	'moodbar-feedback-filters-my-response' => 'Samo moji odgovori:',
 	'moodbar-feedback-filters-button' => 'Nastavi filtre',
 	'moodbar-feedback-whatis' => 'Kaj je ta funkcija?',
@@ -4691,6 +4845,7 @@ Vaša uporabniška pogovorna stran je stran, kjer se lahko drugi uporabniki {{GR
 Ste še negotovi? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Ta video] (na [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTubeu]) vam jih predstavi korak za korakom.
 
 Želimo vam lep dan,
+
 -- {{SITENAME}}',
 );
 
@@ -4869,6 +5024,7 @@ För mer information, besök $1 .',
 	'moodbar-email-confirm-title' => 'Bekräfta e-post',
 	'moodbar-email-resend-confirmation' => 'Skicka bekräftelse',
 	'moodbar-email-optout' => 'Nej tack',
+	'moodbar-tooltip-title' => 'Låt oss veta om dina erfarenheter av att redigera {{SITENAME}}.',
 	'right-moodbar-view' => 'Visa och exportera MoodBar feedback',
 	'right-moodbar-admin' => 'Ändra synlighet på feedback instrumentpanelen',
 	'moodbar-admin-title' => 'MoodBar feedback',
@@ -4963,6 +5119,7 @@ Din diskussionssida är den sida som andra användare redigerare på {{SITENAME}
 Är du fortfarande förvirrad? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Denna video] (titta på [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) ger dig en översikt steg-försteg.
 
 Ha en bra dag,
+
 -- {{SITENAME}}',
 );
 
@@ -5248,6 +5405,7 @@ Trang thảo luận cá nhân của bạn là trang mà những người dùng k
 Vẫn còn thắc mắc? [http://vi.wikipedia.org/wiki/Tập_tin:Wikipedia_basics_-_Talk_pages.ogv Video này] (coi trên [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) chỉ dẫn từng bước một.
 
 Chúc vui vẻ,
+
 {{SITENAME}}',
 );
 
@@ -5405,6 +5563,22 @@ $messages['zh-hans'] = array(
 	'response-ajax-error-head' => '糟糕！',
 	'response-ajax-error-body' => '添加您的回应时发生错误。<br />请稍后重试。',
 	'moodbar-enotif-subject' => '$1已对您的反馈作出回应',
+	'moodbar-enotif-body' => '$1, 您好！
+
+欢迎来到 {{SITENAME}}，并且感谢您的[$2 feedback|反馈]。另一位{{SITENAME}}用户[$3 $6]写下了如下回复：
+
+     $4
+
+　在您的 [$5 talk page|对话页]查看此消息。
+
+什么是对话页？
+您的用户对话页是这样一个页，其他{{SITENAME}}编辑用来与您沟通。您可以通过点击＂编辑＂来回复，将光标移到建议的下面，输入您的回复和四个波浪线(~~~~)签名并保存。所有{{SITENAME}}页都有对话页，并且它们有很多不同的用途。可能需要一些时间掌握它，不过一旦习惯了以后也非常简单。
+
+还有点困惑？[http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv 此视频] (在 [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]上观看) 可以提供一个一步一步的概览。
+
+愉快一整天，
+
+-- {{SITENAME}}',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
