@@ -768,6 +768,14 @@ $messages['sv'] = array(
 	'interwikilist-prefix' => 'Interwikiprefix:',
 );
 
+/** Tulu (ತುಳು)
+ * @author VASANTH S.N.
+ */
+$messages['tcy'] = array(
+	'interwikilist' => 'ಅಂತರ್ವಿಕಿ ಪಟ್ಟಿ',
+	'interwikilist-linkname' => 'ಅಂತರ್ವಿಕಿ ಕೊಂಡಿ',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
