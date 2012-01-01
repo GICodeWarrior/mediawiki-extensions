@@ -330,6 +330,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Blahma
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -338,8 +339,8 @@ $messages['eo'] = array(
 	'contrib-tracking-error' => 'Eraro',
 	'contrib-tracking-error-text' => 'Malvalida enigo',
 	'contrib-tracking-submitting' => 'Sendante al mona traktejo...',
-	'contrib-tracking-continue' => 'Se vi ne aŭtomate estus alidirektita, klaku la butonon por fini vian donacon ĉe PayPal.',
-	'contrib-tracking-redirect' => 'Vi estos aŭtomatike alidirektita al PayPal por kompletigi vian donacon.',
+	'contrib-tracking-continue' => 'Se oni ne alidirektos vin aŭtomate, klaku la butonon por fini la donacon.',
+	'contrib-tracking-redirect' => 'Vi estos aŭtomate alidirektita por fini vian donacon.',
 	'contrib-tracking-button' => 'Daŭrigi',
 	'contrib-tracking-item-name-onetime' => 'Unuopa donaco',
 	'contrib-tracking-item-name-recurring' => 'Ĉiumonata donaco',
@@ -540,6 +541,7 @@ $messages['he'] = array(
 $messages['hi'] = array(
 	'contrib-tracking-error' => 'त्रुटि',
 	'contrib-tracking-button' => 'जारी रखें',
+	'contrib-tracking-item-name-onetime' => 'एक समय दान',
 );
 
 /** Croatian (Hrvatski)
@@ -1139,6 +1141,7 @@ $messages['scn'] = array(
  */
 $messages['si'] = array(
 	'contrib-tracking-error' => 'දෝෂය',
+	'contrib-tracking-error-text' => 'වලංගු නොවන ෆෝරම යොමුව',
 	'contrib-tracking-button' => 'ඉදිරියට යන්න',
 );
 
