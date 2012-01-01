@@ -469,6 +469,14 @@ $messages['he'] = array(
 	'communityvoice-ratings-error-no-title' => 'תכונת הכותרת חסרה בתג הדירוג.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Ansumang
+ */
+$messages['hi'] = array(
+	'communityvoice-ratings-scale-status-thanks' => 'मतदान के लिए धन्यवाद!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|मतदान|मतदान}} डालें)',
+);
+
 /** Croatian (Hrvatski)
  * @author Ex13
  */
@@ -964,6 +972,8 @@ $messages['si'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'යවමින්...',
 	'communityvoice-ratings-scale-status-error' => 'යැවීමේ දෝෂය!',
 	'communityvoice-ratings-scale-status-thanks' => 'මනාපය ලබා දුන්නට තුති!',
+	'communityvoice-ratings-error-no-category' => 'තරාතිරම් ටැගයේ ප්‍රවර්ග ස්වභාවය මඟ හැරී ඇත.',
+	'communityvoice-ratings-error-no-title' => 'තරාතිරම් ටැගයේ මාතෘකා ස්වභාවය මඟ හැරී ඇත.',
 );
 
 /** Slovak (Slovenčina)
