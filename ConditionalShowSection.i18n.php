@@ -219,6 +219,13 @@ $messages['lb'] = array(
 	'conditionalshowsection-desc' => 'Den Tag cshow derbäisetzen fir en Abschnitt vum Wikitext ënner gewësse Konditionen ze weisen oder ze verstoppen',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'conditionalshowsection-desc' => "Doog  de tag <code><nowiki>cshow</nowiki></code> bie um konditioneel 'ne paragraaf wikitekst weer te gaeve of te verberge",
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
