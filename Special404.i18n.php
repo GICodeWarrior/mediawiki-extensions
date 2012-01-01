@@ -333,6 +333,13 @@ Vläicht wëllt Dir op der:
 * [[{{MediaWiki:Mainpage}}|Haaptsäit]] kucken',
 );
 
+/** Lingala (Lingála)
+ * @author Eruedin
+ */
+$messages['ln'] = array(
+	'error404' => 'Zíko 404: Lonkásá ezalí tɛ́.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
