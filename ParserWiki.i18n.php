@@ -26,6 +26,13 @@ $messages['aln'] = array(
 	'parserwiki-desc' => 'Lejon për të përcaktuar një gramatikë në një wiki atëherë përdorim që e ciklit të lartë të informatave të dhëna në të njëjtën wiki',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'parserwiki-desc' => 'Permite establecer una gramática nuna wiki y llueu utilizar esa gramática pa introducir información nesa mesma wiki',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
  */
