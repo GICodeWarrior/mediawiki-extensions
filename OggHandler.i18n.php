@@ -1181,10 +1181,24 @@ $messages['fi'] = array(
 );
 
 /** Faroese (Føroyskt)
+ * @author EileenSanda
  * @author Spacebirdy
  */
 $messages['fo'] = array(
+	'ogg-short-audio' => 'Ogg $1 ljóð fíla, $2',
+	'ogg-short-video' => 'Ogg $1 video fíla, $2',
+	'ogg-play' => 'Play',
+	'ogg-pause' => 'Pausa',
+	'ogg-stop' => 'Stop',
+	'ogg-play-video' => 'Spæl video',
+	'ogg-play-sound' => 'Spæl ljóð',
+	'ogg-player-videoElement' => 'Innbygdur brovsara stuðul',
+	'ogg-player-soundthumb' => 'Ongin avspælari',
+	'ogg-use-player' => 'Brúka avspælara:',
 	'ogg-more' => 'Meira...',
+	'ogg-dismiss' => 'Lat aftur',
+	'ogg-download' => 'Tak niður fílu',
+	'ogg-desc-link' => 'Um hesa fílu',
 );
 
 /** French (Français)
@@ -1256,7 +1270,7 @@ QuickTime pôt pas liére los fichiérs Ogg sen cél composent.
 Volyéd <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/fr">tèlèchargiér XiphQT</a> ou ben chouèsir un ôtro liésor.',
 	'ogg-player-videoElement' => 'Assistance du navigator nativa',
 	'ogg-player-oggPlugin' => 'Modulo d’èxtension du navigator',
-	'ogg-player-thumbnail' => 'Ren que l’émâge fixa',
+	'ogg-player-thumbnail' => 'Solament l’émâge fixa',
 	'ogg-player-soundthumb' => 'Gins de liésor',
 	'ogg-player-selected' => '(chouèsi)',
 	'ogg-use-player' => 'Utilisar lo liésor :',
