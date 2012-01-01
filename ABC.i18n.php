@@ -362,6 +362,14 @@ $messages['fi'] = array(
 	'abcdownload' => 'Lataa:',
 );
 
+/** Faroese (Føroyskt)
+ * @author EileenSanda
+ */
+$messages['fo'] = array(
+	'abc-desc' => 'Legg afturat <code>&lt;abc&gt;</code> fyri at formatera ABC tónleik',
+	'abcdownload' => 'Heinta:',
+);
+
 /** French (Français)
  * @author Grondin
  */
