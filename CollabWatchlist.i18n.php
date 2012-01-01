@@ -322,8 +322,11 @@ $messages['eo'] = array(
 	'collabwatchlisttagselect' => 'Etikedo',
 	'collabwatchlisttagcomment' => 'Komento',
 	'collabwatchlistedit-users-raw-submit' => 'Konservi',
+	'collabwatchlistedit-raw-titles' => 'Kategorioj:',
 	'collabwatchlistedit-tags-raw-titles' => 'Etikedoj:',
+	'collabwatchlistedit-users-raw-titles' => 'Uzantoj:',
 	'collabwatchlistedit-normal-title' => 'Redakti kategoriojn',
+	'collabwatchlistdelete-submit' => 'Forigi',
 	'collabwatchlistnew-submit' => 'Krei',
 	'collabwatchlistedit-normal-submit' => 'Konservi',
 );
