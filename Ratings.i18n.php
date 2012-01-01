@@ -141,6 +141,22 @@ $messages['he'] = array(
 	'ratings-no-votes-yet' => 'איש לא דירג את זה עדיין.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'ratings-desc' => 'Zmóžnja wužiwarjam wšelake "kajkosće" stronow pohódnoćić',
+	'right-rate' => 'Wěstu kajkosć strony pohódnoćić',
+	'ratings-starsratings-desc' => 'Zwobraznja jednory wodźenski element (hwěžki) za pohódnoćenje, kotryž wužiwarjej dowola, wěstu kajkosć strony pohódnoćić. Aktualny hłós wužiwarja so zwobrazni, jeli je hižo pohódnoćił.',
+	'ratings-par-page' => 'Strona, na kotruž pohódnoćenje so nałožuje.',
+	'ratings-par-tag' => 'Pohódnoćenski element. Element podawa, kotra "kajkosć" strony so pohódnoćuje.',
+	'ratings-par-showdisabled' => 'Pohódnoćenja pokazać, hdyž wužiwar njemóže wothłosować (w přećiwo pisanju škitanym modusu).',
+	'ratings-par-incsummary' => 'Ma so zjeće aktualnych pohódnoćenjow nad pohódnoćenskim elementom pokazać?',
+	'ratings-votesummary-desc' => 'Zwobraznja krótke zjeće pohódnoćenjow za podatu stronu a por kajkosćow.',
+	'ratings-current-score' => 'Aktualne wužiwarske pohódnoćenje: $1 ($2 {{PLURAL:$2|pohódnoćenje|pohódnoćeni|pohódnoćenja|pohódnoćenjow}})',
+	'ratings-no-votes-yet' => 'Dotal nichtó njeje pohódnoćił.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
