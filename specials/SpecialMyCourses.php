@@ -54,7 +54,7 @@ class SpecialMyCourses extends SpecialEPPage {
 	}
 
 	/**
-	 *
+	 * Display the courses this student is linked to.
 	 *
 	 * @since 0.1
 	 *
@@ -95,7 +95,7 @@ class SpecialMyCourses extends SpecialEPPage {
 	}
 
 	/**
-	 *
+	 * Display the provided courses in a table.
 	 *
 	 * @since 0.1
 	 *
@@ -121,8 +121,15 @@ class SpecialMyCourses extends SpecialEPPage {
 		foreach ( $courses as /* EPCourse */ $course ) {
 			$fields = array();
 
-			$fields[] = $course->getField( 'name' );
-			$fields[] = $course->getOrg()->getField( 'name' );
+			$fields[] = Linker::link(
+				$this->getTitle( $course->getField( 'name' ) ),
+				'<b>' . htmlspecialchars( $course->getField( 'name' ) ) . '</b>'
+			);
+
+			$fields[] = Linker::link(
+				SpecialPage::getTitleFor( 'Institution', $course->getOrg()->getField( 'name' ) ),
+				htmlspecialchars( $course->getOrg()->getField( 'name' ) )
+			);
 
 			foreach ( $fields as &$field ) {
 				$field = Html::rawElement( 'td', array(), $field );
@@ -136,7 +143,7 @@ class SpecialMyCourses extends SpecialEPPage {
 	}
 
 	/**
-	 *
+	 * Display info for a single course.
 	 *
 	 * @since 0.1
 	 *
@@ -144,10 +151,23 @@ class SpecialMyCourses extends SpecialEPPage {
 	 * @param string $courseName
 	 */
 	protected function displayCourse( EPStudent $student, $courseName ) {
+		$out = $this->getOutput();
+
 		$course = EPCourse::selectRow( null, array( 'name' => $courseName ) );
 
-		if ( $student->hasTerm( array(  ) ) ) {
-			// TODO
+		if ( $course !== false && $student->hasTerm( array( 'course_id' => $course->getId() ) ) ) {
+			$out->addWikiMsg( 'ep-mycourses-show-all' );
+
+			$out->setPageTitle( wfMsgExt(
+				'ep-mycourses-course-title',
+				'parsemag',
+				$courseName,
+				$course->getOrg( 'name' )->getField( 'name' )
+			) );
+		}
+		else {
+			$this->showError( wfMessage( 'ep-mycourses-no-such-course', $courseName ) );
+			$this->displayCourses( $student );
 		}
 	}
 
