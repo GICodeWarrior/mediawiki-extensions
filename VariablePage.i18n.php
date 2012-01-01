@@ -482,6 +482,7 @@ $messages['rue'] = array(
 $messages['si'] = array(
 	'variablepage' => 'විචල්‍යපිටුව',
 	'variablepage-navlink_text' => 'පරිත්‍යාග කරන්න',
+	'variablepage-desc' => 'ලුහුබර විචල්‍ය පිටුවේ යලියොමුව',
 );
 
 /** Slovak (Slovenčina)
