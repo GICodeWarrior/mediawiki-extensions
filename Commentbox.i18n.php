@@ -681,6 +681,26 @@ Dir hutt eng Bemierkung zu dëser Säit? Setzt ze hei derbäi oder <span class="
 	'commentbox-error-empty-comment' => 'Eidel Bemierkunge sinn net erlaabt!',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'commentbox-desc' => "Deit 'n opmirkingevinster bie aan bepaolde pagina's",
+	'commentbox-intro' => '== De kans \'n opmirking toeveuge... ==
+Höbs de \'n opmirking euver dees pagina?
+Veug die hie toe of <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} bewirk dees pagina direk]</span>.',
+	'commentbox-savebutton' => 'Opmirking opsjlaon',
+	'commentbox-name' => 'Naam:',
+	'commentbox-name-explanation' => '<small>Tip: Es te dich [[Special:UserLogin|aanmels]], hoofs te diene naam hie neet in te veure.</small>',
+	'commentbox-log' => 'Nuuj opmirkinge',
+	'commentbox-first-comment-heading' => '== Opmirkinge ==',
+	'commentbox-regex' => '/\\n==\\s*Opmirkinge\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => "Dao is get fout gegange bij 't opsjlaon van de opmirking",
+	'commentbox-error-page-nonexistent' => 'Dees pagina besjteit neet',
+	'commentbox-error-namespace' => 'Opmirkinge zeen neet gepermitteerd in dees naamruumde!',
+	'commentbox-error-empty-comment' => 'Laeg opmirkinge zeen neet gepermitteerd!',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Eitvys200
  */
