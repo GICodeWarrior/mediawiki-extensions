@@ -544,10 +544,12 @@ $messages['he'] = array(
  * @author Ansumang
  */
 $messages['hi'] = array(
+	'apisandbox' => 'एपीआई सांडबॉक्स',
 	'apisb-parameters' => 'पारामीटर्स',
 	'apisb-result' => 'परिणाम',
 	'apisb-request-url' => 'अनुरोध URL:',
 	'apisb-select-action' => 'क्रिया चयन करें',
+	'apisb-select-query' => 'क्वेरी क्या करना है?',
 	'apisb-select-value' => 'मूल्य चयन करें',
 	'apisb-loading' => 'लोड हो रहा है...',
 	'apisb-ns-main' => '(मुख्य)',
@@ -1282,7 +1284,11 @@ $messages['scn'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'apisb-desc' => 'ගවේෂකයෙන් [//www.mediawiki.org/wiki/API මාධ්‍යවිකි API] ඇමතුම්වල දෝෂ ඉවත් කිරීමට ඉඩදෙන්න',
 	'apisandbox' => 'API වැලිපිල්ල',
+	'apisb-no-js' => "'''දෝෂය''': මෙම ගුණාංගය සඳහා ජාවාස්ක්‍රිප්ට් අවශ්‍ය වේ.",
+	'apisb-intro' => "'''මාධ්‍යවිකි API''' සමඟ අත්හදා බැලීම සඳහා මෙම පිටුව භාවිතා කරන්න.
+	API භාවිතය පිලිබඳ වැඩිදුර විස්තර සඳහා  [//www.mediawiki.org/wiki/API API ප්‍රලේඛනය] හී ඉල්ලීමක් කරන්න.",
 	'apisb-api-disabled' => 'මෙම අඩවියෙහි API අක්‍රීය කොට ඇත.',
 	'apisb-parameters' => 'පරාමිතීන්',
 	'apisb-result' => 'ප්‍රතිඵලය',
@@ -1414,6 +1420,7 @@ Kolla på [//www.mediawiki.org/wiki/API API-dokumentationen] för fler detaljer 
 $messages['ta'] = array(
 	'apisb-parameters' => 'அளவுருக்கள்',
 	'apisb-result' => 'முடிவு',
+	'apisb-loading' => 'ஏற்றுகிறது...',
 	'apisb-query-prop' => 'பண்புகள்',
 	'apisb-query-list' => 'பட்டியல்கள்',
 	'apisb-query-meta' => 'Meta தகவல்',
