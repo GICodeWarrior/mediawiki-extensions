@@ -754,7 +754,10 @@ $messages['sah'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'ratedpages' => 'පාඨකයා තරාතිරම්කල පිටු',
+	'ratedpages-none' => 'මෙම ලයිස්තුවේ පිටු කිසිවක් නොමැත.',
 	'ratedpages-graphs' => 'තරාතිරම් දත්ත',
+	'ratedpages-count' => ' {{PLURAL:$1|නිරීක්ෂණ|නිරීක්ෂණ}} $1 ක්',
 );
 
 /** Slovak (Slovenčina)

@@ -2459,6 +2459,7 @@ $messages['sh'] = array(
  * @author බිඟුවා
  */
 $messages['si'] = array(
+	'readerfeedback' => 'මෙම පිටුව ගැන ඔබ මොනවද හිතන්නෙ?',
 	'readerfeedback-reliability' => 'විශ්වසනීයත්වය',
 	'readerfeedback-completeness' => 'පූර්ණත්වය',
 	'readerfeedback-npov' => 'මධ්‍යස්ථතාව',

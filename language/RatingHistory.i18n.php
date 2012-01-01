@@ -2209,15 +2209,21 @@ $messages['si'] = array(
 	'ratinghistory-leg' => '[[:$1|$1]] සඳහා තරාතිරම් ඉතිහාස දත්ත',
 	'ratinghistory-tab' => 'තරාතිරම',
 	'ratinghistory-link' => 'පිටු තරාතිරම',
+	'ratinghistory-thanks' => "''<span style=\"color:darkred;\">මෙම පිටුව නිරීක්ෂණය කිරීමට මොහොතක් ගත කලාට තුති!</span>''",
 	'ratinghistory-period' => 'කාලපරිච්ඡේදය:',
 	'ratinghistory-month' => 'පසුගිය මාසය',
 	'ratinghistory-3months' => 'පසුගිය මාස 3',
 	'ratinghistory-year' => 'පසුගිය වර්ෂය',
 	'ratinghistory-3years' => 'පසුගිය වර්ෂ 3',
+	'ratinghistory-ave' => 'සාමාන්‍ය: $1',
+	'ratinghistory-chart' => 'සෑම වේලාවෙහිම පාඨක තරාතිරම්',
 	'ratinghistory-purge' => 'කෑෂය විමෝචනය කරන්න',
+	'ratinghistory-table' => 'පාඨක තරාතිරම්වල දල විශ්ලේෂණය',
+	'ratinghistory-users' => 'තරාතිරම් ලබාදුන් පරිශීලකයෝ',
 	'ratinghistory-svg' => 'SVG ලෙස නරඹන්න',
 	'ratinghistory-table-rating' => 'තරාතිරම',
 	'ratinghistory-table-votes' => 'මනාප',
+	'right-feedback' => 'පිටුවක් තරාතිරම් කිරීමට ප්‍රතිචාර ෆෝරමය භාවිතා කරන්න',
 );
 
 /** Slovak (Slovenčina)
