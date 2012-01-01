@@ -361,6 +361,15 @@ $messages['ms'] = array(
 	'spl3_nosubpages' => '$1 tiada sublaman untuk disenaraikan.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'spl3-desc' => 'Lager automatisk en liste over undersidene til en side ved å bruke taggen <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Ukjent verdi for valg $1.',
+	'spl3_nosubpages' => '$1 har ingen undersider å vise.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -376,15 +385,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'spl3-desc' => 'Lagar automatisk ei liste over undersidene til ei side ved å bruke taggen <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug' => 'Ukjend verdi for val $1.',
-	'spl3_nosubpages' => '$1 har ingen undersider å vise.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'spl3-desc' => 'Lager automatisk en liste over undersidene til en side ved å bruke taggen <code><nowiki><splist /></nowiki></code>',
-	'spl3_debug' => 'Ukjent verdi for valg $1.',
 	'spl3_nosubpages' => '$1 har ingen undersider å vise.',
 );
 
@@ -467,6 +467,14 @@ $messages['rue'] = array(
 	'spl3-desc' => 'Автоматічно створює список підсторінок сторінок за помочі значкы <tt>&lt;splist /&gt;</tt>',
 	'spl3_debug' => 'Незнама годнота вольбы $1.',
 	'spl3_nosubpages' => '$1 не мать жадны зобразительны підсторінкы.',
+);
+
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'spl3_debug' => '$1 විකල්පය සඳහා නොදන්නා අගය.',
+	'spl3_nosubpages' => '$1 සතුව ලැයිස්තුගත කිරීමට උපපිටු නැත.',
 );
 
 /** Slovak (Slovenčina)
