@@ -196,14 +196,15 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'signaturelogpage' => 'Allekirjoitusloki',
-	'signature-desc' => 'Sallii dokumentin [[Special:SignDocument|allekirjoituksen]].',
-	'signaturelogpagetext' => 'Tämä on [[Special:SignDocument|kaikkien asiakirjoihin lisättyjen allekirjoitusten]] loki..',
+	'signature-desc' => 'Mahdollistaa dokumentin [[Special:SignDocument|allekirjoituksen]].',
+	'signaturelogpagetext' => 'Tämä on [[Special:SignDocument|kaikkien asiakirjoihin lisättyjen allekirjoitusten]] loki.',
 	'signaturelogentry' => 'allekirjoitti dokumentin $1',
 	'right-sigadmin' => 'Ylläpitää asiakirjojen allekirjoituksia',
 	'right-createsigndocument' => 'Luoda allekirjoitettavia asiakirjoja',
@@ -433,6 +434,20 @@ $messages['mr'] = array(
 	'signaturelogentry' => '$ डक्यूमेंट वर सही केली',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ * @author Simny
+ */
+$messages['nb'] = array(
+	'signaturelogpage' => 'Signaturlogg',
+	'signature-desc' => 'Slår på [[Special:SignDocument|dokumentsignering]]',
+	'signaturelogpagetext' => 'Dette er en logg over [[Special:SignDocument|alle signaturer lagt til dokumenter]].',
+	'signaturelogentry' => 'signerte dokumentet $1',
+	'right-sigadmin' => 'Administrer dokumentsignering',
+	'right-createsigndocument' => 'Lag dokumenter som kan signeres',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -456,20 +471,6 @@ $messages['nn'] = array(
 	'signaturelogentry' => 'signerte dokumentet $1',
 	'right-sigadmin' => 'Administrer signering av dokument',
 	'right-createsigndocument' => 'Lag dokument som kan signerast',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- * @author Simny
- */
-$messages['nb'] = array(
-	'signaturelogpage' => 'Signaturlogg',
-	'signature-desc' => 'Slår på [[Special:SignDocument|dokumentsignering]]',
-	'signaturelogpagetext' => 'Dette er en logg over [[Special:SignDocument|alle signaturer lagt til dokumenter]].',
-	'signaturelogentry' => 'signerte dokumentet $1',
-	'right-sigadmin' => 'Administrer dokumentsignering',
-	'right-createsigndocument' => 'Lag dokumenter som kan signeres',
 );
 
 /** Occitan (Occitan)
