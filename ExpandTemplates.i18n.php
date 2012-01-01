@@ -1845,6 +1845,7 @@ $messages['sgs'] = array(
 
 /** Sinhala (සිංහල)
  * @author නන්දිමිතුරු
+ * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
 	'expandtemplates' => 'සැකිලි පුළුල් කරන්න',
@@ -1860,6 +1861,7 @@ $messages['si'] = array(
 	'expand_templates_xml_output' => 'XML ප්‍රතිදානය',
 	'expand_templates_ok' => 'හරි',
 	'expand_templates_remove_comments' => 'පරිකථනයන්  ඉවත්කරන්න',
+	'expand_templates_remove_nowiki' => 'ප්‍රතිපලයෙහි <nowiki> ටැග යටපත් කරන්න',
 	'expand_templates_generate_xml' => 'XML ව්‍යාකරණ විග්‍රහ රුක පෙන්වන්න',
 	'expand_templates_preview' => 'පෙරදසුන',
 );
