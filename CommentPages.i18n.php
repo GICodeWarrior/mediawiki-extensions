@@ -403,6 +403,14 @@ $messages['lb'] = array(
 	'nstab-comments' => 'Kommentar',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'commentpages-desc' => "Opmirkingepagina's veur de hoofnaamruumde",
+	'nstab-comments' => 'Opmirkinge',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
