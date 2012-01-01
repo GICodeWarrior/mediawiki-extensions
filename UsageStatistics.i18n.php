@@ -815,6 +815,7 @@ $messages['fa'] = array(
  * @author Nike
  * @author Silvonen
  * @author Str4nd
+ * @author Veikk0.ma
  * @author Vililikku
  */
 $messages['fi'] = array(
@@ -827,6 +828,7 @@ $messages['fi'] = array(
 	'usagestatisticsnamespace' => 'Nimiavaruus:',
 	'usagestatisticsexcluderedirects' => 'Jätä pois ohjaukset',
 	'usagestatistics-namespace' => 'Nämä ovat tilastot nimiavaruudessa [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Ohjauksia]] ei oteta huomioon.',
 	'usagestatisticstype' => 'Tyyppi',
 	'usagestatisticsstart' => 'Aloituspäivä',
 	'usagestatisticsend' => 'Lopetuspäivä',
