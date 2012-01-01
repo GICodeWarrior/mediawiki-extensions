@@ -310,6 +310,13 @@ $messages['ms'] = array(
 	'trustedxff-desc' => 'Pengendalian senarai alamat proksi yang dipercayai ([http://meta.wikimedia.org/wiki/XFF_project projek XFF])',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'trustedxff-desc' => 'Behandling av en liste over pålitelige proxyadresser ([http://meta.wikimedia.org/wiki/XFF_project XFF-prosjektet])',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -336,13 +343,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'trustedxff-desc' => 'Handsaming av ei liste over pålitelege proxyadresser ([http://meta.wikimedia.org/wiki/XFF_project XFF-prosjektet])',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'trustedxff-desc' => 'Behandling av en liste over pålitelige proxyadresser ([http://meta.wikimedia.org/wiki/XFF_project XFF-prosjektet])',
 );
 
 /** Occitan (Occitan)
@@ -415,6 +415,13 @@ $messages['rue'] = array(
  */
 $messages['sah'] = array(
 	'trustedxff-desc' => 'Итэҕэйиллэр прокси-аадырыстар тиһиктэрин оҥоруу ([http://meta.wikimedia.org/wiki/XFF_project XFF бырайыак])',
+);
+
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'trustedxff-desc' => 'විශ්වාශ කරන ලද පෙරකලාසි ලිපිනයන් පාලනය කිරීම ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
 );
 
 /** Slovak (Slovenčina)
