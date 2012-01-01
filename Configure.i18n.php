@@ -3177,6 +3177,7 @@ $messages['eo'] = array(
 	'configure-section-proxy' => 'Prokuriloj',
 	'configure-section-cookie' => 'Kuketoj',
 	'configure-section-performance' => 'Rendimento',
+	'configure-section-test' => 'Testoj',
 	'configure-section-upload' => 'Alŝuto',
 	'configure-section-sharedupload' => 'Kolektiva alŝuto',
 	'configure-section-mime' => 'MIME-tipoj',
@@ -7024,6 +7025,7 @@ Maak die map aan, of veranger 't um dees oetbreijing te gebroeke.",
 	'configure-section-profiling' => 'Profilen',
 	'configure-section-site' => 'Aanpassinge aan de site',
 	'configure-section-css-js' => 'CSS en JavaScript',
+	'configure-section-resourceloader' => 'ResourceLoader',
 	'configure-section-namespaces' => 'Naamruumdes',
 	'configure-section-stats' => 'Sitesjtattestieke',
 	'configure-section-skin' => 'Vörmgeving',
@@ -7039,6 +7041,7 @@ Maak die map aan, of veranger 't um dees oetbreijing te gebroeke.",
 	'configure-section-proxy' => "Proxy's",
 	'configure-section-cookie' => 'Cookies',
 	'configure-section-performance' => 'Prestaties',
+	'configure-section-test' => 'Tèste',
 	'configure-section-upload' => 'Uploade',
 	'configure-section-sharedupload' => 'Gedeilde uploads',
 	'configure-section-mime' => 'MIME-type',
@@ -11222,6 +11225,26 @@ $messages['ta'] = array(
 	'configure-condition-operator-and' => 'மற்றும்',
 	'configure-condition-operator-not' => 'அல்லாதது',
 	'configure-condition-name-3' => 'மின்னஞ்சல் உறுதி செய்யப்பட்டது',
+);
+
+/** Tulu (ತುಳು)
+ * @author VASANTH S.N.
+ */
+$messages['tcy'] = array(
+	'configure-js-remove' => 'ಮಾಜಾಲೆ',
+	'configure-old-changes' => 'ಬದಲಾವಣೆಲು',
+	'configure-section-pages' => 'ಪುಟಕುಲು',
+	'configure-section-groups' => 'ಗುಂಪುಲು',
+	'configure-section-images' => 'ಕಡತೊಲು',
+	'configure-section-users' => 'ಬಳಕೆದಾರೆರ್',
+	'configure-section-job' => 'ಬೇಲೆಲು',
+	'configure-section-search' => 'ನಾಡ್‘ಲೆ',
+	'configure-select-wiki-view-all' => 'ಮಾತಾ ವಿಕಿಲು',
+	'configure-select-wiki-submit' => 'ಆಯ್ಕೆ ಮಲ್ಪುಲೆ',
+	'configure-view' => 'ನೋಟಲು',
+	'configure-throttle-action-edit' => 'ತಿದ್ದ್‘ಲೆ',
+	'configure-condition-operator-or' => 'ಅಥವಾ',
+	'configure-condition-operator-and' => 'ಬೊಕ್ಕ',
 );
 
 /** Telugu (తెలుగు)
