@@ -651,7 +651,9 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Silvonen
+ * @author Veikk0.ma
  */
 $messages['fi'] = array(
 	'mwe-clipedit-crop' => 'Rajaa kuva',
@@ -661,12 +663,18 @@ $messages['fi'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'Lisää kappaleeseen',
 	'mwe-clipedit-preview_insert' => 'Esikatsele lisäystä',
 	'mwe-clipedit-cancel_image_insert' => 'Peruuta lisäys',
+	'mwe-clipedit-sc_attributes' => 'Leikkeen tietojen muokkaaminen',
 	'mwe-clipedit-sc_audio' => 'Äänenhallinta',
 	'mwe-clipedit-sc_duration' => 'Kesto',
+	'mwe-clipedit-template_properties' => 'Mallineen ominaisuudet',
+	'mwe-clipedit-custom_title' => 'Oma otsikko',
 	'mwe-clipedit-edit_properties' => 'Muokkaa ominaisuuksia',
+	'mwe-clipedit-other_properties' => 'Muut ominaisuudet',
 	'mwe-clipedit-start_time' => 'Aloitusaika',
 	'mwe-clipedit-end_time' => 'Lopetusaika',
 	'mwe-clipedit-edit-tools' => 'Muokkaustyökalut',
+	'mwe-clipedit-inline-description' => 'Tekstitys',
+	'mwe-clipedit-edit-video-tools' => 'Videon muokkaustyökalut:',
 	'mwe-clipedit-duration' => 'Kesto:',
 );
 

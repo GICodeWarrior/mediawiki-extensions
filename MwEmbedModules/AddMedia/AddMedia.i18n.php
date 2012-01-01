@@ -2388,6 +2388,7 @@ $messages['fa'] = array(
  * @author Olli
  * @author Silvonen
  * @author Str4nd
+ * @author Veikk0.ma
  */
 $messages['fi'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 / $2',
@@ -2422,23 +2423,39 @@ Katso lisätietoja alkuperäiseltä [$4 resurssivulta].',
 	'mwe-error_not_loggedin' => 'Et ole kirjautunut järjestelmään tai sinulla ei ole lupaa tallentaa tiedostoja.',
 	'mwe-error-not-loggedin-file' => 'Näyttää siltä, että et ole kirjautunut järjestelmään tai ohjelmistossa oli virhe.
 Voit $1 tai yrittää uudelleen',
+	'mwe-upload-in-progress' => 'Tallentaminen käynnissä (älä sulje tätä ikkunaa)',
+	'mwe-uploaded-status' => 'Tallennettu',
+	'mwe-transcoded-status' => 'Muunnettu',
+	'mwe-uploaded-time-remaining' => 'Aikaa jäljellä: $1',
 	'mwe-add_media_wizard' => 'Lisää media ohjatusti',
 	'mwe-media_search' => 'Mediahaku',
 	'mwe-am-results_desc' => 'Tulokset $1-$2',
+	'mwe-am-results_desc_total' => 'Tulokset $1–$2 (yhteensä $3)',
 	'mwe-am-results_next' => 'seuraava',
 	'mwe-am-results_prev' => 'edellinen',
+	'mwe-upload_tab' => 'Tallenna tiedosto',
 	'mwe-link' => 'linkki',
+	'mwe-cc_by_title' => 'Nimeä',
+	'mwe-cc_nc_title' => 'Epäkaupallinen',
+	'mwe-cc_nd_title' => 'Ei muutoksia',
+	'mwe-cc_sa_title' => 'Tarttuva',
 	'mwe-unknown_license' => 'Tuntematon lisenssi',
+	'mwe-your-recent-uploads' => 'Tallentamasi tiedostot',
+	'mwe-upload-a-file' => 'Tallenna uusi tiedosto',
 	'mwe-watch_this_page' => 'Tarkkaile tätä sivua',
 	'mwe-update_preview' => 'Päivitä esikatselu',
+	'mwe-return-search-results' => 'Palaa hakutuloksiin',
 	'mwe-ftype-svg' => 'SVG-vektoritiedosto',
 	'mwe-ftype-jpg' => 'JPEG-kuvatiedosto',
 	'mwe-ftype-png' => 'PNG-kuvatiedosto',
 	'mwe-ftype-oga' => 'Ogg-äänitiedosto',
 	'mwe-ftype-ogg' => 'Ogg-videotiedosto',
 	'mwe-ftype-unk' => 'Tuntematon tiedostomuoto',
+	'mwe-am-commons' => 'Wikimedia Commons, vapaasti lisensoidun opetuksellisten mediasisällön arkisto (kuvia, ääntä ja videoleikkeitä)',
 	'mwe-am-this_wiki-title' => 'Tämä wiki',
 	'mwe-am-this_wiki-desc' => 'Paikallinen wiki',
+	'mwe-am-archive_org-desc' => 'Internet Archive, sivistyksellisten luomusten digitaalinen kirjasto',
+	'mwe-am-flickr-desc' => 'Flickr.com, valokuvien jakamiseen tarkoitettu verkkosivusto',
 );
 
 /** French (Français)

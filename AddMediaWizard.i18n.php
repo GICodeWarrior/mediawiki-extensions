@@ -209,12 +209,13 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Centerlink
+ * @author Nedergard
  * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'addmediawizard-desc' => 'Lisää ohjatun mediatoiminnon, joka on kehitetty yhteistyössä Kalturan ja Wikimedia Foundationin kanssa.',
-	'addmediawizard-loading' => 'Ladataan lisää mediaopastustoiminto',
+	'addmediawizard-loading' => 'Ladataan ohjattua median lisäystoimintoa',
 );
 
 /** French (Français)

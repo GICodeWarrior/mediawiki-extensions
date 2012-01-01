@@ -1073,6 +1073,7 @@ $messages['de-formal'] = array(
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Erdemaslancan
  * @author Mirzali
  * @author Xoser
  */
@@ -1154,7 +1155,7 @@ $messages['diq'] = array(
 	'fogg-encoding-done' => 'kodkerdış temam bı',
 	'fogg-badtoken' => 'nişan qebul nêbı',
 	'fogg-preview' => 'video temaşa bıker',
-	'fogg-hidepreview' => 'temaşakerdışi bınımn',
+	'fogg-hidepreview' => 'Vertemaşi bınımnê',
 );
 
 /** Lower Sorbian (Dolnoserbski)
