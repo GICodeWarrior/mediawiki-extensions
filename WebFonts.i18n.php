@@ -123,7 +123,9 @@ $messages['br'] = array(
 	'webfonts-desc' => "Ensoc'hañ a ra ar fontoù er pajennoù",
 	'webfonts-load' => 'Diuzañ ar font',
 	'webfonts-reset' => 'Adderaouekaat',
+	'webfonts-enable-preference' => "Gweredekaat an ensoc'hañ fontoù (Fontoù Kenrouedad)",
 	'webfonts-menu-tooltip' => 'Dibabit ur font evit ar bajenn',
+	'webfonts-help' => 'Skoazell',
 );
 
 /** Bosnian (Bosanski)
@@ -364,7 +366,12 @@ $messages['hsb'] = array(
  * @author Misibacsi
  */
 $messages['hu'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Fontok beágyazása a lapokba',
 	'webfonts-load' => 'Válassza ki a betűtípus',
+	'webfonts-reset' => 'Törlés',
+	'webfonts-enable-preference' => 'Fontok beágyazása (WebFonts)',
+	'webfonts-menu-tooltip' => 'Válassz egy fontot az oldalhoz',
 	'webfonts-help' => 'Segítség',
 );
 
