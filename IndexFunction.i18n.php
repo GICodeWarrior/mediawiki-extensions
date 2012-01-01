@@ -196,7 +196,7 @@ Un titl meneger evit ar {{PLURAL:$2|bajenn|pajenn}}-mañ eo an titl-mañ :
 $1
 Gwiriit mat n'eo ket bet savet c'hoazh, gant un titl all, ar bajenn emaoc'h en sell da grouiñ.
 Mar savit ar bajenn-mañ, tennit an titl eus ar <nowiki>{{#index:}}</nowiki> {{PLURAL:$2|bajenn|pajenn}} a-us.",
-	'indexfunc-index-exists' => 'Bez\' ez eus eus ar bajenn "$1" c\'hoazh',
+	'indexfunc-index-exists' => 'Ar bajenn "$1" zo anezhi c\'hoazh',
 	'indexfunc-movewarn' => 'Diwallit :
 Un titl meneger evit ar {{PLURAL:$3|bajenn |pajenn}} eo $1 :
 $2
