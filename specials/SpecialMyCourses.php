@@ -154,8 +154,9 @@ class SpecialMyCourses extends SpecialEPPage {
 		$out = $this->getOutput();
 
 		$course = EPCourse::selectRow( null, array( 'name' => $courseName ) );
+		$terms = $student->getTerms( null, array( 'course_id' => $course->getId() ) );
 
-		if ( $course !== false && $student->hasTerm( array( 'course_id' => $course->getId() ) ) ) {
+		if ( $course !== false && count( $terms ) > 0 ) {
 			$out->addWikiMsg( 'ep-mycourses-show-all' );
 
 			$out->setPageTitle( wfMsgExt(
@@ -164,11 +165,34 @@ class SpecialMyCourses extends SpecialEPPage {
 				$courseName,
 				$course->getOrg( 'name' )->getField( 'name' )
 			) );
+
+			$this->displayCourseSummary( $course, $terms );
 		}
 		else {
 			$this->showError( wfMessage( 'ep-mycourses-no-such-course', $courseName ) );
 			$this->displayCourses( $student );
 		}
+	}
+
+	/**
+	 * Display the summary for a course.
+	 *
+	 * @since 0.1
+	 *
+	 * @param EPCourse $course
+	 * @param array $terms
+	 */
+	protected function displayCourseSummary( EPCourse $course, array /* of EPTerm */ $terms ) {
+		$info = array();
+
+		$info['name'] = $course->getField( 'name' );
+		$info['org'] = EPOrg::selectFieldsRow( 'name', array( 'id' => $course->getField( 'org_id' ) ) );
+
+		foreach ( $info as &$inf ) {
+			$inf = htmlspecialchars( $inf );
+		}
+
+		$this->displaySummary( $course, false, $info );
 	}
 
 }

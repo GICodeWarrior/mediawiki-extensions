@@ -224,6 +224,8 @@ $messages['en'] = array(
 	'ep-mycourses-show-all' => 'This page shows one of the courses you are enrolled in. You can also view all [[Special:MyCourses|your courses]].',
 	'ep-mycourses-no-such-course' => 'You are not enrolled in any course with name "$1". The courses you are enrolled in are listed below.',
 	'ep-mycourses-course-title' => 'My courses: $1 at $2',
+	'specialmycourses-summary-name' => 'Course name',
+	'specialmycourses-summary-org' => 'Institution name',
 
 	// Navigation links
 	'ep-nav-orgs' => 'Institution list',

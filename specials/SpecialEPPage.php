@@ -176,8 +176,9 @@ abstract class SpecialEPPage extends SpecialPage {
 	 * 
 	 * @param EPDBObject $item
 	 * @param boolean $collapsed
+	 * @param array $summaryData
 	 */
-	protected function displaySummary( EPDBObject $item, $collapsed = true ) {
+	protected function displaySummary( EPDBObject $item, $collapsed = true, array $summaryData = null ) {
 		$out = $this->getOutput();
 		
 		$class = 'wikitable ep-summary mw-collapsible';
@@ -189,8 +190,10 @@ abstract class SpecialEPPage extends SpecialPage {
 		$out->addHTML( Html::openElement( 'table', array( 'class' => $class ) ) );
 		
 		$out->addHTML( '<tr>' . Html::element( 'th', array( 'colspan' => 2 ), wfMsg( 'ep-item-summary' ) ) . '</tr>' );
-		
-		foreach ( $this->getSummaryData( $item ) as $stat => $value ) {
+
+		$summaryData = is_null( $summaryData ) ? $this->getSummaryData( $item ) : $summaryData;
+
+		foreach ( $summaryData as $stat => $value ) {
 			$out->addHTML( '<tr>' );
 
 			$out->addHTML( Html::element(
