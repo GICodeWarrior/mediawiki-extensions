@@ -576,6 +576,18 @@ Consulta con un [[Special:ListUsers/sysop|alministrador]].",
 	'openidfailure' => 'Falló la comprobación',
 	'openidfailuretext' => "Falló la comprobación de la URL d'OpenID. Mensaxe d'error: «$1»",
 	'openidsuccess' => 'Comprobación correuta',
+	'openidsuccesstext' => "'''Verificación y aniciu de sesión como usuariu $1 correutos.'''
+
+La to OpenID ye $2.
+
+Esti y otros OpenID opcionales se puen xestionar na [[Special:Preferences#prefsection-openid|llingüeta OpenID]] de les preferencies.<br />
+Se pue amestar una contraseña de cuenta opcional nel [[Special:Preferences#prefsection-personal|perfil d'usuariu]].",
+	'openidusernameprefix' => 'Usuariu OpenID',
+	'openidserverlogininstructions' => "$3 pide qu'escribas la to contraseña de la páxina $1 pal usuariu $2 (esta ye la URL del to OpenID)",
+	'openidtrustinstructions' => 'Comprueba si quies compartir datos con $1.',
+	'openidallowtrust' => "Permitir a $1 confiar nesta cuenta d'usuariu.",
+	'openidnopolicy' => "El sitiu nun conseñó la so política d'intimidá.",
+	'openidpolicy' => 'Comprueba la <a target="_new" href="$1">política d\'intimidá</a> pa mayor información.',
 	'openidoptional' => 'Opcional',
 	'openidrequired' => 'Requeríu',
 	'openidnickname' => 'Alcuñu',
@@ -594,6 +606,18 @@ pues escoyer unu ente les opciones d'abaxo.",
 	'openidchooseexisting' => 'Una cuenta esistente nesta wiki',
 	'openidchooseusername' => "Nome d'usuariu:",
 	'openidchoosepassword' => 'Contraseña:',
+	'openidconvertinstructions' => "Esti formulariu te permite camudar la to cuenta d'usuariu pa usar una URL d'OpenID o amestar más URLs d'OpenID.",
+	'openidconvertoraddmoreids' => 'Convertir a OpenID o amestar otra URL OpenID',
+	'openidconvertsuccess' => 'Convertida correutamente a OpenID',
+	'openidconvertsuccesstext' => 'Convertisti correutamente la to OpenID a $1.',
+	'openidconvertyourstext' => 'Esa yá ye la to OpenID.',
+	'openidconvertothertext' => "Esa ye la OpenID d'otra persona.",
+	'openidalreadyloggedin' => 'Yá aniciasti sesión.',
+	'openidalreadyloggedintext' => "'''Yá tas identificáu, $1!'''
+
+Pues xestionar (ver, desaniciar, amestar otres) les OpenID na [[Special:Preferences#prefsection-openid|llingüeta OpenID]] de les preferencies.",
+	'openidnousername' => "Nun escribisti dengún nome d'usuariu.",
+	'openidbadusername' => "Escribisti mal el nome d'usuariu.",
 );
 
 /** Azerbaijani (Azərbaycanca)
@@ -2718,7 +2742,7 @@ Ty njemóhł so bjez OpenID přizjewić.',
 	'openiddeleteerroropenidonly' => 'Njemóžeš wšě swoje OpenID zničić, dokelž njesměš so z OpenID přizjewić.
 Ty njemóhł so bjez OpenID přizjewić.',
 	'openiddelete-sucess' => 'OpenID je so wuspěšnje z twojeho konta wotstronił.',
-	'openiddelete-error' => 'Při wotstronjenju OpenID z twojeho konto je zmólk wustupił.',
+	'openiddelete-error' => 'Při wotstronjenju OpenID z twojeho konto je zmylk wustupił.',
 	'openid-openids-were-not-merged' => 'Při zjednoćenju wužiwarskich kontow OpenID njejsu so zjednoćili.',
 	'openid-prefstext' => 'Nastajenja [//openid.net/ OpenID]',
 	'openid-pref-hide' => 'Twój OpenID na twojej wužiwarskej stronje schować, jeli so z OpenID přizjewješ.',
