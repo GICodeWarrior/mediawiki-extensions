@@ -243,6 +243,20 @@ $messages['fa'] = array(
 	'bm-printversion-inexistent-book' => 'کتاب یافت نشد. لطفاً نام یک کتاب که موجود باشد را وارد کنید تا نسخهٔ قابل چاپ آن را بگیرید.',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Veikk0.ma
+ */
+$messages['fi'] = array(
+	'bookmanager-desc' => 'Kirjojen työkalut',
+	'bm-booktools-section' => 'Kirjan työkalut',
+	'bm-randomchapter-link' => 'Satunnainen luku',
+	'bm-printversion' => 'Tulostettava versio',
+	'bm-printversion-desc' => 'Luo [[Special:PrintVersion|tulostettavan version]] kirjasta',
+	'bm-printversion-no-book' => 'Anna kirjan nimi, niin saat siitä tulostettavan version.',
+	'bm-printversion-inexistent-book' => 'Kirjaa ei löytynyt. Anna olemassa olevan kirjan nimi, niin saat siitä tulostettavan version.',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Faure.thomas
