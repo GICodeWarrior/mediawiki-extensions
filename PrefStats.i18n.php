@@ -980,6 +980,22 @@ Aseta $wgPrefStatsTrackPrefs asetusten seuraamiseksi.',
 	'prefstats-legend-in' => 'Liittynyt',
 );
 
+/** Faroese (Føroyskt)
+ * @author EileenSanda
+ */
+$messages['fo'] = array(
+	'prefstats-xaxis' => 'Varir (tímar)',
+	'prefstats-factors' => 'Vís per: $1',
+	'prefstats-factor-hour' => 'tími',
+	'prefstats-factor-sixhours' => 'seks tímar',
+	'prefstats-factor-day' => 'dagur',
+	'prefstats-factor-week' => 'vika',
+	'prefstats-factor-twoweeks' => 'tvær vikur',
+	'prefstats-factor-fourweeks' => 'fýra vikur',
+	'prefstats-legend-out' => 'Valt frá',
+	'prefstats-legend-in' => 'Valt til',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
