@@ -829,8 +829,8 @@ $messages['br'] = array(
 	'articlefeedback-field-objective-tooltip-1' => 'Tuek betek re',
 	'articlefeedback-field-objective-tooltip-2' => "Tuek a-walc'h",
 	'articlefeedback-field-objective-tooltip-3' => 'Un tammig tuek',
-	'articlefeedback-field-objective-tooltip-4' => "Didu a-walc'h evit doare",
-	'articlefeedback-field-objective-tooltip-5' => 'Didu-krenn',
+	'articlefeedback-field-objective-tooltip-4' => "Neptu a-walc'h evit doare",
+	'articlefeedback-field-objective-tooltip-5' => 'Neptu-rik',
 	'articlefeedback-field-wellwritten-label' => 'Skrivet brav',
 	'articlefeedback-field-wellwritten-tip' => "Ha soñjal a ra deoc'h eo skrivet brav ha frammet mat ar bajenn-mañ ?",
 	'articlefeedback-field-wellwritten-tooltip-1' => 'Digomprenus',
@@ -1022,8 +1022,8 @@ $messages['ca'] = array(
 	'articlefeedback-form-switch-label' => 'Valoreu aquesta pàgina',
 	'articlefeedback-form-panel-title' => 'Valoreu la pàgina',
 	'articlefeedback-form-panel-explanation' => 'Què és això?',
-	'articlefeedback-form-panel-explanation-link' => 'Projecte: ArticleFeedback',
-	'articlefeedback-form-panel-clear' => 'Suprimeix la Darrera classificació',
+	'articlefeedback-form-panel-explanation-link' => 'Project:ArticleFeedback',
+	'articlefeedback-form-panel-clear' => 'Esborra aquesta valoració',
 	'articlefeedback-form-panel-expertise' => 'Estic molt ben informat sobre aquest tema (opcional)',
 	'articlefeedback-form-panel-expertise-studies' => 'Tinc un rellevant college/llicenciatura',
 	'articlefeedback-form-panel-expertise-profession' => 'És part de la meva professió',
@@ -1032,18 +1032,18 @@ $messages['ca'] = array(
 	'articlefeedback-form-panel-helpimprove' => "M'agradaria ajudar a millorar la Wikipedia, enviar-me un correu electrònic (opcional)",
 	'articlefeedback-form-panel-helpimprove-note' => 'Us enviarem un correu electrònic de confirmació. No compartirem la seva adreça de correu electrònic amb tercers com per la nostra  $1 .',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'declaració de privacitat de resposta',
-	'articlefeedback-form-panel-submit' => 'Presentar les classificacions',
-	'articlefeedback-form-panel-pending' => "La classificació no han estat presentats encara s'ha",
+	'articlefeedback-form-panel-submit' => 'Enviar les valoracions',
+	'articlefeedback-form-panel-pending' => 'Les vostres valoracions encara no han estat enviades',
 	'articlefeedback-form-panel-success' => 'Desat correctament',
 	'articlefeedback-form-panel-expiry-title' => 'El seu índexs han caducat',
-	'articlefeedback-form-panel-expiry-message' => 'Si us plau reavaluar aquesta pàgina i presentar les classificacions noves.',
-	'articlefeedback-report-switch-label' => 'Veure pàgina ratings',
-	'articlefeedback-report-panel-title' => 'Classificacions de pàgina',
+	'articlefeedback-form-panel-expiry-message' => 'Si us plau reavalueu aquesta pàgina i envieu noves valoracions.',
+	'articlefeedback-report-switch-label' => 'Veure valoracions de la pàgina',
+	'articlefeedback-report-panel-title' => 'Valoracions de la pàgina',
 	'articlefeedback-report-panel-description' => 'Actual mitjana de qualificacions.',
 	'articlefeedback-report-empty' => 'No hi ha valoracions',
 	'articlefeedback-report-ratings' => '$1 valoracions',
 	'articlefeedback-field-trustworthy-label' => 'Digne de confiança',
-	'articlefeedback-field-trustworthy-tip' => 'Et sents aquesta pàgina té cites suficients i que aquestes cites provenen de fonts de confiança?',
+	'articlefeedback-field-trustworthy-tip' => 'Creu que aquesta pàgina conté cites suficients i que aquestes provenen de fonts de confiança?',
 	'articlefeedback-field-trustworthy-tooltip-1' => 'No té fonts de bona reputació',
 	'articlefeedback-field-trustworthy-tooltip-2' => 'Algunes fonts de bona reputació',
 	'articlefeedback-field-trustworthy-tooltip-3' => 'Fonts de bona reputació adequadas',
@@ -1053,8 +1053,8 @@ $messages['ca'] = array(
 	'articlefeedback-field-complete-tip' => 'Consideres que aquesta pàgina aborda els temes essencials que havien de ser coberts?',
 	'articlefeedback-field-complete-tooltip-1' => 'Falta més informació',
 	'articlefeedback-field-complete-tooltip-2' => 'Conté informació',
-	'articlefeedback-field-complete-tooltip-3' => 'Conté informació clau, però amb les llacunes',
-	'articlefeedback-field-complete-tooltip-4' => 'Conté informació clau de la majoria dels',
+	'articlefeedback-field-complete-tooltip-3' => 'Conté la informació clau, però amb llacunes',
+	'articlefeedback-field-complete-tooltip-4' => 'Conté la majoria de la informació clau',
 	'articlefeedback-field-complete-tooltip-5' => 'Cobertura completa',
 	'articlefeedback-field-objective-label' => 'Imparcial',
 	'articlefeedback-field-objective-tip' => "Creus que aquesta pàgina representa, de forma equilibrada, tots els punts de vista sobre l'assumpte?",
@@ -1064,7 +1064,7 @@ $messages['ca'] = array(
 	'articlefeedback-field-objective-tooltip-4' => 'No hi ha biaix evident',
 	'articlefeedback-field-objective-tooltip-5' => 'Completament imparcial',
 	'articlefeedback-field-wellwritten-label' => 'Ben escrit',
-	'articlefeedback-field-wellwritten-tip' => 'Et sents que aquesta pàgina és ben organitzat i ben escrit?',
+	'articlefeedback-field-wellwritten-tip' => 'Creu que aquesta pàgina està ben organitzada i ben escrita?',
 	'articlefeedback-field-wellwritten-tooltip-1' => 'Incomprensible',
 	'articlefeedback-field-wellwritten-tooltip-2' => "Difícil d'entendre",
 	'articlefeedback-field-wellwritten-tooltip-3' => 'Claredat adequada',
@@ -2312,8 +2312,8 @@ $3
  * @author Pxos
  */
 $messages['fi'] = array(
-	'articlefeedback' => 'Sivun arvostelun koostesivu',
-	'articlefeedback-desc' => 'Sivun palaute (kokeiluversio)',
+	'articlefeedback' => 'Sivujen arvostelun koostesivu',
+	'articlefeedback-desc' => 'Sivujen palaute',
 	'articlefeedback-survey-question-origin' => 'Millä sivulla olit, kun aloitit tämän kyselyn?',
 	'articlefeedback-survey-question-whyrated' => 'Kerro meille, miksi arvostelit tämän sivun tänään (valitse kaikki sopivat vaihtoehdot):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Haluan vaikuttaa sivun kokonaisarvosanaan',
@@ -2334,10 +2334,10 @@ $messages['fi'] = array(
 	'articlefeedback-form-switch-label' => 'Anna tälle sivulle arvosana',
 	'articlefeedback-form-panel-title' => 'Anna tälle sivulle arvosana',
 	'articlefeedback-form-panel-explanation' => 'Mikä tämä on?',
-	'articlefeedback-form-panel-explanation-link' => 'Project:Sivun palaute',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Sivujen palaute',
 	'articlefeedback-form-panel-clear' => 'Poista tämä arvostelu',
 	'articlefeedback-form-panel-expertise' => 'Tunnen tämän aihepiirin hyvin (vapaaehtoinen)',
-	'articlefeedback-form-panel-expertise-studies' => 'Minulla on vastaava yliopiston/ammattioppilaitoksenloppututkinto',
+	'articlefeedback-form-panel-expertise-studies' => 'Minulla on vastaava yliopiston tai ammattioppilaitoksen loppututkinto',
 	'articlefeedback-form-panel-expertise-profession' => 'Tämä on osa ammattiani',
 	'articlefeedback-form-panel-expertise-hobby' => 'Olen erittäin kiinnostunut aiheesta',
 	'articlefeedback-form-panel-expertise-other' => 'Tietojeni lähde ei ole näkyvillä tässä',
@@ -2348,7 +2348,7 @@ $messages['fi'] = array(
 	'articlefeedback-form-panel-pending' => 'Arvostelujasi ei ole vielä lähetetty',
 	'articlefeedback-form-panel-success' => 'Tallennus onnistui',
 	'articlefeedback-form-panel-expiry-title' => 'Arvostelusi ovat vanhentuneet',
-	'articlefeedback-form-panel-expiry-message' => 'Lue sivu uudelleen ja lähetä uudet arvostelut.',
+	'articlefeedback-form-panel-expiry-message' => 'Arvostele sivu uudelleen ja lähetä uudet arvostelut.',
 	'articlefeedback-report-switch-label' => 'Näytä sivun arvostelut',
 	'articlefeedback-report-panel-title' => 'Sivun arvostelut',
 	'articlefeedback-report-panel-description' => 'Arvosanojen keskiarvo tällä hetkellä.',
@@ -2388,7 +2388,7 @@ $messages['fi'] = array(
 	'articlefeedback-pitch-survey-message' => 'Käytä hetki lyhyen kyselyn täyttämiseen.',
 	'articlefeedback-pitch-survey-accept' => 'Aloita kysely',
 	'articlefeedback-pitch-join-message' => 'Halusitko luoda käyttäjätunnuksen?',
-	'articlefeedback-pitch-join-body' => 'Tunnus auttaa sinua seuraamaan muutoksiasi, osallistumaan keskusteluihin, ja olet osa yhteisöä.',
+	'articlefeedback-pitch-join-body' => 'Tunnus auttaa sinua seuraamaan omia muutoksiasi, osallistumaan keskusteluihin, ja lisäksi olet osa yhteisöä.',
 	'articlefeedback-pitch-join-accept' => 'Luo tunnus',
 	'articlefeedback-pitch-join-login' => 'Kirjaudu sisään',
 	'articlefeedback-pitch-edit-message' => 'Tiesitkö, että voit muokata tätä sivua?',
@@ -3307,7 +3307,7 @@ Prošu spytaj pozdźišo hišće raz.',
 	'articlefeedback-field-complete-label' => 'Dospołny',
 	'articlefeedback-field-complete-tip' => 'Měnicé, zo tuta strona wobkedźbuje wšitke bytostne temowe pola, kotrež měła wobsahować?',
 	'articlefeedback-field-complete-tooltip-1' => 'Wobsahuje mało informacijow',
-	'articlefeedback-field-complete-tooltip-2' => 'Wobsahuje někotre informcije',
+	'articlefeedback-field-complete-tooltip-2' => 'Wobsahuje někotre informacije',
 	'articlefeedback-field-complete-tooltip-3' => 'Wobsahuje wažne informacije, ma wšak mjezery',
 	'articlefeedback-field-complete-tooltip-4' => 'Wobsahuje najwjace wažnych informacijow',
 	'articlefeedback-field-complete-tooltip-5' => 'Wobšěrne informacije',
@@ -3753,6 +3753,7 @@ Tim {{SITENAME}}',
 );
 
 /** Iloko (Ilokano)
+ * @author Ansumang
  * @author Lam-ang
  */
 $messages['ilo'] = array(
@@ -3762,6 +3763,116 @@ $messages['ilo'] = array(
 	'articlefeedback-survey-question-whyrated' => 'Pangngaasi nga ibagam kaniami nu apay nga pinategam daytoy a panid tatta nga aldaw (kur-itam amin a maidangep:',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Kayatko ti agparawad ti amin a sakup a pagpateg iti daytoy a panid',
 	'articlefeedback-survey-answer-whyrated-development' => 'Adda namnamak a ti pagnagpateg ko ket mapaneknekan ti panag-rangay iti daytoy a panid',
+	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Kayatko ti agparawad  iti {{SITENAME}}',
+	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Kayatko ti makibingay  ti pangipagarupak',
+	'articlefeedback-survey-answer-whyrated-didntrate' => 'Saanak a nagisagana kadagit pagipagarupan tatta nga aldaw, ngem kayatko ti agited tipagipagarupan iti sumakbay a panawen',
+	'articlefeedback-survey-answer-whyrated-other' => 'Sabali',
+	'articlefeedback-survey-question-useful' => 'Namatmati ka a dagiti pangipagarupan a naited ket makatulong ken nalawag?',
+	'articlefeedback-survey-question-useful-iffalse' => 'Apay?',
+	'articlefeedback-survey-question-comments' => 'Addan ka pay kadagiti ania man nga inayon mo a komentario?',
+	'articlefeedback-survey-submit' => 'Ited',
+	'articlefeedback-survey-title' => 'Pangngaasi a sungbatam ti sumagmamano a saludsod',
+	'articlefeedback-survey-thanks' => 'Agyaman  para iti panag punnom ti panagala.',
+	'articlefeedback-survey-disclaimer' => 'Babaen ti panagited, agtulag ka ti panagsaragasag babaen kadagitoy $1.',
+	'articlefeedback-survey-disclaimerlink' => 'banbanag',
+	'articlefeedback-error' => 'Adda biddut a napasamak. Pangngaasi a padasem to no madamdama.',
+	'articlefeedback-form-switch-label' => 'Pategam daytoy a panid',
+	'articlefeedback-form-panel-title' => 'Pategam daytoy a panid',
+	'articlefeedback-form-panel-explanation' => 'Ania daytoy?',
+	'articlefeedback-form-panel-explanation-link' => 'Project:Pangipagarupan ti Artikulo',
+	'articlefeedback-form-panel-clear' => 'Ikkaten daytoy a pategan',
+	'articlefeedback-form-panel-expertise' => 'Siak ket nangato ti pannakaammok maipanggep  iti daytoy a topiko (saan a nasken a mapili)',
+	'articlefeedback-form-panel-expertise-studies' => 'Addaanak ti maipaay a kolehio/unibersidad a grado',
+	'articlefeedback-form-panel-expertise-profession' => 'Paset daytoy iti pagsapulak',
+	'articlefeedback-form-panel-expertise-hobby' => 'Daytoy ket kabudbukudak a regget',
+	'articlefeedback-form-panel-expertise-other' => 'Ti nagtaudan ti panakaammok ket saan a nailista ditoy',
+	'articlefeedback-form-panel-helpimprove' => 'Kayatko kuma ti tumulong a parang-ayen ti Wikipedia, patulodendak ti e-surat (saan a nasken a mapili)',
+	'articlefeedback-form-panel-helpimprove-note' => 'Agipatulod kamin to ti kaniam ti pagsingkedan nga e-surat. Saan mi nga ibingbingay ti pagtaemgam nga e-surat kadagiti adda dita ruar a gunglo a kas tunggal maysa-mi a /nga $1.',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'pribado a sarita ti insao para ti panagipagarupan',
+	'articlefeedback-form-panel-submit' => 'Ited dagiti pangpatpateg',
+	'articlefeedback-form-panel-pending' => 'Dagiti pangpatpategam ket saan pay a naited',
+	'articlefeedback-form-panel-success' => 'Balligi ti panakaidulin',
+	'articlefeedback-form-panel-expiry-title' => 'Nagpaso dagiti pagipatpategam',
+	'articlefeedback-form-panel-expiry-message' => 'Pangngaasi a kitaem manen daytoy a panid ken agited kadagiti baro a pategan.',
+	'articlefeedback-report-switch-label' => 'Kitaen dagit pategan ti panid',
+	'articlefeedback-report-panel-title' => 'Dagiti pategan ti panid',
+	'articlefeedback-report-panel-description' => 'Agdama a patengngaan kadagiti pategan.',
+	'articlefeedback-report-empty' => 'Awan dagiti pategan',
+	'articlefeedback-report-ratings' => '$1 dagiti pategan',
+	'articlefeedback-field-trustworthy-label' => 'Natalek',
+	'articlefeedback-field-trustworthy-tip' => 'Mariknam kadi a daytoy a panid ket addaan kadagiti umdas a dakamat ken dagita a dakamat ket natalged dagiti nagtaudan da?',
+	'articlefeedback-field-trustworthy-tooltip-1' => 'Agkurang kadagiti nadayaw a nagtaudan',
+	'articlefeedback-field-trustworthy-tooltip-2' => 'Manmano dagiti nadayaw a nagtaudan',
+	'articlefeedback-field-trustworthy-tooltip-3' => 'Makaanay dagiti nadayaw a nagtaudan',
+	'articlefeedback-field-trustworthy-tooltip-4' => 'Nasayaat dagiti nadayaw a nagtaudan',
+	'articlefeedback-field-trustworthy-tooltip-5' => 'Nalatak dagiti nadayaw a nagtaudan',
+	'articlefeedback-field-complete-label' => 'Kompleto',
+	'articlefeedback-field-complete-tip' => 'Mariknam kadi a daytoy a panid ket masakup na ti masapul a topiko a disso a rumbeng kuma?',
+	'articlefeedback-field-complete-tooltip-1' => 'Agkurang ti kaadduan a pakaammo',
+	'articlefeedback-field-complete-tooltip-2' => 'Aglaon ti manmano a pakaammo',
+	'articlefeedback-field-complete-tooltip-3' => 'Aglaon ti nasken a pakaammo, ngem addaan dagiti buang',
+	'articlefeedback-field-complete-tooltip-4' => 'Aglaon ti kaadu a nasken a pakaammo',
+	'articlefeedback-field-complete-tooltip-5' => 'Nasayaat ti pannakasakup na',
+	'articlefeedback-field-objective-label' => 'Napanggep',
+	'articlefeedback-field-objective-tip' => 'Mariknam kadi a daytoy a panid ket agiparang ti nasayaat a pannakabagi iti amin a kita iti daytoy a banag?',
+	'articlefeedback-field-objective-tooltip-1' => 'Di nalinteg unay',
+	'articlefeedback-field-objective-tooltip-2' => 'Natimbeng a di nalinteg',
+	'articlefeedback-field-objective-tooltip-3' => 'Bassit a di nalinteg',
+	'articlefeedback-field-objective-tooltip-4' => 'Awan ti napatak a di nalinteg',
+	'articlefeedback-field-objective-tooltip-5' => 'KOmpleto a saan a di nalinteg',
+	'articlefeedback-field-wellwritten-label' => 'Nakarakad ti pannakaisurat na',
+	'articlefeedback-field-wellwritten-tip' => 'Mariknam kadi a daytoy a panid ket nakarakad ti pannaka-urnos na, ken nakarakad ti pannakaisurat na?',
+	'articlefeedback-field-wellwritten-tooltip-1' => 'Saan maawatan',
+	'articlefeedback-field-wellwritten-tooltip-2' => 'Narigat a maawatan',
+	'articlefeedback-field-wellwritten-tooltip-3' => 'Makaanay ti kalawag na',
+	'articlefeedback-field-wellwritten-tooltip-4' => 'Nasayaat ti kalawag na',
+	'articlefeedback-field-wellwritten-tooltip-5' => 'Mailaklaksid ti kalawag na',
+	'articlefeedback-pitch-reject' => 'Siguro no madamdama',
+	'articlefeedback-pitch-or' => 'wenno',
+	'articlefeedback-pitch-thanks' => 'Agyaman! Dagita pategam ket naidulinen.',
+	'articlefeedback-pitch-survey-message' => 'Pangngaasi nga alaen ti kanito nga agkompleto ti bassit a panagala.',
+	'articlefeedback-pitch-survey-accept' => 'Mangrugi  ti panagala',
+	'articlefeedback-pitch-join-message' => 'Kayatmo ti agaramid ti pakabilangan?',
+	'articlefeedback-pitch-join-body' => 'Ti pakabilangan ket tulongan na ka a mangsurot dagit inurnos mo, makiraman kadagiti pagtungtungan, ken ag-paset ka iti komunidad.',
+	'articlefeedback-pitch-join-accept' => 'Agaramid ti pakabilangan',
+	'articlefeedback-pitch-join-login' => 'Sumrek',
+	'articlefeedback-pitch-edit-message' => 'Amom kadi a mabalin mo nga urnosen daytoy a panid?',
+	'articlefeedback-pitch-edit-accept' => 'Urnosen daytoy a panid',
+	'articlefeedback-survey-message-success' => 'Agyaman  para iti panag punnom ti panagala.',
+	'articlefeedback-survey-message-error' => 'Adda biddut a napasamak.
+Pangngaasi a padasem to no madamdama.',
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Sarita ti insao a pribado ti panagipagrupan',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Dagiti nangato ken nababa tatta nga aldaw',
+	'articleFeedback-table-caption-dailyhighs' => 'Dagiti panid nga addaan kadagiti kangatuan a pategan: $1',
+	'articleFeedback-table-caption-dailylows' => 'Dagiti panid nga addaan kadagiti kababaan a pategan: $1',
+	'articleFeedback-table-caption-weeklymostchanged' => 'Ti kaaduan a nasukatan iti daytoy a lawas',
+	'articleFeedback-table-caption-recentlows' => 'Dagiti kaudian kababaan',
+	'articleFeedback-table-heading-page' => 'Panid',
+	'articleFeedback-table-heading-average' => 'Natimbengan',
+	'articleFeedback-copy-above-highlow-tables' => 'Daytoy ket subsubokan laeng a langa. Pangngaasi nga agited ti panagipagarupan idiay [$1 pagtungtungan a panid].',
+	'articlefeedback-dashboard-bottom' => "'''Paammo''':Agtultuloy kami nga agsusubok ti sabsabali a waya ti panagibarabaw kadagiti artikulo kadagitoy a pagipatarayan. Iti agdama, ti pagipatarayan ket nairaman ti sumaganad nga artikulo:
+* Dagiti panid nga addan dagiti kangatuan/kababaan a pategan: dagiti artikulo a nakaawat ti kabassitan a 10 a pategan iti uneg ti 24 nga oras. Ti pagtimbengan ket kalkulo babaen tipang-ala ti katengngaan kadagiti amin a pategan a naited
+iti uneg ti 24 nga oras.
+* Dagiti kinaudi a kababaan: dagiti artikulo a nakaala ti 70% wenno kaad-adu a nababa ( 2 a bituen wenno nabab-baba) a dagiti pategan iti ania man a kategoria iti kinaudi a 24 nga oras. Dagiti artikulo laeng a nakaala ti kababaan a 10 a pategan iti kinaudi a 24 nga oras dagiti mairaman.",
+	'articlefeedback-disable-preference' => 'Saan nga iparang ti Artikulo a pangipagarupan a widget kadagiti paid',
+	'articlefeedback-emailcapture-response-body' => 'Kablaaw!
+
+Agyaman para iti panagi-yebkas ti pammateg iti panagitulong ti panag ti parang-ay {{SITENAME}}.
+
+Pangngaasi nga agala ti kanito tapno mapasingkedan ti e-surat mo babaen ti panag-takla iti panilpo dita baba:
+
+$1
+
+Ken ikabil ti sumaganad a pagsingkedan a kodigo:
+
+$3
+
+Dakami ket sagiden da kan to no madamdama  no kasano ka a makatulong ti panagparang-ay ti {{SITENAME}}.
+
+No saan mo nga inrugi daytoy a  kiddaw, pangngaasi a saan mo nga ikaskaso daytoy nga e-surat ken saan kami nga agipatulod ti ania man.
+
+Dagiti kasayaatan a  tarigaygay, ken agyaman kami kania yo,
+Timpuyog ti {{SITENAME}}',
 );
 
 /** Italian (Italiano)
@@ -6847,11 +6958,13 @@ $messages['si'] = array(
 	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'මම කැමතියි මගේ අදහස හුවමාරු කරගන්න',
 	'articlefeedback-survey-answer-whyrated-didntrate' => 'මම අද තරාතිරම් දුන්නේ නැහැ, නමුත් මට ඉදිරියේදී ප්‍රතිචාරය ලබා දීමට අවශ්‍යයි',
 	'articlefeedback-survey-answer-whyrated-other' => 'වෙනත්',
+	'articlefeedback-survey-question-useful' => 'ඉදිරිපත් කරපු තරාතිරම් ප්‍රයෝජනවත් සහ නිර්ද්‍යෝෂයි කියා ඔබ විශ්වාශ කරනවද?',
 	'articlefeedback-survey-question-useful-iffalse' => 'ඇයි?',
 	'articlefeedback-survey-question-comments' => 'ඔබ සතුව වෙනත් අමතර පරිකථන තිබේද?',
 	'articlefeedback-survey-submit' => 'යොමන්න',
 	'articlefeedback-survey-title' => 'කරුණාකර ප්‍රශ්ණ කිහිපයකට පිළිතුරු දෙන්න',
 	'articlefeedback-survey-thanks' => 'සමීක්ෂණය පිරවූවාට තුති.',
+	'articlefeedback-survey-disclaimer' => 'යොමු කිරීමෙන්, $1 යටතේ පාරදෘෂ්‍යතාවට ඔබ එකඟ වේ.',
 	'articlefeedback-survey-disclaimerlink' => 'කොන්දේසි',
 	'articlefeedback-error' => 'දෝෂයක් හට ගැනුණි. කරුණාකර නැවත උත්සහ කරන්න.',
 	'articlefeedback-form-switch-label' => 'මෙම පිටුවේ තරාතිරම සකසන්න',
@@ -6865,29 +6978,34 @@ $messages['si'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'එය ගැඹුරු පුද්ගලික ළැදිකමක්',
 	'articlefeedback-form-panel-expertise-other' => 'මගේ දැනුමෙහි මූලාශ්‍ර මෙහි ලයිස්තුගත කොට නොමැත',
 	'articlefeedback-form-panel-helpimprove' => 'විකිපිඩියාව වැඩි දියුණු කිරීමට මම කැමතියි, මට විද්‍යුත් තැපැලක් එවන්න (අමතර)',
+	'articlefeedback-form-panel-helpimprove-note' => 'අපි ඔබට තහවුරුකිරීමේ ඊ-තැපෑලක් එවන්නෙමු. අපගේ $1 අනුව අපි ඔබගේ ඊ-තැපැල් ලිපිනය වෙනත් පාර්ශවයන් සමඟ හුවමාරු කරන්නේ නැහැ.',
 	'articlefeedback-form-panel-helpimprove-privacy' => 'ප්‍රතිචාර පෞද්ගලිකත්ව ප්‍රකාශය',
 	'articlefeedback-form-panel-submit' => 'තරාතිරම් යොමන්න',
 	'articlefeedback-form-panel-pending' => 'ඔබේ තරාතිරම් තවමත් යොමු කර නොමැත',
 	'articlefeedback-form-panel-success' => 'සාර්ථකව සුරකින ලදී',
 	'articlefeedback-form-panel-expiry-title' => 'ඔබේ තරාතිරම් කල් ඉකුත් වී ඇත',
+	'articlefeedback-form-panel-expiry-message' => 'කරුණාකර මෙම පිටුව යලිඅගයාත්මක කරමින් නව තරාතිරම් යොමන්න.',
 	'articlefeedback-report-switch-label' => 'පිටු තරාතිරම් නරඹන්න',
 	'articlefeedback-report-panel-title' => 'පිටු තරාතිරම',
 	'articlefeedback-report-panel-description' => 'වත්මන් සාමාන්‍ය තරාතිරම්.',
 	'articlefeedback-report-empty' => 'තරාතිරම් නොමැත',
 	'articlefeedback-report-ratings' => 'තරාතිරම් $1',
 	'articlefeedback-field-trustworthy-label' => 'විශ්වසනීය',
+	'articlefeedback-field-trustworthy-tip' => 'ඔබට හැඟෙනවාද මෙම පිටුව සතුව ප්‍රමාණවත් උපුටා දැක්වීම හා ඒවා විශ්වාශනිය මූලාශ්‍ර වලින් පැමිණි එවයි කියා?',
 	'articlefeedback-field-trustworthy-tooltip-1' => 'අඩුපාඩු සහිත සම්භාවනීය මූලාශ්‍ර ඇත',
 	'articlefeedback-field-trustworthy-tooltip-2' => 'සම්භාවනීය මූලාශ්‍ර ස්වල්පයක් ඇත',
 	'articlefeedback-field-trustworthy-tooltip-3' => 'ප්‍රමාණවත් සම්භාවනීය මූලාශ්‍ර ඇත',
 	'articlefeedback-field-trustworthy-tooltip-4' => 'හොඳ සම්භාවනීය මූලාශ්‍ර ඇත',
 	'articlefeedback-field-trustworthy-tooltip-5' => 'හොඳ සම්භාවනීය මූලාශ්‍ර ඇත',
 	'articlefeedback-field-complete-label' => 'සම්පූර්ණයි',
+	'articlefeedback-field-complete-tip' => 'ඔබට හැඟෙනවාද මෙම පිටුව උපරිම අයුරින් අත්‍යවශ්‍ය විෂය ප්‍රමාණයක් ආවරණය කර ඇති කියා?',
 	'articlefeedback-field-complete-tooltip-1' => 'ගොඩක් තොරතුරු මග හැරී ඇත',
 	'articlefeedback-field-complete-tooltip-2' => 'සමහර තොරතුරු අඩංගු වේ',
 	'articlefeedback-field-complete-tooltip-3' => 'ප්‍රධාන තොරතුරු අඩංගුයි, නමුත් පරතර සමඟ',
 	'articlefeedback-field-complete-tooltip-4' => 'ගොඩක් ප්‍රධාන තොරතුරු අඩංගු වේ',
 	'articlefeedback-field-complete-tooltip-5' => 'පුළුල් ආවරණයක් සහිතයි',
 	'articlefeedback-field-objective-label' => 'විෂය මූලික',
+	'articlefeedback-field-objective-tip' => 'ඔබට හැඟෙනවාද මෙම පිටුව විසින් වාදපදයෙහි සියලුම දෘෂ්ටිකෝණ සතුටුදායක අයුරින් නිරුපණය කර ඇති කියා?',
 	'articlefeedback-field-objective-tooltip-1' => 'බෙභෙවින් අගතියමය',
 	'articlefeedback-field-objective-tooltip-2' => 'මධ්‍යස්ත අගතිය',
 	'articlefeedback-field-objective-tooltip-3' => 'අවම අගතිය',
@@ -6923,6 +7041,28 @@ $messages['si'] = array(
 	'articleFeedback-table-heading-average' => 'සාමාන්‍යය',
 	'articleFeedback-copy-above-highlow-tables' => 'මෙය පරීක්ෂාත්මක මූණුවරකි.  කරුණාකර [$1 සාකච්ඡා පිටුවෙහි] ප්‍රතිචාරය ලබා දෙන්න.',
 	'articlefeedback-disable-preference' => 'ලිපි ප්‍රතිචාර ගැජටය පිටුවල පෙනවන්න එපා',
+	'articlefeedback-emailcapture-response-body' => 'කොහොමද!
+
+{{SITENAME}} වැඩිදියුණු කිරීම සඳහා උපකාර කිරීමට කැමැත්ත ප්‍රකාශ කළාට ස්තුතියි.
+
+කරුණාකර පහත දැක්වෙන සබැඳිය මත ක්ලික් කිරීම මඟින් ඔබේ විද්‍යුත් තැපැල් ලිපිනය තහවුරු කිරීම සඳහා මොහොතක් ගත කරන්න: 
+
+$1
+
+ඔබට මෙයටද යා හැක:
+
+$2
+
+ඉන්පසු පහත දැක්වෙන තහවුරු කිරීමේ කේතය යොදන්න:
+
+$3
+
+ඔබට {{SITENAME}} වැඩිදියුණු කල හැක්කේ කෙසේදැයි දන්වමින් අපි ඔබව විගසින් දැනුවත් කරන්නෙමු.
+
+ඔබ විසින් මෙම අයැදුම ඇතුළත් කලේ නැතිනම්, කරුණාකර මෙම පණිවුඩය නොසලකන්න ඉන්පසු අපි ඔබට වෙන මොනවත් එවන්නේ නැහැ.
+
+සුභපැතුම්, සහ ස්තුතියි,
+{{SITENAME}} හී කණ්ඩායම',
 );
 
 /** Slovak (Slovenčina)
@@ -7522,11 +7662,14 @@ $messages['ta'] = array(
 	'articlefeedback-survey-submit' => 'சமர்ப்பி',
 	'articlefeedback-survey-title' => 'தயவு செய்து ஒரு சில கேள்விகளுக்கு பதில் அளியுங்கள்',
 	'articlefeedback-survey-thanks' => 'ஆய்வுக்கான படிவத்தை பூர்த்தி செய்தமைக்கு நன்றி.',
+	'articlefeedback-survey-disclaimerlink' => 'விதிமுறைகள்',
+	'articlefeedback-error' => 'ஒரு பிழை ஏற்பட்டுள்ளது. தயவுகூர்ந்து பிறகு மீண்டும் முயற்சிக்கவும்.',
 	'articlefeedback-form-switch-label' => 'இப்பக்கத்தை மதிப்பிடு',
 	'articlefeedback-form-panel-title' => 'இப்பக்கத்தை மதிப்பிடு',
 	'articlefeedback-form-panel-explanation' => 'இது என்ன?',
 	'articlefeedback-form-panel-explanation-link' => 'திட்டம்: கட்டுரை கருத்து',
 	'articlefeedback-form-panel-clear' => 'இந்த மதிப்பீட்டை நீக்கு',
+	'articlefeedback-form-panel-expertise' => 'நான் இந்த தலைப்பு (விருப்பதேர்வு) பற்றி அதிக அறிவுடையவன்.',
 	'articlefeedback-form-panel-expertise-studies' => 'நான் பொருத்தமான கல்லூரி/பல்கலைக்கழக பட்டம் பெற்றிருக்கிறேன்.',
 	'articlefeedback-form-panel-expertise-profession' => 'இது என் தொழிலின் ஒரு பகுதி',
 	'articlefeedback-form-panel-expertise-hobby' => 'இது ஒரு ஆழமான தனிப்பட்ட விருப்பமாகும்',
