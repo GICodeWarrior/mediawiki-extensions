@@ -548,6 +548,14 @@ $messages['sah'] = array(
 	'nedits' => '{{PLURAL:$1|Соҕотох көннөрүү|$1 көннөрүү}}',
 );
 
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'activestrategy' => 'සක්‍රීය උපාය',
+	'nedits' => '{{PLURAL:$1|සංස්කරණ|සංස්කරණ}} $1 ක්',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Jkjk
