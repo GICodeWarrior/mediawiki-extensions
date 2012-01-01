@@ -1,7 +1,7 @@
 li#pt-webfont {
 	/* @embed */
-	background: url(images/font-icon.png) no-repeat scroll left top transparent;
-	padding-left: 15px !important;
+	background: url(images/font-icon.png) no-repeat 0 0;
+	padding-left: 18px !important;
 }
 
 div#webfonts-menu {
@@ -10,7 +10,7 @@ div#webfonts-menu {
 	display: none;
 }
 
-div#webfonts-menu.open{
+div#webfonts-menu.open {
 	display: block;
 }
 div#webfonts-fonts {
