@@ -101,10 +101,11 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Olli
  */
 $messages['fi'] = array(
-	'customusersignup-desc' => 'Sallii mukautettujen viestien näyttämisen tilin luomisprosessin aikana',
+	'customusersignup-desc' => 'Mahdollistaa mukautettujen viestien näyttämisen tunnuksen luomisprosessin aikana.',
 );
 
 /** French (Français)
