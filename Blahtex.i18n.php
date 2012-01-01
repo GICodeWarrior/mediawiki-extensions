@@ -1054,7 +1054,11 @@ Nepre estu precize unu komando definita;
 	'math_MissingOpenBraceAfter' => 'Mankas malferma krampo "{" post "$1"',
 	'math_MissingOpenBraceAtEnd' => 'Mankas malferma krampo "{" ĉe fino de enigo',
 	'math_MissingOpenBraceBefore' => 'Mankas malferma krampo "{" antaŭ "$1"',
+	'math_MissingOrIllegalParameterCount' => 'Mankanta aŭ malpermesita parametro-konto en difino de "$1".
+Ĝi estu unuopa cifero inter 1 kaj 9 inkluzive.',
 	'math_MissingOrIllegalParameterIndex' => 'Mankanta aŭ nevalida parametro-indekso en difino de "$1"',
+	'math_NonAsciiInMathMode' => 'Ne-ASCII-aj signoj nur povas esti uzata per tekstreĝimo.
+Provu ĉirkaŭi la problemajn signoj en "\\text{...}".',
 	'math_NotEnoughArguments' => 'Ne sufiĉaj argumentoj estis provizitaj por "$1"',
 	'math_PngIncompatibleCharacter' => 'Neeblas korekte generi PNG-on enhavantan la signon $1',
 	'math_ReservedCommand' => 'La komando "$1" estas rezervita por interna uzado de blatex',
