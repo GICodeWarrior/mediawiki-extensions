@@ -28,6 +28,7 @@
 		$.post(
 			mw.config.get( 'wgScriptPath' ) + '/api.php', {
 				'action': 'clicktracking',
+				'format' : 'json',
 				'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
 				'eventid': id,
 				'token': $.cookie( 'clicktracking-session' )
@@ -44,6 +45,7 @@
 		$.post(
 			mw.config.get( 'wgScriptPath' ) + '/api.php', {
 				'action': 'clicktracking',
+				'format' : 'json',
 				'eventid': id,
 				'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
 				'token': $.cookie( 'clicktracking-session' ),
@@ -61,6 +63,7 @@
 	$.trackActionURL = function( url, id ) {
 		return mw.config.get( 'wgScriptPath' ) + '/api.php?' + $.param( {
 			'action': 'clicktracking',
+			'format' : 'json',
 			'eventid': id,
 			'namespacenumber': mw.config.get( 'wgNamespaceNumber' ),
 			'token': $.cookie( 'clicktracking-session' ),
