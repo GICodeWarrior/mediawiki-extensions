@@ -73,4 +73,6 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'efServerAdminLogSchemaUpdates';
 function efServerAdminLogSchemaUpdates( $updater ) {
 	$base = dirname( __FILE__ );
 	$updater->addExtensionTable( 'sal_channel', "$base/tables.sql" );
+
+	return true;
 }
