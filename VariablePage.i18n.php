@@ -513,6 +513,14 @@ $messages['sv'] = array(
 	'variablepage-desc' => 'Lättviktsomdirigering av variabelsida',
 );
 
+/** Tamil (தமிழ்)
+ * @author Shanmugamp7
+ */
+$messages['ta'] = array(
+	'variablepage' => 'மாறுபடும் பக்கம்',
+	'variablepage-navlink_text' => 'நன்கொடை அளிக்கவும்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
