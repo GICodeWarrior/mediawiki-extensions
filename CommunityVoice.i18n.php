@@ -473,6 +473,11 @@ $messages['he'] = array(
  * @author Ansumang
  */
 $messages['hi'] = array(
+	'communityvoice' => 'समुदाय आवाज',
+	'communityvoice-desc' => 'सामुदायिक भागीदारी उपकरण',
+	'communityvoice-ratings' => 'मूल्यांकन',
+	'communityvoice-ratings-scale-status-sending' => 'भेज रहा है...',
+	'communityvoice-ratings-scale-status-error' => 'भेजने में त्रुटि!',
 	'communityvoice-ratings-scale-status-thanks' => 'मतदान के लिए धन्यवाद!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|मतदान|मतदान}} डालें)',
 );
