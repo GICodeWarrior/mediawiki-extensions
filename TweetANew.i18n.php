@@ -111,6 +111,7 @@ $messages['de'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Gomoko
+ * @author McDutchie
  */
 $messages['fr'] = array(
 	'tweetanew-desc' => "Tweeter lorsqu'une page est créée ou modifiée. Selon les préférences définis pour le wiki complet, soit automatiquement, soit depuis la page de modification.",
@@ -124,7 +125,7 @@ $messages['fr'] = array(
 	'tweetanew-new1' => 'Ressemble à $1 qui a été créé sur $2',
 	'tweetanew-new2' => '$1 a été récemment créé sur $2',
 	'tweetanew-new3' => 'Vérifiez $2 - il y a une nouvelle page sur $1',
-	'tweetanew-editdefault' => 'PAGE MISE À JOUR jour :  $1 - $2',
+	'tweetanew-editdefault' => 'PAGE MISE À JOUR :  $1 - $2',
 	'tweetanew-edit1' => 'Il semblerait que $1a été mis à jour sur $2',
 	'tweetanew-edit2' => '$1 a été récemment modifié sur $2',
 	'tweetanew-edit3' => 'Vérifiez $2 - il y a du nouveau contenu sur $1',
@@ -149,6 +150,27 @@ $messages['gl'] = array(
 	'tweetanew-edit1' => 'Semella que se actualizou a páxina "$1" no enderezo $2',
 	'tweetanew-edit2' => 'Actualizouse a páxina "$1" no enderezo $2',
 	'tweetanew-edit3' => 'Bótalle unha ollada a "$2", con novos contidos no enderezo $1',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'tweetanew-desc' => 'Invia un "tweet" quando un pagina es create o modificate. Dependente del preferentias definite pro le wiki integre, isto es facite o automaticamente, o ab le pagina de modification.',
+	'tweetanew-newaction' => 'Inviar un "tweet" super iste nove pagina',
+	'tweetanew-newtooltip' => 'Inviar information super iste nove pagina a Twitter',
+	'tweetanew-editaction' => 'Inviar un "tweet" super iste modification',
+	'tweetanew-edittooltip' => 'Inviar information super iste modification a Twitter',
+	'tweetanew-minoredit' => 'm',
+	'tweetanew-authorcredit' => 'per',
+	'tweetanew-newdefault' => 'NOVE PAGINA: $1 - $2',
+	'tweetanew-new1' => 'Un pagina "$1" es create a $2',
+	'tweetanew-new2' => '$1 ha essite create recentemente a $2',
+	'tweetanew-new3' => 'Reguarda $2 - es un nove pagina super $1',
+	'tweetanew-editdefault' => 'PAGINA ACTUALISATE: $1 - $2',
+	'tweetanew-edit1' => 'Actualisation del pagina "$1" a $2',
+	'tweetanew-edit2' => '$1 ha essite modificate recentemente a $2',
+	'tweetanew-edit3' => 'Reguarda $2 - il ha nove contento in $1',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
