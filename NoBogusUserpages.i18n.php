@@ -85,6 +85,15 @@ $messages['hsb'] = array(
 	'right-createbogususerpage' => 'Wužiwarske strony za wužiwarjow wutowrić, kotřiž njejsu na tutym wikiju zregistrowani',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'nobogususerpages-desc' => 'Impedi le creation de paginas de usator pro le quales non existe un usator',
+	'badaccess-bogususerpage' => 'Le usator de iste pagina de usator non existe. Tu non ha le derecto de crear un false pagina de usator.',
+	'right-createbogususerpage' => 'Crear paginas de usator pro usatores que non es registrate in iste wiki',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
