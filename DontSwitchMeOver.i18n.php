@@ -220,6 +220,13 @@ $messages['he'] = array(
 	'dontswitchmeover-pref' => 'אין להרשות את החלפת העיצוב שלי כאשר עיצוב בררת המחדל משתנה',
 );
 
+/** Hindi (हिन्दी)
+ * @author Ansumang
+ */
+$messages['hi'] = array(
+	'dontswitchmeover-pref' => 'जब पूर्व निर्धारित स्किन बदलें, तब मेरा स्किन बदलने की अनुमति ना दें',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */
