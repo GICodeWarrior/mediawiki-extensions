@@ -2917,9 +2917,9 @@ Sta pàginà-sì a l'é mach disponìbil a utent selessionà.",
 	'action-editwhitelist' => 'modìfica la lista bianca për utent esistent',
 	'action-restricttowhitelist' => 'modìfica e varda pàgine an sla lista bianca',
 	'group-restricted' => 'Utent selessionà',
-	'group-restricted-member' => 'Utent selessionà',
+	'group-restricted-member' => '{{GENDER:$1|utent selessionà}}',
 	'group-manager' => 'Mansé',
-	'group-manager-member' => 'Mansé',
+	'group-manager-member' => '{{GENDER:$1|gestor}}',
 );
 
 /** Pashto (پښتو)
