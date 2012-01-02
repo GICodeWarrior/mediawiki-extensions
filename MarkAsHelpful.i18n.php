@@ -162,10 +162,12 @@ $messages['hsb'] = array(
  * @author Dj
  */
 $messages['hu'] = array(
+	'markashelpful-desc' => 'Felhasználói felületet biztosít a hasznos megjegyzések megjelölésére',
 	'mah-mark-text' => 'Megjelelés hasznosként',
 	'mah-you-marked-text' => 'Szerinted hasznos',
 	'mah-someone-marked-text' => '{{GENDER:$1|$1 szerint hasznos}}',
 	'mah-undo-mark-text' => 'visszavonás',
+	'mah-action-error' => 'Hiba történt a művelet végrehajtása során',
 );
 
 /** Interlingua (Interlingua)
