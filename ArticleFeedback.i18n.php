@@ -4629,6 +4629,22 @@ $messages['li'] = array(
 	'articlefeedback-pitch-reject' => 'Neet noe',
 	'articlefeedback-pitch-or' => 'of',
 	'articlefeedback-pitch-thanks' => 'Bedank! Dien beoerdeiling is opgesjlage.',
+	'articlefeedback-pitch-survey-accept' => 'Vragenlies starte',
+	'articlefeedback-pitch-join-message' => "Wils te 'ne gebroeker aanmake?",
+	'articlefeedback-pitch-join-accept' => 'Gebroeker aanmake',
+	'articlefeedback-pitch-join-login' => 'Aanmèlle',
+	'articlefeedback-pitch-edit-accept' => 'Dees pagina bewirke',
+	'articlefeedback-survey-message-success' => "Bedank veur 't beantwoorde van de vraoge.",
+	'articlefeedback-survey-message-error' => "'n Fout is opgetraoje. 
+Perbeer 't later obbenuuts.",
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement/nl',
+	'articleFeedback-table-caption-dailyhighsandlows' => 'Huugde- en deepdepunte van vendaag',
+	'articleFeedback-table-caption-dailyhighs' => "Pagina's mit de hoegste waarderinge: $1",
+	'articleFeedback-table-caption-dailylows' => "Pagina's mit de liegste waarderinge: $1",
+	'articleFeedback-table-caption-weeklymostchanged' => 'Dees week de meiste verangeringe',
+	'articleFeedback-table-caption-recentlows' => 'Recente deepdepunte',
+	'articleFeedback-table-heading-page' => 'Pagina',
+	'articleFeedback-table-heading-average' => 'Gemiddelde',
 );
 
 /** Lithuanian (Lietuvių)
@@ -8219,7 +8235,12 @@ Nhóm {{SITENAME}}',
  * @author Imre
  */
 $messages['yi'] = array(
+	'articlefeedback-survey-answer-whyrated-other' => 'אַנדער',
+	'articlefeedback-survey-submit' => 'אײַנגעבן',
 	'articlefeedback-pitch-or' => 'אָדער',
+	'articlefeedback-pitch-join-accept' => 'באשאפֿט א קאנטע',
+	'articlefeedback-pitch-join-login' => 'אַרײַנלאָגירן',
+	'articlefeedback-pitch-edit-accept' => 'ענדערן דעם בלאט',
 	'articleFeedback-table-heading-page' => 'זײַט',
 	'articleFeedback-table-heading-average' => 'דורכשניט',
 );
