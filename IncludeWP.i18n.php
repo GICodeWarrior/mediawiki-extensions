@@ -139,7 +139,7 @@ Postoji <a href="$6">potpuni spisak autora</a>.',
  */
 $messages['de'] = array(
 	'includewp-desc' => 'Ermöglicht das Einbeziehen von Inhalten der Wikipedia in ein Wiki',
-	'includewp-loading-page' => 'Lade Seite …',
+	'includewp-loading-page' => 'Die Seite wird gerade geladen …',
 	'includewp-show-full-page' => 'Seite vollständig anzeigen',
 	'includewp-show-fragment' => 'Lediglich den ersten Absatz anzeigen',
 	'includewp-loading-failed' => 'Das Laden der Seite ist gescheitert.',
