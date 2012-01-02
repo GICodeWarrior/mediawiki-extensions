@@ -71,7 +71,7 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'regexfun-desc' => 'Adder functiones al analysator syntactic que permitte le uso de expressiones regular intra paginas wiki',
 	'regexfun-invalid' => 'Le expression regular "$1" es invalide.',
-	'regexfun-limit-exceed' => 'Le maximo de $1 processamentos de expression regular "Regex Fun" ha essite attingite.',
+	'regexfun-limit-exceed' => 'Le maximo de $1 {{PLURAL:$1|processamento|processamentos}} de expression regular "Regex Fun" ha essite attingite.',
 );
 
 /** Japanese (日本語)
