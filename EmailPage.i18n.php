@@ -345,6 +345,13 @@ $messages['de'] = array(
 	'ea-allusers' => 'Alle Benutzer',
 );
 
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
+$messages['diq'] = array(
+	'ea-data' => 'Daye',
+);
+
 /** Greek (Ελληνικά)
  * @author Glavkos
  */
