@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * This scripts removes the narayamDisable property from users that enabled
+ * it and sets narayamEnable to false instead.
+ * --batch-size can be used to specify number of users to process at once,
+ * the default is 100.
+ *
+ * @author Amir E. Aharoni
+ * based on extensions/Translate/scipts/list-mwext-i18n-files.php and
+ * extensions/WikimediaMaintenance/fixUsabilityPrefs2.php
+ *
+ * @copyright Copyright © 2011
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ * @file
+ */
+
 // Standard boilerplate to define $IP
 if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
         $IP = getenv( 'MW_INSTALL_PATH' );
@@ -11,6 +26,7 @@ require_once( "$IP/maintenance/Maintenance.php" );
 class FixNarayamDisablePref extends Maintenance {
 	function __construct() {
 		parent::__construct();
+		$this->setBatchSize( 100 );
 	}
 
 	function execute() {
@@ -19,9 +35,8 @@ class FixNarayamDisablePref extends Maintenance {
 		$table = 'user_properties';
 		$oldPropName = 'narayamDisable';
 		$newPropName = 'narayamEnable';
-		echo "Fixing $oldPropName to $newPropName\n";
+		$this->output( "Changing $oldPropName to $newPropName\n" );
 
-		$batchSize = 100;
 		$allIds = array();
 		while ( true ) {
 			$dbw->begin();
@@ -30,7 +45,7 @@ class FixNarayamDisablePref extends Maintenance {
 				array( 'up_user' ),
 				array( 'up_property' => $oldPropName, 'up_value' => 1 ),
 				__METHOD__,
-				array( 'LIMIT' => $batchSize, 'FOR UPDATE' ) );
+				array( 'LIMIT' => $this->mBatchSize, 'FOR UPDATE' ) );
 			if ( !$res->numRows() ) {
 				$dbw->commit();
 				break;
@@ -49,7 +64,7 @@ class FixNarayamDisablePref extends Maintenance {
 			wfWaitForSlaves( 10 );
 		}
 
-		echo "Done\n";
+		$this->output( "Done\n" );
 	}
 }
 
