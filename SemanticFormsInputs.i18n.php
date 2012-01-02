@@ -274,14 +274,14 @@ $messages['cs'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'semanticformsinputs-desc' => 'Ermöglicht zusätzliche Eingabearten für [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
+	'semanticformsinputs-desc' => 'Ermöglicht verschiedene zusätzliche Eingabearten für [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
 	'semanticformsinputs-wrongformat' => 'Falsches Format.',
 	'semanticformsinputs-close' => 'Schließen',
 	'semanticformsinputs-prev' => 'Voriger Monat',
 	'semanticformsinputs-next' => 'Nächster Monat',
 	'semanticformsinputs-today' => 'Heute',
-	'semanticformsinputs-dateformatlong' => 'd. MM yy',
-	'semanticformsinputs-dateformatshort' => 'dd.mm.yy',
+	'semanticformsinputs-dateformatlong' => 'T. MM JJ',
+	'semanticformsinputs-dateformatshort' => 'TT.MM.JJ',
 	'semanticformsinputs-firstdayofweek' => '1',
 	'semanticformsinputs-malformedregexp' => 'Fehlerhafter regulärer Ausdruck ($1)',
 	'semanticformsinputs-datepicker-dateformat' => 'Die Zeichenfolge des Datumsformats. Siehe hierzu die [http://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters Online-Dokumentation] für weitere Informationen.',
