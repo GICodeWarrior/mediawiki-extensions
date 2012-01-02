@@ -231,6 +231,13 @@ $messages['es'] = array(
 	'webfonts-help' => 'Ayuda',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'webfonts-help' => 'Laguntza',
+);
+
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Huji
