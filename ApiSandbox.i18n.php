@@ -362,6 +362,14 @@ $messages['et'] = array(
 	'apisb-generic-parameters' => 'Üldised parameetrid',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'apisb-loading' => 'Kargatzen…',
+	'apisb-query-list' => 'Zerrendak',
+);
+
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Leyth
@@ -1540,6 +1548,16 @@ $messages['vi'] = array(
 	'apisb-query-meta' => 'Siêu thông tin',
 	'apisb-generic-parameters' => 'Tham số chung',
 	'apisb-generator-parameters' => 'Bộ xuất phát',
+);
+
+/** Yiddish (ייִדיש)
+ * @author Imre
+ */
+$messages['yi'] = array(
+	'apisb-result' => 'רעזולטאט',
+	'apisb-loading' => 'לאָדט…',
+	'apisb-ns-main' => '(הויפט)',
+	'apisb-query-list' => 'ליסטעס',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
