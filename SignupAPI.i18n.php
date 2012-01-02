@@ -219,6 +219,7 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'usersignup' => 'Creation de conto',
 	'signupapi-desc' => 'Remove le texto concernente le creation de contos del [[Special:UserLogin|pagina pro aperir session]] e adde un API pro le creation de contos',
 	'signupapi-ok' => 'OK',
 	'signupapi-noname' => 'Nulle nomine de usator specificate.',
