@@ -3460,10 +3460,13 @@ $messages['lb'] = array(
 /** Limburgish (Limburgs)
  * @author Aelske
  * @author Ooswesthoesbes
+ * @author Pahles
  */
 $messages['li'] = array(
 	'contributionreporting-desc' => 'Liverapportaasj veure fónswèrvingsaksie ven Wikimedia',
 	'contributiontotal' => 'Totaal gifte',
+	'dailytotal' => 'Dageliks totaol',
+	'disablednotice' => 'Biedragerapportage',
 	'contributionhistory' => 'Giftegesjiedenès',
 	'contrib-hist-header' => 'Ópmèrkinger ven donore vanoet de ganse welt',
 	'contrib-hist-name' => 'Naam',
@@ -3525,6 +3528,10 @@ $messages['li'] = array(
 	'fundraiserstats-tab-averages' => 'Gemiddelde (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Jaor toet noe (USD)',
+	'fundraiserstats-customize' => 'Aanpasse',
+	'fundraiserstats-show-years' => 'De volgende jare weergaeve:',
+	'fundraiserstats-time-zone' => 'Tiedzone:',
+	'fundraiserstats-utc' => '(vanaaf UTC)',
 );
 
 /** Lumbaart (Lumbaart)
@@ -5606,6 +5613,7 @@ $messages['sw'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author Shanmugamp7
  * @author TRYPPN
  */
 $messages['ta'] = array(
@@ -5621,6 +5629,7 @@ $messages['ta'] = array(
 	'contribstats-avg' => 'சராசரி (USD)',
 	'contribstats-day-totals' => 'இன்றய மொத்தத் தொகை',
 	'contribstats-week' => 'வாரம்',
+	'contribstats-banner' => 'பதாகை',
 	'contribstats-template' => 'வார்ப்புரு',
 	'fundraiserstats-date' => 'தேதி',
 	'fundraiserstats-contributions' => 'பங்களிப்புக்கள்',
@@ -6376,16 +6385,23 @@ $messages['vo'] = array(
 );
 
 /** Yiddish (ייִדיש)
+ * @author Imre
  * @author פוילישער
  */
 $messages['yi'] = array(
 	'contrib-hist-name' => 'נאָמען',
 	'contrib-hist-date' => 'צײַט און דאַטע',
+	'contrib-hist-amount' => 'סכום',
 	'contrib-hist-anonymous' => 'אַנאנים',
 	'contribstats-day' => 'טאָג',
 	'contribstats-month' => 'מאנאַט',
 	'contribstats-currency' => 'וואַלוטע:',
+	'contribstats-contributions' => 'בײַשטײַערונגען',
 	'contribstats-week' => 'וואך',
+	'contribstats-template' => 'מוסטער',
+	'contribstats-average' => 'דורכשניט',
+	'fundraiserstats-date' => 'דאַטע',
+	'fundraiserstats-time-zone' => 'צײַט זאנע:',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
