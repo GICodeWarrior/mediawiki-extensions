@@ -217,6 +217,28 @@ $messages['hsb'] = array(
 	'translatesvg-toggle-hide' => 'Přełožki  w tutej rěči schować',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'translatesvg-desc' => 'Forni un interfacie in stilo native pro traducer SVGs de maniera conforme al specification SVG1.1',
+	'translatesvg-legend' => 'Cammino del file',
+	'translatesvg-page' => 'File:',
+	'translatesvg-submit' => 'Va',
+	'translatesvg-summary' => 'Iste pagina special permitte adder, remover e modificar traductiones incorporate in un file de imagine SVG.',
+	'translatesvg-add' => 'Si tu lingua non es jam listate, tu pote [[#addlanguage|adder lo]].',
+	'translatesvg-xcoordinate-pre' => 'Coordinata X (horizontal):',
+	'translatesvg-ycoordinate-pre' => 'Coordinata Y (vertical):',
+	'translatesvg-specify' => 'Specifica un nove codice de lingua (p.ex. ia, fr, de, es, ...)',
+	'translatesvg-fallbackdesc' => 'Predefinition (nulle lingua specificate)',
+	'translatesvg-qqqdesc' => 'Consilio al traductores',
+	'translatesvg-nodesc' => '(sin description)',
+	'translatesvg-remove' => 'Remover tote le traductiones in iste lingua',
+	'translatesvg-unsuccessful' => "Iste file '''non poteva esser traducite''', regrettabilemente.",
+	'translatesvg-toggle-view' => 'Vider le traductiones in iste lingua',
+	'translatesvg-toggle-hide' => 'Celar le traductiones in iste lingua',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
