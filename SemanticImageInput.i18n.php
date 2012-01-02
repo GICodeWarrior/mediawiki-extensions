@@ -51,8 +51,8 @@ $messages['br'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'sii-desc' => 'Ermöglicht eine zusätzliche Eingabeart zu Bildern für [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms], die den Abruf von Bildern aus den Wikipedias und Wikimedia Commons erlaubt',
-	'sii-imageinput-loading' => 'Lade Bild …',
+	'sii-desc' => 'Ermöglicht für [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms] eine zusätzliche Eingabeart, die den Abruf von Bildern aus den Wikipedias und Wikimedia Commons erlaubt',
+	'sii-imageinput-loading' => 'Das Bild wird gerade geladen …',
 );
 
 /** French (Français)
