@@ -1335,7 +1335,7 @@ $messages['es'] = array(
 	'moodbar-feedback-filters-type-happy' => 'Feliz',
 	'moodbar-feedback-filters-type-confused' => 'Confundido',
 	'moodbar-feedback-filters-type-sad' => 'Triste',
-	'moodbar-feedback-filters-username' => 'Nombre de usuario',
+	'moodbar-feedback-filters-username' => 'Nombre de usuario:',
 	'moodbar-feedback-filters-button' => 'Instalar filtros',
 	'moodbar-feedback-more' => 'Más',
 	'moodbar-feedback-newer' => 'Más reciente',
@@ -2878,6 +2878,7 @@ Fir méi Informatiounen, gitt w.e.g. op d'$1.",
 	'moodbar-feedback-restore' => 'verstoppte Feedback nees weisen',
 	'moodbar-action-reason' => 'Grond:',
 	'moodbar-action-reason-required' => 'Gitt w.e.g. e Grond un.',
+	'moodbar-feedback-response-summary' => '[[$1|$2]] huet viru(n) $4 [[$3|geäntwert]]',
 	'moodbar-type-happy' => '{{GENDER:$1|Glécklech}}',
 	'moodbar-type-sad' => '{{GENDER:$1|Traureg}}',
 	'moodbar-type-confused' => '{{GENDER:$1|Duercherneen}}',
@@ -3999,16 +4000,16 @@ Për savèjne ëd pi, për piasì vìsita ël $1.",
 	'moodbar-enotif-subject' => "$1 a l'ha rëspondù ai sò coment",
 	'moodbar-enotif-body' => "Cerea \$1!
 
-Bin ëvnù a {{SITENAME}}, e mersì për tò [\$2 artorn]. N'autr utent ëd {{SITENAME}}, [\$3 \$6], a l'ha scrivù l'arspòsta ch'i ven:
+Bin ëvnù a {{SITENAME}}, e mersì për sò [\$2 coment]. N'àutr utent ëd {{SITENAME}}, [\$3 \$6], a l'ha scrivù la rispòsta sì-dapress:
 
      \$4
 
-Varda sto mëssagi dzora a toa [\$5 pagina ëd discussion]
+Smon-e ës mëssagi dzora a soa [\$5 pàgina ëd ciaciarade]
 
-Lòn ch'a l'é na pagina ëd discussion?
-Toa pagina ëd discussion a l'é la pagina che autr editor ëd {{SITENAME}} a dòvro a comuniché con ti. It peule arsponde an sgnacand \"Modìfica\", bogiand ël cursor sota ël coment, scrivend toa arspòsta e quatr tilde (~~~~) për firmé, e salvand. Tute le pagine an {{SITENAME}} a l'han pagine ëd discussion, e a son dovrà për tanti but diferent. A-i veu un pòch për pijé l'andi, ma a l'é bastansa be fé na vira ch'it ses abituà.
+Lòn ch'a l'é na pàgina ëd ciaciarade?
+Soa pàgina ëd ciaciarade a l'é la pàgina che d'àutri contributor ëd {{SITENAME}} a deuvro për comuniché con chiel. A peul rësponde an sgnacand \"Modifiché\", spostand ël cursor sota ël coment, scrivend soa rispòsta e quatr tilde (~~~~) për sot-signé, e argistrand. Tute le pàgine an {{SITENAME}} a l'han dle pàgine ëd discussion, e a son dovrà për tanti but diferent. A-i va un pòch për pijé l'andi, ma a l'é bastansa bel fé na vira ch'a l'é costumasse.
 
-Anco' confondù? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Sto video] (varda su [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) at dà na dimostrassion pass-a-pass.
+Ancor nen sigur? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv Ës filmà] (da vëdde su [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) a-j dà na dimostrassion detajà.
 
 Bon-a giornà,
 
@@ -4663,6 +4664,7 @@ $messages['si'] = array(
 	'moodbar-feedback-newer' => 'නවතම',
 	'moodbar-feedback-older' => 'පැරණිතම',
 	'moodbar-user-hidden' => '(පරිශීලකයා සඟවා ඇත)',
+	'moodbar-comment-hidden' => '(පරිපාලනමය ක්‍රියාකාරකමක් මඟින් ප්‍රතචාරය සඟවා ඇත)',
 	'moodbar-feedback-show' => 'සැඟවුණු ප්‍රතිචාරය පෙන්වන්න',
 	'moodbar-feedback-hide' => 'ප්‍රතිචාරය සඟවන්න',
 	'moodbar-feedback-action-confirm' => 'තහවුරු කරන්න',
@@ -5123,6 +5125,71 @@ Ha en bra dag,
 -- {{SITENAME}}',
 );
 
+/** Tamil (தமிழ்)
+ * @author Shanmugamp7
+ */
+$messages['ta'] = array(
+	'moodbar-privacy-link' => 'விதிமுறைகள்',
+	'moodbar-privacy-link-title' => 'உபயோகிக்க விதிமுறைகள்',
+	'moodbar-disable-link' => 'எனக்கு ஆர்வம் இல்லை .இந்த அம்சத்தை செயலிழக்க செய்யவும்.',
+	'moodbar-form-title' => 'ஏனெனில்...',
+	'moodbar-form-note' => '140 எழுத்துகள் அதிகபட்சம்',
+	'moodbar-form-note-dynamic' => '$1 எழுத்துகள் மீதமுள்ளன',
+	'moodbar-form-submit' => 'கருத்துகளை பகிர்',
+	'moodbar-form-policy-text' => '$1 ஐ சமர்ப்பிப்பதன் மூலம்',
+	'moodbar-form-policy-label' => 'எமது கொள்கை',
+	'moodbar-loading-title' => 'பகிர்தல்...',
+	'moodbar-success-title' => 'நன்றி!',
+	'moodbar-error-title' => 'Oops!',
+	'moodbar-blocked-subtitle' => 'நீங்கள் திருத்துவதிலிருந்து தடுக்கப்பட்டுள்ளீர்கள்.',
+	'moodbar-email-title' => 'மின்னஞ்சலை சேர்',
+	'moodbar-email-input' => 'உங்கள் மின்னஞ்சல் முகவரி',
+	'moodbar-email-desc' => 'யாராவது உங்கள் கருத்துக்களுக்கு  பதில் அளித்தால் நாங்கள்  உங்களுக்கு ஒரு மின்னஞ்சல் அனுப்புவோம்.',
+	'moodbar-email-submit' => 'சமர்ப்பி',
+	'moodbar-updating-title' => 'புதுப்பிக்கப்படுகிறது...',
+	'moodbar-updating-subtitle' => 'நாங்கள் உங்கள் மின்னஞ்சல் அமைப்புகளை புதுப்பித்துக் கொண்டிருக்கிறோம்.',
+	'moodbar-email-confirm-title' => 'மின்னஞ்சலை உறுதிசெய்யவும்',
+	'moodbar-email-resend-confirmation' => 'உறுதிபடுத்தலை திரும்ப அனுப்பு',
+	'moodbar-email-optout' => 'வேண்டாம் நன்றி',
+	'moodbar-tooltip-title' => '{{SITENAME}} திருத்துவதில்  உங்கள் அனுபவத்தை பற்றி எங்களுக்கு தெரியப்படுத்தவும். .',
+	'moodbar-admin-empty' => 'முடிவுகள் ஏதுமில்லை',
+	'moodbar-header-id' => 'கருத்து ID',
+	'moodbar-header-timestamp' => 'நேரமுத்திரை',
+	'moodbar-header-type' => 'வகை',
+	'moodbar-header-page' => 'பக்கம்',
+	'moodbar-header-usertype' => 'பயனீட்டாளர் வகை',
+	'moodbar-header-user' => 'பயனர்',
+	'moodbar-header-editmode' => 'திருத்து வகை',
+	'moodbar-header-system' => 'அமைப்பு வகை',
+	'moodbar-header-useragent' => 'பயனர் முகவர்',
+	'moodbar-header-comment' => 'கருத்துரைகள்',
+	'moodbar-header-user-editcount' => 'பயனர் திருத்து  எண்ணிக்கை',
+	'moodbar-header-namespace' => 'பெயர்வெளி',
+	'moodbar-header-own-talk' => 'சொந்த பேச்சுப் பக்கம்',
+	'moodbar-feedback-view-link' => '( இந்த பின்கருத்தை காண்)',
+	'moodbar-feedback-filters' => 'வடிகட்டிகள்',
+	'moodbar-feedback-filters-type' => 'மனநிலை:',
+	'moodbar-feedback-filters-type-happy' => 'மகிழ்ச்சி',
+	'moodbar-feedback-filters-type-confused' => 'குழப்ப நிலை',
+	'moodbar-feedback-filters-type-sad' => 'சோகம்',
+	'moodbar-feedback-filters-username' => 'பயனர் பெயர்:',
+	'moodbar-feedback-filters-my-response' => 'என் மறுமொழிகள் மட்டும்:',
+	'moodbar-feedback-filters-button' => 'வடிகட்டிகளை அமை',
+	'moodbar-feedback-whatis' => 'இந்த அம்சம் என்றால் என்ன?',
+	'moodbar-feedback-permalink' => 'இங்கே இணை',
+	'moodbar-feedback-noresults' => 'உங்கள் வடிப்பான்களுடன்  பொருந்தும் கருத்துரைகள் ஏதும் இல்லை.',
+	'moodbar-feedback-more' => 'மேலும்',
+	'moodbar-feedback-nomore' => 'காண்பிக்க மேலும்  எந்த முடிவுகளும் இல்லை.',
+	'moodbar-feedback-newer' => 'மிக புதியது',
+	'moodbar-feedback-older' => 'மிக பழையது',
+	'moodbar-feedback-ajaxerror' => 'மேலும் முடிவுகளை பெறும் போது பிழை ஏற்பட்டுள்ளது.',
+	'moodbar-feedback-load-record-error' => 'பதிவேட்டை ஏற்றுகையில் பிழை ஏற்பட்டது.',
+	'moodbar-user-hidden' => '(மறைக்கப்பட்ட பயனீட்டாளர்)',
+	'moodbar-comment-hidden' => '(கருத்துக்கள் நிர்வாக செயலால் மறைக்கப்பட்டுள்ளது)',
+	'moodbar-feedback-show' => 'மறைக்கப்பட்ட கருத்துகளை காண்பி',
+	'moodbar-feedback-hide' => 'கருத்துகளை மறை',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -5417,14 +5484,25 @@ $messages['yi'] = array(
 	'moodbar-type-happy-title' => 'צופֿרידן',
 	'moodbar-type-sad-title' => 'אומערט',
 	'moodbar-type-confused-title' => 'צעמישט',
+	'moodbar-success-title' => 'אַ דאַנק',
 	'moodbar-email-submit' => 'אײַנגעבן',
+	'moodbar-admin-empty' => 'קיין רעזולטאטן',
+	'moodbar-header-type' => 'טיפ',
 	'moodbar-header-page' => 'בלאַט',
 	'moodbar-header-user' => 'באַניצער',
+	'moodbar-header-namespace' => 'נאָמענטייל',
+	'moodbar-feedback-filters-type-happy' => 'גליקלעך',
+	'moodbar-feedback-filters-type-confused' => 'צעמישט',
+	'moodbar-feedback-filters-type-sad' => 'אומערט',
 	'moodbar-feedback-filters-username' => 'באַניצער נאָמען:',
+	'moodbar-feedback-more' => 'מער',
 	'moodbar-feedback-action-confirm' => 'באַשטעטיקן',
 	'moodbar-feedback-action-cancel' => 'אַנולירן',
 	'moodbar-action-reason' => 'אורזאַך:',
+	'moodbar-user-ip' => 'IP אַדרעס',
 	'response-back-text' => 'צוריק',
+	'response-preview-text' => 'פֿאראויסשטעלונג',
+	'response-ajax-success-head' => 'אַ דאַנק',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
