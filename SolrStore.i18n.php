@@ -72,6 +72,17 @@ $messages['hsb'] = array(
 	'solrstore-searchFieldSets-title' => 'SolrSearch: Wuběr pytanskich sadźbow',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'solrstore-desc' => 'Cercar proprietates semantic con le poter de un motor de recerca de plen texto',
+	'solrsearch' => 'SolrSearch',
+	'solrstore-searchFieldSets' => 'SolrSearch',
+	'solrstore-searchFieldSets-select' => 'Per favor selige un SearchSet',
+	'solrstore-searchFieldSets-title' => 'SolrSearch: selection de SearchSet',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
