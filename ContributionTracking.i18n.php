@@ -773,6 +773,7 @@ $messages['lb'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Pahles
  */
 $messages['li'] = array(
 	'contributiontracking-desc' => 'Vólge ven gifte veur de fónswèrving ven Wikimedia',
@@ -782,6 +783,7 @@ $messages['li'] = array(
 	'contrib-tracking-submitting' => "Bezig mit 't oetveure venne betaling...",
 	'contrib-tracking-continue' => 'Es se neet automatisch wörs doorgestuurdj, klik den óp de knoep óm dien gif via PayPal aaf te make.',
 	'contrib-tracking-button' => 'Doorgaon',
+	'contrib-tracking-item-name-onetime' => 'Einsige donatie',
 );
 
 /** Lithuanian (Lietuvių)
@@ -1390,10 +1392,12 @@ $messages['vo'] = array(
 );
 
 /** Yiddish (ייִדיש)
+ * @author Imre
  * @author פוילישער
  */
 $messages['yi'] = array(
 	'contrib-tracking-error' => 'גרײַז',
+	'contrib-tracking-button' => 'פֿארזעצן',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
