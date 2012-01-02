@@ -10,9 +10,6 @@ class SpecialSignDocument extends SpecialPage {
 	 */
 	private $mDocumentId;
 
-	private $mArticle;
-	private $mTitle;
-
 	private $mCurrentSig;
 	private $mForm;
 
@@ -252,11 +249,6 @@ class SpecialSignDocument extends SpecialPage {
 		$out .= '</td></tr>';
 
 		return $out;
-	}
-
-	function loadDocument() {
-		$this->mTitle = Title::newFromId( 1 );
-		$this->mArticle = new Article( $this->mTitle );
 	}
 
 	function dealWithPost() {

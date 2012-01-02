@@ -96,13 +96,13 @@ class SignDocumentForm {
 			throw new MWException( 'Something went horribly wrong. ' .
 				'mTitle is null or not an object.' );
 
-		if ( !$this->mTitle->exists() )
-			return false;
-
 		$this->mArticle = new Article( $this->mTitle );
 		$this->mArticle->loadPageData();
 
-		$this->mOldid = $this->mArticle->mLatest;
+		if ( !$this->mTitle->exists() )
+			return false;
+
+		$this->mOldid = $this->mTitle->getLatestRevID();
 		$this->mPageId = $this->mTitle->getArticleID();
 
 		return true;
