@@ -69,6 +69,14 @@ $messages['hsb'] = array(
 	'soundmanager2button-play' => 'Wothrać',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'soundmanager2button-desc' => 'Incorpora un lector MP3 de SoundManager 2 in un pagina wiki',
+	'soundmanager2button-play' => 'Reproducer',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
