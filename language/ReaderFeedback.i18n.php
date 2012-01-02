@@ -2473,6 +2473,7 @@ $messages['si'] = array(
 	'readerfeedback-level-4' => 'අති විශිෂ්ට',
 	'readerfeedback-submit' => 'යොමන්න',
 	'readerfeedback-main' => 'අන්තර්ගත පිටු පමණක් තරාතිරම් කල හැක.',
+	'readerfeedback-success' => "'''මෙම පිටුව නිරීක්ෂණය කලාට තුති!''' ([$2 ප්‍රතිපල බලන්න]) ([$3 පරිකථන හෝ ප්‍රශ්ණ?]).",
 	'readerfeedback-submitting' => 'යොමු කරමින් …',
 	'readerfeedback-finished' => 'ස්තුතියි!',
 	'readerfeedback-tagfilter' => 'ටැගය:',
