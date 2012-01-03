@@ -92,3 +92,10 @@ $messages['nl'] = array(
 	'relationlinks-desc' => 'Voegt "link rel" toe aan de header, wat gebruikt kan worden voor navigatie en SEO',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'relationlinks-desc' => 'A gionta colegament relativ a la testà, che a peulo dovrà për navigassion e për SEO',
+);
+
