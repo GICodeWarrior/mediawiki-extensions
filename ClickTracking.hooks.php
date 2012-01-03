@@ -236,7 +236,7 @@ class ClickTrackingHooks {
 				// Replace tabs with spaces in all strings
 				str_replace( "\t", ' ', $eventName ),
 				wfTimestampNow(),
-				(bool)$isLoggedIn,
+				(int)$isLoggedIn,
 				str_replace( "\t", ' ', $sessionId ),
 				(int)$namespace,
 				(int)$contribs,
