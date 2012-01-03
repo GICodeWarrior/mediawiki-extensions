@@ -24,6 +24,13 @@ $messages['qqq'] = array(
 	'dontswitchmeover-pref' => 'The wording of this message may change',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['af'] = array(
+	'dontswitchmeover-pref' => 'Moenie toelaat dat my vel te verander kan word as die standaard vel verander',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
