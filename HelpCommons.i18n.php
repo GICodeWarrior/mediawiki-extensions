@@ -27,6 +27,13 @@ $messages['qqq'] = array(
 	'helpcommons-desc' => '{{desc}}',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'helpcommons-desc' => "Estrái páxines d'ayuda d'una wiki d'ayuda y les inclúi n'otres wikis de la familia wiki",
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -88,5 +95,12 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'helpcommons-desc' => "Maakt de Help-naamruimte uit een hulpwiki beschikbaar in andere wiki's van een wikifamilie",
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'helpcommons-desc' => "A pija dle pagine d'agiut da na wiki d'agiut e a j'anseriss ant autre wiki an sla famija ëd wiki",
 );
 
