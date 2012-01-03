@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'customusersignup-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['af'] = array(
+	'customusersignup-desc' => 'Laat aanpas boodskappe tydens die rekening te skep',
+);
+
 /** Arabic (العربية)
  * @author Ciphers
  */
