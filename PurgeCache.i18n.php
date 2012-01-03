@@ -250,11 +250,11 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'purgecache' => 'Purgar a memoria caché',
+	'purgecache' => 'Limpar a memoria caché',
 	'purgecache-desc' => '[[Special:PurgeCache|Páxina especial]] usada para limpar a táboa OBJECTCACHE',
-	'purgecache-warning' => 'Isto purgará a memoria caché das táboas.',
-	'purgecache-purged' => 'A memoria caché foi purgada.',
-	'purgecache-button' => 'Depurar',
+	'purgecache-warning' => 'Isto limpará a memoria caché das táboas.',
+	'purgecache-purged' => 'Limpouse a memoria caché.',
+	'purgecache-button' => 'Limpar',
 	'right-purgecache' => 'Limpar a táboa OBJECTCACHE',
 );
 
