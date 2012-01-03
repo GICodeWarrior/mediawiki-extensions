@@ -232,6 +232,13 @@ $messages['he'] = array(
 	'variablepage-desc' => 'הפניה קלילה לדפי משתנים',
 );
 
+/** Hindi (हिन्दी)
+ * @author Ansumang
+ */
+$messages['hi'] = array(
+	'variablepage-navlink_text' => 'दान',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */
