@@ -210,51 +210,69 @@ Text to display in a table cell if there is no number to be shown',
 
 /** Afrikaans (Afrikaans)
  * @author Naudefj
+ * @author පසිඳු කාවින්ද
  */
 $messages['af'] = array(
 	'articlefeedback' => 'Bladsybeoordeling',
 	'articlefeedback-desc' => 'Bladsybeoordeling',
+	'articlefeedback-survey-question-origin' => 'Watter bladsy het jy wanneer jy begin hierdie opname?',
+	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Ek wou by te dra tot die algehele beoordeling van die bladsy',
+	'articlefeedback-survey-answer-whyrated-development' => "Ek hoop dat my rating 'n positiewe invloed op die ontwikkeling van die bladsy",
 	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Ek wil bydrae tot {{site name}}',
 	'articlefeedback-survey-answer-whyrated-sharing-opinion' => 'Ek hou daarvan om my mening te deel',
+	'articlefeedback-survey-answer-whyrated-didntrate' => "Ek het nie 'ratings vandag, maar wou om terugvoer te gee op die funksie",
 	'articlefeedback-survey-answer-whyrated-other' => 'Ander',
+	'articlefeedback-survey-question-useful' => 'Glo jy die graderings voorsien nuttige en duidelike?',
 	'articlefeedback-survey-question-useful-iffalse' => 'Hoekom?',
 	'articlefeedback-survey-question-comments' => 'Het u enige addisionele kommentaar?',
 	'articlefeedback-survey-submit' => 'Dien in',
 	'articlefeedback-survey-title' => "Antwoord asseblief 'n paar vrae",
 	'articlefeedback-survey-thanks' => 'Dankie dat u die opname ingevul het.',
 	'articlefeedback-survey-disclaimerlink' => 'voorwaardes',
+	'articlefeedback-error' => "Is 'n fout. Probeer asseblief weer later.",
 	'articlefeedback-form-switch-label' => 'Beoordeel hierdie bladsy',
 	'articlefeedback-form-panel-title' => 'Beoordeel hierdie bladsy',
 	'articlefeedback-form-panel-explanation' => 'Wat is dit?',
 	'articlefeedback-form-panel-clear' => 'Verwyder hierdie gradering',
+	'articlefeedback-form-panel-expertise' => 'Ek is hoogs kundige oor hierdie onderwerp (opsioneel)',
+	'articlefeedback-form-panel-expertise-profession' => 'Dit is deel van my beroep',
+	'articlefeedback-form-panel-expertise-hobby' => "Dit is 'n diep persoonlike passie",
+	'articlefeedback-form-panel-expertise-other' => 'Die bron van my kennis is nie hier gelys',
+	'articlefeedback-form-panel-helpimprove' => "Ek sou graag wou help verbeter Wikipedia, stuur vir my 'n e-pos (opsioneel)",
 	'articlefeedback-form-panel-helpimprove-privacy' => 'Privaatheidsbeleid',
 	'articlefeedback-form-panel-submit' => 'Stuur beoordeling',
+	'articlefeedback-form-panel-pending' => 'Jou graderings is nog nie ingedien',
 	'articlefeedback-form-panel-success' => 'Suksesvol gestoor',
 	'articlefeedback-form-panel-expiry-title' => 'U graderings het verstryk',
+	'articlefeedback-form-panel-expiry-message' => 'Let asseblief hierdie bladsy te herevalueer en nuwe graderings.',
 	'articlefeedback-report-switch-label' => 'Wys bladsygraderings',
 	'articlefeedback-report-panel-title' => 'Bladsygraderings',
 	'articlefeedback-report-panel-description' => 'Huidige gemiddelde gradering.',
 	'articlefeedback-report-empty' => 'Geen beoordelings',
 	'articlefeedback-report-ratings' => '$1 beoordelings',
 	'articlefeedback-field-trustworthy-label' => 'Betroubaar',
+	'articlefeedback-field-trustworthy-tip' => 'Voel jy hierdie bladsy het genoeg aanhalings en ​​dat dié aanhalings kom uit betroubare bronne?',
 	'articlefeedback-field-trustworthy-tooltip-1' => 'Sonder betroubare bronne',
 	'articlefeedback-field-trustworthy-tooltip-2' => 'Weinig betroubare bronne',
 	'articlefeedback-field-trustworthy-tooltip-3' => 'Voldoende betroubare bronne',
 	'articlefeedback-field-trustworthy-tooltip-4' => 'Goeie betroubare bronne',
 	'articlefeedback-field-trustworthy-tooltip-5' => 'Uitstekend betroubare bronne',
 	'articlefeedback-field-complete-label' => 'Voltooid',
+	'articlefeedback-field-complete-tip' => 'Het jy voel dat hierdie bladsy dek die noodsaaklike onderwerp gebiede wat dit moet?',
 	'articlefeedback-field-complete-tooltip-1' => 'Die meeste inligting ontbreek',
 	'articlefeedback-field-complete-tooltip-2' => 'Bevat sommige inligting',
 	'articlefeedback-field-complete-tooltip-3' => 'Bevat belangrike inligting, maar met die leemtes',
 	'articlefeedback-field-complete-tooltip-4' => 'Bevat die mees belangrike inligting',
 	'articlefeedback-field-complete-tooltip-5' => 'Omvattende dekking',
 	'articlefeedback-field-objective-label' => 'Onbevooroordeeld',
+	'articlefeedback-field-objective-tip' => "Het jy voel dat hierdie bladsy toon 'n ​​billike verteenwoordiging van alle perspektiewe oor die kwessie?",
 	'articlefeedback-field-objective-tooltip-1' => 'Swaar partydig',
 	'articlefeedback-field-objective-tooltip-2' => 'Matig partydig',
 	'articlefeedback-field-objective-tooltip-3' => 'Bietjie partydig',
 	'articlefeedback-field-objective-tooltip-4' => 'Geen duidelike partydigheid',
 	'articlefeedback-field-objective-tooltip-5' => 'Glad nie partydig nie',
 	'articlefeedback-field-wellwritten-label' => 'Goed geskryf',
+	'articlefeedback-field-wellwritten-tip' => 'Het jy voel dat hierdie bladsy is goed georganiseer en goed geskryf?',
 	'articlefeedback-field-wellwritten-tooltip-1' => 'Onverstaanbaar',
 	'articlefeedback-field-wellwritten-tooltip-2' => 'Moeilik om te verstaan',
 	'articlefeedback-field-wellwritten-tooltip-3' => 'Voldoende duidelikheid',
@@ -263,13 +281,18 @@ $messages['af'] = array(
 	'articlefeedback-pitch-reject' => 'Miskien later',
 	'articlefeedback-pitch-or' => 'of',
 	'articlefeedback-pitch-thanks' => 'Dankie! U beoordeling is gestoor.',
+	'articlefeedback-pitch-survey-message' => "Neem asseblief 'n oomblik om' n kort vraelys in te vul.",
 	'articlefeedback-pitch-survey-accept' => 'Begin vraelys',
+	'articlefeedback-pitch-join-message' => "Het jy wil 'n rekening te skep?",
+	'articlefeedback-pitch-join-body' => "'N Rekening sal jou help om liedjies van jou wysigings, betrokke te raak in gesprekke, en' n deel van die gemeenskap.",
 	'articlefeedback-pitch-join-accept' => "Skep 'n gebruiker",
 	'articlefeedback-pitch-join-login' => 'Meld aan',
+	'articlefeedback-pitch-edit-message' => 'Het jy geweet dat jy kan hierdie bladsy wysig?',
 	'articlefeedback-pitch-edit-accept' => 'Wysig hierdie bladsy',
 	'articlefeedback-survey-message-success' => 'Dankie dat u die opname ingevul het.',
 	'articlefeedback-survey-message-error' => "'n Fout het voorgekom.
 Probeer asseblief later weer.",
+	'articlefeedback-privacyurl' => 'http://wikimediafoundation.org/wiki/Feedback_privacy_statement',
 	'articleFeedback-table-caption-dailyhighsandlows' => 'Vandag se hoogte- en laagtepunte',
 	'articleFeedback-table-caption-dailyhighs' => 'Bladsye met die hoogste graderings: $1',
 	'articleFeedback-table-caption-dailylows' => 'Bladsye met die laagste graderings: $1',
@@ -277,6 +300,7 @@ Probeer asseblief later weer.",
 	'articleFeedback-table-caption-recentlows' => 'Onlangse laagtepunte',
 	'articleFeedback-table-heading-page' => 'Bladsy',
 	'articleFeedback-table-heading-average' => 'Gemiddelde',
+	'articlefeedback-disable-preference' => 'Moenie toon die artikel terugvoer widget op bladsye',
 );
 
 /** Aragonese (Aragonés)
@@ -6865,6 +6889,15 @@ $3
 тім {{grammar:2sg|{{SITENAME}}}}',
 );
 
+/** Sanskrit (संस्कृतम्)
+ * @author Ansumang
+ */
+$messages['sa'] = array(
+	'articlefeedback-pitch-or' => 'अथवापि',
+	'articlefeedback-pitch-join-login' => 'प्रविश्यताम्',
+	'articleFeedback-table-heading-page' => 'पृष्ठम्',
+);
+
 /** Sakha (Саха тыла)
  * @author HalanTul
  */
@@ -8102,6 +8135,16 @@ $messages['vec'] = array(
 	'articlefeedback-survey-submit' => 'Manda',
 	'articlefeedback-survey-title' => 'Par piaser, rispondi a qualche domanda',
 	'articlefeedback-survey-thanks' => 'Grassie de aver conpilà el questionario.',
+);
+
+/** Veps (Vepsän kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'articlefeedback-survey-answer-whyrated-other' => 'Toine',
+	'articlefeedback-survey-disclaimerlink' => 'arvoimižed',
+	'articlefeedback-form-panel-explanation' => 'Mi nece om?',
+	'articlefeedback-field-complete-label' => 'Kaik',
 );
 
 /** Vietnamese (Tiếng Việt)
