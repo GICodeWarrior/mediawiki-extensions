@@ -50,13 +50,24 @@ $messages['qqq'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Ansumang
  * @author Naudefj
+ * @author පසිඳු කාවින්ද
  */
 $messages['af'] = array(
+	'apisb-parameters' => 'Parameters',
+	'apisb-result' => 'Resultaat',
 	'apisb-loading' => 'Laai tans…',
+	'apisb-load-error' => 'Fout met laai API beskrywing',
+	'apisb-request-error' => 'Fout met die uitvoering van API-versoek',
+	'apisb-namespaces-error' => 'Fout tydens laai naamspasies',
 	'apisb-ns-main' => '(Hoofnaamruimte)',
+	'apisb-submit' => 'Maak versoek',
 	'apisb-query-prop' => 'Eienskappe',
 	'apisb-query-list' => 'Lyste',
+	'apisb-query-meta' => 'Meta-inligting',
+	'apisb-generic-parameters' => 'generiese parameters',
+	'apisb-generator-parameters' => 'Generator',
 );
 
 /** Arabic (العربية)
@@ -294,7 +305,7 @@ Vidu [//www.mediawiki.org/wiki/API la API-dokumentadon] por pli da detaloj pri l
 	'apisb-namespaces-error' => 'Okazis eraro dum ŝargado de la nomspacoj',
 	'apisb-ns-main' => '(Ĉefa)',
 	'apisb-submit' => 'Fari mendon',
-	'apisb-query-prop' => 'Ecoj',
+	'apisb-query-prop' => 'Atributoj',
 	'apisb-query-list' => 'Listoj',
 	'apisb-query-meta' => 'Metainformoj',
 	'apisb-generic-parameters' => 'Komunaj parametroj',
@@ -560,6 +571,7 @@ $messages['hi'] = array(
 	'apisb-select-query' => 'क्वेरी क्या करना है?',
 	'apisb-select-value' => 'मूल्य चयन करें',
 	'apisb-loading' => 'लोड हो रहा है...',
+	'apisb-namespaces-error' => 'नेमस्पेस लोड़ होने में त्रुटि',
 	'apisb-ns-main' => '(मुख्य)',
 	'apisb-submit' => 'अनुरोध करना',
 	'apisb-query-prop' => 'गुणधर्म',
@@ -1280,6 +1292,14 @@ $messages['ru'] = array(
 	'apisb-generator-parameters' => 'Генератор',
 );
 
+/** Sanskrit (संस्कृतम्)
+ * @author Ansumang
+ */
+$messages['sa'] = array(
+	'apisb-result' => 'परिणामम्',
+	'apisb-ns-main' => '(मुख्य)',
+);
+
 /** Sicilian (Sicilianu)
  * @author Aushulz
  */
@@ -1429,6 +1449,8 @@ $messages['ta'] = array(
 	'apisb-parameters' => 'அளவுருக்கள்',
 	'apisb-result' => 'முடிவு',
 	'apisb-loading' => 'ஏற்றுகிறது...',
+	'apisb-ns-main' => '(முதன்மை)',
+	'apisb-submit' => 'கோரிக்கை செய்',
 	'apisb-query-prop' => 'பண்புகள்',
 	'apisb-query-list' => 'பட்டியல்கள்',
 	'apisb-query-meta' => 'Meta தகவல்',
@@ -1517,6 +1539,16 @@ $messages['uk'] = array(
 	'apisb-query-meta' => 'Мета-інформація',
 	'apisb-generic-parameters' => 'Загальні параметри',
 	'apisb-generator-parameters' => 'Генератор',
+);
+
+/** Veps (Vepsän kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'apisb-parameters' => 'Parametrad',
+	'apisb-result' => "Rezul'tat",
+	'apisb-query-prop' => 'Ičendad',
+	'apisb-query-list' => 'Nimikirjutesed',
 );
 
 /** Vietnamese (Tiếng Việt)
