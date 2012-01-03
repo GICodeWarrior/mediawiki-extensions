@@ -60,6 +60,7 @@ class FixNarayamDisablePref extends Maintenance {
 				array( 'up_property' => $newPropName, 'up_value' => 0 ),
 				array( 'up_property' => $oldPropName, 'up_user' => $ids ),
 				__METHOD__ );
+			$dbw->commit();
 
 			wfWaitForSlaves( 10 );
 		}
