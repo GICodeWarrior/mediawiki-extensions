@@ -118,7 +118,7 @@ $.narayam = new ( function() {
 			e.shiftKey == shortcutKey.shiftKey &&
 			String.fromCharCode( e.which ).toLowerCase() == shortcutKey.key.toLowerCase();
 	}
-	
+
 	/**
 	 * Get the shortcut key for the tool, depending on OS, browser
 	 * @return shortcutKey
@@ -137,7 +137,7 @@ $.narayam = new ( function() {
 		// Safari/Konqueror on any platform, but not Safari on Windows
 		// or any browser on Mac except chrome and opera
 		if ( !( profile.platform == 'win' && profile.name == 'safari' ) &&
-			 ( profile.name == 'safari'|| profile.platform == 'mac' || profile.name == 'konqueror' ) 
+			 ( profile.name == 'safari'|| profile.platform == 'mac' || profile.name == 'konqueror' )
 			 && !( profile.name == 'opera' || profile.name == 'chrome' ) ) {
 			defaultShortcut.key = 'g';
 		}
@@ -147,7 +147,7 @@ $.narayam = new ( function() {
 		}
 		return defaultShortcut;
 	}
-	
+
 	/**
 	 * Get a description of the shortcut key, e.g. "Ctrl-M"
 	 * @return string
@@ -421,7 +421,7 @@ $.narayam = new ( function() {
 		schemes[name] = data;
 		return true;
 	};
-	
+
 	/**
 	 * Get the transliteration rules for the given input method name.
 	 * @param name String
@@ -429,7 +429,7 @@ $.narayam = new ( function() {
 	this.getScheme = function( name ) {
 		return schemes[name];
 	};
-	
+
 	/**
 	 * Change the current transliteration scheme
 	 * @param name String
@@ -509,7 +509,7 @@ $.narayam = new ( function() {
 			.append( $narayamMenuItemLabel );
 		return $narayamMenuItem;
 	};
-	
+
 	/**
 	 * prepare the menu list for all the input methods.
 	 * @return The div containing the constructed menu.
@@ -520,7 +520,7 @@ $.narayam = new ( function() {
 		var $narayamMenuItems = $( '<ul>' );
 		var count = 1;
 		var seen = [];
-		
+
 		var recent = $.cookie( "narayam-scheme" ) || [];
 		if ( typeof recent === "string" ) {
 			recent = recent.split( "," );
@@ -552,7 +552,7 @@ $.narayam = new ( function() {
 				$narayamMenuItems.append( $narayamMenuItem );
 			}
 		}
-		
+
 		if ( !haveSchemes ) {
 			// No schemes available, don't show the tool
 			return null;
@@ -569,7 +569,7 @@ $.narayam = new ( function() {
 			.text( mw.msg( 'narayam-toggle-ime', shortcutText() ) )
 			.prepend( $checkbox )
 			.prop( 'title', mw.msg( 'narayam-checkbox-tooltip' ) );
-			
+
 		var $moreLink = $( '<a>' )
 			.text( mw.msg( 'narayam-more-imes' ) )
 			.prop( 'href', '#' )
@@ -630,8 +630,8 @@ $.narayam = new ( function() {
 			.addClass( 'menu-items' )
 			.append( $narayamMenuItems );
 	}
-	
-	
+
+
 	/**
 	 * Construct the menu for Narayam
 	 */
@@ -647,7 +647,7 @@ $.narayam = new ( function() {
 			.prop( 'href', '#' )
 			.text( mw.msg( 'narayam-menu' ) )
 			.attr( 'title', mw.msg( 'narayam-menu-tooltip' ) );
-		
+
 		$menu.append( $menuItemsDiv );
 		var $li = $( '<li>' ).attr( 'id', 'pt-narayam' ).append( $link );
 

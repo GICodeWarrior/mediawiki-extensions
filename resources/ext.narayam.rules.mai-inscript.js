@@ -1,7 +1,7 @@
 /**
  * InScript regular expression rules table for Maithili language
  * Based on CDAC's "Enhanced InScript Keyboard Layout 5.2" for Maithili
- * @author Amir Aharoni ([[User:Amire80]]) 
+ * @author Amir Aharoni ([[User:Amire80]])
  * @date 2011-12-02
  * License: GPLv3
  */

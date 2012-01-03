@@ -92,7 +92,7 @@ See: http://www.mediawiki.org/wiki/Extension:Narayam',
 	'narayam-help-page' => '{{doc-important|Do not translate "Help:".}}
 this is a help page connected narayam. it describes how to use this tool',
 	'narayam-checkbox-tooltip' => 'Toggle the input method —that is, the interpretation of keystrokes— between "standard" and "interpreted by Narayam".',
-	'narayam-eo' => 'The language "Esperanto" in your local language. 
+	'narayam-eo' => 'The language "Esperanto" in your local language.
 This allows for Narayam to add custom input methods for input fields. Esperanto x-system transcription. For more information, see http://www.mediawiki.org/wiki/Extension:Narayam .',
 	'narayam-hi-inscript' => '[[w:InScript|InScript]] keyboard layout for the Standard Hindi language.',
 	'narayam-kn' => 'Transliteration scheme for the Kannada language.',

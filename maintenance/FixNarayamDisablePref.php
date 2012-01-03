@@ -64,7 +64,7 @@ class FixNarayamDisablePref extends Maintenance {
 			wfWaitForSlaves( 10 );
 		}
 
-		$this->output( "Done\n" );
+		$this->output( "Old preference $oldPropName was migrated to $newPropName\n" );
 	}
 }
 

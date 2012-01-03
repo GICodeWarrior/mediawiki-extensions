@@ -5,7 +5,7 @@
  * @date 2011-11-20
  * License: GPLv3
  */
- 
+
  // Normal rules
 var rules = [
 ['X', '', '\u0A81'],
@@ -114,4 +114,4 @@ jQuery.narayam.addScheme( 'gu-inscript', {
     'keyBufferLength': 0,
     'rules': rules,
     'rules_x': rules_x
-} ); 
+} );
