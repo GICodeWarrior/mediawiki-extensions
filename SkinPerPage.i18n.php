@@ -356,6 +356,13 @@ $messages['ms'] = array(
 	'skinperpage-desc' => 'Menambah tag <code>&lt;skin&gt;</code> untuk membolehkan pemakaian rupa yang berlainan pada setiap laman',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'skinperpage-desc' => 'Legger til en <code>&lt;skin&gt;</code>-tagg for å kunne bruke ulike utseender per side',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -375,13 +382,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'skinperpage-desc' => 'Legg til eit <code>&lt;skin&gt;</code>-merke for å kunna bruka ulike utsjånader per sida',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'skinperpage-desc' => 'Legger til en <code>&lt;skin&gt;</code>-tagg for å kunne bruke ulike utseender per side',
 );
 
 /** Occitan (Occitan)
@@ -445,6 +445,13 @@ $messages['rue'] = array(
  */
 $messages['sah'] = array(
 	'skinperpage-desc' => 'Сирэй тас көстүүтүн быһаарар <code>&lt;skin&gt;</code> тиэги эбэр',
+);
+
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'skinperpage-desc' => 'පිටුවක් සඳහා එක් එක් අන්දමේ සම් භාවිතා කිරීමට <code>&lt;skin&gt;</code> ටැගය එක් කරයි',
 );
 
 /** Slovak (Slovenčina)
