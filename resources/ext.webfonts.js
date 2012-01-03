@@ -139,7 +139,7 @@
 			styleString += fontFormats.join() + ";\n";
 			styleString += "\tfont-weight: normal;}";
 
-			// inject the css to the head of the page. 
+			// inject the css to the head of the page.
 			mw.util.addCSS( styleString );
 		},
 

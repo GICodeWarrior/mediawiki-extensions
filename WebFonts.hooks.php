@@ -41,7 +41,7 @@ class WebFontsHooks {
 
 		return true;
 	}
-	
+
 	/**
 	 * Hook: ResourceLoaderGetConfigVars
 	 */
@@ -49,7 +49,7 @@ class WebFontsHooks {
 		$vars['wgWebFontsHelpPage'] = wfMsgForContent( 'webfonts-help-page' );
 		return true;
 	}
-	
+
 	/**
 	 * UserGetDefaultOptions hook handler.
 	 * @param $defaultOptions array

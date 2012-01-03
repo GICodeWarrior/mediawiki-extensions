@@ -39,7 +39,7 @@ $wgHooks['GetPreferences'][] = 'WebFontsHooks::addPreference';
 $wgHooks['UserGetDefaultOptions'][] = 'WebFontsHooks::addDefaultOptions';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'WebFontsHooks::addConfig';
 
-$wgWebFontsEnabledByDefault = true; 
+$wgWebFontsEnabledByDefault = true;
 
 $wgResourceModules['ext.webfonts.init'] = array(
 	'scripts' => 'resources/ext.webfonts.init.js',
@@ -60,7 +60,7 @@ $wgResourceModules['ext.webfonts.core'] = array(
 	'remoteExtPath' => 'WebFonts',
 	'messages' => array(
 		'webfonts-load',
-		'webfonts-reset', 
+		'webfonts-reset',
 		'webfonts-menu-tooltip',
 		'webfonts-help',
 	),
