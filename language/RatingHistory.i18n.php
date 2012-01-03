@@ -2166,6 +2166,13 @@ $messages['rue'] = array(
 	'right-feedback' => 'Оцїнёваня сторінок средством формуларя',
 );
 
+/** Sanskrit (संस्कृतम्)
+ * @author Ansumang
+ */
+$messages['sa'] = array(
+	'ratinghistory-table-votes' => 'मत',
+);
+
 /** Sakha (Саха тыла)
  * @author HalanTul
  */
@@ -2223,6 +2230,9 @@ $messages['si'] = array(
 	'ratinghistory-svg' => 'SVG ලෙස නරඹන්න',
 	'ratinghistory-table-rating' => 'තරාතිරම',
 	'ratinghistory-table-votes' => 'මනාප',
+	'ratinghistory-none' => 'මෙම අවස්ථාවේදී ප්‍රස්ථාර සඳහා පාඨක ප්‍රතිචාර දත්ත ලබා ගැනීමට නොමැත.',
+	'ratinghistory-ratings' => "'''ප්‍රබන්ධය:''' '''(1)''' - දුර්වල; '''(2)''' - අවම; '''(3)''' - සතුටුදායක; '''(4)''' - ඉහළ; '''(5)''' - අති විශිෂ්ට;",
+	'ratinghistory-graph-scale' => "'''දිනකට නිරීක්ෂණ''' <span style=\"color:red;\">''(රතු)''</span> ''1:\$1'' පරිමාණයෙන් දක්වා ඇත.",
 	'right-feedback' => 'පිටුවක් තරාතිරම් කිරීමට ප්‍රතිචාර ෆෝරමය භාවිතා කරන්න',
 );
 

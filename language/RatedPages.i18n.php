@@ -29,8 +29,10 @@ $messages['qqq'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Naudefj
+ * @author පසිඳු කාවින්ද
  */
 $messages['af'] = array(
+	'ratedpages' => 'Reader gegradeerde bladsye',
 	'ratedpages-none' => 'Daar is geen bladsye in hierdie lys nie',
 );
 
