@@ -47,7 +47,6 @@ class FixNarayamDisablePref extends Maintenance {
 				__METHOD__,
 				array( 'LIMIT' => $this->mBatchSize, 'FOR UPDATE' ) );
 			if ( !$res->numRows() ) {
-				$dbw->commit();
 				break;
 			}
 
