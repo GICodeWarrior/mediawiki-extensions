@@ -37,6 +37,16 @@ $messages['qqq'] = array(
 {{Identical|Help}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['af'] = array(
+	'webfonts-load' => 'Kies font',
+	'webfonts-reset' => 'Reset',
+	'webfonts-menu-tooltip' => "Kies 'n font vir die bladsy",
+	'webfonts-help' => 'Help',
+);
+
 /** Arabic (العربية)
  * @author روخو
  */
@@ -491,6 +501,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'webfonts-desc' => "D'Schrëften an d'Säiten abannen",
 	'webfonts-load' => 'Buschtawen-Typ (Font) eraussichen',
 	'webfonts-reset' => 'Zrécksetzen',
 	'webfonts-menu-tooltip' => "Sicht eng Buschtawen-Zort fir d'Säit eraus",
@@ -717,6 +728,7 @@ $messages['ru'] = array(
 );
 
 /** Sanskrit (संस्कृतम्)
+ * @author Ansumang
  * @author Bhawani Gautam
  */
 $messages['sa'] = array(
@@ -725,6 +737,7 @@ $messages['sa'] = array(
 	'webfonts-load' => 'वर्णानि चयनं करोतु',
 	'webfonts-reset' => 'पुनर्स्थापयतु',
 	'webfonts-enable-preference' => 'वर्णस्थापना (वेबफ़ॉन्ट) सक्रियं करोतु',
+	'webfonts-help' => 'साहाय्यम्',
 );
 
 /** Sicilian (Sicilianu)
@@ -846,6 +859,9 @@ $messages['uk'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-load' => 'Valiče šrift',
+	'webfonts-menu-tooltip' => 'Valiče šrift lehtpolen täht',
 	'webfonts-help' => 'Abu',
 );
 
