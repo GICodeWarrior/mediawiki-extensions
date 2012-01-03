@@ -98,7 +98,7 @@ $messages['mk'] = array(
 $messages['ms'] = array(
 	'regexfun-desc' => 'Menambahkan fungsi-fungsi penghurai yang membolehkan penggunaan ungkapan nalar dalam laman wiki',
 	'regexfun-invalid' => 'Ungkapan nalar "$1" tidak sah.',
-	'regexfun-limit-exceed' => 'Had maksimum $1 kendalian ungkapan nalar "Regex Fun" tercapai.',
+	'regexfun-limit-exceed' => 'Had maksimum $1 kendalian ungkapan nalar "Regex Fun" dicapai.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
