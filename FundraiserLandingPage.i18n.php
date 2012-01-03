@@ -6,6 +6,13 @@ $messages['en'] = array(
 	'fundraiserlandingpage-desc' => 'Takes URL parameters and passes them to the specified template as template variables',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['af'] = array(
+	'fundraiserlandingpage-desc' => 'Neem URL-parameters en oordra aan die spesifieke sjabloon as sjabloon veranderlikes',
+);
+
 /** Asturian (Asturianu)
  * @author Xuacu
  */
@@ -82,6 +89,13 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'fundraiserlandingpage-desc' => 'Prende parametros de URL e los passa al patrono specificate como variabiles de patrono',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'fundraiserlandingpage-desc' => 'Ambil parameter URL dan melewatkannya ke templat yang telah ditentukan sebagai variabel templat',
 );
 
 /** Italian (Italiano)
@@ -166,5 +180,12 @@ $messages['vi'] = array(
  */
 $messages['zh-hans'] = array(
 	'fundraiserlandingpage-desc' => '采用URL参数并将其作为模板变量传递给指定的模板',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Anakmalaysia
+ */
+$messages['zh-hant'] = array(
+	'fundraiserlandingpage-desc' => '採用URL參數並將其作為模板變量傳遞給指定的模板',
 );
 
