@@ -34,7 +34,7 @@ class MoodBarHooks {
 				array( 'moodbar_feedback', 'moodbar_feedback_response' ),
 				array( 'mbf_id', 'mbf_user_id' ),
 				array( 'mbf_id = mbfr_mbf_id',
-					'mbfr_id' => intval( $item ) 
+					'mbfr_id' => intval( $item )
 				),__METHOD__ );
 
 			if ( $res !== false ) {
@@ -43,7 +43,7 @@ class MoodBarHooks {
 
 				// Make sure that the page requesting 'mark as helpful' item is the 
 				// talk page of the user who wrote the feedback
-				if ( $commenter && $page->isTalkPage() && 
+				if ( $commenter && $page->isTalkPage() &&
 					$commenter->getTalkPage()->getPrefixedText() == $page->getPrefixedText() ) {
 				
 					$isAbleToShow = true;
