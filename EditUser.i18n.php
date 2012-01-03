@@ -598,7 +598,7 @@ $messages['hi'] = array(
 	'edituser' => 'सदस्य संपादन करें',
 	'edituser-username' => 'सदस्यनाम:',
 	'edituser-dosearch' => 'खोजें',
-	'edituser-nouser' => 'दिया हुआ सदस्य अस्तित्वमें नहीं हैं',
+	'edituser-nouser' => 'सदस्य "$1" मौजूद नहीं है।',
 	'edituser-exempt' => 'दिये हुए सदस्यको संपादित नहीं कर सकतें',
 );
 
