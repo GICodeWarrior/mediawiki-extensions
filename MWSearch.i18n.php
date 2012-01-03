@@ -428,6 +428,13 @@ $messages['nah'] = array(
 	'mwsearch-desc' => 'HMTlatēmoaliztli',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'mwsearch-desc' => 'MWSearch-programtillegg',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -447,13 +454,6 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
-	'mwsearch-desc' => 'MWSearch-programtillegg',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
 	'mwsearch-desc' => 'MWSearch-programtillegg',
 );
 
@@ -525,6 +525,13 @@ $messages['rue'] = array(
  */
 $messages['sah'] = array(
 	'mwsearch-desc' => 'MWSearch плагин',
+);
+
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'mwsearch-desc' => 'MWසෙවුම් ප්ලගිනය',
 );
 
 /** Slovak (Slovenčina)
