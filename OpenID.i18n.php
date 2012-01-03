@@ -6550,10 +6550,11 @@ $messages['yi'] = array(
  * @author Onecountry
  * @author Wrightbus
  * @author Xiaomingyan
+ * @author Yanmiao liu
  */
 $messages['zh-hans'] = array(
 	'openid-desc' => '使用一个[//openid.net/ OpenID]来登录到这个wiki，或使用wiki用户帐号登录到其他接受OpenID的网站',
-	'openidlogin' => '使用OpenID登录',
+	'openidlogin' => '使用OpenID登录或创建账号',
 	'openidserver' => 'OpenID服务器',
 	'openidxrds' => 'Yadis文件',
 	'openidconvert' => 'OpenID转换',
@@ -6569,9 +6570,14 @@ $messages['zh-hans'] = array(
 	'openidfailure' => '验证失败',
 	'openidfailuretext' => 'OpenID地址验证失败。错误信息："$1"',
 	'openidsuccess' => '验证成功',
-	'openidsuccesstext' => 'OpenID地址验证成功。',
+	'openidsuccesstext' => "'''成功验证并且登录为用户 $1'''。
+
+您的OpenID是 $2 。
+
+这个和可能将来的OpenID可以在您的设置里的[[Special:Preferences#prefsection-openid|OpenID选项卡]]中管理。<br />
+可选的账户密码可以在您的[[Special:Preferences#prefsection-personal|用户设置]]里添加。",
 	'openidusernameprefix' => 'OpenID用户',
-	'openidserverlogininstructions' => '请在下方输入密码以便以用户$2的身份登录$3 （用户页面$1）。',
+	'openidserverlogininstructions' => '$3请求您为用户$2的用户页面$1输入密码（这是您的OpenID URL）',
 	'openidtrustinstructions' => '请确认您是否愿与$1分享数据。',
 	'openidallowtrust' => '允许$1信任这个用户的账户。',
 	'openidnopolicy' => '站点没有提供隐私政策。',
@@ -6583,7 +6589,7 @@ $messages['zh-hans'] = array(
 	'openidemail' => '电邮地址',
 	'openidlanguage' => '语言',
 	'openidtimezone' => '时区',
-	'openidchooselegend' => '用户名选择',
+	'openidchooselegend' => '用户名和账户选择',
 	'openidchooseinstructions' => '所有的用户都需要提供昵称；
 您可以从下面任选一个。',
 	'openidchoosenick' => '你的昵称 ($1)',
@@ -6601,21 +6607,22 @@ $messages['zh-hans'] = array(
 	'openidconvertyourstext' => '这已经是您的OpenID。',
 	'openidconvertothertext' => '这是别人的OpenID。',
 	'openidalreadyloggedin' => '您已经登录了。',
+	'openidalreadyloggedintext' => "'''您已经登录，$1！'''
+
+您可以在您的设置的[[Special:Preferences#prefsection-openid|OpenID 选项卡]]中管理（查看、删除和进一步添加）OpenID。",
 	'openidnousername' => '没有指定用户名。',
 	'openidbadusername' => '指定的用户名是错误的。',
 	'openidautosubmit' => '本页包含的表单在启用JavaScript的情况下可以自动提交。
 如果没有自动提交，请按 "Continue" （继续）按钮。',
 	'openidclientonlytext' => '你不能在其他站点上使用这个wiki的帐号作为OpenID。',
 	'openidloginlabel' => 'OpenID地址',
-	'openidlogininstructions' => '{{SITENAME}} 支持用于网站间单点登录的[//openid.net/ OpenID] 标准。
-OpenID可以让你不必使用不同的密码登录不同站点。
-（详情请参见[//en.wikipedia.org/wiki/OpenID 维基百科关于 OpenID 的条目]。）
-
-如果你在{{SITENAME}}上已经拥有账户，可以按一般方法，使用用户名和密码[[Special:UserLogin|登录]]。
-
-如果想今后使用OpenID登录，可以登录后 [[Special:OpenIDConvert|将一般账户转换为OpenID账户]]。
-
-[//openid.net/get/ OpenID的提供者]有很多，你可能在使用其他服务时已经建立了一个可以使用OpenID的账户了。',
+	'openidlogininstructions' => '{{SITENAME}} 支持用于网站间单点登录的 [//openid.net/ OpenID] 标准。
+OpenID 可以让您不必使用不同的密码登录不同的站点。
+（详情请参见 [//en.wikipedia.org/wiki/OpenID 维基百科关于 OpenID 的条目]。）
+[//openid.net/get/ OpenID 的提供者]有很多，您可能在使用其他服务时已经建立了一个可以使用 OpenID 的账户了。',
+	'openidlogininstructions-openidloginonly' => "{{SITENAME}} ''仅''允许用 OpenID 登录。",
+	'openidlogininstructions-passwordloginallowed' => '如果您在 {{SITENAME}} 上已经拥有了账号，可以以通常的方式用用户名和密码[[Special:UserLogin|登录]]。
+将来使用 OpenID，您可以在正常登录后[[Special:OpenIDConvert|转换账号为 OpenID]]。',
 	'openidupdateuserinfo' => '更新我的个人信息',
 	'openiddelete' => '删除OpenID',
 	'openiddelete-text' => '按下"{{int:openiddelete-button}}"按钮后，OpenID $1将从你的账户中删除。你以后将无法再使用这个OpenID登录。',
@@ -6626,11 +6633,13 @@ OpenID可以让你不必使用不同的密码登录不同站点。
 没有OpenID您将无法登录。',
 	'openiddelete-sucess' => 'OpenID已被成功删除。',
 	'openiddelete-error' => '在移除你的OpenID的时候出现了一个错误。',
+	'openid-openids-were-not-merged' => '合并用户帐号时，OpenID 没有被合并。',
 	'openid-prefstext' => '[//openid.net/ OpenID]设置',
 	'openid-pref-hide' => 'OpenID登录时，在用户页隐藏OpenID。',
 	'openid-pref-update-userinfo-on-login' => '每次登录时，都从OpenID的用户信息中更新以下信息。',
 	'openid-urls-desc' => '和你的账号关联的OpenID：',
 	'openid-urls-action' => '动作',
+	'openid-urls-registration' => '注册时间',
 	'openid-urls-delete' => '删除',
 	'openid-add-url' => '添加一个新的OpenID',
 	'openid-login-or-create-account' => '登录或创建新账号',
@@ -6639,6 +6648,15 @@ OpenID可以让你不必使用不同的密码登录不同站点。
 	'openid-provider-label-yahoo' => '使用你的Yahoo账号登录',
 	'openid-provider-label-aol' => '输入你的AOL屏幕名称',
 	'openid-provider-label-other-username' => '输入你的$1用户名',
+	'specialpages-group-openid' => 'OpenID 服务页和状态信息',
+	'right-openid-dashboard-access' => '对 OpenID 仪表板的标准访问',
+	'right-openid-dashboard-admin' => '对 OpenID 仪表板的管理员访问',
+	'openid-dashboard-title' => 'OpenID 仪表板',
+	'openid-dashboard-title-admin' => 'OpenID 仪表板（管理员）',
+	'openid-dashboard-introduction' => '当前 OpenID 的扩展设置（[$1 help|$1 帮助]）',
+	'openid-dashboard-number-openid-users' => '拥有 OpenID 的用户数',
+	'openid-dashboard-number-openids-in-database' => 'OpenID 的数量（总数）',
+	'openid-dashboard-number-users-without-openid' => '没有 OpenID 的用户数',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
