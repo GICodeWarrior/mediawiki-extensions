@@ -17,28 +17,28 @@ $moodBarDir = dirname(__FILE__) . '/';
 
 // Object model
 $wgAutoloadClasses['MBFeedbackItem'] = $moodBarDir . 'FeedbackItem.php';
-$wgAutoloadClasses['MBFeedbackResponseItem'] =  $moodBarDir . 'FeedbackResponseItem.php';
-$wgAutoloadClasses['MWFeedbackResponseItemPropertyException'] =  $moodBarDir . 'FeedbackResponseItem.php';
-$wgAutoloadClasses['MoodBarFormatter'] =  $moodBarDir . 'Formatter.php';
-$wgAutoloadClasses['MoodBarHTMLEmailNotification'] =  $moodBarDir . 'include/MoodBarHTMLEmailNotification.php';
-$wgAutoloadClasses['MoodBarHTMLMailerJob'] =  $moodBarDir . 'include/MoodBarHTMLMailerJob.php';
-$wgAutoloadClasses['MoodBarUtil'] =  $moodBarDir . 'include/MoodBarUtil.php';
+$wgAutoloadClasses['MBFeedbackResponseItem'] = $moodBarDir . 'FeedbackResponseItem.php';
+$wgAutoloadClasses['MWFeedbackResponseItemPropertyException'] = $moodBarDir . 'FeedbackResponseItem.php';
+$wgAutoloadClasses['MoodBarFormatter'] = $moodBarDir . 'Formatter.php';
+$wgAutoloadClasses['MoodBarHTMLEmailNotification'] = $moodBarDir . 'include/MoodBarHTMLEmailNotification.php';
+$wgAutoloadClasses['MoodBarHTMLMailerJob'] = $moodBarDir . 'include/MoodBarHTMLMailerJob.php';
+$wgAutoloadClasses['MoodBarUtil'] = $moodBarDir . 'include/MoodBarUtil.php';
 
 // API
-$wgAutoloadClasses['ApiMoodBar'] =  $moodBarDir . 'ApiMoodBar.php';
+$wgAutoloadClasses['ApiMoodBar'] = $moodBarDir . 'ApiMoodBar.php';
 $wgAPIModules['moodbar'] = 'ApiMoodBar';
-$wgAutoloadClasses['ApiQueryMoodBarComments'] =  $moodBarDir . 'ApiQueryMoodBarComments.php';
+$wgAutoloadClasses['ApiQueryMoodBarComments'] = $moodBarDir . 'ApiQueryMoodBarComments.php';
 $wgAPIListModules['moodbarcomments'] = 'ApiQueryMoodBarComments';
-$wgAutoloadClasses['ApiFeedbackDashboard'] =  $moodBarDir . 'ApiFeedbackDashboard.php';
+$wgAutoloadClasses['ApiFeedbackDashboard'] = $moodBarDir . 'ApiFeedbackDashboard.php';
 $wgAPIModules['feedbackdashboard'] = 'ApiFeedbackDashboard';
-$wgAutoloadClasses['ApiFeedbackDashboardResponse'] =  $moodBarDir . 'ApiFeedbackDashboardResponse.php';
+$wgAutoloadClasses['ApiFeedbackDashboardResponse'] = $moodBarDir . 'ApiFeedbackDashboardResponse.php';
 $wgAPIModules['feedbackdashboardresponse'] = 'ApiFeedbackDashboardResponse';
-$wgAutoloadClasses['ApiMoodBarSetUserEmail'] =  $moodBarDir . 'ApiMoodBarSetUserEmail.php';
-$wgAutoloadClasses['MWApiMoodBarSetUserEmailInvalidActionException'] =  $moodBarDir . 'ApiMoodBarSetUserEmail.php';
+$wgAutoloadClasses['ApiMoodBarSetUserEmail'] = $moodBarDir . 'ApiMoodBarSetUserEmail.php';
+$wgAutoloadClasses['MWApiMoodBarSetUserEmailInvalidActionException'] = $moodBarDir . 'ApiMoodBarSetUserEmail.php';
 $wgAPIModules['moodbarsetuseremail'] = 'ApiMoodBarSetUserEmail';
 
 // Hooks
-$wgAutoloadClasses['MoodBarHooks'] =  $moodBarDir . 'MoodBar.hooks.php';
+$wgAutoloadClasses['MoodBarHooks'] = $moodBarDir . 'MoodBar.hooks.php';
 $wgHooks['BeforePageDisplay'][] = 'MoodBarHooks::onPageDisplay';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'MoodBarHooks::resourceLoaderGetConfigVars';
 $wgHooks['MakeGlobalVariablesScript'][] = 'MoodBarHooks::makeGlobalVariablesScript';
@@ -46,12 +46,12 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'MoodBarHooks::onLoadExtensionSchemaU
 $wgHooks['onMarkItemAsHelpful'][] = 'MoodBarHooks::onMarkItemAsHelpful';
 
 // Special pages
-$wgAutoloadClasses['SpecialMoodBar'] =  $moodBarDir . 'SpecialMoodBar.php';
+$wgAutoloadClasses['SpecialMoodBar'] = $moodBarDir . 'SpecialMoodBar.php';
 $wgSpecialPages['MoodBar'] = 'SpecialMoodBar';
-$wgAutoloadClasses['SpecialFeedbackDashboard'] =  $moodBarDir . 'SpecialFeedbackDashboard.php';
+$wgAutoloadClasses['SpecialFeedbackDashboard'] = $moodBarDir . 'SpecialFeedbackDashboard.php';
 $wgSpecialPages['FeedbackDashboard'] = 'SpecialFeedbackDashboard';
 
-$dashboardFormsPath =  $moodBarDir . 'DashboardForms.php';
+$dashboardFormsPath = $moodBarDir . 'DashboardForms.php';
 $wgAutoloadClasses['MBDashboardForm'] = $dashboardFormsPath;
 $wgAutoloadClasses['MBActionForm'] = $dashboardFormsPath;
 $wgAutoloadClasses['MBHideForm'] = $dashboardFormsPath;
@@ -75,8 +75,8 @@ $wgAvailableRights[] = 'moodbar-admin';
 $wgGroupPermissions['sysop']['moodbar-admin'] = true;
 
 // Internationalisation
-$wgExtensionMessagesFiles['MoodBar'] =  $moodBarDir . 'MoodBar.i18n.php';
-$wgExtensionMessagesFiles['MoodBarAliases'] =  $moodBarDir . 'MoodBar.alias.php';
+$wgExtensionMessagesFiles['MoodBar'] = $moodBarDir . 'MoodBar.i18n.php';
+$wgExtensionMessagesFiles['MoodBarAliases'] = $moodBarDir . 'MoodBar.alias.php';
 
 // Resources
 $mbResourceTemplate = array(
