@@ -20,6 +20,11 @@ $messages['en'] = array(
 	'tooltip-p-moodbar-trigger-feedback' => '',
 	'tooltip-p-moodbar-trigger-share' => '',
 	'tooltip-p-moodbar-trigger-editing' => '',
+	// Time format
+	'moodbar-weeks' => '{{PLURAL:$1|$1 week|$1 weeks}}',
+	'moodbar-months' => '{{PLURAL:$1|$1 month|$1 months}}',
+	'moodbar-years' => '{{PLURAL:$1|$1 year|$1 years}}',
+	'moodbar-seconds' => 'less than 1 minute',
 	// Overlay
 	'moodbar-close' => '(close)',
 	'moodbar-intro-feedback' => 'Editing $1 made me...',

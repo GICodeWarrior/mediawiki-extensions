@@ -71,33 +71,33 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 	public function getMoodBarTypeStats( ) {
 	
 		global $wgMemc;
- 
-		$timestamp = time() - 24 * 60 * 60; // 24 hours ago
+
+		$timestamp = wfTimestamp( TS_UNIX ) - 24 * 60 * 60; // 24 hours ago
 		
 		// Try cache first
 		$key = wfMemcKey( 'moodbar_feedback', 'type_stats', 'last_day' );
 		$moodbarStat = $wgMemc->get( $key );
-                
-                if ( $moodbarStat === false ) {
-                        $dbr = wfGetDB( DB_SLAVE );
-                        $res = $dbr->select( array( 'moodbar_feedback' ),
-                        	             array( 'mbf_type', 'COUNT(*) AS number' ),
-                                             array( 'mbf_hidden_state' => 0, 'mbf_timestamp > ' . $dbr->addQuotes( wfTimestamp( TS_MW, $timestamp ) ) ),
-                                             __METHOD__,
-                                             array( 'GROUP BY' => 'mbf_type' )
-                        );
- 
-                        $moodbarStat = array('happy' => 0, 'sad' => 0, 'confused' => 0);
- 
-                        foreach ( $res as $row ) {
-                                $moodbarStat[$row->mbf_type] = $row->number;
-                        }
- 
-                        // Cache the results in cache for 1 hour
-                        $wgMemc->set( $key, $moodbarStat, 60 * 60 );
-                }
-               
-                return $moodbarStat;
+
+		if ( $moodbarStat === false ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select( array( 'moodbar_feedback' ),
+						array( 'mbf_type', 'COUNT(*) AS number' ),
+						array( 'mbf_hidden_state' => 0, 'mbf_timestamp > ' . $dbr->addQuotes( wfTimestamp( TS_MW, $timestamp ) ) ),
+						__METHOD__,
+						array( 'GROUP BY' => 'mbf_type' )
+			);
+
+			$moodbarStat = array( 'happy' => 0, 'sad' => 0, 'confused' => 0 );
+
+			foreach ( $res as $row ) {
+				$moodbarStat[$row->mbf_type] = $row->number;
+			}
+
+			// Cache the results in cache for 1 hour
+			$wgMemc->set( $key, $moodbarStat, 60 * 60 );
+		}
+
+		return $moodbarStat;
 		
 	}
 	
@@ -222,12 +222,8 @@ HTML;
 		$typeMsg = wfMessage( "moodbar-type-$type" )->params( $feedbackItem->getProperty('user') )->escaped();
 		
 		// Timestamp
-		$now = wfTimestamp( TS_UNIX );
 		$timestamp = wfTimestamp( TS_UNIX, $feedbackItem->getProperty('timestamp') );
-		$time = $wgLang->formatTimePeriod( $now - $timestamp,
-			array( 'avoid' => 'avoidminutes', 'noabbrevs' => true )
-		);
-		$timeMsg = wfMessage( 'ago' )->params( $time )->escaped();
+		$timeMsg = wfMessage( 'ago' )->params( MoodBarUtil::formatTimeSince( $timestamp ) )->escaped();
 		
 		// Comment
 		$comment = htmlspecialchars( $feedbackItem->getProperty('comment') );
@@ -296,40 +292,29 @@ HTML;
 		$showResponseBox = true;
 		
 		//Do not show response box if there is a response already
-		if ( isset( $response[$id] ) ) {	
-			//for now we only display the latest response
-			foreach ( $response[$id] AS $response_detail ) { 
-				
-				$responder =  User::newFromId( $response_detail->mbfr_user_id );
-				
-				if ( !$responder->isAnon() ) {
-					
-					$now = wfTimestamp( TS_UNIX );
-					$responsetimestamp = wfTimestamp( TS_UNIX, $response_detail->mbfr_timestamp );
-					
-					$responsetime = $wgLang->formatTimePeriod( $now - $responsetimestamp,
-						array( 'avoid' => 'avoidminutes', 'noabbrevs' => true )
-						);
-					
-					$permalinkTitle = $feedbackItem->getProperty('user')->getTalkPage()->getFullText();
-					
-					$individual_response = wfMsgExt('moodbar-feedback-response-summary', array('parse'),  
-						                         $responder->getUserPage()->getFullText(), 
-						                         $responder->getName(), 
-						                         $permalinkTitle . '#feedback-dashboard-response-' . $response_detail->mbfr_id,  
-						                         $responsetime);
-					$showResponseBox = false;
-					
-					$responseElements = <<<HTML
-							    	<div class="fbd-item-response">
-							    		$individual_response
-							    	</div>
-HTML;
-					break;
-					
-				}
-			}
+		if ( isset( $response[$id] ) ) {
+			$response_detail = $response[$id];
+
+			$responder = User::newFromId( $response_detail->mbfr_user_id );
 			
+			if ( $responder && !$responder->isAnon() ) {
+				$responsetime = MoodBarUtil::formatTimeSince( wfTimestamp( TS_UNIX, $response_detail->mbfr_timestamp ) );
+				
+				$permalinkTitle = $feedbackItem->getProperty('user')->getTalkPage()->getFullText();
+				
+				$individual_response = wfMsgExt('moodbar-feedback-response-summary', array('parse'),
+												$responder->getUserPage()->getFullText(), 
+												$responder->getName(), 
+												$permalinkTitle . '#feedback-dashboard-response-' . $response_detail->mbfr_id,
+												$responsetime);
+				$showResponseBox = false;
+				
+				$responseElements = <<<HTML
+								<div class="fbd-item-response">
+									$individual_response
+								</div>
+HTML;
+			}			
 		}
 		//only show response elements if feedback is not hidden, and user is logged in
 		else if ( $showResponseBox && $feedbackItem->getProperty('hidden-state') == false
@@ -410,15 +395,15 @@ HTML;
 
 			if($feedback_hidden_detail === false) {
 				$footer = wfMessage('moodbar-hidden-footer-without-log')->
-			                    rawParams( $link )->escaped();	
+									rawParams( $link )->escaped();	
 			}
 			else {
 				$footer = wfMessage('moodbar-hidden-footer')->
-			                    rawParams( htmlspecialchars( $feedback_hidden_detail->log_user_text ), 
-				                       $wgLang->date($feedback_hidden_detail->log_timestamp), 
-				                       $wgLang->time($feedback_hidden_detail->log_timestamp),  
-				                       htmlspecialchars( $feedback_hidden_detail->log_comment ), 
-				                       $link )->escaped();	
+									rawParams( htmlspecialchars( $feedback_hidden_detail->log_user_text ), 
+									$wgLang->date($feedback_hidden_detail->log_timestamp), 
+									$wgLang->time($feedback_hidden_detail->log_timestamp),  
+									htmlspecialchars( $feedback_hidden_detail->log_comment ), 
+									$link )->escaped();	
 			}
 						
 			return Xml::tags( 'div', array( 'class' => 'error' ), $footer );
@@ -673,48 +658,63 @@ HTML;
 	 */
 	protected static function getFeedbackHiddenDetail( $mbf_id ) {
 		$dbr = wfGetDB( DB_SLAVE );
-		
-		return $dbr->selectRow( array( 'logging' ), 
-			             array( 'log_user_text', 'log_timestamp', 'log_comment' ),
-			             array( 'log_namespace' => NS_SPECIAL,  
-			             	    'log_title' => 'FeedbackDashboard/' . intval( $mbf_id ),  
-			             	    'log_action' => 'hide', 
-			             	    'log_type' => 'moodbar' ),
-			             __METHOD__,
-			             array( 'LIMIT' => 1, 'ORDER BY' => "log_timestamp DESC" )
+
+		return $dbr->selectRow( array( 'logging' ),
+					array( 'log_user_text', 'log_timestamp', 'log_comment' ),
+					array( 'log_namespace' => NS_SPECIAL,  
+						'log_title' => 'FeedbackDashboard/' . intval( $mbf_id ),
+						'log_action' => 'hide',
+						'log_type' => 'moodbar' ),
+					__METHOD__,
+					array( 'LIMIT' => 1, 'ORDER BY' => "log_timestamp DESC" )
 		);
 	}
 	
 	/**
-	 * Get the response summary for a set of feedback 
+	 * Get the latest response summary for a set of feedback, 
 	 * @param $res Iterator of Db row with index mbf_id for feedback
 	 * @return array
 	 */
 	public static function getResponseSummary( $res ) {
 		$dbr = wfGetDB( DB_SLAVE );
-		
+
 		$feedback = array();
-		
+
 		foreach ( $res as $row ) {
-			$feedback[] = $row->mbf_id;	
+			$feedback[] = $row->mbf_id;
 		}
-		
+
 		$response = array();
-		
+
 		if ( count( $feedback ) > 0 ) {
+			// query to get the latest mbfr_id for each mbfr_mbf_id 
 			$res = $dbr->select( array( 'moodbar_feedback_response' ),
-					     array( 'mbfr_id', 'mbfr_mbf_id', 'mbfr_user_id', 'mbfr_timestamp' ),
-					     array( 'mbfr_mbf_id' => $feedback, 'mbfr_user_id != 0' ),
-					     __METHOD__,
-					     array( 'ORDER BY' => "mbfr_mbf_id DESC, mbfr_timestamp DESC, mbfr_id DESC" )
-					     );
-			
-	                foreach ( $res AS $row ) {
-	                	$response[$row->mbfr_mbf_id][] = $row;
-	                }
+						array( 'MAX(mbfr_id) AS latest_mbfr_id' ),
+						array( 'mbfr_mbf_id' => $feedback, 'mbfr_user_id != 0' ),
+						__METHOD__,
+						array( 'GROUP BY' => "mbfr_mbf_id" )
+			);
+
+			$mbfrId = array();
+
+			foreach ( $res as $row ) {
+				$mbfrId[] = $row->latest_mbfr_id;
+			}
+
+			// get the detail for each mbfr_id
+			if ( count( $mbfrId ) > 0 ) {
+				$res = $dbr->select( array( 'moodbar_feedback_response' ),
+							array( 'mbfr_id', 'mbfr_mbf_id', 'mbfr_user_id', 'mbfr_timestamp' ),
+							array( 'mbfr_id' => $mbfrId ),
+							__METHOD__
+				);
+	
+				foreach ( $res as $row ) {
+					$response[$row->mbfr_mbf_id] = $row;
+				}
+			}
 		}
-		
-		
+
 		return $response;
 	}
 	
