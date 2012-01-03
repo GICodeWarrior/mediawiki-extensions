@@ -2598,6 +2598,14 @@ $messages['rue'] = array(
 	'prefstats-legend-in' => 'Приголошіня',
 );
 
+/** Sanskrit (संस्कृतम्)
+ * @author Ansumang
+ */
+$messages['sa'] = array(
+	'prefstats-factor-hour' => 'घंटा',
+	'prefstats-factor-day' => 'दिवस',
+);
+
 /** Sakha (Саха тыла)
  * @author HalanTul
  */
