@@ -33,6 +33,16 @@ This is a feature in development. See [[mw:MarkAsHelpful]] for background inform
 	'mah-action-error' => 'Generic error message',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['af'] = array(
+	'markashelpful-desc' => "Bied 'n gebruiker koppelvlak om kommentaar te merk as nuttige",
+	'mah-mark-text' => 'Merk as nuttige',
+	'mah-you-marked-text' => 'Jy dink dit is nuttig',
+	'mah-undo-mark-text' => 'maak ongedaan',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
@@ -322,6 +332,7 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Anakmalaysia
  * @author Yanmiao liu
  */
 $messages['zh-hans'] = array(
@@ -330,6 +341,18 @@ $messages['zh-hans'] = array(
 	'mah-you-marked-text' => '您认为有帮助',
 	'mah-someone-marked-text' => '{{GENDER:$1|$1 认为有帮助}}',
 	'mah-undo-mark-text' => '撤销',
-	'mah-action-error' => '执行此项功能出错',
+	'mah-action-error' => '执行此操作中出错',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Anakmalaysia
+ */
+$messages['zh-hant'] = array(
+	'markashelpful-desc' => '提供用戶界面標記評論為有幫助',
+	'mah-mark-text' => '標記為有幫助',
+	'mah-you-marked-text' => '您認為有幫助',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1認為有幫助}}',
+	'mah-undo-mark-text' => '撤銷',
+	'mah-action-error' => '執行此操作中出錯',
 );
 
