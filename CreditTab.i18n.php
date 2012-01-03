@@ -42,6 +42,15 @@ $messages['ast'] = array(
 	'credits-tab-title' => "Créditos d'esta páxina",
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'credits-desc' => 'Дадае спасылку да сьпісу аўтараў',
+	'credits-tab' => 'Аўтары',
+	'credits-tab-title' => 'Аўтары гэтай старонкі',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
