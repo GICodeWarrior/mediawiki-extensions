@@ -80,7 +80,12 @@ $wgNarayamSchemes = array(
 		'gom-deva' =>  array( 'ext.narayam.rules.gom-deva', 'beta' ),
 		'gom-deva-inscript' => array( 'ext.narayam.rules.gom-deva-inscript', 'beta' ),
 	),
+	'gu' => array(
+		'gu' => array( 'ext.narayam.rules.gu', 'beta' ),
+		'gu-inscript' => array( 'ext.narayam.rules.gu-inscript', 'beta' ),
+	),
 	'he' => array(
+		'he-standard-2011-extonly' =>  array( 'ext.narayam.rules.he-standard-2011-extonly', 'beta' ),
 		'he-standard-2011' =>  array( 'ext.narayam.rules.he-standard-2011', 'beta' ),
 	),
 	'hi' => array(
@@ -143,10 +148,6 @@ $wgNarayamSchemes = array(
 	),
 	'ur' => array(
 		'ur' => array( 'ext.narayam.rules.ur', 'beta' ),
-	),
-	'gu' => array(
-		'gu' => array( 'ext.narayam.rules.gu', 'beta' ),
-		'gu-inscript' => array( 'ext.narayam.rules.gu-inscript', 'beta' ),
 	),
 	'ru' => array(
 		'ru-standard' => array( 'ext.narayam.rules.ru-standard', 'beta' ),
@@ -215,6 +216,7 @@ $wgResourceModules['ext.narayam.core'] = $narayamTpl + array(
 		'narayam-gom-deva-inscript',
 		'narayam-gu',
 		'narayam-gu-inscript',
+		'narayam-he-standard-2011-extonly',
 		'narayam-he-standard-2011',
 		'narayam-hi',
 		'narayam-hi-inscript',
@@ -299,6 +301,10 @@ $wgResourceModules['ext.narayam.rules.brx-inscript'] = $narayamTpl + array(
 );
 $wgResourceModules['ext.narayam.rules.eo'] = $narayamTpl + array(
 	'scripts' => 'resources/ext.narayam.rules.eo.js',
+	'dependencies' => 'ext.narayam.core',
+);
+$wgResourceModules['ext.narayam.rules.he-standard-2011-extonly'] = $narayamTpl + array(
+	'scripts' => 'resources/ext.narayam.rules.he-standard-2011-extonly.js',
 	'dependencies' => 'ext.narayam.core',
 );
 $wgResourceModules['ext.narayam.rules.he-standard-2011'] = $narayamTpl + array(

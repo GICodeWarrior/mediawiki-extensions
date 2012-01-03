@@ -69,7 +69,10 @@ $messages['en'] = array(
 	'narayam-mai-inscript' => 'Maithili InScript',
 	'narayam-gom-deva' => 'Goan Konkani-Devanagari Transliteration',
 	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari InScript',
-	'narayam-he-standard-2011' => 'Hebrew Standard 2011',
+
+	// extonly should be the default, hence the short name
+	'narayam-he-standard-2011-extonly' => 'Hebrew Standard 2011',
+	'narayam-he-standard-2011' => 'Hebrew Standard 2011 (English keyboard)',
 );
 
 /** Message documentation (Message documentation)
@@ -1144,7 +1147,8 @@ $messages['he'] = array(
 	'narayam-mai-inscript' => 'מייתילי InScript',
 	'narayam-gom-deva' => 'קונקנית של גואה – דוונגרי תעתיק',
 	'narayam-gom-deva-inscript' => 'קונקנית של גואה – דוונגרי InScript',
-	'narayam-he-standard-2011' => 'עברית עם ניקוד',
+	'narayam-he-standard-2011-extonly' => 'עברית עם ניקוד',
+	'narayam-he-standard-2011' => 'עברית עם ניקוד (עם מקלדת אנגלית)',
 );
 
 /** Hindi (हिन्दी)
