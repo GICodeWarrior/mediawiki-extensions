@@ -314,7 +314,7 @@ $messages['pms'] = array(
 	'mirrortools-desc' => 'A përmët ëd fé dle modìfiche via API con qualsëssìa nòm utent',
 	'right-mirroredit' => 'Modìfica via API sota qualsëssìa nòm utent',
 	'group-MirrorTools' => "Utent ëd l'utiss Mirror",
-	'group-MirrorTools-member' => "Utent ëd l'utiss mirror",
+	'group-MirrorTools-member' => "{{GENDER:$1|utent ëd l'utiss mirror}}",
 	'grouppage-MirrorTools' => "{{ns:project}}:Utent ëd l'utiss Mirror",
 );
 
