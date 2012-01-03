@@ -42,10 +42,17 @@ $messages['qqq'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Naudefj
+ * @author පසිඳු කාවින්ද
  */
 $messages['af'] = array(
+	'contributiontracking-desc' => 'Bydrae die dop vir die Wikimedia fondsinsameling',
+	'contributiontracking' => 'Bydrae die dop',
 	'contrib-tracking-error' => 'Fout',
+	'contrib-tracking-error-text' => 'Ongeldige vorm voorlegging',
+	'contrib-tracking-submitting' => 'Stuur na betaling verwerker ...',
+	'contrib-tracking-redirect' => 'Jy sal outomaties herlei word om jou skenking te voltooi.',
 	'contrib-tracking-button' => 'Gaan voort',
+	'contrib-tracking-item-name-recurring' => 'Herhalende maandelikse skenking',
 );
 
 /** Aragonese (Aragonés)
@@ -539,9 +546,12 @@ $messages['he'] = array(
  * @author Ansumang
  */
 $messages['hi'] = array(
+	'contributiontracking' => 'अबदान ट्रैकिंग',
 	'contrib-tracking-error' => 'त्रुटि',
+	'contrib-tracking-error-text' => 'अमान्य फॉर्म सबमिशन',
 	'contrib-tracking-button' => 'जारी रखें',
 	'contrib-tracking-item-name-onetime' => 'एक समय दान',
+	'contrib-tracking-item-name-recurring' => 'आवर्ती मासिक दान',
 );
 
 /** Croatian (Hrvatski)
@@ -1142,9 +1152,15 @@ $messages['scn'] = array(
  * @author බිඟුවා
  */
 $messages['si'] = array(
+	'contributiontracking-desc' => 'විකිමාධ්‍ය පුණ්‍යාධාරය සඳහා දායකත්ව ඉලියිම්',
+	'contributiontracking' => 'දායකත්ව ඉලියිම්',
 	'contrib-tracking-error' => 'දෝෂය',
 	'contrib-tracking-error-text' => 'වලංගු නොවන ෆෝරම යොමුව',
+	'contrib-tracking-submitting' => 'ගෙවීම් සකසනය වෙත යොමුකරමින්...',
+	'contrib-tracking-redirect' => 'ඔබගේ පරිත්‍යාගය සම්පූර්ණ කිරීම සඳහා ඔබව ස්වයංක්‍රීයව යලි යොමු කරනු ඇත.',
 	'contrib-tracking-button' => 'ඉදිරියට යන්න',
+	'contrib-tracking-item-name-onetime' => 'එක්-වතාවක පරිත්‍යාගය',
+	'contrib-tracking-item-name-recurring' => 'ප්‍රත්‍යාවර්තී මාසික පරිත්‍යාගය',
 );
 
 /** Slovak (Slovenčina)
