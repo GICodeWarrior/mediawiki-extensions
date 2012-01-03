@@ -117,7 +117,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'purge' => 'Cache leeren',
-	'purge-desc' => 'Ergänzt einen „Purge“-Reiter zur schnellen Cache-Löschung für alle normalen Seiten und umgeht so die Purge-Prüfung für unangemeldete Benutzer',
+	'purge-desc' => 'Ergänzt den Reiter „Purge“, der die schnelle Löschung des Seitencaches ermöglicht',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -145,11 +145,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author McDutchie
  * @author Sanbec
  */
 $messages['es'] = array(
 	'purge' => 'purgar',
-	'purge-desc' => 'Añade una pestaña de purgado en todas las páginas normales y sortea la comprobación de purgado para los usuarios anónimos permitiendo el purgado rápido de la caché',
+	'purge-desc' => 'Añade una pestaña de purgado en todas las páginas normales permitiendo el purgado rápido de la caché',
 );
 
 /** Finnish (Suomi)
@@ -158,15 +159,16 @@ $messages['es'] = array(
  */
 $messages['fi'] = array(
 	'purge' => 'tyhjennä välimuisti',
-	'purge-desc' => 'Lisää välimuistin tyhjennysvälilehden kaikille tavallisille sivuille ja ohittaa tarkistuksen kirjautumattomille käyttäjille välimuistin nopeaan tyhjennykseen.',
+	'purge-desc' => 'Lisää välimuistin tyhjennysvälilehden kaikille tavallisille sivuille mahdollistaen välimuistin nopean tyhjennyksen.',
 );
 
 /** French (Français)
+ * @author Gomoko
  * @author Grondin
  */
 $messages['fr'] = array(
 	'purge' => 'purger',
-	'purge-desc' => 'Ajoute un onglet « Purger » sur toutes les pages normales et active sa sélection pour les utilisateurs anonymes pour une purge rapide du cache.',
+	'purge-desc' => 'Ajoute un onglet «Purger» sur toutes les pages normales, permettant une purge rapide du cache',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -181,8 +183,8 @@ $messages['frp'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'purge' => 'limpar',
-	'purge-desc' => 'Engade unha lapela "Purgar" en todas as páxinas normais e salta a comprobación de purgar para os usuarios anónimos, permitindo unha purga rápida da caché',
+	'purge' => 'Limpar',
+	'purge-desc' => 'Engade a lapela "Limpar" en todas as páxinas normais, permitindo unha purga rápida da caché',
 );
 
 /** Swiss German (Alemannisch)
@@ -248,7 +250,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'purge' => 'purgar',
-	'purge-desc' => 'Adde un scheda "purgar" in tote le paginas normal, e contorna le verification de purga pro usatores anonyme permittente un purga rapide del cache',
+	'purge-desc' => 'Adde un scheda "purgar" in tote le paginas normal, permittente un purga rapide del cache',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -269,11 +271,12 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author McDutchie
  * @author Pietrodn
  */
 $messages['it'] = array(
 	'purge' => 'purga',
-	'purge-desc' => 'Aggiunge un tab "purga" su tutte le pagine normali, e bypassa il controllo di purga per gli utenti anonimi permettendo uno svuotamento rapido della cache',
+	'purge-desc' => 'Aggiunge un tab "purga" su tutte le pagine normali, permettendo uno svuotamento rapido della cache',
 );
 
 /** Japanese (日本語)
@@ -335,7 +338,7 @@ $messages['lt'] = array(
  */
 $messages['mk'] = array(
 	'purge' => 'исчисти',
-	'purge-desc' => 'Додава јазиче за пречистување кеш на сите нормални страници, и ја прескокнува проверката за чистење за анонимни корисници што дозволува брзо чистење на кешот',
+	'purge-desc' => 'Додава јазиче за пречистување кеш на сите нормални страници, што овозможува брзо чистење на кешот',
 );
 
 /** Marathi (मराठी)
@@ -368,6 +371,14 @@ $messages['nah'] = array(
 	'purge' => 'ticchipāhuāz',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'purge' => 'gjenoppfrisk',
+	'purge-desc' => 'Legger til en fane for gjenoppfrisking på alle vanlige sider, og slår av gjenoppfriskingssjekken for anonyme brukere, hvilket gjør at mellomlageret kan oppdateres raskere',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -379,18 +390,11 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
+ * @author Njardarlogar
  */
 $messages['nn'] = array(
 	'purge' => 'oppfrisk',
 	'purge-desc' => 'Legg til ei fana for oppfrisking på alle vanlege sider, og slår av oppfriskingssjekken for anonyme brukarar, noko som gjer at mellomlageret kan verta oppdartert raskare',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'purge' => 'gjenoppfrisk',
-	'purge-desc' => 'Legger til en fane for gjenoppfrisking på alle vanlige sider, og slår av gjenoppfriskingssjekken for anonyme brukere, hvilket gjør at mellomlageret kan oppdateres raskere',
 );
 
 /** Occitan (Occitan)
@@ -414,25 +418,27 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'purge' => 'polida',
-	'purge-desc' => 'A gionta un tab ëd "purga" a tute le pàgine normaj, e a bypassa ël control ëd purga për j\'utent anònim, an përmëttend na purga lesta dla cache',
+	'purge-desc' => 'A gionta un tab ëd "purga" a tute le pàgine normaj an përmëttend na purga lesta dla cache',
 );
 
 /** Portuguese (Português)
  * @author 555
  * @author Hamilton Abreu
  * @author Malafaya
+ * @author McDutchie
  */
 $messages['pt'] = array(
 	'purge' => 'purgar',
-	'purge-desc' => "Adiciona um separador \"purgar\" a todas as páginas normais e ultrapassa a verificação de purga para os utilizadores anónimos, permitindo uma purga rápida da ''cache''",
+	'purge-desc' => "Adiciona um separador \"purgar\" a todas as páginas normais, permitindo uma purga rápida da ''cache''",
 );
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author McDutchie
  */
 $messages['pt-br'] = array(
 	'purge' => 'purgar',
-	'purge-desc' => 'Adiciona uma aba para purgar em todas as páginas normais, e ultrapassa a verificação de purga para utilizadores anônimos, permitindo um purga rápida da cache',
+	'purge-desc' => 'Adiciona uma aba para purgar em todas as páginas normais, permitindo um purga rápida da cache',
 );
 
 /** Romanian (Română)
