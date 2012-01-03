@@ -160,18 +160,18 @@ $messages['ms'] = array(
 	'pageobjectmodel-desc' => 'Menambahkan satu set kelas untuk peniskalaan sintaks MediaWiki untuk memudahkan pengekstrakan dan manipulasi laman dalam program lain',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'pageobjectmodel-desc' => "Voegt klassen toe voor de abstractie van de MediaWiki-syntaxis om eenvoudige extractie en manipulatie van pagina's binnen andere programma's mogelijk te maken",
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'pageobjectmodel-desc' => 'Legger til et sett av klasser for abstraksjon av MediaWiki-syntaks for enkel utvinning og manipulering av sider inni andre program',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'pageobjectmodel-desc' => "Voegt klassen toe voor de abstractie van de MediaWiki-syntaxis om eenvoudige extractie en manipulatie van pagina's binnen andere programma's mogelijk te maken",
 );
 
 /** Polish (Polski)
@@ -229,5 +229,12 @@ $messages['tl'] = array(
  */
 $messages['uk'] = array(
 	'pageobjectmodel-desc' => 'Додає набір класів, які абстрагують синтаксис MediaWiki, що дозволяє легко обробляти сторінки іншими програмами',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Yanmiao liu
+ */
+$messages['zh-hans'] = array(
+	'pageobjectmodel-desc' => '增加一系列的类，用于抽象 MediaWiki 语法便于在其他程序中对页面的抽取和操作',
 );
 
