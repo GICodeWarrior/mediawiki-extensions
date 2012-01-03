@@ -2412,12 +2412,19 @@ $messages['he'] = array(
 $messages['hi'] = array(
 	'contributiontotal' => 'कुल योगदान',
 	'dailytotal' => 'दैनिक कुल',
+	'disablednotice' => 'योगदान रिपोर्टिंग',
+	'disablednotice-disabled' => 'इस पृष्ठ अस्थायी रूप से काम नहीं कर रहा है । कृपया थोड़ी देर में पुनः कोसिस करें ।',
 	'contributionhistory' => 'योगदान इतिहास',
+	'contrib-hist-header' => 'पूरे दुनिया भरसे दाता टिप्पणी भेजते हैं',
 	'contrib-hist-name' => 'नाम',
 	'contrib-hist-date' => 'दिनांक और समय',
 	'contrib-hist-amount' => 'राशि',
+	'contrib-hist-next' => 'पूर्व अनुदान',
+	'contrib-hist-previous' => 'नयी अनुदान',
 	'contrib-hist-anonymous' => 'बेनामी',
 	'contributionstatistics' => 'योगदान के आँकड़े',
+	'contribstats-desc' => 'विकिमीडिया फ़ाउंडेशन को किया गया योगदान की आंकड़े दिखाएँ',
+	'contribstats-currency-range-totals' => 'कुल मुद्रा ($1 से $2)',
 	'contribstats-day' => 'दिन',
 	'contribstats-month' => 'महीना',
 	'contribstats-currency' => 'मुद्रा',
@@ -2425,27 +2432,42 @@ $messages['hi'] = array(
 	'contribstats-contributions' => 'योगदान',
 	'contribstats-total' => 'कुल (USD)',
 	'contribstats-avg' => 'औसत (USD)',
+	'contribstats-max' => 'सर्वोच्च दान',
 	'contribstats-percentage-ytd' => 'प्रतिशत (YTD)',
 	'contribstats-total-ytd' => 'कुल (YTD)',
 	'contribstats-value-exactly' => 'बिल्कुल $1',
 	'contribstats-value-under' => 'के नीचे $1',
+	'contribstats-value-from' => '$1 से - $2',
+	'contribstats-value-over' => 'के ऊपर $1',
+	'contributiontrackingstatistics' => 'योगदान ट्रैकिंग आँकड़े',
 	'contribstats-day-totals' => 'दिन के लिए कुल',
 	'contribstats-week' => 'सप्ताह',
 	'contribstats-payment-type' => 'शुल्क प्रकार',
 	'contribstats-banner' => 'बैनर',
 	'contribstats-clicks' => 'क्लिकस',
 	'contribstats-donations' => 'दान',
+	'contribstats-conversion' => 'रूपांतरण रेट (%)',
 	'contribstats-template' => 'साँचा',
+	'contribstats-nodata' => 'कोई डेटा नहीं दिया गया',
+	'contribstats-landingpage' => 'लैंडिंग पृष्ठ',
 	'contribstats-donatepage' => 'दान पृष्ठ',
 	'contribstats-average' => 'औसत',
+	'contribstats-paypal-donations' => 'पेपाल अनुदान',
 	'contribstats-credit-card' => 'क्रेडिट कार्ड',
+	'fundraiserstatistics' => 'फंड एकठा की आकलन',
 	'fundraiserstats-date' => 'दिनांक',
 	'fundraiserstats-day' => 'दिन  $1 के $2',
 	'fundraiserstats-contributions' => 'योगदान',
 	'fundraiserstats-total' => 'कुल (USD)',
 	'fundraiserstats-avg' => 'औसत (USD)',
+	'fundraiserstats-ytd' => 'संचयी कुल (USD)',
+	'fundraiserstats-max' => 'अधिकतम (USD)',
+	'fundraiserstats-tab-totals' => 'कुल (USD)',
 	'fundraiserstats-tab-contributions' => 'योगदान की संख्या',
+	'fundraiserstats-tab-averages' => 'औसत (USD)',
+	'fundraiserstats-tab-maximums' => 'अधिकतम (USD)',
 	'fundraiserstats-customize' => 'अनुकूलित करें',
+	'fundraiserstats-show-years' => 'निम्न बर्षमान दिखाएँ:',
 	'fundraiserstats-time-zone' => 'समय मंडल:',
 	'fundraiserstats-utc' => '(UTC से)',
 );
@@ -3748,6 +3770,7 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'contributionreporting-desc' => 'വിക്കിമീഡിയ ഫണ്ട്റെയ്സർ നൽകുന്ന തത്സമയ തെര്യപ്പെടുത്തൽ',
 	'contributiontotal' => 'ആകെ സംഭാവനകൾ',
+	'dailytotal' => 'ദൈനംദിന തുക',
 	'contributionhistory' => 'സംഭാവനകളുടെ നാൾവഴി',
 	'contrib-hist-header' => 'ലോകത്തിന്റെ നാനാഭാഗത്തു നിന്നുമുള്ള ദാതാക്കളുടെ കുറിപ്പുകൾ',
 	'contrib-hist-name' => 'പേര്',
@@ -5096,6 +5119,15 @@ $messages['rue'] = array(
 	'fundraiserstats-utc' => '(од UTC)',
 );
 
+/** Sanskrit (संस्कृतम्)
+ * @author Ansumang
+ */
+$messages['sa'] = array(
+	'contribstats-week' => 'सप्ताह',
+	'fundraiserstats-date' => 'दिनाङ्क',
+	'fundraiserstats-time-zone' => 'समय मण्डल:',
+);
+
 /** Sakha (Саха тыла)
  * @author HalanTul
  */
@@ -5188,10 +5220,13 @@ $messages['scn'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'contributionreporting-desc' => 'විකිමාධ්‍ය පුණ්‍යාධාරයේ සජීවී වාර්තාකරණය',
 	'contributiontotal' => 'දායකත්ව එකතුව',
 	'dailytotal' => 'දෛනික එකතුව',
 	'disablednotice' => 'දායකත්ව වාර්තා කිරීම්',
+	'disablednotice-disabled' => 'මෙම පිටුව තාවකාලිකව අක්‍රීය කොට ඇත. කරුණාකර නැවත උත්සහ කරන්න.',
 	'contributionhistory' => 'දායකත්ව ඉතිහාසය',
+	'contrib-hist-header' => 'ලෝකයෙන්ම ලැබෙන දානපති පරිකථන',
 	'contrib-hist-name' => 'නම',
 	'contrib-hist-date' => 'දිනය සහ වෙලාව',
 	'contrib-hist-amount' => 'වටිනාකම',
@@ -5199,6 +5234,7 @@ $messages['si'] = array(
 	'contrib-hist-previous' => 'නවතම පරිත්‍යාගයන්',
 	'contrib-hist-anonymous' => 'නිර්නාමික',
 	'contributionstatistics' => 'දායකත්ව සංඛ්‍යා ලේඛන',
+	'contribstats-currency-range-totals' => 'ව්‍යවහාර මුදල් එකතුවන් ($1 ගෙන් $2 දක්වා)',
 	'contribstats-day' => 'දිනය',
 	'contribstats-month' => 'මාසය',
 	'contribstats-currency' => 'ව්‍යවහාර මුදල',
@@ -5213,6 +5249,7 @@ $messages['si'] = array(
 	'contribstats-value-under' => '$1 යටතේ',
 	'contribstats-value-from' => '$1 - $2 වෙතින්',
 	'contribstats-value-over' => '$1 වඩා',
+	'contributiontrackingstatistics' => 'දායකත්ව ඉලියීම සංඛ්‍යා ලේඛන',
 	'contribstats-day-totals' => 'දවසට එකතුව',
 	'contribstats-week' => 'සතිය',
 	'contribstats-payment-type' => 'ගෙවන විධිය',
@@ -5228,6 +5265,8 @@ $messages['si'] = array(
 	'contribstats-average' => 'සාමාන්‍යය',
 	'contribstats-paypal-donations' => 'පේපැල් පරිත්‍යාගයන්',
 	'contribstats-credit-card' => 'ණය පත',
+	'contribstats-fraud-note' => 'සමහරක් වංචනික පරිත්‍යාග පවතියි.',
+	'contribstats-unaudited' => 'මේවා අසම්මත එකතුවන්ය.',
 	'fundraiserstatistics' => 'පුණ්‍යාධාරයේ සංඛ්‍යාලේඛන',
 	'fundraiserstats-date' => 'දිනය',
 	'fundraiserstats-day' => '$2 න් $1 දිනය',
