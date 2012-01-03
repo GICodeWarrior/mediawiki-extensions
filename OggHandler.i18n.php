@@ -105,6 +105,7 @@ $messages['akz'] = array(
  * @author AVRS
  * @author Naudefj
  * @author SPQRobin
+ * @author පසිඳු කාවින්ද
  */
 $messages['af'] = array(
 	'ogg-desc' => "Hanteer Ogg Theora- en Vorbis-lêers met 'n JavaScript-mediaspeler",
@@ -122,6 +123,7 @@ $messages['af'] = array(
 	'ogg-play-sound' => 'Speel geluid',
 	'ogg-player-videoElement' => 'Standaardondersteuning in webblaaier',
 	'ogg-player-oggPlugin' => 'Webblaaier-plugin',
+	'ogg-player-thumbnail' => 'Still image net',
 	'ogg-player-soundthumb' => 'Geen mediaspeler',
 	'ogg-player-selected' => '(geselekteer)',
 	'ogg-use-player' => 'Gebruik speler:',
@@ -3203,6 +3205,16 @@ $messages['rue'] = array(
 	'ogg-desc-link' => 'О файлі',
 	'ogg-oggThumb-version' => 'OggHandler потребує oggThumb верзії $1 або новшый.',
 	'ogg-oggThumb-failed' => 'oggThumb не быв годен створити нагляд.',
+);
+
+/** Sanskrit (संस्कृतम्)
+ * @author Ansumang
+ */
+$messages['sa'] = array(
+	'ogg-play' => 'प्रयोग',
+	'ogg-pause' => 'विराम',
+	'ogg-stop' => 'स्थापयति',
+	'ogg-dismiss' => 'निबिड',
 );
 
 /** Sakha (Саха тыла)
