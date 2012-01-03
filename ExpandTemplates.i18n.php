@@ -837,6 +837,7 @@ $messages['he'] = array(
 );
 
 /** Hindi (हिन्दी)
+ * @author Ansumang
  * @author Kaustubh
  * @author Shyam
  */
@@ -854,6 +855,7 @@ $messages['hi'] = array(
 	'expand_templates_xml_output' => 'XML आउटपुट',
 	'expand_templates_ok' => 'ओके',
 	'expand_templates_remove_comments' => 'टिप्पणी हटायें',
+	'expand_templates_remove_nowiki' => 'रोकें <nowiki> परिणाम में टैग',
 	'expand_templates_generate_xml' => 'XML का पार्स (parse) वृक्ष दर्शायें',
 	'expand_templates_preview' => 'झलक',
 );
@@ -1807,6 +1809,15 @@ $messages['rue'] = array(
 	'expand_templates_remove_nowiki' => 'Іґноровати в резултатї значкы <nowiki>',
 	'expand_templates_generate_xml' => 'Указати сінтаксічный стром в XML',
 	'expand_templates_preview' => 'Нагляд',
+);
+
+/** Sanskrit (संस्कृतम्)
+ * @author Ansumang
+ */
+$messages['sa'] = array(
+	'expand_templates_output' => 'परिणामम्',
+	'expand_templates_ok' => 'अस्तु',
+	'expand_templates_preview' => 'प्राग्दृश्यम् दर्श्यताम्',
 );
 
 /** Sakha (Саха тыла)
