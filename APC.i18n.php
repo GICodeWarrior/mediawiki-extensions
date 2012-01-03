@@ -3578,11 +3578,12 @@ $messages['io'] = array(
  * @author Darth Kule
  * @author Gianfranco
  * @author Melos
+ * @author Nemo bis
  * @author Pietrodn
  * @author Rippitippi
  */
 $messages['it'] = array(
-	'apc' => 'informazioni APC',
+	'apc' => 'Informazioni APC',
 	'apc-desc' => '[[Special:APC|Visualizza e gestisce la cache APC]] con MediaWiki',
 	'right-apc' => 'Utilizza tutte le funzioni di [[Special:APC|APC]]',
 	'viewapc-apc-not-available' => "Non è disponibile nessun'informazione sulla cache.
