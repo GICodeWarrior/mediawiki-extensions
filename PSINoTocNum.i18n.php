@@ -29,6 +29,13 @@ $messages['arz'] = array(
 	'psinotocnum-desc' => 'كلمة سحرية جديدة "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'psinotocnum-desc' => 'Nueva pallabra máxica «<nowiki>__NOTOCNUM__</nowiki>»',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
