@@ -23,7 +23,9 @@ class PurgeActionExtension{
 	public static function contentHook( $skin, array &$content_actions ) {
 		global $wgRequest, $wgUser;
 
-		$title = $skin->getTitle();
+		// Use getRelevantTitle if present so that this will work on some special pages
+		$title = method_exists( $skin, 'getRelevantTitle' ) ?
+			$skin->getRelevantTitle() : $skin->getTitle();
 		if ( $title->getNamespace() !== NS_SPECIAL && $wgUser->isAllowed( 'purge' ) ) {
 			$action = $wgRequest->getText( 'action' );
 
