@@ -122,6 +122,13 @@ $messages['he'] = array(
 	'editpagetracking-desc' => 'שמירת הפעם הראשונה שעל משתמש רואה את דך העריכה',
 );
 
+/** Hindi (हिन्दी)
+ * @author Ansumang
+ */
+$messages['hi'] = array(
+	'editpagetracking-desc' => 'पहली बार जो भी सदस्य सम्पादन पृष्ठ देखें उसे रेकॉर्ड करें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
