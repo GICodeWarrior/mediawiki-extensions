@@ -321,7 +321,9 @@ Terms of use URL. Do not change this URL until a translation of the page itself 
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Ansumang
  * @author Naudefj
+ * @author පසිඳු කාවින්ද
  */
 $messages['af'] = array(
 	'moodbar-desc' => 'Laat spesifieke gebruikers toe om hulle gemoedstoestand aan die webwerf se operateur terug te stuur',
@@ -340,6 +342,9 @@ $messages['af'] = array(
 	'moodbar-error-title' => 'Oeps!',
 	'moodbar-email-submit' => 'Dien in',
 	'moodbar-email-optout' => 'Nee dankie',
+	'right-moodbar-view' => 'Stemming balk terugvoer te sien en uitvoer',
+	'moodbar-admin-title' => 'stemming balk terugvoer',
+	'moodbar-admin-intro' => 'Hierdie bladsy laat jou toe om terugvoer voorgelê met die stemming balk te sien.',
 	'moodbar-admin-empty' => 'Geen resultate',
 	'moodbar-header-id' => 'Terugvoer-ID',
 	'moodbar-header-timestamp' => 'Tydstip',
@@ -353,27 +358,49 @@ $messages['af'] = array(
 	'moodbar-header-locale' => 'Lokaal',
 	'moodbar-header-useragent' => 'User-agent',
 	'moodbar-header-comment' => 'Opmerkings',
+	'moodbar-header-user-editcount' => 'Gebruiker wysig Telling',
 	'moodbar-header-namespace' => 'Naamruimte',
 	'moodbar-header-own-talk' => 'Eie besprekingsblad',
+	'moodbar-feedback-title' => 'Terugvoer dashboard',
+	'moodbar-feedback-view-link' => '(Sien die terugvoer)',
+	'moodbar-feedback-filters' => 'filters',
 	'moodbar-feedback-filters-type' => 'Gemoed:',
 	'moodbar-feedback-filters-type-happy' => 'Bly',
 	'moodbar-feedback-filters-type-confused' => 'Verward',
 	'moodbar-feedback-filters-type-sad' => 'Afgehaal',
+	'moodbar-feedback-whatis' => 'Wat is hierdie funksie?',
+	'moodbar-feedback-permalink' => 'skakel hier',
+	'moodbar-feedback-noresults' => 'Daar is geen kommentaar wat ooreenstem met jou filters.',
 	'moodbar-feedback-more' => 'Meer',
 	'moodbar-feedback-newer' => 'Nuwer',
 	'moodbar-feedback-older' => 'Ouer',
+	'moodbar-feedback-ajaxerror' => "'N fout het voorgekom terwyl meer resultate te gaan haal.",
+	'moodbar-feedback-load-record-error' => "'N fout voorgekom tydens die laai van' n rekord.",
+	'moodbar-user-hidden' => '(User weggesteek)',
+	'moodbar-comment-hidden' => '(Terugvoer verborge is deur administratiewe optrede)',
 	'moodbar-feedback-action-confirm' => 'Bevestig',
 	'moodbar-feedback-action-cancel' => 'Kanselleer',
+	'moodbar-feedback-restore' => 'die herstel van verborge terugvoer',
+	'moodbar-action-reason' => 'Rede:',
+	'moodbar-action-reason-required' => "Gee 'n rede.",
+	'moodbar-hide-header' => 'Adres hierdie item uit die oog',
+	'moodbar-restore-header' => 'Herstel die sigbaarheid van hierdie item',
+	'moodbar-invalid-item' => 'Die stelsel is nie in staat om die korrekte terugvoer item te kry.',
+	'moodbar-feedback-action-error' => "Is 'n fout as jy probeer om hierdie aksie uit te voer.",
 	'moodbar-type-happy' => 'Bly',
 	'moodbar-type-sad' => 'Afgehaal',
 	'moodbar-type-confused' => 'Verward',
 	'moodbar-user-anonymized' => 'Geanonimiseerd',
 	'moodbar-user-ip' => 'IP-adres',
 	'moodbar-user-user' => 'Geregistreerde gebruiker',
+	'moodbar-log-name' => 'Terugvoer log',
 	'moodbar-response-link' => 'voorwaardes',
 	'response-back-text' => 'Terug',
 	'response-preview-text' => 'Voorskou',
+	'response-ajax-action-head' => 'Reageer ...',
+	'response-ajax-action-body' => 'Jou antwoord is bygevoeg.',
 	'response-ajax-success-head' => 'Dankie!',
+	'response-ajax-success-body' => 'Jou reaksie is bygevoeg.',
 	'response-ajax-error-head' => 'Oeps!',
 );
 
@@ -2311,6 +2338,7 @@ $messages['hi'] = array(
 	'moodbar-type-confused' => '{{GENDER:$1|उलझन में}}',
 	'moodbar-user-user' => 'पंजीकृत सदस्य',
 	'moodbar-log-name' => 'सुझाव लॉग',
+	'moodbar-response-link' => 'शर्तें',
 	'response-back-text' => 'पीछे',
 	'response-preview-text' => 'पूर्वावलोकन',
 	'response-ajax-success-head' => 'धन्यवाद!',
@@ -2851,6 +2879,7 @@ Fir méi Informatiounen, gitt w.e.g. op d'$1.",
 	'moodbar-header-user-editcount' => 'Compteur vun den Ännerunge pro Benotzer',
 	'moodbar-header-namespace' => 'Nummraum',
 	'moodbar-header-own-talk' => 'Eegen Diskussiounssäit',
+	'moodbar-feedback-response-title' => '== Äntwert op Äre [[$1|Feedback]] ==',
 	'moodbar-feedback-view-link' => '(Feedback weisen)',
 	'moodbar-feedback-filters' => 'Filteren',
 	'moodbar-feedback-filters-type' => 'Stëmmung:',
@@ -4573,6 +4602,21 @@ $messages['rue'] = array(
 	'moodbar-user-user' => 'Реґістрованый хоснователь',
 );
 
+/** Sanskrit (संस्कृतम्)
+ * @author Ansumang
+ */
+$messages['sa'] = array(
+	'moodbar-header-type' => 'प्रकारम्',
+	'moodbar-header-page' => 'पृष्ठम्',
+	'moodbar-header-usertype' => 'योजक प्रकारम्',
+	'moodbar-header-user' => 'योजकः',
+	'moodbar-feedback-filters-username' => 'योजकनामन्:',
+	'moodbar-feedback-action-confirm' => 'स्थिरीकरोतु',
+	'moodbar-feedback-action-cancel' => 'निवर्तयते',
+	'moodbar-action-reason' => 'कारणम् :',
+	'response-preview-text' => 'प्राग्दृश्यम् दर्श्यताम्',
+);
+
 /** Sicilian (Sicilianu)
  * @author Aushulz
  */
@@ -4640,7 +4684,9 @@ $messages['si'] = array(
 	'moodbar-header-usertype' => 'පරිශීලක වර්ගය',
 	'moodbar-header-user' => 'පරිශීලක',
 	'moodbar-header-editmode' => 'සංස්කරණ ක්‍රමය',
+	'moodbar-header-bucket' => 'පරීක්ෂක පනිට්ටුව',
 	'moodbar-header-system' => 'පද්ධති වර්ගය',
+	'moodbar-header-locale' => 'ස්ථානය',
 	'moodbar-header-useragent' => 'පරිශීලක නියෝජිත',
 	'moodbar-header-comment' => 'පරිකථන',
 	'moodbar-header-user-editcount' => 'පරිශීලක සංස්කරණ ගණන',
@@ -4676,6 +4722,9 @@ $messages['si'] = array(
 	'moodbar-action-reason-required' => 'කරුණාකර හේතුවක් ඉදිරිපත් කරන්න.',
 	'moodbar-hide-header' => 'දසුනෙන් මෙම අයිතමය සඟවන්න',
 	'moodbar-restore-header' => 'මෙම අයිතමයේ දෘශ්‍යතාවය නැවත පිහිටුවන්න',
+	'moodbar-feedback-action-error' => 'මෙම ක්‍රියාව සිදු කිරීමට උත්සහ කරන අතරතුරදී දෝෂයක් හට ගැනුණි.',
+	'moodbar-feedback-response-summary' => '[[$1|$2]]  $4 කට පෙර [[$3|ප්‍රතිචාරය ලබා දෙන ලදී]]',
+	'moodbar-feedback-edit-summary' => '[[Special:FeedbackDashboard/$1|පරිශීලක ප්‍රතිචාරයට]]  ප්‍රතිචාර දක්වන්න: $2',
 	'moodbar-type-happy' => '{{GENDER:$1|සතුටු}}',
 	'moodbar-type-sad' => '{{GENDER:$1|දුක්මුසු}}',
 	'moodbar-type-confused' => '{{GENDER:$1|ව්‍යාකූල}}',
@@ -5643,7 +5692,7 @@ $messages['zh-hans'] = array(
 	'moodbar-enotif-subject' => '$1已对您的反馈作出回应',
 	'moodbar-enotif-body' => '$1, 您好！
 
-欢迎来到 {{SITENAME}}，并且感谢您的[$2 feedback|反馈]。另一位{{SITENAME}}用户[$3 $6]写下了如下回复：
+欢迎来到 {{SITENAME}}，并且感谢您的[$2 反馈]。另一位{{SITENAME}}用户[$3 $6]写下了如下回复：
 
      $4
 
@@ -5678,6 +5727,7 @@ $messages['zh-hant'] = array(
 	'moodbar-what-label' => '這是什麼？',
 	'moodbar-respond-text' => '回應這個',
 	'moodbar-response-add' => '添加一個回應',
+	'moodbar-response-desc' => '回應將參考原始註釋，無需簽名。',
 	'moodbar-response-btn' => '發送回應',
 	'moodbar-what-content' => '此功能可以幫助社區了解人們在編輯此網站時的體驗。詳細信息請訪問$1。',
 	'moodbar-what-link' => '功能頁面',
@@ -5705,10 +5755,12 @@ $messages['zh-hant'] = array(
 	'moodbar-updating-title' => '正在更新...',
 	'moodbar-updating-subtitle' => '正在更新您的電子郵件設置。',
 	'moodbar-email-confirm-title' => '確認電子郵件',
+	'moodbar-email-confirm-desc' => '您必須確認您的電郵地址才能收到通知。以重新發送確認信息，單擊“重新發送確認”。',
 	'moodbar-email-resend-confirmation' => '重新發送確認',
 	'moodbar-email-optout' => '不，謝謝',
 	'moodbar-tooltip-title' => '請您跟我們分享您在{{SITENAME}}編輯的經驗。',
 	'right-moodbar-view' => '查看和導出MoodBar反饋',
+	'right-moodbar-admin' => '改變回饋儀表板的可視性',
 	'moodbar-admin-title' => 'MoodBar反饋',
 	'moodbar-admin-intro' => '此頁面允許你查看通過MoodBar提交的反饋。',
 	'moodbar-admin-empty' => '沒有結果',
@@ -5728,6 +5780,8 @@ $messages['zh-hant'] = array(
 	'moodbar-header-namespace' => '名字空間',
 	'moodbar-header-own-talk' => '自己的討論頁',
 	'moodbar-feedback-title' => '反饋面板',
+	'moodbar-feedback-description' => '這個儀表板顯示新編輯者對其編輯$1經驗的意見。
+[http://en.wikipedia.org/wiki/Wikipedia:New_editor_feedback 了解更多]',
 	'moodbar-feedback-response-title' => '==對您[[$1|回饋]]的反應==',
 	'moodbar-feedback-view-link' => '（查看反饋）',
 	'moodbar-feedback-filters' => '過濾器',
@@ -5735,7 +5789,7 @@ $messages['zh-hant'] = array(
 	'moodbar-feedback-filters-type-happy' => '開心',
 	'moodbar-feedback-filters-type-confused' => '困惑',
 	'moodbar-feedback-filters-type-sad' => '不快',
-	'moodbar-feedback-filters-username' => '用戶名',
+	'moodbar-feedback-filters-username' => '用戶名：',
 	'moodbar-feedback-filters-my-response' => '僅顯示我的反應：',
 	'moodbar-feedback-filters-button' => '設置過濾器',
 	'moodbar-feedback-whatis' => '這是什麼功能？',
@@ -5762,14 +5816,18 @@ $messages['zh-hant'] = array(
 	'moodbar-hide-header' => '從這個視圖隱藏這個項目',
 	'moodbar-restore-header' => '恢復項目的可見性',
 	'moodbar-invalid-item' => '系統無法找到正確的回饋項目。',
+	'moodbar-feedback-action-error' => '嘗試執行此操作中出錯。',
 	'moodbar-feedback-response-summary' => '[[$1|$2]]於$4前[[$3|反應]]',
+	'moodbar-feedback-edit-summary' => '反應[[Special:FeedbackDashboard/$1|用戶回饋]]：$2',
 	'moodbar-type-happy' => '{{GENDER:$1|開心}}',
 	'moodbar-type-sad' => '{{GENDER:$1|不快}}',
 	'moodbar-type-confused' => '{{GENDER:$1|困惑}}',
+	'moodbar-type-stats' => 'MoodBar在過去24小時內收到的回饋意見：開心：$1，不快：$2，困惑：$3',
 	'moodbar-user-anonymized' => '匿名',
 	'moodbar-user-ip' => 'IP位址',
 	'moodbar-user-user' => '註冊用戶',
 	'moodbar-log-name' => '反饋日誌',
+	'moodbar-log-header' => '這是採取列於的[[Special:FeedbackDashboard|回饋儀表板]]回饋項目行動日誌。',
 	'moodbar-log-hide' => '隱藏[[$1]]',
 	'moodbar-log-restore' => '恢復[[$1]]的可視性',
 	'moodbar-response-terms' => '提交後，您將同意在$1下的透明度。',
@@ -5783,5 +5841,21 @@ $messages['zh-hant'] = array(
 	'response-ajax-error-head' => '糟糕！',
 	'response-ajax-error-body' => '添加您的回應時發生錯誤。<br />請稍後重試。',
 	'moodbar-enotif-subject' => '$1已對您的反饋作出回應',
+	'moodbar-enotif-body' => '$1, 您好！
+
+歡迎來到{{SITENAME}}，並且感謝您的[$2 回饋]。另一位{{SITENAME}}用戶[$3 $6]寫下瞭如下回复：
+
+     $4
+
+在您的[$5 talk page|對話頁]查看此消息。
+
+對話頁是什麼？
+您的用戶對話頁是這樣一個頁，其他{{SITENAME}}編輯用來與您溝通。您可以通過點擊“編輯”來回复，將光標移到建議的下面，輸入您的回復和四個波浪線(~~~~)簽名並保存。所有{{SITENAME}}頁都有對話頁，並且它們有很多不同的用途。可能需要一些時間掌握它，不過一旦習慣了以後也非常簡單。
+
+還有點困惑？ [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv 此視頻] (在[http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]上觀看) 可以提供一個一步一步的概覽。
+
+愉快一整天，
+
+-- {{SITENAME}}',
 );
 
