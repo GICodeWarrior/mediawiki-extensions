@@ -50,6 +50,15 @@ $messages['arz'] = array(
 	'untidy' => 'لا ترتيب',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'tidy-desc' => 'Amiesta una llingüeta «ordenao» o «desordenao» (dependiendo de $wgUseTidy) nes páxines normales, que permite saltase la configuración HTML global d\'ordenación pa una sola vista',
+	'tidy' => 'Ordenao',
+	'untidy' => 'Desordenao',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
