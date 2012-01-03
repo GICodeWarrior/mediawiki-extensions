@@ -45,6 +45,7 @@ $messages['qqq'] = array(
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Naudefj
+ * @author පසිඳු කාවින්ද
  */
 $messages['af'] = array(
 	'vector' => 'Gebruikerskoppelvlak-verbeteringe vir Vektor',
@@ -56,6 +57,7 @@ Indien u aangemeld is, kan u hierdie waarskuwing in die {{int:prefs-editing}}"-a
 	'vector-editwarning-preference' => "Waarsku my as ek 'n gewysigde bladsy verlaat alvorens dit gestoor is",
 	'vector-simplesearch-search' => 'Soek',
 	'vector-simplesearch-containing' => 'bevat...',
+	'vector-noexperiments-preference' => 'Verban my uit funksie eksperimente',
 );
 
 /** Gheg Albanian (Gegë)
@@ -1559,6 +1561,13 @@ $messages['rue'] = array(
 	'vector-simplesearch-search' => 'Глядати',
 	'vector-simplesearch-containing' => 'обсягуючій...',
 	'vector-noexperiments-preference' => 'Не брати участь на експеріментах з новыма функціями',
+);
+
+/** Sanskrit (संस्कृतम्)
+ * @author Ansumang
+ */
+$messages['sa'] = array(
+	'vector-simplesearch-search' => 'अन्वेषणम्',
 );
 
 /** Sakha (Саха тыла)
