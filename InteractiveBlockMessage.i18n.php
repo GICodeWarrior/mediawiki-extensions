@@ -115,3 +115,10 @@ $messages['pl'] = array(
 	'interactiveblockmessage-desc' => 'Dodaje obsługę magicznego słowa <nowiki>{{USERBLOCKED}}</nowiki> wskazującego na stronie użytkownika czy jest on zablokowany',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'interactiveblockmessage-desc' => "A crea na paròla màgica neuva <nowiki>{{USERBLOCKED}}</nowiki> che se a l'é an su në spassi nominal a indica se l'utent a l'é blocà o nò",
+);
+
