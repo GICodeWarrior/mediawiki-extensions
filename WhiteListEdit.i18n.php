@@ -4011,10 +4011,12 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Hydra
+ * @author Hzy980512
  * @author Liangent
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
+	'mywhitelistpages' => '我的页面',
 	'whitelisttablemodify' => '修改',
 	'whitelisttablemodifyall' => '全选',
 	'whitelisttablemodifynone' => '全不选',
@@ -4036,7 +4038,8 @@ $messages['zh-hans'] = array(
 	'whitelistpagelist' => '$1 的{{SITENAME}}页面',
 	'whitelistoverview' => '== 查看 $1 的更改 ==',
 	'whitelistoverviewcd' => "* [[:$2|$2]]，修改日期为 '''$1'''",
-	'whitelistrequestmsg' => '$1请求访问以下页面：
+	'whitelistrequest' => '请求访问更多页面',
+	'whitelistrequestmsg' => '$1请求访问以下{{PLURAL:$3|页面}}:
 
 $2',
 	'whitelistrequestconf' => '新页面请求已发送到$1',
@@ -4049,9 +4052,9 @@ $2',
 	'action-editwhitelist' => '修改现有用户的白名单',
 	'action-restricttowhitelist' => '编辑、查看白名单上的页面',
 	'group-restricted' => '受限用户',
-	'group-restricted-member' => '受限用户',
+	'group-restricted-member' => '{{GENDER:$1|受限用户}}',
 	'group-manager' => '管理员',
-	'group-manager-member' => '管理员',
+	'group-manager-member' => '{{GENDER:$1|管理员}}',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
