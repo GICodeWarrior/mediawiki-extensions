@@ -809,12 +809,18 @@ $messages['uk'] = array(
 	'uos-other' => '*Інші',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'useroptionstats' => 'Kävutajiden järgendusiden statistik',
+	'useroptionstats-desc' => "[[Special:UserOptionStats|Specialine lehtpol']], kus om satesenladindad MediaWikin järgendusiden kävutamižes ühtnijoil",
+	'uos-warn' => 'PHPlot ei ole azotadud!',
+	'uos-choose' => "Valikat üks' neniš kävutajanjärgendusišpäi: $1",
+	'uos-choose-hidden' => "Valikat üks' neniš peittud kävutajanjärgendusišpäi: $1",
 	'uos-unknown' => '*Augotižjärgendusen mödhe',
 	'uos-other' => '*Toine',
+	'uos-title' => 'Muga jagadas kävutajidenjärgendused $1',
 );
 
 /** Vietnamese (Tiếng Việt)
