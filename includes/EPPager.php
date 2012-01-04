@@ -154,7 +154,8 @@ abstract class EPPager extends TablePager {
 				$value = $this->getLanguage()->pipeList( $this->getControlLinks( $this->currentObject ) );
 			}
 			else {
-				$value = isset( $row->$field ) ? $row->$field : null;
+				$prefixedField = $c::getPrefixedField( $field );
+				$value = isset( $row->$prefixedField ) ? $row->$prefixedField : null;
 			}
 			
 			$formatted = strval( $this->formatValue( $field, $value ) );
@@ -177,20 +178,22 @@ abstract class EPPager extends TablePager {
 	 * @return array
 	 */
 	public function getFieldNames() {
-		$conds = $this->conds; // Yeah, this is needed in PHP 5.3 >_>
-		$fields = array_filter( $this->getFields(), function( $name ) use ( $conds ) {
-			return !array_key_exists( $name, $conds );
-		} );
-		
-		$fields = $this->getFieldNameList( $fields );
-		
+		$fields = array();
+
 		if ( $this->hasMultipleItemControl() ) {
-			// This is a hack to get an extra column for select all control.
-			$fields = array_merge( array( '_select' => '' ), $fields );
+			$fields['_select'] = '';
 		}
-		
-		$fields['_controls'] = ''; // This is a hack to get an extra column for the control links.
-		
+
+		foreach ( $this->getFields() as $field ) {
+			if ( !array_key_exists( $field, $this->conds ) ) {
+				$fields[$field] = $field;
+			}
+		}
+
+		if ( $this->hasActionsColumn() ) {
+			$fields['_controls'] = '';
+		}
+
 		return $fields;
 	}
 	
@@ -255,6 +258,7 @@ abstract class EPPager extends TablePager {
 	}
 
 	/**
+	 * Returns whether the pager has multiple item actions and therefore should show the multiple items control.
 	 *
 	 * @since 0.1
 	 *
@@ -262,6 +266,17 @@ abstract class EPPager extends TablePager {
 	 */
 	protected function hasMultipleItemControl() {
 		return count( $this->getMultipleItemActions() ) > 0;
+	}
+
+	/**
+	 * Returns whether the pager should show an extra column for item actions.
+	 *
+	 * @since 0.1
+	 *
+	 * @return boolean
+	 */
+	protected function hasActionsColumn() {
+		return true;
 	}
 	
 	/**
@@ -297,7 +312,6 @@ abstract class EPPager extends TablePager {
 	 * @return array
 	 */
 	protected function getConditions() {
-		$req = $this->getRequest();
 		$conds = array();
 		
 		$filterOptions = $this->getFilterOptions();
@@ -327,28 +341,6 @@ abstract class EPPager extends TablePager {
 	function getDefaultSort() {
 		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
 		return $c::getPrefixedField( 'id' );
-	}
-	
-	/**
-	 * Takes a list of (unprefixed) field names and return them in an associative array where
-	 * the keys are the prefixed field names and the values are header messages.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param array $fields
-	 * 
-	 * @return array
-	 */
-	protected function getFieldNameList( array $fields ) {
-		$headers = array();
-		$c = $this->className;
-		
-		foreach ( $fields as $fieldName => $fieldLabel ) {
-			$message = $fieldLabel === '' ? '' : $this->getMsg( 'header-' . $fieldLabel );
-			$headers[$c::getPrefixedField( $fieldLabel )] = $message;
-		}
-		
-		return $headers;
 	}
 	
 	/**
@@ -495,8 +487,7 @@ abstract class EPPager extends TablePager {
 	 * @see TablePager::formatValue()
 	 */
 	public final function formatValue( $name, $value ) {
-		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
-		return $this->getFormattedValue( $c::unprefixFieldName( $name ), $value );
+		return $this->getFormattedValue( $name, $value );
 	}
 	
 	/**
@@ -565,6 +556,10 @@ abstract class EPPager extends TablePager {
 	
 		# Make table header
 		foreach ( $fields as $field => $name ) {
+			$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
+			$prefixedField = $c::getPrefixedField( $field );
+			$name = $name === '' ? '' : $this->getMsg( 'header-' . $name );
+
 			if ( $field === '_select' ) {
 				$s .= '<th width="30px">' . Html::element( 'input', array(
 					'type' => 'checkbox',
@@ -575,29 +570,31 @@ abstract class EPPager extends TablePager {
 			}
 			elseif ( strval( $name ) == '' ) {
 				$s .= "<th>&#160;</th>\n";
-			} elseif ( $this->isFieldSortable( $field ) ) {
-				$query = array( 'sort' => $field, 'limit' => $this->mLimit );
-				if ( $field == $this->mSort ) {
+			} elseif ( $this->isFieldSortable( $prefixedField ) ) {
+				$query = array( 'sort' => $prefixedField, 'limit' => $this->mLimit );
+
+				if ( $prefixedField == $this->mSort ) {
 					# This is the sorted column
 					# Prepare a link that goes in the other sort order
 					if ( $this->mDefaultDirection ) {
-					# Descending
-					$image = 'Arr_d.png';
-				$query['asc'] = '1';
-				$query['desc'] = '';
-				$alt = htmlspecialchars( wfMsg( 'descending_abbrev' ) );
-				} else {
-					# Ascending
-					$image = 'Arr_u.png';
-				$query['asc'] = '';
-				$query['desc'] = '1';
-				$alt = htmlspecialchars( wfMsg( 'ascending_abbrev' ) );
-				}
-				$image = htmlspecialchars( "$wgStylePath/common/images/$image" );
-				$link = $this->makeLink(
-							"<img width=\"12\" height=\"12\" alt=\"$alt\" src=\"$image\" />" .
-				htmlspecialchars( $name ), $query );
-				$s .= "<th class=\"$sortClass\">$link</th>\n";
+						# Descending
+						$image = 'Arr_d.png';
+						$query['asc'] = '1';
+						$query['desc'] = '';
+						$alt = htmlspecialchars( wfMsg( 'descending_abbrev' ) );
+					} else {
+						# Ascending
+						$image = 'Arr_u.png';
+						$query['asc'] = '';
+						$query['desc'] = '1';
+						$alt = htmlspecialchars( wfMsg( 'ascending_abbrev' ) );
+					}
+
+					$image = htmlspecialchars( "$wgStylePath/common/images/$image" );
+					$link = $this->makeLink(
+								"<img width=\"12\" height=\"12\" alt=\"$alt\" src=\"$image\" />" .
+					htmlspecialchars( $name ), $query );
+					$s .= "<th class=\"$sortClass\">$link</th>\n";
 				} else {
 					$s .= '<th>' . $this->makeLink( htmlspecialchars( $name ), $query ) . "</th>\n";
 				}

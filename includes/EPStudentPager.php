@@ -67,7 +67,12 @@ class EPStudentPager extends EPPager {
 				$name = $user->getRealName() === '' ? $user->getName() : $user->getRealName();
 
 				$value = Linker::userLink( $value, $name ) . Linker::userToolLinks( $value, $name );
-
+				break;
+			case '_courses_current':
+				$value = 'foo'; // TODO
+				break;
+			case '_courses_passed':
+				$value = 'bar'; // TODO
 				break;
 		}
 
@@ -90,6 +95,27 @@ class EPStudentPager extends EPPager {
 	 */
 	protected function getMultipleItemActions() {
 		return array();
+	}
+
+	/**
+	 * (non-PHPdoc)
+	 * @see EPPager::hasActionsColumn()
+	 */
+	protected function hasActionsColumn() {
+		return false;
+	}
+
+	/**
+	 * (non-PHPdoc)
+	 * @see EPPager::getFieldNames()
+	 */
+	public function getFieldNames() {
+		$fields = parent::getFieldNames();
+
+		$fields['_courses_current'] = 'current-courses';
+		$fields['_courses_passed'] = 'passed-courses';
+
+		return $fields;
 	}
 
 }

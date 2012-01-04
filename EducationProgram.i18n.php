@@ -142,6 +142,8 @@ $messages['en'] = array(
 	// Student pager
 	'epstudentpager-header-user-id' => 'User',
 	'epstudentpager-header-id' => 'Id',
+	'epstudentpager-header-current-courses' => 'Current courses',
+	'epstudentpager-header-passed-courses' => 'Passed courses',
 
 	// Special:EditInstitution
 	'editinstitution-text' => 'Enter the institution details below and click submit to save your changes.',
