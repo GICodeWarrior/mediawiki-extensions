@@ -448,10 +448,11 @@ $messages['sah'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Singhalawap
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
-	'skinperpage-desc' => 'පිටුවක් සඳහා එක් එක් අන්දමේ සම් භාවිතා කිරීමට <code>&lt;skin&gt;</code> ටැගය එක් කරයි',
+	'skinperpage-desc' => 'පිටුවක් සඳහා එක් එක් අන්දමේ skin භාවිතා කිරීමට <code>&lt;skin&gt;</code> ටැගය එක් කරයි',
 );
 
 /** Slovak (Slovenčina)
