@@ -216,6 +216,7 @@ $messages['af'] = array(
 	'articlefeedback' => 'Bladsybeoordeling',
 	'articlefeedback-desc' => 'Bladsybeoordeling',
 	'articlefeedback-survey-question-origin' => 'Watter bladsy het jy wanneer jy begin hierdie opname?',
+	'articlefeedback-survey-question-whyrated' => 'Laat ons weet waarom jy gegradeerde hierdie bladsy vandag (check alles wat van toepassing is):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Ek wou by te dra tot die algehele beoordeling van die bladsy',
 	'articlefeedback-survey-answer-whyrated-development' => "Ek hoop dat my rating 'n positiewe invloed op die ontwikkeling van die bladsy",
 	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Ek wil bydrae tot {{site name}}',
