@@ -82,7 +82,7 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select( array( 'moodbar_feedback' ),
 						array( 'mbf_type', 'COUNT(*) AS number' ),
-						array( 'mbf_hidden_state' => 0, 'mbf_timestamp > ' . $dbr->addQuotes( wfTimestamp( TS_MW, $timestamp ) ) ),
+						array( 'mbf_hidden_state' => 0, 'mbf_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $timestamp ) ) ),
 						__METHOD__,
 						array( 'GROUP BY' => 'mbf_type' )
 			);

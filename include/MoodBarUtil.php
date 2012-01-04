@@ -58,8 +58,7 @@ class MoodBarUtil {
 				$messageKey = $displayBlock;
 			}
 			
-			return wfMessage( $messageKey )->inLanguage( $wgLang )
-						->params( $wgLang->formatNum( $displayTime ) )->escaped();
+			return wfMessage( $messageKey )->params( $wgLang->formatNum( $displayTime ) )->escaped();
 
 		} else {
 			return wfMessage( 'moodbar-seconds' )->escaped();
