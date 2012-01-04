@@ -156,6 +156,28 @@ $messages['gl'] = array(
 	'mah-action-error' => 'Houbo un erro ao levar a cabo a acción',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'markashelpful-desc' => 'ממשק משתמש לסימון הערות כמועילות',
+	'mah-mark-text' => 'סימון שההערה מועילה',
+	'mah-you-marked-text' => 'לדעתך זה מועיל',
+	'mah-someone-marked-text' => '$1 {{GENDER:$1|חושב|חושבת}} שזה מועיל',
+	'mah-undo-mark-text' => 'ביטול',
+	'mah-action-error' => 'אירעה שגיאה בעת ביצוע הפעולה הזאת',
+);
+
+/** Hindi (हिन्दी)
+ * @author Ansumang
+ */
+$messages['hi'] = array(
+	'mah-mark-text' => 'सहायक चिन्हित करें',
+	'mah-you-marked-text' => 'आप सोचते हैं ये सहायक है',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1 ये सहायक लगता है}}',
+	'mah-undo-mark-text' => 'पूर्ववत करें',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -223,6 +245,13 @@ $messages['mk'] = array(
 	'mah-someone-marked-text' => '{{GENDER:$1|$1}} смета дека ова е корисно',
 	'mah-undo-mark-text' => 'врати',
 	'mah-action-error' => 'Се појави грешка при извршувањето на дејството',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'mah-undo-mark-text' => 'പ്രവൃത്തി തിരസ്കരിക്കുക',
 );
 
 /** Malay (Bahasa Melayu)
