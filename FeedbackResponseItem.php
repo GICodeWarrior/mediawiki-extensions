@@ -285,7 +285,7 @@ class MBFeedbackResponseItem {
 	 */
 	public static function update( $mbfr_id, $values ) {
 
-		if ( empty( $values ) ) {
+		if ( !$values ) {
 			return;
 		}
 		

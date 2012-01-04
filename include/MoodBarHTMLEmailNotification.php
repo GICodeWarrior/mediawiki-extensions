@@ -265,7 +265,7 @@ HTML;
 			foreach ( $pageObject as $key => $value ) {							
 				$links[$key.'Url'] = wfExpandUrl( wfAppendQuery( $clickTrackingLink, 
 									array( 'redirectto' => $value->getLinkURL(), 
-										'namespacenumber' => $value->getNamespace() ) ) );			
+										'namespacenumber' => $value->getNamespace() ) ), PROTO_CANONICAL );			
 			}
 		}
 		
