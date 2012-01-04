@@ -3,7 +3,7 @@
 #fbd-filters {
 	position: absolute;
 	width: 15em;
-	left:0px;  /* needed for ie6 & ie7 */
+	left: 0px;  /* needed for ie6 & ie7 */
 }
 
 #fbd-filters form {
@@ -193,7 +193,7 @@
 }
 
 .fbd-hover {
-	background-color: #f1f1f1;
+	background-color: #FAFAFA;
 }
 
 .fbd-item-emoticon {
@@ -229,7 +229,7 @@
 }
 
 .fbd-item-response {
-	line-height: 22px;
+	line-height: 2.1em;
 }
 
 .fbd-item-response-icon {
@@ -247,6 +247,7 @@
 .fbd-item-response > p {
 	padding: 0;
 	margin: 0;
+	line-height:2.1em;
 }
 
 .fbd-item-response-success {
@@ -303,22 +304,12 @@
 
 .fbd-item-userLinks{
 	font-size: 1em;	
-	visibility: hidden;
-}
-
-.fbd-hover .fbd-item-userLinks {
-	visibility: visible;
 }
 
 .fbd-item-time {
 	font-size: 1.2em;
 	float: right;
 	display: inline; /* ie7 fix */
-	visibility: hidden;
-}
-
-.fbd-hover .fbd-item-time {
-	visibility: visible;
 }
 
 .fbd-item-message {
