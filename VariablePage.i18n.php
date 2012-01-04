@@ -27,9 +27,11 @@ $messages['qqq'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Naudefj
+ * @author පසිඳු කාවින්ද
  */
 $messages['af'] = array(
 	'variablepage-navlink_text' => 'Skenk',
+	'variablepage-desc' => 'Liggewig veranderlike bladsy Aansturing',
 );
 
 /** Arabic (العربية)
