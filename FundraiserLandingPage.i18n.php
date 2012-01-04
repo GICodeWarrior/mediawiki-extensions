@@ -20,6 +20,13 @@ $messages['ast'] = array(
 	'fundraiserlandingpage-desc' => 'Toma los parámetros de la URL y los pasa como variables de plantía a la plantía especificada',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'fundraiserlandingpage-desc' => 'Выкарыстоўвае парамэтры URL і перадае іх у пазначаны шаблён у якасьці зьменных шаблёна',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
