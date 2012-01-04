@@ -41,6 +41,7 @@ $messages['qqq'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['af'] = array(
+	'webfonts' => 'WebFonts',
 	'webfonts-load' => 'Kies font',
 	'webfonts-reset' => 'Reset',
 	'webfonts-menu-tooltip' => "Kies 'n font vir die bladsy",
