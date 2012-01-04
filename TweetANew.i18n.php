@@ -212,22 +212,23 @@ $messages['mk'] = array(
 /** Dutch (Nederlands)
  * @author Inholland
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
-	'tweetanew-desc' => 'Verstuurt tweets wanneer een pagina wordt gemaakt of bewerkt. Afhankelijk van de voorkeuren die zijn ingesteld voor heel de wiki, gebeurt dit automatisch of vanop de bewerkingspagina.',
-	'tweetanew-newaction' => 'Tweet over deze nieuwe pagina',
-	'tweetanew-newtooltip' => 'Verstuur informatie over deze nieuwe pagina naar Twitter',
-	'tweetanew-editaction' => 'Tweet over deze bewerking',
-	'tweetanew-edittooltip' => 'Verstuur informatie over deze bewerking naar Twitter',
+	'tweetanew-desc' => 'Verstuurt tweets wanneer een pagina wordt aangemaakt of bewerkt. Afhankelijk van de voorkeuren die zijn ingesteld voor de wiki, gebeurt dit automatisch of vanaf de bewerkingspagina.',
+	'tweetanew-newaction' => 'Tweeten over deze nieuwe pagina',
+	'tweetanew-newtooltip' => 'Gegevens over deze nieuwe pagina naar Twitter verzenden',
+	'tweetanew-editaction' => 'Tweeten over deze bewerking',
+	'tweetanew-edittooltip' => 'Gegevens over deze bewerking naar Twitter verzenden',
 	'tweetanew-minoredit' => 'k',
 	'tweetanew-authorcredit' => 'door',
-	'tweetanew-newdefault' => 'NIEUWE PAGINA: $1 - $2',
-	'tweetanew-new1' => 'Ziet eruit dat $1 is aangemaakt op $2',
-	'tweetanew-new2' => '$1 is onlangs aangemaakt op $2',
-	'tweetanew-new3' => 'Bekijk $2 - het heeft een nieuwe pagina op $1',
-	'tweetanew-editdefault' => 'BIJGEWERKTE PAGINA:  $1 - $2',
-	'tweetanew-edit1' => 'Ziet eruit dat $1 is bijgewerkt op $2',
+	'tweetanew-newdefault' => 'NIEUWE PAGINA: $1 ($2)',
+	'tweetanew-new1' => '$1 is aangemaakt ($2)',
+	'tweetanew-new2' => '$1 is onlangs aangemaakt ($2)',
+	'tweetanew-new3' => 'Kijk eens op de nieuwe pagina $1 ($2)',
+	'tweetanew-editdefault' => 'BIJGEWERKTE PAGINA:  $1 ($2)',
+	'tweetanew-edit1' => '$1 is bijgewerkt op $2',
 	'tweetanew-edit2' => '$1 is onlangs aangepast op $2',
-	'tweetanew-edit3' => 'Bekijk $2 - het heeft nieuwe inhoud op $1',
+	'tweetanew-edit3' => 'Kijk eens op de aangepaste pagina $1 ($2)',
 );
 
