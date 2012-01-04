@@ -153,6 +153,7 @@ You may see an example in context at http://wikimediafoundation.org/wiki/Special
 
 /** Afrikaans (Afrikaans)
  * @author Naudefj
+ * @author පසිඳු කාවින්ද
  */
 $messages['af'] = array(
 	'contributionreporting-desc' => 'Lewendige verslaggewing oor Wikimedia se fondsinsameling',
@@ -192,6 +193,7 @@ $messages['af'] = array(
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Totaal vir hierdie week|Weeklikse totale inklusief die afgelope $1 weke}}',
 	'contribstats-payment-type' => 'Betaalwyse',
 	'contribstats-banner' => 'Banier',
+	'contribstats-payment-type-hits' => 'Payment type hits',
 	'contribstats-clicks' => 'Klieks',
 	'contribstats-donations' => 'Donasies',
 	'contribstats-conversion' => 'Sukses-persentasie',
@@ -200,6 +202,7 @@ $messages['af'] = array(
 	'contribstats-landingpage' => 'Landingsblad',
 	'contribstats-donatepage' => 'Skenkingsblad',
 	'contribstats-average' => 'Gemiddeld',
+	'contribstats-imperfect-data' => 'Hierdie data is nie volmaak sonder die gebruik van sessie die dop het sy beperkinge as die dop van skenkers.',
 	'contribstats-paypal-donations' => 'PayPal-donasies',
 	'contribstats-credit-card' => 'Kredietkaart',
 	'contribstats-fraud-note' => 'Bevat bedrieglike donasies.',
@@ -217,7 +220,9 @@ $messages['af'] = array(
 	'fundraiserstats-tab-averages' => 'Gemiddeldes (in USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimums (in USD)',
 	'fundraiserstats-tab-ytd' => 'Jaar-tot-datum (USD)',
+	'fundraiserstats-instructions' => "Om statistieke vir enige dag, Beweeg die muis oor die bar vir daardie dag. Elke jaar is 'n ander kleur op die kaart.",
 	'fundraiserstats-customize' => 'Aanpas',
+	'fundraiserstats-show-years' => 'Wys vir die volgende jaar:',
 	'fundraiserstats-time-zone' => 'Tydsone:',
 	'fundraiserstats-utc' => '(vanaf UTC)',
 );
@@ -2466,6 +2471,7 @@ $messages['hi'] = array(
 	'fundraiserstats-tab-contributions' => 'योगदान की संख्या',
 	'fundraiserstats-tab-averages' => 'औसत (USD)',
 	'fundraiserstats-tab-maximums' => 'अधिकतम (USD)',
+	'fundraiserstats-tab-ytd' => 'बर्ष-से-तारीख (USD)',
 	'fundraiserstats-customize' => 'अनुकूलित करें',
 	'fundraiserstats-show-years' => 'निम्न बर्षमान दिखाएँ:',
 	'fundraiserstats-time-zone' => 'समय मंडल:',
