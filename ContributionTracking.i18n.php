@@ -50,8 +50,10 @@ $messages['af'] = array(
 	'contrib-tracking-error' => 'Fout',
 	'contrib-tracking-error-text' => 'Ongeldige vorm voorlegging',
 	'contrib-tracking-submitting' => 'Stuur na betaling verwerker ...',
+	'contrib-tracking-continue' => 'As jy nie outomaties getrek het, kliek op die knoppie om u skenking te voltooi.',
 	'contrib-tracking-redirect' => 'Jy sal outomaties herlei word om jou skenking te voltooi.',
 	'contrib-tracking-button' => 'Gaan voort',
+	'contrib-tracking-item-name-onetime' => 'Eenmalige donasie',
 	'contrib-tracking-item-name-recurring' => 'Herhalende maandelikse skenking',
 );
 
