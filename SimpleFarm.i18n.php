@@ -48,6 +48,13 @@ $messages['gl'] = array(
 	'simplefarm-desc' => 'Simple, pero potente extensión de wiki granxa sen ningunha páxina de configuración luxosa',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'simplefarm-desc' => 'הרחבה פשוטה, אבל חזקה, לניהול חוות ויקי ללא דפי הגדרות מורכבים',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
