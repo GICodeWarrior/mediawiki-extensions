@@ -67,9 +67,11 @@ See graph of [http://en.wikipedia.org/wiki/Special:PrefStats/skin user preferenc
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Naudefj
+ * @author පසිඳු කාවින්ද
  */
 $messages['af'] = array(
 	'prefstats' => 'Voorkeur-statistieke',
+	'prefstats-desc' => 'Track statistieke oor hoeveel gebruikers het sekere voorkeure in staat gestel',
 	'prefstats-title' => 'Voorkeur-statistieke',
 	'prefstats-xaxis' => 'Tydsduur (ure)',
 	'prefstats-factors' => 'Wys per: $1',
@@ -80,6 +82,7 @@ $messages['af'] = array(
 	'prefstats-factor-twoweeks' => 'twee weke',
 	'prefstats-factor-fourweeks' => 'vier weke',
 	'prefstats-factor-default' => 'terug na die verstek-skaal',
+	'prefstats-legend-out' => 'Uitgeteken',
 	'prefstats-legend-in' => 'Aangemeld',
 );
 
