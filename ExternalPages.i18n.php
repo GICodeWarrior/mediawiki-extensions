@@ -55,6 +55,16 @@ $messages['ar'] = array(
 	'externalpages-no-page' => 'لم تحدد الصفحة',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'externalpages' => 'Páxines esternes',
+	'externalpages-desc' => 'Recupera y amuesa les páxines de sitios WMF remotos',
+	'externalpages-bad-page' => 'Se conseñó una páxina incorreuta',
+	'externalpages-no-page' => 'Nun se conseñó denguna páxina',
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  * @author Comp1089
