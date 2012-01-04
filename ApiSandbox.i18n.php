@@ -55,8 +55,11 @@ $messages['qqq'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['af'] = array(
+	'apisb-api-disabled' => 'API is afgeskakel op hierdie webwerf.',
 	'apisb-parameters' => 'Parameters',
 	'apisb-result' => 'Resultaat',
+	'apisb-select-action' => "Kies 'n aksie",
+	'apisb-select-value' => "Kies 'n waarde",
 	'apisb-loading' => 'Laai tans…',
 	'apisb-load-error' => 'Fout met laai API beskrywing',
 	'apisb-request-error' => 'Fout met die uitvoering van API-versoek',
@@ -567,6 +570,7 @@ $messages['hi'] = array(
 	'apisb-parameters' => 'पारामीटर्स',
 	'apisb-result' => 'परिणाम',
 	'apisb-request-url' => 'अनुरोध URL:',
+	'apisb-request-post' => 'डेटा भेजें:',
 	'apisb-select-action' => 'क्रिया चयन करें',
 	'apisb-select-query' => 'क्वेरी क्या करना है?',
 	'apisb-select-value' => 'मूल्य चयन करें',
