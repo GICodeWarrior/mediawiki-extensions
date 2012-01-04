@@ -167,6 +167,25 @@ coa mensaxe de erro: "$2"!',
 	'sql2wiki-err-feature_not_supported' => 'SQL2Wiki: A función non está soportada polo tipo de base de datos $1!',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'sql2wiki' => 'SQL2Wiki',
+	'sql2wiki-desc' => 'SQL-daty direktnje we wobsahu strony pokazać',
+	'sql2wiki-special' => 'SQL2Wiki-kod při kliknjenju wuwjesć',
+	'sql2wiki-cache_refresh' => 'Aktualizować',
+	'sql2wiki-err-invalid_db_id' => 'SQL2Wiki: Falowacy abo njepłaćiwy ID datoweje banki',
+	'sql2wiki-err-invalid_type' => 'SQL2Wiki: Falowacy abo njepłaćiwy typ',
+	'sql2wiki-err-failed_to_connect' => 'SQL2Wiki: Zwjazanje z $1 je so njeporádźiło!',
+	'sql2wiki-err-failed_to_execute' => 'SQL2Wiki: Wuwjedźenje přikaza je so njeporadźiło:
+
+"$1"
+
+ze zmylkowej zdźělenku: "$2"!',
+	'sql2wiki-err-feature_not_supported' => 'SQL2Wiki: Funkcija so přez datowu banku typa $1 njepodpěruje!',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
