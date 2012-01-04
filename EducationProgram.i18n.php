@@ -24,6 +24,14 @@ $messages['en'] = array(
 	'ep-item-summary' => 'Summary',
 	'ep-toplink' => 'My courses',
 
+	// Navigation links
+	'ep-nav-orgs' => 'Institution list',
+	'ep-nav-courses' => 'Courses list',
+	'ep-nav-terms' => 'Terms list',
+	'ep-nav-mycourses' => 'My courses',
+	'ep-nav-students' => 'Student list',
+	'ep-nav-mentors' => 'Ambassador list',
+
 	// Preferences
 	'prefs-education' => 'Education',
 	'ep-prefs-showtoplink' => 'Show a link to [[Special:MyCourses|your courses]] at the top of every page.',
@@ -131,6 +139,10 @@ $messages['en'] = array(
 	'eptermpager-filter-course-id' => 'Course',
 	'eptermpager-filter-year' => 'Year',
 
+	// Student pager
+	'epstudentpager-header-user-id' => 'User',
+	'epstudentpager-header-id' => 'Id',
+
 	// Special:EditInstitution
 	'editinstitution-text' => 'Enter the institution details below and click submit to save your changes.',
 	'educationprogram-org-edit-name' => 'Institution name',
@@ -229,12 +241,6 @@ $messages['en'] = array(
 	'ep-mycourses-course-title' => 'My courses: $1 at $2',
 	'specialmycourses-summary-name' => 'Course name',
 	'specialmycourses-summary-org' => 'Institution name',
-
-	// Navigation links
-	'ep-nav-orgs' => 'Institution list',
-	'ep-nav-courses' => 'Courses list',
-	'ep-nav-terms' => 'Terms list',
-	'ep-nav-mycourses' => 'My courses',
 );
 
 /** Message documentation (Message documentation)

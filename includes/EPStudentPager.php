@@ -26,14 +26,15 @@ class EPStudentPager extends EPPager {
 		parent::__construct( $context, $conds, 'EPStudent' );
 	}
 
-		/**
+	/**
 	 * (non-PHPdoc)
 	 * @see EPPager::getFields()
 	 */
 	public function getFields() {
 		return array(
-			// TODO
-		); 
+			'id',
+			'user_id',
+		);
 	}
 	
 	/**
@@ -58,8 +59,15 @@ class EPStudentPager extends EPPager {
 	 */
 	protected function getFormattedValue( $name, $value ) {
 		switch ( $name ) {
-			case '': // TODO
+			case 'id':
 				$value = $value;
+				break;
+			case 'user_id':
+				$user = User::newFromId( $value );
+				$name = $user->getRealName() === '' ? $user->getName() : $user->getRealName();
+
+				$value = Linker::userLink( $value, $name ) . Linker::userToolLinks( $value, $name );
+
 				break;
 		}
 
@@ -71,6 +79,16 @@ class EPStudentPager extends EPPager {
 	 * @see EPPager::getSortableFields()
 	 */
 	protected function getSortableFields() {
+		return array(
+			'id',
+		);
+	}
+
+	/**
+	 * (non-PHPdoc)
+	 * @see EPPager::getMultipleItemActions()
+	 */
+	protected function getMultipleItemActions() {
 		return array();
 	}
 

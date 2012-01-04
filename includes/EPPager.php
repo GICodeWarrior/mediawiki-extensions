@@ -165,9 +165,7 @@ abstract class EPPager extends TablePager {
 			
 			$cells[] = Html::rawElement( 'td', $this->getCellAttrs( $field, $value ), $formatted );
 		}
-		
-		$links = $this->getControlLinks( $this->currentObject );
-		
+
 		return Html::rawElement( 'tr', $this->getRowAttrs( $row ), implode( '', $cells ) ) . "\n";
 	}
 

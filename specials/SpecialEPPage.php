@@ -144,7 +144,7 @@ abstract class SpecialEPPage extends SpecialPage {
 		}
 		
 		$this->getOutput()->addHTML(
-			Html::rawElement( 'p', array(), $this->getLang()->pipeList( $links ) )
+			Html::rawElement( 'p', array(), $this->getLanguage()->pipeList( $links ) )
 		);
 	}
 	
@@ -161,6 +161,11 @@ abstract class SpecialEPPage extends SpecialPage {
 			wfMsg( 'ep-nav-courses' ) => SpecialPage::getTitleFor( 'Courses' ),
 			wfMsg( 'ep-nav-terms' ) => SpecialPage::getTitleFor( 'Terms' ),
 		);
+
+		if ( $this->getUser()->isAllowed( 'epmentor' ) ) {
+			$items[wfMsg( 'ep-nav-students' )] = SpecialPage::getTitleFor( 'Students' );
+			$items[wfMsg( 'ep-nav-mentors' )] = SpecialPage::getTitleFor( 'Ambassadors' );
+		}
 		
 		if ( $this->getUser()->isAllowed( 'epmentor' ) || EPStudent::has( array( 'user_id' => $this->getUser()->getId() ) ) ) {
 			$items[wfMsg( 'ep-nav-mycourses' )] = SpecialPage::getTitleFor( 'MyCourses' );
