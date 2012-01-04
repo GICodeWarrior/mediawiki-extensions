@@ -29,6 +29,13 @@ $messages['ast'] = array(
 	'formatnum-desc' => 'Pasa de formatnum a number_format de PHP',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'formatnum-desc' => 'Абгортка да PHP-функцыі number_format',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'formatnum-desc' => 'Ermöglicht das Formatieren von Zahlen mit php number_format',
