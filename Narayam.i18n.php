@@ -523,7 +523,7 @@ $messages['de'] = array(
 	'narayam-desc' => 'Ermöglicht benutzerdefinierte Eingabemethoden für Eingabefelder',
 	'narayam-toggle-ime' => 'Aktiviere ($1)',
 	'narayam-menu' => 'Eingabemethode',
-	'narayam-menu-tooltip' => 'Steuerung des Eingabemethodeneditors von Narayam (IME)',
+	'narayam-menu-tooltip' => 'Eine Eingabemethode auswählen',
 	'narayam-help' => 'Hilfe',
 	'narayam-help-page' => 'Help:Eingabe',
 	'narayam-checkbox-tooltip' => 'Eingabemethode ein- und ausschalten',
@@ -548,7 +548,7 @@ $messages['de'] = array(
 	'narayam-ne' => 'Nepalesisch (Transliteration)',
 	'narayam-ne-inscript' => 'Nepalesisch (InScript)',
 	'narayam-or' => 'Oriya (Transliteration)',
-	'narayam-or-lekhani' => 'Odiya (Lekhani)',
+	'narayam-or-lekhani' => 'Oriya (Lekhani)',
 	'narayam-or-inscript' => 'Oriya (InScript)',
 	'narayam-pa-phonetic' => 'Punjabi - Gurmukhi (Phonetisch)',
 	'narayam-pa-inscript' => 'Punjabi - Gurmukhi (InScript)',
@@ -1010,7 +1010,7 @@ $messages['gl'] = array(
 	'narayam-gom-deva' => 'Transliteración para goan konkani-devanagari',
 	'narayam-gom-deva-inscript' => 'InScript para goan konkani-devanagari',
 	'narayam-he-standard-2011-extonly' => 'Hebreo estándar 2011',
-	'narayam-he-standard-2011' => 'Hebreo estándar 2011',
+	'narayam-he-standard-2011' => 'Hebreo estándar 2011 (teclado inglés)',
 );
 
 /** Swiss German (Alemannisch)
@@ -1191,6 +1191,7 @@ $messages['hi'] = array(
 	'narayam-menu' => 'इनपुट विधि',
 	'narayam-help' => 'सहायता',
 	'narayam-help-page' => 'Help:टंकण',
+	'narayam-enable-preference' => 'इनपूट पद्धती सक्षम करें',
 	'narayam-more-imes' => 'अधिक इनपुट विधियाँ',
 	'narayam-am' => 'अम्हारिक ट्रांसलिटरेसन',
 	'narayam-as' => 'असमिया ट्रांसलिटरेसन',
@@ -1211,6 +1212,7 @@ $messages['hi'] = array(
 	'narayam-or' => 'ओड़िया ट्रांसलिटरेसन',
 	'narayam-or-lekhani' => 'ओड़िया लेखनी',
 	'narayam-or-inscript' => 'ओड़िया इनस्क्रिप्ट',
+	'narayam-pa-phonetic' => 'गुरुमुखी पंजाबी फोनेटिक',
 	'narayam-pa-inscript' => 'गुरुमुखी पंजाबी इनस्क्रिप्ट',
 	'narayam-sa' => 'संस्कृत ट्रांसलिटरेसन',
 	'narayam-sa-inscript' => 'संस्कृत इनस्क्रिप्ट',
@@ -1218,6 +1220,7 @@ $messages['hi'] = array(
 	'narayam-ta-99' => 'तामिल९९',
 	'narayam-ta-inscript' => 'तामिल इनस्क्रिप्ट',
 	'narayam-ta' => 'तामिल ट्रांसलिटरेसन',
+	'narayam-ta-bamini' => 'तामिल बामीनी',
 	'narayam-tcy' => 'तुलु ट्रांसलिटरेसन',
 	'narayam-te-inscript' => 'तेलुगु इनस्क्रिप्ट',
 	'narayam-bn-avro' => 'बंगाली एभ्रो',
@@ -1225,6 +1228,7 @@ $messages['hi'] = array(
 	'narayam-de' => 'जर्मान',
 	'narayam-gu' => 'गुजराती ट्रांसलिटरेसन',
 	'narayam-gu-inscript' => 'गूज़राती इनस्क्रिप्ट',
+	'narayam-sah-standard' => 'सखा स्टैंडर्ड',
 	'narayam-hne-inscript' => 'छतीसगड़ि इनस्क्रिप्ट',
 	'narayam-mai-inscript' => 'मैथिली इनस्क्रिप्ट',
 );
@@ -1290,7 +1294,7 @@ $messages['hsb'] = array(
 	'narayam-gom-deva' => 'Transliteracija Konkanišćiny (Goa) - Dewanagari',
 	'narayam-gom-deva-inscript' => 'Konkanišćina (Goa) - Dewanagari (InScript)',
 	'narayam-he-standard-2011-extonly' => 'Hebrejski standard 2011',
-	'narayam-he-standard-2011' => 'Hebrejski standard 2011',
+	'narayam-he-standard-2011' => 'Hebrejski standard 2011 (jendźelska tastatura)',
 );
 
 /** Hungarian (Magyar)
@@ -1693,13 +1697,14 @@ $messages['mk'] = array(
  * @author Junaid P V
  * @author Junaidpv
  * @author Praveenp
+ * @author Shijualex
  * @author Vssun
  */
 $messages['ml'] = array(
 	'narayam-desc' => 'ഇൻപുട്ട് ഫീൽഡുകളിൽ ഇച്ഛാനുസരണമുള്ള ലിപികളിൽ എഴുതാനുള്ള സൗകര്യം കൂട്ടിച്ചേർക്കുന്നു',
 	'narayam-toggle-ime' => 'സജീവമാക്കുക ($1)',
 	'narayam-menu' => 'എഴുത്തുപകരണം',
-	'narayam-menu-tooltip' => 'ഒരു  എഴുത്തുരീതി തിരഞ്ഞെടുക്കുക',
+	'narayam-menu-tooltip' => 'എഴുത്തുരീതി തിരഞ്ഞെടുക്കുക',
 	'narayam-help' => 'സഹായം',
 	'narayam-help-page' => 'Help:എഴുത്ത്',
 	'narayam-checkbox-tooltip' => 'എഴുത്തുപകരണം ഉപയോഗിക്കാനും ഒഴിവാക്കാനും ഇവിടെ ഞെക്കുക',
@@ -1717,7 +1722,7 @@ $messages['ml'] = array(
 	'narayam-hi-inscript' => 'ഹിന്ദി ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-kn' => 'കന്നഡ ലിപ്യന്തരണം',
 	'narayam-kn-inscript' => 'കന്നട ഇൻസ്ക്രിപ്റ്റ്',
-	'narayam-ml' => 'മലയാളം ലിപ്യന്തരണം',
+	'narayam-ml' => 'മലയാളം ലിപിമാറ്റം',
 	'narayam-ml-inscript' => 'മലയാളം ഇൻസ്ക്രിപ്റ്റ്',
 	'narayam-mr' => 'മറാത്തി ലിപ്യന്തരണം',
 	'narayam-mr-inscript' => 'മറാത്തി ഇൻസ്ക്രിപ്റ്റ്',
@@ -1903,7 +1908,7 @@ $messages['nl'] = array(
 	'narayam-gom-deva' => 'Goan Konkani-Devanagari (transliteratie)',
 	'narayam-gom-deva-inscript' => 'Goan Konkani-Devanagari InScript',
 	'narayam-he-standard-2011-extonly' => 'Hebreeuws standaard 2011',
-	'narayam-he-standard-2011' => 'Hebreeuws standaard 2011',
+	'narayam-he-standard-2011' => 'Hebreeuws standaard 2011 (Engels toetsenbord)',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
@@ -2866,11 +2871,26 @@ $messages['vi'] = array(
 
 /** Yiddish (ייִדיש)
  * @author Imre
+ * @author פוילישער
  */
 $messages['yi'] = array(
 	'narayam-help' => 'הילף',
+	'narayam-am' => 'אמהאריש טראנסליטעראציע',
+	'narayam-as' => 'אַסאַמיש טראנסליטעראציע',
+	'narayam-as-avro' => 'אַסאַמיש אוורא',
 	'narayam-eo' => 'עספעראנטא',
+	'narayam-hi' => 'הינדי טראנסליטעראציע',
+	'narayam-hi-inscript' => 'הינדי – InScript',
+	'narayam-kn' => 'קאַנאַדאַ טראנסליטעראציע',
+	'narayam-ml' => 'מאלייאלאם טראנסליטעראציע',
+	'narayam-mr' => 'מאראטהי טראנסליטעראציע',
+	'narayam-mr-inscript' => 'מאראטהי InScript',
+	'narayam-ne' => 'נעפאליש טראנסליטעראציע',
+	'narayam-or-inscript' => 'אריע – InScript',
+	'narayam-sa' => 'סאנסקריט טראנסליטעראציע',
 	'narayam-de' => 'דײַטשיש',
+	'narayam-he-standard-2011-extonly' => 'העברעיש מיט פינטלעך',
+	'narayam-he-standard-2011' => 'העברעיש מיט פינטלעך (ענגלישער קלאוויער)',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
