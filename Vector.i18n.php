@@ -784,6 +784,7 @@ $messages['he'] = array(
  * @author Ansumang
  */
 $messages['hi'] = array(
+	'vector' => 'यूआई उन्नति वेक्टर स्किन के लिए',
 	'vector-collapsiblenav-more' => 'और अधिक भाषाएं',
 	'vector-simplesearch-search' => 'खोज',
 	'vector-noexperiments-preference' => 'मुझे सुविधा प्रयोगों से बाहर निकालें',
