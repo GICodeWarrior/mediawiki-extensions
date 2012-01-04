@@ -37,8 +37,9 @@ class MoodBarHTMLEmailNotification {
 	 * @param $response string response text
 	 * @param $feedback integer feedback id
 	 * @param $type string moodbar type
+	 * @param $responseId int response id
 	 */
-	public function notifyOnRespond( $editor, $title, $timestamp, $feedback, $response, $type ) {
+	public function notifyOnRespond( $editor, $title, $timestamp, $feedback, $response, $type, $responseId ) {
 		global $wgEnotifUseJobQ, $wgEnotifUserTalk;
 
 		if ( $title->getNamespace() != NS_USER_TALK || !$wgEnotifUserTalk || 
@@ -53,12 +54,13 @@ class MoodBarHTMLEmailNotification {
 				'timestamp' => $timestamp,
 				'response' => $response,
 				'feedback' => $feedback,
-				'type' => $type
+				'type' => $type,
+				'responseId' => $responseId
 			);
 			$job = new MoodBarHTMLMailerJob( $title, $params );
 			$job->insert();
 		} else {
-			$this->actuallyNotifyOnRespond( $editor, $title, $timestamp, $feedback, $response, $type );
+			$this->actuallyNotifyOnRespond( $editor, $title, $timestamp, $feedback, $response, $type, $responseId );
 		}
 	}
 
@@ -74,8 +76,9 @@ class MoodBarHTMLEmailNotification {
 	 * @param $response string response text
 	 * @param $feedabck integer feedback id
 	 * @param $type string moodbar type
+	 * @param $responseId int response id
 	 */
-	public function actuallyNotifyOnRespond( $editor, $title, $timestamp, $feedback, $response, $type ) {
+	public function actuallyNotifyOnRespond( $editor, $title, $timestamp, $feedback, $response, $type, $responseId ) {
 		global $wgEnotifUserTalk;
 
 		wfProfileIn( __METHOD__ );
@@ -94,6 +97,8 @@ class MoodBarHTMLEmailNotification {
 
 		if ( $wgEnotifUserTalk && $this->canSendUserTalkEmail( $editor, $title ) ) {
 			$this->compose( $this->targetUser );
+			//update to mark the email as 'sent'
+			MBFeedbackResponseItem::update( $responseId, array( 'mbfr_enotif_sent' => 1 ) );
 		}
 
 		wfProfileOut( __METHOD__ );
@@ -253,12 +258,14 @@ HTML;
 			$token = wfGenerateToken();
 			$eventid = 'ext.feedbackDashboard@' . $wgMoodBarConfig['bucketConfig']['version'] . 
 					'-email-response_link-' . $this->type;
-			$clickTrackingLink = $wgServer . $wgScriptPath . '/api.php?action=clicktracking&eventid=' . 
-						wfUrlencode( $eventid ) . '&token=' . wfUrlencode( $token );
-			
-			foreach ( $pageObject as $key => $value ) {
-				$links[$key.'Url'] = $clickTrackingLink . '&redirectto=' . wfUrlencode( $value->getLinkURL() ) . 
-							'&namespacenumber=' . wfUrlencode( $value->getNamespace() ); 
+
+			$clickTrackingLink = wfAppendQuery( wfScript( 'api' ), 
+								array( 'action' => 'clicktracking', 'eventid' => $eventid, 'token' => $token ) );
+
+			foreach ( $pageObject as $key => $value ) {							
+				$links[$key.'Url'] = wfExpandUrl( wfAppendQuery( $clickTrackingLink, 
+									array( 'redirectto' => $value->getLinkURL(), 
+										'namespacenumber' => $value->getNamespace() ) ) );			
 			}
 		}
 		

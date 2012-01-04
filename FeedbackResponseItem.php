@@ -278,6 +278,25 @@ class MBFeedbackResponseItem {
 		}
 	}
 
+	/**
+	 * Update response item based on the primary key $mbfr_id
+	 * @param $mbfr_id int - id representing a unique response item
+	 * @param $values array - key -> database field, value -> the new value
+	 */
+	public static function update( $mbfr_id, $values ) {
+
+		if ( empty( $values ) ) {
+			return;
+		}
+		
+		$dbw = wfGetDB( DB_MASTER );
+
+		$dbw->update( 'moodbar_feedback_response', 
+				$values,
+				array( 'mbfr_id' => $mbfr_id ),
+				__METHOD__ );
+	}
+	
 }
 
 class MWFeedbackResponseItemPropertyException extends MWException {};

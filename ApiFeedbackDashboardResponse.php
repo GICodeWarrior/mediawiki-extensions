@@ -70,7 +70,8 @@ class ApiFeedbackDashboardResponse extends ApiBase {
 			$EMailNotif->notifyOnRespond( $wgUser, $talkPage, wfTimestampNow(), 
 							$item->getProperty('feedback'), 
 							$wgLang->truncate( $response, 250 ), 
-							$item->getProperty('feedbackitem')->getProperty( 'type' ) );
+							$item->getProperty('feedbackitem')->getProperty( 'type' ),
+							$id );
 
 		}
 
