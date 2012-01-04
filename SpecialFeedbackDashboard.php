@@ -144,7 +144,7 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 			array( 'id' => 'fbd-filters-my-response', 'value' => '1' ) );
 			
 			$myResponseFilter = '<label for="fbd-filters-my-response" id="fbd-filters-type-my-response-label" class="fbd-filters-label">' . 
-			                    $myResponseMsg . $myResponseCheckbox . '</label>';
+			                     $myResponseCheckbox . $myResponseMsg . '</label>';
 		}
 		
 		return <<<HTML
