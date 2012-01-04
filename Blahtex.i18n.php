@@ -1388,7 +1388,7 @@ Talvez pretendía usar "$2" no seu lugar?',
 	'math_InvalidColour' => 'A cor "$1" non é válida.',
 	'math_InvalidUtf8Input' => 'A cadea de entrada non era UTF-8 válido',
 	'math_LatexFontNotSpecified' => 'Non se especificou fonte de LaTeX para "$1"',
-	'math_LatexPackageUnavailable' => 'É imposíbel producir un PNG porque o paquete LaTeX "$1" non está dispoñíbel',
+	'math_LatexPackageUnavailable' => 'Non se puido producir un PNG porque o paquete LaTeX "$1" non está dispoñible',
 	'math_MismatchedBeginAndEnd' => 'Os comandos "$1" e "$2" non coinciden',
 	'math_MisplacedLimits' => 'O comando "$1" só pode aparecer a continuación dun operador matemático.
 Considere utilizar "\\mathop".',
