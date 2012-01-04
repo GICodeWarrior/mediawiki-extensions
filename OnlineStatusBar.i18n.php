@@ -192,7 +192,9 @@ $messages['he'] = array(
 	'onlinestatusbar-desc' => 'שורת מצב שמציגה בדף המשתמש אם המשתמש מקוון, בהתאם להעדפות',
 	'onlinestatusbar-line' => '$1 $2 $3 עכשיו',
 	'onlinestatusbar-used' => 'לאפשר לאחרים לראות שאתם מחוברים?',
+	'onlinestatusbar-away-time' => 'אחרי כמה לסמך אותך בתור "לא נמצא":',
 	'onlinestatusbar-status' => 'מהו המצב שתרצו להיות פה לפי בררת המחדל:',
+	'onlinestatusbar-away' => 'להתייחס באופן אוטומטי כאלה "לא נמצא" אחרי פרק זמן מוגדר',
 	'onlinestatusbar-purge' => 'לנקות את המטמון של דף המשתמש בכל פעם שאתם נכנסים או יוצאים',
 	'prefs-onlinestatus' => 'מצב ההימצאות באתר',
 	'onlinestatusbar-hide' => 'להסתיר את שורת המצב כדי להשתמש רק במילת הקסם (למשתמשים מתקדמים)',
@@ -200,6 +202,7 @@ $messages['he'] = array(
 	'onlinestatusbar-status-busy' => 'עסוק',
 	'onlinestatusbar-status-away' => 'לא ליד מחשב',
 	'onlinestatusbar-status-offline' => 'לא באתר',
+	'onlinestatusbar-status-uknown' => 'המצב אינו ידוע',
 	'onlinestatusbar-status-hidden' => 'מוסתר',
 );
 
