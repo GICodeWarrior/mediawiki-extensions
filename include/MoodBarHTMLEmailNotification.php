@@ -240,20 +240,20 @@ HTML;
 	 * @return array - the links to be tracked in email
 	 */
 	protected function buildEmailLink() {
-		$pageObject = array( 'feedbackPage' => SpecialPage::getTitleFor( 'FeedbackDashboard', $this->feedback ),
-					'editorTalkPage' => $this->editor->getTalkPage(),
-					'targetUserTalkPage' => $this->targetUser->getTalkPage() );
+		$pageObject = array( 'feedbackPage' => array( 'obj' => SpecialPage::getTitleFor( 'FeedbackDashboard', $this->feedback ), 'clicktracking' => false ),
+					'editorTalkPage' => array( 'obj' => $this->editor->getTalkPage(), 'clicktracking' => false ),
+					'targetUserTalkPage' => array( 'obj' => $this->targetUser->getTalkPage(), 'clicktracking' => true ) );
 		
 		$links = array();
 		
 		// if clickTracking is not enabled, return the full canonical url for email  
 		if ( !class_exists( 'ApiClickTracking' ) ) {
 			foreach ( $pageObject as $key => $value ) {
-				$links[$key.'Url'] = $value->getCanonicalURL();
+				$links[$key.'Url'] = $value['obj']->getCanonicalURL();
 			}
 		}
 		else {
-			global $wgServer, $wgScriptPath, $wgMoodBarConfig;
+			global $wgMoodBarConfig;
 		
 			$token = wfGenerateToken();
 			$eventid = 'ext.feedbackDashboard@' . $wgMoodBarConfig['bucketConfig']['version'] . 
@@ -262,10 +262,15 @@ HTML;
 			$clickTrackingLink = wfAppendQuery( wfScript( 'api' ), 
 								array( 'action' => 'clicktracking', 'eventid' => $eventid, 'token' => $token ) );
 
-			foreach ( $pageObject as $key => $value ) {							
-				$links[$key.'Url'] = wfExpandUrl( wfAppendQuery( $clickTrackingLink, 
-									array( 'redirectto' => $value->getLinkURL(), 
-										'namespacenumber' => $value->getNamespace() ) ), PROTO_CANONICAL );			
+			foreach ( $pageObject as $key => $value ) {	
+				if ( $value['clicktracking'] ) {
+					$links[$key.'Url'] = wfExpandUrl( wfAppendQuery( $clickTrackingLink, 
+									array( 'redirectto' => $value['obj']->getLinkURL(), 
+										'namespacenumber' => $value['obj']->getNamespace() ) ), PROTO_CANONICAL );	
+				}
+				else {
+					$links[$key.'Url'] = $value['obj']->getCanonicalURL();	
+				}		
 			}
 		}
 		
