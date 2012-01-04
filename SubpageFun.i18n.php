@@ -48,6 +48,13 @@ $messages['gl'] = array(
 	'subpagefun-desc' => 'Engade funcións analíticas que permiten obter información máis ampla acerca das [http://www.mediawiki.org/wiki/Help:Subpages subpáxinas]',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'subpagefun-desc' => 'הוספת פונקציות מפענח שמאפשרות לקבל מידע נרחב על [http://www.mediawiki.org/wiki/Help:Subpages דפי־משנה]',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
