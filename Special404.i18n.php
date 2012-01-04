@@ -455,6 +455,13 @@ $messages['ru'] = array(
 * [[{{MediaWiki:Mainpage}}|The Main page]]',
 );
 
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'error404' => '404 හමු නොවුණි',
+);
+
 /** Swedish (Svenska)
  * @author WikiPhoenix
  */
