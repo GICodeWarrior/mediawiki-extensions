@@ -61,6 +61,15 @@ $messages['gl'] = array(
 	'wom-desc' => 'Modelo de obxectos de páxina sinxelo para os usuarios do wiki',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'objecteditor' => 'עורך עצמים',
+	'wom_editor' => 'דגם עצמים',
+	'wom-desc' => 'דגם עצמים קל לדף עבור משתמש ויקי',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
