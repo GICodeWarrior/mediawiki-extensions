@@ -33,7 +33,10 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'ratedpages' => 'Reader gegradeerde bladsye',
+	'ratedpages-leg' => "Vind bladsye beoordeeld met 'n groot aantal van graderings",
+	'ratedpages-list' => "Hier is 'n lys van bladsye gesorteer volgens hul leser terugvoer telling.",
 	'ratedpages-none' => 'Daar is geen bladsye in hierdie lys nie',
+	'ratedpages-graphs' => 'rating data',
 );
 
 /** Arabic (العربية)
