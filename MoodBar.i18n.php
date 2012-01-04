@@ -212,6 +212,10 @@ See also:
 	'moodbar-intro-feedback' => 'Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-intro-editing' => '[[File:MoodBar-Step-1.png|right|200px]]
 Intro title of the MoodBar overlay trigger. $1 is the SITENAME.',
+	'moodbar-weeks' => 'Full word for "weeks". $1 is the number of weeks. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}',
+	'moodbar-months' => 'Full word for "months". $1 is the number of months. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}',
+	'moodbar-years' => 'Full word for "years". $1 is the number of years. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}',
+	'moodbar-seconds' => 'The phrase "less than 1 minute", Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}',
 	'moodbar-type-happy-title' => 'No gender support ([[bugzilla:30071|bug 30071]])',
 	'moodbar-type-sad-title' => 'No gender support ([[bugzilla:30071|bug 30071]])',
 	'moodbar-type-confused-title' => 'No gender support ([[bugzilla:30071|bug 30071]])',
