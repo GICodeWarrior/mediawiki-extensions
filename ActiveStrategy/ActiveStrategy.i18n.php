@@ -17,9 +17,11 @@ $messages['qqq'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Naudefj
+ * @author පසිඳු කාවින්ද
  */
 $messages['af'] = array(
 	'activestrategy' => 'Aktiewe strategie',
+	'active-strategy-desc' => 'Word die aantal wysigings aan strategiese beplanning bladsye',
 	'nedits' => '$1 {{PLURAL:$1|wysiging|wysigings}}',
 );
 
@@ -239,6 +241,13 @@ $messages['he'] = array(
 	'active-strategy-desc' => 'הצגת מספר העריכות לדפי תכנון אסטרטגי',
 	'active-strategy-intro' => 'מספר העריכות לדפי כוח משימה ב{{PLURAL:$1|יום האחרון|־$1 הימים האחרונים}}.',
 	'nedits' => '{{PLURAL:$1|עריכה אחת|$1 עריכות}}',
+);
+
+/** Hindi (हिन्दी)
+ * @author Ansumang
+ */
+$messages['hi'] = array(
+	'activestrategy' => 'सक्षम रणनीति',
 );
 
 /** Croatian (Hrvatski)
