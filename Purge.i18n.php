@@ -19,11 +19,12 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Purodha
+ * @author Siebrand
  * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'purge' => '{{Identical|Purge}}',
-	'purge-desc' => '{{desc}}',
+	'purge-desc' => '{{desc}} "purge" refers to {{msg-mw|purge}}.',
 );
 
 /** Arabic (العربية)
@@ -40,6 +41,14 @@ $messages['ar'] = array(
 $messages['arz'] = array(
 	'purge' => 'إفراغ الكاش',
 	'purge-desc' => 'يضيف لسان إفراغ للكاش فى كل الصفحات العادية ويتفادى تحقق الكاش للمستخدمين المجهولين مما يسمح بإفراغ الكاش بشكل سريع',
+);
+
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'purge' => 'Purgar',
+	'purge-desc' => 'Amiesta una llingüeta purgar en toles páxines normales que permite la purga rápida de la caché',
 );
 
 /** Azerbaijani (Azərbaycanca)
@@ -59,10 +68,11 @@ $messages['bar'] = array(
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'purge' => 'ачысьціць',
-	'purge-desc' => 'Дадае закладку ачысткі на ўсе звычайныя старонкі і прапускае праверку ачысткі для ананімных удзельнікаў, для хуткай ачысткі кэшу',
+	'purge-desc' => 'Дадае закладку ачысткі на ўсе звычайныя старонкі для хуткай ачысткі кэшу',
 );
 
 /** Bulgarian (Български)
@@ -204,12 +214,13 @@ $messages['gu'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'purge' => 'רענון המטמון',
-	'purge-desc' => 'הוספת לשונית ריקון לכל הדפים הרגילים, ועקיפת בדיקת הריקון למשתמשים אנונימיים כדי לאפשר ריקון זריז של המטמון.',
+	'purge-desc' => 'הוספת לשונית ריקון לכל הדפים הרגילים שמאפשרת ריקון זריז של המטמון',
 );
 
 /** Hindi (हिन्दी)
@@ -233,7 +244,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'purge' => 'wuprózdnić',
-	'purge-desc' => 'Přidawa rajtark "wuprózdnić" za spěšne wurjedźenje pufrowaka na wšěch normalnych stronach a wobeńdźe kontrolu za anonymnych wužiwarjow',
+	'purge-desc' => 'Přidawa rajtark "wuprózdnić" za spěšne wurjedźenje pufrowaka na wšěch normalnych stronach',
 );
 
 /** Hungarian (Magyar)
@@ -354,7 +365,7 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'purge' => 'singkirkan',
-	'purge-desc' => 'Membubuh tab singkirkan pada semua laman biasa, serta memintas semakan penyingkiran untuk pengguna tanpa nama, mempercepat penyingkiran cache',
+	'purge-desc' => 'Membubuh tab singkirkan pada semua laman biasa untuk mempercepat penyingkiran cache',
 );
 
 /** Erzya (Эрзянь)
@@ -385,7 +396,7 @@ $messages['nb'] = array(
  */
 $messages['nl'] = array(
 	'purge' => 'cache legen',
-	'purge-desc' => 'Voegt een tabblad "purge" toe op alle normale pagina\'s en laat de purgecontrole weg voor anonieme gebruikers zodat de cache snel gepurged kan worden',
+	'purge-desc' => 'Voegt een tabblad "cache legen" toe op alle normale pagina\'s zodat de cache snel gepurged kan worden',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -524,10 +535,11 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'purge' => 'очистити',
-	'purge-desc' => 'Додає вкладку очистки на всі звичайні сторінки і обходить перевірку анонімних користувачів, що дозволяє швидко очищати кеш',
+	'purge-desc' => 'Додає вкладку очистки на всі звичайні сторінки, що дозволяє швидко очищати кеш',
 );
 
 /** Vietnamese (Tiếng Việt)
