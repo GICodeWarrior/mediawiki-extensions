@@ -159,6 +159,32 @@ $messages['de'] = array(
 	'notificator-notified-already' => '$1 wurde bereits zu dieser Seite oder Seitenänderung benachrichtigt.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'notificator' => 'Notificator',
+	'notificator-desc' => 'Informěrujo někogo pśez e-mail wó změnach na boku, gaž kliknjo se na tłocašk na tom boku.',
+	'notificator-db-table-does-not-exist' => 'Tabela datoweje banki "notificator" njeeksistěrujo. Wótwardowański skript update.php musy se wuwjasć, nježli až rozšyrjenje Notificator dajo se wužywaś.',
+	'notificator-e-mail-address' => 'e-mailowa adresa',
+	'notificator-notify' => 'Informěrowaś',
+	'notificator-notify-address-or-name' => '$1 informěrowaś',
+	'notificator-revs-not-from-same-title' => 'Wersijowe ID njesłušaju k tomu samemu titeloju/bokoju',
+	'notificator-return-to' => 'Slědk k',
+	'notificator-special-page-accessed-directly' => 'Na toś ten specialny bok njedajo se direktny pśistup měś. Dajo se jano pśez tłocašk rozšyrjenja Notificator wužywaś.',
+	'notificator-e-mail-address-invalid' => 'Pódana e-mailowa adresa jo njepłaśiwa.',
+	'notificator-notification-not-sent' => 'Informacija njejo se pósłała.',
+	'notificator-change-tag' => 'změniś',
+	'notificator-new-tag' => 'nowy',
+	'notificator-notification-text-changes' => '$1 co śi wó slědujucych změnach na $2 informěrowaś:',
+	'notificator-notification-text-new' => '$1 co śi wó $2 informěrowaś.',
+	'notificator-following-e-mail-sent-to' => 'Slědujuca e-mail jo se na $1 pósłała:',
+	'notificator-subject' => 'Tema:',
+	'notificator-error-sending-e-mail' => 'Pśi rozesćełanju zdźěleńskeje e-maile na $1 jo zmólka nastała.',
+	'notificator-error-parameter-missing' => 'Zmólka: Felujucy parameter.',
+	'notificator-notified-already' => '$1 jo se južo wó toś tom boku abo změnje boka informěrował.',
+);
+
 /** Spanish (Español)
  * @author Fitoschido
  */
@@ -253,6 +279,32 @@ $messages['gl'] = array(
 	'notificator-error-sending-e-mail' => 'Houbo un erro ao enviar a notificación por correo electrónico a $1.',
 	'notificator-error-parameter-missing' => 'Erro: Falta o parámetro.',
 	'notificator-notified-already' => '$1 xa fora notificado antes sobre esta páxina ou cambio na páxina.',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'notificator' => 'Notificator',
+	'notificator-desc' => 'Informuje někoho přez e-mejl wo změnach na stronje, hdyž so na tłóčatko na tej stronje kliknje.',
+	'notificator-db-table-does-not-exist' => 'Tabela datoweje banki "notificator" njeeksistuje. Wothladowanski skript update.php dyrbi so wuwjesć, prjedy hač rozšěrjenje Notificator da so wužiwać.',
+	'notificator-e-mail-address' => 'e-mejlowa adresa',
+	'notificator-notify' => 'Informować',
+	'notificator-notify-address-or-name' => '$1 informować',
+	'notificator-revs-not-from-same-title' => 'Wersijowe ID njesłušeja k samsnemu titulej/samsnej stronje',
+	'notificator-return-to' => 'Wróćo k',
+	'notificator-special-page-accessed-directly' => 'Na tutu specialnu stronu njeda so direktnje přistup měć. Da so jenož přez tłóčatko rozšěrjenja Notificator wužiwać.',
+	'notificator-e-mail-address-invalid' => 'Podata e-mejlowa adresa je njepłaćiwa.',
+	'notificator-notification-not-sent' => 'Informacija njeje so rozpósłała.',
+	'notificator-change-tag' => 'změnić',
+	'notificator-new-tag' => 'nowy',
+	'notificator-notification-text-changes' => '$1 chce će wo slědowacych změnach na $2 informować:',
+	'notificator-notification-text-new' => '$1 chce će wo $2 informować.',
+	'notificator-following-e-mail-sent-to' => 'Slědowaca e-mejl je so na $1 pósłała:',
+	'notificator-subject' => 'Nastupa:',
+	'notificator-error-sending-e-mail' => 'Při rozposyłanju zdźělenskeje e-mejle na $1 je zmylk wustupił.',
+	'notificator-error-parameter-missing' => 'Zmylk: Falowacy parameter.',
+	'notificator-notified-already' => '$1 je so hižo wo tutej stronje abo změnje strony informował.',
 );
 
 /** Interlingua (Interlingua)
