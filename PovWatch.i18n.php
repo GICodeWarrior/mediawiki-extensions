@@ -819,7 +819,7 @@ $messages['gl'] = array(
 	'povwatch_intro' => 'PovWatch é un servizo que permite que páxinas polémicas sexan "empurradas" discretamente ás listas de vixilancia dos adminitradores subscritos.
 
 un rexistro dos "empurróns" ás listas de vixilancia recentes está dispoñible en [[Special:PovWatch/log]].',
-	'povwatch_subscriber_list' => 'Unha [[Special:PovWatch/subscribers|lista de subscritores]] está dispoñíbel.',
+	'povwatch_subscriber_list' => 'Hai dispoñible unha [[Special:PovWatch/subscribers|lista cos subscritores]].',
 	'povwatch_subscriber_list_intro' => '<strong>Lista dos subscritores</strong>',
 	'povwatch_not_allowed_subscribers' => 'Non ten permiso para ver a lista de subscrición de PovWatch.',
 	'povwatch_unknown_subpage' => 'Subpáxina descoñecida.',
