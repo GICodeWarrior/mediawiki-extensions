@@ -99,6 +99,7 @@ $wgSpecialPages['EditCourse'] 						= 'SpecialEditCourse';
 $wgSpecialPages['EditInstitution'] 					= 'SpecialEditInstitution';
 $wgSpecialPages['EditTerm'] 						= 'SpecialEditTerm';
 $wgSpecialPages['Enroll'] 	    					= 'SpecialEnroll';
+$wgSpecialPages['Ambassadors'] 	    				= 'SpecialAmbassadors';
 
 $wgSpecialPageGroups['MyCourses'] 					= 'education';
 $wgSpecialPageGroups['Institution'] 				= 'education';
@@ -113,6 +114,7 @@ $wgSpecialPageGroups['EducationProgram'] 			= 'education';
 $wgSpecialPageGroups['EditCourse'] 					= 'education';
 $wgSpecialPageGroups['EditInstitution'] 			= 'education';
 $wgSpecialPageGroups['EditTerm'] 					= 'education';
+$wgSpecialPageGroups['Ambassadors'] 				= 'education';
 
 // DB object classes
 $egEPDBObjects = array();

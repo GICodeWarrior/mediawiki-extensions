@@ -243,6 +243,7 @@ $messages['en'] = array(
 	'ep-mycourses-course-title' => 'My courses: $1 at $2',
 	'specialmycourses-summary-name' => 'Course name',
 	'specialmycourses-summary-org' => 'Institution name',
+    'ep-mycourses-not-a-student' => 'You are not enrolled in any [[Special:Courses|courses]].',
 );
 
 /** Message documentation (Message documentation)
