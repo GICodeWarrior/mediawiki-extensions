@@ -560,6 +560,19 @@ $messages['id'] = array(
 	'communityvoice-ratings-error-no-title' => 'Atribut judul tidak ditemukan pada tag peringkat.',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'communityvoice' => 'Timek ti Komunidad',
+	'communityvoice-desc' => 'Ramramit ti rumaman ti kumunidad',
+	'communityvoice-ratings' => 'Dagiti pategan',
+	'communityvoice-ratings-scale-status-sending' => 'Ipatpatulod...',
+	'communityvoice-ratings-scale-status-error' => 'Biddut ti panagipatulod!',
+	'communityvoice-ratings-scale-status-thanks' => 'Agyamanak ti panagbutos!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|butos|dagiti butos}} ipalladaw)',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */
