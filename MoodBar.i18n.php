@@ -193,6 +193,7 @@ Have a nice day,
  * @author IAlex
  * @author Lloffiwr
  * @author McDutchie
+ * @author Nike
  * @author Purodha
  * @author Raymond
  * @author SPQRobin
@@ -288,7 +289,7 @@ See also:
 	'moodbar-feedback-filters-type-confused' => 'Used on Special:FeedbackDashboard to filter by "confused" feedback entries',
 	'moodbar-feedback-filters-type-sad' => 'Used on Special:FeedbackDashboard to filter by "sad" feedback entries',
 	'moodbar-feedback-filters-username' => '{{Identical|Username}}',
-	'moodbar-feedback-filters-my-response' => 'Used on SpecialFeedbackDashboard to filter by "My responses only" feedback entries',
+	'moodbar-feedback-filters-my-response' => 'Used on SpecialFeedbackDashboard to filter by "My responses only" feedback entries. A checkbox comes right before the text.',
 	'moodbar-feedback-more' => 'Text of the link that the user can click to see more results. Only visible if JavaScript is enabled.
 {{Identical|More}}',
 	'moodbar-feedback-newer' => 'Text of the link that the user can click to go back to more recent results. Only visible if JavaScript is not enabled.',
@@ -392,7 +393,7 @@ $messages['af'] = array(
 	'moodbar-feedback-filters-type-confused' => 'Verward',
 	'moodbar-feedback-filters-type-sad' => 'Afgehaal',
 	'moodbar-feedback-filters-username' => 'Gebruikernaam:',
-	'moodbar-feedback-filters-my-response' => 'My reaksies kan slegs',
+	'moodbar-feedback-filters-my-response' => 'Slegs my reaksies',
 	'moodbar-feedback-filters-button' => 'Stel filters',
 	'moodbar-feedback-whatis' => 'Wat is hierdie funksie?',
 	'moodbar-feedback-permalink' => 'skakel hier',
@@ -742,6 +743,7 @@ $messages['br'] = array(
 	'moodbar-trigger-feedback' => 'Ho soñj war an doare da zegas kemmoù',
 	'moodbar-trigger-share' => 'Rannit ho skiant-prenañ ganeomp',
 	'moodbar-trigger-editing' => "Oc'h aozañ $1...",
+	'moodbar-seconds' => "nebeutoc'h eget ur vunutenn",
 	'moodbar-close' => '(serriñ)',
 	'moodbar-intro-feedback' => 'Degas kemmoù e $1 en deus ma lakaet da vezañ...',
 	'moodbar-intro-share' => 'Ma zamm troiad war $1 en deus ma lakaet da vezañ...',
@@ -756,6 +758,7 @@ $messages['br'] = array(
 	'moodbar-response-btn' => 'Kas ar respont',
 	'moodbar-what-link' => "Pajenn deskrivañ an arc'hwel",
 	'moodbar-privacy-link' => 'termenoù',
+	'moodbar-privacy-link-title' => 'Termenoù implijout',
 	'moodbar-disable-link' => "N'on ket dedennet. Diweredekaat ar perzh-mañ.",
 	'moodbar-form-title' => 'Peogwir...',
 	'moodbar-form-note' => "140 arouezenn d'ar muiañ",
@@ -791,13 +794,15 @@ $messages['br'] = array(
 	'moodbar-header-comment' => 'Evezhiadennoù',
 	'moodbar-header-user-editcount' => 'Niver a gemmoù degaset gant an implijer',
 	'moodbar-header-namespace' => 'Esaouenn anv',
+	'moodbar-header-own-talk' => 'Pajenn gaozeal an-unan',
 	'moodbar-feedback-response-title' => "==Evit respont d'hoc'h [[$1|evezhiadenn]]==",
 	'moodbar-feedback-filters' => 'Siloù',
 	'moodbar-feedback-filters-type' => 'Imor :',
 	'moodbar-feedback-filters-type-happy' => 'Laouen',
 	'moodbar-feedback-filters-type-confused' => 'Trubuilhet',
 	'moodbar-feedback-filters-type-sad' => 'Trist',
-	'moodbar-feedback-filters-username' => 'Anv implijer',
+	'moodbar-feedback-filters-username' => 'Anv implijer :',
+	'moodbar-feedback-filters-my-response' => 'Ma respontoù hepken',
 	'moodbar-feedback-whatis' => 'Petra eo kement-mañ ?',
 	'moodbar-feedback-permalink' => "Sevel ul liamm davet al lec'h-mañ",
 	'moodbar-feedback-more' => "Muioc'h",
@@ -805,12 +810,13 @@ $messages['br'] = array(
 	'moodbar-feedback-newer' => "Nevesoc'h",
 	'moodbar-feedback-older' => "Koshoc'h",
 	'moodbar-feedback-ajaxerror' => "Ur fazi zo bet en ur glask disoc'hoù all.",
+	'moodbar-user-hidden' => '(implijer kuzhet)',
 	'moodbar-feedback-action-confirm' => 'Kadarnaat',
 	'moodbar-feedback-action-cancel' => 'Nullañ',
 	'moodbar-action-reason' => 'Abeg :',
 	'moodbar-action-reason-required' => 'Merkit un abeg.',
 	'moodbar-hide-header' => 'Kuzhat an elfenn-mañ evit na vefe ket gwelet',
-	'moodbar-feedback-response-summary' => " [[$3|Respontet]] eo bet d'an evezhiadenn-mañ gant [[$1|$2]]  $4 zo",
+	'moodbar-feedback-response-summary' => '[[$3|Respontet]] eo bet gant [[$1|$2]]  $4 zo',
 	'moodbar-type-happy' => '{{GENDER:$1|Laouen}}',
 	'moodbar-type-sad' => '{{GENDER:$1|Trist}}',
 	'moodbar-type-confused' => '{{GENDER:$1|Trubuilhet}}',
@@ -828,6 +834,7 @@ $messages['br'] = array(
 	'response-ajax-success-body' => 'Ouzhpennet eo bet ho respont.',
 	'response-ajax-error-head' => 'Chaous !',
 	'response-ajax-error-body' => "C'hoarvezet ez eus ur fazi en ur ouzhpennañ ho respont. <br />Klaskit en-dro diwezhatoc'hik.",
+	'moodbar-enotif-subject' => "Respontet eo bet d'hoc'h evezhiadennoù gant $1",
 );
 
 /** Danish (Dansk)
@@ -901,10 +908,10 @@ $messages['de'] = array(
 	'moodbar-trigger-feedback' => 'Rückmeldung zum Bearbeiten',
 	'moodbar-trigger-share' => 'Teile uns deinen Eindruck mit',
 	'moodbar-trigger-editing' => 'Bearbeite $1 …',
-	'moodbar-weeks' => '{{PLURAL:$1|$1 Woche|$1 Wochen}}',
-	'moodbar-months' => '{{PLURAL:$1|$1 Monat|$1 Monate}}',
-	'moodbar-years' => '{{PLURAL:$1|$1 Jahr|$1 Jahre}}',
-	'moodbar-seconds' => 'weniger als 1 Minute',
+	'moodbar-weeks' => '{{PLURAL:$1|einer Woche|$1 Wochen}}',
+	'moodbar-months' => '{{PLURAL:$1|einem Monat|$1 Monaten}}',
+	'moodbar-years' => '{{PLURAL:$1|einem Jahr|$1 Jahren}}',
+	'moodbar-seconds' => 'weniger als einer Minute',
 	'moodbar-close' => '(schließen)',
 	'moodbar-intro-feedback' => '$1 zu bearbeiten macht mich …',
 	'moodbar-intro-share' => 'Meine Erfahrung auf $1 macht mich …',
@@ -1035,7 +1042,7 @@ Weitere Informationen hierzu sind an der folgenden Stelle zu finden: $1.',
 	'moodbar-enotif-subject' => '$1 antwortete auf deine Rückmeldung.',
 	'moodbar-enotif-body' => 'Hallo $1,
 
-Willkommen bei {{SITENAME}} und vielen Dank für deine [$2 Rückmeldung]. Ein anderer Benutzer aus {{SITENAME}}, [$3 $6], hinterließ die folgende Antwort:
+Willkommen bei {{SITENAME}} und vielen Dank für deine [$2 Rückmeldung]. Ein anderer {{SITENAME}}-Benutzer, [$3 $6], hinterließ die folgende Antwort:
 
      $4
 
@@ -1069,7 +1076,7 @@ $messages['de-formal'] = array(
 	'moodbar-enotif-subject' => '$1 antwortete auf Ihre Rückmeldung.',
 	'moodbar-enotif-body' => 'Hallo $1,
 
-Willkommen bei {{SITENAME}} und vielen Dank für Ihre [$2 Rückmeldung]. Ein anderer Benutzer aus {{SITENAME}}, [$3 $6], hinterließ die folgende Antwort:
+Willkommen bei {{SITENAME}} und vielen Dank für Ihre [$2 Rückmeldung]. Ein anderer {{SITENAME}}-Benutzer, [$3 $6], hinterließ die folgende Antwort:
 
      $4
 
@@ -1647,7 +1654,7 @@ $messages['fi'] = array(
 	'moodbar-feedback-hide' => 'piilota palaute',
 	'moodbar-feedback-action-confirm' => 'Vahvista',
 	'moodbar-feedback-action-cancel' => 'Peruuta',
-	'moodbar-hidden-footer' => 'Piilotettu palaute käyttäjältä $1 päivänä $2 kello $3. Syy: $4 $5',
+	'moodbar-hidden-footer' => 'Piilotettu palaute käyttäjältä $1 $2 kello $3. Syy: $4 $5',
 	'moodbar-hidden-footer-without-log' => 'Piilotettu palaute $1',
 	'moodbar-feedback-restore' => 'palauta piilotettu palaute',
 	'moodbar-action-item' => 'Palautekohde:',
@@ -2502,6 +2509,10 @@ $messages['hu'] = array(
 	'moodbar-trigger-feedback' => 'Visszajelzés a szerkesztésről',
 	'moodbar-trigger-share' => 'Oszd meg a tapasztalataidat',
 	'moodbar-trigger-editing' => '$1 szerkesztése…',
+	'moodbar-weeks' => '{{PLURAL:$1|egy héttel|$1 héttel}}',
+	'moodbar-months' => '{{PLURAL:$1|egy hónappal|$1 hónappal}}',
+	'moodbar-years' => '{{PLURAL:$1|egy évvel|$1 évvel}}',
+	'moodbar-seconds' => 'kevesebb mint 1 perccel',
 	'moodbar-close' => '(bezár)',
 	'moodbar-intro-feedback' => '$1 szerkeszése…',
 	'moodbar-intro-share' => '$1 tapasztalataim…',
@@ -2549,7 +2560,9 @@ $messages['hu'] = array(
 	'moodbar-header-usertype' => 'Felhasználó típusa',
 	'moodbar-header-user' => 'Szerkesztő',
 	'moodbar-header-editmode' => 'Szerkesztés mód',
+	'moodbar-header-system' => 'Rendszer típusa',
 	'moodbar-header-locale' => 'Nyelv',
+	'moodbar-header-useragent' => 'Böngésző típusa',
 	'moodbar-header-comment' => 'Hozzászólások',
 	'moodbar-header-user-editcount' => 'Szerkesztések száma',
 	'moodbar-header-namespace' => 'Névtér',
@@ -2565,8 +2578,12 @@ $messages['hu'] = array(
 	'moodbar-feedback-filters-my-response' => 'Csak az én válaszaim',
 	'moodbar-feedback-filters-button' => 'Szűrők beállítása',
 	'moodbar-feedback-whatis' => 'Mi ez a szolgáltatás?',
+	'moodbar-feedback-more' => 'Több',
+	'moodbar-feedback-nomore' => 'Nincs több megjeleníthető eredmény.',
 	'moodbar-feedback-newer' => 'Újabb',
 	'moodbar-feedback-older' => 'Régebbi',
+	'moodbar-feedback-ajaxerror' => 'Hiba történt a további találatok lekérése során.',
+	'moodbar-feedback-load-record-error' => 'Hiba történt a rekord betöltése során.',
 	'moodbar-user-hidden' => '(Rejtett felhasználó)',
 	'moodbar-feedback-action-confirm' => 'Megerősítés',
 	'moodbar-feedback-action-cancel' => 'Mégse',
@@ -2583,10 +2600,14 @@ $messages['hu'] = array(
 	'moodbar-user-user' => 'Regisztrált felhasználó',
 	'moodbar-log-name' => 'Visszajelzés napló',
 	'moodbar-log-hide' => 'rejtve [[$1]]',
+	'moodbar-log-restore' => 'láthatóság visszaállítása: [[$1]]',
 	'moodbar-response-terms' => 'A beküldéssel egyetértesz az alábbiakkal: $1.',
 	'response-back-text' => 'Vissza',
 	'response-preview-text' => 'Előnézet',
+	'response-ajax-action-head' => 'Válaszolás...',
+	'response-ajax-action-body' => 'A válasz hozzáadása folyamatban.',
 	'response-ajax-success-head' => 'Köszönjük!',
+	'response-ajax-success-body' => 'A válasz hozzáadva.',
 	'response-ajax-error-head' => 'Hupsz!',
 	'moodbar-enotif-subject' => '$1 válaszolt a visszajelzésedre',
 );
@@ -2599,6 +2620,10 @@ $messages['ia'] = array(
 	'moodbar-trigger-feedback' => 'Commentos super le modification',
 	'moodbar-trigger-share' => 'Divider tu experientia',
 	'moodbar-trigger-editing' => 'Modificar $1...',
+	'moodbar-weeks' => '$1 {{PLURAL: $1|septimana|septimanas}}',
+	'moodbar-months' => '$1 {{PLURAL:$1|mense|menses}}',
+	'moodbar-years' => '$1 {{PLURAL:$1|anno|annos}}',
+	'moodbar-seconds' => 'minus de 1 minuta',
 	'moodbar-close' => '(clauder)',
 	'moodbar-intro-feedback' => 'Modificar $1 me rendeva…',
 	'moodbar-intro-share' => 'Mi experientia in $1 me rendeva…',
@@ -5658,6 +5683,10 @@ $messages['zh-hans'] = array(
 	'moodbar-trigger-feedback' => '有关编辑的反馈',
 	'moodbar-trigger-share' => '分享你的经验',
 	'moodbar-trigger-editing' => '编辑$1……',
+	'moodbar-weeks' => '$1周',
+	'moodbar-months' => '$1个月',
+	'moodbar-years' => '$1年',
+	'moodbar-seconds' => '不到1分钟',
 	'moodbar-close' => '（关闭）',
 	'moodbar-intro-feedback' => '编辑$1让我……',
 	'moodbar-intro-share' => '我在$1上的经历让我……',
