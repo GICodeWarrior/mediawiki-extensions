@@ -439,6 +439,8 @@ $messages['br'] = array(
 	'narayam-bn-nkb' => 'NKB bengaleg',
 	'narayam-ur' => 'Standard ourdou',
 	'narayam-de' => 'Alamaneg',
+	'narayam-ru-standard' => 'Rusianeg standard',
+	'narayam-sah-standard' => 'Sakha Standard',
 	'narayam-he-standard-2011-extonly' => 'Hebraeg standard 2011',
 	'narayam-he-standard-2011' => 'Hebraeg standard 2011',
 );
