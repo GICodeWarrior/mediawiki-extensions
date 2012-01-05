@@ -3785,7 +3785,7 @@ $messages['ilo'] = array(
 	'articlefeedback' => 'Pagipatarayan ti pangipagarupan ti artikulo',
 	'articlefeedback-desc' => 'Pangipagarupan ti artikulo',
 	'articlefeedback-survey-question-origin' => 'Ania a panid ti ayanmo idi nagrugi ka iti daytoy a panagala?',
-	'articlefeedback-survey-question-whyrated' => 'Pangngaasi nga ibagam kaniami nu apay nga pinategam daytoy a panid tatta nga aldaw (kur-itam amin a maidangep:',
+	'articlefeedback-survey-question-whyrated' => 'Pangngaasi nga ibagam kaniami nu apay a pinategam daytoy a panid tatta nga aldaw (kur-itam amin a maidangep):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'Kayatko ti agparawad ti amin a sakup a pagpateg iti daytoy a panid',
 	'articlefeedback-survey-answer-whyrated-development' => 'Adda namnamak a ti pagnagpateg ko ket mapaneknekan ti panag-rangay iti daytoy a panid',
 	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'Kayatko ti agparawad  iti {{SITENAME}}',
@@ -3887,6 +3887,10 @@ Agyaman para iti panagi-yebkas ti pammateg iti panagitulong ti panag ti parang-a
 Pangngaasi nga agala ti kanito tapno mapasingkedan ti e-surat mo babaen ti panag-takla iti panilpo dita baba:
 
 $1
+
+Mabalin mo met a sarungkaren ti:
+
+$2
 
 Ken ikabil ti sumaganad a pagsingkedan a kodigo:
 
