@@ -303,6 +303,15 @@ $messages['mr'] = array(
 कृपया थोडावेळ वाट पाहून आपल्या ब्राउझरमधील 'reload' या कळीवर टिचकी द्या.",
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'userthrottle-desc' => 'Mendikit pembukaan akaun pengguna',
+	'acct_creation_global_hard_throttle_hit' => 'Pembukaan akaun telah digantung secara automatik selama beberapa saat untuk mengurangkan beban kebanjiran pendaftaran.
+Sila tunggu sebentar, kemudian tekan "muat semula" (refresh/reload) pada pelayar anda untuk menghantar semula.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
