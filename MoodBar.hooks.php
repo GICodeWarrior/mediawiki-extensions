@@ -109,7 +109,6 @@ class MoodBarHooks {
 
 	public static function makeGlobalVariablesScript( &$vars ) {
 		global $wgUser, $wgEnableEmail;
-		$vars['mbEditToken'] = $wgUser->editToken();
 		$vars['mbEmailEnabled'] = $wgEnableEmail;
 		$vars['mbUserEmail'] = strlen( $wgUser->getEmail() ) > 0 ? true : false;
 		$vars['mbIsEmailConfirmationPending'] = $wgUser->isEmailConfirmationPending(); //returns false if email authentication off, and if email is confimed already

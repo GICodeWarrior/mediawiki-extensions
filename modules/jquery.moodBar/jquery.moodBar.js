@@ -32,7 +32,7 @@
 					'system': clientData.platform,
 					'bucket': fb.bucket,
 					'type': fb.type,
-					'token': mw.config.get('mbEditToken'),
+					'token': mw.user.tokens.get('editToken'),
 					'format': 'json'
 				};
 				
@@ -58,7 +58,7 @@
 				'action': 'moodbarsetuseremail',
 				'mbaction': 'setemail', 
 				'email': mbProps.email,
-				'token': mw.config.get('mbEditToken'),
+				'token': mw.user.tokens.get('editToken'),
 				'format':'json'
 			};
 			return $.ajax( {
@@ -74,7 +74,7 @@
 			var apiRequest = {
 				'action': 'moodbarsetuseremail',
 				'mbaction': 'resendverification', 
-				'token': mw.config.get('mbEditToken'),
+				'token': mw.user.tokens.get('editToken'),
 				'format':'json'
 			};
 			return $.ajax( {
