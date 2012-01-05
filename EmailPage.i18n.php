@@ -408,6 +408,7 @@ $messages['fa'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Od1n
  * @author Peter17
  */
 $messages['fr'] = array(
@@ -428,7 +429,7 @@ $messages['fr'] = array(
 	'ea-to' => 'À :',
 	'ea-to-info' => 'Les adresses électroniques peuvent être séparées par un ou plusieurs point virgule, virgule, astérisque ou caractère de nouvelle ligne',
 	'ea-cc' => 'Copie :',
-	'ea-send' => 'Envoyer !',
+	'ea-send' => 'Envoyer',
 	'ea-subject' => 'Objet :',
 	'ea-message' => 'Message :',
 	'ea-message-info' => 'Faire précéder le contenu d’un message facultatif en wikitexte',
