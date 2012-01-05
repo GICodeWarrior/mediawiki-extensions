@@ -310,6 +310,15 @@ $messages['mr'] = array(
 	'untidy' => 'अव्यवस्थीत',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'tidy-desc' => 'Menambahkan tab kemas atau selerak (bergantung pada $wgUseTidy) pada laman normal demi membolehkan pembatalan tetapan kekemasan HTML sejagat bagi paparan tunggal',
+	'tidy' => 'Kemas',
+	'untidy' => 'Selerak',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
