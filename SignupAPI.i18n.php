@@ -278,6 +278,7 @@ $messages['mk'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'usersignup' => 'Pendaftaran pengguna',
 	'signupapi-desc' => 'Membersihkan perkara-perkara berkaitan pendaftaran daripada [[Special:UserLogin|laman log masuk]] serta menambahkan API untuk pendaftaran',
 	'signupapi-ok' => 'OK',
 	'signupapi-noname' => 'Nama pengguna tidak dinyatakan',
