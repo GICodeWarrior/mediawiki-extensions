@@ -1,18 +1,19 @@
 select#wpUserLanguage,
 select#webfonts-font-chooser,
-select#webfonts-size-chooser{
+select#webfonts-size-chooser {
 	width: 200px;
 	height: 25px;
 	vertical-align: middle;
 }
 
-select#webfonts-size-chooser{
+select#webfonts-size-chooser {
 	width: 50px;
 }
 
-div#webfonts-preview-area{
+div#webfonts-preview-area {
 	height: 300px;
 	border: 1px solid #cccccc;
+	border-radius: 0 0 4px 4px;
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	text-align: left;
@@ -23,30 +24,30 @@ div#webfonts-preview-area{
 button#webfonts-preview-bold,
 button#webfonts-preview-italic,
 button#webfonts-preview-underline,
-a#webfonts-preview-download{
+a#webfonts-preview-download {
 	height: 25px;
 	vertical-align: middle;
 	font-weight: bold;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.4);
 }
 
-a#webfonts-preview-download.disabled{
+a#webfonts-preview-download.disabled {
 	color: #808080;
 }
 
-div#webfonts-preview-toolbar button{
+div#webfonts-preview-toolbar button {
 	width: 30px;
 }
 
-button#webfonts-preview-italic{
+button#webfonts-preview-italic {
 	font-style: italic;
 }
 
-button#webfonts-preview-underline{
+button#webfonts-preview-underline {
 	text-decoration: underline;
 }
 
-a#webfonts-preview-download{
+a#webfonts-preview-download {
 	padding-right: 10px;
 	padding-left: 10px;
 	padding-top: 3px;
@@ -54,10 +55,11 @@ a#webfonts-preview-download{
 	text-decoration: none;
 }
 
-div#webfonts-preview-toolbar{
+div#webfonts-preview-toolbar {
 	overflow: hidden;
 	background-color: #F9F9F9;
 	border: 1px solid #CCCCCC;
+	border-radius: 4px 4px 0 0;
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	position: relative;
