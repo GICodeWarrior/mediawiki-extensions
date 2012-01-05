@@ -86,7 +86,7 @@ class MV_SequencePage extends Article {
 			'linkback'		=> $this->mTitle->getFullURL(),
 			'mTitle'		=> $this->mTitle->getPrefixedDBKey(),
 			'mTalk'			=> $talkTitle->getPrefixedDBKey(),
-			'mTouchedTime'	=> wfTimestamp(TS_ISO_8601, $this->mTitle->getTouched())
+			'mTouchedTime'	=> wfTimestamp(TS_ISO_8601, $this->getTouched())
 		);
 		foreach($metaData as $name=>$val){
 			$titleNode = $this->smilDoc->createElement('meta');
