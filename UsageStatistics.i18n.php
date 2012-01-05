@@ -1618,7 +1618,16 @@ $messages['mr'] = array(
  * @author Zamwan
  */
 $messages['ms'] = array(
+	'specialuserstats' => 'Statistik penggunaan',
+	'usagestatistics' => 'Statistik penggunaan',
+	'usagestatistics-desc' => 'Tunjukkan statistik pengguna individu dan keseluruhan wiki',
+	'usagestatisticsfor' => '<h2>Statistik penggunaan [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Statistik penggunaan semua pengguna</h2>',
 	'usagestatisticsinterval' => 'Selang:',
+	'usagestatisticsnamespace' => 'Ruang nama:',
+	'usagestatisticsexcluderedirects' => 'Kecualikan lencongan',
+	'usagestatistics-namespace' => 'Inilah statistik di ruang nama [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Lencongan]] tidak diambil kira.',
 	'usagestatisticstype' => 'Jenis',
 	'usagestatisticsstart' => 'Tarikh mula:',
 	'usagestatisticsend' => 'Tarikh tamat:',
@@ -1629,7 +1638,14 @@ $messages['ms'] = array(
 	'usagestatisticsintervalday' => 'Hari',
 	'usagestatisticsintervalweek' => 'Minggu',
 	'usagestatisticsintervalmonth' => 'Bulan',
+	'usagestatisticsincremental' => 'Tokokan',
+	'usagestatisticsincremental-text' => 'tokokan',
+	'usagestatisticscumulative' => 'Terkumpul',
+	'usagestatisticscumulative-text' => 'terkumpul',
 	'usagestatisticscalselect' => 'Pilih',
+	'usagestatistics-editindividual' => 'Statistik penyuntingan $1 pengguna individu',
+	'usagestatistics-editpages' => 'Statistik laman $1 pengguna individu',
+	'right-viewsystemstats' => 'Melihat [[Special:UserStats|statistik penggunaan wiki]]',
 );
 
 /** Erzya (Эрзянь)
