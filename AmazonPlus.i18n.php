@@ -1903,6 +1903,7 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Anakmalaysia
  * @author Liangent
  * @author Wrightbus
  */
@@ -1921,7 +1922,7 @@ $messages['zh-hans'] = array(
 	'amazonplus-none' => '本产品目前无货可销售',
 	'amazonplus-cp-none' => '无',
 	'amazonplus-more' => '更多',
-	'amazonplus-less' => '最少',
+	'amazonplus-less' => '更少',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
