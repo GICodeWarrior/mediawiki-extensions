@@ -170,9 +170,9 @@ class SolrConnectorStore extends SMWStore {
 	 */
 	public function getQueryResult( SMWQuery $query ) {
 		// IF YOU SEE THIS HERE PLEASE IGNORE IT!
-		// Our first aproche was it to create new SMWStore for querying data
-		// but we had big problems recreating and parsing the SMW query syntax
-		// that we just stopped at this point here.
+		// Our first approach was to create new SMWStore for querying data
+		// but we had big problems recreating and parsing the SMW query syntax,
+		// so we just stopped at this point here.
 		// Maybe we will finish it someday
 		$wgSolrTalker = new SolrTalker();
 		if ( property_exists( $query, 'params' ) &&
@@ -186,10 +186,10 @@ class SolrConnectorStore extends SMWStore {
 
 			echo( "SOLR query: {$query->getQueryString()}\n" );
 
-			echo 'Search is Powered by Solr!';
+			echo 'Search is powered by Solr!';
 			echo $queryStr = urldecode( $wgSolrTalker->parseSolrQuery( $query->getQueryString() ) );
 
-			// Get Sort Parameters and add them to the QueryString
+			// Get sort parameters and add them to the query string
 			if ( $query->sort ) {
 				// TODO: Der Inhalt von Sort muss genau der Name eines der Felder von Solr sein
 				//	  um danach Sortieren zu können. Deshalb Wird eine Liste alle Solr Felder
@@ -208,7 +208,7 @@ class SolrConnectorStore extends SMWStore {
 			echo 'Query Limit:' . $query->getLimit();
 
 			echo ( 'SEARCHRESULT: ' . $xml = $wgSolrTalker->solrQuery( $queryStr, $query->getOffset(), $query->getLimit() ) );
-			echo '<br/>';
+			echo '<br />';
 			// TODO: Move this code to parseSolrResult
 			$numFound = $xml->result['numFound'];
 			foreach ( $xml->result->doc as $doc ) {
@@ -248,7 +248,7 @@ class SolrConnectorStore extends SMWStore {
 			// Do we have more results?
 			$more = false;
 			// TODO: Does this work?
-			echo 'Number of Records: ' . $numFound;
+			echo 'Number of records: ' . $numFound;
 			if ( $numFound > 10 ) {
 				$more = true;
 			}
