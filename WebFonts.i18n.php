@@ -149,6 +149,9 @@ $messages['br'] = array(
 	'webfonts-enable-preference' => "Gweredekaat an ensoc'hañ fontoù (Fontoù Kenrouedad)",
 	'webfonts-menu-tooltip' => 'Dibabit ur font evit ar bajenn',
 	'webfonts-help' => 'Skoazell',
+	'webfonts-preview-title' => 'Rakwelet ar fontoù',
+	'webfonts-preview-download' => 'Pellgargañ',
+	'webfonts-preview-installing-fonts-title' => 'Staliañ ar fontoù',
 );
 
 /** Bosnian (Bosanski)
@@ -189,6 +192,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Metalhead64
  */
 $messages['de'] = array(
 	'webfonts' => 'WebFonts',
@@ -198,6 +202,20 @@ $messages['de'] = array(
 	'webfonts-enable-preference' => 'Schriftarteneinbettung aktivieren',
 	'webfonts-menu-tooltip' => 'Eine Schriftart für die Seite auswählen.',
 	'webfonts-help' => 'Hilfe',
+	'webfonts-preview-intro' => 'Diese Seite hilft dir dabei, die durch die Erweiterung Webfonts verfügbaren Schriftarten in der Vorschau anzusehen und sie auf deinen Computer herunterzuladen sowie zu installieren.',
+	'webfonts-preview-title' => 'Schriftartvorschau',
+	'webfonts-preview-download' => 'Herunterladen',
+	'webfonts-preview-sampletext' => 'Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.',
+	'webfonts-preview-installing-fonts-title' => 'Schriftarten installieren',
+	'webfonts-preview-installing-fonts-text' => 'Du kannst eine Schriftart herunterladen, indem du oben rechts auf den Link „{{int:webfonts-preview-download}}“ klickst. Um die heruntergeladene Schriftart auf deinem Computer zu installieren, folge bitte [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts diesen Hinweisen].',
+);
+
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'webfonts-preview-intro' => 'Diese Seite hilft Ihnen dabei, die durch die Erweiterung Webfonts verfügbaren Schriftarten in der Vorschau anzusehen und sie auf Ihren Computer herunterzuladen sowie zu installieren.',
+	'webfonts-preview-installing-fonts-text' => 'Sie können eine Schriftart herunterladen, indem Sie oben rechts auf den Link „{{int:webfonts-preview-download}}“ klicken. Um die heruntergeladene Schriftart auf Ihrem Computer zu installieren, folgen Sie bitte [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts diesen Hinweisen].',
 );
 
 /** Lower Sorbian (Dolnoserbski)
