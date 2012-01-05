@@ -573,6 +573,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dj
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -592,6 +593,7 @@ $messages['hu'] = array(
 	'security-type-category' => 'kategória',
 	'security-type-namespace' => 'névtér',
 	'security-restricttogroup' => 'A tartalom megjelenítése a(z) „$1” csoport tagjaira van korlátozva',
+	'restriction-read' => 'Olvasás',
 );
 
 /** Interlingua (Interlingua)
