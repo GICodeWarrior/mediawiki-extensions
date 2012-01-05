@@ -21,18 +21,25 @@ jQuery( function( $ ) {
 		 * Creates inputs and places them into container
 		 */
 		createInputs: function() {
-			var s = '<table class="api-sandbox-options">\n<tbody>';
-			for ( var i = 0; i < this.params.length; i++ ) {
-				var param = this.params[i],
-					name = this.prefix + param.name;
+			var $table, i, length, param, name;
 
-				s += '<tr><td class="api-sandbox-label">'
-					+ mw.html.element( 'label', { 'for': 'param-' + name }, name + '=' )
-					+ '</td><td class="api-sandbox-value">' + this.input( param, name )
-					+ '</td><td>' + smartEscape( param.description ) + '</td></tr>';
+			$table = $( '<table class="api-sandbox-options">' );
+			for ( i = 0, length = this.params.length; i < length; i += 1 ) {
+				param = this.params[i];
+				name = this.prefix + param.name;
+
+				$( '<tr>' )
+					.append(
+						$( '<td class="api-sandbox-label">' )
+							.html( mw.html.element( 'label',
+								{ 'for': 'param-' + name }, name + '=' )
+						)
+					)
+					.append( $( '<td class="api-sandbox-value">' ).html( this.input( param, name ) ) )
+					.append( $( '<td>' ).html( smartEscape( param.description ) ) )
+					.appendTo( $table );
 			}
-			s += '\n</tbody>\n</table>\n';
-			this.$container.html( s );
+			this.$container.html( $table );
 		},
 
 		/**
@@ -86,24 +93,28 @@ jQuery( function( $ ) {
 		},
 
 		select: function( values, attributes, selected ) {
+			var s = '', i, length, value, face, attrs;
+
 			attributes['class'] = 'api-sandbox-input';
 			if ( isset( attributes.multiple ) ) {
 				attributes['size'] = Math.min( values.length, 10 );
 			}
-			var s = '';
 			if ( typeof selected != 'array' ) {
 				if ( selected ) {
 					s += mw.html.element( 'option', { value: '', selected: 'selected' }, mw.msg( 'apisb-select-value' ) );
 				}
 				selected = [];
 			}
-			for ( var i = 0; i < values.length; i++ ) {
-				var value = typeof values[i] == 'object' ? values[i].key : values[i],
-					face = typeof values[i] == 'object' ? values[i].value : values[i],
-					attrs = { 'value': value };
+
+			for ( i = 0, length = values.length; i < length; i += 1 ) {
+				value = typeof values[i] == 'object' ? values[i].key : values[i];
+				face = typeof values[i] == 'object' ? values[i].value : values[i];
+				attrs = { 'value': value };
+
 				if ( $.inArray( value, selected ) >= 0 ) {
 					attrs.selected = 'selected';
 				}
+
 				s += '\n' + mw.html.element( 'option', attrs, face );
 			}
 			s = mw.html.element( 'select', attributes, new mw.html.Raw( s ) );
@@ -111,11 +122,11 @@ jQuery( function( $ ) {
 		},
 
 		getRequestData: function() {
-			var params = '';
-			for ( var i = 0; i < this.params.length; i++ ) {
-				var param = this.params[i],
-					name = this.prefix + param.name,
-					$node = $( '#param-' + name );
+			var params = '', i, length, param, name, $node;
+			for ( i = 0, length = this.params.length; i < length; i += 1 ) {
+				param = this.params[i];
+				name = this.prefix + param.name;
+				$node = $( '#param-' + name );
 				if ( param.type == 'boolean' ) {
 					if ( $node.is( ':checked' ) ) {
 						params += '&' + name;
