@@ -231,6 +231,13 @@ $messages['ig'] = array(
 	'clientside-desc' => 'Ne nyé ihe ȯmé í ké ókịkẹ ọgúgú màkà ihe nsónùsòrò nke ébé-onyé-jị nwèrè dí kà HTML, CSS na JavaScript',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'clientside-desc' => 'Agited ti opisio para iti panagaramid ti kodigo iti bangir ti kliente a porma a kas iti HTML, CSS ken JavaScript',
+);
+
 /** Italian (Italiano)
  * @author HalphaZ
  */
@@ -308,6 +315,13 @@ $messages['ms'] = array(
 	'clientside-desc' => 'Menyediakan fungsi untuk menjana kod dalam format sebelah klien seperti HTML, CSS dan JavaScript',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Simny
+ */
+$messages['nb'] = array(
+	'clientside-desc' => 'Ordner med funkjoner for å opprette koder i klientsideformat, for eksempel HTML, CSS og JavaScript',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -327,13 +341,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'clientside-desc' => 'Gjev funksjonar for å oppretta kodar i klientside format, til dømes HTML, CSS og JavaScript',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Simny
- */
-$messages['nb'] = array(
-	'clientside-desc' => 'Ordner med funkjoner for å opprette koder i klientsideformat, for eksempel HTML, CSS og JavaScript',
 );
 
 /** Occitan (Occitan)
