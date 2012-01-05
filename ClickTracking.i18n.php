@@ -352,6 +352,14 @@ $messages['id'] = array(
 	'clicktracking-desc' => "Pelacak klik, digunakan untuk melacak kejadian yang tidak menyebabkan ''refresh'' halaman",
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'clicktracking' => 'Panag-surot ti panagtakla a Pagpasayaat ti Panagaramid',
+	'clicktracking-desc' => 'Pagsurot ti panagtakla para iti pangsurot kadagiti paspasamak a saan nga agpataud ti pagpasadiwa ti panid',
+);
+
 /** Italian (Italiano)
  * @author Gianfranco
  * @author Una giornata uggiosa '94
