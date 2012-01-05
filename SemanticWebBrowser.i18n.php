@@ -97,6 +97,22 @@ $messages['gl'] = array(
 	'swb_inverse_label_default' => '$1 de',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'browsewiki' => 'Wiki a semantisku syć přepytać',
+	'swb_desc' => 'Přidawa specialnu stronu [[Special:BrowseWiki|Wiki a semantisku syć přepytać]]',
+	'swb_browse_article' => 'Zapodaj mjeno strony, wot kotrejež ma so semantiske přehladowanje započeć.',
+	'swb_browse_go' => 'Pytać',
+	'swb_browse_show_incoming' => 'dochadźace kajkosće pokazać, kotrež sem wotkazuja',
+	'swb_browse_hide_incoming' => 'dochadźace kajkosće schować, kotrež sem wotkazuja',
+	'swb_browse_no_outgoing' => 'Tuta strona nima kajkosće.',
+	'swb_browse_no_incoming' => 'Žane kajkosće k tutej stronje njewotkazuja.',
+	'swb_inverse_label_property' => 'Pomjenowanje nawopačneje kajkosće',
+	'swb_inverse_label_default' => '$1 z',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
