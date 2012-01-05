@@ -45,7 +45,6 @@ $wgAutoloadClasses['MarkAsHelpfulHooks'] = $dir . 'MarkAsHelpful.hooks.php';
 
 $wgHooks['BeforePageDisplay'][] = 'MarkAsHelpfulHooks::onPageDisplay';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'MarkAsHelpfulHooks::onLoadExtensionSchemaUpdates';
-$wgHooks['MakeGlobalVariablesScript'][] = 'MarkAsHelpfulHooks::makeGlobalVariablesScript';
 
 // Special pages
 

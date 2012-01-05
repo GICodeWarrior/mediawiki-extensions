@@ -37,10 +37,4 @@ class MarkAsHelpfulHooks {
 		return true;
 	}
 
-	public static function makeGlobalVariablesScript( &$vars ) {
-		global $wgUser;
-		$vars['mahEditToken'] = $wgUser->editToken();
-		return true;
-	}
-
 }

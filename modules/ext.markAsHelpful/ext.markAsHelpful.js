@@ -23,7 +23,6 @@
 				}
 			}); 
 		},
-
 		/*
 		 * Return object of item properties
 		 */
@@ -37,7 +36,6 @@
 					};
 			return properties;
 		},
-
 		/*
 		 * Load the current state of the MarkAsHelpful item
 		 */
@@ -58,7 +56,8 @@
 				data: request,
 				success: function( data ) {
 
-					if ( data && data.getmarkashelpfulitem.result == 'success' &&
+					if ( data.getmarkashelpfulitem &&
+						data.getmarkashelpfulitem.result == 'success' &&
 						data.getmarkashelpfulitem.formatted
 					) {
 						var $content = $( data.getmarkashelpfulitem.formatted );
@@ -88,7 +87,7 @@
 				'page': mw.config.get( 'wgPageName' ),
 				'useragent': clientData.name + '/' + clientData.versionNumber,
 				'system': clientData.platform,
-				'token': mw.config.get( 'mahEditToken' ),
+				'token': mw.user.tokens.get( 'editToken' ),
 				'format': 'json'
 			}, props );
 
@@ -101,7 +100,6 @@
 				},
 				dataType: 'json'
 			} );
-
 		}
 	};
 
