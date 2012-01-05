@@ -108,6 +108,27 @@ $messages['de-formal'] = array(
 	'fptc-suggestion' => 'Meinten Sie:',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'freqpatterntagcloud-desc' => '[[Special:FreqPatternTagCloud|Specialny bok]] za napóranje gronidłoweje mrokawy na zakłaźe atributow a za pytanje za pódobnymi atributowymi gódnotami',
+	'fptc-categoryname' => 'Kategorija',
+	'fptc-context-menu-browse' => 'Boki z toś teju gódnotu pśepytaś',
+	'fptc-context-menu-similar-tags' => 'Pódobne atributy:',
+	'fptc-form-attribute-name' => 'Atribut:',
+	'fptc-form-submit-button' => 'Wótpósłaś',
+	'fptc-invalid-attribute' => 'Zapódany atribut jo njepłaśiwy.',
+	'fptc-insufficient-rights-for-maintenance' => 'Musyš se ako administrator pśizjawiś, aby se toś ten bok woglědał.',
+	'fptc-refresh-frequent-patterns' => 'Daty aktualizěrowaś',
+	'fptc-refreshed-frequent-patterns' => 'Pšawidła za "Frequent Pattern" su se zaktualizěrowali.',
+	'fptc-search-attribute-name' => 'Za atributom pytaś',
+	'fptc-search-button' => 'Pytanje',
+	'fptc-search-suggestion-value' => 'Pódobny na "%s":',
+	'fptc-suggestion' => 'Měniš ty:',
+	'fptc-no-suggestion' => 'Žedne naraźenja njenamakane',
+);
+
 /** French (Français)
  * @author Gomoko
  */
@@ -164,6 +185,27 @@ $messages['gl'] = array(
 	'fptc-search-suggestion-value' => 'Similar a "%s":',
 	'fptc-suggestion' => 'Quizais quixo dicir:',
 	'fptc-no-suggestion' => 'Non se atopou suxestión ningunha',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'freqpatterntagcloud-desc' => '[[Special:FreqPatternTagCloud|Specialna strona]] za wutworjenje hesłoweje mróčele na zakładźe atributow a za pytanje za podobnymi atributowymi hódnotami',
+	'fptc-categoryname' => 'Kategorija',
+	'fptc-context-menu-browse' => 'Strony z tutej hódnotu přepytać',
+	'fptc-context-menu-similar-tags' => 'Podobne atributy:',
+	'fptc-form-attribute-name' => 'Atribut:',
+	'fptc-form-submit-button' => 'Wotpósłać',
+	'fptc-invalid-attribute' => 'Zapodaty atribut je njepłaćiwy.',
+	'fptc-insufficient-rights-for-maintenance' => 'Dyrbiš so jako administrator přizjewić, zo by sej tutu stronu wobhladał.',
+	'fptc-refresh-frequent-patterns' => 'Daty aktualizować',
+	'fptc-refreshed-frequent-patterns' => 'Prawidła za "Frequent Pattern" su so zaktualizowali.',
+	'fptc-search-attribute-name' => 'Za atributom pytać',
+	'fptc-search-button' => 'Pytanje',
+	'fptc-search-suggestion-value' => 'Podobny na "%s":',
+	'fptc-suggestion' => 'Měniš ty:',
+	'fptc-no-suggestion' => 'Žane namjety njenamakane',
 );
 
 /** Interlingua (Interlingua)
