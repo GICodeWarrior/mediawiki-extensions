@@ -616,14 +616,15 @@ Hlej [//www.mediawiki.org/wiki/API API-dokumentaciju] za dalše podrobnosće za 
 );
 
 /** Hungarian (Magyar)
+ * @author Bináris
  * @author Dj
  */
 $messages['hu'] = array(
 	'apisb-desc' => 'Lehetőséget biztosít az [//www.mediawiki.org/wiki/API MediaWiki API] hívások nyomkövetésére a böngészőből',
 	'apisandbox' => 'API homokozó',
 	'apisb-no-js' => "'''Hiba''': ehhez a szolgáltatáshoz JavaScript szükséges.",
-	'apisb-intro' => "Használd ezt az oldalt '''MediaWiki API''' kísérletezésekre.
-Az API használatának további részletei az [//www.mediawiki.org/wiki/API the API dokumentációnál] található.",
+	'apisb-intro' => "Ezen az oldalon kísérletezhetsz a '''MediaWiki API'''-val.
+További részletek az [//www.mediawiki.org/wiki/API API-dokumentációnál] találhatók.",
 	'apisb-api-disabled' => 'API le van tiltva ezen az oldalon.',
 	'apisb-parameters' => 'Paraméterek',
 	'apisb-result' => 'Eredmény',
@@ -771,6 +772,7 @@ Per ulteriori dettagli di utilizzo delle API, fai riferimento alla [//www.mediaw
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'apisb-desc' => '브라우저에서 [//www.mediawiki.org/wiki/API 미디어위키 API] 호출을 디버그할 수 있도록 함',
 	'apisandbox' => 'API 실험실',
 	'apisb-no-js' => "'''오류''': 이 기능을 쓰려면 자바스크립트가 필요합니다.",
 	'apisb-intro' => "'''미디어위키 API'''를 시험해보려면 이 페이지를 이용해보세요.
@@ -793,6 +795,7 @@ $messages['ko'] = array(
 	'apisb-query-list' => '목록',
 	'apisb-query-meta' => '메타 정보',
 	'apisb-generic-parameters' => '일반 매개변수',
+	'apisb-generator-parameters' => '제네레이터',
 );
 
 /** Colognian (Ripoarisch)
@@ -1599,19 +1602,20 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Anakmalaysia
  * @author Hydra
+ * @author Liangent
  * @author PhiLiP
  * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
-	'apisb-desc' => '允许调试 [//www.mediawiki.org/wiki/API MediaWiki API] 从浏览器的调用',
-	'apisandbox' => 'API 沙箱',
+	'apisb-desc' => '允许从浏览器调试[//www.mediawiki.org/wiki/API MediaWiki API]调用',
+	'apisandbox' => 'API沙箱',
 	'apisb-no-js' => "'''错误'''：此功能需要 JavaScript。",
-	'apisb-intro' => '使用这个页面来试验“Mediawiki应用程式介面（API）”。
+	'apisb-intro' => '使用这个页面来试验“MediaWiki应用程序接口（API）”。
 欲知API使用详情，请参阅[//www.mediawiki.org/wiki/API API文档]。',
-	'apisb-api-disabled' => '此站点上禁用了 API。',
+	'apisb-api-disabled' => '此站点上禁用了API。',
 	'apisb-parameters' => '参数',
 	'apisb-result' => '结果',
-	'apisb-request-url' => '请求的 URL：',
+	'apisb-request-url' => '请求的URL：',
 	'apisb-request-post' => 'POST数据：',
 	'apisb-select-action' => '选择操作',
 	'apisb-select-query' => '查询又如何？',
@@ -1625,20 +1629,21 @@ $messages['zh-hans'] = array(
 	'apisb-query-prop' => '属性',
 	'apisb-query-list' => '列表',
 	'apisb-query-meta' => 'Meta 信息',
-	'apisb-generic-parameters' => '泛型参数',
+	'apisb-generic-parameters' => '通用参数',
 	'apisb-generator-parameters' => '生成器',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Anakmalaysia
+ * @author Liangent
  */
 $messages['zh-hant'] = array(
-	'apisb-desc' => '允許調試 [//www.mediawiki.org/wiki/API MediaWiki API] 從瀏覽器的調用',
-	'apisandbox' => 'API 沙箱',
+	'apisb-desc' => '允許從瀏覽器調試[//www.mediawiki.org/wiki/API MediaWiki API]調用',
+	'apisandbox' => 'API沙箱',
 	'apisb-no-js' => "'''錯誤'''：此功能需要 JavaScript。",
-	'apisb-intro' => '使用這個頁面來試驗“Mediawiki應用程式介面（API）”。
+	'apisb-intro' => '使用這個頁面來試驗“MediaWiki應用程式介面（API）”。
 欲知API使用詳情，請參閱[//www.mediawiki.org/wiki/API API文檔]。',
-	'apisb-api-disabled' => '此站點上禁用了 API。',
+	'apisb-api-disabled' => '此站點上禁用了API。',
 	'apisb-parameters' => '參數',
 	'apisb-result' => '結果',
 	'apisb-request-url' => '請求的 URL：',
@@ -1655,7 +1660,7 @@ $messages['zh-hant'] = array(
 	'apisb-query-prop' => '屬性',
 	'apisb-query-list' => '列表',
 	'apisb-query-meta' => 'Meta 信息',
-	'apisb-generic-parameters' => '泛型參數',
+	'apisb-generic-parameters' => '通用參數',
 	'apisb-generator-parameters' => '生成器',
 );
 
