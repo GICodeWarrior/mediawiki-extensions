@@ -7,6 +7,10 @@
  * Support					https://www.mediawiki.org/wiki/Extension_talk:Education_Program
  * Source code:			    http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/EducationProgram
  *
+ * The source code makes use of a number of terms different from but corresponding to those in the UI:
+ * * Org instead of Institution
+ * * Mentor instead of Ambassador
+ *
  * @file EducationProgram.php
  * @ingroup EducationProgram
  *
@@ -59,13 +63,14 @@ $wgAutoloadClasses['EPCourse'] 						= dirname( __FILE__ ) . '/includes/EPCourse
 $wgAutoloadClasses['EPCoursePager'] 				= dirname( __FILE__ ) . '/includes/EPCoursePager.php';
 $wgAutoloadClasses['EPDBObject'] 					= dirname( __FILE__ ) . '/includes/EPDBObject.php';
 $wgAutoloadClasses['EPMentor'] 						= dirname( __FILE__ ) . '/includes/EPMentor.php';
+$wgAutoloadClasses['EPMentorPager'] 				= dirname( __FILE__ ) . '/includes/EPMentorPager.php';
 $wgAutoloadClasses['EPOrg'] 						= dirname( __FILE__ ) . '/includes/EPOrg.php';
 $wgAutoloadClasses['EPOrgPager'] 					= dirname( __FILE__ ) . '/includes/EPOrgPager.php';
 $wgAutoloadClasses['EPPager'] 						= dirname( __FILE__ ) . '/includes/EPPager.php';
 $wgAutoloadClasses['EPStudent'] 					= dirname( __FILE__ ) . '/includes/EPStudent.php';
 $wgAutoloadClasses['EPStudentPager'] 				= dirname( __FILE__ ) . '/includes/EPStudentPager.php';
 $wgAutoloadClasses['EPTerm'] 						= dirname( __FILE__ ) . '/includes/EPTerm.php';
-$wgAutoloadClasses['EPTermPager'] 						= dirname( __FILE__ ) . '/includes/EPTermPager.php';
+$wgAutoloadClasses['EPTermPager'] 					= dirname( __FILE__ ) . '/includes/EPTermPager.php';
 
 $wgAutoloadClasses['SpecialCourse'] 				= dirname( __FILE__ ) . '/specials/SpecialCourse.php';
 $wgAutoloadClasses['SpecialCourses'] 				= dirname( __FILE__ ) . '/specials/SpecialCourses.php';
@@ -83,6 +88,7 @@ $wgAutoloadClasses['SpecialStudents'] 				= dirname( __FILE__ ) . '/specials/Spe
 $wgAutoloadClasses['SpecialTerm'] 					= dirname( __FILE__ ) . '/specials/SpecialTerm.php';
 $wgAutoloadClasses['SpecialTerms'] 					= dirname( __FILE__ ) . '/specials/SpecialTerms.php';
 $wgAutoloadClasses['SpecialEnroll'] 				= dirname( __FILE__ ) . '/specials/SpecialEnroll.php';
+$wgAutoloadClasses['SpecialAmbassadors'] 			= dirname( __FILE__ ) . '/specials/SpecialAmbassadors.php';
 
 // Special pages
 $wgSpecialPages['MyCourses'] 						= 'SpecialMyCourses';

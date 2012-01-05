@@ -55,9 +55,9 @@ $messages['en'] = array(
 	'group-epstudent-member' => '{{GENDER:$1|education program student}}',
 	'grouppage-epstudent' => '{{ns:project}}:Education_program_students',
 
-	'group-epmentor' => 'Education program mentors',
-	'group-epmentor-member' => '{{GENDER:$1|education program mentor}}',
-	'grouppage-epmentor' => '{{ns:project}}:Education_program_mentors',
+	'group-epmentor' => 'Education program ambassadors',
+	'group-epmentor-member' => '{{GENDER:$1|education program ambassador}}',
+	'grouppage-epmentor' => '{{ns:project}}:Education_program_ambassadors',
 
 	// Special pages
 	'specialpages-group-education' => 'Education',
@@ -78,6 +78,7 @@ $messages['en'] = array(
 	'special-editcourse-add' => 'Add course',
 	'special-editcourse-edit' => 'Edit course',
 	'special-enroll' => 'Enroll',
+    'special-ambassadors' => 'Ambassadors',
 
 	// Special:Institutions
 	'ep-institutions-nosuchinstitution' => 'There is no institution with name "$1". Existing institutions are listed below.',
@@ -111,6 +112,9 @@ $messages['en'] = array(
 
 	// Special:Students
 	'ep-students-noresults' => 'There are no students to list.',
+
+    // Special:Ambassadors
+    'ep-mentors-noresults' => 'There are no ambassadors to list.',
 
 	// Pager
 	'ep-pager-showonly' => 'Show only items with',

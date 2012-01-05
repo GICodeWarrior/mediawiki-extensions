@@ -34,7 +34,6 @@ class SpecialAmbassadors extends SpecialEPPage {
 
 		if ( $this->subPage === '' ) {
 			$this->displayNavigation();
-			EPMentor::displayAddNewControl( $this->getContext() );
 			EPMentor::displayPager( $this->getContext() );
 		}
 		else {
