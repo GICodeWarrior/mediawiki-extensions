@@ -618,7 +618,7 @@ jQuery(function( $ ) {
 						'action':'feedbackdashboardresponse',
 						'useragent': clientData.name + '/' + clientData.versionNumber,
 						'system': clientData.platform,
-						'token': mw.config.get('mbEditToken'),
+						'token': mw.user.tokens.get( 'editToken' ),
 						'response': fbResponse,
 						'feedback': item_id,
 						'format':'json'
