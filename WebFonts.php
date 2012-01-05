@@ -30,9 +30,11 @@ $dir = dirname( __FILE__ );
 
 // Internationalization
 $wgExtensionMessagesFiles['WebFonts'] = "$dir/WebFonts.i18n.php";
+$wgExtensionMessagesFiles['SpecialWebFonts'] = "$dir/SpecialWebFonts.i18n.php";
 
 // Register auto load for the page class
 $wgAutoloadClasses['WebFontsHooks'] = "$dir/WebFonts.hooks.php";
+$wgAutoloadClasses['SpecialWebFonts'] = "$dir/SpecialWebFonts.php";
 
 $wgHooks['BeforePageDisplay'][] = 'WebFontsHooks::addModules';
 $wgHooks['GetPreferences'][] = 'WebFontsHooks::addPreference';
@@ -40,6 +42,8 @@ $wgHooks['UserGetDefaultOptions'][] = 'WebFontsHooks::addDefaultOptions';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'WebFontsHooks::addConfig';
 
 $wgWebFontsEnabledByDefault = true;
+
+$wgSpecialPages['WebFonts'] = 'SpecialWebFonts';
 
 $wgResourceModules['ext.webfonts.init'] = array(
 	'scripts' => 'resources/ext.webfonts.init.js',
@@ -68,5 +72,14 @@ $wgResourceModules['ext.webfonts.core'] = array(
 		'jquery.cookie',
 		'mediawiki.util',
 	),
+	'position' => 'top',
+);
+
+$wgResourceModules['ext.webfonts.preview'] = array(
+	'scripts' => 'resources/ext.webfonts.preview.js',
+	'styles' => 'resources/ext.webfonts.preview.css',
+	'localBasePath' => $dir,
+	'remoteExtPath' => 'WebFonts',
+	'dependencies' => 'ext.webfonts.core',
 	'position' => 'top',
 );
