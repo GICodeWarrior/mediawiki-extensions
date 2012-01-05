@@ -268,12 +268,12 @@ $messages['mk'] = array(
 	'right-editalluserpages' => 'уреди кориснички страници',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  */
-$messages['nl'] = array(
-	'userpageeditprotection-desc' => "Beperkt het bewerken van gebruikerspagina's tot de gebruiker zelf en gebruikers met rechten",
-	'right-editalluserpages' => "Gebruikerspagina's bewerken",
+$messages['ms'] = array(
+	'userpageeditprotection-desc' => 'Mengehadkan penyunting di laman pengguna kepada pengguna dan penyunting yang dibenarkan',
+	'right-editalluserpages' => 'Menyunting laman pengguna',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -282,6 +282,14 @@ $messages['nl'] = array(
 $messages['nb'] = array(
 	'userpageeditprotection-desc' => 'Begrenser redigering av brukersidene til brukeren og tillatte bidragsytere',
 	'right-editalluserpages' => 'Rediger brukersider',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'userpageeditprotection-desc' => "Beperkt het bewerken van gebruikerspagina's tot de gebruiker zelf en gebruikers met rechten",
+	'right-editalluserpages' => "Gebruikerspagina's bewerken",
 );
 
 /** Occitan (Occitan)
