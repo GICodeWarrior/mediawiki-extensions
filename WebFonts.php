@@ -31,6 +31,7 @@ $dir = dirname( __FILE__ );
 // Internationalization
 $wgExtensionMessagesFiles['WebFonts'] = "$dir/WebFonts.i18n.php";
 $wgExtensionMessagesFiles['SpecialWebFonts'] = "$dir/SpecialWebFonts.i18n.php";
+$wgExtensionMessagesFiles['WebFontsAlias'] = "$dir/WebFonts.alias.php";
 
 // Register auto load for the page class
 $wgAutoloadClasses['WebFontsHooks'] = "$dir/WebFonts.hooks.php";

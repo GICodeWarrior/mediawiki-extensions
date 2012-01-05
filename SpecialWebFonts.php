@@ -28,20 +28,12 @@ class SpecialWebFonts extends SpecialPage {
 	}
 
 	protected function showPreviewForm() {
-		$this->out->addHtml( Html::openElement( 'h2' )
-			. wfMsg( 'webfonts-preview-title' )
-			. Html::closeElement( 'h2' ) );
-
+		$this->out->wrapWikiMsg( '==$1==', 'webfonts-preview-title' ) ;
 		$this->out->addHtml( $this->showToolbar() );
-
-		$editArea = Html::openElement( 'div', array( 'id' => 'webfonts-preview-area' , 'contenteditable' => 'true' ) )
-			. wfMsg( 'webfonts-preview-sampltext' )
-			. Html::closeElement( 'div' );
+		$editArea = Html::Element( 'div', array( 'id' => 'webfonts-preview-area' , 'contenteditable' => 'true' ) ,
+			wfMsg( 'webfonts-preview-sampletext' ) ) ;
 		$this->out->addHtml( $editArea );
-
-		$this->out->addHtml( Html::openElement( 'h2' )
-			. wfMsg( 'webfonts-preview-installing-fonts-title' )
-			. Html::closeElement( 'h2' ) );
+		$this->out->wrapWikiMsg( '==$1==', 'webfonts-preview-installing-fonts-title' ) ;
 		$this->out->addWikiMsg( 'webfonts-preview-installing-fonts-text' );
 	}
 
@@ -58,17 +50,14 @@ class SpecialWebFonts extends SpecialPage {
 		}
 		$sizeSelector->setDefault( 16 );
 
-		$bold = Html::openElement( 'button', array( 'id' => 'webfonts-preview-bold' ) ) . 'B'
-			. Html::closeElement( 'button' );
+		$bold = Html::Element( 'button', array( 'id' => 'webfonts-preview-bold' )  , 'B' );
 
-		$italic = Html::openElement( 'button', array( 'id' => 'webfonts-preview-italic' ) ) . 'I'
-			. Html::closeElement( 'button' );
+		$italic = Html::Element( 'button', array( 'id' => 'webfonts-preview-italic' ) , 'I' );
 
-		$underline = Html::openElement( 'button', array( 'id' => 'webfonts-preview-underline' ) ) . 'U'
-			. Html::closeElement( 'button' );
+		$underline = Html::Element( 'button', array( 'id' => 'webfonts-preview-underline' ) ,  'U' );
 
-		$download  = Html::openElement( 'a', array( 'id' => 'webfonts-preview-download', 'href' => '#' ) )
-			. wfMsg( 'webfonts-preview-download' ) . Html::closeElement( 'a' );
+		$download  = Html::Element( 'a', array( 'id' => 'webfonts-preview-download', 'href' => '#' ) ,
+			wfMsg( 'webfonts-preview-download' ) );
 
 		return Html::openElement( 'div', array( 'id' => 'webfonts-preview-toolbar' ) )
 			. $langSelector[1]
