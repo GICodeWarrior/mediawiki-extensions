@@ -199,27 +199,17 @@ class ExtZeroRatedMobileAccess {
 	*/
 	private function lookupCarrier( $carrier ) {
 		wfProfileIn( __METHOD__ );
-		$carrierLink = '';
-		$carrierLinkData = '';
-		switch ( $carrier ) {
-			case 'Verizon':
-				$carrierLinkData = array( 'name' => 'Verizon Wireless', 
-					'url' => 'http://www.verizonwireless.com/b2c/index.html',
-					'partnerId' => '1006' );
-				break;
-			case 'Orange':
-				$carrierLinkData = array( 'name' => 'Orange Tunisia', 
-					'url' => 'http://www.orange.tn/',
-					'partnerId' => '1007' );
-				break;
+		$carrierLinkData = array();
+		$carrier = strtoupper( $carrier );
+
+		$allCarrierLinkData = $this->createCarrierOptionsFromWikiText();
+
+		if ( is_array( $allCarrierLinkData ) ) {
+			if ( isset( $allCarrierLinkData[$carrier] ) ) {
+				$carrierLinkData = $allCarrierLinkData[$carrier];
+			}
 		}
 
-		if ( is_array( $carrierLinkData ) ) {
-			$carrierLink = Html::rawElement( 'a',
-				array('href' => $carrierLinkData['url'] ),
-				$carrierLinkData['name'] );
-		}
-		$carrierLinkData['link'] = $carrierLink;
 		wfProfileOut( __METHOD__ );
 		return $carrierLinkData;
 	}
@@ -360,6 +350,51 @@ class ExtZeroRatedMobileAccess {
 		wfProfileOut( __METHOD__ );
 		return true;
 	}
+	
+	private static function createCarrierOptionsFromWikiText() {		
+		global $wgMemc;
+		wfProfileIn( __METHOD__ );
+		$carrierOptionsWikiPage = wfMsg( 'zero-rated-mobile-access-carrier-options-wiki-page' );
+		$title = Title::newFromText( $carrierOptionsWikiPage, NS_MEDIAWIKI );
+		// Use the revision directly to prevent other hooks to be called
+		$rev = Revision::newFromTitle( $title );
+		$sha1OfRev = $rev->getSha1();
+		$key = wfMemcKey( 'zero-rated-mobile-access-carrier-options', $sha1OfRev );
+		$carrierOptions = $wgMemc->get( $key );
+
+		if ( !$carrierOptions ) {
+			$carrierOptions = array();
+			$lines = array();
+			if ( $rev ) {
+				$lines = explode( "\n", $rev->getRawText() );
+			}
+			if ( $lines && count( $lines ) > 0 ) {
+				$sizeOfLines = sizeof( $lines );
+				for ( $i = 0; $i < $sizeOfLines; $i++ ) {
+					$line = $lines[$i];
+					if ( strpos( $line, '*' ) === 0 && strpos( $line, '**' ) !== 0 && $i >= 0 ) {
+						$carrierName = strtoupper( str_replace( '* ', '', $line ) );
+						$carrierRaw = str_replace( '* ', '', $line );
+						$carrierOptions[$carrierName] = '';
+						$carrierOptions[$carrierName]['name'] = $carrierRaw;
+					} elseif ( strpos( $line, '**' ) === 0 && $i > 0 ) {
+						if ( $i % 3 === 1 ) {
+							$carrierOptions[$carrierName]['url'] = trim( str_replace( '** ', '', $line ) );
+							$carrierLink = Html::rawElement( 'a',
+								array('href' => $carrierOptions[$carrierName]['url'] ),
+									$carrierOptions[$carrierName]['name'] );
+							$carrierOptions[$carrierName]['link'] = $carrierLink;
+						} elseif ( $i % 3 === 2 ) {
+							$carrierOptions[$carrierName]['partnerId'] = intval( trim( str_replace( '** ', '', $line ) ) );
+						}
+					}
+				}
+			}
+			$wgMemc->set( $key, $carrierOptions, self::getMaxAge() );
+		}
+		wfProfileOut( __METHOD__ );
+		return $carrierOptions;
+	}
 
 	/**
 	* Returns the language options array parsed from a valid Wiki page
@@ -376,7 +411,7 @@ class ExtZeroRatedMobileAccess {
 		$sha1OfRev = $rev->getSha1();
 		$key = wfMemcKey( 'zero-rated-mobile-access-language-options', $sha1OfRev );
 		$languageOptions = $wgMemc->get( $key );
-		
+
 		if ( !$languageOptions ) {
 			$languageOptions = array();
 			$lines = array();
