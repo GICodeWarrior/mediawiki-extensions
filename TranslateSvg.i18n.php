@@ -278,6 +278,28 @@ $messages['mk'] = array(
 	'translatesvg-toggle-hide' => 'Скриј преводи на овој јазик',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'translatesvg-desc' => 'Menyediakan antaramuka bergaya natif untuk menterjemah SVG sejajar dengan tentuan SVG1.1',
+	'translatesvg-legend' => 'Laluan fail',
+	'translatesvg-page' => 'Fail:',
+	'translatesvg-submit' => 'Pergi',
+	'translatesvg-summary' => 'Laman khas ini membolehkan anda untuk menambahkan, membuang dan mengubahsuai terjemahan yang terbenam dalam fail imeg SVG yang tertentu.',
+	'translatesvg-add' => 'Jika bahasa anda belum disenaraikan, anda boleh [[#addlanguage|menambahkannya]].',
+	'translatesvg-xcoordinate-pre' => 'Koordinat X (melintang):',
+	'translatesvg-ycoordinate-pre' => 'Koordinat Y (menegak):',
+	'translatesvg-specify' => 'Nyatakan kod bahasa baru (cth. ms, en, zh, ta, ...)',
+	'translatesvg-fallbackdesc' => 'Asali (tiada bahasa dinyatakan)',
+	'translatesvg-qqqdesc' => 'Nasihat kepada para penterjemah',
+	'translatesvg-nodesc' => '(tiada keterangan)',
+	'translatesvg-remove' => 'Buang semua terjemahan dalam bahasa ini',
+	'translatesvg-unsuccessful' => "Maaf, fail ini '''tidak boleh diterjemah'''.",
+	'translatesvg-toggle-view' => 'Lihat terjemahan dalam bahasa ini',
+	'translatesvg-toggle-hide' => 'Sorokkan terjemahan dalam bahasa ini',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
