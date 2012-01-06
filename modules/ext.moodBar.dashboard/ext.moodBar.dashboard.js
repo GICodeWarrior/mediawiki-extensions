@@ -509,7 +509,6 @@ jQuery(function( $ ) {
 					wikitext = wikitext.replace(/~{3,5}/g, '') + "\n\n~~~~";  //remove and add signature for 
 					parseWikiText($item, wikitext); 
 				});
-
 		}		
 		e.preventDefault();
 	}
@@ -613,8 +612,8 @@ jQuery(function( $ ) {
 								)
 						)
 					);
-		$item
-			.append( tooltip );
+		$item.append( tooltip );
+		//close event, closure remembers object
 		$( '.fbd-tooltip-close' )
 			.live( 'click' , function() {
 				tooltip.remove();
@@ -711,6 +710,16 @@ jQuery(function( $ ) {
 		if(types.length === 0) { //check for 0 because onclick it will already have unchecked itself.
 			$(this).prop('checked', true);
 		}
+	});
+	
+	//only allow one of the secondary filters to be checked
+	$( 'input[type=checkbox].fbd-filters-check').click(function(){
+		var count = $( 'input[type=checkbox].fbd-filters-check').length;
+		if(count > 1) {
+			$( 'input[type=checkbox].fbd-filters-check').prop('checked', false);
+			$(this).prop('checked', true);
+		}
+
 	});
 
 	$( '#fbd-list' ).delegate( '.fbd-item', 'hover', function (){		
