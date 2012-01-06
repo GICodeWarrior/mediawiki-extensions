@@ -1,8 +1,4 @@
-( function( $ ) {
-	
-	$( document ).ready( function() {
-		$.kieli.setup();
-	} );
+( function ( $ ) {
 
 	$.kieli = {
 		loaded: false,
@@ -166,4 +162,8 @@
 		}
 	};
 	
-})(jQuery);
+	$( document ).ready( function() {
+		$.kieli.setup();
+	} );
+	
+} )( jQuery );
