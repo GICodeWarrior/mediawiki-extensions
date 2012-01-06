@@ -87,6 +87,48 @@
 	margin: 1em 0 0 0;
 }
 
+/* Tool Tip */
+
+.fbd-tooltip-overlay-wrap {
+	width: 285px;
+	position: absolute;
+	left: 7em;
+	top: 5.25em;
+	background: #ff9933;
+	padding: 2px;
+}
+
+.fbd-tooltip-pointy {
+	position: absolute;
+	top: -15px;
+	left: 15px;
+	/* @embed */
+	background: url(images/tooltip-pokey.png);
+	background-repeat: no-repeat;
+	background-position: left;
+	height: 17px;
+	width: 15px;
+}
+
+.fbd-tooltip-overlay {
+	background: #fefac6;
+	padding: 10px;
+}
+
+.fbd-tooltip-title {
+	font-weight: bold;
+	font-size: 0.75em;
+	/* embed */
+	background: url(images/mb-icon-16x16-alert.png) left top no-repeat;
+	line-height: 18px;
+	padding-left: 20px;
+}
+
+.fbd-tooltip-close {
+	color: #FF9933;
+	float: right;
+}
+
 /* List */
 
 #fbd-list {
@@ -230,6 +272,7 @@
 
 .fbd-item-response {
 	line-height: 2.1em;
+	position: relative;
 }
 
 .fbd-item-response-icon {

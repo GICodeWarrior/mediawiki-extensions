@@ -455,7 +455,7 @@ jQuery(function( $ ) {
 					
 			//get the feedbackItem
 			var $item = $(this).closest('.fbd-item');
-			
+			//close any open responders prior to opening this one.
 			closeAllResponders();
 			
 			$(this).find('.fbd-item-response-collapsed')
@@ -509,6 +509,7 @@ jQuery(function( $ ) {
 					wikitext = wikitext.replace(/~{3,5}/g, '') + "\n\n~~~~";  //remove and add signature for 
 					parseWikiText($item, wikitext); 
 				});
+
 		}		
 		e.preventDefault();
 	}
@@ -593,7 +594,38 @@ jQuery(function( $ ) {
 		setTimeout(function(){
 			reloadItem($el, true);	
 		}, 2000);
-	} 
+	}
+	/* Display tooltip for response concurrency notification
+	 * @param $item Feedback item
+	 * @param msg Message to display in tooltip
+	*/
+	function loadToolTip($item, msg) {
+		var tooltip = $('<div>').attr('class', 'fbd-tooltip-overlay-wrap')
+						.append(
+						$('<div>').attr('class', 'fbd-tooltip-overlay')
+						.append(
+							$('<div>').attr('class', 'fbd-tooltip-pointy')
+						).append(
+							$('<div>').attr('class', 'fbd-tooltip-title')
+								.text( msg ) 
+								.prepend(
+									$('<span>').attr('class', 'fbd-tooltip-close').text('X')	
+								)
+						)
+					);
+		$item
+			.append( tooltip );
+		$( '.fbd-tooltip-close' )
+			.live( 'click' , function() {
+				tooltip.remove();
+			});
+		setTimeout( function() {
+			tooltip.fadeOut(function(tooltip){
+				tooltip.remove();
+			});
+		}, 1500 );	
+
+	}
 	// On-load stuff
 	
 	$('.fbd-item-show a').live( 'click', showHiddenItem );
