@@ -5,27 +5,42 @@
 -- Organizations, ie universities
 CREATE TABLE IF NOT EXISTS /*_*/ep_orgs (
   org_id                     INT unsigned        NOT NULL auto_increment PRIMARY KEY,
+
   org_name                   VARCHAR(255)        NOT NULL, -- Name of the organization
   org_city                   VARCHAR(255)        NOT NULL, -- Name of the city where the org is located
-  org_country                VARCHAR(255)        NOT NULL -- Name of the country where the org is located
+  org_country                VARCHAR(255)        NOT NULL, -- Name of the country where the org is located
+
+  org_courses                SMALLINT unsigned   NOT NULL, -- Amount of courses
+  org_mentors                SMALLINT unsigned   NOT NULL, -- Amount of mentors
+  org_students               INT unsigned        NOT NULL -- Amount of students
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX /*i*/ep_org_name ON /*_*/ep_orgs (org_name);
+CREATE INDEX /*i*/ep_org_courses ON /*_*/ep_orgs (org_courses);
+CREATE INDEX /*i*/ep_org_mentors ON /*_*/ep_orgs (org_mentors);
+CREATE INDEX /*i*/ep_org_students ON /*_*/ep_orgs (org_students);
 
 -- Courses. These describe a specific course, time-independent.
 CREATE TABLE IF NOT EXISTS /*_*/ep_courses (
   course_id                  INT unsigned        NOT NULL auto_increment PRIMARY KEY,
+
   course_org_id              INT unsigned        NOT NULL, -- Foreign key on ep_orgs.org_id
   course_name                VARCHAR(255)        NOT NULL, -- Name of the course
-  course_description         TEXT                NOT NULL -- Description of the course
+  course_description         TEXT                NOT NULL, -- Description of the course
+  course_lang                VARCHAR(10)         NOT NULL, -- Language (code)
+
+  course_students            SMALLINT unsigned   NOT NULL -- Amount of students
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/ep_course_org_id ON /*_*/ep_courses (course_org_id);
 CREATE UNIQUE INDEX /*i*/ep_course_name ON /*_*/ep_courses (course_name);
+CREATE INDEX /*i*/ep_course_lang ON /*_*/ep_courses (course_lang);
+CREATE INDEX /*i*/ep_course_students ON /*_*/ep_courses (course_students);
 
 -- Terms. These are "instances" of a course in a certain period.
 CREATE TABLE IF NOT EXISTS /*_*/ep_terms (
   term_id                    INT unsigned        NOT NULL auto_increment PRIMARY KEY,
+
   term_course_id             INT unsigned        NOT NULL, -- Foreign key on ep_courses.course_id
   term_org_id                INT unsigned        NOT NULL, -- Foreign key on ep_orgs.org_id. Helper field, not strictly needed.
   term_year                  SMALLINT unsigned   NOT NULL, -- Yeah in which the term takes place
@@ -43,10 +58,18 @@ CREATE UNIQUE INDEX /*i*/ep_trem_period ON /*_*/ep_terms (term_org_id, term_star
 -- Students. In essence this is an extension to the user table.
 CREATE TABLE IF NOT EXISTS /*_*/ep_students (
   student_id                 INT unsigned        NOT NULL auto_increment PRIMARY KEY,
-  student_user_id            INT unsigned        NOT NULL -- Foreign key on user.user_id
+
+  student_user_id            INT unsigned        NOT NULL, -- Foreign key on user.user_id
+  student_first_enroll       varbinary(14)       NOT NULL, -- Time of first enrollment
+
+  student_last_active        varbinary(14)       NOT NULL, -- Time of last activity
+  student_active_enroll      TINYINT unsigned    NOT NULL -- If the student is enrolled in any active terms
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX /*i*/ep_students_user_id ON /*_*/ep_students (student_user_id);
+CREATE INDEX /*i*/ep_students_first_enroll ON /*_*/ep_students (student_first_enroll);
+CREATE INDEX /*i*/ep_students_last_active ON /*_*/ep_students (student_last_active);
+CREATE INDEX /*i*/ep_students_active_enroll ON /*_*/ep_students (student_active_enroll);
 
 -- Mentors. In essence this is an extension to the user table.
 CREATE TABLE IF NOT EXISTS /*_*/ep_mentors (

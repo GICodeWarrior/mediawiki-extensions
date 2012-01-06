@@ -24,13 +24,17 @@ final class EPHooks {
 	 * @return true
 	 */
 	public static function onSchemaUpdate( DatabaseUpdater $updater ) {
-		$updater->addExtensionUpdate( array(
-			'addTable',
+		$updater->addExtensionTable(
 			'ep_orgs',
-			dirname( __FILE__ ) . '/sql/EducationProgram.sql',
-			true
-		) );
-		
+			dirname( __FILE__ ) . '/sql/EducationProgram.sql'
+		);
+
+		$updater->addExtensionField(
+			'ep_orgs',
+			'org_courses',
+			dirname( __FILE__ ) . '/sql/AddExtraFields.sql'
+		);
+
 		return true;
 	}
 
