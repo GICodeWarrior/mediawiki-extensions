@@ -43,6 +43,18 @@ $messages['af'] = array(
 	'mah-undo-mark-text' => 'maak ongedaan',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'markashelpful-desc' => 'Надае магчымасьць пазначэньня карысных камэнтараў',
+	'mah-mark-text' => 'Пазначыць як карыснае',
+	'mah-you-marked-text' => 'Вы пазначылі гэта карысным',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1 мяркуе, што гэта карысна}}',
+	'mah-undo-mark-text' => 'скасаваць',
+	'mah-action-error' => 'У час выкананьня дзеяньня адбылася памылка',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
@@ -334,11 +346,16 @@ $messages['sv'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author A1
  * @author Тест
  */
 $messages['uk'] = array(
 	'markashelpful-desc' => 'Надає інтерфейс користувача для позначання корисних коментарів',
+	'mah-mark-text' => 'Позначити як корисне',
+	'mah-you-marked-text' => 'Ви вважаєте, що це корисне',
+	'mah-someone-marked-text' => '{{GENDER:$1|$1 вважають це корисним}}',
 	'mah-undo-mark-text' => 'скасувати',
+	'mah-action-error' => 'Не вдалося виконати дію',
 );
 
 /** Vietnamese (Tiếng Việt)
