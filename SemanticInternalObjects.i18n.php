@@ -282,6 +282,7 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'semanticinternalobjects-desc' => "Ampostassion d'oget intern an drinta a Semantic MediaWiki",
+	'semanticinternalobjects-internalproperty' => 'Proprietà anterna',
 );
 
 /** Portuguese (Português)
