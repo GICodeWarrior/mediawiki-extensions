@@ -50,7 +50,7 @@ class SpecialEnroll extends SpecialEPPage {
 		elseif ( count( $args ) === 2 ) {
 			$term = EPTerm::selectRow( null, array(
 				'id' => $args[0],
-				'token' => strtolower( $args[1] )
+				'token' => $args[1]
 			) );
 			
 			if ( $term === false ) {
