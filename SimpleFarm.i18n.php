@@ -90,3 +90,10 @@ $messages['nl'] = array(
 	'simplefarm-desc' => "Eenvoudige maar toch krachtige wikifarm-uitbreiding zonder grootse configuratiepagina's",
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'simplefarm-desc' => "Sempi, anco' na potenta estension ëd na fatorìa wiki sensa qualsëssia pagina ëd configurassion ëd fantasìa",
+);
+
