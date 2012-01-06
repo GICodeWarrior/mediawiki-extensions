@@ -82,6 +82,13 @@ $messages['ms'] = array(
 	'suop-desc' => 'Mengemaskinikan atribut-atribut semantik pada laman wiki sewaktu menyingkirkan laman',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['nb'] = array(
+	'suop-desc' => 'Oppdater semantiske attributter for en wikiside når siden blir ryddet',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -89,10 +96,10 @@ $messages['nl'] = array(
 	'suop-desc' => 'Werkt semantische eigenschappen van een wikipagina bij als de pagina uit de cache wordt verwijderd',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Event
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
  */
-$messages['nb'] = array(
-	'suop-desc' => 'Oppdater semantiske attributter for en wikiside når siden blir ryddet',
+$messages['pms'] = array(
+	'suop-desc' => "A modìfica j'atribù semàntich ëd na pagina wiki quand as purga la pagina",
 );
 
