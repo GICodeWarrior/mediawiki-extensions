@@ -27,8 +27,7 @@ $wgExtensionCredits['other'][] = array(
 );
 
 // Internationalization
-$dir = dirname( __FILE__ ) . '/';
-$wgExtensionMessagesFiles['HelpCommons'] = $dir . 'HelpCommons.i18n.php';
+$wgExtensionMessagesFiles['HelpCommons'] = dirname( __FILE__ ) . '/HelpCommons.i18n.php';
 
 // Help wiki(s) where the help namespace is fetched from
 $wgHelpCommonsFetchingWikis = array();
@@ -92,7 +91,7 @@ function wfHelpCommonsLoad( $helppage ) {
 
 	if ( !empty( $text->old_text ) ) {
 		$wgOut->addWikiText( $text->old_text );
-		$wgOut->addScript('<style type="text/css">div.noarticletext { display: none; } div.mw-warning-with-logexcerpt { display: none; } #contentSub, #contentSub2 { display: none; }</style>');
+		$wgOut->addScript( '<style type="text/css">div.noarticletext { display: none; } div.mw-warning-with-logexcerpt { display: none; } #contentSub, #contentSub2 { display: none; }</style>' );
 		return false;
 	} else {
 		return true;
@@ -197,6 +196,15 @@ function efHelpCommonsMakeBlueLinks( $skin, $target, &$text, &$customAttribs, &$
 function efHelpCommonsChangeCategoryLinks( $skin, $target, &$text, &$customAttribs, &$query, &$options, &$ret ) {
 	global $wgTitle, $wgHelpCommonsFetchingWikis, $wgLanguageCode, $wgDBname;
 
+	// only affects non-help-page-fetching wikis
+	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
+		foreach ( $urls as $url => $helpwiki ) {
+			if ( $wgDBname == $helpwiki ) {
+				return true;
+			}
+		}
+	}
+
 	if ( $wgTitle->getNamespace() != NS_HELP || $wgTitle->exists() ) {
 		return true;
 	}
@@ -222,7 +230,7 @@ function efHelpCommonsChangeCategoryLinks( $skin, $target, &$text, &$customAttri
 	// change category's link
 	foreach ( $wgHelpCommonsFetchingWikis as $language => $urls ) {
 		foreach ( $urls as $url => $helpwiki ) {
-			if ( $wgLanguageCode == $language && $wgDBname != $helpwiki ) {
+			if ( $wgLanguageCode == $language ) {
 				$text = '<a href="' . $url . '/index.php?title=' . str_replace( ' ', '_', $target->getPrefixedText() ) . '">' . $text . '</a>';
 			}
 		}
