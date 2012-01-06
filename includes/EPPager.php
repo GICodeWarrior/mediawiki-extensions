@@ -492,7 +492,8 @@ abstract class EPPager extends TablePager {
 	
 	/**
 	 * Similar to TablePager::formatValue, but passes along the name of the field without prefix.
-	 * 
+	 * Returned values need to be escaped!
+	 *
 	 * @since 0.1
 	 * 
 	 * @param string $name

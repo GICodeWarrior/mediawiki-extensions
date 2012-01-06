@@ -32,6 +32,11 @@ class EPStudent extends EPDBObject {
 		return array(
 			'id' => 'id',
 			'user_id' => 'id',
+
+			'first_enroll' => 'str', // TS_MW
+
+			'last_active' => 'str', // TS_MW
+			'active_enroll' => 'bool',
 		);
 	}
 	

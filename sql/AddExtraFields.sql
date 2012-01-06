@@ -5,10 +5,12 @@
 
 ALTER TABLE /*_*/ep_orgs ADD COLUMN org_courses SMALLINT unsigned NOT NULL;
 ALTER TABLE /*_*/ep_orgs ADD COLUMN org_mentors SMALLINT unsigned NOT NULL;
+ALTER TABLE /*_*/ep_orgs ADD COLUMN org_terms SMALLINT unsigned NOT NULL;
 ALTER TABLE /*_*/ep_orgs ADD COLUMN org_students INT unsigned NOT NULL;
 
 CREATE INDEX /*i*/ep_org_courses ON /*_*/ep_orgs (org_courses);
 CREATE INDEX /*i*/ep_org_mentors ON /*_*/ep_orgs (org_mentors);
+CREATE INDEX /*i*/ep_org_terms ON /*_*/ep_orgs (org_terms);
 CREATE INDEX /*i*/ep_org_students ON /*_*/ep_orgs (org_students);
 
 ALTER TABLE /*_*/ep_courses ADD COLUMN course_lang VARCHAR(10) NOT NULL;

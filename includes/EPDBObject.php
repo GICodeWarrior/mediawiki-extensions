@@ -168,13 +168,16 @@ abstract class EPDBObject {
 	 * @since 0.1
 	 *
 	 * @param string $name
+	 * @param mixed $default
 	 *
 	 * @throws MWException
 	 * @return mixed
 	 */
-	public function getField( $name ) {
+	public function getField( $name, $default = null ) {
 		if ( $this->hasField( $name ) ) {
 			return $this->fields[$name];
+		} elseif ( !is_null( $default ) ) {
+			return $default;
 		} else {
 			throw new MWException( 'Attempted to get not-set field ' . $name );
 		}
@@ -343,6 +346,7 @@ abstract class EPDBObject {
 
 	/**
 	 * Updates the object in the database.
+	 * TODO: log and store old rev
 	 *
 	 * @since 0.1
 	 *
@@ -361,6 +365,7 @@ abstract class EPDBObject {
 
 	/**
 	 * Inserts the object into the database.
+	 * TODO: log
 	 *
 	 * @since 0.1
 	 *
@@ -383,6 +388,7 @@ abstract class EPDBObject {
 
 	/**
 	 * Removes the object from the database.
+	 * TODO: log and store rev
 	 *
 	 * @since 0.1
 	 *
@@ -1064,6 +1070,36 @@ abstract class EPDBObject {
 		}
 
 		return $params;
+	}
+
+	/**
+	 * Computes and updates the values of the summary fields.
+	 *
+	 * @since 0.1
+	 *
+	 * @param array|string|null $summaryFields
+	 */
+	public function loadSummaryFields( $summaryFields = null ) {
+
+	}
+
+	/**
+	 * Computes the values of the summary fields of the objects matching the provided conditions.
+	 *
+	 * @since 0.1
+	 *
+	 * @param array|string|null $summaryFields
+	 * @param array $conditions
+	 */
+	public static function updateSummaryFields( $summaryFields = null, array $conditions = array() ) {
+		self::setReadDb( DB_MASTER );
+
+		foreach ( self::select( 'id', $conditions ) as /* EPDBObject */ $item ) {
+			$item->loadSummaryFields( $summaryFields );
+			$item->writeToDB();
+		}
+
+		self::setReadDb( DB_SLAVE );
 	}
 
 }

@@ -74,6 +74,8 @@ class EPTerm extends EPDBObject {
 			$this->setField( 'org_id', $this->getCourse( 'org_id' )->getField( 'org_id' ) );
 		}
 
+		EPOrg::updateSummaryFields( 'terms', array( 'id' => $this->getField( 'org_id' ) ) );
+
 		return parent::insertIntoDB();
 	}
 	
@@ -83,13 +85,36 @@ class EPTerm extends EPDBObject {
 	 */
 	public function removeFromDB() {
 		$id = $this->getId();
+		$this->loadFields( array( 'org_id' ) );
+		$orgId = $this->getField( 'org_id', false );
 		
 		$success = parent::removeFromDB();
 		
 		if ( $success ) {
 			$success = wfGetDB( DB_MASTER )->delete( 'ep_students_per_term', array( 'spt_term_id' => $id ) ) && $success;
 		}
-		
+
+		if ( $orgId !== false ) {
+			EPOrg::updateSummaryFields( array( 'terms', 'students' ), array( 'id' => $orgId ) );
+		}
+
+		return $success;
+	}
+
+	/**
+	 * (non-PHPdoc)
+	 * @see EPDBObject::updateInDB()
+	 */
+	protected function updateInDB() {
+		$oldOrgId = $this->hasField( 'org_id' ) ? self::selectFieldsRow( 'org_id', array( 'id' => $this->getId() ) ) : false;
+
+		$success = parent::updateInDB();
+
+		if ( $success && $oldOrgId !== false && $oldOrgId !== $this->getField( 'org_id' ) ) {
+			$conds = array( 'id' => array( $oldOrgId, $this->getField( 'org_id' ) ) );
+			EPOrg::updateSummaryFields( array( 'terms', 'students' ), $conds );
+		}
+
 		return $success;
 	}
 	

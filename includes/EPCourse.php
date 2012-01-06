@@ -36,6 +36,9 @@ class EPCourse extends EPDBObject {
 		
 			'name' => 'str',
 			'description' => 'str',
+			'lang' => 'str',
+
+			'students' => 'int',
 		);
 	}
 	

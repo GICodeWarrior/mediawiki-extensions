@@ -128,6 +128,10 @@ $messages['en'] = array(
 	'eporgpager-header-city' => 'City',
 	'eporgpager-header-country' => 'Country',
 	'eporgpager-filter-country' => 'Country',
+	'eporgpager-header-courses' => 'Courses',
+	'eporgpager-header-mentors' => 'Ambassadors',
+	'eporgpager-header-students' => 'Students',
+	'eporgpager-header-terms' => 'Terms',
 
 	// Institution pager
 	'epcoursepager-header-name' => 'Name',

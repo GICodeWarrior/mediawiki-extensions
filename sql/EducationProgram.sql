@@ -11,11 +11,13 @@ CREATE TABLE IF NOT EXISTS /*_*/ep_orgs (
   org_country                VARCHAR(255)        NOT NULL, -- Name of the country where the org is located
 
   org_courses                SMALLINT unsigned   NOT NULL, -- Amount of courses
+  org_terms                  SMALLINT unsigned   NOT NULL, -- Amount of terms
   org_mentors                SMALLINT unsigned   NOT NULL, -- Amount of mentors
   org_students               INT unsigned        NOT NULL -- Amount of students
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX /*i*/ep_org_name ON /*_*/ep_orgs (org_name);
+CREATE INDEX /*i*/ep_org_terms ON /*_*/ep_orgs (org_terms);
 CREATE INDEX /*i*/ep_org_courses ON /*_*/ep_orgs (org_courses);
 CREATE INDEX /*i*/ep_org_mentors ON /*_*/ep_orgs (org_mentors);
 CREATE INDEX /*i*/ep_org_students ON /*_*/ep_orgs (org_students);

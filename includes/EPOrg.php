@@ -43,6 +43,11 @@ class EPOrg extends EPDBObject {
 			'name' => 'str',
 			'city' => 'str',
 			'country' => 'str',
+
+			'courses' => 'int',
+			'terms' => 'int',
+			'mentors' => 'int',
+			'students' => 'int',
 		);
 	}
 
@@ -55,7 +60,61 @@ class EPOrg extends EPDBObject {
 			'name' => '',
 			'city' => '',
 			'country' => '',
+
+			'courses' => 0,
+			'terms' => 0,
+			'mentors' => 0,
+			'students' => 0,
 		);
+	}
+
+	/**
+	 * (non-PHPdoc)
+	 * @see EPDBObject::loadSummaryFields()
+	 */
+	public function loadSummaryFields( $summaryFields = null ) {
+		if ( is_null( $summaryFields ) ) {
+			$summaryFields = array( 'courses', 'terms', 'mentors', 'students' );
+		}
+		else {
+			$summaryFields = (array)$summaryFields;
+		}
+
+		$fields = array();
+
+		if ( in_array( 'courses', $summaryFields ) ) {
+			$fields['courses'] = EPCourse::count( array( 'org_id' => $this->getId() ) );
+		}
+
+		if ( in_array( 'terms', $summaryFields ) ) {
+			$fields['terms'] = EPTerm::count( array( 'org_id' => $this->getId() ) );
+		}
+
+		$dbr = wfGetDB( DB_SLAVE );
+
+		if ( in_array( 'mentors', $summaryFields ) ) {
+			$fields['mentors'] = $dbr->select(
+				'ep_mentors_per_org',
+				'COUNT(*) AS rowcount',
+				array( 'mpo_org_id' => $this->getId() )
+			);
+
+			$fields['mentors'] = $fields['mentors']->rowcount;
+		}
+
+		if ( in_array( 'students', $summaryFields ) ) {
+			$termIds = EPTerm::selectFields( 'id', array( 'org_id' => $this->getId() ) );
+
+			$fields['students'] = $dbr->select(
+				'ep_students_per_term',
+				'COUNT(*) AS rowcount',
+				array( 'spt_term_id' => $termIds )
+			);
+
+			$fields['students'] = $fields['students']->rowcount;
+		}
+
+		$this->setFields( $fields );
 	}
 	
 	/**
