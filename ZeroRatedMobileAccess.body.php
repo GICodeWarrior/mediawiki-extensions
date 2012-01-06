@@ -99,9 +99,10 @@ class ExtZeroRatedMobileAccess {
 			$parsedHtml = $this->parseLinksForZeroQueryString( $html );
 			$out->clearHTML();
 			$out->addHTML( $parsedHtml );
+			$carrierLink = ( isset( self::$carrier['link'] ) ) ? self::$carrier['link'] : '';
 			$bannerText = Html::rawElement( 'h3',
 				array(	'id' => 'zero-rated-banner-text' ),
-					wfMsg( 'zero-rated-mobile-access-banner-text', self::$carrier['link'] ) );
+					wfMsg( 'zero-rated-mobile-access-banner-text', $carrierLink ) );
 			$banner = Html::rawElement( 'div',
 				array(	'style' => 'display:none;',
 						'id' => 'zero-rated-banner' ),
@@ -239,7 +240,7 @@ class ExtZeroRatedMobileAccess {
 			if ( $zeroRatedLinkHref && substr( $zeroRatedLinkHref, 0, 1 ) !== '#' ) {
 				$zeroPartnerUrl = $this->appendQueryString( $zeroRatedLinkHref,
 					array( array( 'name' => 'zeropartner',
-						'value' => self::$carrier['partnerId'] ), 
+						'value' => ( isset( self::$carrier['partnerId'] ) ) ? self::$carrier['partnerId'] : 0 ),
 					array('name' => 'renderZeroRatedBanner', 
 						'value' => 'true') ) );
 				if ( $zeroPartnerUrl ) {
@@ -254,7 +255,7 @@ class ExtZeroRatedMobileAccess {
 			if ( $zeroRatedExternalLinkHref && substr( $zeroRatedExternalLinkHref, 0, 1 ) !== '#' ) {
 				$zeroPartnerUrl = $this->appendQueryString( $zeroRatedLinkHref,
 					array( array( 'name' => 'zeropartner',
-						'value' => self::$carrier['partnerId'] ), 
+						'value' => ( isset( self::$carrier['partnerId'] ) ) ? self::$carrier['partnerId'] : 0 ),
 					array('name' => 'renderZeroRatedBanner', 
 						'value' => 'true') ) );
 				if ( $zeroPartnerUrl ) {
@@ -358,9 +359,13 @@ class ExtZeroRatedMobileAccess {
 		$title = Title::newFromText( $carrierOptionsWikiPage, NS_MEDIAWIKI );
 		// Use the revision directly to prevent other hooks to be called
 		$rev = Revision::newFromTitle( $title );
-		$sha1OfRev = $rev->getSha1();
-		$key = wfMemcKey( 'zero-rated-mobile-access-carrier-options', $sha1OfRev );
-		$carrierOptions = $wgMemc->get( $key );
+		if ( $rev ) {
+			$sha1OfRev = $rev->getSha1();
+			$key = wfMemcKey( 'zero-rated-mobile-access-carrier-options', $sha1OfRev );
+			$carrierOptions = $wgMemc->get( $key );
+		} else {
+			$carrierOptions = null;
+		}
 
 		if ( !$carrierOptions ) {
 			$carrierOptions = array();
@@ -408,9 +413,13 @@ class ExtZeroRatedMobileAccess {
 		$title = Title::newFromText( $languageOptionsWikiPage, NS_MEDIAWIKI );
 		// Use the revision directly to prevent other hooks to be called
 		$rev = Revision::newFromTitle( $title );
-		$sha1OfRev = $rev->getSha1();
-		$key = wfMemcKey( 'zero-rated-mobile-access-language-options', $sha1OfRev );
-		$languageOptions = $wgMemc->get( $key );
+		if ( $rev ) {
+			$sha1OfRev = $rev->getSha1();
+			$key = wfMemcKey( 'zero-rated-mobile-access-language-options', $sha1OfRev );
+			$languageOptions = $wgMemc->get( $key );
+		} else {
+			$languageOptions = null;
+		}
 
 		if ( !$languageOptions ) {
 			$languageOptions = array();
