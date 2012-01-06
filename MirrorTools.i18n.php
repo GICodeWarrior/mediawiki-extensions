@@ -43,7 +43,7 @@ $messages['be-tarask'] = array(
 	'mirrortools-desc' => 'Дазваляе рэдагаваньні праз API ад імя любога ўдзельніка',
 	'right-mirroredit' => 'рэдагаваньне праз API ад імя любога ўдзельніка',
 	'group-MirrorTools' => 'Карыстальнікі Mirror tool',
-	'group-MirrorTools-member' => 'карыстальнік Mirror tool',
+	'group-MirrorTools-member' => '{{GENDER:$1|карыстальнік|карыстальніца}} Mirror tool',
 	'grouppage-MirrorTools' => '{{ns:project}}:Карыстальнікі Mirror tool',
 );
 
