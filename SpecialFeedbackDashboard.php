@@ -49,8 +49,13 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 			if ( count( $filters ) ) {
 				$filterType = 'filtered';
 			}
-			
-			$filters['myresponse'] = $wgRequest->getVal( 'myresponse' );
+		
+			// UI should allow users to select one or none
+			if ( $wgRequest->getVal( 'myresponse' ) == '1' ) {
+				$filters['responsefilter'] = 'myresponse';
+			} elseif ( $wgRequest->getVal( 'showunanswered' ) == '1' ) {
+				$filters['responsefilter'] = 'showunanswered';
+			}
 		}
 		// Do the query
 		$backwards = $wgRequest->getVal( 'dir' ) === 'prev';
@@ -141,11 +146,19 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 		if ( !$wgUser->isAnon() ) {
 			$myResponseMsg = wfMessage( 'moodbar-feedback-filters-my-response' )->escaped();
 			$myResponseCheckbox = Xml::check( 'myresponse', $wgRequest->getCheck( 'myresponse' ),
-			array( 'id' => 'fbd-filters-my-response', 'value' => '1' ) );
+								array( 'id' => 'fbd-filters-my-response', 'value' => '1' ) );
 			
 			$myResponseFilter = '<label for="fbd-filters-my-response" id="fbd-filters-type-my-response-label" class="fbd-filters-label">' . 
-			                     $myResponseCheckbox . $myResponseMsg . '</label>';
+						$myResponseCheckbox . $myResponseMsg . '</label>';
 		}
+
+		// Show unanswered filter
+		$showUnansweredMsg = wfMessage( 'moodbar-feedback-filters-show-unanswered' )->escaped();
+		$showUnansweredCheckbox = Xml::check( 'showunanswered', $wgRequest->getCheck( 'showunanswered' ),
+							array( 'id' => 'fbd-filters-show-unanswered', 'value' => '1' ) );
+			
+		$showUnansweredFilter = '<label for="fbd-filters-show-unanswered" id="fbd-filters-type-show-unanswered-label" class="fbd-filters-label">' . 
+								$showUnansweredCheckbox . $showUnansweredMsg . '</label>';
 		
 		return <<<HTML
 		<div id="fbd-description">
@@ -179,6 +192,7 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 				<label for="fbd-filters-username" class="fbd-filters-label">$usernameMsg</label>
 				$usernameTextbox
 				$myResponseFilter
+				$showUnansweredFilter
 				<button type="submit" id="fbd-filters-set">$setFiltersMsg</button>
 			</form>
 			<a href="$whatIsURL" id="fbd-about">$whatIsMsg</a>
@@ -585,12 +599,25 @@ HTML;
 		$option    = array( 'LIMIT' => $limit + 2, 'ORDER BY' => "mbf_timestamp$desc, mbf_id$desc" );
 		$tableJoin = array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) ); 
 		
-		//View my response
-		if ( isset( $filters['myresponse'] ) && $filters['myresponse'] == '1' && !$wgUser->isAnon() ) {
-			$table[] = 'moodbar_feedback_response';
-			$option['GROUP BY'] = 'mbf_id';
-			$tableJoin['moodbar_feedback_response'] = array( 'INNER JOIN', 'mbf_id=mbfr_mbf_id' );
-			$conds['mbfr_user_id'] = $wgUser->getId(); 
+		
+		// View my response or unanswered feedback
+		if ( isset( $filters['responsefilter'] ) ) {
+			switch ( $filters['responsefilter'] ) {
+				case 'myresponse':
+					if ( !$wgUser->isAnon() ) {
+						$table[] = 'moodbar_feedback_response';
+						$option['GROUP BY'] = 'mbf_id';
+						$tableJoin['moodbar_feedback_response'] = array( 'INNER JOIN', 'mbf_id=mbfr_mbf_id' );
+						$conds['mbfr_user_id'] = $wgUser->getId();
+					}
+				break;
+				
+				case 'showunanswered':
+					$table[] = 'moodbar_feedback_response';
+					$tableJoin['moodbar_feedback_response'] = array( 'LEFT JOIN', 'mbf_id=mbfr_mbf_id' );
+					$conds['mbfr_id'] = null; 
+				break;
+			}
 		}
 		
 		$res = $dbr->select( $table, array(
