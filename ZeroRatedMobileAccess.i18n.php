@@ -18,6 +18,7 @@ $messages['en'] = array (
 	'zero-rated-mobile-access-desc' => 'Provides features for mobile providers that provide free access',
 	'zero-rated-mobile-access-search' => 'Search',
 	'zero-rated-mobile-access-language-options-wiki-page' => 'zero-rated-mobile-access-language-options',
+	'zero-rated-mobile-access-carrier-options-wiki-page' => 'zero-rated-mobile-access-carrier-options',
 	'zero-rated-mobile-access-language-selection' => 'All languages',
 	'zero-rated-mobile-access-home-page-selection' => '$1 home page',
 	'zero-rated-mobile-access-home-page-selection-text' => 'Or go to the home page in the following language:',
