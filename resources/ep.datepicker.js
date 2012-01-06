@@ -10,7 +10,7 @@
 
 	$( document ).ready( function() {
 		
-		$( '.ep-datepicker' ).datepicker( {
+		$( '.ep-datepicker-tr' ).find( 'input' ).datepicker( {
 			'dateFormat': 'yy-mm-dd'
 		} );
 		
