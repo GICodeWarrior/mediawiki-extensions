@@ -309,7 +309,7 @@ HTML;
 		if ( isset( $response[$id] ) ) {
 			$response_detail = $response[$id];
 
-			$responder = User::newFromId( $response_detail->mbfr_user_id );
+			$responder = User::newFromRow( $response_detail );
 			
 			if ( $responder && !$responder->isAnon() ) {
 				$responsetime = MoodBarUtil::formatTimeSince( wfTimestamp( TS_UNIX, $response_detail->mbfr_timestamp ) );
@@ -730,9 +730,9 @@ HTML;
 
 			// get the detail for each mbfr_id
 			if ( count( $mbfrId ) > 0 ) {
-				$res = $dbr->select( array( 'moodbar_feedback_response' ),
-							array( 'mbfr_id', 'mbfr_mbf_id', 'mbfr_user_id', 'mbfr_timestamp' ),
-							array( 'mbfr_id' => $mbfrId ),
+				$res = $dbr->select( array( 'moodbar_feedback_response', 'user' ),
+							array( 'mbfr_id', 'mbfr_mbf_id', 'mbfr_timestamp', 'user_id', 'user_name', 'user_real_name' ),
+							array( 'mbfr_id' => $mbfrId, 'mbfr_user_id = user_id' ),
 							__METHOD__
 				);
 	
