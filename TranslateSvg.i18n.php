@@ -75,6 +75,28 @@ $messages['ast'] = array(
 	'translatesvg-toggle-hide' => 'Anubrir les traducciones a esta llingua',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'translatesvg-desc' => 'Надае інтэрфэйс для перакладу SVG, узгодненых са спэцыфікацыяй SVG1.1',
+	'translatesvg-legend' => 'Шлях да файла',
+	'translatesvg-page' => 'Файл:',
+	'translatesvg-submit' => 'Пачаць',
+	'translatesvg-summary' => 'Гэтая спэцыяльная старонка дазваляе дадаваць, рэдагаваць і выдаляць пераклады, убудаваныя ў дадзены SVG-файл.',
+	'translatesvg-add' => 'Калі ваша мова ня зьмешчаная ў сьпісе, вы можаце [[#addlanguage|дадаць яе]].',
+	'translatesvg-xcoordinate-pre' => 'X-каардыната (па гарызанталі):',
+	'translatesvg-ycoordinate-pre' => 'Y-каардыната (па вэртыкалі):',
+	'translatesvg-specify' => 'Пазначце новы код мовы (напрыклад, en, fr, de, be, ...)',
+	'translatesvg-fallbackdesc' => 'Перадвызначаная (мова не пазначаная)',
+	'translatesvg-qqqdesc' => 'Парада перакладчыкам',
+	'translatesvg-nodesc' => '(апісаньня няма)',
+	'translatesvg-remove' => 'Выдаліць усе пераклады на гэтай мове',
+	'translatesvg-unsuccessful' => "Гэты '''файл ня можа быць перакладзены''', перапрашаем.",
+	'translatesvg-toggle-view' => 'Пабачыць пераклады на гэтую мову',
+	'translatesvg-toggle-hide' => 'Схаваць пераклады на гэтую мову',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
@@ -329,5 +351,12 @@ $messages['nl'] = array(
 $messages['te'] = array(
 	'translatesvg-submit' => 'వెళ్ళు',
 	'translatesvg-nodesc' => '(వివరణ లేదు)',
+);
+
+/** Ukrainian (Українська)
+ * @author A1
+ */
+$messages['uk'] = array(
+	'translatesvg-nodesc' => '(немає опису)',
 );
 
