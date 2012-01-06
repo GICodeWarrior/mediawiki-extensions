@@ -426,6 +426,7 @@ $messages['bar'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
+ * @author Wizardist
  * @author Александр Сигачёв
  */
 $messages['be-tarask'] = array(
@@ -480,9 +481,9 @@ $2',
 	'action-editwhitelist' => 'зьмяненьне белага сьпісу для існуючых удзельнікаў',
 	'action-restricttowhitelist' => 'рэдагаваньне і прагляд толькі старонак зь белага сьпісу',
 	'group-restricted' => 'Удзельнікі, абмежаваныя ў правах',
-	'group-restricted-member' => 'удзельнік, абмежаваны ў правах',
+	'group-restricted-member' => '{{GENDER:$1|удзельнік, абмежаваны|удзельніца, абмежаваная}} ў правах',
 	'group-manager' => 'Кіраўнікі',
-	'group-manager-member' => 'кіраўнік',
+	'group-manager-member' => '{{GENDER:$1|кіраўнік|кіраўніца}}',
 );
 
 /** Bulgarian (Български)
