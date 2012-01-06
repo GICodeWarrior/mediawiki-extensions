@@ -19,9 +19,12 @@ $wgSpecialPages['Offline'] = 'SpecialOffline';
 $wgSpecialPageGroups['Offline'] = 'wiki'; // XXX is not the key?
 
 
+$wgAutoloadClasses['CachedStorage'] = $dir.'/CachedStorage.php';
 $wgAutoloadClasses['DatabaseBz2'] = $dir.'/DatabaseBz2.php';
+$wgAutoloadClasses['DumpReader'] = $dir.'/DumpReader.php';
 $wgAutoloadClasses['SearchBz2'] = $dir.'/SearchBz2.php';
 $wgAutoloadClasses['SpecialOffline'] = $dir.'/SpecialOffline.php';
+$wgAutoloadClasses['XapianDatabase'] = $dir.'/xapian.php';
 
 
 function wfOfflineInit() {

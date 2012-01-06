@@ -48,7 +48,6 @@ class SearchBz2 extends SearchEngine {
     protected function searchInternal( $term, $fulltext ) {
         global $wgCountTotalSearchHits;
         
-        require_once(dirname(__FILE__).'/DumpReader.php');
         $results = DumpReader::index_search($term);
 
         return new Bz2SearchResultSet( $results, $term);

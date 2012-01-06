@@ -28,8 +28,6 @@ class SpecialOffline extends SpecialPage
     function execute($param) {
         global $wgOut, $wgTitle;
 
-        require_once(dirname(__FILE__).'/DumpReader.php');
-
         $this->setHeaders();
         $this->outputHeader();
 

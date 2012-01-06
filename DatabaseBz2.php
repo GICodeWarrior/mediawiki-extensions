@@ -28,8 +28,6 @@ class DatabaseBz2 extends Database
 {
     function select( $table, $fields, $conds='', $fname = 'Database::select', $options = array() )
     {
-        require_once(dirname(__FILE__).'/DumpReader.php');
-        require_once(dirname(__FILE__).'/CachedStorage.php');
         $row = array();
         $title = false;
         if (isset($conds['page_title'])) {

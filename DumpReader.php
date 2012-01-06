@@ -77,7 +77,6 @@ class DumpReader
     #wfDebug("looking up word [$title]");
 
     try {
-      require_once("xapian.php");
       global $wgOfflineWikiPath;
       $db = new XapianDatabase("$wgOfflineWikiPath/db");
       #$qp = new XapianQueryParser();
