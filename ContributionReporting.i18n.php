@@ -544,10 +544,14 @@ $messages['be'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'contributionreporting-desc' => 'Актуальныя справаздачы пра збор ахвяраваньняў на карысьць фундацыі «Вікімэдыя»',
 	'contributiontotal' => 'Усяго ахвяраваньняў',
+	'dailytotal' => 'Агулам за дзень',
+	'disablednotice' => 'Справаздача па дзейнасьці',
+	'disablednotice-disabled' => 'Гэтая старонка часова адключаная. Калі ласка, паспрабуйце зноў пазьней.',
 	'contributionhistory' => 'Гісторыя ахвяраваньняў',
 	'contrib-hist-header' => 'Камэнтары ахвяравальнікаў з усяго сьвету',
 	'contrib-hist-name' => 'Імя',
