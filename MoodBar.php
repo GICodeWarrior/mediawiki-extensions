@@ -220,6 +220,7 @@ $wgResourceModules['ext.moodBar.dashboard'] = $mbResourceTemplate + array(
 		'response-ajax-success-body',
 		'response-ajax-error-head',
 		'response-ajax-error-body',
+		'response-concurrency-notification',
 	),
 );
 

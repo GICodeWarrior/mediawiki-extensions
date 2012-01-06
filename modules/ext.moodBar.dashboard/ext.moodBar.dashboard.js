@@ -509,6 +509,8 @@ jQuery(function( $ ) {
 					wikitext = wikitext.replace(/~{3,5}/g, '') + "\n\n~~~~";  //remove and add signature for 
 					parseWikiText($item, wikitext); 
 				});
+				//var $responseItem = $item.find('.fbd-item-response') ;
+				//loadToolTip($responseItem);
 		}		
 		e.preventDefault();
 	}
@@ -596,9 +598,8 @@ jQuery(function( $ ) {
 	}
 	/* Display tooltip for response concurrency notification
 	 * @param $item Feedback item
-	 * @param msg Message to display in tooltip
 	*/
-	function loadToolTip($item, msg) {
+	function loadToolTip($item) {
 		var tooltip = $('<div>').attr('class', 'fbd-tooltip-overlay-wrap')
 						.append(
 						$('<div>').attr('class', 'fbd-tooltip-overlay')
@@ -606,7 +607,7 @@ jQuery(function( $ ) {
 							$('<div>').attr('class', 'fbd-tooltip-pointy')
 						).append(
 							$('<div>').attr('class', 'fbd-tooltip-title')
-								.text( msg ) 
+								.text( mw.msg( 'response-concurrency-notification' ) ) 
 								.prepend(
 									$('<span>').attr('class', 'fbd-tooltip-close').text('X')	
 								)
@@ -719,7 +720,6 @@ jQuery(function( $ ) {
 			$( 'input[type=checkbox].fbd-filters-check').prop('checked', false);
 			$(this).prop('checked', true);
 		}
-
 	});
 
 	$( '#fbd-list' ).delegate( '.fbd-item', 'hover', function (){		

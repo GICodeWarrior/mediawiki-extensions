@@ -87,6 +87,24 @@
 	margin: 1em 0 0 0;
 }
 
+/* Leader Board */
+.fbd-leaderboard {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.fbd-leaderboard li{
+	margin: 0px;
+	padding: 2px 5px;
+	list-style: none;
+}
+
+.fbd-leaderboard li span {
+	float:right;
+	color: #777777;
+	font-weight: bold;
+}
+
 /* Tool Tip */
 
 .fbd-tooltip-overlay-wrap {

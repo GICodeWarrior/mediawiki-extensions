@@ -167,6 +167,7 @@ For more information, please visit the $1.',
 	'response-ajax-success-body' => 'Your response has been added.',
 	'response-ajax-error-head' => 'Oops!',
 	'response-ajax-error-body' => 'There was an error adding your response. <br />Please try again later.', 
+	'response-concurrency-notification' => 'Someone has recently started responding to this feedback.',
 	//Email notification
 	'moodbar-enotif-subject' => '$1 responded to your feedback',
 	
@@ -328,6 +329,7 @@ Terms of use URL. Do not change this URL until a translation of the page itself 
 	'response-ajax-success-body' => 'Text for ajax status body on successful response (can be html)',
 	'response-ajax-error-head' => 'Text for ajax status heading on error',
 	'response-ajax-error-body' => 'Text for ajax status body on error (can be html)',
+	'response-concurrency-notification' => 'Warning text explaining that another user has initiated a response to this feedback.',
 	'moodbar-enotif-subject' => 'Feedback response email subject',
 	'moodbar-enotif-body' => 'Feedback response email body, $1 is the commenter name, $2 is the link to the feedback of commenter, $3 is the responder talk page, $4 is the response text, $5 is commenter talk page',
 );
