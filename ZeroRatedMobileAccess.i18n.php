@@ -11,7 +11,9 @@
 
 $messages = array();
 
-// en translation
+/** English
+ * @author Patrick Reilly
+ */
 $messages['en'] = array (
 	'zero-rated-mobile-access-desc' => 'Provides features for mobile providers that provide free access',
 	'zero-rated-mobile-access-search' => 'Search',
@@ -26,12 +28,9 @@ $messages['en'] = array (
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'No',
 );
 
-$messages['ja'] = array (
-	'zero-rated-mobile-access-desc' => 'ゼロ格モバイルアクセス',
-	'zero-rated-mobile-access-search' => '検索する',
-	'zero-rated-mobile-access-language-options-wiki-page' => 'Language_options',
-);
-
+/** Message documentation (Message documentation)
+ * @author Patrick Reilly
+ */
 $messages['qqq'] = array(
 	'zero-rated-mobile-access-desc' => '{{desc}}',
 	'zero-rated-mobile-access-search' => 'Text for search action on the search button',
@@ -44,4 +43,13 @@ $messages['qqq'] = array(
 	'zero-rated-mobile-access-banner-text-data-charges' => 'Data charges notice to user before images are displayed',
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Text for accepting charges',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Text for rejecting charges',
+);
+
+/** Japanese (日本語)
+ * @author Patrick Reilly
+ */
+$messages['ja'] = array (
+	'zero-rated-mobile-access-desc' => 'ゼロ格モバイルアクセス',
+	'zero-rated-mobile-access-search' => '検索する',
+	'zero-rated-mobile-access-language-options-wiki-page' => 'Language_options',
 );
