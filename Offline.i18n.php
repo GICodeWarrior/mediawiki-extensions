@@ -41,6 +41,46 @@ $messages['en'] = array(
     'offline_live_data_preferred' => 'Matches from the so-called live database will be preferred over dump text.',
 );
 
+$messages['qqq'] = array(
+    'offline_desc' => '',
+    'offline' => 'Title on the Special page',
+    'offline_special_desc' => '',
+
+    'offline_heading_status' => '',
+
+    'offline_test_article' => 'an entry known to exist in your language wiki',
+    'offline_bad_test_article' => '',
+
+    'offline_index_test_pass' => '',
+    'offline_index_test_fail' => '',
+    'offlinewikipath_not_configured' => '',
+    'offlinewikipath_not_found' => '',
+    'offline_dbdir_not_found' => '',
+    'offline_unknown_index_error' => '',
+
+    'offline_bzload_test_pass' => '',
+    'offline_bzload_test_fail' => '',
+    'offline_bz2_ext_needed' => '',
+    'offline_bz2_file_gone' => '',
+    'offline_unknown_bz2_error' => '',
+
+    'offline_article_test_pass' => '',
+    'offline_article_test_fail' => '',
+
+    'offline_hooks_test_pass' => '',
+    'offline_hooks_test_fail' => '',
+    'offline_cache_needed' => '',
+
+    'offline_all_tests_pass' => '',
+
+    // user preferences
+    'offline_subdir_status' => '',
+    'offline_change_subdir' => '',
+
+    'offline_change_language' => '',
+    'offline_live_data_preferred' => '',
+);
+
 $messages['tl'] = array(
     'offline_test_article' => 'Myanmar', // a word likely to be found
 );
