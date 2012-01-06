@@ -404,7 +404,7 @@ class ExtZeroRatedMobileAccess {
 	private static function createLanguageOptionsFromWikiText() {
 		global $wgMemc;
 		wfProfileIn( __METHOD__ );
-		$languageOptionsWikiPage = wfMsg( 'zero-rated-mobile-access-language-options-wiki-page' );
+		$languageOptionsWikiPage = wfMsgForContent( 'zero-rated-mobile-access-language-options-wiki-page' );
 		$title = Title::newFromText( $languageOptionsWikiPage, NS_MEDIAWIKI );
 		// Use the revision directly to prevent other hooks to be called
 		$rev = Revision::newFromTitle( $title );
