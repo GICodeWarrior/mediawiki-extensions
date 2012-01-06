@@ -1901,7 +1901,7 @@ Sie sollten nur in Beiträgen im Wikilog-Namensraum benutzt werden.',
 	'wikilog-posting-anonymously' => 'Du bist zurzeit nicht angemeldet; dein Kommentar wird anonym versendet, identifiziert durch deine Internetverbindungsadresse. Du solltest oben entweder ein Pseudonym angeben, um den Kommentar zu identifizieren oder dich $1, damit er passend zugeordnet wird.',
 	'wikilog-anonymous-moderated' => 'Nachdem du deinen Kommentar übermittelt hast, wird er nicht sofort auf dieser Seite sichtbar sein. 
 Der Kommentar wird erst erscheinen, nachdem er von einem Moderator geprüft wurde.',
-	'wikilog-post-comment' => 'Poste einen neuen Kommentar',
+	'wikilog-post-comment' => 'Verfasse einen neuen Kommentar',
 	'wikilog-post-reply' => 'Poste eine neue Antwort',
 	'wikilog-form-legend' => 'Suche nach Wikilog-Beiträgen',
 	'wikilog-form-wikilog' => 'Wikilog:',
