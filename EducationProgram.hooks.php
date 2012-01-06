@@ -29,11 +29,13 @@ final class EPHooks {
 			dirname( __FILE__ ) . '/sql/EducationProgram.sql'
 		);
 
-		$updater->addExtensionField(
+		$updater->addExtensionUpdate( array(
+			'addField',
 			'ep_orgs',
 			'org_courses',
-			dirname( __FILE__ ) . '/sql/AddExtraFields.sql'
-		);
+			dirname( __FILE__ ) . '/sql/AddExtraFields.sql',
+			true
+		) );
 
 		return true;
 	}
