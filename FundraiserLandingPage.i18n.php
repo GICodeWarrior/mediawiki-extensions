@@ -21,10 +21,11 @@ $messages['ast'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'fundraiserlandingpage-desc' => 'Выкарыстоўвае парамэтры URL і перадае іх у пазначаны шаблён у якасьці зьменных шаблёна',
+	'fundraiserlandingpage-desc' => 'Выкарыстоўвае парамэтры з URL-адрасу і перадае іх у пазначаны шаблён у якасьці зьменных шаблёну',
 );
 
 /** German (Deutsch)
