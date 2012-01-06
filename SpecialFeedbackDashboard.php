@@ -146,7 +146,7 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 		if ( !$wgUser->isAnon() ) {
 			$myResponseMsg = wfMessage( 'moodbar-feedback-filters-my-response' )->escaped();
 			$myResponseCheckbox = Xml::check( 'myresponse', $wgRequest->getCheck( 'myresponse' ),
-								array( 'id' => 'fbd-filters-my-response', 'value' => '1' ) );
+								array( 'id' => 'fbd-filters-my-response', 'value' => '1', 'class' => 'fbd-filters-check' ) );
 			
 			$myResponseFilter = '<label for="fbd-filters-my-response" id="fbd-filters-type-my-response-label" class="fbd-filters-label">' . 
 						$myResponseCheckbox . $myResponseMsg . '</label>';
@@ -155,7 +155,7 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 		// Show unanswered filter
 		$showUnansweredMsg = wfMessage( 'moodbar-feedback-filters-show-unanswered' )->escaped();
 		$showUnansweredCheckbox = Xml::check( 'showunanswered', $wgRequest->getCheck( 'showunanswered' ),
-							array( 'id' => 'fbd-filters-show-unanswered', 'value' => '1' ) );
+							array( 'id' => 'fbd-filters-show-unanswered', 'value' => '1', 'class' => 'fbd-filters-check' ) );
 			
 		$showUnansweredFilter = '<label for="fbd-filters-show-unanswered" id="fbd-filters-type-show-unanswered-label" class="fbd-filters-label">' . 
 								$showUnansweredCheckbox . $showUnansweredMsg . '</label>';
