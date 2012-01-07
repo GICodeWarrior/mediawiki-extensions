@@ -1309,9 +1309,10 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
-	'createpage' => '创建新页面',
+	'createpage' => '创建页面',
 	'createpage_submitbutton' => '提交',
 	'createpage_entertitle' => '请输入您的页面标题。',
 	'createpage-badtitle' => '“$1”无法用作页面标题',

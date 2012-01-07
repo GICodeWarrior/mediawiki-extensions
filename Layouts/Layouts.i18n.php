@@ -1060,9 +1060,10 @@ $messages['yi'] = array(
  * @author Gzdavidwong
  * @author Liangent
  * @author Wilsonmess
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
-	'layouts_title' => '建立一个页面',
+	'layouts_title' => '创建页面',
 	'layouts_chooselayout' => '为$1选择一个样式：',
 	'layouts_nolayout' => '没有布局',
 	'layouts_continue' => '继续',
