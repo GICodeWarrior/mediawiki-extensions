@@ -1242,6 +1242,7 @@ $messages['mr'] = array(
 	'vector-editwarning-preference' => 'जर मी संपादित करीत असलेल्या पानावरील माझे संपादिलेले बदल जतन न केल्यास मला इशारा द्या',
 	'vector-simplesearch-search' => 'शोधा',
 	'vector-simplesearch-containing' => '.......हे असलेले',
+	'vector-noexperiments-preference' => 'प्रायोगिक वैशिष्ट्यापासून मला दूर ठेवा',
 );
 
 /** Malay (Bahasa Melayu)
