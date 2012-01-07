@@ -101,3 +101,11 @@ $messages['nl'] = array(
 	'soundmanager2button-play' => 'Afspelen',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'soundmanager2button-desc' => 'A anseriss un riprodotor SoundManager 2 MP3 ant na pagina wiki',
+	'soundmanager2button-play' => 'Fé parte',
+);
+
