@@ -128,6 +128,14 @@ $messages['nl'] = array(
 	'sii-imageinput-loading' => 'Bezig met het laden van de afbeelding...',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'sii-desc' => "A gionta n'ingres ëd figura che ciama figure da Wikipedia për [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Formolari Semàntich]",
+	'sii-imageinput-loading' => 'Cariament ëd la figura...',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
