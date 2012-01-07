@@ -1189,10 +1189,15 @@ $messages['uk'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Hzy980512
  * @author PhiLiP
  * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
+	'collabwatchlisttools-view' => '显示',
+	'collabwatchlisttools-edit' => '编辑类别',
+	'collabwatchlisttools-delete' => '删除',
+	'collabwatchlistedit-users-raw-submit' => '保存',
 	'collabwatchlistedit-raw-titles' => '分类：',
 	'collabwatchlistedit-tags-raw-submit' => '保存',
 );
