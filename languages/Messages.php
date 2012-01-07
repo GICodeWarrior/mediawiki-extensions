@@ -133,6 +133,15 @@ $messages['nl'] = array(
 	'wom-desc' => 'Gemakkelijk paginaobjectmodel',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'objecteditor' => "Editor d'Oget",
+	'wom_editor' => "Model d'Oget",
+	'wom-desc' => 'Easy Page Object Model për utent wiki',
+);
+
 /** Portuguese (Português)
  * @author SandroHc
  */
