@@ -41,6 +41,15 @@ $messages['qqq'] = array(
 	'right-createbogususerpage' => '{{doc-right|createbogususerpage}}',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'nobogususerpages-desc' => 'Забараняе стварэньне старонак неіснуючых удзельнікаў',
+	'badaccess-bogususerpage' => 'Удзельнік гэтай старонкі ўдзельніка не існуе. Вы ня маеце дазволу ствараць фіктыўныя старонкі ўдзельнікаў.',
+	'right-createbogususerpage' => 'ствараць старонкі ўдзельнікаў, не зарэгістраваных у гэтай вікі',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -119,5 +128,14 @@ $messages['nl'] = array(
 	'nobogususerpages-desc' => "Beperkt het aanmaken van gebruikerspagina's waar een gebruiker niet bestaat",
 	'badaccess-bogususerpage' => 'De gebruiker voor deze gebruikerspagina bestaat niet. U hebt geen rechten om deze gebruikerspagina aan te maken.',
 	'right-createbogususerpage' => "Gebruikerspagina's aanmaken voor gebruikers die niet bekend zijn in deze wiki",
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'nobogususerpages-desc' => "A strens la creassion ëd pagine utent për coj utent ch'a esisto pa",
+	'badaccess-bogususerpage' => "L'utent dë sta pagina utent a esist pa. It l'has pa ij drit ëd creé na pagina utent bogus.",
+	'right-createbogususerpage' => "Crea pagine utent për utent ch'a son pa registrà dzora a sta wiki.",
 );
 
