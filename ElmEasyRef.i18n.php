@@ -187,6 +187,15 @@ $messages['nl'] = array(
 	'elm-easyref-close' => 'Sluiten',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'elm-easyref-desc' => "Gionté camp ëd pupup për mosté ël contnù dl'arferiment",
+	'elm-easyref-ref' => 'Arferiment $1',
+	'elm-easyref-close' => 'Sara',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
