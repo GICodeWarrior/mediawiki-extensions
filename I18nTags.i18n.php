@@ -1,7 +1,5 @@
 <?php
 
-require_once( dirname(__FILE__) . '/I18nTags.magic.php' );
-
 $messages = array();
 
 $messages['en'] = array(

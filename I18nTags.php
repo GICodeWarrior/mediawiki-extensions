@@ -22,6 +22,7 @@ $wgExtensionCredits['parserhook'][] = array(
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['I18nTags'] = $dir . 'I18nTags_body.php';
 $wgExtensionMessagesFiles['I18nTags'] = $dir . 'I18nTags.i18n.php';
+$wgExtensionMessagesFiles['I18nTagsMagic'] = $dir . 'I18nTags.magic.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'efI18nTagsInit';
 
