@@ -2436,6 +2436,7 @@ $messages['ml'] = array(
  * @author AVRS
  * @author Kaajawa
  * @author Kaustubh
+ * @author Mahitgar
  */
 $messages['mr'] = array(
 	'ogg-desc' => 'ऑग थियोरा व वॉर्बिस संचिकांसाठीचा चालक, जावास्क्रीप्ट प्लेयर सकट',
@@ -2454,7 +2455,7 @@ $messages['mr'] = array(
 	'ogg-play-sound' => 'ध्वनी चालू करा',
 	'ogg-no-player' => 'माफ करा, पण तुमच्या संगणकामध्ये कुठलाही प्लेयर आढळला नाही. कृपया <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">प्लेयर डाउनलोड करा</a>.',
 	'ogg-no-xiphqt' => 'तुमच्या संगणकामध्ये क्वीकटाईम ला लागणारा XiphQT हा तुकडा आढळला नाही. याशिवाय क्वीकटाईम ऑग संचिका चालवू शकणार नाही. कॄपया <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT डाउनलोड करा</a> किंवा दुसरा प्लेयर वापरा.',
-	'ogg-player-videoElement' => '<video> तुकडा',
+	'ogg-player-videoElement' => 'मूल ब्राउज़र समर्थन',
 	'ogg-player-oggPlugin' => 'न्याहाळक प्लगीन',
 	'ogg-player-cortado' => 'कोर्टाडो (जावा)',
 	'ogg-player-thumbnail' => 'फक्त स्थिर चित्र',
@@ -3631,6 +3632,7 @@ $messages['sw'] = array(
 
 /** Tamil (தமிழ்)
  * @author Shanmugamp7
+ * @author Sodabottle
  * @author TRYPPN
  */
 $messages['ta'] = array(
@@ -3648,7 +3650,7 @@ $messages['ta'] = array(
 	'ogg-play-sound' => 'ஒலி ஓடவிடு',
 	'ogg-no-player' => 'மன்னிக்கவும், உங்கள் கணினியில் எந்த ஒரு ஆதரவு ஓடல்  மென்பொருளும் இருப்பதாக தெரியவில்லை.
 தயவுசெய்து <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ஒரு ஓடல்  மென்பொருளை தகவலிறக்கம் செய்யவும்</a>.',
-	'ogg-player-videoElement' => 'சொந்த மேய்வான் ஆதரவு',
+	'ogg-player-videoElement' => 'சொந்த உலாவி ஆதரவு',
 	'ogg-player-oggPlugin' => 'மேய்வான் செருகுநிரல்',
 	'ogg-player-thumbnail' => 'நிழற்படம் மட்டும்',
 	'ogg-player-soundthumb' => 'ஓடல் மென்பொருள் இல்லை',
