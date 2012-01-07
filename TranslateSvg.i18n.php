@@ -32,13 +32,16 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author jarry1250
  */
 $messages['qqq'] = array(
 	'translatesvg-desc' => '{{desc}}',
 	'translatesvg-legend' => 'Form legend; general description of the purposes of the form (to ask for a file path)',
-	'translatesvg-page' => 'Label for a form input',
-	'translatesvg-submit' => 'Text of a button to progress onto next stage of the translation',
+	'translatesvg-page' => 'Label for a form input.
+{{Identical|File}}',
+	'translatesvg-submit' => 'Text of a button to progress onto next stage of the translation.
+{{Identical|Go}}',
 	'translatesvg-summary' => 'General description of the special page, displayed at the top of it so users know what they are looking at',
 	'translatesvg-add' => 'Introduction sentence available to JavaScript-enabled users including a link to add translations in a new language. The anchor (#addlanguage) does not need translation.',
 	'translatesvg-xcoordinate-pre' => 'Label for a form input for the adjustment of the X-coordinate (horizontal position) of the text being translated',
@@ -76,24 +79,25 @@ $messages['ast'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'translatesvg-desc' => 'Надае інтэрфэйс для перакладу SVG, узгодненых са спэцыфікацыяй SVG1.1',
+	'translatesvg-desc' => 'Надае інтэрфэйс для перакладу SVG-файлаў, узгодненых са спэцыфікацыяй SVG1.1',
 	'translatesvg-legend' => 'Шлях да файла',
 	'translatesvg-page' => 'Файл:',
 	'translatesvg-submit' => 'Пачаць',
 	'translatesvg-summary' => 'Гэтая спэцыяльная старонка дазваляе дадаваць, рэдагаваць і выдаляць пераклады, убудаваныя ў дадзены SVG-файл.',
-	'translatesvg-add' => 'Калі ваша мова ня зьмешчаная ў сьпісе, вы можаце [[#addlanguage|дадаць яе]].',
+	'translatesvg-add' => 'Калі Вашая мова ня зьмешчаная ў сьпісе, Вы можаце [[#addlanguage|дадаць яе]].',
 	'translatesvg-xcoordinate-pre' => 'X-каардыната (па гарызанталі):',
 	'translatesvg-ycoordinate-pre' => 'Y-каардыната (па вэртыкалі):',
-	'translatesvg-specify' => 'Пазначце новы код мовы (напрыклад, en, fr, de, be, ...)',
-	'translatesvg-fallbackdesc' => 'Перадвызначаная (мова не пазначаная)',
+	'translatesvg-specify' => 'Пазначце новы код мовы (напрыклад: en, fr, de, be, …)',
+	'translatesvg-fallbackdesc' => 'Па змоўчваньні (мова не пазначаная)',
 	'translatesvg-qqqdesc' => 'Парада перакладчыкам',
 	'translatesvg-nodesc' => '(апісаньня няма)',
 	'translatesvg-remove' => 'Выдаліць усе пераклады на гэтай мове',
-	'translatesvg-unsuccessful' => "Гэты '''файл ня можа быць перакладзены''', перапрашаем.",
-	'translatesvg-toggle-view' => 'Пабачыць пераклады на гэтую мову',
+	'translatesvg-unsuccessful' => "Прабачце, гэты '''файл ня можа быць перакладзены'''.",
+	'translatesvg-toggle-view' => 'Паказаць пераклады на гэтую мову',
 	'translatesvg-toggle-hide' => 'Схаваць пераклады на гэтую мову',
 );
 
