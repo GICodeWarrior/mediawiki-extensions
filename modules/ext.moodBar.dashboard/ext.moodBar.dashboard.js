@@ -715,10 +715,12 @@ jQuery(function( $ ) {
 	
 	//only allow one of the secondary filters to be checked
 	$( 'input[type=checkbox].fbd-filters-check').click(function(){
-		var count = $( 'input[type=checkbox].fbd-filters-check').length;
+		var		count = $( 'input[type=checkbox].fbd-filters-check').length,
+				state = $(this).prop('checked'); //save state of checkbox
+
 		if(count > 1) {
 			$( 'input[type=checkbox].fbd-filters-check').prop('checked', false);
-			$(this).prop('checked', true);
+			$(this).prop('checked', state);
 		}
 	});
 
@@ -729,6 +731,9 @@ jQuery(function( $ ) {
 	$( '#fbd-list' ).delegate( '.fbd-item', 'mouseleave', function (){
 		$(this).removeClass('fbd-hover');
 	});
+
+	//zebra stripe leaderboard
+	$('.fbd-leaderboard li:nth-child(even)').addClass('even');
 
 	saveFormState();
 	var filterType = $( '#fbd-filters' ).children( 'form' ).data( 'filtertype' );

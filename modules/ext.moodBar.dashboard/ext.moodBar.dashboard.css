@@ -95,14 +95,26 @@
 }
 .fbd-leaderboard li{
 	margin: 0px;
-	padding: 2px 5px;
+	padding: 2px 10px;
 	list-style: none;
+	font-weight:600;
 }
 
+.fbd-leaderboard li.even {
+	background: #EFEFEF;
+}
 .fbd-leaderboard li span {
 	float:right;
 	color: #777777;
-	font-weight: bold;
+}
+
+.fbd-leaderboard-top-responders {
+	margin-top:15px;
+}
+
+.fbd-leaderboard-top-responders h5 {
+	border-bottom:1px solid #000000;
+	padding-bottom:0px;
 }
 
 /* Tool Tip */

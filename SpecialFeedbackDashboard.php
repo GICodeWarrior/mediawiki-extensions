@@ -287,8 +287,7 @@ HTML;
 			
 			return <<<HTML
 			<div class="fbd-leaderboard-top-responders">
-				$topRespondersTitle
-				<hr />
+				<h5>$topRespondersTitle</h5>
 				<ul class="fbd-leaderboard">
 					$html
 				</ul>
