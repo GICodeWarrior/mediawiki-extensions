@@ -65,5 +65,76 @@ class MoodBarUtil {
 		}
 	
 	}
+	
+	/**
+	 * Get the top responders for feedback in past week, default is top 5
+	 * @param $num int - the number of top responders we want to get
+	 * @return array
+	 */
+	public static function getTopResponders( $num = 5 ) {
+	
+		global $wgMemc;
+
+		$timestamp = wfTimestamp( TS_UNIX ) - 7 * 24 * 60 * 60; // 1 week ago
+
+		// Try cache first
+		$key = wfMemcKey( 'moodbar_feedback_response', 'top_responders', 'past_week' );
+		$topResponders = $wgMemc->get( $key );
+
+		if ( $topResponders === false ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select( array( 'moodbar_feedback_response', 'user' ),
+							array( 'COUNT(*) AS number', 'user_id', 'user_name', 'user_real_name' ),
+							array( 'mbfr_user_id = user_id', 'mbfr_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $timestamp ) ) ),
+							__METHOD__,
+							array( 'GROUP BY' => 'user_id', 'ORDER BY' => 'number DESC', 'LIMIT' => $num )
+			);
+			
+			$topResponders = iterator_to_array( $res );
+
+			// Cache the results in cache for 12 hour
+			$wgMemc->set( $key, $topResponders, 12 * 60 * 60 );
+		}
+
+		return $topResponders;
+
+	}
+
+	/**
+	 * Get the stats for the moodbar type in the last 24 hours
+	 * @return array - count of number for each moodbar type
+	 */
+	public function getMoodBarTypeStats() {
+
+		global $wgMemc;
+
+		$timestamp = wfTimestamp( TS_UNIX ) - 24 * 60 * 60; // 24 hours ago
+		
+		// Try cache first
+		$key = wfMemcKey( 'moodbar_feedback', 'type_stats', 'last_day' );
+		$moodbarStat = $wgMemc->get( $key );
+
+		if ( $moodbarStat === false ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select( array( 'moodbar_feedback' ),
+						array( 'mbf_type', 'COUNT(*) AS number' ),
+						array( 'mbf_hidden_state' => 0, 'mbf_timestamp > ' . $dbr->addQuotes( $dbr->timestamp( $timestamp ) ) ),
+						__METHOD__,
+						array( 'GROUP BY' => 'mbf_type' )
+			);
+
+			$moodbarStat = array( 'happy' => 0, 'sad' => 0, 'confused' => 0 );
+
+			foreach ( $res as $row ) {
+				$moodbarStat[$row->mbf_type] = $row->number;
+			}
+
+			// Cache the results in cache for 1 hour
+			$wgMemc->set( $key, $moodbarStat, 60 * 60 );
+		}
+
+		return $moodbarStat;
+
+	}
 
 }
