@@ -334,7 +334,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'purge' => 'eidel maachen',
-	'purge-desc' => "Setzt e \"Purge\" Onglet op all normal Säiten derbäi, an iwwerspréngt d ''Purge''-Kontroll fir anonym Benotzer fir den Tëschespäicher (Cache) séier eidelzemaachen",
+	'purge-desc' => 'Setzt e "Purge" Onglet op all normal Säiten derbäi an erlaabt et fir den Tëschespäicher (Cache) séier eidelzemaachen',
 );
 
 /** Lithuanian (Lietuvių)
