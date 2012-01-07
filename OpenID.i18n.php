@@ -631,6 +631,9 @@ Pues xestionar (ver, desaniciar, amestar otres) les OpenID na [[Special:Preferen
 	'openid-provider-label-other-username' => "Escribi'l nome d'usuariu de $1",
 	'openid-dashboard-title' => "Tableru d'OpenID",
 	'openid-dashboard-title-admin' => "Tableru d'OpenID (alministrador)",
+	'openid-dashboard-number-openid-users' => "Númberu d'usuarios con OpenID",
+	'openid-dashboard-number-openids-in-database' => "Númberu d'OpenIDs (total)",
+	'openid-dashboard-number-users-without-openid' => "Númberu d'usuarios ensin OpenID",
 );
 
 /** Azerbaijani (Azərbaycanca)
@@ -748,6 +751,7 @@ $messages['be-tarask'] = array(
 	'openid-pref-update-userinfo-on-login' => 'Абнаўляць наступную інфармацыю з OpenID кожны раз, калі я уваходжу ў сыстэму:',
 	'openid-urls-desc' => 'OpenID зьвязаныя з Вашым рахункам:',
 	'openid-urls-action' => 'Дзеяньне',
+	'openid-urls-registration' => 'Час рэгістрацыі',
 	'openid-urls-delete' => 'Выдаліць',
 	'openid-add-url' => 'Дадаць новы OpenID',
 	'openid-login-or-create-account' => 'Увайсьці альбо стварыць новы рахунак',
@@ -865,7 +869,7 @@ $messages['bn'] = array(
 	'openidusernameprefix' => 'ওপেনআইডিইউজার',
 	'openidoptional' => 'ঐচ্ছিক',
 	'openidrequired' => 'বাধ্যতামূলক',
-	'openidnickname' => 'ডাক সাম',
+	'openidnickname' => 'ডাকনাম',
 	'openidfullname' => 'পূর্ণ নাম',
 	'openidemail' => 'ই-মেইল ঠিকানা',
 	'openidlanguage' => 'ভাষা',
