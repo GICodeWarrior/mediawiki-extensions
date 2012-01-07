@@ -701,5 +701,20 @@ $messages['uk'] = array(
  */
 $messages['zh-hans'] = array(
 	'admanager' => '广告管理器',
+	'admanager_invalidtargetpage' => '找不到标题名为“$1”的页面',
+	'admanager_invalidtargetcategory' => '找不到标题名为“$1”的分类',
+	'admanager_notable' => '错误！找不到某数据库资料表！请先运行update.php。',
+	'admanager_labelPage' => '页面标题',
+	'admanager_labelCategory' => '分类名称',
+	'admanager_submit' => '提交',
+	'admanager_noads' => '不显示广告',
+	'admanager_Page' => '页面',
+	'admanager_Category' => '分类',
+	'admanager_added' => '更改已保存',
+	'admanager_zonenotnumber' => '错误！$1不是数字。',
+	'admanager_return' => '回到[[Special:AdManager|广告管理器]]',
+	'admanager_gotoads' => '[[Special:AdManager|编辑广告位置]]',
+	'admanager_gotozones' => '[[Special:AdManagerZones|编辑广告区域]]',
+	'right-admanager' => '[[Special:AdManager|管理广告配置]]',
 );
 
