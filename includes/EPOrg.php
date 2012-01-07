@@ -233,7 +233,7 @@ class EPOrg extends EPDBObject {
 			'submit'
 		) );
 
-		$out->addHTML( Html::hidden( 'newEditToken', $context->getUser()->editToken() ) );
+		$out->addHTML( Html::hidden( 'isnew', 1 ) );
 
 		$out->addHTML( '</fieldset></form>' );
 		

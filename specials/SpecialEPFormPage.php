@@ -149,7 +149,8 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 		static $isNew = null;
 		
 		if ( is_null( $isNew ) ) {
-			$isNew = $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'newEditToken' ) );
+			$isNew = $this->getRequest()->wasPosted() &&
+				( $this->getRequest()->getCheck( 'isnew' ) || $this->getRequest()->getCheck( 'wpisnew' ) );
 		}
 		
 		return $isNew;
@@ -163,7 +164,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	protected function showForm() {
 		$form = $this->getForm();
 
-		if ( $this->isNew() ) {
+		if ( $this->getRequest()->wasPosted() && $this->getRequest()->getCheck( 'isnew' ) ) {
 			$form->prepareForm();
 			$form->displayForm( Status::newGood() );
 		}
@@ -204,7 +205,16 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	 * @return HTMLForm|null
 	 */
 	protected function getForm() {
-		$form = new HTMLForm( $this->getFormFields(), $this->getContext() );
+		$fields = $this->getFormFields();
+
+		if ( $this->isNew() ) {
+			$fields['isnew'] = array(
+				'type' => 'hidden',
+				'default' => 1
+			);
+		}
+
+		$form = new HTMLForm( $fields, $this->getContext() );
 
 		$form->setSubmitCallback( array( $this, 'handleSubmission' ) );
 		$form->setSubmitText( wfMsg( 'educationprogram-org-submit' ) );
@@ -239,12 +249,14 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 		$fields = array();
 
 		$fields['id'] = array( 'type' => 'hidden' );
-		
+
+		$req = $this->getRequest();
+
 		// This sort of sucks as well. Meh, HTMLForm is odd.
-		if ( $this->getRequest()->wasPosted()
-			&& $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) 
-			&& $this->getRequest()->getCheck( 'wpitem-id' ) ) {
-			$fields['id']['default'] = $this->getRequest()->getInt( 'wpitem-id' ); 
+		if ( $req->wasPosted()
+			&& $this->getUser()->matchEditToken( $req->getVal( 'wpEditToken' ) )
+			&& $req->getCheck( 'wpitem-id' ) ) {
+			$fields['id']['default'] = $req->getInt( 'wpitem-id' );
 		}
 		
 		return $fields;
@@ -272,7 +284,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 		$mappedFields = array();
 
 		foreach ( $fields as $name => $field ) {
-			if ( $this->isNew() ) {
+			if ( $this->getRequest()->getCheck( 'isnew' ) ) {
 				// HTML form is being a huge pain in running the validation on post,
 				// so just remove it if when not appropriate.
 				unset( $field['validation-callback'] );
@@ -326,7 +338,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 			$matches = array();
 
 			if ( preg_match( '/item-(.+)/', $name, $matches ) ) {
-				if ( $matches[1] === 'id' && $value === '' ) {
+				if ( $matches[1] === 'id' && ( $value === '' || $value === '0' ) ) {
 					$value = null;
 				}
 				

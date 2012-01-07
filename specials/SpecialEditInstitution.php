@@ -72,7 +72,7 @@ class SpecialEditInstitution extends SpecialEPFormPage {
 	 * @return string|true
 	 */
 	public function countryIsValid( $value, array $alldata = null ) {
-		$countries = array_keys( CountryNames::getNames( $this->getLang()->getCode() ) );
+		$countries = array_keys( CountryNames::getNames( $this->getLanguage()->getCode() ) );
 		
 		if ( $this->isNew() ) {
 			array_unshift( $countries, '' );
