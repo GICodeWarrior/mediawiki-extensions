@@ -467,6 +467,8 @@ $messages['ia'] = array(
 	'webfonts-preview-intro' => 'Iste pagina permitte previsualisar le typos de litteras disponibile in le extension WebFonts e, si desirate, discargar e installar los in tu computator.',
 	'webfonts-preview-title' => 'Previsualisar le typos de litteras',
 	'webfonts-preview-download' => 'Discargar',
+	'webfonts-preview-installing-fonts-title' => 'Installar typos de litteras',
+	'webfonts-preview-installing-fonts-text' => 'Tu pote discargar un typo de litteras usante le ligamine {{int:webfonts-preview-download}} hic supra. Pro installar le typo de litteras discargate in tu computator, per favor consulta [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts iste documentation].',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -540,13 +542,19 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'webfonts' => '웹폰트',
+	'webfonts' => '웹 글꼴',
 	'webfonts-desc' => '문서에 글꼴을 포함하기',
 	'webfonts-load' => '글꼴 선택',
 	'webfonts-reset' => '리셋',
 	'webfonts-enable-preference' => '글꼴 임베딩 켜기 (WebFonts)',
 	'webfonts-menu-tooltip' => '문서를 표시할 글꼴 선택',
 	'webfonts-help' => '도움말',
+	'webfonts-preview-intro' => '이 페이지는 WebFonts 확장 기능에서 제공하는 글꼴을 미리 보고 글꼴을 선택하여 컴퓨터에 내려받고 설치할 수 있도록 도와 줄 것입니다.',
+	'webfonts-preview-title' => '글꼴 미리 보기',
+	'webfonts-preview-download' => '다운로드',
+	'webfonts-preview-sampletext' => '덧글은 통신 예절 지키면서 표현 자유 추구하는 방향으로.',
+	'webfonts-preview-installing-fonts-title' => '글꼴 설치하기',
+	'webfonts-preview-installing-fonts-text' => '위의 "{{int:webfonts-preview-download}}" 링크를 통해 글꼴을 내려받을 수 있습니다. 내려받은 글꼴을 컴퓨터에 설치하려면 [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts 이 설명문서]를 참고하십시오.',
 );
 
 /** Colognian (Ripoarisch)
@@ -570,6 +578,7 @@ $messages['lb'] = array(
 	'webfonts-reset' => 'Zrécksetzen',
 	'webfonts-menu-tooltip' => "Sicht eng Buschtawen-Zort fir d'Säit eraus",
 	'webfonts-help' => 'Hëllef',
+	'webfonts-preview-download' => 'Eroflueden',
 );
 
 /** Limburgish (Limburgs)
@@ -628,13 +637,18 @@ $messages['ml'] = array(
 /** Marathi (मराठी)
  * @author Htt
  * @author Kaajawa
+ * @author Mahitgar
  */
 $messages['mr'] = array(
 	'webfonts' => 'जालटंक',
 	'webfonts-load' => 'टंक',
 	'webfonts-reset' => 'पूर्ववत करा',
+	'webfonts-enable-preference' => '(WebFonts) फॉंट अंतःस्थापन  (एंबेडिंग) सक्षम करा',
 	'webfonts-menu-tooltip' => 'पानासाठी टंक निवडा',
 	'webfonts-help' => 'मदत',
+	'webfonts-preview-download' => 'उतरवा',
+	'webfonts-preview-sampletext' => 'The quick brown fox jumps over the lazy dog कुणी अनुवादाचे हे खरे आव्हान पेलू शकेल काय ? मराठी भाषेतील प्रत्येक अक्षर येईल आणि एकदाच येईल किमान सर्वाधिक अक्षरे येतील अशी वाक्य रचना हवी आहे. येथे बदल करण्याकरिता तुम्हाला ट्रांसलेटविकि डॉट नेट वर आधी आपले खाते उघडून अनुवाद करू देण्याची फॉर्मॅलिटी पार पाडावी लागेल.',
+	'webfonts-preview-installing-fonts-title' => 'फॉंट इन्स्टॉलींग',
 );
 
 /** Malay (Bahasa Melayu)
@@ -705,6 +719,7 @@ $messages['nl'] = array(
 );
 
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Jnanaranjan Sahu
  * @author Odisha1
  * @author Psubhashish
  */
@@ -716,6 +731,7 @@ $messages['or'] = array(
 	'webfonts-enable-preference' => 'ଫଣ୍ଟ ଏମବେଡ଼ କରିବା ସଚଳ କରିବେ (ୱେବ ଫଣ୍ଟ)',
 	'webfonts-menu-tooltip' => 'ଏହି ପୃଷ୍ଠା ପାଇଁ ଏକ ଫଣ୍ଟ ବାଛିବେ',
 	'webfonts-help' => 'ସହଯୋଗ',
+	'webfonts-preview-download' => 'ଡାଉନଲୋଡ',
 );
 
 /** Polish (Polski)
@@ -744,6 +760,12 @@ $messages['pms'] = array(
 	'webfonts-enable-preference' => "Abilité l'anseriment ëd tipo ëd caràter (Caràter dl'aragnà)",
 	'webfonts-menu-tooltip' => 'Selessioné un tipo ëd caràter për la pàgina',
 	'webfonts-help' => 'Agiut',
+	'webfonts-preview-intro' => "Sta pagina a giuta a mosté ij caràter disponìbij ant l'estension WebFonts e opsionalment a dëscarieje e anstaleje an tò calcolador.",
+	'webfonts-preview-title' => 'Preuva ij caràter',
+	'webfonts-preview-download' => 'Dëscaria',
+	'webfonts-preview-sampletext' => 'La cita volp maròn a sàuta dlà dël can fòl',
+	'webfonts-preview-installing-fonts-title' => 'Anstalé Caràter',
+	'webfonts-preview-installing-fonts-text' => 'It peule dëscarié un caròter an dovrand ël colegament {{int:webfonts-preview-download}} dàit dzora. Për anstalé ël caròter dëscarià an tò calcolador, për piasè fa arferiment a [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts sta documentassion]',
 );
 
 /** Pashto (پښتو)
