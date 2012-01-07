@@ -1291,6 +1291,7 @@ Tekst wstawiany nie wymaga escapowania.',
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'action-masseditregex' => 'fà na modìfica a baron',
 	'masseditregex' => 'Modìfiche mùltiple an dovrand espression regolar',
 	'masseditregex-desc' => 'Dovré espression regolar për [[Special:MassEditRegex|modifiché vàire pàgine ant na sola operassion]]',
 	'masseditregextext' => 'Anseriss un-a o pi espression regolar (un-a për linia) për confront, e un-a o pi espression për rimpiassé minca confront bon.
@@ -1326,6 +1327,7 @@ Ij valor ëd rimpiassadura a dovrìo nen esse trucà.",
 	'masseditregex-badregex' => 'Regex pa bon-a:',
 	'masseditregex-editfailed' => 'Modìfica falìa:',
 	'masseditregex-tooltip-execute' => 'Fà sti cangiament-sì a minca pàgina',
+	'right-masseditregex' => "Rimpiassa ij contnù ëd pagina an dovrand n'espression regolar",
 );
 
 /** Pashto (پښتو)
