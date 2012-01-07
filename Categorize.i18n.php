@@ -237,6 +237,16 @@ $messages['pl'] = array(
 	'categorize-advice' => 'Kliknij wybrane etykiety, które pasują do tej strony',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'categorize-desc' => "A gionta na fnesta d'ingress për modifiché e carié pagine ch'a përmëtto a j'utent d'assigné dle categorìe",
+	'categorize-title' => 'Qualificassion ëd conossensa',
+	'categorize-footer' => "S'it veule gionté na tichëtta, për piasì contata n'[[Special:ListUsers/sysop|administrador]].",
+	'categorize-advice' => "Sgnaca an sla tichëtta ch'it veue dé a sta pagina:",
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author SandroHc
