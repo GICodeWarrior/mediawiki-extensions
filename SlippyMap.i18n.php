@@ -155,6 +155,15 @@ $messages['ast'] = array(
 	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>layer</tt>, les capes válides son $2.',
 	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>marker</tt>, los marcadores válidos son $2.',
 	'slippymap_error_unknown_attribute' => "L'atributu <tt>$1</tt> ye desconocíu.",
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>lat</tt> (llatitú). Les llatitúes deben tar ente -90 y 90 graos.',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>lon</tt> (llonxitú). Les llonxitúes deben tar ente -180 y 180 graos.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>zoom</tt>. Los niveles de zoom deben tar ente $2 y $3.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => "El valor <tt>$1</tt> nun ye válidu pal atributu <tt>width</tt> (anchor). L'anchor debe tar ente $2 y $3.",
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'El valor <tt>$1</tt> nun ye válidu pal atributu <tt>height</tt> (altor). Los altores deben tar ente $2 y $3.',
+	'slippymap_code' => 'Códigu wiki pa esta vista del mapa:',
+	'slippymap_button_code' => 'Sacar el códigu wiki',
+	'slippymap_resetview' => 'Reaniciar vista',
+	'slippymap_clicktoactivate' => "Calca p'activar el mapa",
 );
 
 /** Azerbaijani (Azərbaycanca)
