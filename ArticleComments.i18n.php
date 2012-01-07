@@ -124,6 +124,33 @@ $messages['arc'] = array(
 	'article-comments-submit-button' => 'ܫܕܪ',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'article-comments-desc' => 'Activa les seiciones de comentarios nes páxines de conteníu',
+	'article-comments-title-string' => 'títulu',
+	'article-comments-name-string' => 'Nome',
+	'article-comments-name-field' => 'Nome (obligatoriu):',
+	'article-comments-url-field' => 'Páxina web:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Comentariu',
+	'article-comments-comment-field' => 'Comentariu:',
+	'article-comments-submit-button' => 'Unviar',
+	'article-comments-leave-comment-link' => 'Dexar un comentariu...',
+	'article-comments-invalid-field' => 'El $1 proporcionáu <nowiki>[$2]</nowiki> nun ye válidu.',
+	'article-comments-required-field' => 'El campu «$1» ye obligatoriu.',
+	'article-comments-submission-failed' => "Falló l'unviu del comentariu",
+	'article-comments-failure-reasons' => 'Sentímoslo, el to comentariu nun pudo unviase {{PLURAL:$1|pol siguiente motivu|polos siguientes motivos}}:',
+	'article-comments-no-comments' => 'Sentímoslo, nesti momentu la páxina «[[$1]]» nun aceuta comentarios.',
+	'article-comments-talk-page-starter' => '<noinclude>Comentarios sobro «[[$1]]»
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 dixo...',
+	'article-comments-summary' => 'Comentariu proporcionáu por $1 - pela estensión ArticleComments',
+	'article-comments-submission-succeeded' => "El comentariu s'unvió correutamente",
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  * @author Wertuose
