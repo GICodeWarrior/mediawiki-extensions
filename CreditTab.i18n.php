@@ -158,3 +158,12 @@ $messages['pl'] = array(
 	'credits-tab-title' => 'Autorzy tej strony',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'credits-desc' => "A gionta un colegament a j'arconossiment",
+	'credits-tab' => 'Arconossiment',
+	'credits-tab-title' => 'Arconossiment për sta pagina',
+);
+
