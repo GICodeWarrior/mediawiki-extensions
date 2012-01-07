@@ -6999,13 +6999,14 @@ $messages['sh'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Singhalawap
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
 	'articlefeedback' => 'ලිපි ප්‍රතිචාර උපකරණ පුවරුව',
 	'articlefeedback-desc' => 'ලිපි ප්‍රතිචාරය',
 	'articlefeedback-survey-question-origin' => 'ඔබ සමීක්ෂණය අරඹන විට සිටිය පිටුව කුමක්ද?',
-	'articlefeedback-survey-question-whyrated' => 'කරුණාකර ඔබ අද මෙම පිටුව තරාතිරම් කලේ මන්දැයි අපට පවසන්න (යෙදෙන සියල්ලම අවේක්ෂණය කරන්න):',
+	'articlefeedback-survey-question-whyrated' => 'කරුණාකර ඔබ අද මෙම පිටුව රේට්කලේ මන්දැයි අපට පවසන්න (යෙදෙන සියල්ලම අවේක්ෂණය කරන්න):',
 	'articlefeedback-survey-answer-whyrated-contribute-rating' => 'මෙම පිටුවේ සමස්ත තරාතිරම් සඳහා දායකවීමට මට අවශ්‍යයි',
 	'articlefeedback-survey-answer-whyrated-development' => 'මම හිතනවා මෙම පිටුවේ සංවර්ධනයට මගේ තරාතිරම් ධනාත්මකව බලපාවි කියා',
 	'articlefeedback-survey-answer-whyrated-contribute-wiki' => 'මට {{SITENAME}} ට මගේ දායකත්වය ලබා දෙන්න ඕනේ',
@@ -7075,7 +7076,7 @@ $messages['si'] = array(
 	'articlefeedback-pitch-reject' => 'සමහරවිට පසුව',
 	'articlefeedback-pitch-or' => 'හෝ',
 	'articlefeedback-pitch-thanks' => 'ස්තුතියි! ඔබේ තරාතිරම් සුරකින ලදී.',
-	'articlefeedback-pitch-survey-message' => 'කෙටි සමීක්ෂණය සම්පූර්ණ කිරීමට කරුණාකර මොහොතක් ගත කරන්න.',
+	'articlefeedback-pitch-survey-message' => 'කෙටි සමීක්ෂණ පත්‍රක් සම්පූර්ණ කිරීමට මොහොතක් ගත කරන්න.',
 	'articlefeedback-pitch-survey-accept' => 'සමීක්ෂණය අරඹන්න',
 	'articlefeedback-pitch-join-message' => 'ඔබට ගිණුමක් තැනීමට අවශ්‍යද?',
 	'articlefeedback-pitch-join-accept' => 'ගිණුමක් තනන්න',
