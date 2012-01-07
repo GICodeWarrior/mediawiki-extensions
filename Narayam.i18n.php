@@ -2899,6 +2899,7 @@ $messages['yi'] = array(
  * @author Anakmalaysia
  * @author Bencmq
  * @author Hydra
+ * @author Hzy980512
  * @author Liangent
  * @author PhiLiP
  * @author Xiaomingyan
@@ -2962,7 +2963,7 @@ $messages['zh-hans'] = array(
 	'narayam-gom-deva' => '果阿孔卡尼语天城文转写',
 	'narayam-gom-deva-inscript' => '果阿孔卡尼语天城文InScript',
 	'narayam-he-standard-2011-extonly' => '希伯来语2011年标准',
-	'narayam-he-standard-2011' => '希伯来语2011年标准',
+	'narayam-he-standard-2011' => '希伯来语标准2011（英语键盘）',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
