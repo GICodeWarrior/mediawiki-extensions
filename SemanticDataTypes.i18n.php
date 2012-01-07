@@ -115,6 +115,14 @@ $messages['mk'] = array(
 	'sdt-duration' => 'Времетраење',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
+ */
+$messages['nb'] = array(
+	'sdt-desc' => 'Tilleggsdatatyper for Semantic MediaWiki med utvidelser',
+	'sdt-duration' => 'Varighet',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  */
@@ -123,12 +131,12 @@ $messages['nl'] = array(
 	'sdt-duration' => 'Duur',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Event
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
  */
-$messages['nb'] = array(
-	'sdt-desc' => 'Tilleggsdatatyper for Semantic MediaWiki med utvidelser',
-	'sdt-duration' => 'Varighet',
+$messages['pms'] = array(
+	'sdt-desc' => 'Sòrt ëd dat adissionaj për Semantic MediaWiki e estension',
+	'sdt-duration' => 'Durà',
 );
 
 /** Telugu (తెలుగు)
