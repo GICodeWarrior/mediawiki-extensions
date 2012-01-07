@@ -96,3 +96,11 @@ $messages['nl'] = array(
 	'parserfun-desc' => 'Voegt een parserfunctie <code>#parse</code> toe voor het parsen van wikitekst, en introduceert het voorvoegsel <code>THIS:</code> voor aan magische variabelen gerelateerde paginagegevens',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'parserfun-desc' => 'A gionta na funsion <code>#parse</code> dël parser për parsifiché test wiki e a anseriss ël prefiss <code>THIS:</code> për anformassion ëd pagina relative a variàbij màgiche',
+	'parserfun-invalid-caller-mode' => "Pa dàit gnun-e manere d'operassion o ìndess numérich.",
+);
+
