@@ -104,7 +104,7 @@ class MoodBarUtil {
 	 * Get the stats for the moodbar type in the last 24 hours
 	 * @return array - count of number for each moodbar type
 	 */
-	public function getMoodBarTypeStats() {
+	public static function getMoodBarTypeStats() {
 
 		global $wgMemc;
 
