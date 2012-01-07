@@ -117,6 +117,14 @@ $messages['nl'] = array(
 	'spark-missing-query' => 'U moet een zoekopdracht opgeven met de parameter "data-spark-query".',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'spark-desc' => "A gionta na tichëtta <code><nowiki><spark /></nowiki></code> che a abìlita l'anseriment ëd mash-ups[http://km.aifb.kit.edu/sites/spark/ Spark]. La libreria spark a l'é stàita creà da Denny Vrandecic and Andreas Harth.",
+	'spark-missing-query' => 'It deuve specifiché na query an dovrand ël paràmetr "data-spark-query".',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
