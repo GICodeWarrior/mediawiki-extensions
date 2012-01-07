@@ -120,3 +120,12 @@ $messages['nl'] = array(
 	'regexfun-limit-exceed' => 'Het maximale aantal van {{PLURAL:$1|$1|$1}} af te handelen reguliere expressies is bereikt.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'regexfun-desc' => "A gionta funsion ëd parser ch'a përmëtto l'usagi d'espression regolar an drinta a pagine wiki",
+	'regexfun-invalid' => 'L\'espression regoar "$1" a l\'é pa bon-a.',
+	'regexfun-limit-exceed' => 'Rivà al màssim ëd {{PLURAL:$1|$1 gestor d\'espression regolar "Regex Fun"|$1 gestor d\'espression regolar "Regex Fun"}}.',
+);
+
