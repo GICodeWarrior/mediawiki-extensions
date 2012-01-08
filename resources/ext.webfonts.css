@@ -1,6 +1,6 @@
 li#pt-webfont {
 	/* @embed */
-	background: url(images/font-icon.png) no-repeat 0 0;
+	background: url(images/font-icon.png) no-repeat scroll left top transparent;
 	padding-left: 18px !important;
 }
 
