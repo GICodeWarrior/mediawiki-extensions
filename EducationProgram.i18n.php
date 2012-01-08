@@ -79,6 +79,7 @@ $messages['en'] = array(
 	'special-editcourse-edit' => 'Edit course',
 	'special-enroll' => 'Enroll',
     'special-ambassadors' => 'Ambassadors',
+	'special-ambassador' => 'Ambassador',
 
 	// Special:Institutions
 	'ep-institutions-nosuchinstitution' => 'There is no institution with name "$1". Existing institutions are listed below.',
@@ -226,6 +227,10 @@ $messages['en'] = array(
 	'ep-term-description' => 'description',
 	'specialterm-summary-token' => 'Enrollment token',
 	'ep-term-nav-edit' => 'Edit this term',
+
+	// Special:Ambassador
+	'ep-ambassador-does-not-exist' => 'There is no ambassador with name "$1". See [[Special:Ambassadors|here]] for a list of ambassadors.',
+	'ep-ambassador-title' => 'Ambassador: $1',
 
 	// Special:Enroll
 	'ep-enroll-title' => 'Enroll for $1 at $2',

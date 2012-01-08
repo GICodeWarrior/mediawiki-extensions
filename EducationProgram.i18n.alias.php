@@ -31,4 +31,5 @@ $specialPageAliases['en'] = array(
 	'EditTerm' => array( 'EditTerm' ),
 	'Enroll' => array( 'Enroll' ),
 	'Ambassadors' => array( 'Ambassadors' ),
+	'Ambassador' => array( 'Ambassador' ),
 );

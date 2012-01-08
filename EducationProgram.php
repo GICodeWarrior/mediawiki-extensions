@@ -89,6 +89,7 @@ $wgAutoloadClasses['SpecialTerm'] 					= dirname( __FILE__ ) . '/specials/Specia
 $wgAutoloadClasses['SpecialTerms'] 					= dirname( __FILE__ ) . '/specials/SpecialTerms.php';
 $wgAutoloadClasses['SpecialEnroll'] 				= dirname( __FILE__ ) . '/specials/SpecialEnroll.php';
 $wgAutoloadClasses['SpecialAmbassadors'] 			= dirname( __FILE__ ) . '/specials/SpecialAmbassadors.php';
+$wgAutoloadClasses['SpecialAmbassador'] 			= dirname( __FILE__ ) . '/specials/SpecialAmbassador.php';
 
 // Special pages
 $wgSpecialPages['MyCourses'] 						= 'SpecialMyCourses';
@@ -106,6 +107,7 @@ $wgSpecialPages['EditInstitution'] 					= 'SpecialEditInstitution';
 $wgSpecialPages['EditTerm'] 						= 'SpecialEditTerm';
 $wgSpecialPages['Enroll'] 	    					= 'SpecialEnroll';
 $wgSpecialPages['Ambassadors'] 	    				= 'SpecialAmbassadors';
+$wgSpecialPages['Ambassador'] 	    				= 'SpecialAmbassador';
 
 $wgSpecialPageGroups['MyCourses'] 					= 'education';
 $wgSpecialPageGroups['Institution'] 				= 'education';
@@ -121,6 +123,7 @@ $wgSpecialPageGroups['EditCourse'] 					= 'education';
 $wgSpecialPageGroups['EditInstitution'] 			= 'education';
 $wgSpecialPageGroups['EditTerm'] 					= 'education';
 $wgSpecialPageGroups['Ambassadors'] 				= 'education';
+$wgSpecialPageGroups['Ambassador'] 					= 'education';
 
 // DB object classes
 $egEPDBObjects = array();

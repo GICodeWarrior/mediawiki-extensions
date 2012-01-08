@@ -87,7 +87,7 @@ class SpecialInstitution extends SpecialEPPage {
 		$stats['name'] = $org->getField( 'name' );
 		$stats['city'] = $org->getField( 'city' );
 		
-		$countries = CountryNames::getNames( $this->getLang()->getCode() );
+		$countries = CountryNames::getNames( $this->getLanguage()->getCode() );
 		$stats['country'] = $countries[$org->getField( 'country' )];
 
 		foreach ( $stats as &$stat ) {

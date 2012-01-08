@@ -183,7 +183,7 @@ abstract class SpecialEPPage extends SpecialPage {
 	 * @param boolean $collapsed
 	 * @param array $summaryData
 	 */
-	protected function displaySummary( EPDBObject $item, $collapsed = true, array $summaryData = null ) {
+	protected function displaySummary( EPDBObject $item, $collapsed = false, array $summaryData = null ) {
 		$out = $this->getOutput();
 		
 		$class = 'wikitable ep-summary mw-collapsible';
