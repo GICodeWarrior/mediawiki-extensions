@@ -95,19 +95,30 @@ class EPTermPager extends EPPager {
 			'end',
 		);
 	}
+
+	/**
+	 * (non-PHPdoc)
+	 * @see EPPager::getFieldNames()
+	 */
+	public function getFieldNames() {
+		$fields = parent::getFieldNames();
+
+		if ( array_key_exists( 'course_id', $this->conds ) && array_key_exists( 'org_id', $fields ) ) {
+			unset( $fields['org_id'] );
+		}
+
+		return $fields;
+	}
 	
 	/**
 	 * (non-PHPdoc)
 	 * @see EPPager::getFilterOptions()
 	 */
 	protected function getFilterOptions() {
-		$years = EPTerm::selectFields( 'year', array(), array( 'DISTINCT' ), array(), true );
-		asort( $years, SORT_NUMERIC );
-		$years = array_merge( array( '' ), $years );
-		$years = array_combine( $years, $years );
-		
-		return array(
-			'course_id' => array(
+		$options = array();
+
+		if ( !array_key_exists( 'course_id', $this->conds ) ) {
+			$options['course_id'] = array(
 				'type' => 'select',
 				'options' => array_merge(
 					array( '' => '' ),
@@ -115,8 +126,9 @@ class EPTermPager extends EPPager {
 				),
 				'value' => '',
 				'datatype' => 'int',
-			),
-			'org_id' => array(
+			);
+
+			$options['org_id'] = array(
 				'type' => 'select',
 				'options' => array_merge(
 					array( '' => '' ),
@@ -124,13 +136,21 @@ class EPTermPager extends EPPager {
 				),
 				'value' => '',
 				'datatype' => 'int',
-			),
-			'year' => array(
-				'type' => 'select',
-				'options' => $years,
-				'value' => '',
-			),
+			);
+		}
+
+		$years = EPTerm::selectFields( 'year', array(), array( 'DISTINCT' ), array(), true );
+		asort( $years, SORT_NUMERIC );
+		$years = array_merge( array( '' ), $years );
+		$years = array_combine( $years, $years );
+
+		$options['year'] = array(
+			'type' => 'select',
+			'options' => $years,
+			'value' => '',
 		);
+
+		return $options;
 	}
 	
 	/**

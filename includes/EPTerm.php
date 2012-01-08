@@ -95,11 +95,13 @@ class EPTerm extends EPDBObject {
 			$this->setField( 'org_id', $this->getCourse( 'org_id' )->getField( 'org_id' ) );
 		}
 
-		if ( $this->updateSummaries ) {
+		$success = parent::insertIntoDB();
+
+		if ( $success && $this->updateSummaries ) {
 			EPOrg::updateSummaryFields( 'terms', array( 'id' => $this->getField( 'org_id' ) ) );
 		}
 
-		return parent::insertIntoDB();
+		return $success;
 	}
 	
 	/**
@@ -110,18 +112,20 @@ class EPTerm extends EPDBObject {
 		$id = $this->getId();
 
 		if ( $this->updateSummaries ) {
-			$this->loadFields( array( 'org_id' ) );
-			$orgId = $this->getField( 'org_id', false );
+			$this->loadFields( array( 'org_id', 'course_id' ) );
+			$orgId = $this->getField( 'org_id' );
+			$courseId = $this->getField( 'course_id' );
 		}
 
 		$success = parent::removeFromDB();
 		
-		if ( $success ) {
-			$success = wfGetDB( DB_MASTER )->delete( 'ep_students_per_term', array( 'spt_term_id' => $id ) ) && $success;
+		if ( $success && $this->updateSummaries ) {
+			EPCourse::updateSummaryFields( 'students', array( 'id' => $courseId ) );
+			EPOrg::updateSummaryFields( array( 'terms', 'students' ), array( 'id' => $orgId ) );
 		}
 
-		if ( $this->updateSummaries && $orgId !== false ) {
-			EPOrg::updateSummaryFields( array( 'terms', 'students' ), array( 'id' => $orgId ) );
+		if ( $success ) {
+			$success = wfGetDB( DB_MASTER )->delete( 'ep_students_per_term', array( 'spt_term_id' => $id ) ) && $success;
 		}
 
 		return $success;

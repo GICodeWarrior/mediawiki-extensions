@@ -110,7 +110,7 @@ class EPCourse extends EPDBObject {
 		if ( $this->updateSummaries && $orgId !== false ) {
 			EPOrg::updateSummaryFields( array( 'terms', 'students', 'courses' ), array( 'id' => $orgId ) );
 		}
-		
+
 		return $success;
 	}
 
@@ -139,8 +139,8 @@ class EPCourse extends EPDBObject {
 
 		if ( $this->updateSummaries && $success && $oldOrgId !== false && $oldOrgId !== $this->getField( 'org_id' ) ) {
 			$conds = array( 'id' => array( $oldOrgId, $this->getField( 'org_id' ) ) );
-			EPOrg::updateSummaryFields( array( 'terms', 'students', 'courses' ), $conds );
 			EPTerm::updateSummaryFields( 'org_id', array( 'course_id' => $this->getId() ) );
+			EPOrg::updateSummaryFields( array( 'terms', 'students', 'courses' ), $conds );
 		}
 
 		return $success;

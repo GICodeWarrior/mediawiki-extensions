@@ -889,7 +889,7 @@ abstract class EPDBObject {
 			
 			$conds[] = $cond;
 		}
-		//if (count($conds)) {q($conds);}
+
 		return $conds;
 	}
 

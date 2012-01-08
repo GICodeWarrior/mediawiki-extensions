@@ -126,7 +126,7 @@ class EPCoursePager extends EPPager {
 				wfMsgHtml( 'edit' )
 			);
 			
-			$links[] = $this->getDeletionLink( 'term', $item->getId() );
+			$links[] = $this->getDeletionLink( 'course', $item->getId() );
 		}
 		
 		return $links;
