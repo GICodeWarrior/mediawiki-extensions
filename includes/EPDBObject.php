@@ -31,6 +31,17 @@ abstract class EPDBObject {
 	protected $fields = array( 'id' => null );
 
 	/**
+	 * If the object should update summaries of linked items when changed.
+	 * For example, update the course_count field in universities when a course in courses is deleted.
+	 * Settings this to false can prevent needless updating work in situations
+	 * such as deleting a university, which will then delete all it's courses.
+	 *
+	 * @since 0.1
+	 * @var bool
+	 */
+	protected $updateSummaries = true;
+
+	/**
 	 * The database connection to use for read operations.
 	 *
 	 * @since 0.2
@@ -181,6 +192,23 @@ abstract class EPDBObject {
 		} else {
 			throw new MWException( 'Attempted to get not-set field ' . $name );
 		}
+	}
+
+	/**
+	 * Gets the value of a field but first loads it if not done so already.
+	 *
+	 * @since 0.1
+	 *
+	 * @param string$name
+	 *
+	 * @return mixed
+	 */
+	public function loadAndGetField( $name ) {
+		if ( !$this->hasField( $name ) ) {
+			$this->loadFields( array( $name ) );
+		}
+
+		return $this->getField( $name );
 	}
 
 	/**
@@ -1100,6 +1128,17 @@ abstract class EPDBObject {
 		}
 
 		self::setReadDb( DB_SLAVE );
+	}
+
+	/**
+	 * Sets the value for the @see $updateSummaries field.
+	 *
+	 * @since 0.1
+	 *
+	 * @param boolean $update
+	 */
+	public function setUpdateSummaries( $update ) {
+		$this->updateSummaries = $update;
 	}
 
 }

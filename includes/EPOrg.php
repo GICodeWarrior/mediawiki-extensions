@@ -105,13 +105,18 @@ class EPOrg extends EPDBObject {
 		if ( in_array( 'students', $summaryFields ) ) {
 			$termIds = EPTerm::selectFields( 'id', array( 'org_id' => $this->getId() ) );
 
-			$fields['students'] = $dbr->select(
-				'ep_students_per_term',
-				'COUNT(*) AS rowcount',
-				array( 'spt_term_id' => $termIds )
-			);
+			if ( count( $termIds ) > 0 ) {
+				$fields['students'] = $dbr->select(
+					'ep_students_per_term',
+					'COUNT(*) AS rowcount',
+					array( 'spt_term_id' => $termIds )
+				);
 
-			$fields['students'] = $fields['students']->rowcount;
+				$fields['students'] = $fields['students']->fetchObject()->rowcount;
+			}
+			else {
+				$fields['students'] = 0;
+			}
 		}
 
 		$this->setFields( $fields );
