@@ -35,6 +35,7 @@ $wgResourceModules['ext.apiSandbox'] = array(
 		'apisb-ns-main',
 		'parentheses',
 	),
+	'dependencies' => 'mediawiki.util',
 );
 
 $wgHooks['APIGetDescription'][] = 'efASAPIGetDescription';
