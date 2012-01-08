@@ -72,7 +72,18 @@ class EPOrgPager extends EPPager {
 				$value = htmlspecialchars( $countries[$value] );
 				break;
 			case 'courses': case 'mentors': case 'students': case 'terms':
+				$rawValue = $value;
 				$value = htmlspecialchars( $this->getLanguage()->formatNum( $value ) );
+
+				if ( $rawValue > 0 && in_array( $name, array( 'terms', 'courses' ) ) ) {
+					$value = Linker::linkKnown(
+						SpecialPage::getTitleFor( $this->getLanguage()->ucfirst( $name ) ),
+						$value,
+						array(),
+						array( 'org_id' => $this->currentObject->getId() )
+					);
+				}
+
 				break;
 		}
 

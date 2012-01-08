@@ -116,6 +116,15 @@ class EPTermPager extends EPPager {
 				'value' => '',
 				'datatype' => 'int',
 			),
+			'org_id' => array(
+				'type' => 'select',
+				'options' => array_merge(
+					array( '' => '' ),
+					EPOrg::getOrgOptions( EPOrg::select( array( 'name', 'id' ) ) )
+				),
+				'value' => '',
+				'datatype' => 'int',
+			),
 			'year' => array(
 				'type' => 'select',
 				'options' => $years,

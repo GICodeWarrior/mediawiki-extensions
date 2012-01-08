@@ -147,6 +147,7 @@ $messages['en'] = array(
 	'eptermpager-header-end' => 'End',
 	'eptermpager-filter-course-id' => 'Course',
 	'eptermpager-filter-year' => 'Year',
+	'eptermpager-filter-org-id' => 'Institution',
 
 	// Student pager
 	'epstudentpager-header-user-id' => 'User',

@@ -441,7 +441,7 @@ abstract class EPPager extends TablePager {
 	protected function addFilterValues( array &$filterOptions, $cast = true ) {
 		$req = $this->getRequest();
 		$changed = false;
-		
+
 		foreach ( $filterOptions as $optionName => &$optionData ) {
 			if ( $req->getCheck( $optionName ) ) {
 				$optionData['value'] = $req->getVal( $optionName );
