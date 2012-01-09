@@ -25,7 +25,7 @@ $messages['en'] = array(
 	'webfonts-preview-download' => 'Download',
 	'webfonts-preview-sampletext' => 'The quick brown fox jumps over the lazy dog',
 	'webfonts-preview-installing-fonts-title' => 'Installing Fonts',
-	'webfonts-preview-installing-fonts-text' => 'You can download a font using the {{int:webfonts-preview-download}} link given above. To install the downloaded font in your computer, please refer [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts this documentation]',
+	'webfonts-preview-installing-fonts-text' => 'You can download a font using the "{{int:webfonts-preview-download}}" link given above. To install the downloaded font in your computer, please refer [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts this documentation]',
 );
 
 /** Message documentation (Message documentation)
