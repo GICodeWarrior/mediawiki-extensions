@@ -12,11 +12,11 @@ $messages = array();
  * @author santhosh
 */
 $messages['en'] = array(
-	'webfonts'         => 'WebFonts',
+	'webfonts'         => 'Web fonts',
 	'webfonts-desc'    => 'Embed fonts in pages',
 	'webfonts-load'    => 'Select font',
 	'webfonts-reset'   => 'Reset',
-	'webfonts-enable-preference' => 'Enable font embedding (WebFonts)',
+	'webfonts-enable-preference' => 'Enable font embedding (Web fonts)',
 	'webfonts-menu-tooltip' => 'Select a font for the page',
 	'webfonts-help' => 'Help',
 	'webfonts-help-page' => '//www.mediawiki.org/wiki/Special:MyLanguage/Help:Extension:WebFonts',
