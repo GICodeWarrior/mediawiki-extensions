@@ -26,6 +26,7 @@ $messages['en'] = array (
 	'zero-rated-mobile-access-banner-text-data-charges' => 'Data charges may apply continue: $1 or $2',
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Yes',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'No',
+	'zero-rated-mobile-access-click-to-view-image' => 'Click to view image of, "$1"...',
 );
 
 /** Message documentation (Message documentation)
@@ -44,6 +45,7 @@ $messages['qqq'] = array(
 * $2 = {{Msg-mw|zero-rated-mobile-access-banner-text-data-charges-no}}',
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Text for accepting charges',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Text for rejecting charges',
+	'zero-rated-mobile-access-click-to-view-image' => 'Text for viewing an image link',
 );
 
 /** Japanese (日本語)

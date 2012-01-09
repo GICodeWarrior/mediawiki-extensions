@@ -13,6 +13,8 @@ class ExtZeroRatedMobileAccess {
 	private static $acceptBilling;
 	private static $carrier;
 	private static $renderZeroRatedRedirect;
+	private static $forceClickToViewImages;
+	public static $useFormat;
 
 	/**
 	 * Handler for the BeforePageDisplay hook
@@ -24,6 +26,15 @@ class ExtZeroRatedMobileAccess {
 	public function beforePageDisplayHTML( &$out, &$text ) {
 		global $wgRequest;
 		wfProfileIn( __METHOD__ );
+		
+		$xDevice = isset( $_SERVER['HTTP_X_DEVICE'] ) ? $_SERVER['HTTP_X_DEVICE'] : '';
+		self::$useFormat = $wgRequest->getText( 'useformat' );
+		
+		if ( self::$useFormat !== 'mobile' && self::$useFormat !== 'mobile-wap' &&
+			!$xDevice ) {
+			wfProfileOut( __METHOD__ );
+			return true;
+		}
 
 		$output = Html::openElement( 'div',
 			array( 'id' => 'zero-landing-page' ) );
@@ -31,8 +42,14 @@ class ExtZeroRatedMobileAccess {
 		self::$renderZeroRatedLandingPage = $wgRequest->getFuzzyBool( 'renderZeroRatedLandingPage' );
 		self::$renderZeroRatedBanner = $wgRequest->getFuzzyBool( 'renderZeroRatedBanner' );
 		self::$renderZeroRatedRedirect = $wgRequest->getFuzzyBool( 'renderZeroRatedRedirect' );
+		self::$forceClickToViewImages = $wgRequest->getFuzzyBool( 'forceClickToViewImages' );
 		self::$acceptBilling = $wgRequest->getVal( 'acceptbilling' );
 		self::$title = $out->getTitle();
+		
+		$carrier = $wgRequest->getHeader( 'HTTP_CARRIER' );
+		if ( $carrier !== '(null)') {
+			self::$renderZeroRatedBanner = true;
+		}
 
 		if ( self::$title->getNamespace() == NS_FILE ) {
 			self::$isFilePage = true;
@@ -93,7 +110,6 @@ class ExtZeroRatedMobileAccess {
 			$out->setPageTitle( null );
 		} elseif ( self::$renderZeroRatedBanner === true ) {
 			// a2enmod headers >>> .htaccess >>> RequestHeader set HTTP_CARRIER Verizon
-			$carrier = $wgRequest->getHeader( 'HTTP_CARRIER' );
 			self::$carrier = $this->lookupCarrier( $carrier );
 			$html = $out->getHTML();
 			$parsedHtml = $this->parseLinksForZeroQueryString( $html );
@@ -233,6 +249,22 @@ class ExtZeroRatedMobileAccess {
 		$doc->encoding = 'UTF-8';
 
 		$xpath = new DOMXpath( $doc );
+
+		if ( !self::$isFilePage && self::$forceClickToViewImages ) {
+			$tagToReplace = 'img';
+			$tagToReplaceNodes = $doc->getElementsByTagName( $tagToReplace );
+			foreach ( $tagToReplaceNodes as $tagToReplaceNode ) {
+				if ( $tagToReplaceNode ) {
+					$alt = $tagToReplaceNode->getAttribute( 'alt' );
+					$spanNodeText = wfMsg( 'zero-rated-mobile-access-click-to-view-image', lcfirst( substr( $alt, 0, 40 ) ) );
+					$spanNode = $doc->createElement( "span", str_replace( "&", "&amp;", $spanNodeText ) );
+					if ( $alt ) {
+						$spanNode->setAttribute( 'title', $alt );
+					}
+					$tagToReplaceNode->parentNode->replaceChild( $spanNode, $tagToReplaceNode );
+				}
+			}
+		}
 
 		$zeroRatedLinks = $xpath->query( "//a[not(contains(@class,'external'))]" );
 		foreach ( $zeroRatedLinks as $zeroRatedLink ) {
