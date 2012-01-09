@@ -93,6 +93,7 @@ $messages['an'] = array(
 	'vector-editwarning-preference' => "Alvertir-me quan salga d'una pachina d'edición sin alzar os cambios",
 	'vector-simplesearch-search' => 'Mirar',
 	'vector-simplesearch-containing' => 'que contién...',
+	'vector-noexperiments-preference' => "Excluir-me d'as caracteristicas experimentals",
 );
 
 /** Arabic (العربية)
