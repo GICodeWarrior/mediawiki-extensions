@@ -63,6 +63,25 @@ $messages['af'] = array(
 	'webfonts-help' => 'Help',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'webfonts' => 'WebFonts',
+	'webfonts-desc' => 'Incrustar fuents tipograficas en as pachinas',
+	'webfonts-load' => 'Trigar fuent tipografica',
+	'webfonts-reset' => 'Restablir',
+	'webfonts-enable-preference' => 'Activar a incrustación de fuents tipograficas (WebFonts)',
+	'webfonts-menu-tooltip' => "Trigar una fuent tipografica t'a pachina",
+	'webfonts-help' => 'Aduya',
+	'webfonts-preview-intro' => 'Ista pachina le aduya a previsualizar as fuents tipograficas disponibles en a extensión WebFonts y, si lo deseya, descargar-las y instalar-las en o suyo ordinador.',
+	'webfonts-preview-title' => "Anvista previa d'as fuents tipograficas",
+	'webfonts-preview-download' => 'Descargar',
+	'webfonts-preview-sampletext' => 'A-saber-las vegadas o can o mixín y o zapo han malfurriau quantos kilowatios.',
+	'webfonts-preview-installing-fonts-title' => 'Instalando as fuents tipograficas',
+	'webfonts-preview-installing-fonts-text' => "Puede descargar-se una fuent tipografica fendo servir o vinclo {{int:webfonts-preview-download}} d'alto. Ta instalar a fuent descargada en o suyo ordinador, consulte por favor [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts ista documentación]",
+);
+
 /** Arabic (العربية)
  * @author روخو
  */
@@ -119,18 +138,24 @@ $messages['be-tarask'] = array(
 	'webfonts-preview-download' => 'Загрузіць',
 	'webfonts-preview-sampletext' => 'Хуткая шэрая лісіца пераскочыла праз лянівага сабаку',
 	'webfonts-preview-installing-fonts-title' => 'Усталяваньне шрыфтоў',
-	'webfonts-preview-installing-fonts-text' => 'Вы можаце спампаваць шрыфт, скарыстаўшыся спасылкай «{{int:webfonts-preview-download}}» вышэй. Каб інсталяваць спампаваны шрыфт у вашую сыстэму, зьвярніцеся да [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts дакумэнтацыі]',
+	'webfonts-preview-installing-fonts-text' => 'Вы можаце загрузіць шрыфт, скарыстаўшыся спасылкай «{{int:webfonts-preview-download}}» вышэй. Каб усталяваць загружаны шрыфт у Вашую сыстэму, зьвярніцеся да [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts дакумэнтацыі]',
 );
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Jayantanth
  */
 $messages['bn'] = array(
 	'webfonts' => 'ওয়েবফন্টস',
 	'webfonts-desc' => 'পাতায় ফন্ট সন্নিবেশ',
 	'webfonts-load' => 'ফন্ট নির্বাচন',
 	'webfonts-reset' => 'পুনরায় আরম্ভ',
+	'webfonts-enable-preference' => 'ফন্ট এমবেড সস্ক্রিয় করুন (ওয়েবফন্টস)',
+	'webfonts-menu-tooltip' => 'পাতা থেকে ফন্ট নির্বাচন করুন',
 	'webfonts-help' => 'সাহায্য',
+	'webfonts-preview-download' => 'ডাউনলোড',
+	'webfonts-preview-sampletext' => 'আমার সোনার বাংলা আমি তোমায় ভালবাসি',
+	'webfonts-preview-installing-fonts-title' => 'ফন্ট ইন্সটল হচ্ছে',
 );
 
 /** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
@@ -189,7 +214,7 @@ $messages['cs'] = array(
 	'webfonts-preview-download' => 'Stáhnout',
 	'webfonts-preview-sampletext' => 'Příliš žluťoučký kůň úpěl ďábelské ódy.',
 	'webfonts-preview-installing-fonts-title' => 'Instalace písem',
-	'webfonts-preview-installing-fonts-text' => 'Písmo sí můžete stáhnout pomocí odkazu {{int:webfonts-preview-download}} zobrazeného výše. Postup instalace staženého písma do vašeho počítače najdete v [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts dokumentaci]',
+	'webfonts-preview-installing-fonts-text' => 'Písmo si můžete stáhnout pomocí odkazu „{{int:webfonts-preview-download}}“ zobrazeného výše. Postup instalace staženého písma do vašeho počítače najdete v [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts dokumentaci]',
 );
 
 /** Danish (Dansk)
@@ -244,6 +269,11 @@ $messages['dsb'] = array(
 	'webfonts-enable-preference' => 'Zasajźenje pismow zmóžniś (WebFonts)',
 	'webfonts-menu-tooltip' => 'Pismo za bok wubraś',
 	'webfonts-help' => 'Pomoc',
+	'webfonts-preview-intro' => 'Toś ten bok śi pomaga se pisma woglědaś, kótarež stoje w rozšyrjenju k dispoziciji a je na žycenje ześěgnuś a na twójom licadle instalěrowaś.',
+	'webfonts-preview-title' => 'Pśeglěd pismow',
+	'webfonts-preview-download' => 'Ześěgnuś',
+	'webfonts-preview-installing-fonts-title' => 'Pisma instalěrowaś',
+	'webfonts-preview-installing-fonts-text' => 'Móžoš pismo z pomocu wótkaza "{{int:webfonts-preview-download}}" górjejce ześěgnuś. Aby ześěgnjone pismo na swójo licadle instalěrował, glědaj pšosym [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts toś tu dokumentaciju].',
 );
 
 /** Greek (Ελληνικά)
@@ -343,7 +373,7 @@ $messages['fr'] = array(
 	'webfonts-preview-download' => 'Télécharger',
 	'webfonts-preview-sampletext' => 'Portez ce vieux whisky au juge blond qui fume',
 	'webfonts-preview-installing-fonts-title' => 'Installation des polices',
-	'webfonts-preview-installing-fonts-text' => 'Vous pouvez télécharger une police en utilisant le lien {{int:webfonts-preview-download}} ci-dessus. Pour installer la police téléchargée sur votre ordinateur, veuillez consulter [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts cette documentation]',
+	'webfonts-preview-installing-fonts-text' => 'Vous pouvez télécharger une police en utilisant le lien "{{int:webfonts-preview-download}}" ci-dessus. Pour installer la police téléchargée sur votre ordinateur, veuillez consulter [//www.mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts cette documentation].',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -373,8 +403,9 @@ $messages['gl'] = array(
 	'webfonts-preview-intro' => 'Esta páxina axúdalle a ollar unha vista previa das fontes dispoñibles na extensión WebFonts e, opcionalmente, descargalas e instalalas no seu ordenador.',
 	'webfonts-preview-title' => 'Vista previa das fontes',
 	'webfonts-preview-download' => 'Descargar',
+	'webfonts-preview-sampletext' => 'Necesitamos unha tipografía chuliña de cor kiwi, que lle zorregue unha labazada visual á xente',
 	'webfonts-preview-installing-fonts-title' => 'Instalación das fontes',
-	'webfonts-preview-installing-fonts-text' => 'Pode descargar unha fonte mediante a ligazón "{{int:webfonts-preview-download}}" anterior. Para instalar a fonte descargada no seu ordenador consulte [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts esta documentación]',
+	'webfonts-preview-installing-fonts-text' => 'Pode descargar unha fonte mediante a ligazón "{{int:webfonts-preview-download}}" anterior. Para instalar a fonte descargada no seu ordenador consulte [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts esta documentación].',
 );
 
 /** Swiss German (Alemannisch)
@@ -407,6 +438,12 @@ $messages['he'] = array(
 	'webfonts-enable-preference' => 'הפעלה של הטמעת גופנים (גופני רשת)',
 	'webfonts-menu-tooltip' => 'בחירת גופן לדף',
 	'webfonts-help' => 'עזרה',
+	'webfonts-preview-intro' => 'בדף הזה יש תצוגה מקדימה של הגופנים הזמינים בהרחבה WebFonts ושאפשר להוריד ולהתקין במחשב שלך.',
+	'webfonts-preview-title' => 'תצוגה מקדימה של גופנים',
+	'webfonts-preview-download' => 'הורדה',
+	'webfonts-preview-sampletext' => 'יַעֲקֹב דָּגָן הַשָּׂמֵחַ טִפֵּס בֶּעֱזוּז לְרֹאשׁ סֻלָּם מָאֳרָךְ לִצְפּוֹת בִּמְעוֹף דּוּכִיפַת וְנֵץ',
+	'webfonts-preview-installing-fonts-title' => 'התקנת גופנים',
+	'webfonts-preview-installing-fonts-text' => 'אפשר להוריד גופן באמצעות הקישור "{{int:webfonts-preview-download}}" לעיל. כדי להתקין את הגופן במחשב שלך, ר\' [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts את דפי העזרה האלה]',
 );
 
 /** Hindi (हिन्दी)
@@ -434,9 +471,11 @@ $messages['hsb'] = array(
 	'webfonts-enable-preference' => 'Zasadźenje pismow zmóžnić (WebFonts)',
 	'webfonts-menu-tooltip' => 'Pismo za stronu wubrać',
 	'webfonts-help' => 'Pomoc',
+	'webfonts-preview-intro' => 'Tuta strona ći pomha sej pismaj wobhladać, kotrež w rozšěrjenju k dispoziciji steja a je na přeće sćahnyć a na twojim ličaku instalować.',
 	'webfonts-preview-title' => 'Přehlad pismow',
 	'webfonts-preview-download' => 'Sćahnyć',
 	'webfonts-preview-installing-fonts-title' => 'Pisma instalować',
+	'webfonts-preview-installing-fonts-text' => 'Móžeš pismo z pomocu wotkaza "{{int:webfonts-preview-download}}" horjeka sćahnyć. Zo by sćehnjene pismo na swojim ličaku instalował, hlej prošu [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts tutu dokumentaciju].',
 );
 
 /** Hungarian (Magyar)
@@ -467,8 +506,9 @@ $messages['ia'] = array(
 	'webfonts-preview-intro' => 'Iste pagina permitte previsualisar le typos de litteras disponibile in le extension WebFonts e, si desirate, discargar e installar los in tu computator.',
 	'webfonts-preview-title' => 'Previsualisar le typos de litteras',
 	'webfonts-preview-download' => 'Discargar',
+	'webfonts-preview-sampletext' => 'Apud le zoo, quatro juvene feminas bibe whisky ex calices gothic',
 	'webfonts-preview-installing-fonts-title' => 'Installar typos de litteras',
-	'webfonts-preview-installing-fonts-text' => 'Tu pote discargar un typo de litteras usante le ligamine {{int:webfonts-preview-download}} hic supra. Pro installar le typo de litteras discargate in tu computator, per favor consulta [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts iste documentation].',
+	'webfonts-preview-installing-fonts-text' => 'Tu pote discargar un typo de litteras usante le ligamine "{{int:webfonts-preview-download}}" hic supra. Pro installar le typo de litteras discargate in tu computator, per favor consulta [//www.mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts iste documentation].',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -610,7 +650,7 @@ $messages['mk'] = array(
 	'webfonts-preview-download' => 'Преземи',
 	'webfonts-preview-sampletext' => 'Бучниов жолт џин ѕида куќа со фурна меѓу полиња за цреши, хмељ и грозје.',
 	'webfonts-preview-installing-fonts-title' => 'Инсталација на фонотовите',
-	'webfonts-preview-installing-fonts-text' => 'Можете да преземете фонт преку горенаведената врска {{int:webfonts-preview-download}}. За да го инсталирате на сметачот, погледајте ја [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts?uselang=mk оваа документација]',
+	'webfonts-preview-installing-fonts-text' => 'Можете да преземете фонт преку горенаведената врска „{{int:webfonts-preview-download}}“. За да го инсталирате на сметачот, погледајте ја [//www.mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts?uselang=mk оваа документација].',
 );
 
 /** Malayalam (മലയാളം)
@@ -698,6 +738,7 @@ $messages['ne'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author SPQRobin
  * @author Saruman
  * @author Siebrand
@@ -715,10 +756,11 @@ $messages['nl'] = array(
 	'webfonts-preview-download' => 'Downloaden',
 	'webfonts-preview-sampletext' => "Pa's wijze lynx bezag vroom het fikse aquaduct",
 	'webfonts-preview-installing-fonts-title' => 'Lettertypen installeren',
-	'webfonts-preview-installing-fonts-text' => 'U kunt een lettertype downloaden via de verwijzing "{{int:webfonts-preview-download}}" hierboven. Bekijk de [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts documentatie] om het gedownloade lettertype te installeren op uw computer.',
+	'webfonts-preview-installing-fonts-text' => 'U kunt een lettertype downloaden via de verwijzing "{{int:webfonts-preview-download}}" hierboven. Bekijk de [//www.mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts documentatie] om het gedownloade lettertype te installeren op uw computer.',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
  * @author Jnanaranjan Sahu
  * @author Odisha1
  * @author Psubhashish
@@ -731,7 +773,11 @@ $messages['or'] = array(
 	'webfonts-enable-preference' => 'ଫଣ୍ଟ ଏମବେଡ଼ କରିବା ସଚଳ କରିବେ (ୱେବ ଫଣ୍ଟ)',
 	'webfonts-menu-tooltip' => 'ଏହି ପୃଷ୍ଠା ପାଇଁ ଏକ ଫଣ୍ଟ ବାଛିବେ',
 	'webfonts-help' => 'ସହଯୋଗ',
+	'webfonts-preview-intro' => 'ଏହି ପୃଷ୍ଠା ୱେବଫଣ୍ଟ ଏକ୍ସଟେନ୍ଶନରେ ଯେଉଁ ଲିପି ଉପଲବ୍ଧ ଅଛି ତାହାର ପୂର୍ବ ଦେଖଣାରେ ସାହାଯ୍ୟ କରିଥାଏ ଏବଂ ଆପଣଙ୍କ କମ୍ପ୍ୟୁଟରରେ ବୈକଳ୍ପିକ ଭାବେ ଡ଼ାଉନଲୋଡ଼ ଓ ଇନସ୍ଟଲ କରିଥାଏ ।',
+	'webfonts-preview-title' => 'ଲିପିର ପୂର୍ବ ଦେଖଣା',
 	'webfonts-preview-download' => 'ଡାଉନଲୋଡ',
+	'webfonts-preview-installing-fonts-title' => 'ଲିପି ସ୍ଥାପନ ହେଉଛି',
+	'webfonts-preview-installing-fonts-text' => 'ଆପଣ ଏକ ଲିପି ଡ଼ାଉନଲୋଡ଼ କରିପାରିବେ ଉପରେ ଥିବା ଏହି ଲିଙ୍କ {{int:webfonts-preview-download}} ଉପଯୋଗ କରି । ଡ଼ାଉନଲୋଡ଼ କରାଯାଇଥିବା ଲିପିକୁ ଆପଣଙ୍କ କମ୍ପ୍ୟୁଟରରେ ସ୍ଥାପନ କରିବା ପାଇଁ, ଦୟାକରି ଏହା ଦେଖନ୍ତୁ [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts this documentation]',
 );
 
 /** Polish (Polski)
@@ -775,6 +821,7 @@ $messages['ps'] = array(
 	'webfonts-load' => 'ليکبڼه ټاکل',
 	'webfonts-reset' => 'بياايښودل',
 	'webfonts-help' => 'لارښود',
+	'webfonts-preview-download' => 'ښکته کول',
 );
 
 /** Portuguese (Português)
@@ -835,6 +882,12 @@ $messages['ru'] = array(
 	'webfonts-enable-preference' => 'Включить внедрение шрифтов (WebFonts)',
 	'webfonts-menu-tooltip' => 'Выберите шрифт для страницы',
 	'webfonts-help' => 'Справка',
+	'webfonts-preview-intro' => 'Эта страница поможет просмотреть шрифты, доступные в расширение WebFonts.  При необходимости их можно будет загрузить и установить на своём компьютере.',
+	'webfonts-preview-title' => 'Просмотр шрифтов',
+	'webfonts-preview-download' => 'Загрузить',
+	'webfonts-preview-sampletext' => 'В чащах юга жил-был цитрус... — да, но фальшивый экземпляръ! The quick brown fox jumps over the lazy dog.',
+	'webfonts-preview-installing-fonts-title' => 'Установка шрифтов',
+	'webfonts-preview-installing-fonts-text' => 'Вы можете загрузить шрифт с помощью приведённой ниже ссылки «{{int:webfonts-preview-download}}». Чтобы установить загруженный шрифт на вашем компьютере, пожалуйста, обратитесь [//www.mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts к данной документации].',
 );
 
 /** Sanskrit (संस्कृतम्)
@@ -881,6 +934,9 @@ $messages['sl'] = array(
 	'webfonts-enable-preference' => 'Omogoči vdelavo pisav (SpletnePisave)',
 	'webfonts-menu-tooltip' => 'Izberite pisavo strani',
 	'webfonts-help' => 'Pomoč',
+	'webfonts-preview-title' => 'Predogled pisav',
+	'webfonts-preview-download' => 'Prenesi',
+	'webfonts-preview-installing-fonts-title' => 'Nameščanje pisav',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
