@@ -29,7 +29,42 @@ class EPTerm extends EPDBObject {
 	 * @var EPOrg|false
 	 */
 	protected $org = false;
-	
+
+	/**
+	 * Returns a list of statuses a term can have.
+	 * Keys are messages, values are identifiers.
+	 *
+	 * @since 0.1
+	 *
+	 * @return array
+	 */
+	public static function getStatuses() {
+		return array(
+			wfMsg( 'ep-term-status-passed' ) => 'passed',
+			wfMsg( 'ep-term-status-current' ) => 'current',
+			wfMsg( 'ep-term-status-planned' ) => 'planned',
+		);
+	}
+
+	/**
+	 * Returns the message for the provided status identifier.
+	 *
+	 * @since 0.1
+	 *
+	 * @param string $status
+	 *
+	 * @return string
+	 */
+	public static function getStatusMessage( $status ) {
+		static $map = null;
+
+		if ( is_null( $map ) ) {
+			$map = array_flip( self::getStatuses() );
+		}
+
+		return $map[$status];
+	}
+
 	/**
 	 * @see parent::getFieldTypes
 	 *
@@ -322,6 +357,51 @@ class EPTerm extends EPDBObject {
 		}
 		
 		return false;
+	}
+
+	/**
+	 * Gets the amount of days left, rounded up to the nearest integer.
+	 *
+	 * @since 0.1
+	 *
+	 * @return integer
+	 */
+	public function getDaysLeft() {
+		$timeLeft = (int)wfTimestamp( TS_UNIX, $this->getField( 'end' ) ) - time();
+		return (int)ceil( $timeLeft / ( 60 * 60 * 24 ) );
+	}
+
+	/**
+	 * Gets the amount of days since term start, rounded up to the nearest integer.
+	 *
+	 * @since 0.1
+	 *
+	 * @return integer
+	 */
+	public function getDaysPassed() {
+		$daysPassed = time() - (int)wfTimestamp( TS_UNIX, $this->getField( 'start' ) );
+		return (int)ceil( $daysPassed / ( 60 * 60 * 24 ) );
+	}
+
+	/**
+	 * Returns the status of the term.
+	 *
+	 * @since 0.1
+	 *
+	 * @return string
+	 */
+	public function getStatus() {
+		if ( $this->getDaysLeft() <= 0 ) {
+			$status = 'passed';
+		}
+		elseif( $this->getDaysPassed() <= 0 ) {
+			$status = 'planned';
+		}
+		else {
+			$status = 'current';
+		}
+
+		return $status;
 	}
 
 }

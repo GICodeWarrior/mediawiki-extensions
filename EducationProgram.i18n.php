@@ -81,6 +81,11 @@ $messages['en'] = array(
     'special-ambassadors' => 'Ambassadors',
 	'special-ambassador' => 'Ambassador',
 
+	// Term statuses
+	'ep-term-status-passed' => 'Passed',
+	'ep-term-status-current' => 'Current',
+	'ep-term-status-planned' => 'Planned',
+
 	// Special:Institutions
 	'ep-institutions-nosuchinstitution' => 'There is no institution with name "$1". Existing institutions are listed below.',
 	'ep-institutions-noresults' => 'There are no institutions to list.',
@@ -134,10 +139,11 @@ $messages['en'] = array(
 	'eporgpager-header-students' => 'Students',
 	'eporgpager-header-terms' => 'Terms',
 
-	// Institution pager
+	// Course pager
 	'epcoursepager-header-name' => 'Name',
 	'epcoursepager-header-org-id' => 'Institution',
 	'epcoursepager-filter-org-id' => 'Institution',
+	'epcoursepager-header-students' => 'Students',
 
 	// Term pager
 	'eptermpager-header-id' => 'Id',
@@ -148,6 +154,8 @@ $messages['en'] = array(
 	'eptermpager-filter-course-id' => 'Course',
 	'eptermpager-filter-year' => 'Year',
 	'eptermpager-filter-org-id' => 'Institution',
+	'eptermpager-header-status' => 'Status',
+	'eptermpager-filter-status' => 'Status',
 
 	// Student pager
 	'epstudentpager-header-user-id' => 'User',

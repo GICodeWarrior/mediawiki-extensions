@@ -31,6 +31,7 @@ class EPCoursePager extends EPPager {
 		return array(
 			'name',
 			'org_id',
+			'students',
 		);
 	}
 	
@@ -70,6 +71,9 @@ class EPCoursePager extends EPPager {
 					htmlspecialchars( $value )
 				);
 				break;
+			case 'students':
+				$value = htmlspecialchars( $this->getLanguage()->formatNum( $value ) );
+				break;
 		}
 
 		return $value;
@@ -87,6 +91,7 @@ class EPCoursePager extends EPPager {
 	protected function getSortableFields() {
 		return array(
 			'name',
+			'students',
 		);
 	}
 	

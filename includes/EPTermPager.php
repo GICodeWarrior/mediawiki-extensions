@@ -78,6 +78,8 @@ class EPTermPager extends EPPager {
 			case 'start': case 'end':
 				$value = $this->getLanguage()->date( $value );
 				break;
+			case '_status':
+				$value = htmlspecialchars( EPTerm::getStatusMessage( $this->currentObject->getStatus() ) );
 		}
 
 		return $value;
@@ -106,6 +108,8 @@ class EPTermPager extends EPPager {
 		if ( array_key_exists( 'course_id', $this->conds ) && array_key_exists( 'org_id', $fields ) ) {
 			unset( $fields['org_id'] );
 		}
+
+		$fields = wfArrayInsertAfter( $fields, array( '_status' => 'status' ), 'end' );
 
 		return $fields;
 	}
@@ -150,6 +154,15 @@ class EPTermPager extends EPPager {
 			'value' => '',
 		);
 
+		$options['status'] = array(
+			'type' => 'select',
+			'options' => array_merge(
+				array( '' => '' ),
+				EPTerm::getStatuses()
+			),
+			'value' => '',
+		);
+
 		return $options;
 	}
 	
@@ -185,6 +198,35 @@ class EPTermPager extends EPPager {
 		$actions = parent::getMultipleItemActions();
 
 		return $actions;
+	}
+
+	/**
+	 * (non-PHPdoc)
+	 * @see EPPager::getConditions()
+	 */
+	protected function getConditions() {
+		$conds = parent::getConditions();
+
+		if ( array_key_exists( 'status', $conds ) ) {
+			$now = wfGetDB( DB_SLAVE )->addQuotes( wfTimestampNow() );
+
+			switch ( $conds['status'] ) {
+				case 'passed':
+					$conds[] = 'end < ' . $now;
+					break;
+				case 'planned':
+					$conds[] = 'start > ' . $now;
+					break;
+				case 'current':
+					$conds[] = 'end >= ' . $now;
+					$conds[] = 'start <= ' . $now;
+					break;
+			}
+
+			unset( $conds['status'] );
+		}
+
+		return $conds;
 	}
 
 }
