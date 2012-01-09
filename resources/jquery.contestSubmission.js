@@ -80,7 +80,7 @@
 			var links = $( '<span />' ).html( '' );
 
 			this.label = $( '<label style="display:block" />' ).attr( {
-				'for': this.config.name,
+				'for': this.config.name
 			} ).text( mw.msg( message ) ).append(
 				$( '<br />' ),
 				mw.msg( 'contest-submission-domains', domainLinks.join( ', ' ) )
