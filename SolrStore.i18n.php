@@ -113,6 +113,17 @@ $messages['nl'] = array(
 	'solrstore-searchFieldSets-title' => 'SolrSearch: SearchSet selecteren',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'solrstore-desc' => "Serca proprietà semàntiche con la potensa d'un potor d'arserca a test pien",
+	'solrsearch' => 'SolrSearch',
+	'solrstore-searchFieldSets' => 'SolrSearch',
+	'solrstore-searchFieldSets-select' => 'Për piasì selession-a un SearchSet',
+	'solrstore-searchFieldSets-title' => 'SolrSearch: selession-a SearchSet',
+);
+
 /** Russian (Русский)
  * @author Eleferen
  */
