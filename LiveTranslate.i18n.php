@@ -898,6 +898,11 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'livetranslate-desc' => 'A abìlita la tradussion imedià dël contnù ëd la pàgina an dovrand ël sërvissi ëd tradussion ëd Google',
+	'right-managetms' => '[[Special:SpecialLiveTranslate|Modìfica]] la lista ëd memòrie ëd tradussion',
+	'action-managetms' => 'gestiss le memòrie ëd tradussion',
+	'group-tmxadmin' => 'Aministrador TMX',
+	'group-tmxadmin-member' => '{{GENDER:$1|aministrador TMX}}',
+	'grouppage-tmxadmin' => '{{ns:project}}:aministrador TMX',
 	'livetranslate-translate-to' => 'Vòlta sta pàgina an',
 	'livetranslate-button-translate' => 'Traduv',
 	'livetranslate-button-translating' => 'Volté...',
