@@ -61,6 +61,13 @@ class FixNarayamDisablePref extends Maintenance {
 				__METHOD__ );
 			$dbw->commit();
 
+			foreach ( $ids as $id ) {
+				$user = User::newFromID( $id );
+				if ( $user ) {
+					$user->invalidateCache();
+				}
+			}
+
 			wfWaitForSlaves( 10 );
 		}
 
