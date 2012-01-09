@@ -135,7 +135,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'purge' => 'wuprozniś',
-	'purge-desc' => 'Pśidawa rejtark "wuprozniś" wšym normalnym bokam a wobija se kontrolu za proznjenje cacha za anonymnych wužywarjow, aby zmóžnił spěšnje proznjenje cacha',
+	'purge-desc' => 'Pśidawa rejtark "wuprozniś" na wšych normalnych bokach, kótaryž zmóžnja malsne proznjenje cacha',
 );
 
 /** Greek (Ελληνικά)
@@ -315,10 +315,11 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author ITurtle
+ * @author Kwj2772
  */
 $messages['ko'] = array(
 	'purge' => '새로 고침',
-	'purge-desc' => '모든 일반 문서에 새로 고침 탭을 추가합니다. 그리고 캐시를 지우려고 하는 익명 사용자에 대한 확인 검사를 우회할 수 있도록 합니다.',
+	'purge-desc' => '모든 일반 문서에 새로 고침 탭을 추가합니다.',
 );
 
 /** Colognian (Ripoarisch)
