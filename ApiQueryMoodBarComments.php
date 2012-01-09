@@ -39,14 +39,14 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
 		
-		if ( $params['myresponse'] == '1' ) {
+		if ( isset( $params['myresponse'] ) ) {
 			if ( !$wgUser->isAnon() ) {
 				$this->addTables( array( 'moodbar_feedback_response' ) );
 				$this->addJoinConds( array( 'moodbar_feedback_response' => array( 'INNER JOIN', 'mbf_id=mbfr_mbf_id' ) ) );
 				$this->addWhereFld( 'mbfr_user_id', $wgUser->getId() );
 				$this->addOption( 'GROUP BY', 'mbf_id' );		
 			}
-		} elseif ( $params['showunanswered'] == '1' ) {
+		} elseif ( isset( $params['showunanswered'] ) ) {
 			$this->addTables( array( 'moodbar_feedback_response' ) );
 			$this->addJoinConds( array( 'moodbar_feedback_response' => array( 'LEFT JOIN', 'mbf_id=mbfr_mbf_id' ) ) );
 			$this->addWhere( array( 'mbfr_id' => null ) );
@@ -170,12 +170,8 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 			'user' => array(
 				ApiBase::PARAM_TYPE => 'user',
 			),
-			'myresponse' => array(
-				ApiBase::PARAM_TYPE => array( '1', '0' ),
-			),
-			'showunanswered' => array(
-				ApiBase::PARAM_TYPE => array( '1', '0' ),
-			),
+			'myresponse' => null,
+			'showunanswered' => null,
 			'prop' => array(
 				ApiBase::PARAM_TYPE => array( 'metadata', 'formatted', 'hidden' ),
 				ApiBase::PARAM_DFLT => 'metadata',

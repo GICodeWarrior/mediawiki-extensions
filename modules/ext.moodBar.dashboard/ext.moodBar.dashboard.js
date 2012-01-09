@@ -5,7 +5,7 @@ jQuery(function( $ ) {
 	/**
 	 * Saved form state
 	 */
-	 var formState = { types: [], username: '', myresponse: '0', showunanswered: '0' };
+	 var formState = { types: [], username: '', myresponse: null, showunanswered: null };
 	
 	/**
 	 * Save the current form state to formState
@@ -13,8 +13,8 @@ jQuery(function( $ ) {
 	function saveFormState() {
 		formState.types = getSelectedTypes();
 		formState.username = $( '#fbd-filters-username' ).val();
-		formState.myresponse = $( '#fbd-filters-my-response' ).prop( 'checked' ) ? $( '#fbd-filters-my-response' ).val() : '0';
-		formState.showunanswered = $( '#fbd-filters-show-unanswered' ).prop( 'checked' ) ? $( '#fbd-filters-show-unanswered' ).val() : '0';
+		formState.myresponse = $( '#fbd-filters-my-response' ).prop( 'checked' ) ? $( '#fbd-filters-my-response' ).val() : null;
+		formState.showunanswered = $( '#fbd-filters-show-unanswered' ).prop( 'checked' ) ? $( '#fbd-filters-show-unanswered' ).val() : null;
 	}
 	
 	/**
@@ -133,10 +133,10 @@ jQuery(function( $ ) {
 		if ( formState.username.length ) {
 			reqData.mbcuser = formState.username;
 		}
-		if ( formState.myresponse != '0' ) {
+		if ( formState.myresponse ) {
 			reqData.mbcmyresponse = formState.myresponse;
 		}
-		if ( formState.showunanswered != '0' ) {
+		if ( formState.showunanswered ) {
 			reqData.mbcshowunanswered = formState.showunanswered;
 		}
 		

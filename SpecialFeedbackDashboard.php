@@ -51,9 +51,9 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 			}
 		
 			// UI should allow users to select one or none
-			if ( $wgRequest->getVal( 'myresponse' ) == '1' ) {
+			if ( $wgRequest->getCheck( 'myresponse' ) ) {
 				$filters['responsefilter'] = 'myresponse';
-			} elseif ( $wgRequest->getVal( 'showunanswered' ) == '1' ) {
+			} elseif ( $wgRequest->getCheck( 'showunanswered' ) ) {
 				$filters['responsefilter'] = 'showunanswered';
 			}
 		}
@@ -334,7 +334,7 @@ HTML;
 			}			
 		}
 		//only show response elements if feedback is not hidden, and user is logged in
-		else if ( $showResponseBox && $feedbackItem->getProperty('hidden-state') == false
+		elseif ( $showResponseBox && $feedbackItem->getProperty('hidden-state') == false
 			&& !$wgUser->isAnon() ) {
 			//$respondToThis = "<span>".wfMessage('moodbar-respond-collapsed')->escaped().'</span> '.wfMessage("moodbar-respond-text")->escaped();
 			$respondToThis = '<span class="fbd-item-response-collapsed"></span> '.wfMessage("moodbar-respond-text")->escaped();			
@@ -675,6 +675,14 @@ HTML;
 			'username' => $wgRequest->getVal( 'username' ),
 			'offset' => $offset,
 		);
+
+		if ( $wgRequest->getCheck( 'myresponse' ) ) {
+			$query['myresponse'] = $wgRequest->getVal( 'myresponse' );	
+		}
+		elseif ( $wgRequest->getCheck( 'showunanswered' ) ) {
+			$query['showunanswered'] = $wgRequest->getVal( 'showunanswered' ) ;
+		}
+
 		if ( $backwards ) {
 			$query['dir'] = 'prev';
 		}
