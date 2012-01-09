@@ -263,6 +263,13 @@ $messages['ksh'] = array(
 	'formatsearch-desc' => 'Deiht de Resultat-Sigg vum Söke oprühme.',
 );
 
+/** Kirghiz (Кыргызча)
+ * @author AidaBishkek
+ */
+$messages['ky'] = array(
+	'formatsearch-desc' => 'Издөө жыйынтыктары барагын иреттейт',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -298,6 +305,13 @@ $messages['ms'] = array(
 	'formatsearch-desc' => 'Membersihkan laman hasil carian',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'formatsearch-desc' => 'Renser søkeresultatsiden',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -317,13 +331,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'formatsearch-desc' => 'Reinsar søkeresultatsida',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'formatsearch-desc' => 'Renser søkeresultatsiden',
 );
 
 /** Occitan (Occitan)
