@@ -174,7 +174,7 @@ $wgHooks['UserGetDefaultOptions'][] = 'NarayamHooks::addDefaultOptions';
 // Autoloader
 $wgAutoloadClasses['NarayamHooks'] = $dir . '/Narayam.hooks.php';
 
-$wgNarayamEnabledByDefault = true;
+$wgNarayamPreferenceDefaultValue = true;
 
 // ResourceLoader module registration
 $narayamTpl = array(

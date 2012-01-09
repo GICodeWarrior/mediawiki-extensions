@@ -106,9 +106,8 @@ class NarayamHooks {
 	 * @return bool
 	 */
 	public static function addDefaultOptions( &$defaultOptions ) {
-		global $wgNarayamEnabledByDefault;
-		// By default, the preference page option to enable Narayam is set to wgNarayamEnabledByDefault value.
-		$defaultOptions['narayamEnable'] = $wgNarayamEnabledByDefault;
+		global $wgNarayamPreferenceDefaultValue;
+		$defaultOptions['narayamEnable'] = $wgNarayamPreferenceDefaultValue;
 		return true;
 	 }
 }

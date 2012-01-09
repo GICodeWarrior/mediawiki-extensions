@@ -460,7 +460,7 @@ $.narayam = new ( function() {
 	/**
 	 * Set up Narayam. This adds the scheme dropdown, binds the handlers
 	 * and initializes the enabled/disabled state and selected scheme
-	 * from a cookie or wgNarayamEnableByDefault
+	 * from a cookie or wgNarayamEnabledByDefault
 	 */
 	this.setup = function() {
 		that.buildMenu();
