@@ -30,7 +30,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Narayam',
-	'version' => 0.1,
+	'version' => 0.2,
 	'author' => array( '[http://junaidpv.in Junaid P V]', 'Roan Kattouw' ),
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Narayam',
 	'descriptionmsg' => 'narayam-desc'
