@@ -127,3 +127,13 @@ $messages['nl'] = array(
 	'global.js' => "/* JavaScript die hier wordt geplaatst heeft invloed op alle pagina's in de wikifarm */",
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'sharedcssjs-desc' => "A abìlita ël recùper ëd wiki globaj e ëd CSS e JS dj'utent da na wiki sentral",
+	'sharedcssjs-error' => "Sta pagina a l'é pijà da na wiki sentral e a peul mach esse edità là.",
+	'global.css' => '/* Ij CSS piassà sì a saran aplicà a tùit jë skin su tute le wiki ëd tute le fatorìe wiki */',
+	'global.js' => '/* Minca JavaScript sì a sarà carià për utent dzora a minca caria ëd pàgina ant la fatorìa wiki */',
+);
+
