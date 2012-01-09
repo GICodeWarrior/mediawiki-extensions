@@ -13088,6 +13088,7 @@ $messages['lb'] = array(
 	'configure-setting-wgRCLinkLimits' => 'Maximal Zuel vun den Ännerungen déi bäi de leschten Ännerunge gewise ginn',
 	'configure-setting-wgRCLinkDays' => 'Limit vun den Deeg déi bäi de rezenten Ännerungen ugewise ginn',
 	'configure-setting-wgRCShowChangedSize' => 'Zuel vun de geännerten Zeechen an de rezenten Ännerunge weisen',
+	'configure-setting-wgUseRCPatrol' => "D'Iwwerwaache vun de rezenten Ännerunge benotze fir de Vandalismus ze kontrolléieren",
 	'configure-setting-wgRC2UDPOmitBots' => ' Ännerungen duerch Botten Bäi de rezenten Ännerungen vun den UDP-Noriichten ausloossen',
 	'configure-setting-wgBlockAllowsUTEdit' => "Engem gespaarte Benotzer erlaben seng eegen Diskussiounssäit z'änneren",
 	'configure-setting-wgBlockDisablesLogin' => 'Gespaarte Benotzer net erlaben sech anzeloggen',
