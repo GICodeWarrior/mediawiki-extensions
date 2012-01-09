@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS /*_*/ep_orgs (
   org_city                   VARCHAR(255)        NOT NULL, -- Name of the city where the org is located
   org_country                VARCHAR(255)        NOT NULL, -- Name of the country where the org is located
 
+  org_active                 TINYINT unsigned    NOT NULL, -- If the org has any active terms
   org_courses                SMALLINT unsigned   NOT NULL, -- Amount of courses
   org_terms                  SMALLINT unsigned   NOT NULL, -- Amount of terms
   org_mentors                SMALLINT unsigned   NOT NULL, -- Amount of mentors
@@ -21,6 +22,7 @@ CREATE INDEX /*i*/ep_org_terms ON /*_*/ep_orgs (org_terms);
 CREATE INDEX /*i*/ep_org_courses ON /*_*/ep_orgs (org_courses);
 CREATE INDEX /*i*/ep_org_mentors ON /*_*/ep_orgs (org_mentors);
 CREATE INDEX /*i*/ep_org_students ON /*_*/ep_orgs (org_students);
+CREATE INDEX /*i*/ep_org_active ON /*_*/ep_orgs (org_active);
 
 -- Courses. These describe a specific course, time-independent.
 CREATE TABLE IF NOT EXISTS /*_*/ep_courses (
@@ -31,6 +33,7 @@ CREATE TABLE IF NOT EXISTS /*_*/ep_courses (
   course_description         TEXT                NOT NULL, -- Description of the course
   course_lang                VARCHAR(10)         NOT NULL, -- Language (code)
 
+  course_active              TINYINT unsigned    NOT NULL, -- If the course has any active terms
   course_students            SMALLINT unsigned   NOT NULL -- Amount of students
 ) /*$wgDBTableOptions*/;
 
@@ -38,6 +41,7 @@ CREATE INDEX /*i*/ep_course_org_id ON /*_*/ep_courses (course_org_id);
 CREATE UNIQUE INDEX /*i*/ep_course_name ON /*_*/ep_courses (course_name);
 CREATE INDEX /*i*/ep_course_lang ON /*_*/ep_courses (course_lang);
 CREATE INDEX /*i*/ep_course_students ON /*_*/ep_courses (course_students);
+CREATE INDEX /*i*/ep_course_active ON /*_*/ep_courses (course_active);
 
 -- Terms. These are "instances" of a course in a certain period.
 CREATE TABLE IF NOT EXISTS /*_*/ep_terms (

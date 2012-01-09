@@ -44,6 +44,7 @@ class EPOrg extends EPDBObject {
 			'city' => 'str',
 			'country' => 'str',
 
+			'active' => 'bool',
 			'courses' => 'int',
 			'terms' => 'int',
 			'mentors' => 'int',
@@ -61,6 +62,7 @@ class EPOrg extends EPDBObject {
 			'city' => '',
 			'country' => '',
 
+			'active' => false,
 			'courses' => 0,
 			'terms' => 0,
 			'mentors' => 0,

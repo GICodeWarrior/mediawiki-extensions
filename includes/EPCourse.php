@@ -38,6 +38,7 @@ class EPCourse extends EPDBObject {
 			'description' => 'str',
 			'lang' => 'str',
 
+			'active' => 'bool',
 			'students' => 'int',
 		);
 	}
@@ -49,6 +50,9 @@ class EPCourse extends EPDBObject {
 	public static function getDefaults() {
 		return array(
 			'description' => '',
+
+			'active' => false,
+			'students' => 0,
 		);
 	}
 
@@ -168,7 +172,7 @@ class EPCourse extends EPDBObject {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param array $orgs
+	 * @param array $courses
 	 * 
 	 * @return array
 	 */

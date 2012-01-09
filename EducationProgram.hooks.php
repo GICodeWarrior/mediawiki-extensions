@@ -37,6 +37,14 @@ final class EPHooks {
 			true
 		) );
 
+		$updater->addExtensionUpdate( array(
+			'addField',
+			'ep_orgs',
+			'org_active',
+			dirname( __FILE__ ) . '/sql/AddStatusFields.sql',
+			true
+		) );
+
 		return true;
 	}
 

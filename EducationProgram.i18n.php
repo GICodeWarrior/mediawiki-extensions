@@ -138,12 +138,20 @@ $messages['en'] = array(
 	'eporgpager-header-mentors' => 'Ambassadors',
 	'eporgpager-header-students' => 'Students',
 	'eporgpager-header-terms' => 'Terms',
+	'eporgpager-header-active' => 'Active',
+	'eporgpager-filter-active' => 'Active courses',
+	'eporgpager-yes' => 'Yes',
+	'eporgpager-no' => 'No',
 
 	// Course pager
 	'epcoursepager-header-name' => 'Name',
 	'epcoursepager-header-org-id' => 'Institution',
 	'epcoursepager-filter-org-id' => 'Institution',
 	'epcoursepager-header-students' => 'Students',
+	'epcoursepager-header-active' => 'Active',
+	'epcoursepager-filter-active' => 'Active terms',
+	'epcoursepager-yes' => 'Yes',
+	'epcoursepager-no' => 'No',
 
 	// Term pager
 	'eptermpager-header-id' => 'Id',

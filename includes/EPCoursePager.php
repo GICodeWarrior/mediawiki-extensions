@@ -32,6 +32,7 @@ class EPCoursePager extends EPPager {
 			'name',
 			'org_id',
 			'students',
+			'active',
 		);
 	}
 	
@@ -74,6 +75,9 @@ class EPCoursePager extends EPPager {
 			case 'students':
 				$value = htmlspecialchars( $this->getLanguage()->formatNum( $value ) );
 				break;
+			case 'active':
+				$value = wfMsgHtml( 'epcoursepager-' . ( $value == '1' ? 'yes' : 'no' ) );
+				break;
 		}
 
 		return $value;
@@ -92,6 +96,7 @@ class EPCoursePager extends EPPager {
 		return array(
 			'name',
 			'students',
+			'active',
 		);
 	}
 	
@@ -109,6 +114,15 @@ class EPCoursePager extends EPPager {
 				),
 				'value' => '',
 				'datatype' => 'int',
+			),
+			'active' => array(
+				'type' => 'select',
+				'options' => array(
+					'' => '',
+					wfMsg( 'epcoursepager-yes' ) => '1',
+					wfMsg( 'epcoursepager-no' ) => '0',
+				),
+				'value' => '1',
 			),
 		);
 	}

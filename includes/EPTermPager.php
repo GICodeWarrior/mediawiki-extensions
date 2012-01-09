@@ -160,7 +160,7 @@ class EPTermPager extends EPPager {
 				array( '' => '' ),
 				EPTerm::getStatuses()
 			),
-			'value' => '',
+			'value' => 'current',
 		);
 
 		return $options;

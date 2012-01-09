@@ -36,6 +36,7 @@ class EPOrgPager extends EPPager {
 			'terms',
 			'mentors',
 			'students',
+			'active',
 		);
 	}
 	
@@ -85,6 +86,9 @@ class EPOrgPager extends EPPager {
 				}
 
 				break;
+			case 'active':
+				$value = wfMsgHtml( 'eporgpager-' . ( $value == '1' ? 'yes' : 'no' ) );
+				break;
 		}
 
 		return $value;
@@ -103,7 +107,7 @@ class EPOrgPager extends EPPager {
 			'mentors',
 			'students',
 			'terms',
-			'terms',
+			'active',
 		);
 	}
 
@@ -122,6 +126,15 @@ class EPOrgPager extends EPPager {
 				'type' => 'select',
 				'options' => efEpGetCountryOptions( $this->getLanguage()->getCode() ),
 				'value' => ''
+			),
+			'active' => array(
+				'type' => 'select',
+				'options' => array(
+					'' => '',
+					wfMsg( 'eporgpager-yes' ) => '1',
+					wfMsg( 'eporgpager-no' ) => '0',
+				),
+				'value' => '1',
 			),
 		);
 	}

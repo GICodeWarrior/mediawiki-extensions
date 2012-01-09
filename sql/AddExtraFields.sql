@@ -5,7 +5,7 @@
 
 ALTER TABLE /*_*/ep_orgs ADD COLUMN org_courses SMALLINT unsigned NOT NULL;
 ALTER TABLE /*_*/ep_orgs ADD COLUMN org_mentors SMALLINT unsigned NOT NULL;
-ALTER TABLE /*_*/ep_orgs ADD COLUMN org_terms SMALLINT unsigned NOT NULL;
+ALTER TABLE /*_*/ep_orgs ADD COLUMN org_terms SMALLIN1T unsigned NOT NULL;
 ALTER TABLE /*_*/ep_orgs ADD COLUMN org_students INT unsigned NOT NULL;
 
 CREATE INDEX /*i*/ep_org_courses ON /*_*/ep_orgs (org_courses);
