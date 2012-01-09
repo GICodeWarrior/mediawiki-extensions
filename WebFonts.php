@@ -21,6 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'WebFonts',
+	'version' =>     => '1.0',
 	'author'         => array( 'Santhosh Thottingal', 'Niklas Laxström' ),
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:WebFonts',
 	'descriptionmsg' => 'webfonts-desc',
