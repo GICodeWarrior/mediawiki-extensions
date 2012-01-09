@@ -44,6 +44,7 @@ $wgHooks['ResourceLoaderGetConfigVars'][] = 'WebFontsHooks::addConfig';
 $wgWebFontsEnabledByDefault = true;
 
 $wgSpecialPages['WebFonts'] = 'SpecialWebFonts';
+$wgSpecialPageGroups['WebFonts'] = 'wiki';
 
 $wgResourceModules['ext.webfonts.init'] = array(
 	'scripts' => 'resources/ext.webfonts.init.js',
