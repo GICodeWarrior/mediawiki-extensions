@@ -544,9 +544,18 @@ Xem thêm:
 * [[{{MediaWiki:Mainpage}}|Trang đầu]]',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hzy980512
+ */
 $messages['zh-hans'] = array(
+	'special404-desc' => '提供404错误的目的地',
 	'error404' => '404 找不到页面',
+	'special404-body' => '您要求的链接找不到。
+
+您是想输入{{fullurl:$1}}么？
+
+可能您也想去：
+* [[{{MediaWiki:Mainpage}}|主页]]',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
