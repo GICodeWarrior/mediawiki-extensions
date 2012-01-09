@@ -195,6 +195,8 @@ Puede <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downloa
 	'ogg-dismiss' => 'Zarrar',
 	'ogg-download' => 'Escargar fichero',
 	'ogg-desc-link' => 'Información sobre este fichero',
+	'ogg-oggThumb-version' => 'OggHandler requiere una versión oggThumb $1 u posterior.',
+	'ogg-oggThumb-failed' => 'oggThumb no podió creyar a imachen miniatura.',
 );
 
 /** Arabic (العربية)
