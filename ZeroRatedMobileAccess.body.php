@@ -46,7 +46,7 @@ class ExtZeroRatedMobileAccess {
 		self::$acceptBilling = $wgRequest->getVal( 'acceptbilling' );
 		self::$title = $out->getTitle();
 		
-		$carrier = $wgRequest->getHeader( 'HTTP_CARRIER' );
+		$carrier = $wgRequest->getHeader( 'HTTP_X_CARRIER' );
 		if ( $carrier !== '(null)') {
 			self::$renderZeroRatedBanner = true;
 		}
