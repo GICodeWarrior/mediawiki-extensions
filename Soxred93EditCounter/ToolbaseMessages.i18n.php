@@ -1233,6 +1233,22 @@ Als u een verwijzing ergens anders vandaan hebt gevolgd, <a href="$1">meld dan a
 	'toolbase-error-toomanyedits' => '$1 heeft $2 bewerkingen gemaakt. Dit hulpprogramma heeft een maximum van $3 bewerkingen.',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
+ */
+$messages['or'] = array(
+	'toolbase-header-bugs' => 'ବଗସବୁ',
+	'toolbase-replag-years' => 'ବର୍ଷ',
+	'toolbase-replag-months' => 'ମାସ',
+	'toolbase-replag-weeks' => 'ସପ୍ତାହ',
+	'toolbase-replag-days' => 'ଦିନ',
+	'toolbase-replag-hours' => 'ଘଣ୍ଟା',
+	'toolbase-replag-minutes' => 'ମିନିଟ',
+	'toolbase-replag-seconds' => 'ସେକେଣ୍ଡ',
+	'toolbase-footer-language' => 'ଭାଷା ବଦଳାନ୍ତୁ',
+	'toolbase-footer-translate' => 'ଅନୁବାଦ',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
