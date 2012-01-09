@@ -1,0 +1,1068 @@
+<html>
+<head>
+<title>Docs For Class Microsoft_WindowsAzure_Storage_Blob_Stream</title>
+<link rel="stylesheet" type="text/css" href="../../media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">Microsoft_WindowsAzure_Storage</td>
+  </tr>
+  <tr><td class="header_line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                                                                                                                                                                                                        
+                              		  [ <a href="../../classtrees_Microsoft_WindowsAzure_Storage.html" class="menu">class tree: Microsoft_WindowsAzure_Storage</a> ]
+		  [ <a href="../../elementindex_Microsoft_WindowsAzure_Storage.html" class="menu">index: Microsoft_WindowsAzure_Storage</a> ]
+		  	    [ <a href="../../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+	<div id="todolist">
+			<p><a href="../../todolist.html">Todo List</a></p>
+	</div>
+      <b>Packages:</b><br />
+              <a href="../../li_Microsoft_WindowsAzure.html">Microsoft_WindowsAzure</a><br />
+              <a href="../../li_Microsoft.html">Microsoft</a><br />
+              <a href="../../li_Microsoft_Console.html">Microsoft_Console</a><br />
+              <a href="../../li_Microsoft_Http.html">Microsoft_Http</a><br />
+              <a href="../../li_Microsoft_Log.html">Microsoft_Log</a><br />
+              <a href="../../li_Microsoft_SqlAzure.html">Microsoft_SqlAzure</a><br />
+              <a href="../../li_Microsoft_SqlAzure_CommandLine.html">Microsoft_SqlAzure_CommandLine</a><br />
+              <a href="../../li_Microsoft_Uri.html">Microsoft_Uri</a><br />
+              <a href="../../li_Microsoft_WindowsAzure_CommandLine.html">Microsoft_WindowsAzure_CommandLine</a><br />
+              <a href="../../li_Microsoft_WindowsAzure_Storage.html">Microsoft_WindowsAzure_Storage</a><br />
+            <br /><br />
+                        <b>Files:</b><br />
+      	subpackage <b>Blob</b><br>  <div class="package">
+			<a href="../../Microsoft_WindowsAzure_Storage/Blob/_WindowsAzure---Storage---Blob---Stream.php.html">		Stream.php
+		</a><br>
+	  </div><br />
+      
+      
+            <b>Classes:</b><br />
+        <div class="package">
+	Blob<br />	    &nbsp;&nbsp;		<a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html">Microsoft_WindowsAzure_Storage_Blob_Stream</a><br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: Microsoft_WindowsAzure_Storage_Blob_Stream</h1>
+Source Location: /WindowsAzure/Storage/Blob/Stream.php<br /><br />
+
+
+<table width="100%" border="0">
+<tr><td valign="top">
+
+<h3><a href="#class_details">Class Overview</a></h3>
+<pre></pre><br />
+<div class="description"></div><br /><br />
+<h4>Author(s):</h4>
+<ul>
+              </ul>
+
+
+
+
+      
+      
+
+<h4>Copyright:</h4>
+<ul>
+  <li>Copyright (c) 2009 - 2011, RealDolmen (http://www.realdolmen.com)</li>
+</ul>
+        
+</td>
+
+<td valign="top">
+<h3><a href="#class_vars">Variables</a></h3>
+<ul>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#var$_blobs">$_blobs</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#var$_fileName">$_fileName</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#var$_storageClient">$_storageClient</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#var$_temporaryFileHandle">$_temporaryFileHandle</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#var$_temporaryFileName">$_temporaryFileName</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#var$_writeMode">$_writeMode</a></li>
+  </ul>
+</td>
+
+
+<td valign="top">
+<h3><a href="#class_methods">Methods</a></h3>
+<ul>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methoddir_closedir">dir_closedir</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methoddir_opendir">dir_opendir</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methoddir_readdir">dir_readdir</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methoddir_rewinddir">dir_rewinddir</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodmkdir">mkdir</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodrename">rename</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodrmdir">rmdir</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodstream_close">stream_close</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodstream_eof">stream_eof</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodstream_flush">stream_flush</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodstream_open">stream_open</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodstream_read">stream_read</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodstream_seek">stream_seek</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodstream_stat">stream_stat</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodstream_tell">stream_tell</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodstream_write">stream_write</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodunlink">unlink</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#methodurl_stat">url_stat</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#method_getContainerName">_getContainerName</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#method_getFileName">_getFileName</a></li>
+    <li><a href="../../Microsoft_WindowsAzure_Storage/Blob/Microsoft_WindowsAzure_Storage_Blob_Stream.html#method_getStorageClient">_getStorageClient</a></li>
+  </ul>
+</td>
+
+</tr></table>
+<hr />
+
+<table width="100%" border="0"><tr>
+
+
+
+
+
+
+</tr></table>
+<hr />
+
+<a name="class_details"></a>
+<h3>Class Details</h3>
+<div class="tags">
+[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a49">49</a>]<br />
+<br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>copyright:</b>&nbsp;&nbsp;</td><td>Copyright (c) 2009 - 2011, RealDolmen (http://www.realdolmen.com)</td>
+  </tr>
+  <tr>
+    <td><b>license:</b>&nbsp;&nbsp;</td><td><a href="http://phpazure.codeplex.com/license">http://phpazure.codeplex.com/license</a></td>
+  </tr>
+</table>
+</div>
+</div><br /><br />
+<div class="top">[ <a href="#top">Top</a> ]</div><br />
+
+<hr />
+<a name="class_vars"></a>
+<h3>Class Variables</h3>
+<div class="tags">
+	<a name="var$_blobs"></a>
+	<p></p>
+	<h4>$_blobs = <span class="value">&nbsp;null</span></h4>
+	<p>[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a91">91</a>]</p>
+  List of blobs<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_fileName"></a>
+	<p></p>
+	<h4>$_fileName = <span class="value">&nbsp;null</span></h4>
+	<p>[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a56">56</a>]</p>
+  Current file name<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_storageClient"></a>
+	<p></p>
+	<h4>$_storageClient = <span class="value">&nbsp;null</span></h4>
+	<p>[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a77">77</a>]</p>
+  Blob storage client<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td><a href="../../Microsoft_WindowsAzure/Storage/Microsoft_WindowsAzure_Storage_Blob.html">Microsoft_WindowsAzure_Storage_Blob</a></td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_temporaryFileHandle"></a>
+	<p></p>
+	<h4>$_temporaryFileHandle = <span class="value">&nbsp;null</span></h4>
+	<p>[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a70">70</a>]</p>
+  Temporary file handle<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>resource</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_temporaryFileName"></a>
+	<p></p>
+	<h4>$_temporaryFileName = <span class="value">&nbsp;null</span></h4>
+	<p>[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a63">63</a>]</p>
+  Temporary file name<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$_writeMode"></a>
+	<p></p>
+	<h4>$_writeMode = <span class="value">&nbsp;false</span></h4>
+	<p>[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a84">84</a>]</p>
+  Write mode?<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>boolean</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+</div><br />
+
+<hr />
+<a name="class_methods"></a>
+<h3>Class Methods</h3>
+<div class="tags">
+
+  <hr />
+	<a name="methoddir_closedir"></a>
+	<h3>method dir_closedir <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a558">558</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean dir_closedir(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Close a directory<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>True</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methoddir_opendir"></a>
+	<h3>method dir_opendir <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a519">519</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean dir_opendir(
+string
+$path, integer
+$options)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Attempt to open a directory<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$path</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$options</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methoddir_readdir"></a>
+	<h3>method dir_readdir <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a532">532</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string dir_readdir(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Return the next filename in the directory<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methoddir_rewinddir"></a>
+	<h3>method dir_rewinddir <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a547">547</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean dir_rewinddir(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Reset the directory pointer<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>True</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodmkdir"></a>
+	<h3>method mkdir <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a468">468</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean mkdir(
+string
+$path, integer
+$mode, integer
+$options)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Create a new directory<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$path</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$mode</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$options</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodrename"></a>
+	<h3>method rename <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a386">386</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean rename(
+string
+$path_from, string
+$path_to)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Attempt to rename the item<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>False</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$path_from</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$path_to</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodrmdir"></a>
+	<h3>method rmdir <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a492">492</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean rmdir(
+string
+$path, integer
+$options)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Remove a directory<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$path</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$options</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodstream_close"></a>
+	<h3>method stream_close <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a201">201</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void stream_close(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Close the stream<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodstream_eof"></a>
+	<h3>method stream_eof <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a273">273</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean stream_eof(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		End of the stream?<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodstream_flush"></a>
+	<h3>method stream_flush <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a313">313</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean stream_flush(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Flush current cached stream data to storage<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodstream_open"></a>
+	<h3>method stream_open <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a161">161</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean stream_open(
+string
+$path, string
+$mode, integer
+$options, 
+&$opened_path, string
+$opened_path)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Open the stream<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$path</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$mode</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$options</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$opened_path</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>&$opened_path</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodstream_read"></a>
+	<h3>method stream_read <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a242">242</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string stream_read(
+integer
+$count)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Read from the stream<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$count</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodstream_seek"></a>
+	<h3>method stream_seek <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a299">299</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean stream_seek(
+integer
+$offset, integer
+$whence)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Update the read/write position of the stream<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$offset</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$whence</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodstream_stat"></a>
+	<h3>method stream_stat <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a352">352</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>array stream_stat(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns data array of stream variables<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodstream_tell"></a>
+	<h3>method stream_tell <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a287">287</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer stream_tell(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		What is the current read/write position of the stream?<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodstream_write"></a>
+	<h3>method stream_write <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a257">257</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer stream_write(
+string
+$data)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Write to the stream<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$data</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodunlink"></a>
+	<h3>method unlink <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a367">367</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean unlink(
+string
+$path)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Attempt to delete the item<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$path</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodurl_stat"></a>
+	<h3>method url_stat <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a420">420</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>array url_stat(
+string
+$path, integer
+$flags)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Return array of URL variables<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$path</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$flags</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_getContainerName"></a>
+	<h3>method _getContainerName <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a122">122</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string _getContainerName(
+string
+$path)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Extract container name<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$path</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_getFileName"></a>
+	<h3>method _getFileName <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a138">138</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string _getFileName(
+string
+$path)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Extract file name<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$path</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_getStorageClient"></a>
+	<h3>method _getStorageClient <span class="smalllinenumber">[line <a href="../../__filesource/fsource_Microsoft_WindowsAzure_Storage_Blob_WindowsAzureStorageBlobStream.php.html#a99">99</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../../Microsoft_WindowsAzure/Storage/Microsoft_WindowsAzure_Storage_Blob.html">Microsoft_WindowsAzure_Storage_Blob</a> _getStorageClient(
+[string
+$path = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Retrieve storage client for this stream type<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$path</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+</div><br />
+
+
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Sat, 03 Dec 2011 13:59:42 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

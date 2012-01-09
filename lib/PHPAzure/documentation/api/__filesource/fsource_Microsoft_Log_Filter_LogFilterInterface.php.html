@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>File Source for Interface.php</title>
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">Microsoft_Log</td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                                                                                                    
+                                                                                                                                  		  [ <a href="../classtrees_Microsoft_Log.html" class="menu">class tree: Microsoft_Log</a> ]
+		  [ <a href="../elementindex_Microsoft_Log.html" class="menu">index: Microsoft_Log</a> ]
+		  	    [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+      <b>Packages:</b><br />
+              <a href="../li_Microsoft_WindowsAzure.html">Microsoft_WindowsAzure</a><br />
+              <a href="../li_Microsoft.html">Microsoft</a><br />
+              <a href="../li_Microsoft_Console.html">Microsoft_Console</a><br />
+              <a href="../li_Microsoft_Http.html">Microsoft_Http</a><br />
+              <a href="../li_Microsoft_Log.html">Microsoft_Log</a><br />
+              <a href="../li_Microsoft_SqlAzure.html">Microsoft_SqlAzure</a><br />
+              <a href="../li_Microsoft_SqlAzure_CommandLine.html">Microsoft_SqlAzure_CommandLine</a><br />
+              <a href="../li_Microsoft_Uri.html">Microsoft_Uri</a><br />
+              <a href="../li_Microsoft_WindowsAzure_CommandLine.html">Microsoft_WindowsAzure_CommandLine</a><br />
+              <a href="../li_Microsoft_WindowsAzure_Storage.html">Microsoft_WindowsAzure_Storage</a><br />
+            <br /><br />
+                  
+      
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1 align="center">Source for file Interface.php</h1>
+<p>Documentation is available at <a href="../Microsoft_Log/Filter/_Log---Filter---Interface.php.html">Interface.php</a></p>
+<div class="src-code">
+<ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">&nbsp;*&nbsp;Zend&nbsp;Framework</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*&nbsp;LICENSE</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;This&nbsp;source&nbsp;file&nbsp;is&nbsp;subject&nbsp;to&nbsp;the&nbsp;new&nbsp;BSD&nbsp;license&nbsp;that&nbsp;is&nbsp;bundled</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;with&nbsp;this&nbsp;package&nbsp;in&nbsp;the&nbsp;file&nbsp;LICENSE.txt.</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;It&nbsp;is&nbsp;also&nbsp;available&nbsp;through&nbsp;the&nbsp;world-wide-web&nbsp;at&nbsp;this&nbsp;URL:</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*&nbsp;http://framework.zend.com/license/new-bsd</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-doc">&nbsp;*&nbsp;If&nbsp;you&nbsp;did&nbsp;not&nbsp;receive&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;license&nbsp;and&nbsp;are&nbsp;unable&nbsp;to</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-doc">&nbsp;*&nbsp;obtain&nbsp;it&nbsp;through&nbsp;the&nbsp;world-wide-web,&nbsp;please&nbsp;send&nbsp;an&nbsp;email</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">&nbsp;*&nbsp;to&nbsp;license@zend.com&nbsp;so&nbsp;we&nbsp;can&nbsp;send&nbsp;you&nbsp;a&nbsp;copy&nbsp;immediately.</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@category</span><span class="src-doc">&nbsp;&nbsp;&nbsp;Micorosft</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Microsoft_Log</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@subpackage</span><span class="src-doc">&nbsp;Filter</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@copyright</span><span class="src-doc">&nbsp;&nbsp;Copyright&nbsp;(c)&nbsp;2005-2010&nbsp;Zend&nbsp;Technologies&nbsp;USA&nbsp;Inc.&nbsp;(http://www.zend.com)</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;http://framework.zend.com/license/new-bsd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New&nbsp;BSD&nbsp;License</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;$Id:&nbsp;Interface.php&nbsp;20096&nbsp;2010-01-06&nbsp;02:05:09Z&nbsp;bkarwin&nbsp;$</span></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@category</span><span class="src-doc">&nbsp;&nbsp;&nbsp;Microsoft</span></div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Microsoft_Log</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@subpackage</span><span class="src-doc">&nbsp;Filter</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@copyright</span><span class="src-doc">&nbsp;&nbsp;Copyright&nbsp;(c)&nbsp;2005-2010&nbsp;Zend&nbsp;Technologies&nbsp;USA&nbsp;Inc.&nbsp;(http://www.zend.com)</span></div></li>
+<li><div class="src-line"><a name="a28"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;http://framework.zend.com/license/new-bsd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New&nbsp;BSD&nbsp;License</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;$Id:&nbsp;Interface.php&nbsp;20096&nbsp;2010-01-06&nbsp;02:05:09Z&nbsp;bkarwin&nbsp;$</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-key">interface&nbsp;</span><a href="../Microsoft_Log/Filter/Microsoft_Log_Filter_Interface.html">Microsoft_Log_Filter_Interface</a></div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a34"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Returns&nbsp;TRUE&nbsp;to&nbsp;accept&nbsp;the&nbsp;message,&nbsp;FALSE&nbsp;to&nbsp;block&nbsp;it.</span></div></li>
+<li><div class="src-line"><a name="a35"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a36"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc">&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;</span><span class="src-doc-var">$event&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;event&nbsp;data</span></div></li>
+<li><div class="src-line"><a name="a37"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">boolean&nbsp;</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;accepted?</span></div></li>
+<li><div class="src-line"><a name="a38"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Microsoft_Log/Filter/Microsoft_Log_Filter_Interface.html#methodaccept">accept</a><span class="src-sym">(</span><span class="src-var">$event</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a40"></a><span class="src-sym">}</span></div></li>
+</ol>
+</div>
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Sat, 03 Dec 2011 13:59:27 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
