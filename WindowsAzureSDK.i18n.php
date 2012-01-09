@@ -6,9 +6,9 @@ $messages['en'] = array(
 );
 
 $messages['de-formal'] = array(
-	'windowswzuresdk-desc' => 'Diese Erweiterung stellt das [http://phpazure.codeplex.com/ PHPAzure] SDK bereit, welches von [http://www.realdolmen.com/ REALDOLMEN] entwickelt wird. Sie ist die Basis f¸r andere Erweiterungen, welche mit Windows Azure Diensten interagieren m¸ssen. Die MediaWiki-Integration wurde von [http://www.hallowelt.biz Hallo Welt! Medienwerkstatt GmbH] durchgef¸hrt.'
+	'windowswzuresdk-desc' => 'Diese Erweiterung stellt das [http://phpazure.codeplex.com/ PHPAzure] SDK bereit, welches von [http://www.realdolmen.com/ REALDOLMEN] entwickelt wird. Sie ist die Basis f√ºr andere Erweiterungen, welche mit Windows Azure Diensten interagieren m√ºssen. Die MediaWiki-Integration wurde von [http://www.hallowelt.biz Hallo Welt! Medienwerkstatt GmbH] durchgef√ºhrt.'
 );
 
 $messages['de'] = array(
-	'windowswzuresdk-desc' => 'Diese Erweiterung stellt das [http://phpazure.codeplex.com/ PHPAzure] SDK bereit, welches von [http://www.realdolmen.com/ REALDOLMEN] entwickelt wird. Sie ist die Basis f¸r andere Erweiterungen, welche mit Windows Azure Diensten interagieren m¸ssen. Die MediaWiki-Integration wurde von [http://www.hallowelt.biz Hallo Welt! Medienwerkstatt GmbH] durchgef¸hrt.'
+	'windowswzuresdk-desc' => 'Diese Erweiterung stellt das [http://phpazure.codeplex.com/ PHPAzure] SDK bereit, welches von [http://www.realdolmen.com/ REALDOLMEN] entwickelt wird. Sie ist die Basis f√ºr andere Erweiterungen, welche mit Windows Azure Diensten interagieren m√ºssen. Die MediaWiki-Integration wurde von [http://www.hallowelt.biz Hallo Welt! Medienwerkstatt GmbH] durchgef√ºhrt.'
 );
