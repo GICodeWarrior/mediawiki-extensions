@@ -13,7 +13,7 @@
 		$previewBox.css( 'font-size', parseInt( $( 'select#webfonts-size-chooser' ).val(), 10 ) );
 		var fontconfig = mw.webfonts.config.fonts[font];
 		var base = mw.config.get( 'wgExtensionAssetsPath' ) + '/WebFonts/fonts/';
-		$downloadLink.prop( 'href', base + 'fontconfig.ttf' ).removeClass( 'disabled' );
+		$downloadLink.prop( 'href', base + fontconfig.ttf ).removeClass( 'disabled' );
 		return true;
 	};
 	
