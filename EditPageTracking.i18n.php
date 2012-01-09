@@ -241,6 +241,13 @@ $messages['ro'] = array(
 	'editpagetracking-desc' => 'Înregistrează prima dată când fiecare utilizator vizualizează pagina de modificare',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'editpagetracking-desc' => "Reggistre 'a prima vote ca ogne utende visite 'a pàgena cangiate",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
