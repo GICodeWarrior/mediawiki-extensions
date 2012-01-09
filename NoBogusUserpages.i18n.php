@@ -42,12 +42,13 @@ $messages['qqq'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'nobogususerpages-desc' => 'Забараняе стварэньне старонак неіснуючых удзельнікаў',
 	'badaccess-bogususerpage' => 'Удзельнік гэтай старонкі ўдзельніка не існуе. Вы ня маеце дазволу ствараць фіктыўныя старонкі ўдзельнікаў.',
-	'right-createbogususerpage' => 'ствараць старонкі ўдзельнікаў, не зарэгістраваных у гэтай вікі',
+	'right-createbogususerpage' => 'стварэньне старонак ўдзельнікаў, не зарэгістраваных у {{GRAMMAR:месны|{{SITENAME}}}}',
 );
 
 /** German (Deutsch)
