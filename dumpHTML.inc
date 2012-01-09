@@ -801,7 +801,7 @@ class DumpHTML {
 		if ( $ns == NS_SPECIAL ) {
 			SpecialPage::executePath( $wgTitle, $context );
 		} else {
-			$article = MediaWiki::articleFromTitle( $wgTitle, $context );
+			$article = Article::newFromTitle( $wgTitle, $context );
 			$rt = $article->followRedirect();
 			if ( is_object( $rt ) ) {
 				return $this->getRedirect( $rt );
