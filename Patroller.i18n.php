@@ -127,6 +127,8 @@ $messages['an'] = array(
 	'patrol-revert' => 'Revertir',
 	'patrol-revert-reason' => 'Razón:',
 	'patrol-reverting' => 'Revertindo: $1',
+	'group-patroller' => 'Patrullers',
+	'group-patroller-member' => '{{GENDER:$1|patrullero|patrullera}}',
 );
 
 /** Old English (Ænglisc)
@@ -427,10 +429,12 @@ $messages['ckb'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'group-patroller' => 'Strážci',
-	'group-patroller-member' => 'strážce',
+	'group-patroller-member' => '{{GENDER:$1|strážce|strážkyně}}',
+	'grouppage-patroller' => '{{ns:project}}:Strážci',
 );
 
 /** Welsh (Cymraeg)
