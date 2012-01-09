@@ -271,6 +271,25 @@ met de foutmelding: "$2".',
 	'sql2wiki-err-feature_not_supported' => 'SQL2Wiki: de functie wordt niet ondersteund door databases van het type $1!',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'sql2wiki' => 'SQL2Wiki',
+	'sql2wiki-desc' => 'Mosta ij dat SQL diretament ant ij contnù dla pagina',
+	'sql2wiki-special' => 'Fà viré ël còdes SQL2Wiki an sgnacand',
+	'sql2wiki-cache_refresh' => 'Rinfrësca',
+	'sql2wiki-err-invalid_db_id' => 'SQL2Wiki: ID ëd database mancant o pa bon',
+	'sql2wiki-err-invalid_type' => 'SQL2Wiki: Tipo mancant o pa bon',
+	'sql2wiki-err-failed_to_connect' => 'SQL2Wiki: Falì a coleghesse a $1!',
+	'sql2wiki-err-failed_to_execute' => 'SQL2Wiki: Falì a eseguì l\'istrussion:
+
+"$1"
+
+con mëssagi d\'eror: "$2"!',
+	'sql2wiki-err-feature_not_supported' => "SQL2Wiki: La funsionalità a l'é pa apogià dal database ëd sòrt $1!",
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
