@@ -14,7 +14,7 @@
 
 if( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
 
-define( 'TREEANDMENU_VERSION','1.3.0, 2012-01-08' );
+define( 'TREEANDMENU_VERSION','1.2.4, 2012-01-09' );
 
 // Set any unset images to default titles
 if( !isset( $wgTreeViewImages ) || !is_array( $wgTreeViewImages ) ) $wgTreeViewImages = array();
@@ -29,8 +29,10 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'        => __FILE__,
 	'name'        => 'TreeAndMenu',
 	'author'      => array( '[http://www.organicdesign.co.nz/User:Nad Nad]', '[http://www.organicdesign.co.nz/User:Sven Sven]' ),
-	'url'         => 'https://www.mediawiki.org/wiki/Extension:TreeAndMenu',
-	'descriptionmsg' => 'treeandmenu-desc',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:TreeAndMenu',
+	'description' => 'Adds #tree and #menu parser functions which contain bullet-lists to be rendered as collapsible treeview\'s or dropdown menus.
+	                  The treeview\'s use the [http://www.destroydrop.com/javascripts/tree dTree] JavaScript tree menu,
+	                  and the dropdown menu\'s use [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
 	'version'     => TREEANDMENU_VERSION
 );
 
@@ -138,7 +140,7 @@ class TreeAndMenu {
 	 * Called after parser has finished (ParserAfterTidy) so all transcluded parts can be assembled into final trees
 	 */
 	public function renderTreeAndMenu( &$parser, &$text ) {
-		global $wgJsMimeType, $wgOut, $wgVersion;
+		global $wgJsMimeType, $wgOut;
 		$u = $this->uniq;
 
 		// Determine which trees are sub trees
@@ -231,9 +233,6 @@ class TreeAndMenu {
 										$nodes
 										document.getElementById('$id').innerHTML = $objid.toString();
 										$opennodesjs";
-
-						// If MediaWiki version 1.16+ bind the script to jQuery's ready hook
-						if( version_compare( $wgVersion, '1.16.0' ) >= 0 ) $script = "jQuery( function() { $script } );";
 
 						// Embed the script into the output
 						$html = "$top<div class='$class' id='$id'>$dTreeScript<script type=\"$wgJsMimeType\">/*<![CDATA[*/
