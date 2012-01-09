@@ -101,6 +101,13 @@ $messages['hsb'] = array(
 	'dublincorerdf-desc' => 'Dublin Core RDF-metadaty',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'dublincorerdf-desc' => 'Dublin Core RDF-metaadat',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -143,17 +150,17 @@ $messages['ms'] = array(
 	'dublincorerdf-desc' => 'Dublin Core RDF-metadata',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'dublincorerdf-desc' => 'Dublin Core RDF-metadata',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Event
  */
 $messages['nb'] = array(
+	'dublincorerdf-desc' => 'Dublin Core RDF-metadata',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
 	'dublincorerdf-desc' => 'Dublin Core RDF-metadata',
 );
 
@@ -184,6 +191,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'dublincorerdf-desc' => 'Metadados RDF Dublin Core',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'dublincorerdf-desc' => 'Dubline Core RDF-metadata',
 );
 
 /** Russian (Русский)
