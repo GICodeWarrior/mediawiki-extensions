@@ -26,19 +26,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'WindowsAzureSDK',
-	'author'         => array( 'REALDOLMEN', 'Hallo Welt! Medienwerkstatt GmbH' ),
+	'author'         => array( 'REALDOLMEN', 'Hallo Welt! Medienwerkstatt GmbH', 'Robert Vogel' ),
 	'url'            => 'http://www.hallowelt.biz',
 	'version'        => '4.1.0',
 	'descriptionmsg' => 'windowswzuresdk-desc',
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['WindowsAzureSDK'] = $dir . 'WindowsAzureSDK.i18n.php'; 
+$wgExtensionMessagesFiles['WindowsAzureSDK'] = $dir . 'WindowsAzureSDK.i18n.php';
 
 if(!class_exists('Microsoft_WindowsAzure_Diagnostics_Manager')) {
-	require_once( $dir.'lib/PHPAzure/library/Microsoft/AutoLoader.php' );
-}
-
-if (!defined( 'MICROSOFT_WINDOWS_AZURE_SDK_VERSION' )) {
-	define( 'MICROSOFT_WINDOWS_AZURE_SDK_VERSION', '4.1.0' );
+	require_once( $wgWindowsAzureSDKRoot.'/library/Microsoft/AutoLoader.php' );
 }
