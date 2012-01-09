@@ -875,6 +875,7 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Hzy980512
  * @author PhiLiP
  * @author Shinjiman
  */
@@ -882,7 +883,7 @@ $messages['zh-hans'] = array(
 	'simpleantispam' => '您的编辑已经触发了反垃圾装置',
 	'simpleantispam-label' => "反垃圾检查。
 '''不要'''加入这个！",
-	'simpleantispam-desc' => '加一个简单的垃圾／机器人检查表格',
+	'simpleantispam-desc' => '对表格添加一个简单的垃圾邮件或自动程序检查机制',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
