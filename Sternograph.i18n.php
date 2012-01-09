@@ -140,6 +140,16 @@ $messages['nl'] = array(
 	'sternograph-speaker-is' => 'Het sprekerblok <$1> moet het teken $2 bevatten.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'sternograph-desc' => '<nowiki><sterno></nowiki> tichëtte për trascrission ëd paròle parlà (canson, antërviste, etc)',
+	'sternograph-empty' => '<$1> la tichëtta a peul pa esse veuida.',
+	'sternograph-nested' => '<$1> la tichëtta a peul pa esse anidà.',
+	'sternograph-speaker-is' => '<$1> le linie dël blòch dël parlant a deuvo avèj $2 caràter.',
+);
+
 /** Russian (Русский)
  * @author Eleferen
  */
