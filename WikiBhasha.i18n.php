@@ -194,6 +194,13 @@ $messages['ksh'] = array(
 	'wikibhasha-desc' => 'En Aanwendung, öm Enhallde en mieh wi eine Shprooch ze schaffe un esu de Wikipedija op Änglesch mieh Ennfommazjuhne zohzeföhre.',
 );
 
+/** Kirghiz (Кыргызча)
+ * @author AidaBishkek
+ */
+$messages['ky'] = array(
+	'wikibhasha-desc' => 'Англис тилиндеги Уикипедиянын мазмунунун негизинде көп тилдүү мазмун түзүү үчүн тиркеме',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
