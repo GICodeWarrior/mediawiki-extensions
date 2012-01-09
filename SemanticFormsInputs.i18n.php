@@ -574,6 +574,7 @@ $messages['lb'] = array(
 	'semanticformsinputs-prev' => 'Vireg',
 	'semanticformsinputs-next' => 'Nächst',
 	'semanticformsinputs-today' => 'Haut',
+	'semanticformsinputs-menuselect-structure' => "D'Struktur vum Menü als net zortéiert Lëscht.",
 );
 
 /** Macedonian (Македонски)
