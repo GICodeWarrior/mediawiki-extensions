@@ -128,6 +128,13 @@ $messages['pt'] = array(
 	'editsectionclearerlink-desc' => 'Melhorar a usabilidade dos links de edição de secções, disponibilizando operações ao passar o ponteiro do rato sobre secções e links',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'editsectionclearerlink-desc' => "Migliore l'usabbilità d'a sezione de le collegaminde pu cangiamende cu le sezione e le aziune pe le stile de le collegaminde",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
