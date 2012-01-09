@@ -509,8 +509,6 @@ jQuery(function( $ ) {
 					wikitext = wikitext.replace(/~{3,5}/g, '') + "\n\n~~~~";  //remove and add signature for 
 					parseWikiText($item, wikitext); 
 				});
-				//var $responseItem = $item.find('.fbd-item-response') ;
-				//loadToolTip($responseItem);
 		}		
 		e.preventDefault();
 	}
