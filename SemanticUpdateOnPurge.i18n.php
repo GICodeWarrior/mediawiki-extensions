@@ -97,9 +97,10 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'suop-desc' => "A modìfica j'atribù semàntich ëd na pagina wiki quand as purga la pagina",
+	'suop-desc' => "A agiorna j'atribù semàntich ëd na pàgina wiki quand as purga la pàgina",
 );
 
