@@ -116,9 +116,17 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'interactiveblockmessage-desc' => "A crea na paròla màgica neuva <nowiki>{{USERBLOCKED}}</nowiki> che se a l'é an su në spassi nominal a indica se l'utent a l'é blocà o nò",
+	'interactiveblockmessage-desc' => "A crea la paròla màgica neuva <nowiki>{{USERBLOCKED}}</nowiki> che se a l'é ant lë spassi utent a mostra se l'utent a l'é blocà o nò",
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'interactiveblockmessage-desc' => 'Создает новое волшебное слово <nowiki>{{USERBLOCKED}}</nowiki>, присутствие которого на странице участника говорит блокировке данного участника.',
 );
 
