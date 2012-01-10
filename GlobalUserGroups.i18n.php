@@ -140,3 +140,17 @@ $messages['pt-br'] = array(
 	'globalusergroups-desc' => 'Permite o uso de grupos de usuários locais definidos como grupos globais',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'globalusergroups-desc' => 'Позволяет использовать определённые локальные группы пользователей как глобальные группы',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Waihorace
+ */
+$messages['zh-hant'] = array(
+	'globalusergroups-desc' => '允許使用已經定義的本地用戶組作為全域用戶組',
+);
+
