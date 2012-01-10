@@ -144,6 +144,7 @@ class MoodBarHooks {
 		) );
 		$updater->addExtensionIndex( 'moodbar_feedback_response', 'mbfr_mbf_mbfr_id', "$dir/mbfr_mbf_mbfr_id_index.sql" );
 		$updater->addExtensionField( 'moodbar_feedback_response', 'mbfr_enotif_sent', "$dir/mbfr_enotif_sent.sql" );
+		$updater->addExtensionIndex( 'moodbar_feedback_response', 'mbfr_user_id', "$dir/mbfr_user_id_index.sql" );
 		
 		return true;
 	}
