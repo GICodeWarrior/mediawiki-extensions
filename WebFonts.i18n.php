@@ -151,8 +151,9 @@ $messages['bn'] = array(
 	'webfonts-load' => 'ফন্ট নির্বাচন',
 	'webfonts-reset' => 'পুনরায় আরম্ভ',
 	'webfonts-enable-preference' => 'ফন্ট এমবেড সস্ক্রিয় করুন (ওয়েবফন্টস)',
-	'webfonts-menu-tooltip' => 'পাতা থেকে ফন্ট নির্বাচন করুন',
+	'webfonts-menu-tooltip' => 'পাতার জন্য ফন্ট নির্বাচন করুন',
 	'webfonts-help' => 'সাহায্য',
+	'webfonts-preview-title' => 'ফন্ট প্রাকদর্শন',
 	'webfonts-preview-download' => 'ডাউনলোড',
 	'webfonts-preview-sampletext' => 'আমার সোনার বাংলা আমি তোমায় ভালবাসি',
 	'webfonts-preview-installing-fonts-title' => 'ফন্ট ইন্সটল হচ্ছে',
@@ -707,7 +708,7 @@ $messages['ms'] = array(
 	'webfonts-preview-download' => 'Muat turun',
 	'webfonts-preview-sampletext' => 'Taufik ialah seorang pakar virus dan jurusinar X yang rajin membaca buku, gemar menonton wayang dan pandai menghafaz al-Quran.',
 	'webfonts-preview-installing-fonts-title' => 'Pemasangan Fon',
-	'webfonts-preview-installing-fonts-text' => 'Anda boleh memuat turun fon dengan menggunakan pautan {{int:webfonts-preview-download}} yang disediakan di atas. Untuk memasang fon yang dimuat turun ke dalam komputer anda, sila rujuk [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts dokumentasi ini]',
+	'webfonts-preview-installing-fonts-text' => 'Anda boleh memuat turun fon dengan menggunakan pautan "{{int:webfonts-preview-download}}" yang disediakan di atas. Untuk memasang fon yang dimuat turun ke dalam komputer anda, sila rujuk [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts dokumentasi ini].',
 );
 
 /** Maltese (Malti)
@@ -806,7 +807,7 @@ $messages['pms'] = array(
 	'webfonts-enable-preference' => "Abilité l'anseriment ëd tipo ëd caràter (Caràter dl'aragnà)",
 	'webfonts-menu-tooltip' => 'Selessioné un tipo ëd caràter për la pàgina',
 	'webfonts-help' => 'Agiut',
-	'webfonts-preview-intro' => "Sta pagina a giuta a mosté ij caràter disponìbij ant l'estension WebFonts e opsionalment a dëscarieje e anstaleje an tò calcolador.",
+	'webfonts-preview-intro' => "Sta pàgina a-j giuta a previsualisé ij caràter disponìbij ant l'estension WebFonts e opsionalment a dëscarieje e anstaleje an sò ordinator.",
 	'webfonts-preview-title' => 'Preuva ij caràter',
 	'webfonts-preview-download' => 'Dëscaria',
 	'webfonts-preview-sampletext' => 'La cita volp maròn a sàuta dlà dël can fòl',
@@ -1058,6 +1059,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Anakmalaysia
+ * @author Hzy980512
  * @author Liangent
  */
 $messages['zh-hans'] = array(
@@ -1073,11 +1075,12 @@ $messages['zh-hans'] = array(
 	'webfonts-preview-download' => '下载',
 	'webfonts-preview-sampletext' => '平雪迎骨水直',
 	'webfonts-preview-installing-fonts-title' => '安装字体',
-	'webfonts-preview-installing-fonts-text' => '您可以使用上面给出的{{int:webfonts-preview-download}}链接下载字体。要安装在您的电脑上下载的字体，请参阅[//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts 此文档]。',
+	'webfonts-preview-installing-fonts-text' => '您可以使用上面的"{{int:webfonts-preview-download}}"链接下载字体。要安装在您电脑上的字体，请参阅[//www.mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts 这篇文章].',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Anakmalaysia
+ * @author Waihorace
  */
 $messages['zh-hant'] = array(
 	'webfonts' => 'WebFonts',
