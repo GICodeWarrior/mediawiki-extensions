@@ -733,6 +733,7 @@ Bim Text, wu yygsetzt wird, isch d Richtig nit relevant.',
 /** Hebrew (עברית)
  * @author Amire80
  * @author YaronSh
+ * @author ערן
  */
 $messages['he'] = array(
 	'masseditregex' => 'עריכה המונית באמצעות ביטויים רגולאריים',
@@ -770,6 +771,7 @@ $messages['he'] = array(
 	'masseditregex-badregex' => 'ביטוי רגולארי שגוי:',
 	'masseditregex-editfailed' => 'העריכה נכשלה:',
 	'masseditregex-tooltip-execute' => 'החלת שינויים אלה לכל דף',
+	'right-masseditregex' => 'החלפת תוכן הדף באמצעות ביטויים רגולריים',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
