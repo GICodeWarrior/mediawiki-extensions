@@ -16,7 +16,7 @@ CREATE TABLE /*_*/moodbar_feedback (
 	mbf_comment varchar(255) binary,
 
 	-- Latest response id for this feedback
-	mbf_latest_response int unsigned NOT NULL,
+	mbf_latest_response int unsigned NOT NULL default 0,
 	-- Options and context
 	-- Whether or not the feedback item is hidden
 	-- 0 = No; 255 = Yes (other values reserved for partial hiding)

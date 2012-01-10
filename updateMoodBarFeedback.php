@@ -31,25 +31,39 @@ class UpdateMoodBarFeedback extends LoggedUpdateMaintenance {
 		$this->output( "Updating mbf_latest_response in moodbar_feedback table...\n" );
 
 		// Grab the feedback record with mbf_latest_response = 0
-		$res = $db->select( array( 'moodbar_feedback', 'moodbar_feedback_response' ), 
-					array( 'MAX(mbfr_id) AS latest_mbfr_id', 'mbf_id' ),
-					array( 'mbf_id=mbfr_mbf_id', 'mbf_latest_response' => 0 ),
-					__METHOD__,
-					array( 'GROUP BY' => 'mbfr_mbf_id' )
-		);
-		$count = 0;
-		foreach ( $res as $row ) {
-			$count++;
-			if ( $count % 100 == 0 ) {
-				$this->output( $count . "\n" );
-				wfWaitForSlaves();
+		$lastMbfId = $totalCount = 0;
+		$batchSize = $count = 100;
+		
+		while ( $batchSize == $count ) {
+			$count = 0;
+			$res = $db->select( array( 'moodbar_feedback', 'moodbar_feedback_response' ), 
+						array( 'MAX(mbfr_id) AS latest_mbfr_id', 'mbf_id' ),
+						array( 'mbf_id=mbfr_mbf_id', 'mbf_latest_response' => 0, 'mbf_id > ' . $lastMbfId ),
+						__METHOD__,
+						array( 'ORDER BY' => 'mbf_id', 'GROUP BY' => 'mbf_id', "LIMIT $batchSize" )
+			);
+			
+			foreach ( $res as $row ) {
+				$count++;
+				$mbfrId = intval( $row->latest_mbfr_id );
+				$mbfId  = intval( $row->mbf_id );
+				
+				$db->update( 'moodbar_feedback',
+						array( 'mbf_latest_response' => $mbfrId ),
+						array( 'mbf_id' => $mbfId ),
+						__METHOD__ );
+				
+				$lastMbfId = $mbfId;
 			}
-			$db->update( 'moodbar_feedback',
-					array( 'mbf_latest_response' => intval( $row->latest_mbfr_id ) ),
-					array( 'mbf_id' => intval( $row->mbf_id ) ),
-					__METHOD__ );
+			
+			$totalCount = $totalCount + $count;
+			
+			$this->output( $count . "\n" );
+			wfWaitForSlaves();
+
 		}
-		$this->output( "Done, $count rows updated.\n" );
+		
+		$this->output( "Done, $totalCount rows updated.\n" );
 		return true;
 	}
 }
