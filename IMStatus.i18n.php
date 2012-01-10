@@ -1069,6 +1069,38 @@ $messages['nah'] = array(
 	'imstatus_your_name' => '$1 motōca',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'imstatus-desc' => 'Legg til merkelapper for å vise forskjellige påloggingsstatuser i direktemeldingsprogram (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Syntaks',
+	'imstatus_default' => 'Standard',
+	'imstatus_example' => 'Eksempel',
+	'imstatus_possible_val' => 'Mulige verdier',
+	'imstatus_max' => 'max',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'eller',
+	'imstatus_style' => 'stilen til statusindikatoren',
+	'imstatus_action' => 'handling når knappen blir klikket på',
+	'imstatus_details_saa' => 'For flere detaljer om alle stilene og handligene, se $1.',
+	'imstatus_your_name' => 'ditt $1 navn',
+	'imstatus_aim_presence' => '$1 viser statusen din med en lenke som vil starte AIM for å sende deg en direktemelding, gitt at brukeren har det installert.',
+	'imstatus_aim_api' => '$1 viser statusen din med en lenke som vil starte en <b>nettleser</b>-javaskriptversjon av AIM for å sende deg en direktemelding.',
+	'imstatus_gtalk_code' => 'din google talk-kode',
+	'imstatus_gtalk_get_code' => 'din google talk-kode: få den på $1.',
+	'imstatus_gtalk_height' => 'boksens høyde, i piksler.',
+	'imstatus_gtalk_width' => 'boksens bredde, i piksler.',
+	'imstatus_icq_id' => 'din ICQ-ID',
+	'imstatus_icq_style' => 'et tall i intervallet fra 0 til 26 (ja, det finnes 27 tilgjengelige stiler).',
+	'imstatus_live_code' => "ID'en til ditt Live Messenger-nettsted",
+	'imstatus_live_get_code' => 'ID\'en til ditt Live Messenger-nettsted: <strong>dette er ikke e-postadressen din</strong>, du må lage en i <a href="$1">dine Live Messenger-alternativ</a>.
+ID\'en du må oppgi er tallene og bokstavene mellom "$2" og "$3".',
+	'imstatus_skype_nbstyle' => 'Merk: Dersom du velger en stil som også er en handling vil handlingsvalget ditt bli overkjørt av handlingen som samsvarer med stilvalget ditt.',
+	'imstatus_xfire_size' => 'knappens størrelse, fra $1 (størst) til $2 (minst).',
+	'imstatus_yahoo_style' => 'knappes stil, fra $1 (minst) til $2 (størst), $3 og $4 er for lydpost.',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -1133,38 +1165,6 @@ ID\'en du må oppgje er tala og bokstavane mellom  «$2» og «$3».',
 	'imstatus_skype_nbstyle' => 'Merk: Om du vel ein stil som òg er ei handling, vil handlingsvalet ditt bli overkøyrt av handlinga som samsvarer med stilvalet ditt.',
 	'imstatus_xfire_size' => 'knappestorleiken, frå $1 (størst) til $2 (minst).',
 	'imstatus_yahoo_style' => 'knappestilen, frå $1 (minst) til $2 (størst), $3 og $4 er for lydpost.',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'imstatus-desc' => 'Legg til merkelapper for å vise forskjellige påloggingsstatuser i direktemeldingsprogram (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
-	'imstatus_syntax' => 'Syntaks',
-	'imstatus_default' => 'Standard',
-	'imstatus_example' => 'Eksempel',
-	'imstatus_possible_val' => 'Mulige verdier',
-	'imstatus_max' => 'max',
-	'imstatus_min' => 'min',
-	'imstatus_or' => 'eller',
-	'imstatus_style' => 'stilen til statusindikatoren',
-	'imstatus_action' => 'handling når knappen blir klikket på',
-	'imstatus_details_saa' => 'For flere detaljer om alle stilene og handligene, se $1.',
-	'imstatus_your_name' => 'ditt $1 navn',
-	'imstatus_aim_presence' => '$1 viser statusen din med en lenke som vil starte AIM for å sende deg en direktemelding, gitt at brukeren har det installert.',
-	'imstatus_aim_api' => '$1 viser statusen din med en lenke som vil starte en <b>nettleser</b>-javaskriptversjon av AIM for å sende deg en direktemelding.',
-	'imstatus_gtalk_code' => 'din google talk-kode',
-	'imstatus_gtalk_get_code' => 'din google talk-kode: få den på $1.',
-	'imstatus_gtalk_height' => 'boksens høyde, i piksler.',
-	'imstatus_gtalk_width' => 'boksens bredde, i piksler.',
-	'imstatus_icq_id' => 'din ICQ-ID',
-	'imstatus_icq_style' => 'et tall i intervallet fra 0 til 26 (ja, det finnes 27 tilgjengelige stiler).',
-	'imstatus_live_code' => "ID'en til ditt Live Messenger-nettsted",
-	'imstatus_live_get_code' => 'ID\'en til ditt Live Messenger-nettsted: <strong>dette er ikke e-postadressen din</strong>, du må lage en i <a href="$1">dine Live Messenger-alternativ</a>.
-ID\'en du må oppgi er tallene og bokstavene mellom "$2" og "$3".',
-	'imstatus_skype_nbstyle' => 'Merk: Dersom du velger en stil som også er en handling vil handlingsvalget ditt bli overkjørt av handlingen som samsvarer med stilvalget ditt.',
-	'imstatus_xfire_size' => 'knappens størrelse, fra $1 (størst) til $2 (minst).',
-	'imstatus_yahoo_style' => 'knappes stil, fra $1 (minst) til $2 (størst), $3 og $4 er for lydpost.',
 );
 
 /** Occitan (Occitan)
@@ -1741,6 +1741,13 @@ $messages['vo'] = array(
 	'imstatus_your_name' => 'nem-$1 olik',
 	'imstatus_icq_id' => 'Dientifäd-ICQ olik',
 	'imstatus_live_code' => 'Dientifäd olik pro bevüresodatopäd: Live Messenger',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'imstatus_or' => 'אדער',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
