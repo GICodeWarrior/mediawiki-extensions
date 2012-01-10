@@ -383,8 +383,8 @@ class ExtZeroRatedMobileAccess {
 		wfProfileOut( __METHOD__ );
 		return true;
 	}
-	
-	private static function createCarrierOptionsFromWikiText() {		
+
+	private static function createCarrierOptionsFromWikiText() {
 		global $wgMemc;
 		wfProfileIn( __METHOD__ );
 		$carrierOptionsWikiPage = wfMsg( 'zero-rated-mobile-access-carrier-options-wiki-page' );

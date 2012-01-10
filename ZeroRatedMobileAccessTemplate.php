@@ -21,8 +21,7 @@ abstract class ZeroRatedMobileAccessTemplate {
 
 	/**
 	 * Sets the value $value to $name
-	 * @param $name
-	 * @param $value
+	 * @param $options array
 	 */
 	public function setByArray( $options ) {
 		foreach ($options as $name => $value ) {
