@@ -47,7 +47,7 @@ class ExtZeroRatedMobileAccess {
 		self::$title = $out->getTitle();
 		
 		$carrier = $wgRequest->getHeader( 'HTTP_X_CARRIER' );
-		if ( $carrier !== '(null)') {
+		if ( $carrier !== '(null)' && $carrier ) {
 			self::$renderZeroRatedBanner = true;
 		}
 
@@ -203,11 +203,14 @@ class ExtZeroRatedMobileAccess {
 		}
 
 		$output .= Html::closeElement( 'div' );
-		$out->addHTML( $output );
+		if ( $output != '<div id="zero-landing-page"></div>' ) {
+			$out->addHTML( $output );
+		}
+
 		wfProfileOut( __METHOD__ );
 		return true;
 	}
-	
+
 	/**
 	* Returns information about carrier
 	* 
