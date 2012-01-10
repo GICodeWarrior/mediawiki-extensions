@@ -244,7 +244,7 @@ class NSLocalFile extends LocalFile {
 	 * The only thing changed here is to strip NS from the file name
 	 * Delete cached transformed files
 	*/
-	function purgeThumbnails() {
+	function purgeThumbnails( $options = array() ) {
 		global $wgUseSquid;
 		// Delete thumbnails
 		$files = $this->getThumbnails();
@@ -394,8 +394,8 @@ class NSOldLocalFile extends OldLocalFile {
 	function addOlds() {
 		return NSLocalFile::addOlds();
 	}
-	function purgeThumbnails() {
-		return NSLocalFile::purgeThumbnails();
+	function purgeThumbnails($options = array() ) {
+		return NSLocalFile::purgeThumbnails( $options );
 	}
 	/**
 	 * Replaces hard coded OldLocalFile::newFromRow to use $this->repo->oldFileFromRowFactory configuration
