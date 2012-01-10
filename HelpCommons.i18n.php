@@ -98,9 +98,17 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'helpcommons-desc' => "A pija dle pagine d'agiut da na wiki d'agiut e a j'anseriss ant autre wiki an sla famija ëd wiki",
+	'helpcommons-desc' => "A arcupera dle pàgine d'agiut da na wiki d'agiut e a j'anseriss an d'àutre wiki ant la famija ëd wiki",
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'helpcommons-desc' => 'Извлекает страницы справки из справочной вики и добавляет их в другие вики',
 );
 
