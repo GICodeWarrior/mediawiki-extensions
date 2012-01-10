@@ -781,27 +781,30 @@ class DumpHTML {
 
 	/** Reads the content of a title object, executes the skin and captures the result */
 	function getArticleHTML( $title ) {
-		global $wgOut, $wgTitle, $wgUser;
+		global $wgOut, $wgTitle, $wgUser, $wgRequest;
+
 		if ( is_null( $title ) ) {
 			return false;
 		}
+
 		LinkCache::singleton()->clear();
 
 		$context = new RequestContext();
 		$context->setRequest( new DumpFauxRequest( $title->getLocalUrl(),
-				                                   array( 'title' => $title->getPrefixedDbKey() ) ) );
+			array( 'title' => $title->getPrefixedDbKey() ) ) );
 		$context->setTitle( $title );
-		$context->setUser( $wgUser );
 
-		$wgTitle = $title; // b/c
-		$wgOut = $context->getOutput(); // b/c
-		$wgOut->parserOptions( new ParserOptions() ); // anon
+		// b/c
+		$wgTitle = $title;
+		$wgOut = $context->getOutput();
+		$wgUser = $context->getUser();
+		$wgRequest = $context->getRequest();
 
-		$ns = $wgTitle->getNamespace();
+		$ns = $title->getNamespace();
 		if ( $ns == NS_SPECIAL ) {
-			SpecialPage::executePath( $wgTitle, $context );
+			SpecialPage::executePath( $title, $context );
 		} else {
-			$article = Article::newFromTitle( $wgTitle, $context );
+			$article = Article::newFromTitle( $title, $context );
 			$rt = $article->followRedirect();
 			if ( is_object( $rt ) ) {
 				return $this->getRedirect( $rt );
@@ -810,9 +813,8 @@ class DumpHTML {
 			}
 		}
 
-		$sk = $context->getSkin();
 		ob_start();
-		$sk->outputPage( $wgOut );
+		$context->getSkin()->outputPage( $context->getOutput() );
 		$text = ob_get_contents();
 		ob_end_clean();
 
