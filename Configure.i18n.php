@@ -12392,6 +12392,7 @@ $messages['yi'] = array(
 	'configure-throttle-action-rollback' => 'צוריקדרייען',
 	'configure-throttle-action-emailuser' => 'שיקן ע־פאסט',
 	'configure-throttle-group' => 'טיפ',
+	'configure-condition-operator-and' => 'און',
 	'configure-condition-name-5' => 'באַניצערס IP אַדרעס',
 	'configure-condition-description-3' => 'ע-פּאָסט באַשטעטיקט',
 );
