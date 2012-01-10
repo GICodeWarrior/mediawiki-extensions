@@ -91,9 +91,10 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'simplefarm-desc' => "Sempi, anco' na potenta estension ëd na fatorìa wiki sensa qualsëssia pagina ëd configurassion ëd fantasìa",
+	'simplefarm-desc' => 'Sempia ma potenta estension ëd fatorìa wiki sensa gnun-a pàgina sbërlusenta ëd configurassion',
 );
 
