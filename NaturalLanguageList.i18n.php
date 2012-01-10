@@ -464,6 +464,14 @@ $messages['vi'] = array(
 	'nll-lastseparator' => '&#32;và&#32;',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'nll-desc' => 'איינפֿאכע פֿארמאטירן פֿון ליסטעס אין נאטורלעכע שפראכן',
+	'nll-lastseparator' => '&#32;און&#32;',
+);
+
 /** Yoruba (Yorùbá)
  * @author Demmy
  */
