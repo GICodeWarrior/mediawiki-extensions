@@ -1604,11 +1604,12 @@ $messages['yi'] = array(
  * @author Hydra
  * @author Liangent
  * @author PhiLiP
+ * @author Shizhao
  * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'apisb-desc' => '允许从浏览器调试[//www.mediawiki.org/wiki/API MediaWiki API]调用',
-	'apisandbox' => 'API沙箱',
+	'apisandbox' => 'API沙盒',
 	'apisb-no-js' => "'''错误'''：此功能需要 JavaScript。",
 	'apisb-intro' => '使用这个页面来试验“MediaWiki应用程序接口（API）”。
 欲知API使用详情，请参阅[//www.mediawiki.org/wiki/API API文档]。',
@@ -1618,14 +1619,14 @@ $messages['zh-hans'] = array(
 	'apisb-request-url' => '请求的URL：',
 	'apisb-request-post' => 'POST数据：',
 	'apisb-select-action' => '选择操作',
-	'apisb-select-query' => '查询又如何？',
+	'apisb-select-query' => '如何查询？',
 	'apisb-select-value' => '选择值',
 	'apisb-loading' => '正在载入...',
 	'apisb-load-error' => '加载 API 说明时出错',
 	'apisb-request-error' => '执行 API 请求时出错',
 	'apisb-namespaces-error' => '载入名字空间出错',
 	'apisb-ns-main' => '（主）',
-	'apisb-submit' => '提出要求',
+	'apisb-submit' => '提交请求',
 	'apisb-query-prop' => '属性',
 	'apisb-query-list' => '列表',
 	'apisb-query-meta' => 'Meta 信息',
