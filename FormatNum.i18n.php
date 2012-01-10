@@ -104,3 +104,10 @@ $messages['pms'] = array(
 	'formatnum-desc' => 'A passa formatnum a number_format ëd PHP',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'formatnum-desc' => 'Передаёт formatnum в функцию PHP number_format',
+);
+
