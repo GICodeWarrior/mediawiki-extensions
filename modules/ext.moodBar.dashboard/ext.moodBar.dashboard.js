@@ -713,13 +713,7 @@ jQuery(function( $ ) {
 	
 	//only allow one of the secondary filters to be checked
 	$( 'input[type=checkbox].fbd-filters-check').click(function(){
-		var		count = $( 'input[type=checkbox].fbd-filters-check').length,
-				state = $(this).prop('checked'); //save state of checkbox
-
-		if(count > 1) {
-			$( 'input[type=checkbox].fbd-filters-check').prop('checked', false);
-			$(this).prop('checked', state);
-		}
+		$( 'input[type=checkbox].fbd-filters-check' ).not( this ).prop( 'checked', false );
 	});
 
 	$( '#fbd-list' ).delegate( '.fbd-item', 'hover', function (){		
