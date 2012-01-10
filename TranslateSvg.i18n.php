@@ -265,6 +265,28 @@ $messages['ia'] = array(
 	'translatesvg-toggle-hide' => 'Celar le traductiones in iste lingua',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'translatesvg-desc' => 'SVG 1.1 규격에 따라 SVG 파일을 번역하는 인터페이스를 제공',
+	'translatesvg-legend' => '파일 경로',
+	'translatesvg-page' => '파일:',
+	'translatesvg-submit' => '확인',
+	'translatesvg-summary' => '이 특수 문서에서 SVG 파일에 포함된 문자열의 번역을 추가, 제거, 수정할 수 있습니다.',
+	'translatesvg-add' => '당신이 쓰는 언어가 나열되어 있지 않다면 [[#addlanguage|추가]]할 수 있습니다.',
+	'translatesvg-xcoordinate-pre' => 'X좌표 (가로):',
+	'translatesvg-ycoordinate-pre' => 'Y좌표 (세로):',
+	'translatesvg-specify' => '새 언어 코드를 입력하세요 (예시: en, fr, de, es, ko ...)',
+	'translatesvg-fallbackdesc' => '기본값 (언어 설정 없음)',
+	'translatesvg-qqqdesc' => '번역자에 대한 조언',
+	'translatesvg-nodesc' => '(설명 없음)',
+	'translatesvg-remove' => '이 언어로 된 모든 번역 제거하기',
+	'translatesvg-unsuccessful' => "이 파일은 '''번역할 수 없습니다''', 죄송합니다.",
+	'translatesvg-toggle-view' => '이 언어로 된 번역 보기',
+	'translatesvg-toggle-hide' => '이 언어로 된 번역 숨기기',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
