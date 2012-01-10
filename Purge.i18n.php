@@ -426,11 +426,12 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'purge' => 'polida',
-	'purge-desc' => 'A gionta un tab ëd "purga" a tute le pàgine normaj an përmëttend na purga lesta dla cache',
+	'purge-desc' => 'A gionta un feuj ëd purga a tute le pàgine normaj an përmëttend na polidada lesta dla memòria local',
 );
 
 /** Portuguese (Português)
