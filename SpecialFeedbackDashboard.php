@@ -101,7 +101,7 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 		
 		
 		$moodbarStat = MoodBarUtil::getMoodBarTypeStats();
-		$moodbarStatMsg = wfMessage( 'moodbar-type-stats' )->params( $moodbarStat['happy'], $moodbarStat['sad'], $moodbarStat['confused'] )->escaped();
+		$moodbarStatMsg = wfMessage( 'moodbar-type-stats' )->numParams( $moodbarStat['happy'], $moodbarStat['sad'], $moodbarStat['confused'] )->escaped();
 		$feedbackDashboardDescription = wfMessage( 'moodbar-feedback-description' )->params( $wgSitename ); // don't escape because there is html 
 
 		$myResponseFilter = '';
@@ -267,7 +267,8 @@ HTML;
 	 * @return html string
 	 */
 	protected static function buildLeaderBoardElement() {
-
+		global $wgLang;
+		
 		$topResponders = MoodBarUtil::getTopResponders();
 
 		$html = '';
@@ -277,7 +278,7 @@ HTML;
 				$user = User::newFromRow( $row );
 				if ( $user && !$user->isAnon() ) {
 					$html .= '<li>' . Linker::userLink( $user->getId(), htmlspecialchars( $user->getName() ) ) .
-							'<span>' . $row->number . '</span></li>';
+							'<span>' . $wgLang->formatNum( intval( $row->number ) ) . '</span></li>';
 				}
 			}
 		}
