@@ -3,7 +3,7 @@
 #fbd-filters {
 	position: absolute;
 	width: 15em;
-	left: 0px;  /* needed for ie6 & ie7 */
+	left: 0; /* needed for ie6 & ie7 */
 }
 
 #fbd-filters form {
@@ -18,7 +18,8 @@
 	margin-top: 0.5em;
 }
 
-#fbd-description-text, #fbd-stats {
+#fbd-description-text,
+#fbd-stats {
 	padding: 0 0 1em 0;
 }
 
@@ -26,7 +27,7 @@
 	font-size: 1.2em;
 	margin: 0;
 	padding: 0;
-	border-bottom: solid 1px black;
+	border-bottom: 1px solid black;
 }
 
 #fbd-filters-types {
@@ -93,8 +94,8 @@
 	padding: 0;
 	list-style: none;
 }
-.fbd-leaderboard li{
-	margin: 0px;
+.fbd-leaderboard li {
+	margin: 0;
 	padding: 2px 10px;
 	list-style: none;
 	font-weight:600;
@@ -109,12 +110,12 @@
 }
 
 .fbd-leaderboard-top-responders {
-	margin-top:15px;
+	margin-top: 15px;
 }
 
 .fbd-leaderboard-top-responders h5 {
-	border-bottom:1px solid #000000;
-	padding-bottom:0px;
+	border-bottom: 1px solid #000000;
+	padding-bottom: 0;
 }
 
 /* Tool Tip */
@@ -162,8 +163,8 @@
 /* List */
 
 #fbd-list {
-	margin: 0px 20px 0px 16em;
-	padding: 0px;
+	margin: 0 20px 0 16em;
+	padding: 0;
 	min-height: 20em;
 	list-style: none;
 	list-style-image: none; /* ie 7 fix */
@@ -178,15 +179,19 @@
 	display: none;
 }
 
-#fbd-list-more, #fbd-list-newer-older {
+#fbd-list-more,
+#fbd-list-newer-older {
 	margin: 1em 0 0 13em;
 	padding: 0.5em;
 	background-color: #e8f2f8;
 }
 
-#fbd-list-more a, #fbd-list-more span,
-#fbd-list-newer a, #fbd-list-older a,
-#fbd-list-newer .fbd-page-disabled, #fbd-list-older .fbd-page-disabled {
+#fbd-list-more a,
+#fbd-list-more span,
+#fbd-list-newer a,
+#fbd-list-older a,
+#fbd-list-newer .fbd-page-disabled,
+#fbd-list-older .fbd-page-disabled {
 	font-size: 1.4em;
 	background-repeat: no-repeat;
 }
@@ -206,7 +211,8 @@
 	float: left;
 }
 
-#fbd-list-newer a, #fbd-list-newer .fbd-page-disabled {
+#fbd-list-newer a,
+#fbd-list-newer .fbd-page-disabled {
 	background-position: left center;
 	padding-left: 20px;
 }
@@ -217,8 +223,8 @@
 }
 
 .mw-ajax-loader {
-	/* Undo padding due to it destroying the layout for inline response */	
-	padding: 8px 16px 0px 16px !important;
+	/* Undo padding due to it destroying the layout for inline response */
+	padding: 8px 16px 0 16px !important;
 }
 
 /* The images here are named -ltr instead of -left and -rtl instead of -right
@@ -238,7 +244,8 @@
 	float: right;
 }
 
-#fbd-list-older a, #fbd-list-older .fbd-page-disabled {
+#fbd-list-older a,
+#fbd-list-older .fbd-page-disabled {
 	background-position: right center;
 	padding-right: 20px;
 }
@@ -258,7 +265,7 @@
 }
 
 .fbd-item {
-	border-bottom: solid 1px silver;
+	border-bottom: 1px solid silver;
 	position: relative;
 	padding-top: 0.5em;
 	padding-right: 1em;
@@ -309,7 +316,7 @@
 
 .fbd-item-response-icon {
 	float: left;
-	display: block;	
+	display: block;
 	height: 56px;
 	width: 56px;
 	background-position: center center;
@@ -326,14 +333,14 @@
 }
 
 .fbd-item-response-success {
-	/* @embed */ 
+	/* @embed */
 	background-image: url(images/response-success.png);
 }
- 
+
 .fbd-item-response-error {
-	/* @embed */ 
+	/* @embed */
 	background-image: url(images/response-error.png);
-} 
+}
 
 .fbd-ajax-response > div > .fbd-ajax-heading {
 	font-size: 1.5em;
@@ -378,7 +385,7 @@
 }
 
 .fbd-item-userLinks{
-	font-size: 1em;	
+	font-size: 1em;
 }
 
 .fbd-item-time {
@@ -395,7 +402,7 @@
 }
 
 .fbd-response-text {
-	height: 5em;	
+	height: 5em;
 	overflow: hidden;
 }
 
@@ -409,13 +416,13 @@
 }
 
 .fbd-response-preview-block {
-	width:100%;  /* ie7 fix */
+	width:100%; /* ie7 fix */
 }
 
 .fbd-response-wikitext{
 	background-color: #FDFFE7;
-    border: 1px solid #FCEB92;
-    padding: 5px;
+	border: 1px solid #FCEB92;
+	padding: 5px;
 }
 
 .fbd-item-permalink,
@@ -441,7 +448,6 @@
 	visibility: visible;
 }
 
-
 .fbd-respond-link {
 	font-size: 1.1em;
 	cursor: pointer;
@@ -458,19 +464,21 @@
 	color: silver;
 }
 .fbd-response-form {
-	margin:0em 0px 1em 81px;
+	margin: 0em 0 1em 81px;
 }
 .fbd-response-form b {
 	font-size: 1em;
 }
-.fbd-response-form small, .fbd-response-form .small{
+.fbd-response-form small,
+.fbd-response-form .small{
 	font-size: 0.8em;
 	color: #262626;
 }
 .fbd-response-formNote {
 	float: right;
 }
-.fbd-response-submit, .fbd-response-preview {
+.fbd-response-submit,
+.fbd-response-preview {
 	float: right;
 }
 .center {
