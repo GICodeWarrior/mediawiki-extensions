@@ -11,7 +11,7 @@ select#webfonts-size-chooser {
 }
 
 div#webfonts-preview-area {
-	height: 300px;
+	height: 150px;
 	border: 1px solid #cccccc;
 	border-radius: 0 0 4px 4px;
 	-webkit-border-radius: 0 0 4px 4px;
