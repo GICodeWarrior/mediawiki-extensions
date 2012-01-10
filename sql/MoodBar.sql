@@ -15,6 +15,8 @@ CREATE TABLE /*_*/moodbar_feedback (
 	-- The feedback itself
 	mbf_comment varchar(255) binary,
 
+	-- Latest response id for this feedback
+	mbf_latest_response int unsigned NOT NULL,
 	-- Options and context
 	-- Whether or not the feedback item is hidden
 	-- 0 = No; 255 = Yes (other values reserved for partial hiding)
@@ -35,3 +37,4 @@ CREATE INDEX /*i*/mbf_title_type_id ON /*_*/moodbar_feedback (mbf_namespace,mbf_
 CREATE INDEX /*i*/mbf_userid_ip_timestamp_id ON /*_*/moodbar_feedback (mbf_user_id, mbf_user_ip, mbf_timestamp, mbf_id);
 CREATE INDEX /*i*/mbf_type_userid_ip_timestamp_id ON /*_*/moodbar_feedback (mbf_type, mbf_user_id, mbf_user_ip, mbf_timestamp, mbf_id);
 CREATE INDEX /*i*/mbf_timestamp_id ON /*_*/moodbar_feedback (mbf_timestamp, mbf_id);
+CREATE INDEX /*i*/mbf_latest_response ON /*_*/moodbar_feedback (mbf_latest_response);

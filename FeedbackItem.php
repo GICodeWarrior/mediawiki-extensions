@@ -275,5 +275,24 @@ class MBFeedbackItem {
 	public static function getValidTypes() {
 		return self::$validTypes;
 	}
+	
+	/**
+	 * Update feedback item based on the primary key $mbf_id
+	 * @param $mbf_id int - id representing a unique feedback item
+	 * @param $values array - key -> database field, value -> the new value
+	 */
+	public static function update( $mbf_id, $values ) {
+
+		if ( !$values ) {
+			return;
+		}
+		
+		$dbw = wfGetDB( DB_MASTER );
+
+		$dbw->update( 'moodbar_feedback', 
+				$values,
+				array( 'mbf_id' => intval( $mbf_id ) ),
+				__METHOD__ );
+	}
 
 }

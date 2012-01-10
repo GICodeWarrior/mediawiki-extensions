@@ -239,6 +239,8 @@ class MBFeedbackResponseItem {
 			$row['mbfr_user_id'] = $user->getId();
 		}
 
+		$dbw->begin();
+
 		if ( $this->getProperty('id') ) {
 			$row['mbfr_id'] = $this->getProperty('id');
 			$dbw->replace( 'moodbar_feedback_response', array('mbfr_id'), $row, __METHOD__ );
@@ -247,8 +249,15 @@ class MBFeedbackResponseItem {
 			$dbw->insert( 'moodbar_feedback_response', $row, __METHOD__ );
 			$this->setProperty( 'id', $dbw->insertId() );
 		}
+		
+		$id = $this->getProperty('id');
 
-		return $this->getProperty('id');
+		// Update feedback with the latest response id
+		MBFeedbackItem::update( $this->getProperty('feedback'), array( 'mbf_latest_response' => $id ) );
+		
+		$dbw->commit();
+		
+		return $id;
 	}
 
 	/**
@@ -293,7 +302,7 @@ class MBFeedbackResponseItem {
 
 		$dbw->update( 'moodbar_feedback_response', 
 				$values,
-				array( 'mbfr_id' => $mbfr_id ),
+				array( 'mbfr_id' => intval( $mbfr_id ) ),
 				__METHOD__ );
 	}
 	

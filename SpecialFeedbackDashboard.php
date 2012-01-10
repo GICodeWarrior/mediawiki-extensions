@@ -617,9 +617,7 @@ HTML;
 				break;
 				
 				case 'showunanswered':
-					$table[] = 'moodbar_feedback_response';
-					$tableJoin['moodbar_feedback_response'] = array( 'LEFT JOIN', 'mbf_id=mbfr_mbf_id' );
-					$conds['mbfr_id'] = null; 
+					$conds['mbf_latest_response'] = 0; 
 				break;
 			}
 		}
@@ -630,7 +628,7 @@ HTML;
 		$res = $dbr->select( $table, array(
 				'user_name', 'mbf_id', 'mbf_type',
 				'mbf_timestamp', 'mbf_user_id', 'mbf_user_ip', 'mbf_comment',
-				'mbf_anonymous', 'mbf_hidden_state',
+				'mbf_anonymous', 'mbf_hidden_state', 'mbf_latest_response'
 			),
 			$conds,
 			__METHOD__,
@@ -714,46 +712,31 @@ HTML;
 	
 	/**
 	 * Get the latest response summary for a set of feedback, 
-	 * @param $res Iterator of Db row with index mbf_id for feedback
+	 * @param $res Iterator of Db row with index mbf_latest_response for feedback
 	 * @return array
 	 */
 	public static function getResponseSummary( $res ) {
 		$dbr = wfGetDB( DB_SLAVE );
-
-		$feedback = array();
+		
+		$mbfrIds = array();
 
 		foreach ( $res as $row ) {
-			$feedback[] = $row->mbf_id;
+			if ( $row->mbf_latest_response != 0 ) {
+				$mbfrIds[] = $row->mbf_latest_response;
+			}
 		}
 
 		$response = array();
 
-		if ( count( $feedback ) > 0 ) {
-			// query to get the latest mbfr_id for each mbfr_mbf_id 
-			$res = $dbr->select( array( 'moodbar_feedback_response' ),
-						array( 'MAX(mbfr_id) AS latest_mbfr_id' ),
-						array( 'mbfr_mbf_id' => $feedback, 'mbfr_user_id != 0' ),
-						__METHOD__,
-						array( 'GROUP BY' => "mbfr_mbf_id" )
+		if ( count( $mbfrIds ) > 0 ) {
+			$res = $dbr->select( array( 'moodbar_feedback_response', 'user' ),
+						array( 'mbfr_id', 'mbfr_mbf_id', 'mbfr_timestamp', 'user_id', 'user_name', 'user_real_name' ),
+						array( 'mbfr_id' => $mbfrIds, 'mbfr_user_id = user_id' ),
+						__METHOD__
 			);
 
-			$mbfrId = array();
-
 			foreach ( $res as $row ) {
-				$mbfrId[] = $row->latest_mbfr_id;
-			}
-
-			// get the detail for each mbfr_id
-			if ( count( $mbfrId ) > 0 ) {
-				$res = $dbr->select( array( 'moodbar_feedback_response', 'user' ),
-							array( 'mbfr_id', 'mbfr_mbf_id', 'mbfr_timestamp', 'user_id', 'user_name', 'user_real_name' ),
-							array( 'mbfr_id' => $mbfrId, 'mbfr_user_id = user_id' ),
-							__METHOD__
-				);
-	
-				foreach ( $res as $row ) {
-					$response[$row->mbfr_mbf_id] = $row;
-				}
+				$response[$row->mbfr_mbf_id] = $row;
 			}
 		}
 

@@ -13,7 +13,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 		// Build the query
 		$this->addJoinConds( array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) ) );
 		$this->addFields( array( 'user_name', 'mbf_id', 'mbf_type', 'mbf_timestamp', 'mbf_user_id', 'mbf_user_ip',
-			'mbf_comment', 'mbf_hidden_state' ) );
+			'mbf_comment', 'mbf_hidden_state', 'mbf_latest_response' ) );
 		if ( count( $params['type'] ) ) {
 			$this->addWhereFld( 'mbf_type', $params['type'] );
 		}
@@ -46,9 +46,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 				$this->addOption( 'GROUP BY', 'mbf_id' );		
 			}
 		} elseif ( $params['showunanswered'] ) {
-			$this->addTables( array( 'moodbar_feedback_response' ) );
-			$this->addJoinConds( array( 'moodbar_feedback_response' => array( 'LEFT JOIN', 'mbf_id=mbfr_mbf_id' ) ) );
-			$this->addWhere( array( 'mbfr_id' => null ) );
+			$this->addWhere( array( 'mbf_latest_response' => 0 ) );
 		}
 
 		$this->addTables( array( 'moodbar_feedback', 'user' ) );
