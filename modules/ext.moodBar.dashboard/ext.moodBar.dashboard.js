@@ -2,10 +2,12 @@
  * AJAX code for Special:MoodBarFeedback
  */
 jQuery( document ).ready( function ( $ ) {
+	var formState, filterType, $fbdFiltersCheck;
+
 	/**
 	 * Saved form state
 	 */
-	 var formState = {
+	 formState = {
 		types: [],
 		username: '',
 		myresponse: null,
@@ -149,6 +151,8 @@ jQuery( document ).ready( function ( $ ) {
 			url: mw.util.wikiScript( 'api' ),
 			data: reqData,
 			success: function ( data ) {
+				var comments, len, $ul, moreResults, i;
+
 				// Remove the spinner and restore the "More" link
 				$( '#fbd-list-more' )
 					.removeClass( 'mw-ajax-loader' )
@@ -160,11 +164,11 @@ jQuery( document ).ready( function ( $ ) {
 					return;
 				}
 
-				var comments = data.query.moodbarcomments,
-					len = comments.length,
-					$ul = $( '#fbd-list' ),
-					moreResults = false,
-					i;
+				comments = data.query.moodbarcomments;
+				len = comments.length;
+				$ul = $( '#fbd-list' );
+				moreResults = false;
+
 				if ( len === 0 ) {
 					if ( mode === 'more' ) {
 						showMessage( mw.msg( 'moodbar-feedback-nomore' ) );
@@ -212,6 +216,7 @@ jQuery( document ).ready( function ( $ ) {
 	 */
 	function reloadItem( $item, show ) {
 		var cont, request;
+
 		cont = $item.data( 'mbccontinue' );
 
 		request = {
@@ -227,8 +232,10 @@ jQuery( document ).ready( function ( $ ) {
 			request.mbcprop = 'formatted|hidden';
 		}
 
-		$.post( mw.util.wikiScript( 'api' ), request,
-			function ( data ) {
+		$.ajax( {
+			url: mw.util.wikiScript( 'api' ),
+			data: request,
+			success: function ( data ) {
 				if ( data && data.query && data.query.moodbarcomments &&
 					data.query.moodbarcomments.length > 0
 				) {
@@ -240,17 +247,22 @@ jQuery( document ).ready( function ( $ ) {
 					$item.find( '.mw-ajax-loader' ).remove();
 					showItemError( $item );
 				}
-			}, 'json' )
-			.error( function () { showItemError( $item ); } );
+			},
+			dataType: 'json',
+			error: function () {
+				showItemError( $item );
+			}
+		} );
 	}
 
 	/**
 	 * Show a hidden comment
 	 */
 	function showHiddenItem(e) {
-		var $item = $(this).closest( '.fbd-item' );
+		var $item, $spinner;
 
-		var $spinner = $( '<span class="mw-ajax-loader">&nbsp;</span>' );
+		$item = $(this).closest( '.fbd-item' );
+		$spinner = $( '<span class="mw-ajax-loader">&nbsp;</span>' );
 		$item.find( '.fbd-item-show' ).empty().append( $spinner );
 
 		reloadItem( $item, true );
@@ -276,17 +288,19 @@ jQuery( document ).ready( function ( $ ) {
 	 * @param $item jQuery item containing the .fbd-item
 	 */
 	function confirmAction( params, $item ) {
+		var inlineForm, storedParams, $storedItem;
 
-		var inlineForm = $( '<span>' ).attr( 'class', 'fbd-item-reason' )
-				.append( $( '<span>' ).text(mw.msg( 'moodbar-action-reason' )) )
-				.append( $( '<input>' ).attr({'class':'fbd-action-reason', 'name':'fbd-action-reason'}) )
-				.append( $( '<button>' ).attr( 'class', 'fbd-action-confirm' ).text( mw.msg( 'moodbar-feedback-action-confirm' )) )
-				.append( $( '<button>' ).attr( 'class', 'fbd-action-cancel' ).text( mw.msg( 'moodbar-feedback-action-cancel' )) )
-				.append( $( '<span>' ).attr( 'class', 'fbd-item-reason-msg' ) )
+		inlineForm = $( '<span>' )
+			.attr( 'class', 'fbd-item-reason' )
+			.append( $( '<span>' ).text( mw.msg( 'moodbar-action-reason' ) ) )
+			.append( $( '<input>' ).attr({'class':'fbd-action-reason', 'name':'fbd-action-reason'} ) )
+			.append( $( '<button>' ).attr( 'class', 'fbd-action-confirm' ).text( mw.msg( 'moodbar-feedback-action-confirm' ) ) )
+			.append( $( '<button>' ).attr( 'class', 'fbd-action-cancel' ).text( mw.msg( 'moodbar-feedback-action-cancel' ) ) )
+			.append( $( '<span>' ).attr( 'class', 'fbd-item-reason-msg' ) )
 			.append( $( '<div>' ).attr( 'class', 'fbd-item-reason-msg' ) );
 
-		var storedParams = params;
-		var $storedItem = $item;
+		storedParams = params;
+		$storedItem = $item;
 
 		$item.find( '.fbd-item-hide, .fbd-item-restore, .fbd-item-permalink' )
 			.empty();
@@ -318,23 +332,26 @@ jQuery( document ).ready( function ( $ ) {
 	 * @param $item jQuery item containing the .fbd-item
 	 */
 	function doAction( params, $item ) {
-		var item_id = $item.data( 'mbccontinue' ).split( '|' )[1];
+		var item_id, $spinner;
 
-		var errorHandler = function ( error_str ) {
+		function errorHandler ( error_str ) {
 			showItemError( $item, error_str );
-		};
-
-		var $spinner = $( '<span class="mw-ajax-loader">&nbsp;</span>' );
+		}
+		
+		item_id = $item.data( 'mbccontinue' ).split( '|' )[1];
+		$spinner = $( '<span class="mw-ajax-loader">&nbsp;</span>' );
 		$item.find( '.fbd-item-hide' ).empty().append( $spinner );
 
-		$.post( mw.util.wikiScript( 'api' ),
-			$.extend( {
+		$.ajax( {
+			type: 'POST',
+			url: mw.util.wikiScript( 'api' ),
+			data: $.extend( {
 				action: 'feedbackdashboard',
 				token: mw.user.tokens.get( 'editToken' ),
 				item: item_id,
 				format: 'json'
 			}, params ),
-			function ( response ) {
+			success: function ( response ) {
 				if ( response && response.feedbackdashboard ) {
 					if ( response.feedbackdashboard.result === 'success' ) {
 						reloadItem( $item );
@@ -346,8 +363,9 @@ jQuery( document ).ready( function ( $ ) {
 				} else {
 					errorHandler();
 				}
-			} )
-			.error( errorHandler );
+			},
+			error: errorHandler
+		} );
 	}
 
 	/**
@@ -367,6 +385,7 @@ jQuery( document ).ready( function ( $ ) {
 	 */
 	function hideItem( e ) {
 		var $item = $(this).closest( '.fbd-item' );
+
 		closeAllResponders(); // If any are open
 		confirmAction( { mbaction: 'hide' }, $item );
 		e.preventDefault();
@@ -379,8 +398,8 @@ jQuery( document ).ready( function ( $ ) {
 	function closeAllResponders() {
 
 		$( '.fbd-item' ).each( function () {
-
 			var $link = $( this ).find( '.fbd-respond-link' );
+
 			if ( $link.hasClass( 'responder-expanded' ) ) {
 
 				$link.find( '.fbd-item-response-expanded' )
@@ -403,6 +422,7 @@ jQuery( document ).ready( function ( $ ) {
 	 * @param e {jQuery.Event}
 	 */
 	function showResponseForm( e ) {
+		var termsLink, ula, inlineForm, $item;
 
 		if ( $(this).hasClass( 'responder-expanded' ) ) {
 
@@ -411,18 +431,18 @@ jQuery( document ).ready( function ( $ ) {
 		} else {
 
 			// Init terms of use link
-			var termsLink = mw.html.element ( 'a', {
-					'href': mw.msg( 'moodbar-response-url' ),
-					'title': mw.msg( 'moodbar-response-link' ),
-					'target': '_new'
-				}, mw.msg( 'moodbar-response-link' ) );
+			termsLink = mw.html.element ( 'a', {
+				href: mw.msg( 'moodbar-response-url' ),
+				title: mw.msg( 'moodbar-response-link' ),
+				target: '_blank'
+			}, mw.msg( 'moodbar-response-link' ) );
 
 			// ULA
-			var ula = mw.msg( 'moodbar-response-terms' )
+			ula = mw.msg( 'moodbar-response-terms' )
 				.replace ( /\$1/g, termsLink );
 
 			// Build form
-			var inlineForm = $( '<div>' ).attr( 'class', 'fbd-response-form' )
+			inlineForm = $( '<div>' ).attr( 'class', 'fbd-response-form' )
 				.append(
 					$( '<b>' ).text( mw.msg( 'moodbar-response-add' ) )
 				).append(
@@ -462,7 +482,8 @@ jQuery( document ).ready( function ( $ ) {
 				);
 
 			// Get the feedbackItem
-			var $item = $(this).closest( '.fbd-item' );
+			$item = $(this).closest( '.fbd-item' );
+
 			// Close any open responders prior to opening this one.
 			closeAllResponders();
 
@@ -650,51 +671,53 @@ jQuery( document ).ready( function ( $ ) {
 
 	// Handle response submit
 	$( '.fbd-response-submit' ).live( 'click', function () {
-			var $item = $(this).parent().parent();
-			var fbResponse = $item.find( '.fbd-response-text' ).val();
-			if ( fbResponse ) {
-				var	clientData = $.client.profile(),
-					item_id = $item.data( 'mbccontinue' ).split( '|' )[1],
-					resData = {
-						action: 'feedbackdashboardresponse',
-						useragent: clientData.name + '/' + clientData.versionNumber,
-						system: clientData.platform,
-						token: mw.user.tokens.get( 'editToken' ),
-						response: fbResponse,
-						feedback: item_id,
-						format: 'json'
-					};
+		var $item, fbResponse, clientData, item_id, resData, $responseStatus, $responseForm;
 
-				var $responseStatus = $( '<div>' ).attr( 'class', 'fbd-ajax-response' )
-					.append( $( '<span>' ).attr( 'class','mw-ajax-loader fbd-item-response-icon' ).html( '&nbsp;' ) )
-					.append( $( '<div>' )
-						.append( $( '<span>' ).attr( 'class', 'fbd-ajax-heading' ).text( mw.msg( 'response-ajax-action-head' ) ) )
-						.append( $( '<span>' ).attr( 'class', 'fbd-ajax-text' ).text( mw.msg( 'response-ajax-action-body' ) ) )
-				);
+		$item = $(this).parent().parent();
+		fbResponse = $item.find( '.fbd-response-text' ).val();
+		if ( fbResponse ) {
+			clientData = $.client.profile();
+			item_id = $item.data( 'mbccontinue' ).split( '|' )[1];
+			resData = {
+				action: 'feedbackdashboardresponse',
+				useragent: clientData.name + '/' + clientData.versionNumber,
+				system: clientData.platform,
+				token: mw.user.tokens.get( 'editToken' ),
+				response: fbResponse,
+				feedback: item_id,
+				format: 'json'
+			};
 
-				var $responseForm = $item.find( '.fbd-response-form' );
-				$responseForm.empty().append( $responseStatus );
+			 $responseStatus = $( '<div>' ).attr( 'class', 'fbd-ajax-response' )
+				.append( $( '<span>' ).attr( 'class','mw-ajax-loader fbd-item-response-icon' ).html( '&nbsp;' ) )
+				.append( $( '<div>' )
+					.append( $( '<span>' ).attr( 'class', 'fbd-ajax-heading' ).text( mw.msg( 'response-ajax-action-head' ) ) )
+					.append( $( '<span>' ).attr( 'class', 'fbd-ajax-text' ).text( mw.msg( 'response-ajax-action-body' ) ) )
+			);
 
-				// Send response
-				$.ajax( {
-					type: 'POST',
-					url: mw.util.wikiScript( 'api' ),
-					data: resData,
-					success: function (data) {
-							// If rejected
-							if ( data.error !== undefined ) {
-								responseMessage( $item, 'error', mw.msg( 'response-ajax-error-head' ), data.error.info );
-							} else if ( data.feedbackdashboardresponse !== undefined ) {
-								responseMessage( $item, 'success', mw.msg( 'response-ajax-success-head' ), mw.msg( 'response-ajax-success-body' ) );
-							}
-					},
-					error: function ( jqXHR, textStatus, errorThrown ) {
-							responseMessage( $item, 'error', mw.msg( 'response-ajax-error-head' ), mw.msg( 'response-ajax-error-body' ) );
-					},
-					dataType: 'json'
-				} );
+			$responseForm = $item.find( '.fbd-response-form' );
+			$responseForm.empty().append( $responseStatus );
 
-			}
+			// Send response
+			$.ajax( {
+				type: 'POST',
+				url: mw.util.wikiScript( 'api' ),
+				data: resData,
+				success: function (data) {
+						// If rejected
+						if ( data.error !== undefined ) {
+							responseMessage( $item, 'error', mw.msg( 'response-ajax-error-head' ), data.error.info );
+						} else if ( data.feedbackdashboardresponse !== undefined ) {
+							responseMessage( $item, 'success', mw.msg( 'response-ajax-success-head' ), mw.msg( 'response-ajax-success-body' ) );
+						}
+				},
+				error: function ( jqXHR, textStatus, errorThrown ) {
+						responseMessage( $item, 'error', mw.msg( 'response-ajax-error-head' ), mw.msg( 'response-ajax-error-body' ) );
+				},
+				dataType: 'json'
+			} );
+
+		}
 	});
 
 	$( '#fbd-filters' ).children( 'form' ).submit( function ( e ) {
@@ -712,31 +735,32 @@ jQuery( document ).ready( function ( $ ) {
 		loadComments( 'more' );
 	} );
 
-	$( '#fbd-filters-types input[type=checkbox]' ).click( function () {
+	$( '#fbd-filters-types input[type="checkbox"]' ).click( function () {
 		var types = getSelectedTypes();
 		if ( types.length === 0 ) { //check for 0 because onclick it will already have unchecked itself.
 			$(this).prop( 'checked', true);
 		}
 	});
 
-	//only allow one of the secondary filters to be checked
-	$( 'input[type=checkbox].fbd-filters-check' ).click(function () {
-		$( 'input[type=checkbox].fbd-filters-check' ).not( this ).prop( 'checked', false );
+	// Only allow one of the secondary filters to be checked
+	$fbdFiltersCheck = $( 'input.fbd-filters-check[type="checkbox"]' ).click(function () {
+		$fbdFiltersCheck.not( this ).prop( 'checked', false );
 	});
 
-	$( '#fbd-list' ).delegate( '.fbd-item', 'hover', function () {
-		$(this).toggleClass( 'fbd-hover' );
-	});
-
-	$( '#fbd-list' ).delegate( '.fbd-item', 'mouseleave', function () {
-		$(this).removeClass( 'fbd-hover' );
-	});
+	$( '#fbd-list' )
+		.delegate( '.fbd-item', 'hover', function () {
+			$(this).toggleClass( 'fbd-hover' );
+		})
+		.delegate( '.fbd-item', 'mouseleave', function () {
+			$(this).removeClass( 'fbd-hover' );
+		});
 
 	//zebra stripe leaderboard
 	$( '.fbd-leaderboard li:nth-child(even)' ).addClass( 'even' );
 
 	saveFormState();
-	var filterType = $( '#fbd-filters' ).children( 'form' ).data( 'filtertype' );
+
+	filterType = $( '#fbd-filters' ).children( 'form' ).data( 'filtertype' );
 	// If filtering already happened on the PHP side, don't load the form state from cookies
 	if ( filterType !== 'filtered' ) {
 		// Don't do an AJAX filter if we're on an ID view, or if the form is still blank after loadFromCookies()
