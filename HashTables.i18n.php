@@ -96,3 +96,10 @@ $messages['pms'] = array(
 	'hashtables-desc' => "Funsion ëd parser ch'a përmëtto ëd travajé con tàule ëd taj ant ël contest ëd na pàgina",
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'hashtables-desc' => 'Функции парсера, позволяющие работать в хеш-таблицами на странице содержания',
+);
+
