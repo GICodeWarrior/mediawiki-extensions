@@ -48,7 +48,7 @@ $messages['qqq'] = array(
 $messages['be-tarask'] = array(
 	'nobogususerpages-desc' => 'Забараняе стварэньне старонак неіснуючых удзельнікаў',
 	'badaccess-bogususerpage' => 'Удзельнік гэтай старонкі ўдзельніка не існуе. Вы ня маеце дазволу ствараць фіктыўныя старонкі ўдзельнікаў.',
-	'right-createbogususerpage' => 'стварэньне старонак ўдзельнікаў, не зарэгістраваных у {{GRAMMAR:месны|{{SITENAME}}}}',
+	'right-createbogususerpage' => 'стварэньне старонак ўдзельнікаў, не зарэгістраваных у гэтай вікі',
 );
 
 /** German (Deutsch)
