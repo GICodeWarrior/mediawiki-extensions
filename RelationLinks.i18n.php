@@ -93,9 +93,10 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'relationlinks-desc' => 'A gionta colegament relativ a la testà, che a peulo dovrà për navigassion e për SEO',
+	'relationlinks-desc' => "A gionta na liura relativa a l'antestassion, che a peul esse dovrà për la navigassion e për le sitassion",
 );
 
