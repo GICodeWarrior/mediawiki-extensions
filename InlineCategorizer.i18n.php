@@ -2160,6 +2160,7 @@ Stu fatte normalmende succede quanne 'a categorije ha state aggiunde a 'a pàgen
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'inlinecategorizer-desc' => 'JavaScript-модуль, позволяющий изменять, добавлять и удалять ссылки на категории прямо со страницы',
 	'inlinecategorizer-add-category' => 'Добавить категорию',
 	'inlinecategorizer-add-category-submit' => 'Добавить',
 	'inlinecategorizer-add-category-summary' => 'добавить категорию «$1»',
