@@ -111,8 +111,8 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 			$myResponseCheckbox = Xml::check( 'myresponse', $wgRequest->getCheck( 'myresponse' ),
 								array( 'id' => 'fbd-filters-my-response', 'value' => '1', 'class' => 'fbd-filters-check' ) );
 			
-			$myResponseFilter = '<label for="fbd-filters-my-response" id="fbd-filters-type-my-response-label" class="fbd-filters-label">' . 
-						$myResponseCheckbox . $myResponseMsg . '</label>';
+			$myResponseFilter = $myResponseCheckbox. '<label for="fbd-filters-my-response" id="fbd-filters-type-my-response-label" class="fbd-filters-label">' . 
+						$myResponseMsg . '</label>';
 		}
 
 		// Show unanswered filter
@@ -120,8 +120,8 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 		$showUnansweredCheckbox = Xml::check( 'showunanswered', $wgRequest->getCheck( 'showunanswered' ),
 							array( 'id' => 'fbd-filters-show-unanswered', 'value' => '1', 'class' => 'fbd-filters-check' ) );
 			
-		$showUnansweredFilter = '<label for="fbd-filters-show-unanswered" id="fbd-filters-type-show-unanswered-label" class="fbd-filters-label">' . 
-								$showUnansweredCheckbox . $showUnansweredMsg . '</label>';
+		$showUnansweredFilter = $showUnansweredCheckbox . '<label for="fbd-filters-show-unanswered" id="fbd-filters-type-show-unanswered-label" class="fbd-filters-label">' . 
+								$showUnansweredMsg . '</label>';
 
 		$leaderBoardElement = self::buildLeaderBoardElement();
 
@@ -599,7 +599,7 @@ HTML;
 		// Do the actual query
 		$desc = $backwards ? '' : ' DESC';
 		
-		$table     = array( 'moodbar_feedback', 'user' );
+		$table     = array( );
 		$option    = array( 'LIMIT' => $limit + 2, 'ORDER BY' => "mbf_timestamp$desc, mbf_id$desc" );
 		$tableJoin = array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) ); 
 		
@@ -611,7 +611,7 @@ HTML;
 					if ( !$wgUser->isAnon() ) {
 						$table[] = 'moodbar_feedback_response';
 						$option['GROUP BY'] = 'mbf_id';
-						$tableJoin['moodbar_feedback_response'] = array( 'INNER JOIN', 'mbf_id=mbfr_mbf_id' );
+						$conds[] = 'mbf_id=mbfr_mbf_id';
 						$conds['mbfr_user_id'] = $wgUser->getId();
 					}
 				break;
@@ -623,6 +623,9 @@ HTML;
 				break;
 			}
 		}
+		
+		$table[] = 'moodbar_feedback';
+		$table[] = 'user';
 		
 		$res = $dbr->select( $table, array(
 				'user_name', 'mbf_id', 'mbf_type',

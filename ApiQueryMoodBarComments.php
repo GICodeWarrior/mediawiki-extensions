@@ -11,7 +11,6 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 		$prop = array_flip( $params['prop'] );
 
 		// Build the query
-		$this->addTables( array( 'moodbar_feedback', 'user' ) );
 		$this->addJoinConds( array( 'user' => array( 'LEFT JOIN', 'user_id=mbf_user_id' ) ) );
 		$this->addFields( array( 'user_name', 'mbf_id', 'mbf_type', 'mbf_timestamp', 'mbf_user_id', 'mbf_user_ip',
 			'mbf_comment', 'mbf_hidden_state' ) );
@@ -42,7 +41,7 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 		if ( isset( $params['myresponse'] ) ) {
 			if ( !$wgUser->isAnon() ) {
 				$this->addTables( array( 'moodbar_feedback_response' ) );
-				$this->addJoinConds( array( 'moodbar_feedback_response' => array( 'INNER JOIN', 'mbf_id=mbfr_mbf_id' ) ) );
+				$this->addWhere( 'mbf_id=mbfr_mbf_id' );
 				$this->addWhereFld( 'mbfr_user_id', $wgUser->getId() );
 				$this->addOption( 'GROUP BY', 'mbf_id' );		
 			}
@@ -51,6 +50,8 @@ class ApiQueryMoodBarComments extends ApiQueryBase {
 			$this->addJoinConds( array( 'moodbar_feedback_response' => array( 'LEFT JOIN', 'mbf_id=mbfr_mbf_id' ) ) );
 			$this->addWhere( array( 'mbfr_id' => null ) );
 		}
+
+		$this->addTables( array( 'moodbar_feedback', 'user' ) );
 
 		if ( ! $wgUser->isAllowed( 'moodbar-admin' ) ) {
 			$this->addWhereFld( 'mbf_hidden_state', 0 );
