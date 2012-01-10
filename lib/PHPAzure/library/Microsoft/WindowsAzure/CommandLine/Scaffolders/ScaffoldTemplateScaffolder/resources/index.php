@@ -7,7 +7,7 @@
  * @command-handler-footer 
  * @command-handler-footer Optional $Name$Scaffolder footer information.
  */ 
-class $Name$Scaffolder
+class NameScaffolder/*$Name$Scaffolder*/
 	extends Microsoft_WindowsAzure_CommandLine_PackageScaffolder_PackageScaffolderAbstract
 {
 	/**
