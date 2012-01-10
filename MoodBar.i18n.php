@@ -157,6 +157,7 @@ For more information, please visit the $1.',
 	'moodbar-log-hide' => 'hid [[$1]]',
 	'moodbar-log-feedback' => 'MoodBar Feedback [[$1]]',
 	'moodbar-log-restore' => 'restored the visibility for [[$1]]',
+	'moodbar-log-reason' => '$1: $2',
         //Feedback Response
 	'moodbar-response-terms' => 'By submitting, you agree to transparency under these $1.',
 	'moodbar-response-link' => 'terms',
@@ -329,6 +330,14 @@ See also:
 	'moodbar-response-url' => '{{Optional}}
 
 Terms of use URL. Do not change this URL until a translation of the page itself exists.',
+	// Log types
+	'moodbar-log-name' => 'Feedback log name',
+	'moodbar-log-header' => 'Descriptive header text for Feedback log page.',
+	'moodbar-log-hide' => 'Log Action text for hiding feedback [[$1]] is link to feedback item',
+	'moodbar-log-feedback' => 'Log Action text for leaving feedback [[$1]] is link to feedback item',
+	'moodbar-log-restore' => 'Log Action text for restoring feedback [[$1]] is link to feedback item',
+	'moodbar-log-reason' => 'Text for log reason. $1 is moodbar type, $2 is moodbar comment',
+	//Feedback Dashboard Response 
 	'response-back-text' => 'Text for response preview back button',
 	'response-preview-text' => 'Text for preview response preview button',
 	'response-ajax-action-head' => 'Text for ajax status heading while request is being made',
