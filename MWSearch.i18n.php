@@ -660,6 +660,13 @@ $messages['vo'] = array(
 	'mwsearch-desc' => 'program: MWSearch',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'mwsearch-desc' => 'MWSearch צוגאָב',
+);
+
 /** Cantonese (粵語)
  * @author Shinjiman
  */
