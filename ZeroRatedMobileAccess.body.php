@@ -1,7 +1,7 @@
 <?php
 
 class ExtZeroRatedMobileAccess {
-	const VERSION = '0.0.6';
+	const VERSION = '0.0.7';
 
 	public static $renderZeroRatedLandingPage;
 	public static $renderZeroRatedBanner;
@@ -24,189 +24,192 @@ class ExtZeroRatedMobileAccess {
 	 * @return bool
 	 */
 	public function beforePageDisplayHTML( &$out, &$text ) {
-		global $wgRequest;
+		global $wgRequest, $wgConf, $wgDBname, $wgEnableZeroRatedMobileAccessTesting;
 		wfProfileIn( __METHOD__ );
+
+		list( $site, $lang ) = $wgConf->siteFromDB( $wgDBname );
+		if ( $site == 'wikipedia'  || $wgEnableZeroRatedMobileAccessTesting ) {
+
+			$xDevice = isset( $_SERVER['HTTP_X_DEVICE'] ) ? $_SERVER['HTTP_X_DEVICE'] : '';
+			self::$useFormat = $wgRequest->getText( 'useformat' );
+
+			if ( self::$useFormat !== 'mobile' && self::$useFormat !== 'mobile-wap' &&
+				!$xDevice ) {
+				wfProfileOut( __METHOD__ );
+				return true;
+			}
+
+			$output = Html::openElement( 'div',
+				array( 'id' => 'zero-landing-page' ) );
+
+			self::$renderZeroRatedLandingPage = $wgRequest->getFuzzyBool( 'renderZeroRatedLandingPage' );
+			self::$renderZeroRatedBanner = $wgRequest->getFuzzyBool( 'renderZeroRatedBanner' );
+			self::$renderZeroRatedRedirect = $wgRequest->getFuzzyBool( 'renderZeroRatedRedirect' );
+			self::$forceClickToViewImages = $wgRequest->getFuzzyBool( 'forceClickToViewImages' );
+			self::$acceptBilling = $wgRequest->getVal( 'acceptbilling' );
+			self::$title = $out->getTitle();
 		
-		$xDevice = isset( $_SERVER['HTTP_X_DEVICE'] ) ? $_SERVER['HTTP_X_DEVICE'] : '';
-		self::$useFormat = $wgRequest->getText( 'useformat' );
-		
-		if ( self::$useFormat !== 'mobile' && self::$useFormat !== 'mobile-wap' &&
-			!$xDevice ) {
-			wfProfileOut( __METHOD__ );
-			return true;
-		}
+			$carrier = $wgRequest->getHeader( 'HTTP_X_CARRIER' );
+			if ( $carrier !== '(null)' && $carrier ) {
+				self::$renderZeroRatedBanner = true;
+			}
 
-		$output = Html::openElement( 'div',
-			array( 'id' => 'zero-landing-page' ) );
+			if ( self::$title->getNamespace() == NS_FILE ) {
+				self::$isFilePage = true;
+			}
 
-		self::$renderZeroRatedLandingPage = $wgRequest->getFuzzyBool( 'renderZeroRatedLandingPage' );
-		self::$renderZeroRatedBanner = $wgRequest->getFuzzyBool( 'renderZeroRatedBanner' );
-		self::$renderZeroRatedRedirect = $wgRequest->getFuzzyBool( 'renderZeroRatedRedirect' );
-		self::$forceClickToViewImages = $wgRequest->getFuzzyBool( 'forceClickToViewImages' );
-		self::$acceptBilling = $wgRequest->getVal( 'acceptbilling' );
-		self::$title = $out->getTitle();
-		
-		$carrier = $wgRequest->getHeader( 'HTTP_X_CARRIER' );
-		if ( $carrier !== '(null)' && $carrier ) {
-			self::$renderZeroRatedBanner = true;
-		}
-
-		if ( self::$title->getNamespace() == NS_FILE ) {
-			self::$isFilePage = true;
-		}
-
-		if ( self::$acceptBilling === 'no' ) {
-			$targetUrl = $wgRequest->getVal( 'returnto' );
-			$out->redirect( $targetUrl, '301' );
-			$out->output();
-		}
-
-		if ( self::$acceptBilling === 'yes' ) {
-			$targetUrl = $wgRequest->getVal( 'returnto' );
-			if ( $targetUrl ) {
+			if ( self::$acceptBilling === 'no' ) {
+				$targetUrl = $wgRequest->getVal( 'returnto' );
 				$out->redirect( $targetUrl, '301' );
 				$out->output();
 			}
-		}
 
-		if ( self::$isFilePage && self::$acceptBilling !== 'yes' ) {
-			$acceptBillingYes = Html::rawElement( 'a',
-				array('href' => $wgRequest->appendQuery( 'renderZeroRatedBanner=true&acceptbilling=yes' ) ),
-				wfMsg( 'zero-rated-mobile-access-banner-text-data-charges-yes' ) );
-			$referrer = $wgRequest->getHeader( 'referer' );
-			$acceptBillingNo = Html::rawElement( 'a',
-				array('href' => $wgRequest->appendQuery( 'acceptbilling=no&returnto=' . urlencode( $referrer ) ) ),
-				wfMsg( 'zero-rated-mobile-access-banner-text-data-charges-no' ) );
-			$bannerText = Html::rawElement( 'h3',
-				array(	'id' => 'zero-rated-banner-text' ),
-					wfMsg( 'zero-rated-mobile-access-banner-text-data-charges', $acceptBillingYes, $acceptBillingNo ) );
-			$banner = Html::rawElement( 'div',
-				array(	'style' => 'display:none;',
-						'id' => 'zero-rated-banner-red' ),
-					$bannerText
-			);
-			$output .= $banner;
-			$out->clearHTML();
-			$out->setPageTitle( null );
-		} elseif ( self::$renderZeroRatedRedirect === true ) {
-			$returnto = $wgRequest->getVal( 'returnto' );
-			$acceptBillingYes = Html::rawElement( 'a',
-				array('href' => $wgRequest->appendQuery( 'renderZeroRatedBanner=true&acceptbilling=yes&returnto=' . urlencode( $returnto ) ) ),
-				wfMsg( 'zero-rated-mobile-access-banner-text-data-charges-yes' ) );
-			$referrer = $wgRequest->getHeader( 'referer' );
-			$acceptBillingNo = Html::rawElement( 'a',
-				array('href' => $wgRequest->appendQuery( 'acceptbilling=no&returnto=' . urlencode( $referrer ) ) ),
-				wfMsg( 'zero-rated-mobile-access-banner-text-data-charges-no' ) );
-			$bannerText = Html::rawElement( 'h3',
-				array(	'id' => 'zero-rated-banner-text' ),
-					wfMsg( 'zero-rated-mobile-access-banner-text-data-charges', $acceptBillingYes, $acceptBillingNo ) );
-			$banner = Html::rawElement( 'div',
-				array(	'style' => 'display:none;',
-						'id' => 'zero-rated-banner-red' ),
-					$bannerText
-			);
-			$output .= $banner;
-			$out->clearHTML();
-			$out->setPageTitle( null );
-		} elseif ( self::$renderZeroRatedBanner === true ) {
-			// a2enmod headers >>> .htaccess >>> RequestHeader set HTTP_CARRIER Verizon
-			self::$carrier = $this->lookupCarrier( $carrier );
-			$html = $out->getHTML();
-			$parsedHtml = $this->parseLinksForZeroQueryString( $html );
-			$out->clearHTML();
-			$out->addHTML( $parsedHtml );
-			$carrierLink = ( isset( self::$carrier['link'] ) ) ? self::$carrier['link'] : '';
-			$bannerText = Html::rawElement( 'h3',
-				array(	'id' => 'zero-rated-banner-text' ),
-					wfMsg( 'zero-rated-mobile-access-banner-text', $carrierLink ) );
-			$banner = Html::rawElement( 'div',
-				array(	'style' => 'display:none;',
-						'id' => 'zero-rated-banner' ),
-					$bannerText
-			);
-			$output .= $banner;
-		}
-		if ( self::$renderZeroRatedLandingPage === true ) {
-			$out->clearHTML();
-			$out->setPageTitle( null );
-			$output .= wfMsg( 'zero-rated-mobile-access-desc' );
-			$languageNames = Language::getLanguageNames();
-			$country = $wgRequest->getVal( 'country' );
-			$ip = $wgRequest->getVal( 'ip', wfGetIP() );
-			// Temporary hack to allow for testing on localhost
-			$countryIps = array(
-								'GERMANY' => '80.237.226.75',
-								'MEXICO' => '187.184.240.247',
-								'THAILAND' => '180.180.150.104',
-								'FRANCE' => '90.6.70.28',
-								);
-			$ip = ( strpos( $ip, '192.168.' ) === 0 ) ? $countryIps['THAILAND'] : $ip;
-            if ( IP::isValid( $ip ) ) {
-	            // If no country was passed, try to do GeoIP lookup
-                // Requires php5-geoip package
-				if ( !$country && function_exists( 'geoip_country_code_by_name' ) ) {
-					$country = geoip_country_code_by_name( $ip );
+			if ( self::$acceptBilling === 'yes' ) {
+				$targetUrl = $wgRequest->getVal( 'returnto' );
+				if ( $targetUrl ) {
+					$out->redirect( $targetUrl, '301' );
+					$out->output();
 				}
-				self::addDebugOutput( $country );
 			}
-			$languageOptions = self::createLanguageOptionsFromWikiText();
-			//self::$displayDebugOutput = true;
-			$languagesForCountry = ( isset( $languageOptions[self::getFullCountryNameFromCode( $country )] ) ) ?
-				$languageOptions[self::getFullCountryNameFromCode( $country )] : null;
-			//self::addDebugOutput( $languageOptions );
-			self::addDebugOutput( self::getFullCountryNameFromCode( $country ) );
-			self::addDebugOutput( $languagesForCountry );
-			self::writeDebugOutput();
 
-			if ( is_array( $languagesForCountry ) ) {
-				$sizeOfLanguagesForCountry = sizeof( $languagesForCountry );
-				for ( $i = 0; $i < $sizeOfLanguagesForCountry; $i++ ) {
-					$languageName = $languageNames[$languagesForCountry[$i]['language']];
-					$languageCode = $languagesForCountry[$i]['language'];
-					$output .= Html::element( 'hr' );
-					$output .= Html::element( 'h3',
-						array( 'id' => 'lang_' . $languageCode ),
-						$languageName
-					);
-					if ( $i == 0 ) {
-						$output .= self::getSearchFormHtml( $languageCode );
-					} else {
-						$languageUrl = sprintf( self::$formatMobileUrl, $languageCode );
-						$output .= Html::element( 'a',
-							array(	'id' => 'lang_' . $languageCode,
-							 		'href' => $languageUrl ),
-							wfMessage( 'zero-rated-mobile-access-home-page-selection',
-								$languageName )->inLanguage( $languageCode )
+			if ( self::$isFilePage && self::$acceptBilling !== 'yes' ) {
+				$acceptBillingYes = Html::rawElement( 'a',
+					array('href' => $wgRequest->appendQuery( 'renderZeroRatedBanner=true&acceptbilling=yes' ) ),
+					wfMsg( 'zero-rated-mobile-access-banner-text-data-charges-yes' ) );
+				$referrer = $wgRequest->getHeader( 'referer' );
+				$acceptBillingNo = Html::rawElement( 'a',
+					array('href' => $wgRequest->appendQuery( 'acceptbilling=no&returnto=' . urlencode( $referrer ) ) ),
+					wfMsg( 'zero-rated-mobile-access-banner-text-data-charges-no' ) );
+				$bannerText = Html::rawElement( 'h3',
+					array(	'id' => 'zero-rated-banner-text' ),
+						wfMsg( 'zero-rated-mobile-access-banner-text-data-charges', $acceptBillingYes, $acceptBillingNo ) );
+				$banner = Html::rawElement( 'div',
+					array(	'style' => 'display:none;',
+							'id' => 'zero-rated-banner-red' ),
+						$bannerText
+				);
+				$output .= $banner;
+				$out->clearHTML();
+				$out->setPageTitle( null );
+			} elseif ( self::$renderZeroRatedRedirect === true ) {
+				$returnto = $wgRequest->getVal( 'returnto' );
+				$acceptBillingYes = Html::rawElement( 'a',
+					array('href' => $wgRequest->appendQuery( 'renderZeroRatedBanner=true&acceptbilling=yes&returnto=' . urlencode( $returnto ) ) ),
+					wfMsg( 'zero-rated-mobile-access-banner-text-data-charges-yes' ) );
+				$referrer = $wgRequest->getHeader( 'referer' );
+				$acceptBillingNo = Html::rawElement( 'a',
+					array('href' => $wgRequest->appendQuery( 'acceptbilling=no&returnto=' . urlencode( $referrer ) ) ),
+					wfMsg( 'zero-rated-mobile-access-banner-text-data-charges-no' ) );
+				$bannerText = Html::rawElement( 'h3',
+					array(	'id' => 'zero-rated-banner-text' ),
+						wfMsg( 'zero-rated-mobile-access-banner-text-data-charges', $acceptBillingYes, $acceptBillingNo ) );
+				$banner = Html::rawElement( 'div',
+					array(	'style' => 'display:none;',
+							'id' => 'zero-rated-banner-red' ),
+						$bannerText
+				);
+				$output .= $banner;
+				$out->clearHTML();
+				$out->setPageTitle( null );
+			} elseif ( self::$renderZeroRatedBanner === true ) {
+				// a2enmod headers >>> .htaccess >>> RequestHeader set HTTP_CARRIER Verizon
+				self::$carrier = $this->lookupCarrier( $carrier );
+				$html = $out->getHTML();
+				$parsedHtml = $this->parseLinksForZeroQueryString( $html );
+				$out->clearHTML();
+				$out->addHTML( $parsedHtml );
+				$carrierLink = ( isset( self::$carrier['link'] ) ) ? self::$carrier['link'] : '';
+				$bannerText = Html::rawElement( 'h3',
+					array(	'id' => 'zero-rated-banner-text' ),
+						wfMsg( 'zero-rated-mobile-access-banner-text', $carrierLink ) );
+				$banner = Html::rawElement( 'div',
+					array(	'style' => 'display:none;',
+							'id' => 'zero-rated-banner' ),
+						$bannerText
+				);
+				$output .= $banner;
+			}
+			if ( self::$renderZeroRatedLandingPage === true ) {
+				$out->clearHTML();
+				$out->setPageTitle( null );
+				$output .= wfMsg( 'zero-rated-mobile-access-desc' );
+				$languageNames = Language::getLanguageNames();
+				$country = $wgRequest->getVal( 'country' );
+				$ip = $wgRequest->getVal( 'ip', wfGetIP() );
+				// Temporary hack to allow for testing on localhost
+				$countryIps = array(
+									'GERMANY' => '80.237.226.75',
+									'MEXICO' => '187.184.240.247',
+									'THAILAND' => '180.180.150.104',
+									'FRANCE' => '90.6.70.28',
+									);
+				$ip = ( strpos( $ip, '192.168.' ) === 0 ) ? $countryIps['THAILAND'] : $ip;
+	            if ( IP::isValid( $ip ) ) {
+		            // If no country was passed, try to do GeoIP lookup
+	                // Requires php5-geoip package
+					if ( !$country && function_exists( 'geoip_country_code_by_name' ) ) {
+						$country = geoip_country_code_by_name( $ip );
+					}
+					self::addDebugOutput( $country );
+				}
+				$languageOptions = self::createLanguageOptionsFromWikiText();
+				//self::$displayDebugOutput = true;
+				$languagesForCountry = ( isset( $languageOptions[self::getFullCountryNameFromCode( $country )] ) ) ?
+					$languageOptions[self::getFullCountryNameFromCode( $country )] : null;
+				//self::addDebugOutput( $languageOptions );
+				self::addDebugOutput( self::getFullCountryNameFromCode( $country ) );
+				self::addDebugOutput( $languagesForCountry );
+				self::writeDebugOutput();
+
+				if ( is_array( $languagesForCountry ) ) {
+					$sizeOfLanguagesForCountry = sizeof( $languagesForCountry );
+					for ( $i = 0; $i < $sizeOfLanguagesForCountry; $i++ ) {
+						$languageName = $languageNames[$languagesForCountry[$i]['language']];
+						$languageCode = $languagesForCountry[$i]['language'];
+						$output .= Html::element( 'hr' );
+						$output .= Html::element( 'h3',
+							array( 'id' => 'lang_' . $languageCode ),
+							$languageName
 						);
-						$output .= Html::element( 'br' );
+						if ( $i == 0 ) {
+							$output .= self::getSearchFormHtml( $languageCode );
+						} else {
+							$languageUrl = sprintf( self::$formatMobileUrl, $languageCode );
+							$output .= Html::element( 'a',
+								array(	'id' => 'lang_' . $languageCode,
+								 		'href' => $languageUrl ),
+								wfMessage( 'zero-rated-mobile-access-home-page-selection',
+									$languageName )->inLanguage( $languageCode )
+							);
+							$output .= Html::element( 'br' );
+						}
 					}
 				}
-			}
-			$output .= Html::element( 'hr' );
-			$output .= wfMsg( 'zero-rated-mobile-access-home-page-selection-text' );
-			$output .= Html::openElement( 'select',
-				array( 'id' => 'languageselection',
-					'onchange' => 'javascript:window.location = this.options[this.selectedIndex].value;',
-				)
-			);
-			$output .=	Html::element( 'option',
-				array( 'value' => '' ),
-				wfMsg( 'zero-rated-mobile-access-language-selection' )
-			);
-			foreach ( $languageNames as $languageCode => $languageName ) {
-				$output .=	Html::element( 'option',
-					array( 'value' => sprintf( self::$formatMobileUrl, $languageCode ) ),
-					$languageName
+				$output .= Html::element( 'hr' );
+				$output .= wfMsg( 'zero-rated-mobile-access-home-page-selection-text' );
+				$output .= Html::openElement( 'select',
+					array( 'id' => 'languageselection',
+						'onchange' => 'javascript:window.location = this.options[this.selectedIndex].value;',
+					)
 				);
+				$output .=	Html::element( 'option',
+					array( 'value' => '' ),
+					wfMsg( 'zero-rated-mobile-access-language-selection' )
+				);
+				foreach ( $languageNames as $languageCode => $languageName ) {
+					$output .=	Html::element( 'option',
+						array( 'value' => sprintf( self::$formatMobileUrl, $languageCode ) ),
+						$languageName
+					);
+				}
+				$output .= Html::closeElement( 'select' );
 			}
-			$output .= Html::closeElement( 'select' );
-		}
 
-		$output .= Html::closeElement( 'div' );
-		if ( $output != '<div id="zero-landing-page"></div>' ) {
-			$out->addHTML( $output );
+			$output .= Html::closeElement( 'div' );
+			if ( $output != '<div id="zero-landing-page"></div>' ) {
+				$out->addHTML( $output );
+			}
 		}
-
 		wfProfileOut( __METHOD__ );
 		return true;
 	}

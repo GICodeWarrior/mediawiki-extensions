@@ -39,6 +39,8 @@ foreach ( $autoloadClasses as $className => $classFilename ) {
 	$wgAutoloadClasses[$className] = $cwd . $classFilename . '.php';
 }
 
+$wgEnableZeroRatedMobileAccessTesting = false;
+
 $wgExtZeroRatedMobileAccess = new ExtZeroRatedMobileAccess();
 
 $wgHooks['BeforePageDisplay'][] = array( &$wgExtZeroRatedMobileAccess, 'beforePageDisplayHTML' );
