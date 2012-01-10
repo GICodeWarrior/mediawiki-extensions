@@ -60,7 +60,7 @@ function wfTalkHereAjaxEditor( $page, $section, $returnto ) {
 	$wgRequest = new FauxRequest( $args );
 	$wgTitle = $title;
 
-	$article = MediaWiki::articleFromTitle( $title, RequestContext::getMain() );
+	$article = Article::newFromTitle( $title, RequestContext::getMain() );
 	$editor = new TalkHereEditPage( $article );
 
 	//generate form

@@ -46,7 +46,7 @@ class TalkHereHooks {
 
 		$skin = $wgUser->getSkin();
 
-		$talkArticle = MediaWiki::articleFromTitle( $talk, RequestContext::getMain() );
+		$talkArticle = Article::newFromTitle( $talk, RequestContext::getMain() );
 
 		$wgOut->addHTML('<div class="talkhere" id="talkhere">');
 
