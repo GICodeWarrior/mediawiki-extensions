@@ -29,7 +29,7 @@ abstract class MBDashboardForm {
 		$output = $wgOut->getHTML();
 		$wgOut->clearHTML( );
 		$wgOut->addHTML( $oldText );
-		
+
 		if ( $result === true ) {
 			return true;
 		}

@@ -29,6 +29,17 @@ class ApiMoodBar extends ApiBase {
 
 		$result = array( 'result' => 'success' );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+
+		//add feedback log in recent changes
+		$this->logFeedback($params, $item->getProperty( 'id' ));
+	}
+
+	public function logFeedback( $params, $itemId ) {
+		$title = SpecialPage::getTitleFor( 'FeedbackDashboard', $itemId);
+		$reason = $params['type'] . ': ' . $params['comment']; 
+		$log = new LogPage( 'moodbar' );
+		$log->addEntry( 'feedback', $title, $reason );
+
 	}
 
 	public function needsToken() {

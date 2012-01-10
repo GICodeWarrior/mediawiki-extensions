@@ -63,6 +63,7 @@ $wgLogHeaders['moodbar'] = 'moodbar-log-header';
 $wgLogActions += array(
 	'moodbar/hide' => 'moodbar-log-hide',
 	'moodbar/restore' => 'moodbar-log-restore',
+	'moodbar/feedback' => 'moodbar-log-feedback'
 );
 
 // Jobs

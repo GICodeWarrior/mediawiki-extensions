@@ -167,6 +167,7 @@
 	min-height: 20em;
 	list-style: none;
 	list-style-image: none; /* ie 7 fix */
+	min-height: 500px;
 }
 
 .client-nojs #fbd-list-more {
