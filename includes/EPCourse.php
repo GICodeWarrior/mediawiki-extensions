@@ -62,7 +62,7 @@ class EPCourse extends EPDBObject {
 	 */
 	public function loadSummaryFields( $summaryFields = null ) {
 		if ( is_null( $summaryFields ) ) {
-			$summaryFields = array( 'students' );
+			$summaryFields = array( 'students', 'active' );
 		}
 		else {
 			$summaryFields = (array)$summaryFields;
@@ -85,6 +85,16 @@ class EPCourse extends EPDBObject {
 			else {
 				$fields['students'] = 0;
 			}
+		}
+
+		if ( in_array( 'active', $summaryFields ) ) {
+			$now = wfGetDB( DB_SLAVE )->addQuotes( wfTimestampNow() );
+
+			$fields['active'] = EPTerm::has( array(
+				'course_id' => $this->getId(),
+				'end >= ' . $now,
+				'start <= ' . $now,
+			) );
 		}
 
 		$this->setFields( $fields );
@@ -112,7 +122,7 @@ class EPCourse extends EPDBObject {
 		}
 
 		if ( $this->updateSummaries && $orgId !== false ) {
-			EPOrg::updateSummaryFields( array( 'terms', 'students', 'courses' ), array( 'id' => $orgId ) );
+			EPOrg::updateSummaryFields( array( 'terms', 'students', 'courses', 'active' ), array( 'id' => $orgId ) );
 		}
 
 		return $success;
@@ -126,7 +136,7 @@ class EPCourse extends EPDBObject {
 		$success = parent::insertIntoDB();
 
 		if ( $this->updateSummaries ) {
-			EPOrg::updateSummaryFields( 'courses', array( 'id' => $this->getField( 'org_id' ) ) );
+			EPOrg::updateSummaryFields( array( 'courses', 'active' ), array( 'id' => $this->getField( 'org_id' ) ) );
 		}
 
 		return $success;
@@ -144,7 +154,7 @@ class EPCourse extends EPDBObject {
 		if ( $this->updateSummaries && $success && $oldOrgId !== false && $oldOrgId !== $this->getField( 'org_id' ) ) {
 			$conds = array( 'id' => array( $oldOrgId, $this->getField( 'org_id' ) ) );
 			EPTerm::updateSummaryFields( 'org_id', array( 'course_id' => $this->getId() ) );
-			EPOrg::updateSummaryFields( array( 'terms', 'students', 'courses' ), $conds );
+			EPOrg::updateSummaryFields( array( 'terms', 'students', 'courses', 'active' ), $conds );
 		}
 
 		return $success;

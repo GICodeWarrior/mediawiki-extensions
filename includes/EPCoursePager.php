@@ -122,7 +122,7 @@ class EPCoursePager extends EPPager {
 					wfMsg( 'epcoursepager-yes' ) => '1',
 					wfMsg( 'epcoursepager-no' ) => '0',
 				),
-				'value' => '1',
+				'value' => '',
 			),
 		);
 	}

@@ -133,7 +133,8 @@ class EPTerm extends EPDBObject {
 		$success = parent::insertIntoDB();
 
 		if ( $success && $this->updateSummaries ) {
-			EPOrg::updateSummaryFields( 'terms', array( 'id' => $this->getField( 'org_id' ) ) );
+			EPOrg::updateSummaryFields( array( 'terms', 'active' ), array( 'id' => $this->getField( 'org_id' ) ) );
+			EPCourse::updateSummaryFields( 'active', array( 'id' => $this->getField( 'course_id' ) ) );
 		}
 
 		return $success;
@@ -156,7 +157,7 @@ class EPTerm extends EPDBObject {
 		
 		if ( $success && $this->updateSummaries ) {
 			EPCourse::updateSummaryFields( 'students', array( 'id' => $courseId ) );
-			EPOrg::updateSummaryFields( array( 'terms', 'students' ), array( 'id' => $orgId ) );
+			EPOrg::updateSummaryFields( array( 'terms', 'students', 'active' ), array( 'id' => $orgId ) );
 		}
 
 		if ( $success ) {
@@ -173,6 +174,7 @@ class EPTerm extends EPDBObject {
 	protected function updateInDB() {
 		if ( $this->updateSummaries ) {
 			$oldOrgId = $this->hasField( 'org_id' ) ? self::selectFieldsRow( 'org_id', array( 'id' => $this->getId() ) ) : false;
+			$oldCourseId = $this->hasField( 'course_id' ) ? self::selectFieldsRow( 'course_id', array( 'id' => $this->getId() ) ) : false;
 		}
 
 		if ( $this->hasField( 'course_id' ) ) {
@@ -185,9 +187,16 @@ class EPTerm extends EPDBObject {
 
 		$success = parent::updateInDB();
 
-		if ( $this->updateSummaries && $success && $oldOrgId !== false && $oldOrgId !== $this->getField( 'org_id' ) ) {
-			$conds = array( 'id' => array( $oldOrgId, $this->getField( 'org_id' ) ) );
-			EPOrg::updateSummaryFields( array( 'terms', 'students' ), $conds );
+		if ( $this->updateSummaries && $success ) {
+			if ( $oldOrgId !== false && $oldOrgId !== $this->getField( 'org_id' ) ) {
+				$conds = array( 'id' => array( $oldOrgId, $this->getField( 'org_id' ) ) );
+				EPOrg::updateSummaryFields( array( 'terms', 'students', 'active' ), $conds );
+			}
+
+			if ( $oldCourseId !== false && $oldCourseId !== $this->getField( 'org_id' ) ) {
+				$conds = array( 'id' => array( $oldCourseId, $this->getField( 'course_id' ) ) );
+				EPCourse::updateSummaryFields( array( 'active', 'students' ), $conds );
+			}
 		}
 
 		return $success;

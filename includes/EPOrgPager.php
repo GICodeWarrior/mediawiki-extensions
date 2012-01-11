@@ -134,7 +134,7 @@ class EPOrgPager extends EPPager {
 					wfMsg( 'eporgpager-yes' ) => '1',
 					wfMsg( 'eporgpager-no' ) => '0',
 				),
-				'value' => '1',
+				'value' => '',
 			),
 		);
 	}

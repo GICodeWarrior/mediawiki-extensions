@@ -76,7 +76,7 @@ class EPOrg extends EPDBObject {
 	 */
 	public function loadSummaryFields( $summaryFields = null ) {
 		if ( is_null( $summaryFields ) ) {
-			$summaryFields = array( 'courses', 'terms', 'mentors', 'students' );
+			$summaryFields = array( 'courses', 'terms', 'mentors', 'students', 'active' );
 		}
 		else {
 			$summaryFields = (array)$summaryFields;
@@ -119,6 +119,16 @@ class EPOrg extends EPDBObject {
 			else {
 				$fields['students'] = 0;
 			}
+		}
+
+		if ( in_array( 'active', $summaryFields ) ) {
+			$now = wfGetDB( DB_SLAVE )->addQuotes( wfTimestampNow() );
+
+			$fields['active'] = EPTerm::has( array(
+				'org_id' => $this->getId(),
+				'end >= ' . $now,
+				'start <= ' . $now,
+			) );
 		}
 
 		$this->setFields( $fields );
