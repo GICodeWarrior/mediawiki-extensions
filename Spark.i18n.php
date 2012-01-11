@@ -118,11 +118,12 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'spark-desc' => "A gionta na tichëtta <code><nowiki><spark /></nowiki></code> che a abìlita l'anseriment ëd mash-ups[http://km.aifb.kit.edu/sites/spark/ Spark]. La libreria spark a l'é stàita creà da Denny Vrandecic and Andreas Harth.",
-	'spark-missing-query' => 'It deuve specifiché na query an dovrand ël paràmetr "data-spark-query".',
+	'spark-desc' => "A gionta na tichëtta <code><nowiki><spark /></nowiki></code> che a abìlita l'anseriment ëd mash-ups[http://km.aifb.kit.edu/sites/spark/ Spark]. La biblioteca spark a l'é stàita creà da Denny Vrandecic e Andreas Harth.",
+	'spark-missing-query' => "A dev spessifiché n'arcesta an dovrand ël paràmetr «data-spark-query».",
 );
 
 /** Portuguese (Português)
