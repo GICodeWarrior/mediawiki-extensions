@@ -51,7 +51,7 @@ $messages['qqq'] = array(
 /** Japanese (日本語)
  * @author Patrick Reilly
  */
-$messages['ja'] = array (
+$messages['ja'] = array(
 	'zero-rated-mobile-access-desc' => 'ゼロ格モバイルアクセス',
 	'zero-rated-mobile-access-search' => '検索する',
 );
