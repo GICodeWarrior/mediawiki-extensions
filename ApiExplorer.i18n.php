@@ -205,13 +205,14 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'apiexplorer' => 'Explorer API',
-	'apiexplorer-desc' => "Pagina për esploré anterativament la documentassion ëd l'API ëd MediaWiki",
-	'apiexplorer-intro' => "Sta pagina a mosta documentassion për l'API corenta dla wiki. Për piasì sgnaca dzora a na funsion sota për vëdde pi anformassion a propòsit ëd che paràmetr a peulo esse dovrà an minca ciamà. Varda ëdcò [http://www.mediawiki.org/wiki/API:Main_page a documentassion general dl'API MediaWiki].",
-	'apiexplorer-loading' => 'Carié funsion...',
+	'apiexplorer-desc' => "Pàgina për esploré ëd fasson anterativa la documentassion ëd l'API ëd MediaWiki",
+	'apiexplorer-intro' => "Costa pàgina a smonla documentassion për l'API dla wiki atual. Për piasì, ch'a sgnaca dzora a na funsion sì-sota për vëdde pi d'anformassion a propòsit ëd che paràmetr a peulo esse dovrà an minca ciamà. Ch'a bèica ëdcò [http://www.mediawiki.org/wiki/API:Main_page la documentassion general dl'API MediaWiki].",
+	'apiexplorer-loading' => 'Cariament dle funsion...',
 );
 
 /** Russian (Русский)
