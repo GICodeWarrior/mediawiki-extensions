@@ -129,10 +129,11 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'sii-desc' => "A gionta n'ingres ëd figura che ciama figure da Wikipedia për [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Formolari Semàntich]",
+	'sii-desc' => "A gionta n'anseriment ëd figura che a pija soe figure da Wikipedia për ij [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Formolari Semàntich]",
 	'sii-imageinput-loading' => 'Cariament ëd la figura...',
 );
 
