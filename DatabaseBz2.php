@@ -26,57 +26,57 @@
 
 class DatabaseBz2 extends Database
 {
-    function select( $table, $fields, $conds='', $fname = 'Database::select', $options = array() )
-    {
-        $row = array();
-        $title = false;
-        if (isset($conds['page_title'])) {
-            $title = $conds['page_title'];
-            if ($conds['page_namespace'] && MWNamespace::getCanonicalName($conds['page_namespace']))
-              $title = MWNamespace::getCanonicalName($conds['page_namespace']).':'.$title;
-        }
+	function select( $table, $fields, $conds='', $fname = 'Database::select', $options = array() )
+	{
+		$row = array();
+		$title = false;
+		if (isset($conds['page_title'])) {
+			$title = $conds['page_title'];
+			if ($conds['page_namespace'] && MWNamespace::getCanonicalName($conds['page_namespace']))
+				$title = MWNamespace::getCanonicalName($conds['page_namespace']).':'.$title;
+		}
 
-        if ($title && ($table == 'page' || (is_array($table) && in_array('page', $table))))
-        {
-            if (preg_match('/Template:Pp-/i', $title))
-            return false;
+		if ($title && ($table == 'page' || (is_array($table) && in_array('page', $table))))
+		{
+			if (preg_match('/Template:Pp-/i', $title))
+			return false;
 
-            $textid = CachedStorage::fetchIdByTitle($title);
-            if (!$textid) {
-                $content = DumpReader::load_article($title);
-                if (!$content) {
-                    wfDebug('no content for '.$title);
-                    return false;
-                }
-                $textid = CachedStorage::set($title, $content);
-            }
-        } elseif (isset($conds['rev_id'])) {
-            $textid = $conds['rev_id'];
-        }
+			$textid = CachedStorage::fetchIdByTitle($title);
+			if (!$textid) {
+				$content = DumpReader::load_article($title);
+				if (!$content) {
+					wfDebug('no content for '.$title);
+					return false;
+				}
+				$textid = CachedStorage::set($title, $content);
+			}
+		} elseif (isset($conds['rev_id'])) {
+			$textid = $conds['rev_id'];
+		}
 
-        if (!isset($textid))
-            return $this->resultObject(array());
+		if (!isset($textid))
+			return $this->resultObject(array());
 
-        if ($table == 'page') {
-            // Given a page_title, get the id of text content.  For efficiency,
-            //    we fetch the text and store it by ID to access in case 2.
-            $row = array_fill_keys($fields, '');
-            $row['page_id'] = $textid;
-            $row['page_title'] = $title;
-            $row['page_latest'] = $textid;
-        }
-        elseif ($table == array('page', 'revision')) { 
-            // Redundantly return textid which is cache key to article wml.
-            $fields[] = 'rev_user';
-            $fields[] = 'rev_user_text';
-            $row = array_fill_keys($fields, '');
-            $row['rev_id'] = $textid;
-            $row['rev_text_id'] = $textid;
-        }
-        else { print_r($table); print_r($conds); }
+		if ($table == 'page') {
+			// Given a page_title, get the id of text content.  For efficiency,
+			//	we fetch the text and store it by ID to access in case 2.
+			$row = array_fill_keys($fields, '');
+			$row['page_id'] = $textid;
+			$row['page_title'] = $title;
+			$row['page_latest'] = $textid;
+		}
+		elseif ($table == array('page', 'revision')) { 
+			// Redundantly return textid which is cache key to article wml.
+			$fields[] = 'rev_user';
+			$fields[] = 'rev_user_text';
+			$row = array_fill_keys($fields, '');
+			$row['rev_id'] = $textid;
+			$row['rev_text_id'] = $textid;
+		}
+		else { print_r($table); print_r($conds); }
 
-        return $this->resultObject($row);
-    }
+		return $this->resultObject($row);
+	}
 
 
 ////////////////////////////////////////////////BOILERPLATE FOLLOWS
@@ -85,470 +85,469 @@ class DatabaseBz2 extends Database
 #------------------------------------------------------------------------------
 # Accessors
 #------------------------------------------------------------------------------
-    function failFunction( $function = NULL ) {
-        return null;
-    }
+	function failFunction( $function = NULL ) {
+		return null;
+	}
 
-    function setOutputPage( $out ) {
-        return null;
-    }
+	function setOutputPage( $out ) {
+		return null;
+	}
 
-    function debug( $debug = NULL ) {
-        return null;
-    }
+	function debug( $debug = NULL ) {
+		return null;
+	}
 
-    function bufferResults( $buffer = NULL ) {
-        return null;
-    }
+	function bufferResults( $buffer = NULL ) {
+		return null;
+	}
 
-    function ignoreErrors( $ignoreErrors = NULL ) {
-        return true;
-    }
+	function ignoreErrors( $ignoreErrors = NULL ) {
+		return true;
+	}
 
-    function trxLevel( $level = NULL ) {
-        return 0;
-    }
+	function trxLevel( $level = NULL ) {
+		return 0;
+	}
 
-    function errorCount( $count = NULL ) {
-        return 0;
-    }
+	function errorCount( $count = NULL ) {
+		return 0;
+	}
 
-    function getLBInfo( $name = NULL ) {
-        return true;
-    }
+	function getLBInfo( $name = NULL ) {
+		return true;
+	}
 
-    function setLBInfo( $name, $value = NULL ) {
-        return true;
-    }
+	function setLBInfo( $name, $value = NULL ) {
+		return true;
+	}
 
-    function cascadingDeletes() {
-        return false;
-    }
+	function cascadingDeletes() {
+		return false;
+	}
 
-    function cleanupTriggers() {
-        return false;
-    }
+	function cleanupTriggers() {
+		return false;
+	}
 
-    function strictIPs() {
-        return false;
-    }
+	function strictIPs() {
+		return false;
+	}
 
-    function realTimestamps() {
-        return false;
-    }
+	function realTimestamps() {
+		return false;
+	}
 
-    function implicitGroupby() {
-        return true;
-    }
+	function implicitGroupby() {
+		return true;
+	}
 
-    function implicitOrderby() {
-        return true;
-    }
+	function implicitOrderby() {
+		return true;
+	}
 
-    function searchableIPs() {
-        return false;
-    }
+	function searchableIPs() {
+		return false;
+	}
 
-    function functionalIndexes() {
-        return false;
-    }
+	function functionalIndexes() {
+		return false;
+	}
 
-    function lastQuery() {
-        return true;
-    }
-    function isOpen() {
-        return true;
-    }
+	function lastQuery() {
+		return true;
+	}
+	function isOpen() {
+		return true;
+	}
 
-    function setFlag( $flag ) {
-        return true;
-    }
+	function setFlag( $flag ) {
+		return true;
+	}
 
-    function clearFlag( $flag ) {
-        return true;
-    }
+	function clearFlag( $flag ) {
+		return true;
+	}
 
-    function getFlag( $flag ) {
-        return true;
-    }
+	function getFlag( $flag ) {
+		return true;
+	}
 
-    function getProperty( $name ) {
-        return true;
-    }
+	function getProperty( $name ) {
+		return true;
+	}
 
 
-    function __construct( $server = false, $user = false, $password = false, $dbName = false,
-        $failFunction = false, $flags = 0, $tablePrefix = 'get from global' ) {
-        null;
-    }
+	function __construct( $server = false, $user = false, $password = false, $dbName = false,
+		$failFunction = false, $flags = 0, $tablePrefix = 'get from global' ) {
+		null;
+	}
 
-    static function newFromParams( $server, $user, $password, $dbName, $failFunction = false, $flags = 0 ) {
-        return new Database( $server, $user, $password, $dbName, $failFunction, $flags );
-    }
+	static function newFromParams( $server, $user, $password, $dbName, $failFunction = false, $flags = 0 ) {
+		return new Database( $server, $user, $password, $dbName, $failFunction, $flags );
+	}
 
-    function open( $server, $user, $password, $dbName ) {
+	function open( $server, $user, $password, $dbName ) {
 //TODO test article load using TestDumpReader
-        return true;
-    }
-
-    function close() {
-        return true;
-    }
-
-    function reportConnectionError( $error = 'Unknown error' ) {
-        return null;
-    }
-
-    public function query( $sql, $fname = '', $tempIgnore = false ) {
-        return null;
-    }
-
-    function doQuery( $sql ) {
-        return true;
-    }
-
-    function reportQueryError( $error, $errno, $sql, $fname, $tempIgnore = false ) {
-        return null;
-    }
-
-
-    function prepare( $sql, $func = 'Database::prepare' ) {
-        return null;
-    }
-
-    function freePrepared( $prepared ) {
-        return null;
-    }
-
-    function execute( $prepared, $args = null ) {
-        return true;
-    }
-
-    function safeQuery( $query, $args = null ) {
-        return true;
-    }
-
-    function fillPrepared( $preparedQuery, $args ) {
-        return true;
-    }
-
-    function fillPreparedArg( $matches ) {
-        return true;
-    }
-
-    function freeResult( $res ) {
-        return null;
-    }
-
-    function fetchObject( $res ) {
-        // cast to object
-        if (!$res)
-        return false;
-
-        $array = $res->result;
-        if(!is_array($array)) {
-        return $array;
-        }
-        
-        $object = new stdClass();
-        if (is_array($array) && count($array) > 0) {
-          foreach ($array as $name=>$value) {
-         if (!empty($name)) {
-            $object->$name = $value;
-         }
-          }
-          return $object;
-        }
-        else {
-          return false;
-        }
-    }
-
-     function fetchRow( $res ) {
-        return null;
-    }
-
-    function numRows( $res ) {
-        return 0;
-    }
-
-    function numFields( $res ) {
-        return 0;
-    }
-
-    function fieldName( $res, $n ) {
-        return true;
-    }
-
-    function insertId() {
-        return null;
-    }
-
-    function dataSeek( $res, $row ) {
-        return true;
-    }
-
-    function lastErrno() {
-        return null;
-    }
+		return true;
+	}
+
+	function close() {
+		return true;
+	}
+
+	function reportConnectionError( $error = 'Unknown error' ) {
+		return null;
+	}
+
+	public function query( $sql, $fname = '', $tempIgnore = false ) {
+		return null;
+	}
+
+	function doQuery( $sql ) {
+		return true;
+	}
+
+	function reportQueryError( $error, $errno, $sql, $fname, $tempIgnore = false ) {
+		return null;
+	}
+
+
+	function prepare( $sql, $func = 'Database::prepare' ) {
+		return null;
+	}
+
+	function freePrepared( $prepared ) {
+		return null;
+	}
+
+	function execute( $prepared, $args = null ) {
+		return true;
+	}
+
+	function safeQuery( $query, $args = null ) {
+		return true;
+	}
+
+	function fillPrepared( $preparedQuery, $args ) {
+		return true;
+	}
+
+	function fillPreparedArg( $matches ) {
+		return true;
+	}
+
+	function freeResult( $res ) {
+		return null;
+	}
+
+	function fetchObject( $res ) {
+		// cast to object
+		if (!$res)
+		return false;
+
+		$array = $res->result;
+		if(!is_array($array)) {
+		return $array;
+		}
+		
+		$object = new stdClass();
+		if (is_array($array) && count($array) > 0) {
+			foreach ($array as $name=>$value) {
+				if (!empty($name)) {
+					$object->$name = $value;
+				}
+			}
+			return $object;
+		} else {
+			  return false;
+		}
+	}
+
+	function fetchRow( $res ) {
+		return null;
+	}
+
+	function numRows( $res ) {
+		return 0;
+	}
+
+	function numFields( $res ) {
+		return 0;
+	}
+
+	function fieldName( $res, $n ) {
+		return true;
+	}
+
+	function insertId() {
+		return null;
+	}
+
+	function dataSeek( $res, $row ) {
+		return true;
+	}
+
+	function lastErrno() {
+		return null;
+	}
 
-    function lastError() {
-        return null;
-    }
+	function lastError() {
+		return null;
+	}
 
-    function affectedRows() {
-        return 0;
-    }
+	function affectedRows() {
+		return 0;
+	}
 
-    function set( $table, $var, $value, $cond, $fname = 'Database::set' ) {
-        return null;
-    }
+	function set( $table, $var, $value, $cond, $fname = 'Database::set' ) {
+		return null;
+	}
 
-    function selectField( $table, $var, $cond='', $fname = 'Database::selectField', $options = array() ) {
-        return $this->fetchObject($this->select($table, array($var), $cond));
-    }
+	function selectField( $table, $var, $cond='', $fname = 'Database::selectField', $options = array() ) {
+		return $this->fetchObject($this->select($table, array($var), $cond));
+	}
 
-    function makeSelectOptions( $options ) {
-        return null;
-    }
+	function makeSelectOptions( $options ) {
+		return null;
+	}
 
-    function selectRow( $table, $vars, $conds, $fname = 'Database::selectRow', $options = array() ) {
-        return $this->fetchObject($this->select($table, $vars, $conds));
-    }
+	function selectRow( $table, $vars, $conds, $fname = 'Database::selectRow', $options = array() ) {
+		return $this->fetchObject($this->select($table, $vars, $conds));
+	}
 
-    function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
-        return 0;
-    }
-    
+	function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
+		return 0;
+	}
+	
 
-    static function generalizeSQL( $sql ) {
-        return null;
-    }
+	static function generalizeSQL( $sql ) {
+		return null;
+	}
 
-    function fieldExists( $table, $field, $fname = 'Database::fieldExists' ) {
-        return null;
-    }
+	function fieldExists( $table, $field, $fname = 'Database::fieldExists' ) {
+		return null;
+	}
 
-    function indexExists( $table, $index, $fname = 'Database::indexExists' ) {
-        return null;
-    }
+	function indexExists( $table, $index, $fname = 'Database::indexExists' ) {
+		return null;
+	}
 
-
-    function indexInfo( $table, $index, $fname = 'Database::indexInfo' ) {
-        return null;
-    }
-
-    function tableExists( $table ) {
-        return null;
-    }
-
-    function fieldInfo( $table, $field ) {
-        return null;
-    }
-
-    function fieldType( $res, $index ) {
-        return null;
-    }
-
-    function indexUnique( $table, $index ) {
-        return null;
-    }
-
-    function insert( $table, $a, $fname = 'Database::insert', $options = array() ) {
-        return null;
-    }
-
-    function makeUpdateOptions( $options ) {
-        return null;
-    }
-
-    function update( $table, $values, $conds, $fname = 'Database::update', $options = array() ) {
-        return null;
-    }
-
-    function makeList( $a, $mode = LIST_COMMA ) {
-        return null;
-    }
-
-    function selectDB( $db ) {
-        return null;
-    }
 
-    function tableName( $name ) {
-        return null;
-    }
+	function indexInfo( $table, $index, $fname = 'Database::indexInfo' ) {
+		return null;
+	}
 
-    public function tableNames() {
-        return null;
-    }
+	function tableExists( $table ) {
+		return null;
+	}
 
-    public function tableNamesN() {
-        return null;
-    }
+	function fieldInfo( $table, $field ) {
+		return null;
+	}
 
-    function tableNamesWithUseIndex( $tables, $use_index ) {
-        return null;
-    }
+	function fieldType( $res, $index ) {
+		return null;
+	}
 
-    function strencode( $s ) {
-        return true;
-    }
+	function indexUnique( $table, $index ) {
+		return null;
+	}
 
-    function addQuotes( $s ) {
-        return true;
-    }
+	function insert( $table, $a, $fname = 'Database::insert', $options = array() ) {
+		return null;
+	}
 
-    function escapeLike( $s ) {
-        return true;
-    }
+	function makeUpdateOptions( $options ) {
+		return null;
+	}
 
-    function nextSequenceValue( $seqName ) {
-        return null;
-    }
+	function update( $table, $values, $conds, $fname = 'Database::update', $options = array() ) {
+		return null;
+	}
 
-    function useIndexClause( $index ) {
-        return true;
-    }
+	function makeList( $a, $mode = LIST_COMMA ) {
+		return null;
+	}
 
-    function replace( $table, $uniqueIndexes, $rows, $fname = 'Database::replace' ) {
-        return null;
-    }
+	function selectDB( $db ) {
+		return null;
+	}
 
-    function deleteJoin( $delTable, $joinTable, $delVar, $joinVar, $conds, $fname = 'Database::deleteJoin' ) {
-        return null;
-    }
+	function tableName( $name ) {
+		return null;
+	}
 
-    function textFieldSize( $table, $field ) {
-        return null;
-    }
+	public function tableNames() {
+		return null;
+	}
 
-    function lowPriorityOption() {
-    }
+	public function tableNamesN() {
+		return null;
+	}
 
-    function delete( $table, $conds, $fname = 'Database::delete' ) {
-        return true;
-    }
+	function tableNamesWithUseIndex( $tables, $use_index ) {
+		return null;
+	}
 
-    function insertSelect( $destTable, $srcTable, $varMap, $conds, $fname = 'Database::insertSelect',
-        $insertOptions = array(), $selectOptions = array() )
-    {
-        return null;
-    }
+	function strencode( $s ) {
+		return true;
+	}
 
-    function limitResult($sql, $limit, $offset=false) {
-        return null;
-    }
+	function addQuotes( $s ) {
+		return true;
+	}
 
-    function limitResultForUpdate($sql, $num) {
-        return null;
-    }
+	function escapeLike( $s ) {
+		return true;
+	}
 
-    function conditional( $cond, $trueVal, $falseVal ) {
-        return null;
-    }
+	function nextSequenceValue( $seqName ) {
+		return null;
+	}
 
-    function wasDeadlock() {
-        return null;
-    }
+	function useIndexClause( $index ) {
+		return true;
+	}
 
-    function deadlockLoop() {
-        return null;
-    }
+	function replace( $table, $uniqueIndexes, $rows, $fname = 'Database::replace' ) {
+		return null;
+	}
 
-    function masterPosWait( $file, $pos, $timeout ) {
-        return null;
-    }
+	function deleteJoin( $delTable, $joinTable, $delVar, $joinVar, $conds, $fname = 'Database::deleteJoin' ) {
+		return null;
+	}
 
-    function getSlavePos() {
-        return null;
-    }
+	function textFieldSize( $table, $field ) {
+		return null;
+	}
 
-    function getMasterPos() {
-        return null;
-    }
+	function lowPriorityOption() {
+	}
 
-    function begin( $fname = 'Database::begin' ) {
-    }
+	function delete( $table, $conds, $fname = 'Database::delete' ) {
+		return true;
+	}
 
-    function commit( $fname = 'Database::commit' ) {
-    }
+	function insertSelect( $destTable, $srcTable, $varMap, $conds, $fname = 'Database::insertSelect',
+		$insertOptions = array(), $selectOptions = array() )
+	{
+		return null;
+	}
 
-    function rollback( $fname = 'Database::rollback' ) {
-    }
+	function limitResult($sql, $limit, $offset=false) {
+		return null;
+	}
 
-    function immediateBegin( $fname = 'Database::immediateBegin' ) {
-    }
+	function limitResultForUpdate($sql, $num) {
+		return null;
+	}
 
-    function immediateCommit( $fname = 'Database::immediateCommit' ) {
-    }
+	function conditional( $cond, $trueVal, $falseVal ) {
+		return null;
+	}
 
-    function timestamp( $ts=0 ) {
-    }
+	function wasDeadlock() {
+		return null;
+	}
 
-    function timestampOrNull( $ts = null ) {
-    }
+	function deadlockLoop() {
+		return null;
+	}
 
-    function resultObject( $result ) {
-        return new ResultWrapper($this, $result);
-    }
+	function masterPosWait( $file, $pos, $timeout ) {
+		return null;
+	}
 
-    function aggregateValue ($valuedata,$valuename='value') {
-    }
+	function getSlavePos() {
+		return null;
+	}
 
-    static function getSoftwareLink() {
-        return "[http://www.mysql.com/ MySQL]";
-    }
+	function getMasterPos() {
+		return null;
+	}
 
-    function getServerVersion() {
-    }
+	function begin( $fname = 'Database::begin' ) {
+	}
 
-    function ping() {
-        return true;
-    }
+	function commit( $fname = 'Database::commit' ) {
+	}
 
-    function getLag() {
-        return 0;
-    }
+	function rollback( $fname = 'Database::rollback' ) {
+	}
 
-    function getStatus($which="%") {
-        return true;
-    }
+	function immediateBegin( $fname = 'Database::immediateBegin' ) {
+	}
 
-    function maxListLen() {
-        return 0;
-    }
+	function immediateCommit( $fname = 'Database::immediateCommit' ) {
+	}
 
-    function encodeBlob($b) {
-        return $b;
-    }
+	function timestamp( $ts=0 ) {
+	}
 
-    function decodeBlob($b) {
-        return $b;
-    }
+	function timestampOrNull( $ts = null ) {
+	}
 
-    public function setTimeout( $timeout ) {
-    }
+	function resultObject( $result ) {
+		return new ResultWrapper($this, $result);
+	}
 
-    function sourceFile( $filename, $lineCallback = false, $resultCallback = false ) {
-        return null;
-    }
+	function aggregateValue ($valuedata,$valuename='value') {
+	}
 
-    function sourceStream( $fp, $lineCallback = false, $resultCallback = false ) {
-        return true;
-    }
+	static function getSoftwareLink() {
+		return "[http://www.mysql.com/ MySQL]";
+	}
 
+	function getServerVersion() {
+	}
 
-    protected function replaceVars( $ins ) {
-        return true;
-    }
+	function ping() {
+		return true;
+	}
 
-    protected function tableNameCallback( $matches ) {
-    }
+	function getLag() {
+		return 0;
+	}
 
-    /*
-     * Build a concatenation list to feed into a SQL query
-    */
-    function buildConcat( $stringList ) {
-        return true;
-    }
+	function getStatus($which="%") {
+		return true;
+	}
+
+	function maxListLen() {
+		return 0;
+	}
+
+	function encodeBlob($b) {
+		return $b;
+	}
+
+	function decodeBlob($b) {
+		return $b;
+	}
+
+	public function setTimeout( $timeout ) {
+	}
+
+	function sourceFile( $filename, $lineCallback = false, $resultCallback = false ) {
+		return null;
+	}
+
+	function sourceStream( $fp, $lineCallback = false, $resultCallback = false ) {
+		return true;
+	}
+
+
+	protected function replaceVars( $ins ) {
+		return true;
+	}
+
+	protected function tableNameCallback( $matches ) {
+	}
+
+	/*
+	 * Build a concatenation list to feed into a SQL query
+	*/
+	function buildConcat( $stringList ) {
+		return true;
+	}
 }
