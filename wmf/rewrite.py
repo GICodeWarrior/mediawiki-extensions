@@ -173,6 +173,15 @@ class WMFRewrite(object):
         # keep a copy of the original request so we can ask the scalers for it
         reqorig = req.copy()
 
+        # Containers have 4 components: project, language, zone, and shard.
+        # Shard is optional (and configurable).  If there's no zone in the URL,
+        # the zone is 'public'.  Project, language, and zone are turned into containers
+        # with the pattern proj-lang-local-zone (or proj-lang-local-zone.shard).
+        # Projects are wikipedia, wikinews, etc.
+        # Languages are en, de, fr, commons, etc.
+        # Zones are public, thumb, and temp.
+        # Shards are stolen from the URL and are 2 digits of hex.
+        # Examples:
         # Rewrite URLs of these forms (source, temp, and thumbnail files):
         # (a) http://upload.wikimedia.org/<proj>/<lang>/.*
         #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-public/.*
@@ -187,7 +196,7 @@ class WMFRewrite(object):
         match = re.match(r'^/(?P<proj>[^/]+)/(?P<lang>[^/]+)/((?P<zone>thumb|temp)/)?(?P<path>(archive/)?[0-9a-f]/(?P<shard>[0-9a-f]{2})/.+)$', req.path)
         if match:
             # Get the repo zone (if not provided that means "public")
-            zone = match.group('zone') if match.group('zone') else 'public'
+            zone = (match.group('zone') if match.group('zone') else 'public')
             # Get the object path relative to the zone (and thus container)
             obj = match.group('path') # e.g. "archive/a/ab/..."
 
