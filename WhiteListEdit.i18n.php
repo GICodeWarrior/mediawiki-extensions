@@ -3203,9 +3203,9 @@ $2',
 	'action-editwhitelist' => 'изменить белый список для существующих участников',
 	'action-restricttowhitelist' => 'редактировать и просматривать страницы только из белого списка',
 	'group-restricted' => 'Участники, ограниченные в правах',
-	'group-restricted-member' => 'Участник, ограниченный в правах',
+	'group-restricted-member' => '{{GENDER:$1|участник, ограниченный в правах|участница, ограниченная в правах}}',
 	'group-manager' => 'Управляющие',
-	'group-manager-member' => 'управляющий',
+	'group-manager-member' => '{{GENDER:$1|управляющий|управляющая}}',
 );
 
 /** Rusyn (Русиньскый)
