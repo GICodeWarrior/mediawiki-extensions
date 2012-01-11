@@ -188,10 +188,11 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'elm-easyref-desc' => "Gionté camp ëd pupup për mosté ël contnù dl'arferiment",
+	'elm-easyref-desc' => "Gionté un camp ëd test për smon-e ël contnù dl'arferiment",
 	'elm-easyref-ref' => 'Arferiment $1',
 	'elm-easyref-close' => 'Sara',
 );
