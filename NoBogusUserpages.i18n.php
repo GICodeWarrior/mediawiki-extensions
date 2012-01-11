@@ -48,7 +48,7 @@ $messages['qqq'] = array(
 $messages['be-tarask'] = array(
 	'nobogususerpages-desc' => 'Забараняе стварэньне старонак неіснуючых удзельнікаў',
 	'badaccess-bogususerpage' => 'Удзельнік гэтай старонкі ўдзельніка не існуе. Вы ня маеце дазволу ствараць фіктыўныя старонкі ўдзельнікаў.',
-	'right-createbogususerpage' => 'стварэньне старонак ўдзельнікаў, не зарэгістраваных у гэтай вікі',
+	'right-createbogususerpage' => 'стварэньне старонак незарэгістраваных ўдзельнікаў',
 );
 
 /** German (Deutsch)
@@ -132,11 +132,12 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'nobogususerpages-desc' => "A strens la creassion ëd pagine utent për coj utent ch'a esisto pa",
-	'badaccess-bogususerpage' => "L'utent dë sta pagina utent a esist pa. It l'has pa ij drit ëd creé na pagina utent bogus.",
-	'right-createbogususerpage' => "Crea pagine utent për utent ch'a son pa registrà dzora a sta wiki.",
+	'nobogususerpages-desc' => 'A rëstrenz la creassion ëd pàgine utent për le quaj a esist gnun utent',
+	'badaccess-bogususerpage' => "L'utent dë sta pàgina utent a esist pa. Chiel a l'ha pa ij drit ëd creé na pàgina utent fantasma.",
+	'right-createbogususerpage' => "Creé dle pàgine utent për dj'utent ch'a son pa registrà dzora a sta wiki.",
 );
 
