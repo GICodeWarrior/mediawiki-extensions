@@ -413,8 +413,7 @@ jQuery( document ).ready( function ( $ ) {
 				$( '.fbd-response-preview, .fbd-response-submit' ).removeProp( 'disabled' );
 				$( this ).find( '.fbd-response-form' ).remove();
 			}
-			//remove ConcurrencyToolTip if any
-			$( this ).find( '.fbd-tooltip-overlay-wrap').remove();
+			
 		});
 	}
 
@@ -540,17 +539,6 @@ jQuery( document ).ready( function ( $ ) {
 					wikitext = wikitext.replace( /~{3,5}/g, '' ) + "\n\n~~~~"; // Remove and add signature for
 					parseWikiText( $item, wikitext );
 				});
-				
-				//run concurrency check
-				$.concurrency.check( {
-					ccaction: 'checkout',
-					resourcetype: 'moodbar-feedback-response',
-					record: $item.data( 'mbccontinue' ).split( '|' )[1]
-				}, function( data ){
-					if( data && data.concurrency.result == 'failure' ) { //checkout failed, show tooltip
-						loadConcurrencyToolTip($item);
-					}
-				} );
 		}		
 		e.preventDefault();
 	}
@@ -635,38 +623,6 @@ jQuery( document ).ready( function ( $ ) {
 		setTimeout( function () {
 			reloadItem( $el, true );
 		}, 2000);
-	}
-
-	/**
-	 * Display tooltip for response concurrency notification
-	 * @param $item Feedback item
-	*/
-	function loadConcurrencyToolTip($item) {
-		var $tooltip = $('<div>').attr('class', 'fbd-tooltip-overlay-wrap')
-				.append(
-				$('<div>').attr('class', 'fbd-tooltip-overlay')
-				.append(
-					$('<div>').attr('class', 'fbd-tooltip-pointy')
-				).append(
-					$('<div>').attr('class', 'fbd-tooltip-title')
-						.text( mw.msg( 'response-concurrency-notification' ) ) 
-						.prepend(
-							$('<span>').attr('class', 'fbd-tooltip-close').text('X')	
-						)
-				)
-		);
-		$item.find( '.fbd-item-response' ).append( $tooltip );
-		// Close event, closure remembers object
-		$( '.fbd-tooltip-close' )
-			.live( 'click' , function () {
-				$tooltip.remove();
-			} );
-		setTimeout( function() {
-			$tooltip.fadeOut( function(){
-				$tooltip.remove();
-			} );
-		}, 1500 );
-
 	}
 
 	// On-load stuff
