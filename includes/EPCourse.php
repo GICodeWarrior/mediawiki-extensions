@@ -190,7 +190,7 @@ class EPCourse extends EPDBObject {
 		$options = array();
 		
 		foreach ( $courses as /* EPCourse */ $course ) {
-			$options[$course->getField( 'name' )] = $course->getId(); 
+			$options[$course->getField( 'name' )] = (string)$course->getId();
 		}
 		
 		return $options;
@@ -275,11 +275,11 @@ class EPCourse extends EPDBObject {
 		$out->addHTML( Html::element( 'label', array( 'for' => 'neworg' ), wfMsg( 'ep-courses-neworg' ) ) );
 		
 		$out->addHTML( '&#160;' );
-		
+
 		$select = new XmlSelect(
 			'neworg',
 			'neworg',
-			array_key_exists( 'org', $args ) ? $args['org'] : false
+			array_key_exists( 'org', $args ) ? (string)$args['org'] : false
 		);
 		
 		$select->addOptions( EPOrg::getOrgOptions( EPOrg::getEditableOrgs( $context->getUser() ) ) );

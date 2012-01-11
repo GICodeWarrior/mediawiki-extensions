@@ -68,6 +68,12 @@ class SpecialInstitution extends SpecialEPPage {
 				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-institution-courses' ) ) );
 				
 				EPCourse::displayPager( $this->getContext(), array( 'org_id' => $org->getId() ) );
+
+				if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
+					$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-institution-add-course' ) ) );
+
+					EPCourse::displayAddNewControl( $this->getContext(), array( 'org' => $org->getId() ) );
+				}
 			}
 		}
 	}

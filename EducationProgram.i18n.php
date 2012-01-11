@@ -225,6 +225,7 @@ $messages['en'] = array(
 	'specialinstitution-summary-city' => 'City',
 	'specialinstitution-summary-country' => 'Country',
 	'ep-institution-nav-edit' => 'Edit this institution',
+	'ep-institution-add-course' => 'Add a course',
 
 	// Special:Course
 	'ep-course-title' => 'Course: $1',
@@ -235,6 +236,7 @@ $messages['en'] = array(
 	'specialcourse-summary-org' => 'Institution',
 	'ep-course-description' => 'Description',
 	'ep-course-nav-edit' => 'Edit this course',
+	'ep-course-add-term' => 'Add a term',
 
 	// Special:Term
 	'ep-term-title' => 'Term: $1',

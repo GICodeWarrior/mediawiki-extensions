@@ -72,6 +72,12 @@ class SpecialCourse extends SpecialEPPage {
 				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-course-terms' ) ) );
 				
 				EPTerm::displayPager( $this->getContext(), array( 'course_id' => $course->getId() ) );
+
+				if ( $course->useCanManage( $this->getUser() ) ) {
+					$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-course-add-term' ) ) );
+
+					EPCourse::displayAddNewControl( $this->getContext(), array( 'course' => $course->getId() ) );
+				}
 			}
 		}
 	}
