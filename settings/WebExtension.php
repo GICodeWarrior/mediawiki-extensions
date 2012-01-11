@@ -196,14 +196,14 @@ class WebExtension {
 		$ret = '<fieldset><legend>' . htmlspecialchars( $this->mName ) . '</legend>';
 		if ( count( $errors = $this->checkSettingsDependencies() ) ) {
 			$ret .= "<span class=\"errorbox\">";
-			$ret .= wfMsgExt( 'configure-ext-settings-dep-errors', array( 'parseinline' ), count( $errors ) );
+			$ret .= wfMessage( 'configure-ext-settings-dep-errors', count( $errors ) )->parse();
 			$ret .= "<ul>\n";
 			foreach ( $errors as $err ) {
 				list( $setting, $req, $cur ) = $err;
 				$setting = '$'.$setting;
 				$req = self::prettifyForDisplay( $req );
 				$cur = self::prettifyForDisplay( $cur );
-				$ret .= '<li>' . wfMsgExt( 'configure-ext-settings-dep-error', array( 'parseinline' ), $setting, $req, $cur ) . "</li>\n";
+				$ret .= '<li>' . wfMessage( 'configure-ext-settings-dep-error', $setting, $req, $cur )->parse() . "</li>\n";
 			}
 			return $ret . "</ul>\n</span>\n</fieldset>";
 		}
@@ -211,11 +211,11 @@ class WebExtension {
 		$warnings = array();
 
 		if ( $this->mDbChange ) {
-			$warnings[] = wfMsgExt( 'configure-ext-schemachange', array( 'parseinline' ) );
+			$warnings[] = wfMessage( 'configure-ext-schemachange' )->parse();
 		}
 		if ( count( $this->mExtensionsDependencies ) ) {
 			global $wgLang;
-			$warnings[] = wfMsgExt( 'configure-ext-ext-dependencies', array( 'parseinline' ), $wgLang->listToText( $this->mExtensionsDependencies ), count( $this->mExtensionsDependencies ) );
+			$warnings[] = wfMessage( 'configure-ext-ext-dependencies', $wgLang->listToText( $this->mExtensionsDependencies ), count( $this->mExtensionsDependencies ) )->parse();
 		}
 
 		if ( count( $warnings ) ) {
@@ -230,20 +230,20 @@ class WebExtension {
 			$ret .= "</span><br clear=\"left\" />\n";
 		}
 
-		$use = wfMsgExt( 'configure-ext-use', array( 'parseinline' ) );
+		$use = wfMessage( 'configure-ext-use' )->parse();
 		$ret .= "<h2>{$use}</h2>\n";
 		$ret .= "<table class=\"configure-table configure-table-ext\"><tr><td>\n";
 		$checkName = $this->getCheckName();
-		$ret .= Xml::checkLabel( wfMsg( 'configure-ext-use-extension' ), $checkName, $checkName, $this->isActivated() );
+		$ret .= Xml::checkLabel( wfMessage( 'configure-ext-use-extension' )->text(), $checkName, $checkName, $this->isActivated() );
 		$ret .= "</td></tr>\n";
 		if ( !empty( $this->mDoc ) ) {
 			$ret .= "<tr><td>\n";
-			$ret .= '<p>' . Xml::element( 'a', array( 'href' => $this->mDoc ), wfMsg( 'configure-ext-doc' ) ) . "</p>\n";
+			$ret .= '<p>' . Xml::element( 'a', array( 'href' => $this->mDoc ), wfMessage( 'configure-ext-doc' )->text() ) . "</p>\n";
 			$ret .= "</td></tr>";
 		}
 		$ret .= "</table>\n";
 		if ( count( $this->mSettings ) ) {
-			$settings = wfMsgExt( 'configure-ext-settings', array( 'parseinline' ) );
+			$settings = wfMessage( 'configure-ext-settings' )->parse();
 			$ret .= "<h2>{$settings}</h2>\n";
 			$ret .= "<table class=\"configure-table\">\n";
 			foreach ( $this->mSettings as $name => $type ) {
