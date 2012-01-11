@@ -157,15 +157,15 @@ class WMFRewrite(object):
     def __call__(self, env, start_response):
       #try: commented-out while debugging so you can see where stuff happened.
         req = webob.Request(env)
-        # PUT requests never need rewriting.
-        if req.method == 'PUT':
+        # End-users should only do GET/HEAD, nothing else needs a rewrite
+        if req.method != 'GET' and req.method != 'HEAD':
             return self.app(env, start_response)
 
-        # double (or triple, etc.) slashes in the URL should be ignored; collapse them. fixes bug 32864
+        # Double (or triple, etc.) slashes in the URL should be ignored; collapse them. fixes bug 32864
         while(req.path_info != req.path_info.replace('//', '/')):
             req.path_info = req.path_info.replace('//', '/')
 
-        # if it already has AUTH, presume that it's good. #07. fixes bug 33620
+        # If it already has AUTH, presume that it's good. #07. fixes bug 33620
         hasauth = re.search('/AUTH_[0-9a-fA-F]{32}/', req.path)
         if req.path.startswith('/auth') or hasauth:
             return self.app(env, start_response)
@@ -186,7 +186,7 @@ class WMFRewrite(object):
         #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-thumb/temp/.*
         # (f) http://upload.wikimedia.org/<proj>/<lang>/temp/.*
         #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-temp/.*
-        match = re.match(r'^/(?P<proj>[^/]+)/(?P<lang>[^/]+)/(?P<zone>(thumb|temp)/)?(?P<path>((temp|archive)/)?[0-9a-f]/(?P<shard>[0-9a-f]{2})/.+)$', req.path)
+        match = re.match(r'^/(?P<proj>[^/]+)/(?P<lang>[^/]+)/((?P<zone>thumb|temp)/)?(?P<path>((temp|archive)/)?[0-9a-f]/(?P<shard>[0-9a-f]{2})/.+)$', req.path)
         if match:
             # Get the repo zone (if not provided that means "public")
             zone = match.group('zone') if match.group('zone') else 'public'
