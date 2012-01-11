@@ -112,7 +112,6 @@ class ExtZeroRatedMobileAccess {
 				$out->clearHTML();
 				$out->setPageTitle( null );
 			} elseif ( self::$renderZeroRatedBanner === true ) {
-				// a2enmod headers >>> .htaccess >>> RequestHeader set HTTP_CARRIER Verizon
 				self::$carrier = $this->lookupCarrier( $carrier );
 				if ( isset( self::$carrier['name'] ) ) {
 					$html = $out->getHTML();
