@@ -112,7 +112,7 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 								array( 'id' => 'fbd-filters-my-response', 'value' => '1', 'class' => 'fbd-filters-check' ) );
 			
 			$myResponseFilter = $myResponseCheckbox. '<label for="fbd-filters-my-response" id="fbd-filters-type-my-response-label" class="fbd-filters-label">' . 
-						$myResponseMsg . '</label>';
+						$myResponseMsg . '</label><br class="fbd-clearfix" />';
 		}
 
 		// Show unanswered filter
@@ -121,7 +121,7 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 							array( 'id' => 'fbd-filters-show-unanswered', 'value' => '1', 'class' => 'fbd-filters-check' ) );
 			
 		$showUnansweredFilter = $showUnansweredCheckbox . '<label for="fbd-filters-show-unanswered" id="fbd-filters-type-show-unanswered-label" class="fbd-filters-label">' . 
-								$showUnansweredMsg . '</label>';
+								$showUnansweredMsg . '</label><br class="fbd-clearfix" />';
 
 		$leaderBoardElement = self::buildLeaderBoardElement();
 

@@ -36,6 +36,9 @@
 	border: none;
 }
 
+.fbd-filters-check {
+	float: left;
+}
 .fbd-filters-label {
 	display: inline;
 	margin: 0.5em 0 0 0;
@@ -123,7 +126,7 @@
 .fbd-tooltip-overlay-wrap {
 	width: 285px;
 	position: absolute;
-	left: 7em;
+	left: 1em;
 	top: 5.25em;
 	background: #ff9933;
 	padding: 2px;
@@ -487,4 +490,7 @@
 .red-bold {
 	font-weight: bold;
 	color: #CC0000;
+}
+.fbd-clearfix {
+	clear: both;
 }
