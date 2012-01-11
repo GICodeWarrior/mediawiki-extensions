@@ -173,47 +173,35 @@ class WMFRewrite(object):
         # keep a copy of the original request so we can ask the scalers for it
         reqorig = req.copy()
 
-        # match these two URL forms (source files and thumbnails):
-        # http://upload.wikimedia.org/<proj>/<lang>/.*
-        # http://upload.wikimedia.org/<proj>/<lang>/thumb/.*
-        # example:
-        # http://upload.wikimedia.org/wikipedia/commons/a/aa/000_Finlanda_harta.PNG
-        # http://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/000_Finlanda_harta.PNG/75px-000_Finlanda_harta.PNG
-        # http://upload.wikimedia.org/wikipedia/commons/thumb/archive/b/b6/20101108115418!Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg/100px-Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg
-        match = re.match(r'/(?P<proj>[^/]+?)/(?P<lang>[^/]+?)/(?P<thumb>thumb/)?(?P<archive>(temp|archive)/)?(?P<shard>[0-9a-f]/[0-9a-f]{2}/)?(?P<path>.*)', req.path)
+        # Rewrite URLs of these forms (source, temp, and thumbnail files):
+        # (a) http://upload.wikimedia.org/<proj>/<lang>/.*
+        #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-public/.*
+        # (b) http://upload.wikimedia.org/<proj>/<lang>/archive/.*
+        #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-public/archive.*
+        # (c) http://upload.wikimedia.org/<proj>/<lang>/thumb/.*
+        #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-thumb/.*
+        # (d) http://upload.wikimedia.org/<proj>/<lang>/thumb/archive/.*
+        #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-thumb/archive/.*
+        # (e) http://upload.wikimedia.org/<proj>/<lang>/thumb/temp/.*
+        #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-thumb/temp/.*
+        # (f) http://upload.wikimedia.org/<proj>/<lang>/temp/.*
+        #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-temp/.*
+        match = re.match(r'^/(?P<proj>[^/]+)/(?P<lang>[^/]+)/(?P<zone>(thumb|temp)/)?(?P<path>((temp|archive)/)?[0-9a-f]/(?P<shard>[0-9a-f]{2})/.+)$', req.path)
         if match:
-            # Our target URL is as follows (example):
-            # https://alsted.wikimedia.org:8080/v1/AUTH_6790933748e741268babd69804c6298b/wikipedia-en-25/Machinesmith.png
-            # http://msfe/v1/AUTH_6790933748e741268babd69804c6298b/wikipedia-commons-aa/000_Finlanda_harta.PNG
-            # http://mfse/v1/AUTH_6790933748e741268babd69804c6298b/wikipedia-commons-thumb-aa/000_Finlanda_harta.PNG/75px-000_Finlanda_harta.PNG
+            # Get the repo zone (if not provided that means "public")
+            zone = match.group('zone') if match.group('zone') else 'public'
+            # Get the object path relative to the zone (and thus container)
+            obj = match.group('path') # e.g. "archive/a/ab/..."
 
-            # turn slashes in the container name into hyphens
-            container = "%s-%s" % (match.group('proj'), match.group('lang')) #02
-            thumb = match.group('thumb')
-            arch = match.group('archive')
-            shard = match.group('shard')
-            obj = match.group('path')
-            # include the thumb in the container.
-            if thumb: #03
-                container += "-thumb"
-
-            # only pull out shard if we're supposed to shard this container
+            # Get the per-project "conceptual" container name, e.g. "<proj><lang><repo><zone>"
+            container = "%s-%s-local-%s" % (match.group('proj'), match.group('lang'), zone) #02/#03
+            # Add 2-digit shard to the container if it is supposed to be sharded.
+            # We may thus have an "actual" container name like "<proj><lang><repo><zone>.<shard>"
             if ( (self.shard_containers == 'all') or \
-                 ((self.shard_containers == 'some') and (container in self.shard_container_list))):
-                if shard:
-                    #add only the 2-digit shard to the container name
-                    container += ".%s" % shard[2:4]
-            if arch:
-                # for urls that go /wiki/thumb/archive/a/ab/path, the container is wiki-thumb-ab and the obj is archive/path
-                # aka pull the shard into the container if necessary but the string 'archive' or 'temp' goes into the object.
-                obj = "%s%s" % (arch, obj)
+                 ((self.shard_containers == 'some') and (container in self.shard_container_list)) ):
+                container += ".%s" % match.group('shard')
 
-            if not obj:
-                # don't let them list the contents of the container (it's CRAZY huge) #08
-                resp = webob.exc.HTTPForbidden('No container listing')
-                return resp(env, start_response)
-
-            # save a url with just the account name in it.
+            # Save a url with just the account name in it.
             req.path_info = "/v1/%s" % (self.account)
             port = self.bind_port
             req.host = '127.0.0.1:%s' % port
@@ -248,8 +236,6 @@ class WMFRewrite(object):
         else:
             resp = webob.exc.HTTPBadRequest('Regexp failed: "%s"' % (req.path)) #11
             return resp(env, start_response)
-      #except:
-        #return webob.exc.HTTPNotFound('Internal error')(env, start_response)
 
 def filter_factory(global_conf, **local_conf):
     conf = global_conf.copy()
