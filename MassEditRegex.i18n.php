@@ -1329,7 +1329,7 @@ Ij valor ëd rimpiassadura a dovrìo nen esse trucà.",
 	'masseditregex-badregex' => 'Regex pa bon-a:',
 	'masseditregex-editfailed' => 'Modìfica falìa:',
 	'masseditregex-tooltip-execute' => 'Fà sti cangiament-sì a minca pàgina',
-	'right-masseditregex' => "Rimpiassa ij contnù ëd pagina an dovrand n'espression regolar",
+	'right-masseditregex' => "Rampiassé ij contnù ëd la pàgina an dovrand d'espression regolar",
 );
 
 /** Pashto (پښتو)
