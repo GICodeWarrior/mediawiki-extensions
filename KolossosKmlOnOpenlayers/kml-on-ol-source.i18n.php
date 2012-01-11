@@ -484,9 +484,12 @@ $messages['ml'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'ts-kml-on-ol-options' => 'Pilihan',
 	'ts-kml-on-ol-languages' => 'Bahasa',
+	'ts-kml-on-ol-thumbnails' => 'Lakaran kenit',
 	'ts-kml-on-ol-help' => 'Bantuan',
 	'ts-kml-on-ol-all' => 'Semua',
+	'ts-kml-on-ol-map-by' => 'Peta oleh',
 );
 
 /** Mazanderani (مازِرونی)
