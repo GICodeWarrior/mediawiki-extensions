@@ -121,10 +121,11 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'regexfun-desc' => "A gionta funsion ëd parser ch'a përmëtto l'usagi d'espression regolar an drinta a pagine wiki",
+	'regexfun-desc' => "A gionta le funsion d'anàlisi ch'a përmëtto l'usagi d'espression regolar andrinta a le pàgine wiki",
 	'regexfun-invalid' => 'L\'espression regoar "$1" a l\'é pa bon-a.',
 	'regexfun-limit-exceed' => 'Rivà al màssim ëd {{PLURAL:$1|$1 gestor d\'espression regolar "Regex Fun"|$1 gestor d\'espression regolar "Regex Fun"}}.',
 );
