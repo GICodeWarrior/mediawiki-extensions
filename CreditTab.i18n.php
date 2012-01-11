@@ -159,11 +159,12 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'credits-desc' => "A gionta un colegament a j'arconossiment",
 	'credits-tab' => 'Arconossiment',
-	'credits-tab-title' => 'Arconossiment për sta pagina',
+	'credits-tab-title' => 'Arconossiment për costa pàgina',
 );
 
