@@ -74,9 +74,10 @@ class EPTermPager extends EPPager {
 				);
 				break;
 			case 'year':
+				$value = htmlspecialchars( $value );
 				break;
 			case 'start': case 'end':
-				$value = $this->getLanguage()->date( $value );
+				$value = htmlspecialchars( $this->getLanguage()->date( $value ) );
 				break;
 			case '_status':
 				$value = htmlspecialchars( EPTerm::getStatusMessage( $this->currentObject->getStatus() ) );

@@ -34,6 +34,9 @@ class EPStudentPager extends EPPager {
 		return array(
 			'id',
 			'user_id',
+			'first_enroll',
+			'last_active',
+			'active_enroll',
 		);
 	}
 	
@@ -68,11 +71,14 @@ class EPStudentPager extends EPPager {
 
 				$value = Linker::userLink( $value, $name ) . Linker::userToolLinks( $value, $name );
 				break;
-			case '_courses_current':
-				$value = 'foo'; // TODO
+			case 'first_enroll': case 'last_active':
+				htmlspecialchars( $this->getLanguage()->date( $value ) );
 				break;
-			case '_courses_passed':
-				$value = 'bar'; // TODO
+			case 'active_enroll':
+				$value = wfMsgHtml( $value === '1' ? 'epstudentpager-yes' : 'epstudentpager-no' );
+				break;
+			case '_courses_current':
+				$value = $this->getLanguage()->pipeList( $this->currentObject->getCurrentCourses() );
 				break;
 		}
 
@@ -86,6 +92,9 @@ class EPStudentPager extends EPPager {
 	protected function getSortableFields() {
 		return array(
 			'id',
+			'first_enroll',
+			'last_active',
+			'active_enroll',
 		);
 	}
 
@@ -113,7 +122,6 @@ class EPStudentPager extends EPPager {
 		$fields = parent::getFieldNames();
 
 		$fields['_courses_current'] = 'current-courses';
-		$fields['_courses_passed'] = 'passed-courses';
 
 		return $fields;
 	}

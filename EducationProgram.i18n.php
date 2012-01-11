@@ -170,6 +170,11 @@ $messages['en'] = array(
 	'epstudentpager-header-id' => 'Id',
 	'epstudentpager-header-current-courses' => 'Current courses',
 	'epstudentpager-header-passed-courses' => 'Passed courses',
+	'epstudentpager-header-first-enroll' => 'First enrollment',
+	'epstudentpager-header-last-active' => 'Last active',
+	'epstudentpager-header-active-enroll' => 'Currently enrolled',
+	'epstudentpager-yes' => 'Yes',
+	'epstudentpager-no' => 'No',
 
 	// Special:EditInstitution
 	'editinstitution-text' => 'Enter the institution details below and click submit to save your changes.',
