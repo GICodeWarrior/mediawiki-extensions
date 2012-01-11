@@ -336,16 +336,21 @@ class ExtZeroRatedMobileAccess {
 		return true;
 	}
 
+	/**
+	* Returns the carrier options array parsed from a valid wiki page
+	* 
+	* @return Array
+	*/
 	private static function createCarrierOptionsFromWikiText() {
 		global $wgMemc;
 		wfProfileIn( __METHOD__ );
-		$carrierOptionsWikiPage = wfMsg( 'zero-rated-mobile-access-carrier-options-wiki-page' );
-		$title = Title::newFromText( $carrierOptionsWikiPage, NS_MEDIAWIKI );
-		// Use the revision directly to prevent other hooks to be called
-		$rev = Revision::newFromTitle( $title );
+	
+		$carrierOptionsWikiPage = wfMsgForContent( 'zero-rated-mobile-access-carrier-options-wiki-page' );
+
+		list( $revId, $rev ) = self::getOptionsFromForeignWiki( $carrierOptionsWikiPage );
+
 		if ( $rev ) {
-			$sha1OfRev = $rev->getSize();
-			$key = wfMemcKey( 'zero-rated-mobile-access-carrier-options', $sha1OfRev );
+			$key = wfMemcKey( 'zero-rated-mobile-access-carrier-options', $revId );
 			$carrierOptions = $wgMemc->get( $key );
 		} else {
 			$carrierOptions = null;
@@ -355,7 +360,7 @@ class ExtZeroRatedMobileAccess {
 			$carrierOptions = array();
 			$lines = array();
 			if ( $rev ) {
-				$lines = explode( "\n", $rev->getRawText() );
+				$lines = explode( "\n", $rev );
 			}
 			if ( $lines && count( $lines ) > 0 ) {
 				$sizeOfLines = sizeof( $lines );
@@ -386,7 +391,67 @@ class ExtZeroRatedMobileAccess {
 	}
 
 	/**
-	* Returns the language options array parsed from a valid Wiki page
+	* Returns the foreign wiki options array from a valid wiki page
+	* 
+	* @return Array
+	*/
+	private static function getOptionsFromForeignWiki( $pageName ) {
+		global $wgMemc;
+		wfProfileIn( __METHOD__ );
+
+		$key = null;
+		$rev = null;
+
+		if ( $pageName ) {
+		
+			$memcKey = wfMemcKey( 'zero-rated-mobile-access-foreign-options-', md5( $pageName ) );
+			$foreignOptions = $wgMemc->get( $memcKey );
+
+			if ( !$foreignOptions ) {
+				$options = array();
+				$options['method'] = 'GET';
+				$url = 'http://en.wikipedia.org/w/api.php?action=query&prop=revisions&&rvlimit=1&rvprop=content&format=json&titles=MediaWiki:' . $pageName;
+				$req = ( class_exists( 'MWHttpRequest' ) ) ? MWHttpRequest::factory( $url, $options ) :  HttpRequest::factory( $url, $options );
+
+				$status = $req->execute();
+
+				if ( !$status->isOK() ) {
+					$error = $req->getContent();
+					wfProfileOut( __METHOD__ );
+					return array( $key, $rev );
+				}
+
+				$ret = $req->getContent();
+
+				$jsonData = FormatJson::decode( $ret, true );
+
+				if ( isset( $jsonData['query']['pages'] ) ) {
+					$key = key( $jsonData['query']['pages'] );
+					if ( !is_int( $key ) ) {
+						$key = null;
+					}
+
+					foreach( $jsonData['query']['pages'] as $pages ) {
+						if ( isset( $pages['revisions'][0]['*'] ) ) {
+							$rev = $pages['revisions'][0]['*'];
+						}
+					}
+				}
+
+				if ( $key && $rev ) {
+					$wgMemc->set( $memcKey, array( $key, $rev ), self::getMaxAge() );
+				}
+			} else {
+				list ( $key, $rev ) = $foreignOptions;
+			}
+		}
+
+		wfProfileOut( __METHOD__ );
+		return array( $key, $rev );
+	}
+
+	/**
+	* Returns the language options array parsed from a valid wiki page
 	* 
 	* @return Array
 	*/
@@ -394,12 +459,11 @@ class ExtZeroRatedMobileAccess {
 		global $wgMemc;
 		wfProfileIn( __METHOD__ );
 		$languageOptionsWikiPage = wfMsgForContent( 'zero-rated-mobile-access-language-options-wiki-page' );
-		$title = Title::newFromText( $languageOptionsWikiPage, NS_MEDIAWIKI );
-		// Use the revision directly to prevent other hooks to be called
-		$rev = Revision::newFromTitle( $title );
+
+		list( $revId, $rev ) = self::getOptionsFromForeignWiki( $languageOptionsWikiPage );
+
 		if ( $rev ) {
-			$sha1OfRev = $rev->getSize();
-			$key = wfMemcKey( 'zero-rated-mobile-access-language-options', $sha1OfRev );
+			$key = wfMemcKey( 'zero-rated-mobile-access-language-options', $revId );
 			$languageOptions = $wgMemc->get( $key );
 		} else {
 			$languageOptions = null;
@@ -409,7 +473,7 @@ class ExtZeroRatedMobileAccess {
 			$languageOptions = array();
 			$lines = array();
 			if ( $rev ) {
-				$lines = explode( "\n", $rev->getRawText() );
+				$lines = explode( "\n", $rev );
 			}
 			if ( $lines && count( $lines ) > 0 ) {
 				$sizeOfLines = sizeof( $lines );
