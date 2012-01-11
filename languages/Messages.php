@@ -134,12 +134,13 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'objecteditor' => "Editor d'Oget",
 	'wom_editor' => "Model d'Oget",
-	'wom-desc' => 'Easy Page Object Model për utent wiki',
+	'wom-desc' => "Model d'oget ëd pàgina sempia për l'utent wiki",
 );
 
 /** Portuguese (Português)
