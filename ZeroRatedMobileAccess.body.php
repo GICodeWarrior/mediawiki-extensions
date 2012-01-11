@@ -277,11 +277,9 @@ class ExtZeroRatedMobileAccess {
 		foreach ( $zeroRatedLinks as $zeroRatedLink ) {
 			$zeroRatedLinkHref = $zeroRatedLink->getAttribute( 'href' );
 			if ( $zeroRatedLinkHref && substr( $zeroRatedLinkHref, 0, 1 ) !== '#' ) {
-				$zeroPartnerUrl = $this->appendQueryString( $zeroRatedLinkHref,
-					array( array( 'name' => 'zeropartner',
-						'value' => ( isset( self::$carrier['partnerId'] ) ) ? self::$carrier['partnerId'] : 0 ),
-					array('name' => 'renderZeroRatedBanner', 
-						'value' => 'true') ) );
+				$partnerId = isset( self::$carrier['partnerId'] ) ? self::$carrier['partnerId'] : 0;
+				$zeroPartnerUrl = wfAppendQuery( $zeroRatedLinkHref,
+					array(	'zeropartner' => $partnerId, 'renderZeroRatedBanner' => 'true' ) );
 				if ( $zeroPartnerUrl ) {
 					$zeroRatedLink->setAttribute( 'href', $zeroPartnerUrl );
 				}
@@ -292,11 +290,9 @@ class ExtZeroRatedMobileAccess {
 		foreach ( $zeroRatedExternalLinks as $zeroRatedExternalLink ) {
 			$zeroRatedExternalLinkHref = $zeroRatedExternalLink->getAttribute( 'href' );
 			if ( $zeroRatedExternalLinkHref && substr( $zeroRatedExternalLinkHref, 0, 1 ) !== '#' ) {
-				$zeroPartnerUrl = $this->appendQueryString( $zeroRatedLinkHref,
-					array( array( 'name' => 'zeropartner',
-						'value' => ( isset( self::$carrier['partnerId'] ) ) ? self::$carrier['partnerId'] : 0 ),
-					array('name' => 'renderZeroRatedBanner', 
-						'value' => 'true') ) );
+				$partnerId = isset( self::$carrier['partnerId'] ) ? self::$carrier['partnerId'] : 0;
+				$zeroPartnerUrl = wfAppendQuery( $zeroRatedLinkHref,
+					array(	'zeropartner' => $partnerId, 'renderZeroRatedBanner' => 'true' ) );
 				if ( $zeroPartnerUrl ) {
 					$zeroRatedExternalLink->setAttribute( 'href', '?renderZeroRatedRedirect=true&returnto=' . urlencode($zeroRatedExternalLinkHref) );
 				}
@@ -306,56 +302,6 @@ class ExtZeroRatedMobileAccess {
 		$output = $doc->saveXML( null, LIBXML_NOEMPTYTAG );
 		wfProfileOut( __METHOD__ );
 		return $output;
-	}
-
-	/**
-	* Returns the url with querystring parameters appended
-	* 
-	* @param String $url: valid url to append querystring
-	* @param Array $queryStringParameters: array of parameters to add to querystring
-	* @return String
-	*/
-	private function appendQueryString( $url, $queryStringParameters ) {
-		wfProfileIn( __METHOD__ );
-		$parsedUrl = parse_url( $url );
-		if ( isset( $parsedUrl['query'] ) ) {
-			parse_str( $parsedUrl['query'], $queryString );
-			foreach ( $queryStringParameters as $queryStringParameter ) {
-				$queryString[$queryStringParameter['name']] = $queryStringParameter['value'];
-			}
-			$parsedUrl['query'] = http_build_query( $queryString );
-		} else {
-			$parsedUrl['query'] = '';
-			foreach ( $queryStringParameters as $queryStringParameter ) {
-				$parsedUrl['query'] .= "{$queryStringParameter['name']}={$queryStringParameter['value']}&";
-			}
-			if ( substr( $parsedUrl['query'], -1, 1 ) === '&' ) {
-				$parsedUrl['query'] = substr( $parsedUrl['query'], 0, -1 );
-			}
-		}
-		wfProfileOut( __METHOD__ );
-		return $this->unParseUrl( $parsedUrl );
-	}
-
-	/**
-	* Returns the full url
-	* 
-	* @param Array $parsedUrl: the array returned from parse_url
-	* @return String
-	*/
-	private function unParseUrl( $parsedUrl ) { 
-		wfProfileIn( __METHOD__ );
-		$scheme = isset( $parsedUrl['scheme'] ) ? $parsedUrl['scheme'] . '://' : '';
-		$host = isset( $parsedUrl['host'] ) ? $parsedUrl['host'] : '';
-		$port = isset( $parsedUrl['port'] ) ? ':' . $parsedUrl['port'] : '';
-		$user = isset( $parsedUrl['user'] ) ? $parsedUrl['user'] : '';
-		$pass = isset( $parsedUrl['pass'] ) ? ':' . $parsedUrl['pass']  : '';
-		$pass = ( $user || $pass ) ? "$pass@" : '';
-		$path = isset( $parsedUrl['path'] ) ? $parsedUrl['path'] : '';
-		$query = isset( $parsedUrl['query'] ) ? '?' . $parsedUrl['query'] : '';
-		$fragment = isset( $parsedUrl['fragment'] ) ? '#' . $parsedUrl['fragment'] : '';
-		wfProfileOut( __METHOD__ );
-		return "$scheme$user$pass$host$port$path$query$fragment"; 
 	}
 
 	/**
