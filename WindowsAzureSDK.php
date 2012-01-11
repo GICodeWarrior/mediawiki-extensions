@@ -29,7 +29,7 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => array( 'REALDOLMEN', 'Hallo Welt! Medienwerkstatt GmbH', 'Robert Vogel' ),
 	'url'            => 'http://www.hallowelt.biz',
 	'version'        => '4.1.0',
-	'descriptionmsg' => 'windowswzuresdk-desc',
+	'descriptionmsg' => 'windowsazuresdk-desc',
 );
 
 $dir = dirname(__FILE__) . '/';
