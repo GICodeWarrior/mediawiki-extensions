@@ -8,9 +8,6 @@
  * @ingroup SemanticInternalObjects
  */
 
-// FIXME: Can be enabled when new style magic words are used (introduced in r52503)
-// require_once( dirname( __FILE__ ) . '/SemanticInternalObjects.i18n.magic.php' );
-
 $messages = array();
 
 /** English

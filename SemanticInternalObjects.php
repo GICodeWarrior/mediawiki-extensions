@@ -9,7 +9,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-define( 'SIO_VERSION', '0.6.7' );
+define( 'SIO_VERSION', '0.6.8' );
 
 $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'parserhook'][] = array(
 	'path' => __FILE__,
@@ -33,6 +33,7 @@ $wgHooks['PageSchemasRegisterHandlers'][] = 'SIOPageSchemas::registerClass';
 
 $siogIP = dirname( __FILE__ );
 $wgExtensionMessagesFiles['SemanticInternalObjects'] = $siogIP . '/SemanticInternalObjects.i18n.php';
+$wgExtensionMessagesFiles['SemanticInternalObjectsMagic'] = $siogIP . '/SemanticInternalObjects.i18n.magic.php';
 $wgAutoloadClasses['SIOHandler'] = $siogIP . '/SemanticInternalObjects_body.php';
 $wgAutoloadClasses['SIOSQLStore'] = $siogIP . '/SemanticInternalObjects_body.php';
 if ( class_exists( 'SMWDIWikiPage' ) ) {
@@ -52,7 +53,7 @@ function siofRegisterParserFunctions( &$parser ) {
 function siofLanguageGetMagic( &$magicWords, $langCode = 'en' ) {
 	switch ( $langCode ) {
 	default:
-		$magicWords['set_internal'] = array ( 0, 'set_internal' );
+		// Not in i18n file, so remains for now...
 		$magicWords['set_internal_recurring_event'] = array ( 0, 'set_internal_recurring_event' );
 	}
 	return true;
