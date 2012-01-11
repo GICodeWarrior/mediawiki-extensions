@@ -27,7 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Plotter parser extension',
-	'version'        => '0.6c',
+	'version'        => '0.6d',
 	'author'         => 'Ryan Lane',
 	'descriptionmsg' => 'plotters-desc',
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:Plotters',
@@ -35,14 +35,12 @@ $wgExtensionCredits['other'][] = array(
 
 $wgHooks['ParserFirstCallInit'][] = 'efPlottersSetHooks';
 $wgHooks['OutputPageParserOutput'][] = 'PlottersParserOutput';
-if( version_compare( $wgVersion, '1.16alpha', '<' ) ) {
-	$wgHooks['LanguageGetMagic'][] = 'PlottersLanguageGetMagic';
-}
 $wgHooks['ArticleSaveComplete'][] = 'wfPlottersArticleSaveComplete';
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['Plotters'] = $dir . 'Plotters.i18n.php';
 $wgExtensionMessagesFiles['PlottersAlias'] = $dir . 'Plotters.alias.php';
+$wgExtensionMessagesFiles['PlottersMagic'] = $dir . 'Plotters.magic.php';
 $wgAutoloadClasses['Plotters'] = $dir . 'PlottersClass.php';
 $wgAutoloadClasses['PlottersParser'] = $dir . 'PlottersParser.php';
 $wgAutoloadClasses['SpecialPlotters'] = $dir . 'SpecialPlotters.php';
@@ -245,15 +243,5 @@ function PlottersParserOutput( $outputPage, $parserOutput )  {
 			}
 		}
 	}
-	return true;
-}
-
-// FIXME: doesn't this make using this method and the hook above useless?
-/**
- * We ignore langCode - parser function names can be translated but
- * we are not using this feature
- */
-function PlottersLanguageGetMagic( $magicWords, $langCode ) {
-	$magicWords['plot']  = array( 0, 'plot' );
 	return true;
 }
