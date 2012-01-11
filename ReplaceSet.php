@@ -27,7 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die( "This is an extension to the MediaWiki packa
 $wgExtensionCredits['parserhook'][] = array (
 	'name' => 'ReplaceSet',
 	'url' => 'http://mediawiki.org/wiki/Extension:ReplaceSet',
-	'version' => '1.1',
+	'version' => '1.2',
 	'author' => "[http://mediawiki.org/wiki/User:Dantman Daniel Friesen]",
 	'descriptionmsg' => 'replaceset-desc',
 );
@@ -37,6 +37,7 @@ $wgHooks['ParserFirstCallInit'][] = 'efReplaceSetRegisterParser';
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ReplaceSet'] = $dir . 'ReplaceSet.class.php';
 $wgExtensionMessagesFiles['ReplaceSet'] = $dir . 'ReplaceSet.i18n.php';
+$wgExtensionMessagesFiles['ReplaceSetMagic'] = $dir . 'ReplaceSet.i18n.magic.php';
 
 function efReplaceSetRegisterParser( &$parser ) {
 	$parser->setFunctionHook( 'replaceset', array( 'ReplaceSet', 'parserFunction' ) );
