@@ -7,8 +7,6 @@
  * @ingroup Extensions
  */
 
-require_once( dirname(__FILE__) . '/Icon.i18n.magic.php' );
-
 $messages = array();
 
 $messages['en'] = array(
