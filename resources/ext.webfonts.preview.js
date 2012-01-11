@@ -6,6 +6,10 @@
 
 	var showPreview = function () {
 		var font = $( 'select#webfonts-font-chooser' ).val();
+		if ( font === null ) {
+			return true;
+		}
+		
 		var $downloadLink = $( 'a#webfonts-preview-download' );
 		var $previewBox = $( 'div#webfonts-preview-area' );
 		mw.webfonts.addFont( font );
