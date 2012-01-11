@@ -67,6 +67,24 @@ $messages['qqq'] = array(
 * $2 is the final URL of the new page - shortened if a service is enabled via this extension',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'tweetanew-desc' => 'Дасылае паведамленьне ў Twitter пасьля стварэньня ці рэдагаваньня старонкі. У залежнасьці ад наладаў, можа адсылаць як аўтаматычна, гэтак і пры пазначэньні на старонцы рэдагаваньня.',
+	'tweetanew-newaction' => 'Даслаць паведамленьне ў Twitter пра новую старонку',
+	'tweetanew-newtooltip' => 'Даслаць паведамленьне пра гэтую новую старонку ў Twitter',
+	'tweetanew-editaction' => 'Даслаць паведамленьне ў Twitter пра гэтае рэдагаваньне',
+	'tweetanew-edittooltip' => 'Даслаць паведамленьне пра гэтае рэдагаваньне ў Twitter',
+	'tweetanew-minoredit' => 'д',
+	'tweetanew-authorcredit' => 'ад',
+	'tweetanew-newdefault' => 'НОВАЯ СТАРОНКА: $1 — $2',
+	'tweetanew-new1' => 'Хтосьці стварыў старонку «$1» па адрасе $2',
+	'tweetanew-new2' => 'Нядаўна была створаная старонка «$1»: $2',
+	'tweetanew-new3' => 'Наведайце новую старонку «$1» — $2',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
