@@ -24,10 +24,13 @@ class ExtZeroRatedMobileAccess {
 	 * @return bool
 	 */
 	public function beforePageDisplayHTML( &$out, &$text ) {
-		global $wgRequest, $wgConf, $wgDBname, $wgEnableZeroRatedMobileAccessTesting;
+		global $wgRequest, $wgConf, $wgEnableZeroRatedMobileAccessTesting;
 		wfProfileIn( __METHOD__ );
 
-		list( $site, $lang ) = $wgConf->siteFromDB( $wgDBname );
+		$dB = wfGetDB( DB_MASTER );
+		$dBname = $dB->getDBname();
+
+		list( $site, $lang ) = $wgConf->siteFromDB( $dBname );
 		if ( $site == 'wikipedia'  || $wgEnableZeroRatedMobileAccessTesting ) {
 
 			$xDevice = isset( $_SERVER['HTTP_X_DEVICE'] ) ? $_SERVER['HTTP_X_DEVICE'] : '';
