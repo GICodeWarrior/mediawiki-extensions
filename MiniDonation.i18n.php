@@ -397,6 +397,14 @@ $messages['my'] = array(
 	'donationform-submit' => 'PayPal အား အသုံးပြု၍ လှူဒါန်းရန်',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'donationform-desc' => 'Legger til taggen <code>&lt;donateform&gt;</code> for donasjoner via PayPal',
+	'donationform-submit' => 'Doner med PayPal',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -411,14 +419,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'donationform-desc' => 'Legg til merket <code>&lt;donateform&gt;</code> for å støtta donasjonar gjennom PayPal',
 	'donationform-submit' => 'Doner gjennom PayPal',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'donationform-desc' => 'Legger til taggen <code>&lt;donateform&gt;</code> for donasjoner via PayPal',
-	'donationform-submit' => 'Doner med PayPal',
 );
 
 /** Occitan (Occitan)
@@ -605,10 +605,11 @@ $messages['vec'] = array(
 	'donationform-submit' => 'Dona tramite PayPal',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel')
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'donationform-desc' => 'Ližadab virg <code>&lt;donateform&gt;</code>, miše voiži lahjoita PayPal:an turbiš',
 	'donationform-submit' => "Lahjoita PayPal-an kal't",
 );
 
