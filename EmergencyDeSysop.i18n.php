@@ -1183,10 +1183,12 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Hzy980512
  */
 $messages['zh-hans'] = array(
 	'emergencydesysop' => '紧急移除管理员权限',
 	'emergencydesysop-desc' => '允许管理员牺牲他们的特权，免除另一名管理员的权限。',
+	'emergencydesysop-title' => '从现在这个账户或其它管理员账号上移除权限',
 	'emergencydesysop-otheradmin' => '其他管理员去移除权限',
 	'emergencydesysop-reason' => '移除理由',
 	'emergencydesysop-submit' => '递交',
