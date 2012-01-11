@@ -97,10 +97,11 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'parserfun-desc' => 'A gionta na funsion <code>#parse</code> dël parser për parsifiché test wiki e a anseriss ël prefiss <code>THIS:</code> për anformassion ëd pagina relative a variàbij màgiche',
-	'parserfun-invalid-caller-mode' => "Pa dàit gnun-e manere d'operassion o ìndess numérich.",
+	'parserfun-desc' => "A gionta na funsion <code>#parse</code> ëd l'analisator për analisé ël test wiki e a anseriss ël prefiss <code>THIS:</code> për le variàbij màgiche gropà a j'anformassion an sla pàgina",
+	'parserfun-invalid-caller-mode' => 'Gnun-a manera ëd fonsionament o ìndes numérich a son ëstàit dàit.',
 );
 
