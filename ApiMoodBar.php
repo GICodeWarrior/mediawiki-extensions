@@ -36,7 +36,7 @@ class ApiMoodBar extends ApiBase {
 
 	public function logFeedback( $params, $itemId ) {
 		$title = SpecialPage::getTitleFor( 'FeedbackDashboard', $itemId );
-		$reason = wfMessage( 'moodbar-log-reason' )->params( $params['type'], $params['comment'] )->escaped();
+		$reason = wfMessage( 'moodbar-log-reason' )->params( $params['type'], $params['comment'] )->text();
 		$log = new LogPage( 'moodbar' );
 		$log->addEntry( 'feedback', $title, $reason );
 	}
