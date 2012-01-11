@@ -101,7 +101,7 @@
 # Confirm MW environment
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-define( 'WIKIARTICLEFEEDS_VERSION', '0.6.6' );
+define( 'WIKIARTICLEFEEDS_VERSION', '0.6.7' );
 
 # Bring in supporting classes
 require_once( "$IP/includes/Feed.php" );
@@ -119,12 +119,12 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['WikiArticleFeeds'] = $dir . 'WikiArticleFeeds.i18n.php';
+$wgExtensionMessagesFiles['WikiArticleFeedsMagic'] = $dir . 'WikiArticleFeeds.i18n.magic.php';
 
 /**
  * Wrapper class for consolidating all WAF related parser methods
  */
 class WikiArticleFeedsParser {
-
 	function feedStart( $text, $params = array() ) {
 		return '<!-- FEED_START -->';
 	}
@@ -147,12 +147,6 @@ class WikiArticleFeedsParser {
 		return ( !empty( $tags ) ? '<pre>@ITEMTAGS@' . base64_encode( serialize( implode( ',', $tags ) ) ) . '@ITEMTAGS@</pre>':'' );
 	}
 
-	// FIXME: remove after 1.16 branching. This extension has not been branched yet.
-	function itemTagsMagic( &$magicWords, $langCode = null ) {
-		$magicWords['itemtags'] = array( 0, 'itemtags' );
-		return true;
-	}
-
 	function itemTagsPlaceholderCorrections( $parser, &$text ) {
 		$text = preg_replace(
 							 '|<pre>@ITEMTAGS@([0-9a-zA-Z\\+\\/]+=*)@ITEMTAGS@</pre>|',
@@ -165,8 +159,6 @@ class WikiArticleFeedsParser {
 
 # Create global instance
 $wgWikiArticleFeedsParser = new WikiArticleFeedsParser();
-// FIXME: update after 1.16 branching for new style magic words. This extension has not been branched yet.
-$wgHooks['LanguageGetMagic'][] = array( $wgWikiArticleFeedsParser, 'itemTagsMagic' );
 $wgHooks['ParserBeforeTidy'][] = array( $wgWikiArticleFeedsParser, 'itemTagsPlaceholderCorrections' );
 
 # Add Extension Functions
@@ -570,4 +562,3 @@ function wfGenerateWikiFeed( $article, $feedFormat = 'atom', $filterTags = null 
 	# Feed footer
 	$feed->outFooter();
 }
-

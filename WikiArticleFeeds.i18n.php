@@ -5,8 +5,6 @@
  * @file
  * @ingroup Extensions
  */
-// FIXME: enable after 1.16 branching. This extension has not been branched yet.
-// require_once( dirname(__FILE__) . '/WikiArticleFeeds.i18n.magic.php' );
 
 $messages = array();
 
