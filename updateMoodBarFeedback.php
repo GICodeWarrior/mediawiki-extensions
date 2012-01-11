@@ -40,7 +40,7 @@ class UpdateMoodBarFeedback extends LoggedUpdateMaintenance {
 						array( 'MAX(mbfr_id) AS latest_mbfr_id', 'mbf_id' ),
 						array( 'mbf_id=mbfr_mbf_id', 'mbf_latest_response' => 0, 'mbf_id > ' . $lastMbfId ),
 						__METHOD__,
-						array( 'ORDER BY' => 'mbf_id', 'GROUP BY' => 'mbf_id', "LIMIT $batchSize" )
+						array( 'ORDER BY' => 'mbf_id', 'GROUP BY' => 'mbf_id', 'LIMIT' => $batchSize )
 			);
 			
 			foreach ( $res as $row ) {
@@ -56,7 +56,7 @@ class UpdateMoodBarFeedback extends LoggedUpdateMaintenance {
 				$lastMbfId = $mbfId;
 			}
 			
-			$totalCount = $totalCount + $count;
+			$totalCount += $count;
 			
 			$this->output( $count . "\n" );
 			wfWaitForSlaves();
