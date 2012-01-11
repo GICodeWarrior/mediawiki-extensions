@@ -24,7 +24,7 @@ $wgAutoloadClasses['DatabaseBz2'] = $dir.'/DatabaseBz2.php';
 $wgAutoloadClasses['DumpReader'] = $dir.'/DumpReader.php';
 $wgAutoloadClasses['SearchBz2'] = $dir.'/SearchBz2.php';
 $wgAutoloadClasses['SpecialOffline'] = $dir.'/SpecialOffline.php';
-$wgAutoloadClasses['FulltextIndex'] = $dir.'/XapianFulltextIndex.php';
+$wgAutoloadClasses['FulltextIndex'] = $dir.'/FulltextIndex.php';
 
 
 function wfOfflineInit() {

@@ -76,41 +76,10 @@ class DumpReader
 		$title = strtolower(trim($title));
 		#wfDebug("looking up word [$title]");
 
+		global $wgOfflineWikiPath;
 		try {
-			global $wgOfflineWikiPath;
-			$db = new XapianDatabase("$wgOfflineWikiPath/db");
-			#$qp = new XapianQueryParser();
-			#$qp->set_database($db);
-			#$stemmer = new XapianStem("english");
-			#$qp->set_stemmer($stemmer);
-			#$query = $qp->parse_query($title);
-			$query = new XapianQuery($title);
-			$enquire = new XapianEnquire($db);
-			$enquire->set_query($query);
-			$matches = $enquire->get_mset(0, 25);
-
-			if (0 /*SCORING*/) {
-				$scores = array();
-				for ($i = $matches->begin(); !$i->equals($matches->end()); $i->next())
-				{
-					$row = $i->get_document();
-					$str = $i->get_percent()."% [".$row->get_data()."]";
-					$scores[] = $str;
-					if (1/*DEBUG*/) wfDebug("$str\n");
-				}
-			}
-
-			$result = array();
-			for ($i = $matches->begin(); !$i->equals($matches->end()); $i->next())
-			{
-				$entry = $i->get_document()->get_data();
-				$result[] = explode(':', $entry, 3);
-			}
-			# not in Xapian 1.0.X
-			#$db->close();
-
-			return $result;
-
+			$indexer = new XapianFulltextIndex("$wgOfflineWikiPath/db");
+			return $indexer->search($title);
 		} catch (Exception $e) {
 			wfDebug(__METHOD__.':'.$e->getMessage());
 			return null;
