@@ -2468,6 +2468,8 @@ $messages['mr'] = array(
 	'ogg-dismiss' => 'बंद करा',
 	'ogg-download' => 'संचिका उतरवा',
 	'ogg-desc-link' => 'या संचिकेबद्दलची माहिती',
+	'ogg-oggThumb-version' => 'OggHandler ला  oggThumb च्या  $1 अथवा त्या नंतरच्या आवृउत्तीची गरज आहे',
+	'ogg-oggThumb-failed' => 'oggThumb इवलेसे-चित्र निर्माणकरण्यात यशस्वी झाले नाही.',
 );
 
 /** Malay (Bahasa Melayu)
