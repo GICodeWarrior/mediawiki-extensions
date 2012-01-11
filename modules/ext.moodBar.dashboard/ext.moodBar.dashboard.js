@@ -413,6 +413,8 @@ jQuery( document ).ready( function ( $ ) {
 				$( '.fbd-response-preview, .fbd-response-submit' ).removeProp( 'disabled' );
 				$( this ).find( '.fbd-response-form' ).remove();
 			}
+			//remove ConcurrencyToolTip if any
+			$( this ).find( '.fbd-tooltip-overlay-wrap').remove();
 		});
 	}
 
