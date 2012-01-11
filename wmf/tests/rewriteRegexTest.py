@@ -4,18 +4,16 @@ import re
 # (a) http://upload.wikimedia.org/<proj>/<lang>/.*
 #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-public/.*
 # (b) http://upload.wikimedia.org/<proj>/<lang>/archive/.*
-#         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-public/archive.*
+#         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-public/archive/.*
 # (c) http://upload.wikimedia.org/<proj>/<lang>/thumb/.*
 #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-thumb/.*
 # (d) http://upload.wikimedia.org/<proj>/<lang>/thumb/archive/.*
 #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-thumb/archive/.*
-# (e) http://upload.wikimedia.org/<proj>/<lang>/thumb/temp/.*
-#         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-thumb/temp/.*
-# (f) http://upload.wikimedia.org/<proj>/<lang>/temp/.*
+# (e) http://upload.wikimedia.org/<proj>/<lang>/temp/.*
 #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-temp/.*
 
 # The regex to test (for rewrite.py)
-regex = r'^/(?P<proj>[^/]+)/(?P<lang>[^/]+)/((?P<zone>thumb|temp)/)?(?P<path>((temp|archive)/)?[0-9a-f]/(?P<shard>[0-9a-f]{2})/.+)$'
+regex = r'^/(?P<proj>[^/]+)/(?P<lang>[^/]+)/((?P<zone>thumb|temp)/)?(?P<path>(archive/)?[0-9a-f]/(?P<shard>[0-9a-f]{2})/.+)$'
 
 # [url,proj,lang,zone,shard,path]
 cases = []
@@ -27,8 +25,6 @@ cases.append( ['/wikipedia/commons/thumb/a/ab/file.jpg',
  'wikipedia', 'commons', 'thumb', 'ab', 'a/ab/file.jpg'] )
 cases.append( ['/wikipedia/commons/thumb/archive/a/ab/file.jpg',
  'wikipedia', 'commons', 'thumb', 'ab', 'archive/a/ab/file.jpg'] )
-cases.append( ['/wikipedia/commons/thumb/temp/a/ab/file.jpg',
- 'wikipedia', 'commons', 'thumb', 'ab', 'temp/a/ab/file.jpg'] )
 cases.append( ['/wikipedia/commons/temp/a/ab/file.jpg',
  'wikipedia', 'commons', 'temp', 'ab', 'a/ab/file.jpg'] )
 
