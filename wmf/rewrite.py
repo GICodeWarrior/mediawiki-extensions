@@ -180,7 +180,7 @@ class WMFRewrite(object):
         # http://upload.wikimedia.org/wikipedia/commons/a/aa/000_Finlanda_harta.PNG
         # http://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/000_Finlanda_harta.PNG/75px-000_Finlanda_harta.PNG
         # http://upload.wikimedia.org/wikipedia/commons/thumb/archive/b/b6/20101108115418!Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg/100px-Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg
-        match = re.match(r'/(?P<proj>[^/]*?)/(?P<lang>[^/]*?)/(?P<thumb>thumb/)?(?P<archive>(temp|archive)/)?(?P<shard>[0-9a-f]/[0-9a-f]{2}/)?(?P<path>.*)', req.path)
+        match = re.match(r'/(?P<proj>[^/]+?)/(?P<lang>[^/]+?)/(?P<thumb>thumb/)?(?P<archive>(temp|archive)/)?(?P<shard>[0-9a-f]/[0-9a-f]{2}/)?(?P<path>.*)', req.path)
         if match:
             # Our target URL is as follows (example):
             # https://alsted.wikimedia.org:8080/v1/AUTH_6790933748e741268babd69804c6298b/wikipedia-en-25/Machinesmith.png
