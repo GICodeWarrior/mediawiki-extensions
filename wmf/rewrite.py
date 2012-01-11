@@ -202,7 +202,7 @@ class WMFRewrite(object):
                  ((self.shard_containers == 'some') and (container in self.shard_container_list))):
                 if shard:
                     #add only the 2-digit shard to the container name
-                    container += "-%s" % shard[2:4]
+                    container += ".%s" % shard[2:4]
             if arch:
                 # for urls that go /wiki/thumb/archive/a/ab/path, the container is wiki-thumb-ab and the obj is archive/path
                 # aka pull the shard into the container if necessary but the string 'archive' or 'temp' goes into the object.
