@@ -2,7 +2,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'windowsazuresdk-desc' => 'Provides the [http://phpazure.codeplex.com/ PHPAzure] SDK created by [http://www.realdolmen.com/ REALDOLMEN].'
+	'windowsazuresdk-desc' => 'Provides the [http://phpazure.codeplex.com/ PHPAzure] SDK created by [http://www.realdolmen.com/ REALDOLMEN]'
 );
 
 /** German (Deutsch) */
