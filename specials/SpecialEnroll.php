@@ -33,7 +33,7 @@ class SpecialEnroll extends SpecialEPPage {
 	 *
 	 * @since 0.1
 	 *
-	 * @param string $arg
+	 * @param string $subPage
 	 */
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
@@ -63,21 +63,29 @@ class SpecialEnroll extends SpecialEPPage {
 
 				if ( $this->getUser()->isLoggedIn() ) {
 					if ( $this->getUser()->isAllowed( 'epstudent' ) ) {
-						$this->showEnrollmentForm( $term );
+						$user = $this->getUser();
+						$hasFields = trim( $user->getRealName() ) !== '' || $user->getOption( 'gender' ) !== 'unknown';
+
+						if ( $hasFields ) {
+							$this->showEnrollmentForm( $term );
+						}
+						else {
+
+						}
 					}
 					else {
 						$this->showWarning( wfMessage( 'ep-enroll-not-allowed' ) );
 					}
 				}
 				else {
-					$this->showSignupLink( $term );
+					$this->showSignupLink();
 				}
 			}
 		}
 	}
 
 	/**
-	 *
+	 * Set the page title.
 	 *
 	 * @since 0.1
 	 *
@@ -93,13 +101,11 @@ class SpecialEnroll extends SpecialEPPage {
 	}
 
 	/**
-	 * 
-	 * 
-	 * @param EPTerm $term
+	 * Show links to signup.
 	 * 
 	 * @since 0.1
 	 */
-	protected function showSignupLink( EPTerm $term ) {
+	protected function showSignupLink() {
 		$out = $this->getOutput();
 		
 		$out->addWikiMsg( 'ep-enroll-login-first' );
@@ -129,15 +135,30 @@ class SpecialEnroll extends SpecialEPPage {
 
 		$out->addHTML( '</li></ul>' );
 	}
+
+	/**
+	 * Just enroll the user in the term. This is useful when
+	 * there are no things for the user to fill out in the
+	 * enrollment form, making that step not needed.
+	 *
+	 * @since 0.1
+	 *
+	 * @param EPTerm $term
+	 */
+	protected function autoEnroll( EPTerm $term ) {
+		// TODO
+	}
 	
 	/**
-	 * 
+	 * Create and display the enrollment form.
 	 * 
 	 * @since 0.1
 	 * 
 	 * @param EPTerm $term
 	 */
 	protected function showEnrollmentForm( EPTerm $term ) {
+		$this->getOutput()->addWikiMsg( 'ep-enroll-header' );
+
 		$form = new HTMLForm( $this->getFormFields(), $this->getContext() );
 
 		$form->setSubmitCallback( array( $this, 'handleSubmission' ) );
@@ -150,7 +171,7 @@ class SpecialEnroll extends SpecialEPPage {
 	}
 
 	/**
-	 *
+	 * Returns the definitions for the fields of the signup form.
 	 *
 	 * @since 0.1
 	 *
@@ -159,10 +180,40 @@ class SpecialEnroll extends SpecialEPPage {
 	protected function getFormFields() {
 		$fields = array();
 
+		$user = $this->getUser();
+
 		$fields['enroll'] = array(
 			'type' => 'hidden',
 			'default' => 1
 		);
+
+		if ( trim( $user->getRealName() ) === '' ) {
+			$fields['realname'] = array(
+				'type' => 'text',
+				'default' => '',
+				'label-message' => 'ep-enroll-realname',
+				'required' => true,
+				'validation-callback' => function( $value, array $alldata = null ) {
+					return strlen( $value ) < 2 ? wfMsgExt( 'ep-enroll-invalid-name', 'parsemag', 2 ) : true;
+				}
+			);
+		}
+
+		if ( $user->getOption( 'gender' ) === 'unknown' ) {
+			$fields['gender'] = array(
+				'type' => 'select',
+				'default' => 'unknown',
+				'label-message' => 'ep-enroll-gender',
+				'validation-callback' => function( $value, array $alldata = null ) {
+					return strlen( $value ) < 2 ? wfMsg( 'ep-enroll-invalid-gender' ) : true;
+				},
+				'options' => array(
+					wfMsg( 'gender-male' ) => 'male',
+					wfMsg( 'gender-female' ) => 'female',
+					wfMsg( 'gender-unknown' ) => 'unknown',
+				)
+			);
+		}
 
 		return $fields;
 	}
