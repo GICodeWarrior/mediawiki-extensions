@@ -167,7 +167,7 @@ class EPOrg extends EPDBObject {
 		$options = array();
 		
 		foreach ( $orgs as /* EPOrg */ $org ) {
-			$options[$org->getField( 'name' )] = (string)$org->getId();
+			$options[$org->getField( 'name' )] = $org->getId();
 		}
 		
 		return $options;
