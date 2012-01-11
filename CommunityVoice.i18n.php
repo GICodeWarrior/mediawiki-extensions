@@ -571,6 +571,8 @@ $messages['ilo'] = array(
 	'communityvoice-ratings-scale-status-error' => 'Biddut ti panagipatulod!',
 	'communityvoice-ratings-scale-status-thanks' => 'Agyamanak ti panagbutos!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|butos|dagiti butos}} ipalladaw)',
+	'communityvoice-ratings-error-no-category' => 'Ti gupit ti kategoria ket awan dita pategan nga etiketa.',
+	'communityvoice-ratings-error-no-title' => 'Ti gupit ti titulo ket awan dita pategan ti etiketa.',
 );
 
 /** Italian (Italiano)
