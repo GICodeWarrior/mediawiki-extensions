@@ -404,4 +404,18 @@ class EPTerm extends EPDBObject {
 		return $status;
 	}
 
+	/**
+	 * Get a link to Special:Term/id.
+	 *
+	 * @since 0.1
+	 *
+	 * @return string
+	 */
+	public function getLink() {
+		return Linker::linkKnown(
+			SpecialPage::getTitleFor( 'Term', $this->getId() ),
+			htmlspecialchars( $this->getId() )
+		);
+	}
+
 }

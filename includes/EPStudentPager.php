@@ -78,7 +78,12 @@ class EPStudentPager extends EPPager {
 				$value = wfMsgHtml( $value === '1' ? 'epstudentpager-yes' : 'epstudentpager-no' );
 				break;
 			case '_courses_current':
-				$value = $this->getLanguage()->pipeList( $this->currentObject->getCurrentCourses() );
+				$value = $this->getLanguage()->pipeList( array_map(
+					function( EPCourse $course ) {
+						return $course->getLink();
+					},
+					$this->currentObject->getCurrentCourses( 'name' )
+				) );
 				break;
 		}
 

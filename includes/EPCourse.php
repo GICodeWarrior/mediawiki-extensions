@@ -374,4 +374,18 @@ class EPCourse extends EPDBObject {
 		return false;
 	}
 
+	/**
+	 * Get a link to Special:Course/name.
+	 *
+	 * @since 0.1
+	 *
+	 * @return string
+	 */
+	public function getLink() {
+		return Linker::linkKnown(
+			SpecialPage::getTitleFor( 'Course', $this->getField( 'name' ) ),
+			htmlspecialchars( $this->getField( 'name' ) )
+		);
+	}
+
 }

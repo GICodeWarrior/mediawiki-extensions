@@ -306,5 +306,19 @@ class EPOrg extends EPDBObject {
 		
 		return $this->terms;
 	}
+
+	/**
+	 * Get a link to Special:Institution/name.
+	 *
+	 * @since 0.1
+	 *
+	 * @return string
+	 */
+	public function getLink() {
+		return Linker::linkKnown(
+			SpecialPage::getTitleFor( 'Institution', $this->getField( 'name' ) ),
+			htmlspecialchars( $this->getField( 'name' ) )
+		);
+	}
 	
 }
