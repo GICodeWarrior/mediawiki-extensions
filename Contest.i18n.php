@@ -3887,6 +3887,37 @@ $messages['ia'] = array(
 	'contest-submission-domains' => 'Le submissiones es limitate a iste sitos: $1',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'contest-desc' => 'Agpalubos kadagiti agar-aramat ti makipaglak-am iti salisal a kariten. Dagiti hustisia ket matungtungan da ken agbutos kadagiti naited',
+	'contest-toplink' => 'Dagiti kukuak a salisal',
+	'right-contestadmin' => 'Taripatuen dagiti salisal',
+	'right-contestant' => 'Makipaglak-am kadagiti salisal',
+	'right-contestjudge' => 'Agikeddeng kadagiti naited a salisal',
+	'action-contestadmin' => 'taripatuen dagiti salisal',
+	'action-contestant' => 'makipaglak-am kadagiti salisal',
+	'action-contestjudge' => 'agikeddeng kadagiti naited a salisal',
+	'group-contestadmin' => 'Dagiti admin ti salisal',
+	'group-contestadmin-member' => '{{GENDER:$1|administrador ti salisal}}',
+	'grouppage-contestadmin' => '{{ns:project}}:Dagiti administrador ti salisal',
+	'group-contestant' => 'Makipaset',
+	'group-contestant-member' => '{{GENDER:$1|Makipaset}}',
+	'grouppage-contestant' => '{{ns:project}}:Dagiti makipaset',
+	'group-contestjudge' => 'Dagiti agikeddeng ti salisal',
+	'group-contestjudge-member' => '{{GENDER:$1|agikeddeng ti salisal}}',
+	'grouppage-contestjudge' => '{{ns:project}}:Dagiti agikeddeng ti salisal',
+	'prefs-contest' => 'Dagiti salisal',
+	'contest-prefs-showtoplink' => 'Agiparang ti panilpo idiay [[Special:MyContests|Dagiti kukuak a salisal]]  iti pagpilian ti agar-aramat.',
+	'contest-status-draft' => 'Draft (nabaldado)',
+	'contest-status-active' => 'Nasiglat (napakabaelan)',
+	'contest-status-expired' => 'Nagpaso (napakabaelan, ti napalabas a petsa)',
+	'contest-status-finished' => 'Nalpasen (nabaldado)',
+	'special-contest' => 'Kitaen ti salisal',
+	'special-contests' => 'Taripatuen dagiti salisal',
+);
+
 /** Italian (Italiano)
  * @author Aushulz
  * @author F. Cosoleto
