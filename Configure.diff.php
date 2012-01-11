@@ -118,7 +118,7 @@ abstract class ConfigurationDiff {
 		$old = $this->getOldVersion();
 		$new = $this->getNewVersion();
 		if ( !( $wikis = $this->cleanWikis( $old, $new ) ) ) {
-			return wfMsgExt( 'configure-no-diff', array( 'parse' ) );
+			return wfMessage( 'configure-no-diff' )->parseAsBlock();
 		}
 		$text = '';
 		foreach ( $wikis as $wiki ) {
@@ -152,22 +152,25 @@ abstract class ConfigurationDiff {
 						$groupDiff .= $this->processDiffSetting( $setting, $oldSetting, $newSetting, $type ) . "\n";
 				}
 				if ( $groupDiff != '' ) {
-					$name = wfMsgExt( 'configure-section-' . $groupName, array( 'parseinline' ) );
-					if ( wfEmptyMsg( 'configure-section-' . $groupName, $name ) )
+					$msg = wfMessage( 'configure-section-' . $groupName );
+					if ( $msg->exists() ) {
+						$name = $msg->parse();
+					} else {
 						$name = $groupName;
+					}
 					$sectionDiff .= "<tr><td colspan=\"4\"><h4 class=\"config-diff-group\">{$name}</h4></td></tr>\n";
 					$sectionDiff .= $groupDiff;
 				}
 			}
 			if ( $sectionDiff != '' ) {
-				$name = wfMsgExt( 'configure-section-' . $sectionName, array( 'parseinline' ) );
+				$name = wfMessage( 'configure-section-' . $sectionName )->parse();
 				$text .= "<tr><td colspan=\"4\"><h3 class=\"config-diff-section\">{$name}</h3></td></tr>\n";
 				$text .= $sectionDiff;
 			}
 		}
 
 		if ( empty( $text ) )
-			return wfMsgExt( 'configure-no-diff', array( 'parse' ) );
+			return wfMessage( 'configure-no-diff' )->parseAsBlock();
 
 		$ret = "<table class='diff'>\n";
 		$ret .= "<col class='diff-marker' />";
@@ -189,13 +192,13 @@ abstract class ConfigurationDiff {
 	 * @return String: XHTML
 	 */
 	function processDiffSetting( $name, $old, $new, $type ) {
-		$msg =  'configure-setting-' . $name;
-		$msgVal = wfMsgExt( $msg, array( 'parseinline' ) );
+		$msg = wfMessage( 'configure-setting-' . $name );
 		$rawVal = Xml::element( 'tt', null, "\$$name" );
-		if ( wfEmptyMsg( $msg, $msgVal ) )
+		if ( $msg->exists() ) {
+			$msgVal = $msg->parse() . " ($rawVal)";
+		} else {
 			$msgVal = $rawVal;
-		else
-			$msgVal = "$msgVal ($rawVal)";
+		}
 
 		$oldSet = $this->getSettingAsArray( WebConfiguration::filterVar( $old ), $name, $type );
 		$newSet = $this->getSettingAsArray( WebConfiguration::filterVar( $new ), $name, $type );
@@ -272,7 +275,7 @@ abstract class ConfigurationDiff {
 							if ($count == 0 || $period == 0)
 								continue;
 
-							$val[] = "$action, $group: " . wfMsg( 'configure-throttle-summary', $count, $period );
+							$val[] = "$action, $group: " . wfMessage( 'configure-throttle-summary', $count, $period )->text();
 						}
 					}
 				}
@@ -285,11 +288,11 @@ abstract class ConfigurationDiff {
 
 				foreach( $setting as $group => $conds ) {
 					if ( !is_array( $conds ) ) {
-						$val[] = "$group: ".wfMsg( "configure-condition-description-$conds" );
+						$val[] = "$group: ".wfMessage( "configure-condition-description-$conds" )->text();
 						continue;
 					}
 					if ( count( $conds ) == 0 ) {
-						$val[] = "$group: ".wfMsg( 'configure-autopromote-noconds' );
+						$val[] = "$group: ".wfMessage( 'configure-autopromote-noconds' )->text();
 						continue;
 					}
 
@@ -297,7 +300,7 @@ abstract class ConfigurationDiff {
 						$boolop = array_shift( $conds );
 						$boolop = $opToName[$boolop];
 
-						$val[] = "$group: " . wfMsg( "configure-boolop-description-$boolop" );
+						$val[] = "$group: " . wfMessage( "configure-boolop-description-$boolop" )->text();
 					} else {
 						$conds = array( $conds );
 					}
@@ -305,7 +308,7 @@ abstract class ConfigurationDiff {
 					// Analyse each individual one...
 					foreach( $conds as $cond ) {
 						if ($cond == array( APCOND_AGE, -1 ) ) {
-							$val[] = "$group: " . wfMsg( 'configure-autopromote-noconds' );
+							$val[] = "$group: " . wfMessage( 'configure-autopromote-noconds' )->text();
 							continue;
 						}
 
@@ -318,7 +321,7 @@ abstract class ConfigurationDiff {
 						$argSummary = implode( ', ', $cond );
 						$count = count( $cond );
 
-						$val[] = "$group: ".wfMsgExt( "configure-condition-description-$name", array( 'parsemag' ), $argSummary, $count );
+						$val[] = "$group: ".wfMessage( "configure-condition-description-$name", $argSummary, $count )->text();
 					}
 				}
 			} else {

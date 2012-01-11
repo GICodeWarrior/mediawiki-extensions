@@ -287,13 +287,13 @@ abstract class ConfigurationPage extends SpecialPage {
 	protected function showResult( $result ) {
 		global $wgOut, $wgUser;
 		$ok = $result == 'success';
-		$msg = wfMsgNoTrans( $ok ? 'configure-saved' : 'configure-error' );
+		$msg = $ok ? 'configure-saved' : 'configure-error';
 		$class = $ok ? 'successbox' : 'errorbox';
 
-		$wgOut->addWikiText( Html::rawElement( 'div', array( 'class' => $class ), "<strong>$msg</strong>" ) );
+		$wgOut->wrapWikiMsg( Html::rawElement( 'div', array( 'class' => $class ), '$1' ), $msg );
 
 		$sk = $wgUser->getSkin();
-		$linkText = wfMsgExt( 'configure-backlink', 'parseinline' );
+		$linkText = wfMessage( 'configure-backlink' )->parse();
 		$wgOut->addHTML( Html::rawElement( 'p', array( 'style' => 'clear:both;' ), $sk->link( $this->getTitle(), $linkText ) ) );
 	}
 
@@ -311,7 +311,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		global $wgOut, $wgLang;
 
 		$wgOut->addWikiMsg( 'configure-edit-old',
-			$wgLang->timeAndDate( $version ),
+			$wgLang->timeanddate( $version ),
 			$wgLang->date( $version ),
 			$wgLang->time( $version )
 		);
@@ -380,16 +380,16 @@ abstract class ConfigurationPage extends SpecialPage {
 		foreach ( $versions as $data ) {
 			$ts = $data['timestamp'];
 			$count++;
-			$datetime = wfMsgExt( 'configure-old-summary-datetime', array( 'parsemag', 'escape' ),
-				$wgLang->timeAndDate( $ts ),
+			$datetime = wfMessage( 'configure-old-summary-datetime',
+				$wgLang->timeanddate( $ts ),
 				$wgLang->date( $ts ),
 				$wgLang->time( $ts )
-			);
+			)->escaped();
 			$link = $skin->linkKnown( $title, $datetime, array(), array( 'version' => $ts ) );
 			$diffLink = '';
 			if ( $prev )
 				$diffLink =  '(' . $skin->linkKnown( SpecialPage::getTitleFor( 'ViewConfig' ),
-					wfMsgHtml( 'configure-old-changes' ), array(), array( 'version' => $ts, 'diff' => $prev ) ) . ')';
+					wfMessage( 'configure-old-changes' )->escaped(), array(), array( 'version' => $ts, 'diff' => $prev ) ) . ')';
 
 			## Make user link...
 			$userLink = '';
@@ -410,8 +410,7 @@ abstract class ConfigurationPage extends SpecialPage {
 
 			$comment = $data['reason'] ? $skin->commentBlock( $data['reason'] ) : '';
 
-			$text = wfMsgExt( 'configure-old-summary', array( 'parseinline' ), array( '$1', '$2', '$3', '$4', $username ) );
-			$text = wfMsgReplaceArgs( $text, array( $link, $userLink, $diffLink, $comment ) );
+			$text = wfMessage( 'configure-old-summary' )->rawParams( $link, $userLink, $diffLink, $comment )->params( $username )->parse();
 
 			$prev = $ts;
 
@@ -423,18 +422,18 @@ abstract class ConfigurationPage extends SpecialPage {
 		## Take out the first ten...
 		$links = array_slice( $links, 0, 10 );
 
-		$text = Html::element( 'legend', null, wfMsg( 'configure-old' ) );
+		$text = Html::element( 'legend', null, wfMessage( 'configure-old' )->text() );
 		if ( !count( $links ) ) {
-			$text .= wfMsgExt( 'configure-no-old', array( 'parse' ) );
+			$text .= wfMessage( 'configure-no-old' )->parseAsBlock();
 		} else {
-			$text .= wfMsgExt( 'configure-old-versions', array( 'parse' ) );
+			$text .= wfMessage( 'configure-old-versions' )->parseAsBlock();
 			$text .= "<ul>\n<li>";
 			$text .= implode( "</li>\n<li>", $links );
 			$text .= "</li>\n</ul>\n";
 		}
 		$link = SpecialPage::getTitleFor( 'ViewConfig' );
-		$text .= Html::rawElement( 'p', null, $skin->link( $link, wfMsgHtml( 'configure-view-all-versions' ), array(), array(), array( 'known' ) ) );
-		$text .= Html::rawElement( 'p', null, $skin->link( $link, wfMsgHtml( 'configure-view-default' ), array(), array( 'version' => 'default' ), array( 'known' ) ) );
+		$text .= Html::rawElement( 'p', null, $skin->linkKnown( $link, wfMessage( 'configure-view-all-versions' )->escaped() ) );
+		$text .= Html::rawElement( 'p', null, $skin->linkKnown( $link, wfMessage( 'configure-view-default' )->escaped(), array(), array( 'version' => 'default' ) ) );
 
 		return Html::rawElement( 'fieldset', null, $text );
 	}
@@ -446,8 +445,8 @@ abstract class ConfigurationPage extends SpecialPage {
 		global $wgConfigureWikis, $wgScript;
 		if ( $wgConfigureWikis === false || !$this->isUserAllowedInterwiki() )
 			return '';
-		$form = Html::element( 'legend', null, wfMsg( 'configure-select-wiki' ) );
-		$form .= wfMsgExt( 'configure-select-wiki-desc', array( 'parse' ) );
+		$form = Html::element( 'legend', null, wfMessage( 'configure-select-wiki' )->text() );
+		$form .= wfMessage( 'configure-select-wiki-desc' )->parseAsBlock();
 		$form .= Html::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
 		$form .= Html::hidden( 'title', $this->getTitle()->getPrefixedDBkey() );
 		if ( is_array( $wgConfigureWikis ) ) {
@@ -459,7 +458,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		} else {
 			$form .= Html::input( 'wiki', $this->mWiki, 'text' ) . '&#160;';
 		}
-		$form .= Html::input( null, wfMsg( 'configure-select-wiki-submit' ), 'submit' );
+		$form .= Html::input( null, wfMessage( 'configure-select-wiki-submit' )->text(), 'submit' );
 		$form .= Html::closeElement( 'form' );
 		return Html::rawElement( 'fieldset', null, $form );
 	}
@@ -844,7 +843,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	protected function showForm() {
 		global $wgOut, $wgUser, $wgRequest;
 
-		$action = $this->getTitle()->escapeLocalURL();
+		$action = $this->getTitle()->getLocalURL();
 
 		$reason = $wgRequest->getText( 'wpReason' );
 
@@ -860,12 +859,12 @@ abstract class ConfigurationPage extends SpecialPage {
 			Html::openElement( 'div', array( 'id' => 'configure' ) ) . "\n" .
 			$this->buildAllSettings() . "\n" .
 			( $this->mCanEdit ?
-				wfMsgExt( 'configure-form-reason', 'parseinline' ) . ' ' . Html::input( 'wpReason', $reason, 'text', array( 'size' => 45 ) ) . "\n" .
+				wfMessage( 'configure-form-reason' )->text() . ' ' . Html::input( 'wpReason', $reason, 'text', array( 'size' => 45 ) ) . "\n" .
 				Html::openElement( 'div', array( 'id' => 'prefsubmit' ) ) . "\n" .
 				Html::openElement( 'div', array() ) . "\n" .
 				Html::hidden( 'wpEditToken', $wgUser->editToken() ) . "\n" .
-				Html::input( 'wpSave', wfMsg( 'configure-btn-save' ), 'submit', array( 'class' => 'btnSavePrefs' ) ) . "\n" .
-				Html::input( 'wpPreview', wfMsg( 'showdiff' ), 'submit' ) . "\n" .
+				Html::input( 'wpSave', wfMessage( 'configure-btn-save' )->text(), 'submit', array( 'class' => 'btnSavePrefs' ) ) . "\n" .
+				Html::input( 'wpPreview', wfMessage( 'showdiff' )->text(), 'submit' ) . "\n" .
 				Html::closeElement( 'div' ) . "\n" .
 				Html::closeElement( 'div' ) . "\n" .
 				Html::hidden( 'wpEditToken', $wgUser->editToken() ) . "\n" .
@@ -880,9 +879,9 @@ abstract class ConfigurationPage extends SpecialPage {
 
 	/** Show a hidden-by-default search form */
 	protected function buildSearchForm() {
-		$input = wfMsgExt( 'configure-js-search-prompt', 'parseinline' ) . wfMsgExt( 'word-separator', array( 'escapenoentities' ) ) .
-			Html::element( 'input', array( 'id' => 'configure-search-input', 'size' => 45 ) );
-		$form = Html::element( 'legend', null, wfMsg( 'configure-js-search-legend' ) ) . Html::rawElement( 'p', null, $input ) . "\n" .
+		$input = wfMessage( 'configure-js-search-prompt' )->parse() . wfMessage( 'word-separator' )->escaped() .
+			Html::element( 'input', array( 'id' => 'configure-search-input', 'size' => 45 ), null );
+		$form = Html::element( 'legend', null, wfMessage( 'configure-js-search-legend' )->text() ) . Html::rawElement( 'p', null, $input ) . "\n" .
 			Html::openElement( 'ul', array( 'id' => 'configure-search-results' ) ) . Html::closeElement( 'ul' );
 		$form = Html::rawElement( 'fieldset', array( 'style' => 'display: none;', 'id' => 'configure-search-form' ), $form );
 		return $form;
@@ -904,10 +903,12 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @return String xhtml fragment
 	 */
 	protected function buildTableHeading( $msg ) {
-		$msgName = 'configure-section-' . $msg;
-		$msgVal = wfMsgExt( $msgName, array( 'parseinline' ) );
-		if ( wfEmptyMsg( $msgName, $msgVal ) )
+		$msgObj = wfMessage( 'configure-section-' . $msg );
+		if ( $msgObj->exists() ) {
+			$msgVal = $msgObj->parse();
+		} else {
 			$msgVal = $msg;
+		}
 		return "\n<h2>" . $msgVal . "</h2>" . Html::openElement( 'table', array( 'class' => 'configure-table' ) ) . "\n";
 	}
 
@@ -921,7 +922,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	protected function buildInput( $conf, $params = array() ) {
 		$read = isset( $params['read'] ) ? $params['read'] : $this->userCanRead( $conf );
 		if ( !$read )
-			return Html::rawElement( 'span', array( 'class' => 'disabled' ), wfMsgExt( 'configure-view-not-allowed', array( 'parseinline' ) ) );
+			return Html::rawElement( 'span', array( 'class' => 'disabled' ), wfMessage( 'configure-view-not-allowed' )->parse() );
 		$allowed = isset( $params['edit'] ) ? $params['edit'] : $this->userCanEdit( $conf );
 		$type = isset( $params['type'] ) ? $params['type'] : $this->getSettingType( $conf );
 		$default = isset( $params['value'] ) ? $params['value'] : $this->getSettingValue( $conf );
@@ -933,7 +934,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		if ( $type == 'image-url' ) {
 			if ( !$allowed )
 				return '<code>' . htmlspecialchars( (string)$default ) . '</code>';
-			return wfMsgExt( 'configure-image-url-explanation', 'parseinline' ) . '<br />' .
+			return wfMessage( 'configure-image-url-explanation' )->parse() . '<br />' .
 				Html::element( 'input', array( 'name' => "wp$conf", 'size' => 45, 'value' => (string)$default,
 					'class' => 'image-selector', 'id' => 'image-url-textbox-' . $conf )
 				) . '&#160;' .
@@ -1013,7 +1014,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					htmlspecialchars( ( is_array( $default ) ? implode( "\n", $default ) : $default ) ) .
 					"\n</pre>";
 			}
-			$text = wfMsgExt( 'configure-arrayinput-oneperline', 'parseinline' );
+			$text = wfMessage( 'configure-arrayinput-oneperline' )->parse();
 			$text .= Html::textarea( "wp{$conf}", is_array( $default ) ? implode( "\n", $default ) : '',
 				array( 'id' => "wp{$conf}", 'rows' => 8, 'style' => 'width:95%;' ) );
 			return $text;
@@ -1021,13 +1022,19 @@ abstract class ConfigurationPage extends SpecialPage {
 		if ( $type == 'assoc' ) {
 			## See if the key/value has a special description
 
-			$keydesc = wfMsgExt( "configure-setting-$conf-key", 'parseinline' );
-			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
+			$keydescmsg = wfMessage( "configure-setting-$conf-key" );
+			if ( $keydescmsg->exists() ) {
+				$keydesc = $keydescmsg->parse();
+			} else {
+				$keydesc = wfMessage( 'configure-desc-key' )->escaped();
+			}
 
-			if ( wfEmptyMsg( "configure-setting-$conf-key", $keydesc ) )
-				$keydesc = wfMsgHtml( 'configure-desc-key' );
-			if ( wfEmptyMsg( "configure-setting-$conf-value", $valdesc ) )
-				$valdesc = wfMsgHtml( 'configure-desc-val' );
+			$valdescmsg = wfMessage( "configure-setting-$conf-value" );
+			if ( $valdescmsg->exists() ) {
+				$valdesc = $valdescmsg->parse();
+			} else {
+				$valdesc = wfMessage( 'configure-desc-val' )->escaped();
+			}
 
 			$classes = array( 'configure-array-table', 'assoc' );
 
@@ -1051,13 +1058,14 @@ abstract class ConfigurationPage extends SpecialPage {
 					else
 						$text .= '<code>' . htmlspecialchars( $key ) . '</code>';
 					$text .= Html::closeElement( 'td' ) . Html::openElement( 'td' );
-					if ( $allowed )
+					if ( $allowed ) {
 						$text .= Html::element( 'input', array(
 							'name' => 'wp' . $conf . "-val-{$i}",
 							'type' => 'text', 'value' => $val, 'size' => 20
 						) ) . Html::element( 'br' ) . "\n";
-					else
+					} else {
 						$text .= '<code>' . htmlspecialchars( $val ) . '</code>';
+					}
 					$text .= Html::closeElement( 'td' ) . Html::closeElement( 'tr' );
 					$i++;
 				}
@@ -1085,13 +1093,19 @@ abstract class ConfigurationPage extends SpecialPage {
 			return $text;
 		}
 		if ( $type == 'rate-limits' ) { ## Some of this is stolen from assoc, since it's an assoc with an assoc.
-			$keydesc = wfMsgExt( "configure-setting-$conf-key", 'parseinline' );
-			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
+			$keydescmsg = wfMessage( "configure-setting-$conf-key" );
+			if ( $keydescmsg->exists() ) {
+				$keydesc = $keydescmsg->parse();
+			} else {
+				$keydesc = wfMessage( 'configure-desc-key' )->escaped();
+			}
 
-			if ( wfEmptyMsg( "configure-setting-$conf-key", $keydesc ) )
-				$keydesc = wfMsgHtml( 'configure-desc-key' );
-			if ( wfEmptyMsg( "configure-setting-$conf-value", $valdesc ) )
-				$valdesc = wfMsgHtml( 'configure-desc-val' );
+			$valdescmsg = wfMessage( "configure-setting-$conf-value" );
+			if ( $valdescmsg->exists() ) {
+				$valdesc = $valdescmsg->parse();
+			} else {
+				$valdesc = wfMessage( 'configure-desc-val' )->escaped();
+			}
 
 			$classes = array( 'configure-array-table', 'configure-rate-limits' );
 
@@ -1109,11 +1123,11 @@ abstract class ConfigurationPage extends SpecialPage {
 				if ( isset( $default[$action] ) )
 					$val = $default[$action];
 
-				$key = Html::rawElement( 'td', array(), wfMsgExt( "configure-throttle-action-$action", 'parseinline' ) );
+				$key = Html::rawElement( 'td', array(), wfMessage( "configure-throttle-action-$action" )->parse() );
 
 				## Build YET ANOTHER ASSOC TABLE ARGH!
-				$innerRows = Html::rawElement( 'tr', array(), Html::rawElement( 'th', array(), wfMsgExt( 'configure-throttle-group', 'parseinline' ) ) . ' ' .
-					Html::rawElement( 'th', array(), wfMsgExt( 'configure-throttle-limit', 'parseinline' ) ) )."\n";
+				$innerRows = Html::rawElement( 'tr', array(), Html::rawElement( 'th', array(), wfMessage( 'configure-throttle-group' )->parse() ) . ' ' .
+					Html::rawElement( 'th', array(), wfMessage( 'configure-throttle-limit' )->parse() ) )."\n";
 				foreach( $validGroups as $type ) {
 					$limits = null;
 					if ( isset( $default[$action][$type] ) )
@@ -1124,16 +1138,16 @@ abstract class ConfigurationPage extends SpecialPage {
 						$count = $period = 0;
 
 					$id = 'wp'.$conf.'-key-'.$action.'-'.$type;
-					$left_col = Html::rawElement( 'td', array(), wfMsgExt( "configure-throttle-group-$type", 'parseinline' ) );
+					$left_col = Html::rawElement( 'td', array(), wfMessage( "configure-throttle-group-$type" )->parse() );
 
 					if ( $allowed ) {
-						$right_col = Html::element( 'label', array( 'for' => "$id-count" ), wfMsg( 'configure-throttle-count' ) ) .
+						$right_col = Html::element( 'label', array( 'for' => "$id-count" ), wfMessage( 'configure-throttle-count' )->text() ) .
 							'&#160;' . Html::input( "$id-count", $count, 'text', array( 'name' => "$id-count", 'size' => 15 ) ) .
 							Html::element( 'br' ) .
-							Html::element( 'label', array( 'for' => "$id-period" ), wfMsg( 'configure-throttle-period' ) ) .
+							Html::element( 'label', array( 'for' => "$id-period" ), wfMessage( 'configure-throttle-period' )->text() ) .
 							'&#160;' . Html::input( "$id-period", $period, 'text', array( 'name' => "$id-period", 'size' => 15 ) );
 					} else {
-						$right_col = ($count && $period) ? wfMsg( 'configure-throttle-summary', $count, $period ) : wfMsg( 'configure-throttle-none' );
+						$right_col = ($count && $period) ? wfMessage( 'configure-throttle-summary', $count, $period )->text() : wfMessage( 'configure-throttle-none' )->text();
 						## Laziness: Make summaries work by putting the data in hidden fields, rather than a special case in JS.
 						$right_col .= "\n" . Html::hidden( "$id-count", $count, array( 'id' => "$id-count" ) ) . Html::hidden( "$id-period", $period, array( 'id' => "$id-period" ) );
 					}
@@ -1171,7 +1185,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			foreach ( $wgContLang->getNamespaces() as $ns => $name ) {
 				$name = str_replace( '_', ' ', $name );
 				if ( '' == $name ) {
-					$name = wfMsgExt( 'blanknamespace', array( 'parseinline' ) );
+					$name = wfMessage( 'blanknamespace' )->parse();
 				}
 				if ( $type == 'ns-bool' ) {
 					$checked = isset( $default[$ns] ) && $default[$ns];
@@ -1197,17 +1211,20 @@ abstract class ConfigurationPage extends SpecialPage {
 		}
 		if ( $type == 'ns-text' ) {
 			global $wgContLang;
-			$nsdesc = wfMsgHtml( 'configure-desc-ns' );
-			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
+			$nsdesc = wfMessage( 'configure-desc-ns' )->escaped();
+			$valdescmsg = wfMessage( "configure-setting-$conf-value" );
+			if ( $valdescmsg->exists() ) {
+				$valdesc = $valdescmsg->parse();
+			} else {
+				$valdesc = wfMessage( 'configure-desc-val' )->escaped();
+			}
 
-			if ( wfEmptyMsg( "configure-setting-$conf-value", $valdesc ) )
-				$valdesc = wfMsgHtml( 'configure-desc-val' );
 			$text = Html::openElement( 'table', array( 'class' => 'configure-array-table ns-text configure-biglist' ) ) . "\n" .
 				Html::rawElement( 'tr', array(), Html::rawElement( 'th', array(), $nsdesc ) . Html::rawElement( 'th', array(), $valdesc ) ) . "\n";
 			foreach ( $wgContLang->getNamespaces() as $ns => $name ) {
 				$name = str_replace( '_', ' ', $name );
 				if ( '' == $name ) {
-					$name = wfMsgExt( 'blanknamespace', array( 'parseinline' ) );
+					$name = wfMessage( 'blanknamespace' )->parse();
 				}
 				$text .= Html::openElement( 'tr', array() ) . Html::rawElement( 'td', array(), $name ) . Html::openElement( 'td', array() );
 				if ( $allowed )
@@ -1225,11 +1242,14 @@ abstract class ConfigurationPage extends SpecialPage {
 		}
 		if ( $type == 'ns-array' ) {
 			global $wgContLang;
-			$nsdesc = wfMsgHtml( 'configure-desc-ns' );
-			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
+			$nsdesc = wfMessage( 'configure-desc-ns' )->escaped();
+			$valdescmsg = wfMessage( "configure-setting-$conf-value" );
+			if ( $valdescmsg->exists() ) {
+				$valdesc = $valdescmsg->parse();
+			} else {
+				$valdesc = wfMessage( 'configure-desc-val' )->escaped();
+			}
 
-			if ( wfEmptyMsg( "configure-setting-$conf-value", $valdesc ) )
-				$valdesc = wfMsgHtml( 'configure-desc-val' );
 			$text = Html::openElement( 'table', array( 'class' => 'ns-array configure-biglist configure-array-table' ) ) . "\n" .
 				Html::rawElement( 'tr', array(), Html::rawElement( 'th', array(), $nsdesc ) . Html::rawElement( 'th', array(), $valdesc ) ) . "\n";
 			foreach ( $wgContLang->getNamespaces() as $ns => $name ) {
@@ -1237,7 +1257,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					continue;
 				$name = str_replace( '_', ' ', $name );
 				if ( '' == $name ) {
-					$name = wfMsgExt( 'blanknamespace', array( 'parseinline' ) );
+					$name = wfMessage( 'blanknamespace' )->parse();
 				}
 				$text .= Html::openElement( 'tr' ) . Html::rawElement( 'td', array(),
 					Html::rawElement( 'label', array( 'for' => "wp{$conf}-ns{$ns}" ), $name ) ) . Html::openElement( 'td' );
@@ -1278,11 +1298,14 @@ abstract class ConfigurationPage extends SpecialPage {
 				$all = array_diff( $all, $this->getSettingValue( 'wgImplicitGroups' ) );
 			}
 			sort( $all );
-			$groupdesc = wfMsgHtml( 'configure-desc-group' );
-			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
+			$groupdesc = wfMessage( 'configure-desc-group' )->escaped();
+			$valdescmsg = wfMessage( "configure-setting-$conf-value" );
+			if ( $valdescmsg->exists() ) {
+				$valdesc = $valdescmsg->parse();
+			} else {
+				$valdesc = wfMessage( 'configure-desc-val' )->escaped();
+			}
 
-			if ( wfEmptyMsg( "configure-setting-$conf-value", $valdesc ) )
-				$valdesc = wfMsgHtml( 'configure-desc-val' );
 			$classes = "{$type} configure-array-table" . ( $type == 'group-bool' ? ' ajax-group' : '' );
 			$text = Html::openElement( 'table', array( 'id' => $conf, 'class' => $classes ) ) ."\n";
 			$text .= Html::rawElement( 'tr', array( 'class' => 'configure-maintable-row' ),
@@ -1300,10 +1323,14 @@ abstract class ConfigurationPage extends SpecialPage {
 		}
 		if ( $type == 'promotion-conds' ) {
 
-			$groupdesc = wfMsgHtml( 'configure-desc-group' );
-			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
-			if ( wfEmptyMsg( "configure-setting-$conf-value", $valdesc ) )
-				$valdesc = wfMsgHtml( 'configure-desc-val' );
+			$groupdesc = wfMessage( 'configure-desc-group' )->escaped();
+			$valdescmsg = wfMessage( "configure-setting-$conf-value" );
+			if ( $valdescmsg->exists() ) {
+				$valdesc = $valdescmsg->parse();
+			} else {
+				$valdesc = wfMessage( 'configure-desc-val' )->escaped();
+			}
+
 			$text = Html::openElement( 'table', array( 'id' => $conf, 'class' => "{$type} configure-array-table ajax-group" ) ) ."\n";
 			$text .= Html::rawElement( 'tr', array( 'class' => 'configure-maintable-row' ),
 				Html::rawElement( 'th', array(), $groupdesc ) . Html::rawElement( 'th', array(), $valdesc ) ) . "\n";
@@ -1338,7 +1365,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			APCOND_AGE_FROM_EDIT => 'int' );
 
 		$row = Html::openElement( 'div', array( 'class' => 'configure-biglist promotion-conds-element' ) );
-		$row .= wfMsgHtml( 'configure-condition-operator' ) . ' ';
+		$row .= wfMessage( 'configure-condition-operator' )->escaped() . ' ';
 		$encConf = htmlspecialchars( $conf );
 		$encGroup = htmlspecialchars( $group );
 		$encId = 'wp'.$encConf.'-'.$encGroup;
@@ -1354,7 +1381,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				$opts['checked'] = 'checked';
 			}
 			$row .= Html::input( $encId.'-opt-'.$desc, $desc, 'radio', $opts ) .
-				'&#160;' . Html::element( 'label', array( 'for' => $encId.'-opt-'.$desc ), wfMsg( 'configure-condition-operator-'.$desc ) );
+				'&#160;' . Html::element( 'label', array( 'for' => $encId.'-opt-'.$desc ), wfMessage( 'configure-condition-operator-'.$desc )->text() );
 		}
 		$row .= Html::element( 'br' ) . "\n";
 
@@ -1379,10 +1406,10 @@ abstract class ConfigurationPage extends SpecialPage {
 
 		$row .= Html::openElement( 'table', array( 'class' => 'configure-table-promotion' ) );
 
-		$row .= Html::rawElement( 'tr', array(), Html::element( 'th', array(), wfMsg( 'configure-condition-name' ) ) .
-			Html::element( 'th', array(), wfMsg( 'configure-condition-requirement' ) ) )."\n";
+		$row .= Html::rawElement( 'tr', array(), Html::element( 'th', array(), wfMessage( 'configure-condition-name' )->text() ) .
+			Html::element( 'th', array(), wfMessage( 'configure-condition-requirement' )->text() ) )."\n";
 		foreach ( $conds as $condName => $condType ) {
-			$desc = wfMsg( 'configure-condition-name-' . $condName );
+			$desc = wfMessage( 'configure-condition-name-' . $condName )->text();
 			$row .= Html::openElement( 'tr' ) . Html::rawElement( 'td', array(),
 				Html::element( 'label', array( 'for' => "{$encId}-cond-{$condName}" ), $desc ) ) . Html::openElement( 'td' );
 			switch( $condType ) {
@@ -1469,7 +1496,6 @@ abstract class ConfigurationPage extends SpecialPage {
 		$showLink = isset( $params['link'] ) ? $params['link'] : true;
 
 		## First TD
-		$msgVal = wfMsgExt( $msg, array( 'parseinline' ) );
 		$rawVal = Html::element( 'tt', null, "\$$conf" );
 		if ( $showLink ) {
 			$url = 'http://www.mediawiki.org/wiki/Manual:$' . $conf;
@@ -1477,13 +1503,17 @@ abstract class ConfigurationPage extends SpecialPage {
 		} else {
 			$link = $rawVal;
 		}
-		if ( wfEmptyMsg( $msg, $msgVal ) )
-			$msgVal = $link;
-		else
-			$msgVal = "$msgVal ($link)";
 
-		if ( $params['customised'] )
-			$msgVal = Html::rawElement( 'p', null, $msgVal ).wfMsgExt( 'configure-customised', 'parse' );
+		$msgObj = wfMessage( $msg );
+		if ( $msgObj->exists() ) {
+			$msgVal = $msgObj->parse() . " ($link)";
+		} else {
+			$msgVal = $link;
+		}
+
+		if ( $params['customised'] ) {
+			$msgVal = Html::rawElement( 'p', null, $msgVal ) . wfMessage( 'configure-customised' )->parseAsBlock();
+		}
 
 		$attribs = array();
 		$attribs['style'] = 'text-align:' . ( $wgContLang->isRtl() ? 'right' : 'left' ) . ';vertical-align:top;';
@@ -1588,7 +1618,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				}
 
 				if ( $thisSection ) {
-					$thisSection = Html::rawElement( 'legend', null, wfMsgExt( "configure-section-$title", array( 'parseinline' ) ) ) . $thisSection;
+					$thisSection = Html::rawElement( 'legend', null, wfMessage( "configure-section-$title" )->parse() ) . $thisSection;
 					$ret .= Html::rawElement( 'fieldset', null, $thisSection );
 				}
 			}
