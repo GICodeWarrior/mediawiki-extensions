@@ -14,6 +14,8 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 
 $wgExtensionMessagesFiles['MathStatFunctions'] = dirname( __FILE__ ) . '/MathStatFunctions.i18n.php';
+$wgExtensionMessagesFiles['MathStatFunctionsMagic'] = dirname( __FILE__ ) . '/MathStatFunctions.i18n.magic.php';
+
 $wgHooks['ParserFirstCallInit'][] = 'wfSetupMathStatFunctions';
 
 $wgExtMathStatFunctions = null;
@@ -28,7 +30,6 @@ class ParserFunctionsNotFoundException extends Exception {
 }
 
 class ExtMathStatFunctions {
-
 	public function __construct() {
 		if ( !class_exists( 'ExtParserFunctions' ) )
 			throw new ParserFunctionsNotFoundException;

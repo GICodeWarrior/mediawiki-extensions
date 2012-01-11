@@ -6,8 +6,6 @@
  * @ingroup Extensions
  */
 
-require_once( dirname( __FILE__ ) . '/MathStatFunctions.i18n.magic.php' );
-
 $messages = array();
 
 $messages['en'] = array(
