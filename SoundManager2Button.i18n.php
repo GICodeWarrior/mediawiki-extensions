@@ -102,10 +102,11 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'soundmanager2button-desc' => 'A anseriss un riprodotor SoundManager 2 MP3 ant na pagina wiki',
+	'soundmanager2button-desc' => 'A anseriss un letor MP3 SoundManager 2 ant na pàgina wiki',
 	'soundmanager2button-play' => 'Fé parte',
 );
 
