@@ -64,13 +64,14 @@ class SpecialEnroll extends SpecialEPPage {
 				if ( $this->getUser()->isLoggedIn() ) {
 					if ( $this->getUser()->isAllowed( 'epstudent' ) ) {
 						$user = $this->getUser();
-						$hasFields = trim( $user->getRealName() ) !== '' || $user->getOption( 'gender' ) !== 'unknown';
+						$hasFields = trim( $user->getRealName() ) !== '' && $user->getOption( 'gender' ) !== 'unknown';
 
 						if ( $hasFields ) {
-							$this->showEnrollmentForm( $term );
+							$this->doEnroll( $term );
+							$this->onSuccess();
 						}
 						else {
-
+							$this->showEnrollmentForm( $term );
 						}
 					}
 					else {
@@ -137,16 +138,41 @@ class SpecialEnroll extends SpecialEPPage {
 	}
 
 	/**
-	 * Just enroll the user in the term. This is useful when
-	 * there are no things for the user to fill out in the
-	 * enrollment form, making that step not needed.
+	 * Just enroll the user in the term.
 	 *
 	 * @since 0.1
 	 *
 	 * @param EPTerm $term
+	 *
+	 * @return boolean Success indicator
 	 */
-	protected function autoEnroll( EPTerm $term ) {
-		// TODO
+	protected function doEnroll( EPTerm $term ) {
+		$student = EPStudent::newFromUser( $this->getUser(), array( 'id' ) );
+		$hadStudent = $student !== false;
+
+		$fields = array(
+			'active_enroll' => 1
+		);
+
+		if ( !$hadStudent ) {
+			$student = new EPStudent( array( 'user_id' => $this->getUser()->getId() ), true );
+			$fields['first_enroll'] = wfTimestamp( TS_MW );
+		}
+
+		$student->setFields( $fields );
+
+		$success = $student->writeToDB();
+
+		if ( $success ) {
+			$success = $student->associateWithTerms( array( $term ) ) && $success;
+
+			if ( !$hadStudent ) {
+				$this->getUser()->setOption( 'ep_showtoplink', true );
+				$this->getUser()->saveSettings();
+			}
+		}
+
+		return $success;
 	}
 	
 	/**
@@ -205,7 +231,7 @@ class SpecialEnroll extends SpecialEPPage {
 				'default' => 'unknown',
 				'label-message' => 'ep-enroll-gender',
 				'validation-callback' => function( $value, array $alldata = null ) {
-					return strlen( $value ) < 2 ? wfMsg( 'ep-enroll-invalid-gender' ) : true;
+					return in_array( $value, array( 'male', 'female', 'unknown' ) ) ? true : wfMsg( 'ep-enroll-invalid-gender' );
 				},
 				'options' => array(
 					wfMsg( 'gender-male' ) => 'male',
@@ -227,25 +253,17 @@ class SpecialEnroll extends SpecialEPPage {
 	 * @return Bool|Array
 	 */
 	public function handleSubmission( array $data ) {
-		$student = EPStudent::newFromUser( $this->getUser(), array( 'id' ) );
-
-		if ( $student === false ) {
-			$student = new EPStudent( array( 'user_id' => $this->getUser()->getId() ), true );
+		if ( array_key_exists( 'realname', $data ) ) {
+			$this->getUser()->setRealName( $data['realname'] );
 		}
 
-		$fields = array(); // TODO
-
-		$student->setFields( $fields );
-
-		$success = $student->writeToDB();
-
-		if ( $success ) {
-			$success = $student->associateWithTerms( array( $this->term ) ) && $success;
-			$this->getUser()->setOption( 'ep_showtoplink', true );
-			$this->getUser()->saveSettings(); // TODO: can't we just save this single option instead of everything?
+		if ( array_key_exists( 'gender', $data ) ) {
+			$this->getUser()->setOption( 'gender', $data['gender'] );
 		}
 
-		if ( $success ) {
+		$this->getUser()->saveSettings();
+
+		if ( $this->doEnroll( $this->term ) ) {
 			return true;
 		}
 		else {

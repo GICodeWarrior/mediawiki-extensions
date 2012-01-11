@@ -268,6 +268,10 @@ $messages['en'] = array(
 	'ep-enroll-invalid-token' => 'The token you provided is invalid.',
 	'ep-enroll-legend' => 'Enroll',
 	'ep-enroll-header' => 'In order to enroll for this course, all you need to do is fill out this form and click the submission button. After that you will be enrolled.',
+	'ep-enroll-gender' => 'Gender (optional)',
+	'ep-enroll-realname' => 'Real name (required)',
+	'ep-enroll-invalid-name' => 'The name needs to be at least contain $1 {{PLURAL:$1|character|characters}}.',
+	'ep-enroll-invalid-gender' => 'Please select one of these genders',
 
 	// Special:MyCourses
 	'ep-mycourses-enrolled' => 'You have successfully enrolled for $1 at $2.',
