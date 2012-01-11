@@ -17,6 +17,7 @@ $wgAutoloadClasses['CategoryMultisortHooks'] = $dir . 'CategoryMultisort.hooks.p
 $wgAutoloadClasses['CategoryMultisortViewer'] = $dir . 'CategoryMultisort.class.php';
 
 $wgExtensionMessagesFiles['CategoryMultisort'] = $dir . 'CategoryMultisort.i18n.php';
+$wgExtensionMessagesFiles['CategoryMultisortMagic'] = $dir . 'CategoryMultisort.i18n.magic.php';
 
 $wgCategoryMultisortHooks = new CategoryMultisortHooks();
 

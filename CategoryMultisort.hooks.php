@@ -12,7 +12,6 @@ class CategoryMultisortHooks {
 		foreach ( array(
 			'LoadExtensionSchemaUpdates',
 			'ParserFirstCallInit',
-			'LanguageGetMagic',
 			'ParserClearState',
 			'ParserBeforeTidy',
 			'LinksUpdate',
@@ -68,13 +67,6 @@ class CategoryMultisortHooks {
 				'defaultsort', array( $this, 'parserDefaultSort' ), SFH_NO_HASH
 			);
 		}
-		return true;
-	}
-	
-	function onLanguageGetMagic( &$magicWords, $langCode ) {
-		$magicWords['CategoryMultisort'] = array( 0, 'CategoryMultisort' );
-		$magicWords['CategoryDefaultMultisort'] = array( 0, 'CategoryDefaultMultisort' );
-		$magicWords['CategoryUseMultisort'] = array( 0, 'CategoryUseMultisort' );
 		return true;
 	}
 	
