@@ -41,6 +41,7 @@ $dir = dirname( __FILE__ ) . '/';
 
 $wgExtensionMessagesFiles['ContributionReporting'] = $dir . 'ContributionReporting.i18n.php';
 $wgExtensionMessagesFiles['ContributionReportingAlias'] = $dir . 'ContributionReporting.alias.php';
+$wgExtensionMessagesFiles['ContributionReportingMagic'] = $dir . 'ContributionReporting.magic.php';
 
 $wgAutoloadClasses['ContributionHistory'] = $dir . 'ContributionHistory_body.php';
 $wgAutoloadClasses['ContributionTotal'] = $dir . 'ContributionTotal_body.php';
@@ -144,7 +145,6 @@ $wgResourceModules['ext.disablednotice'] = array(
 ) + $commonModuleInfo;
 
 $wgHooks['ParserFirstCallInit'][] = 'efContributionReportingSetup';
-$wgHooks['LanguageGetMagic'][] = 'efContributionReportingTotal_Magic';
 
 /**
  * @param $parser Parser
@@ -152,18 +152,6 @@ $wgHooks['LanguageGetMagic'][] = 'efContributionReportingTotal_Magic';
  */
 function efContributionReportingSetup( $parser ) {
 	$parser->setFunctionHook( 'contributiontotal', 'efContributionReportingTotal_Render' );
-	return true;
-}
-
-/**
- * Define the contributiontotal magic word
- * Example: {{#contributiontotal:fundraiser=2011|fudgefactor=0}}
- * @param $magicWords array
- * @param $langCode string
- * @return bool
- */
-function efContributionReportingTotal_Magic( &$magicWords, $langCode ) {
-	$magicWords['contributiontotal'] = array( 0, 'contributiontotal' );
 	return true;
 }
 
