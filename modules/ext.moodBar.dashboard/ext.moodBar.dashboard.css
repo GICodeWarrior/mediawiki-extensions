@@ -110,6 +110,7 @@
 .fbd-leaderboard li span {
 	float:right;
 	color: #777777;
+	display:block
 }
 
 .fbd-leaderboard-top-responders {

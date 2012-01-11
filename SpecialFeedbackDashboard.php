@@ -112,7 +112,7 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 								array( 'id' => 'fbd-filters-my-response', 'value' => '1', 'class' => 'fbd-filters-check' ) );
 			
 			$myResponseFilter = $myResponseCheckbox. '<label for="fbd-filters-my-response" id="fbd-filters-type-my-response-label" class="fbd-filters-label">' . 
-						$myResponseMsg . '</label><br class="fbd-clearfix" />';
+						$myResponseMsg . '</label>';
 		}
 
 		// Show unanswered filter
@@ -121,7 +121,7 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 							array( 'id' => 'fbd-filters-show-unanswered', 'value' => '1', 'class' => 'fbd-filters-check' ) );
 			
 		$showUnansweredFilter = $showUnansweredCheckbox . '<label for="fbd-filters-show-unanswered" id="fbd-filters-type-show-unanswered-label" class="fbd-filters-label">' . 
-								$showUnansweredMsg . '</label><br class="fbd-clearfix" />';
+								$showUnansweredMsg . '</label>';
 
 		$leaderBoardElement = self::buildLeaderBoardElement();
 
@@ -156,8 +156,11 @@ class SpecialFeedbackDashboard extends IncludableSpecialPage {
 				</fieldset>
 				<label for="fbd-filters-username" class="fbd-filters-label">$usernameMsg</label>
 				$usernameTextbox
+				<br class="fbd-clearfix" />
 				$myResponseFilter
+				<br class="fbd-clearfix" />
 				$showUnansweredFilter
+				<br class="fbd-clearfix" />
 				<button type="submit" id="fbd-filters-set">$setFiltersMsg</button>
 			</form>
 			<a href="$whatIsURL" id="fbd-about">$whatIsMsg</a>
@@ -277,8 +280,8 @@ HTML;
 			foreach ( $topResponders as $row ) {
 				$user = User::newFromRow( $row );
 				if ( $user && !$user->isAnon() ) {
-					$html .= '<li>' . Linker::userLink( $user->getId(), htmlspecialchars( $user->getName() ) ) .
-							'<span>' . $wgLang->formatNum( intval( $row->number ) ) . '</span></li>';
+					$html .= '<li><span>' . $wgLang->formatNum( intval( $row->number ) ) . '</span>' 
+							. Linker::userLink( $user->getId(), htmlspecialchars( $user->getName() ) ) . '</li>';
 				}
 			}
 		}
