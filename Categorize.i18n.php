@@ -238,13 +238,14 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'categorize-desc' => "A gionta na fnesta d'ingress për modifiché e carié pagine ch'a përmëtto a j'utent d'assigné dle categorìe",
-	'categorize-title' => 'Qualificassion ëd conossensa',
-	'categorize-footer' => "S'it veule gionté na tichëtta, për piasì contata n'[[Special:ListUsers/sysop|administrador]].",
-	'categorize-advice' => "Sgnaca an sla tichëtta ch'it veue dé a sta pagina:",
+	'categorize-desc' => "A gionta na fnestra d'imission për modifiché e carié dle pàgine ch'a përmëtto a j'utent d'assigné dle categorìe",
+	'categorize-title' => 'Qualificassion dla conossensa',
+	'categorize-footer' => "S'a veul gionté na tichëtta, për piasì ch'a contata n'[[Special:ListUsers/sysop|administrator]].",
+	'categorize-advice' => "Ch'a sgnaca an sla tichëtta ch'a veul dé a sta pàgina:",
 );
 
 /** Portuguese (Português)
