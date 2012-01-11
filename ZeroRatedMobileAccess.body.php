@@ -27,10 +27,10 @@ class ExtZeroRatedMobileAccess {
 		global $wgRequest, $wgConf, $wgEnableZeroRatedMobileAccessTesting;
 		wfProfileIn( __METHOD__ );
 
-		$dB = wfGetDB( DB_MASTER );
-		$dBname = $dB->getDBname();
+		$DB = wfGetDB( DB_MASTER );
+		$DBName = $DB->getDBname();
 
-		list( $site, $lang ) = $wgConf->siteFromDB( $dBname );
+		list( $site, $lang ) = $wgConf->siteFromDB( $DBName );
 		if ( $site == 'wikipedia'  || $wgEnableZeroRatedMobileAccessTesting ) {
 
 			$xDevice = isset( $_SERVER['HTTP_X_DEVICE'] ) ? $_SERVER['HTTP_X_DEVICE'] : '';
