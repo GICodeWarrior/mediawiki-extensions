@@ -34,6 +34,7 @@ $wgExtensionCredits['parserhook'][] = array (
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['NegRef'] = $dir . 'Negref.i18n.php';
+$wgExtensionMessagesFiles['NegRefMagic'] = $dir . 'Negref.i18n.magic.php';
 $wgHooks['ParserFirstCallInit'][] = 'efNegrefRegisterParser';
 
 function efNegrefRegisterParser( &$parser ) {
