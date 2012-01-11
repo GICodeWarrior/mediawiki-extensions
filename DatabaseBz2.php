@@ -24,9 +24,9 @@
  * http://www.gnu.org/copyleft/gpl.html
 **/
 
-class DatabaseBz2 extends Database
+class DatabaseBz2 extends DatabaseBase
 {
-	function select( $table, $fields, $conds='', $fname = 'Database::select', $options = array() )
+	function select( $table, $fields, $conds='', $fname = 'DatabaseBase::select', $options = array() )
 	{
 		$row = array();
 		$title = false;
@@ -79,165 +79,9 @@ class DatabaseBz2 extends Database
 	}
 
 
-////////////////////////////////////////////////BOILERPLATE FOLLOWS
-
-
-#------------------------------------------------------------------------------
-# Accessors
-#------------------------------------------------------------------------------
-	function failFunction( $function = NULL ) {
-		return null;
-	}
-
-	function setOutputPage( $out ) {
-		return null;
-	}
-
-	function debug( $debug = NULL ) {
-		return null;
-	}
-
-	function bufferResults( $buffer = NULL ) {
-		return null;
-	}
-
-	function ignoreErrors( $ignoreErrors = NULL ) {
-		return true;
-	}
-
-	function trxLevel( $level = NULL ) {
-		return 0;
-	}
-
-	function errorCount( $count = NULL ) {
-		return 0;
-	}
-
-	function getLBInfo( $name = NULL ) {
-		return true;
-	}
-
-	function setLBInfo( $name, $value = NULL ) {
-		return true;
-	}
-
-	function cascadingDeletes() {
-		return false;
-	}
-
-	function cleanupTriggers() {
-		return false;
-	}
-
-	function strictIPs() {
-		return false;
-	}
-
-	function realTimestamps() {
-		return false;
-	}
-
-	function implicitGroupby() {
-		return true;
-	}
-
-	function implicitOrderby() {
-		return true;
-	}
-
-	function searchableIPs() {
-		return false;
-	}
-
-	function functionalIndexes() {
-		return false;
-	}
-
-	function lastQuery() {
-		return true;
-	}
-	function isOpen() {
-		return true;
-	}
-
-	function setFlag( $flag ) {
-		return true;
-	}
-
-	function clearFlag( $flag ) {
-		return true;
-	}
-
-	function getFlag( $flag ) {
-		return true;
-	}
-
-	function getProperty( $name ) {
-		return true;
-	}
-
-
-	function __construct( $server = false, $user = false, $password = false, $dbName = false,
-		$failFunction = false, $flags = 0, $tablePrefix = 'get from global' ) {
-		null;
-	}
-
-	static function newFromParams( $server, $user, $password, $dbName, $failFunction = false, $flags = 0 ) {
-		return new Database( $server, $user, $password, $dbName, $failFunction, $flags );
-	}
-
 	function open( $server, $user, $password, $dbName ) {
 //TODO test article load using TestDumpReader
 		return true;
-	}
-
-	function close() {
-		return true;
-	}
-
-	function reportConnectionError( $error = 'Unknown error' ) {
-		return null;
-	}
-
-	public function query( $sql, $fname = '', $tempIgnore = false ) {
-		return null;
-	}
-
-	function doQuery( $sql ) {
-		return true;
-	}
-
-	function reportQueryError( $error, $errno, $sql, $fname, $tempIgnore = false ) {
-		return null;
-	}
-
-
-	function prepare( $sql, $func = 'Database::prepare' ) {
-		return null;
-	}
-
-	function freePrepared( $prepared ) {
-		return null;
-	}
-
-	function execute( $prepared, $args = null ) {
-		return true;
-	}
-
-	function safeQuery( $query, $args = null ) {
-		return true;
-	}
-
-	function fillPrepared( $preparedQuery, $args ) {
-		return true;
-	}
-
-	function fillPreparedArg( $matches ) {
-		return true;
-	}
-
-	function freeResult( $res ) {
-		return null;
 	}
 
 	function fetchObject( $res ) {
@@ -299,45 +143,13 @@ class DatabaseBz2 extends Database
 		return 0;
 	}
 
-	function set( $table, $var, $value, $cond, $fname = 'Database::set' ) {
-		return null;
-	}
-
+/*
 	function selectField( $table, $var, $cond='', $fname = 'Database::selectField', $options = array() ) {
 		return $this->fetchObject($this->select($table, array($var), $cond));
 	}
-
-	function makeSelectOptions( $options ) {
-		return null;
-	}
-
-	function selectRow( $table, $vars, $conds, $fname = 'Database::selectRow', $options = array() ) {
-		return $this->fetchObject($this->select($table, $vars, $conds));
-	}
-
-	function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
-		return 0;
-	}
-	
-
-	static function generalizeSQL( $sql ) {
-		return null;
-	}
-
-	function fieldExists( $table, $field, $fname = 'Database::fieldExists' ) {
-		return null;
-	}
-
-	function indexExists( $table, $index, $fname = 'Database::indexExists' ) {
-		return null;
-	}
-
+*/
 
 	function indexInfo( $table, $index, $fname = 'Database::indexInfo' ) {
-		return null;
-	}
-
-	function tableExists( $table ) {
 		return null;
 	}
 
@@ -345,209 +157,16 @@ class DatabaseBz2 extends Database
 		return null;
 	}
 
-	function fieldType( $res, $index ) {
-		return null;
-	}
-
-	function indexUnique( $table, $index ) {
-		return null;
-	}
-
-	function insert( $table, $a, $fname = 'Database::insert', $options = array() ) {
-		return null;
-	}
-
-	function makeUpdateOptions( $options ) {
-		return null;
-	}
-
-	function update( $table, $values, $conds, $fname = 'Database::update', $options = array() ) {
-		return null;
-	}
-
-	function makeList( $a, $mode = LIST_COMMA ) {
-		return null;
-	}
-
-	function selectDB( $db ) {
-		return null;
-	}
-
-	function tableName( $name ) {
-		return null;
-	}
-
-	public function tableNames() {
-		return null;
-	}
-
-	public function tableNamesN() {
-		return null;
-	}
-
-	function tableNamesWithUseIndex( $tables, $use_index ) {
-		return null;
-	}
-
 	function strencode( $s ) {
 		return true;
 	}
 
-	function addQuotes( $s ) {
-		return true;
-	}
-
-	function escapeLike( $s ) {
-		return true;
-	}
-
-	function nextSequenceValue( $seqName ) {
-		return null;
-	}
-
-	function useIndexClause( $index ) {
-		return true;
-	}
-
-	function replace( $table, $uniqueIndexes, $rows, $fname = 'Database::replace' ) {
-		return null;
-	}
-
-	function deleteJoin( $delTable, $joinTable, $delVar, $joinVar, $conds, $fname = 'Database::deleteJoin' ) {
-		return null;
-	}
-
-	function textFieldSize( $table, $field ) {
-		return null;
-	}
-
-	function lowPriorityOption() {
-	}
-
-	function delete( $table, $conds, $fname = 'Database::delete' ) {
-		return true;
-	}
-
-	function insertSelect( $destTable, $srcTable, $varMap, $conds, $fname = 'Database::insertSelect',
-		$insertOptions = array(), $selectOptions = array() )
-	{
-		return null;
-	}
-
-	function limitResult($sql, $limit, $offset=false) {
-		return null;
-	}
-
-	function limitResultForUpdate($sql, $num) {
-		return null;
-	}
-
-	function conditional( $cond, $trueVal, $falseVal ) {
-		return null;
-	}
-
-	function wasDeadlock() {
-		return null;
-	}
-
-	function deadlockLoop() {
-		return null;
-	}
-
-	function masterPosWait( $file, $pos, $timeout ) {
-		return null;
-	}
-
-	function getSlavePos() {
-		return null;
-	}
-
-	function getMasterPos() {
-		return null;
-	}
-
-	function begin( $fname = 'Database::begin' ) {
-	}
-
-	function commit( $fname = 'Database::commit' ) {
-	}
-
-	function rollback( $fname = 'Database::rollback' ) {
-	}
-
-	function immediateBegin( $fname = 'Database::immediateBegin' ) {
-	}
-
-	function immediateCommit( $fname = 'Database::immediateCommit' ) {
-	}
-
-	function timestamp( $ts=0 ) {
-	}
-
-	function timestampOrNull( $ts = null ) {
-	}
-
-	function resultObject( $result ) {
-		return new ResultWrapper($this, $result);
-	}
-
-	function aggregateValue ($valuedata,$valuename='value') {
-	}
-
 	static function getSoftwareLink() {
-		return "[http://www.mysql.com/ MySQL]";
+		return "[http://www.mysql.com/ MySQL]"; //XXX
 	}
 
 	function getServerVersion() {
+	//XXX
 	}
 
-	function ping() {
-		return true;
-	}
-
-	function getLag() {
-		return 0;
-	}
-
-	function getStatus($which="%") {
-		return true;
-	}
-
-	function maxListLen() {
-		return 0;
-	}
-
-	function encodeBlob($b) {
-		return $b;
-	}
-
-	function decodeBlob($b) {
-		return $b;
-	}
-
-	public function setTimeout( $timeout ) {
-	}
-
-	function sourceFile( $filename, $lineCallback = false, $resultCallback = false ) {
-		return null;
-	}
-
-	function sourceStream( $fp, $lineCallback = false, $resultCallback = false ) {
-		return true;
-	}
-
-
-	protected function replaceVars( $ins ) {
-		return true;
-	}
-
-	protected function tableNameCallback( $matches ) {
-	}
-
-	/*
-	 * Build a concatenation list to feed into a SQL query
-	*/
-	function buildConcat( $stringList ) {
-		return true;
-	}
 }
