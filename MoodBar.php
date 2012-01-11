@@ -189,6 +189,7 @@ $wgResourceModules['ext.moodBar.dashboard'] = $mbResourceTemplate + array(
 	'scripts' => 'ext.moodBar.dashboard/ext.moodBar.dashboard.js',
 	'dependencies' => array(
 		'mediawiki.util',
+		'jquery.concurrency',
 		'user.tokens',
 		'jquery.NobleCount',
 		'jquery.elastic'

@@ -13,7 +13,7 @@ jQuery( document ).ready( function ( $ ) {
 		myresponse: null,
 		showunanswered: null
 	 };
-
+	
 	/**
 	 * Figure out which comment type filters have been selected.
 	 * @return array of comment types
@@ -538,7 +538,18 @@ jQuery( document ).ready( function ( $ ) {
 					wikitext = wikitext.replace( /~{3,5}/g, '' ) + "\n\n~~~~"; // Remove and add signature for
 					parseWikiText( $item, wikitext );
 				});
-		}
+				
+				//run concurrency check
+				$.concurrency.check( {
+					ccaction: 'checkout',
+					resourcetype: 'moodbar-feedback-response',
+					record: $item.data( 'mbccontinue' ).split( '|' )[1]
+				}, function( data ){
+					if( data && data.concurrency.result == 'failure' ) { //checkout failed, show tooltip
+						loadConcurrencyToolTip($item);
+					}
+				} );
+		}		
 		e.preventDefault();
 	}
 
@@ -627,31 +638,31 @@ jQuery( document ).ready( function ( $ ) {
 	/**
 	 * Display tooltip for response concurrency notification
 	 * @param $item Feedback item
-	 */
-	function loadToolTip( $item ) {
-		var tooltip = $( '<div>' ).attr( 'class', 'fbd-tooltip-overlay-wrap' )
-						.append(
-						$( '<div>' ).attr( 'class', 'fbd-tooltip-overlay' )
-						.append(
-							$( '<div>' ).attr( 'class', 'fbd-tooltip-pointy' )
-						).append(
-							$( '<div>' ).attr( 'class', 'fbd-tooltip-title' )
-								.text( mw.msg( 'response-concurrency-notification' ) )
-								.prepend(
-									$( '<span>' ).attr( 'class', 'fbd-tooltip-close' ).text( 'X' )
-								)
+	*/
+	function loadConcurrencyToolTip($item) {
+		var $tooltip = $('<div>').attr('class', 'fbd-tooltip-overlay-wrap')
+				.append(
+				$('<div>').attr('class', 'fbd-tooltip-overlay')
+				.append(
+					$('<div>').attr('class', 'fbd-tooltip-pointy')
+				).append(
+					$('<div>').attr('class', 'fbd-tooltip-title')
+						.text( mw.msg( 'response-concurrency-notification' ) ) 
+						.prepend(
+							$('<span>').attr('class', 'fbd-tooltip-close').text('X')	
 						)
-					);
-		$item.append( tooltip );
+				)
+		);
+		$item.find( '.fbd-item-response' ).append( $tooltip );
 		// Close event, closure remembers object
 		$( '.fbd-tooltip-close' )
 			.live( 'click' , function () {
-				tooltip.remove();
-			});
-		setTimeout( function () {
-			tooltip.fadeOut(function ( tooltip ) {
-				tooltip.remove();
-			});
+				$tooltip.remove();
+			} );
+		setTimeout( function() {
+			$tooltip.fadeOut( function(){
+				$tooltip.remove();
+			} );
 		}, 1500 );
 
 	}
