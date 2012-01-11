@@ -1,7 +1,7 @@
 <?php
 
 class ExtZeroRatedMobileAccess {
-	const VERSION = '0.0.7';
+	const VERSION = '0.0.8';
 
 	public static $renderZeroRatedLandingPage;
 	public static $renderZeroRatedBanner;
@@ -39,8 +39,7 @@ class ExtZeroRatedMobileAccess {
 				return true;
 			}
 
-			$output = Html::openElement( 'div',
-				array( 'id' => 'zero-landing-page' ) );
+			$output = '';
 
 			self::$renderZeroRatedLandingPage = $wgRequest->getFuzzyBool( 'renderZeroRatedLandingPage' );
 			self::$renderZeroRatedBanner = $wgRequest->getFuzzyBool( 'renderZeroRatedBanner' );
@@ -206,8 +205,8 @@ class ExtZeroRatedMobileAccess {
 				$output .= Html::closeElement( 'select' );
 			}
 
-			$output .= Html::closeElement( 'div' );
-			if ( $output != '<div id="zero-landing-page"></div>' ) {
+			if ( $output ) {
+				$output = Html::openElement( 'div', array( 'id' => 'zero-landing-page' ) ) . $output . Html::closeElement( 'div' );
 				$out->addHTML( $output );
 			}
 		}
