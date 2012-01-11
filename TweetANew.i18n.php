@@ -5,14 +5,14 @@
  * @addtogroup Extensions
  * @license GPL
  */
- 
+
 $messages = array();
 
 /** English
  * @author Gregory Varnum
  */
-$messages['en'] = array( 
-	'tweetanew-desc' => 'Tweets when a page is created or edited.  Depending on preferences set for the entire wiki, either automatically or from the edit page.',
+$messages['en'] = array(
+	'tweetanew-desc' => 'Tweets when a page is created or edited. Depending on preferences set for the entire wiki, either automatically or from the edit page.',
 	'tweetanew-accesskey' => 'e',
 	'tweetanew-newaction' => 'Tweet about this new page',
 	'tweetanew-newtooltip' => 'Send information about this new page to Twitter',
