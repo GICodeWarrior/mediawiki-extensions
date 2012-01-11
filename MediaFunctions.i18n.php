@@ -8,8 +8,6 @@
  * @version 1.2
  */
 
-require_once( dirname( __FILE__ ) . '/MediaFunctions.i18n.magic.php' );
-
 $messages = array();
 
 /* English

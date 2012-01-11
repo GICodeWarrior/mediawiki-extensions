@@ -21,6 +21,7 @@ $wgExtensionCredits['parserhook'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['MediaFunctions'] = $dir . 'MediaFunctions.i18n.php';
+$wgExtensionMessagesFiles['MediaFunctionsMagic'] = $dir . 'MediaFunctions.i18n.magic.php';
 $wgAutoloadClasses['MediaFunctions'] = $dir . 'MediaFunctions.class.php';
 $wgHooks['ParserFirstCallInit'][] = 'efMediaFunctionsSetup';
 
