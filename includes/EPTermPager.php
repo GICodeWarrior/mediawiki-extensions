@@ -62,7 +62,7 @@ class EPTermPager extends EPPager {
 			case 'id':
 				$value = Linker::linkKnown(
 					SpecialPage::getTitleFor( 'Term', $value ),
-					htmlspecialchars( $value )
+					htmlspecialchars( $this->getLanguage()->formatNum( $value, true ) )
 				);
 				break;
 			case 'course_id':

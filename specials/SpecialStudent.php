@@ -34,7 +34,42 @@ class SpecialStudent extends SpecialEPPage {
 
 		$out = $this->getOutput();
 
-		// TODO: AUTH
+		if ( trim( $subPage ) === '' ) {
+			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Students' )->getLocalURL() );
+		}
+		else {
+			$this->displayNavigation();
+
+			$student = EPStudent::selectRow( null, array( 'id' => $this->subPage ) );
+
+			if ( $student === false ) {
+				$out->addWikiMsg( 'ep-student-none', $this->subPage );
+			}
+			else {
+				$out->setPageTitle( wfMsgExt( 'ep-student-title', 'parsemag', $student->getUser()->getName() ) );
+
+				$this->displaySummary( $student );
+			}
+		}
+	}
+
+	/**
+	 * Gets the summary data.
+	 *
+	 * @since 0.1
+	 *
+	 * @param EPStudent $student
+	 *
+	 * @return array
+	 */
+	protected function getSummaryData( EPDBObject $student ) {
+		$stats = array();
+
+		$stats['first-enroll'] = htmlspecialchars( $this->getLanguage()->timeanddate( $student->getField( 'first_enroll' ), true ) );
+		$stats['last-active'] = htmlspecialchars( $this->getLanguage()->timeanddate( $student->getField( 'last_active' ), true ) );
+		$stats['active-enroll'] = wfMsgHtml( $student->getField( 'active_enroll' ) ? 'ep-student-actively-enrolled' : 'ep-student-no-active-enroll' );
+
+		return $stats;
 	}
 
 }

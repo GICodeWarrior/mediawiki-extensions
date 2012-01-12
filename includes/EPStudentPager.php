@@ -63,7 +63,10 @@ class EPStudentPager extends EPPager {
 	protected function getFormattedValue( $name, $value ) {
 		switch ( $name ) {
 			case 'id':
-				$value = $value;
+				$value = Linker::linkKnown(
+					SpecialPage::getTitleFor( 'Student', $value ),
+					htmlspecialchars( $this->getLanguage()->formatNum( $value, true ) )
+				);
 				break;
 			case 'user_id':
 				$user = User::newFromId( $value );

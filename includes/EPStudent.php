@@ -22,6 +22,14 @@ class EPStudent extends EPDBObject {
 	protected $terms = false;
 
 	/**
+	 * Cached user object of the user that is this student.
+	 *
+	 * @since 0.1
+	 * @var User|false
+	 */
+	protected $user = false;
+
+	/**
 	 * @see parent::getFieldTypes
 	 *
 	 * @since 0.1
@@ -243,6 +251,21 @@ class EPStudent extends EPDBObject {
 			$context->getOutput()->addHTML( $pager->getFilterControl( true ) );
 			$context->getOutput()->addWikiMsg( 'ep-students-noresults' );
 		}
+	}
+
+	/**
+	 * Returns the user that is this student.
+	 *
+	 * @since 0.1
+	 *
+	 * @return User
+	 */
+	public function getUser() {
+		if ( $this->user === false ) {
+			$this->user = User::newFromId( $this->loadAndGetField( 'user_id' ) );
+		}
+
+		return $this->user;
 	}
 
 }

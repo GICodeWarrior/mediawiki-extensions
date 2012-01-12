@@ -268,6 +268,15 @@ $messages['en'] = array(
 	'ep-ambassador-does-not-exist' => 'There is no ambassador with name "$1". See [[Special:Ambassadors|here]] for a list of ambassadors.',
 	'ep-ambassador-title' => 'Ambassador: $1',
 
+	// Special:Student
+	'ep-student-none' => 'There is no student with id "$1". See [[Special:Students|here]] for a list of students.',
+	'ep-student-title' => 'Student: $1',
+	'ep-student-actively-enrolled' => 'Currently enrolled',
+	'ep-student-no-active-enroll' => 'Not currently enrolled',
+	'specialstudent-summary-active-enroll' => 'Enrollment status',
+	'specialstudent-summary-last-active' => 'Last activity',
+	'specialstudent-summary-first-enroll' => 'First enrollment',
+
 	// Special:Enroll
 	'ep-enroll-title' => 'Enroll for $1 at $2',
 	'ep-enroll-login-first' => 'Before you can enroll in this course, you need to login.',

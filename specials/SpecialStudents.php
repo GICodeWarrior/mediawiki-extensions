@@ -32,8 +32,6 @@ class SpecialStudents extends SpecialEPPage {
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
 
-		$out = $this->getOutput();
-
 		if ( $this->subPage === '' ) {
 			$this->displayNavigation();
 			EPStudent::displayPager( $this->getContext() );
