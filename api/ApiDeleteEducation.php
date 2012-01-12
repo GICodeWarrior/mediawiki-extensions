@@ -98,7 +98,7 @@ class ApiDeleteEducation extends ApiBase {
 		}
 
 		if ( $user->isAllowed( 'epmentor' ) ) {
-			$mentor = new EPMentor( null, array( 'user_id' => $user->getId() ) );
+			$mentor = new EPMentor( array( 'user_id' => $user->getId() ) );
 
 			if ( $mentor !== false ) {
 				if ( $type === 'course' ) {
