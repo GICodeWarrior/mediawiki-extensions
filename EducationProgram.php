@@ -144,6 +144,14 @@ $wgHooks['UnitTestsList'][] 					= 'EPHooks::registerUnitTests';
 $wgHooks['PersonalUrls'][] 						= 'EPHooks::onPersonalUrls';
 $wgHooks['GetPreferences'][] 					= 'EPHooks::onGetPreferences';
 
+$wgLogTypes[] = 'institution';
+$wgLogTypes[] = 'course';
+$wgLogTypes[] = 'term';
+
+$wgLogActionsHandlers['institution/*'] = 'LogFormatter';
+$wgLogActionsHandlers['course/*'] = 'LogFormatter';
+$wgLogActionsHandlers['term/*'] = 'LogFormatter';
+
 // Rights
 $wgAvailableRights[] = 'epadmin';
 $wgAvailableRights[] = 'epstudent';

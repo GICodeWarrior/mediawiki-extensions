@@ -72,6 +72,19 @@ class EPOrg extends EPDBObject {
 
 	/**
 	 * (non-PHPdoc)
+	 * @see EPDBObject::createLogEntry()
+	 */
+	protected function createLogEntry( $subType ) {
+		$logEntry = new ManualLogEntry( 'institution', $subType );
+
+		$logEntry->setPerformer( $GLOBALS['wgUser'] );
+		$logEntry->setTarget( $this->getTitle() );
+
+		return $logEntry;
+	}
+
+	/**
+	 * (non-PHPdoc)
 	 * @see EPDBObject::loadSummaryFields()
 	 */
 	public function loadSummaryFields( $summaryFields = null ) {
@@ -140,6 +153,7 @@ class EPOrg extends EPDBObject {
 	 */
 	public function removeFromDB() {
 		$id = $this->getId();
+		$this->loadFields( array( 'name' ) );
 
 		$success = parent::removeFromDB();
 
@@ -318,6 +332,17 @@ class EPOrg extends EPDBObject {
 	}
 
 	/**
+	 * Get the title of Special:Institution/name.
+	 *
+	 * @since 0.1
+	 *
+	 * @return Title
+	 */
+	public function getTitle() {
+		return SpecialPage::getTitleFor( 'Institution', $this->getField( 'name' ) );
+	}
+
+	/**
 	 * Get a link to Special:Institution/name.
 	 *
 	 * @since 0.1
@@ -326,7 +351,7 @@ class EPOrg extends EPDBObject {
 	 */
 	public function getLink() {
 		return Linker::linkKnown(
-			SpecialPage::getTitleFor( 'Institution', $this->getField( 'name' ) ),
+			$this->getTitle(),
 			htmlspecialchars( $this->getField( 'name' ) )
 		);
 	}

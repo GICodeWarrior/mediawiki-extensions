@@ -42,6 +42,14 @@ abstract class EPDBObject {
 	protected $updateSummaries = true;
 
 	/**
+	 * If the object should log changes.
+	 *
+	 * @since 0.1
+	 * @var bool
+	 */
+	protected $log = true;
+
+	/**
 	 * The database connection to use for read operations.
 	 *
 	 * @since 0.2
@@ -383,12 +391,18 @@ abstract class EPDBObject {
 	protected function updateInDB() {
 		$dbw = wfGetDB( DB_MASTER );
 
-		return $dbw->update(
+		$success = $dbw->update(
 			$this->getDBTable(),
 			$this->getWriteValues(),
 			array( $this->getFieldPrefix() . 'id' => $this->getId() ),
 			__METHOD__
 		);
+
+		if ( $success ) {
+			$this->log( 'update' );
+		}
+
+		return $success;
 	}
 
 	/**
@@ -409,7 +423,10 @@ abstract class EPDBObject {
 			array( 'IGNORE' )
 		);
 
-		$this->setField( 'id', $dbw->insertId() );
+		if ( $result ) {
+			$this->setField( 'id', $dbw->insertId() );
+			$this->log( 'add' );
+		}
 
 		return $result;
 	}
@@ -427,9 +444,42 @@ abstract class EPDBObject {
 
 		if ( $success ) {
 			$this->setField( 'id', null );
+			$this->log( 'remove' );
 		}
 
 		return $success;
+	}
+
+	/**
+	 * Log an action.
+	 *
+	 * @since 0.1
+	 *
+	 * @param string $subType
+	 */
+	protected function log( $subType ) {
+		if ( $this->log ) {
+			$logEntry = $this->createLogEntry( $subType );
+
+			if ( createLogEntry !== false ) {
+				$logid = $logEntry->insert();
+				$logEntry->publish( $logid );
+			}
+		}
+	}
+
+	/**
+	 * Override and create and return a log entry to
+	 * make the log method have an actual effect.
+	 *
+	 * @since 0.1
+	 *
+	 * @param string $subType
+	 *
+	 * @return false|ManualLogEntry
+	 */
+	protected function createLogEntry( $subType ) {
+		return false;
 	}
 
 	/**
@@ -1139,6 +1189,24 @@ abstract class EPDBObject {
 	 */
 	public function setUpdateSummaries( $update ) {
 		$this->updateSummaries = $update;
+	}
+
+	/**
+	 * Sets the value for the @see $log field.
+	 *
+	 * @since 0.1
+	 */
+	public function enableLogging() {
+		$this->log = true;
+	}
+
+	/**
+	 * Sets the value for the @see $log field.
+	 *
+	 * @since 0.1
+	 */
+	public function disableLogging() {
+		$this->log = false;
 	}
 
 }

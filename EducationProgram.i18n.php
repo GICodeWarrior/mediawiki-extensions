@@ -32,6 +32,27 @@ $messages['en'] = array(
 	'ep-nav-students' => 'Student list',
 	'ep-nav-mentors' => 'Ambassador list',
 
+	// Logging
+	'log-name-institution' => 'Institution log',
+	'log-name-course' => 'Course log',
+	'log-name-term' => 'Term log',
+
+	'log-header-institution' => 'These events track when changes are made to institutions.',
+	'log-header-course' => 'These events track when changes are made to courses.',
+	'log-header-term' => 'These events track when changes are made to terms.',
+
+	'logentry-institution-add' => '$1 {{GENDER:$2|created institution}} $3',
+	'logentry-institution-remove' => '$1 {{GENDER:$2|removed institution}} $3',
+	'logentry-institution-update' => '$1 {{GENDER:$2|updated institution}} $3',
+
+	'logentry-course-add' => '$1 {{GENDER:$2|created course}} $3',
+	'logentry-course-remove' => '$1 {{GENDER:$2|removed course}} $3',
+	'logentry-course-update' => '$1 {{GENDER:$2|updated course}} $3',
+
+	'logentry-term-add' => '$1 {{GENDER:$2|created term}} $3',
+	'logentry-term-remove' => '$1 {{GENDER:$2|removed term}} $3',
+	'logentry-term-update' => '$1 {{GENDER:$2|updated term}} $3',
+
 	// Preferences
 	'prefs-education' => 'Education',
 	'ep-prefs-showtoplink' => 'Show a link to [[Special:MyCourses|your courses]] at the top of every page.',
