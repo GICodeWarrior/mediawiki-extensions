@@ -147,6 +147,8 @@ class MoodBarHooks {
 		$updater->addExtensionIndex( 'moodbar_feedback_response', 'mbfr_user_id', "$dir/mbfr_user_id_index.sql" );
 		$updater->addExtensionField( 'moodbar_feedback', 'mbf_latest_response', "$dir/mbf_latest_response.sql" );
 		$updater->addExtensionIndex( 'moodbar_feedback', 'mbf_latest_response', "$dir/mbf_latest_response.sql" );
+		// commented out til bsitu can test this for me.
+		//$updater->addExtensionTable( 'concurrencycheck', "$dir/concurrencycheck.sql" );
 		
 		return true;
 	}
