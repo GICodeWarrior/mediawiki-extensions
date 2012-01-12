@@ -530,7 +530,7 @@ $messages['nl'] = array(
 	'ts-kml-on-ol-options' => 'Instellingen',
 	'ts-kml-on-ol-languages' => 'Talen',
 	'ts-kml-on-ol-thumbnails' => 'Miniaturen',
-	'ts-kml-on-ol-help' => 'Help',
+	'ts-kml-on-ol-help' => 'Hulp',
 	'ts-kml-on-ol-all' => 'Alle',
 	'ts-kml-on-ol-map-by' => 'Kaart door',
 );
