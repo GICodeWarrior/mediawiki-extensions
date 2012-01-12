@@ -47,6 +47,14 @@ $messages['ar'] = array(
 	'dontswitchmeover-pref' => 'لا تسمح لواجهتي أن تتغيّر حين تتغيرُ الواجهة المبدئية',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'dontswitchmeover-desc' => "Preferencia pa que los usuarios conseñen si quieren conservar la so configuración d'aspeutu cuando cambie l'aspeutu predetermináu.",
+	'dontswitchmeover-pref' => "Non permitir camudar el mio aspeutu al cambiar l'aspeutu predetermináu",
+);
+
 /** Bashkir (Башҡортса)
  * @author Assele
  */
