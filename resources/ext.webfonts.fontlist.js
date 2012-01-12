@@ -350,6 +350,7 @@
 
 		languages: {
 			// en: [ "RufScript", "Perizia", "Ubuntu" ],
+			ahr:  [ "Lohit Devanagari" ],
 			am:  [ "AbyssinicaSIL" ],
 			as:  [ "Lohit Assamese" ],
 			bh:  [ "Lohit Devanagari" ],
