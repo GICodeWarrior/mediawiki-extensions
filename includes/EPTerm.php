@@ -31,6 +31,14 @@ class EPTerm extends EPDBObject {
 	protected $org = false;
 
 	/**
+	 * Cached array of the linked EPStudent objects.
+	 *
+	 * @since 0.1
+	 * @var array|false
+	 */
+	protected $students = false;
+
+	/**
 	 * Returns a list of statuses a term can have.
 	 * Keys are messages, values are identifiers.
 	 *
@@ -98,6 +106,60 @@ class EPTerm extends EPDBObject {
 			'description' => '',
 			'token' => '',
 		);
+	}
+
+	/**
+	 * Returns the students enrolled in this term.
+	 *
+	 * @since 0.1
+	 *
+	 * @param string|array|null $fields
+	 * @param array $conditions
+	 *
+	 * @return array of EPStudent
+	 */
+	protected function doGetStudents( $fields, array $conditions ) {
+		$conditions[] = array( array( 'ep_terms', 'id' ), $this->getId() );
+
+		return EPStudent::select(
+			$fields,
+			$conditions,
+			array(),
+			array(
+				'ep_students_per_term' => array( 'INNER JOIN', array( array( array( 'ep_students_per_term', 'term_id' ), array( 'ep_terms', 'id' ) ) ) ),
+				'ep_terms' => array( 'INNER JOIN', array( array( array( 'ep_students_per_term', 'term_id' ), array( 'ep_terms', 'id' ) ) ) )
+			)
+		);
+	}
+
+	/**
+	 * Returns the students enrolled in this term.
+	 * Caches the result when no conditions are provided and all fields are selected.
+	 *
+	 * @since 0.1
+	 *
+	 * @param string|array|null $fields
+	 * @param array $conditions
+	 *
+	 * @return array of EPStudent
+	 */
+	public function getStudents( $fields = null, array $conditions = array() ) {
+		if ( count( $conditions ) !== 0 ) {
+			return $this->doGetStudents( $fields, $conditions );
+		}
+
+		if ( $this->students === false ) {
+			$students = $this->doGetStudents( $fields, $conditions );
+
+			if ( is_null( $fields ) ) {
+				$this->students = $students;
+			}
+
+			return $students;
+		}
+		else {
+			return $this->students;
+		}
 	}
 
 	/**

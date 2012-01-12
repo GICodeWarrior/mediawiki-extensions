@@ -75,7 +75,7 @@ class EPStudentPager extends EPPager {
 				$value = Linker::userLink( $value, $name ) . Linker::userToolLinks( $value, $name );
 				break;
 			case 'first_enroll': case 'last_active':
-				htmlspecialchars( $this->getLanguage()->date( $value ) );
+				$value = htmlspecialchars( $this->getLanguage()->date( $value ) );
 				break;
 			case 'active_enroll':
 				$value = wfMsgHtml( $value === '1' ? 'epstudentpager-yes' : 'epstudentpager-no' );
@@ -84,7 +84,7 @@ class EPStudentPager extends EPPager {
 				$value = $this->getLanguage()->pipeList( array_map(
 					function( EPCourse $course ) {
 						return $course->getLink();
-					} ,
+					},
 					$this->currentObject->getCurrentCourses( 'name' )
 				) );
 				break;

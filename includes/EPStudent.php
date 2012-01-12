@@ -99,7 +99,7 @@ class EPStudent extends EPDBObject {
 	}
 
 	/**
-	 * Returns the orgs this mentor is part of.
+	 * Returns the terms this student is enrolled in.
 	 * Caches the result when no conditions are provided and all fields are selected.
 	 *
 	 * @since 0.1

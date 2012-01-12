@@ -71,7 +71,14 @@ class SpecialTerm extends SpecialEPPage {
 
 				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-term-students' ) ) );
 
-				// TODO: students
+				$studentIds = array_map(
+					function( EPStudent $student ) {
+						return $student->getId();
+					},
+					$term->getStudents( 'id' )
+				);
+
+				EPStudent::displayPager( $this->getContext(), array( 'id' => $studentIds ) );
 			}
 		}
 	}
