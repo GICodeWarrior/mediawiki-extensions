@@ -26,8 +26,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'WindowsAzureSDK',
-	'author'         => array( 'REALDOLMEN', 'Hallo Welt! Medienwerkstatt GmbH', 'Robert Vogel' ),
-	'url'            => 'http://www.hallowelt.biz',
+	'author'         => array( 'REALDOLMEN', '[http://www.hallowelt.biz Hallo Welt! Medienwerkstatt GmbH]', 'Robert Vogel' ),
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:WindowsAzureSDK',
 	'version'        => '4.1.0',
 	'descriptionmsg' => 'windowsazuresdk-desc',
 );
