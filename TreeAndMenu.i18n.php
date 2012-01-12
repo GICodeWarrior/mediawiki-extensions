@@ -46,6 +46,14 @@ $messages['de'] = array(
 Die Baumansicht nutzt hierzu [http://www.destroydrop.com/javascripts/tree dTree] sowie das Aufklappmenü [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'treeandmenu-desc' => 'Pśidawa parserowe funkcije <code><nowiki>#tree</nowiki></code> a <code><nowiki>#menu</nowiki></code>, kótarež zwobraznjaju nalicenja ako złožujobne bomowe naglědy abo padajuce menije.
+Bomowe naglědy wužywaju JavaScriptowy bomowy meni [http://www.destroydrop.com/javascripts/tree dTree] a padajuce menije wužywaju [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
+);
+
 /** French (Français)
  * @author Gomoko
  */
@@ -74,8 +82,8 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'treeandmenu-desc' => 'Přidawa parserowe funkcije <code><nowiki>#tree</nowiki></code> and <code><nowiki>#menu</nowiki></code>, kotrež naličenja jako fałdujomne štomowe napohlady abo padace menije zwobraznjeja.
-Štomowe napohlady wužiwaja JavaScriptowy štomowy menij [http://www.destroydrop.com/javascripts/tree dTree] a padace menije wužiwaja [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
+	'treeandmenu-desc' => 'Přidawa parserowe funkcije <code><nowiki>#tree</nowiki></code> a <code><nowiki>#menu</nowiki></code>, kotrež naličenja jako fałdujomne štomowe napohlady abo padace menije zwobraznjeja.
+Štomowe napohlady wužiwaja JavaScriptowy štomowy meni [http://www.destroydrop.com/javascripts/tree dTree] a padace menije wužiwaja [http://www.htmldog.com/articles/suckerfish/dropdowns/ Son of Suckerfish]',
 );
 
 /** Interlingua (Interlingua)
