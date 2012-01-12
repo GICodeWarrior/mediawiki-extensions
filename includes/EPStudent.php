@@ -268,4 +268,15 @@ class EPStudent extends EPDBObject {
 		return $this->user;
 	}
 
+	/**
+	 * Returns the display name for the student.
+	 *
+	 * @since 0.1
+	 *
+	 * @return String
+	 */
+	public function getName() {
+		return $this->getUser()->getRealName() === '' ? $this->user->getName() : $this->user->getRealName();
+	}
+
 }

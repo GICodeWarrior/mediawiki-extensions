@@ -185,7 +185,7 @@ abstract class EPPager extends TablePager {
 		}
 
 		foreach ( $this->getFields() as $field ) {
-			if ( !array_key_exists( $field, $this->conds ) ) {
+			if ( !array_key_exists( $field, $this->conds ) || is_array( $this->conds[$field] ) ) {
 				$fields[$field] = $field;
 			}
 		}

@@ -46,9 +46,20 @@ class SpecialStudent extends SpecialEPPage {
 				$out->addWikiMsg( 'ep-student-none', $this->subPage );
 			}
 			else {
-				$out->setPageTitle( wfMsgExt( 'ep-student-title', 'parsemag', $student->getUser()->getName() ) );
+				$out->setPageTitle( wfMsgExt( 'ep-student-title', 'parsemag', $student->getName() ) );
 
 				$this->displaySummary( $student );
+
+				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-student-terms' ) ) );
+
+				$termIds = array_map(
+					function( EPTerm $term ) {
+						return $term->getId();
+					},
+					$student->getTerms( 'id' )
+				);
+
+				EPTerm::displayPager( $this->getContext(), array( 'id' => $termIds ) );
 			}
 		}
 	}
@@ -64,6 +75,9 @@ class SpecialStudent extends SpecialEPPage {
 	 */
 	protected function getSummaryData( EPDBObject $student ) {
 		$stats = array();
+
+		$id = $student->getUser()->getId();
+		$stats['user'] = Linker::userLink( $id, $student->getName() ) . Linker::userToolLinks( $id, $student->getName() );
 
 		$stats['first-enroll'] = htmlspecialchars( $this->getLanguage()->timeanddate( $student->getField( 'first_enroll' ), true ) );
 		$stats['last-active'] = htmlspecialchars( $this->getLanguage()->timeanddate( $student->getField( 'last_active' ), true ) );

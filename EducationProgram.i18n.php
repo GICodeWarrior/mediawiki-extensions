@@ -276,6 +276,8 @@ $messages['en'] = array(
 	'specialstudent-summary-active-enroll' => 'Enrollment status',
 	'specialstudent-summary-last-active' => 'Last activity',
 	'specialstudent-summary-first-enroll' => 'First enrollment',
+	'specialstudent-summary-user' => 'User',
+	'ep-student-terms' => 'Terms this student has enrolled in',
 
 	// Special:Enroll
 	'ep-enroll-title' => 'Enroll for $1 at $2',
