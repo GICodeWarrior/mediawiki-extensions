@@ -96,8 +96,33 @@ class SpecialInstitution extends SpecialEPPage {
 		$countries = CountryNames::getNames( $this->getLanguage()->getCode() );
 		$stats['country'] = $countries[$org->getField( 'country' )];
 
+		$stats['status'] = wfMsgHtml( $org->getField( 'active' ) ? 'ep-institution-active' : 'ep-institution-inactive' );
+
+		$stats['courses'] = $this->getLanguage()->formatNum( $org->getField( 'courses' ) );
+		$stats['terms'] = $this->getLanguage()->formatNum( $org->getField( 'terms' ) );
+		$stats['ambassadors'] = $this->getLanguage()->formatNum( $org->getField( 'mentors' ) );
+		$stats['students'] = $this->getLanguage()->formatNum( $org->getField( 'students' ) );
+
 		foreach ( $stats as &$stat ) {
 			$stat = htmlspecialchars( $stat );
+		}
+
+		if ( $org->getField( 'courses' ) > 0 ) {
+			$stats['courses'] = Linker::linkKnown(
+				SpecialPage::getTitleFor( 'Courses' ),
+				$stats['courses'],
+				array(),
+				array( 'org_id' => $org->getId() )
+			);
+		}
+
+		if ( $org->getField( 'terms' ) > 0 ) {
+			$stats['terms'] = Linker::linkKnown(
+				SpecialPage::getTitleFor( 'Terms' ),
+				$stats['terms'],
+				array(),
+				array( 'org_id' => $org->getId() )
+			);
 		}
 
 		return $stats;

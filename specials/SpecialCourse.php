@@ -103,6 +103,24 @@ class SpecialCourse extends SpecialEPPage {
 			htmlspecialchars( $org )
 		);
 
+		$lang = $this->getLanguage();
+
+		$stats['students'] = htmlspecialchars( $lang->formatNum( $course->getField( 'students' ) ) );
+
+		$stats['status'] = wfMsgHtml( $course->getField( 'active' ) ? 'ep-course-active' : 'ep-course-inactive' );
+
+		$termCount = EPTerm::count( array( 'course_id' => $course->getId() ) );
+		$stats['terms'] = htmlspecialchars( $lang->formatNum( $termCount ) );
+
+		if ( $termCount > 0 ) {
+			$stats['terms'] = Linker::linkKnown(
+				SpecialPage::getTitleFor( 'Terms' ),
+				 $stats['terms'],
+				array(),
+				array( 'course_id' => $course->getId() )
+			);
+		}
+
 		return $stats;
 	}
 

@@ -224,8 +224,15 @@ $messages['en'] = array(
 	'specialinstitution-summary-name' => 'Name',
 	'specialinstitution-summary-city' => 'City',
 	'specialinstitution-summary-country' => 'Country',
+	'specialinstitution-summary-status' => 'Status',
+	'specialinstitution-summary-courses' => 'Course count',
+	'specialinstitution-summary-terms' => 'Term count',
+	'specialinstitution-summary-students' => 'Student count',
+	'specialinstitution-summary-ambassadors' => 'Ambassador count',
 	'ep-institution-nav-edit' => 'Edit this institution',
 	'ep-institution-add-course' => 'Add a course',
+	'ep-institution-inactive' => 'Inactive',
+	'ep-institution-active' => 'Active',
 
 	// Special:Course
 	'ep-course-title' => 'Course: $1',
@@ -234,9 +241,14 @@ $messages['en'] = array(
 	'ep-course-create' => 'There is no course with name "$1" yet, but you can create it.',
 	'specialcourse-summary-name' => 'Name',
 	'specialcourse-summary-org' => 'Institution',
+	'specialcourse-summary-students' => 'Student count',
+	'specialcourse-summary-status' => 'Status',
 	'ep-course-description' => 'Description',
 	'ep-course-nav-edit' => 'Edit this course',
 	'ep-course-add-term' => 'Add a term',
+	'ep-course-inactive' => 'Inactive',
+	'ep-course-active' => 'Active',
+	'specialcourse-summary-terms' => 'Term count',
 
 	// Special:Term
 	'ep-term-title' => 'Term: $1',
