@@ -250,3 +250,12 @@ $messages['nl'] = array(
 	'tweetanew-edit3' => 'Kijk eens op de aangepaste pagina $1 ($2)',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hzy980512
+ */
+$messages['zh-hans'] = array(
+	'tweetanew-desc' => '创建或编辑页面时会发出广播。主要取决于整个维基的设置。',
+	'tweetanew-newaction' => '该新页面的广播',
+	'tweetanew-newtooltip' => '发送该新页面的信息至Twitter',
+);
+
