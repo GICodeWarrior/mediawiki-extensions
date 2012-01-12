@@ -36,5 +36,5 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['WindowsAzureSDK'] = $dir . 'WindowsAzureSDK.i18n.php';
 
 if(!class_exists('Microsoft_WindowsAzure_Diagnostics_Manager')) {
-	require_once( $wgWindowsAzureSDKRoot.'/library/Microsoft/AutoLoader.php' );
+	require_once( $dir.'lib/PHPAzure/library/Microsoft/AutoLoader.php' );
 }
