@@ -191,9 +191,11 @@ class WMFRewrite(object):
         #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-thumb/.*
         # (d) http://upload.wikimedia.org/<proj>/<lang>/thumb/archive/.*
         #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-thumb/archive/.*
-        # (e) http://upload.wikimedia.org/<proj>/<lang>/temp/.*
+        # (e) http://upload.wikimedia.org/<proj>/<lang>/thumb/temp/.*
+        #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-thumb/temp/.*
+        # (f) http://upload.wikimedia.org/<proj>/<lang>/temp/.*
         #         => http://msfe/v1/AUTH_<hash>/<proj>-<lang>-local-temp/.*
-        match = re.match(r'^/(?P<proj>[^/]+)/(?P<lang>[^/]+)/((?P<zone>thumb|temp)/)?(?P<path>(archive/)?[0-9a-f]/(?P<shard>[0-9a-f]{2})/.+)$', req.path)
+        match = re.match(r'^/(?P<proj>[^/]+)/(?P<lang>[^/]+)/((?P<zone>thumb|temp)/)?(?P<path>((temp|archive)/)?[0-9a-f]/(?P<shard>[0-9a-f]{2})/.+)$', req.path)
         if match:
             # Get the repo zone (if not provided that means "public")
             zone = (match.group('zone') if match.group('zone') else 'public')
