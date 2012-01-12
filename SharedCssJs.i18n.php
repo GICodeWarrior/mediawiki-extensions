@@ -128,12 +128,13 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'sharedcssjs-desc' => "A abìlita ël recùper ëd wiki globaj e ëd CSS e JS dj'utent da na wiki sentral",
-	'sharedcssjs-error' => "Sta pagina a l'é pijà da na wiki sentral e a peul mach esse edità là.",
-	'global.css' => '/* Ij CSS piassà sì a saran aplicà a tùit jë skin su tute le wiki ëd tute le fatorìe wiki */',
-	'global.js' => '/* Minca JavaScript sì a sarà carià për utent dzora a minca caria ëd pàgina ant la fatorìa wiki */',
+	'sharedcssjs-error' => "Costa pàgina a l'é pijà da na wiki sentral e a peul mach esse modificà ambelelà.",
+	'global.css' => '/* Ij CSS piassà ambelessì a saran aplicà a tute le pel su tute le wiki ëd la fatorìe wiki */',
+	'global.js' => "/* Minca JavaScript ambelessì a sarà carià për j'utent dzora a minca cariament ëd pàgina ant la fatorìa wiki */",
 );
 
