@@ -558,11 +558,37 @@ $messages['mk'] = array(
 	'right-lastlogin' => 'Проверка кога последен пат се најавил корисникот',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'lastuserlogin' => 'दाखल झालेला शेवटचा सदस्य',
+	'lastuserlogin-desc' => 'सदस्य दाखल झाल्याची शेवटवी वेळ दाखविते',
+	'lastuserlogin_useremail' => 'सदस्याचा विपत्रपत्ता',
+	'lastuserlogin_lastlogin' => 'शेवटी कधी दाखल झाला',
+	'lastuserlogin_daysago' => 'दिवसांपूर्वी',
+	'right-lastlogin' => 'सदस्य शेवटी कधी दाखल झाला ती वेळ बघा',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
 	'lastuserlogin_username' => 'Nama sebenar',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'lastuserlogin' => 'Siste brukerinnlogging',
+	'lastuserlogin-desc' => 'Viser den siste gangen en bruker logget inn',
+	'lastuserlogin_userid' => 'Brukernavn',
+	'lastuserlogin_username' => 'Virkelig navn',
+	'lastuserlogin_useremail' => 'Bruker-e-post',
+	'lastuserlogin_lastlogin' => 'Siste innlogging',
+	'lastuserlogin_daysago' => 'Dager siden',
+	'right-lastlogin' => 'Se den siste gangen en bruker logget inn',
 );
 
 /** Dutch (Nederlands)
@@ -585,20 +611,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'lastuserlogin_userid' => 'Brukarnamn',
 	'lastuserlogin_username' => 'Verkeleg namn',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'lastuserlogin' => 'Siste brukerinnlogging',
-	'lastuserlogin-desc' => 'Viser den siste gangen en bruker logget inn',
-	'lastuserlogin_userid' => 'Brukernavn',
-	'lastuserlogin_username' => 'Virkelig navn',
-	'lastuserlogin_useremail' => 'Bruker-e-post',
-	'lastuserlogin_lastlogin' => 'Siste innlogging',
-	'lastuserlogin_daysago' => 'Dager siden',
-	'right-lastlogin' => 'Se den siste gangen en bruker logget inn',
 );
 
 /** Punjabi (ਪੰਜਾਬੀ)
