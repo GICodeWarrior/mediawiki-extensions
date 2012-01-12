@@ -50,7 +50,7 @@ class ExtZeroRatedMobileAccess {
 			self::$forceClickToViewImages = $wgRequest->getFuzzyBool( 'forceClickToViewImages' );
 			self::$acceptBilling = $wgRequest->getVal( 'acceptbilling' );
 			self::$title = $out->getTitle();
-		
+
 			$carrier = $wgRequest->getHeader( 'HTTP_X_CARRIER' );
 			if ( $carrier !== '(null)' && $carrier ) {
 				self::$renderZeroRatedBanner = true;
@@ -86,10 +86,7 @@ class ExtZeroRatedMobileAccess {
 					array(	'id' => 'zero-rated-banner-text' ),
 						wfMsg( 'zero-rated-mobile-access-banner-text-data-charges', $acceptBillingYes, $acceptBillingNo ) );
 				$banner = Html::rawElement( 'div',
-					array(	'style' => 'display:none;',
-							'id' => 'zero-rated-banner-red' ),
-						$bannerText
-				);
+					array(	'style' => 'display:none;', 'id' => 'zero-rated-banner-red' ), $bannerText );
 				$output .= $banner;
 				$out->clearHTML();
 				$out->setPageTitle( null );
@@ -106,10 +103,7 @@ class ExtZeroRatedMobileAccess {
 					array(	'id' => 'zero-rated-banner-text' ),
 						wfMsg( 'zero-rated-mobile-access-banner-text-data-charges', $acceptBillingYes, $acceptBillingNo ) );
 				$banner = Html::rawElement( 'div',
-					array(	'style' => 'display:none;',
-							'id' => 'zero-rated-banner-red' ),
-						$bannerText
-				);
+					array(	'style' => 'display:none;', 'id' => 'zero-rated-banner-red' ), $bannerText );
 				$output .= $banner;
 				$out->clearHTML();
 				$out->setPageTitle( null );
@@ -125,10 +119,7 @@ class ExtZeroRatedMobileAccess {
 						array(	'id' => 'zero-rated-banner-text' ),
 							wfMsg( 'zero-rated-mobile-access-banner-text', $carrierLink ) );
 					$banner = Html::rawElement( 'div',
-						array(	'style' => 'display:none;',
-								'id' => 'zero-rated-banner' ),
-							$bannerText
-					);
+						array(	'style' => 'display:none;', 'id' => 'zero-rated-banner' ), $bannerText );
 					$output .= $banner;
 				}
 			}
@@ -147,9 +138,9 @@ class ExtZeroRatedMobileAccess {
 									'FRANCE' => '90.6.70.28',
 									);
 				$ip = ( strpos( $ip, '192.168.' ) === 0 ) ? $countryIps['THAILAND'] : $ip;
-	            if ( IP::isValid( $ip ) ) {
-		            // If no country was passed, try to do GeoIP lookup
-	                // Requires php5-geoip package
+				if ( IP::isValid( $ip ) ) {
+					// If no country was passed, try to do GeoIP lookup
+					// Requires php5-geoip package
 					if ( !$country && function_exists( 'geoip_country_code_by_name' ) ) {
 						$country = geoip_country_code_by_name( $ip );
 					}
@@ -159,7 +150,6 @@ class ExtZeroRatedMobileAccess {
 				//self::$displayDebugOutput = true;
 				$languagesForCountry = ( isset( $languageOptions[self::getFullCountryNameFromCode( $country )] ) ) ?
 					$languageOptions[self::getFullCountryNameFromCode( $country )] : null;
-				//self::addDebugOutput( $languageOptions );
 				self::addDebugOutput( self::getFullCountryNameFromCode( $country ) );
 				self::addDebugOutput( $languagesForCountry );
 				self::writeDebugOutput();
@@ -170,10 +160,7 @@ class ExtZeroRatedMobileAccess {
 						$languageName = $languageNames[$languagesForCountry[$i]['language']];
 						$languageCode = $languagesForCountry[$i]['language'];
 						$output .= Html::element( 'hr' );
-						$output .= Html::element( 'h3',
-							array( 'id' => 'lang_' . $languageCode ),
-							$languageName
-						);
+						$output .= Html::element( 'h3', array( 'id' => 'lang_' . $languageCode ), $languageName );
 						if ( $i == 0 ) {
 							$output .= self::getSearchFormHtml( $languageCode );
 						} else {
@@ -323,7 +310,7 @@ class ExtZeroRatedMobileAccess {
 
 	/**
 	* Writes objects from the debugOutput Array to buffer
-	* 
+	*
 	* @return bool
 	*/
 	private static function writeDebugOutput() {
@@ -347,7 +334,7 @@ class ExtZeroRatedMobileAccess {
 	private static function createCarrierOptionsFromWikiText() {
 		global $wgMemc;
 		wfProfileIn( __METHOD__ );
-	
+
 		$carrierOptionsWikiPage = wfMsgForContent( 'zero-rated-mobile-access-carrier-options-wiki-page' );
 
 		list( $revId, $rev ) = self::getOptionsFromForeignWiki( $carrierOptionsWikiPage );
@@ -406,7 +393,7 @@ class ExtZeroRatedMobileAccess {
 		$rev = null;
 
 		if ( $pageName ) {
-		
+
 			$memcKey = wfMemcKey( 'zero-rated-mobile-access-foreign-options-', md5( $pageName ) );
 			$foreignOptions = $wgMemc->get( $memcKey );
 
@@ -455,7 +442,7 @@ class ExtZeroRatedMobileAccess {
 
 	/**
 	* Returns the language options array parsed from a valid wiki page
-	* 
+	*
 	* @return Array
 	*/
 	private static function createLanguageOptionsFromWikiText() {
@@ -487,12 +474,12 @@ class ExtZeroRatedMobileAccess {
 						$languageOptions[$countryName] = '';
 					} elseif ( strpos( $line, '**' ) === 0 && $i > 0 ) {
 						$lineParts = explode('#', $line);
-						$language = ( isset( $lineParts[0] ) ) ? 
+						$language = ( isset( $lineParts[0] ) ) ?
 							trim( str_replace( '** ', '', $lineParts[0] ) ) :
 							trim( str_replace( '** ', '', $line ) ) ;
 						if ( $language !== 'portal' && $language !== 'other' ) {
 							$languageOptions[$countryName][] = ( isset( $lineParts[1] ) ) ?
-								array(	'language'  =>  $language, 
+								array(	'language'  =>  $language,
 										'percentage'  =>  intval( str_replace( '%', '', trim( $lineParts[1] ) ) ) ) :
 								$language;
 						}
@@ -507,7 +494,7 @@ class ExtZeroRatedMobileAccess {
 
 	/**
 	 * Returns the Unix timestamp of current day's first second
-	 * 
+	 *
 	 * @return int: Timestamp
 	 */
 	private static function todaysStart() {
@@ -530,7 +517,7 @@ class ExtZeroRatedMobileAccess {
 
 	/**
 	* Returns the number of seconds an item should stay in cache
-	* 
+	*
 	* @return int: Time in seconds
 	*/
 	private static function getMaxAge() {
@@ -543,7 +530,7 @@ class ExtZeroRatedMobileAccess {
 
 	/**
 	* Get full country name from code
-	* 
+	*
 	* @param string $code: alpha-2 code ISO 3166 country code
 	* @return String
 	*/
@@ -797,7 +784,7 @@ class ExtZeroRatedMobileAccess {
 
 	/**
 	* Search form for various languages
-	* 
+	*
 	* @param string $langCode: alpha-2 code for language
 	* @return String
 	*/
@@ -810,7 +797,7 @@ class ExtZeroRatedMobileAccess {
 			<div id="sq" class="divclearable">
         		<input type="text" name="search" id="search" size="22" value="" autocorrect="off" autocomplete="off" autocapitalize="off" maxlength="1024">
 				<div class="clearlink" id="clearsearch" title="Clear"></div>
-			</div> 
+			</div>
 		<button id="goButton" type="submit">{$searchValue}</button>
 		</form>
 HTML;
