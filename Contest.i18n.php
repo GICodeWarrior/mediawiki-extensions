@@ -385,8 +385,10 @@ $messages['qqq'] = array(
 {{Identical|Rating}}',
 	'contest-contestant-header-comments' => 'Table row header',
 	'contest-contestant-submission-url' => 'Text for the link to the submission',
-	'contest-contestant-comments' => 'Page header (h2)',
-	'contest-contestant-submit' => 'Submit button text',
+	'contest-contestant-comments' => 'Page header (h2).
+{{Identical|Comment}}',
+	'contest-contestant-submit' => 'Submit button text.
+{{Identical|Save changes}}',
 	'contest-contestant-comment-by' => '$1 the user name, linked to the user page, followed by talk, contrib and block links',
 	'contest-contestant-rate' => 'Page header (h2)',
 	'contest-contestant-voted' => '$1 is an integer',
@@ -910,6 +912,13 @@ $messages['be-tarask'] = array(
 	'contest-contestant-header-rating' => 'Адзнака',
 	'contest-contestant-header-comments' => 'Колькасьць камэнтараў',
 	'contest-contestant-submission-url' => 'Прадстаўленьне',
+	'contest-contestant-notsubmitted' => 'Яшчэ не прадстаўлены на разгляд',
+	'contest-contestant-comments' => 'Камэнтары',
+	'contest-contestant-submit' => 'Захаваць зьмены',
+	'contest-contestant-comment-by' => 'Камэнтар $1',
+	'contest-contestant-rate' => 'Адзначыць гэтага ўдзельніка',
+	'contest-contestant-not-voted' => 'Вы яшчэ не прагаласавалі за гэтага ўдзельніка.',
+	'contest-contestant-voted' => 'Ваш цяперашні голас «$1».',
 	'contest-mycontests-toplink' => 'Мае конкурсы',
 );
 
