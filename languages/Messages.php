@@ -35,6 +35,15 @@ $messages['de'] = array(
 	'wom-desc' => 'Ermöglicht ein einfaches Objektmodell für Seiten',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'objecteditor' => 'Objektowy editor',
+	'wom_editor' => 'Objektowy model',
+	'wom-desc' => 'Jadnory objektowy model za wikiwužywarja',
+);
+
 /** French (Français)
  * @author Gomoko
  */
@@ -76,7 +85,7 @@ $messages['he'] = array(
 $messages['hsb'] = array(
 	'objecteditor' => 'Objektowy editor',
 	'wom_editor' => 'Objektowy model',
-	'wom-desc' => 'Lochki objektowy model strony za wikiwužiwarja',
+	'wom-desc' => 'Jednory objektowy model strony za wikiwužiwarja',
 );
 
 /** Interlingua (Interlingua)
