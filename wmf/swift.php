@@ -2,10 +2,10 @@
 /**
  * Helper functions for Swift related image thumbnail purging.
  * The functions here should only be called after MediaWiki setup.
- * 
+ *
  * $wmfSwiftConfig must reside in PrivateSettings.php. It should also
  * be extracted in CommonSettings.php to set any swift backend settings.
- * 
+ *
  * This file belongs under wmf-config/ and should be included by CommonSettings.php.
  */
 
@@ -16,7 +16,7 @@ require_once( '/usr/local/apache/common-local/lib/php-cloudfiles/cloudfiles.php'
  * Handler for the LocalFilePurgeThumbnails hook.
  * To avoid excess inclusion of cloudfiles.php, a hook handler can be added
  * to CommonSettings.php which includes this file and calls this function.
- * 
+ *
  * @param $file File
  * @param $archiveName string|false
  * @return true
@@ -48,7 +48,7 @@ function wmfPurgeBackendThumbCache( File $file, $archiveName ) {
 
 /**
  * Get the Swift thumbnail container for this wiki.
- * 
+ *
  * @param $site string
  * @param $lang string
  * @return CF_Container|null

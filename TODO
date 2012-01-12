@@ -57,7 +57,7 @@ neilk_: okay, the moment when an upload passes from being a temp file into somet
 neilk_: in the old design, in essence, all this does is move a file into an NFS directory, and creates the matching database entry which creates a wiki page.
 neilk_: so far I don't think this should be news?
 nelson____: right
-neilk_: So that's includes/specials/SpecialUpload.php 
+neilk_: So that's includes/specials/SpecialUpload.php
 neilk_: then there's includes/api/ApiUpload.php
 neilk_: which is similar but not quite the same
 
@@ -72,7 +72,7 @@ neilk_: nelson__: anyway is this answering your question yet?
 nelson____: yes.
 neilk_: ok so that's the overview of the upload methods & stashing, what else
 nelson____: I think that part of the problem is that various parts of the system feel free to make the jump from "stored" to "accessible as full path".
-neilk_: yes 
+neilk_: yes
 neilk_: it drove me nuts too
 neilk_: and the code intentionally conflates a number of cases, because MediaWiki at heart just wants to throw a number of files into a directory, not manage millions of them
 nelson____: I gotta figure out how to mark the difference, so that something is either 1) a locally stored file, or 2) a blind token from the repo.
@@ -91,7 +91,7 @@ neilk_: isn't any code in UploadStashFile, I mean.
 nelson____: maybe ... what I should do is throw an exception if SwiftRepo::resolveVirtualUrl ever gets called without a mwrepo url, and then just go test everything.
 nelson____: I think maybe I'm trying to overanalyze the code.
 neilk_: I sympathize
-nelson____: I should trust the code more. 
+nelson____: I should trust the code more.
 neilk_: hm, I think not
 nelson____: Trust but verify.
 neilk_: also, this is sad but stashing is done in two slightly different ways, too.

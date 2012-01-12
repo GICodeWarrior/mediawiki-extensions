@@ -4,7 +4,7 @@ import unittest
 
 import webob
 
-from wmf import rewrite 
+from wmf import rewrite
 from wmf.client import ClientException
 
 class FakeApp(object):
@@ -96,13 +96,13 @@ class TestRewrite(unittest.TestCase):
                 environ={'REQUEST_METHOD': 'GET'})
         resp = app(req.environ, start_response)
         self.assertEquals(req.environ['PATH_INFO'], self.url448)
-        self.assertEquals(resp, 
+        self.assertEquals(resp,
             ['401 Unauthorized\n\nThis server could not verify that you are '\
              'authorized to access the document you requested. Either you '\
              'supplied the wrong credentials (e.g., bad password), or your '\
              'browser does not understand how to supply the credentials '\
              'required.\n\n Token may have timed out  '])
- 
+
     def test_06(self):
         """#06 Give them a bad token so that the PUT fails."""
         app = rewrite.WMFRewrite(FakeApp("404 Bad", {}),self.a)

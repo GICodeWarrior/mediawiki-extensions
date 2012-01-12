@@ -91,7 +91,7 @@ class SwiftFile extends LocalFile {
 	 * @return string Path to a local copy of the file.
 	 */
 	public function getPath() {
-		if ( !array_key_exists('', $this->tempPaths ) ) {
+		if ( !array_key_exists( '', $this->tempPaths ) ) {
 			$this->tempPaths[''] = $this->repo->getLocalCopy( $this->repo->container, $this->getRel(), "getPath_" );
 		}
 		return $this->tempPaths[''];
@@ -99,17 +99,17 @@ class SwiftFile extends LocalFile {
 
 	/**
 	 * We're re-purposing getPath() to checkout a copy of the file, if we don't already have a copy.
-	 * Get a local copy of a particular archived file specified by $suffix 
+	 * Get a local copy of a particular archived file specified by $suffix
 	 *
 	 * @param string suffix Specific archived copy.
 	 * @return string Path to a local copy of the file.
 	 */
-	public function getArchivePath( $suffix = false) {
-		if (!$suffix) {
+	public function getArchivePath( $suffix = false ) {
+		if ( !$suffix ) {
 			throw new MWException( "Can't call getArchivePath without a suffix" );
 		}
 		$rel = $this->getArchiveRel( $suffix );
-		if ( !array_key_exists($rel, $this->tempPaths ) ) {
+		if ( !array_key_exists( $rel, $this->tempPaths ) ) {
 			$this->tempPaths[$rel] = $this->repo->getLocalCopy( $this->repo->container, $rel );
 		}
 		return $this->tempPaths[$rel];
@@ -117,24 +117,24 @@ class SwiftFile extends LocalFile {
 
 	/**
 	 * We're re-purposing getPath() to checkout a copy of the file, if we don't already have a copy.
-	 * Get a local copy of a particular thumb specified by $suffix 
+	 * Get a local copy of a particular thumb specified by $suffix
 	 *
 	 * @param string suffix Specific thumbnail.
 	 * @return string Path to a local copy of the file.
 	 */
-	public function getThumbPath( $suffix = false) {
-		if (!$suffix) {
+	public function getThumbPath( $suffix = false ) {
+		if ( !$suffix ) {
 			throw new MWException( "Can't call getThumbPath without a suffix" );
 		}
 		$rel = $this->getRel() . '/' . $suffix;
-		if ( !array_key_exists($rel, $this->tempPaths ) ) {
+		if ( !array_key_exists( $rel, $this->tempPaths ) ) {
 			$this->tempPaths[$rel] = $this->repo->getLocalCopy( $this->repo->getZoneContainer( 'thumb' ), $rel );
 		}
 		return $this->tempPaths[$rel];
 		}
 
 	function __destruct() {
-		foreach ( $this->tempPaths as $path) {
+		foreach ( $this->tempPaths as $path ) {
 			// Clean up temporary data.
 			wfDebug( __METHOD__ . ": deleting $path\n" );
 			unlink( $path );
@@ -161,7 +161,7 @@ class SwiftFile extends LocalFile {
 		$thumbPath = tempnam( $wgTmpDirectory, 'transform_out_' );
 		unlink( $thumbPath );
 		$thumbPath .=  '.' . pathinfo( $thumbName, PATHINFO_EXTENSION );
-		
+
 
 		if ( $this->repo && $this->repo->canTransformVia404() && !( $flags & self::RENDER_NOW ) ) {
 			return $this->handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
@@ -424,7 +424,7 @@ class SwiftRepo extends LocalRepo {
 		foreach ( $triplets as $i => $triplet ) {
 			list( $srcPath, $dstZone, $dstRel ) = $triplet;
 
-			wfDebug( __METHOD__  . ": Storing $srcPath into $dstZone::$dstRel\n");
+			wfDebug( __METHOD__  . ": Storing $srcPath into $dstZone::$dstRel\n" );
 
 			// Point to the container.
 			$dstContainer = $this->getZoneContainer( $dstZone );
@@ -442,7 +442,7 @@ class SwiftRepo extends LocalRepo {
 				if ( !( $flags & self::OVERWRITE ) ) {
 					// does it exist?
 					try {
-						$objd = $dstc->get_object($dstRel);
+						$objd = $dstc->get_object( $dstRel );
 						// and if it does, are we allowed to overwrite it?
 						if ( $flags & self::OVERWRITE_SAME ) {
 							$objs = $srcc->get_object( $srcRel );
@@ -455,15 +455,15 @@ class SwiftRepo extends LocalRepo {
 							$good = false;
 						}
 						$exists = true;
-					} catch (NoSuchObjectException $e) {
+					} catch ( NoSuchObjectException $e ) {
 						$exists = false;
 					}
 				}
-	
+
 				if ( $good ) {
 					try {
 						$this->swiftcopy( $srcc, $srcRel, $dstc, $dstRel );
-					} catch (InvalidResponseException $e ) {
+					} catch ( InvalidResponseException $e ) {
 						$status->error( 'filecopyerror', $srcPath, "{$dstc->name}/$dstRel" );
 						$good = false;
 					}
@@ -479,7 +479,7 @@ class SwiftRepo extends LocalRepo {
 						$objd = $dstc->get_object( $dstRel );
 						// and if it does, are we allowed to overwrite it?
 						if ( $flags & self::OVERWRITE_SAME ) {
-							if ( $objd->getETag() != md5_file($srcPath) ) {
+							if ( $objd->getETag() != md5_file( $srcPath ) ) {
 								$status->fatal( 'fileexistserror', $dstRel );
 								$good = false;
 							}
@@ -488,15 +488,15 @@ class SwiftRepo extends LocalRepo {
 							$good = false;
 						}
 						$exists = true;
-					} catch (NoSuchObjectException $e) {
+					} catch ( NoSuchObjectException $e ) {
 						$exists = false;
 					}
 				}
 				if ( $good ) {
-					wfDebug( __METHOD__  . ": Writing $srcPath to {$dstc->name}/$dstRel\n");
+					wfDebug( __METHOD__  . ": Writing $srcPath to {$dstc->name}/$dstRel\n" );
 					try {
 						$this->write_swift_object( $srcPath, $dstc, $dstRel );
-					} catch (InvalidResponseException $e ) {
+					} catch ( InvalidResponseException $e ) {
 						$status->error( 'filecopyerror', $srcPath, "{$dstc->name}/$dstRel" );
 						$good = false;
 					}
@@ -547,7 +547,7 @@ class SwiftRepo extends LocalRepo {
 	function appendFinish( $toAppendPath ) {
 		$conn = $this->connect();
 		$container = $this->repo->get_container( $conn, $this->repo->container . '-temp' );
-		$parts = $container->list_objects( 0, NULL, $toAppendPath);
+		$parts = $container->list_objects( 0, NULL, $toAppendPath );
 		// list_objects() returns a sorted list.
 
 		// FIXME probably want to put this into a different container.
@@ -667,12 +667,12 @@ class SwiftRepo extends LocalRepo {
 			$srcObj = $srcContainer->get_object( $srcRel );
 		} catch ( NoSuchObjectException $e ) {
 			throw new MWException( 'Source file does not exist: ' . $srcContainer->name . "/$srcRel: $e" );
-		} 
+		}
 
 		wfDebug( __METHOD__ . ' copying to ' . $dstContainer->name . "/$dstRel from " . $srcContainer->name . "/$srcRel\n" );
 
 		try {
-			$dstContainer->copy_object_from($srcObj,$srcContainer,$dstRel);
+			$dstContainer->copy_object_from( $srcObj, $srcContainer, $dstRel );
 		} catch ( SyntaxException $e ) {
 			throw new MWException( 'Source file does not exist: ' . $srcContainer->name . "/$srcRel: $e" );
 		} catch ( MisMatchedChecksumException $e ) {

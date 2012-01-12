@@ -5,7 +5,7 @@ import sys, string, datetime, time, os, re, stat
 import twill
 import twill.commands as t
 import gd
- 
+
 temp_html = "/tmp/wikipedia.html"
 rss_title = "Wikipedia watchlist"
 rss_link = "http://en.wikipedia.org"
@@ -18,7 +18,7 @@ def login(username, password):
     t.go(host+"index.php/Special:UserLogin")
     t.fv("1", "wpName", username)
     t.fv("1", "wpPassword", password)
-    t.submit("wpLoginAttempt")  
+    t.submit("wpLoginAttempt")
 
 
 def upload_list(browser, pagename, uploads):
@@ -34,7 +34,7 @@ def upload_list(browser, pagename, uploads):
     t.formfile("1", "wpUploadFile", uploads[0])
     t.fv("1", "wpDestFile", pagename)
     t.fv("1", "wpUploadDescription", "Uploading %s" % pagename)
-    t.submit("wpUpload")  
+    t.submit("wpUpload")
 
     # Verify that we succeeded.
     t.find("File:%s" % pagename)
@@ -44,7 +44,7 @@ def upload_list(browser, pagename, uploads):
         t.go(host+"index.php?title=Special:Upload&wpDestFile=%s&wpForReUpload=1" % pagename)
         t.formfile("1", "wpUploadFile", fn)
         t.fv("1", "wpUploadDescription", "Uploading %s as %s" % (fn, pagename))
-        t.submit("wpUpload")  
+        t.submit("wpUpload")
 
     # get the URLs for the thumbnails
     urls = []
@@ -65,7 +65,7 @@ def upload_list(browser, pagename, uploads):
     t.go(host+"index.php?title=File:%s&action=delete" % pagename)
     # after we get the confirmation page, commit to the action.
     t.fv("1", "wpReason", "Test Deleting...")
-    t.submit("mw-filedelete-submit")  
+    t.submit("mw-filedelete-submit")
 
     # make sure that we can't visit their URLs.
     for i, url in enumerate(urls):
