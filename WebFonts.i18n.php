@@ -184,7 +184,7 @@ $messages['br'] = array(
 	'webfonts-menu-tooltip' => 'Dibabit ur font evit ar bajenn',
 	'webfonts-help' => 'Skoazell',
 	'webfonts-preview-title' => 'Rakwelet ar fontoù',
-	'webfonts-preview-download' => 'Pellgargañ',
+	'webfonts-preview-download' => 'Pellgargañ ar font-mañ',
 	'webfonts-preview-installing-fonts-title' => 'Staliañ ar fontoù',
 );
 
@@ -597,7 +597,7 @@ $messages['ko'] = array(
 	'webfonts-help' => '도움말',
 	'webfonts-preview-intro' => '이 페이지는 WebFonts 확장 기능에서 제공하는 글꼴을 미리 보고 글꼴을 선택하여 컴퓨터에 내려받고 설치할 수 있도록 도와 줄 것입니다.',
 	'webfonts-preview-title' => '글꼴 미리 보기',
-	'webfonts-preview-download' => '다운로드',
+	'webfonts-preview-download' => '이 글꼴을 다운로드',
 	'webfonts-preview-sampletext' => '덧글은 통신 예절 지키면서 표현 자유 추구하는 방향으로.',
 	'webfonts-preview-installing-fonts-title' => '글꼴 설치하기',
 	'webfonts-preview-installing-fonts-text' => '위의 "{{int:webfonts-preview-download}}" 링크를 통해 글꼴을 내려받을 수 있습니다. 내려받은 글꼴을 컴퓨터에 설치하려면 [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts 이 설명문서]를 참고하십시오.',
@@ -759,7 +759,7 @@ $messages['nl'] = array(
 	'webfonts-help' => 'Hulp',
 	'webfonts-preview-intro' => 'Via deze pagina kunt u de lettertypen bekijken die beschikbaar zijn in de uitbreiding WebFonts en als u dat wilt, kunt u ze downloaden en installeren op uw computer.',
 	'webfonts-preview-title' => 'Voorvertoning lettertypen',
-	'webfonts-preview-download' => 'Downloaden',
+	'webfonts-preview-download' => 'Lettertype downloaden',
 	'webfonts-preview-sampletext' => "Pa's wijze lynx bezag vroom het fikse aquaduct",
 	'webfonts-preview-installing-fonts-title' => 'Lettertypen installeren',
 	'webfonts-preview-installing-fonts-text' => 'U kunt een lettertype downloaden via de verwijzing "{{int:webfonts-preview-download}}" hierboven. Bekijk de [//www.mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts documentatie] om het gedownloade lettertype te installeren op uw computer.',
@@ -1078,7 +1078,7 @@ $messages['zh-hans'] = array(
 	'webfonts-preview-intro' => '本页面可以帮助您预览在WebFonts扩展可用的字体，并可选下载并安装字体。',
 	'webfonts-preview-title' => '预览字体',
 	'webfonts-preview-download' => '下载',
-	'webfonts-preview-sampletext' => '平雪迎骨水直',
+	'webfonts-preview-sampletext' => '灰狐狸快速地从那条笨狗的头上跳过',
 	'webfonts-preview-installing-fonts-title' => '安装字体',
 	'webfonts-preview-installing-fonts-text' => '您可以使用上面的"{{int:webfonts-preview-download}}"链接下载字体。要安装在您电脑上的字体，请参阅[//www.mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts 这篇文章].',
 );
