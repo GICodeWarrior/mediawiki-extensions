@@ -39,7 +39,7 @@ class SpecialEnroll extends SpecialEPPage {
 		parent::execute( $subPage );
 
 		$args = explode( '/', $this->subPage, 2 );
-		
+
 		if ( !ctype_digit( $args[0] ) ) {
 			$this->showWarning( wfMessage( $args[0] === '' ? 'ep-enroll-no-id' : 'ep-enroll-invalid-id' ) );
 		}
@@ -52,7 +52,7 @@ class SpecialEnroll extends SpecialEPPage {
 				'id' => $args[0],
 				'token' => $args[1]
 			) );
-			
+
 			if ( $term === false ) {
 				$this->showWarning( wfMessage( 'ep-enroll-invalid-token' ) );
 			}
@@ -103,12 +103,12 @@ class SpecialEnroll extends SpecialEPPage {
 
 	/**
 	 * Show links to signup.
-	 * 
+	 *
 	 * @since 0.1
 	 */
 	protected function showSignupLink() {
 		$out = $this->getOutput();
-		
+
 		$out->addWikiMsg( 'ep-enroll-login-first' );
 
 		$out->addHTML( '<ul><li>' );
@@ -174,12 +174,12 @@ class SpecialEnroll extends SpecialEPPage {
 
 		return $success;
 	}
-	
+
 	/**
 	 * Create and display the enrollment form.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param EPTerm $term
 	 */
 	protected function showEnrollmentForm( EPTerm $term ) {
@@ -232,7 +232,7 @@ class SpecialEnroll extends SpecialEPPage {
 				'label-message' => 'ep-enroll-gender',
 				'validation-callback' => function( $value, array $alldata = null ) {
 					return in_array( $value, array( 'male', 'female', 'unknown' ) ) ? true : wfMsg( 'ep-enroll-invalid-gender' );
-				},
+				} ,
 				'options' => array(
 					wfMsg( 'gender-male' ) => 'male',
 					wfMsg( 'gender-female' ) => 'female',

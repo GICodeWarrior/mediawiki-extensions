@@ -151,17 +151,17 @@ $wgAvailableRights[] = 'epmentor';
 
 # Users that can manage the education program.
 $wgGroupPermissions['*'            ]['epadmin'] = false;
-//$wgGroupPermissions['user'         ]['epadmin'] = false;
-//$wgGroupPermissions['autoconfirmed']['epadmin'] = false;
-//$wgGroupPermissions['bot'          ]['epadmin'] = false;
+// $wgGroupPermissions['user'         ]['epadmin'] = false;
+// $wgGroupPermissions['autoconfirmed']['epadmin'] = false;
+// $wgGroupPermissions['bot'          ]['epadmin'] = false;
 $wgGroupPermissions['sysop'        ]['epadmin'] = true;
 $wgGroupPermissions['epadmin' ]['epadmin'] = true;
 
 # Users that can enroll as students in the education program.
 $wgGroupPermissions['*'            ]['epstudent'] = false;
 $wgGroupPermissions['user'         ]['epstudent'] = true;
-//$wgGroupPermissions['autoconfirmed']['epstudent'] = true;
-//$wgGroupPermissions['bot'          ]['epstudent'] = false;
+// $wgGroupPermissions['autoconfirmed']['epstudent'] = true;
+// $wgGroupPermissions['bot'          ]['epstudent'] = false;
 $wgGroupPermissions['sysop'        ]['epstudent'] = true;
 $wgGroupPermissions['epadmin']['epstudent'] = true;
 $wgGroupPermissions['epstudent' ]['epstudent'] = true;
@@ -170,8 +170,8 @@ $wgGroupPermissions['epmentor' ]['epstudent'] = true;
 # Users that act as mentors in the education program.
 $wgGroupPermissions['*'            ]['epmentor'] = false;
 $wgGroupPermissions['user'         ]['epmentor'] = true;
-//$wgGroupPermissions['autoconfirmed']['epmentor'] = true;
-//$wgGroupPermissions['bot'          ]['epmentor'] = false;
+// $wgGroupPermissions['autoconfirmed']['epmentor'] = true;
+// $wgGroupPermissions['bot'          ]['epmentor'] = false;
 $wgGroupPermissions['sysop'        ]['epmentor'] = true;
 $wgGroupPermissions['epadmin']['epmentor'] = true;
 $wgGroupPermissions['epmentor' ]['epmentor'] = true;
@@ -237,12 +237,12 @@ function efEpGetCountryOptions( $langCode ) {
 	$countries = CountryNames::getNames( $langCode );
 
 	return array_merge(
-		array( '' => '' ), 
+		array( '' => '' ),
 		array_combine(
 			array_map(
 				function( $value, $key ) {
 					return $key . ' - ' . $value;
-				},
+				} ,
 				array_values( $countries ),
 				array_keys( $countries )
 			),

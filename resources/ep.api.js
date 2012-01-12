@@ -7,9 +7,9 @@
  */
 
 window.educationProgram = new( function() {
-	
+
 	this.api = new( function() {
-		
+
 		this.remove = function( data, callback ) {
 			var requestArgs = {
 				'action': 'deleteeducation',
@@ -18,21 +18,21 @@ window.educationProgram = new( function() {
 				'ids': data.ids.join( '|' ),
 				'type': data.type
 			};
-			
+
 			$.post(
 				wgScriptPath + '/api.php',
 				requestArgs,
 				function( data ) {
 					var success = data.hasOwnProperty( 'success' ) && data.success;
-					
+
 					callback( {
 						'success': success
 					} );
-				}	
-			);	
+				}
+			);
 		};
-		
+
 	} );
-	
+
 } );
 

@@ -20,7 +20,7 @@ abstract class EPPager extends TablePager {
 	 * @var array
 	 */
 	protected $conds;
-	
+
 	/**
 	 * Name of the class deriving from EPDBObject.
 	 * @since 0.1
@@ -34,14 +34,14 @@ abstract class EPPager extends TablePager {
 	 * @var EPDBObject
 	 */
 	protected $currentObject;
-	
+
 	/**
 	 * Context in which this pager is being shown.
 	 * @since 0.1
 	 * @var IContextSource
 	 */
 	protected $context;
-	
+
 	/**
 	 * Constructor.
 	 *
@@ -53,16 +53,16 @@ abstract class EPPager extends TablePager {
 		$this->conds = $conds;
 		$this->className = $className;
 		$this->context = $context;
-		
+
 		$this->mDefaultDirection = true;
-		
+
 		if ( method_exists( 'TablePager', 'getUser' ) ) {
 			parent::__construct( $context );
 		}
 		else {
 			parent::__construct();
 		}
-		
+
 		$this->context->getOutput()->addModules( 'ep.pager' );
 	}
 
@@ -89,7 +89,7 @@ abstract class EPPager extends TablePager {
 	public function getLanguage() {
 		return method_exists( $this->context, 'getLanguage' ) ? $this->context->getLanguage() : $this->context->getLang();
 	}
-	
+
 	/**
 	 * Get the User being used for this instance.
 	 * IndexPager extends ContextSource as of 1.19.
@@ -101,7 +101,7 @@ abstract class EPPager extends TablePager {
 	public function getUser() {
 		return $this->context->getUser();
 	}
-	
+
 	/**
 	 * Get the WebRequest being used for this instance.
 	 * IndexPager extends ContextSource as of 1.19.
@@ -113,7 +113,7 @@ abstract class EPPager extends TablePager {
 	public function getRequest() {
 		return $this->context->getRequest();
 	}
-	
+
 	/**
 	 * Get the Title being used for this instance.
 	 * IndexPager extends ContextSource as of 1.19.
@@ -125,7 +125,7 @@ abstract class EPPager extends TablePager {
 	public function getTitle() {
 		return $this->context->getTitle();
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::formatRow()
@@ -133,7 +133,7 @@ abstract class EPPager extends TablePager {
 	function formatRow( $row ) {
 		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
 		$this->currentObject = $c::newFromDBResult( $row );
-		
+
 		$cells = array();
 
 		foreach ( $this->getFieldNames() as $field => $name ) {
@@ -157,13 +157,13 @@ abstract class EPPager extends TablePager {
 				$prefixedField = $c::getPrefixedField( $field );
 				$value = isset( $row->$prefixedField ) ? $row->$prefixedField : null;
 			}
-			
+
 			$formatted = strval( $this->formatValue( $field, $value ) );
-			
+
 			if ( $formatted == '' ) {
 				$formatted = '&#160;';
 			}
-			
+
 			$cells[] = Html::rawElement( 'td', $this->getCellAttrs( $field, $value ), $formatted );
 		}
 
@@ -172,9 +172,9 @@ abstract class EPPager extends TablePager {
 
 	/**
 	 * Returns the relevant field names.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return array
 	 */
 	public function getFieldNames() {
@@ -196,20 +196,20 @@ abstract class EPPager extends TablePager {
 
 		return $fields;
 	}
-	
+
 	/**
 	 * Returns HTML for the multiple item control.
 	 * With actions coming from @see getMultipleItemActions.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return string
 	 */
 	public function getMultipleItemControl() {
 		if ( !$this->hasMultipleItemControl() ) {
 			return '';
 		}
-		
+
 		$controls = array();
 
 		foreach ( $this->getMultipleItemActions() as $label => $attribs ) {
@@ -235,13 +235,13 @@ abstract class EPPager extends TablePager {
 				implode( '', $controls ) .
 			'</fieldset>';
 	}
-	
+
 	/**
 	 * Return the multiple item actions the current user can do.
 	 * Override in deriving classes to add actions.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return array
 	 */
 	protected function getMultipleItemActions() {
@@ -278,54 +278,54 @@ abstract class EPPager extends TablePager {
 	protected function hasActionsColumn() {
 		return true;
 	}
-	
+
 	/**
 	 * Returns the fields to display.
 	 * Similar to @see getFieldNames, but fields should not be prefixed, and
 	 * non-relevant fields will be removed.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return array
 	 */
 	protected abstract function getFields();
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see IndexPager::getQueryInfo()
 	 */
 	function getQueryInfo() {
-		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_> 
+		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
 		return array(
 			'tables' => array( $c::getDBTable() ),
 			'fields' => $c::getPrefixedFields( $c::getFieldNames() ),
 			'conds' => $c::getPrefixedValues( $this->getConditions() ),
 		);
 	}
-	
+
 	/**
 	 * Get the conditions to use in the query.
 	 * This is done by merging the filter controls conditions with those provided to the constructor.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return array
 	 */
 	protected function getConditions() {
 		$conds = array();
-		
+
 		$filterOptions = $this->getFilterOptions();
 		$this->addFilterValues( $filterOptions, false );
-		
+
 		foreach ( $filterOptions as $optionName => $optionData ) {
 			if ( array_key_exists( 'value', $optionData ) && $optionData['value'] !== '' ) {
 				$conds[$optionName] = $optionData['value'];
 			}
 		}
-		
+
 		return array_merge( $conds, $this->conds );
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::isFieldSortable()
@@ -342,63 +342,63 @@ abstract class EPPager extends TablePager {
 		$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>
 		return $c::getPrefixedField( 'id' );
 	}
-	
+
 	/**
 	 * Should return an array with the names of the fields that are sortable.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return array of string
 	 */
 	protected abstract function getSortableFields();
-	
+
 	/**
 	 * Returns a list with the filter options.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
-	 * @return array 
+	 *
+	 * @return array
 	 */
 	protected function getFilterOptions() {
 		return array();
 	}
-	
+
 	/**
 	 * Gets the HTML for a filter control.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
-	 * @param boolean $hideWhenNoResults When true, there are no results, and no filters are applied, an empty string is returned. 
-	 * 
+	 *
+	 * @param boolean $hideWhenNoResults When true, there are no results, and no filters are applied, an empty string is returned.
+	 *
 	 * @return string
 	 */
 	public function getFilterControl( $hideWhenNoResults = true ) {
 		$filterOptions = $this->getFilterOptions();
-		
+
 		foreach ( $this->conds as $name => $value ) {
 			if ( array_key_exists( $name, $filterOptions ) ) {
 				unset( $filterOptions[$name] );
 			}
 		}
-		
+
 		if ( count( $filterOptions ) < 1 ) {
 			return '';
 		}
-		
+
 		$this->addFilterValues( $filterOptions );
-		
+
 		if ( $hideWhenNoResults && $this->getNumRows() < 1 ) {
 			$noFiltersSet = array_reduce( $filterOptions, function( $current, array $data ) {
 				return $current && ( $data['value'] === '' || is_null( $data['value'] ) );
-			}, true );
-			
+			} , true );
+
 			if ( $noFiltersSet ) {
 				return '';
 			}
 		}
-		
+
 		$controls = array();
-		
+
 		foreach ( $filterOptions as $optionName => $optionData ) {
 			switch ( $optionData['type'] ) {
 				case 'select':
@@ -407,14 +407,14 @@ abstract class EPPager extends TablePager {
 					$control = $select->getHTML();
 					break;
 			}
-			
+
 			$control = '&#160;' . $this->getMsg( 'filter-' . $optionName ) . '&#160;' . $control;
-			
+
 			$controls[] = $control;
 		}
-		
+
 		$title = $this->getTitle()->getFullText();
-		
+
 		return
  			'<fieldset>' .
 				'<legend>' . wfMsgHtml( 'ep-pager-showonly' ) . '</legend>' .
@@ -426,16 +426,16 @@ abstract class EPPager extends TablePager {
 				'</form>' .
 			'</fieldset>';
 	}
-	
+
 	/**
 	 * Changes the provided filter options list by replacing the values by what's set
-	 * in the request, or as fallback, what's set in the session. 
-	 * 
+	 * in the request, or as fallback, what's set in the session.
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array $filterOptions
 	 * @param boolean $cast Should values with non-string type be casted (ie to have a select with int values have the correct val selected).
-	 * 
+	 *
 	 * @return boolean If anything was changed from the default
 	 */
 	protected function addFilterValues( array &$filterOptions, $cast = true ) {
@@ -447,7 +447,7 @@ abstract class EPPager extends TablePager {
 				$optionData['value'] = $req->getVal( $optionName );
 				$req->setSessionData( get_called_class() . $optionName, $optionData['value'] );
 				$changed = true;
-				
+
 				if ( $cast && array_key_exists( 'datatype', $optionData ) ) {
 					switch ( $optionData['datatype'] ) {
 						case 'int':
@@ -464,24 +464,24 @@ abstract class EPPager extends TablePager {
 				$changed = true;
 			}
 		}
-		
+
 		return $changed;
 	}
-	
+
 	/**
 	 * Takes a message key and prefixes it with the extension name and name of the pager,
 	 * feeds it to wfMsg, and returns it.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param string $messageKey
-	 * 
+	 *
 	 * @return string
 	 */
 	protected function getMsg( $messageKey ) {
 		return wfMsg( strtolower( $this->className ) . 'pager-' . str_replace( '_', '-', $messageKey ) );
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::formatValue()
@@ -489,41 +489,41 @@ abstract class EPPager extends TablePager {
 	public final function formatValue( $name, $value ) {
 		return $this->getFormattedValue( $name, $value );
 	}
-	
+
 	/**
 	 * Similar to TablePager::formatValue, but passes along the name of the field without prefix.
 	 * Returned values need to be escaped!
 	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param string $name
 	 * @param string $value
-	 * 
+	 *
 	 * @return string
 	 */
 	protected abstract function getFormattedValue( $name, $value );
-	
+
 	/**
 	 * Returns a list of (escaped, html) links to add in an additional column.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param EPDBObject $item
-	 * 
+	 *
 	 * @return array
 	 */
 	protected function getControlLinks( EPDBObject $item ) {
 		return array();
 	}
-	
+
 	/**
 	 * Returns a deletion link.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param string $type
 	 * @param integer $id
-	 * 
+	 *
 	 * @return string
 	 */
 	protected function getDeletionLink( $type, $id ) {
@@ -542,7 +542,7 @@ abstract class EPPager extends TablePager {
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::getStartBody()
-	 * 
+	 *
 	 * Mostly just a copy of parent class function.
 	 * Allows for having a checlbox in the selection column header.
 	 * Would obviously be better if parent class supported doing this nicer.
@@ -551,10 +551,10 @@ abstract class EPPager extends TablePager {
 		global $wgStylePath;
 		$tableClass = htmlspecialchars( $this->getTableClass() );
 		$sortClass = htmlspecialchars( $this->getSortHeaderClass() );
-	
+
 		$s = "<table style='border:1;' class=\"mw-datatable $tableClass\"><thead><tr>\n";
 		$fields = $this->getFieldNames();
-	
+
 		# Make table header
 		foreach ( $fields as $field => $name ) {
 			$c = $this->className; // Yeah, this is needed in PHP 5.3 >_>

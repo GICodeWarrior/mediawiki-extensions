@@ -16,15 +16,15 @@ class EPTerm extends EPDBObject {
 
 	/**
 	 * Field for caching the linked course.
-	 * 
+	 *
 	 * @since 0.1
 	 * @var EPCourse|false
 	 */
 	protected $course = false;
-	
+
 	/**
 	 * Field for caching the linked org.
-	 * 
+	 *
 	 * @since 0.1
 	 * @var EPOrg|false
 	 */
@@ -77,7 +77,7 @@ class EPTerm extends EPDBObject {
 			'id' => 'id',
 			'course_id' => 'id',
 			'org_id' => 'id',
-		
+
 			'year' => 'int',
 			'start' => 'str', // TS_MW
 			'end' => 'str', // TS_MW
@@ -85,7 +85,7 @@ class EPTerm extends EPDBObject {
 			'token' => 'str',
 		);
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see EPDBObject::getDefaults()
@@ -139,7 +139,7 @@ class EPTerm extends EPDBObject {
 
 		return $success;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see EPDBObject::removeFromDB()
@@ -154,7 +154,7 @@ class EPTerm extends EPDBObject {
 		}
 
 		$success = parent::removeFromDB();
-		
+
 		if ( $success && $this->updateSummaries ) {
 			EPCourse::updateSummaryFields( 'students', array( 'id' => $courseId ) );
 			EPOrg::updateSummaryFields( array( 'terms', 'students', 'active' ), array( 'id' => $orgId ) );
@@ -201,52 +201,52 @@ class EPTerm extends EPDBObject {
 
 		return $success;
 	}
-	
+
 	/**
 	 * Returns the course associated with this term.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param string|array|null $fields
-	 * 
+	 *
 	 * @return EPCourse
 	 */
 	public function getCourse( $fields = null ) {
 		if ( $this->course === false ) {
 			$this->course = EPCourse::selectRow( $fields, array( 'id' => $this->loadAndGetField( 'course_id' ) ) );
 		}
-		
+
 		return $this->course;
 	}
-	
+
 	/**
 	 * Returns the org associated with this term.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param string|array|null $fields
-	 * 
+	 *
 	 * @return EPOrg
 	 */
 	public function getOrg( $fields = null ) {
 		if ( $this->org === false ) {
 			$this->org = EPOrg::selectRow( $fields, array( 'id' => $this->loadAndGetField( 'org_id' ) ) );
 		}
-		
+
 		return $this->org;
 	}
-	
+
 	/**
 	 * Display a pager with terms.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param IContextSource $context
 	 * @param array $conditions
 	 */
 	public static function displayPager( IContextSource $context, array $conditions = array() ) {
 		$pager = new EPTermPager( $context, $conditions );
-		
+
 		if ( $pager->getNumRows() ) {
 			$context->getOutput()->addHTML(
 				$pager->getFilterControl() .
@@ -261,23 +261,23 @@ class EPTerm extends EPDBObject {
 			$context->getOutput()->addWikiMsg( 'ep-terms-noresults' );
 		}
 	}
-	
+
 	/**
 	 * Adds a control to add a term org to the provided context.
 	 * Additional arguments can be provided to set the default values for the control fields.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param IContextSource $context
 	 * @param array $args
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public static function displayAddNewControl( IContextSource $context, array $args ) {
 		if ( !$context->getUser()->isAllowed( 'epmentor' ) ) {
 			return false;
 		}
-		
+
 		$out = $context->getOutput();
 
 		$out->addHTML( Html::openElement(
@@ -295,16 +295,16 @@ class EPTerm extends EPDBObject {
 		$out->addHTML( Html::element( 'p', array(), wfMsg( 'ep-terms-namedoc' ) ) );
 
 		$out->addHTML( Html::element( 'label', array( 'for' => 'newcourse' ), wfMsg( 'ep-terms-newcourse' ) ) );
-		
+
 		$select = new XmlSelect(
 			'newcourse',
 			'newcourse',
 			array_key_exists( 'course', $args ) ? $args['course'] : false
 		);
-		
+
 		$select->addOptions( EPCourse::getCourseOptions( EPCourse::getEditableCourses( $context->getUser() ) ) );
 		$out->addHTML( $select->getHTML() );
-		
+
 		$out->addHTML( '&#160;' . Xml::inputLabel( wfMsg( 'ep-terms-newyear' ), 'newyear', 'newyear', 10 ) );
 
 		$out->addHTML( '&#160;' . Html::input(
@@ -314,24 +314,24 @@ class EPTerm extends EPDBObject {
 		) );
 
 		$out->addHTML( Html::hidden( 'isnew', 1 ) );
-		
+
 		$out->addHTML( '</fieldset></form>' );
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Adds a control to add a new term to the provided context
 	 * or show a message if this is not possible for some reason.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param IContextSource $context
 	 * @param array $args
 	 */
 	public static function displayAddNewRegion( IContextSource $context, array $args = array() ) {
 		$courses = EPCourse::getEditableCourses( $context->getUser() );
-		
+
 		if ( count( $courses ) > 0 ) {
 			EPTerm::displayAddNewControl( $context, $args );
 		}
@@ -342,29 +342,29 @@ class EPTerm extends EPDBObject {
 			$context->getOutput()->addWikiMsg( 'ep-terms-addcoursefirst' );
 		}
 	}
-	
+
 	/**
 	 * Returns if the provided user can manage the term or not.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param User $user
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public function useCanManage( User $user ) {
 		if ( $user->isAllowed( 'epadmin' ) ) {
 			return true;
 		}
-		
+
 		if ( $user->isAllowed( 'epmentor' ) ) {
 			$mentor = EPMentor::selectRow( 'id', array( 'user_id' => $user->getId() ) );
-			
+
 			if ( $mentor !== false ) {
 				return $mentor->hasTerm( array( 'id' => $this->getId() ) );
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -403,7 +403,7 @@ class EPTerm extends EPDBObject {
 		if ( $this->getDaysLeft() <= 0 ) {
 			$status = 'passed';
 		}
-		elseif( $this->getDaysPassed() <= 0 ) {
+		elseif ( $this->getDaysPassed() <= 0 ) {
 			$status = 'planned';
 		}
 		else {

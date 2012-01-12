@@ -36,7 +36,7 @@ class EPTermPager extends EPPager {
 			'end',
 		);
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::getRowClass()
@@ -44,12 +44,12 @@ class EPTermPager extends EPPager {
 	function getRowClass( $row ) {
 		return 'ep-term-row';
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::getTableClass()
 	 */
-	public function getTableClass(){
+	public function getTableClass() {
 		return 'TablePager ep-terms';
 	}
 
@@ -67,7 +67,7 @@ class EPTermPager extends EPPager {
 				break;
 			case 'course_id':
 				$value = EPCourse::selectRow( 'name', array( 'id' => $value ) )->getField( 'name' );
-				
+
 				$value = Linker::linkKnown(
 					SpecialPage::getTitleFor( 'Course', $value ),
 					htmlspecialchars( $value )
@@ -114,7 +114,7 @@ class EPTermPager extends EPPager {
 
 		return $fields;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see EPPager::getFilterOptions()
@@ -166,31 +166,31 @@ class EPTermPager extends EPPager {
 
 		return $options;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see EPPager::getControlLinks()
 	 */
 	protected function getControlLinks( EPDBObject $item ) {
 		$links = parent::getControlLinks( $item );
-		
+
 		$links[] = $value = Linker::linkKnown(
 			SpecialPage::getTitleFor( 'Term', $item->getId() ),
 			wfMsgHtml( 'view' )
 		);
-		
+
 		if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
 			$links[] = $value = Linker::linkKnown(
 				SpecialPage::getTitleFor( 'EditTerm', $item->getId() ),
 				wfMsgHtml( 'edit' )
 			);
-			
+
 			$links[] = $this->getDeletionLink( 'term', $item->getId() );
 		}
-		
+
 		return $links;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see EPPager::getMultipleItemActions()

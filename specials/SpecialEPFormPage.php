@@ -15,35 +15,35 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 
 	/**
 	 * Instance of the object being edited or created.
-	 * 
+	 *
 	 * @since 0.1
 	 * @var EPDBObject|false
 	 */
-	protected $item = false; 
+	protected $item = false;
 
 	/**
 	 * Name of the class of the object being edited or created.
-	 * 
+	 *
 	 * @since 0.1
 	 * @var string
 	 */
 	protected $itemClass;
-	
+
 	/**
 	 * Name of the special page listing the items.
 	 * For example, for "EditLolcat", it could be "Lolcats".
-	 * 
+	 *
 	 * @since 0.1
 	 * @var string
 	 */
 	protected $listPage;
-	
+
 	/**
 	 * Constructor.
 	 *
 	 * @since 0.1
-	 * 
-	 * @param string $name Name of the page 
+	 *
+	 * @param string $name Name of the page
 	 * @param string $right Right needed to access the page
 	 * @param string $itemClass Name of the item class
 	 * @param string $listPage Name of the page listing the items
@@ -51,12 +51,12 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	public function __construct( $name, $right, $itemClass, $listPage ) {
 		$this->itemClass = $itemClass;
 		$this->listPage = $listPage;
-		
+
 		parent::__construct( $name, $right, false );
-		
+
 		$this->getOutput()->addModules( 'ep.formpage' );
 	}
-	
+
 	/**
 	 * @see SpecialPage::getDescription
 	 *
@@ -90,7 +90,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	 */
 	public function execute( $subPage ) {
 		parent::execute( $subPage );
-		
+
 		if ( $this->getRequest()->wasPosted() && $this->getUser()->matchEditToken( $this->getRequest()->getVal( 'wpEditToken' ) ) ) {
 			$this->showForm();
 		}
@@ -98,7 +98,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 			$this->showContent();
 		}
 	}
-	
+
 	/**
 	 * Display the form and set the item field, or redirect the user.
 	 *
@@ -106,7 +106,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	 */
 	protected function showContent() {
 		$c = $this->itemClass; // Yeah, this is needed in PHP 5.3 >_>
-		
+
 		if ( $this->isNew() ) {
 			$data = $this->getNewData();
 
@@ -137,22 +137,22 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 			$this->showForm();
 		}
 	}
-	
+
 	/**
 	 * Returns if the page should work in insertion mode rather then modification mode.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return boolean
 	 */
 	protected function isNew() {
 		static $isNew = null;
-		
+
 		if ( is_null( $isNew ) ) {
 			$isNew = $this->getRequest()->wasPosted() &&
 				( $this->getRequest()->getCheck( 'isnew' ) || $this->getRequest()->getCheck( 'wpisnew' ) );
 		}
-		
+
 		return $isNew;
 	}
 
@@ -174,25 +174,25 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 			}
 		}
 	}
-	
+
 	/**
 	 * Returns the data to use as condition for selecting the object,
 	 * or in case nothing matches the selection, the data to initialize
 	 * it with. This is typically an identifier such as name or id.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return array
 	 */
 	protected function getNewData() {
 		return array( 'name' => $this->getRequest()->getVal( 'newname' ) );
 	}
-	
+
 	/**
 	 * Get the query conditions to obtain the item based on the page title.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return array
 	 */
 	protected function getTitleConditions() {
@@ -221,7 +221,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 
 		$action = $this->isNew() ? 'add' : 'edit';
 		$form->setWrapperLegend( $this->msg( strtolower( $this->getName() ) . '-' . $action . '-legend' ) );
-		
+
 		$form->addButton(
 			'cancelEdit',
 			wfMsg( 'cancel' ),
@@ -239,7 +239,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 
 		return $form;
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see FormSpecialPage::getFormFields()
@@ -258,16 +258,16 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 			&& $req->getCheck( 'wpitem-id' ) ) {
 			$fields['id']['default'] = $req->getInt( 'wpitem-id' );
 		}
-		
+
 		return $fields;
 	}
-	
+
 	/**
 	 * Populates the form fields with the data of the item
 	 * and prefixes their names.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array $fields
 	 *
 	 * @return array
@@ -280,7 +280,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 				}
 			}
 		}
-		
+
 		$mappedFields = array();
 
 		foreach ( $fields as $name => $field ) {
@@ -290,36 +290,36 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 				unset( $field['validation-callback'] );
 				unset( $field['required'] );
 			}
-			
+
 			$mappedFields['item-' . $name] = $field;
 		}
 
 		return $mappedFields;
 	}
-	
+
 	/**
 	 * Gets the default value for a field from the item.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param EPDBObject $item
 	 * @param string $name
-	 * 
+	 *
 	 * @return mixed
 	 */
 	protected function getDefaultFromItem( EPDBObject $item, $name ) {
 		return $item->getField( $name );
 	}
-	
+
 	/**
 	 * Gets called after the form is saved.
-	 * 
+	 *
 	 * @since 0.1
 	 */
 	public function onSuccess() {
 		$this->getOutput()->redirect( SpecialPage::getTitleFor( $this->listPage )->getLocalURL() );
 	}
-	
+
 	/**
 	 * Process the form.  At this point we know that the user passes all the criteria in
 	 * userCanExecute().
@@ -341,7 +341,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 				if ( $matches[1] === 'id' && ( $value === '' || $value === '0' ) ) {
 					$value = null;
 				}
-				
+
 				if ( $c::canHasField( $matches[1] ) ) {
 					$fields[$matches[1]] = $value;
 				}
@@ -353,7 +353,7 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 
 		$keys = array_keys( $fields );
 		$fields = array_combine( $keys, array_map( array( $this, 'handleKnownField' ), $keys, $fields ) );
-		
+
 		/* EPDBObject */ $item = new $c( $fields, is_null( $fields['id'] ) );
 
 		foreach ( $unknownValues as $name => $value ) {
@@ -369,12 +369,12 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 			return array(); // TODO
 		}
 	}
-	
+
 	/**
 	 * Gets called for evey unknown submitted value, so they can be dealt with if needed.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param EPDBObject $item
 	 * @param string $name
 	 * @param string $value This is a string, since it comes from request data, but might be a number or other type.
@@ -382,20 +382,20 @@ abstract class SpecialEPFormPage extends SpecialEPPage {
 	protected function handleUnknownField( EPDBObject $item, $name, $value ) {
 		// Override to use.
 	}
-	
+
 	/**
 	 * Gets called for evey known submitted value, so they can be dealt with if needed.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param string $name
 	 * @param string $value This is a string, since it comes from request data, but might be a number or other type.
-	 * 
+	 *
 	 * @return mixed The new value
 	 */
 	protected function handleKnownField( $name, $value ) {
 		// Override to use.
 		return $value;
 	}
-	
+
 }

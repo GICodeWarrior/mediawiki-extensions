@@ -39,7 +39,7 @@ class EPStudentPager extends EPPager {
 			'active_enroll',
 		);
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::getRowClass()
@@ -47,12 +47,12 @@ class EPStudentPager extends EPPager {
 	function getRowClass( $row ) {
 		return 'ep-student-row';
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::getTableClass()
 	 */
-	public function getTableClass(){
+	public function getTableClass() {
 		return 'TablePager ep-students';
 	}
 
@@ -81,7 +81,7 @@ class EPStudentPager extends EPPager {
 				$value = $this->getLanguage()->pipeList( array_map(
 					function( EPCourse $course ) {
 						return $course->getLink();
-					},
+					} ,
 					$this->currentObject->getCurrentCourses( 'name' )
 				) );
 				break;

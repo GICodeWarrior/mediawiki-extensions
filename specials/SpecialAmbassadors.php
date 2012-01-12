@@ -38,7 +38,7 @@ class SpecialAmbassadors extends SpecialEPPage {
 		}
 		else {
 			// TODO
-			//$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Institution', $this->subPage )->getLocalURL() );
+			// $this->getOutput()->redirect( SpecialPage::getTitleFor( 'Institution', $this->subPage )->getLocalURL() );
 		}
 	}
 

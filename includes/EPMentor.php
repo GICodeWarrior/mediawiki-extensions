@@ -15,12 +15,12 @@ class EPMentor extends EPDBObject {
 
 	/**
 	 * Cached array of the linked EPOrg objects.
-	 * 
+	 *
 	 * @since 0.1
 	 * @var array|false
 	 */
 	protected $orgs = false;
-	
+
 	/**
 	 * @see parent::getFieldTypes
 	 *
@@ -34,26 +34,26 @@ class EPMentor extends EPDBObject {
 			'user_id' => 'id',
 		);
 	}
-	
+
 	/**
 	 * Returns the orgs this mentor is part of.
 	 * Caches the result when no conditions are provided and all fields are selected.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array|null $fields
 	 * @param array $conditions
-	 * 
+	 *
 	 * @return array of EPOrg
 	 */
 	public function getOrgs( array $fields = null, array $conditions = array() ) {
 		if ( count( $conditions ) !== 0 ) {
 			return $this->doGetOrgs( $fields, $conditions );
 		}
-		
+
 		if ( $this->orgs === false ) {
 			$orgs = $this->doGetOrgs( $fields, $conditions );
-			
+
 			if ( is_null( $fields ) ) {
 				$this->orgs = $orgs;
 			}
@@ -64,15 +64,15 @@ class EPMentor extends EPDBObject {
 			return $this->orgs;
 		}
 	}
-	
+
 	/**
 	 * Returns the orgs this mentor is part of.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array|null $fields
 	 * @param array $conditions
-	 * 
+	 *
 	 * @return array of EPOrg
 	 */
 	protected function doGetOrgs( $fields, array $conditions ) {
@@ -80,7 +80,7 @@ class EPMentor extends EPDBObject {
 			array( array( 'ep_mentors', 'id' ), $this->getId() ),
 			$conditions
 		);
-		
+
 		return EPOrg::select(
 			$fields,
 			$conditions,
@@ -91,15 +91,15 @@ class EPMentor extends EPDBObject {
 			)
 		);
 	}
-	
+
 	/**
-	 * Retruns the courses this mentor can manage. 
-	 * 
+	 * Retruns the courses this mentor can manage.
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array|null $fields
 	 * @param array $conditions
-	 * 
+	 *
 	 * @return array of EPCourse
 	 */
 	public function getCourses( array $fields = null, array $conditions = array() ) {
@@ -107,19 +107,19 @@ class EPMentor extends EPDBObject {
 			$this->getOrgs( $fields, $conditions ),
 			function( array $courses, EPOrg $org ) use ( $fields ) {
 				return array_merge( $courses, $org->getCourses( $fields ) );
-			},
+			} ,
 			array()
 		);
 	}
-	
+
 	/**
-	 * Retruns the terms this mentor can manage. 
-	 * 
+	 * Retruns the terms this mentor can manage.
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array|null $fields
 	 * @param array $conditions
-	 * 
+	 *
 	 * @return array of EPTerm
 	 */
 	public function getTerms( array $fields = null, array $conditions = array() ) {
@@ -127,31 +127,31 @@ class EPMentor extends EPDBObject {
 			$this->getOrgs( $fields, $conditions ),
 			function( array $terms, EPOrg $org ) use ( $fields ) {
 				return array_merge( $terms, $org->getTerms( $fields ) );
-			}, 
+			} ,
 			array()
 		);
 	}
-	
+
 	/**
-	 * Retruns if the mentor has any course matching the provided contitions. 
-	 * 
+	 * Retruns if the mentor has any course matching the provided contitions.
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array $conditions
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public function hasCourse( array $conditions = array() ) {
 		return count( $this->getCourses( 'id', $conditions ) ) > 0;
 	}
-	
+
 	/**
 	 * Retruns if the mentor has any term matching the provided conditions.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array $conditions
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public function hasTerm( array $conditions = array() ) {

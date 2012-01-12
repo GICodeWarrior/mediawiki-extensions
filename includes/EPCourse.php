@@ -16,12 +16,12 @@ class EPCourse extends EPDBObject {
 
 	/**
 	 * Field for caching the linked org.
-	 * 
+	 *
 	 * @since 0.1
 	 * @var EPOrg|false
 	 */
 	protected $org = false;
-	
+
 	/**
 	 * @see parent::getFieldTypes
 	 *
@@ -33,7 +33,7 @@ class EPCourse extends EPDBObject {
 		return array(
 			'id' => 'id',
 			'org_id' => 'id',
-		
+
 			'name' => 'str',
 			'description' => 'str',
 			'lang' => 'str',
@@ -42,7 +42,7 @@ class EPCourse extends EPDBObject {
 			'students' => 'int',
 		);
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see EPDBObject::getDefaults()
@@ -99,7 +99,7 @@ class EPCourse extends EPDBObject {
 
 		$this->setFields( $fields );
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see EPDBObject::removeFromDB()
@@ -113,7 +113,7 @@ class EPCourse extends EPDBObject {
 		}
 
 		$success = parent::removeFromDB();
-		
+
 		if ( $success ) {
 			foreach ( EPTerm::select( 'id', array( 'course_id' => $id ) ) as /* EPTerm */ $term ) {
 				$term->setUpdateSummaries( false );
@@ -162,100 +162,100 @@ class EPCourse extends EPDBObject {
 
 	/**
 	 * Returns the org associated with this course.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param string|array|null $fields
-	 * 
+	 *
 	 * @return EPOrg
 	 */
 	public function getOrg( $fields = null ) {
 		if ( $this->org === false ) {
 			$this->org = EPOrg::selectRow( $fields, array( 'id' => $this->getField( 'org_id' ) ) );
 		}
-		
+
 		return $this->org;
 	}
-	
+
 	/**
 	 * Returns a list of courses in an array that can be fed to select inputs.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array $courses
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function getCourseOptions( array /* EPCourse */ $courses ) {
 		$options = array();
-		
+
 		foreach ( $courses as /* EPCourse */ $course ) {
 			$options[$course->getField( 'name' )] = $course->getId();
 		}
-		
+
 		return $options;
 	}
-	
+
 	/**
 	 * Returns the list of orgs that the specified user can edit.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param User|int $user
 	 * @param array|null $fields
-	 * 
+	 *
 	 * @return array of EPCourse
 	 */
 	public static function getEditableCourses( $user, array $fields = null ) {
 		static $cache = array();
-		
+
 		if ( is_int( $user ) ) {
 			$userId = $user;
 		}
 		else {
 			$userId = $user->getId();
 		}
-		
+
 		if ( !array_key_exists( $userId, $cache ) ) {
 			if ( is_int( $user ) ) {
 				$user = User::newFromId( $userId );
 			}
-			
+
 			$courses = array();
-			
+
 			if ( $user->isAllowed( 'epadmin' ) ) {
 				$courses = self::select( $fields );
 			}
 			elseif ( $user->isAllowed( 'epmentor' ) ) {
 				$mentor = EPMentor::select( array( 'user_id' => $user->getId() ) );
-				
+
 				if ( $mentor !== false ) {
 					$courses = $mentor->getCourses( $fields );
 				}
 			}
-			
+
 			$cache[$userId] = $courses;
 		}
-		
+
 		return $cache[$userId];
 	}
-	
+
 	/**
 	 * Adds a control to add a new course to the provided context.
 	 * Additional arguments can be provided to set the default values for the control fields.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param IContextSource $context
 	 * @param array $args
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public static function displayAddNewControl( IContextSource $context, array $args = array() ) {
 		if ( !$context->getUser()->isAllowed( 'epmentor' ) ) {
 			return false;
 		}
-		
+
 		$out = $context->getOutput();
 
 		$out->addHTML( Html::openElement(
@@ -273,7 +273,7 @@ class EPCourse extends EPDBObject {
 		$out->addHTML( Html::element( 'p', array(), wfMsg( 'ep-courses-namedoc' ) ) );
 
 		$out->addHTML( Html::element( 'label', array( 'for' => 'neworg' ), wfMsg( 'ep-courses-neworg' ) ) );
-		
+
 		$out->addHTML( '&#160;' );
 
 		$select = new XmlSelect(
@@ -284,9 +284,9 @@ class EPCourse extends EPDBObject {
 
 		$select->addOptions( EPOrg::getOrgOptions( EPOrg::getEditableOrgs( $context->getUser() ) ) );
 		$out->addHTML( $select->getHTML() );
-		
+
 		$out->addHTML( '&#160;' );
-		
+
 		$out->addHTML( Xml::inputLabel(
 			wfMsg( 'ep-courses-newname' ),
 			'newname',
@@ -296,7 +296,7 @@ class EPCourse extends EPDBObject {
 		) );
 
 		$out->addHTML( '&#160;' );
-		
+
 		$out->addHTML( Html::input(
 			'addneworg',
 			wfMsg( 'ep-courses-add' ),
@@ -306,22 +306,22 @@ class EPCourse extends EPDBObject {
 		$out->addHTML( Html::hidden( 'isnew', 1 ) );
 
 		$out->addHTML( '</fieldset></form>' );
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Adds a control to add a new course to the provided context
 	 * or show a message if this is not possible for some reason.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param IContextSource $context
 	 * @param array $args
 	 */
 	public static function displayAddNewRegion( IContextSource $context, array $args = array() ) {
 		$orgs = EPOrg::getEditableOrgs( $context->getUser() );
-		
+
 		if ( count( $orgs ) > 0 ) {
 			EPCourse::displayAddNewControl( $context, $args );
 		}
@@ -332,18 +332,18 @@ class EPCourse extends EPDBObject {
 			$context->getOutput()->addWikiMsg( 'ep-courses-addorgfirst' );
 		}
 	}
-	
+
 	/**
 	 * Display a pager with courses.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param IContextSource $context
 	 * @param array $conditions
 	 */
 	public static function displayPager( IContextSource $context, array $conditions = array() ) {
 		$pager = new EPCoursePager( $context, $conditions );
-		
+
 		if ( $pager->getNumRows() ) {
 			$context->getOutput()->addHTML(
 				$pager->getFilterControl() .
@@ -358,29 +358,29 @@ class EPCourse extends EPDBObject {
 			$context->getOutput()->addWikiMsg( 'ep-courses-noresults' );
 		}
 	}
-	
+
 	/**
 	 * Returns if the provided user can manage the course or not.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param User $user
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public function useCanManage( User $user ) {
 		if ( $user->isAllowed( 'epadmin' ) ) {
 			return true;
 		}
-		
+
 		if ( $user->isAllowed( 'epmentor' ) ) {
 			$mentor = EPMentor::selectRow( 'id', array( 'user_id' => $user->getId() ) );
-			
+
 			if ( $mentor !== false ) {
 				return $mentor->hasCourse( array( 'id' => $this->getId() ) );
 			}
 		}
-		
+
 		return false;
 	}
 

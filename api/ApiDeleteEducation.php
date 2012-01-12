@@ -47,10 +47,10 @@ class ApiDeleteEducation extends ApiBase {
 
 		return $map[$className];
 	}
-	
+
 	public function execute() {
 		$params = $this->extractRequestParams();
-		
+
 		if ( !$this->userIsAllowed( $params['type'], $params ) || $this->getUser()->isBlocked() ) {
 			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
@@ -71,12 +71,12 @@ class ApiDeleteEducation extends ApiBase {
 			$everythingOk
 		);
 	}
-	
+
 	/**
 	 * Returns if the user is allowed to delete the specified object(s).
 	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param string $type
 	 * @param array $params
 	 *
@@ -84,22 +84,22 @@ class ApiDeleteEducation extends ApiBase {
 	 */
 	protected function userIsAllowed( $type, array $params ) {
 		$user = $this->getUser();
-		
+
 		if ( $type === 'student' ) {
 			return EPStudent::selectField( 'id', array( 'user_id' => $user->getId() ) ) === $params['id'];
 		}
-		
+
 		if ( $type === 'mentor' ) {
 			return EPMentor::selectField( 'id', array( 'user_id' => $user->getId() ) ) === $params['id'];
 		}
-		
+
 		if ( $user->isAllowed( 'epadmin' ) ) {
 			return true;
 		}
-		
+
 		if ( $user->isAllowed( 'epmentor' ) ) {
 			$mentor = new EPMentor( null, array( 'user_id' => $user->getId() ) );
-			
+
 			if ( $mentor !== false ) {
 				if ( $type === 'course' ) {
 					return $mentor->hasCourse( array( 'id' => $params['id'] ) );
@@ -109,7 +109,7 @@ class ApiDeleteEducation extends ApiBase {
 				}
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -124,7 +124,7 @@ class ApiDeleteEducation extends ApiBase {
 	public function getUser() {
 		return method_exists( 'ApiBase', 'getUser' ) ? parent::getUser() : $GLOBALS['wgUser'];
 	}
-	
+
 	public function needsToken() {
 		return true;
 	}

@@ -12,7 +12,6 @@
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class EPMentorPager extends EPPager {
-
 	/**
 	 * Constructor.
 	 *
@@ -36,7 +35,7 @@ class EPMentorPager extends EPPager {
 			'user_id',
 		);
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::getRowClass()
@@ -44,12 +43,12 @@ class EPMentorPager extends EPPager {
 	function getRowClass( $row ) {
 		return 'ep-mentor-row';
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::getTableClass()
 	 */
-	public function getTableClass(){
+	public function getTableClass() {
 		return 'TablePager ep-mentors';
 	}
 

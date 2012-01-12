@@ -2,12 +2,12 @@
 
 /**
  * Abstract base class for representing objects that are stored in some DB table.
- * 
+ *
  * These methods must be implemented in deriving classes:
  * * getDBTable
  * * getFieldPrefix
  * * getFieldTypes
- * 
+ *
  * These methods are likely candidates for overriding:
  * * getDefaults
  *
@@ -51,9 +51,9 @@ abstract class EPDBObject {
 
 	/**
 	 * Returns the name of the database table objects of this type are stored in.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @throws MWException
 	 * @return string
 	 */
@@ -68,10 +68,10 @@ abstract class EPDBObject {
 	}
 
 	/**
-	 * Gets the db field prefix. 
-	 * 
+	 * Gets the db field prefix.
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @throws MWException
 	 * @return string
 	 */
@@ -84,7 +84,7 @@ abstract class EPDBObject {
 			throw new MWException( 'Class "' . get_called_class() . '" not found in $egEPDBObjects' );
 		}
 	}
-	
+
 	/**
 	 * Returns an array with the fields and their types this object contains.
 	 * This corresponds directly to the fields in the database, without prefix.
@@ -119,7 +119,7 @@ abstract class EPDBObject {
 	public static function getDefaults() {
 		return array();
 	}
-	
+
 	/**
 	 * Constructor.
 	 *
@@ -515,7 +515,7 @@ abstract class EPDBObject {
 	public static function newFromArray( array $data, $loadDefaults = false ) {
 		return new static( $data, $loadDefaults );
 	}
-	
+
 	/**
 	 * Get the database type used for read operations.
 	 *
@@ -583,13 +583,13 @@ abstract class EPDBObject {
 	 */
 	public static function getPrefixedField( $field ) {
 		static $prefixes = false;
-		
+
 		if ( $prefixes === false ) {
 			foreach ( $GLOBALS['egEPDBObjects'] as $classInfo ) {
 				$prefixes[$classInfo['table']] = $classInfo['prefix'];
 			}
 		}
-		
+
 		if ( is_array( $field ) && count( $field ) > 1 ) {
 			if ( array_key_exists( $field[0], $prefixes ) ) {
 				$prefix = $prefixes[$field[0]];
@@ -602,7 +602,7 @@ abstract class EPDBObject {
 		else {
 			$prefix = static::getFieldPrefix();
 		}
-		
+
 		return $prefix . $field;
 	}
 
@@ -610,7 +610,7 @@ abstract class EPDBObject {
 	 * Takes in an associative array with field names as keys and
 	 * their values as value. The field names are prefixed with the
 	 * db field prefix.
-	 * 
+	 *
 	 * Field names can also be provided as an array with as first element a table name, such as
 	 * $conditions = array(
 	 *	 array( array( 'tablename', 'fieldname' ), $value ),
@@ -638,7 +638,7 @@ abstract class EPDBObject {
 					continue;
 				}
 			}
-			
+
 			$prefixedValues[static::getPrefixedField( $field )] = $value;
 		}
 
@@ -663,27 +663,27 @@ abstract class EPDBObject {
 			array_values( $result )
 		);
 	}
-	
+
 	/**
 	 * Takes a field name with prefix and returns the unprefixed equivalent.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param string $fieldName
-	 * 
+	 *
 	 * @return string
 	 */
 	public static function unprefixFieldName( $fieldName ) {
 		return substr( $fieldName, strlen( static::getFieldPrefix() ) );
 	}
-	
+
 	/**
 	 * Takes an array of field names with prefix and returns the unprefixed equivalent.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array $fieldNames
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function unprefixFieldNames( array $fieldNames ) {
@@ -783,13 +783,13 @@ abstract class EPDBObject {
 
 		return $objects;
 	}
-	
+
 	/**
 	 * Selects the the specified fields of the records matching the provided
 	 * conditions and returns them as associative arrays.
 	 * Provided field names get prefixed.
 	 * Returned field names will not have a prefix.
-	 * 
+	 *
 	 * When $collapse is true:
 	 * If one field is selected, each item in the result array will be this field.
 	 * If two fields are selected, each item in the result array will have as key
@@ -830,46 +830,46 @@ abstract class EPDBObject {
 		foreach ( $result as $record ) {
 			$objects[] = static::getFieldsFromDBResult( $record );
 		}
-		
+
 		if ( $collapse ) {
 			if ( count( $fields ) === 1 ) {
-				$objects = array_map( function( $object ) { return array_shift( $object ); }, $objects );
+				$objects = array_map( function( $object ) { return array_shift( $object ); } , $objects );
 			}
 			elseif ( count( $fields ) === 2 ) {
 				$o = array();
-				
+
 				foreach ( $objects as $object ) {
 					$o[array_shift( $object )] = array_shift( $object );
 				}
-				
+
 				$objects = $o;
 			}
 		}
 
 		return $objects;
 	}
-	
+
 	/**
 	 * Process the join conditions. This includes prefixing table and field names,
-	 * and adding of needed tables. 
-	 * 
+	 * and adding of needed tables.
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array $joinConds Join conditions without prefixes and fields in array rather then string with equals sign.
 	 * @param array $tables List of tables to which the extra needed ones get added.
-	 * 
+	 *
 	 * @return array Join conditions ready to be fed to MediaWikis native select function.
 	 */
 	protected static function getProcessedJoinConds( array $joinConds, array &$tables ) {
 		$conds = array();
-		
+
 		foreach ( $joinConds as $table => $joinCond ) {
 			if ( !in_array( $table, $tables ) ) {
 				$tables[] = $table;
 			}
-			
+
 			$cond = array( $joinCond[0], array() );
-			
+
 			foreach ( $joinCond[1] as $joinCondPart ) {
 				$parts = array(
 					static::getPrefixedField( $joinCondPart[0] ),
@@ -884,9 +884,9 @@ abstract class EPDBObject {
 					$tables[] = $joinCondPart[1][0];
 				}
 
-				$cond[1][] = implode( '=', $parts );	
+				$cond[1][] = implode( '=', $parts );
 			}
-			
+
 			$conds[] = $cond;
 		}
 
@@ -992,7 +992,7 @@ abstract class EPDBObject {
 		if ( is_null( $tables ) ) {
 			$tables = static::getDBTable();
 		}
-		
+
 		$dbr = wfGetDB( static::getReadDb() );
 
 		return $dbr->select(

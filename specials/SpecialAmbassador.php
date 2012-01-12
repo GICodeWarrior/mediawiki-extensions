@@ -33,7 +33,7 @@ class SpecialAmbassador extends SpecialEPPage {
 		parent::execute( $subPage );
 
 		$out = $this->getOutput();
-		
+
 		if ( trim( $subPage ) === '' ) {
 			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Ambassadors' )->getLocalURL() );
 		}
@@ -42,8 +42,8 @@ class SpecialAmbassador extends SpecialEPPage {
 
 			$this->displayNavigation();
 
-			$mentor = false; //EPMentor::selectRow( null, array( 'id' => $this->subPage ) );
-			
+			$mentor = false; // EPMentor::selectRow( null, array( 'id' => $this->subPage ) );
+
 			if ( $mentor === false ) {
 				$this->showWarning( wfMessage( 'ep-ambassador-does-not-exist', $this->subPage ) );
 			}
@@ -52,7 +52,7 @@ class SpecialAmbassador extends SpecialEPPage {
 			}
 		}
 	}
-	
+
 	/**
 	 * Gets the summary data.
 	 *

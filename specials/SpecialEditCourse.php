@@ -37,11 +37,11 @@ class SpecialEditCourse extends SpecialEPFormPage {
 			'required' => true,
 			'validation-callback' => function ( $value, array $alldata = null ) {
 				return strlen( $value ) < 5 ? wfMsgExt( 'ep-course-invalid-name', 'parsemag', 5 ) : true;
-			},
+			} ,
 		);
-		
+
 		$orgOptions = EPOrg::getOrgOptions( EPOrg::getEditableOrgs( $this->getUser() ) );
-		
+
 		$fields['org_id'] = array (
 			'type' => 'select',
 			'label-message' => 'ep-course-edit-org',
@@ -49,22 +49,22 @@ class SpecialEditCourse extends SpecialEPFormPage {
 			'options' => $orgOptions,
 			'validation-callback' => function ( $value, array $alldata = null ) use ( $orgOptions ) {
 				return in_array( (int)$value, array_values( $orgOptions ) ) ? true : wfMsg( 'ep-course-invalid-org' );
-			},
+			} ,
 		);
-		
+
 		$fields['description'] = array (
 			'type' => 'textarea',
 			'label-message' => 'ep-course-edit-description',
 			'required' => true,
 			'validation-callback' => function ( $value, array $alldata = null ) {
 				return strlen( $value ) < 10 ? wfMsgExt( 'ep-course-invalid-description', 'parsemag', 10 ) : true;
-			},
+			} ,
 			'rows' => 10
 		);
 
 		return $this->processFormFields( $fields );
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see SpecialEPFormPage::getNewData()
@@ -75,5 +75,5 @@ class SpecialEditCourse extends SpecialEPFormPage {
 			'name' => $this->getRequest()->getVal( 'newname' ),
 		);
 	}
-	
+
 }

@@ -34,18 +34,18 @@ class SpecialCourse extends SpecialEPPage {
 		parent::execute( $subPage );
 
 		$out = $this->getOutput();
-		
+
 		if ( trim( $subPage ) === '' ) {
 			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Courses' )->getLocalURL() );
 		}
 		else {
 			$out->setPageTitle( wfMsgExt( 'ep-course-title', 'parsemag', $this->subPage ) );
-		
+
 			$course = EPCourse::selectRow( null, array( 'name' => $this->subPage ) );
-			
+
 			if ( $course === false ) {
 				$this->displayNavigation();
-				
+
 				if ( $this->getUser()->isAllowed( 'epadmin' ) || $this->getUser()->isAllowed( 'epmentor' ) ) {
 					$out->addWikiMsg( 'ep-course-create', $this->subPage );
 					EPCourse::displayAddNewRegion( $this->getContext(), array( 'name' => $this->subPage ) );
@@ -56,21 +56,21 @@ class SpecialCourse extends SpecialEPPage {
 			}
 			else {
 				$links = array();
-				
+
 				if ( $course->useCanManage( $this->getUser() ) ) {
 					$links[wfMsg( 'ep-course-nav-edit' )] = SpecialPage::getTitleFor( 'EditCourse', $this->subPage );
 				}
-				
+
 				$this->displayNavigation( $links );
-				
+
 				$this->displaySummary( $course );
-				
+
 				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-course-description' ) ) );
-				
+
 				$out->addHTML( $this->getOutput()->parse( $course->getField( 'description' ) ) );
-				
+
 				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-course-terms' ) ) );
-				
+
 				EPTerm::displayPager( $this->getContext(), array( 'course_id' => $course->getId() ) );
 
 				if ( $course->useCanManage( $this->getUser() ) ) {
@@ -81,7 +81,7 @@ class SpecialCourse extends SpecialEPPage {
 			}
 		}
 	}
-	
+
 	/**
 	 * Gets the summary data.
 	 *

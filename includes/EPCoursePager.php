@@ -35,7 +35,7 @@ class EPCoursePager extends EPPager {
 			'active',
 		);
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::getRowClass()
@@ -43,12 +43,12 @@ class EPCoursePager extends EPPager {
 	function getRowClass( $row ) {
 		return 'ep-course-row';
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::getTableClass()
 	 */
-	public function getTableClass(){
+	public function getTableClass() {
 		return 'TablePager ep-courses';
 	}
 
@@ -66,7 +66,7 @@ class EPCoursePager extends EPPager {
 				break;
 			case 'org_id':
 				$value = EPOrg::selectRow( 'name', array( 'id' => $value ) )->getField( 'name' );
-				
+
 				$value = Linker::linkKnown(
 					SpecialPage::getTitleFor( 'Institution', $value ),
 					htmlspecialchars( $value )
@@ -99,7 +99,7 @@ class EPCoursePager extends EPPager {
 			'active',
 		);
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see EPPager::getFilterOptions()
@@ -126,29 +126,29 @@ class EPCoursePager extends EPPager {
 			),
 		);
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see EPPager::getControlLinks()
 	 */
 	protected function getControlLinks( EPDBObject $item ) {
 		$links = parent::getControlLinks( $item );
-		
+
 		$links[] = $value = Linker::linkKnown(
 			SpecialPage::getTitleFor( 'Course', $item->getField( 'name' ) ),
 			wfMsgHtml( 'view' )
 		);
-		
+
 		if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
 			$links[] = $value = Linker::linkKnown(
 				SpecialPage::getTitleFor( 'EditCourse', $item->getField( 'name' ) ),
 				wfMsgHtml( 'edit' )
 			);
-			
+
 			$links[] = $this->getDeletionLink( 'course', $item->getId() );
 		}
-		
+
 		return $links;
 	}
-	
+
 }

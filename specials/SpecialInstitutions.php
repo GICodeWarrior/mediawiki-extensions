@@ -42,5 +42,5 @@ class SpecialInstitutions extends SpecialEPPage {
 			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Institution', $this->subPage )->getLocalURL() );
 		}
 	}
-	
+
 }

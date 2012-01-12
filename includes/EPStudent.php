@@ -39,15 +39,15 @@ class EPStudent extends EPDBObject {
 			'active_enroll' => 'bool',
 		);
 	}
-	
+
 	/**
 	 * Get the student object of a user, or false if there is none.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param User $user
 	 * @param string|array|null $fields
-	 * 
+	 *
 	 * @return EPStudent|false
 	 */
 	public static function newFromUser( User $user, $fields = null ) {
@@ -137,7 +137,7 @@ class EPStudent extends EPDBObject {
 			function( array $ids, EPTerm $term ) {
 				$ids[] = $term->getField( 'course_id' );
 				return $ids;
-			},
+			} ,
 			array()
 		);
 
@@ -244,5 +244,5 @@ class EPStudent extends EPDBObject {
 			$context->getOutput()->addWikiMsg( 'ep-students-noresults' );
 		}
 	}
-	
+
 }

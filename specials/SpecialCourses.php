@@ -42,5 +42,5 @@ class SpecialCourses extends SpecialEPPage {
 			$this->getOutput()->redirect( SpecialPage::getTitleFor( 'Course', $this->subPage )->getLocalURL() );
 		}
 	}
-	
+
 }

@@ -39,7 +39,7 @@ class EPOrgPager extends EPPager {
 			'active',
 		);
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::getRowClass()
@@ -47,12 +47,12 @@ class EPOrgPager extends EPPager {
 	function getRowClass( $row ) {
 		return 'ep-org-row';
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see TablePager::getTableClass()
 	 */
-	public function getTableClass(){
+	public function getTableClass() {
 		return 'TablePager ep-orgs';
 	}
 
@@ -138,28 +138,28 @@ class EPOrgPager extends EPPager {
 			),
 		);
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see EPPager::getControlLinks()
 	 */
 	protected function getControlLinks( EPDBObject $item ) {
 		$links = parent::getControlLinks( $item );
-		
+
 		$links[] = $value = Linker::linkKnown(
 			SpecialPage::getTitleFor( 'Institution', $item->getField( 'name' ) ),
 			wfMsgHtml( 'view' )
 		);
-		
+
 		if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
 			$links[] = $value = Linker::linkKnown(
 				SpecialPage::getTitleFor( 'EditInstitution', $item->getField( 'name' ) ),
 				wfMsgHtml( 'edit' )
 			);
-			
+
 			$links[] = $this->getDeletionLink( 'org', $item->getId() );
 		}
-		
+
 		return $links;
 	}
 

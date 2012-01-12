@@ -17,7 +17,7 @@ abstract class SpecialEPPage extends SpecialPage {
 	/**
 	 * The subpage, ie the part after Special:PageName/
 	 * Empty string if none is provided.
-	 * 
+	 *
 	 * @since 0.1
 	 * @var string
 	 */
@@ -122,37 +122,37 @@ abstract class SpecialEPPage extends SpecialPage {
 	public function getLanguage() {
 		return method_exists( get_parent_class(), 'getLanguage' ) ? parent::getLanguage() : $this->getLang();
 	}
-	
+
 	/**
 	 * Adds a navigation menu with the provided links.
 	 * Links should be provided in an array with:
 	 * label => Title (object)
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array $items
 	 */
 	protected function displayNavigation( array $items = array() ) {
 		$links = array();
 		$items = array_merge( $this->getDefaultNavigationItems(), $items );
-		
+
 		foreach ( $items as $label => $target ) {
 			$links[] = Linker::linkKnown(
 				$target,
 				htmlspecialchars( $label )
 			);
 		}
-		
+
 		$this->getOutput()->addHTML(
 			Html::rawElement( 'p', array(), $this->getLanguage()->pipeList( $links ) )
 		);
 	}
-	
+
 	/**
 	 * Returns the default nav items for @see displayNavigation.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @return array
 	 */
 	protected function getDefaultNavigationItems() {
@@ -166,34 +166,34 @@ abstract class SpecialEPPage extends SpecialPage {
 			$items[wfMsg( 'ep-nav-students' )] = SpecialPage::getTitleFor( 'Students' );
 			$items[wfMsg( 'ep-nav-mentors' )] = SpecialPage::getTitleFor( 'Ambassadors' );
 		}
-		
+
 		if ( $this->getUser()->isAllowed( 'epmentor' ) || EPStudent::has( array( 'user_id' => $this->getUser()->getId() ) ) ) {
 			$items[wfMsg( 'ep-nav-mycourses' )] = SpecialPage::getTitleFor( 'MyCourses' );
 		}
-		
+
 		return $items;
 	}
-	
+
 	/**
 	 * Display the summary data.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param EPDBObject $item
 	 * @param boolean $collapsed
 	 * @param array $summaryData
 	 */
 	protected function displaySummary( EPDBObject $item, $collapsed = false, array $summaryData = null ) {
 		$out = $this->getOutput();
-		
+
 		$class = 'wikitable ep-summary mw-collapsible';
-		
+
 		if ( $collapsed ) {
-			$class.= ' mw-collapsed';
+			$class .= ' mw-collapsed';
 		}
-		
+
 		$out->addHTML( Html::openElement( 'table', array( 'class' => $class ) ) );
-		
+
 		$out->addHTML( '<tr>' . Html::element( 'th', array( 'colspan' => 2 ), wfMsg( 'ep-item-summary' ) ) . '</tr>' );
 
 		$summaryData = is_null( $summaryData ) ? $this->getSummaryData( $item ) : $summaryData;
@@ -218,7 +218,7 @@ abstract class SpecialEPPage extends SpecialPage {
 
 		$out->addHTML( Html::closeElement( 'table' ) );
 	}
-	
+
 	/**
 	 * Gets the summary data.
 	 * Returned values must be escaped.

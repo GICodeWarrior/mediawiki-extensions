@@ -15,20 +15,20 @@ class EPOrg extends EPDBObject {
 
 	/**
 	 * Cached array of the linked EPCourse objects.
-	 * 
+	 *
 	 * @since 0.1
 	 * @var array|false
 	 */
 	protected $courses = false;
-	
+
 	/**
 	 * Cached array of the linked EPTerm objects.
-	 * 
+	 *
 	 * @since 0.1
 	 * @var array|false
 	 */
 	protected $terms = false;
-	
+
 	/**
 	 * @see parent::getFieldTypes
 	 *
@@ -39,7 +39,7 @@ class EPOrg extends EPDBObject {
 	protected static function getFieldTypes() {
 		return array(
 			'id' => 'id',
-			
+
 			'name' => 'str',
 			'city' => 'str',
 			'country' => 'str',
@@ -133,54 +133,54 @@ class EPOrg extends EPDBObject {
 
 		$this->setFields( $fields );
 	}
-	
+
 	/**
 	 * (non-PHPdoc)
 	 * @see EPDBObject::removeFromDB()
 	 */
 	public function removeFromDB() {
 		$id = $this->getId();
-		
+
 		$success = parent::removeFromDB();
-		
+
 		if ( $success ) {
 			$success = wfGetDB( DB_MASTER )->delete( 'ep_mentors_per_org', array( 'mpo_org_id' => $id ) ) && $success;
-			
+
 			foreach ( EPCourse::select( 'id', array( 'org_id' => $id ) ) as /* EPCourse */ $course ) {
 				$success = $course->removeFromDB() && $success;
 			}
 		}
-		
+
 		return $success;
 	}
-	
+
 	/**
 	 * Returns a list of orgs in an array that can be fed to select inputs.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array $orgs
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function getOrgOptions( array /* EPOrg */ $orgs ) {
 		$options = array();
-		
+
 		foreach ( $orgs as /* EPOrg */ $org ) {
 			$options[$org->getField( 'name' )] = $org->getId();
 		}
-		
+
 		return $options;
 	}
-	
+
 	/**
 	 * Returns the list of orgs that the specified user can edit.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param User|int $user
 	 * @param array|null $fields
-	 * 
+	 *
 	 * @return array of EPOrg
 	 */
 	public static function getEditableOrgs( $user, array $fields = null ) {
@@ -191,7 +191,7 @@ class EPOrg extends EPDBObject {
 		else {
 			$userId = $user->getId();
 		}
-		
+
 		if ( $user->isAllowed( 'epadmin' ) ) {
 			return self::select( $fields );
 		}
@@ -203,25 +203,25 @@ class EPOrg extends EPDBObject {
 			return array();
 		}
 	}
-	
+
 	/**
 	 * Adds a control to add a new org to the provided context.
 	 * Adittional arguments can be provided to set the default values for the control fields.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param IContextSource $context
 	 * @param array $args
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public static function displayAddNewControl( IContextSource $context, array $args = array() ) {
 		if ( !$context->getUser()->isAllowed( 'epadmin' ) ) {
 			return false;
 		}
-		
+
 		$out = $context->getOutput();
-		
+
 		$out->addHTML( Html::openElement(
 			'form',
 			array(
@@ -253,21 +253,21 @@ class EPOrg extends EPDBObject {
 		$out->addHTML( Html::hidden( 'isnew', 1 ) );
 
 		$out->addHTML( '</fieldset></form>' );
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Display a pager with courses.
-	 * 
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param IContextSource $context
 	 * @param array $conditions
 	 */
 	public static function displayPager( IContextSource $context, array $conditions = array() ) {
 		$pager = new EPOrgPager( $context, $conditions );
-		
+
 		if ( $pager->getNumRows() ) {
 			$context->getOutput()->addHTML(
 				$pager->getFilterControl() .
@@ -282,38 +282,38 @@ class EPOrg extends EPDBObject {
 			$context->getOutput()->addWikiMsg( 'ep-institutions-noresults' );
 		}
 	}
-	
+
 	/**
-	 * Retruns the courses linked to this org. 
-	 * 
+	 * Retruns the courses linked to this org.
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array|null $fields
-	 * 
+	 *
 	 * @return array of EPCourse
 	 */
 	public function getCourses( array $fields = null ) {
 		if ( $this->courses === false ) {
 			$this->courses = EPCourse::select( $fields, array( 'org_id' => $this->getId() ) );
 		}
-		
+
 		return $this->courses;
 	}
-	
+
 	/**
-	 * Retruns the terms linked to this org. 
-	 * 
+	 * Retruns the terms linked to this org.
+	 *
 	 * @since 0.1
-	 * 
+	 *
 	 * @param array|null $fields
-	 * 
+	 *
 	 * @return array of EPTerm
 	 */
 	public function getTerms( array $fields = null ) {
 		if ( $this->terms === false ) {
 			$this->terms = EPTerm::select( $fields, array( 'org_id' => $this->getId() ) );
 		}
-		
+
 		return $this->terms;
 	}
 
@@ -330,5 +330,5 @@ class EPOrg extends EPDBObject {
 			htmlspecialchars( $this->getField( 'name' ) )
 		);
 	}
-	
+
 }
