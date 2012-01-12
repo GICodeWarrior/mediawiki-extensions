@@ -6715,7 +6715,7 @@ $messages['fr'] = array(
 	'configure-setting-wgVersion' => 'Version de MediaWiki',
 	'configure-setting-wgAllowSpecialInclusion' => 'Permet l’inclusion des pages spéciales',
 	'configure-setting-wgExportAllowHistory' => 'Permet l’export pour inclure l’historique complet',
-	'configure-setting-wgExportAllowListContributors' => 'Permet une liste de contributeurs à exporter',
+	'configure-setting-wgExportAllowListContributors' => "Autoriser l'exportation de liste des contributeurs",
 	'configure-setting-wgExportFromNamespaces' => "Autoriser l'options « exporter toutes les pages de l'espace de noms » dans [[Special:Export]]",
 	'configure-setting-wgExportMaxHistory' => 'Nombre maximum de versions pour [[Special:Export]]',
 	'configure-setting-wgExportMaxLinkDepth' => 'Valeur maximale du paramètre « profondeur des pages liées à inclure » de [[Special:Export]]',
@@ -11507,6 +11507,7 @@ $messages['it'] = array(
  * @author Naohiro19
  * @author Ohgi
  * @author Schu
+ * @author Whym
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -11902,7 +11903,7 @@ $messages['ja'] = array(
 	'configure-setting-wgUseTagFilter' => '{{int:recentchanges}}や履歴画面などで、編集をタグによって絞り込むことができるようにする',
 	'configure-setting-wgDisableHardRedirects' => '特別ページと他ウィキのページへのリダイレクトを無効にする',
 	'configure-setting-wgEnableScaryTranscluding' => 'ウィキ間トランスクルージョンを有効にする',
-	'configure-setting-wgImportSources' => 'トランスウィキ用のインターウィキ接頭辞一覧',
+	'configure-setting-wgImportSources' => 'ウィキ間移動用のインターウィキ接頭辞一覧',
 	'configure-setting-wgInterwikiCache' => 'インターウィキキャッシュを有効にする',
 	'configure-setting-wgInterwikiExpiry' => 'インターウィキキャッシュの有効期限',
 	'configure-setting-wgInterwikiFallbackSite' => 'インターウィキフォールバックサイト',
