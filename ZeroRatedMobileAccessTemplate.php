@@ -24,7 +24,7 @@ abstract class ZeroRatedMobileAccessTemplate {
 	 * @param $options array
 	 */
 	public function setByArray( $options ) {
-		foreach ($options as $name => $value ) {
+		foreach ( $options as $name => $value ) {
 			$this->set( $name, $value );
 		}
 	}

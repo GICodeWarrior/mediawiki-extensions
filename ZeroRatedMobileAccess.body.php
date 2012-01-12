@@ -76,11 +76,11 @@ class ExtZeroRatedMobileAccess {
 
 			if ( self::$isFilePage && self::$acceptBilling !== 'yes' ) {
 				$acceptBillingYes = Html::rawElement( 'a',
-					array('href' => $wgRequest->appendQuery( 'renderZeroRatedBanner=true&acceptbilling=yes' ) ),
+					array( 'href' => $wgRequest->appendQuery( 'renderZeroRatedBanner=true&acceptbilling=yes' ) ),
 					wfMsg( 'zero-rated-mobile-access-banner-text-data-charges-yes' ) );
 				$referrer = $wgRequest->getHeader( 'referer' );
 				$acceptBillingNo = Html::rawElement( 'a',
-					array('href' => $wgRequest->appendQuery( 'acceptbilling=no&returnto=' . urlencode( $referrer ) ) ),
+					array( 'href' => $wgRequest->appendQuery( 'acceptbilling=no&returnto=' . urlencode( $referrer ) ) ),
 					wfMsg( 'zero-rated-mobile-access-banner-text-data-charges-no' ) );
 				$bannerText = Html::rawElement( 'h3',
 					array(	'id' => 'zero-rated-banner-text' ),
@@ -93,11 +93,11 @@ class ExtZeroRatedMobileAccess {
 			} elseif ( self::$renderZeroRatedRedirect === true ) {
 				$returnto = $wgRequest->getVal( 'returnto' );
 				$acceptBillingYes = Html::rawElement( 'a',
-					array('href' => $wgRequest->appendQuery( 'renderZeroRatedBanner=true&acceptbilling=yes&returnto=' . urlencode( $returnto ) ) ),
+					array( 'href' => $wgRequest->appendQuery( 'renderZeroRatedBanner=true&acceptbilling=yes&returnto=' . urlencode( $returnto ) ) ),
 					wfMsg( 'zero-rated-mobile-access-banner-text-data-charges-yes' ) );
 				$referrer = $wgRequest->getHeader( 'referer' );
 				$acceptBillingNo = Html::rawElement( 'a',
-					array('href' => $wgRequest->appendQuery( 'acceptbilling=no&returnto=' . urlencode( $referrer ) ) ),
+					array( 'href' => $wgRequest->appendQuery( 'acceptbilling=no&returnto=' . urlencode( $referrer ) ) ),
 					wfMsg( 'zero-rated-mobile-access-banner-text-data-charges-no' ) );
 				$bannerText = Html::rawElement( 'h3',
 					array(	'id' => 'zero-rated-banner-text' ),
@@ -147,7 +147,7 @@ class ExtZeroRatedMobileAccess {
 					self::addDebugOutput( $country );
 				}
 				$languageOptions = self::createLanguageOptionsFromWikiText();
-				//self::$displayDebugOutput = true;
+				// self::$displayDebugOutput = true;
 				$languagesForCountry = ( isset( $languageOptions[self::getFullCountryNameFromCode( $country )] ) ) ?
 					$languageOptions[self::getFullCountryNameFromCode( $country )] : null;
 				self::addDebugOutput( self::getFullCountryNameFromCode( $country ) );
@@ -206,7 +206,7 @@ class ExtZeroRatedMobileAccess {
 
 	/**
 	* Returns information about carrier
-	* 
+	*
 	* @param String $carrier: Name of carrier e.g., "Verizon Wireless"
 	* @return Array
 	*/
@@ -229,7 +229,7 @@ class ExtZeroRatedMobileAccess {
 
 	/**
 	* Returns the Html of a page with the various links appended with zeropartner parameter
-	* 
+	*
 	* @param String $html: Html of current page
 	* @return String
 	*/
@@ -283,7 +283,7 @@ class ExtZeroRatedMobileAccess {
 				$zeroPartnerUrl = wfAppendQuery( $zeroRatedLinkHref,
 					array(	'zeropartner' => $partnerId, 'renderZeroRatedBanner' => 'true' ) );
 				if ( $zeroPartnerUrl ) {
-					$zeroRatedExternalLink->setAttribute( 'href', '?renderZeroRatedRedirect=true&returnto=' . urlencode($zeroRatedExternalLinkHref) );
+					$zeroRatedExternalLink->setAttribute( 'href', '?renderZeroRatedRedirect=true&returnto=' . urlencode( $zeroRatedExternalLinkHref ) );
 				}
 			}
 		}
@@ -295,7 +295,7 @@ class ExtZeroRatedMobileAccess {
 
 	/**
 	* Adds object to debugOutput Array
-	* 
+	*
 	* @param Object $object: any valid PHP object
 	* @return bool
 	*/
@@ -317,7 +317,7 @@ class ExtZeroRatedMobileAccess {
 		wfProfileIn( __METHOD__ );
 		if ( self::$debugOutput && self::$displayDebugOutput === true ) {
 			echo "<pre>";
-			foreach( self::$debugOutput as $debugOutput ) {
+			foreach ( self::$debugOutput as $debugOutput ) {
 				var_dump( $debugOutput );
 			}
 			echo "</pre>";
@@ -328,7 +328,7 @@ class ExtZeroRatedMobileAccess {
 
 	/**
 	* Returns the carrier options array parsed from a valid wiki page
-	* 
+	*
 	* @return Array
 	*/
 	private static function createCarrierOptionsFromWikiText() {
@@ -365,7 +365,7 @@ class ExtZeroRatedMobileAccess {
 						if ( $i % 3 === 1 ) {
 							$carrierOptions[$carrierName]['url'] = trim( str_replace( '** ', '', $line ) );
 							$carrierLink = Html::rawElement( 'a',
-								array('href' => $carrierOptions[$carrierName]['url'] ),
+								array( 'href' => $carrierOptions[$carrierName]['url'] ),
 									$carrierOptions[$carrierName]['name'] );
 							$carrierOptions[$carrierName]['link'] = $carrierLink;
 						} elseif ( $i % 3 === 2 ) {
@@ -382,7 +382,7 @@ class ExtZeroRatedMobileAccess {
 
 	/**
 	* Returns the foreign wiki options array from a valid wiki page
-	* 
+	*
 	* @return Array
 	*/
 	private static function getOptionsFromForeignWiki( $pageName ) {
@@ -421,7 +421,7 @@ class ExtZeroRatedMobileAccess {
 						$key = null;
 					}
 
-					foreach( $jsonData['query']['pages'] as $pages ) {
+					foreach ( $jsonData['query']['pages'] as $pages ) {
 						if ( isset( $pages['revisions'][0]['*'] ) ) {
 							$rev = $pages['revisions'][0]['*'];
 						}
@@ -473,7 +473,7 @@ class ExtZeroRatedMobileAccess {
 						$countryName = strtoupper( str_replace( '* ', '', $line ) );
 						$languageOptions[$countryName] = '';
 					} elseif ( strpos( $line, '**' ) === 0 && $i > 0 ) {
-						$lineParts = explode('#', $line);
+						$lineParts = explode( '#', $line );
 						$language = ( isset( $lineParts[0] ) ) ?
 							trim( str_replace( '** ', '', $lineParts[0] ) ) :
 							trim( str_replace( '** ', '', $line ) ) ;
