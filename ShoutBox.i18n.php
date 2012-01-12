@@ -147,13 +147,14 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'shoutbox-desc' => 'A gionta na funsion dël parser për anserì tò shoutbox',
+	'shoutbox-desc' => "A gionta na funsion d'anàlisi për anserì sò shoutbox",
 	'shoutbox-missing-params' => 'A ShoutBox a-j manca un paràmetr obligatori.',
 	'shoutbox-bad-params' => "ShoutBox a l'ha arseivù un paràmetr pa bon.",
-	'shoutbox-unparsable-param-string' => 'ShoutBox a l\'ha arseivù la stringa ëd paràmetr pa pasàbila "<tt>$1</tt>".',
+	'shoutbox-unparsable-param-string' => "ShoutBox a l'ha arseivù la stringa ëd paràmetr «<tt>$1</tt>», pa analisàbil.",
 	'shoutbox-bad-id' => 'ShoutBox a l\'ha arseivù l\'id pa bon "<tt>$1</tt>".',
 	'shoutbox-illegal-width' => 'ShoutBox a l\'ha arseivù ël paràmetr ëd dimension ilegal "$1".',
 	'shoutbox-illegal-height' => 'ShoutBox a l\'ha arseivù ël paràmetr d\'autëssa ilegal "$1".',
