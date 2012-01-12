@@ -141,13 +141,14 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'sternograph-desc' => '<nowiki><sterno></nowiki> tichëtte për trascrission ëd paròle parlà (canson, antërviste, etc)',
+	'sternograph-desc' => 'Tichëtte <nowiki><sterno></nowiki> për la trascrission ëd le paròle parlà (canson, antërviste, e via fòrt)',
 	'sternograph-empty' => '<$1> la tichëtta a peul pa esse veuida.',
 	'sternograph-nested' => '<$1> la tichëtta a peul pa esse anidà.',
-	'sternograph-speaker-is' => '<$1> le linie dël blòch dël parlant a deuvo avèj $2 caràter.',
+	'sternograph-speaker-is' => 'Le linie dël blòch dël discors <$1> a devo avèj ël caràter $2.',
 );
 
 /** Russian (Русский)
