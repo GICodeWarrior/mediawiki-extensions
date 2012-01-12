@@ -1044,6 +1044,22 @@ $messages['mk'] = array(
 	'imstatus_yahoo_style' => 'стил на копчето, од $1 (најмало) до $2 (најголемо), $3 и $4 се за говорна пошта.',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'imstatus_example' => 'उदाहरण',
+	'imstatus_possible_val' => 'शक्य असलेल्या किंमती',
+	'imstatus_max' => 'जास्तीतजास्त',
+	'imstatus_min' => 'कमीतकमी',
+	'imstatus_or' => 'किंवा',
+	'imstatus_action' => 'बटन टिचकविल्यावर काय क्रिया होते',
+	'imstatus_your_name' => 'आपले $1 नाव',
+	'imstatus_gtalk_height' => 'पिक्सेलमध्ये खिडकीची उंची',
+	'imstatus_gtalk_width' => 'पिक्सेलमध्ये खिडकीची रुंदी',
+	'imstatus_xfire_size' => 'बटनांचा आकार $1 (सर्वात मोठे) ते $2 (सर्वात लहान).',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
  */
