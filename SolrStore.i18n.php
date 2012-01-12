@@ -114,14 +114,15 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'solrstore-desc' => "Serca proprietà semàntiche con la potensa d'un potor d'arserca a test pien",
+	'solrstore-desc' => "Arserché dle proprietà semàntiche con la potensa d'un motor d'arserca a test pien",
 	'solrsearch' => 'SolrSearch',
 	'solrstore-searchFieldSets' => 'SolrSearch',
 	'solrstore-searchFieldSets-select' => 'Për piasì selession-a un SearchSet',
-	'solrstore-searchFieldSets-title' => 'SolrSearch: selession-a SearchSet',
+	'solrstore-searchFieldSets-title' => 'SolrSearch: selession ëd SearchSet',
 );
 
 /** Russian (Русский)
