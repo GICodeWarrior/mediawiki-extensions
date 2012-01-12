@@ -272,14 +272,15 @@ met de foutmelding: "$2".',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'sql2wiki' => 'SQL2Wiki',
-	'sql2wiki-desc' => 'Mosta ij dat SQL diretament ant ij contnù dla pagina',
-	'sql2wiki-special' => 'Fà viré ël còdes SQL2Wiki an sgnacand',
+	'sql2wiki-desc' => 'Smon-e ij dat SQL diretament ant ij contnù dle pàgine',
+	'sql2wiki-special' => "Fé andé ël còdes SQL2Wiki cand ch'a së sgnaca",
 	'sql2wiki-cache_refresh' => 'Rinfrësca',
-	'sql2wiki-err-invalid_db_id' => 'SQL2Wiki: ID ëd database mancant o pa bon',
+	'sql2wiki-err-invalid_db_id' => 'SQL2Wiki: ID ëd base ëd dàit mancant o pa bon',
 	'sql2wiki-err-invalid_type' => 'SQL2Wiki: Tipo mancant o pa bon',
 	'sql2wiki-err-failed_to_connect' => 'SQL2Wiki: Falì a coleghesse a $1!',
 	'sql2wiki-err-failed_to_execute' => 'SQL2Wiki: Falì a eseguì l\'istrussion:
@@ -287,7 +288,7 @@ $messages['pms'] = array(
 "$1"
 
 con mëssagi d\'eror: "$2"!',
-	'sql2wiki-err-feature_not_supported' => "SQL2Wiki: La funsionalità a l'é pa apogià dal database ëd sòrt $1!",
+	'sql2wiki-err-feature_not_supported' => "SQL2Wiki: La funsionalità a l'é pa mantnùa da le base ëd dàit ëd sòrt $1!",
 );
 
 /** Portuguese (Português)
