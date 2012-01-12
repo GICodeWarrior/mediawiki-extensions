@@ -211,13 +211,14 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'userdebuginfo' => "Anformassion ëd Debug dj'Utent",
-	'userdebuginfo-desc' => "A mosta quaiche potensiament ùtile anformassion an sl'utent corent",
+	'userdebuginfo' => "Anformassion ëd polissìa dai bigat dj'Utent",
+	'userdebuginfo-desc' => "A smon chèiche anformassion ëd polissìa dai bigat ch'a peulo ven-e a taj an sl'utent corent",
 	'userdebuginfo-useragent' => 'Agent utent HTTP',
-	'userdebuginfo-remotehost' => 'Host remòt HTTP',
+	'userdebuginfo-remotehost' => 'Òspit leugn HTTP',
 	'userdebuginfo-remoteaddr' => 'Adrëssa remòta HTTP',
 	'userdebuginfo-key' => 'Ciav',
 	'userdebuginfo-value' => 'Valor',
