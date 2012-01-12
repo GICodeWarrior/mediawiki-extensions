@@ -591,14 +591,33 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Kaustubh
+ * @author V.narsikar
  */
 $messages['mr'] = array(
 	'minipreview-desc' => 'एखाद्या चित्राच्या पुढे, त्या वर्गातील अथवा त्या पानातील इतर चित्रे अथवा संचिका, छोट्या आकारात पाहण्यासाठी, मिनीप्रिव्ह्यूचा वापर करा',
-	'minipreview-files_in_category' => 'या वर्गात एकूण $1 संचिका आहेत.',
-	'minipreview-files_in_gallery' => 'या प्रदर्शनात एकूण $1 संचिका आहेत.',
-	'minipreview-no_more_files_here' => 'यापुढे कोणत्याही संचिका नाहीत.',
+	'minipreview-files_in_category' => "या वर्गात '''$1''' {{PLURAL:$1|संचिका|संचिका}} आहेत.",
+	'minipreview-files_in_gallery' => "या दिर्घेत '''$1''' {{PLURAL:$1|संचिका|संचिका}} आहेत.",
+	'minipreview-no_more_files_here' => 'या दिशेने कोणत्याही संचिका नाहीत.',
 	'minipreview-no_category_gallery' => 'वर्ग किंवा प्रदर्शने नाहीत!',
 	'minipreview-ignore_categories' => 'खाली वर्ग नामे तसेच नामांची सुरुवात होणार्‍या शब्दांची यादी आहे. मिनीप्रिव्ह्यू या यादीतील वर्गात समाविष्ट असणार्‍या संचिका दाखविणार नाही. उदा. "* PD-" "PD-" ने सुरु होणारे वर्ग दाखविणार नाही, जसे की "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Boivie
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'minipreview-desc' => 'Miniforhåndsvisning viser små forhåndsvisninger av media i samme kategorier eller fra samme sider',
+	'minipreview-files_in_category' => 'Totalt $1 {{PLURAL:$1|fil|filer}} i denne kategorien.',
+	'minipreview-files_in_gallery' => 'Totalt $1 {{PLURAL:$1|fil|filer}} i dette galleriet.',
+	'minipreview-no_more_files_here' => 'Ingen flere filer i denne retningen.',
+	'minipreview-no_category_gallery' => 'Ingen kategorier eller gallerier!',
+	'minipreview-ignore_categories' => 'Følgende er en liste over kategorinavn eller begynnelser på såden. Disse kategoriene vil ikke vises av Miniforhåndsvisning. For eksempel vil «* PD-» gjøre at bilder ikke velges ut fordi de er i kategorier som begynner med «PD-», slik som «PD-old».
 * GFDL-
 * GFDL
 * CC-
@@ -635,24 +654,6 @@ $messages['nn'] = array(
 	'minipreview-no_more_files_here' => 'Ikkje fleire filer i denne retninga.',
 	'minipreview-no_category_gallery' => 'Ingen kategoriar eller galleri!',
 	'minipreview-ignore_categories' => 'Følgjande er ei lista over kategorinamn eller starten på dei. Desse kategoriane vil ikkje bli viste av MiniPreview. Til dømes vil «* PD-» gjera at bilete ikkje blir valte ut av di dei er i kategoriar som byrjar med «PD-», slik som «PD-old».
-* GFDL-
-* GFDL
-* CC-
-* PD-
-* Self',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Boivie
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'minipreview-desc' => 'Miniforhåndsvisning viser små forhåndsvisninger av media i samme kategorier eller fra samme sider',
-	'minipreview-files_in_category' => 'Totalt $1 {{PLURAL:$1|fil|filer}} i denne kategorien.',
-	'minipreview-files_in_gallery' => 'Totalt $1 {{PLURAL:$1|fil|filer}} i dette galleriet.',
-	'minipreview-no_more_files_here' => 'Ingen flere filer i denne retningen.',
-	'minipreview-no_category_gallery' => 'Ingen kategorier eller gallerier!',
-	'minipreview-ignore_categories' => 'Følgende er en liste over kategorinavn eller begynnelser på såden. Disse kategoriene vil ikke vises av Miniforhåndsvisning. For eksempel vil «* PD-» gjøre at bilder ikke velges ut fordi de er i kategorier som begynner med «PD-», slik som «PD-old».
 * GFDL-
 * GFDL
 * CC-
