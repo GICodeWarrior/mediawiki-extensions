@@ -65,6 +65,18 @@ $messages['arz'] = array(
 	'categoryintersection-results' => 'التدوير جاب $1 {{PLURAL:$1|نتيجه|نتيجه}}.',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'categoryintersection' => 'Interseición de categoríes',
+	'categoryintersection-desc' => "Mantién una tabla con valores hash pa les [[Special:CategoryIntersection|interseiciones de categoríes]] dientro d'una páxina",
+	'categoryintersection-doit' => 'Llista de les páxines en toes estes categoríes',
+	'categoryintersection-maxcategories' => "El númberu máximu permitíu d'interseiciones de categoríes ye $1.",
+	'categoryintersection-mincategories' => "Tienes d'incluir polo menos dos categoríes.",
+	'categoryintersection-results' => 'La gueta devolvió $1 {{PLURAL:$1|resultáu|resultaos}}.',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
