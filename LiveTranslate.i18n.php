@@ -293,6 +293,11 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'livetranslate-desc' => 'Zmóžnja direktne pśełožowanje wopśimjeśa boka z pomocu słužby "Google Translate"',
+	'right-managetms' => 'Lisćinu pśełožkowych składow [[Special:SpecialLiveTranslate|změniś]]',
+	'action-managetms' => 'Pśełožkowe składy zastojaś',
+	'group-tmxadmin' => 'TMX-administratory',
+	'group-tmxadmin-member' => '{{GENDER:$1|TMX-administrator|TMX-administratorka}}',
+	'grouppage-tmxadmin' => '{{ns:project}}: TMX-administratory',
 	'livetranslate-translate-to' => 'Pśełož toś ten boko do',
 	'livetranslate-button-translate' => 'Pśełožyś',
 	'livetranslate-button-translating' => 'Pśełožujo se...',
