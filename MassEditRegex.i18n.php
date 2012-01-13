@@ -235,8 +235,10 @@ $messages['az'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
+	'action-masseditregex' => 'выкананьне масавага рэдагаваньня',
 	'masseditregex' => 'Масавае рэдагаваньне з выкарыстаньнем рэгулярных выразаў',
 	'masseditregex-desc' => 'Выкарыстаньне рэгулярных выразаў для [[Special:MassEditRegex|рэдагаваньня некалькіх старонак за адно дзеяньне]]',
 	'masseditregextext' => 'Увядзіце адзін альбо некалькі рэгулярных выразаў (адзін на радок) для пошуку супадзеньняў, і адзін альбо некалькі выразаў для замены кожнага супадзеньня.
@@ -271,6 +273,7 @@ $messages['be-tarask'] = array(
 	'masseditregex-badregex' => 'Няслушны рэгулярны выраз:',
 	'masseditregex-editfailed' => 'Рэдагаваньне не атрымалася:',
 	'masseditregex-tooltip-execute' => 'Прыняць гэтыя зьмены для кожнай старонкі',
+	'right-masseditregex' => 'замена зьместу старонак з дапамогай рэгулярных выразаў',
 );
 
 /** Bulgarian (Български)
