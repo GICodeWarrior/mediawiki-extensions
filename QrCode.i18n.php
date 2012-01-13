@@ -191,6 +191,13 @@ $messages['ms'] = array(
 	'qrcode-desc' => 'Menjana dan membubuh imej-imej QR Code pada laman wiki',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'qrcode-desc' => 'Genererer og legger til QR-koder til en wikiside',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -198,11 +205,11 @@ $messages['nl'] = array(
 	'qrcode-desc' => "Genereert QR Code-afbeeldingen voor wikipagina's",
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
  */
-$messages['nb'] = array(
-	'qrcode-desc' => 'Genererer og legger til QR-koder til en wikiside',
+$messages['or'] = array(
+	'qrcode-desc' => 'ଉଇକି ପୃଷ୍ଠାରେ QR କୋଡ଼ ଚିତ୍ରମାନ ଉତ୍ପନ୍ନ ଏବଂ ଯୋଡ଼ିଥାଏ',
 );
 
 /** Polish (Polski)
