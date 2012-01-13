@@ -25,7 +25,6 @@ $wgExtensionCredits[version_compare( $wgVersion, '1.17', '>=' ) ? 'userpage tool
 
 $dir = dirname( __FILE__ );
 
-$wgAutoloadClasses['InteractiveBlockMessage'] = "$dir/InteractiveBlockMessage.php";
 $wgAutoloadClasses['InteractiveBlockMessageHooks'] = "$dir/InteractiveBlockMessageHooks.php";
 
 $wgExtensionMessagesFiles['InteractiveBlockMessage'] = "$dir/InteractiveBlockMessage.i18n.php";
