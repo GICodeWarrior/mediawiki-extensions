@@ -256,7 +256,7 @@ class SpecialContest extends SpecialContestPage {
 		}
 
 		if ( $req->getSessionData( 'contestant-challenge' ) ) {
-			$challenge = ContestChallenge::s()->selectRow( 'id', array( 'title' => $req->getSessionData( 'contestant-' . $field ) ) );
+			$challenge = ContestChallenge::s()->selectRow( 'id', array( 'title' => $req->getSessionData( 'contestant-challenge' ) ) );
 
 			if ( $challenge !== false ) {
 				$conds['contestant_challenge_id'] = $challenge->getField( 'id' );
