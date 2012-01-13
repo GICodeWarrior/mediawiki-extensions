@@ -49,7 +49,23 @@ $wgAutoloadClasses['ApiConcurrency'] = $dir . 'ApiConcurrency.php';
 $wgAPIModules['concurrency'] = 'ApiConcurrency';
 
 // Hooks
+$wgAutoloadClasses['InterfaceConcurrencyHooks'] = $dir . 'InterfaceConcurrency.hooks.php';
+$wgHooks['BeforePageDisplay'][] = 'InterfaceConcurrencyHooks::beforePageDisplay';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'InterfaceConcurrencyHooks::onLoadExtensionSchemaUpdates';
+
+// Resources
+$icResourceTemplate = array(
+	'localBasePath' => $dir . 'modules',
+	'remoteExtPath' => 'InterfaceConcurrency/modules'
+);
+
+$wgResourceModules['jquery.interfaceConcurrency'] = $icResourceTemplate + array(
+	'scripts' => 'jquery.interfaceConcurrency/jquery.interfaceConcurrency.js',
+	'dependencies' => array(
+		'mediawiki.util',
+		'mediawiki.user',
+	),
+);
 
 // Configuration
 $wgConcurrency = array(
