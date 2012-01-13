@@ -46,7 +46,7 @@
 
 						_this.sendReminder( function( data ) {
 							if ( data.success ) {
-								$dialog.text( mw.msg( 'contest-contest-reminder-success', data.contestantcount ) );
+								$dialog.msg( 'contest-contest-reminder-success', data.contestantcount );
 								$send.remove();
 								$cancel.button( 'option', 'label', mw.msg( 'contest-contest-reminder-close' ) );
 							}
@@ -54,7 +54,7 @@
 								$send.button( 'option', 'label', mw.msg( 'contest-contest-reminder-retry' ) );
 								$send.button( 'option', 'disabled', false );
 
-								alert( mw.msg( 'contest-contest-reminder-failed' ) );
+								alert( window.gM( 'contest-contest-reminder-failed', data.contestantcount ) );
 							}
 						} );
 					}

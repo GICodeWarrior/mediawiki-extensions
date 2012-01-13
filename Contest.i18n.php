@@ -179,11 +179,10 @@ $messages['en'] = array(
 	'contest-contest-reminder-send' => 'Send reminder',
 	'contest-contest-reminder-cancel' => 'Cancel',
 	'contest-contest-reminder-sending' => 'Sending...',
-	// We really want // {{PLURAL:$1|contestant|contestants}} here, but the JS i18n shizzle does not support it yet :/
-	'contest-contest-reminder-success' => 'Successfully sent the reminder e-mail to $1 contestants',
+	'contest-contest-reminder-success' => 'Successfully sent the reminder e-mail to $1 {{PLURAL:$1|contestant|contestants}}',
 	'contest-contest-reminder-close' => 'Close',
 	'contest-contest-reminder-retry' => 'Retry sending',
-	'contest-contest-reminder-failed' => 'Could not send the reminder e-mails.',
+	'contest-contest-reminder-failed' => 'Could not send the reminder {{PLURAL:$1|e-mail|e-mails}}.',
 	'contest-contest-reminder-subject' => 'Subject:',
 
 	// Contestant pager

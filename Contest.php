@@ -175,7 +175,7 @@ $wgResourceModules['contest.special.contest'] = $moduleTemplate + array(
 		'contest-contest-reminder-subject',
 	),
 	'dependencies' => array(
-		'jquery.ui.button', 'jquery.ui.dialog',
+		'jquery.ui.button', 'jquery.ui.dialog', 'mediawiki.jqueryMsg',
 	)
 );
 
