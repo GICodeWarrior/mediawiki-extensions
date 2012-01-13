@@ -211,8 +211,10 @@ This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background i
 	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-trigger-editing' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
 	'moodbar-weeks' => 'Full word for "weeks". $1 is the number of weeks. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}',
-	'moodbar-months' => 'Full word for "months". $1 is the number of months. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}',
-	'moodbar-years' => 'Full word for "years". $1 is the number of years. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}',
+	'moodbar-months' => 'Full word for "months". $1 is the number of months. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}.
+{{Identical|Month}}',
+	'moodbar-years' => 'Full word for "years". $1 is the number of years. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}.
+{{Identical|Year}}',
 	'moodbar-seconds' => 'The phrase "less than 1 minute", Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}',
 	'moodbar-close' => 'Link text of the close-button. Make sure to include parentheses.
 
@@ -625,13 +627,17 @@ $messages['ba'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  * @author Тест
  */
 $messages['be-tarask'] = array(
 	'moodbar-desc' => 'Дазваляе вызначаным удзельнікам дасылаць іх водгук пра вопыт у рэдагаваньні',
 	'moodbar-trigger-feedback' => 'Водгук пра рэдагаваньне',
 	'moodbar-trigger-share' => 'Падзяліцца Вашым вопытам',
-	'moodbar-trigger-editing' => 'Выкарыстоўваючы $1…',
+	'moodbar-trigger-editing' => 'Рэдагаваньне {{GRAMMAR:родны|$1}}…',
+	'moodbar-weeks' => '$1 {{PLURAL:$1|тыдзень|тыдні|тыдняў}}',
+	'moodbar-months' => '$1 {{PLURAL:$1|месяц|месяцы|месяцаў}}',
+	'moodbar-years' => '$1 {{PLURAL:$1|год|гады|гадоў}}',
 	'moodbar-close' => '(зачыніць)',
 	'moodbar-intro-feedback' => 'Рэдагаваньне {{GRAMMAR:родны|$1}} дало мне…',
 	'moodbar-intro-share' => 'Мой вопыт на {{GRAMMAR:родны|$1}} даў мне…',
