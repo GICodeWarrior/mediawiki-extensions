@@ -209,6 +209,8 @@ $messages['dsb'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Napóraś',
 	'articletocategory2-create-category-under-category-text' => 'Kategoriju toś tej kategoriji pśidaś',
 	'articletocategory2-create-category-under-category-button' => 'Napóraś',
+	'right-ArticleToCategory2' => 'Bok kategoriji dodaś',
+	'right-ArticleToCategory2AddCat' => 'Kategoriju kategoriji pśidaś',
 );
 
 /** Greek (Ελληνικά)
