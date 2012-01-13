@@ -115,7 +115,7 @@ class ExtZeroRatedMobileAccess {
 					$out->clearHTML();
 					$out->addHTML( $parsedHtml );
 					$carrierLink = ( isset( self::$carrier['link'] ) ) ? self::$carrier['link'] : '';
-					$bannerText = Html::rawElement( 'h3',
+					$bannerText = Html::rawElement( 'span',
 						array(	'id' => 'zero-rated-banner-text' ),
 							wfMsg( 'zero-rated-mobile-access-banner-text', $carrierLink ) );
 					$banner = Html::rawElement( 'div',
