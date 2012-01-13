@@ -139,6 +139,7 @@ $messages['az'] = array(
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'collabwatchlist' => 'Агульны сьпіс назіраньня',
@@ -155,7 +156,7 @@ $messages['be-tarask'] = array(
 	'collabwatchlisttools-rawUsers' => 'Рэдагаваць нефарматаваны сьпіс удзельнікаў',
 	'collabwatchlisttools-delete' => 'Выдаліць',
 	'collabwatchlistsall' => 'Усе сьпісы',
-	'collabwatchlistfiltertags' => 'Фільтраваць тэгі',
+	'collabwatchlistfiltertags' => 'Схаваць тэгі',
 	'collabwatchlistedit-users-raw-submit' => 'Захаваць',
 	'collabwatchlistedit-raw-title' => 'Рэдагаваньне нефарматаванага сьпісу катэгорыяў',
 	'collabwatchlistedit-tags-raw-title' => 'Рэдагаваньне нефарматаванага сьпісу тэгаў',
