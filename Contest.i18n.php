@@ -318,7 +318,9 @@ $messages['qqq'] = array(
 	'contest-contest-submissioncount' => 'Table row header',
 	'contest-contest-end' => 'Table row header',
 	'contest-contest-days-ago' => '$1 is a date, $2 is an integer, the amount of days',
-	'contest-contest-days-left' => '$1 is a date, $2 is an integer, the amount of days',
+	'contest-contest-days-left' => 'This is for an end date, followed by an amount of days it is from now, displayed in a summary table for a single contest. Parameters:
+* $1 is a date;
+* $2 is an integer, the amount of days.',
 	'contest-contest-contestants' => 'Page section header',
 	'contest-contest-reminder-mail' => 'Reminder e-mail',
 	'contest-contest-reminder-page' => 'Text explaining the e-mail content is pulled from a page, $1 is the page name.',
@@ -333,7 +335,7 @@ $messages['qqq'] = array(
 {{Identical|No}}',
 	'contest-contest-none' => 'Option in a dropdown menu.
 {{Identical|None}}',
-	'contest-contest-some' => 'Option in a dropdown menu',
+	'contest-contest-some' => 'Option in a dropdown menu pointing to submissions that have none or some comments.',
 	'contest-contest-filter-challenge' => 'Label put before and input field',
 	'contest-contest-filter-volunteer' => 'Label put before and input field',
 	'contest-contest-filter-wmf' => 'Label put before and input field',
@@ -918,7 +920,16 @@ $messages['be-tarask'] = array(
 	'contest-contestant-rate' => 'Адзначыць гэтага ўдзельніка',
 	'contest-contestant-not-voted' => 'Вы яшчэ не прагаласавалі за гэтага ўдзельніка.',
 	'contest-contestant-voted' => 'Ваш цяперашні голас «$1».',
+	'contest-contestant-permalink' => 'Сталая спасылка',
+	'contest-email-signup-title' => 'Дзякуй за прыняцьце выкліку!',
+	'contest-email-reminder-title' => 'Толькі $1 {{PLURAL:$1|дзень|дні|дзён}} да заканчэньня конкурсу!',
 	'contest-mycontests-toplink' => 'Мае конкурсы',
+	'contest-mycontests-no-contests' => 'Вы ня ўдзельнічаеце ў конкурсах.',
+	'contest-mycontests-active-header' => 'Цяперашнія конкурсы',
+	'contest-mycontests-finished-header' => 'Скончаныя конкурсы',
+	'contest-mycontests-active-text' => 'У цяперашні момант Вы ўдзельнічаеце ў наступных конкурсах:',
+	'contest-mycontests-finished-text' => 'Вы ўдзельнічалі ў наступных конкурсах:',
+	'contest-mycontests-header-contest' => 'Конкурс',
 );
 
 /** Bengali (বাংলা)
@@ -1290,10 +1301,10 @@ $messages['de'] = array(
 	'contest-contest-reminder-send' => 'Erinnerung senden',
 	'contest-contest-reminder-cancel' => 'Abbrechen',
 	'contest-contest-reminder-sending' => 'Sende …',
-	'contest-contest-reminder-success' => 'Die Erinnerungs-E-Mail wurde erfolgreich an $1 Teilnehmer versandt.',
+	'contest-contest-reminder-success' => 'Die Erinnerungs-E-Mail wurde erfolgreich an {{PLURAL:$1|einen Teilnehmer|$1 Teilnehmer}} versandt.',
 	'contest-contest-reminder-close' => 'Schließen',
 	'contest-contest-reminder-retry' => 'Erneute Versendung versuchen',
-	'contest-contest-reminder-failed' => 'Die Erinnerungs-E-Mails konnten nicht versandt werden.',
+	'contest-contest-reminder-failed' => 'Die {{PLURAL:$1|Erinnerungs-E-Mail konnte|Erinnerungs-E-Mails konnten}} nicht versandt werden.',
 	'contest-contest-reminder-subject' => 'Betreff:',
 	'contest-contestant-id' => 'Kennung',
 	'contest-contestant-challenge-name' => 'Name der Herausforderung',
@@ -1922,6 +1933,7 @@ $messages['et'] = array(
 
 /** Persian (فارسی)
  * @author Leyth
+ * @author Mehran
  * @author MehranVB
  * @author Rmashhadi
  * @author ZxxZxxZ
@@ -2779,10 +2791,10 @@ $messages['gl'] = array(
 	'contest-contest-reminder-send' => 'Enviar o recordatorio',
 	'contest-contest-reminder-cancel' => 'Cancelar',
 	'contest-contest-reminder-sending' => 'Enviando...',
-	'contest-contest-reminder-success' => 'O correo electrónico recordatorio enviouse correctamente a $1 participantes',
+	'contest-contest-reminder-success' => 'O correo electrónico recordatorio enviouse correctamente a $1 {{PLURAL:$1|participante|participantes}}',
 	'contest-contest-reminder-close' => 'Pechar',
 	'contest-contest-reminder-retry' => 'Reintentar o envío',
-	'contest-contest-reminder-failed' => 'Non se poden enviar os correos co recordatorio.',
+	'contest-contest-reminder-failed' => 'Non se {{PLURAL:$1|puido|puideron}} enviar {{PLURAL:$1|o correo|os correos}} co recordatorio.',
 	'contest-contest-reminder-subject' => 'Asunto:',
 	'contest-contestant-id' => 'ID',
 	'contest-contestant-challenge-name' => 'Nome do desafío',
@@ -3451,10 +3463,10 @@ $messages['hsb'] = array(
 	'contest-contest-reminder-send' => 'Dopomnjeće pósłać',
 	'contest-contest-reminder-cancel' => 'Přetorhnyć',
 	'contest-contest-reminder-sending' => 'Sćele so...',
-	'contest-contest-reminder-success' => 'Dopomnjensku e-mejl na $1 wubědźowarjow wuspěšnje pósłany',
+	'contest-contest-reminder-success' => 'Dopomnjensku e-mejl na $1 {{PLURAL:$1|wubědźowarja|wubědźowarjow|wubědźowarjow|wubědźowarjow}} wuspěšnje pósłany',
 	'contest-contest-reminder-close' => 'Začinić',
 	'contest-contest-reminder-retry' => 'Hišće raz pósłanje spytać',
-	'contest-contest-reminder-failed' => 'Dopomnjenske e-mejle njedachu so rozpósłać.',
+	'contest-contest-reminder-failed' => '{{PLURAL:$1|Dopomnjenska e-mejl njeda|Dopomnjenskej e-mejli njedaštej|Dopomnjenske e-mejle njedachu|Dopomnjenske e-mejle njedachu}} so rozpósłać.',
 	'contest-contest-reminder-subject' => 'Tema:',
 	'contest-contestant-id' => 'ID',
 	'contest-contestant-challenge-name' => 'Mjeno wužadanja',
@@ -3602,7 +3614,7 @@ $messages['hu'] = array(
 	'contest-signup-cv' => 'Önéletrajzra mutató hivatkozás',
 	'contest-signup-readrules' => 'Megerősítem, hogy elolvastam [[$1|a verseny szabályokat]] és egyetértek velük',
 	'contest-signup-challenge' => 'Melyik kihíváson kívánsz részt venni?',
-	'contest-signup-finished' => 'A verseny véget ért. Köszönjük a részt vételt.',
+	'contest-signup-finished' => 'A verseny véget ért. Köszönjük a részvételt!',
 	'contest-signup-draft' => 'A verseny még nem kezdődött el. Légy türelemmel!',
 	'contest-signup-country' => 'Országod',
 	'contest-signup-emailwarn' => 'Figyelem: a fiókod email címének lecserélésére készülsz, amelyhez meg kell erősítened az új email címedet.',
@@ -3643,10 +3655,10 @@ $messages['hu'] = array(
 	'contest-contest-reminder-send' => 'Emlékeztető küldése',
 	'contest-contest-reminder-cancel' => 'Mégse',
 	'contest-contest-reminder-sending' => 'Küldés…',
-	'contest-contest-reminder-success' => 'Emlékeztető levél elküldése $1 versenyző részére sikeresen elküldve',
+	'contest-contest-reminder-success' => 'Emlékeztető levél {{PLURAL:$1|egy versenyző|$1 versenyző}} részére sikeresen elküldve',
 	'contest-contest-reminder-close' => 'Bezárás',
 	'contest-contest-reminder-retry' => 'Újra küldés',
-	'contest-contest-reminder-failed' => 'Nem sikerült elküldeni az emlékeztető emaileket.',
+	'contest-contest-reminder-failed' => 'Nem sikerült elküldeni az emlékeztető {{PLURAL:$1|emailt|emaileket}}.',
 	'contest-contest-reminder-subject' => 'Tárgy:',
 	'contest-contestant-id' => 'ID',
 	'contest-contestant-challenge-name' => 'Kihívás neve',
@@ -3694,9 +3706,11 @@ $messages['hu'] = array(
 	'contest-submission-submit' => 'Elküldés',
 	'contest-submission-unknown' => 'Nincs verseny a megadott névvel.',
 	'contest-submission-header' => 'Köszönjük, hogy részt vesz a versenyen. Ha végeztél a kihívással, akkor felvehetsz egy hivatkozást az alábbi pályamunkádhoz.',
+	'contest-submission-finished' => 'Ez a verseny véget ért. Köszönjük a részvételt!',
 	'contest-submission-submission' => 'Hivatkozás a pályamunkára',
 	'contest-submission-invalid-url' => 'Ez az URL nem felel meg egyik engedélyezett formának sem.',
 	'contest-submission-new-submission' => 'Még mindig meg kell adnod a pályamunkádra mutató hivatkozást. Ezt még a határidő előtt meg kell tenned.',
+	'contest-submission-current-submission' => 'Ez a beküldésed URL-je, ahol módosíthatod azt a határidő végéig.',
 	'contest-submission-challenge' => 'Jelenleg részt veszel a $1 kihívásban.',
 	'contest-submission-challenge-description' => "'''Aktuális kihívás: $1''' -- $2",
 	'contest-submission-domains' => 'Pályamunkák az alábbi weboldalakra vannak korlátozva: $1',
@@ -3929,6 +3943,7 @@ $messages['ilo'] = array(
 /** Italian (Italiano)
  * @author Aushulz
  * @author F. Cosoleto
+ * @author Nemo bis
  */
 $messages['it'] = array(
 	'contest-toplink' => 'Le mie gare',
@@ -4032,7 +4047,7 @@ $messages['it'] = array(
 	'contest-contest-submissioncount' => 'Numero di partecipanti',
 	'contest-contest-end' => 'Fine del concorso',
 	'contest-contest-days-ago' => '$1, $2 {{PLURAL:$1|giorno|giorni}} fa',
-	'contest-contest-days-left' => '$1, fra $2 {{PLURAL:$1|giorno|giorni}}',
+	'contest-contest-days-left' => '$1: fra $2 {{PLURAL:$2|giorno|giorni}}',
 	'contest-contest-contestants' => 'Concorrenti',
 	'contest-contest-contestants-text' => "Cliccare sull'ID della voce nella colonna di sinistra per giudicare una singola voce.",
 	'contest-contest-reminder-mail' => 'Email di promemoria',
@@ -5083,10 +5098,10 @@ $messages['nl'] = array(
 	'contest-contest-reminder-send' => 'Herinnering verzenden',
 	'contest-contest-reminder-cancel' => 'Annuleren',
 	'contest-contest-reminder-sending' => 'Bezig met verzenden...',
-	'contest-contest-reminder-success' => 'De e-mail ter herinnering is verzonden naar $1 deelnemers',
+	'contest-contest-reminder-success' => 'De herinneringse-mail is verzonden naar $1 {{PLURAL:$1|deelnemer|deelnemers}}',
 	'contest-contest-reminder-close' => 'Sluiten',
 	'contest-contest-reminder-retry' => 'Opnieuw proberen te verzenden',
-	'contest-contest-reminder-failed' => 'De e-mails konden niet worden verzonden.',
+	'contest-contest-reminder-failed' => 'De {{PLURAL:$1|e-mail kon|e-mails konden}} niet worden verzonden.',
 	'contest-contest-reminder-subject' => 'Onderwerp:',
 	'contest-contestant-id' => 'ID',
 	'contest-contestant-challenge-name' => 'Naam van de uitdaging',
@@ -5254,7 +5269,7 @@ $messages['or'] = array(
 	'contest-contest-reminder-sending' => 'ପଠାଉଛି...',
 	'contest-contest-reminder-close' => 'ବନ୍ଦ କରିବେ',
 	'contest-contest-reminder-retry' => 'ଆଉଥରେ ପଠେଇବାକୁ ଚେଷ୍ଟା କରନ୍ତୁ',
-	'contest-contest-reminder-failed' => 'ମନେପକା ଇ-ମେଲଟିକୁ ପଠେଇ ହେଲାନି ।',
+	'contest-contest-reminder-failed' => 'ମନେପକା {{PLURAL:$1|ଇ-ମେଲ|ଇ-ମେଲ୍ସ}} ପଠେଇ ହେଲାନି ।',
 	'contest-contest-reminder-subject' => 'ବିଷୟ:',
 	'contest-contestant-id' => 'ଆଇ ଡି',
 	'contest-contestant-volunteer' => 'ସ୍ଵେଚ୍ଛାସେବୀ',
@@ -5742,6 +5757,7 @@ $messages['ps'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'contest-desc' => 'Permite utilizatorilor să participe în concursuri. Judecătorii pot discuta și vota înscrierile',
@@ -5871,10 +5887,10 @@ $messages['ro'] = array(
 	'contest-contest-reminder-send' => 'Trimite reamintire',
 	'contest-contest-reminder-cancel' => 'Revocare',
 	'contest-contest-reminder-sending' => 'Se trimite...',
-	'contest-contest-reminder-success' => 'E-mailul de reamintire către $1 concurenți a fost trimis cu succes',
+	'contest-contest-reminder-success' => 'E-mailul de reamintire către $1 {{PLURAL:$1|concurent|concurenți}} a fost trimis cu succes',
 	'contest-contest-reminder-close' => 'Închide',
 	'contest-contest-reminder-retry' => 'Reîncercați trimiterea',
-	'contest-contest-reminder-failed' => 'Nu s-au putut trimite e-mailurile de reamintire.',
+	'contest-contest-reminder-failed' => 'Nu {{PLURAL:$1|s-a|s-au}} putut trimite {{PLURAL:$1|e-mailul|e-mailurile}} de reamintire.',
 	'contest-contest-reminder-subject' => 'Subiect:',
 	'contest-contestant-id' => 'ID',
 	'contest-contestant-challenge-name' => 'Numele provocării',
