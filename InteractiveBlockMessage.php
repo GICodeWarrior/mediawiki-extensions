@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die();
 }
 
-$wgExtensionCredits[version_compare( $wgVersion, '1.17', '>=' ) ? 'userpage tools' : 'other'][] = array(
+$wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Interactive block message',
 	'version' => '1.0.0',
