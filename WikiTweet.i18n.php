@@ -799,6 +799,29 @@ $messages['nl'] = array(
 	'wikitweet-cannotparse' => 'Het is niet mogelijk het volgende te verwerken:',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
+ */
+$messages['or'] = array(
+	'wikitweet-submit' => 'ଟୁଇଟ',
+	'wikitweet-submitandmail' => 'ଟୁଇଟ ଏବଂ ଇ-ମେଲ',
+	'wikitweet-intheroom' => 'ଆପଣ କୋଠରିରେ ଅଛନ୍ତି',
+	'wikitweet-subscribe' => 'ସଦସ୍ୟତାରେ ସମ୍ମିଳିତ ହେବେ',
+	'wikitweet-subscribed' => 'ସଦସ୍ୟତାରେ ସମ୍ମିଳିତ ହେଲେ',
+	'wikitweet-unsubscribe' => 'ସଦସ୍ୟତାରୁ ବାହାରିବେ',
+	'wikitweet-delete' => 'ଲିଭାଇବେ',
+	'wikitweet-private' => 'ନିଜସ୍ଵ',
+	'wikitweet-anonymous' => 'ଅଜ୍ଞାତ',
+	'wikitweet-timeago' => '$1 ଆଗରୁ',
+	'wikitweet-fewsecondsago' => 'କିଛି ସେକେଣ୍ଡ ପୂର୍ବରୁ',
+	'wikitweet-status' => 'ସ୍ଥିତି:',
+	'wikitweet-status0' => 'କଥା',
+	'wikitweet-status1' => 'ବୃତ୍ତାନ୍ତ',
+	'wikitweet-status2' => 'ଚେତାବନୀ',
+	'wikitweet-status3' => 'ସତର୍କ',
+	'wikitweet-comment' => 'ମତାମତ',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
