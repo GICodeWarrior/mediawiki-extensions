@@ -380,8 +380,10 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author Rahuldeshmukh101
  */
 $messages['mr'] = array(
+	'dontswitchmeover-desc' => 'मुळ देखाव्याची स्थापना बदलत असतांना वापरकर्त्यांना त्यांच्या देखाव्याचे  व्यवस्थापन संरक्षित करण्याची पसंती',
 	'dontswitchmeover-pref' => 'अविचल(डिफॉल्ट) त्वचा बदलेल तेव्हा माझी बदलती ठेऊ नका',
 );
 
