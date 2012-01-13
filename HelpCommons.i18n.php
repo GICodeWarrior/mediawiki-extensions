@@ -48,6 +48,13 @@ $messages['de'] = array(
 	'helpcommons-desc' => 'Nimmt den Hilfe-Namensraum aus einem Hilfe Wiki und bindet ihn in andere Wikis der Wiki-Familie ein',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'helpcommons-desc' => 'Bjerjo mjenjowy rum Pomoc z wikija pomocy a zapśiimujo jen do drugich wikijow wikiswójźby',
+);
+
 /** Esperanto (Esperanto)
  * @author ThomasPusch
  */
