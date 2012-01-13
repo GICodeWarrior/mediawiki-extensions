@@ -38,6 +38,13 @@ $messages['de'] = array(
 	'interactiveblockmessage-desc' => 'Ergänzt das „magische Wort“ <nowiki>{{USERBLOCKED}}</nowiki>, das anzeigt, ob ein Benutzer gesperrt ist oder nicht',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'interactiveblockmessage-desc' => 'Napórajo nowe magiske słowo <nowiki>{{USERBLOCKED}}</nowiki>, kótarež pódawa, lěc wužywaŕ jo zablokěrowany abo nic',
+);
+
 /** French (Français)
  * @author Gomoko
  */
