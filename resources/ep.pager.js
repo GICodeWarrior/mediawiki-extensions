@@ -43,7 +43,7 @@
 							}
 						}
 						else {
-							alert( mw.msg( 'ep-pager-delete-fail' ) ); // TODO
+							alert( mw.msg( 'ep-pager-delete-fail' ) );
 						}
 					}
 				);
@@ -65,7 +65,7 @@
 				ids.push( $( element ).val() );
 			} );
 
-			if ( ids.length < 1 || !confirm( mw.msg( 'ep-pager-confirm-delete-selected' ) ) ) {
+			if ( ids.length < 1 || !confirm( window.gM( 'ep-pager-confirm-delete-selected', ids.length ) ) ) {
 				return;
 			}
 
@@ -93,7 +93,7 @@
 						}
 					}
 					else {
-						alert( mw.msg( 'ep-pager-delete-selected-fail' ) ); // TODO
+						alert( window.gM( 'ep-pager-delete-selected-fail', ids.length ) );
 					}
 				}
 			);

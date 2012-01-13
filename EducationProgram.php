@@ -206,6 +206,7 @@ $wgResourceModules['ep.pager'] = $moduleTemplate + array(
 	),
 	'dependencies' => array(
 		'ep.api',
+		'mediawiki.jqueryMsg',
 	),
 	'messages' => array(
 		'ep-pager-confirm-delete',

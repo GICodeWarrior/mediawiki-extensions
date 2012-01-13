@@ -234,8 +234,8 @@ $messages['en'] = array(
 	// ep.pager
 	'ep-pager-confirm-delete' => 'Are you sure you want to delete this item?',
 	'ep-pager-delete-fail' => 'Could not delete this item.',
-	'ep-pager-confirm-delete-selected' => 'Are you sure you want to delete the selected items?',
-	'ep-pager-delete-selected-fail' => 'Could not delete the selected items.',
+	'ep-pager-confirm-delete-selected' => 'Are you sure you want to delete the selected {{PLURAL:$1|item|items}}?',
+	'ep-pager-delete-selected-fail' => 'Could not delete the selected {{PLURAL:$1|item|items}}.',
 
 	// Special:Institution
 	'ep-institution-none' => 'There is no institution with name "$1". See [[Special:Institution|here]] for a list of institutions.',
