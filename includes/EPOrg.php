@@ -75,12 +75,10 @@ class EPOrg extends EPDBObject {
 	 * @see EPDBObject::createLogEntry()
 	 */
 	protected function createLogEntry( $subType ) {
-		$logEntry = new ManualLogEntry( 'institution', $subType );
-
-		$logEntry->setPerformer( $GLOBALS['wgUser'] );
-		$logEntry->setTarget( $this->getTitle() );
-
-		return $logEntry;
+		return array(
+			'type' => 'institution',
+			'title' => $this->getTitle(),
+		);
 	}
 
 	/**

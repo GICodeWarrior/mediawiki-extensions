@@ -459,26 +459,35 @@ abstract class EPDBObject {
 	 */
 	protected function log( $subType ) {
 		if ( $this->log ) {
-			$logEntry = $this->createLogEntry( $subType );
+			if ( class_exists( 'ManualLogEntry' ) ) {
+				$info = $this->getLogInfo( $subType );
 
-			if ( createLogEntry !== false ) {
-				$logid = $logEntry->insert();
-				$logEntry->publish( $logid );
+				if ( $info !== false ) {
+					$logEntry = new ManualLogEntry( $info['type'], $subType );
+
+					$logEntry->setPerformer( array_key_exists( 'user', $info ) ? $info['user'] : $GLOBALS['wgUser'] );
+					$logEntry->setTarget( $info['title'] );
+
+					$logid = $logEntry->insert();
+					$logEntry->publish( $logid );
+				}
+			}
+			else {
+				// TODO
 			}
 		}
 	}
 
 	/**
-	 * Override and create and return a log entry to
-	 * make the log method have an actual effect.
+	 * Returns the info for the log entry or false if no entry should be created.
 	 *
 	 * @since 0.1
 	 *
 	 * @param string $subType
 	 *
-	 * @return false|ManualLogEntry
+	 * @return array|false
 	 */
-	protected function createLogEntry( $subType ) {
+	protected function getLogInfo( $subType ) {
 		return false;
 	}
 
