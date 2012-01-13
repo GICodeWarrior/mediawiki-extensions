@@ -274,7 +274,7 @@ $messages['cs'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'semanticformsinputs-desc' => 'Ermöglicht verschiedene zusätzliche Eingabearten für [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
+	'semanticformsinputs-desc' => 'Ermöglicht verschiedene zusätzliche Eingabearten für [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
 	'semanticformsinputs-wrongformat' => 'Falsches Format.',
 	'semanticformsinputs-close' => 'Schließen',
 	'semanticformsinputs-prev' => 'Voriger Monat',
