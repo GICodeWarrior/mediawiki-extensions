@@ -42,6 +42,13 @@ $messages['de'] = array(
 	'globalusergroups-desc' => 'Ermöglicht das Nutzen definierter lokaler Benutzergruppen als globale Gruppen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'globalusergroups-desc' => 'Zmóžnja wužywanje definěrowanych lokalnych wužywarskich kupkow ako globalne kupki',
+);
+
 /** French (Français)
  * @author Gomoko
  */
