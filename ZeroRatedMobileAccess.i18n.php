@@ -31,6 +31,7 @@ $messages['en'] = array (
 
 /** Message documentation (Message documentation)
  * @author Patrick Reilly
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'zero-rated-mobile-access-desc' => '{{desc}}',
@@ -39,12 +40,13 @@ $messages['qqq'] = array(
 	'zero-rated-mobile-access-home-page-selection' => 'Name of language followed by text to show user in local link to Wikipedia',
 	'zero-rated-mobile-access-home-page-selection-text' => 'Text to show user prior to selection of language option',
 	'zero-rated-mobile-access-banner-text' => 'Text shown to users of various carriers with carrier name',
-	'zero-rated-mobile-access-banner-text-data-charges' => 'Data charges notice to user before images are displayed
-* $1 = {{Msg-mw|zero-rated-mobile-access-banner-text-data-charges-yes}}
-* $2 = {{Msg-mw|zero-rated-mobile-access-banner-text-data-charges-no}}',
+	'zero-rated-mobile-access-banner-text-data-charges' => 'Data charges notice to user before images are displayed. Parameters:
+* $1 is {{Msg-mw|zero-rated-mobile-access-banner-text-data-charges-yes}}
+* $2 is {{Msg-mw|zero-rated-mobile-access-banner-text-data-charges-no}}',
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Text for accepting charges',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Text for rejecting charges',
-	'zero-rated-mobile-access-click-to-view-image' => 'Text for viewing an image link',
+	'zero-rated-mobile-access-click-to-view-image' => 'Text for viewing an image link. Parameters:
+* $1 is the alt text of the image that can be viewed.',
 );
 
 /** German (Deutsch)
@@ -56,7 +58,7 @@ $messages['de'] = array(
 	'zero-rated-mobile-access-language-selection' => 'Alle Sprachen',
 	'zero-rated-mobile-access-home-page-selection' => '$1 Startseite',
 	'zero-rated-mobile-access-home-page-selection-text' => 'Oder besuche die Startseite in der folgenden Sprache:',
-	'zero-rated-mobile-access-banner-text' => 'Kostenloser Zugriff auf Wikipedia über $1',
+	'zero-rated-mobile-access-banner-text' => 'Kostenloser Zugriff auf {{SITENAME}} über $1',
 	'zero-rated-mobile-access-banner-text-data-charges' => 'Datenübertragungsgebühren können anwendbar sein: $1 oder $2',
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Ja',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Nein',
@@ -79,7 +81,7 @@ $messages['dsb'] = array(
 	'zero-rated-mobile-access-language-selection' => 'Wšykne rěcy',
 	'zero-rated-mobile-access-home-page-selection' => '$1 startowy bok',
 	'zero-rated-mobile-access-home-page-selection-text' => 'Abo źi k startowemu bokoju w slědujucej rěcy:',
-	'zero-rated-mobile-access-banner-text' => 'Lichotna Wikipedija wót $1',
+	'zero-rated-mobile-access-banner-text' => 'Lichotna {{SITENAME}} wót $1',
 	'zero-rated-mobile-access-banner-text-data-charges' => 'Pśi pśenjasenju datow mógu se płaśonki wuběraś: $1 abo $2',
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Jo',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Ně',
@@ -95,7 +97,7 @@ $messages['fr'] = array(
 	'zero-rated-mobile-access-language-selection' => 'Toutes les langues',
 	'zero-rated-mobile-access-home-page-selection' => "page d'accueil $1",
 	'zero-rated-mobile-access-home-page-selection-text' => "Ou allez à la page d'accueil dans la langue suivante:",
-	'zero-rated-mobile-access-banner-text' => 'Wikipedia libre depuis $1',
+	'zero-rated-mobile-access-banner-text' => '{{SITENAME}} libre depuis $1',
 	'zero-rated-mobile-access-banner-text-data-charges' => "Les frais de données peuvent s'appliquer de façon permanente: $1 ou $2",
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Oui',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Non',
@@ -111,7 +113,7 @@ $messages['hsb'] = array(
 	'zero-rated-mobile-access-language-selection' => 'Wšě rěče',
 	'zero-rated-mobile-access-home-page-selection' => '$1 startowa strona',
 	'zero-rated-mobile-access-home-page-selection-text' => 'Abo wopytaj startowu stronu w slědowacej rěči:',
-	'zero-rated-mobile-access-banner-text' => 'Swobodna Wikipedija wot $1',
+	'zero-rated-mobile-access-banner-text' => 'Swobodna {{SITENAME}} wot $1',
 	'zero-rated-mobile-access-banner-text-data-charges' => 'Při přenjesenju datow móža so popłatki zběrać: $1 abo $2',
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Haj',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Ně',
@@ -127,7 +129,7 @@ $messages['ia'] = array(
 	'zero-rated-mobile-access-language-selection' => 'Tote le linguas',
 	'zero-rated-mobile-access-home-page-selection' => 'Pagina principal in $1',
 	'zero-rated-mobile-access-home-page-selection-text' => 'O va al pagina principal in lingua:',
-	'zero-rated-mobile-access-banner-text' => 'Wikipedia gratuite de $1',
+	'zero-rated-mobile-access-banner-text' => '{{SITENAME}} gratuite de $1',
 	'zero-rated-mobile-access-banner-text-data-charges' => 'Costos de datos pote esser applicate. Continuar ($1 o $2)?',
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Si',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'No',
@@ -151,22 +153,43 @@ $messages['mk'] = array(
 	'zero-rated-mobile-access-language-selection' => 'Сите јазици',
 	'zero-rated-mobile-access-home-page-selection' => 'Главна страница на $1',
 	'zero-rated-mobile-access-home-page-selection-text' => 'Или пак посетете ја главната страница на следниов јазик:',
-	'zero-rated-mobile-access-banner-text' => 'Бесплатна Википедија од $1',
+	'zero-rated-mobile-access-banner-text' => 'Бесплатна {{SITENAME}} од $1',
 	'zero-rated-mobile-access-banner-text-data-charges' => 'Може да ви биде побарана доплата за податоците. Сакате да продолжите? $1 / $2',
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Да',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Не',
 	'zero-rated-mobile-access-click-to-view-image' => 'Стиснете за да ја погледате сликата на „$1“...',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'zero-rated-mobile-access-desc' => 'Menyediakan ciri-ciri untuk pembekal khidmat mudah alih yang menyediakan capaian percuma',
+	'zero-rated-mobile-access-search' => 'Cari',
+	'zero-rated-mobile-access-language-selection' => 'Semua bahasa',
+	'zero-rated-mobile-access-home-page-selection' => 'Laman utama $1',
+	'zero-rated-mobile-access-home-page-selection-text' => 'Atau pergi ke laman utama dalam bahasa yang berikut:',
+	'zero-rated-mobile-access-banner-text' => '{{SITENAME}} percuma daripada $1',
+	'zero-rated-mobile-access-banner-text-data-charges' => 'Tertakluk kepada caj data, sambung? $1 atau $2',
+	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Ya',
+	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Tidak',
+	'zero-rated-mobile-access-click-to-view-image' => 'Klik untuk melihat imej "$1"...',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'zero-rated-mobile-access-desc' => 'Biedt functies om mobiele providers vrije toegang te laden aanbieden',
 	'zero-rated-mobile-access-search' => 'Zoeken',
 	'zero-rated-mobile-access-language-selection' => 'Alle talen',
-	'zero-rated-mobile-access-banner-text' => 'Gratis Wikipedia van $1',
+	'zero-rated-mobile-access-home-page-selection' => 'Startpagina van $1',
+	'zero-rated-mobile-access-home-page-selection-text' => 'Of ga naar de startpagina in de volgende taal:',
+	'zero-rated-mobile-access-banner-text' => 'Gratis {{SITENAME}} van $1',
+	'zero-rated-mobile-access-banner-text-data-charges' => 'U moet mogelijk datakosten betalen als u doorgaat: $1 of $2',
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Ja',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Nee',
+	'zero-rated-mobile-access-click-to-view-image' => 'Klik om de afbeelding te zien of "$1"...',
 );
 
 /** Telugu (తెలుగు)
