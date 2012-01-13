@@ -352,6 +352,16 @@ $messages['km'] = array(
 	'templatelink_empty' => 'អ្នក​ត្រូវតែ​ផ្ដល់​ប៉ារ៉ាម៉ែត្រ​មួយ​។',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author VASANTH S.N.
+ */
+$messages['kn'] = array(
+	'templatelink' => 'ಟೆಂಪ್ಲೇಟು ಕೊಂಡಿ',
+	'templatelink_desc' => 'ಈ ವಿಸ್ತರಣೆ ಟೆಂಪ್ಲೇಟನ್ನು ಹೊಸ ಪುಟದಲ್ಲಿ ತೋರಿಸಬಹುದು',
+	'templatelink_empty' => 'ನೀವು ಒಂದು ವ್ಯಾಪ್ತಿಯನ್ನು ಕೊಡ ಬೇಕು.',
+	'templatelink_newtitle' => '$1 (ಸೇರಿಸಲ್ಪಟ್ಟಿದೆ)',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
