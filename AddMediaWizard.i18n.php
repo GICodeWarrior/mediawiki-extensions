@@ -495,6 +495,14 @@ $messages['oc'] = array(
 	'addmediawizard-desc' => 'Apondre un assistent pels mèdias, desvolopat dins un partenariat entre Kaltura e la Wikimedia Foundation',
 );
 
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Ansumang
+ */
+$messages['or'] = array(
+	'addmediawizard-desc' => 'ମିଡ଼ିଆ ୱିଜାର୍ଡ଼ ଯୋଡ଼ନ୍ତୁ, କଲତୁରା ଏବଂ ଉଇକିମିଡ଼ିଆ ଫାଉନ୍ଡେଶନ ଦ୍ଵାରା ସମ୍ମିଳିତ ହୋଇ ବିକଶିତ',
+	'addmediawizard-loading' => 'ମିଡ଼ିଆ ୱିଜାର୍ଡ଼ ଯୋଡ଼ିବା ପାଇଁ ଲୋଡ଼ ହେଉଛି',
+);
+
 /** Papiamento (Papiamentu)
  * @author Sdm1985
  */
