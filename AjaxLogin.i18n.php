@@ -346,6 +346,8 @@ To buźo k drugemu bokoju wjasć a ty by mógał swóju aktualnu změnu zgubiś.
 	'al-nosuchuser' => 'Wužywaŕ z mjenim "$1" njejo.
 Wužywarske mjenja źiwaju na wjelikopisanje.
 Skontrolěruj swój pšawopis.',
+	'al-createblocked' => 'Twója IP-adresa jo za załoženje kontow zablokěrowana.',
+	'al-throttled' => 'Sy pśecesto wopytał, swójo gronidło zapódaś. Pšosym cakaj $1 {{PLURAL:$1|sekundu|sedkunźe|sekundy|sekundow}}, nježli až wopytaš to hyšći raz.',
 );
 
 /** Greek (Ελληνικά)
