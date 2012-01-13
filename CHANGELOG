@@ -1,6 +1,12 @@
 This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
+0.17.0 - 13 January 2012
+  Rewrote the extension to use local context instead of global variables where
+  possible.
+  THIS VERSION NOW REQUIRES MediaWiki 1.18 TO WORK.
+
+
 0.16.3 - 3 March 2011
   Updated the extension to work with the current development version.
 

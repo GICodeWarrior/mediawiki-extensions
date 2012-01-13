@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => array( 'Alexandre Emsenhuber', 'Andrew Garrett' ),
 	'url' => 'https://www.mediawiki.org/wiki/Extension:Configure',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.16.3',
+	'version' => '0.17.0',
 );
 
 # Configuration part

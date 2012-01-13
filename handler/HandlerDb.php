@@ -192,20 +192,21 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * Save a new configuration
 	 *
 	 * @param $settings array of settings
+	 * @param $user User doing the modification
 	 * @param $wiki String: wiki name or true for all
 	 * @param $ts 14 chars timestamps
 	 * @param $reason String: Reason, as given by the user.
 	 * @return bool true on success
 	 */
-	public function saveNewSettings( $settings, $wiki, $ts = false, $reason = '' ) {
+	public function saveNewSettings( $settings, User $user, $wiki, $ts = false, $reason = '' ) {
 		if ( $wiki === true ) {
 			foreach ( $settings as $name => $val ) {
-				$this->saveSettingsForWiki( $val, $name, $ts, $reason );
+				$this->saveSettingsForWiki( $val, $user, $name, $ts, $reason );
 			}
 		} else {
 			if ( !isset( $settings[$wiki] ) )
 				return false;
-			$this->saveSettingsForWiki( $settings[$wiki], $wiki, $ts, $reason );
+			$this->saveSettingsForWiki( $settings[$wiki], $user, $wiki, $ts, $reason );
 		}
 		$this->getCache()->delete( $this->cacheKey( 'configure', 'current' ) );
 		return true;
@@ -214,9 +215,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	/**
 	 * save the configuration for $wiki
 	 */
-	protected function saveSettingsForWiki( $settings, $wiki, $ts, $reason = '' ) {
-		global $wgUser;
-
+	protected function saveSettingsForWiki( $settings, User $user, $wiki, $ts, $reason = '' ) {
 		$dbw = $this->getMasterDB();
 		if ( !$ts )
 			$ts = wfTimestampNow();
@@ -233,7 +232,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 				'cv_wiki' => $wiki,
 				'cv_timestamp' => $dbw->timestamp( $ts ),
 				'cv_is_latest' => 1,
-				'cv_user_text' => $wgUser->getName(),
+				'cv_user_text' => $user->getName(),
 				'cv_user_wiki' => wfWikiId(),
 				'cv_reason' => $reason
 			),
