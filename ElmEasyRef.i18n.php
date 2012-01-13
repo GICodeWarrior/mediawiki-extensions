@@ -59,7 +59,7 @@ $messages['br'] = array(
  */
 $messages['de'] = array(
 	'elm-easyref-desc' => 'Ermöglicht Pop-up-Einblendungen des Inhalts einer Referenz',
-	'elm-easyref-ref' => 'Referenz $1',
+	'elm-easyref-ref' => 'Quellennachweis $1',
 	'elm-easyref-close' => 'Schließen',
 );
 
