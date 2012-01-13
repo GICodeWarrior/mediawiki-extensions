@@ -23,8 +23,6 @@ $wgAutoloadClasses['MoodBarFormatter'] = $moodBarDir . 'Formatter.php';
 $wgAutoloadClasses['MoodBarHTMLEmailNotification'] = $moodBarDir . 'include/MoodBarHTMLEmailNotification.php';
 $wgAutoloadClasses['MoodBarHTMLMailerJob'] = $moodBarDir . 'include/MoodBarHTMLMailerJob.php';
 $wgAutoloadClasses['MoodBarUtil'] = $moodBarDir . 'include/MoodBarUtil.php';
-// commented out til bsitu can test this for me
-//$wgAutoloadClasses['ConcurrencyCheck'] = $moodBarDir . 'include/ConcurrencyCheck.php';
 
 // API
 $wgAutoloadClasses['ApiMoodBar'] = $moodBarDir . 'ApiMoodBar.php';
@@ -38,8 +36,6 @@ $wgAPIModules['feedbackdashboardresponse'] = 'ApiFeedbackDashboardResponse';
 $wgAutoloadClasses['ApiMoodBarSetUserEmail'] = $moodBarDir . 'ApiMoodBarSetUserEmail.php';
 $wgAutoloadClasses['MWApiMoodBarSetUserEmailInvalidActionException'] = $moodBarDir . 'ApiMoodBarSetUserEmail.php';
 $wgAPIModules['moodbarsetuseremail'] = 'ApiMoodBarSetUserEmail';
-// commented out til bsitu can test this for me
-//$wgAutoloadClasses['ApiConcurrency'] = $moodBarDir . 'ApiConcurrency.php';
 
 // Hooks
 $wgAutoloadClasses['MoodBarHooks'] = $moodBarDir . 'MoodBar.hooks.php';
