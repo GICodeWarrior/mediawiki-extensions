@@ -781,9 +781,9 @@ $messages['or'] = array(
 	'webfonts-help' => 'ସହଯୋଗ',
 	'webfonts-preview-intro' => 'ଏହି ପୃଷ୍ଠା ୱେବଫଣ୍ଟ ଏକ୍ସଟେନ୍ଶନରେ ଯେଉଁ ଲିପି ଉପଲବ୍ଧ ଅଛି ତାହାର ପୂର୍ବ ଦେଖଣାରେ ସାହାଯ୍ୟ କରିଥାଏ ଏବଂ ଆପଣଙ୍କ କମ୍ପ୍ୟୁଟରରେ ବୈକଳ୍ପିକ ଭାବେ ଡ଼ାଉନଲୋଡ଼ ଓ ଇନସ୍ଟଲ କରିଥାଏ ।',
 	'webfonts-preview-title' => 'ଲିପିର ପୂର୍ବ ଦେଖଣା',
-	'webfonts-preview-download' => 'ଡାଉନଲୋଡ',
+	'webfonts-preview-download' => 'ଏହି ଲିପି ଡ଼ାଉନଲୋଡ଼ କରନ୍ତୁ',
 	'webfonts-preview-installing-fonts-title' => 'ଲିପି ସ୍ଥାପନ ହେଉଛି',
-	'webfonts-preview-installing-fonts-text' => 'ଆପଣ ଏକ ଲିପି ଡ଼ାଉନଲୋଡ଼ କରିପାରିବେ ଉପରେ ଥିବା ଏହି ଲିଙ୍କ {{int:webfonts-preview-download}} ଉପଯୋଗ କରି । ଡ଼ାଉନଲୋଡ଼ କରାଯାଇଥିବା ଲିପିକୁ ଆପଣଙ୍କ କମ୍ପ୍ୟୁଟରରେ ସ୍ଥାପନ କରିବା ପାଇଁ, ଦୟାକରି ଏହା ଦେଖନ୍ତୁ [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts this documentation]',
+	'webfonts-preview-installing-fonts-text' => "ଆପଣ ଏକ ଲିପି ଡ଼ାଉନଲୋଡ଼ କରିପାରିବେ ଉପରେ ଥିବା ଏହି ଲିଙ୍କ ''{{int:webfonts-preview-download}}'' ଉପଯୋଗ କରି । ଡ଼ାଉନଲୋଡ଼ କରାଯାଇଥିବା ଲିପିକୁ ଆପଣଙ୍କ କମ୍ପ୍ୟୁଟରରେ ସ୍ଥାପନ କରିବା ପାଇଁ, ଦୟାକରି ଏହା ଦେଖନ୍ତୁ [//mediawiki.org/wiki/Special:MyLanguage/Help:How_to_install_fonts this documentation] ।",
 );
 
 /** Polish (Polski)
