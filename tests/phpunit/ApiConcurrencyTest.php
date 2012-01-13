@@ -78,7 +78,7 @@ class ApiConcurrencyTest extends ApiTestCase {
 
 		$wgUser = self::$users['one']->user;
 		/* commenting these out since i need to go home and they're breakin CI.  See commit summary for details.
-		
+
 		list( $result, , $session ) =  $this->doApiRequestWithToken( array(
 									'action' => 'concurrency',
 									'ccaction' => 'checkout',
@@ -142,7 +142,7 @@ class ApiConcurrencyTest extends ApiTestCase {
 									'resourcetype' => 'responding-to-moodbar-feedback'), $sessionArray['two'], self::$users['two']->user );
 
 		$this->assertEquals( "success", $result['concurrency']['result'] );
-		*/	
+		*/
 	}
 
 	/**
@@ -152,17 +152,17 @@ class ApiConcurrencyTest extends ApiTestCase {
 		$exception = false;
 		try {
 			global $wgUser;
-			
+
 			$wgUser = self::$users['one']->user;
-		
+
 			list( $result, , $session ) =  $this->doApiRequestWithToken( array(
 												'action' => 'concurrency',
 												'ccaction' => 'checkinX',
 												'record' => 1,
-												'resourcetype' => 'responding-to-moodbar-feedback'), $sessionArray['one'], self::$users['one']->user );
+												'resourcetype' => 'responding-to-moodbar-feedback' ), $sessionArray['one'], self::$users['one']->user );
 		} catch ( UsageException $e ) {
 			$exception = true;
-			$this->assertEquals("Unrecognized value for parameter 'ccaction': checkinX",
+			$this->assertEquals( "Unrecognized value for parameter 'ccaction': checkinX",
 				$e->getMessage() );
 		}
 		$this->assertTrue( $exception, "Got exception" );
