@@ -42,6 +42,13 @@ $messages['de'] = array(
 	'categorysortheaders-desc' => 'Ermöglicht, unter Angabe eines abweichenden Titels zur Anzeige, die Einsortierung von Seiten in Kategorien <!--<nowiki>[[category:Foo|^Header^Invisible part of sortkey]]</nowiki>-->',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'categorysortheaders-desc' => 'Dowólujo swójske sortěrowańske głowy z někotarymi znamuškami pódaś, aby se boki z pomocu syntaksy <nowiki>[[category:Foo|^Header^Invisible part of sortkey]]</nowiki> do kategorijow sortěrowali',
+);
+
 /** French (Français)
  * @author Gomoko
  */
