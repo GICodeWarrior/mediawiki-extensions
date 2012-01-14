@@ -19,7 +19,6 @@ CREATE TABLE IF NOT EXISTS /*_*/ep_orgs (
 CREATE UNIQUE INDEX /*i*/ep_org_name ON /*_*/ep_orgs (org_name);
 CREATE INDEX /*i*/ep_org_terms ON /*_*/ep_orgs (org_terms);
 CREATE INDEX /*i*/ep_org_courses ON /*_*/ep_orgs (org_courses);
-CREATE INDEX /*i*/ep_org_mentors ON /*_*/ep_orgs (org_mentors);
 CREATE INDEX /*i*/ep_org_students ON /*_*/ep_orgs (org_students);
 CREATE INDEX /*i*/ep_org_active ON /*_*/ep_orgs (org_active);
 
