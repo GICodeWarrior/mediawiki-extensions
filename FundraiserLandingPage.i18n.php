@@ -35,6 +35,13 @@ $messages['de'] = array(
 	'fundraiserlandingpage-desc' => 'Ermögliche die Nutzung von URL-Parametern als Vorlagenvariablen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'fundraiserlandingpage-desc' => 'Pśepódawa URL-parametry na pódanu pśedłogu ako wariable pśedłogi',
+);
+
 /** Esperanto (Esperanto)
  * @author Blahma
  */
