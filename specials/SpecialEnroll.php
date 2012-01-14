@@ -52,15 +52,20 @@ class SpecialEnroll extends SpecialEPPage {
 			}
 			elseif ( $term->getStatus() === 'current' ) {
 				$token = '';
+				$tokenIsValid = $term->getField( 'token' ) === '';
 				
-				if ( count( $args ) === 2 ) {
-					$token = $args[1];
-				}
-				elseif ( $this->getRequest()->wasPosted() && $this->getRequest()->getCheck( 'wptoken' ) ) {
-					$token = $this->getRequest()->getText( 'wptoken' );
+				if ( !$tokenIsValid ) {
+					$tokenIsValid = $term->getField( 'token' ) === $token;
+					
+					if ( count( $args ) === 2 ) {
+						$token = $args[1];
+					}
+					elseif ( $this->getRequest()->wasPosted() && $this->getRequest()->getCheck( 'wptoken' ) ) {
+						$token = $this->getRequest()->getText( 'wptoken' );
+					}
 				}
 				
-				if ( $term->getField( 'token' ) === $token ) {
+				if ( $tokenIsValid ) {
 					$this->showEnrollmentView( $term );
 				}
 				else {

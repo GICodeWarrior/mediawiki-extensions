@@ -41,7 +41,7 @@ class SpecialEditTerm extends SpecialEPFormPage {
 			'options' => $courseOptions,
 			'validation-callback' => function ( $value, array $alldata = null ) use ( $courseOptions ) {
 				return in_array( (int)$value, array_values( $courseOptions ) ) ? true : wfMsg( 'ep-term-invalid-course' );
-			} ,
+			},
 		);
 
 		$fields['token'] = array (
@@ -51,7 +51,8 @@ class SpecialEditTerm extends SpecialEPFormPage {
 			'required' => true,
 			'size' => 20,
 			'validation-callback' => function ( $value, array $alldata = null ) {
-				return strlen( $value ) < 2 ? wfMsgExt( 'ep-term-invalid-token', 'parsemag', 2 ) : true;
+				$strLen = strlen( $value );
+				return ( $strLen !== 0 && $strLen < 2 ) ? wfMsgExt( 'ep-term-invalid-token', 'parsemag', 2 ) : true;
 			} ,
 		);
 
