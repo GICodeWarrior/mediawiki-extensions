@@ -246,14 +246,6 @@ abstract class EPPager extends TablePager {
 	 */
 	protected function getMultipleItemActions() {
 		$actions = array();
-
-		if ( false ) { // TODO: $this->getUser()->isAllowed( 'epadmin' )
-			$actions[wfMsg( 'ep-pager-delete-selected' )] = array(
-				'class' => 'ep-pager-delete-selected',
-				'data-type' => ApiDeleteEducation::getTypeForClassName( $this->className )
-			);
-		}
-
 		return $actions;
 	}
 

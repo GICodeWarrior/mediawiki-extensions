@@ -353,13 +353,9 @@ $messages['en'] = array(
  * @author Jeroen De Dauw
  */
 $messages['qqq'] = array(
-	'right-epadmin' => '{{doc-right|epadmin}}',
-	'right-epstudent' => '{{doc-right|epstudent}}',
-	'right-epmentor' => '{{doc-right|epmentor}}',
+	'right-' => '{{doc-right|}}',
 
-	'action-epadmin' => '{{doc-action|epadmin}}',
-	'action-epstudent' => '{{doc-action|epstudent}}',
-	'action-epmentor' => '{{doc-action|epmentor}}',
+	'action-' => '{{doc-action|}}',
 
 	'specialpages-group-education' => 'Special pages group, h2',
 	'special-mycourses' => '{{doc-special|mycourses}}',

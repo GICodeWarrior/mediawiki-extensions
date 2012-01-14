@@ -108,14 +108,6 @@ class EPStudentPager extends EPPager {
 
 	/**
 	 * (non-PHPdoc)
-	 * @see EPPager::getMultipleItemActions()
-	 */
-	protected function getMultipleItemActions() {
-		return array();
-	}
-
-	/**
-	 * (non-PHPdoc)
 	 * @see EPPager::hasActionsColumn()
 	 */
 	protected function hasActionsColumn() {

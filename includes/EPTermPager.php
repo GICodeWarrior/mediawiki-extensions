@@ -198,6 +198,13 @@ class EPTermPager extends EPPager {
 	protected function getMultipleItemActions() {
 		$actions = parent::getMultipleItemActions();
 
+		if ( $this->getUser()->isAllowed( 'ep-term' ) ) {
+			$actions[wfMsg( 'ep-pager-delete-selected' )] = array(
+				'class' => 'ep-pager-delete-selected',
+				'data-type' => ApiDeleteEducation::getTypeForClassName( $this->className )
+			);
+		}
+		
 		return $actions;
 	}
 

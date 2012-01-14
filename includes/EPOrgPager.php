@@ -162,5 +162,22 @@ class EPOrgPager extends EPPager {
 
 		return $links;
 	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see EPPager::getMultipleItemActions()
+	 */
+	protected function getMultipleItemActions() {
+		$actions = parent::getMultipleItemActions();
+
+		if ( $this->getUser()->isAllowed( 'ep-org' ) ) {
+			$actions[wfMsg( 'ep-pager-delete-selected' )] = array(
+				'class' => 'ep-pager-delete-selected',
+				'data-type' => ApiDeleteEducation::getTypeForClassName( $this->className )
+			);
+		}
+		
+		return $actions;
+	}
 
 }

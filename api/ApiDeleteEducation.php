@@ -25,8 +25,6 @@ class ApiDeleteEducation extends ApiBase {
 		'org' => 'EPOrg',
 		'course' => 'EPCourse',
 		'term' => 'EPTerm',
-		'student' => 'EPStudent',
-		'mentor' => 'EPMentor',
 	);
 
 	/**
@@ -83,34 +81,7 @@ class ApiDeleteEducation extends ApiBase {
 	 * @return boolean
 	 */
 	protected function userIsAllowed( $type, array $params ) {
-		$user = $this->getUser();
-
-		if ( $type === 'student' ) {
-			return EPStudent::selectField( 'id', array( 'user_id' => $user->getId() ) ) === $params['id'];
-		}
-
-		if ( $type === 'mentor' ) {
-			return EPMentor::selectField( 'id', array( 'user_id' => $user->getId() ) ) === $params['id'];
-		}
-
-		if ( $user->isAllowed( 'epadmin' ) ) {
-			return true;
-		}
-
-		if ( $user->isAllowed( 'epmentor' ) ) {
-			$mentor = new EPMentor( array( 'user_id' => $user->getId() ) );
-
-			if ( $mentor !== false ) {
-				if ( $type === 'course' ) {
-					return $mentor->hasCourse( array( 'id' => $params['id'] ) );
-				}
-				elseif ( $type === 'term' ) {
-					return $mentor->hasTerm( array( 'id' => $params['id'] ) );
-				}
-			}
-		}
-
-		return false;
+		return $this->getUser()->isAllowed( 'ep-' . $type );
 	}
 
 	/**

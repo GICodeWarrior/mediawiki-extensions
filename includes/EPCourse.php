@@ -212,7 +212,7 @@ class EPCourse extends EPDBObject {
 	 * @return boolean
 	 */
 	public static function displayAddNewControl( IContextSource $context, array $args = array() ) {
-		if ( !$context->getUser()->isAllowed( 'epmentor' ) ) {
+		if ( !$context->getUser()->isAllowed( 'ep-course' ) ) {
 			return false;
 		}
 
@@ -326,6 +326,23 @@ class EPCourse extends EPDBObject {
 			SpecialPage::getTitleFor( 'Course', $this->getField( 'name' ) ),
 			htmlspecialchars( $this->getField( 'name' ) )
 		);
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see EPPager::getMultipleItemActions()
+	 */
+	protected function getMultipleItemActions() {
+		$actions = parent::getMultipleItemActions();
+
+		if ( $this->getUser()->isAllowed( 'ep-course' ) ) {
+			$actions[wfMsg( 'ep-pager-delete-selected' )] = array(
+				'class' => 'ep-pager-delete-selected',
+				'data-type' => ApiDeleteEducation::getTypeForClassName( $this->className )
+			);
+		}
+		
+		return $actions;
 	}
 
 }
