@@ -40,6 +40,13 @@ $messages['de'] = array(
 	'localjquery-desc' => 'Ermöglicht das Laden einer lokalen [[MediaWiki:JQuery.js]] mithilfe des MediaWiki-ResourceLoader',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'localjquery-desc' => 'jQuery z [[MediaWiki:JQuery.js]] z pomocu ResourceLoader zacytaś',
+);
+
 /** French (Français)
  * @author Od1n
  */
