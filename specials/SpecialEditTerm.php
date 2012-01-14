@@ -32,7 +32,7 @@ class SpecialEditTerm extends SpecialEPFormPage {
 	protected function getFormFields() {
 		$fields = parent::getFormFields();
 
-		$courseOptions = EPCourse::getCourseOptions( array() ); // TODO
+		$courseOptions = EPCourse::getCourseOptions();
 
 		$fields['course_id'] = array (
 			'type' => 'select',

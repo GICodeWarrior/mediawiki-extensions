@@ -109,7 +109,7 @@ class SpecialTerm extends SpecialEPPage {
 			htmlspecialchars( $course )
 		);
 
-		$stats['year'] = htmlspecialchars( $term->getField( 'year' ) ); // TODO: how to properly i18n this?
+		$stats['year'] = htmlspecialchars( $this->getLanguage()->formatNum( $term->getField( 'year' ), true ) );
 		$stats['start'] = htmlspecialchars( $this->getLanguage()->timeanddate( $term->getField( 'start' ), true ) );
 		$stats['end'] = htmlspecialchars( $this->getLanguage()->timeanddate( $term->getField( 'end' ), true ) );
 

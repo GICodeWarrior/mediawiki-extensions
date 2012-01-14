@@ -364,7 +364,7 @@ class EPTerm extends EPDBObject {
 			array_key_exists( 'course', $args ) ? $args['course'] : false
 		);
 
-		$select->addOptions( EPCourse::getCourseOptions( array() ) ); // TODO
+		$select->addOptions( EPCourse::getCourseOptions() );
 		$out->addHTML( $select->getHTML() );
 
 		$out->addHTML( '&#160;' . Xml::inputLabel( wfMsg( 'ep-terms-newyear' ), 'newyear', 'newyear', 10 ) );
@@ -392,9 +392,7 @@ class EPTerm extends EPDBObject {
 	 * @param array $args
 	 */
 	public static function displayAddNewRegion( IContextSource $context, array $args = array() ) {
-		$courses = array(); // TODO
-
-		if ( count( $courses ) > 0 ) {
+		if ( EPCourse::has() ) {
 			EPTerm::displayAddNewControl( $context, $args );
 		}
 		elseif ( $context->getUser()->isAllowed( 'ep-course' ) ) {

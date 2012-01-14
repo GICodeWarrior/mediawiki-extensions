@@ -40,7 +40,7 @@ class SpecialEditCourse extends SpecialEPFormPage {
 			} ,
 		);
 
-		$orgOptions = EPOrg::getOrgOptions( array() ); // TODO
+		$orgOptions = EPOrg::getOrgOptions();
 
 		$fields['org_id'] = array (
 			'type' => 'select',

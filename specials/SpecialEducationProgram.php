@@ -34,7 +34,7 @@ class SpecialEducationProgram extends SpecialEPPage {
 
 		$out = $this->getOutput();
 
-		// TODO: AUTH
+		// TODO
 	}
 
 }

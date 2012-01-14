@@ -182,13 +182,17 @@ class EPCourse extends EPDBObject {
 	 *
 	 * @since 0.1
 	 *
-	 * @param array $courses
+	 * @param array|null $courses
 	 *
 	 * @return array
 	 */
-	public static function getCourseOptions( array /* EPCourse */ $courses ) {
+	public static function getCourseOptions( array /* EPCourse */ $courses = null ) {
 		$options = array();
 
+		if ( is_null( $courses ) ) {
+			$courses = EPCourse::select( array( 'name', 'id' ) );
+		}
+		
 		foreach ( $courses as /* EPCourse */ $course ) {
 			$options[$course->getField( 'name' )] = $course->getId();
 		}
@@ -238,7 +242,7 @@ class EPCourse extends EPDBObject {
 			array_key_exists( 'org', $args ) ? $args['org'] : false
 		);
 
-		$select->addOptions( EPOrg::getOrgOptions( array() ) ); // TODO
+		$select->addOptions( EPOrg::getOrgOptions() );
 		$out->addHTML( $select->getHTML() );
 
 		$out->addHTML( '&#160;' );
@@ -276,15 +280,10 @@ class EPCourse extends EPDBObject {
 	 * @param array $args
 	 */
 	public static function displayAddNewRegion( IContextSource $context, array $args = array() ) {
-		$orgs = array(); // TODO
-
-		if ( count( $orgs ) > 0 ) {
+		if ( EPOrg::has() ) {
 			EPCourse::displayAddNewControl( $context, $args );
 		}
-		elseif ( $context->getUser()->isAllowed( 'epadmin' ) ) {
-			$context->getOutput()->addWikiMsg( 'ep-courses-noorgs' );
-		}
-		elseif ( $context->getUser()->isAllowed( 'epmentor' ) ) {
+		elseif ( $context->getUser()->isAllowed( 'ep-org' ) ) {
 			$context->getOutput()->addWikiMsg( 'ep-courses-addorgfirst' );
 		}
 	}

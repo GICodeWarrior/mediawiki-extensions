@@ -171,13 +171,17 @@ class EPOrg extends EPDBObject {
 	 *
 	 * @since 0.1
 	 *
-	 * @param array $orgs
+	 * @param array|null $orgs
 	 *
 	 * @return array
 	 */
-	public static function getOrgOptions( array /* EPOrg */ $orgs ) {
+	public static function getOrgOptions( array /* EPOrg */ $orgs = null ) {
 		$options = array();
 
+		if ( is_null( $orgs ) ) {
+			$orgs = EPOrg::select( array( 'name', 'id' ) );
+		}
+		
 		foreach ( $orgs as /* EPOrg */ $org ) {
 			$options[$org->getField( 'name' )] = $org->getId();
 		}
