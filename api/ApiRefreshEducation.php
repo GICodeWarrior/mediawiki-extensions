@@ -12,7 +12,7 @@
  * @licence GNU GPL v3+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ApiDeleteEducation extends ApiBase {
+class ApiRefreshEducation extends ApiBase {
 
 	/**
 	 * Maps class names to values for the type parameter.
