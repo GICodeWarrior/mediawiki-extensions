@@ -169,9 +169,8 @@ class EPStudent extends EPDBObject {
 	 * @return array of EPCourse
 	 */
 	public function getCurrentCourses( $fields = null, array $conditions = array() ) {
-		return $this->getCourses( $fields, $conditions, array(
-			'end >= ' . wfGetDB( DB_SLAVE )->addQuotes( wfTimestampNow() )
-		) );
+		$conditions['active'] = 1;
+		return $this->getCourses( $fields, $conditions );
 	}
 
 	/**
@@ -185,9 +184,8 @@ class EPStudent extends EPDBObject {
 	 * @return array of EPCourse
 	 */
 	public function getPassedCourses( $fields = null, array $conditions = array() ) {
-		return $this->getCourses( $fields, $conditions, array(
-			'end < ' . wfGetDB( DB_SLAVE )->addQuotes( wfTimestampNow() )
-		) );
+		$conditions['active'] = 0;
+		return $this->getCourses( $fields, $conditions );
 	}
 
 	/**
