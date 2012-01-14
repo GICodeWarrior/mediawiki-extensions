@@ -327,22 +327,5 @@ class EPCourse extends EPDBObject {
 			htmlspecialchars( $this->getField( 'name' ) )
 		);
 	}
-	
-	/**
-	 * (non-PHPdoc)
-	 * @see EPPager::getMultipleItemActions()
-	 */
-	protected function getMultipleItemActions() {
-		$actions = parent::getMultipleItemActions();
-
-		if ( $this->getUser()->isAllowed( 'ep-course' ) ) {
-			$actions[wfMsg( 'ep-pager-delete-selected' )] = array(
-				'class' => 'ep-pager-delete-selected',
-				'data-type' => ApiDeleteEducation::getTypeForClassName( $this->className )
-			);
-		}
-		
-		return $actions;
-	}
 
 }
