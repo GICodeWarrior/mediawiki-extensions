@@ -221,6 +221,28 @@ $messages['gl'] = array(
 	'translatesvg-toggle-hide' => 'Agochar todas as traducións nesta lingua',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'translatesvg-desc' => 'מתן ממשק ילידי לתרגום קובצי SVG בהתאם לתקן SVG1.1',
+	'translatesvg-legend' => 'נתיב לקובץ',
+	'translatesvg-page' => 'קובץ:',
+	'translatesvg-submit' => 'קדימה',
+	'translatesvg-summary' => 'הדף המיוחד הזה מאפשר לך להוסיף, להסיר ולשנות תרגומים ש מוטמעים בקובץ SVG.',
+	'translatesvg-add' => 'עם שפתך אינה רשומה כבר, אפשר [[#addlanguage|להוסיף אותה]].',
+	'translatesvg-xcoordinate-pre' => 'נקודה על ציר X (אופקי):',
+	'translatesvg-ycoordinate-pre' => 'נקודה על ציר Y (אנכי):',
+	'translatesvg-specify' => 'קוד השפה החדשה (למשל en‏, fr‏, es‏, he...)',
+	'translatesvg-fallbackdesc' => 'בררת מחדל (ללא הגדרת שפה)',
+	'translatesvg-qqqdesc' => 'עצות למתרגמים',
+	'translatesvg-nodesc' => '(אין תיאור)',
+	'translatesvg-remove' => 'הסרת כל התרגומים לשפה הזאת',
+	'translatesvg-unsuccessful' => "'''לא התאפשר לתרגם את הקובץ הזה''', סליחה.",
+	'translatesvg-toggle-view' => 'הצגת התרגומים לשפה הזאת',
+	'translatesvg-toggle-hide' => 'הסתרת התרגומים לשפה הזאת',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
