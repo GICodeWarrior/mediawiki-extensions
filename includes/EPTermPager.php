@@ -115,7 +115,7 @@ class EPTermPager extends EPPager {
 			unset( $fields['org_id'] );
 		}
 
-		$fields = wfArrayInsertAfter( $fields, array( '_status' => 'status' ), 'end' );
+		$fields = wfArrayInsertAfter( $fields, array( '_status' => 'status' ), 'students' );
 
 		return $fields;
 	}

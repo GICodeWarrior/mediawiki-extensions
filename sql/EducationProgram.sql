@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS /*_*/ep_orgs (
   org_active                 TINYINT unsigned    NOT NULL, -- If the org has any active terms
   org_courses                SMALLINT unsigned   NOT NULL, -- Amount of courses
   org_terms                  SMALLINT unsigned   NOT NULL, -- Amount of terms
-  org_mentors                SMALLINT unsigned   NOT NULL, -- Amount of mentors
   org_students               INT unsigned        NOT NULL -- Amount of students
 ) /*$wgDBTableOptions*/;
 
