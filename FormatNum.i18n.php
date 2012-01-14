@@ -41,6 +41,13 @@ $messages['de'] = array(
 	'formatnum-desc' => 'Ermöglicht das Formatieren von Zahlen mit php number_format',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'formatnum-desc' => 'Formatěrujo licby we formaśe number_format z PHP',
+);
+
 /** French (Français)
  * @author Gomoko
  */
