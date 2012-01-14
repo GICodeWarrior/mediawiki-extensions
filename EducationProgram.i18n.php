@@ -66,12 +66,12 @@ $messages['en'] = array(
 	'right-ep-enroll' => 'Enroll in Education Program terms',
 
 	// Actions
-	'right-ep-org' => 'manage institutions',
-	'right-ep-course' => 'manage courses',
-	'right-ep-term' => 'manage terms',
-	'right-ep-token' => 'see enrollment tokens',
-	'right-ep-remstudent' => 'remove students from terms',
-	'right-ep-enroll' => 'enroll in terms',
+	'action-ep-org' => 'manage institutions',
+	'action-ep-course' => 'manage courses',
+	'action-ep-term' => 'manage terms',
+	'action-ep-token' => 'see enrollment tokens',
+	'action-ep-remstudent' => 'remove students from terms',
+	'action-ep-enroll' => 'enroll in terms',
 
 	// Groups
 	'group-epadmin' => 'Education program admins',
