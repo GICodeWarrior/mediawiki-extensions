@@ -10,4 +10,9 @@ Latest version of the release notes: http://svn.wikimedia.org/viewvc/mediawiki/t
 
 Initial release with these features:
 
+* Management and browsing interfaces for institutions, courses and terms.
+* Pages with summaries and linked items for all institutions, courses and terms.
+* Enrollment page for students with optional token requirement.
+* Sortable and filterable list of students.
+* Personal courses overview at Special:MyCourses for students.
 * ...

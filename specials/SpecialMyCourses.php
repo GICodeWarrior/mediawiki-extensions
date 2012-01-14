@@ -44,6 +44,10 @@ class SpecialMyCourses extends SpecialEPPage {
 			$this->getOutput()->addWikiMsg( 'ep-mycourses-not-a-student' );
 		}
 		else {
+			if ( $this->getUser()->isAllowed( 'ep-org' ) ) {
+				$this->displayNavigation();
+			}
+			
 			if ( $this->subPage === '' ) {
 				$this->displayCourses( $student );
 			}
@@ -193,6 +197,18 @@ class SpecialMyCourses extends SpecialEPPage {
 		}
 
 		$this->displaySummary( $course, false, $info );
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see SpecialEPPage::getDefaultNavigationItems()
+	 */
+	protected function getDefaultNavigationItems() {
+		$items = parent::getDefaultNavigationItems();
+		
+		unset( $items[wfMsg( 'ep-nav-mycourses' )] );
+		
+		return $items;
 	}
 
 }

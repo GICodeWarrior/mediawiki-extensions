@@ -103,11 +103,11 @@ class SpecialCourse extends SpecialEPPage {
 			htmlspecialchars( $org )
 		);
 
+		$stats['status'] = wfMsgHtml( $course->getField( 'active' ) ? 'ep-course-active' : 'ep-course-inactive' );
+		
 		$lang = $this->getLanguage();
 
 		$stats['students'] = htmlspecialchars( $lang->formatNum( $course->getField( 'students' ) ) );
-
-		$stats['status'] = wfMsgHtml( $course->getField( 'active' ) ? 'ep-course-active' : 'ep-course-inactive' );
 
 		$termCount = EPTerm::count( array( 'course_id' => $course->getId() ) );
 		$stats['terms'] = htmlspecialchars( $lang->formatNum( $termCount ) );
