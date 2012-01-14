@@ -574,7 +574,11 @@ $messages['lb'] = array(
 	'semanticformsinputs-prev' => 'Vireg',
 	'semanticformsinputs-next' => 'Nächst',
 	'semanticformsinputs-today' => 'Haut',
+	'semanticformsinputs-datepicker-weekstart' => 'Den éischten Dag vun der Woch (0 - Sonndeg, 1 - Méindeg, ...).',
+	'semanticformsinputs-datepicker-firstdate' => 'Den éischten Datum deen erausgesicht ka ginn (am Format JJJJ/MM/DD)',
+	'semanticformsinputs-datepicker-lastdate' => 'De leschten Datum deen erausgesicht ka ginn (am Format JJJJ/MM/DD)',
 	'semanticformsinputs-menuselect-structure' => "D'Struktur vum Menü als net zortéiert Lëscht.",
+	'semanticformsinputs-menuselect-enableinputfield' => "Soll et dem Benotzer méiglech si fir d'Feld direkt auszefëllen?",
 );
 
 /** Macedonian (Македонски)
