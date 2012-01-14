@@ -64,6 +64,9 @@ $messages['en'] = array(
 	'right-ep-token' => 'See Education Program enrollment tokens',
 	'right-ep-remstudent' => 'Remove students from terms',
 	'right-ep-enroll' => 'Enroll in Education Program terms',
+	'right-ep-online' => 'Add or remove online ambassadors to terms',
+	'right-ep-campus' => 'Add or remove campus ambassadors to terms',
+	'right-ep-instructor' => 'Add or remove instructors to courses',
 
 	// Actions
 	'action-ep-org' => 'manage institutions',
@@ -72,6 +75,9 @@ $messages['en'] = array(
 	'action-ep-token' => 'see enrollment tokens',
 	'action-ep-remstudent' => 'remove students from terms',
 	'action-ep-enroll' => 'enroll in terms',
+	'action-ep-online' => 'add or remove online ambassadors to terms',
+	'action-ep-campus' => 'add or remove campus ambassadors to terms',
+	'action-ep-instructor' => 'add or remove instructors to courses',
 
 	// Groups
 	'group-epadmin' => 'Education program admins',

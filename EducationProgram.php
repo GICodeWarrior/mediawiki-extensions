@@ -166,13 +166,19 @@ $wgAvailableRights[] = 'ep-term';		// Manage terms
 $wgAvailableRights[] = 'ep-token';		// See enrollment tokens
 $wgAvailableRights[] = 'ep-enroll';		// Enroll as a student
 $wgAvailableRights[] = 'ep-remstudent';	// Dissasociate students from terms
+$wgAvailableRights[] = 'ep-online';		// Add or remove online ambassadors from terms
+$wgAvailableRights[] = 'ep-campus';		// Add or remove campus ambassadors from terms
+$wgAvailableRights[] = 'ep-instructor';	// Add or remove instructors from courses
 
+$wgGroupPermissions['*']['ep-enroll'] = true;
 $wgGroupPermissions['*']['ep-org'] = false;
 $wgGroupPermissions['*']['ep-course'] = false;
 $wgGroupPermissions['*']['ep-term'] = false;
 $wgGroupPermissions['*']['ep-token'] = false;
 $wgGroupPermissions['*']['ep-remstudent'] = false;
-$wgGroupPermissions['*']['ep-enroll'] = true;
+$wgGroupPermissions['*']['ep-online'] = false;
+$wgGroupPermissions['*']['ep-campus'] = false;
+$wgGroupPermissions['*']['ep-instructor'] = false;
 
 $wgGroupPermissions['epstaff']['ep-org'] = true;
 $wgGroupPermissions['epstaff']['ep-course'] = true;
@@ -180,6 +186,9 @@ $wgGroupPermissions['epstaff']['ep-term'] = true;
 $wgGroupPermissions['epstaff']['ep-token'] = true;
 $wgGroupPermissions['epstaff']['ep-enroll'] = true;
 $wgGroupPermissions['epstaff']['ep-remstudent'] = true;
+$wgGroupPermissions['epstaff']['ep-online'] = true;
+$wgGroupPermissions['epstaff']['ep-campus'] = true;
+$wgGroupPermissions['epstaff']['ep-instructor'] = true;
 
 $wgGroupPermissions['epadmin']['ep-org'] = true;
 $wgGroupPermissions['epadmin']['ep-course'] = true;
@@ -187,6 +196,9 @@ $wgGroupPermissions['epadmin']['ep-term'] = true;
 $wgGroupPermissions['epadmin']['ep-token'] = true;
 $wgGroupPermissions['epadmin']['ep-enroll'] = true;
 $wgGroupPermissions['epadmin']['ep-remstudent'] = true;
+$wgGroupPermissions['epadmin']['ep-online'] = true;
+$wgGroupPermissions['epadmin']['ep-campus'] = true;
+$wgGroupPermissions['epadmin']['ep-instructor'] = true;
 
 $wgGroupPermissions['eponlineamb']['ep-org'] = true;
 $wgGroupPermissions['eponlineamb']['ep-course'] = true;
@@ -203,6 +215,8 @@ $wgGroupPermissions['epinstructor']['ep-course'] = true;
 $wgGroupPermissions['epinstructor']['ep-term'] = true;
 $wgGroupPermissions['epinstructor']['ep-token'] = true;
 $wgGroupPermissions['epinstructor']['ep-remstudent'] = true;
+$wgGroupPermissions['epinstructor']['ep-online'] = true;
+$wgGroupPermissions['epinstructor']['ep-campus'] = true;
 
 $wgGroupPermissions['epstaff']['userrights'] = false;
 $wgAddGroups['epstaff'] = array( 'epstaff', 'epadmin', 'eponlineamb', 'epcampamb', 'epinstructor' );
