@@ -49,6 +49,18 @@ $messages['qqq'] = array(
 * $1 is the alt text of the image that can be viewed.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'zero-rated-mobile-access-search' => 'Klask',
+	'zero-rated-mobile-access-language-selection' => 'An holl yezhoù',
+	'zero-rated-mobile-access-home-page-selection' => 'pajenn degemer $1',
+	'zero-rated-mobile-access-banner-text' => '{{SITENAME}} dieub abaoe $1',
+	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Ya',
+	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Ket',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -58,7 +70,7 @@ $messages['de'] = array(
 	'zero-rated-mobile-access-language-selection' => 'Alle Sprachen',
 	'zero-rated-mobile-access-home-page-selection' => '$1 Startseite',
 	'zero-rated-mobile-access-home-page-selection-text' => 'Oder besuche die Startseite in der folgenden Sprache:',
-	'zero-rated-mobile-access-banner-text' => 'Kostenloser Zugriff auf {{SITENAME}} über $1',
+	'zero-rated-mobile-access-banner-text' => 'Kostenfreier Zugriff auf {{SITENAME}} über $1',
 	'zero-rated-mobile-access-banner-text-data-charges' => 'Datenübertragungsgebühren können anwendbar sein: $1 oder $2',
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Ja',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Nein',
@@ -102,6 +114,22 @@ $messages['fr'] = array(
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Oui',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Non',
 	'zero-rated-mobile-access-click-to-view-image' => 'Cliquez pour voir l\'image de, "$1"...',
+);
+
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'zero-rated-mobile-access-desc' => 'מתן יכולות לספקי תקשורת ניידת שנותנים גישה בחינם',
+	'zero-rated-mobile-access-search' => 'חיפוש',
+	'zero-rated-mobile-access-language-selection' => 'כל השפות',
+	'zero-rated-mobile-access-home-page-selection' => 'דף הבית של $1',
+	'zero-rated-mobile-access-home-page-selection-text' => 'או ללכת לדף הבית בשפה הבאה:',
+	'zero-rated-mobile-access-banner-text' => '{{SITENAME}} בחינם מ{{GRAMMAR:תחילית|$1}}',
+	'zero-rated-mobile-access-banner-text-data-charges' => 'ייתכן שיחול תשלום על העברת נתונים אם תמשיכו: $1 או $2',
+	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'כן',
+	'zero-rated-mobile-access-banner-text-data-charges-no' => 'לא',
+	'zero-rated-mobile-access-click-to-view-image' => 'לחצו כאן כדי להציג את התמונה, או "$1"...',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -174,6 +202,16 @@ $messages['ms'] = array(
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Ya',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Tidak',
 	'zero-rated-mobile-access-click-to-view-image' => 'Klik untuk melihat imej "$1"...',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'zero-rated-mobile-access-search' => 'Zeuken',
+	'zero-rated-mobile-access-banner-text' => 'Graotis {{SITENAME}} van $1',
+	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Ja',
+	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Nee',
 );
 
 /** Dutch (Nederlands)
