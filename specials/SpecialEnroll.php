@@ -25,6 +25,7 @@ class SpecialEnroll extends SpecialEPPage {
 	 * @since 0.1
 	 */
 	public function __construct() {
+		// We can not demand ep-enroll here already, since the user might first need to login.
 		parent::__construct( 'Enroll', '', false );
 	}
 
@@ -43,46 +44,107 @@ class SpecialEnroll extends SpecialEPPage {
 		if ( !ctype_digit( $args[0] ) ) {
 			$this->showWarning( wfMessage( $args[0] === '' ? 'ep-enroll-no-id' : 'ep-enroll-invalid-id' ) );
 		}
-		elseif ( count( $args ) === 1 ) {
-			// TODO: might want to have an input here
-			$this->showWarning( wfMessage( 'ep-enroll-no-token' ) );
-		}
-		elseif ( count( $args ) === 2 ) {
-			$term = EPTerm::selectRow( null, array(
-				'id' => $args[0],
-				'token' => $args[1]
-			) );
-
+		else {
+			$term = EPTerm::selectRow( null, array( 'id' => $args[0] ) );
+			
 			if ( $term === false ) {
-				$this->showWarning( wfMessage( 'ep-enroll-invalid-token' ) );
+				$this->showWarning( wfMessage( 'ep-enroll-nosuchterm' ) );
 			}
-			else {
-				$this->term = $term;
-
-				$this->setPageTitle( $term );
-
-				if ( $this->getUser()->isLoggedIn() ) {
-					if ( $this->getUser()->isAllowed( 'ep-enroll' ) ) {
-						$user = $this->getUser();
-						$hasFields = trim( $user->getRealName() ) !== '' && $user->getOption( 'gender' ) !== 'unknown';
-
-						if ( $hasFields ) {
-							$this->doEnroll( $term );
-							$this->onSuccess();
-						}
-						else {
-							$this->showEnrollmentForm( $term );
-						}
-					}
-					else {
-						$this->showWarning( wfMessage( 'ep-enroll-not-allowed' ) );
-					}
+			elseif ( $term->getStatus() === 'current' ) {
+				$token = '';
+				
+				if ( count( $args ) === 2 ) {
+					$token = $args[1];
+				}
+				elseif ( $this->getRequest()->wasPosted() && $this->getRequest()->getCheck( 'wptoken' ) ) {
+					$token = $this->getRequest()->getText( 'wptoken' );
+				}
+				
+				if ( $term->getField( 'token' ) === $token ) {
+					$this->showEnrollmentView( $term );
 				}
 				else {
-					$this->showSignupLink();
+					if ( $token !== '' ) {
+						$this->showWarning( wfMessage( 'ep-enroll-invalid-token' ) );
+					}
+					
+					$this->showTokenInput();
 				}
 			}
+			else {
+				$this->showWarning( wfMessage( 'ep-enroll-term-' . $term->getStatus() ) );
+			}
 		}
+	}
+	
+	/**
+	 * Shows the actuall enrollment view.
+	 * Should only be called after everything checks out, ie the user can enroll in the term.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param EPTerm $term
+	 */
+	protected function showEnrollmentView( EPTerm $term ) {
+		$this->term = $term;
+
+		$this->setPageTitle( $term );
+
+		if ( $this->getUser()->isLoggedIn() ) {
+			if ( $this->getUser()->isAllowed( 'ep-enroll' ) ) {
+				$user = $this->getUser();
+				$hasFields = trim( $user->getRealName() ) !== '' && $user->getOption( 'gender' ) !== 'unknown';
+
+				if ( $hasFields ) {
+					$this->doEnroll( $term );
+					$this->onSuccess();
+				}
+				else {
+					$this->showEnrollmentForm( $term );
+				}
+			}
+			else {
+				$this->showWarning( wfMessage( 'ep-enroll-not-allowed' ) );
+			}
+		}
+		else {
+			$this->showSignupLink();
+		}	
+	}
+	
+	/**
+	 * Show an input for a token.
+	 * 
+	 * @since 0.1
+	 */
+	protected function showTokenInput() {
+		$out = $this->getOutput();
+		
+	//	$out->addWikiMsg( 'ep-enroll-no-token' );
+		
+		$out->addHTML( Html::openElement(
+			'form',
+			array(
+				'method' => 'post',
+				'action' => $this->getTitle( $this->subPage )->getLocalURL(),
+			)
+		) );
+
+		$out->addHTML( '<fieldset>' );
+
+		$out->addHTML( '<legend>' . wfMsgHtml( 'ep-enroll-add-token' ) . '</legend>' );
+
+		$out->addHTML( Html::element( 'p', array(), wfMsg( 'ep-enroll-add-token-doc' ) ) );
+
+		$out->addHTML( '&#160;' . Xml::inputLabel( wfMsg( 'ep-enroll-token' ), 'wptoken', 'wptoken' ) );
+
+		$out->addHTML( '&#160;' . Html::input(
+			'submittoken',
+			wfMsg( 'ep-enroll-submit-token' ),
+			'submit'
+		) );
+
+		$out->addHTML( '</fieldset></form>' );
 	}
 
 	/**
@@ -238,6 +300,13 @@ class SpecialEnroll extends SpecialEPPage {
 					wfMsg( 'gender-female' ) => 'female',
 					wfMsg( 'gender-unknown' ) => 'unknown',
 				)
+			);
+		}
+		
+		if ( $this->getRequest()->getCheck( 'wptoken' ) ) {
+			$fields['token'] = array(
+				'type' => 'hidden',
+				'default' => $this->getRequest()->getText( 'wptoken' )
 			);
 		}
 

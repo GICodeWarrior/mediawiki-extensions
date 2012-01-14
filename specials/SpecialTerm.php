@@ -69,16 +69,20 @@ class SpecialTerm extends SpecialEPPage {
 
 				$out->addHTML( $this->getOutput()->parse( $term->getField( 'description' ) ) );
 
-				$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-term-students' ) ) );
-
 				$studentIds = array_map(
 					function( EPStudent $student ) {
 						return $student->getId();
 					},
 					$term->getStudents( 'id' )
 				);
-
-				EPStudent::displayPager( $this->getContext(), array( 'id' => $studentIds ) );
+				
+				if ( count( $studentIds ) > 0 ) {
+					$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-term-students' ) ) );
+					EPStudent::displayPager( $this->getContext(), array( 'id' => $studentIds ) );
+				}
+				else {
+					// TODO
+				}
 			}
 		}
 	}
