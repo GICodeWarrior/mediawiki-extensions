@@ -52,6 +52,14 @@ final class EPHooks {
 			dirname( __FILE__ ) . '/sql/AddMentorFields.sql',
 			true
 		) );
+		
+		$updater->addExtensionUpdate( array(
+			'addField',
+			'ep_terms',
+			'term_students',
+			dirname( __FILE__ ) . '/sql/AddStudentsField.sql',
+			true
+		) );
 
 		return true;
 	}

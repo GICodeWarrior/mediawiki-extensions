@@ -34,6 +34,7 @@ class EPTermPager extends EPPager {
 			'year',
 			'start',
 			'end',
+			'students',
 		);
 	}
 
@@ -81,6 +82,9 @@ class EPTermPager extends EPPager {
 				break;
 			case '_status':
 				$value = htmlspecialchars( EPTerm::getStatusMessage( $this->currentObject->getStatus() ) );
+			case 'students':
+				$value = htmlspecialchars( $this->getLanguage()->formatNum( $value ) );
+				break;
 		}
 
 		return $value;
@@ -96,6 +100,7 @@ class EPTermPager extends EPPager {
 			'year',
 			'start',
 			'end',
+			'students',
 		);
 	}
 

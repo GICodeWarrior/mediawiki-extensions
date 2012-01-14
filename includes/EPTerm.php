@@ -91,6 +91,8 @@ class EPTerm extends EPDBObject {
 			'end' => 'str', // TS_MW
 			'description' => 'str',
 			'token' => 'str',
+		
+			'students' => 'int',
 		);
 	}
 
@@ -105,6 +107,8 @@ class EPTerm extends EPDBObject {
 			'end' => wfTimestamp( TS_MW ),
 			'description' => '',
 			'token' => '',
+		
+			'students' => 0,
 		);
 	}
 
@@ -168,7 +172,7 @@ class EPTerm extends EPDBObject {
 	 */
 	public function loadSummaryFields( $summaryFields = null ) {
 		if ( is_null( $summaryFields ) ) {
-			$summaryFields = array( 'org_id' );
+			$summaryFields = array( 'org_id', 'students' );
 		}
 		else {
 			$summaryFields = (array)$summaryFields;
@@ -178,6 +182,16 @@ class EPTerm extends EPDBObject {
 
 		if ( in_array( 'org_id', $summaryFields ) ) {
 			$fields['org_id'] = $this->getCourse( 'org_id' )->getField( 'org_id' );
+		}
+		
+		if ( in_array( 'students', $summaryFields ) ) {
+			$fields['students'] = wfGetDB( DB_SLAVE )->select(
+				'ep_students_per_term',
+				'COUNT(*) AS rowcount',
+				array( 'spt_term_id' => $this->getId() )
+			);
+
+			$fields['students'] = $fields['students']->fetchObject()->rowcount;
 		}
 
 		$this->setFields( $fields );

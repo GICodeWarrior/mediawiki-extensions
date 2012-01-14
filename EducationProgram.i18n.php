@@ -205,6 +205,7 @@ $messages['en'] = array(
 	'eptermpager-filter-org-id' => 'Institution',
 	'eptermpager-header-status' => 'Status',
 	'eptermpager-filter-status' => 'Status',
+	'eptermpager-header-students' => 'Students',
 
 	// Student pager
 	'epstudentpager-header-user-id' => 'User',

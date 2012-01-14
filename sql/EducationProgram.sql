@@ -56,13 +56,16 @@ CREATE TABLE IF NOT EXISTS /*_*/ep_terms (
   term_description           TEXT                NOT NULL, -- Description of the term
   term_online_ambs           BLOB                NOT NULL, -- List of associated online abmassadors
   term_campus_ambs           BLOB                NOT NULL, -- List of associated campus abmassadors
-  term_token                 VARCHAR(255)        NOT NULL -- Token needed to enroll
+  term_token                 VARCHAR(255)        NOT NULL, -- Token needed to enroll
+  
+  term_students              SMALLINT unsigned   NOT NULL -- Amount of students
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/ep_term_year ON /*_*/ep_terms (term_year);
 CREATE INDEX /*i*/ep_term_start ON /*_*/ep_terms (term_start);
 CREATE INDEX /*i*/ep_term_end ON /*_*/ep_terms (term_end);
 CREATE UNIQUE INDEX /*i*/ep_trem_period ON /*_*/ep_terms (term_org_id, term_start, term_start);
+CREATE INDEX /*i*/ep_term_students ON /*_*/ep_terms (term_students);
 
 -- Students. In essence this is an extension to the user table.
 CREATE TABLE IF NOT EXISTS /*_*/ep_students (
