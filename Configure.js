@@ -147,7 +147,7 @@ window.fixAssocTable = function( table ){
 	var startName = 'wp' + table.attr( 'id' );
 	table.chidren( 'tr' ).each( function( i ) {
 		if ( i == 0 ) {
-			continue;
+			return;
 		}
 		var inputs = $( this ).chidren( 'input' );
 		inputs[0].attr( 'name', startName + '-key-' + (i - 1) );
