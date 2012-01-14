@@ -507,6 +507,7 @@ $messages['dsb'] = array(
 	'vector-editwarning-preference' => 'Warnowaś, gaž bok spušća se z njeskłaźonymi změnami',
 	'vector-simplesearch-search' => 'Pytaś',
 	'vector-simplesearch-containing' => 'wopśimujo...',
+	'vector-noexperiments-preference' => 'Mě z funkciskich eksperimentow wuzamknuś',
 );
 
 /** Greek (Ελληνικά)
