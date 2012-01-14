@@ -62,7 +62,7 @@ class SpecialEnroll extends SpecialEPPage {
 				$this->setPageTitle( $term );
 
 				if ( $this->getUser()->isLoggedIn() ) {
-					if ( $this->getUser()->isAllowed( 'epstudent' ) ) {
+					if ( $this->getUser()->isAllowed( 'ep-enroll' ) ) {
 						$user = $this->getUser();
 						$hasFields = trim( $user->getRealName() ) !== '' && $user->getOption( 'gender' ) !== 'unknown';
 

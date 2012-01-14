@@ -46,7 +46,7 @@ class SpecialCourse extends SpecialEPPage {
 			if ( $course === false ) {
 				$this->displayNavigation();
 
-				if ( $this->getUser()->isAllowed( 'epadmin' ) || $this->getUser()->isAllowed( 'epmentor' ) ) {
+				if ( $this->getUser()->isAllowed( 'ep-course' ) ) {
 					$out->addWikiMsg( 'ep-course-create', $this->subPage );
 					EPCourse::displayAddNewRegion( $this->getContext(), array( 'name' => $this->subPage ) );
 				}
@@ -57,7 +57,7 @@ class SpecialCourse extends SpecialEPPage {
 			else {
 				$links = array();
 
-				if ( $course->useCanManage( $this->getUser() ) ) {
+				if ( $this->getUser()->isAllowed( 'ep-course' ) ) {
 					$links[wfMsg( 'ep-course-nav-edit' )] = SpecialPage::getTitleFor( 'EditCourse', $this->subPage );
 				}
 
@@ -73,7 +73,7 @@ class SpecialCourse extends SpecialEPPage {
 
 				EPTerm::displayPager( $this->getContext(), array( 'course_id' => $course->getId() ) );
 
-				if ( $course->useCanManage( $this->getUser() ) ) {
+				if ( $this->getUser()->isAllowed( 'ep-course' ) ) {
 					$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-course-add-term' ) ) );
 
 					EPTerm::displayAddNewControl( $this->getContext(), array( 'course' => $course->getId() ) );

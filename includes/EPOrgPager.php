@@ -151,7 +151,7 @@ class EPOrgPager extends EPPager {
 			wfMsgHtml( 'view' )
 		);
 
-		if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
+		if ( $this->getUser()->isAllowed( 'ep-org' ) ) {
 			$links[] = $value = Linker::linkKnown(
 				SpecialPage::getTitleFor( 'EditInstitution', $item->getField( 'name' ) ),
 				wfMsgHtml( 'edit' )

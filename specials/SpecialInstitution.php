@@ -46,7 +46,7 @@ class SpecialInstitution extends SpecialEPPage {
 			if ( $org === false ) {
 				$this->displayNavigation();
 
-				if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
+				if ( $this->getUser()->isAllowed( 'ep-org' ) ) {
 					$out->addWikiMsg( 'ep-institution-create', $this->subPage );
 					EPOrg::displayAddNewControl( $this->getContext(), array( 'name' => $this->subPage ) );
 				}
@@ -57,7 +57,7 @@ class SpecialInstitution extends SpecialEPPage {
 			else {
 				$links = array();
 
-				if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
+				if ( $this->getUser()->isAllowed( 'ep-org' ) ) {
 					$links[wfMsg( 'ep-institution-nav-edit' )] = SpecialPage::getTitleFor( 'EditInstitution', $this->subPage );
 				}
 
@@ -69,7 +69,7 @@ class SpecialInstitution extends SpecialEPPage {
 
 				EPCourse::displayPager( $this->getContext(), array( 'org_id' => $org->getId() ) );
 
-				if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
+				if ( $this->getUser()->isAllowed( 'ep-course' ) ) {
 					$out->addHTML( Html::element( 'h2', array(), wfMsg( 'ep-institution-add-course' ) ) );
 
 					EPCourse::displayAddNewControl( $this->getContext(), array( 'org' => $org->getId() ) );

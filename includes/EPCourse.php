@@ -197,50 +197,6 @@ class EPCourse extends EPDBObject {
 	}
 
 	/**
-	 * Returns the list of orgs that the specified user can edit.
-	 *
-	 * @since 0.1
-	 *
-	 * @param User|int $user
-	 * @param array|null $fields
-	 *
-	 * @return array of EPCourse
-	 */
-	public static function getEditableCourses( $user, array $fields = null ) {
-		static $cache = array();
-
-		if ( is_int( $user ) ) {
-			$userId = $user;
-		}
-		else {
-			$userId = $user->getId();
-		}
-
-		if ( !array_key_exists( $userId, $cache ) ) {
-			if ( is_int( $user ) ) {
-				$user = User::newFromId( $userId );
-			}
-
-			$courses = array();
-
-			if ( $user->isAllowed( 'epadmin' ) ) {
-				$courses = self::select( $fields );
-			}
-			elseif ( $user->isAllowed( 'epmentor' ) ) {
-				$mentor = EPMentor::select( array( 'user_id' => $user->getId() ) );
-
-				if ( $mentor !== false ) {
-					$courses = $mentor->getCourses( $fields );
-				}
-			}
-
-			$cache[$userId] = $courses;
-		}
-
-		return $cache[$userId];
-	}
-
-	/**
 	 * Adds a control to add a new course to the provided context.
 	 * Additional arguments can be provided to set the default values for the control fields.
 	 *
@@ -282,7 +238,7 @@ class EPCourse extends EPDBObject {
 			array_key_exists( 'org', $args ) ? $args['org'] : false
 		);
 
-		$select->addOptions( EPOrg::getOrgOptions( EPOrg::getEditableOrgs( $context->getUser() ) ) );
+		$select->addOptions( EPOrg::getOrgOptions( array() ) ); // TODO
 		$out->addHTML( $select->getHTML() );
 
 		$out->addHTML( '&#160;' );
@@ -320,7 +276,7 @@ class EPCourse extends EPDBObject {
 	 * @param array $args
 	 */
 	public static function displayAddNewRegion( IContextSource $context, array $args = array() ) {
-		$orgs = EPOrg::getEditableOrgs( $context->getUser() );
+		$orgs = array(); // TODO
 
 		if ( count( $orgs ) > 0 ) {
 			EPCourse::displayAddNewControl( $context, $args );
@@ -357,31 +313,6 @@ class EPCourse extends EPDBObject {
 			$context->getOutput()->addHTML( $pager->getFilterControl( true ) );
 			$context->getOutput()->addWikiMsg( 'ep-courses-noresults' );
 		}
-	}
-
-	/**
-	 * Returns if the provided user can manage the course or not.
-	 *
-	 * @since 0.1
-	 *
-	 * @param User $user
-	 *
-	 * @return boolean
-	 */
-	public function useCanManage( User $user ) {
-		if ( $user->isAllowed( 'epadmin' ) ) {
-			return true;
-		}
-
-		if ( $user->isAllowed( 'epmentor' ) ) {
-			$mentor = EPMentor::selectRow( 'id', array( 'user_id' => $user->getId() ) );
-
-			if ( $mentor !== false ) {
-				return $mentor->hasCourse( array( 'id' => $this->getId() ) );
-			}
-		}
-
-		return false;
 	}
 
 	/**

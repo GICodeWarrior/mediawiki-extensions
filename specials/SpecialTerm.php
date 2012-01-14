@@ -46,7 +46,7 @@ class SpecialTerm extends SpecialEPPage {
 			if ( $term === false ) {
 				$this->displayNavigation();
 
-				if ( $this->getUser()->isAllowed( 'epadmin' ) || $this->getUser()->isAllowed( 'epmentor' ) ) {
+				if ( $this->getUser()->isAllowed( 'ep-term' ) ) {
 					$out->addWikiMsg( 'ep-term-create', $this->subPage );
 					EPTerm::displayAddNewRegion( $this->getContext(), array( 'id' => $this->subPage ) );
 				}
@@ -57,7 +57,7 @@ class SpecialTerm extends SpecialEPPage {
 			else {
 				$links = array();
 
-				if ( $term->useCanManage( $this->getUser() ) ) {
+				if ( $this->getUser()->isAllowed( 'ep-term' ) ) {
 					$links[wfMsg( 'ep-term-nav-edit' )] = SpecialPage::getTitleFor( 'EditTerm', $this->subPage );
 				}
 
@@ -113,7 +113,7 @@ class SpecialTerm extends SpecialEPPage {
 		$stats['start'] = htmlspecialchars( $this->getLanguage()->timeanddate( $term->getField( 'start' ), true ) );
 		$stats['end'] = htmlspecialchars( $this->getLanguage()->timeanddate( $term->getField( 'end' ), true ) );
 
-		if ( $term->useCanManage( $this->getUser() ) ) {
+		if ( $this->getUser()->isAllowed( 'ep-token' ) ) {
 			$stats['token'] = Linker::linkKnown(
 				SpecialPage::getTitleFor( 'Enroll', $term->getId() . '/' . $term->getField( 'token' ) ),
 				htmlspecialchars( $term->getField( 'token' ) )

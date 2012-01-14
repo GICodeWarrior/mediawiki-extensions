@@ -19,7 +19,7 @@ class SpecialEditInstitution extends SpecialEPFormPage {
 	 * @since 0.1
 	 */
 	public function __construct() {
-		parent::__construct( 'EditInstitution', 'epadmin', 'EPOrg', 'Institutions' );
+		parent::__construct( 'EditInstitution', 'ep-org', 'EPOrg', 'Institutions' );
 	}
 
 	/**

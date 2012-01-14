@@ -58,6 +58,7 @@ $wgAutoloadClasses['EPHooks'] 						= dirname( __FILE__ ) . '/EducationProgram.h
 $wgAutoloadClasses['EPSettings'] 					= dirname( __FILE__ ) . '/EducationProgram.settings.php';
 
 $wgAutoloadClasses['ApiDeleteEducation'] 			= dirname( __FILE__ ) . '/api/ApiDeleteEducation.php';
+$wgAutoloadClasses['ApiRefreshEducation'] 			= dirname( __FILE__ ) . '/api/ApiRefreshEducation.php';
 
 $wgAutoloadClasses['EPCourse'] 						= dirname( __FILE__ ) . '/includes/EPCourse.php';
 $wgAutoloadClasses['EPCoursePager'] 				= dirname( __FILE__ ) . '/includes/EPCoursePager.php';
@@ -137,6 +138,7 @@ $egEPDBObjects[] = array( 'table' => 'ep_mentors_per_org', 'prefix' => 'mpo_' );
 
 // API
 $wgAPIModules['deleteeducation'] 				= 'ApiDeleteEducation';
+$wgAPIModules['refresheducation'] 				= 'ApiRefreshEducation';
 
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] 		= 'EPHooks::onSchemaUpdate';

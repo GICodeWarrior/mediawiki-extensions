@@ -336,7 +336,7 @@ class EPTerm extends EPDBObject {
 	 * @return boolean
 	 */
 	public static function displayAddNewControl( IContextSource $context, array $args ) {
-		if ( !$context->getUser()->isAllowed( 'epmentor' ) ) {
+		if ( !$context->getUser()->isAllowed( 'ep-term' ) ) {
 			return false;
 		}
 
@@ -364,7 +364,7 @@ class EPTerm extends EPDBObject {
 			array_key_exists( 'course', $args ) ? $args['course'] : false
 		);
 
-		$select->addOptions( EPCourse::getCourseOptions( EPCourse::getEditableCourses( $context->getUser() ) ) );
+		$select->addOptions( EPCourse::getCourseOptions( array() ) ); // TODO
 		$out->addHTML( $select->getHTML() );
 
 		$out->addHTML( '&#160;' . Xml::inputLabel( wfMsg( 'ep-terms-newyear' ), 'newyear', 'newyear', 10 ) );
@@ -392,42 +392,14 @@ class EPTerm extends EPDBObject {
 	 * @param array $args
 	 */
 	public static function displayAddNewRegion( IContextSource $context, array $args = array() ) {
-		$courses = EPCourse::getEditableCourses( $context->getUser() );
+		$courses = array(); // TODO
 
 		if ( count( $courses ) > 0 ) {
 			EPTerm::displayAddNewControl( $context, $args );
 		}
-		elseif ( $context->getUser()->isAllowed( 'epadmin' ) ) {
-			$context->getOutput()->addWikiMsg( 'ep-terms-nocourses' );
-		}
-		elseif ( $context->getUser()->isAllowed( 'epmentor' ) ) {
+		elseif ( $context->getUser()->isAllowed( 'ep-course' ) ) {
 			$context->getOutput()->addWikiMsg( 'ep-terms-addcoursefirst' );
 		}
-	}
-
-	/**
-	 * Returns if the provided user can manage the term or not.
-	 *
-	 * @since 0.1
-	 *
-	 * @param User $user
-	 *
-	 * @return boolean
-	 */
-	public function useCanManage( User $user ) {
-		if ( $user->isAllowed( 'epadmin' ) ) {
-			return true;
-		}
-
-		if ( $user->isAllowed( 'epmentor' ) ) {
-			$mentor = EPMentor::selectRow( 'id', array( 'user_id' => $user->getId() ) );
-
-			if ( $mentor !== false ) {
-				return $mentor->hasTerm( array( 'id' => $this->getId() ) );
-			}
-		}
-
-		return false;
 	}
 
 	/**

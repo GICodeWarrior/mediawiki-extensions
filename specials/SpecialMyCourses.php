@@ -21,7 +21,7 @@ class SpecialMyCourses extends SpecialEPPage {
 	 * @since 0.1
 	 */
 	public function __construct() {
-		parent::__construct( 'MyCourses', 'epstudent' );
+		parent::__construct( 'MyCourses', 'ep-enroll' );
 	}
 
 	/**

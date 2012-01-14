@@ -179,7 +179,7 @@ class EPTermPager extends EPPager {
 			wfMsgHtml( 'view' )
 		);
 
-		if ( $this->getUser()->isAllowed( 'epadmin' ) ) {
+		if ( $this->getUser()->isAllowed( 'ep-term' ) ) {
 			$links[] = $value = Linker::linkKnown(
 				SpecialPage::getTitleFor( 'EditTerm', $item->getId() ),
 				wfMsgHtml( 'edit' )

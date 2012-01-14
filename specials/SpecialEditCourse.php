@@ -19,7 +19,7 @@ class SpecialEditCourse extends SpecialEPFormPage {
 	 * @since 0.1
 	 */
 	public function __construct() {
-		parent::__construct( 'EditCourse', 'epmentor', 'EPCourse', 'Courses' );
+		parent::__construct( 'EditCourse', 'ep-course', 'EPCourse', 'Courses' );
 	}
 
 	/**
@@ -40,7 +40,7 @@ class SpecialEditCourse extends SpecialEPFormPage {
 			} ,
 		);
 
-		$orgOptions = EPOrg::getOrgOptions( EPOrg::getEditableOrgs( $this->getUser() ) );
+		$orgOptions = EPOrg::getOrgOptions( array() ); // TODO
 
 		$fields['org_id'] = array (
 			'type' => 'select',

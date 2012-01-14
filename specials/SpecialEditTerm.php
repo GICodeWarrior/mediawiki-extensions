@@ -19,7 +19,7 @@ class SpecialEditTerm extends SpecialEPFormPage {
 	 * @since 0.1
 	 */
 	public function __construct() {
-		parent::__construct( 'EditTerm', 'epmentor', 'EPTerm', 'Terms' );
+		parent::__construct( 'EditTerm', 'ep-term', 'EPTerm', 'Terms' );
 
 		$this->getOutput()->addModules( 'ep.datepicker' );
 	}
@@ -32,7 +32,7 @@ class SpecialEditTerm extends SpecialEPFormPage {
 	protected function getFormFields() {
 		$fields = parent::getFormFields();
 
-		$courseOptions = EPCourse::getCourseOptions( EPCourse::getEditableCourses( $this->getUser() ) );
+		$courseOptions = EPCourse::getCourseOptions( array() ); // TODO
 
 		$fields['course_id'] = array (
 			'type' => 'select',

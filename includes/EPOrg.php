@@ -186,37 +186,6 @@ class EPOrg extends EPDBObject {
 	}
 
 	/**
-	 * Returns the list of orgs that the specified user can edit.
-	 *
-	 * @since 0.1
-	 *
-	 * @param User|int $user
-	 * @param array|null $fields
-	 *
-	 * @return array of EPOrg
-	 */
-	public static function getEditableOrgs( $user, array $fields = null ) {
-		if ( is_int( $user ) ) {
-			$userId = $user;
-			$user = User::newFromId( $user );
-		}
-		else {
-			$userId = $user->getId();
-		}
-
-		if ( $user->isAllowed( 'epadmin' ) ) {
-			return self::select( $fields );
-		}
-		elseif ( $user->isAllowed( 'epmentor' ) ) {
-			$mentor = EPMentor::selectRow( 'id', array( 'user_id' => $userId ) );
-			return $mentor === false ? array() : $mentor->getOrgs( $fields );
-		}
-		else {
-			return array();
-		}
-	}
-
-	/**
 	 * Adds a control to add a new org to the provided context.
 	 * Adittional arguments can be provided to set the default values for the control fields.
 	 *
@@ -228,7 +197,7 @@ class EPOrg extends EPDBObject {
 	 * @return boolean
 	 */
 	public static function displayAddNewControl( IContextSource $context, array $args = array() ) {
-		if ( !$context->getUser()->isAllowed( 'epadmin' ) ) {
+		if ( !$context->getUser()->isAllowed( 'ep-org' ) ) {
 			return false;
 		}
 
