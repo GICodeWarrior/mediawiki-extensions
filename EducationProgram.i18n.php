@@ -58,27 +58,41 @@ $messages['en'] = array(
 	'ep-prefs-showtoplink' => 'Show a link to [[Special:MyCourses|your courses]] at the top of every page.',
 
 	// Rights
-	'right-epadmin' => 'Manage the education program',
-	'right-epstudent' => 'Enroll in the education program',
-	'right-epmentor' => 'Mentor in the education program',
+	'right-ep-org' => 'Manage Education Program institutions',
+	'right-ep-course' => 'Manage Education Program courses',
+	'right-ep-term' => 'Manage Education Program terms',
+	'right-ep-token' => 'See Education Program enrollment tokens',
+	'right-ep-remstudent' => 'Remove students from terms',
+	'right-ep-enroll' => 'Enroll in Education Program terms',
 
 	// Actions
-	'action-epadmin' => 'manage the education program',
-	'action-epstudent' => 'enroll in the education program',
-	'action-epmentor' => 'mentor in the education program',
+	'right-ep-org' => 'manage institutions',
+	'right-ep-course' => 'manage courses',
+	'right-ep-term' => 'manage terms',
+	'right-ep-token' => 'see enrollment tokens',
+	'right-ep-remstudent' => 'remove students from terms',
+	'right-ep-enroll' => 'enroll in terms',
 
 	// Groups
 	'group-epadmin' => 'Education program admins',
-	'group-epadmin-member' => '{{GENDER:$1|education program admin}}',
+	'group-epadmin-member' => '{{GENDER:$1|Education Program admin}}',
 	'grouppage-epadmin' => '{{ns:project}}:Education_program_administrators',
 
-	'group-epstudent' => 'Education program students',
-	'group-epstudent-member' => '{{GENDER:$1|education program student}}',
-	'grouppage-epstudent' => '{{ns:project}}:Education_program_students',
+	'group-epstaff' => 'Education program staff',
+	'group-epstaff-member' => '{{GENDER:$1|Education Program staff}}',
+	'grouppage-epstaff' => '{{ns:project}}:Education_program_staff',
 
-	'group-epmentor' => 'Education program ambassadors',
-	'group-epmentor-member' => '{{GENDER:$1|education program ambassador}}',
-	'grouppage-epmentor' => '{{ns:project}}:Education_program_ambassadors',
+	'group-eponlineamb' => 'Education program online ambassador',
+	'group-eponlineamb-member' => '{{GENDER:$1|Education Program online ambassador}}',
+	'grouppage-eponlineamb' => '{{ns:project}}:Education_program_online_ambassadors',
+
+	'group-epcampamb' => 'Education program campus ambassador',
+	'group-epcampamb-member' => '{{GENDER:$1|Education Program campus ambassador}}',
+	'grouppage-epcampamb' => '{{ns:project}}:Education_program_campus_ambassadors',
+
+	'group-epinstructor' => 'Education program instructor',
+	'group-epinstructor-member' => '{{GENDER:$1|Education Program instructor}}',
+	'grouppage-epinstructor' => '{{ns:project}}:Education_program_instructors',
 
 	// Special pages
 	'specialpages-group-education' => 'Education',

@@ -152,38 +152,57 @@ $wgLogActionsHandlers['institution/*'] = 'LogFormatter';
 $wgLogActionsHandlers['course/*'] = 'LogFormatter';
 $wgLogActionsHandlers['term/*'] = 'LogFormatter';
 
-// Rights
-$wgAvailableRights[] = 'epadmin';
-$wgAvailableRights[] = 'epstudent';
-$wgAvailableRights[] = 'epmentor';
+$wgAvailableRights[] = 'ep-org'; 		// Manage orgs
+$wgAvailableRights[] = 'ep-course';		// Manage courses
+$wgAvailableRights[] = 'ep-term';		// Manage terms
+$wgAvailableRights[] = 'ep-token';		// See enrollment tokens
+$wgAvailableRights[] = 'ep-enroll';		// Enroll as a student
+$wgAvailableRights[] = 'ep-remstudent';	// Dissasociate students from terms
 
-# Users that can manage the education program.
-$wgGroupPermissions['*'            ]['epadmin'] = false;
-// $wgGroupPermissions['user'         ]['epadmin'] = false;
-// $wgGroupPermissions['autoconfirmed']['epadmin'] = false;
-// $wgGroupPermissions['bot'          ]['epadmin'] = false;
-$wgGroupPermissions['sysop'        ]['epadmin'] = true;
-$wgGroupPermissions['epadmin' ]['epadmin'] = true;
+$wgGroupPermissions['*']['ep-org'] = false;
+$wgGroupPermissions['*']['ep-course'] = false;
+$wgGroupPermissions['*']['ep-term'] = false;
+$wgGroupPermissions['*']['ep-token'] = false;
+$wgGroupPermissions['*']['ep-remstudent'] = false;
+$wgGroupPermissions['*']['ep-enroll'] = true;
 
-# Users that can enroll as students in the education program.
-$wgGroupPermissions['*'            ]['epstudent'] = false;
-$wgGroupPermissions['user'         ]['epstudent'] = true;
-// $wgGroupPermissions['autoconfirmed']['epstudent'] = true;
-// $wgGroupPermissions['bot'          ]['epstudent'] = false;
-$wgGroupPermissions['sysop'        ]['epstudent'] = true;
-$wgGroupPermissions['epadmin']['epstudent'] = true;
-$wgGroupPermissions['epstudent' ]['epstudent'] = true;
-$wgGroupPermissions['epmentor' ]['epstudent'] = true;
+$wgGroupPermissions['epstaff']['ep-org'] = true;
+$wgGroupPermissions['epstaff']['ep-course'] = true;
+$wgGroupPermissions['epstaff']['ep-term'] = true;
+$wgGroupPermissions['epstaff']['ep-token'] = true;
+$wgGroupPermissions['epstaff']['ep-enroll'] = true;
+$wgGroupPermissions['epstaff']['ep-remstudent'] = true;
 
-# Users that act as mentors in the education program.
-$wgGroupPermissions['*'            ]['epmentor'] = false;
-$wgGroupPermissions['user'         ]['epmentor'] = true;
-// $wgGroupPermissions['autoconfirmed']['epmentor'] = true;
-// $wgGroupPermissions['bot'          ]['epmentor'] = false;
-$wgGroupPermissions['sysop'        ]['epmentor'] = true;
-$wgGroupPermissions['epadmin']['epmentor'] = true;
-$wgGroupPermissions['epmentor' ]['epmentor'] = true;
+$wgGroupPermissions['epadmin']['ep-org'] = true;
+$wgGroupPermissions['epadmin']['ep-course'] = true;
+$wgGroupPermissions['epadmin']['ep-term'] = true;
+$wgGroupPermissions['epadmin']['ep-token'] = true;
+$wgGroupPermissions['epadmin']['ep-enroll'] = true;
+$wgGroupPermissions['epadmin']['ep-remstudent'] = true;
 
+$wgGroupPermissions['eponlineamb']['ep-org'] = true;
+$wgGroupPermissions['eponlineamb']['ep-course'] = true;
+$wgGroupPermissions['eponlineamb']['ep-term'] = true;
+$wgGroupPermissions['eponlineamb']['ep-token'] = true;
+
+$wgGroupPermissions['epcampamb']['ep-org'] = true;
+$wgGroupPermissions['epcampamb']['ep-course'] = true;
+$wgGroupPermissions['epcampamb']['ep-term'] = true;
+$wgGroupPermissions['epcampamb']['ep-token'] = true;
+
+$wgGroupPermissions['epinstructor']['ep-org'] = true;
+$wgGroupPermissions['epinstructor']['ep-course'] = true;
+$wgGroupPermissions['epinstructor']['ep-term'] = true;
+$wgGroupPermissions['epinstructor']['ep-token'] = true;
+$wgGroupPermissions['epinstructor']['ep-remstudent'] = true;
+
+$wgGroupPermissions['epstaff']['userrights'] = false;
+$wgAddGroups['epstaff'] = array( 'epstaff', 'epadmin', 'eponlineamb', 'epcampamb', 'epinstructor' );
+$wgRemoveGroups['epstaff'] = array( 'epstaff', 'epadmin', 'eponlineamb', 'epcampamb', 'epinstructor' );
+
+$wgGroupPermissions['epadmin']['userrights'] = false;
+$wgAddGroups['epadmin'] = array( 'eponlineamb', 'epcampamb', 'epinstructor' );
+$wgRemoveGroups['epadmin'] = array( 'eponlineamb', 'epcampamb', 'epinstructor' );
 
 // Resource loader modules
 $moduleTemplate = array(
