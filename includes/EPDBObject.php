@@ -382,7 +382,7 @@ abstract class EPDBObject {
 
 	/**
 	 * Updates the object in the database.
-	 * TODO: log and store old rev
+	 * TODO: store old rev
 	 *
 	 * @since 0.1
 	 *
@@ -407,7 +407,6 @@ abstract class EPDBObject {
 
 	/**
 	 * Inserts the object into the database.
-	 * TODO: log
 	 *
 	 * @since 0.1
 	 *
@@ -433,7 +432,7 @@ abstract class EPDBObject {
 
 	/**
 	 * Removes the object from the database.
-	 * TODO: log and store rev
+	 * TODO: store rev
 	 *
 	 * @since 0.1
 	 *

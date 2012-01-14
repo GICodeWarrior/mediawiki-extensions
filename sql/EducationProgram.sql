@@ -93,14 +93,6 @@ CREATE TABLE IF NOT EXISTS /*_*/ep_students_per_term (
 
 CREATE UNIQUE INDEX /*i*/ep_students_per_term ON /*_*/ep_students_per_term (spt_student_id, spt_term_id);
 
--- Links an org with all it's mentors.
-CREATE TABLE IF NOT EXISTS /*_*/ep_mentors_per_org (
-  mpo_mentor_id              INT unsigned        NOT NULL, -- Foreign key on ep_mentors.mentor_id
-  mpo_org_id                 INT unsigned        NOT NULL -- Foreign key on ep_orgs.org_id
-) /*$wgDBTableOptions*/;
-
-CREATE UNIQUE INDEX /*i*/ep_mentors_per_org ON /*_*/ep_mentors_per_org (mpo_mentor_id, mpo_org_id);
-
 -- Revision table, holding blobs of various types of objects, such as orgs or students.
 -- This is somewhat based on the (core) revision table and is meant to serve
 -- as a prototype for a more general system to store this kind of data in a versioned fashion.  

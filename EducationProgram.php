@@ -147,10 +147,16 @@ $wgHooks['GetPreferences'][] 					= 'EPHooks::onGetPreferences';
 $wgLogTypes[] = 'institution';
 $wgLogTypes[] = 'course';
 $wgLogTypes[] = 'term';
+$wgLogTypes[] = 'student';
+$wgLogTypes[] = 'ambassador';
+$wgLogTypes[] = 'instructor';
 
 $wgLogActionsHandlers['institution/*'] = 'LogFormatter';
 $wgLogActionsHandlers['course/*'] = 'LogFormatter';
 $wgLogActionsHandlers['term/*'] = 'LogFormatter';
+$wgLogActionsHandlers['student/*'] = 'LogFormatter';
+$wgLogActionsHandlers['ambassador/*'] = 'LogFormatter';
+$wgLogActionsHandlers['instructor/*'] = 'LogFormatter';
 
 $wgAvailableRights[] = 'ep-org'; 		// Manage orgs
 $wgAvailableRights[] = 'ep-course';		// Manage courses
