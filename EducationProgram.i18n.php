@@ -339,6 +339,8 @@ $messages['en'] = array(
 	'ep-enroll-add-token-doc' => 'In order to enroll for this term, you need a token provided by your instructor or one of the ambassadors for your term.',
 	'ep-enroll-token' => 'Enrollment token',
 	'ep-enroll-submit-token' => 'Enroll with this token',
+	'ep-enroll-term-passed' => 'This term has ended, so you can no longer enroll for it. A list of existing terms can be found [[Special:Terms|here]].',
+	'ep-enroll-term-planned' => 'This term has not yet started, please be patient. A list of existing terms can be found [[Special:Terms|here]].',
 
 	// Special:MyCourses
 	'ep-mycourses-enrolled' => 'You have successfully enrolled for $1 at $2.',

@@ -48,7 +48,7 @@ class SpecialEnroll extends SpecialEPPage {
 			$term = EPTerm::selectRow( null, array( 'id' => $args[0] ) );
 			
 			if ( $term === false ) {
-				$this->showWarning( wfMessage( 'ep-enroll-nosuchterm' ) );
+				$this->showWarning( wfMessage( 'ep-enroll-invalid-id' ) );
 			}
 			elseif ( $term->getStatus() === 'current' ) {
 				$token = '';
@@ -124,8 +124,6 @@ class SpecialEnroll extends SpecialEPPage {
 	 */
 	protected function showTokenInput() {
 		$out = $this->getOutput();
-		
-	//	$out->addWikiMsg( 'ep-enroll-no-token' );
 		
 		$out->addHTML( Html::openElement(
 			'form',
