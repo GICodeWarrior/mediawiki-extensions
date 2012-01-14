@@ -162,12 +162,9 @@ abstract class SpecialEPPage extends SpecialPage {
 			wfMsg( 'ep-nav-terms' ) => SpecialPage::getTitleFor( 'Terms' ),
 		);
 
-		if ( $this->getUser()->isAllowed( 'epmentor' ) ) {
-			$items[wfMsg( 'ep-nav-students' )] = SpecialPage::getTitleFor( 'Students' );
-			$items[wfMsg( 'ep-nav-mentors' )] = SpecialPage::getTitleFor( 'Ambassadors' );
-		}
+		$items[wfMsg( 'ep-nav-students' )] = SpecialPage::getTitleFor( 'Students' );
 
-		if ( $this->getUser()->isAllowed( 'epmentor' ) || EPStudent::has( array( 'user_id' => $this->getUser()->getId() ) ) ) {
+		if ( EPStudent::has( array( 'user_id' => $this->getUser()->getId() ) ) ) {
 			$items[wfMsg( 'ep-nav-mycourses' )] = SpecialPage::getTitleFor( 'MyCourses' );
 		}
 

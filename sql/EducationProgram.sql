@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS /*_*/ep_courses (
   course_name                VARCHAR(255)        NOT NULL, -- Name of the course
   course_description         TEXT                NOT NULL, -- Description of the course
   course_lang                VARCHAR(10)         NOT NULL, -- Language (code)
+  course_instructors         BLOB                NOT NULL, -- List of associated instructors
 
   course_active              TINYINT unsigned    NOT NULL, -- If the course has any active terms
   course_students            SMALLINT unsigned   NOT NULL -- Amount of students
@@ -53,6 +54,8 @@ CREATE TABLE IF NOT EXISTS /*_*/ep_terms (
   term_start                 varbinary(14)       NOT NULL, -- Start time of the term
   term_end                   varbinary(14)       NOT NULL, -- End time of the term
   term_description           TEXT                NOT NULL, -- Description of the term
+  term_online_ambs           BLOB                NOT NULL, -- List of associated online abmassadors
+  term_campus_ambs           BLOB                NOT NULL, -- List of associated campus abmassadors
   term_token                 VARCHAR(255)        NOT NULL -- Token needed to enroll
 ) /*$wgDBTableOptions*/;
 
@@ -114,6 +117,3 @@ CREATE INDEX /*i*/ep_revision_user_text ON /*_*/ep_revisions (rev_user_text);
 CREATE INDEX /*i*/ep_revision_time ON /*_*/ep_revisions (rev_time);
 CREATE INDEX /*i*/ep_revision_minor_edit ON /*_*/ep_revisions (rev_minor_edit);
 CREATE INDEX /*i*/ep_revision_deleted ON /*_*/ep_revisions (rev_deleted);
-
--- TODO: figure out how to best do logging.
--- Can the core stuff be used in a sane way for this?
