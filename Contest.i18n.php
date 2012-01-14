@@ -38,7 +38,7 @@ $messages['en'] = array(
 	'grouppage-contestadmin' => '{{ns:project}}:Contest administrators',
 
 	'group-contestant' => 'Contestant',
-	'group-contestant-member' => '{{GENDER:$1|Contestant}}',
+	'group-contestant-member' => '{{GENDER:$1|contestant}}',
 	'grouppage-contestant' => '{{ns:project}}:Contestants',
 
 	'group-contestjudge' => 'Contest judges',
@@ -73,7 +73,7 @@ $messages['en'] = array(
 
 	// Special:Contests
 	'contest-special-addnew' => 'Add a new contest',
-	'contest-special-namedoc' => 'The name of the contest is the identifier used in URLs (i.e. "name" in {{#Special:Contest}}/name).',
+	'contest-special-namedoc' => 'The name of the contest is the identifier used in URLs (for example "name" in {{#Special:Contest}}/name).',
 	'contest-special-newname' => 'Contest name',
 	'contest-special-add' => 'Add contest',
 	'contest-special-existing' => 'Existing contests',
@@ -136,7 +136,6 @@ $messages['en'] = array(
 	'contest-signup-draft' => 'This contest has not yet started. Please be patient.',
 	'contest-signup-country' => 'Your country',
 	'contest-signup-emailwarn' => 'Warning: You are changing your accounts e-mail address, which will require your confirming the new address.',
-	
 
 	'contest-signup-require-rules' => 'You must agree to the contest rules.',
 	'contest-signup-require-country' => 'You must provide your country of residence.',
@@ -248,7 +247,7 @@ $messages['en'] = array(
 	'contest-submission-challenge' => 'You are currently participating in the $1 challenge.',
 	'contest-submission-challenge-description' => "'''Current challenge: $1''' -- $2",
 
-	// TODO: how can this be done properly in JS?
+	// @todo How can this be done properly in JS? Create a JS equivalent of Language::listToText?
 	'contest-submission-domains' => 'Submissions are restricted to these sites: $1',
 );
 
@@ -308,7 +307,7 @@ $messages['qqq'] = array(
 	'contest-welcome-active-contests' => 'Message shown above a list of contests',
 	'contest-welcome-no-contests-active' => 'Indicates that there arte no active contests',
 	'contest-signup-submit' => '{{Identical|Sign up}}',
-	'contest-signup-emailwarn' => "Warning message shown above an email input when the user starts changing it's value",
+	'contest-signup-emailwarn' => "Warning message shown above an e-mail input when the user starts changing it's value",
 	'contest-contest-title' => 'Page title',
 	'contest-contest-no-results' => 'Message displayed instead of a table when there are no contests',
 	'contest-contest-name' => 'Table row header.
