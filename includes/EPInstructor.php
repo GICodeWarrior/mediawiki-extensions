@@ -131,7 +131,7 @@ class EPInstructor {
 			);
 		}
 		
-		return '<span class="mw-usertoollinks">(' . $context->getLanguage()->pipeList( $links ) . ')</span>';
+		return ' <span class="mw-usertoollinks">(' . $context->getLanguage()->pipeList( $links ) . ')</span>';
 	}
 	
 }

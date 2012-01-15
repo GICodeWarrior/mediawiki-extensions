@@ -23,10 +23,10 @@ class EPCourse extends EPDBObject {
 	protected $org = false;
 
 	/**
-	 * Field for caching the instructors their user objects.
+	 * Field for caching the instructors.
 	 *
 	 * @since 0.1
-	 * @var {array of User}|false
+	 * @var {array of EPInstructor}|false
 	 */
 	protected $instructors = false;
 	
@@ -339,18 +339,18 @@ class EPCourse extends EPDBObject {
 	}
 	
 	/**
-	 * Returns the instructors as a list of User objects.
+	 * Returns the instructors as a list of EPInstructor objects.
 	 * 
 	 * @since 0.1
 	 * 
-	 * @return array of User
+	 * @return array of EPInstructor
 	 */
 	public function getInstructors() {
 		if ( $this->instructors === false ) {
 			$this->instructors = array();
 			
 			foreach ( $this->getField( 'instructors' ) as $userId ) {
-				$this->instructors[] = User::newFromId( $userId );
+				$this->instructors[] = EPInstructor::newFromId( $userId );
 			}
 		}
 

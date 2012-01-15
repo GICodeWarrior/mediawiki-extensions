@@ -121,13 +121,13 @@ class SpecialCourse extends SpecialEPPage {
 			);
 		}
 		
-		$instructors = $course->getInstructors;
+		$instructors = $course->getInstructors();
 		
 		if ( count( $instructors ) > 0 ) {
 			$stats['instructors'] = '<ul>';
 			
-			foreach ( $instructors as /* User */ $instructor ) {
-				// TODO
+			foreach ( $instructors as /* EPInstructor */ $instructor ) {
+				$instructor->getUserLink() . $instructor->getToolLinks( $this->getContext() );
 			}
 			
 			$stats['instructors'] = '</ul>';

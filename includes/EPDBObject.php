@@ -560,6 +560,10 @@ abstract class EPDBObject {
 					if ( is_string( $value ) ) {
 						$value = unserialize( $value );
 					}
+					
+					if ( !is_array( $value ) ) {
+						$value = array();
+					}
 					break;
 				case 'id':
 					if ( is_string( $value ) ) {
