@@ -63,6 +63,7 @@ $wgAutoloadClasses['ApiRefreshEducation'] 			= dirname( __FILE__ ) . '/api/ApiRe
 $wgAutoloadClasses['EPCourse'] 						= dirname( __FILE__ ) . '/includes/EPCourse.php';
 $wgAutoloadClasses['EPCoursePager'] 				= dirname( __FILE__ ) . '/includes/EPCoursePager.php';
 $wgAutoloadClasses['EPDBObject'] 					= dirname( __FILE__ ) . '/includes/EPDBObject.php';
+$wgAutoloadClasses['EPLogFormatter'] 				= dirname( __FILE__ ) . '/includes/EPLogFormatter.php';
 $wgAutoloadClasses['EPMentor'] 						= dirname( __FILE__ ) . '/includes/EPMentor.php';
 $wgAutoloadClasses['EPMentorPager'] 				= dirname( __FILE__ ) . '/includes/EPMentorPager.php';
 $wgAutoloadClasses['EPOrg'] 						= dirname( __FILE__ ) . '/includes/EPOrg.php';
@@ -153,13 +154,13 @@ $wgLogTypes[] = 'student';
 $wgLogTypes[] = 'ambassador';
 $wgLogTypes[] = 'instructor';
 
-if ( array_key_exists( 'LogFormatter', $wgAutoloadClasses ) ) {
-	$wgLogActionsHandlers['institution/*'] = 'LogFormatter';
-	$wgLogActionsHandlers['course/*'] = 'LogFormatter';
-	$wgLogActionsHandlers['term/*'] = 'LogFormatter';
-	$wgLogActionsHandlers['student/*'] = 'LogFormatter';
-	$wgLogActionsHandlers['ambassador/*'] = 'LogFormatter';
-	$wgLogActionsHandlers['instructor/*'] = 'LogFormatter';
+if ( array_key_exists( 'LogFormatter', $wgAutoloadLocalClasses ) ) {
+	$wgLogActionsHandlers['institution/*'] = 'EPLogFormatter';
+	$wgLogActionsHandlers['course/*'] = 'EPLogFormatter';
+	$wgLogActionsHandlers['term/*'] = 'EPLogFormatter';
+	$wgLogActionsHandlers['student/*'] = 'EPLogFormatter';
+	$wgLogActionsHandlers['ambassador/*'] = 'EPLogFormatter';
+	$wgLogActionsHandlers['instructor/*'] = 'EPLogFormatter';
 }
 else {
 	// Compatibility with MediaWiki 1.18.
