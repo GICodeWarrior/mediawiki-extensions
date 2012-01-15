@@ -14,10 +14,9 @@ $smwgExtTabEnabled = true;
 
 global $wgExtensionFunctions, $wgHooks, $wgAutoloadClasses, $smwgExtTabEnableLocalEdit;
 $wgExtensionFunctions[] = 'smwgExtTabSetupExtension';
-$wgHooks['LanguageGetMagic'][] = 'ETParserFunctions::languageGetMagic';
 
+$wgExtensionMessagesFiles['ExtTabMagic'] = $smwgExtTabIP . '/languages/ExtTab.i18n.magic.php';
 $wgAutoloadClasses['ETParserFunctions'] = $smwgExtTabIP . '/includes/ET_ParserFunctions.php';
-
 
 function smwfExtTabInitMessages() {
 	global $smwgExtTabMessagesInitialized;
@@ -111,9 +110,10 @@ function smwgExtTabSetupExtension() {
 	// Register Credits
 	$wgExtensionCredits['parserhook'][] = array(
 		'name' => 'Semantic&nbsp;ExtTab&nbsp;Extension', 'version' => SMW_EXTTAB_VERSION,
-			'author' => "Ning Hu, Justin Zhang, [http://smwforum.ontoprise.com/smwforum/index.php/Jesse_Wang Jesse Wang], sponsored by [http://projecthalo.com Project Halo], [http://www.vulcan.com Vulcan Inc.]",
-			'url' => 'http://wiking.vulcan.com/dev',
-			'description' => 'Tab control based on ExtJS.' );
+		'author' => "Ning Hu, Justin Zhang, [http://smwforum.ontoprise.com/smwforum/index.php/Jesse_Wang Jesse Wang], sponsored by [http://projecthalo.com Project Halo], [http://www.vulcan.com Vulcan Inc.]",
+		'url' => 'http://wiking.vulcan.com/dev',
+		'description' => 'Tab control based on ExtJS.',
+	);
 
 	return true;
 }

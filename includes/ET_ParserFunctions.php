@@ -4,14 +4,6 @@
  */
 
 class ETParserFunctions {
-	static function languageGetMagic( &$magicWords, $langCode = "en" ) {
-		switch ( $langCode ) {
-			default:
-				$magicWords['tab'] = array ( 0, 'tab' );
-		}
-		return true;
-	}
-
 	static function registerFunctions( &$parser ) {
 		$parser->setFunctionHook( 'tab', array( 'ETParserFunctions', 'renderTabWidget' ), SFH_OBJECT_ARGS );
 		$parser->setHook( "embedwiki", array( 'ETParserFunctions', 'embedWiki' ) );
@@ -138,5 +130,4 @@ class ETParserFunctions {
 		$str .= '</div>';
 		return array( $str, 'noparse' => true, 'isHTML' => false );
 	}
-
 }
