@@ -51,6 +51,14 @@ $messages['be-tarask'] = array(
 	'credits-tab-title' => 'Аўтары гэтай старонкі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'credits-tab' => 'Kredoù',
+	'credits-tab-title' => 'Kredoù evit ar bajenn-mañ',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
