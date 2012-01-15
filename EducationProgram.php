@@ -153,28 +153,38 @@ $wgLogTypes[] = 'student';
 $wgLogTypes[] = 'ambassador';
 $wgLogTypes[] = 'instructor';
 
-$wgLogActionsHandlers['institution/*'] = 'LogFormatter';
-$wgLogActionsHandlers['course/*'] = 'LogFormatter';
-$wgLogActionsHandlers['term/*'] = 'LogFormatter';
-$wgLogActionsHandlers['student/*'] = 'LogFormatter';
-$wgLogActionsHandlers['ambassador/*'] = 'LogFormatter';
-$wgLogActionsHandlers['instructor/*'] = 'LogFormatter';
-
-// Compatibility with MediaWiki 1.18.
-$wgLogNames['institution'] = 'log-name-institution';
-$wgLogNames['course'] = 'log-name-course';
-$wgLogNames['term'] = 'log-name-term';
-$wgLogNames['student'] = 'log-name-student';
-$wgLogNames['ambassador'] = 'log-name-ambassador';
-$wgLogNames['instructor'] = 'log-name-instructor';
-
-// Compatibility with MediaWiki 1.18.
-$wgLogHeaders['institution'] = 'log-header-institution';
-$wgLogHeaders['course'] = 'log-header-course';
-$wgLogHeaders['term'] = 'log-header-term';
-$wgLogHeaders['student'] = 'log-header-student';
-$wgLogHeaders['ambassador'] = 'log-header-ambassador';
-$wgLogHeaders['instructor'] = 'log-header-instructor';
+if ( array_key_exists( 'LogFormatter', $wgAutoloadClasses ) ) {
+	$wgLogActionsHandlers['institution/*'] = 'LogFormatter';
+	$wgLogActionsHandlers['course/*'] = 'LogFormatter';
+	$wgLogActionsHandlers['term/*'] = 'LogFormatter';
+	$wgLogActionsHandlers['student/*'] = 'LogFormatter';
+	$wgLogActionsHandlers['ambassador/*'] = 'LogFormatter';
+	$wgLogActionsHandlers['instructor/*'] = 'LogFormatter';
+}
+else {
+	// Compatibility with MediaWiki 1.18.
+	foreach ( array( 'institution', 'course', 'term', 'student', 'ambassador', 'instructor' ) as $type ) {
+		foreach ( array( 'add', 'remove', 'update' ) as $action ) {
+			$wgLogActionsHandlers[$type . '/' . $action] = 'EPHooks::formatLogEntry';
+		}
+	}
+	
+	// Compatibility with MediaWiki 1.18.
+	$wgLogNames['institution'] = 'log-name-institution';
+	$wgLogNames['course'] = 'log-name-course';
+	$wgLogNames['term'] = 'log-name-term';
+	$wgLogNames['student'] = 'log-name-student';
+	$wgLogNames['ambassador'] = 'log-name-ambassador';
+	$wgLogNames['instructor'] = 'log-name-instructor';
+	
+	// Compatibility with MediaWiki 1.18.
+	$wgLogHeaders['institution'] = 'log-header-institution';
+	$wgLogHeaders['course'] = 'log-header-course';
+	$wgLogHeaders['term'] = 'log-header-term';
+	$wgLogHeaders['student'] = 'log-header-student';
+	$wgLogHeaders['ambassador'] = 'log-header-ambassador';
+	$wgLogHeaders['instructor'] = 'log-header-instructor';
+}
 
 $wgAvailableRights[] = 'ep-org'; 		// Manage orgs
 $wgAvailableRights[] = 'ep-course';		// Manage courses

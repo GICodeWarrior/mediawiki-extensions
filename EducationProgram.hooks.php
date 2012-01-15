@@ -136,5 +136,28 @@ final class EPHooks {
 
 		return true;
 	}
+	
+	/**
+	 * Handles formatting of log entries for MediaWiki 1.18.x. 
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $type
+	 * @param string $action
+	 * @param Title $title
+	 * @param boolean|null $forUI
+	 * @param array $params
+	 * 
+	 * @return string
+	 */
+	public static function formatLogEntry( $type, $action, Title $title, $forUI, array $params ) {
+		global $wgContLang, $wgLang;
+		
+		return wfMessage( 'logentry-' . $type . '-' . $action )->params(
+			'', // User link in the new system
+			'#', // User name for gender in the new system
+			Message::rawParam( $forUI ? Linker::link( $title ) : $title->getPrefixedText() )
+		)->inLanguage( $forUI === null ? $wgContLang : $wgLang )->text();
+	}
 
 }
