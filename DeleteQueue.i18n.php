@@ -4305,6 +4305,7 @@ $messages['lb'] = array(
 	'deletequeue-delnom-submit' => 'Nominatioun fortschécken',
 	'deletequeue-log-rmspeedy' => 'huet ofgelehnt fir [[$1]] séier ze läschen.',
 	'right-speedy-nominate' => 'Säite virschloe fir séier ze läschen',
+	'right-speedy-review' => 'Nominatioune fir e séiert Läschen nokucken',
 	'right-prod-nominate' => 'Säit virschloe vir ze läschen',
 	'right-deletediscuss-nominate' => 'Läschdiskussiounen ufänken',
 	'right-deletediscuss-review' => 'Läschdiskussiounen ofschléissen',
@@ -4355,6 +4356,7 @@ $messages['lb'] = array(
 	'deletequeue-case-details' => 'Basisinformatiounen',
 	'deletequeue-case-page' => 'Säit:',
 	'deletequeue-case-reason' => 'Grond:',
+	'deletequeue-case-needs-review' => 'Dëse Fall muss [[$1|nogekuckt]] ginn.',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
