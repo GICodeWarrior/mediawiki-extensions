@@ -49,6 +49,22 @@ $messages['qqq'] = array(
 * $1 is the alt text of the image that can be viewed.',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'zero-rated-mobile-access-desc' => 'Надае магчымасьці мабільным правайдэрам, якія забясьпечваюць бясплатны доступ',
+	'zero-rated-mobile-access-search' => 'Шукаць',
+	'zero-rated-mobile-access-language-selection' => 'на ўсіх мовах',
+	'zero-rated-mobile-access-home-page-selection' => '$1 галоўная старонка',
+	'zero-rated-mobile-access-home-page-selection-text' => 'Ці перайсьці на галоўную старонка на мове:',
+	'zero-rated-mobile-access-banner-text' => 'Бясплатная {{SITENAME}} ад $1',
+	'zero-rated-mobile-access-banner-text-data-charges' => 'Пасьля працягу могуць быць сьпісаныя кошты: $1 ці $2',
+	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'так',
+	'zero-rated-mobile-access-banner-text-data-charges-no' => 'не',
+	'zero-rated-mobile-access-click-to-view-image' => 'Націсьніце, каб праглядзець выяву «$1»...',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
@@ -98,6 +114,14 @@ $messages['dsb'] = array(
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Jo',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Ně',
 	'zero-rated-mobile-access-click-to-view-image' => 'Klikni how, aby wobraz wót "$1" wiźeł...',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Kyllä',
+	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Ei',
 );
 
 /** French (Français)
@@ -170,6 +194,20 @@ $messages['ia'] = array(
 $messages['ja'] = array(
 	'zero-rated-mobile-access-desc' => 'ゼロ格モバイルアクセス',
 	'zero-rated-mobile-access-search' => '検索する',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'zero-rated-mobile-access-search' => 'Sichen',
+	'zero-rated-mobile-access-language-selection' => 'All Sproochen',
+	'zero-rated-mobile-access-home-page-selection' => '$1 Ufaankssäit',
+	'zero-rated-mobile-access-banner-text' => '{{SITENAME}} fräi iwwer $1',
+	'zero-rated-mobile-access-banner-text-data-charges' => 'Fraisë fir Dateniwwerdroung kënnen entstoe wann Dir weiderfuert: $1 oder $2',
+	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Jo',
+	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Neen',
+	'zero-rated-mobile-access-click-to-view-image' => 'Klickt fir d\'Bild vun"$1" ze gesinn ...',
 );
 
 /** Macedonian (Македонски)
