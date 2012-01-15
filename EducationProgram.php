@@ -57,8 +57,10 @@ $wgExtensionMessagesFiles['EducationProgramAlias']	= dirname( __FILE__ ) . '/Edu
 $wgAutoloadClasses['EPHooks'] 						= dirname( __FILE__ ) . '/EducationProgram.hooks.php';
 $wgAutoloadClasses['EPSettings'] 					= dirname( __FILE__ ) . '/EducationProgram.settings.php';
 
+$wgAutoloadClasses['ApiAddInstructor'] 				= dirname( __FILE__ ) . '/api/ApiAddInstructor.php';
 $wgAutoloadClasses['ApiDeleteEducation'] 			= dirname( __FILE__ ) . '/api/ApiDeleteEducation.php';
 $wgAutoloadClasses['ApiRefreshEducation'] 			= dirname( __FILE__ ) . '/api/ApiRefreshEducation.php';
+$wgAutoloadClasses['ApiRemoveInstructor'] 			= dirname( __FILE__ ) . '/api/ApiRemoveInstructor.php';
 
 $wgAutoloadClasses['EPCourse'] 						= dirname( __FILE__ ) . '/includes/EPCourse.php';
 $wgAutoloadClasses['EPCoursePager'] 				= dirname( __FILE__ ) . '/includes/EPCoursePager.php';
@@ -139,8 +141,10 @@ $egEPDBObjects[] = array( 'table' => 'ep_students_per_term', 'prefix' => 'spt_' 
 $egEPDBObjects[] = array( 'table' => 'ep_mentors_per_org', 'prefix' => 'mpo_' );
 
 // API
+$wgAPIModules['addinstructor'] 					= 'ApiAddInstructor';
 $wgAPIModules['deleteeducation'] 				= 'ApiDeleteEducation';
 $wgAPIModules['refresheducation'] 				= 'ApiRefreshEducation';
+$wgAPIModules['removeinstructor'] 				= 'ApiRemoveInstructor';
 
 // Hooks
 $wgHooks['LoadExtensionSchemaUpdates'][] 		= 'EPHooks::onSchemaUpdate';
