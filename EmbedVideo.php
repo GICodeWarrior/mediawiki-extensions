@@ -24,23 +24,13 @@ $wgExtensionCredits['parserhook'][] = array(
 	'author'         => array( 'Jim R. Wilson', 'Andrew Whitworth' ),
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:EmbedVideo',
 	'descriptionmsg' => 'embedvideo-desc',
-	'version'        => '1.0'
+	'version'        => '1.1'
 );
 
 $dir = dirname(__FILE__) . '/';
-require_once($dir . "EmbedVideo.hooks.php");
+require_once($dir . "EmbedVideo.hooks.php"); // @todo FIXME: Use autoloader to load classes.
 require_once($dir . "EmbedVideo.Services.php");
-$wgExtensionMessagesFiles['embedvideo'] = $dir . 'EmbedVideo.i18n.php';
-
+$wgExtensionMessagesFiles['EmbedVideo'] = $dir . 'EmbedVideo.i18n.php';
+$wgExtensionMessagesFiles['EmbedVideoMagic'] = $dir . 'EmbedVideo.i18n.magic.php';
 
 $wgHooks['ParserFirstCallInit'][] = "EmbedVideo::setup";
-if (version_compare($wgVersion, '1.7', '<')) {
-    # Hack solution to resolve 1.6 array parameter nullification for hook args
-    function wfEmbedVideoLanguageGetMagic( &$magicWords ) {
-        EmbedVideo::parserFunctionMagic( $magicWords );
-        return true;
-    }
-    $wgHooks['LanguageGetMagic'][] = 'wfEmbedVideoLanguageGetMagic';
-} else {
-    $wgHooks['LanguageGetMagic'][] = 'EmbedVideo::parserFunctionMagic';
-}

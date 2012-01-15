@@ -15,29 +15,15 @@ abstract class EmbedVideo {
 	public static function setup( $parser ) {
 		# Setup parser hooks. ev is the primary hook, evp is supported for
 		# legacy purposes
-		global $wgVersion;
-		$prefix = version_compare($wgVersion, '1.7', '<') ? '#' : '';
-		EmbedVideo::addMagicWord($prefix, "ev", "EmbedVideo::parserFunction_ev");
-		EmbedVideo::addMagicWord($prefix, "evp", "EmbedVideo::parserFunction_evp");
+		EmbedVideo::addMagicWord("ev", "EmbedVideo::parserFunction_ev");
+		EmbedVideo::addMagicWord("evp", "EmbedVideo::parserFunction_evp");
 
 		return true;
 	}
 
-	private static function addMagicWord($prefix, $word, $function) {
+	private static function addMagicWord($word, $function) {
 		global $wgParser;
-		$wgParser->setFunctionHook($prefix . $word, $function);
-	}
-
-	/**
-	 * Adds magic words for parser functions.
-	 * @param Array $magicWords
-	 * @param $langCode
-	 * @return Boolean Always true
-	 */
-	public static function parserFunctionMagic(&$magicWords, $langCode='en') {
-		$magicWords['evp'] = array(0, 'evp');
-		$magicWords['ev']  = array(0, 'ev');
-		return true;
+		$wgParser->setFunctionHook($word, $function);
 	}
 
 	/**
