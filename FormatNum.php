@@ -17,30 +17,20 @@ $wgExtensionCredits['parserhook'][] = array (
 	'url'=>'http://www.mediawiki.org/wiki/Extension:FormatNum',
 	'descriptionmsg' => 'formatnum-desc',
 	'author'=>'[http://www.dasch-tour.de DaSch]',
-	'version'=>'0.2.0',
+	'version'=>'0.3.0',
 );
 $dir = dirname( __FILE__ ) . '/';
 
 // Internationalization
 $wgExtensionMessagesFiles['FormatNum'] = $dir . 'FormatNum.i18n.php';
+$wgExtensionMessagesFiles['FormatNumMagic'] = $dir . 'FormatNum.i18n.magic.php';
 
 # Define a setup function
 $wgHooks['ParserFirstCallInit'][] = 'efFormatNumParserFunction_Setup';
-# Add a hook to initialise the magic word
-$wgHooks['LanguageGetMagic'][]    = 'efFormatNumParserFunction_Magic';
 
 function efFormatNumParserFunction_Setup( $parser ) {
 	# Set a function hook associating the "example" magic word with our function
 	$parser->setFunctionHook( 'formatnum', 'efFormatNumParserFunction_Render' );
-	return true;
-}
-
-function efFormatNumParserFunction_Magic( &$magicWords, $langCode ) {
-	# Add the magic word
-	# The first array element is case sensitive, in this case it is not case sensitive
-	# All remaining elements are synonyms for our parser function
-	$magicWords['formatnum'] = array( 0, 'formatnum' );
-	# unless we return true, other parser functions extensions won't get loaded.
 	return true;
 }
 
