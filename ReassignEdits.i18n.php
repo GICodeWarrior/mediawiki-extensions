@@ -48,6 +48,15 @@ $messages['qqq'] = array(
 	'right-reassignedits' => '{{doc-right|reassignedits}}',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'reassignedits-new' => 'Anv implijer nevez',
+	'reassignedits-old' => 'Anv implijer kozh',
+	'reassignedits-submit' => 'Kas',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author SVG
