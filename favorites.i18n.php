@@ -481,6 +481,62 @@ $messages['he'] = array(
 	'favoritelistanontext' => 'נא $1 על מנת לצפות או לערוך פריטים ברשימת המעקב שלך.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'favorites-desc' => 'Zmóžnja wutworjenje lisćiny faworitow',
+	'favoritethis' => 'Tutu stronu jako faworitu składować',
+	'prefs-favoritelist' => 'Fawority',
+	'prefs-favoritelist-token' => 'Faworitowy token:',
+	'prefs-advancedfavoritelist' => 'Rozšěrjene opcije',
+	'favoritelist' => 'Moje fawority',
+	'myfavoritelist' => 'Moje fawority',
+	'favoritelistfor' => "(za '''$1''')",
+	'nofavoritelist' => 'Nimaš žane zapiski w swojich faworitach.',
+	'favoritelistanontext' => 'Dyrbiš so $1, zo by zapiski w swojich faworitach wobhladał a wobdźěłał.',
+	'favoritenologin' => 'Njepřizjewjeny',
+	'favoritenologintext' => 'Dyrbiš [[Special:UserLogin|přizjewjeny]] być, zo by swoje fawority změnić móhł.',
+	'addedfavorite' => 'Faworitam přidaty',
+	'addedfavoritetext' => 'Strona "[[:$1]]" bu [[Special:Favoritelist|twojim faworitam]] přidata.',
+	'removedfavorite' => 'Z faworitow wotstronjeny',
+	'removedfavoritetext' => 'Strona "[[:$1]]" bu z [[Special:Favoritelist|twojich faworitow]] wotstronjena.',
+	'favorite' => 'Jako faworit přidać',
+	'favoritethispage' => 'Tutu stronu jako faworitu přidać',
+	'unfavorite' => 'Z faworitow wotstronić',
+	'unfavoritethispage' => 'Nic wjace jako faworit njeskładować',
+	'favoritelist-options' => 'Faworitowe opcije',
+	'favoriteing' => 'Składuje so jako faworit...',
+	'unfavoriteing' => 'Faworit so wotstronja...',
+	'tooltip-pt-favoritelist' => 'Lisćina stronow, kotruž za změnami přepruwuješ',
+	'tooltip-ca-favorite' => 'Tutu stronu twojim faworitam přidać',
+	'tooltip-ca-unfavorite' => 'Tutu stronu z twojich faworitow wotstronić',
+	'tooltip-favorite' => 'Tutu stronu twojim faworitam přidać',
+	'favoritelistall2' => 'wšě',
+	'favoritelistedit-numitems' => 'Twoje fawority wobsahuja {{PLUrAL:$1|1 zapisk|$1 zapiskaj|$1 zapiski|$1 zapiskow}}.',
+	'favoritelistedit-noitems' => 'Twoje fawority žane zapiski njewobsahuja.',
+	'favoritelistedit-normal-title' => 'Fawority wobdźěłać',
+	'favoritelistedit-normal-legend' => 'Zapiski z faworitow wotstronić',
+	'favoritelistedit-normal-explain' => 'Zapiski w twojich faworitach pokazuja so deleka.
+Zo by zapisk wotstronił, markěruj kašćik pódla njeho a klikń na "{{int:Favoritelistedit-normal-submit}}".
+Móžeš tež [[Special:Favoritelist/raw|lisćinu surowych faworitow  wobdźěłać]].',
+	'favoritelistedit-normal-submit' => 'Zapiski wotstronić',
+	'favoritelistedit-normal-done' => '{{PLURAL:$1|1 zapisk bu|$1 zapiskaj buštej|$1 zapiski buchu|$1 zapiskow  bu}} z twojich faworitow {{PLURAL:$1|wotstronjeny|wotstronjenej|wotstronjene|wotstronjene}}:',
+	'favoritelistedit-raw-title' => 'Lisćinu surowych faworitow wobdźěłać',
+	'favoritelistedit-raw-legend' => 'Lisćinu surowych faworitow wobdźěłać',
+	'favoritelistedit-raw-explain' => 'Zapiski w twojich faworitach pokazuja so deleka a dadźa so po rynčkach přidać a wotstronić.
+Hdyž sy hotowy, klikń na "{{int:Favoritelistedit-raw-submit}}".
+Móžeš tež [[Special:Favoritelist/edit|stndardny editor wužiwać]].',
+	'favoritelistedit-raw-titles' => 'Zapiski:',
+	'favoritelistedit-raw-submit' => 'Fawority aktualizować',
+	'favoritelistedit-raw-done' => 'Twoje fawority su so zaktualizowali.',
+	'favoritelistedit-raw-added' => '{{PLURAL:$1|1 zapisk bu dodaty|$1 zapiskaj buštej dodatej|$1 zapiski buchu dodate|$1 zapiskow bu dodate}}:',
+	'favoritelistedit-raw-removed' => '{{PLURAL:$1|1 zapisk bu wotstronjeny|$1 zapiskaj buštej wotstronjenej|$1 zapiski buchu wotstronjene|$1 zapiskow bu wotstronjene}}:',
+	'favoritelisttools-view' => 'Fawority sej wobhladać',
+	'favoritelisttools-edit' => 'Fawority sej wobhladać a wobdźěłać',
+	'favoritelisttools-raw' => 'Surowe fawority wobdźěłać',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
