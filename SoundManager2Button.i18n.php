@@ -28,6 +28,13 @@ $messages['ast'] = array(
 	'soundmanager2button-play' => 'Reproducir',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'soundmanager2button-play' => 'Lenn',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
