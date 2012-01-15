@@ -481,11 +481,12 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Dj
  * @author Misibacsi
+ * @author Xbspiro
  */
 $messages['hu'] = array(
 	'webfonts' => 'WebFonts',
 	'webfonts-desc' => 'Fontok beágyazása a lapokba',
-	'webfonts-load' => 'Válassza ki a betűtípus',
+	'webfonts-load' => 'Válassza ki a betűtípust!',
 	'webfonts-reset' => 'Törlés',
 	'webfonts-enable-preference' => 'Fontok beágyazása (WebFonts)',
 	'webfonts-menu-tooltip' => 'Válassz egy fontot az oldalhoz',
@@ -624,7 +625,7 @@ $messages['lb'] = array(
 	'webfonts-reset' => 'Zrécksetzen',
 	'webfonts-menu-tooltip' => "Sicht eng Buschtawen-Zort fir d'Säit eraus",
 	'webfonts-help' => 'Hëllef',
-	'webfonts-preview-download' => 'Eroflueden',
+	'webfonts-preview-download' => 'Dës Schrëftart (Font) eroflueden',
 );
 
 /** Limburgish (Limburgs)
@@ -638,6 +639,9 @@ $messages['li'] = array(
 	'webfonts-enable-preference' => 'Sjakel insloeting fonts aan (WebFonts)',
 	'webfonts-menu-tooltip' => 'Selecteer fonts veure pagina',
 	'webfonts-help' => 'Hölp',
+	'webfonts-preview-intro' => 'Via dees paasj kins se de lettertypes bekieke die besjikbaar zeen inne oetbreiing WebFonts en es se det wils, kins se ze downloade en installere op diene pc.',
+	'webfonts-preview-title' => 'Veurbesjoew lettertypes',
+	'webfonts-preview-download' => 'Download dit lettertype',
 );
 
 /** Macedonian (Македонски)
@@ -1028,7 +1032,7 @@ $messages['uk'] = array(
 	'webfonts-reset' => 'Скинути',
 	'webfonts-menu-tooltip' => 'Виберіть шрифт для сторінки',
 	'webfonts-help' => 'Допомога',
-	'webfonts-preview-download' => 'Завантажити',
+	'webfonts-preview-download' => 'Завантажити цей шрифт',
 );
 
 /** Veps (Vepsän kel')
