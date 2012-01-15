@@ -23,7 +23,7 @@ define('EXTPATH','GeeQuBox');
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'GeeQuBox',
-	'version' => '0.02.1',
+	'version' => '0.03.0',
 	'author' => array( '[http://www.mediawiki.org/wiki/User:Clausekwis David Raison]' ), 
 	'url' => 'https://www.mediawiki.org/wiki/Extension:GeeQuBox',
 	'descriptionmsg' => 'geequbox-desc'
@@ -41,27 +41,22 @@ $wgResourceModules['ext.GeeQuBox'] = array(
 	'remoteExtPath' => EXTPATH 
 );
 
-
 // defaults
 $wgGqbDefaultWidth = 640;
 
 $wgExtensionMessagesFiles['GeeQuBox'] = dirname(__FILE__) .'/GeeQuBox.i18n.php';
-$wgHooks['LanguageGetMagic'][] = 'wfGeeQuBoxLanguageGetMagic';
+$wgExtensionMessagesFiles['GeeQuBoxMagic'] = dirname(__FILE__) .'/GeeQuBox.i18n.magic.php';
 
 $gqb = new GeeQuBox;
 $wgHooks['BeforeParserrenderImageGallery'][] = array($gqb,'gqbAnalyse');
 $wgHooks['BeforePageDisplay'][] = array($gqb,'gqbAddLightbox');
 
-function wfGeeQuBoxLanguageGetMagic( &$magicWords, $langCode = 'en' ) {
-	$magicWords['geequbox'] = array( 0, 'geequbox' );
-	return true;
-}
+// @todo FIXME: Put this class in a separate file.
 
 /**
  * Class that handles all GeeQuBox operations.
  */
 class GeeQuBox {
-
 	private static $_page;
 	private $_hasGallery;
 
@@ -92,7 +87,6 @@ class GeeQuBox {
 			return true;
 		} else return false;
 	}
-
 
 	private function _gqbAddScripts() {
 		global $wgExtensionAssetsPath;
@@ -157,6 +151,4 @@ class GeeQuBox {
 	
 		return 'href="'. $iPath .'" title="'. htmlspecialchars( $title )  .'" class="image"';
 	}
-
 }
-
