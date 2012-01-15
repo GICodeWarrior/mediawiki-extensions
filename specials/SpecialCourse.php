@@ -120,6 +120,22 @@ class SpecialCourse extends SpecialEPPage {
 				array( 'course_id' => $course->getId() )
 			);
 		}
+		
+		$instructors = $course->getInstructors;
+		
+		if ( count( $instructors ) > 0 ) {
+			$stats['instructors'] = '<ul>';
+			
+			foreach ( $instructors as /* User */ $instructor ) {
+				// TODO
+			}
+			
+			$stats['instructors'] = '</ul>';
+		}
+		else {
+			$stats['instructors'] = wfMsgHtml( 'ep-course-no-instructors' );
+		}
+		
 
 		return $stats;
 	}

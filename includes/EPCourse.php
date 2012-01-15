@@ -23,6 +23,14 @@ class EPCourse extends EPDBObject {
 	protected $org = false;
 
 	/**
+	 * Field for caching the instructors their user objects.
+	 *
+	 * @since 0.1
+	 * @var {array of User}|false
+	 */
+	protected $instructors = false;
+	
+	/**
 	 * @see parent::getFieldTypes
 	 *
 	 * @since 0.1
@@ -37,6 +45,7 @@ class EPCourse extends EPDBObject {
 			'name' => 'str',
 			'description' => 'str',
 			'lang' => 'str',
+			'instructors' => 'array',
 
 			'active' => 'bool',
 			'students' => 'int',
@@ -53,6 +62,7 @@ class EPCourse extends EPDBObject {
 
 			'active' => false,
 			'students' => 0,
+			'instructors' => array(),
 		);
 	}
 
@@ -326,6 +336,25 @@ class EPCourse extends EPDBObject {
 			SpecialPage::getTitleFor( 'Course', $this->getField( 'name' ) ),
 			htmlspecialchars( $this->getField( 'name' ) )
 		);
+	}
+	
+	/**
+	 * Returns the instructors as a list of User objects.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array of User
+	 */
+	public function getInstructors() {
+		if ( $this->instructors === false ) {
+			$this->instructors = array();
+			
+			foreach ( $this->getField( 'instructors' ) as $userId ) {
+				$this->instructors[] = User::newFromId( $userId );
+			}
+		}
+
+		return $this->instructors;
 	}
 
 }

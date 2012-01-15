@@ -91,6 +91,8 @@ class EPTerm extends EPDBObject {
 			'end' => 'str', // TS_MW
 			'description' => 'str',
 			'token' => 'str',
+			'online_ambs' => 'array',
+			'campus_ambs' => 'array',
 		
 			'students' => 'int',
 		);
@@ -107,6 +109,8 @@ class EPTerm extends EPDBObject {
 			'end' => wfTimestamp( TS_MW ),
 			'description' => '',
 			'token' => '',
+			'online_ambs' => array(),
+			'campus_ambs' => array(),
 		
 			'students' => 0,
 		);

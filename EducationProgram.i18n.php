@@ -292,6 +292,8 @@ $messages['en'] = array(
 	'ep-course-inactive' => 'Inactive',
 	'ep-course-active' => 'Active',
 	'specialcourse-summary-terms' => 'Term count',
+	'specialcourse-summary-instructors' => 'Instructors',
+	'ep-course-no-instructors' => 'There are no instructors for this course.',
 
 	// Special:Term
 	'ep-term-title' => 'Term: $1',
