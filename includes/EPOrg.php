@@ -85,7 +85,7 @@ class EPOrg extends EPDBObject {
 	 */
 	public function loadSummaryFields( $summaryFields = null ) {
 		if ( is_null( $summaryFields ) ) {
-			$summaryFields = array( 'courses', 'terms', 'mentors', 'students', 'active' );
+			$summaryFields = array( 'courses', 'terms', 'students', 'active' );
 		}
 		else {
 			$summaryFields = (array)$summaryFields;
@@ -102,16 +102,6 @@ class EPOrg extends EPDBObject {
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
-
-		if ( in_array( 'mentors', $summaryFields ) ) {
-			$fields['mentors'] = $dbr->select(
-				'ep_mentors_per_org',
-				'COUNT(*) AS rowcount',
-				array( 'mpo_org_id' => $this->getId() )
-			);
-
-			$fields['mentors'] = $fields['mentors']->rowcount;
-		}
 
 		if ( in_array( 'students', $summaryFields ) ) {
 			$termIds = EPTerm::selectFields( 'id', array( 'org_id' => $this->getId() ) );

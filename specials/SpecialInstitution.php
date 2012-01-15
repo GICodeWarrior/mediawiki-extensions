@@ -100,7 +100,6 @@ class SpecialInstitution extends SpecialEPPage {
 
 		$stats['courses'] = $this->getLanguage()->formatNum( $org->getField( 'courses' ) );
 		$stats['terms'] = $this->getLanguage()->formatNum( $org->getField( 'terms' ) );
-		$stats['ambassadors'] = $this->getLanguage()->formatNum( $org->getField( 'mentors' ) );
 		$stats['students'] = $this->getLanguage()->formatNum( $org->getField( 'students' ) );
 
 		foreach ( $stats as &$stat ) {
