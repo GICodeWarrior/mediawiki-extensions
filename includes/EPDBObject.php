@@ -458,21 +458,34 @@ abstract class EPDBObject {
 	 */
 	protected function log( $subType ) {
 		if ( $this->log ) {
-			if ( class_exists( 'ManualLogEntry' ) ) {
-				$info = $this->getLogInfo( $subType );
-
-				if ( $info !== false ) {
+			$info = $this->getLogInfo( $subType );
+			$user = array_key_exists( 'user', $info ) ? $info['user'] : $GLOBALS['wgUser'];
+			
+			if ( $info !== false ) {
+				if ( false && class_exists( 'ManualLogEntry' ) ) {
 					$logEntry = new ManualLogEntry( $info['type'], $subType );
-
-					$logEntry->setPerformer( array_key_exists( 'user', $info ) ? $info['user'] : $GLOBALS['wgUser'] );
+	
+					$logEntry->setPerformer( $user );
 					$logEntry->setTarget( $info['title'] );
-
+					
+					if ( array_key_exists( 'comment', $info ) ) {
+						$logEntry->setComment( $info['comment'] );
+					}
+	
 					$logid = $logEntry->insert();
 					$logEntry->publish( $logid );
 				}
-			}
-			else {
-				// TODO
+				else {
+					$log = new LogPage( $info['type'] );
+					
+					$log->addEntry(
+						$subType,
+						$info['title'],
+						array_key_exists( 'comment', $info ) ? $info['comment'] : '',
+						array(),
+						$user
+					);
+				}
 			}
 		}
 	}

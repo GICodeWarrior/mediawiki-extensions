@@ -70,9 +70,9 @@ class EPOrg extends EPDBObject {
 
 	/**
 	 * (non-PHPdoc)
-	 * @see EPDBObject::createLogEntry()
+	 * @see EPDBObject::getLogInfo()
 	 */
-	protected function createLogEntry( $subType ) {
+	protected function getLogInfo( $subType ) {
 		return array(
 			'type' => 'institution',
 			'title' => $this->getTitle(),
