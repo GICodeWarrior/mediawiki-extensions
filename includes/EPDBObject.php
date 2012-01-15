@@ -462,7 +462,7 @@ abstract class EPDBObject {
 			$user = array_key_exists( 'user', $info ) ? $info['user'] : $GLOBALS['wgUser'];
 			
 			if ( $info !== false ) {
-				if ( false && class_exists( 'ManualLogEntry' ) ) {
+				if ( class_exists( 'ManualLogEntry' ) ) {
 					$logEntry = new ManualLogEntry( $info['type'], $subType );
 	
 					$logEntry->setPerformer( $user );
@@ -476,6 +476,7 @@ abstract class EPDBObject {
 					$logEntry->publish( $logid );
 				}
 				else {
+					// Compatibility with MediaWiki 1.18.
 					$log = new LogPage( $info['type'] );
 					
 					$log->addEntry(

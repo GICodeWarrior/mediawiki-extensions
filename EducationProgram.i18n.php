@@ -36,6 +36,9 @@ $messages['en'] = array(
 	'log-name-institution' => 'Institution log',
 	'log-name-course' => 'Course log',
 	'log-name-term' => 'Term log',
+	'log-name-student' => 'Student log',
+	'log-name-ambassador' => 'Ambassador log',
+	'log-name-instructor' => 'Instructor log',
 
 	'log-header-institution' => 'These events track when changes are made to institutions.',
 	'log-header-course' => 'These events track when changes are made to courses.',

@@ -160,6 +160,22 @@ $wgLogActionsHandlers['student/*'] = 'LogFormatter';
 $wgLogActionsHandlers['ambassador/*'] = 'LogFormatter';
 $wgLogActionsHandlers['instructor/*'] = 'LogFormatter';
 
+// Compatibility with MediaWiki 1.18.
+$wgLogNames['institution'] = 'log-name-institution';
+$wgLogNames['course'] = 'log-name-course';
+$wgLogNames['term'] = 'log-name-term';
+$wgLogNames['student'] = 'log-name-student';
+$wgLogNames['ambassador'] = 'log-name-ambassador';
+$wgLogNames['instructor'] = 'log-name-instructor';
+
+// Compatibility with MediaWiki 1.18.
+$wgLogHeaders['institution'] = 'log-header-institution';
+$wgLogHeaders['course'] = 'log-header-course';
+$wgLogHeaders['term'] = 'log-header-term';
+$wgLogHeaders['student'] = 'log-header-student';
+$wgLogHeaders['ambassador'] = 'log-header-ambassador';
+$wgLogHeaders['instructor'] = 'log-header-instructor';
+
 $wgAvailableRights[] = 'ep-org'; 		// Manage orgs
 $wgAvailableRights[] = 'ep-course';		// Manage courses
 $wgAvailableRights[] = 'ep-term';		// Manage terms
