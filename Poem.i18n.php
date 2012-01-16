@@ -414,6 +414,13 @@ $messages['ms'] = array(
 	'poem-desc' => 'Menambah tag <code>&lt;poem&gt;</code> untuk pemformatan puisi',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['nb'] = array(
+	'poem-desc' => 'Legger til taggen <code>&lt;poem&gt;</code> for å kunne formatere dikt',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -433,13 +440,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'poem-desc' => 'Legg til merket <code>&lt;poem&gt;</code> for å kunna formatera dikt',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
-$messages['nb'] = array(
-	'poem-desc' => 'Legger til taggen <code>&lt;poem&gt;</code> for å kunne formatere dikt',
 );
 
 /** Occitan (Occitan)
