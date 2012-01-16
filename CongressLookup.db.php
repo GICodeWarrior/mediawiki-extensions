@@ -56,7 +56,17 @@ class CongressLookupDB {
 				__METHOD__
 			);
 			foreach ( $res as $row ) {
-				// TODO: stuffz.
+				$oneSenator = array(
+					'bioguideid' => $row->ss_bioguideid,
+					'gender' => $row->ss_gender,
+					'name' => $row->ss_name,
+					'title' => $row->ss_title,
+					'state' => $row->ss_state,
+					'phone' => $row->ss_phone,
+					'fax' => $row->ss_fax,
+					'contactform' => $row->ss_contactform
+				);
+				$senatorData[] = $oneSenator;
 			}
 		}
 		return $senatorData;
