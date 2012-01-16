@@ -44,22 +44,31 @@ $messages['en'] = array(
 	'log-header-course' => 'These events track when changes are made to courses.',
 	'log-header-term' => 'These events track when changes are made to terms.',
 
-	'logentry-institution-add' => '$1 {{GENDER:$2|created institution}} $3',
-	'logentry-institution-remove' => '$1 {{GENDER:$2|removed institution}} $3',
-	'logentry-institution-update' => '$1 {{GENDER:$2|updated institution}} $3',
+	'logentry-institution-add' => '$1 created institution $3',
+	'logentry-institution-remove' => '$1 removed institution $3',
+	'logentry-institution-update' => '$1 updated institution $3',
 
-	'logentry-course-add' => '$1 {{GENDER:$2|created course}} $3',
-	'logentry-course-remove' => '$1 {{GENDER:$2|removed course}} $3',
-	'logentry-course-update' => '$1 {{GENDER:$2|updated course}} $3',
+	'logentry-course-add' => '$1 created course $3',
+	'logentry-course-remove' => '$1 removed course $3',
+	'logentry-course-update' => '$1 updated course $3',
 
-	'logentry-term-add' => '$1 {{GENDER:$2|created term}} $3',
-	'logentry-term-remove' => '$1 {{GENDER:$2|removed term}} $3',
-	'logentry-term-update' => '$1 {{GENDER:$2|updated term}} $3',
+	'logentry-term-add' => '$1 created term $3',
+	'logentry-term-remove' => '$1 removed term $3',
+	'logentry-term-update' => '$1 updated term $3',
 
 	'logentry-instructor-add' => '$1 {{GENDER:$2|added}} {{PLURAL:$4|instructor|instructors}} $5 to course $3',
 	'logentry-instructor-remove' => '$1 {{GENDER:$2|removed}} {{PLURAL:$4|instructor|instructors}} $5 from course $3',
-	'logentry-instructor-selfadd' => '$1 {{GENDER:$2|added himself|added herself}} to course $3',
-	'logentry-instructor-selfremove' => '$1 {{GENDER:$2|removed himself|removed herself}} from course $3',
+	'logentry-instructor-selfadd' => '$1 {{GENDER:$2|added himself|added herself}} as instructor to course $3',
+	'logentry-instructor-selfremove' => '$1 {{GENDER:$2|removed himself|removed herself}} as instructor from course $3',
+
+	'logentry-ambassador-add' => '$1 added {{PLURAL:$4|ambassador|ambassadors}} $5 to course $3',
+	'logentry-ambassador-remove' => '$1 removed {{PLURAL:$4|ambassador|ambassadors}} $5 from course $3',
+	'logentry-ambassador-selfadd' => '$1 added {{GENDER:$2|himself|herself}} as ambassador to course $3',
+	'logentry-ambassador-selfremove' => '$1 removed {{GENDER:$2|himself|herself}} as ambassador from course $3',
+
+	'logentry-student-enroll' => '$1 enrolled in term $3',
+	'logentry-student-remove' => '$1 removed $4 as student from term $3',
+	'logentry-student-selfremove' => '$1 removed {{GENDER:$2|his|her}} enrollment from term $3',
 
 	// Preferences
 	'prefs-education' => 'Education',

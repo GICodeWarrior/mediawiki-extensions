@@ -5,14 +5,14 @@
  *
  * @since 0.1
  *
- * @file ApiAddInstructor.php
+ * @file ApiInstructor.php
  * @ingroup Education Program
  * @ingroup API
  *
  * @licence GNU GPL v3+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ApiAddInstructor extends ApiBase {
+class ApiInstructor extends ApiBase {
 
 	public function execute() {
 		$params = $this->extractRequestParams();
@@ -33,16 +33,31 @@ class ApiAddInstructor extends ApiBase {
 			$this->dieUsage( wfMsgExt( 'ep-addinstructor-invalid-user' ), 'invalid-user' );
 		}
 		
+		if ( !$this->userIsAllowed( $userId ) ) {
+			$this->dieUsageMsg( array( 'badaccess-groups' ) );
+		}
+		
 		$course = EPCourse::selectRow( array( 'id', 'name', 'instructors' ), array( 'id' => $params['courseid'] ) );
 
 		if ( $course === false ) {
 			$this->dieUsage( wfMsgExt( 'ep-addinstructor-invalid-course' ), 'invalid-course' );
 		}
 		
+		$success = false;
+		
+		switch ( $params['subaction'] ) {
+			case 'add':
+				$success = $course->addInstructors( array( $userId ) );
+				break;
+			case 'remove':
+				$success = $course->removeInstructors( array( $userId ) );
+				break;
+		}
+		
 		$this->getResult()->addValue(
 			null,
 			'success',
-			$course->addInstructors( array( $userId ) )
+			$success
 		);
 	}
 
@@ -57,17 +72,35 @@ class ApiAddInstructor extends ApiBase {
 	public function getUser() {
 		return method_exists( 'ApiBase', 'getUser' ) ? parent::getUser() : $GLOBALS['wgUser'];
 	}
+	
+	protected function userIsAllowed( $userId ) {
+		$user = $this->getUser();
+		
+		if ( $user->isAllowed( 'ep-instructor' ) ) {
+			return true;
+		}
+		
+		if ( $user->isAllowed( 'ep-beinstructor' ) && $user->getId() === $userId ) {
+			return true;
+		}
+		
+		return false;
+	}
 
-//	public function needsToken() {
-//		return true;
-//	}
-//
-//	public function mustBePosted() {
-//		return true;
-//	}
+	public function needsToken() {
+		return true;
+	}
+
+	public function mustBePosted() {
+		return true;
+	}
 
 	public function getAllowedParams() {
 		return array(
+			'subaction' => array(
+				ApiBase::PARAM_TYPE => array( 'add', 'remove' ),
+				ApiBase::PARAM_REQUIRED => true,
+			),
 			'username' => array(
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => false,
@@ -86,6 +119,7 @@ class ApiAddInstructor extends ApiBase {
 
 	public function getParamDescription() {
 		return array(
+			'subaction' => 'Specifies what you want to do with the instructor',
 			'courseid' => 'The ID of the course to which the instructor should be added',
 			'username' => 'Name of the user to associate as instructor',
 			'userid' => 'Id of the user to associate as instructor',
@@ -109,8 +143,10 @@ class ApiAddInstructor extends ApiBase {
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=addinstructor&courseid=42&userid=9001',
-			'api.php?action=addinstructor&courseid=42&username=Jeroen%20De%20Dauw',
+			'api.php?action=instructor&subaction=add&courseid=42&userid=9001',
+			'api.php?action=instructor&subaction=add&courseid=42&username=Jeroen%20De%20Dauw',
+			'api.php?action=instructor&subaction=remove&courseid=42&userid=9001',
+			'api.php?action=instructor&subaction=remove&courseid=42&username=Jeroen%20De%20Dauw',
 		);
 	}
 

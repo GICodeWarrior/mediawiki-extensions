@@ -393,13 +393,13 @@ class EPCourse extends EPDBObject {
 	 * @since 0.1
 	 * 
 	 * @param array|integer $newInstructors
+	 * @param string $message
 	 * @param boolean $save
 	 * @param boolean $log
-	 * @param string $message
 	 * 
 	 * @return boolean Success indicator
 	 */
-	public function addInstructors( $newInstructors, $save = true, $log = true, $message = '' ) {
+	public function addInstructors( $newInstructors, $message = '', $save = true, $log = true ) {
 		$instructors = $this->getField( 'instructors' );
 		$addedInstructors = array();
 		
@@ -415,7 +415,7 @@ class EPCourse extends EPDBObject {
 		}
 		
 		$this->setField( 'instructors', $instructors );
-		$addedInstructors = array( 1 );
+		// $addedInstructors = array( 1 );
 		if ( count( $addedInstructors ) > 0 ) {
 			$success = true;
 			
@@ -454,6 +454,24 @@ class EPCourse extends EPDBObject {
 		else {
 			return true;
 		}
+	}
+	
+	/**
+	 * Remove a number of instructors to this course,
+	 * by default also saving the course and only
+	 * logging the removal of the instructors.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array|integer $newInstructors
+	 * @param string $message
+	 * @param boolean $save
+	 * @param boolean $log
+	 * 
+	 * @return boolean Success indicator
+	 */
+	public function removeInstructors( $newInstructors, $message = '', $save = true, $log = true ) {
+		// TODO
 	}
 
 }
