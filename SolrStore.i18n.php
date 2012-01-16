@@ -28,6 +28,15 @@ $messages['qqq'] = array(
 	'solrstore-searchFieldSets-title' => 'The title of the Special:SolrSearch page. A SearchSet is a predefined search form for a field based search.',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'solrstore-desc' => 'Паўнатэкставы пошук па сэмантычных палях',
+	'solrsearch' => 'SolrSearch',
+	'solrstore-searchFieldSets' => 'SolrSearch',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
