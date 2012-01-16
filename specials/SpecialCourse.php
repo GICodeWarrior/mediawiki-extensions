@@ -124,17 +124,18 @@ class SpecialCourse extends SpecialEPPage {
 		$instructors = $course->getInstructors();
 		
 		if ( count( $instructors ) > 0 ) {
-			$stats['instructors'] = '<ul>';
+			$stats['instructors'] = array();
 			
 			foreach ( $instructors as /* EPInstructor */ $instructor ) {
-				$stats['instructors'] .= 
-					'<li>'
-					. $instructor->getUserLink()
-					. $instructor->getToolLinks( $this->getContext(), $course )
-					. '</li>';
+				$stats['instructors'][] = $instructor->getUserLink() . $instructor->getToolLinks( $this->getContext(), $course );
 			}
 			
-			$stats['instructors'] .= '</ul>';
+			if ( count( $instructors ) == 1 ) {
+				$stats['instructors'] = $stats['instructors'][0];
+			}
+			else {
+				$stats['instructors'] = '<ul><li>' . implode( '</li><li>', $stats['instructors'] ) . '</li></ul>';
+			}
 		}
 		else {
 			$stats['instructors'] = wfMsgHtml( 'ep-course-no-instructors' );

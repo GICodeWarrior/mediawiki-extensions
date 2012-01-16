@@ -357,8 +357,6 @@ class EPCourse extends EPDBObject {
 	 * @return array of EPInstructor
 	 */
 	public function getInstructors() {
-		// $this->setField( 'instructors', array( 1 ) );
-		
 		if ( $this->instructors === false ) {
 			$this->instructors = array();
 			
@@ -415,7 +413,7 @@ class EPCourse extends EPDBObject {
 		}
 		
 		$this->setField( 'instructors', $instructors );
-		// $addedInstructors = array( 1 );
+		
 		if ( count( $addedInstructors ) > 0 ) {
 			$success = true;
 			
@@ -463,14 +461,14 @@ class EPCourse extends EPDBObject {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param array|integer $newInstructors
+	 * @param array|integer $sadInstructors
 	 * @param string $message
 	 * @param boolean $save
 	 * @param boolean $log
 	 * 
 	 * @return boolean Success indicator
 	 */
-	public function removeInstructors( $newInstructors, $message = '', $save = true, $log = true ) {
+	public function removeInstructors( $sadInstructors, $message = '', $save = true, $log = true ) {
 		// TODO
 	}
 

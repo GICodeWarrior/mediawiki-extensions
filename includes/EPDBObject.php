@@ -1176,7 +1176,9 @@ abstract class EPDBObject {
 
 		foreach ( self::select( 'id', $conditions ) as /* EPDBObject */ $item ) {
 			$item->loadSummaryFields( $summaryFields );
+			$item->disableLogging();
 			$item->writeToDB();
+			$item->enableLogging();
 		}
 
 		self::setReadDb( DB_SLAVE );

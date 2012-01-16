@@ -1,7 +1,7 @@
 <?php
 
 /**
- * API module to associate users as instructor for a course.
+ * API module to associate/disassociate users as instructor with/from a course.
  *
  * @since 0.1
  *
@@ -73,6 +73,13 @@ class ApiInstructor extends ApiBase {
 		return method_exists( 'ApiBase', 'getUser' ) ? parent::getUser() : $GLOBALS['wgUser'];
 	}
 	
+	/**
+	 * Returns if the user is allowed to do the requested action.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param integer $userId User id of the mentor affected
+	 */
 	protected function userIsAllowed( $userId ) {
 		$user = $this->getUser();
 		
@@ -113,6 +120,10 @@ class ApiInstructor extends ApiBase {
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
 			),
+			'reason' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => false,
+			),
 			'token' => null,
 		);
 	}
@@ -123,13 +134,14 @@ class ApiInstructor extends ApiBase {
 			'courseid' => 'The ID of the course to which the instructor should be added',
 			'username' => 'Name of the user to associate as instructor',
 			'userid' => 'Id of the user to associate as instructor',
+			'reason' => 'Message with the reason for this change for nthe log',
 			'token' => 'Edit token. You can get one of these through prop=info.',
 		);
 	}
 
 	public function getDescription() {
 		return array(
-			'API module for associating a user as instructor with a course.'
+			'API module for associating/disassociating a user as instructor with/from a course.'
 		);
 	}
 
@@ -147,6 +159,7 @@ class ApiInstructor extends ApiBase {
 			'api.php?action=instructor&subaction=add&courseid=42&username=Jeroen%20De%20Dauw',
 			'api.php?action=instructor&subaction=remove&courseid=42&userid=9001',
 			'api.php?action=instructor&subaction=remove&courseid=42&username=Jeroen%20De%20Dauw',
+			'api.php?action=instructor&subaction=remove&courseid=42&username=Jeroen%20De%20Dauw&reason=Removed%20from%20program%20because%20of%20evil%20plans%20to%20take%20over%20the%20world',
 		);
 	}
 
