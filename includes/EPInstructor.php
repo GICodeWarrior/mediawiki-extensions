@@ -116,7 +116,7 @@ class EPInstructor {
 	public function getToolLinks( IContextSource $context, EPCourse $course = null ) {
 		$links = array();
 		
-		$items[] = Linker::userTalkLink( $this->getUser()->getId(), $this->getUser()->getName() );
+		$links[] = Linker::userTalkLink( $this->getUser()->getId(), $this->getUser()->getName() );
 		
 		$links[] = Linker::link( SpecialPage::getTitleFor( 'Contributions', $this->getUser()->getName() ), wfMsgHtml( 'contribslink' ) );
 		

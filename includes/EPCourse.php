@@ -346,7 +346,7 @@ class EPCourse extends EPDBObject {
 	 * @return array of EPInstructor
 	 */
 	public function getInstructors() {
-		$this->setField( 'instructors', array( 1 ) );
+		// $this->setField( 'instructors', array( 1 ) );
 		
 		if ( $this->instructors === false ) {
 			$this->instructors = array();
