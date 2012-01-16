@@ -103,6 +103,13 @@ $messages['hsb'] = array(
 	'snmpquery-desc' => 'Funkcije SNMPget a SNMPwalk přidać a zwobraznjenje wuslědkow we wikiju dowolić',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'snmpquery-desc' => 'SNMPget és SNMPwalk funkciók hozzáadása, és wikin történő megjelenítésük biztosítása',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -153,18 +160,18 @@ $messages['ms'] = array(
 	'snmpquery-desc' => 'Menambahkan fungsi-fungsi SNMPget dan SNMPwalk serta membolehkan pemaparan hasilnya dalam wiki',
 );
 
-/** Dutch (Nederlands)
- * @author Siebrand
- */
-$messages['nl'] = array(
-	'snmpquery-desc' => 'Voegt de functies SNMPget en SNMPwalk toe en maakt het mogelijk deze gegevens in de wiki weer te geven',
-);
-
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'snmpquery-desc' => 'Legg til funksjonene SNMPget og SNMPwalk og tillat visning av resultatene i wikien',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'snmpquery-desc' => 'Voegt de functies SNMPget en SNMPwalk toe en maakt het mogelijk deze gegevens in de wiki weer te geven',
 );
 
 /** Polish (Polski)
