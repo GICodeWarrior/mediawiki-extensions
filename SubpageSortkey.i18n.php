@@ -17,6 +17,13 @@ $messages['qqq'] = array(
 	'subpagesortkey-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'subpagesortkey-desc' => 'Зьмяняе перадвызначаны ключ сартыроўкі старонкі заснаваным на назьве ягонай падстаронкі замест поўнай назвы',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
