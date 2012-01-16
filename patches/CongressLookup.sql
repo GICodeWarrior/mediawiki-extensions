@@ -1,14 +1,14 @@
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/cl_senate (
-	`ss_id` int(10) unsigned NOT NULL,
-	`ss_bioguideid` varchar(32) NOT NULL,
-	`ss_gender` varchar(1) NOT NULL,
-	`ss_name` varchar(255) NOT NULL,
-	`ss_title` varchar(8) NOT NULL,
-	`ss_state` varchar(2) NOT NULL,
-	`ss_phone` varchar(32) NOT NULL,
-	`ss_fax` varchar(32) NOT NULL,
-	`ss_contactform` varchar(255) NOT NULL,
-	PRIMARY KEY (`ss_id`)
+  `ss_id` int(10) unsigned NOT NULL,
+  `ss_bioguideid` varchar(32) NOT NULL,
+  `ss_gender` varchar(1) NOT NULL,
+  `ss_name` varchar(255) NOT NULL,
+  `ss_title` varchar(8) NOT NULL,
+  `ss_state` varchar(2) NOT NULL,
+  `ss_phone` varchar(32) NOT NULL,
+  `ss_fax` varchar(32) NOT NULL,
+  `ss_contactform` varchar(255) NOT NULL,
+PRIMARY KEY (`ss_id`)
 ) /*$wgDBTableOptions*/;
 CREATE INDEX /*i*/ss_state ON /*$wgDBprefix*/sopa_senate (ss_state);
 
