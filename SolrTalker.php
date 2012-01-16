@@ -98,6 +98,7 @@ class SolrTalker {
 						$dynamicBase = substr( $field->str[2], 1 ); // Get the dynamic base of the field eg. "*_dtmax"
 						$newField = str_replace( $dynamicBase, '', $field['name'] ); // Get the field name without the dynamicbase
 						if ( strcasecmp( str_replace( ' ', '_', $newField ), $searchField ) == 0 ) { // Replace all spaces with underscore for better matching
+							$result = trim($field['name']);
 							if ( stripos( $dynamicBase, 'max' ) && stripos( $sort, 'desc' ) ) {
 								// For descending sorting use the MaX value field
 								continue 2;	// we got the right field, stop it!
