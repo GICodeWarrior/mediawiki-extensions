@@ -28,7 +28,7 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 		$this->setHeaders();
 		
 		if ( $zip ) {
-			$zip = $this->trimZip( $zip );
+			//$zip = $this->trimZip( $zip );
 			$this->showMatches( $zip );
 		}
 	}
