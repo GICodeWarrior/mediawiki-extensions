@@ -30,12 +30,14 @@ $messages['en'] = array (
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Patrick Reilly
  * @author Siebrand
  */
 $messages['qqq'] = array(
 	'zero-rated-mobile-access-desc' => '{{desc}}',
-	'zero-rated-mobile-access-search' => 'Text for search action on the search button',
+	'zero-rated-mobile-access-search' => 'Text for search action on the search button.
+{{Identical|Search}}',
 	'zero-rated-mobile-access-language-selection' => 'Text to show the user when they select a language option',
 	'zero-rated-mobile-access-home-page-selection' => 'Name of language followed by text to show user in local link to Wikipedia',
 	'zero-rated-mobile-access-home-page-selection-text' => 'Text to show user prior to selection of language option',
@@ -43,13 +45,16 @@ $messages['qqq'] = array(
 	'zero-rated-mobile-access-banner-text-data-charges' => 'Data charges notice to user before images are displayed. Parameters:
 * $1 is {{Msg-mw|zero-rated-mobile-access-banner-text-data-charges-yes}}
 * $2 is {{Msg-mw|zero-rated-mobile-access-banner-text-data-charges-no}}',
-	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Text for accepting charges',
-	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Text for rejecting charges',
+	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Text for accepting charges.
+{{Identical|Yes}}',
+	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Text for rejecting charges.
+{{Identical|No}}',
 	'zero-rated-mobile-access-click-to-view-image' => 'Text for viewing an image link. Parameters:
 * $1 is the alt text of the image that can be viewed.',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
@@ -62,7 +67,7 @@ $messages['be-tarask'] = array(
 	'zero-rated-mobile-access-banner-text-data-charges' => 'Пасьля працягу могуць быць сьпісаныя кошты: $1 ці $2',
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'так',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'не',
-	'zero-rated-mobile-access-click-to-view-image' => 'Націсьніце, каб праглядзець выяву «$1»...',
+	'zero-rated-mobile-access-click-to-view-image' => 'Націсьніце, каб праглядзець выяву «$1»…',
 );
 
 /** Breton (Brezhoneg)
@@ -138,6 +143,23 @@ $messages['fr'] = array(
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Oui',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'Non',
 	'zero-rated-mobile-access-click-to-view-image' => 'Cliquez pour voir l\'image de, "$1"...',
+);
+
+/** Galician (Galego)
+ * @author Elisardojm
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'zero-rated-mobile-access-desc' => 'Proporciona características para os provedores de servizos móbiles que dan acceso gratuíto',
+	'zero-rated-mobile-access-search' => 'Procurar',
+	'zero-rated-mobile-access-language-selection' => 'Todas as linguas',
+	'zero-rated-mobile-access-home-page-selection' => 'Páxina principal en $1',
+	'zero-rated-mobile-access-home-page-selection-text' => 'Ou vaia á páxina principal na seguinte lingua:',
+	'zero-rated-mobile-access-banner-text' => '{{SITENAME}} gratis desde $1',
+	'zero-rated-mobile-access-banner-text-data-charges' => 'Poden aplicarse tarifas de datos se continúa: $1 ou $2',
+	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'Si',
+	'zero-rated-mobile-access-banner-text-data-charges-no' => 'non',
+	'zero-rated-mobile-access-click-to-view-image' => 'Prema para ver a imaxe, "$1"...',
 );
 
 /** Hebrew (עברית)
@@ -276,5 +298,13 @@ $messages['te'] = array(
 	'zero-rated-mobile-access-language-selection' => 'అన్ని భాషలు',
 	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'అవును',
 	'zero-rated-mobile-access-banner-text-data-charges-no' => 'కాదు',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'zero-rated-mobile-access-banner-text-data-charges-yes' => 'יא',
+	'zero-rated-mobile-access-banner-text-data-charges-no' => 'ניין',
 );
 
