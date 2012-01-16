@@ -47,6 +47,7 @@ $wgCongressLookupMaxAge = 900; // 15 minutes
 $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses['SpecialCongressLookup'] = $dir . 'SpecialCongressLookup.php';
+$wgAutoloadClasses['CongressLookupDB'] = $dir . 'CongressLookup.db.php';
 $wgExtensionMessagesFiles['CongressLookup'] = $dir . 'CongressLookup.i18n.php';
 $wgExtensionMessagesFiles['CongressLookupAlias'] = $dir . 'CongressLookup.alias.php';
 $wgSpecialPages['CongressLookup'] = 'SpecialCongressLookup';

@@ -23,12 +23,30 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 		// Pull in query string parameters
 		$zip = $wgRequest->getVal( 'zip' );
 		
-		/* Setup */
+		// Setup
 		$wgOut->setSquidMaxage( $wgCongressLookupMaxAge );
 		$this->setHeaders();
 		
-		/* Display */
-		// TODO: Do some work here.
+		if ( $zip ) {
+			$zip = $this->trimZip( $zip );
+			showMatches( $zip );
+		}
+	}
+	
+	/**
+	 * Given a zip code, output HTML-formatted data for the representatives for that area
+	 * @param $zip string: A zip code
+	 * @return true
+	 */
+	private function showMatches( $zip ) {
+		global $wgOut;
+		
+		$myRepresentative = array();
+		$mySenators = array();
+		$myRepresentative = CongressLookupDB->getRepresentative();
+		$mySenators = CongressLookupDB->getSenators();
+		
+		// TODO: stuffz.
 	}
 	
 }
