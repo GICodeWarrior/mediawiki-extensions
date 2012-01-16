@@ -90,6 +90,17 @@ class EPInstructor {
 	}
 	
 	/**
+	 * Returns the name of the instroctor, using their real name when available.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return string
+	 */
+	public function getName() {
+		return $this->getUser()->getRealName() === '' ? $this->getUser()->getName() : $this->getUser()->getRealName();
+	}
+	
+	/**
 	 * Retruns the user link for this instructor, using their real name when available.
 	 * 
 	 * @since 0.1
@@ -99,7 +110,7 @@ class EPInstructor {
 	public function getUserLink() {
 		return Linker::userLink(
 			$this->getUser()->getId(),
-			$this->getUser()->getRealName() === '' ? $this->getUser()->getName() : $this->getUser()->getRealName()
+			$this->getName()
 		);
 	}
 	

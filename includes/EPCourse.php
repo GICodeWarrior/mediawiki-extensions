@@ -333,9 +333,20 @@ class EPCourse extends EPDBObject {
 	 */
 	public function getLink() {
 		return Linker::linkKnown(
-			SpecialPage::getTitleFor( 'Course', $this->getField( 'name' ) ),
+			$this->getTitle(),
 			htmlspecialchars( $this->getField( 'name' ) )
 		);
+	}
+	
+	/**
+	 * Get the title of Special:Course/name.
+	 *
+	 * @since 0.1
+	 *
+	 * @return Title
+	 */
+	public function getTitle() {
+		return SpecialPage::getTitleFor( 'Course', $this->getField( 'name' ) );
 	}
 	
 	/**
@@ -357,6 +368,92 @@ class EPCourse extends EPDBObject {
 		}
 
 		return $this->instructors;
+	}
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see EPDBObject::setField()
+	 */
+	public function setField( $name, $value ) {
+		if ( $name === 'instructors' ) {
+			$this->instructors = false;
+		}
+		elseif ( $name === 'org_id' ) {
+			$this->org = false;
+		}
+		
+		parent::setField( $name, $value );
+	}
+	
+	/**
+	 * Adds a number of instructors to this course,
+	 * by default also saving the course and only
+	 * logging the adittion of the instructors.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array|integer $newInstructors
+	 * @param boolean $save
+	 * @param boolean $log
+	 * @param string $message
+	 * 
+	 * @return boolean Success indicator
+	 */
+	public function addInstructors( $newInstructors, $save = true, $log = true, $message = '' ) {
+		$instructors = $this->getField( 'instructors' );
+		$addedInstructors = array();
+		
+		foreach ( (array)$newInstructors as $userId ) {
+			if ( !is_integer( $userId ) ) {
+				throw new MWException( 'Provided user id is not an integer' );
+			}
+			
+			if ( !in_array( $userId, $instructors ) ) {
+				$instructors[] = $userId;
+				$addedInstructors[] = $userId;
+			}
+		}
+		
+		$this->setField( 'instructors', $instructors );
+		$addedInstructors = array( 1 );
+		if ( count( $addedInstructors ) > 0 ) {
+			$success = true;
+			
+			if ( $save ) {
+				$this->disableLogging();
+				$success = $this->writeToDB();
+				$this->enableLogging();
+			}
+			
+			if ( $success && $log ) {
+				$names = array();
+				
+				foreach ( $addedInstructors as $userId ) {
+					$names[] = EPInstructor::newFromId( $userId )->getName();
+				}
+				
+				$info = array(
+					'type' => 'instructor',
+					'subtype' => 'add',
+					'title' => $this->getTitle(),
+					'parameters' => array(
+						'4::instructorcount' => count( $names ),
+						'5::instructors' => $GLOBALS['wgLang']->listToText( $names )
+					),
+				);
+				
+				if ( $message !== '' ) {
+					$info['comment'] = $message;
+				}
+				
+				EPUtils::log( $info );
+			}
+			
+			return $success;
+		} 
+		else {
+			return true;
+		}
 	}
 
 }

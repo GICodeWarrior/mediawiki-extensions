@@ -76,6 +76,7 @@ $wgAutoloadClasses['EPStudent'] 					= dirname( __FILE__ ) . '/includes/EPStuden
 $wgAutoloadClasses['EPStudentPager'] 				= dirname( __FILE__ ) . '/includes/EPStudentPager.php';
 $wgAutoloadClasses['EPTerm'] 						= dirname( __FILE__ ) . '/includes/EPTerm.php';
 $wgAutoloadClasses['EPTermPager'] 					= dirname( __FILE__ ) . '/includes/EPTermPager.php';
+$wgAutoloadClasses['EPUtils'] 						= dirname( __FILE__ ) . '/includes/EPUtils.php';
 
 $wgAutoloadClasses['SpecialCourse'] 				= dirname( __FILE__ ) . '/specials/SpecialCourse.php';
 $wgAutoloadClasses['SpecialCourses'] 				= dirname( __FILE__ ) . '/specials/SpecialCourses.php';
@@ -169,11 +170,20 @@ if ( array_key_exists( 'LogFormatter', $wgAutoloadLocalClasses ) ) {
 }
 else {
 	// Compatibility with MediaWiki 1.18.
-	foreach ( array( 'institution', 'course', 'term', 'student', 'ambassador', 'instructor' ) as $type ) {
+	foreach ( array( 'institution', 'course', 'term' ) as $type ) {
 		foreach ( array( 'add', 'remove', 'update' ) as $action ) {
 			$wgLogActionsHandlers[$type . '/' . $action] = 'EPHooks::formatLogEntry';
 		}
 	}
+	
+	foreach ( array( 'instructor', 'ambassador' ) as $type ) {
+		foreach ( array( 'add', 'remove', 'selfadd', 'selfremove' ) as $action ) {
+			$wgLogActionsHandlers[$type . '/' . $action] = 'EPHooks::formatLogEntry';
+		}
+	}
+	
+	$wgLogActionsHandlers['student/enroll'] = 'EPHooks::formatLogEntry';
+	$wgLogActionsHandlers['student/remove'] = 'EPHooks::formatLogEntry';
 	
 	// Compatibility with MediaWiki 1.18.
 	$wgLogNames['institution'] = 'log-name-institution';

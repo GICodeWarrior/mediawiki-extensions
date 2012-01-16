@@ -18,17 +18,31 @@ class ApiAddInstructor extends ApiBase {
 		$params = $this->extractRequestParams();
 
 		if ( !( isset( $params['username'] ) XOR isset( $params['userid'] ) ) ) {
-			$this->dieUsage( wfMsgExt( 'ep-addinstructor-invalid-user-arg' ), 'username-xor-userid' );
+			$this->dieUsage( wfMsgExt( 'ep-addinstructor-invalid-user-args' ), 'username-xor-userid' );
 		}
 
-		$everythingOk = true;
+		if ( isset( $params['username'] ) ) {
+			$user = User::newFromName( $params['username'] );
+			$userId = $user->getId();
+		}
+		else {
+			$userId = $params['userid'];
+		}
+		
+		if ( $userId < 1 ) {
+			$this->dieUsage( wfMsgExt( 'ep-addinstructor-invalid-user' ), 'invalid-user' );
+		}
+		
+		$course = EPCourse::selectRow( array( 'id', 'name', 'instructors' ), array( 'id' => $params['courseid'] ) );
 
-		// TODO
-
+		if ( $course === false ) {
+			$this->dieUsage( wfMsgExt( 'ep-addinstructor-invalid-course' ), 'invalid-course' );
+		}
+		
 		$this->getResult()->addValue(
 			null,
 			'success',
-			$everythingOk
+			$course->addInstructors( array( $userId ) )
 		);
 	}
 
@@ -44,13 +58,13 @@ class ApiAddInstructor extends ApiBase {
 		return method_exists( 'ApiBase', 'getUser' ) ? parent::getUser() : $GLOBALS['wgUser'];
 	}
 
-	public function needsToken() {
-		return true;
-	}
-
-	public function mustBePosted() {
-		return true;
-	}
+//	public function needsToken() {
+//		return true;
+//	}
+//
+//	public function mustBePosted() {
+//		return true;
+//	}
 
 	public function getAllowedParams() {
 		return array(
@@ -88,6 +102,8 @@ class ApiAddInstructor extends ApiBase {
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'username-xor-userid', 'info' => 'You need to either provide the username or the userid parameter' ),
+			array( 'code' => 'invalid-user', 'info' => 'An invalid user name or id was provided' ),
+			array( 'code' => 'invalid-course', 'info' => 'There is no course with the provided ID' ),
 		) );
 	}
 

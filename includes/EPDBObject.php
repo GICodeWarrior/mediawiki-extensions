@@ -459,34 +459,10 @@ abstract class EPDBObject {
 	protected function log( $subType ) {
 		if ( $this->log ) {
 			$info = $this->getLogInfo( $subType );
-			$user = array_key_exists( 'user', $info ) ? $info['user'] : $GLOBALS['wgUser'];
 			
 			if ( $info !== false ) {
-				if ( class_exists( 'ManualLogEntry' ) ) {
-					$logEntry = new ManualLogEntry( $info['type'], $subType );
-	
-					$logEntry->setPerformer( $user );
-					$logEntry->setTarget( $info['title'] );
-					
-					if ( array_key_exists( 'comment', $info ) ) {
-						$logEntry->setComment( $info['comment'] );
-					}
-	
-					$logid = $logEntry->insert();
-					$logEntry->publish( $logid );
-				}
-				else {
-					// Compatibility with MediaWiki 1.18.
-					$log = new LogPage( $info['type'] );
-					
-					$log->addEntry(
-						$subType,
-						$info['title'],
-						array_key_exists( 'comment', $info ) ? $info['comment'] : '',
-						array(),
-						$user
-					);
-				}
+				$info['subtype'] = $subType;
+				EPUtils::log( $info );
 			}
 		}
 	}

@@ -56,6 +56,11 @@ $messages['en'] = array(
 	'logentry-term-remove' => '$1 {{GENDER:$2|removed term}} $3',
 	'logentry-term-update' => '$1 {{GENDER:$2|updated term}} $3',
 
+	'logentry-instructor-add' => '$1 {{GENDER:$2|added}} {{PLURAL:$4|instructor|instructors}} $5 to course $3',
+	'logentry-instructor-remove' => '$1 {{GENDER:$2|removed}} {{PLURAL:$4|instructor|instructors}} $5 from course $3',
+	'logentry-instructor-selfadd' => '$1 {{GENDER:$2|added himself|added herself}} to course $3',
+	'logentry-instructor-selfremove' => '$1 {{GENDER:$2|removed himself|removed herself}} from course $3',
+
 	// Preferences
 	'prefs-education' => 'Education',
 	'ep-prefs-showtoplink' => 'Show a link to [[Special:MyCourses|your courses]] at the top of every page.',
@@ -372,6 +377,11 @@ $messages['en'] = array(
 
 	// EPInstrucor
 	'ep-instructor-remove' => 'remove from course',
+
+	// API addinstructor
+	'ep-addinstructor-invalid-user-args' => 'You need to either provide the username or the userid parameter',
+	'ep-addinstructor-invalid-user' => 'The provided user id or name is not valid and can therefore not be associated as instrucor with the specified course',
+	'ep-addinstructor-invalid-course' => 'There is no course with the provided ID',
 );
 
 /** Message documentation (Message documentation)
