@@ -383,6 +383,7 @@ $messages['en'] = array(
 	'ep-instructor-remove-retry' => 'Retry',
 	'ep-instructor-remove-failed' => 'Something went wrong - could not remove the instructor from the course.',
 	'ep-instructor-cancel-button' => 'Cancel',
+	'ep-instructor-remove-text' => 'You are about to remove $2 (Username: $1) as {{GENDER:$1|instructor}} from course $3. Please enter a brief summary with the reason for this removal.',
 
 	// EPInstrucor
 	'ep-instructor-remove' => 'remove from course',

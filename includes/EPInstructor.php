@@ -110,6 +110,7 @@ class EPInstructor {
 	public function getUserLink() {
 		return Linker::userLink(
 			$this->getUser()->getId(),
+			$this->getUser()->getName(),
 			$this->getName()
 		);
 	}
@@ -131,14 +132,18 @@ class EPInstructor {
 		
 		$links[] = Linker::link( SpecialPage::getTitleFor( 'Contributions', $this->getUser()->getName() ), wfMsgHtml( 'contribslink' ) );
 		
-		if ( !is_null( $course ) && $context->getUser()->isAllowed( 'ep-instructor' ) ) {
+		if ( !is_null( $course ) &&
+			( $context->getUser()->isAllowed( 'ep-instructor' ) || $this->getUser()->getId() == $context->getUser()->getId() ) ) {
 			$links[] = Html::element(
 				'a',
 				array(
 					'href' => '#',
 					'class' => 'ep-instructor-remove',
 					'data-courseid' => $course->getId(),
+					'data-coursename' => $course->getField( 'name' ),
 					'data-userid' => $this->getUser()->getId(),
+					'data-username' => $this->getUser()->getName(),
+					'data-bestname' => $this->getName(),
 				),
 				wfMsg( 'ep-instructor-remove' )
 			);

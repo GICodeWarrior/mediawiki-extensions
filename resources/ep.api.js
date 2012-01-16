@@ -34,7 +34,8 @@ window.educationProgram = new( function() {
 		
 		this.addInstructor = function( args ) {
 			var requestArgs = $.extend( {
-				'action': 'addinstructor',
+				'action': 'instructor',
+				'subaction': 'add',
 				'format': 'json',
 				'token': window.mw.user.tokens.get( 'editToken' )
 			}, args );

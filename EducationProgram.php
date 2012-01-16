@@ -336,6 +336,7 @@ $wgResourceModules['ep.instructor'] = $moduleTemplate + array(
 	'dependencies' => array(
 		'jquery.ui.dialog',
 		'ep.api',
+		'mediawiki.jqueryMsg',
 	),
 	'messages' => array(
 		'ep-instructor-remove-title',
@@ -346,6 +347,7 @@ $wgResourceModules['ep.instructor'] = $moduleTemplate + array(
 		'ep-instructor-remove-retry',
 		'ep-instructor-remove-failed',
 		'ep-instructor-cancel-button',
+		'ep-instructor-remove-text',
 	),
 );
 
