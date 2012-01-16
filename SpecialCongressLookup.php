@@ -29,7 +29,7 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 		
 		if ( $zip ) {
 			$zip = $this->trimZip( $zip );
-			showMatches( $zip );
+			$this->showMatches( $zip );
 		}
 	}
 	
@@ -43,8 +43,8 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 		
 		$myRepresentative = array();
 		$mySenators = array();
-		$myRepresentative = CongressLookupDB->getRepresentative();
-		$mySenators = CongressLookupDB->getSenators();
+		$myRepresentative = CongressLookupDB::getRepresentative( $zip );
+		$mySenators = CongressLookupDB::getSenators( $zip );
 		
 		// TODO: stuffz.
 	}

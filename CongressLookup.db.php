@@ -12,10 +12,10 @@ class CongressLookupDB {
 	public static function getRepresentative( $zip ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		 
-		$zip = $this->trimZip( $zip, 5 ); // Trim it to 5 digit
+		$zip = self::trimZip( $zip, 5 ); // Trim it to 5 digit
 		$zip = intval( $zip ); // Convert into an integer
 
-		$row = $dbr->selectRow( 'cl_zip5', 'rep_id', array( 'zip' => $zip ) );
+		$row = $dbr->selectRow( 'cl_zip5', 'sz5_rep_id', array( 'sz5_zip' => $zip ) );
 		if ( $row ) {
 			// TODO: stuffz.
 		}
@@ -29,10 +29,10 @@ class CongressLookupDB {
 	public static function getSenators( $zip ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		 
-		$zip = $this->trimZip( $zip, 3 ); // Trim it to 3 digit
+		$zip = self::trimZip( $zip, 3 ); // Trim it to 3 digit
 		$zip = intval( $zip ); // Convert into an integer
 
-		$row = $dbr->selectRow( 'cl_zip3', 'state', array( 'zip' => $zip ) );
+		$row = $dbr->selectRow( 'cl_zip3', 'sz3_state', array( 'sz3_zip' => $zip ) );
 		if ( $row ) {
 			// TODO: stuffz.
 		}
