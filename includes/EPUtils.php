@@ -13,6 +13,14 @@
  */
 class EPUtils {
 
+	/**
+	 * Create a log entry using the provided info.
+	 * Takes care about the logging interface changes in MediaWiki 1.19.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $info
+	 */
 	public static function log( array $info ) {
 		$user = array_key_exists( 'user', $info ) ? $info['user'] : $GLOBALS['wgUser'];
 		
@@ -47,6 +55,34 @@ class EPUtils {
 				);
 			}
 		}
+	}
+	
+	/**
+	 * Returns a list of country names that can be used by
+	 * a select input localized in the lang of which the code is provided.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $langCode
+	 * 
+	 * @return array
+	 */
+	public static function getCountryOptions( $langCode ) {
+		$countries = CountryNames::getNames( $langCode );
+	
+		return array_merge(
+			array( '' => '' ),
+			array_combine(
+				array_map(
+					function( $value, $key ) {
+						return $key . ' - ' . $value;
+					} ,
+					array_values( $countries ),
+					array_keys( $countries )
+				),
+				array_keys( $countries )
+			)
+		);
 	}
 	
 }

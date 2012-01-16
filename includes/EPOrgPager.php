@@ -68,7 +68,7 @@ class EPOrgPager extends EPPager {
 				);
 				break;
 			case 'country':
-				$countries = array_flip( efEpGetCountryOptions( $this->getLanguage()->getCode() ) );
+				$countries = array_flip( EPUtils::getCountryOptions( $this->getLanguage()->getCode() ) );
 				$value = htmlspecialchars( $countries[$value] );
 				break;
 			case 'courses': case 'students': case 'terms':
@@ -122,7 +122,7 @@ class EPOrgPager extends EPPager {
 		return array(
 			'country' => array(
 				'type' => 'select',
-				'options' => efEpGetCountryOptions( $this->getLanguage()->getCode() ),
+				'options' => EPUtils::getCountryOptions( $this->getLanguage()->getCode() ),
 				'value' => ''
 			),
 			'active' => array(

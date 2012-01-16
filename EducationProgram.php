@@ -358,22 +358,3 @@ $egEPSettings = array();
 
 # The default value for the user preferences.
 $wgDefaultUserOptions['ep_showtoplink'] = false;
-
-// TODO: put somewhere decent + document
-function efEpGetCountryOptions( $langCode ) {
-	$countries = CountryNames::getNames( $langCode );
-
-	return array_merge(
-		array( '' => '' ),
-		array_combine(
-			array_map(
-				function( $value, $key ) {
-					return $key . ' - ' . $value;
-				} ,
-				array_values( $countries ),
-				array_keys( $countries )
-			),
-			array_keys( $countries )
-		)
-	);
-}
