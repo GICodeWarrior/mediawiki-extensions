@@ -150,6 +150,7 @@ $wgHooks['UnitTestsList'][] 					= 'EPHooks::registerUnitTests';
 $wgHooks['PersonalUrls'][] 						= 'EPHooks::onPersonalUrls';
 $wgHooks['GetPreferences'][] 					= 'EPHooks::onGetPreferences';
 
+// Logging
 $wgLogTypes[] = 'institution';
 $wgLogTypes[] = 'course';
 $wgLogTypes[] = 'term';
@@ -199,6 +200,7 @@ else {
 	$wgLogHeaders['instructor'] = 'log-header-instructor';
 }
 
+// Rights
 $wgAvailableRights[] = 'ep-org'; 			// Manage orgs
 $wgAvailableRights[] = 'ep-course';			// Manage courses
 $wgAvailableRights[] = 'ep-term';			// Manage terms
@@ -212,6 +214,7 @@ $wgAvailableRights[] = 'ep-beonline';		// Add or remove yourself as online ambas
 $wgAvailableRights[] = 'ep-becampus';		// Add or remove yourself as campus ambassador from terms
 $wgAvailableRights[] = 'ep-beinstructor';	// Add or remove yourself as instructor from courses
 
+// User group rights
 $wgGroupPermissions['*']['ep-enroll'] = true;
 $wgGroupPermissions['*']['ep-org'] = false;
 $wgGroupPermissions['*']['ep-course'] = false;
@@ -348,6 +351,19 @@ $wgResourceModules['ep.instructor'] = $moduleTemplate + array(
 		'ep-instructor-remove-failed',
 		'ep-instructor-cancel-button',
 		'ep-instructor-remove-text',
+		'ep-instructor-adding',
+		'ep-instructor-addittion-success',
+		'ep-instructor-addittion-self-success',
+		'ep-instructor-add-close-button',
+		'ep-instructor-add-retry',
+		'ep-instructor-addittion-failed',
+		'ep-instructor-add-title',
+		'ep-instructor-add-button',
+		'ep-instructor-add-self-button',
+		'ep-instructor-add-text',
+		'ep-instructor-add-self-text',
+		'ep-instructor-add-self-title',
+		'ep-instructor-add-cancel-button',
 	),
 );
 

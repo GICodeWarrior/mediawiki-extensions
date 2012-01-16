@@ -169,9 +169,10 @@ class SpecialCourse extends SpecialEPPage {
 				'a',
 				array(
 					'href' => '#',
-					'class' => 'ep-become-instructor',
+					'class' => 'ep-add-instructor',
 					'data-courseid' => $course->getId(),
 					'data-coursename' => $course->getField( 'name' ),
+					'data-mode' => 'self',
 				),
 				wfMsg( 'ep-course-become-instructor' )
 			);
@@ -191,6 +192,7 @@ class SpecialCourse extends SpecialEPPage {
 		}
 		
 		if ( count( $links ) > 0 ) {
+			$this->getOutput()->addModules( 'ep.instructor' );
 			return '<br />' . $this->getLanguage()->pipeList( $links );
 		}
 		else {

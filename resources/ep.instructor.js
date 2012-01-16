@@ -84,9 +84,97 @@
 					doRemove();
 				}
 			} );
+		} );
+		
+		$( '.ep-add-instructor' ).click( function( event ) {
+			var $this = $( this ), _this = this;
 			
+			this.courseId = $this.attr( 'data-courseid' );
+			this.courseName = $this.attr( 'data-coursename' );
+			this.selfMode = $this.attr( 'data-mode' ) === 'self';
+			this.$dialog = null;
+			
+			this.nameInput = $( '<input>' ).attr( {
+				'type': 'text',
+				'size': 60,
+				'maxlength': 250
+			} );
+			
+			this.summaryInput = $( '<input>' ).attr( {
+				'type': 'text',
+				'size': 60,
+				'maxlength': 250
+			} );
+			
+			this.doAdd = function() {
+				var $add = $( '#ep-instructor-add-button' );
+				var $cancel = $( '#ep-instructor-add-cancel-button' );
 
-			// TODO: input to provide reason/comment for log
+				$remove.button( 'option', 'disabled', true );
+				$remove.button( 'option', 'label', mw.msg( 'ep-instructor-adding' ) );
+
+				ep.api.removeInstructor( {
+					'courseid': this.courseId,
+					'userid': this.userId,
+					'reason': this.summaryInput.val()
+				} ).done( function() {
+					_this.$dialog.text( mw.msg( _this.selfMode ? 'ep-instructor-addittion-self-success' : 'ep-instructor-addittion-success' ) );
+					$add.remove();
+					$cancel.button( 'option', 'label', mw.msg( 'ep-instructor-add-close-button' ) );
+					$cancel.focus();
+				} ).fail( function() {
+					$add.button( 'option', 'disabled', false );
+					$add.button( 'option', 'label', mw.msg( 'ep-instructor-add-retry' ) );
+					alert( mw.msg( 'ep-instructor-addittion-failed' ) );
+				} );
+			};
+			
+			this.getName = function() {
+				return this.selfMode ? mw.user.name : this.nameInput.val();
+			};
+			
+			this.$dialog = $( '<div>' ).html( '' ).dialog( {
+				'title': mw.msg( this.selfMode ? 'ep-instructor-add-self-title' : 'ep-instructor-add-title' ),
+				'minWidth': 550,
+				'buttons': [
+					{
+						'text': mw.msg( this.selfMode ? 'ep-instructor-add-self-button' : 'ep-instructor-add-button' ),
+						'id': 'ep-instructor-add-button',
+						'click': this.doAdd
+					},
+					{
+						'text': mw.msg( 'ep-instructor-add-cancel-button' ),
+						'id': 'ep-instructor-add-cancel-button',
+						'click': function() {
+							$dialog.dialog( 'close' );
+						}
+					}
+				]
+			} );
+			
+			this.$dialog.append( $( '<p>' ).text( gM( 
+				this.selfMode ? 'ep-instructor-add-self-text' : 'ep-instructor-add-text',
+				this.courseName,
+				this.getName()
+			) ) );
+			
+			if ( !this.selfMode ) {
+				this.$dialog.append( this.nameInput );
+			}
+			
+			this.$dialog.append( this.summaryInput );
+			
+			this.nameInput.focus();
+			
+			var enterHandler = function( event ) {
+				if ( event.which == '13' ) {
+					event.preventDefault();
+					this.doAdd();
+				}
+			};
+			
+			this.nameInput.keypress( enterHandler );
+			this.summaryInput.keypress( enterHandler );
 		} );
 		
 	} );

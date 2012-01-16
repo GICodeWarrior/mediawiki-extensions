@@ -386,6 +386,20 @@ $messages['en'] = array(
 	'ep-instructor-remove-failed' => 'Something went wrong - could not remove the instructor from the course.',
 	'ep-instructor-cancel-button' => 'Cancel',
 	'ep-instructor-remove-text' => 'You are about to remove $2 (Username: $1) as {{GENDER:$1|instructor}} from course $3. Please enter a brief summary with the reason for this removal.',
+	'ep-instructor-adding' => 'Adding...',
+	'ep-instructor-addittion-success' => '$1 has been successfully added as {{GENDER:$1|instructor}} for course $2!',
+	'ep-instructor-addittion-self-success' => 'You have been successfully added as {{GENDER:$1|instructor}} for course $2!',
+	'ep-instructor-add-close-button' => 'Close',
+	'ep-instructor-add-retry' => 'Retry',
+	'ep-instructor-addittion-failed' => 'Something went wrong - could not add the instructor to the course.',
+	'ep-instructor-add-title' => 'Add an instructor to the course',
+	'ep-instructor-add-self-title' => 'Become an {{GENDER:$1|instructor}} for this course',
+	'ep-instructor-add-button' => 'Add instructor',
+	'ep-instructor-add-self-button' => 'Become {{GENDER:$1|instructor}}',
+	'ep-instructor-add-text' => 'You are adding an instructor for course $1. Enter the username of the instructor and a brief description why this person is being added.',
+	'ep-instructor-add-self-text' => 'You are adding yourself as {{GENDER:$1|instructor}} for course $1. Please add a brief description why you are doing so.',
+	'ep-instructor-add-cancel-button' => 'Cancel',
+	
 
 	// EPInstrucor
 	'ep-instructor-remove' => 'remove from course',
