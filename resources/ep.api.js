@@ -31,6 +31,31 @@ window.educationProgram = new( function() {
 				}
 			);
 		};
+		
+		this.addInstructor = function( args ) {
+			var requestArgs = $.extend( {
+				'action': 'addinstructor',
+				'format': 'json',
+				'token': window.mw.user.tokens.get( 'editToken' )
+			}, args );
+			
+			var deferred = $.Deferred();
+			
+			$.post(
+				wgScriptPath + '/api.php',
+				requestArgs,
+				function( data ) {
+					if ( data.hasOwnProperty( 'success' ) && data.success ) {
+						deferred.resolve();
+					}
+					else {
+						deferred.reject();
+					}
+				}
+			);
+			
+			return deferred.promise();
+		};
 
 	} );
 

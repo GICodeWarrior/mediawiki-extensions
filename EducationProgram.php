@@ -322,6 +322,26 @@ $wgResourceModules['ep.formpage'] = $moduleTemplate + array(
 	),
 );
 
+$wgResourceModules['ep.instructor'] = $moduleTemplate + array(
+	'scripts' => array(
+		'ep.instructor.js',
+	),
+	'dependencies' => array(
+		'jquery.ui.dialog',
+		'ep.api',
+	),
+	'messages' => array(
+		'ep-instructor-remove-title',
+		'ep-instructor-remove-button',
+		'ep-instructor-removing',
+		'ep-instructor-removal-success',
+		'ep-instructor-close-button',
+		'ep-instructor-remove-retry',
+		'ep-instructor-remove-failed',
+		'ep-instructor-cancel-button',
+	),
+);
+
 unset( $moduleTemplate );
 
 $egEPSettings = array();

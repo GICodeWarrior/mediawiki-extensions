@@ -109,26 +109,30 @@ class EPInstructor {
 	 * @since 0.1
 	 * 
 	 * @param IContextSource $context
+	 * @param EPCourse|null $course
 	 * 
 	 * @return string
 	 */
-	public function getToolLinks( IContextSource $context ) {
+	public function getToolLinks( IContextSource $context, EPCourse $course = null ) {
 		$links = array();
 		
 		$items[] = Linker::userTalkLink( $this->getUser()->getId(), $this->getUser()->getName() );
 		
 		$links[] = Linker::link( SpecialPage::getTitleFor( 'Contributions', $this->getUser()->getName() ), wfMsgHtml( 'contribslink' ) );
 		
-		if ( $context->getUser()->isAllowed( 'instructor' ) ) {
+		if ( !is_null( $course ) && $context->getUser()->isAllowed( 'ep-instructor' ) ) {
 			$links[] = Html::element(
 				'a',
 				array(
 					'href' => '#',
 					'class' => 'ep-instructor-remove',
-					'data-id' => $this->getId()
+					'data-courseid' => $course->getId(),
+					'data-userid' => $this->getUser()->getId(),
 				),
 				wfMsg( 'ep-instructor-remove' )
 			);
+			
+			$context->getOutput()->addModules( 'ep.instructor' );
 		}
 		
 		return ' <span class="mw-usertoollinks">(' . $context->getLanguage()->pipeList( $links ) . ')</span>';

@@ -127,10 +127,14 @@ class SpecialCourse extends SpecialEPPage {
 			$stats['instructors'] = '<ul>';
 			
 			foreach ( $instructors as /* EPInstructor */ $instructor ) {
-				$instructor->getUserLink() . $instructor->getToolLinks( $this->getContext() );
+				$stats['instructors'] .= 
+					'<li>'
+					. $instructor->getUserLink()
+					. $instructor->getToolLinks( $this->getContext(), $course )
+					. '</li>';
 			}
 			
-			$stats['instructors'] = '</ul>';
+			$stats['instructors'] .= '</ul>';
 		}
 		else {
 			$stats['instructors'] = wfMsgHtml( 'ep-course-no-instructors' );

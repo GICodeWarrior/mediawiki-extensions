@@ -359,6 +359,19 @@ $messages['en'] = array(
 	'specialmycourses-summary-name' => 'Course name',
 	'specialmycourses-summary-org' => 'Institution name',
     'ep-mycourses-not-a-student' => 'You are not enrolled in any [[Special:Courses|courses]].',
+
+	// ep.instructor
+	'ep-instructor-remove-title' => 'Remove instructor from course',
+	'ep-instructor-remove-button' => 'Remove instructor',
+	'ep-instructor-removing' => 'Removing...',
+	'ep-instructor-removal-success' => 'This instructor has been successfully removed from this course.',
+	'ep-instructor-close-button' => 'Close',
+	'ep-instructor-remove-retry' => 'Retry',
+	'ep-instructor-remove-failed' => 'Something went wrong - could not remove the instructor from the course.',
+	'ep-instructor-cancel-button' => 'Cancel',
+
+	// EPInstrucor
+	'ep-instructor-remove' => 'remove from course',
 );
 
 /** Message documentation (Message documentation)
