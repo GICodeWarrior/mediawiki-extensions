@@ -92,7 +92,7 @@ $messages['qqq'] = array(
 See: http://www.mediawiki.org/wiki/Extension:Narayam',
 	'narayam-help' => 'See: http://www.mediawiki.org/wiki/Extension:Narayam
 {{Identical|Help}}',
-	'narayam-help-page' => '{{doc-important|Do not translate "Help:".}}
+	'narayam-help-page' => '{{doc-important|Do not translate "Special:MyLanguage/Help:".}}
 this is a help page connected narayam. it describes how to use this tool',
 	'narayam-checkbox-tooltip' => 'Toggle the input method —that is, the interpretation of keystrokes— between "standard" and "interpreted by Narayam".',
 	'narayam-eo' => 'The language "Esperanto" in your local language.
