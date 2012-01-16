@@ -619,7 +619,7 @@ $.narayam = new ( function() {
 		if ( helppage ) {
 			var $link = $( '<a>' )
 				.text( mw.msg( 'narayam-help' ) )
-				.prop( 'href', mw.util.wikiGetlink( helppage ) );
+				.prop( 'href',  helppage );
 			var $li = $( '<li>' ).addClass( 'narayam-help-link' );
 			$narayamMenuItems.append( $li.append( $link ) );
 		}
