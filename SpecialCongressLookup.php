@@ -1,9 +1,4 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	echo "CongressLookup extension\n";
-	exit( 1 );
-}
-
 /**
  * This class creates a page which asks the user for their zip code. It then uses the zip code to
  * look up information about the user's congressional representatives and presents that information
