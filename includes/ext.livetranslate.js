@@ -17,7 +17,7 @@ window.liveTranslate = new( function() {
 				console.log( 'Live Translate: ' + message );
 			}
 		}
-	}
+	};
 	
 	this.msg = function() {
 		if ( typeof mediaWiki === 'undefined' ) {
@@ -32,7 +32,7 @@ window.liveTranslate = new( function() {
 		else {
 			return mediaWiki.msg.apply( this, arguments );
 		}
-	}
+	};
 	
 } )();
 
