@@ -26,7 +26,7 @@
 				$remove.button( 'option', 'disabled', true );
 				$remove.button( 'option', 'label', mw.msg( 'ep-instructor-removing' ) );
 
-				ep.api.addInstructor( {
+				ep.api.removeInstructor( {
 					'courseid': courseId,
 					'userid': userId,
 					'reason': summaryInput.val()
@@ -67,7 +67,12 @@
 				]
 			} );
 			
-			$dialog.append( $( '<p>' ).text( gM( 'ep-instructor-remove-text', userName, bestName, courseName ) ) );
+			$dialog.append( $( '<p>' ).msg(
+				'ep-instructor-remove-text',
+				mw.html.escape( userName ),
+				'<b>' + mw.html.escape( bestName ) + '</b>', 
+				'<b>' + mw.html.escape( courseName ) + '</b>'
+			) );
 			
 			$dialog.append( summaryInput );
 			

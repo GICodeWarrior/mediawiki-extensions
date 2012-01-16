@@ -308,6 +308,8 @@ $messages['en'] = array(
 	'specialcourse-summary-terms' => 'Term count',
 	'specialcourse-summary-instructors' => 'Instructors',
 	'ep-course-no-instructors' => 'There are no instructors for this course.',
+	'ep-course-become-instructor' => 'Become instructor',
+	'ep-course-add-instructor' => 'Add an instructor',
 
 	// Special:Term
 	'ep-term-title' => 'Term: $1',

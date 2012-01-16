@@ -412,9 +412,9 @@ class EPCourse extends EPDBObject {
 			}
 		}
 		
-		$this->setField( 'instructors', $instructors );
-		
 		if ( count( $addedInstructors ) > 0 ) {
+			$this->setField( 'instructors', $instructors );
+			
 			$success = true;
 			
 			if ( $save ) {
@@ -424,27 +424,7 @@ class EPCourse extends EPDBObject {
 			}
 			
 			if ( $success && $log ) {
-				$names = array();
-				
-				foreach ( $addedInstructors as $userId ) {
-					$names[] = EPInstructor::newFromId( $userId )->getName();
-				}
-				
-				$info = array(
-					'type' => 'instructor',
-					'subtype' => 'add',
-					'title' => $this->getTitle(),
-					'parameters' => array(
-						'4::instructorcount' => count( $names ),
-						'5::instructors' => $GLOBALS['wgLang']->listToText( $names )
-					),
-				);
-				
-				if ( $message !== '' ) {
-					$info['comment'] = $message;
-				}
-				
-				EPUtils::log( $info );
+				$this->logInstructorChange( 'add', $addedInstructors, $message );
 			}
 			
 			return $success;
@@ -469,7 +449,72 @@ class EPCourse extends EPDBObject {
 	 * @return boolean Success indicator
 	 */
 	public function removeInstructors( $sadInstructors, $message = '', $save = true, $log = true ) {
-		// TODO
+		$removedInstructors = array();
+		$remaimingInstructors = array();
+		$sadInstructors = (array)$sadInstructors;
+		
+		foreach ( $this->getField( 'instructors' ) as $userId ) {
+			if ( in_array( $userId, $sadInstructors ) ) {
+				$removedInstructors[] = $userId;
+			}
+			else {
+				$remaimingInstructors[] = $userId;
+			}
+		}
+		
+		if ( count( $removedInstructors ) > 0 ) {
+			$this->setField( 'instructors', $remaimingInstructors );
+			
+			$success = true;
+		
+			if ( $save ) {
+				$this->disableLogging();
+				$success = $this->writeToDB();
+				$this->enableLogging();
+			}
+			
+			if ( $success && $log ) {
+				$this->logInstructorChange( 'remove', $removedInstructors, $message );
+			}
+			
+			return $success;
+		}
+		else {
+			return true;
+		}
+	}
+
+	/**
+	 * Log a change of the instructors of the course.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param string $action
+	 * @param array $instructors
+	 * @param string $message
+	 */
+	protected function logInstructorChange( $action, array $instructors, $message ) {
+		$names = array();
+		
+		foreach ( $instructors as $userId ) {
+			$names[] = EPInstructor::newFromId( $userId )->getName();
+		}
+		
+		$info = array(
+			'type' => 'instructor',
+			'subtype' => $action,
+			'title' => $this->getTitle(),
+			'parameters' => array(
+				'4::instructorcount' => count( $names ),
+				'5::instructors' => $GLOBALS['wgLang']->listToText( $names )
+			),
+		);
+		
+		if ( $message !== '' ) {
+			$info['comment'] = $message;
+		}
+		
+		EPUtils::log( $info );
 	}
 
 }

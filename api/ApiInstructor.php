@@ -47,10 +47,10 @@ class ApiInstructor extends ApiBase {
 		
 		switch ( $params['subaction'] ) {
 			case 'add':
-				$success = $course->addInstructors( array( $userId ) );
+				$success = $course->addInstructors( array( $userId ), $params['reason'] );
 				break;
 			case 'remove':
-				$success = $course->removeInstructors( array( $userId ) );
+				$success = $course->removeInstructors( array( $userId ), $params['reason'] );
 				break;
 		}
 		
@@ -123,6 +123,7 @@ class ApiInstructor extends ApiBase {
 			'reason' => array(
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_DFLT => '',
 			),
 			'token' => null,
 		);

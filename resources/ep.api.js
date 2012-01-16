@@ -32,10 +32,9 @@ window.educationProgram = new( function() {
 			);
 		};
 		
-		this.addInstructor = function( args ) {
+		this.instructor = function( args ) {
 			var requestArgs = $.extend( {
 				'action': 'instructor',
-				'subaction': 'add',
 				'format': 'json',
 				'token': window.mw.user.tokens.get( 'editToken' )
 			}, args );
@@ -56,6 +55,16 @@ window.educationProgram = new( function() {
 			);
 			
 			return deferred.promise();
+		};
+		
+		this.addInstructor = function( args ) {
+			args.subaction = 'add';
+			return this.instructor( args );
+		};
+		
+		this.removeInstructor = function( args ) {
+			args.subaction = 'remove';
+			return this.instructor( args );
 		};
 
 	} );

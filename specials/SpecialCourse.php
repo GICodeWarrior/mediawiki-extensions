@@ -121,28 +121,81 @@ class SpecialCourse extends SpecialEPPage {
 			);
 		}
 		
+		$stats['instructors'] = $this->getInstructorsList( $course ) . $this->getInstructorControls( $course );
+
+		return $stats;
+	}
+	
+	/**
+	 * Returns a list with the instructors for the provided course
+	 * or a message indicating there are none.
+	 * 
+	 * @since 0.1
+	 *  
+	 * @param EPCourse $course
+	 * 
+	 * @return string
+	 */
+	protected function getInstructorsList( EPCourse $course ) {
 		$instructors = $course->getInstructors();
 		
 		if ( count( $instructors ) > 0 ) {
-			$stats['instructors'] = array();
+			$instList = array();
 			
 			foreach ( $instructors as /* EPInstructor */ $instructor ) {
-				$stats['instructors'][] = $instructor->getUserLink() . $instructor->getToolLinks( $this->getContext(), $course );
+				$instList[] = $instructor->getUserLink() . $instructor->getToolLinks( $this->getContext(), $course );
 			}
 			
 			if ( count( $instructors ) == 1 ) {
-				$stats['instructors'] = $stats['instructors'][0];
+				return $instList[0];
 			}
 			else {
-				$stats['instructors'] = '<ul><li>' . implode( '</li><li>', $stats['instructors'] ) . '</li></ul>';
+				return '<ul><li>' . implode( '</li><li>', $instList ) . '</li></ul>';
 			}
 		}
 		else {
-			$stats['instructors'] = wfMsgHtml( 'ep-course-no-instructors' );
+			return wfMsgHtml( 'ep-course-no-instructors' );
+		}
+	}
+	
+	protected function getInstructorControls( EPCourse $course ) {
+		$user = $this->getUser();
+		$links = array();
+		
+		if ( ( $user->isAllowed( 'ep-instructor' ) || $user->isAllowed( 'ep-beinstructor' ) )
+			&& !in_array( $user->getId(), $course->getField( 'instructors' ) )
+			) {
+			$links[] = Html::element(
+				'a',
+				array(
+					'href' => '#',
+					'class' => 'ep-become-instructor',
+					'data-courseid' => $course->getId(),
+					'data-coursename' => $course->getField( 'name' ),
+				),
+				wfMsg( 'ep-course-become-instructor' )
+			);
 		}
 		
-
-		return $stats;
+		if ( $user->isAllowed( 'ep-instructor' ) ) {
+			$links[] = Html::element(
+				'a',
+				array(
+					'href' => '#',
+					'class' => 'ep-add-instructor',
+					'data-courseid' => $course->getId(),
+					'data-coursename' => $course->getField( 'name' ),
+				),
+				wfMsg( 'ep-course-add-instructor' )
+			);
+		}
+		
+		if ( count( $links ) > 0 ) {
+			return '<br />' . $this->getLanguage()->pipeList( $links );
+		}
+		else {
+			return '';
+		}
 	}
 
 }
