@@ -27,6 +27,13 @@ $messages['ast'] = array(
 	'subpagefun-desc' => 'Amiesta funciones analítiques que permiten sacar información abondo tocante a les [http://www.mediawiki.org/wiki/Help:Subpages sub-páxines]',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'subpagefun-desc' => 'Дадае функцыі парсэра для здабыцьця багатай інфармацыі пра [http://www.mediawiki.org/wiki/Help:Subpages падстаронкі]',
+);
+
 /** German (Deutsch)
  * @author Daniel Werner
  */
