@@ -10,6 +10,7 @@ class CongressLookupDB {
 	 * @return array
 	 */
 	public static function getRepresentative( $zip ) {
+		$repData = array();
 		$dbr = wfGetDB( DB_SLAVE );
 		 
 		$zip = self::trimZip( $zip, 5 ); // Trim it to 5 digit
@@ -19,6 +20,7 @@ class CongressLookupDB {
 		if ( $row ) {
 			// TODO: stuffz.
 		}
+		return $repData;
 	}
 	
 	/**
@@ -27,6 +29,7 @@ class CongressLookupDB {
 	 * @return array
 	 */
 	public static function getSenators( $zip ) {
+		$senatorData = array();
 		$dbr = wfGetDB( DB_SLAVE );
 		 
 		$zip = self::trimZip( $zip, 3 ); // Trim it to 3 digit
@@ -34,8 +37,29 @@ class CongressLookupDB {
 
 		$row = $dbr->selectRow( 'cl_zip3', 'sz3_state', array( 'sz3_zip' => $zip ) );
 		if ( $row ) {
-			// TODO: stuffz.
+			$state = $row->state;
+			$res = $dbr->select( 
+				'cl_senate',
+				array(
+					'ss_bioguideid',
+					'ss_gender',
+					'ss_name',
+					'ss_title',
+					'ss_state',
+					'ss_phone',
+					'ss_fax',
+					'ss_contactform'
+				),
+				array(
+					'ss_state' => $state,
+				),
+				__METHOD__
+			);
+			foreach ( $res as $row ) {
+				// TODO: stuffz.
+			}
 		}
+		return $senatorData;
 	}
 	
 	/**
