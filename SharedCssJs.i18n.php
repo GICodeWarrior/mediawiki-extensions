@@ -35,6 +35,18 @@ Similar to {{msg-mw|protectedpagetext}}',
 	'global.js' => '{{msg-mw|global.js}}',
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author EugeneZelenko
+ * @author Jim-by
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'sharedcssjs-desc' => 'Дазваляе выбарку глябальнай вікі і CSS і JS удзельніка з цэнтральнай вікі',
+	'sharedcssjs-error' => 'Гэтая старонка выбраная з цэнтральнай вікі і рэдагаваць яе можна толькі там.',
+	'global.css' => '/* Зьмешчаны тут CSS будзе працаваць ва ўсіх афармленьнях усіх вікі-праектаў вікі-фэрмы */',
+	'global.js' => '/* Любы зьмешчаны тут JavaScript будзе загружацца для ўдзельнікаў на кожнай старонцы, загружанай у вікі-фэрму */',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author McDutchie
