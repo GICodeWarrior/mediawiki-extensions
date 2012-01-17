@@ -16,42 +16,58 @@ class CongressLookupDB {
 		$zip = self::trimZip( $zip, 5 ); // Trim it to 5 digit
 		$zip = intval( $zip ); // Convert into an integer
 
-		$row = $dbr->selectRow( 'cl_zip5', 'clz5_rep_id', array( 'clz5_zip' => $zip ) );
-		if ( $row ) {
-			$rep_id = $row->clz5_rep_id;
-			$res = $dbr->select( 
-				'cl_house',
-				array(
-					'clh_bioguideid',
-					'clh_gender',
-					'clh_name',
-					'clh_title',
-					'clh_state',
-					'clh_district',
-					'clh_phone',
-					'clh_fax',
-					'clh_contactform',
-					'clh_twitter'
-				),
-				array(
-					'clh_id' => $rep_id,
-				),
-				__METHOD__
-			);
-			foreach ( $res as $row ) {
-				$oneHouseRep = array(
-					'bioguideid' => $row->clh_bioguideid,
-					'gender' => $row->clh_gender,
-					'name' => $row->clh_name,
-					'title' => $row->clh_title,
-					'state' => $row->clh_state,
-					'district' => $row->clh_district,
-					'phone' => $row->clh_phone,
-					'fax' => $row->clh_fax,
-					'contactform' => $row->clh_contactform,
-					'twitter' => $row->clh_twitter,
+		/**
+		 * Select all possible reps for this 5 digit zip code.
+		 * In some cases, there is more than one representative for a given
+		 * 5-digit zip code, since district lines are drawn to the 9-digit zip
+		 * level. In the event that there are multiple reps for this 5 digit
+		 * zip, we'll return them all. It will be up to the display layer
+		 * to determine how to display this to the user.
+		 */
+		$rep_results = $dbr->select( 
+			'cl_zip5', 
+			'clz5_rep_id', 
+			array( 'clz5_zip' => $zip ),
+			__MEHOTD__
+		);
+		
+		if ( $rep_results ) {
+			foreach ( $rep_results as $rep_row ) {
+				$rep_id = $rep_row->clz5_rep_id;
+				$res = $dbr->select( 
+					'cl_house',
+					array(
+						'clh_bioguideid',
+						'clh_gender',
+						'clh_name',
+						'clh_title',
+						'clh_state',
+						'clh_district',
+						'clh_phone',
+						'clh_fax',
+						'clh_contactform',
+						'clh_twitter'
+					),
+					array(
+						'clh_id' => $rep_id,
+					),
+					__METHOD__
 				);
-				$repData[] = $oneHouseRep;
+				foreach ( $res as $row ) {
+					$oneHouseRep = array(
+						'bioguideid' => $row->clh_bioguideid,
+						'gender' => $row->clh_gender,
+						'name' => $row->clh_name,
+						'title' => $row->clh_title,
+						'state' => $row->clh_state,
+						'district' => $row->clh_district,
+						'phone' => $row->clh_phone,
+						'fax' => $row->clh_fax,
+						'contactform' => $row->clh_contactform,
+						'twitter' => $row->clh_twitter,
+					);
+					$repData[] = $oneHouseRep;
+				}
 			}
 		}
 		return $repData;
