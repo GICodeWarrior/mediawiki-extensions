@@ -112,7 +112,6 @@ h4 {
 }
 .sopaActionDiv {
     margin-bottom: 1em;
-    margin-left: 1em;
 }
 </style>
 </head>
@@ -140,10 +139,12 @@ h4 {
 	</p>
 </div>
 <div id="contacts">
-	<h4>Your Representatives:</h4>
+	
 HTML;
 		if ( $this->zip ) {
 			$htmlOut .= $this->getCongressTables();
+		} else {
+			$htmlOut .= $this->getZipForm();
 		}
 
 		// Output end of the page
@@ -156,13 +157,15 @@ HTML;
 	
 	/**
 	 * Get an HTML table of data for the user's congressional representatives
-	 * @return HTML for the table
+	 * @return string HTML for the table
 	 */
 	private function getCongressTables() {
 		$myRepresentative = CongressLookupDB::getRepresentative( $this->zip );
 		$mySenators = CongressLookupDB::getSenators( $this->zip );
 
 		$congressTable = '';
+		
+		$congressTable .= Html::element( 'h4', array(), 'Your Representatives:' );
 
 		if ( $myRepresentative ) {
 			$congressTable .= Html::openElement( 'table', array (
@@ -222,5 +225,58 @@ HTML;
 		
 		return $congressTable;
 	}
-
+	
+	/**
+	 * Get HTML for a Zip Code form
+	 * @return string HTML
+	 */
+	private function getZipForm() {
+		$htmlOut = <<<HTML
+<h4>Contact your representatives</h4>
+<div class="sopaActionDiv">
+	<form action="" method="GET">
+		<label for="zip">Your zip code:</label>
+		<input type="text" maxlength="10" size="5" name="zip"/>
+		<input type="submit" value="Look up" name="submit"/>
+	</form>
+</div>
+HTML;
+		return $htmlOut;
+	}
+	
+	/**
+	 * Get HTML for social media links
+	 * @return string HTML for social media links
+	 */
+	private function getSocialMedia() {
+		$htmlOut = <<<HTML
+<div class="sopaActionDiv">
+	<div>
+		<div class="sopaSocial">
+			<a style="text-decoration: none;" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fexample.com%2F">
+			<img width="33" height="33" src="//upload.wikimedia.org/wikipedia/commons/2/2a/WP_SOPA_sm_icon_facebook_dedede.png">
+			</a>
+			<br/>
+			<a style="text-decoration: none;" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fexample.com%2F">Facebook</a>
+		</div>
+		<div class="sopaSocial">
+			<a style="text-decoration: none;" href="https://m.google.com/app/plus/x/?v=compose&content=Google%20Plus%20Post%20Here%20http%3A%2F%2Fexample.com%2F">
+			<img width="33" height="33" src="//upload.wikimedia.org/wikipedia/commons/0/08/WP_SOPA_sm_icon_gplus_dedede.png">
+			</a>
+			<br/>
+			<a style="text-decoration: none; color:" href="https://m.google.com/app/plus/x/?v=compose&content=Google%20Plus%20Post%20Here%20http%3A%2F%2Fexample.com%2F">Google+</a>
+		</div>
+		<div class="sopaSocial">
+			<a style="text-decoration: none;" href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ftest.wikipedia.org%2Fwiki%2FMain_Page%3Fbanner%3Dblackout&text=Tweet%20here%20%23WikipediaBlackout%20http%3A%2F%2Fexample.com%2F">
+			<img width="33" height="33" src="//upload.wikimedia.org/wikipedia/commons/4/45/WP_SOPA_sm_icon_twitter_dedede.png">
+			</a>
+			<br/>
+			<a style="text-decoration: none;" href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ftest.wikipedia.org%2Fwiki%2FMain_Page%3Fbanner%3Dblackout&text=Tweet%20here%20%23WikipediaBlackout%20http%3A%2F%2Fexample.com%2F">Twitter</a>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+HTML;
+		return $htmlOut;
+	}
 }
