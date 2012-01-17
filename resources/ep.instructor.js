@@ -37,6 +37,9 @@
 					$remove.remove();
 					$cancel.button( 'option', 'label', ep.msg( 'ep-instructor-close-button' ) );
 					$cancel.focus();
+
+					// TODO: update UI to reflect the addition
+					location.reload();
 				} ).fail( function() {
 					$remove.button( 'option', 'disabled', false );
 					$remove.button( 'option', 'label', ep.msg( 'ep-instructor-remove-retry' ) );
@@ -134,7 +137,12 @@
 					$add.remove();
 					$cancel.button( 'option', 'label', ep.msg( 'ep-instructor-add-close-button' ) );
 					$cancel.focus();
+
+					// TODO: update UI to reflect the addition
+					location.reload();
 				} ).fail( function() {
+					// TODO: implement handling for fails caused by invalid user name
+
 					$add.button( 'option', 'disabled', false );
 					$add.button( 'option', 'label', ep.msg( 'ep-instructor-add-retry' ) );
 					alert( ep.msg( 'ep-instructor-addittion-failed' ) );
