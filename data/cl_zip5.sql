@@ -1,24 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 3.3.9.2
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Jan 17, 2012 at 01:32 AM
--- Server version: 5.1.47
--- PHP Version: 5.3.6
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Dumping data for table cl_zip5
---
-
 REPLACE INTO /*$wgDBprefix*/cl_zip5 (`clz5_zip`, `clz5_rep_id`) VALUES
 (501, 400031),
 (544, 400031),

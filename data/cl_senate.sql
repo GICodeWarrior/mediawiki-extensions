@@ -1,25 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 3.3.9.2
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Jan 16, 2012 at 06:02 PM
--- Server version: 5.1.47
--- PHP Version: 5.3.6
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Dumping data for table `cl_senate`
---
-
-INSERT INTO /*$wgDBprefix*/`cl_senate` (`cls_id`, `cls_bioguideid`, `cls_gender`, `cls_name`, `cls_title`, `cls_state`, `cls_phone`, `cls_fax`, `cls_contactform`, `cls_twitter`) VALUES
+REPLACE INTO /*$wgDBprefix*/cl_senate (`cls_id`, `cls_bioguideid`, `cls_gender`, `cls_name`, `cls_title`, `cls_state`, `cls_phone`, `cls_fax`, `cls_contactform`, `cls_twitter`) VALUES
 (300001, 'A000069', 'M', 'Sen. Daniel Akaka [D, HI]', 'Sen.', 'HI', '202-224-6361', '202-224-2126', 'http://www.akaka.senate.gov/email-senator-akaka.cfm', NULL),
 (300002, 'A000360', 'M', 'Sen. Lamar Alexander [R, TN]', 'Sen.', 'TN', '202-224-4944', '202-228-3398', 'http://www.alexander.senate.gov/public/index.cfm?p=Email', 'SenAlexander'),
 (300005, 'B000243', 'M', 'Sen. Max Baucus [D, MT]', 'Sen.', 'MT', '202-224-2651', '202-224-0515', 'http://www.baucus.senate.gov/contact/emailForm.cfm?subj=issue', NULL),
