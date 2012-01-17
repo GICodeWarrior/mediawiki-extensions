@@ -375,6 +375,8 @@ $wgResourceModules['ep.instructor'] = $moduleTemplate + array(
 		'ep-instructor-add-self-text',
 		'ep-instructor-add-self-title',
 		'ep-instructor-add-cancel-button',
+		'ep-instructor-summary-input',
+		'ep-instructor-name-input',
 	),
 );
 

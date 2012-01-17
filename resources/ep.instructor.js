@@ -96,14 +96,16 @@
 			
 			this.nameInput = $( '<input>' ).attr( {
 				'type': 'text',
-				'size': 60,
-				'maxlength': 250
+				'size': 30,
+				'maxlength': 250,
+				'id': 'ep-instructor-nameinput'
 			} );
 			
 			this.summaryInput = $( '<input>' ).attr( {
 				'type': 'text',
 				'size': 60,
-				'maxlength': 250
+				'maxlength': 250,
+				'id': 'ep-instructor-summaryinput'
 			} );
 			
 			this.doAdd = function() {
@@ -159,12 +161,26 @@
 			) ) );
 			
 			if ( !this.selfMode ) {
-				this.$dialog.append( this.nameInput );
+				this.$dialog.append(
+					$( '<label>' ).attr( {
+						'for': 'ep-instructor-nameinput'
+					} ).text( ep.msg( 'ep-instructor-name-input' ) + ' ' ),
+					this.nameInput,
+					'<br />',
+					$( '<label>' ).attr( {
+						'for': 'ep-instructor-summaryinput'
+					} ).text( ep.msg( 'ep-instructor-summary-input' ) )
+				);
 			}
 			
 			this.$dialog.append( this.summaryInput );
 			
-			this.nameInput.focus();
+			if ( this.selfMode ) {
+				this.summaryInput.focus();
+			}
+			else {
+				this.nameInput.focus();
+			}
 			
 			var enterHandler = function( event ) {
 				if ( event.which == '13' ) {

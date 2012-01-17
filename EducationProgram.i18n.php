@@ -399,7 +399,8 @@ $messages['en'] = array(
 	'ep-instructor-add-text' => 'You are adding an instructor for course $1. Enter the username of the instructor and a brief description why this person is being added.',
 	'ep-instructor-add-self-text' => 'You are adding yourself as {{GENDER:$1|instructor}} for course $1. Please add a brief description why you are doing so.',
 	'ep-instructor-add-cancel-button' => 'Cancel',
-	
+	'ep-instructor-summary-input' => 'Summary',
+	'ep-instructor-name-input' => 'User name',
 
 	// EPInstrucor
 	'ep-instructor-remove' => 'remove from course',
