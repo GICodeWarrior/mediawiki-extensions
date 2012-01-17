@@ -3,22 +3,23 @@ module( 'ext.webfonts', QUnit.newMwEnvironment() );
 test( '-- Initial check', function() {
 	expect(1);
 
-	ok( mw.webfonts, 'mw.webfonts defined' );
+	ok( mw.webfonts, 'mw.webfonts is defined' );
 } );
 
 test( '-- Dynamic font loading', function() {
 	expect( 7 );
-	
+
+	var validFontName = 'Lohit Devanagari';
 	mw.webfonts.fonts = [];
 	var cssRulesLength = document.styleSheets.length;
-	assertTrue( mw.webfonts.addFont( 'Lohit Devanagari' ) , 'Add the Lohit Devanagari font' );
-	assertTrue( $.inArray( 'Lohit Devanagari', mw.webfonts.fonts ) >= 0 , 'Font loaded' );
+	assertTrue( mw.webfonts.addFont( validFontName ) , 'Add the ' + validFontName + ' font' );
+	assertTrue( $.inArray( validFontName, mw.webfonts.fonts ) >= 0 , validFontName + ' font loaded' );
 	assertTrue( cssRulesLength + 1 === document.styleSheets.length, 'New css rule added to the document' );
 	var loadedFontsSize = mw.webfonts.fonts.length;
-	assertTrue( mw.webfonts.addFont( 'Lohit Devanagari' ) , 'Add the Lohit Devanagari font again' );
-	assertTrue( loadedFontsSize === mw.webfonts.fonts.length , 'Already loaded fonts not loaded again.' );
-	assertFalse( mw.webfonts.addFont( 'Some Non existing font' ), 'addFont should return false if font not found' );
-	assertTrue( cssRulesLength + 1 === document.styleSheets.length, 'No new css rules added at this stage' );
+	assertTrue( mw.webfonts.addFont( validFontName ) , 'Add the ' + validFontName + ' font again' );
+	assertTrue( loadedFontsSize === mw.webfonts.fonts.length , 'A font that is already loaded is not loaded again' );
+	assertFalse( mw.webfonts.addFont( 'Some non-existing font' ), 'addFont returns false if the font was not found' );
+	assertTrue( cssRulesLength + 1 === document.styleSheets.length, 'Loading the font does not add new css rules' );
 } );
 
 test( '-- Dynamic font loading based on lang attribute', function() {
@@ -32,27 +33,28 @@ test( '-- Dynamic font loading based on lang attribute', function() {
 		wgPageContentLanguage: "en",
 	} );
 	
-	ok( $( 'body' ).append( "<p class='webfonts-testing-lang-attr'>Some Content</p>") );
+	ok( $( 'body' ).append( "<p class='webfonts-testing-lang-attr'>Some content</p>"), ' A testing element was appended to <body>' );
 	$testElement =  $( 'p.webfonts-testing-lang-attr' )
-	assertTrue( $testElement !== [], 'Test element added' ) ;
+	assertTrue( $testElement !== [], 'The test element is defined' );
 
-	ok( mw.webfonts.loadFontsForLangAttr() );
-	assertFalse( $testElement.hasClass( 'webfonts-lang-attr' ), 'The element has no webfonts-lang-attr class since there is no lang attribute' ) ;
+	ok( mw.webfonts.loadFontsForLangAttr(), 'Attempted to load fonts for the lang attribute' );
+	assertFalse( $testElement.hasClass( 'webfonts-lang-attr' ), 'The element has no webfonts-lang-attr class since there is no lang attribute' );
 
-	ok( $testElement.attr( 'lang' , 'en' ) , 'Set lang attribute as english' );
-	ok( mw.webfonts.loadFontsForLangAttr() );
-	assertFalse( $testElement.hasClass( 'webfonts-lang-attr' ), 'The element has no webfonts-lang-attr class since en lang has no fonts available' ) ;
+	ok( $testElement.attr( 'lang' , 'en' ) , 'The lang attribute of the test element was set to en (English)' );
+	ok( mw.webfonts.loadFontsForLangAttr(), 'Attempted to load fonts for the lang attribute en' );
+	assertFalse( $testElement.hasClass( 'webfonts-lang-attr' ), 'The test element has no webfonts-lang-attr class since en lang has no fonts available' );
 
-	ok( $testElement.attr( 'lang' , 'ta' ) , 'Set lang attribute as Tamil' );
-	ok( mw.webfonts.loadFontsForLangAttr() );
-	assertTrue( $testElement.hasClass( 'webfonts-lang-attr' ), 'The element has webfonts-lang-attr class' ) ;
-	assertTrue( $.inArray( 'Lohit Tamil', mw.webfonts.fonts ) >= 0 , 'Font loaded' );
-	assertTrue( isFontFaceLoaded( 'Lohit Tamil' ), 'New css rule added to the document for font Lohit Tamil' );
+	var tamilFont = 'Lohit Tamil';
+	ok( $testElement.attr( 'lang' , 'ta' ) , 'Set lang attribute to ta (Tamil)' );
+	ok( mw.webfonts.loadFontsForLangAttr(), 'Attempted to load fonts for the lang attribute ta' );
+	assertTrue( $testElement.hasClass( 'webfonts-lang-attr' ), 'The test element has webfonts-lang-attr class' );
+	assertTrue( $.inArray( tamilFont, mw.webfonts.fonts ) >= 0 , tamilFont + ' font loaded' );
+	assertTrue( isFontFaceLoaded( tamilFont ), 'New css rule font-face was added to the document for font ' + tamilFont );
 
-	ok( mw.webfonts.reset() );
-	assertFalse( $testElement.hasClass( 'webfonts-lang-attr' ), 'The element has no webfonts-lang-attr since we reset it' ) ;
+	ok( mw.webfonts.reset(), 'Reset webfonts' );
+	assertFalse( $testElement.hasClass( 'webfonts-lang-attr' ), 'The element has no webfonts-lang-attr since we reset it' );
 
-	ok( $testElement.remove() );
+	ok( $testElement.remove(), 'The test element was removed from <body>' );
 } );
 
 test( '-- Dynamic font loading based on font-family style attribute', function() {
@@ -61,7 +63,7 @@ test( '-- Dynamic font loading based on font-family style attribute', function()
 	mw.webfonts.fonts = [];
 	ok( $( 'body' ).append( "<p class='webfonts-testing-font-family-style'>Some Content</p>" ) );
 	var $testElement = $( 'p.webfonts-testing-font-family-style' );
-	assertTrue(  $testElement !== [], 'Test element added' ) ;
+	assertTrue(  $testElement !== [], 'Test element added' );
 
 	$testElement.attr( 'style','font-family: RufScript, Arial, Helvetica, sans' );
 	assertTrue( $.inArray( 'RufScript', mw.webfonts.fonts ) === -1 , 'RufScript Font not loaded yet' );
@@ -86,10 +88,10 @@ test( '-- Dynamic font loading based on font-family style attribute', function()
 isFontFaceLoaded = function(fontFamilyName){
 	var lastStyleIndex = document.styleSheets.length-1;
 	// Iterate from last.
-	for( var styleIndex = lastStyleIndex; styleIndex > 0 ; styleIndex-- ){
+	for( var styleIndex = lastStyleIndex; styleIndex > 0; styleIndex-- ){
 		var lastStyleSheet = document.styleSheets[styleIndex];
-		if ( !lastStyleSheet ) continue ;
-		if ( !lastStyleSheet.cssRules[0] ) continue ;
+		if ( !lastStyleSheet ) continue;
+		if ( !lastStyleSheet.cssRules[0] ) continue;
 		var cssText =  lastStyleSheet.cssRules[0].cssText;
 		if ( cssText.indexOf( '@font-face' ) >= 0 &&  cssText.indexOf( fontFamilyName ) >= 0 ){
 			return true;
