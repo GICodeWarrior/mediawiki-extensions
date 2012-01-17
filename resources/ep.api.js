@@ -6,95 +6,63 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-window.educationProgram = new( function() {
+window.educationProgram.api = new( function() {
 
-	// TODO: move to own file
-	this.msg = function () {
-		if ( typeof mw.language.gender === 'undefined' ) {
-			mw.jqueryMsg.htmlEmitter.prototype.gender = function( nodes ) { 
-				var gender;
-				if  ( nodes[0] && nodes[0].options instanceof mw.Map ){
-					gender = nodes[0].options.get( 'gender' );
-				} else {
-					gender = nodes[0];
-				}
-				var forms = nodes.slice(1);
-				return this.language.gender( gender, forms );
-			};
-		}
-		
-		if ( typeof mw.language.gender === 'undefined' ) {
-			return gM.apply( this, arguments );
-		}
-		else {
-			return mw.msg.apply( this, arguments );
-		}
+	this.remove = function( data, callback ) {
+		var requestArgs = {
+			'action': 'deleteeducation',
+			'format': 'json',
+			'token': window.mw.user.tokens.get( 'editToken' ),
+			'ids': data.ids.join( '|' ),
+			'type': data.type
+		};
+
+		$.post(
+			wgScriptPath + '/api.php',
+			requestArgs,
+			function( data ) {
+				var success = data.hasOwnProperty( 'success' ) && data.success;
+
+				callback( {
+					'success': success
+				} );
+			}
+		);
 	};
 	
-	this.msge = function () {
-		return mw.html.escape( this.msg.apply( this, arguments ) );
+	this.instructor = function( args ) {
+		var requestArgs = $.extend( {
+			'action': 'instructor',
+			'format': 'json',
+			'token': window.mw.user.tokens.get( 'editToken' )
+		}, args );
+		
+		var deferred = $.Deferred();
+		
+		$.post(
+			wgScriptPath + '/api.php',
+			requestArgs,
+			function( data ) {
+				if ( data.hasOwnProperty( 'success' ) && data.success ) {
+					deferred.resolve();
+				}
+				else {
+					deferred.reject();
+				}
+			}
+		);
+		
+		return deferred.promise();
 	};
 	
-	this.api = new( function() {
-
-		this.remove = function( data, callback ) {
-			var requestArgs = {
-				'action': 'deleteeducation',
-				'format': 'json',
-				'token': window.mw.user.tokens.get( 'editToken' ),
-				'ids': data.ids.join( '|' ),
-				'type': data.type
-			};
-
-			$.post(
-				wgScriptPath + '/api.php',
-				requestArgs,
-				function( data ) {
-					var success = data.hasOwnProperty( 'success' ) && data.success;
-
-					callback( {
-						'success': success
-					} );
-				}
-			);
-		};
-		
-		this.instructor = function( args ) {
-			var requestArgs = $.extend( {
-				'action': 'instructor',
-				'format': 'json',
-				'token': window.mw.user.tokens.get( 'editToken' )
-			}, args );
-			
-			var deferred = $.Deferred();
-			
-			$.post(
-				wgScriptPath + '/api.php',
-				requestArgs,
-				function( data ) {
-					if ( data.hasOwnProperty( 'success' ) && data.success ) {
-						deferred.resolve();
-					}
-					else {
-						deferred.reject();
-					}
-				}
-			);
-			
-			return deferred.promise();
-		};
-		
-		this.addInstructor = function( args ) {
-			args.subaction = 'add';
-			return this.instructor( args );
-		};
-		
-		this.removeInstructor = function( args ) {
-			args.subaction = 'remove';
-			return this.instructor( args );
-		};
-
-	} );
+	this.addInstructor = function( args ) {
+		args.subaction = 'add';
+		return this.instructor( args );
+	};
+	
+	this.removeInstructor = function( args ) {
+		args.subaction = 'remove';
+		return this.instructor( args );
+	};
 
 } );
-

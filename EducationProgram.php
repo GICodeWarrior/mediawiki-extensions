@@ -289,9 +289,18 @@ $moduleTemplate = array(
 	'remoteExtPath' => 'EducationProgram/resources'
 );
 
+$wgResourceModules['ep.core'] = $moduleTemplate + array(
+	'scripts' => array(
+		'ep.js',
+	),
+);
+
 $wgResourceModules['ep.api'] = $moduleTemplate + array(
 	'scripts' => array(
 		'ep.api.js',
+	),
+	'dependencies' => array(
+		'ep.core',
 	),
 );
 
@@ -338,6 +347,7 @@ $wgResourceModules['ep.instructor'] = $moduleTemplate + array(
 	),
 	'dependencies' => array(
 		'jquery.ui.dialog',
+		'ep.core',
 		'ep.api',
 		'mediawiki.jqueryMsg',
 		'mediawiki.language'
