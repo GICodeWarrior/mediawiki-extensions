@@ -58,7 +58,7 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 		}
 		
 		// Output end of the page
-		$htmlOut .= "\n</body>\n</html>\n";
+		$htmlOut .= "\n</td>\n</tr>\n</table>\n</body>\n</html>\n";
 		
 		echo $htmlOut;
 		
@@ -77,9 +77,24 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 		
 		$congressTable = '';
 		
-		//TODO: Change this so it looks like... anything. 
-		$congressTable .= '<pre>' . print_r( $myRepresentative, true ) . '</pre>';
-		$congressTable .= '<pre>' . print_r( $mySenators, true ) . '</pre>';
+		if ( $myRepresentative ) {
+			$congressTable .= '<table class="person" border="0" cellspacing="0" cellpadding="0" style="border:none;">';
+			$congressTable .= '<tr><td class="name">'.$myRepresentative[0]['name'].'</td></tr>';
+			$congressTable .= '<tr><td>'.wfMsg( 'congresslookup-phone', $myRepresentative[0]['phone'] ).'</td></tr>';
+			$congressTable .= '<tr><td>'.wfMsg( 'congresslookup-fax', $myRepresentative[0]['fax'] ).'</td></tr>';
+			$congressTable .= '<tr><td><a href="'.$myRepresentative[0]['contactform'].'" target="_blank">';
+			$congressTable .= wfMsg( 'congresslookup-contact-form' ).'</a></td></tr>';
+			$congressTable .= '</table>';
+		}
+		foreach ( $mySenators as $senator ) {
+			$congressTable .= '<table class="person" border="0" cellspacing="0" cellpadding="0" style="border:none;">';
+			$congressTable .= '<tr><td class="name">'.$senator['name'].'</td></tr>';
+			$congressTable .= '<tr><td>'.wfMsg( 'congresslookup-phone', $senator['phone'] ).'</td></tr>';
+			$congressTable .= '<tr><td>'.wfMsg( 'congresslookup-fax', $senator['fax'] ).'</td></tr>';
+			$congressTable .= '<tr><td><a href="'.$senator['contactform'].'" target="_blank">';
+			$congressTable .= wfMsg( 'congresslookup-contact-form' ).'</a></td></tr>';
+			$congressTable .= '</table>';
+		}
 		
 		return $congressTable;
 	}
