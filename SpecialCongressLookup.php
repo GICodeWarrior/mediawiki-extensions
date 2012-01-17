@@ -76,9 +76,6 @@ div#instructions {
 	text-align: left;
 	width: 580px;
 	background-color: #202020;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
 	padding: 5px 20px 20px 20px;
 	filter:alpha(opacity=90);
 	-moz-opacity:0.90;
@@ -112,6 +109,10 @@ h3 {
 h4 {
 	font-weight: normal;
 	font-size: 17px;
+}
+.sopaActionDiv {
+    margin-bottom: 1em;
+    margin-left: 1em;
 }
 </style>
 </head>
@@ -187,6 +188,8 @@ HTML;
 			$congressTable .= Html::closeElement( 'td' );
 			$congressTable .= Html::closeElement( 'tr' );
 			$congressTable .= Html::closeElement( 'table' );
+		} else {
+			$congressTable .= Html::element( 'p', array(), wfMsg( 'congresslookup-no-house-rep' ) );
 		}
 		foreach ( $mySenators as $senator ) {
 			$congressTable .= Html::openElement( 'table', array (
@@ -212,6 +215,9 @@ HTML;
 			$congressTable .= Html::closeElement( 'td' );
 			$congressTable .= Html::closeElement( 'tr' );
 			$congressTable .= Html::closeElement( 'table' );
+		}
+		if ( count( $mySenators ) == 0 ) {
+			$congressTable .= Html::element( 'p', array(), wfMsg( 'congresslookup-no-senators' ) );
 		}
 		
 		return $congressTable;

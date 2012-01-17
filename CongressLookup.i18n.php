@@ -20,6 +20,8 @@ $messages['en'] = array(
 	'congresslookup-fax' => 'Fax: $1',
 	'congresslookup-contact-form' => 'Contact form',
 	'congresslookup-your-reps' => 'Your Representatives:',
+	'congresslookup-no-house-rep' => 'No House representative was found for your zip code.',
+	'congresslookup-no-senators' => 'No senators were found for your zip code.',
 );
 
 /** Message documentation (Message documentation)
