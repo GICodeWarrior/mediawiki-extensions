@@ -44,11 +44,10 @@ test( '-- Dynamic font loading based on lang attribute', function() {
 	assertFalse( $testElement.hasClass( 'webfonts-lang-attr' ), 'The element has no webfonts-lang-attr class since en lang has no fonts available' ) ;
 
 	ok( $testElement.attr( 'lang' , 'ta' ) , 'Set lang attribute as Tamil' );
-	var cssRulesLength = document.styleSheets.length;
 	ok( mw.webfonts.loadFontsForLangAttr() );
 	assertTrue( $testElement.hasClass( 'webfonts-lang-attr' ), 'The element has webfonts-lang-attr class' ) ;
 	assertTrue( $.inArray( 'Lohit Tamil', mw.webfonts.fonts ) >= 0 , 'Font loaded' );
-	assertTrue( cssRulesLength + 1 === document.styleSheets.length, 'New css rule added to the document' );
+	assertTrue( isFontFaceLoaded( 'Lohit Tamil' ), 'New css rule added to the document for font Lohit Tamil' );
 
 	ok( mw.webfonts.reset() );
 	assertFalse( $testElement.hasClass( 'webfonts-lang-attr' ), 'The element has no webfonts-lang-attr since we reset it' ) ;
@@ -65,26 +64,36 @@ test( '-- Dynamic font loading based on font-family style attribute', function()
 	assertTrue(  $testElement !== [], 'Test element added' ) ;
 
 	$testElement.attr( 'style','font-family: RufScript, Arial, Helvetica, sans' );
-	var cssRulesLength = document.styleSheets.length;
 	assertTrue( $.inArray( 'RufScript', mw.webfonts.fonts ) === -1 , 'RufScript Font not loaded yet' );
 	ok( mw.webfonts.loadFontsForFontFamilyStyle() );
 	assertTrue( $.inArray( 'RufScript', mw.webfonts.fonts ) >= 0 , 'Font loaded' );
-	assertTrue( cssRulesLength +1 === document.styleSheets.length, 'New css rule added to the document' );
+	assertTrue( isFontFaceLoaded('RufScript'), 'New css rule added to the document for RufScript'  );
 
 	$testElement.attr( 'style','font-family: NonExistingFont, Arial, Helvetica, sans' );
-	cssRulesLength = document.styleSheets.length;
 	ok( mw.webfonts.loadFontsForFontFamilyStyle() );
 	assertTrue( $.inArray( 'NonExistingFont', mw.webfonts.fonts ) === -1 , 'Font not loaded since it is not existing, including fallback fonts' );
-	assertTrue( cssRulesLength === document.styleSheets.length, 'No new css rule added to the document' );
-
+	assertFalse( isFontFaceLoaded( 'NonExistingFont' ), 'No new css rule added to the document' );
+	
 	$testElement.attr( 'style','font-family: NonExistingFont, AnjaliOldLipi, Arial, Helvetica, sans' );
-	cssRulesLength = document.styleSheets.length;
 	assertTrue( $.inArray( 'AnjaliOldLipi', mw.webfonts.fonts ) === -1 , 'Fallback font AnjaliOldLipi not loaded yet' );
 	ok( mw.webfonts.loadFontsForFontFamilyStyle() );
 	assertTrue( $.inArray( 'AnjaliOldLipi', mw.webfonts.fonts ) >= 0 , 'Fallback font AnjaliOldLipi loaded' );
-	assertTrue( cssRulesLength + 1 === document.styleSheets.length, 'New css rule added to the document for fallbackfont' );
+	assertTrue( isFontFaceLoaded('AnjaliOldLipi') , 'New css rule added to the document for fallbackfont AnjaliOldLipi' );
 
 	ok( $testElement.remove() );
 } );
 
-
+isFontFaceLoaded = function(fontFamilyName){
+	var lastStyleIndex = document.styleSheets.length-1;
+	// Iterate from last.
+	for( var styleIndex = lastStyleIndex; styleIndex > 0 ; styleIndex-- ){
+		var lastStyleSheet = document.styleSheets[styleIndex];
+		if ( !lastStyleSheet ) continue ;
+		if ( !lastStyleSheet.cssRules[0] ) continue ;
+		var cssText =  lastStyleSheet.cssRules[0].cssText;
+		if ( cssText.indexOf( '@font-face' ) >= 0 &&  cssText.indexOf( fontFamilyName ) >= 0 ){
+			return true;
+		}
+	}
+	return false;
+}
