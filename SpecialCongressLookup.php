@@ -245,7 +245,7 @@ HTML;
 		$htmlOut = <<<HTML
 <h4>Contact your representatives</h4>
 <div class="sopaActionDiv">
-	<form action="." method="GET">
+	<form action="" method="GET">
 		<label for="zip">Your zip code:</label>
 		<input type="text" maxlength="10" size="5" name="zip" id="zip"/>
 		<input type="submit" value="Look up" name="submit"/>
