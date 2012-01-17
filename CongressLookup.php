@@ -41,8 +41,9 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'congresslookup-desc',
 );
 
-// Configurrable variable for caching time
-$wgCongressLookupMaxAge = 900; // 15 minutes
+// Configurable variables for caching the special page
+$wgCongressLookupSharedMaxAge = 900; // 15 minutes server-side
+$wgCongressLookupMaxAge = 600; // 10 minutes client-side
 
 $dir = dirname( __FILE__ ) . '/';
 

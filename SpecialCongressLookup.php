@@ -5,9 +5,7 @@
  * to the user.
  */
 class SpecialCongressLookup extends UnlistedSpecialPage {
-
-	protected $sharedMaxAge = 600; // Cache for 10 minutes on the server side
-	protected $maxAge = 600; // Cache for 10 minutes on the client side
+	var $zip;
 	
 	public function __construct() {
 		// Register special page
@@ -18,39 +16,61 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 	 * Handle different types of page requests
 	 */
 	public function execute( $sub ) {
-		global $wgRequest, $wgOut, $wgCongressLookupMaxAge;
+		global $wgRequest, $wgOut;
 		
 		// Pull in query string parameters
-		$zip = $wgRequest->getVal( 'zip' );
+		$this->zip = $wgRequest->getVal( 'zip' );
 		
 		// Setup
-		$wgOut->setSquidMaxage( $wgCongressLookupMaxAge );
-		$this->setHeaders();
+		$wgOut->disable();
+		$this->sendHeaders();
 		
-		if ( $zip ) {
-			//$zip = $this->trimZip( $zip );
-			$this->showMatches( $zip );
-		}
+		$this->buildPage();
+		
 	}
 	
 	/**
-	 * Given a zip code, output HTML-formatted data for the representatives for that area
-	 * @param $zip string: A zip code
+	 * Generate the HTTP response headers for the landing page
+	 */
+	private function sendHeaders() {
+		global $wgCongressLookupSharedMaxAge, $wgCongressLookupMaxAge;
+		header( "Content-type: text/html; charset=utf-8" );
+		header( "Cache-Control: public, s-maxage=$wgCongressLookupSharedMaxAge, max-age=$wgCongressLookupMaxAge" );
+	}
+	
+	/**
+	 * Build the HTML for the page
 	 * @return true
 	 */
-	private function showMatches( $zip ) {
-		global $wgOut;
+	private function buildPage() {
+		$htmlOut = '';
 		
+		if ( $this->zip ) {
+			$htmlOut .= $this->getCongressTable();
+		}
+		
+		echo $htmlOut;
+		
+		return true;
+	}
+	
+	/**
+	 * Get an HTML table of data for the user's congressional representatives
+	 * @return HTML for the table
+	 */
+	private function getCongressTable() {
 		$myRepresentative = array();
 		$mySenators = array();
-		$myRepresentative = CongressLookupDB::getRepresentative( $zip );
-		$mySenators = CongressLookupDB::getSenators( $zip );
+		$myRepresentative = CongressLookupDB::getRepresentative( $this->zip );
+		$mySenators = CongressLookupDB::getSenators( $this->zip );
+		
+		$congressTable = '';
 		
 		//TODO: Change this so it looks like... anything. 
-		$wgOut->addHTML( '<pre>' . print_r( $myRepresentative, true ) . '</pre>' );
-		$wgOut->addHTML( '<pre>' . print_r( $mySenators, true ) . '</pre>' );
+		$congressTable .= '<pre>' . print_r( $myRepresentative, true ) . '</pre>';
+		$congressTable .= '<pre>' . print_r( $mySenators, true ) . '</pre>';
 		
-		// TODO: stuffz.
+		return $congressTable;
 	}
 	
 }
