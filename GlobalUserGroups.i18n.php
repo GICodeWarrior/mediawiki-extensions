@@ -35,6 +35,13 @@ $messages['ast'] = array(
 	'globalusergroups-desc' => "Permite l'usu de grupos d'usuarios llocales definíos como grupos globales",
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'globalusergroups-desc' => 'Дазваляе выкарыстоўваць лякальныя групы ўдзельнікаў у якасьці глябальных груп',
+);
+
 /** German (Deutsch)
  * @author SVG
  */
