@@ -76,6 +76,14 @@ $messages['hsb'] = array(
 	'soundmanager2button-play' => 'Wothrać',
 );
 
+/** Hungarian (Magyar)
+ * @author Dj
+ */
+$messages['hu'] = array(
+	'soundmanager2button-desc' => 'SoundManager 2 MP3-lejátszó beágyazása wiki oldalakra',
+	'soundmanager2button-play' => 'Lejátszás',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
