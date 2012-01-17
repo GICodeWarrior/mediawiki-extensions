@@ -18,7 +18,40 @@ class CongressLookupDB {
 
 		$row = $dbr->selectRow( 'cl_zip5', 'sz5_rep_id', array( 'sz5_zip' => $zip ) );
 		if ( $row ) {
-			// TODO: stuffz.
+			$rep_id = $row->sz5_rep_id;
+			$res = $dbr->select( 
+				'cl_house',
+				array(
+					'sh_bioguideid',
+					'sh_gender',
+					'sh_name',
+					'sh_title',
+					'sh_state',
+					'sh_district',
+					'sh_phone',
+					'sh_fax',
+					'sh_contactform'
+				),
+				array(
+					'sh_id' => $rep_id,
+				),
+				__METHOD__
+			);
+			foreach ( $res as $row ) {
+				$oneHouseRep = array(
+					'bioguideid' => $row->sh_bioguideid,
+					'gender' => $row->sh_gender,
+					'name' => $row->sh_name,
+					'title' => $row->sh_title,
+					'state' => $row->sh_state,
+					'district' => $row->sh_district,
+					'phone' => $row->sh_phone,
+					'fax' => $row->sh_fax,
+					'contactform' => $row->sh_contactform
+				);
+				$repData[] = $oneHouseRep;
+			}
+			//$repData = $row;
 		}
 		return $repData;
 	}
@@ -37,7 +70,7 @@ class CongressLookupDB {
 
 		$row = $dbr->selectRow( 'cl_zip3', 'sz3_state', array( 'sz3_zip' => $zip ) );
 		if ( $row ) {
-			$state = $row->state;
+			$state = $row->sz3_state;
 			$res = $dbr->select( 
 				'cl_senate',
 				array(

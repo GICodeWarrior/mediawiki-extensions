@@ -46,6 +46,10 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 		$myRepresentative = CongressLookupDB::getRepresentative( $zip );
 		$mySenators = CongressLookupDB::getSenators( $zip );
 		
+		//TODO: Change this so it looks like... anything. 
+		$wgOut->addHTML( '<pre>' . print_r( $myRepresentative, true ) . '</pre>' );
+		$wgOut->addHTML( '<pre>' . print_r( $mySenators, true ) . '</pre>' );
+		
 		// TODO: stuffz.
 	}
 	
