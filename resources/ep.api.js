@@ -6,26 +6,26 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-if ( typeof mw.language.gender === 'undefined' ) {
-	mw.language.gender = function( gender, forms ) {
-		if ( !forms || forms.length === 0 ) {
-			return '';
-		}
-		forms = mw.language.preConvertPlural( forms, 2 );
-		if ( gender === 'male' ) {
-			return forms[0];
-		}
-		if ( gender === 'female' ) {
-			return forms[1];
-		}
-		return ( forms.length === 3 ) ? forms[2] : forms[0];
-	};
-}
-
 window.educationProgram = new( function() {
 
 	// TODO: move to own file
 	this.msg = function () {
+		if ( typeof mw.language.gender === 'undefined' ) {
+			mw.language.gender = function( gender, forms ) {
+				if ( !forms || forms.length === 0 ) {
+					return '';
+				}
+				forms = mw.language.preConvertPlural( forms, 2 );
+				if ( gender === 'male' ) {
+					return forms[0];
+				}
+				if ( gender === 'female' ) {
+					return forms[1];
+				}
+				return ( forms.length === 3 ) ? forms[2] : forms[0];
+			};
+		}
+		
 		if ( typeof mw.language.gender === 'undefined' ) {
 			return gM.apply( this, arguments );
 		}

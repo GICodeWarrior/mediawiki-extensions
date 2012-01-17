@@ -340,6 +340,7 @@ $wgResourceModules['ep.instructor'] = $moduleTemplate + array(
 		'jquery.ui.dialog',
 		'ep.api',
 		'mediawiki.jqueryMsg',
+		'mediawiki.language'
 	),
 	'messages' => array(
 		'ep-instructor-remove-title',
