@@ -8,6 +8,20 @@
 
 window.educationProgram = new( function() {
 
+	// TODO: move to own file
+	this.msg = function () {
+		if ( typeof mw.language.gender === 'undefined' ) {
+			return gM.apply( this, arguments );
+		}
+		else {
+			return mw.msg.apply( this, arguments );
+		}
+	};
+	
+	this.msge = function () {
+		return mw.html.escape( this.msg.apply( this, arguments ) );
+	};
+	
 	this.api = new( function() {
 
 		this.remove = function( data, callback ) {

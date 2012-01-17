@@ -7,7 +7,7 @@
  */
 
 (function( $, mw, ep ) { 
-
+	
 	$( document ).ready( function() {
 		
 		$( '.ep-instructor-remove' ).click( function( event ) {
@@ -24,21 +24,21 @@
 				var $cancel = $( '#ep-instructor-cancel-button' );
 
 				$remove.button( 'option', 'disabled', true );
-				$remove.button( 'option', 'label', mw.msg( 'ep-instructor-removing' ) );
+				$remove.button( 'option', 'label', ep.msg( 'ep-instructor-removing' ) );
 
 				ep.api.removeInstructor( {
 					'courseid': courseId,
 					'userid': userId,
 					'reason': summaryInput.val()
 				} ).done( function() {
-					$dialog.text( mw.msg( 'ep-instructor-removal-success' ) );
+					$dialog.text( ep.msg( 'ep-instructor-removal-success' ) );
 					$remove.remove();
-					$cancel.button( 'option', 'label', mw.msg( 'ep-instructor-close-button' ) );
+					$cancel.button( 'option', 'label', ep.msg( 'ep-instructor-close-button' ) );
 					$cancel.focus();
 				} ).fail( function() {
 					$remove.button( 'option', 'disabled', false );
-					$remove.button( 'option', 'label', mw.msg( 'ep-instructor-remove-retry' ) );
-					alert( mw.msg( 'ep-instructor-remove-failed' ) );
+					$remove.button( 'option', 'label', ep.msg( 'ep-instructor-remove-retry' ) );
+					alert( ep.msg( 'ep-instructor-remove-failed' ) );
 				} );
 			};
 
@@ -49,16 +49,16 @@
 			} );
 			
 			$dialog = $( '<div>' ).html( '' ).dialog( {
-				'title': mw.msg( 'ep-instructor-remove-title' ),
+				'title': ep.msg( 'ep-instructor-remove-title' ),
 				'minWidth': 550,
 				'buttons': [
 					{
-						'text': mw.msg( 'ep-instructor-remove-button' ),
+						'text': ep.msg( 'ep-instructor-remove-button' ),
 						'id': 'ep-instructor-remove-button',
 						'click': doRemove
 					},
 					{
-						'text': mw.msg( 'ep-instructor-cancel-button' ),
+						'text': ep.msg( 'ep-instructor-cancel-button' ),
 						'id': 'ep-instructor-cancel-button',
 						'click': function() {
 							$dialog.dialog( 'close' );
@@ -111,21 +111,21 @@
 				var $cancel = $( '#ep-instructor-add-cancel-button' );
 
 				$remove.button( 'option', 'disabled', true );
-				$remove.button( 'option', 'label', mw.msg( 'ep-instructor-adding' ) );
+				$remove.button( 'option', 'label', ep.msg( 'ep-instructor-adding' ) );
 
 				ep.api.removeInstructor( {
 					'courseid': this.courseId,
 					'userid': this.userId,
 					'reason': this.summaryInput.val()
 				} ).done( function() {
-					_this.$dialog.text( mw.msg( _this.selfMode ? 'ep-instructor-addittion-self-success' : 'ep-instructor-addittion-success' ) );
+					_this.$dialog.text( ep.msg( _this.selfMode ? 'ep-instructor-addittion-self-success' : 'ep-instructor-addittion-success', this.getName() ) );
 					$add.remove();
-					$cancel.button( 'option', 'label', mw.msg( 'ep-instructor-add-close-button' ) );
+					$cancel.button( 'option', 'label', ep.msg( 'ep-instructor-add-close-button' ) );
 					$cancel.focus();
 				} ).fail( function() {
 					$add.button( 'option', 'disabled', false );
-					$add.button( 'option', 'label', mw.msg( 'ep-instructor-add-retry' ) );
-					alert( mw.msg( 'ep-instructor-addittion-failed' ) );
+					$add.button( 'option', 'label', ep.msg( 'ep-instructor-add-retry' ) );
+					alert( ep.msg( 'ep-instructor-addittion-failed' ) );
 				} );
 			};
 			
@@ -134,16 +134,16 @@
 			};
 			
 			this.$dialog = $( '<div>' ).html( '' ).dialog( {
-				'title': mw.msg( this.selfMode ? 'ep-instructor-add-self-title' : 'ep-instructor-add-title' ),
+				'title': ep.msg( this.selfMode ? 'ep-instructor-add-self-title' : 'ep-instructor-add-title', this.getName() ),
 				'minWidth': 550,
 				'buttons': [
 					{
-						'text': mw.msg( this.selfMode ? 'ep-instructor-add-self-button' : 'ep-instructor-add-button' ),
+						'text': ep.msg( this.selfMode ? 'ep-instructor-add-self-button' : 'ep-instructor-add-button', this.getName() ),
 						'id': 'ep-instructor-add-button',
 						'click': this.doAdd
 					},
 					{
-						'text': mw.msg( 'ep-instructor-add-cancel-button' ),
+						'text': ep.msg( 'ep-instructor-add-cancel-button' ),
 						'id': 'ep-instructor-add-cancel-button',
 						'click': function() {
 							$dialog.dialog( 'close' );
@@ -152,7 +152,7 @@
 				]
 			} );
 			
-			this.$dialog.append( $( '<p>' ).text( gM( 
+			this.$dialog.append( $( '<p>' ).text( gM(
 				this.selfMode ? 'ep-instructor-add-self-text' : 'ep-instructor-add-text',
 				this.courseName,
 				this.getName()
