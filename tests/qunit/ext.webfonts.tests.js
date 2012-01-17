@@ -6,17 +6,41 @@ test( '-- Initial check', function() {
 	ok( mw.webfonts, 'mw.webfonts is defined' );
 } );
 
+test( '-- Web font application to body', function() {
+	expect( 4 );
+
+	var invalidFont = 'NonExistingFont';
+	assertTrue( mw.webfonts.set( invalidFont ) === undefined, 'A non-existent font is not initialized' );
+	// TODO: test that the right thing was written to the log
+
+	var $body = $( 'body' );
+	var bodyLang = $body.attr( 'lang' );
+	var oldConfig = {
+		fontFamily: $body.css( 'font-family' ),
+		fontSize: $body.css( 'font-size' )
+	};
+	var teluguFont = mw.webfonts.config.languages.te[0]
+	$body.attr( 'lang', 'te' );
+
+	ok( mw.webfonts.set( teluguFont ), 'Attempted to load a Telugu font for the whole page' );
+	deepEqual( oldConfig, mw.webfonts.oldconfig, 'Previous body css was saved properly' );
+
+	// Restore <body>
+	$body.attr( 'lang', bodyLang );
+	ok( mw.webfonts.reset(), 'Reset body after testing font application' );
+} );
+
 test( '-- Dynamic font loading', function() {
 	expect( 7 );
 
-	var validFontName = 'Lohit Devanagari';
+	var validFontName = mw.webfonts.config.languages.hi[0];
 	mw.webfonts.fonts = [];
 	var cssRulesLength = document.styleSheets.length;
-	assertTrue( mw.webfonts.addFont( validFontName ) , 'Add a Devanagari font' );
+	assertTrue( mw.webfonts.addFont( validFontName ), 'Add a Devanagari font' );
 	assertTrue( $.inArray( validFontName, mw.webfonts.fonts ) >= 0 , 'Devanagari font loaded' );
 	assertTrue( cssRulesLength + 1 === document.styleSheets.length, 'New css rule added to the document' );
 	var loadedFontsSize = mw.webfonts.fonts.length;
-	assertTrue( mw.webfonts.addFont( validFontName ) , 'Add the Devanagari font again' );
+	assertTrue( mw.webfonts.addFont( validFontName ), 'Add the Devanagari font again' );
 	assertTrue( loadedFontsSize === mw.webfonts.fonts.length , 'A font that is already loaded is not loaded again' );
 	assertFalse( mw.webfonts.addFont( 'Some non-existing font' ), 'addFont returns false if the font was not found' );
 	assertTrue( cssRulesLength + 1 === document.styleSheets.length, 'Loading the font does not add new css rules' );
@@ -33,19 +57,19 @@ test( '-- Dynamic font loading based on lang attribute', function() {
 		wgPageContentLanguage: "en",
 	} );
 	
-	ok( $( 'body' ).append( "<p class='webfonts-testing-lang-attr'>Some content</p>"), ' A element for testing lang-based loading was appended to <body>' );
+	ok( $( 'body' ).append( "<p class='webfonts-testing-lang-attr'>Some content</p>"), 'An element for testing lang-based loading was appended to body' );
 	$testElement =  $( 'p.webfonts-testing-lang-attr' )
 	assertTrue( $testElement !== [], 'The test element is defined' );
 
 	ok( mw.webfonts.loadFontsForLangAttr(), 'Attempted to load fonts for the lang attribute' );
 	assertFalse( $testElement.hasClass( 'webfonts-lang-attr' ), 'The element has no webfonts-lang-attr class since there is no lang attribute' );
 
-	ok( $testElement.attr( 'lang' , 'en' ) , 'The lang attribute of the test element was set to en (English)' );
+	ok( $testElement.attr( 'lang' , 'en' ), 'The lang attribute of the test element was set to en (English)' );
 	ok( mw.webfonts.loadFontsForLangAttr(), 'Attempted to load fonts for the lang attribute en' );
 	assertFalse( $testElement.hasClass( 'webfonts-lang-attr' ), 'The test element has no webfonts-lang-attr class since en lang has no fonts available' );
 
-	var tamilFont = 'Lohit Tamil';
-	ok( $testElement.attr( 'lang' , 'ta' ) , 'Set lang attribute to ta (Tamil)' );
+	var tamilFont = mw.webfonts.config.languages.ta[0];
+	ok( $testElement.attr( 'lang' , 'ta' ), 'Set lang attribute to ta (Tamil)' );
 	ok( mw.webfonts.loadFontsForLangAttr(), 'Attempted to load fonts for the lang attribute ta' );
 	assertTrue( $testElement.hasClass( 'webfonts-lang-attr' ), 'The test element has webfonts-lang-attr class' );
 	assertTrue( $.inArray( tamilFont, mw.webfonts.fonts ) >= 0 , 'Tamil font loaded' );
@@ -54,14 +78,14 @@ test( '-- Dynamic font loading based on lang attribute', function() {
 	ok( mw.webfonts.reset(), 'Reset webfonts' );
 	assertFalse( $testElement.hasClass( 'webfonts-lang-attr' ), 'The element has no webfonts-lang-attr since we reset it' );
 
-	ok( $testElement.remove(), 'The test element was removed from <body>' );
+	ok( $testElement.remove(), 'The test element was removed from body' );
 } );
 
 test( '-- Dynamic font loading based on font-family style attribute', function() {
 	expect( 14 )
 
 	mw.webfonts.fonts = [];
-	ok( $( 'body' ).append( "<p class='webfonts-testing-font-family-style'>Some content</p>" ), 'An element for testing font-family loading was appended to <body>' );
+	ok( $( 'body' ).append( "<p class='webfonts-testing-font-family-style'>Some content</p>" ), 'An element for testing font-family loading was appended to body' );
 	var $testElement = $( 'p.webfonts-testing-font-family-style' );
 	assertTrue(  $testElement !== [], 'The test element is defined' );
 
@@ -79,12 +103,12 @@ test( '-- Dynamic font loading based on font-family style attribute', function()
 	assertTrue( $.inArray( invalidFont, mw.webfonts.fonts ) === -1 , 'Font not loaded since it is not existing, including fallback fonts' );
 	assertFalse( isFontFaceLoaded( invalidFont ), 'No new css rule added to the document since the font does not exist' );
 
-	var malayalamFont = 'AnjaliOldLipi';
+	var malayalamFont = mw.webfonts.config.languages.ml[0];
 	$testElement.attr( 'style', 'font-family: ' + invalidFont + ', ' + malayalamFont + fallbackFonts );
 	assertTrue( $.inArray( malayalamFont, mw.webfonts.fonts ) === -1 , 'Fallback font not loaded yet' );
 	ok( mw.webfonts.loadFontsForFontFamilyStyle(), 'Loading fonts from font-family' );
 	assertTrue( $.inArray( malayalamFont, mw.webfonts.fonts ) >= 0 , 'A fallback font was loaded' );
-	assertTrue( isFontFaceLoaded( malayalamFont ) , 'New css rule added to the document for fallback font' );
+	assertTrue( isFontFaceLoaded( malayalamFont ), 'New css rule added to the document for fallback font' );
 
 	ok( $testElement.remove() );
 } );
