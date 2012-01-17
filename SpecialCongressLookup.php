@@ -184,6 +184,12 @@ HTML;
 			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
 				Html::element( 'td', array(), wfMsg( 'congresslookup-fax', $myRepresentative[0]['fax'] ) )
 			);
+			
+			if ( $myRepresentative[0]['twitter'] ) {
+				$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+					Html::element( 'td', array(), wfMsg( 'congresslookup-twitter', $myRepresentative[0]['twitter'] ) )
+				);
+			}
 
 			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
 				Html::rawElement( 'td', array(),
@@ -216,6 +222,12 @@ HTML;
 			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
 				Html::element( 'td', array(), wfMsg( 'congresslookup-fax', $senator['fax'] ) )
 			);
+			
+			if ( $senator['twitter'] ) {
+				$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+					Html::element( 'td', array(), wfMsg( 'congresslookup-twitter', $senator['twitter'] ) )
+				);
+			}
 
 			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
 				Html::rawElement( 'td', array(),

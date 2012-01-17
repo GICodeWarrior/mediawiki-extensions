@@ -28,7 +28,7 @@ class CongressLookupDB {
 			'cl_zip5', 
 			'clz5_rep_id', 
 			array( 'clz5_zip' => $zip ),
-			__MEHOTD__
+			__METHOD__
 		);
 		
 		if ( $rep_results ) {
