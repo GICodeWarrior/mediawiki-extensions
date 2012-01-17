@@ -125,7 +125,7 @@ h4 {
 
 	<h4>Things you may want to say to your Senator or Representative</h4>
 	<p class="quote">
-	“As one of your concerned constituents, I urge you to oppose SOPA (H.R.3261) and PIPA (S.968) or any future bill that would censor free speech and damage the security of the Internet.”
+	“As one of your concerned constituents, I urge you to oppose SOPA (<a href="http://hdl.loc.gov/loc.uscongress/legislation.112hr3261">H.R.3261</a>) and PIPA (<a href="http://hdl.loc.gov/loc.uscongress/legislation.112s968">S.968</a>) or any future bill that would censor free speech and damage the security of the Internet.”
 	</p>
 
 	<h4>Regarding Censorship</h4>
