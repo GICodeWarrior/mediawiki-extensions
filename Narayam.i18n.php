@@ -92,8 +92,8 @@ $messages['qqq'] = array(
 See: http://www.mediawiki.org/wiki/Extension:Narayam',
 	'narayam-help' => 'See: http://www.mediawiki.org/wiki/Extension:Narayam
 {{Identical|Help}}',
-	'narayam-help-page' => '{{doc-important|Do not translate "Special:MyLanguage/Help:".}}
-this is a help page connected narayam. it describes how to use this tool',
+	'narayam-help-page' => '{{doc-important|Only translate this message if the documentation on MediaWiki.org is not used for a language.}}
+This is a URL to the help page for Narayam that describes how to use this tool.',
 	'narayam-checkbox-tooltip' => 'Toggle the input method —that is, the interpretation of keystrokes— between "standard" and "interpreted by Narayam".',
 	'narayam-eo' => 'The language "Esperanto" in your local language.
 This allows for Narayam to add custom input methods for input fields. Esperanto x-system transcription. For more information, see http://www.mediawiki.org/wiki/Extension:Narayam .',
@@ -1595,7 +1595,6 @@ $messages['lv'] = array(
  * @author Vinitutpal
  */
 $messages['mai'] = array(
-	'narayam-help-page' => ' टाइपिंग',
 	'narayam-hi-inscript' => 'हिन्दी इनस्क्रिप्ट',
 	'narayam-kn' => 'कन्नड़ लिप्यंतरण',
 	'narayam-kn-inscript' => 'कन्नड़ इनस्क्रिप्ट',
