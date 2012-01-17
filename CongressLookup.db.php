@@ -21,7 +21,7 @@ class CongressLookupDB {
 		   table or to have NULL for the rep id. */
 		if ( ( !$row ) || ( !$row->clz5_rep_id ) ) {
 			/* if we got the extra 4 digits, use them */
-			$zip9 = intval( $zip );
+			$zip9 = intval( self::trimZip( $zip, 9 ) ); // remove the dash and pad if needed
 			if ( $zip9 >= 10000 ) {
 				$row = $dbr->selectRow( 'cl_zip9', 'clz9_rep_id', array( 'clz9_zip' => $zip9 ) );
 				if ( $row ) {
@@ -131,14 +131,22 @@ class CongressLookupDB {
 	 */	
 	public static function trimZip( $zip, $length ) {
 		$zip = trim( $zip );
-		if ( strlen( $zip ) < 5 ) {
-			$zip = sprintf( "%05d", $zip );
+		if ( strpos( $zip, '-' ) === False ) {
+		    if ( strlen( $zip ) < 5 ) {
+				$zip = sprintf( "%05d", $zip );
+		    }
+		    elseif ( strlen( $zip ) > 5 ) {
+				$zip = sprintf( "%09d", $zip );
+		    }
 		}
-		elseif ( strlen( $zip ) > 5 ) {
-			$zip = sprintf( "%09d", $zip );
+		else {
+		    $zipPieces = explode( '-', $zip, 2 );
+		    if (! $zipPieces[1]) {
+				$zipPieces[1] = 0;
+		    }
+		    $zip = sprintf( "%05d%04d", $zipPieces[0], $zipPieces[1] );
 		}
-		$zipPieces = explode( '-', $zip, 2 );
-		$zip = substr( $zipPieces[0], 0, $length );
+		$zip = substr( $zip, 0, $length );
 		return $zip;
 	}
 }
