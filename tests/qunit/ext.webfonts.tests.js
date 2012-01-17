@@ -12,11 +12,11 @@ test( '-- Dynamic font loading', function() {
 	var validFontName = 'Lohit Devanagari';
 	mw.webfonts.fonts = [];
 	var cssRulesLength = document.styleSheets.length;
-	assertTrue( mw.webfonts.addFont( validFontName ) , 'Add the ' + validFontName + ' font' );
-	assertTrue( $.inArray( validFontName, mw.webfonts.fonts ) >= 0 , validFontName + ' font loaded' );
+	assertTrue( mw.webfonts.addFont( validFontName ) , 'Add a Devanagari font' );
+	assertTrue( $.inArray( validFontName, mw.webfonts.fonts ) >= 0 , 'Devanagari font loaded' );
 	assertTrue( cssRulesLength + 1 === document.styleSheets.length, 'New css rule added to the document' );
 	var loadedFontsSize = mw.webfonts.fonts.length;
-	assertTrue( mw.webfonts.addFont( validFontName ) , 'Add the ' + validFontName + ' font again' );
+	assertTrue( mw.webfonts.addFont( validFontName ) , 'Add the Devanagari font again' );
 	assertTrue( loadedFontsSize === mw.webfonts.fonts.length , 'A font that is already loaded is not loaded again' );
 	assertFalse( mw.webfonts.addFont( 'Some non-existing font' ), 'addFont returns false if the font was not found' );
 	assertTrue( cssRulesLength + 1 === document.styleSheets.length, 'Loading the font does not add new css rules' );
@@ -33,7 +33,7 @@ test( '-- Dynamic font loading based on lang attribute', function() {
 		wgPageContentLanguage: "en",
 	} );
 	
-	ok( $( 'body' ).append( "<p class='webfonts-testing-lang-attr'>Some content</p>"), ' A testing element was appended to <body>' );
+	ok( $( 'body' ).append( "<p class='webfonts-testing-lang-attr'>Some content</p>"), ' A element for testing lang-based loading was appended to <body>' );
 	$testElement =  $( 'p.webfonts-testing-lang-attr' )
 	assertTrue( $testElement !== [], 'The test element is defined' );
 
@@ -48,8 +48,8 @@ test( '-- Dynamic font loading based on lang attribute', function() {
 	ok( $testElement.attr( 'lang' , 'ta' ) , 'Set lang attribute to ta (Tamil)' );
 	ok( mw.webfonts.loadFontsForLangAttr(), 'Attempted to load fonts for the lang attribute ta' );
 	assertTrue( $testElement.hasClass( 'webfonts-lang-attr' ), 'The test element has webfonts-lang-attr class' );
-	assertTrue( $.inArray( tamilFont, mw.webfonts.fonts ) >= 0 , tamilFont + ' font loaded' );
-	assertTrue( isFontFaceLoaded( tamilFont ), 'New css rule font-face was added to the document for font ' + tamilFont );
+	assertTrue( $.inArray( tamilFont, mw.webfonts.fonts ) >= 0 , 'Tamil font loaded' );
+	assertTrue( isFontFaceLoaded( tamilFont ), 'New css rule font-face was added to the document for Tamil font' );
 
 	ok( mw.webfonts.reset(), 'Reset webfonts' );
 	assertFalse( $testElement.hasClass( 'webfonts-lang-attr' ), 'The element has no webfonts-lang-attr since we reset it' );
@@ -61,41 +61,47 @@ test( '-- Dynamic font loading based on font-family style attribute', function()
 	expect( 14 )
 
 	mw.webfonts.fonts = [];
-	ok( $( 'body' ).append( "<p class='webfonts-testing-font-family-style'>Some Content</p>" ) );
+	ok( $( 'body' ).append( "<p class='webfonts-testing-font-family-style'>Some content</p>" ), 'An element for testing font-family loading was appended to <body>' );
 	var $testElement = $( 'p.webfonts-testing-font-family-style' );
-	assertTrue(  $testElement !== [], 'Test element added' );
+	assertTrue(  $testElement !== [], 'The test element is defined' );
 
-	$testElement.attr( 'style','font-family: RufScript, Arial, Helvetica, sans' );
-	assertTrue( $.inArray( 'RufScript', mw.webfonts.fonts ) === -1 , 'RufScript Font not loaded yet' );
-	ok( mw.webfonts.loadFontsForFontFamilyStyle() );
-	assertTrue( $.inArray( 'RufScript', mw.webfonts.fonts ) >= 0 , 'Font loaded' );
-	assertTrue( isFontFaceLoaded('RufScript'), 'New css rule added to the document for RufScript'  );
+	var latinWebFont = 'RufScript';
+	var fallbackFonts = ', Arial, Helvetica, sans';
+	$testElement.attr( 'style','font-family: ' + latinWebFont + fallbackFonts );
+	assertTrue( $.inArray( latinWebFont, mw.webfonts.fonts ) === -1 , 'Latin font not loaded yet' );
+	ok( mw.webfonts.loadFontsForFontFamilyStyle(), 'Loaded fonts from font-family' );
+	assertTrue( $.inArray( latinWebFont, mw.webfonts.fonts ) >= 0 , 'Latin font loaded' );
+	assertTrue( isFontFaceLoaded( latinWebFont ), 'New css rule added to the document for Latin' );
 
-	$testElement.attr( 'style','font-family: NonExistingFont, Arial, Helvetica, sans' );
-	ok( mw.webfonts.loadFontsForFontFamilyStyle() );
-	assertTrue( $.inArray( 'NonExistingFont', mw.webfonts.fonts ) === -1 , 'Font not loaded since it is not existing, including fallback fonts' );
-	assertFalse( isFontFaceLoaded( 'NonExistingFont' ), 'No new css rule added to the document' );
-	
-	$testElement.attr( 'style','font-family: NonExistingFont, AnjaliOldLipi, Arial, Helvetica, sans' );
-	assertTrue( $.inArray( 'AnjaliOldLipi', mw.webfonts.fonts ) === -1 , 'Fallback font AnjaliOldLipi not loaded yet' );
-	ok( mw.webfonts.loadFontsForFontFamilyStyle() );
-	assertTrue( $.inArray( 'AnjaliOldLipi', mw.webfonts.fonts ) >= 0 , 'Fallback font AnjaliOldLipi loaded' );
-	assertTrue( isFontFaceLoaded('AnjaliOldLipi') , 'New css rule added to the document for fallbackfont AnjaliOldLipi' );
+	var invalidFont = 'NonExistingFont';
+	$testElement.attr( 'style','font-family: ' + invalidFont + fallbackFonts );
+	ok( mw.webfonts.loadFontsForFontFamilyStyle(), 'Attempted to load non-existing fonts specified in font-family' );
+	assertTrue( $.inArray( invalidFont, mw.webfonts.fonts ) === -1 , 'Font not loaded since it is not existing, including fallback fonts' );
+	assertFalse( isFontFaceLoaded( invalidFont ), 'No new css rule added to the document since the font does not exist' );
+
+	var malayalamFont = 'AnjaliOldLipi';
+	$testElement.attr( 'style', 'font-family: ' + invalidFont + ', ' + malayalamFont + fallbackFonts );
+	assertTrue( $.inArray( malayalamFont, mw.webfonts.fonts ) === -1 , 'Fallback font not loaded yet' );
+	ok( mw.webfonts.loadFontsForFontFamilyStyle(), 'Loading fonts from font-family' );
+	assertTrue( $.inArray( malayalamFont, mw.webfonts.fonts ) >= 0 , 'A fallback font was loaded' );
+	assertTrue( isFontFaceLoaded( malayalamFont ) , 'New css rule added to the document for fallback font' );
 
 	ok( $testElement.remove() );
 } );
 
-isFontFaceLoaded = function(fontFamilyName){
-	var lastStyleIndex = document.styleSheets.length-1;
+isFontFaceLoaded = function( fontFamilyName ) {
+	var lastStyleIndex = document.styleSheets.length - 1;
+	
 	// Iterate from last.
-	for( var styleIndex = lastStyleIndex; styleIndex > 0; styleIndex-- ){
+	for( var styleIndex = lastStyleIndex; styleIndex > 0; styleIndex-- ) {
 		var lastStyleSheet = document.styleSheets[styleIndex];
 		if ( !lastStyleSheet ) continue;
 		if ( !lastStyleSheet.cssRules[0] ) continue;
 		var cssText =  lastStyleSheet.cssRules[0].cssText;
-		if ( cssText.indexOf( '@font-face' ) >= 0 &&  cssText.indexOf( fontFamilyName ) >= 0 ){
+		if ( cssText.indexOf( '@font-face' ) >= 0 &&  cssText.indexOf( fontFamilyName ) >= 0 ) {
 			return true;
 		}
 	}
+	
 	return false;
 }
