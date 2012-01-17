@@ -31,7 +31,6 @@
 
 			// Save the current font and its size. Used for reset.
 			if ( !mw.webfonts.oldconfig ) {
-
 				mw.webfonts.oldconfig = {
 					fontFamily: $body.css( 'font-family' ),
 					fontSize: $body.css( 'font-size' )
@@ -54,6 +53,8 @@
 
 			// If we had reset the fonts for tags with lang attribute, apply the fonts again.
 			mw.webfonts.loadFontsForLangAttr();
+
+			return true;
 		},
 
 		/**
@@ -73,6 +74,7 @@
 
 			// Remove the cookie
 			$.cookie( 'webfonts-font', 'none', { 'path': '/', 'expires': 30 } );
+
 			return true;
 		},
 
@@ -428,7 +430,7 @@
 			// @todo Is there a better solution other than hiding it on hover?
 			if ( $.browser.msie ) {
 				$( '#webfonts-menu' ).hover( function() {
-					$( '#searchform' ).css({ visibility: 'hidden' } );
+					$( '#searchform' ).css( { visibility: 'hidden' } );
 				}, function() {
 					$( '#searchform' ).css( { visibility: 'visible' } );
 				} );
