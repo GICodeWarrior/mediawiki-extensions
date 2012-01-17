@@ -379,6 +379,22 @@
 					});
 		},
 
+		prepareSuccess: function( overlay ) {
+			
+			var fbdLink = mw.html.element('a', {
+				'href' : mb.conf.feedbackDashboardUrl,
+				'target': '_blank' 
+			}, mw.msg ( 'moodbar-fbd-link-title' ));
+		
+			var subTitle = overlay
+				.find('.mw-moodBar-state-subtitle');
+			var subTitleText = subTitle
+				.text()
+				.replace( new RegExp( $.escapeRE('{{FBD-LINK}}'), 'g' ), fbdLink );
+			subTitle.html(subTitleText);
+				
+		},
+
 		prepareEmailInput: function ( overlay ) {
 			overlay
 				.find('#mw-moodBar-emailInput')
@@ -487,6 +503,9 @@
 			}
 			if (tpl == mb.tpl.emailconfirmation) {
 				mb.prepareEmailVerification ( mb.ui.overlay );
+			}
+			if (tpl == mb.tpl.success) {
+				mb.prepareSuccess( mb.ui.overlay );
 			}
 			return true;
 		},

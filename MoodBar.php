@@ -174,6 +174,7 @@ $wgResourceModules['ext.moodBar.core'] = $mbResourceTemplate + array(
 		'moodbar-email-confirm-desc',
 		'moodbar-email-resend-confirmation',
 		'moodbar-email-optout',
+		'moodbar-fbd-link-title',
 	),
 	'dependencies' => array(
 		'mediawiki.util',
@@ -259,6 +260,7 @@ $wgMoodBarConfig = array(
 			'expires' => 30,
 		),
 	'infoUrl' => 'http://www.mediawiki.org/wiki/MoodBar',
+	'feedbackDashboardUrl'=> 'about:blank',
 	'privacyUrl' => 'about:blank',
 	'disableExpiration' => 365,
 );
