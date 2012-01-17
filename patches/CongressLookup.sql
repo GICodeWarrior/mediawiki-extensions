@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/cl_senate (
   `ss_state` varchar(2) NOT NULL,
   `ss_phone` varchar(32) NOT NULL,
   `ss_fax` varchar(32) NOT NULL,
-  `ss_contactform` varchar(255) NOT NULL
+  `ss_contactform` varchar(255) NOT NULL,
+  `ss_twitter` varchar(64) DEFAULT NULL
 ) /*$wgDBTableOptions*/;
 CREATE INDEX /*i*/ss_state ON /*$wgDBprefix*/cl_senate (ss_state);
 
@@ -21,7 +22,8 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/cl_house (
   `sh_district` varchar(32) NOT NULL,
   `sh_phone` varchar(32) NOT NULL,
   `sh_fax` varchar(32) NOT NULL,
-  `sh_contactform` varchar(255) NOT NULL
+  `sh_contactform` varchar(255) NOT NULL,
+  `sh_twitter` varchar(64) DEFAULT NULL
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/cl_zip3 (
