@@ -27,6 +27,27 @@ class CongressLookupDB {
 				if ( $row ) {
 					$rep_id = $row->clz9_rep_id;
 				}
+				else {
+					$zip8 = substr( $zip9, 0, 8 );
+					$row = $dbr->selectRow( 'cl_zip93', 'clz93_rep_id', array( 'clz93_zip' => $zip8 ) );
+					if ( $row ) {
+						$rep_id = $row->clz93_rep_id;
+					}
+					else {
+						$zip7 = substr( $zip8, 0, 7 );
+						$row = $dbr->selectRow( 'cl_zip92', 'clz92_rep_id', array( 'clz92_zip' => $zip7 ) );
+						if ( $row ) {
+							$rep_id = $row->clz92_rep_id;
+						}
+						else {
+							$zip6 = substr( $zip7, 0, 6 );
+							$row = $dbr->selectRow( 'cl_zip91', 'clz91_rep_id', array( 'clz91_zip' => $zip6 ) );
+							if ( $row ) {
+								$rep_id = $row->clz91_rep_id;
+							}
+						}
+					}
+				}
 			}
 		}
 		else {
