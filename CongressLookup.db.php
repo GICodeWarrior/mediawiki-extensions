@@ -16,38 +16,40 @@ class CongressLookupDB {
 		$zip = self::trimZip( $zip, 5 ); // Trim it to 5 digit
 		$zip = intval( $zip ); // Convert into an integer
 
-		$row = $dbr->selectRow( 'cl_zip5', 'sz5_rep_id', array( 'sz5_zip' => $zip ) );
+		$row = $dbr->selectRow( 'cl_zip5', 'clz5_rep_id', array( 'clz5_zip' => $zip ) );
 		if ( $row ) {
-			$rep_id = $row->sz5_rep_id;
+			$rep_id = $row->clz5_rep_id;
 			$res = $dbr->select( 
 				'cl_house',
 				array(
-					'sh_bioguideid',
-					'sh_gender',
-					'sh_name',
-					'sh_title',
-					'sh_state',
-					'sh_district',
-					'sh_phone',
-					'sh_fax',
-					'sh_contactform'
+					'clh_bioguideid',
+					'clh_gender',
+					'clh_name',
+					'clh_title',
+					'clh_state',
+					'clh_district',
+					'clh_phone',
+					'clh_fax',
+					'clh_contactform',
+					'clh_twitter'
 				),
 				array(
-					'sh_id' => $rep_id,
+					'clh_id' => $rep_id,
 				),
 				__METHOD__
 			);
 			foreach ( $res as $row ) {
 				$oneHouseRep = array(
-					'bioguideid' => $row->sh_bioguideid,
-					'gender' => $row->sh_gender,
-					'name' => $row->sh_name,
-					'title' => $row->sh_title,
-					'state' => $row->sh_state,
-					'district' => $row->sh_district,
-					'phone' => $row->sh_phone,
-					'fax' => $row->sh_fax,
-					'contactform' => $row->sh_contactform
+					'bioguideid' => $row->clh_bioguideid,
+					'gender' => $row->clh_gender,
+					'name' => $row->clh_name,
+					'title' => $row->clh_title,
+					'state' => $row->clh_state,
+					'district' => $row->clh_district,
+					'phone' => $row->clh_phone,
+					'fax' => $row->clh_fax,
+					'contactform' => $row->clh_contactform,
+					'twitter' => $row->clh_twitter,
 				);
 				$repData[] = $oneHouseRep;
 			}
@@ -68,36 +70,38 @@ class CongressLookupDB {
 		$zip = self::trimZip( $zip, 3 ); // Trim it to 3 digit
 		$zip = intval( $zip ); // Convert into an integer
 
-		$row = $dbr->selectRow( 'cl_zip3', 'sz3_state', array( 'sz3_zip' => $zip ) );
+		$row = $dbr->selectRow( 'cl_zip3', 'clz3_state', array( 'clz3_zip' => $zip ) );
 		if ( $row ) {
-			$state = $row->sz3_state;
+			$state = $row->clz3_state;
 			$res = $dbr->select( 
 				'cl_senate',
 				array(
-					'ss_bioguideid',
-					'ss_gender',
-					'ss_name',
-					'ss_title',
-					'ss_state',
-					'ss_phone',
-					'ss_fax',
-					'ss_contactform'
+					'cls_bioguideid',
+					'cls_gender',
+					'cls_name',
+					'cls_title',
+					'cls_state',
+					'cls_phone',
+					'cls_fax',
+					'cls_contactform',
+					'cls_twitter'
 				),
 				array(
-					'ss_state' => $state,
+					'cls_state' => $state,
 				),
 				__METHOD__
 			);
 			foreach ( $res as $row ) {
 				$oneSenator = array(
-					'bioguideid' => $row->ss_bioguideid,
-					'gender' => $row->ss_gender,
-					'name' => $row->ss_name,
-					'title' => $row->ss_title,
-					'state' => $row->ss_state,
-					'phone' => $row->ss_phone,
-					'fax' => $row->ss_fax,
-					'contactform' => $row->ss_contactform
+					'bioguideid' => $row->cls_bioguideid,
+					'gender' => $row->cls_gender,
+					'name' => $row->cls_name,
+					'title' => $row->cls_title,
+					'state' => $row->cls_state,
+					'phone' => $row->cls_phone,
+					'fax' => $row->cls_fax,
+					'contactform' => $row->cls_contactform,
+					'twitter' => $row->cls_twitter
 				);
 				$senatorData[] = $oneSenator;
 			}

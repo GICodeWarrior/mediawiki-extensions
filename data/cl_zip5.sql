@@ -19,7 +19,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Dumping data for table `cl_zip5`
 --
 
-INSERT INTO `cl_zip5` (`sz5_zip`, `sz5_rep_id`) VALUES
+INSERT INTO `cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (501, NULL),
 (544, NULL),
 (601, 412306),
@@ -7138,7 +7138,7 @@ INSERT INTO `cl_zip5` (`sz5_zip`, `sz5_rep_id`) VALUES
 (17569, 400320),
 (17570, 400320),
 (17572, 400320);
-INSERT INTO `cl_zip5` (`sz5_zip`, `sz5_rep_id`) VALUES
+INSERT INTO `cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17573, NULL),
 (17575, NULL),
 (17576, 400320),
@@ -14005,7 +14005,7 @@ INSERT INTO `cl_zip5` (`sz5_zip`, `sz5_rep_id`) VALUES
 (32254, 400048),
 (32255, NULL),
 (32256, 400273);
-INSERT INTO `cl_zip5` (`sz5_zip`, `sz5_rep_id`) VALUES
+INSERT INTO `cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32257, 400086),
 (32258, 400086),
 (32259, 400273),
@@ -20840,7 +20840,7 @@ INSERT INTO `cl_zip5` (`sz5_zip`, `sz5_rep_id`) VALUES
 (47654, 412427),
 (47660, 412427),
 (47665, 412427);
-INSERT INTO `cl_zip5` (`sz5_zip`, `sz5_rep_id`) VALUES
+INSERT INTO `cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47666, 412427),
 (47670, 412427),
 (47683, 412427),
@@ -27573,7 +27573,7 @@ INSERT INTO `cl_zip5` (`sz5_zip`, `sz5_rep_id`) VALUES
 (62275, 400373),
 (62277, 400082),
 (62278, 400082);
-INSERT INTO `cl_zip5` (`sz5_zip`, `sz5_rep_id`) VALUES
+INSERT INTO `cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62279, 400082),
 (62280, 400082),
 (62281, 400082),
@@ -34339,7 +34339,7 @@ INSERT INTO `cl_zip5` (`sz5_zip`, `sz5_rep_id`) VALUES
 (77641, NULL),
 (77642, 400652),
 (77643, NULL);
-INSERT INTO `cl_zip5` (`sz5_zip`, `sz5_rep_id`) VALUES
+INSERT INTO `cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77650, 400311),
 (77651, 400652),
 (77655, 400636),
@@ -41239,7 +41239,7 @@ INSERT INTO `cl_zip5` (`sz5_zip`, `sz5_rep_id`) VALUES
 (96827, NULL),
 (96828, NULL),
 (96830, NULL);
-INSERT INTO `cl_zip5` (`sz5_zip`, `sz5_rep_id`) VALUES
+INSERT INTO `cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96835, NULL),
 (96836, NULL),
 (96837, NULL),

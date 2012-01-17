@@ -19,7 +19,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Dumping data for table `cl_zip3`
 --
 
-INSERT INTO `cl_zip3` (`sz3_zip`, `sz3_state`) VALUES
+INSERT INTO `cl_zip3` (`clz3_zip`, `clz3_state`) VALUES
 (5, 'NY'),
 (6, 'PR'),
 (7, 'PR'),
