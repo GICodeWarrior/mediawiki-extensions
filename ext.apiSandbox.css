@@ -43,15 +43,3 @@ div.mw-collapsible {
 	text-align: left !important;
 	font-size: 100% !important;
 }
-
-.api-sandbox-examples-outer {
-	
-}
-
-#api-sandbox-examples-button {
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-
-	border: 1px solid #2F6FAB;
-}
