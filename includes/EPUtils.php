@@ -45,7 +45,7 @@ class EPUtils {
 			else {
 				// Compatibility with MediaWiki 1.18.
 				$log = new LogPage( $info['type'] );
-				
+
 				$log->addEntry(
 					$info['subtype'],
 					$info['title'],

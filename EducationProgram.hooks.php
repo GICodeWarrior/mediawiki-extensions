@@ -152,12 +152,22 @@ final class EPHooks {
 	 */
 	public static function formatLogEntry( $type, $action, Title $title, $forUI, array $params ) {
 		global $wgContLang, $wgLang;
-		
-		return wfMessage( 'logentry-' . $type . '-' . $action )->params(
-			'', // User link in the new system
-			'#', // User name for gender in the new system
-			Message::rawParam( $forUI ? Linker::link( $title ) : $title->getPrefixedText() )
-		)->inLanguage( $forUI === null ? $wgContLang : $wgLang )->text();
+
+		$message = wfMessage( 'logentry-' . $type . '-' . $action );
+
+		$message = call_user_func_array(
+			array( $message, 'params' ),
+			array_merge(
+				array(
+					'', // User link in the new system
+					'#', // User name for gender in the new system
+					Message::rawParam( $forUI ? Linker::link( $title ) : $title->getPrefixedText() )
+				),
+				$params
+			)
+		);
+
+		return $message->inLanguage( $forUI === null ? $wgContLang : $wgLang )->text();
 	}
 
 }

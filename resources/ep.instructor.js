@@ -125,9 +125,9 @@
 				$add.button( 'option', 'label', ep.msg( 'ep-instructor-adding' ) );
 
 				ep.api.addInstructor( {
-					'courseid': this.courseId,
-					'username': this.getName(),
-					'reason': this.summaryInput.val()
+					'courseid': _this.courseId,
+					'username': _this.getName(),
+					'reason': _this.summaryInput.val()
 				} ).done( function() {
 					_this.$dialog.text( ep.msg(
 						_this.selfMode ? 'ep-instructor-addittion-self-success' : 'ep-instructor-addittion-success',
