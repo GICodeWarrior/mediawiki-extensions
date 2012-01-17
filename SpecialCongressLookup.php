@@ -90,9 +90,11 @@ table.person {
 	margin-bottom: 1em;
 	border: none;
 	border-collapse:collapse;
+	color: #CCCCCC;
 }
 table.person td.name {
 	font-weight: bold;
+	color: white;
 }
 p {
 	margin: 1em 0;
@@ -137,6 +139,10 @@ h4 {
 	<p class="quote">
 	“A safe and secure Web is vital to our privacy, our access to free knowledge, and to commerce. Hundreds of established authorities on the Internet believe that the required blocking of Internet sites in SOPA and PIPA is badly thought out and threatens Internet security.”
 	</p>
+	
+	<p>
+	If you'd like to learn even more about SOPA/PIPA, <a href="//wikimediafoundation.org/wiki/SOPA/Learn_more" target="_blank">click here</a>.
+	</p>
 </div>
 <div id="contacts">
 	
@@ -160,6 +166,8 @@ HTML;
 	 * @return string HTML for the table
 	 */
 	private function getCongressTables() {
+		global $wgCongressLookupErrorPage;
+		
 		$myRepresentative = CongressLookupDB::getRepresentative( $this->zip );
 		$mySenators = CongressLookupDB::getSenators( $this->zip );
 
@@ -245,6 +253,11 @@ HTML;
 		if ( count( $mySenators ) == 0 ) {
 			$congressTable .= Html::element( 'p', array(), wfMsg( 'congresslookup-no-senators' ) );
 		}
+		
+		$congressTable .= Html::openElement( 'p' );
+		$congressTable .= Html::element( 'a', array ( 'href' => $wgCongressLookupErrorPage ),
+			wfMsg( 'congresslookup-report-errors' ) );
+		$congressTable .= Html::closeElement( 'p' );
 		
 		return $congressTable;
 	}
