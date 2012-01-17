@@ -148,6 +148,7 @@
 		 * This method ensures that css are not duplicated and
 		 * keep track of added fonts.
 		 * @param fontFamilyName {String} The font-family name
+		 * @return boolean False if font not found. True if loaded.
 		 */
 		addFont: function( fontFamilyName ) {
 			// Avoid duplicate loading
@@ -156,8 +157,11 @@
 				if ( mw.webfonts.config.fonts[fontFamilyName] !== undefined ) {
 					mw.webfonts.loadCSS( fontFamilyName );
 					mw.webfonts.fonts.push( fontFamilyName );
+				} else {
+					return false;
 				}
 			}
+			return true;
 		},
 
 		/**
