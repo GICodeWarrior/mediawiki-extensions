@@ -51,7 +51,6 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 <head>
 <title>Wikipedia, the free encyclopedia</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
 <meta name="generator" content="MediaWiki 1.18wmf1" />
 <style type="text/css">
 body {
