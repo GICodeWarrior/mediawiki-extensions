@@ -421,6 +421,12 @@ jQuery( function( $ ) {
 			$examplesContainer.hide(); // just in case
 			return;
 		}
+		// on 1.18, convert everything into 1.19 format
+		if ( info.allexamples.length > 0 && typeof info.allexamples[0] == 'string' ) {
+			for ( var i = 0; i < info.allexamples.length; i++ ) {
+				info.allexamples[i] = { '*': info.allexamples[i] };
+			}
+		}
 		$examplesContent.hide()
 			.html( '' );
 		var $list = $( '<ul></ul>' );
