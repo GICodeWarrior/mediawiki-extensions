@@ -24,6 +24,17 @@ window.educationProgram = new( function() {
 				}
 				return ( forms.length === 3 ) ? forms[2] : forms[0];
 			};
+			
+			mw.jqueryMsg.htmlEmitter.prototype.gender = function( nodes ) { 
+				var gender;
+				if  ( nodes[0] && nodes[0].options instanceof mw.Map ){
+					gender = nodes[0].options.get( 'gender' );
+				} else {
+					gender = nodes[0];
+				}
+				var forms = nodes.slice(1);
+				return this.language.gender( gender, forms );
+			};
 		}
 		
 		if ( typeof mw.language.gender === 'undefined' ) {
