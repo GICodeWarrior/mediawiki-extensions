@@ -137,4 +137,14 @@ class MoodBarUtil {
 
 	}
 
+	/**
+	 * Check if MarkAsHelpful extension is enabled
+	 * @return bool
+	 */
+	public static function isMarkAsHelpfulEnabled() {
+		global $wgMarkAsHelpfulType;
+
+		return is_array( $wgMarkAsHelpfulType ) && in_array( 'mbresponse', $wgMarkAsHelpfulType );
+	}
+
 }

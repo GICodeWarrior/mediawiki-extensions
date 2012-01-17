@@ -140,6 +140,7 @@ For more information, please visit the $1.',
 	'moodbar-invalid-item' => 'The system was unable to find the correct feedback item.',
 	'moodbar-feedback-action-error' => 'An error occurred when trying to perform this action.',
 	'moodbar-feedback-response-summary' => '[[$1|$2]] [[$3|responded]] $4 ago',
+	'moodbar-feedback-response-helpful-summary' => '[[$1|$2]] [[$3|responded]] $4 ago and [[$5|$6]] thinks it helpful',
 	'moodbar-feedback-edit-summary' => 'Response to [[Special:FeedbackDashboard/$1|user feedback]]: $2',
 	'moodbar-feedback-top-responders-title' => 'Top Responders',
 	// Mood types
@@ -210,12 +211,10 @@ $messages['qqq'] = array(
 This is a feature in development. See [[mw:MoodBar 0.1/Design]] for background information.',
 	'moodbar-trigger-feedback' => 'Link text of the MoodBar overlay trigger. $1 is the SITENAME.',
 	'moodbar-trigger-editing' => "Link text of the MoodBar overlay trigger. \$1 is the SITENAME. The implied sentence is ''\"Using [Sitename] made me happy/sad/...\"''. See [[mw:MoodBar 0.1/Design]] for background development information.",
-	'moodbar-weeks' => 'Full word for "weeks". $1 is the number of weeks. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}',
-	'moodbar-months' => 'Full word for "months". $1 is the number of months. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}.
-{{Identical|Month}}',
-	'moodbar-years' => 'Full word for "years". $1 is the number of years. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}.
-{{Identical|Year}}',
-	'moodbar-seconds' => 'The phrase "less than 1 minute", Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}}',
+	'moodbar-weeks' => 'Full word for "weeks". $1 is the number of weeks. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}} and {{msg-moodbar|moodbar-feedback-response-helpful-summary}}',
+	'moodbar-months' => 'Full word for "months". $1 is the number of months. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}} and {{msg-moodbar|moodbar-feedback-response-helpful-summary}}',
+	'moodbar-years' => 'Full word for "years". $1 is the number of years. Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}} and {{msg-moodbar|moodbar-feedback-response-helpful-summary}}',
+	'moodbar-seconds' => 'The phrase "less than 1 minute", Part of variable $1 in {{msg-mw|Ago}} and variable $4 in {{msg-moodbar|moodbar-feedback-response-summary}} and {{msg-moodbar|moodbar-feedback-response-helpful-summary}}',
 	'moodbar-close' => 'Link text of the close-button. Make sure to include parentheses.
 
 See also:
@@ -315,7 +314,9 @@ See also:
 	'moodbar-hidden-footer-without-log' => '* $1 is a link to restore the item displaying {{msg-mw|moodbar-feedback-restore}}',
 	'moodbar-action-reason' => 'Text for Admin action reason',
 	'moodbar-action-reason-required' => 'Text explaining admin action reason is required',
-	'moodbar-feedback-response-summary' => 'Text providing a summary of a user response, $1 is user page, $2 is user name, $3 is user talk page, $4 is time',
+	'moodbar-feedback-response-summary' => 'Text providing a summary of a user response, $1 is responder user page, $2 is responder user name, $3 is commenter talk page, $4 is time',
+	'moodbar-feedback-response-helpful-summary' => 'Text providing a summary of a user response and indicating that commenter has marked the response as helpful, $1 is responder user page, $2 is responder user name,
+$3 is commenter user talk page, $4 is time, $5 is commenter user page, $6 is commenter user name',
 	'moodbar-feedback-edit-summary' => 'Auto generated Edit summary for feedback response, $1 is the feedback id and $2 is the response text',
 	'moodbar-feedback-top-responders-title' => 'The title for Top Responders, which is located below feedback dashboard filter',
 	'moodbar-type-happy' => '$1 is the username that can be used for GENDER. Message is used on Special:FeedbackDashboard.',

@@ -319,15 +319,25 @@ HTML;
 			$responder = User::newFromRow( $response_detail );
 			
 			if ( $responder && !$responder->isAnon() ) {
-				$responsetime = MoodBarUtil::formatTimeSince( wfTimestamp( TS_UNIX, $response_detail->mbfr_timestamp ) );
+				$responsetime 	= MoodBarUtil::formatTimeSince( wfTimestamp( TS_UNIX, $response_detail->mbfr_timestamp ) );
+				$commenter 	= $feedbackItem->getProperty('user');
+				$permalinkTitle = $commenter->getTalkPage()->getFullText();
 				
-				$permalinkTitle = $feedbackItem->getProperty('user')->getTalkPage()->getFullText();
-				
-				$individual_response = wfMsgExt('moodbar-feedback-response-summary', array('parse'),
-												$responder->getUserPage()->getFullText(), 
-												$responder->getName(), 
-												$permalinkTitle . '#feedback-dashboard-response-' . $response_detail->mbfr_id,
-												$responsetime);
+				if ( property_exists( $response_detail, 'mah_id' ) && intval($response_detail->mah_id ) > 0 ) {
+					$individual_response = wfMsgExt('moodbar-feedback-response-helpful-summary', array('parse'),
+										$responder->getUserPage()->getFullText(), 
+										$responder->getName(), 
+										$permalinkTitle . '#feedback-dashboard-response-' . $response_detail->mbfr_id,
+										$responsetime,
+										$commenter->getUserPage()->getFullText(), 
+										$commenter->getName());
+				} else {
+					$individual_response = wfMsgExt('moodbar-feedback-response-summary', array('parse'),
+										$responder->getUserPage()->getFullText(), 
+										$responder->getName(), 
+										$permalinkTitle . '#feedback-dashboard-response-' . $response_detail->mbfr_id,
+										$responsetime);
+				}
 				$showResponseBox = false;
 				
 				$responseElements = <<<HTML
@@ -714,13 +724,13 @@ HTML;
 	}
 	
 	/**
-	 * Get the latest response summary for a set of feedback, 
+	 * Get the latest response summary for a set of feedback
 	 * @param $res Iterator of Db row with index mbf_latest_response for feedback
 	 * @return array
 	 */
 	public static function getResponseSummary( $res ) {
 		$dbr = wfGetDB( DB_SLAVE );
-		
+
 		$mbfrIds = array();
 
 		foreach ( $res as $row ) {
@@ -732,11 +742,23 @@ HTML;
 		$response = array();
 
 		if ( count( $mbfrIds ) > 0 ) {
-			$res = $dbr->select( array( 'moodbar_feedback_response', 'user' ),
-						array( 'mbfr_id', 'mbfr_mbf_id', 'mbfr_timestamp', 'user_id', 'user_name', 'user_real_name' ),
-						array( 'mbfr_id' => $mbfrIds, 'mbfr_user_id = user_id' ),
-						__METHOD__
-			);
+
+			$table  = array( 'user', 'moodbar_feedback_response' );
+			$select = array( 'mbfr_id', 'mbfr_mbf_id', 'mbfr_timestamp', 'user_id', 'user_name', 'user_real_name' );
+			$conds  = array( 'mbfr_id' => $mbfrIds, 'mbfr_user_id = user_id' );
+			$tableJoin = array();
+
+			// Adding markashelpful data if the extension is enabled
+			if ( MoodBarUtil::isMarkAsHelpfulEnabled() ) {
+				$table[] = 'moodbar_feedback';
+				$table[] = 'mark_as_helpful';
+				// Is there a workaround that does not specify INNER JOIN explicitly?
+				$tableJoin['moodbar_feedback'] = array( 'INNER JOIN', 'mbfr_mbf_id = mbf_id' );
+				$tableJoin['mark_as_helpful']  = array( 'LEFT JOIN', "mah_type = 'mbresponse' AND mah_item = mbfr_id AND mah_user_id = mbf_user_id" );
+				$select[] = 'mah_id';
+			}
+
+			$res = $dbr->select( $table, $select, $conds, __METHOD__, array(), $tableJoin );
 
 			foreach ( $res as $row ) {
 				$response[$row->mbfr_mbf_id] = $row;
@@ -745,5 +767,5 @@ HTML;
 
 		return $response;
 	}
-	
+
 }
