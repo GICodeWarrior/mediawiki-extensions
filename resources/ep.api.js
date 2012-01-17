@@ -6,9 +6,9 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-window.educationProgram.api = new( function() {
+( function ( $, mw ) {
 
-	this.remove = function( data, callback ) {
+	mw.educationProgram.remove = function( data, callback ) {
 		var requestArgs = {
 			'action': 'deleteeducation',
 			'format': 'json',
@@ -29,40 +29,6 @@ window.educationProgram.api = new( function() {
 			}
 		);
 	};
-	
-	this.instructor = function( args ) {
-		var requestArgs = $.extend( {
-			'action': 'instructor',
-			'format': 'json',
-			'token': window.mw.user.tokens.get( 'editToken' )
-		}, args );
-		
-		var deferred = $.Deferred();
-		
-		$.post(
-			wgScriptPath + '/api.php',
-			requestArgs,
-			function( data ) {
-				if ( data.hasOwnProperty( 'success' ) && data.success ) {
-					deferred.resolve();
-				}
-				else {
-					deferred.reject();
-				}
-			}
-		);
-		
-		return deferred.promise();
-	};
-	
-	this.addInstructor = function( args ) {
-		args.subaction = 'add';
-		return this.instructor( args );
-	};
-	
-	this.removeInstructor = function( args ) {
-		args.subaction = 'remove';
-		return this.instructor( args );
-	};
 
-} );
+}( jQuery, mediaWiki ) );
+

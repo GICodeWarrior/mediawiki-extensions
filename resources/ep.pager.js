@@ -6,7 +6,9 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-(function ( $, mw, ep ) {
+(function ( $, mw ) {
+
+	var ep = mw.educationProgram;
 
 	$( document ).ready( function () {
 
@@ -101,4 +103,4 @@
 
 	} );
 
-})( window.jQuery, window.mediaWiki, window.educationProgram );
+})( window.jQuery, window.mediaWiki );

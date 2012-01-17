@@ -6,8 +6,10 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-(function( $, mw, ep ) { 
-	
+(function( $, mw ) {
+
+	var ep = mw.educationProgram;
+
 	$( document ).ready( function() {
 		
 		$( '.ep-instructor-remove' ).click( function( event ) {
@@ -148,7 +150,7 @@
 						'text': ep.msg( 'ep-instructor-add-cancel-button' ),
 						'id': 'ep-instructor-add-cancel-button',
 						'click': function() {
-							$dialog.dialog( 'close' );
+							_this.$dialog.dialog( 'close' );
 						}
 					}
 				]
@@ -195,4 +197,4 @@
 		
 	} );
 	
-})( window.jQuery, window.mediaWiki, window.educationProgram );
+})( window.jQuery, window.mediaWiki );
