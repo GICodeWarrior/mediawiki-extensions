@@ -26,7 +26,7 @@ window.educationProgram = new( function() {
 } );
 
 mw.loader.using( 'mediawiki.language', function() {
-	window.educationProgram.compatMode = typeof window.mediaWiki.language.gender === 'undefined';
+	window.educationProgram.compatMode = typeof window.mediaWiki.language === 'undefined';
 	
 	if ( window.educationProgram.compatMode ) {
 		mw.language.gender = function( gender, forms ) {
