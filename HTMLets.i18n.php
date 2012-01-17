@@ -269,6 +269,15 @@ $messages['ja'] = array(
 	'htmlets-loadfailed' => 'HTMLファイル$1の読み込みに失敗しました',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'htmlets-desc' => '<code>&lt;htmlet&gt;</code> 태그로 HTML 코드를 삽입',
+	'htmlets-filenotfound' => 'HTML 파일 $1을 찾을 수 없습니다.',
+	'htmlets-loadfailed' => 'HTML 파일 $1을 불러오지 못했습니다.',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -313,6 +322,16 @@ $messages['ms'] = array(
 	'htmlets-loadfailed' => 'Fail HTML $1 tidak dapat dimuatkan',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'htmlets-desc' => 'Lar deg bruke HTML-fragmenter fra filer ved bruk av taggen <code>&lt;htmlet&gt;</code>',
+	'htmlets-filenotfound' => 'Finner ikke HTML-filen $1',
+	'htmlets-loadfailed' => 'Kunne ikke laste HTML-filen $1',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -327,16 +346,6 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'htmlets-desc' => 'Lèt deg nytta HTML-fragment frå filer ved bruk av merket <code>&lt;htmlet&gt;</code>',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'htmlets-desc' => 'Lar deg bruke HTML-fragmenter fra filer ved bruk av taggen <code>&lt;htmlet&gt;</code>',
-	'htmlets-filenotfound' => 'Finner ikke HTML-filen $1',
-	'htmlets-loadfailed' => 'Kunne ikke laste HTML-filen $1',
 );
 
 /** Occitan (Occitan)
