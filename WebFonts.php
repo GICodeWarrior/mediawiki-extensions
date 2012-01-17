@@ -41,6 +41,7 @@ $wgHooks['BeforePageDisplay'][] = 'WebFontsHooks::addModules';
 $wgHooks['GetPreferences'][] = 'WebFontsHooks::addPreference';
 $wgHooks['UserGetDefaultOptions'][] = 'WebFontsHooks::addDefaultOptions';
 $wgHooks['ResourceLoaderGetConfigVars'][] = 'WebFontsHooks::addConfig';
+$wgHooks['ResourceLoaderTestModules'][] = 'WebFontsHooks::addTestModules';
 
 $wgWebFontsEnabledByDefault = true;
 

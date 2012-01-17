@@ -23,6 +23,21 @@ class WebFontsHooks {
 
 		return true;
 	}
+	/**
+	 * ResourceLoaderTestModules hook handler.
+	 * @param $testModules: array of javascript testing modules. 'qunit' is fed using tests/qunit/QUnitTestResources.php.
+	 * @param $resourceLoader object
+	 * @return bool
+	 */
+	public static function addTestModules( array &$testModules, ResourceLoader &$resourceLoader ) { 
+		$testModules['qunit']['ext.webfonts.tests'] = array(
+			'scripts' => array( 'tests/qunit/ext.webfonts.tests.js' ),
+			'dependencies' => array( 'ext.webfonts.core' ),
+			'localBasePath' => dirname( __FILE__ ),
+			'remoteExtPath' => 'WebFonts',
+		);
+		return true;
+	}
 
 	/**
 	 * GetPreferences hook handler.
