@@ -45,9 +45,20 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 	private function buildPage() {
 		$htmlOut = '';
 		
+		$dir = dirname( __FILE__ ) . '/';
+		
+		// Output beginning of the page
+		$filename = $dir."includes/pageBegin.html";
+		$handle = fopen( $filename, "r" );
+		$htmlOut .= fread( $handle, filesize( $filename ) );
+		fclose( $handle );
+		
 		if ( $this->zip ) {
 			$htmlOut .= $this->getCongressTable();
 		}
+		
+		// Output end of the page
+		$htmlOut .= "\n</body>\n</html>\n";
 		
 		echo $htmlOut;
 		
