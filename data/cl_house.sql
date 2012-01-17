@@ -19,7 +19,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Dumping data for table `cl_house`
 --
 
-INSERT INTO `cl_house` (`clh_id`, `clh_bioguideid`, `clh_gender`, `clh_name`, `clh_title`, `clh_state`, `clh_district`, `clh_phone`, `clh_fax`, `clh_contactform`, `clh_twitter`) VALUES
+INSERT INTO /*$wgDBprefix*/`cl_house` (`clh_id`, `clh_bioguideid`, `clh_gender`, `clh_name`, `clh_title`, `clh_state`, `clh_district`, `clh_phone`, `clh_fax`, `clh_contactform`, `clh_twitter`) VALUES
 (400003, 'A000022', 'M', 'Rep. Gary Ackerman [D, NY-5]', 'Rep.', 'NY', '5', '202-225-2601', '202-225-1589', 'http://www.house.gov/writerep', NULL),
 (400004, 'A000055', 'M', 'Rep. Robert Aderholt [R, AL-4]', 'Rep.', 'AL', '4', '202-225-4876', '202-225-5587', 'http://aderholt.house.gov/?sectionid=195&sectiontree=195', 'Robert_Aderholt'),
 (400005, 'A000358', 'M', 'Rep. Todd Akin [R, MO-2]', 'Rep.', 'MO', '2', '202-225-2561', '202-225-2563', 'http://akin.house.gov/email.shtml', 'ToddAkin'),
@@ -314,7 +314,7 @@ INSERT INTO `cl_house` (`clh_id`, `clh_bioguideid`, `clh_gender`, `clh_name`, `c
 (412228, 'S001174', 'F', 'Rep. Betty Sutton [D, OH-13]', 'Rep.', 'OH', '13', '202-225-3401', '202-225-2266', 'http://sutton.house.gov/about/emailform.cfm', NULL),
 (412231, 'A000362', 'M', 'Rep. Jason Altmire [D, PA-4]', 'Rep.', 'PA', '4', '202-225-2565', '202-226-2274', 'https://forms.house.gov/altmire/webforms/issue_subscribe.htm', NULL),
 (412236, 'C001068', 'M', 'Rep. Steve Cohen [D, TN-9]', 'Rep.', 'TN', '9', '202-225-3265', '202-225-5663', 'http://cohen.house.gov/index.php?option=com_email_form&Itemid=113', 'RepCohen');
-INSERT INTO `cl_house` (`clh_id`, `clh_bioguideid`, `clh_gender`, `clh_name`, `clh_title`, `clh_state`, `clh_district`, `clh_phone`, `clh_fax`, `clh_contactform`, `clh_twitter`) VALUES
+INSERT INTO /*$wgDBprefix*/`cl_house` (`clh_id`, `clh_bioguideid`, `clh_gender`, `clh_name`, `clh_title`, `clh_state`, `clh_district`, `clh_phone`, `clh_fax`, `clh_contactform`, `clh_twitter`) VALUES
 (412239, 'W000800', 'M', 'Rep. Peter Welch [D, VT-0]', 'Rep.', 'VT', '0', '202-225-4115', '202-225-6790', 'http://www.house.gov/formwelch/issue_subscribe.htm', NULL),
 (412250, 'B001257', 'M', 'Rep. Gus Bilirakis [R, FL-9]', 'Rep.', 'FL', '9', '202-225-5755', '202-225-4085', 'http://bilirakis.house.gov/index.php?option=com_content&task=view&id=212&Itemid=44', 'RepGusBilirakis'),
 (412252, 'B001262', 'M', 'Rep. Paul Broun [R, GA-10]', 'Rep.', 'GA', '10', '202-225-4101', '202-226-0776', 'http://broun.house.gov/email.shtml', 'RepPaulBrounMD'),
