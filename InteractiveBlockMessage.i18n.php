@@ -31,6 +31,13 @@ $messages['ast'] = array(
 	'interactiveblockmessage-desc' => "Crea la nueva pallabra máxica <nowiki>{{USERBLOCKED}}</nowiki> que si tas nel espaciu de nomes d'usuariu, indica si l'usuariu ta bloquiáu o non",
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'interactiveblockmessage-desc' => 'Даде новае магічнае слова <nowiki>{{USERBLOCKED}}</nowiki>, якое сьведчыць пра блякаваньне ўдзельніка.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
