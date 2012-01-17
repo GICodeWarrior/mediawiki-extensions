@@ -270,7 +270,7 @@
 					var fontFamilyItems = el.style.fontFamily.split( ',' );
 					$.each( fontFamilyItems, function( i, fontFamily ) {
 						// Remove the ' characters if any.
-						fontFamily = fontFamily.replace( /'/g, '' );
+						fontFamily = $.trim( fontFamily.replace( /'/g, '' ) );
 						mw.webfonts.addFont( fontFamily );
 					});
 				}
