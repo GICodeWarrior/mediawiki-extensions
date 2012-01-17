@@ -73,6 +73,7 @@
 
 			// Remove the cookie
 			$.cookie( 'webfonts-font', 'none', { 'path': '/', 'expires': 30 } );
+			return true;
 		},
 
 		/**
@@ -255,6 +256,7 @@
 					}
 				}
 			});
+			return true;
 		},
 
 		/**
@@ -273,6 +275,7 @@
 					});
 				}
 			});
+			return true;
 		},
 
 		/**
