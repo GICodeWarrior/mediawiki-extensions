@@ -6,12 +6,16 @@ jQuery( function( $ ) {
 	 * @param $container {jQuery} Container to put UI into
 	 * @param info {Object} Query information
 	 * @param prefix {String} Additional prefix for parameter names
+	 * @param params {Object} Optional override for info.parameters
 	 */
 	function UiBuilder( $container, info, prefix, params ) {
 		this.$container = $container;
 		this.info = info;
 		this.prefix = prefix + info.prefix;
 		this.params = isset( params ) ? params : info.parameters;
+
+		$container.addClass( 'api-sandbox-builder' );
+		$container.data( 'builder', this );
 
 		this.createInputs();
 	}
@@ -167,7 +171,16 @@ jQuery( function( $ ) {
 	    $requestUrl = $( '#api-sandbox-url' ),
 	    $requestPost = $( '#api-sandbox-post' ),
 	    $output = $( '#api-sandbox-output' ),
-	    $postRow = $( '#api-sandbox-post-row' );
+	    $postRow = $( '#api-sandbox-post-row' ),
+		$buttonsContainer = $( '#api-sandbox-buttons' ),
+		$examplesButton = $( '<button></button>' )
+			.click( function( e ) {
+				e.preventDefault();
+				$examplesContent.slideToggle();
+			} )
+			.hide()
+			.appendTo( $buttonsContainer ),
+		$examplesContent = $( '#api-sandbox-examples' );
 
 	// UiBuilder objects
 	var mainRequest,
@@ -178,6 +191,14 @@ jQuery( function( $ ) {
 	// cached stuff
 	var paramInfo = { modules: {}, querymodules: {} },
 	    namespaces = [];
+
+	$( '<button></button>' )
+		.text(mw.msg( 'apisb-clear' ) )
+		.click( function( e ) {
+			e.preventDefault();
+			resetUI();
+		} )
+		.insertAfter( $examplesButton );
 
 	// load namespaces
 	$.getJSON( mw.util.wikiScript( 'api' ),
@@ -284,7 +305,7 @@ jQuery( function( $ ) {
 				}
 				$output.html( data );
 			},
-			error: function( jqXHR, textStatus, errorThrown ) {
+			error: function() {
 				showLoadError( $output, 'apisb-request-error' );
 			}
 		};
@@ -373,6 +394,7 @@ jQuery( function( $ ) {
 			function() {
 				showLoading( $mainContainer );
 				$submit.attr( 'disabled', 'disabled' );
+				$examplesContent.hide();
 			},
 			function() {
 				var info;
@@ -384,12 +406,116 @@ jQuery( function( $ ) {
 				mainRequest = new UiBuilder( $mainContainer, info, '' );
 				mainRequest.setHelp( $help );
 				$submit.removeAttr( 'disabled' );
+				updateExamples( info );
 			},
 			function() {
 				$submit.removeAttr( 'disabled' );
 				showLoadError( $mainContainer, 'apisb-load-error' );
+				$examplesContent.hide();
 			}
 		);
+	}
+
+	function updateExamples( info ) {
+		if ( !isset( info.allexamples ) ) {
+			$examplesContainer.hide(); // just in case
+			return;
+		}
+		$examplesContent.hide()
+			.html( '' );
+		var $list = $( '<ul></ul>' );
+		var urlRegex = /api.php\?\S+/m;
+		var count = 0;
+		for ( var i = 0; i < info.allexamples.length; i++ ) {
+			var href = '';
+			var text = '';
+			while ( i < info.allexamples.length && !isset( info.allexamples[i].description ) ) {
+				var match = urlRegex.exec( info.allexamples[i]['*'] );
+				if ( match ) {
+					href = match[0];
+					break;
+				} else {
+					text += '\n' + info.allexamples[i]['*'];
+				}
+				i++;
+			}
+			if ( !href ) {
+				href = info.allexamples[i]['*'];
+			}
+			if ( !text ) {
+				text = isset( info.allexamples[i].description ) ? info.allexamples[i].description : href;
+			}
+			var prefix = text.replace( /[^\n]*$/, '' );
+			var $prefix = prefix.length ? $( '<b>' ).text( prefix ) : [];
+			var linkText = text.replace( /^.*\n/, '' );
+			$( '<li>' ).append( $prefix )
+				.append( $( '<a/>' )
+					.attr( 'href', href )
+					.text( linkText )
+					.click( exampleClick )
+			).appendTo( $list );
+			count++;
+		}
+		$examplesButton.text( mw.msg( count == 1 ? 'apisb-example' : 'apisb-examples' ) );
+		$list.appendTo( $examplesContent );
+		if ( count ) {
+			$examplesButton.show();
+		} else {
+			$examplesButton.hide();
+		}
+	}
+
+	function exampleClick( e ) {
+		e.preventDefault();
+
+		resetUI();
+		var link = $( this ).attr( 'href' ).replace( /^.*?\?/, '' );
+		var params = link.split( '&' );
+		for ( var i = 0; i < params.length; i++ ) {
+			var pieces = params[i].split( '=' );
+			if ( pieces.length == 1 ) { // checkbox
+				$( '#param-' + pieces[0] ).attr( 'checked', 'checked' );
+			} else {
+				var key = pieces[0],
+				    value = decodeURIComponent( pieces.slice( 1 ).join( '=' ) );
+				if ( [ 'action', 'format', 'list', 'prop', 'meta' ].indexOf( key ) != -1 ) {
+					continue;
+				}
+				var $el = $( '#param-' + key );
+				if ( !$el.length ) {
+					continue;
+				}
+				switch ( $el[0].nodeName ) {
+					case 'SELECT':
+						if ( $el.attr( 'multiple' ) ) {
+							var splitted = value.split( '|' );
+							for ( var j = 0; j < splitted.length; j++ ) {
+							$el.children( 'option[value=' + mw.html.escape( splitted[j] ) + ']' )
+								.attr( 'selected', 'selected' );
+							}
+						} else {
+							$el.children( 'option[value=' + mw.html.escape( value ) + ']' )
+								.attr( 'selected', 'selected' );
+						}
+						break;
+					case 'INPUT':
+						if ( $el.attr( 'type' ) == 'checkbox' ) {
+							$( '#param-' + key ).attr( 'checked', 'checked' );
+						} else {
+							$el.val( value );
+						}
+						break;
+					default:
+						continue;
+				}
+			}
+		}
+	}
+
+	function resetUI() {
+		$( '.api-sandbox-builder' ).each( function() {
+			$( this ).data( 'builder' ).createInputs();
+		} );
 	}
 
 	/**

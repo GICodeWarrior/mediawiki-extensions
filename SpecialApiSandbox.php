@@ -83,7 +83,7 @@ class SpecialApiSandbox extends SpecialPage {
 ';
 		$s .= '<tr><td class="api-sandbox-label"><label for="api-sandbox-format">format=</label></td><td class="api-sandbox-value">' 
 			. self::getSelect( 'format', $formats, 'json' )
-			. '</td><td></td></tr>
+			. '</td><td>' . $this->getButtonsBox() . '</td></tr>
 ';
 		$s .= '<tr><td class="api-sandbox-label"><label for="api-sandbox-action">action=</label></td><td class="api-sandbox-value">' 
 			. self::getSelect( 'action', $modules )
@@ -111,6 +111,10 @@ class SpecialApiSandbox extends SpecialPage {
 			) 
 		) . "\n";
 		return $s;
+	}
+
+	public function getButtonsBox() {
+		return '<div id="api-sandbox-buttons"><div id="api-sandbox-examples" style="display: none"></div></div>';
 	}
 
 	/**
