@@ -28,10 +28,11 @@ $messages['ast'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'subpagefun-desc' => 'Дадае функцыі парсэра для здабыцьця багатай інфармацыі пра [http://www.mediawiki.org/wiki/Help:Subpages падстаронкі]',
+	'subpagefun-desc' => 'Дадае функцыі парсэра для атрыманьня пашыранай інфармацыі пра [http://www.mediawiki.org/wiki/Help:Subpages падстаронкі]',
 );
 
 /** German (Deutsch)
