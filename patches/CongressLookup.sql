@@ -32,9 +32,11 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/cl_zip3 (
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/cl_zip5 (
-  `clz5_zip` int(5) unsigned NOT NULL PRIMARY KEY,
+  `clz5_id` int(10) unsigned NOT NULL PRIMARY KEY auto_increment,
+  `clz5_zip` int(5) unsigned NOT NULL,
   `clz5_rep_id` int(10) unsigned DEFAULT NULL
 ) /*$wgDBTableOptions*/;
+CREATE INDEX /*i*/clz5_zip ON /*$wgDBprefix*/cl_zip5 (clz5_zip);
 
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/cl_zip9 (
   `clz9_zip` int(9) unsigned NOT NULL PRIMARY KEY,
