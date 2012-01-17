@@ -89,6 +89,7 @@ div#contacts {
 table.person {
 	margin-bottom: 1em;
 	border: none;
+	border-collapse:collapse;
 }
 table.person td.name {
 	font-weight: bold;
@@ -169,7 +170,7 @@ HTML;
 		if ( $myRepresentative ) {
 
 			$congressTable .= "\n" . Html::openElement( 'table', array (
-				'class' => 'person', 'cellpadding' => 0, 'cellspacing' => 0, 'border' => 0
+				'class' => 'person',
 			) );
 
 			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
@@ -201,7 +202,7 @@ HTML;
 		}
 		foreach ( $mySenators as $senator ) {
 			$congressTable .= "\n" . Html::openElement( 'table', array (
-				'class' => 'person', 'cellpadding' => 0, 'cellspacing' => 0, 'border' => 0
+				'class' => 'person',
 			) );
 
 			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
