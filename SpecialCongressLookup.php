@@ -168,56 +168,67 @@ HTML;
 		$congressTable .= Html::element( 'h4', array(), 'Your Representatives:' );
 
 		if ( $myRepresentative ) {
-			$congressTable .= Html::openElement( 'table', array (
+
+			$congressTable .= "\n" . Html::openElement( 'table', array (
 				'class' => 'person', 'cellpadding' => 0, 'cellspacing' => 0, 'border' => 0
 			) );
-			$congressTable .= Html::openElement( 'tr' );
-			$congressTable .= Html::element( 'td',  array ( 'class' => 'name' ), $myRepresentative[0]['name'] );
-			$congressTable .= Html::openElement( 'tr' );
-			$congressTable .= Html::closeElement( 'tr' );
-			$congressTable .= Html::element( 'td', array(), wfMsg( 'congresslookup-phone', $myRepresentative[0]['phone'] ) );
-			$congressTable .= Html::openElement( 'tr' );
-			$congressTable .= Html::closeElement( 'tr' );
-			$congressTable .= Html::element( 'td', array(), wfMsg( 'congresslookup-fax', $myRepresentative[0]['fax'] ) );
-			$congressTable .= Html::openElement( 'tr' );
-			$congressTable .= Html::closeElement( 'tr' );
-			$congressTable .= Html::openElement( 'td' );
-			$congressTable .= Html::element( 'a', array (
-					'href' => $myRepresentative[0]['contactform'],
-					'target' => '_blank',
-				),
-				wfMsg( 'congresslookup-contact-form' )
+
+			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+				Html::element( 'td',  array ( 'class' => 'name' ), $myRepresentative[0]['name'] )
+		   	);
+
+			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+				Html::element( 'td', array(), wfMsg( 'congresslookup-phone', $myRepresentative[0]['phone'] ) )
+		   	);
+
+			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+				Html::element( 'td', array(), wfMsg( 'congresslookup-fax', $myRepresentative[0]['fax'] ) )
 			);
-			$congressTable .= Html::closeElement( 'td' );
-			$congressTable .= Html::closeElement( 'tr' );
-			$congressTable .= Html::closeElement( 'table' );
+
+			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+				Html::rawElement( 'td', array(),
+					Html::element( 'a', array (
+						'href' => $myRepresentative[0]['contactform'],
+						'target' => '_blank',
+						),
+						wfMsg( 'congresslookup-contact-form' )
+					)
+				)
+			);
+
+			$congressTable .= "\n" . Html::closeElement( 'table' );
 		} else {
 			$congressTable .= Html::element( 'p', array(), wfMsg( 'congresslookup-no-house-rep' ) );
 		}
 		foreach ( $mySenators as $senator ) {
-			$congressTable .= Html::openElement( 'table', array (
+			$congressTable .= "\n" . Html::openElement( 'table', array (
 				'class' => 'person', 'cellpadding' => 0, 'cellspacing' => 0, 'border' => 0
 			) );
-			$congressTable .= Html::openElement( 'tr' );
-			$congressTable .= Html::element( 'td',  array ( 'class' => 'name' ), $senator['name'] );
-			$congressTable .= Html::openElement( 'tr' );
-			$congressTable .= Html::closeElement( 'tr' );
-			$congressTable .= Html::element( 'td', array(), wfMsg( 'congresslookup-phone', $senator['phone'] ) );
-			$congressTable .= Html::openElement( 'tr' );
-			$congressTable .= Html::closeElement( 'tr' );
-			$congressTable .= Html::element( 'td', array(), wfMsg( 'congresslookup-fax', $senator['fax'] ) );
-			$congressTable .= Html::openElement( 'tr' );
-			$congressTable .= Html::closeElement( 'tr' );
-			$congressTable .= Html::openElement( 'td' );
-			$congressTable .= Html::element( 'a', array (
-					'href' => $senator['contactform'],
-					'target' => '_blank',
-				),
-				wfMsg( 'congresslookup-contact-form' )
+
+			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+				Html::element( 'td',  array ( 'class' => 'name' ), $senator['name'] )
 			);
-			$congressTable .= Html::closeElement( 'td' );
-			$congressTable .= Html::closeElement( 'tr' );
-			$congressTable .= Html::closeElement( 'table' );
+
+			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+				Html::element( 'td', array(), wfMsg( 'congresslookup-phone', $senator['phone'] ) )
+			);
+
+			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+				Html::element( 'td', array(), wfMsg( 'congresslookup-fax', $senator['fax'] ) )
+			);
+
+			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+				Html::rawElement( 'td', array(),
+					Html::element( 'a', array (
+						'href' => $senator['contactform'],
+						'target' => '_blank',
+					),
+					wfMsg( 'congresslookup-contact-form' )
+					)
+				)
+			);
+
+			$congressTable .= "\n" . Html::closeElement( 'table' );
 		}
 		if ( count( $mySenators ) == 0 ) {
 			$congressTable .= Html::element( 'p', array(), wfMsg( 'congresslookup-no-senators' ) );
