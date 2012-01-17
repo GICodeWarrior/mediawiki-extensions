@@ -37,7 +37,7 @@ window.educationProgram = new( function() {
 			};
 		}
 		
-		if ( typeof mw.language.gender === 'undefined' ) {
+		if ( true ) { // typeof mw.language.gender === 'undefined'
 			return gM.apply( this, arguments );
 		}
 		else {
