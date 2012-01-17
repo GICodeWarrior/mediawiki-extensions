@@ -344,7 +344,14 @@
 				ttf: "Guru/Saab.ttf",
 				woff: "Guru/Saab.woff",
 				version: "0.91"
+			},
+			"Siyam Rupali": {
+				eot: "Beng/SiyamRupali.eot",
+				ttf: "Beng/SiyamRupali.ttf",
+				woff: "Beng/SiyamRupali.woff",
+				version: "1.070"
 			}
+			
 
 		},
 
@@ -355,7 +362,7 @@
 			as:  [ "Lohit Assamese" ],
 			bh:  [ "Lohit Devanagari" ],
 			bho: [ "Lohit Devanagari" ],
-			bn:  [ "Lohit Bengali" ],
+			bn:  [ "Lohit Bengali" ,"Siyam Rupali" ],
 			bpy: [ "Lohit Bengali" ],
 			cdo: [ "Charis SIL" ],
 			fa:  [ "Iranian Sans" ],
