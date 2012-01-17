@@ -146,6 +146,7 @@ The {{SITENAME}} team',
  * @author EugeneZelenko
  * @author Krinkle
  * @author Minh Nguyen
+ * @author Mormegil
  * @author Nedergard
  * @author Nike
  * @author Praveenp
@@ -177,15 +178,13 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articlefeedback-survey-title' => 'This text appears in the title bar of the survey dialog.',
 	'articlefeedback-survey-thanks' => 'This text appears when the user has successfully submitted the survey.',
 	'articlefeedback-survey-disclaimer' => 'This text appears on the survey form below the comment field and above the submit button. $1 is a link pointing to the privacy policy. The link text is in the {{msg-mw|articlefeedback-survey-disclaimerlink}} message.',
-	'articlefeedback-survey-disclaimerlink' => 'Used in Articlefeedback-survey-disclaimer.',
+	'articlefeedback-survey-disclaimerlink' => 'Used in {{msg-mw|Articlefeedback-survey-disclaimer}}.',
 	'articlefeedback-form-panel-explanation' => '{{Identical|What is this}}',
 	'articlefeedback-form-panel-explanation-link' => 'Do not translate "Project:". Also translate the "ArticleFeedback" special page name at [[Special:AdvancedTranslate]].',
 	'articlefeedback-form-panel-helpimprove' => 'This message should use {{SITENAME}}.',
 	'articlefeedback-form-panel-helpimprove-note' => '$1 is a link pointing to the privacy policy. The link text is in the {{msg-mw|articlefeedback-form-panel-helpimprove-privacy}} message.',
 	'articlefeedback-form-panel-helpimprove-email-placeholder' => '{{Optional}}',
-	'articlefeedback-form-panel-helpimprove-privacy' => '{{Identical|Privacy}}
-
-Used in {{msg-mw|articlefeedback-form-panel-helpimprove-note/fi}}.',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'Used in {{msg-mw|articlefeedback-form-panel-helpimprove-note}}.',
 	'articlefeedback-report-ratings' => "Needs plural support.
 This message is used in JavaScript by module 'jquery.articleFeedback'.
 $1 is an integer, and the rating count.",
@@ -1138,7 +1137,8 @@ $messages['cs'] = array(
 	'articlefeedback-survey-submit' => 'Odeslat',
 	'articlefeedback-survey-title' => 'Odpovězte prosím na několik otázek',
 	'articlefeedback-survey-thanks' => 'Děkujeme za vyplnění průzkumu.',
-	'articlefeedback-survey-disclaimer' => 'V zájmu zlepšení této funkce může být váš názor anonymně sdílen s komunitou Wikipedie.',
+	'articlefeedback-survey-disclaimer' => 'Odesláním souhlasíte se zveřejněním za těchto $1.',
+	'articlefeedback-survey-disclaimerlink' => 'podmínek',
 	'articlefeedback-error' => 'Došlo k chybě. Zkuste to prosím později.',
 	'articlefeedback-form-switch-label' => 'Hodnoťte tuto stránku',
 	'articlefeedback-form-panel-title' => 'Ohodnoťte tuto stránku',
@@ -1151,8 +1151,8 @@ $messages['cs'] = array(
 	'articlefeedback-form-panel-expertise-hobby' => 'Je to můj velký koníček',
 	'articlefeedback-form-panel-expertise-other' => 'Původ mých znalostí zde není uveden',
 	'articlefeedback-form-panel-helpimprove' => 'Rád bych pomohl vylepšit Wikipedii, pošlete mi e-mail (nepovinné)',
-	'articlefeedback-form-panel-helpimprove-note' => 'Pošleme vám potvrzovací e-mail. Vaši e-mailovou adresu nikomu neposkytneme. $1',
-	'articlefeedback-form-panel-helpimprove-privacy' => 'Zásady ochrany osobních údajů',
+	'articlefeedback-form-panel-helpimprove-note' => 'Pošleme vám potvrzovací e-mail. Vaši e-mailovou adresu nikomu dalšímu neposkytneme, jak píšeme v $1',
+	'articlefeedback-form-panel-helpimprove-privacy' => 'zásadách o soukromí',
 	'articlefeedback-form-panel-submit' => 'Odeslat hodnocení',
 	'articlefeedback-form-panel-pending' => 'Vaše hodnocení zatím nebylo odesláno',
 	'articlefeedback-form-panel-success' => 'Úspěšně uloženo',
@@ -4273,7 +4273,7 @@ $messages['ko'] = array(
 	'articlefeedback-form-panel-expertise-other' => '기타',
 	'articlefeedback-form-panel-helpimprove' => '위키백과 개선을 위한 이메일을 받습니다(선택사항)',
 	'articlefeedback-form-panel-helpimprove-note' => '확인 메일을 보냈습니다. 이 메일 주소는 어디에도 공개되지 않습니다. $1',
-	'articlefeedback-form-panel-helpimprove-privacy' => '개인정보 정책',
+	'articlefeedback-form-panel-helpimprove-privacy' => '피드백 개인정보 정책',
 	'articlefeedback-form-panel-submit' => '평가 제출',
 	'articlefeedback-form-panel-pending' => '평가를 제출하지 않았습니다',
 	'articlefeedback-form-panel-success' => '저장 완료',
