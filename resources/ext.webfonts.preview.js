@@ -22,9 +22,9 @@
 	};
 	
 	var getFontsForLang = function ( language ) {
-		var $fontSelecter = $( 'select#webfonts-font-chooser' );
+		var $fontChooser = $( 'select#webfonts-font-chooser' );
 		var $downloadLink = $( 'a#webfonts-preview-download' );
-		$fontSelecter.empty();
+		$fontChooser.empty();
 		var languages = mw.webfonts.config.languages;
 		var fonts = languages[language];
 		if( !fonts ) {
@@ -32,7 +32,7 @@
 			return false;
 		}
 		$.each( fonts, function( key, value ) {   
-			$fontSelecter.append( $( '<option>', { value: value } )
+			$fontChooser.append( $( '<option>', { value: value } )
 				.text( value ) ); 
 		} );
 		showPreview();

@@ -38,9 +38,11 @@
 				};
 			}
 
-			// Set the font, fallback fonts.
+			// Set the web font and the fallback fonts.
 			// Need to change the fonts of Input Select and Textarea explicitly.
-			$( 'body, input, select, textarea' ).css( 'font-family', '"' + font + '", Helvetica, Arial, sans-serif' );
+			$( 'body, input, select, textarea' ).css(
+				'font-family', '"' + font + '", Helvetica, Arial, sans-serif'
+			);
 
 			if ( config.normalization !== undefined ) {
 				$( document ).ready( function() {
@@ -62,6 +64,7 @@
 				fontFamily: mw.webfonts.oldconfig.fontFamily,
 				fontSize: mw.webfonts.oldconfig.fontSize
 			});
+
 			// We need to reset the font family of Input and Select explicitly.
 			$( 'input, select' ).css( 'font-family', mw.webfonts.oldconfig.fontFamily );
 
@@ -73,7 +76,7 @@
 		},
 
 		/**
-		 * Does a find replace of string on the page.
+		 * Does a find & replace of string in the page.
 		 * @param normalization_rules hashmap of replacement rules.
 		 */
 		normalize: function( normalizationRules ) {
@@ -200,10 +203,12 @@
 
 			// Build font dropdown
 			mw.webfonts.buildMenu( fonts );
-			// See if there is a font in cookie if not first font is default font.
+
+			// See if there is a font in a cookie.
+			// If not, the first font listed in the source is the default font.
 			var	cookieFont = $.cookie( 'webfonts-font' ),
 				selectedFont = null;
-			// check whether this font is for the current userlang/contentlang
+			// Check whether this font is for the current userlang/contentlang
 			if ( $.inArray( cookieFont, fonts ) !== -1 || cookieFont === 'none' ) {
 				selectedFont = cookieFont;
 			}
@@ -215,7 +220,7 @@
 			if ( selectedFont ) {
 				mw.webfonts.set( selectedFont );
 				// Mark it as checked
-				$( '#'+fontID( selectedFont ) ).prop( 'checked', true );
+				$( '#' + fontID( selectedFont ) ).prop( 'checked', true );
 			}
 
 			mw.webfonts.loadFontsForFontFamilyStyle();
@@ -223,8 +228,8 @@
 
 			if ( $( '.webfonts-lang-attr' ).length && !$( '#webfonts-fontsmenu' ).length ) {
 				// We need to show the reset option even if there is no font to show
-				// for the language, if there is lang attr based font embedding.
-				 mw.webfonts.buildMenu( fonts );
+				// for the main language, because there may be lang attr based font embedding.
+				mw.webfonts.buildMenu( fonts );
 			}
 		},
 
@@ -237,7 +242,7 @@
 			var requested = [mw.config.get( 'wgUserVariant' ), mw.config.get( 'wgContentLanguage' ),
 				mw.config.get( 'wgUserLanguage' ), mw.config.get( 'wgPageContentLanguage' )];
 			var fontFamily = false;
-			// If there are tags with lang attribute,
+			// Find elements with the lang attribute.
 			$( 'body' ).find( '*[lang]' ).each( function( i, el) {
 				// If the lang attribute value is same as one of
 				// contentLang,useLang, variant, no need to do this.
@@ -268,7 +273,6 @@
 					});
 				}
 			});
-
 		},
 
 		/**
@@ -332,7 +336,6 @@
 				.append( $resetLabel );
 
 			$fontsMenu.append( $resetItem );
-
 
 			var helpPage = mw.config.get( 'wgWebFontsHelpPage' );
 			var $helpLink = $( '<a id="webfont-help-link" >' )
