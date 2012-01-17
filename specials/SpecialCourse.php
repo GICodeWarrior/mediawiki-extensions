@@ -157,7 +157,17 @@ class SpecialCourse extends SpecialEPPage {
 			return wfMsgHtml( 'ep-course-no-instructors' );
 		}
 	}
-	
+
+	/**
+	 * Returns instructor addition controls for the course if the
+	 * current user has the right permissions.
+	 *
+	 * @since 0.1
+	 *
+	 * @param EPCourse $course
+	 *
+	 * @return string
+	 */
 	protected function getInstructorControls( EPCourse $course ) {
 		$user = $this->getUser();
 		$links = array();

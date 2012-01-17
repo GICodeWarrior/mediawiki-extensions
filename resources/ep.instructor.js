@@ -109,20 +109,28 @@
 				'maxlength': 250,
 				'id': 'ep-instructor-summaryinput'
 			} );
-			
+
+			this.getName = function() {
+				return this.selfMode ? mw.user.name : this.nameInput.val();
+			};
+
 			this.doAdd = function() {
 				var $add = $( '#ep-instructor-add-button' );
 				var $cancel = $( '#ep-instructor-add-cancel-button' );
 
-				$remove.button( 'option', 'disabled', true );
-				$remove.button( 'option', 'label', ep.msg( 'ep-instructor-adding' ) );
+				$add.button( 'option', 'disabled', true );
+				$add.button( 'option', 'label', ep.msg( 'ep-instructor-adding' ) );
 
-				ep.api.removeInstructor( {
+				ep.api.addInstructor( {
 					'courseid': this.courseId,
-					'userid': this.userId,
+					'username': this.getName(),
 					'reason': this.summaryInput.val()
 				} ).done( function() {
-					_this.$dialog.text( ep.msg( _this.selfMode ? 'ep-instructor-addittion-self-success' : 'ep-instructor-addittion-success', this.getName() ) );
+					_this.$dialog.text( ep.msg(
+						_this.selfMode ? 'ep-instructor-addittion-self-success' : 'ep-instructor-addittion-success',
+						_this.getName(),
+						_this.courseName
+					) );
 					$add.remove();
 					$cancel.button( 'option', 'label', ep.msg( 'ep-instructor-add-close-button' ) );
 					$cancel.focus();
@@ -132,11 +140,7 @@
 					alert( ep.msg( 'ep-instructor-addittion-failed' ) );
 				} );
 			};
-			
-			this.getName = function() {
-				return this.selfMode ? mw.user.name : this.nameInput.val();
-			};
-			
+
 			this.$dialog = $( '<div>' ).html( '' ).dialog( {
 				'title': ep.msg( this.selfMode ? 'ep-instructor-add-self-title' : 'ep-instructor-add-title', this.getName() ),
 				'minWidth': 550,
@@ -187,7 +191,7 @@
 			var enterHandler = function( event ) {
 				if ( event.which == '13' ) {
 					event.preventDefault();
-					this.doAdd();
+					_this.doAdd();
 				}
 			};
 			

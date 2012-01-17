@@ -8,26 +8,65 @@
 
 ( function ( $, mw ) {
 
-	mw.educationProgram.remove = function( data, callback ) {
-		var requestArgs = {
-			'action': 'deleteeducation',
-			'format': 'json',
-			'token': window.mw.user.tokens.get( 'editToken' ),
-			'ids': data.ids.join( '|' ),
-			'type': data.type
-		};
+	mw.educationProgram.api = {
 
-		$.post(
-			wgScriptPath + '/api.php',
-			requestArgs,
-			function( data ) {
-				var success = data.hasOwnProperty( 'success' ) && data.success;
+		instructor: function( args ) {
+			var requestArgs = $.extend( {
+				'action': 'instructor',
+				'format': 'json',
+				'token': window.mw.user.tokens.get( 'editToken' )
+			}, args );
 
-				callback( {
-					'success': success
-				} );
-			}
-		);
+			var deferred = $.Deferred();
+
+			$.post(
+				wgScriptPath + '/api.php',
+				requestArgs,
+				function( data ) {
+					if ( data.hasOwnProperty( 'success' ) && data.success ) {
+						deferred.resolve();
+					}
+					else {
+						deferred.reject();
+					}
+				}
+			);
+
+			return deferred.promise();
+		},
+
+		addInstructor: function( args ) {
+			args.subaction = 'add';
+			return this.instructor( args );
+		},
+
+		removeInstructor: function( args ) {
+			args.subaction = 'remove';
+			return this.instructor( args );
+		},
+
+		remove: function( data, callback ) {
+			var requestArgs = {
+				'action': 'deleteeducation',
+				'format': 'json',
+				'token': window.mw.user.tokens.get( 'editToken' ),
+				'ids': data.ids.join( '|' ),
+				'type': data.type
+			};
+
+			$.post(
+				wgScriptPath + '/api.php',
+				requestArgs,
+				function( data ) {
+					var success = data.hasOwnProperty( 'success' ) && data.success;
+
+					callback( {
+						'success': success
+					} );
+				}
+			);
+		}
+
 	};
 
 }( jQuery, mediaWiki ) );
