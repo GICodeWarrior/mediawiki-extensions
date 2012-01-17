@@ -8,6 +8,8 @@ test( '-- Initial check', function() {
 
 test( '-- Dynamic font loading', function() {
 	expect( 7 );
+	
+	mw.webfonts.fonts = [];
 	var cssRulesLength = document.styleSheets.length;
 	assertTrue( mw.webfonts.addFont( 'Lohit Devanagari' ) , 'Add the Lohit Devanagari font' );
 	assertTrue( $.inArray( 'Lohit Devanagari', mw.webfonts.fonts ) >= 0 , 'Font loaded' );
@@ -22,6 +24,14 @@ test( '-- Dynamic font loading', function() {
 test( '-- Dynamic font loading based on lang attribute', function() {
 	expect( 15 );
 
+	mw.webfonts.fonts = [];
+	mw.config.set( {
+		wgLanguage: "en",
+		wgUserVariant: "en",
+		wgUserLanguage: "en",
+		wgPageContentLanguage: "en",
+	} );
+	
 	ok( $( 'body' ).append( "<p class='webfonts-testing-lang-attr'>Some Content</p>") );
 	$testElement =  $( 'p.webfonts-testing-lang-attr' )
 	assertTrue( $testElement !== [], 'Test element added' ) ;
@@ -49,6 +59,7 @@ test( '-- Dynamic font loading based on lang attribute', function() {
 test( '-- Dynamic font loading based on font-family style attribute', function() {
 	expect( 14 )
 
+	mw.webfonts.fonts = [];
 	ok( $( 'body' ).append( "<p class='webfonts-testing-font-family-style'>Some Content</p>" ) );
 	var $testElement = $( 'p.webfonts-testing-font-family-style' );
 	assertTrue(  $testElement !== [], 'Test element added' ) ;
