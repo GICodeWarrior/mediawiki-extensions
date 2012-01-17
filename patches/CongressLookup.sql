@@ -27,11 +27,9 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/cl_house (
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/cl_zip3 (
-  `clz3_id` int(10) unsigned NOT NULL PRIMARY KEY auto_increment,
-  `clz3_zip` int(3) unsigned NOT NULL,
+  `clz3_zip` int(3) unsigned NOT NULL PRIMARY KEY,
   `clz3_state` varchar(2) DEFAULT NULL
 ) /*$wgDBTableOptions*/;
-CREATE INDEX /*i*/clz3_zip ON /*$wgDBprefix*/cl_zip3 (clz3_zip);
 
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/cl_zip5 (
   `clz5_id` int(10) unsigned NOT NULL PRIMARY KEY auto_increment,
