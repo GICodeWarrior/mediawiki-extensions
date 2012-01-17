@@ -86,7 +86,7 @@ INSERT INTO `cl_house` (`clh_id`, `clh_bioguideid`, `clh_gender`, `clh_name`, `c
 (400121, 'E000172', 'F', 'Rep. Jo Ann Emerson [R, MO-8]', 'Rep.', 'MO', '8', '202-225-4404', '202-226-0326', 'http://www.house.gov/emerson/contact/', 'joannemerson'),
 (400122, 'E000179', 'M', 'Rep. Eliot Engel [D, NY-17]', 'Rep.', 'NY', '17', '202-225-2464', '202-225-5513', 'http://www.house.gov/writerep', NULL),
 (400124, 'E000215', 'F', 'Rep. Anna Eshoo [D, CA-14]', 'Rep.', 'CA', '14', '202-225-8104', '202-225-8890', 'https://forms.house.gov/eshoo/webforms/issue_subscribe.htm', 'RepAnnaEshoo'),
-(400128, 'F000010', 'M', 'Del. Eni Faleomavaega [D, AS-0]', 'Del.', 'AS', '0', '202-225-1188', '', '', NULL),
+(400128, 'F000010', 'M', 'Del. Eni Faleomavaega [D, AS-0]', 'Del.', 'AS', '0', '202-225-1188', '', 'http://www.house.gov/writerep', NULL),
 (400129, 'F000030', 'M', 'Rep. Sam Farr [D, CA-17]', 'Rep.', 'CA', '17', '202-225-2861', '202-225-6791', 'http://www.farr.house.gov/index.php?option=com_content&task=view&id=202', NULL),
 (400130, 'F000043', 'M', 'Rep. Chaka Fattah [D, PA-2]', 'Rep.', 'PA', '2', '202-225-4001', '202-225-5392', 'http://fattah.house.gov/?sectionid=8&sectiontree=8', 'chakafattah'),
 (400133, 'F000116', 'M', 'Rep. Bob Filner [D, CA-51]', 'Rep.', 'CA', '51', '202-225-8045', '202-225-9073', 'http://www.house.gov/writerep', 'CongBobFilner'),
