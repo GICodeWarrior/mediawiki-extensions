@@ -34,6 +34,13 @@ $messages['ast'] = array(
 	'helpcommons-desc' => "Estrái páxines d'ayuda d'una wiki d'ayuda y les inclúi n'otres wikis de la familia wiki",
 );
 
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'helpcommons-desc' => 'Запытвае дапаможныя старонкі з дапаможнай вікі і ўключае іх у іншыя праекты',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
