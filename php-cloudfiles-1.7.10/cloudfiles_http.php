@@ -903,7 +903,7 @@ class CF_Http
 
     # HEAD /v1/Account/Container/Object
     #
-    function head_object(&$obj)
+    function head_object(&$obj, $hdrs=array())
     {
         if (!is_object($obj) || get_class($obj) != "CF_Object") {
             throw new SyntaxException(
@@ -913,7 +913,7 @@ class CF_Http
         $conn_type = "HEAD";
 
         $url_path = $this->_make_path("STORAGE", $obj->container->name,$obj->name);
-        $return_code = $this->_send_request($conn_type,$url_path);
+        $return_code = $this->_send_request($conn_type,$url_path,$hdrs);
 
         if (!$return_code) {
             $this->error_str .= ": Failed to obtain valid HTTP response.";

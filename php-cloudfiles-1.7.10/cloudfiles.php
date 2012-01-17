@@ -1332,11 +1332,12 @@ class CF_Container
      * </code>
      *
      * @param string $obj_name name of storage Object
+     * @param array $hdrs user-defined headers (X-Newest: true, etc.)
      * @return obj CF_Object instance
      */
-    function create_object($obj_name=NULL)
+    function create_object($obj_name=NULL, $hdrs=array())
     {
-        return new CF_Object($this, $obj_name);
+        return new CF_Object($this, $obj_name, False, True, $hdrs);
     }
 
     /**
@@ -1361,11 +1362,12 @@ class CF_Container
      * </code>
      *
      * @param string $obj_name name of storage Object
+     * @param array $hdrs user-defined headers (X-Newest: true, etc.)
      * @return obj CF_Object instance
      */
-    function get_object($obj_name=NULL)
+    function get_object($obj_name=NULL, $hdrs=array())
     {
-        return new CF_Object($this, $obj_name, True);
+        return new CF_Object($this, $obj_name, True, True, $hdrs);
     }
 
     /**
@@ -1898,8 +1900,10 @@ class CF_Object
      * @param obj $container CF_Container instance
      * @param string $name name of Object
      * @param boolean $force_exists if set, throw an error if Object doesn't exist
+     * @param boolean $dohead if set, do a HEAD request to get object metadata
+     * @param array $hdrs user-defined headers (X-Newest: true, etc.)
      */
-    function __construct(&$container, $name, $force_exists=False, $dohead=True)
+    function __construct(&$container, $name, $force_exists=False, $dohead=True, $hdrs=array())
     {
         if ($name[0] == "/") {
             $r = "Object name '".$name;
@@ -1921,7 +1925,7 @@ class CF_Object
         $this->headers = array();
         $this->manifest = NULL;
         if ($dohead) {
-            if (!$this->_initialize() && $force_exists) {
+            if (!$this->_initialize($hdrs) && $force_exists) {
                 throw new NoSuchObjectException("No such object '".$name."'");
             }
         }
@@ -2541,11 +2545,11 @@ class CF_Object
     /**
      * PRIVATE: fetch information about the remote Object if it exists
      */
-    private function _initialize()
+    private function _initialize($hdrs=array())
     {
         list($status, $reason, $etag, $last_modified, $content_type,
             $content_length, $metadata, $manifest, $headers) =
-                $this->container->cfs_http->head_object($this);
+                $this->container->cfs_http->head_object($this,$hdrs);
         #if ($status == 401 && $this->_re_auth()) {
         #    return $this->_initialize();
         #}
