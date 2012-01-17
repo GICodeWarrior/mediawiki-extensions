@@ -35,3 +35,8 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/cl_zip5 (
   `clz5_zip` int(5) unsigned NOT NULL PRIMARY KEY,
   `clz5_rep_id` int(10) unsigned DEFAULT NULL
 ) /*$wgDBTableOptions*/;
+
+CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/cl_zip9 (
+  `clz9_zip` int(9) unsigned NOT NULL PRIMARY KEY,
+  `clz9_rep_id` int(10) unsigned DEFAULT NULL
+) /*$wgDBTableOptions*/;

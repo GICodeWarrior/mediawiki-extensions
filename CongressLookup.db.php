@@ -12,13 +12,27 @@ class CongressLookupDB {
 	public static function getRepresentative( $zip ) {
 		$repData = array();
 		$dbr = wfGetDB( DB_SLAVE );
+		 
+		$zip5 = self::trimZip( $zip, 5 ); // Trim it to 5 digit
+		$zip5 = intval( $zip ); // Convert into an integer
 
-		$zip = self::trimZip( $zip, 5 ); // Trim it to 5 digit
-		$zip = intval( $zip ); // Convert into an integer
-
-		$row = $dbr->selectRow( 'cl_zip5', 'clz5_rep_id', array( 'clz5_zip' => $zip ) );
-		if ( $row ) {
+		$row = $dbr->selectRow( 'cl_zip5', 'clz5_rep_id', array( 'clz5_zip' => $zip5 ) );
+		/* we expect zip codes that split across districts to either be missing from the clz5_zip
+		   table or to have NULL for the rep id. */
+		if ( ( !$row ) || ( !$row->clz5_rep_id ) ) {
+			/* if we got the extra 4 digits, use them */
+			$zip9 = intval( $zip );
+			if ( $zip9 >= 10000 ) {
+				$row = $dbr->selectRow( 'cl_zip9', 'clz9_rep_id', array( 'clz9_zip' => $zip9 ) );
+				if ( $row ) {
+					$rep_id = $row->clz9_rep_id;
+				}
+			}
+		}
+		else {
 			$rep_id = $row->clz5_rep_id;
+		}
+		if ( $row ) {
 			$res = $dbr->select( 
 				'cl_house',
 				array(
@@ -53,10 +67,11 @@ class CongressLookupDB {
 				);
 				$repData[] = $oneHouseRep;
 			}
+			//$repData = $row;
 		}
 		return $repData;
 	}
-
+	
 	/**
 	 * Given a zip code, return the data for that zip code's senators
 	 * @param $zip string
@@ -68,7 +83,6 @@ class CongressLookupDB {
 		 
 		$zip = self::trimZip( $zip, 3 ); // Trim it to 3 digit
 		$zip = intval( $zip ); // Convert into an integer
-
 		$row = $dbr->selectRow( 'cl_zip3', 'clz3_state', array( 'clz3_zip' => $zip ) );
 		if ( $row ) {
 			$state = $row->clz3_state;
@@ -107,15 +121,22 @@ class CongressLookupDB {
 		}
 		return $senatorData;
 	}
-
+	
 	/**
 	 * Helper method. Trim a zip code, but leave it as a string.
+	 * Pad it with leading zeros to fill out to 5 or 9 digits as needed.
 	 * @param $zip string: Raw zip code
 	 * @param $length integer: How many digits we want to return (from the left)
 	 * @return string The trimmed zip code
 	 */	
 	public static function trimZip( $zip, $length ) {
 		$zip = trim( $zip );
+		if ( strlen( $zip ) < 5 ) {
+			$zip = sprintf( "%05d", $zip );
+		}
+		elseif ( strlen( $zip ) > 5 ) {
+			$zip = sprintf( "%09d", $zip );
+		}
 		$zipPieces = explode( '-', $zip, 2 );
 		$zip = substr( $zipPieces[0], 0, $length );
 		return $zip;
