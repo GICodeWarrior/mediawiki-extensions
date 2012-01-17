@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2012 at 03:28 PM
+-- Generation Time: Jan 17, 2012 at 01:00 AM
 -- Server version: 5.1.47
 -- PHP Version: 5.3.6
 
@@ -54,7 +54,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (660, 412306),
 (662, 412306),
 (664, 412306),
-(667, 412306),
+(667, 412306);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (669, 412306),
 (670, 412306),
 (674, 412306),
@@ -88,7 +89,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (723, 412306),
 (725, 412306),
 (726, NULL),
-(727, NULL),
+(727, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (728, 412306),
 (729, 412306),
 (730, 412306),
@@ -123,7 +125,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (782, 412306),
 (783, 412306),
 (784, 412306),
-(785, NULL),
+(785, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (786, NULL),
 (791, 412306),
 (792, NULL),
@@ -160,7 +163,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (916, NULL),
 (917, 412306),
 (918, 412306),
-(919, NULL),
+(919, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (920, 412306),
 (921, 412306),
 (922, NULL),
@@ -197,7 +201,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (962, 412306),
 (963, NULL),
 (965, 412306),
-(966, 412306),
+(966, 412306);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (968, 412306),
 (969, 412306),
 (970, NULL),
@@ -231,7 +236,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1020, 400301),
 (1021, NULL),
 (1022, 400301),
-(1026, 400301),
+(1026, 400301);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1027, 400301),
 (1028, 400291),
 (1029, 400301),
@@ -263,7 +269,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1070, 400301),
 (1071, 400301),
 (1072, 400301),
-(1073, 400301),
+(1073, 400301);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1074, NULL),
 (1075, 400301),
 (1077, 400301),
@@ -296,7 +303,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1109, 400291),
 (1111, NULL),
 (1114, NULL),
-(1115, NULL),
+(1115, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1116, NULL),
 (1118, 400291),
 (1119, 400291),
@@ -329,7 +337,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1242, 400301),
 (1243, NULL),
 (1244, 400301),
-(1245, 400301),
+(1245, 400301);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1247, 400301),
 (1252, NULL),
 (1253, 400301),
@@ -361,7 +370,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1346, 400301),
 (1347, NULL),
 (1349, 400301),
-(1350, 400301),
+(1350, 400301);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1351, 400301),
 (1354, NULL),
 (1355, 400301),
@@ -393,7 +403,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1460, 412254),
 (1462, 400301),
 (1463, 400301),
-(1464, 400301),
+(1464, 400301);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1467, 412254),
 (1468, 400301),
 (1469, 400301),
@@ -425,7 +436,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1524, 400263),
 (1525, NULL),
 (1526, NULL),
-(1527, 400263),
+(1527, 400263);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1529, 400291),
 (1531, 400301),
 (1532, 400263),
@@ -457,7 +469,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1585, 400301),
 (1586, NULL),
 (1588, 400291),
-(1590, 400291),
+(1590, 400291);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1601, NULL),
 (1602, 400263),
 (1603, 400263),
@@ -490,7 +503,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1740, 400263),
 (1741, 400407),
 (1742, 400253),
-(1745, 400253),
+(1745, 400253);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1746, 400263),
 (1747, 400291),
 (1748, 400263),
@@ -523,7 +537,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1826, 400019),
 (1827, 400301),
 (1830, 412447),
-(1831, NULL),
+(1831, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1832, 412447),
 (1833, 400407),
 (1834, 400407),
@@ -555,7 +570,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1888, NULL),
 (1889, NULL),
 (1890, 400253),
-(1899, NULL),
+(1899, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1901, NULL),
 (1902, 400407),
 (1903, NULL),
@@ -587,7 +603,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1961, NULL),
 (1965, NULL),
 (1966, 400407),
-(1969, 400407),
+(1969, 400407);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (1970, 400407),
 (1971, NULL),
 (1982, 400407),
@@ -620,7 +637,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2054, 400249),
 (2055, NULL),
 (2056, 400249),
-(2059, NULL),
+(2059, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2060, NULL),
 (2061, 412435),
 (2062, 400249),
@@ -653,7 +671,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2118, 400063),
 (2119, 400063),
 (2120, 400063),
-(2121, 400063),
+(2121, 400063);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2122, 412435),
 (2123, NULL),
 (2124, 400249),
@@ -685,7 +704,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2152, 400063),
 (2153, NULL),
 (2155, 400063),
-(2156, NULL),
+(2156, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2163, 400063),
 (2169, 412435),
 (2170, 412435),
@@ -719,7 +739,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2216, NULL),
 (2217, NULL),
 (2222, 400249),
-(2228, NULL),
+(2228, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2238, NULL),
 (2239, NULL),
 (2241, NULL),
@@ -753,7 +774,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2344, NULL),
 (2345, NULL),
 (2346, 412435),
-(2347, 400140),
+(2347, 400140);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2348, NULL),
 (2349, NULL),
 (2350, NULL),
@@ -786,7 +808,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2454, NULL),
 (2455, NULL),
 (2456, NULL),
-(2457, NULL),
+(2457, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2458, 400253),
 (2459, 400249),
 (2460, 400253),
@@ -818,7 +841,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2537, 412435),
 (2538, 412435),
 (2539, 412435),
-(2540, 412435),
+(2540, 412435);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2541, NULL),
 (2542, 412435),
 (2543, 412435),
@@ -851,7 +875,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2636, NULL),
 (2637, NULL),
 (2638, 412435),
-(2639, 412435),
+(2639, 412435);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2641, NULL),
 (2642, 412435),
 (2643, NULL),
@@ -883,7 +908,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2673, 412435),
 (2675, 412435),
 (2702, 400140),
-(2703, 400263),
+(2703, 400263);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2712, NULL),
 (2713, 412435),
 (2714, NULL),
@@ -915,7 +941,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2763, 400263),
 (2764, 400263),
 (2766, 400249),
-(2767, 400249),
+(2767, 400249);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2768, NULL),
 (2769, 400263),
 (2770, 400140),
@@ -947,7 +974,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2826, NULL),
 (2827, 400230),
 (2828, 412470),
-(2829, NULL),
+(2829, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2830, 412470),
 (2831, 400230),
 (2832, 400230),
@@ -979,7 +1007,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2876, NULL),
 (2877, NULL),
 (2878, 400263),
-(2879, 400230),
+(2879, 400230);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2880, NULL),
 (2881, 400230),
 (2882, 400230),
@@ -1011,7 +1040,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2914, 400263),
 (2915, 412470),
 (2916, 400263),
-(2917, 412470),
+(2917, 412470);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (2918, NULL),
 (2919, 412470),
 (2920, 400230),
@@ -1043,7 +1073,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3060, 400019),
 (3061, NULL),
 (3062, 400019),
-(3063, 412447),
+(3063, 412447);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3064, 412447),
 (3070, 412447),
 (3071, 400301),
@@ -1075,7 +1106,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3222, 412447),
 (3223, 400019),
 (3224, 412447),
-(3225, 412447),
+(3225, 412447);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3226, 412447),
 (3227, 412447),
 (3229, 400019),
@@ -1107,7 +1139,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3259, 412447),
 (3260, 400019),
 (3261, 412447),
-(3262, 400019),
+(3262, 400019);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3263, 412447),
 (3264, 412447),
 (3266, 400019),
@@ -1139,7 +1172,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3307, 412447),
 (3431, 400019),
 (3435, NULL),
-(3440, 400019),
+(3440, 400019);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3441, 400019),
 (3442, 400019),
 (3443, 400019),
@@ -1171,7 +1205,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3575, NULL),
 (3576, 400019),
 (3579, 400274),
-(3580, 400019),
+(3580, 400019);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3581, 400274),
 (3582, 400019),
 (3583, 400019),
@@ -1203,7 +1238,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3750, 400019),
 (3751, 400019),
 (3752, 400019),
-(3753, 400019),
+(3753, 400019);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3754, NULL),
 (3755, 400019),
 (3756, NULL),
@@ -1235,7 +1271,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3814, 412447),
 (3815, 412447),
 (3816, 412447),
-(3817, 412447),
+(3817, 412447);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3818, 412447),
 (3819, 412447),
 (3820, 412447),
@@ -1267,7 +1304,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3851, NULL),
 (3852, 412447),
 (3853, 412447),
-(3854, 412447),
+(3854, 412447);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3855, 412447),
 (3856, 412447),
 (3857, 412447),
@@ -1299,7 +1337,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3896, NULL),
 (3897, 412447),
 (3901, 412447),
-(3902, 412307),
+(3902, 412307);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (3903, 412447),
 (3904, 412447),
 (3905, 412447),
@@ -1331,7 +1370,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4022, 412307),
 (4024, 412307),
 (4027, 412447),
-(4028, NULL),
+(4028, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4029, 412307),
 (4030, 412307),
 (4032, 412307),
@@ -1363,7 +1403,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4068, 412447),
 (4069, 412307),
 (4070, NULL),
-(4071, 412307),
+(4071, 412307);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4072, 412307),
 (4073, 412307),
 (4074, 412307),
@@ -1395,7 +1436,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4104, NULL),
 (4105, 412307),
 (4106, 412307),
-(4107, 412307),
+(4107, 412307);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4108, 412307),
 (4109, NULL),
 (4110, 412307),
@@ -1428,7 +1470,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4239, 400274),
 (4240, 400274),
 (4241, NULL),
-(4243, NULL),
+(4243, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4250, 400274),
 (4252, 412307),
 (4253, 400274),
@@ -1460,7 +1503,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4285, 400274),
 (4286, NULL),
 (4287, 412307),
-(4288, NULL),
+(4288, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4289, 400274),
 (4290, 400274),
 (4291, NULL),
@@ -1492,7 +1536,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4360, 412307),
 (4363, 412307),
 (4364, 412307),
-(4401, 400274),
+(4401, 400274);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4402, NULL),
 (4406, 400274),
 (4408, 400274),
@@ -1524,7 +1569,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4442, 400274),
 (4443, 400274),
 (4444, 400274),
-(4448, 400274),
+(4448, 400274);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4449, 400274),
 (4450, 400274),
 (4451, 400274),
@@ -1556,7 +1602,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4488, 400274),
 (4489, NULL),
 (4490, 400274),
-(4491, NULL),
+(4491, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4492, NULL),
 (4493, 400274),
 (4495, 400274),
@@ -1588,7 +1635,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4567, NULL),
 (4568, 412307),
 (4570, NULL),
-(4571, NULL),
+(4571, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4572, 412307),
 (4573, 412307),
 (4574, 412307),
@@ -1619,7 +1667,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4630, 400274),
 (4631, 400274),
 (4634, 400274),
-(4635, 400274),
+(4635, 400274);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4637, NULL),
 (4640, 400274),
 (4642, 400274),
@@ -1651,7 +1700,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4674, 400274),
 (4675, 400274),
 (4676, 400274),
-(4677, 400274),
+(4677, 400274);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4679, 400274),
 (4680, 400274),
 (4681, 400274),
@@ -1683,7 +1733,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4750, 400274),
 (4751, NULL),
 (4756, 400274),
-(4757, 400274),
+(4757, 400274);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4758, 400274),
 (4759, 400274),
 (4760, 400274),
@@ -1715,7 +1766,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4843, 412307),
 (4846, NULL),
 (4847, 412307),
-(4848, 400274),
+(4848, 400274);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4849, 412307),
 (4850, NULL),
 (4851, 412307),
@@ -1747,7 +1799,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4923, 400274),
 (4924, 400274),
 (4925, 400274),
-(4926, NULL),
+(4926, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4927, 412307),
 (4928, 400274),
 (4929, 400274),
@@ -1779,7 +1832,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4961, 400274),
 (4962, 412307),
 (4963, 412307),
-(4964, 400274),
+(4964, 400274);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (4965, 400274),
 (4966, 400274),
 (4967, 400274),
@@ -1811,7 +1865,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5033, 400019),
 (5034, 412239),
 (5035, 412239),
-(5036, 412239),
+(5036, 412239);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5037, 412239),
 (5038, 412239),
 (5039, 412239),
@@ -1843,7 +1898,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5070, 412239),
 (5071, 412239),
 (5072, 412239),
-(5073, 412239),
+(5073, 412239);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5074, 412239),
 (5075, 400019),
 (5076, 412239),
@@ -1875,7 +1931,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5158, 400019),
 (5159, NULL),
 (5161, 412239),
-(5201, 412239),
+(5201, 412239);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5250, 412239),
 (5251, 412239),
 (5252, 412239),
@@ -1907,7 +1964,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5357, NULL),
 (5358, 412239),
 (5359, 412239),
-(5360, 412239),
+(5360, 412239);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5361, 412239),
 (5362, 412239),
 (5363, 412239),
@@ -1940,7 +1998,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5458, 412239),
 (5459, 412239),
 (5460, NULL),
-(5461, 412239),
+(5461, 412239);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5462, 412239),
 (5463, 412239),
 (5464, 412239),
@@ -1973,7 +2032,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5501, NULL),
 (5544, NULL),
 (5601, NULL),
-(5602, 412239),
+(5602, 412239);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5603, NULL),
 (5604, NULL),
 (5609, NULL),
@@ -2005,7 +2065,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5670, NULL),
 (5671, NULL),
 (5672, 412239),
-(5673, 412239),
+(5673, 412239);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5674, 412239),
 (5675, 412239),
 (5676, 412239),
@@ -2037,7 +2098,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5747, 412239),
 (5748, 412239),
 (5750, 412239),
-(5751, 412239),
+(5751, 412239);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5753, 412239),
 (5757, 412239),
 (5758, 412239),
@@ -2068,7 +2130,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5824, 412239),
 (5825, 412239),
 (5826, 412239),
-(5827, 412239),
+(5827, 412239);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5828, 412239),
 (5829, 412239),
 (5830, 412239),
@@ -2100,7 +2163,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5863, NULL),
 (5866, 412239),
 (5867, 412239),
-(5868, 412239),
+(5868, 412239);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (5871, 412239),
 (5872, 412239),
 (5873, 412239),
@@ -2132,7 +2196,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6027, 400301),
 (6028, NULL),
 (6029, 400233),
-(6030, NULL),
+(6030, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6031, 412194),
 (6032, 412194),
 (6033, 400233),
@@ -2164,7 +2229,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6069, 412194),
 (6070, 412194),
 (6071, 412193),
-(6072, NULL),
+(6072, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6073, 400233),
 (6074, 400233),
 (6075, NULL),
@@ -2197,7 +2263,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6106, 400233),
 (6107, 412194),
 (6108, 400233),
-(6109, 400233),
+(6109, 400233);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6110, 400233),
 (6111, 400233),
 (6112, 400233),
@@ -2232,7 +2299,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6153, NULL),
 (6154, NULL),
 (6155, NULL),
-(6156, NULL),
+(6156, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6160, NULL),
 (6161, NULL),
 (6167, NULL),
@@ -2265,7 +2333,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6255, 412193),
 (6256, 412193),
 (6258, NULL),
-(6259, 412193),
+(6259, 412193);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6260, 400230),
 (6262, 412193),
 (6263, NULL),
@@ -2297,7 +2366,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6351, 412193),
 (6353, NULL),
 (6354, 400230),
-(6355, 412193),
+(6355, 412193);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6357, 412193),
 (6359, 400230),
 (6360, 412193),
@@ -2329,7 +2399,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6408, NULL),
 (6409, 412193),
 (6410, 412194),
-(6411, NULL),
+(6411, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6412, 412193),
 (6413, 412193),
 (6414, NULL),
@@ -2361,7 +2432,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6454, NULL),
 (6455, 400103),
 (6456, NULL),
-(6457, 400233),
+(6457, 400233);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6459, NULL),
 (6460, 400103),
 (6467, NULL),
@@ -2394,7 +2466,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6498, 412193),
 (6501, NULL),
 (6502, NULL),
-(6503, NULL),
+(6503, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6504, 400103),
 (6505, NULL),
 (6506, NULL),
@@ -2428,7 +2501,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6601, NULL),
 (6602, NULL),
 (6604, 412282),
-(6605, 412282),
+(6605, 412282);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6606, 412282),
 (6607, 412282),
 (6608, 412282),
@@ -2461,7 +2535,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6750, 412194),
 (6751, 412194),
 (6752, 412194),
-(6753, NULL),
+(6753, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6754, 412194),
 (6755, 412194),
 (6756, 412194),
@@ -2492,7 +2567,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6801, 412282),
 (6804, 412194),
 (6807, 412282),
-(6810, 412282),
+(6810, 412282);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6811, 412452),
 (6812, 412452),
 (6813, NULL),
@@ -2526,7 +2602,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6879, NULL),
 (6880, 412282),
 (6881, NULL),
-(6883, 412282),
+(6883, 412282);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (6888, NULL),
 (6889, NULL),
 (6896, 412282),
@@ -2559,7 +2636,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7007, NULL),
 (7008, 412451),
 (7009, 400142),
-(7010, 400346),
+(7010, 400346);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7011, 400309),
 (7012, 400309),
 (7013, 400309),
@@ -2590,7 +2668,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7041, 412290),
 (7042, 400309),
 (7043, 400309),
-(7044, 400309),
+(7044, 400309);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7045, 400142),
 (7046, 400142),
 (7047, 412186),
@@ -2622,7 +2701,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7077, 412290),
 (7078, 412290),
 (7079, 400309),
-(7080, 412290),
+(7080, 412290);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7081, 412290),
 (7082, 400142),
 (7083, 412290),
@@ -2655,7 +2735,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7182, NULL),
 (7184, NULL),
 (7188, NULL),
-(7189, NULL),
+(7189, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7191, NULL),
 (7192, NULL),
 (7193, NULL),
@@ -2688,7 +2769,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7405, 400142),
 (7407, 400309),
 (7410, 400346),
-(7416, 400145),
+(7416, 400145);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7417, 400309),
 (7418, 400145),
 (7419, 400145),
@@ -2719,7 +2801,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7462, 400145),
 (7463, 400145),
 (7465, 400309),
-(7470, 400142),
+(7470, 400142);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7474, NULL),
 (7477, NULL),
 (7480, 400145),
@@ -2752,7 +2835,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7604, 400346),
 (7605, 400346),
 (7606, 400346),
-(7607, 400346),
+(7607, 400346);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7608, 400346),
 (7620, 400145),
 (7621, 400346),
@@ -2783,7 +2867,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7662, 400346),
 (7663, 400346),
 (7666, 400346),
-(7670, 400346),
+(7670, 400346);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7675, 400145),
 (7676, NULL),
 (7677, NULL),
@@ -2815,7 +2900,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7734, 400308),
 (7735, 400308),
 (7737, 400308),
-(7738, 400380),
+(7738, 400380);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7739, 400184),
 (7740, 400308),
 (7746, 400380),
@@ -2847,7 +2933,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7823, 400145),
 (7825, 400145),
 (7826, 400145),
-(7827, 400145),
+(7827, 400145);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7828, 400142),
 (7829, NULL),
 (7830, 412290),
@@ -2879,7 +2966,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7863, 400145),
 (7865, 412290),
 (7866, 400142),
-(7869, 400142),
+(7869, 400142);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7870, NULL),
 (7871, 400142),
 (7874, 400142),
@@ -2912,7 +3000,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7938, NULL),
 (7939, NULL),
 (7940, 400142),
-(7945, 400142),
+(7945, 400142);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (7946, 412290),
 (7950, 400142),
 (7960, 412290),
@@ -2944,7 +3033,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8014, 400008),
 (8015, 412449),
 (8016, 400380),
-(8018, NULL),
+(8018, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8019, 412449),
 (8020, 400008),
 (8021, 400008),
@@ -2975,7 +3065,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8050, 412449),
 (8051, 400008),
 (8052, 400008),
-(8053, 412449),
+(8053, 412449);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8054, 412449),
 (8055, 412449),
 (8056, 400008),
@@ -3006,7 +3097,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8083, 400008),
 (8084, 400008),
 (8085, 400008),
-(8086, 400008),
+(8086, 400008);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8087, 412449),
 (8088, 412449),
 (8089, 400008),
@@ -3038,7 +3130,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8210, 400244),
 (8212, 400244),
 (8213, NULL),
-(8214, NULL),
+(8214, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8215, 412449),
 (8217, 400244),
 (8218, NULL),
@@ -3070,7 +3163,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8302, 400244),
 (8310, 400244),
 (8311, 400244),
-(8312, 400008),
+(8312, 400008);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8313, 400244),
 (8314, 400244),
 (8315, NULL),
@@ -3102,7 +3196,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8350, 400244),
 (8352, 400244),
 (8353, 400244),
-(8360, 400244),
+(8360, 400244);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8361, 400244),
 (8362, NULL),
 (8401, 400244),
@@ -3134,7 +3229,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8540, 412290),
 (8541, NULL),
 (8542, 400184),
-(8543, NULL),
+(8543, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8544, NULL),
 (8550, 400380),
 (8551, 412290),
@@ -3167,7 +3263,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8628, 400646),
 (8629, 400380),
 (8638, 400380),
-(8640, 412449),
+(8640, 412449);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8641, 412449),
 (8645, NULL),
 (8646, NULL),
@@ -3199,7 +3296,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8742, 400380),
 (8750, 400380),
 (8751, 412449),
-(8752, 412449),
+(8752, 412449);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8753, 412449),
 (8754, NULL),
 (8755, 412449),
@@ -3231,7 +3329,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8828, 400184),
 (8829, 412290),
 (8830, 412290),
-(8831, 400380),
+(8831, 400380);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8832, 412290),
 (8833, 412290),
 (8834, NULL),
@@ -3264,7 +3363,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8875, NULL),
 (8876, 412290),
 (8877, NULL),
-(8878, NULL),
+(8878, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (8879, 400308),
 (8880, 412290),
 (8882, 400308),
@@ -3299,7 +3399,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9033, NULL),
 (9034, NULL),
 (9036, NULL),
-(9037, NULL),
+(9037, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9042, NULL),
 (9045, NULL),
 (9046, NULL),
@@ -3335,7 +3436,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9110, NULL),
 (9111, NULL),
 (9112, NULL),
-(9114, NULL),
+(9114, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9123, NULL),
 (9126, NULL),
 (9128, NULL),
@@ -3371,7 +3473,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9220, NULL),
 (9222, NULL),
 (9225, NULL),
-(9226, NULL),
+(9226, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9227, NULL),
 (9229, NULL),
 (9234, NULL),
@@ -3407,7 +3510,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9449, NULL),
 (9454, NULL),
 (9456, NULL),
-(9459, NULL),
+(9459, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9461, NULL),
 (9463, NULL),
 (9464, NULL),
@@ -3443,7 +3547,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9551, NULL),
 (9554, NULL),
 (9556, NULL),
-(9557, NULL),
+(9557, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9558, NULL),
 (9563, NULL),
 (9564, NULL),
@@ -3479,7 +3584,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9609, NULL),
 (9610, NULL),
 (9612, NULL),
-(9613, NULL),
+(9613, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9617, NULL),
 (9618, NULL),
 (9619, NULL),
@@ -3515,7 +3621,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9714, NULL),
 (9715, NULL),
 (9716, NULL),
-(9717, NULL),
+(9717, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9718, NULL),
 (9720, NULL),
 (9721, NULL),
@@ -3551,7 +3658,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9803, NULL),
 (9804, NULL),
 (9805, NULL),
-(9808, NULL),
+(9808, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9809, NULL),
 (9810, NULL),
 (9811, NULL),
@@ -3587,7 +3695,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9852, NULL),
 (9853, NULL),
 (9854, NULL),
-(9855, NULL),
+(9855, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (9858, NULL),
 (9865, NULL),
 (9866, NULL),
@@ -3620,7 +3729,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10014, 400289),
 (10015, NULL),
 (10016, 400251),
-(10017, 400251),
+(10017, 400251);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10018, 400289),
 (10019, 400251),
 (10020, 400251),
@@ -3650,7 +3760,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10045, NULL),
 (10046, NULL),
 (10047, NULL),
-(10048, 400289),
+(10048, 400289);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10055, NULL),
 (10060, NULL),
 (10069, NULL),
@@ -3683,7 +3794,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10115, 400333),
 (10116, NULL),
 (10117, NULL),
-(10118, NULL),
+(10118, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10119, 400289),
 (10120, NULL),
 (10121, NULL),
@@ -3716,7 +3828,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10163, NULL),
 (10164, NULL),
 (10165, 400251),
-(10166, NULL),
+(10166, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10167, 400251),
 (10168, NULL),
 (10169, 400251),
@@ -3749,7 +3862,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10261, NULL),
 (10265, NULL),
 (10268, NULL),
-(10269, NULL),
+(10269, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10270, NULL),
 (10271, 400289),
 (10272, NULL),
@@ -3780,7 +3894,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10312, 412451),
 (10313, NULL),
 (10314, 412451),
-(10451, 400333),
+(10451, 400333);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10452, 400333),
 (10453, 400333),
 (10454, 400333),
@@ -3809,7 +3924,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10501, 412452),
 (10502, 400246),
 (10503, 400122),
-(10504, 400246),
+(10504, 400246);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10505, NULL),
 (10506, 400246),
 (10507, 412452),
@@ -3839,7 +3955,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10538, 400246),
 (10540, NULL),
 (10541, 412452),
-(10542, NULL),
+(10542, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10543, 400246),
 (10545, NULL),
 (10546, 400246),
@@ -3869,7 +3986,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10581, NULL),
 (10583, 400246),
 (10587, NULL),
-(10588, 412452),
+(10588, 412452);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10589, 412452),
 (10590, 412282),
 (10591, 400122),
@@ -3899,7 +4017,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10706, 400122),
 (10707, 400246),
 (10708, 400122),
-(10709, 400246),
+(10709, 400246);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10710, 400246),
 (10801, 400246),
 (10802, NULL),
@@ -3929,7 +4048,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10930, 412452),
 (10931, 400122),
 (10932, NULL),
-(10933, NULL),
+(10933, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10940, 412452),
 (10941, 412452),
 (10943, NULL),
@@ -3959,7 +4079,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10982, NULL),
 (10983, 400122),
 (10984, 400246),
-(10985, 400178),
+(10985, 400178);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (10986, 412452),
 (10987, 400122),
 (10988, NULL),
@@ -3989,7 +4110,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11030, 400003),
 (11040, 400003),
 (11041, NULL),
-(11042, 400003),
+(11042, 400003);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11043, NULL),
 (11044, NULL),
 (11050, 400003),
@@ -4020,7 +4142,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11210, 412499),
 (11211, 400409),
 (11212, 400409),
-(11213, 400409),
+(11213, 400409);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11214, 412451),
 (11215, 400289),
 (11216, 400409),
@@ -4050,7 +4173,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11241, NULL),
 (11242, NULL),
 (11243, NULL),
-(11244, NULL),
+(11244, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11245, NULL),
 (11247, NULL),
 (11248, NULL),
@@ -4081,7 +4205,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11370, 400087),
 (11371, 400087),
 (11372, 400087),
-(11373, 412499),
+(11373, 412499);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11374, 412499),
 (11375, 412499),
 (11377, 400087),
@@ -4111,7 +4236,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11426, 400003),
 (11427, 400003),
 (11428, 400271),
-(11429, 400271),
+(11429, 400271);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11430, 400271),
 (11431, NULL),
 (11432, 400003),
@@ -4141,7 +4267,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11548, 400003),
 (11549, NULL),
 (11550, 400257),
-(11551, NULL),
+(11551, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11552, 400257),
 (11553, 400219),
 (11554, 400219),
@@ -4171,7 +4298,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11583, NULL),
 (11588, NULL),
 (11590, 400219),
-(11592, NULL),
+(11592, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11593, NULL),
 (11594, NULL),
 (11595, NULL),
@@ -4201,7 +4329,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11715, 400031),
 (11716, 400195),
 (11717, 400195),
-(11718, 400219),
+(11718, 400219);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11719, 400031),
 (11720, 400031),
 (11721, 400195),
@@ -4231,7 +4360,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11750, NULL),
 (11751, 400219),
 (11752, 400195),
-(11753, 400219),
+(11753, 400219);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11754, 400031),
 (11755, 400031),
 (11756, 400219),
@@ -4261,7 +4391,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11783, 400219),
 (11784, 400031),
 (11786, 400031),
-(11787, 400031),
+(11787, 400031);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11788, 400031),
 (11789, 400031),
 (11790, 400031),
@@ -4291,7 +4422,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11934, 400031),
 (11935, 400031),
 (11937, 400031),
-(11939, 400031),
+(11939, 400031);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11940, 400031),
 (11941, 400031),
 (11942, 400031),
@@ -4320,7 +4452,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11968, 400031),
 (11969, NULL),
 (11970, 400031),
-(11971, 400031),
+(11971, 400031);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (11972, 400031),
 (11973, NULL),
 (11975, 400031),
@@ -4350,7 +4483,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12033, 412319),
 (12035, 412319),
 (12036, 412319),
-(12037, 412453),
+(12037, 412453);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12040, NULL),
 (12041, 412319),
 (12042, 412453),
@@ -4380,7 +4514,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12069, NULL),
 (12070, 412319),
 (12071, 412319),
-(12072, 412319),
+(12072, 412319);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12073, NULL),
 (12074, 412453),
 (12075, 412453),
@@ -4410,7 +4545,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12118, 412453),
 (12120, 412319),
 (12121, 412453),
-(12122, 412319),
+(12122, 412319);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12123, 412319),
 (12124, NULL),
 (12125, 412453),
@@ -4440,7 +4576,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12157, 412319),
 (12158, 412319),
 (12159, 412319),
-(12160, 412319),
+(12160, 412319);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12161, NULL),
 (12164, 412383),
 (12165, 412453),
@@ -4470,7 +4607,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12192, 412453),
 (12193, 412319),
 (12194, 412319),
-(12195, NULL),
+(12195, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12196, 412319),
 (12197, 412319),
 (12198, 412319),
@@ -4502,7 +4640,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12233, NULL),
 (12234, NULL),
 (12235, NULL),
-(12236, NULL),
+(12236, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12237, NULL),
 (12238, NULL),
 (12239, NULL),
@@ -4534,7 +4673,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12307, 412319),
 (12308, 412319),
 (12309, 412319),
-(12325, NULL),
+(12325, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12345, NULL),
 (12401, 400178),
 (12402, NULL),
@@ -4564,7 +4704,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12431, 412453),
 (12432, NULL),
 (12433, 400178),
-(12434, 412319),
+(12434, 412319);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12435, 400178),
 (12436, NULL),
 (12438, NULL),
@@ -4594,7 +4735,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12465, NULL),
 (12466, 400178),
 (12468, 412319),
-(12469, 412319),
+(12469, 412319);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12470, 412453),
 (12471, 400178),
 (12472, 400178),
@@ -4624,7 +4766,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12503, 412453),
 (12504, NULL),
 (12506, NULL),
-(12507, 412453),
+(12507, 412453);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12508, 412452),
 (12510, NULL),
 (12511, NULL),
@@ -4654,7 +4797,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12540, 412452),
 (12541, NULL),
 (12542, 412452),
-(12543, 412452),
+(12543, 412452);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12544, NULL),
 (12545, 412452),
 (12546, 400301),
@@ -4684,7 +4828,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12580, 412453),
 (12581, 412453),
 (12582, 412452),
-(12583, 412453),
+(12583, 412453);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12584, NULL),
 (12585, 412453),
 (12586, 400178),
@@ -4714,7 +4859,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12734, 400178),
 (12736, 400178),
 (12737, 400178),
-(12738, 400178),
+(12738, 400178);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12739, 412452),
 (12740, 400178),
 (12741, 400178),
@@ -4744,7 +4890,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12771, 400145),
 (12775, 400178),
 (12776, 412453),
-(12777, 412452),
+(12777, 412452);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12778, 400178),
 (12779, 400178),
 (12780, 400178),
@@ -4774,7 +4921,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12817, 412453),
 (12819, 412453),
 (12820, NULL),
-(12821, 412453),
+(12821, 412453);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12822, 412453),
 (12823, 412453),
 (12824, 412453),
@@ -4803,7 +4951,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12852, 412383),
 (12853, 412383),
 (12854, NULL),
-(12855, 412383),
+(12855, 412383);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12856, 412383),
 (12857, 412383),
 (12858, 412383),
@@ -4833,7 +4982,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12911, 412383),
 (12912, 412383),
 (12913, 412383),
-(12914, 412383),
+(12914, 412383);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12915, NULL),
 (12916, 412383),
 (12917, 412383),
@@ -4863,7 +5013,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12945, 412383),
 (12946, 412383),
 (12949, NULL),
-(12950, 412383),
+(12950, 412383);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12952, 412383),
 (12953, 412383),
 (12955, 412383),
@@ -4893,7 +5044,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12983, 412383),
 (12985, 412383),
 (12986, 412383),
-(12987, 412383),
+(12987, 412383);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (12989, 412383),
 (12992, 412383),
 (12993, 412383),
@@ -4923,7 +5075,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13042, 412383),
 (13043, NULL),
 (13044, 412383),
-(13045, 412454),
+(13045, 412454);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13051, NULL),
 (13052, 412456),
 (13053, 412454),
@@ -4953,7 +5106,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13084, 412456),
 (13087, NULL),
 (13088, 412456),
-(13089, NULL),
+(13089, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13090, 412456),
 (13092, 412454),
 (13093, NULL),
@@ -4984,7 +5138,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13132, 412456),
 (13134, NULL),
 (13135, 412456),
-(13136, 412454),
+(13136, 412454);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13137, NULL),
 (13138, NULL),
 (13139, NULL),
@@ -5014,7 +5169,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13167, 412383),
 (13201, NULL),
 (13202, 412456),
-(13203, 412456),
+(13203, 412456);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13204, 412456),
 (13205, 412456),
 (13206, 412456),
@@ -5045,7 +5201,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13302, 412383),
 (13303, 412454),
 (13304, 412454),
-(13305, NULL),
+(13305, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13308, 412454),
 (13309, 412454),
 (13310, 412383),
@@ -5074,7 +5231,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13335, 412454),
 (13337, 412454),
 (13338, 412454),
-(13339, 412319),
+(13339, 412319);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13340, 412454),
 (13341, 412454),
 (13342, 412454),
@@ -5104,7 +5262,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13407, 412454),
 (13408, 412383),
 (13409, 412454),
-(13410, NULL),
+(13410, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13411, 412454),
 (13413, 412454),
 (13415, NULL),
@@ -5134,7 +5293,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13455, NULL),
 (13456, 412454),
 (13457, NULL),
-(13459, 412319),
+(13459, 412319);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13460, 412454),
 (13461, 412454),
 (13464, 412454),
@@ -5164,7 +5324,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13493, 412383),
 (13494, NULL),
 (13495, 412454),
-(13501, 412454),
+(13501, 412454);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13502, 412454),
 (13503, NULL),
 (13504, NULL),
@@ -5194,7 +5355,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13625, 412383),
 (13626, 412383),
 (13627, NULL),
-(13628, NULL),
+(13628, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13630, 412383),
 (13631, NULL),
 (13632, NULL),
@@ -5224,7 +5386,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13658, 412383),
 (13659, 412383),
 (13660, 412383),
-(13661, 412383),
+(13661, 412383);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13662, 412383),
 (13664, 412383),
 (13665, 412383),
@@ -5254,7 +5417,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13691, 412383),
 (13692, NULL),
 (13693, 412383),
-(13694, 412383),
+(13694, 412383);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13695, NULL),
 (13696, NULL),
 (13697, 412383),
@@ -5284,7 +5448,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13755, 412453),
 (13756, 412453),
 (13757, 412453),
-(13758, NULL),
+(13758, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13760, 412454),
 (13761, NULL),
 (13762, NULL),
@@ -5314,7 +5479,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13807, 412454),
 (13808, 412454),
 (13809, 412454),
-(13810, 412454),
+(13810, 412454);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13811, 412454),
 (13812, 400178),
 (13813, 412454),
@@ -5344,7 +5510,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13849, 412454),
 (13850, 400178),
 (13851, NULL),
-(13856, 412453),
+(13856, 412453);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (13859, 412454),
 (13860, NULL),
 (13861, 412454),
@@ -5374,7 +5541,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14025, 400641),
 (14026, 400641),
 (14027, NULL),
-(14028, 400378),
+(14028, 400378);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14029, NULL),
 (14030, 400641),
 (14031, 412497),
@@ -5404,7 +5572,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14061, NULL),
 (14062, 412393),
 (14063, 400641),
-(14065, 412393),
+(14065, 412393);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14066, 412393),
 (14067, 400378),
 (14068, 412497),
@@ -5434,7 +5603,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14111, 400641),
 (14112, NULL),
 (14113, 412497),
-(14120, 400378),
+(14120, 400378);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14125, 412497),
 (14126, NULL),
 (14127, 400641),
@@ -5465,7 +5635,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14173, NULL),
 (14174, 400378),
 (14201, 400641),
-(14202, 400641),
+(14202, 400641);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14203, 400641),
 (14204, 400641),
 (14205, NULL),
@@ -5495,7 +5666,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14231, NULL),
 (14233, NULL),
 (14240, NULL),
-(14241, NULL),
+(14241, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14260, NULL),
 (14261, NULL),
 (14263, NULL),
@@ -5526,7 +5698,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14424, 412393),
 (14425, 412393),
 (14427, 412497),
-(14428, 412393),
+(14428, 412393);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14429, NULL),
 (14430, NULL),
 (14432, 412456),
@@ -5556,7 +5729,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14475, 412393),
 (14476, 400378),
 (14477, 400378),
-(14478, 412393),
+(14478, 412393);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14479, NULL),
 (14480, 412497),
 (14481, 412497),
@@ -5586,7 +5760,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14521, 412454),
 (14522, 412456),
 (14525, 412497),
-(14526, 412456),
+(14526, 412456);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14527, 412393),
 (14529, NULL),
 (14530, 412497),
@@ -5617,7 +5792,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14561, 412393),
 (14563, NULL),
 (14564, 412393),
-(14568, 412456),
+(14568, 412456);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14569, 412497),
 (14571, 400378),
 (14572, 412393),
@@ -5647,7 +5823,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14616, 400378),
 (14617, 412456),
 (14618, 412393),
-(14619, 400378),
+(14619, 400378);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14620, 412393),
 (14621, 400378),
 (14622, 412456),
@@ -5679,7 +5856,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14702, NULL),
 (14703, NULL),
 (14704, NULL),
-(14706, 412393),
+(14706, 412393);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14707, NULL),
 (14708, 412393),
 (14709, 412393),
@@ -5709,7 +5887,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14736, 412465),
 (14737, 412393),
 (14738, 412317),
-(14739, 412393),
+(14739, 412393);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14740, 400641),
 (14741, 412393),
 (14742, NULL),
@@ -5739,7 +5918,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14778, NULL),
 (14779, 412393),
 (14781, 400641),
-(14782, 400641),
+(14782, 400641);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14783, 412393),
 (14784, 400641),
 (14785, NULL),
@@ -5768,7 +5948,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14821, 412393),
 (14822, 412393),
 (14823, 412393),
-(14824, 412393),
+(14824, 412393);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14825, 412468),
 (14826, 412393),
 (14827, NULL),
@@ -5798,7 +5979,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14859, 412393),
 (14860, 412393),
 (14861, 412393),
-(14863, NULL),
+(14863, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14864, 412393),
 (14865, 412393),
 (14867, 412393),
@@ -5827,7 +6009,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14894, 412468),
 (14895, 412393),
 (14897, 412393),
-(14898, 412393),
+(14898, 412393);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (14901, 412468),
 (14902, NULL),
 (14903, 412393),
@@ -5856,7 +6039,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15026, 412231),
 (15027, 412231),
 (15028, 400285),
-(15030, 412386),
+(15030, 412386);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15031, 400285),
 (15032, NULL),
 (15033, 412386),
@@ -5885,7 +6069,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15061, 412231),
 (15062, 412386),
 (15063, 412386),
-(15064, 400285),
+(15064, 400285);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15065, 412386),
 (15066, 412231),
 (15067, 412386),
@@ -5915,7 +6100,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15102, 400285),
 (15104, 400114),
 (15106, 400285),
-(15108, 400285),
+(15108, 400285);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15110, 400114),
 (15112, 400114),
 (15116, 412231),
@@ -5945,7 +6131,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15189, NULL),
 (15201, 400114),
 (15202, 412231),
-(15203, 400114),
+(15203, 400114);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15204, 400114),
 (15205, 400285),
 (15206, 400114),
@@ -5974,7 +6161,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15229, 412231),
 (15230, NULL),
 (15231, NULL),
-(15232, 400114),
+(15232, 400114);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15233, 400114),
 (15234, 400285),
 (15235, 400285),
@@ -6006,7 +6194,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15267, NULL),
 (15268, NULL),
 (15270, NULL),
-(15272, NULL),
+(15272, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15274, NULL),
 (15275, NULL),
 (15276, NULL),
@@ -6037,7 +6226,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15325, 412386),
 (15327, 412386),
 (15329, 412386),
-(15330, 412386),
+(15330, 412386);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15331, 412386),
 (15332, 412386),
 (15333, 412386),
@@ -6066,7 +6256,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15360, 412386),
 (15361, 400285),
 (15362, 412386),
-(15363, 412386),
+(15363, 412386);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15364, 412386),
 (15365, NULL),
 (15366, NULL),
@@ -6096,7 +6287,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15427, 412386),
 (15428, 412386),
 (15429, 412386),
-(15430, 412386),
+(15430, 412386);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15431, 412386),
 (15432, 412386),
 (15433, 412386),
@@ -6126,7 +6318,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15461, 412386),
 (15462, 412386),
 (15463, NULL),
-(15464, 409888),
+(15464, 409888);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15465, NULL),
 (15466, 412386),
 (15467, NULL),
@@ -6156,7 +6349,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15510, NULL),
 (15520, 412386),
 (15521, 409888),
-(15522, 409888),
+(15522, 409888);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15530, 409888),
 (15531, 412386),
 (15532, 409888),
@@ -6186,7 +6380,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15558, 409888),
 (15559, 409888),
 (15560, 409888),
-(15561, NULL),
+(15561, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15562, 409888),
 (15563, 412386),
 (15564, NULL),
@@ -6216,7 +6411,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15630, NULL),
 (15631, 412386),
 (15632, 412231),
-(15633, 400285),
+(15633, 400285);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15634, 400285),
 (15635, 400285),
 (15636, 400285),
@@ -6245,7 +6441,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15671, 412386),
 (15672, 400285),
 (15673, 412386),
-(15674, 412386),
+(15674, 412386);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15675, 400285),
 (15676, 412386),
 (15677, 412386),
@@ -6274,7 +6471,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15710, 412386),
 (15711, 412317),
 (15712, 409888),
-(15713, 409888),
+(15713, 409888);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15714, 412386),
 (15715, 412317),
 (15716, 409888),
@@ -6304,7 +6502,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15745, 412386),
 (15746, NULL),
 (15747, 409888),
-(15748, 412386),
+(15748, 412386);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15750, NULL),
 (15751, NULL),
 (15752, 409888),
@@ -6333,7 +6532,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15779, 412386),
 (15780, 412317),
 (15781, 412317),
-(15783, 409888),
+(15783, 409888);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15784, 412317),
 (15801, 412317),
 (15821, 412317),
@@ -6362,7 +6562,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15861, 412317),
 (15863, 412317),
 (15864, 412317),
-(15865, 412317),
+(15865, 412317);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15866, 412317),
 (15868, 412317),
 (15870, 412317),
@@ -6392,7 +6593,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15937, 412386),
 (15938, 412386),
 (15940, 412386),
-(15942, 412386),
+(15942, 412386);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (15943, 412386),
 (15944, 412386),
 (15945, NULL),
@@ -6423,7 +6625,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16022, 412465),
 (16023, 412465),
 (16024, 412231),
-(16025, 412465),
+(16025, 412465);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16027, 412465),
 (16028, 412317),
 (16029, 412465),
@@ -6452,7 +6655,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16058, NULL),
 (16059, 412231),
 (16061, 412465),
-(16063, 412231),
+(16063, 412231);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16066, 412231),
 (16101, 412231),
 (16102, 412231),
@@ -6481,7 +6685,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16134, 400235),
 (16136, 412231),
 (16137, 412231),
-(16140, 412231),
+(16140, 412231);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16141, 412231),
 (16142, 412231),
 (16143, 412231),
@@ -6511,7 +6716,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16218, 412317),
 (16220, NULL),
 (16221, NULL),
-(16222, 409888),
+(16222, 409888);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16223, 412465),
 (16224, 412317),
 (16225, NULL),
@@ -6540,7 +6746,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16256, 409888),
 (16257, NULL),
 (16258, 412317),
-(16259, 412317),
+(16259, 412317);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16260, 412317),
 (16261, NULL),
 (16262, 412465),
@@ -6569,7 +6776,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16341, 412317),
 (16342, 412317),
 (16343, 412317),
-(16344, 412317),
+(16344, 412317);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16345, 412465),
 (16346, 412317),
 (16347, 412317),
@@ -6599,7 +6807,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16403, 412465),
 (16404, 412317),
 (16405, 412465),
-(16406, 400235),
+(16406, 400235);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16407, 412465),
 (16410, 412465),
 (16411, 400235),
@@ -6629,7 +6838,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16443, 412465),
 (16444, NULL),
 (16475, NULL),
-(16501, 412465),
+(16501, 412465);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16502, 412465),
 (16503, 412465),
 (16504, 412465),
@@ -6661,7 +6871,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16565, NULL),
 (16601, 409888),
 (16602, 409888),
-(16603, NULL),
+(16603, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16611, 409888),
 (16613, 409888),
 (16614, NULL),
@@ -6690,7 +6901,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16644, NULL),
 (16645, 412317),
 (16646, 412386),
-(16647, 409888),
+(16647, 409888);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16648, 409888),
 (16650, 409888),
 (16651, 412317),
@@ -6719,7 +6931,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16677, 412317),
 (16678, 409888),
 (16679, 409888),
-(16680, 412317),
+(16680, 412317);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16681, 412317),
 (16682, 409888),
 (16683, 412317),
@@ -6749,7 +6962,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16734, 412317),
 (16735, 412317),
 (16738, 412317),
-(16740, 412317),
+(16740, 412317);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16743, 412317),
 (16744, 412317),
 (16745, 412317),
@@ -6779,7 +6993,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16835, NULL),
 (16836, 412317),
 (16837, 412317),
-(16838, 412317),
+(16838, 412317);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16839, 412317),
 (16840, 412317),
 (16841, 412317),
@@ -6808,7 +7023,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16870, 412317),
 (16871, 412317),
 (16872, 412317),
-(16873, NULL),
+(16873, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16874, 412317),
 (16875, 412317),
 (16876, 412317),
@@ -6837,7 +7053,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16930, 412317),
 (16932, 412317),
 (16933, 412317),
-(16935, 412317),
+(16935, 412317);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (16936, 412317),
 (16937, 412317),
 (16938, 412317),
@@ -6867,7 +7084,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17014, NULL),
 (17016, 400183),
 (17017, 400183),
-(17018, 400183),
+(17018, 400183);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17019, 400321),
 (17020, 400183),
 (17021, 409888),
@@ -6896,7 +7114,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17044, 412317),
 (17045, 400183),
 (17046, 400183),
-(17047, 409888),
+(17047, 409888);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17048, 400183),
 (17049, 412317),
 (17050, NULL),
@@ -6926,7 +7145,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17074, 409888),
 (17075, 409888),
 (17076, 412317),
-(17077, 400183),
+(17077, 400183);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17078, 400183),
 (17080, 400183),
 (17081, 400321),
@@ -6956,7 +7176,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17109, 400183),
 (17110, 400183),
 (17111, 400183),
-(17112, 400183),
+(17112, 400183);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17113, 400183),
 (17120, NULL),
 (17121, NULL),
@@ -6987,7 +7208,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17224, 409888),
 (17225, 400017),
 (17228, 409888),
-(17229, 409888),
+(17229, 409888);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17231, NULL),
 (17232, NULL),
 (17233, 409888),
@@ -7017,7 +7239,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17263, NULL),
 (17264, 409888),
 (17265, 409888),
-(17266, 409888),
+(17266, 409888);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17267, 409888),
 (17268, 400017),
 (17270, 409888),
@@ -7047,7 +7270,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17324, 400321),
 (17325, 400017),
 (17326, NULL),
-(17327, 400017),
+(17327, 400017);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17329, 400017),
 (17331, 400017),
 (17332, NULL),
@@ -7077,7 +7301,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17365, 400321),
 (17366, 400321),
 (17368, 400321),
-(17370, 400321),
+(17370, 400321);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17371, NULL),
 (17372, 400321),
 (17375, NULL),
@@ -7107,7 +7332,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17521, NULL),
 (17522, 400320),
 (17527, 400320),
-(17528, NULL),
+(17528, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17529, 400320),
 (17532, 400321),
 (17533, NULL),
@@ -7170,7 +7396,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17723, NULL),
 (17724, 412317),
 (17726, NULL),
-(17727, NULL),
+(17727, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17728, 412317),
 (17729, 412317),
 (17730, 412468),
@@ -7199,7 +7426,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17763, 412468),
 (17764, 412317),
 (17765, 412317),
-(17767, 412317),
+(17767, 412317);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17768, 412468),
 (17769, NULL),
 (17771, 412317),
@@ -7229,7 +7457,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17831, NULL),
 (17832, 412468),
 (17833, 412468),
-(17834, 412468),
+(17834, 412468);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17835, 412468),
 (17836, 412468),
 (17837, 412468),
@@ -7258,7 +7487,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17866, 412469),
 (17867, 412468),
 (17868, 412468),
-(17870, 412468),
+(17870, 412468);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17872, 412468),
 (17876, NULL),
 (17877, NULL),
@@ -7288,7 +7518,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17934, 400183),
 (17935, 412469),
 (17936, 400183),
-(17938, 400183),
+(17938, 400183);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17941, 400183),
 (17942, NULL),
 (17943, 400183),
@@ -7317,7 +7548,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17976, 400183),
 (17978, 400183),
 (17979, 400183),
-(17980, 400183),
+(17980, 400183);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (17981, 400183),
 (17982, 400183),
 (17983, 400183),
@@ -7347,7 +7579,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18039, NULL),
 (18040, 400145),
 (18041, 400147),
-(18042, 400145),
+(18042, 400145);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18043, NULL),
 (18044, NULL),
 (18045, 400648),
@@ -7377,7 +7610,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18073, 400646),
 (18074, 400647),
 (18076, 400648),
-(18077, 400646),
+(18077, 400646);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18078, 400648),
 (18079, 400648),
 (18080, 412469),
@@ -7407,7 +7641,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18211, 412469),
 (18212, NULL),
 (18214, 400183),
-(18216, 412469),
+(18216, 412469);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18218, 400183),
 (18219, 412469),
 (18220, 400183),
@@ -7436,7 +7671,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18249, 412469),
 (18250, 412469),
 (18251, 412469),
-(18252, 400183),
+(18252, 400183);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18254, 412469),
 (18255, 412469),
 (18256, 412469),
@@ -7466,7 +7702,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18346, 412469),
 (18347, 412469),
 (18348, NULL),
-(18349, 412469),
+(18349, 412469);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18350, 412469),
 (18351, 400648),
 (18352, NULL),
@@ -7496,7 +7733,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18421, 412468),
 (18424, 412469),
 (18425, 412468),
-(18426, 412469),
+(18426, 412469);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18427, NULL),
 (18428, 400178),
 (18430, 412468),
@@ -7526,7 +7764,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18457, 412468),
 (18458, 400178),
 (18459, 412468),
-(18460, 412469),
+(18460, 412469);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18461, 400178),
 (18462, 412468),
 (18463, NULL),
@@ -7556,7 +7795,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18522, NULL),
 (18540, NULL),
 (18577, NULL),
-(18601, 412469),
+(18601, 412469);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18602, 412469),
 (18603, 412469),
 (18610, 412469),
@@ -7585,7 +7825,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18636, 412468),
 (18640, 412469),
 (18641, 412469),
-(18642, 412469),
+(18642, 412469);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18643, 412469),
 (18644, 412469),
 (18651, 412469),
@@ -7616,7 +7857,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18766, NULL),
 (18767, NULL),
 (18768, NULL),
-(18769, NULL),
+(18769, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18773, NULL),
 (18774, NULL),
 (18801, 412468),
@@ -7645,7 +7887,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18834, 412468),
 (18837, 412468),
 (18839, 412468),
-(18840, 412468),
+(18840, 412468);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18842, 412468),
 (18843, NULL),
 (18844, 412468),
@@ -7676,7 +7919,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18926, NULL),
 (18927, 400646),
 (18928, NULL),
-(18929, 400646),
+(18929, 400646);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18930, 400646),
 (18931, NULL),
 (18932, 400646),
@@ -7707,7 +7951,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18966, 400646),
 (18968, NULL),
 (18969, 400646),
-(18970, 400646),
+(18970, 400646);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (18971, NULL),
 (18972, 412290),
 (18974, 400646),
@@ -7737,7 +7982,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19020, 400646),
 (19021, 400646),
 (19022, 412466),
-(19023, 412466),
+(19023, 412466);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19025, 400646),
 (19026, 412466),
 (19027, 400130),
@@ -7767,7 +8013,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19054, 400646),
 (19055, 400646),
 (19056, 400646),
-(19057, 400646),
+(19057, 400646);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19058, NULL),
 (19059, NULL),
 (19061, 412466),
@@ -7797,7 +8044,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19091, NULL),
 (19092, NULL),
 (19093, NULL),
-(19094, 412466),
+(19094, 412466);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19095, 400130),
 (19096, 412466),
 (19098, NULL),
@@ -7827,7 +8075,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19124, 400130),
 (19125, 400047),
 (19126, 400130),
-(19127, 400130),
+(19127, 400130);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19128, 400130),
 (19129, 400130),
 (19130, 400130),
@@ -7856,7 +8105,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19153, 412466),
 (19154, 400646),
 (19155, NULL),
-(19160, NULL),
+(19160, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19161, NULL),
 (19162, NULL),
 (19170, NULL),
@@ -7889,7 +8139,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19316, 400147),
 (19317, 400320),
 (19318, NULL),
-(19319, 412466),
+(19319, 412466);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19320, 400320),
 (19330, 400320),
 (19331, NULL),
@@ -7920,7 +8171,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19366, NULL),
 (19367, 400320),
 (19369, 400147),
-(19370, NULL),
+(19370, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19371, NULL),
 (19372, 400147),
 (19373, 412466),
@@ -7951,7 +8203,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19423, NULL),
 (19424, NULL),
 (19425, 400147),
-(19426, 412466),
+(19426, 412466);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19428, 400147),
 (19429, NULL),
 (19430, NULL),
@@ -7982,7 +8235,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19470, NULL),
 (19472, 400647),
 (19473, 400647),
-(19474, 400147),
+(19474, 400147);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19475, 412466),
 (19477, NULL),
 (19478, 400647),
@@ -8013,7 +8267,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19511, 400183),
 (19512, 400183),
 (19516, 400183),
-(19518, 400183),
+(19518, 400183);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19519, 400183),
 (19520, 400320),
 (19522, 400183),
@@ -8043,7 +8298,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19555, 400183),
 (19557, NULL),
 (19559, 400183),
-(19560, 400183),
+(19560, 400183);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19562, 400147),
 (19564, NULL),
 (19565, 400183),
@@ -8073,7 +8329,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19712, NULL),
 (19713, 412407),
 (19714, NULL),
-(19715, NULL),
+(19715, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19716, NULL),
 (19717, NULL),
 (19718, NULL),
@@ -8104,7 +8361,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19885, NULL),
 (19886, NULL),
 (19887, NULL),
-(19889, NULL),
+(19889, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19890, NULL),
 (19891, NULL),
 (19892, NULL),
@@ -8135,7 +8393,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19945, 412407),
 (19946, 412407),
 (19947, 412407),
-(19950, 412407),
+(19950, 412407);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (19951, 412407),
 (19952, 412407),
 (19953, 412407),
@@ -8164,7 +8423,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20003, 400295),
 (20004, 400295),
 (20005, 400295),
-(20006, 400295),
+(20006, 400295);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20007, 400295),
 (20008, 400295),
 (20009, 400295),
@@ -8195,7 +8455,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20043, NULL),
 (20044, NULL),
 (20045, NULL),
-(20046, NULL),
+(20046, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20047, NULL),
 (20049, NULL),
 (20050, NULL),
@@ -8229,7 +8490,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20081, NULL),
 (20082, NULL),
 (20088, NULL),
-(20090, NULL),
+(20090, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20091, NULL),
 (20097, NULL),
 (20098, NULL),
@@ -8260,7 +8522,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20129, 400435),
 (20130, 400435),
 (20131, NULL),
-(20132, 400061),
+(20132, 400061);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20134, NULL),
 (20135, 400061),
 (20136, 412272),
@@ -8291,7 +8554,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20167, NULL),
 (20168, NULL),
 (20169, 412272),
-(20170, 400283),
+(20170, 400283);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20171, 400283),
 (20172, NULL),
 (20175, 400435),
@@ -8323,7 +8587,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20206, NULL),
 (20207, NULL),
 (20208, NULL),
-(20210, NULL),
+(20210, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20211, NULL),
 (20212, NULL),
 (20213, NULL),
@@ -8357,7 +8622,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20245, NULL),
 (20250, NULL),
 (20251, NULL),
-(20254, NULL),
+(20254, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20260, NULL),
 (20261, NULL),
 (20262, NULL),
@@ -8390,7 +8656,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20373, NULL),
 (20374, NULL),
 (20375, 400295),
-(20376, NULL),
+(20376, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20380, NULL),
 (20388, NULL),
 (20389, NULL),
@@ -8424,7 +8691,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20422, NULL),
 (20423, NULL),
 (20424, NULL),
-(20425, NULL),
+(20425, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20426, NULL),
 (20427, NULL),
 (20428, NULL),
@@ -8458,7 +8726,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20505, NULL),
 (20506, NULL),
 (20507, NULL),
-(20508, NULL),
+(20508, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20510, NULL),
 (20515, NULL),
 (20520, NULL),
@@ -8492,7 +8761,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20551, NULL),
 (20552, NULL),
 (20553, NULL),
-(20554, NULL),
+(20554, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20555, NULL),
 (20557, NULL),
 (20558, NULL),
@@ -8525,7 +8795,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20604, NULL),
 (20606, 400189),
 (20607, 400189),
-(20608, 400189),
+(20608, 400189);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20609, 400189),
 (20610, NULL),
 (20611, 400189),
@@ -8555,7 +8826,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20639, 400189),
 (20640, 400189),
 (20643, NULL),
-(20645, 400189),
+(20645, 400189);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20646, 400189),
 (20650, 400189),
 (20653, 400189),
@@ -8585,7 +8857,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20690, 400189),
 (20692, 400189),
 (20693, 400189),
-(20695, 400189),
+(20695, 400189);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20697, NULL),
 (20701, 400090),
 (20703, NULL),
@@ -8615,7 +8888,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20732, 400189),
 (20733, 400189),
 (20735, 400189),
-(20736, 400189),
+(20736, 400189);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20737, 400189),
 (20738, NULL),
 (20740, 400189),
@@ -8646,7 +8920,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20770, 400189),
 (20771, NULL),
 (20772, 400189),
-(20773, NULL),
+(20773, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20774, 400189),
 (20775, NULL),
 (20776, 400189),
@@ -8677,7 +8952,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20825, NULL),
 (20827, NULL),
 (20830, NULL),
-(20832, 412263),
+(20832, 412263);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20833, 412263),
 (20837, 400415),
 (20838, 400415),
@@ -8707,7 +8983,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20876, 400017),
 (20877, 412263),
 (20878, 400415),
-(20879, 412263),
+(20879, 412263);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20880, 400415),
 (20882, 400017),
 (20883, NULL),
@@ -8739,7 +9016,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (20915, NULL),
 (20916, NULL),
 (20918, NULL),
-(20997, NULL),
+(20997, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21001, 400349),
 (21005, 400349),
 (21009, 400349),
@@ -8769,7 +9047,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21043, 400090),
 (21044, 400090),
 (21045, 400090),
-(21046, 400090),
+(21046, 400090);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21047, 400017),
 (21048, 400349),
 (21050, 400017),
@@ -8799,7 +9078,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21092, NULL),
 (21093, 400349),
 (21094, NULL),
-(21098, NULL),
+(21098, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21102, 400017),
 (21104, 400349),
 (21105, 400017),
@@ -8829,7 +9109,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21155, 400017),
 (21156, 412434),
 (21157, 400017),
-(21158, 400017),
+(21158, 400017);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21160, 400017),
 (21161, 400017),
 (21162, 400349),
@@ -8858,7 +9139,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21222, 400349),
 (21223, 400090),
 (21224, 400349),
-(21225, 400349),
+(21225, 400349);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21226, 400349),
 (21227, 400349),
 (21228, 400090),
@@ -8890,7 +9172,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21280, NULL),
 (21281, NULL),
 (21282, NULL),
-(21283, NULL),
+(21283, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21284, NULL),
 (21285, NULL),
 (21286, 400349),
@@ -8921,7 +9204,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21529, 400017),
 (21530, 400017),
 (21531, 400017),
-(21532, 400017),
+(21532, 400017);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21536, 400017),
 (21538, 400017),
 (21539, 400017),
@@ -8950,7 +9234,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21622, 412434),
 (21623, 412434),
 (21624, 412434),
-(21625, 412434),
+(21625, 412434);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21626, 412434),
 (21627, 412434),
 (21628, 412434),
@@ -8979,7 +9264,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21656, NULL),
 (21657, 412434),
 (21658, 412434),
-(21659, 412434),
+(21659, 412434);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21660, 412434),
 (21661, 412434),
 (21662, 412434),
@@ -9009,7 +9295,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21688, NULL),
 (21690, NULL),
 (21701, 400017),
-(21702, 400017),
+(21702, 400017);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21703, 400017),
 (21704, 400017),
 (21705, NULL),
@@ -9040,7 +9327,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21747, NULL),
 (21748, NULL),
 (21749, NULL),
-(21750, 400061),
+(21750, 400061);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21754, 400017),
 (21755, 400017),
 (21756, 400017),
@@ -9070,7 +9358,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21787, 400017),
 (21788, 400017),
 (21790, 400017),
-(21791, 400017),
+(21791, 400017);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21792, NULL),
 (21793, 400017),
 (21794, 400090),
@@ -9100,7 +9389,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21841, 412434),
 (21842, 412434),
 (21843, NULL),
-(21849, 412434),
+(21849, 412434);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21850, 412434),
 (21851, 412434),
 (21852, NULL),
@@ -9130,7 +9420,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21913, 412434),
 (21914, 412434),
 (21915, 412434),
-(21916, NULL),
+(21916, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (21917, 412434),
 (21918, 412434),
 (21919, 412434),
@@ -9160,7 +9451,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22043, 400283),
 (22044, 412272),
 (22046, 400283),
-(22047, NULL),
+(22047, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22060, 412272),
 (22066, 400415),
 (22067, NULL),
@@ -9192,7 +9484,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22151, 412272),
 (22152, 412272),
 (22153, 412272),
-(22156, NULL),
+(22156, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22158, NULL),
 (22159, NULL),
 (22160, NULL),
@@ -9223,7 +9516,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22212, NULL),
 (22213, 400283),
 (22214, NULL),
-(22215, NULL),
+(22215, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22216, NULL),
 (22217, NULL),
 (22218, NULL),
@@ -9255,7 +9549,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22310, 400283),
 (22311, 400283),
 (22312, 412272),
-(22313, NULL),
+(22313, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22314, 400295),
 (22315, 400283),
 (22320, NULL),
@@ -9286,7 +9581,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22442, NULL),
 (22443, 412255),
 (22446, NULL),
-(22448, 412255),
+(22448, 412255);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22451, NULL),
 (22454, 412255),
 (22456, NULL),
@@ -9317,7 +9613,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22524, NULL),
 (22526, NULL),
 (22528, NULL),
-(22529, 412255),
+(22529, 412255);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22530, NULL),
 (22534, 400060),
 (22535, 412255),
@@ -9348,7 +9645,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22601, 400435),
 (22602, 400061),
 (22603, 400061),
-(22604, NULL),
+(22604, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22610, 400060),
 (22611, 400061),
 (22620, 400435),
@@ -9378,7 +9676,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22657, 400154),
 (22660, 400154),
 (22663, 400435),
-(22664, 400154),
+(22664, 400154);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22701, 400060),
 (22709, 400060),
 (22711, 400060),
@@ -9407,7 +9706,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22735, 400060),
 (22736, 400060),
 (22737, 400060),
-(22738, 400060),
+(22738, 400060);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22739, NULL),
 (22740, 400060),
 (22741, 400060),
@@ -9437,7 +9737,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22835, 400060),
 (22840, 400154),
 (22841, 400154),
-(22842, 400154),
+(22842, 400154);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22843, 400154),
 (22844, 400060),
 (22845, 400154),
@@ -9467,7 +9768,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22932, 400154),
 (22935, 400154),
 (22936, 412484),
-(22937, 412484),
+(22937, 412484);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22938, 412484),
 (22939, 400154),
 (22940, 400154),
@@ -9497,7 +9799,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22974, 400060),
 (22976, 400154),
 (22980, 400154),
-(22987, NULL),
+(22987, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (22989, 400060),
 (23001, 412255),
 (23002, 400060),
@@ -9527,7 +9830,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23045, 412255),
 (23047, 400060),
 (23050, 412255),
-(23054, NULL),
+(23054, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23055, 412484),
 (23056, 412255),
 (23058, NULL),
@@ -9557,7 +9861,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23090, NULL),
 (23091, 412255),
 (23092, 412255),
-(23093, 400060),
+(23093, 400060);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23101, NULL),
 (23102, 400060),
 (23103, 400060),
@@ -9587,7 +9892,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23131, NULL),
 (23138, 412255),
 (23139, 400060),
-(23140, 400364),
+(23140, 400364);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23141, 400060),
 (23146, 400060),
 (23147, NULL),
@@ -9617,7 +9923,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23185, 412255),
 (23186, 412255),
 (23187, NULL),
-(23188, 412255),
+(23188, 412255);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23190, NULL),
 (23191, NULL),
 (23192, 400060),
@@ -9648,7 +9955,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23249, NULL),
 (23250, NULL),
 (23255, NULL),
-(23260, NULL),
+(23260, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23261, NULL),
 (23266, NULL),
 (23269, NULL),
@@ -9680,7 +9988,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23303, 412483),
 (23304, 400137),
 (23306, 412483),
-(23307, 412483),
+(23307, 412483);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23308, 412483),
 (23310, 412483),
 (23313, NULL),
@@ -9710,7 +10019,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23389, 412483),
 (23395, 412483),
 (23396, NULL),
-(23397, NULL),
+(23397, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23398, NULL),
 (23399, NULL),
 (23401, 412483),
@@ -9740,7 +10050,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23431, NULL),
 (23432, 400137),
 (23433, 400137),
-(23434, 400616),
+(23434, 400616);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23435, 400137),
 (23436, 400137),
 (23437, 400137),
@@ -9771,7 +10082,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23471, NULL),
 (23479, NULL),
 (23480, 412483),
-(23482, NULL),
+(23482, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23483, NULL),
 (23486, NULL),
 (23487, 400137),
@@ -9802,7 +10114,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23541, NULL),
 (23551, NULL),
 (23601, 412255),
-(23602, 412255),
+(23602, 412255);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23603, 412255),
 (23604, 400364),
 (23605, 412255),
@@ -9833,7 +10146,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23693, 412255),
 (23694, NULL),
 (23696, 412255),
-(23701, 400137),
+(23701, 400137);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23702, 400137),
 (23703, 400137),
 (23704, 400137),
@@ -9863,7 +10177,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23839, 400137),
 (23840, 400137),
 (23841, 400137),
-(23842, 400137),
+(23842, 400137);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23843, 400137),
 (23844, 400137),
 (23845, 400616),
@@ -9892,7 +10207,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23885, 400137),
 (23887, 400616),
 (23888, 400137),
-(23889, 400137),
+(23889, 400137);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23890, 400137),
 (23891, NULL),
 (23893, 412484),
@@ -9921,7 +10237,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23942, 400137),
 (23943, 412484),
 (23944, 400137),
-(23947, 412484),
+(23947, 412484);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (23950, 412484),
 (23952, 412484),
 (23954, 412484),
@@ -9952,7 +10269,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24012, 400154),
 (24013, 400154),
 (24014, 400154),
-(24015, 400154),
+(24015, 400154);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24016, 400154),
 (24017, 400154),
 (24018, 412485),
@@ -9984,7 +10302,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24050, NULL),
 (24053, 412485),
 (24054, 400280),
-(24055, 412485),
+(24055, 412485);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24058, 412485),
 (24059, 412485),
 (24060, 412485),
@@ -10014,7 +10333,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24089, 412485),
 (24090, 412485),
 (24091, 412485),
-(24092, 412484),
+(24092, 412484);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24093, 412485),
 (24094, 412485),
 (24095, 412484),
@@ -10044,7 +10364,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24137, 412484),
 (24138, 412485),
 (24139, 412484),
-(24141, 412485),
+(24141, 412485);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24142, 412485),
 (24143, NULL),
 (24146, NULL),
@@ -10074,7 +10395,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24201, 412485),
 (24202, 412485),
 (24203, NULL),
-(24209, NULL),
+(24209, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24210, 412485),
 (24211, 412485),
 (24212, NULL),
@@ -10103,7 +10425,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24256, 412485),
 (24258, 412485),
 (24260, 412485),
-(24263, 412485),
+(24263, 412485);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24265, 412485),
 (24266, 412485),
 (24269, 412485),
@@ -10132,7 +10455,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24317, 412485),
 (24318, 412485),
 (24319, 412485),
-(24322, 412485),
+(24322, 412485);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24323, 412485),
 (24324, 412485),
 (24325, 412485),
@@ -10161,7 +10485,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24377, 412485),
 (24378, 412485),
 (24379, NULL),
-(24380, 412485),
+(24380, 412485);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24381, 412485),
 (24382, 412485),
 (24401, 400154),
@@ -10191,7 +10516,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24450, 412485),
 (24457, 412485),
 (24458, 400154),
-(24459, 400154),
+(24459, 400154);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24460, 412485),
 (24463, 400154),
 (24464, 400154),
@@ -10221,7 +10547,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24512, NULL),
 (24513, NULL),
 (24514, NULL),
-(24515, NULL),
+(24515, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24517, 412484),
 (24520, 400280),
 (24521, 400154),
@@ -10250,7 +10577,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24554, 412484),
 (24555, 400154),
 (24556, 400154),
-(24557, 412484),
+(24557, 412484);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24558, 412484),
 (24562, 412484),
 (24563, 412484),
@@ -10279,7 +10607,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24597, 412484),
 (24598, 400280),
 (24599, 412484),
-(24601, 412485),
+(24601, 412485);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24602, 412485),
 (24603, 412485),
 (24604, 412485),
@@ -10309,7 +10638,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24646, 412485),
 (24647, NULL),
 (24649, 412485),
-(24651, 412485),
+(24651, 412485);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24656, 412485),
 (24657, 412485),
 (24658, NULL),
@@ -10339,7 +10669,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24815, 412485),
 (24816, 400331),
 (24817, 400331),
-(24818, 400331),
+(24818, 400331);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24820, NULL),
 (24821, 400331),
 (24822, 400331),
@@ -10369,7 +10700,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24851, 400331),
 (24852, 400331),
 (24853, 400331),
-(24854, 400331),
+(24854, 400331);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24855, 400331),
 (24856, 400331),
 (24857, 400331),
@@ -10399,7 +10731,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24889, NULL),
 (24892, 412485),
 (24894, 400331),
-(24895, 400331),
+(24895, 400331);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24896, NULL),
 (24897, 400331),
 (24898, 400331),
@@ -10429,7 +10762,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24946, 400331),
 (24950, 400331),
 (24951, 412485),
-(24954, 400331),
+(24954, 400331);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (24957, 400331),
 (24958, NULL),
 (24961, NULL),
@@ -10459,7 +10793,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25015, 400061),
 (25018, NULL),
 (25019, 400061),
-(25021, 400331),
+(25021, 400331);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25022, 400331),
 (25024, 400061),
 (25025, 400061),
@@ -10489,7 +10824,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25062, NULL),
 (25063, 400061),
 (25064, 400061),
-(25067, 400061),
+(25067, 400061);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25070, 400061),
 (25071, 400061),
 (25075, 400061),
@@ -10519,7 +10855,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25118, 400331),
 (25119, 400331),
 (25121, 400331),
-(25122, NULL),
+(25122, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25123, 400061),
 (25124, 400061),
 (25125, 400061),
@@ -10548,7 +10885,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25164, 400061),
 (25165, 400331),
 (25168, 400061),
-(25169, 400061),
+(25169, 400061);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25173, 400331),
 (25174, 400331),
 (25177, 400061),
@@ -10578,7 +10916,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25241, 400061),
 (25243, 400061),
 (25244, 400061),
-(25245, 400061),
+(25245, 400061);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25247, 400061),
 (25248, 400061),
 (25250, NULL),
@@ -10607,7 +10946,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25286, 400061),
 (25287, 400061),
 (25301, 400061),
-(25302, 400061),
+(25302, 400061);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25303, 400061),
 (25304, 400061),
 (25305, NULL),
@@ -10639,7 +10979,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25337, NULL),
 (25338, NULL),
 (25339, NULL),
-(25350, NULL),
+(25350, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25356, NULL),
 (25357, NULL),
 (25358, NULL),
@@ -10670,7 +11011,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25429, NULL),
 (25430, 400061),
 (25431, 400061),
-(25432, NULL),
+(25432, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25434, 400061),
 (25437, 400061),
 (25438, 400061),
@@ -10699,7 +11041,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25521, 400061),
 (25523, 400061),
 (25524, 400331),
-(25526, 400061),
+(25526, 400061);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25529, 400061),
 (25530, 400633),
 (25534, 400331),
@@ -10728,7 +11071,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25606, 400331),
 (25607, 400331),
 (25608, 412485),
-(25611, 400331),
+(25611, 400331);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25612, 400331),
 (25614, NULL),
 (25617, 400331),
@@ -10757,7 +11101,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25654, 400331),
 (25661, 400340),
 (25665, 400331),
-(25666, 400331),
+(25666, 400331);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25667, 400331),
 (25669, 400340),
 (25670, 400340),
@@ -10788,7 +11133,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25708, NULL),
 (25709, NULL),
 (25710, NULL),
-(25711, NULL),
+(25711, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25712, NULL),
 (25713, NULL),
 (25714, NULL),
@@ -10821,7 +11167,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25801, 400331),
 (25802, NULL),
 (25810, NULL),
-(25811, NULL),
+(25811, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25812, 400331),
 (25813, 400331),
 (25816, NULL),
@@ -10850,7 +11197,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25851, NULL),
 (25853, 400331),
 (25854, 400331),
-(25855, 400331),
+(25855, 400331);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25856, 400331),
 (25857, 400331),
 (25859, NULL),
@@ -10880,7 +11228,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25912, NULL),
 (25913, 400331),
 (25914, NULL),
-(25915, 400331),
+(25915, 400331);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25916, 400331),
 (25917, 400331),
 (25918, 400331),
@@ -10910,7 +11259,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25972, 400331),
 (25976, 400331),
 (25977, 400331),
-(25978, 400331),
+(25978, 400331);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (25979, 400331),
 (25981, 400331),
 (25984, 400331),
@@ -10939,7 +11289,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26059, 400285),
 (26060, 400285),
 (26062, 400285),
-(26070, 400285),
+(26070, 400285);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26074, 412487),
 (26075, 412487),
 (26101, 412460),
@@ -10969,7 +11320,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26155, 412460),
 (26159, 412460),
 (26160, 400061),
-(26161, 400061),
+(26161, 400061);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26162, 412487),
 (26164, 400061),
 (26167, 412487),
@@ -10998,7 +11350,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26222, 400061),
 (26224, 400061),
 (26228, 400061),
-(26229, NULL),
+(26229, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26230, 400061),
 (26234, 400061),
 (26236, 400061),
@@ -11027,7 +11380,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26280, 400061),
 (26282, 400061),
 (26283, 400061),
-(26285, 400061),
+(26285, 400061);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26287, 412487),
 (26288, 400061),
 (26289, 412487),
@@ -11056,7 +11410,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26342, 412487),
 (26343, 400061),
 (26346, 412487),
-(26347, 412487),
+(26347, 412487);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26348, 412487),
 (26349, 412487),
 (26350, NULL),
@@ -11085,7 +11440,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26415, 412487),
 (26416, 412487),
 (26419, 412487),
-(26421, 412487),
+(26421, 412487);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26422, 412487),
 (26424, 412487),
 (26425, 412487),
@@ -11115,7 +11471,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26506, NULL),
 (26507, NULL),
 (26508, 412386),
-(26519, 412487),
+(26519, 412487);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26520, 412487),
 (26521, 412386),
 (26522, NULL),
@@ -11145,7 +11502,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26568, 412487),
 (26570, 412487),
 (26571, 412487),
-(26572, 412487),
+(26572, 412487);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26574, 412487),
 (26575, 412386),
 (26576, 412487),
@@ -11174,7 +11532,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26629, 400061),
 (26631, 400061),
 (26634, 412487),
-(26636, 400061),
+(26636, 400061);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26638, 412487),
 (26639, 400061),
 (26641, 400061),
@@ -11203,7 +11562,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26716, 412487),
 (26717, 400017),
 (26719, 400061),
-(26720, 400017),
+(26720, 400017);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26722, 400061),
 (26726, 400017),
 (26731, 400061),
@@ -11232,7 +11592,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26823, 400061),
 (26824, NULL),
 (26833, 412487),
-(26836, 400061),
+(26836, 400061);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (26838, 400061),
 (26845, 400061),
 (26847, 400061),
@@ -11261,7 +11622,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27023, 400643),
 (27024, 412485),
 (27025, 400280),
-(27027, 400280),
+(27027, 400280);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27028, 400643),
 (27030, 412485),
 (27031, NULL),
@@ -11291,7 +11653,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27106, 400643),
 (27107, 400643),
 (27108, NULL),
-(27109, 400424),
+(27109, 400424);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27110, NULL),
 (27111, NULL),
 (27113, NULL),
@@ -11323,7 +11686,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27214, 400280),
 (27215, 400280),
 (27216, NULL),
-(27217, 400280),
+(27217, 400280);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27220, NULL),
 (27228, NULL),
 (27229, 412287),
@@ -11353,7 +11717,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27278, 400326),
 (27281, 412287),
 (27282, 400424),
-(27283, 400076),
+(27283, 400076);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27284, 400643),
 (27285, NULL),
 (27288, 400280),
@@ -11383,7 +11748,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27323, NULL),
 (27325, 400076),
 (27326, 400280),
-(27330, 412457),
+(27330, 412457);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27331, NULL),
 (27332, NULL),
 (27340, NULL),
@@ -11414,7 +11780,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27403, 400280),
 (27404, NULL),
 (27405, 400424),
-(27406, 400424),
+(27406, 400424);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27407, 400424),
 (27408, 400280),
 (27409, 400424),
@@ -11445,7 +11812,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27506, 412457),
 (27507, 400616),
 (27508, 412457),
-(27509, 400280),
+(27509, 400280);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27510, 400326),
 (27511, 400280),
 (27512, NULL),
@@ -11475,7 +11843,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27542, 400209),
 (27543, NULL),
 (27544, 400616),
-(27545, 400280),
+(27545, 400280);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27546, 412457),
 (27549, 400616),
 (27551, 400616),
@@ -11505,7 +11874,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27586, NULL),
 (27587, 400280),
 (27588, NULL),
-(27589, 400616),
+(27589, 400616);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27591, 400280),
 (27592, 400326),
 (27593, NULL),
@@ -11536,7 +11906,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27622, NULL),
 (27623, NULL),
 (27624, NULL),
-(27625, NULL),
+(27625, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27626, NULL),
 (27627, NULL),
 (27628, NULL),
@@ -11568,7 +11939,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27709, NULL),
 (27710, NULL),
 (27711, NULL),
-(27712, 400326),
+(27712, 400326);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27713, 400326),
 (27715, NULL),
 (27717, NULL),
@@ -11598,7 +11970,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27824, 400209),
 (27825, NULL),
 (27826, 400209),
-(27827, 400209),
+(27827, 400209);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27828, 400616),
 (27829, 400616),
 (27830, 400209),
@@ -11628,7 +12001,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27855, 400616),
 (27856, 400616),
 (27857, 400616),
-(27858, 400616),
+(27858, 400616);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27860, 400616),
 (27861, NULL),
 (27862, 400616),
@@ -11658,7 +12032,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27886, 400616),
 (27887, NULL),
 (27888, 400616),
-(27889, 400616),
+(27889, 400616);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27890, 400616),
 (27891, 400616),
 (27892, 400616),
@@ -11688,7 +12063,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27930, NULL),
 (27932, 400616),
 (27935, 400616),
-(27936, 400209),
+(27936, 400209);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27937, 400616),
 (27938, 400616),
 (27939, 400209),
@@ -11717,7 +12093,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27969, NULL),
 (27970, 400616),
 (27972, 400209),
-(27973, 400209),
+(27973, 400209);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (27974, 400209),
 (27976, 400616),
 (27978, NULL),
@@ -11747,7 +12124,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28026, NULL),
 (28027, 400424),
 (28031, 400424),
-(28032, 400288),
+(28032, 400288);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28033, 400644),
 (28034, 400644),
 (28036, 400644),
@@ -11777,7 +12155,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28081, 412287),
 (28082, NULL),
 (28083, 412287),
-(28086, 400644),
+(28086, 400644);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28088, 400424),
 (28089, 400644),
 (28090, 400644),
@@ -11807,7 +12186,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28124, 412287),
 (28125, 400643),
 (28126, NULL),
-(28127, 412287),
+(28127, 412287);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28128, 412287),
 (28129, 412287),
 (28130, NULL),
@@ -11837,7 +12217,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28173, 400288),
 (28174, 400288),
 (28201, NULL),
-(28202, 400424),
+(28202, 400424);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28203, 400424),
 (28204, 400424),
 (28205, 400424),
@@ -11868,7 +12249,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28230, NULL),
 (28231, NULL),
 (28232, NULL),
-(28233, NULL),
+(28233, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28234, NULL),
 (28235, NULL),
 (28236, NULL),
@@ -11901,7 +12283,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28277, 400288),
 (28278, 400288),
 (28280, NULL),
-(28281, NULL),
+(28281, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28282, NULL),
 (28283, NULL),
 (28284, NULL),
@@ -11932,7 +12315,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28320, 400266),
 (28323, 412457),
 (28325, 400209),
-(28326, 400076),
+(28326, 400076);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28327, 400076),
 (28328, 400266),
 (28329, NULL),
@@ -11962,7 +12346,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28356, 400266),
 (28357, 412287),
 (28358, 400266),
-(28359, NULL),
+(28359, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28360, 400266),
 (28361, NULL),
 (28362, 400266),
@@ -11992,7 +12377,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28387, 400076),
 (28388, NULL),
 (28390, 400076),
-(28391, 400266),
+(28391, 400266);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28392, 400266),
 (28393, 400266),
 (28394, 412287),
@@ -12022,7 +12408,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28429, 400266),
 (28430, 400266),
 (28431, 400266),
-(28432, 400266),
+(28432, 400266);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28433, 400266),
 (28434, 400266),
 (28435, 400266),
@@ -12051,7 +12438,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28460, 400209),
 (28461, 400266),
 (28462, 400266),
-(28463, 400266),
+(28463, 400266);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28464, 400266),
 (28465, 400266),
 (28466, 400209),
@@ -12081,7 +12469,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28520, 400209),
 (28521, 400209),
 (28522, NULL),
-(28523, 400616),
+(28523, 400616);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28524, 400209),
 (28525, 400209),
 (28526, 400616),
@@ -12111,7 +12500,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28556, 400209),
 (28557, 400209),
 (28560, 400616),
-(28561, NULL),
+(28561, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28562, 400616),
 (28563, NULL),
 (28564, NULL),
@@ -12141,7 +12531,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28604, 400643),
 (28605, 400643),
 (28606, 400643),
-(28607, 400643),
+(28607, 400643);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28608, NULL),
 (28609, 400644),
 (28610, 400643),
@@ -12171,7 +12562,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28637, 400644),
 (28638, 400644),
 (28640, 400643),
-(28641, NULL),
+(28641, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28642, 400643),
 (28643, 400643),
 (28644, 400643),
@@ -12201,7 +12593,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28669, 400643),
 (28670, 400643),
 (28671, 400644),
-(28672, NULL),
+(28672, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28673, 400644),
 (28674, NULL),
 (28675, 412485),
@@ -12231,7 +12624,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28704, 412225),
 (28705, 400644),
 (28707, 412225),
-(28708, 412225),
+(28708, 412225);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28709, 412225),
 (28710, 400644),
 (28711, 400644),
@@ -12261,7 +12655,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28735, 412225),
 (28736, 412225),
 (28737, NULL),
-(28738, NULL),
+(28738, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28739, 412225),
 (28740, 400644),
 (28741, 412225),
@@ -12291,7 +12686,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28768, 412225),
 (28770, NULL),
 (28771, 412225),
-(28772, 412225),
+(28772, 412225);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28773, 412473),
 (28774, 412225),
 (28775, NULL),
@@ -12322,7 +12718,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28813, NULL),
 (28814, NULL),
 (28815, NULL),
-(28816, NULL),
+(28816, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (28901, 412225),
 (28902, 412225),
 (28903, NULL),
@@ -12351,7 +12748,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29039, 400075),
 (29040, 412474),
 (29041, NULL),
-(29042, 400075),
+(29042, 400075);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29044, 400075),
 (29045, 412474),
 (29046, 412474),
@@ -12380,7 +12778,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29078, 412474),
 (29079, 412474),
 (29080, 412474),
-(29081, 400075),
+(29081, 400075);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29082, 400075),
 (29101, 412474),
 (29102, 400075),
@@ -12409,7 +12808,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29133, 400075),
 (29135, 400075),
 (29137, 400433),
-(29138, 412472),
+(29138, 412472);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29142, 400075),
 (29143, NULL),
 (29145, 412472),
@@ -12439,7 +12839,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29180, 412474),
 (29201, 400075),
 (29202, 400075),
-(29203, 400075),
+(29203, 400075);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29204, 400075),
 (29205, 400075),
 (29206, 400075),
@@ -12471,7 +12872,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29260, NULL),
 (29290, NULL),
 (29292, NULL),
-(29301, 412473),
+(29301, 412473);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29302, 412473),
 (29303, 412473),
 (29304, NULL),
@@ -12502,7 +12904,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29346, NULL),
 (29348, NULL),
 (29349, 412473),
-(29351, 412472),
+(29351, 412472);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29353, 412474),
 (29355, 412472),
 (29356, 412473),
@@ -12532,7 +12935,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29403, 400075),
 (29404, 412471),
 (29405, 400075),
-(29406, 400075),
+(29406, 400075);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29407, 400075),
 (29409, NULL),
 (29410, NULL),
@@ -12563,7 +12967,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29439, 412471),
 (29440, 412471),
 (29442, NULL),
-(29445, 400075),
+(29445, 400075);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29446, 400075),
 (29447, NULL),
 (29448, 400075),
@@ -12593,7 +12998,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29481, 400075),
 (29482, 412471),
 (29483, 400075),
-(29484, NULL),
+(29484, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29485, 400075),
 (29487, 400075),
 (29488, 400075),
@@ -12623,7 +13029,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29541, 400075),
 (29542, NULL),
 (29543, 412474),
-(29544, 400075),
+(29544, 400075);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29545, 412471),
 (29546, 400075),
 (29547, 412474),
@@ -12652,7 +13059,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29579, 412471),
 (29580, 400075),
 (29581, 412474),
-(29582, 400266),
+(29582, 400266);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29583, 400075),
 (29584, 412474),
 (29585, 412471),
@@ -12683,7 +13091,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29614, NULL),
 (29615, 412473),
 (29616, NULL),
-(29617, 412473),
+(29617, 412473);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29620, 412472),
 (29621, 412472),
 (29622, NULL),
@@ -12713,7 +13122,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29648, NULL),
 (29649, 412472),
 (29650, 412473),
-(29651, 412473),
+(29651, 412473);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29652, NULL),
 (29653, 412472),
 (29654, 412472),
@@ -12742,7 +13152,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29681, 412473),
 (29682, 412472),
 (29683, 412473),
-(29684, 412252),
+(29684, 412252);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29685, 412472),
 (29686, 412472),
 (29687, 412473),
@@ -12772,7 +13183,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29720, 400288),
 (29721, NULL),
 (29722, NULL),
-(29724, 412474),
+(29724, 412474);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29726, 412474),
 (29727, 412474),
 (29728, 400288),
@@ -12802,7 +13214,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29819, 412472),
 (29821, 412252),
 (29822, 412472),
-(29824, 412472),
+(29824, 412472);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29826, 400433),
 (29827, 400075),
 (29828, 412472),
@@ -12832,7 +13245,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29861, NULL),
 (29899, NULL),
 (29901, NULL),
-(29902, 400433),
+(29902, 400433);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29903, NULL),
 (29904, NULL),
 (29905, NULL),
@@ -12863,7 +13277,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29936, 400433),
 (29938, NULL),
 (29939, 400433),
-(29940, 400433),
+(29940, 400433);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (29941, 400433),
 (29943, 400433),
 (29944, 400075),
@@ -12894,7 +13309,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30026, NULL),
 (30028, NULL),
 (30029, NULL),
-(30030, 412199),
+(30030, 412199);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30031, NULL),
 (30032, 412199),
 (30033, 412199),
@@ -12924,7 +13340,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30062, 400151),
 (30063, NULL),
 (30064, 400151),
-(30065, NULL),
+(30065, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30066, 400151),
 (30067, 400151),
 (30068, 400151),
@@ -12954,7 +13371,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30094, 412199),
 (30095, NULL),
 (30096, 412199),
-(30097, 400626),
+(30097, 400626);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30098, NULL),
 (30099, NULL),
 (30101, 400151),
@@ -12984,7 +13402,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30126, 400363),
 (30127, 400151),
 (30129, NULL),
-(30132, 400151),
+(30132, 400151);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30133, NULL),
 (30134, 400151),
 (30135, 400240),
@@ -13015,7 +13434,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30164, NULL),
 (30165, 400151),
 (30168, 400363),
-(30170, 400627),
+(30170, 400627);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30171, 412388),
 (30172, NULL),
 (30173, 400151),
@@ -13044,7 +13464,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30218, 400627),
 (30219, NULL),
 (30220, 400627),
-(30222, 400627),
+(30222, 400627);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30223, 412417),
 (30224, 412417),
 (30228, 400627),
@@ -13074,7 +13495,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30265, 400627),
 (30266, NULL),
 (30268, 400627),
-(30269, 400627),
+(30269, 400627);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30271, NULL),
 (30272, NULL),
 (30273, 400363),
@@ -13104,7 +13526,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30304, NULL),
 (30305, 400240),
 (30306, 400240),
-(30307, 400240),
+(30307, 400240);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30308, 400240),
 (30309, 400240),
 (30310, 400240),
@@ -13134,7 +13557,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30336, 400240),
 (30337, 400240),
 (30338, 400240),
-(30339, 400240),
+(30339, 400240);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30340, 412199),
 (30341, 412199),
 (30342, 400240),
@@ -13166,7 +13590,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30375, NULL),
 (30376, NULL),
 (30377, NULL),
-(30378, NULL),
+(30378, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30379, NULL),
 (30380, NULL),
 (30384, NULL),
@@ -13197,7 +13622,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30426, 400433),
 (30427, 400628),
 (30428, 412417),
-(30429, 400628),
+(30429, 400628);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30434, 400628),
 (30436, 400628),
 (30438, 400628),
@@ -13227,7 +13653,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30471, 400628),
 (30473, 400628),
 (30474, 400628),
-(30475, NULL),
+(30475, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30477, 400628),
 (30499, NULL),
 (30501, 412388),
@@ -13257,7 +13684,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30530, 412252),
 (30531, 412388),
 (30533, 412388),
-(30534, 412388),
+(30534, 412388);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30535, 412388),
 (30537, 412252),
 (30538, 412252),
@@ -13286,7 +13714,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30565, 412252),
 (30566, 412388),
 (30567, 412388),
-(30568, 412252),
+(30568, 412252);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30571, 412388),
 (30572, 412388),
 (30573, NULL),
@@ -13317,7 +13746,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30623, NULL),
 (30624, 412252),
 (30625, 412252),
-(30627, 412252),
+(30627, 412252);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30628, 412252),
 (30629, 412252),
 (30630, 412252),
@@ -13346,7 +13776,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30667, 412252),
 (30668, 412252),
 (30669, 400628),
-(30671, 412252),
+(30671, 412252);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30673, 400628),
 (30677, 412252),
 (30678, 400628),
@@ -13376,7 +13807,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30736, 412388),
 (30738, 412388),
 (30739, 412388),
-(30740, 412388),
+(30740, 412388);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30741, 412388),
 (30742, 412388),
 (30746, 412388),
@@ -13406,7 +13838,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30818, 400628),
 (30819, NULL),
 (30820, 400628),
-(30821, 400628),
+(30821, 400628);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (30822, 400628),
 (30823, 400628),
 (30824, 400628),
@@ -13437,7 +13870,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31006, 400030),
 (31007, 400030),
 (31008, 412417),
-(31009, 412417),
+(31009, 412417);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31010, NULL),
 (31011, 412417),
 (31012, 412417),
@@ -13466,7 +13900,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31036, 412417),
 (31037, 412417),
 (31038, 412417),
-(31039, 400030),
+(31039, 400030);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31040, NULL),
 (31041, 400030),
 (31042, 412417),
@@ -13496,7 +13931,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31070, 400030),
 (31071, 412417),
 (31072, 412417),
-(31073, NULL),
+(31073, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31075, 412417),
 (31076, 400030),
 (31077, 412417),
@@ -13527,7 +13963,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31126, NULL),
 (31131, NULL),
 (31139, NULL),
-(31141, NULL),
+(31141, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31145, NULL),
 (31146, NULL),
 (31150, NULL),
@@ -13559,7 +13996,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31221, NULL),
 (31294, NULL),
 (31295, NULL),
-(31296, NULL),
+(31296, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31297, NULL),
 (31298, NULL),
 (31299, NULL),
@@ -13589,7 +14027,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31328, 400221),
 (31329, 400433),
 (31331, 400221),
-(31333, 400221),
+(31333, 400221);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31401, 400433),
 (31402, NULL),
 (31403, NULL),
@@ -13620,7 +14059,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31513, 400628),
 (31515, NULL),
 (31516, 400221),
-(31518, 400221),
+(31518, 400221);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31519, 412417),
 (31520, 400221),
 (31521, NULL),
@@ -13650,7 +14090,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31554, 400221),
 (31555, 400628),
 (31556, NULL),
-(31557, 400221),
+(31557, 400221);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31558, 400221),
 (31560, 400221),
 (31561, NULL),
@@ -13680,7 +14121,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31630, 400221),
 (31631, 400221),
 (31632, 400030),
-(31634, 400221),
+(31634, 400221);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31635, 400221),
 (31636, 400030),
 (31637, 412417),
@@ -13710,7 +14152,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31711, 400030),
 (31712, 412417),
 (31713, 400030),
-(31714, 412417),
+(31714, 412417);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31715, 400030),
 (31716, 412417),
 (31717, 400030),
@@ -13739,7 +14182,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31743, 400030),
 (31744, 412417),
 (31745, 400030),
-(31746, 400030),
+(31746, 400030);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31747, 412417),
 (31749, 412417),
 (31750, 412417),
@@ -13769,7 +14213,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31775, 412417),
 (31776, NULL),
 (31777, 400030),
-(31778, 412417),
+(31778, 412417);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31779, 400030),
 (31780, 400030),
 (31781, 412417),
@@ -13799,7 +14244,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31808, 400627),
 (31810, 400030),
 (31811, 400627),
-(31812, 400030),
+(31812, 400030);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31814, 400030),
 (31815, 400030),
 (31816, 400030),
@@ -13829,7 +14275,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31914, NULL),
 (31917, NULL),
 (31993, NULL),
-(31994, NULL),
+(31994, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (31995, NULL),
 (31997, NULL),
 (31998, NULL),
@@ -13860,7 +14307,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32054, 400086),
 (32055, 400086),
 (32056, NULL),
-(32058, 400086),
+(32058, 400086);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32059, 400086),
 (32060, 400086),
 (32061, 400086),
@@ -13890,7 +14338,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32097, 400221),
 (32099, NULL),
 (32102, 400048),
-(32105, NULL),
+(32105, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32110, 400273),
 (32111, NULL),
 (32112, 400273),
@@ -13921,7 +14370,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32137, 400273),
 (32138, 400048),
 (32139, 400273),
-(32140, 400048),
+(32140, 400048);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32141, 412414),
 (32142, NULL),
 (32145, 400273),
@@ -13951,7 +14401,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32183, 412410),
 (32185, 400048),
 (32187, 400273),
-(32189, 400273),
+(32189, 400273);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32190, 400273),
 (32192, NULL),
 (32193, 400273),
@@ -13981,7 +14432,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32223, 400048),
 (32224, 400273),
 (32225, 400086),
-(32226, 400086),
+(32226, 400086);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32227, 400086),
 (32228, NULL),
 (32229, NULL),
@@ -14004,8 +14456,7 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32250, 400273),
 (32254, 400048),
 (32255, NULL),
-(32256, 400273);
-INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
+(32256, 400273),
 (32257, 400086),
 (32258, 400086),
 (32259, 400273),
@@ -14014,7 +14465,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32267, NULL),
 (32276, NULL),
 (32277, 400048),
-(32290, NULL),
+(32290, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32301, 400086),
 (32302, NULL),
 (32303, 412408),
@@ -14045,7 +14497,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32330, 412408),
 (32331, 400086),
 (32332, 412408),
-(32333, 400030),
+(32333, 400030);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32334, 412408),
 (32335, 412408),
 (32336, 400086),
@@ -14075,7 +14528,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32401, 412408),
 (32402, NULL),
 (32403, 412408),
-(32404, 412408),
+(32404, 412408);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32405, 412408),
 (32406, NULL),
 (32407, 412408),
@@ -14105,7 +14559,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32438, 400279),
 (32439, 400279),
 (32440, 400279),
-(32442, 412408),
+(32442, 412408);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32443, 412408),
 (32444, 412408),
 (32445, 412394),
@@ -14135,7 +14590,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32507, 400279),
 (32508, 400279),
 (32509, NULL),
-(32511, NULL),
+(32511, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32512, NULL),
 (32513, NULL),
 (32514, 400279),
@@ -14166,7 +14622,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32559, NULL),
 (32560, NULL),
 (32561, 400279),
-(32562, NULL),
+(32562, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32563, NULL),
 (32564, 400279),
 (32565, 400279),
@@ -14198,7 +14655,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32595, NULL),
 (32596, NULL),
 (32597, NULL),
-(32598, NULL),
+(32598, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32601, 400048),
 (32602, NULL),
 (32603, 400048),
@@ -14229,7 +14687,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32634, NULL),
 (32635, NULL),
 (32639, 412409),
-(32640, 400048),
+(32640, 400048);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32641, 400048),
 (32643, 400086),
 (32644, NULL),
@@ -14259,7 +14718,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32702, 412410),
 (32703, 400273),
 (32704, NULL),
-(32706, 400273),
+(32706, 400273);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32707, 400273),
 (32708, 400273),
 (32709, 412414),
@@ -14290,7 +14750,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32746, 400273),
 (32747, NULL),
 (32750, 400273),
-(32751, 400273),
+(32751, 400273);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32752, NULL),
 (32753, NULL),
 (32754, 412414),
@@ -14321,7 +14782,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32789, 400273),
 (32790, NULL),
 (32791, NULL),
-(32792, 412410),
+(32792, 412410);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32793, NULL),
 (32794, NULL),
 (32795, NULL),
@@ -14351,7 +14813,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32822, 412410),
 (32824, 412410),
 (32825, 412410),
-(32826, 412414),
+(32826, 412414);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32827, 412410),
 (32828, 412414),
 (32829, 412410),
@@ -14383,7 +14846,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32886, NULL),
 (32887, NULL),
 (32890, NULL),
-(32891, NULL),
+(32891, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32893, NULL),
 (32897, NULL),
 (32898, NULL),
@@ -14414,7 +14878,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32935, 412309),
 (32936, NULL),
 (32937, 412309),
-(32940, 412309),
+(32940, 412309);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (32941, NULL),
 (32948, 412309),
 (32949, 412309),
@@ -14445,7 +14910,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33001, 400344),
 (33002, NULL),
 (33004, 412413),
-(33008, NULL),
+(33008, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33009, 400623),
 (33010, 400108),
 (33011, NULL),
@@ -14475,7 +14941,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33035, 412415),
 (33036, 400344),
 (33037, 400344),
-(33039, NULL),
+(33039, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33040, 400344),
 (33041, NULL),
 (33042, 400344),
@@ -14506,7 +14973,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33075, NULL),
 (33076, 412413),
 (33077, NULL),
-(33081, NULL),
+(33081, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33082, NULL),
 (33083, NULL),
 (33084, NULL),
@@ -14537,7 +15005,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33132, 400344),
 (33133, 400344),
 (33134, 400344),
-(33135, 400344),
+(33135, 400344);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33136, 400344),
 (33137, 400623),
 (33138, 400623),
@@ -14567,7 +15036,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33162, 400623),
 (33163, NULL),
 (33164, NULL),
-(33165, 400108),
+(33165, 400108);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33166, 400108),
 (33167, 400108),
 (33168, 412412),
@@ -14597,7 +15067,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33194, 412415),
 (33195, NULL),
 (33196, 412415),
-(33197, NULL),
+(33197, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33199, NULL),
 (33231, NULL),
 (33233, NULL),
@@ -14629,7 +15100,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33308, 412413),
 (33309, 412413),
 (33310, NULL),
-(33311, 400623),
+(33311, 400623);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33312, 412413),
 (33313, 400623),
 (33314, 412413),
@@ -14660,7 +15132,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33345, NULL),
 (33346, NULL),
 (33348, NULL),
-(33349, NULL),
+(33349, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33351, 400623),
 (33355, NULL),
 (33359, NULL),
@@ -14691,7 +15164,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33424, NULL),
 (33425, NULL),
 (33426, 412413),
-(33427, NULL),
+(33427, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33428, 412413),
 (33429, NULL),
 (33430, 400170),
@@ -14721,7 +15195,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33461, 412413),
 (33462, 412413),
 (33463, 412413),
-(33464, NULL),
+(33464, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33465, NULL),
 (33466, NULL),
 (33467, 412311),
@@ -14752,7 +15227,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33509, NULL),
 (33510, 412250),
 (33511, 412250),
-(33513, 412409),
+(33513, 412409);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33514, 412409),
 (33521, 412409),
 (33523, 412409),
@@ -14783,7 +15259,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33568, NULL),
 (33569, 412195),
 (33570, 412195),
-(33571, NULL),
+(33571, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33572, 412195),
 (33573, 412411),
 (33574, NULL),
@@ -14813,7 +15290,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33612, 412195),
 (33613, 412195),
 (33614, 412195),
-(33615, 412195),
+(33615, 412195);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33616, 412195),
 (33617, 412195),
 (33618, 412195),
@@ -14844,7 +15322,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33672, NULL),
 (33673, NULL),
 (33674, NULL),
-(33675, NULL),
+(33675, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33677, NULL),
 (33679, NULL),
 (33680, NULL),
@@ -14875,7 +15354,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33714, 400439),
 (33715, 400439),
 (33716, 400439),
-(33728, NULL),
+(33728, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33729, NULL),
 (33730, NULL),
 (33731, NULL),
@@ -14907,7 +15387,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33769, NULL),
 (33770, 400439),
 (33771, 400439),
-(33772, 400439),
+(33772, 400439);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33773, 400439),
 (33774, 400439),
 (33775, NULL),
@@ -14937,7 +15418,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33823, 412409),
 (33825, 412311),
 (33826, NULL),
-(33827, 412411),
+(33827, 412411);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33830, 412411),
 (33831, NULL),
 (33834, 412411),
@@ -14968,7 +15450,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33860, 412250),
 (33862, NULL),
 (33863, NULL),
-(33865, 412196),
+(33865, 412196);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33867, NULL),
 (33868, 412409),
 (33870, 412311),
@@ -14999,7 +15482,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33908, 400622),
 (33909, 400622),
 (33910, NULL),
-(33911, NULL),
+(33911, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33912, 400622),
 (33913, 400622),
 (33914, 400622),
@@ -15029,7 +15513,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33950, 400622),
 (33951, NULL),
 (33952, 400622),
-(33953, 400622),
+(33953, 400622);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (33954, 400622),
 (33955, 400622),
 (33956, 400622),
@@ -15060,7 +15545,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34030, NULL),
 (34031, NULL),
 (34032, NULL),
-(34033, NULL),
+(34033, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34034, NULL),
 (34035, NULL),
 (34036, NULL),
@@ -15093,7 +15579,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34102, 400622),
 (34103, 400622),
 (34104, 400622),
-(34105, 400622),
+(34105, 400622);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34106, NULL),
 (34107, NULL),
 (34108, 400622),
@@ -15123,7 +15610,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34202, 412196),
 (34203, 412196),
 (34204, NULL),
-(34205, 412195),
+(34205, 412195);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34206, NULL),
 (34207, 412196),
 (34208, 412196),
@@ -15153,7 +15641,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34237, 412196),
 (34238, 412196),
 (34239, 412196),
-(34240, 412196),
+(34240, 412196);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34241, 412196),
 (34242, 412196),
 (34243, 412196),
@@ -15184,7 +15673,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34289, NULL),
 (34292, 412196),
 (34293, 412196),
-(34295, NULL),
+(34295, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34420, 400388),
 (34421, NULL),
 (34423, NULL),
@@ -15214,7 +15704,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34471, 400388),
 (34472, 400388),
 (34473, 412409),
-(34474, 400388),
+(34474, 400388);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34475, 400388),
 (34476, 400388),
 (34477, NULL),
@@ -15245,7 +15736,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34613, 412409),
 (34614, 412409),
 (34636, NULL),
-(34639, 412409),
+(34639, 412409);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34652, 412250),
 (34653, 412409),
 (34654, 412409),
@@ -15275,7 +15767,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34698, 400439),
 (34705, 412410),
 (34711, 412409),
-(34712, NULL),
+(34712, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34713, NULL),
 (34729, NULL),
 (34731, 400388),
@@ -15305,7 +15798,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34770, NULL),
 (34771, 412309),
 (34772, 412309),
-(34773, 412309),
+(34773, 412309);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34777, NULL),
 (34778, NULL),
 (34785, 412409),
@@ -15335,7 +15829,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34982, 412311),
 (34983, 412311),
 (34984, 412311),
-(34985, NULL),
+(34985, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (34986, 412311),
 (34987, 412311),
 (34988, NULL),
@@ -15365,7 +15860,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35032, NULL),
 (35033, 400004),
 (35034, 400010),
-(35035, 400010),
+(35035, 400010);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35036, 400010),
 (35038, NULL),
 (35040, 400010),
@@ -15395,7 +15891,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35071, 400010),
 (35072, 400010),
 (35073, 400010),
-(35074, 400010),
+(35074, 400010);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35077, 400004),
 (35078, 400010),
 (35079, 400010),
@@ -15424,7 +15921,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35124, 400010),
 (35125, 400010),
 (35126, 400010),
-(35127, 400010),
+(35127, 400010);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35128, 400010),
 (35130, 400010),
 (35131, 400010),
@@ -15454,7 +15952,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35180, 400010),
 (35181, NULL),
 (35182, NULL),
-(35183, 400010),
+(35183, 400010);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35184, 400010),
 (35185, NULL),
 (35186, 400010),
@@ -15484,7 +15983,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35222, 400010),
 (35223, 400010),
 (35224, 400010),
-(35225, NULL),
+(35225, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35226, 400010),
 (35228, 412396),
 (35229, NULL),
@@ -15516,7 +16016,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35278, NULL),
 (35279, NULL),
 (35280, NULL),
-(35281, NULL),
+(35281, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35282, NULL),
 (35283, NULL),
 (35285, NULL),
@@ -15548,7 +16049,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35444, 400010),
 (35446, 400010),
 (35447, 412396),
-(35448, NULL),
+(35448, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35449, NULL),
 (35452, 400010),
 (35453, 400010),
@@ -15578,7 +16080,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35485, NULL),
 (35486, NULL),
 (35487, NULL),
-(35490, 400010),
+(35490, 400010);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35491, NULL),
 (35501, 400004),
 (35502, NULL),
@@ -15608,7 +16111,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35571, 400004),
 (35572, 400004),
 (35573, NULL),
-(35574, 400004),
+(35574, 400004);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35575, 400004),
 (35576, 412442),
 (35577, NULL),
@@ -15638,7 +16142,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35617, NULL),
 (35618, 412395),
 (35619, 412395),
-(35620, 412395),
+(35620, 412395);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35621, 400004),
 (35622, 412395),
 (35630, 412395),
@@ -15668,7 +16173,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35674, 412395),
 (35677, 412395),
 (35699, NULL),
-(35739, 412395),
+(35739, 412395);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35740, 412395),
 (35741, 412395),
 (35742, 412395),
@@ -15697,7 +16203,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35767, NULL),
 (35768, 412395),
 (35769, 412395),
-(35771, 412395),
+(35771, 412395);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35772, 412395),
 (35773, 412395),
 (35774, 412395),
@@ -15728,7 +16235,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35898, NULL),
 (35899, NULL),
 (35901, 400004),
-(35902, NULL),
+(35902, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35903, 400341),
 (35904, 400004),
 (35905, 400341),
@@ -15757,7 +16265,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35974, 400004),
 (35975, 412395),
 (35976, 400004),
-(35978, 412395),
+(35978, 412395);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (35979, 412395),
 (35980, 400004),
 (35981, 412395),
@@ -15786,7 +16295,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36026, 400341),
 (36027, 400030),
 (36028, 412394),
-(36029, 400341),
+(36029, 400341);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36030, 412394),
 (36031, 400341),
 (36032, 412394),
@@ -15816,7 +16326,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36064, 400341),
 (36065, 400341),
 (36066, 412394),
-(36067, 412394),
+(36067, 412394);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36068, NULL),
 (36069, 400341),
 (36071, 412394),
@@ -15846,7 +16357,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36110, 400341),
 (36111, 400341),
 (36112, NULL),
-(36113, 412394),
+(36113, 412394);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36114, NULL),
 (36115, 412394),
 (36116, 400341),
@@ -15878,7 +16390,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36207, 400341),
 (36250, 400341),
 (36251, 400341),
-(36253, NULL),
+(36253, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36254, NULL),
 (36255, 400341),
 (36256, 400341),
@@ -15908,7 +16421,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36301, 412394),
 (36302, NULL),
 (36303, 412394),
-(36304, NULL),
+(36304, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36305, 412394),
 (36310, 400030),
 (36311, 412394),
@@ -15938,7 +16452,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36360, 412394),
 (36361, NULL),
 (36362, 412394),
-(36370, 400030),
+(36370, 400030);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36371, 412394),
 (36373, 400030),
 (36374, 412394),
@@ -15968,7 +16483,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36456, 412394),
 (36457, NULL),
 (36458, NULL),
-(36460, 412394),
+(36460, 412394);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36461, NULL),
 (36462, NULL),
 (36467, 412394),
@@ -15998,7 +16514,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36521, 400038),
 (36522, 400038),
 (36523, 400038),
-(36524, 412396),
+(36524, 412396);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36525, 400038),
 (36526, 400038),
 (36527, 400038),
@@ -16028,7 +16545,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36558, 400038),
 (36559, 400038),
 (36560, 400038),
-(36561, 400038),
+(36561, 400038);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36562, 400279),
 (36564, 400038),
 (36567, 400279),
@@ -16058,7 +16576,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36604, 400038),
 (36605, 400038),
 (36606, 400038),
-(36607, 400038),
+(36607, 400038);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36608, 400038),
 (36609, 400038),
 (36610, 400038),
@@ -16090,7 +16609,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36671, NULL),
 (36675, NULL),
 (36685, NULL),
-(36688, NULL),
+(36688, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36689, NULL),
 (36690, NULL),
 (36691, NULL),
@@ -16120,7 +16640,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36751, 412396),
 (36752, 412394),
 (36753, NULL),
-(36754, 412396),
+(36754, 412396);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36756, 400010),
 (36758, 400010),
 (36759, 412396),
@@ -16150,7 +16671,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36802, NULL),
 (36803, NULL),
 (36804, 400341),
-(36830, 400341),
+(36830, 400341);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36831, NULL),
 (36832, 400341),
 (36849, 400341),
@@ -16180,7 +16702,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36877, 400627),
 (36879, 400341),
 (36901, 412396),
-(36904, 412396),
+(36904, 412396);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (36906, NULL),
 (36907, 412396),
 (36908, 412396),
@@ -16210,7 +16733,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37026, 412477),
 (37027, 400032),
 (37028, 400431),
-(37029, 412479),
+(37029, 412479);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37030, 412478),
 (37031, 412478),
 (37032, 400032),
@@ -16240,7 +16764,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37061, 412479),
 (37062, 412479),
 (37063, NULL),
-(37064, 412477),
+(37064, 412477);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37065, NULL),
 (37066, 412478),
 (37067, 400032),
@@ -16270,7 +16795,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37096, 412477),
 (37097, 412479),
 (37098, 412477),
-(37101, 400032),
+(37101, 400032);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37110, 412477),
 (37111, NULL),
 (37115, 400081),
@@ -16300,7 +16826,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37146, 412478),
 (37147, 412477),
 (37148, 400431),
-(37149, 412478),
+(37149, 412478);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37150, 412478),
 (37151, 412478),
 (37152, 412478),
@@ -16330,7 +16857,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37190, 412477),
 (37191, 400032),
 (37201, 400081),
-(37202, NULL),
+(37202, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37203, 400081),
 (37204, 400032),
 (37205, 400081),
@@ -16361,7 +16889,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37235, NULL),
 (37236, NULL),
 (37237, NULL),
-(37238, NULL),
+(37238, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37239, NULL),
 (37240, NULL),
 (37241, NULL),
@@ -16392,7 +16921,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37316, 412476),
 (37317, 412225),
 (37318, 412477),
-(37320, NULL),
+(37320, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37321, 412476),
 (37322, 412476),
 (37323, 412476),
@@ -16421,7 +16951,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37348, 412477),
 (37349, NULL),
 (37350, 412388),
-(37351, 412476),
+(37351, 412476);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37352, 412477),
 (37353, 412476),
 (37354, 400116),
@@ -16451,7 +16982,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37380, 412477),
 (37381, 412476),
 (37382, NULL),
-(37383, NULL),
+(37383, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37384, NULL),
 (37385, 412225),
 (37387, 412477),
@@ -16481,7 +17013,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37419, 412477),
 (37421, 412476),
 (37422, NULL),
-(37424, NULL),
+(37424, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37450, NULL),
 (37501, NULL),
 (37601, 412310),
@@ -16511,7 +17044,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37662, NULL),
 (37663, 412310),
 (37664, 412310),
-(37665, 412310),
+(37665, 412310);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37669, NULL),
 (37680, 412485),
 (37681, 412310),
@@ -16541,7 +17075,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37719, 412477),
 (37721, 412476),
 (37722, 412225),
-(37723, 412477),
+(37723, 412477);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37724, 412485),
 (37725, 412476),
 (37726, 412477),
@@ -16570,7 +17105,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37764, 412476),
 (37765, 412310),
 (37766, 412476),
-(37769, 412476),
+(37769, 412476);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37770, 412477),
 (37771, 412476),
 (37772, 400116),
@@ -16600,7 +17136,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37824, NULL),
 (37825, 412476),
 (37826, 412476),
-(37828, 412476),
+(37828, 412476);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37829, 412477),
 (37830, 412476),
 (37831, NULL),
@@ -16630,7 +17167,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37869, 412476),
 (37870, 412476),
 (37871, 412476),
-(37872, 412477),
+(37872, 412477);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37873, 412310),
 (37874, 412476),
 (37876, 412476),
@@ -16659,7 +17197,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37919, 400116),
 (37920, 400116),
 (37921, 400116),
-(37922, 400116),
+(37922, 400116);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (37923, 400116),
 (37924, 400116),
 (37927, NULL),
@@ -16690,7 +17229,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38014, NULL),
 (38015, 412479),
 (38016, NULL),
-(38017, 412442),
+(38017, 412442);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38018, 400032),
 (38019, 412479),
 (38021, 412479),
@@ -16720,7 +17260,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38054, NULL),
 (38055, NULL),
 (38056, NULL),
-(38057, 412442),
+(38057, 412442);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38058, 412479),
 (38059, 412479),
 (38060, 400032),
@@ -16750,7 +17291,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38109, 412442),
 (38110, NULL),
 (38111, 412236),
-(38112, 412236),
+(38112, 412236);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38113, NULL),
 (38114, 412236),
 (38115, 400032),
@@ -16781,7 +17323,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38143, NULL),
 (38145, NULL),
 (38146, NULL),
-(38147, NULL),
+(38147, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38148, NULL),
 (38150, NULL),
 (38151, NULL),
@@ -16814,7 +17357,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38220, 412479),
 (38221, 412479),
 (38222, 400431),
-(38223, NULL),
+(38223, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38224, 400431),
 (38225, 412479),
 (38226, 400431),
@@ -16844,7 +17388,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38281, NULL),
 (38301, 412479),
 (38302, NULL),
-(38303, NULL),
+(38303, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38305, 400032),
 (38308, NULL),
 (38310, 400032),
@@ -16874,7 +17419,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38340, 400032),
 (38341, 400032),
 (38342, 412479),
-(38343, 412479),
+(38343, 412479);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38344, 412479),
 (38345, 400032),
 (38346, NULL),
@@ -16903,7 +17449,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38376, 400032),
 (38377, NULL),
 (38378, 412479),
-(38379, 400032),
+(38379, 400032);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38380, 400032),
 (38381, 400032),
 (38382, 412479),
@@ -16933,7 +17480,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38463, 412477),
 (38464, 412477),
 (38468, 412477),
-(38469, 412477),
+(38469, 412477);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38471, 412395),
 (38472, 412477),
 (38473, 412395),
@@ -16963,7 +17511,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38547, 412478),
 (38548, 412478),
 (38549, 400431),
-(38550, NULL),
+(38550, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38551, 400431),
 (38552, 412478),
 (38553, 412477),
@@ -16993,7 +17542,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38580, 412478),
 (38581, 412477),
 (38582, 412478),
-(38583, 412477),
+(38583, 412477);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38585, 412477),
 (38587, 412477),
 (38588, 412478),
@@ -17022,7 +17572,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38631, 400402),
 (38632, 400402),
 (38633, 412442),
-(38634, NULL),
+(38634, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38635, 412442),
 (38637, 412442),
 (38638, NULL),
@@ -17051,7 +17602,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38669, 400402),
 (38670, 400402),
 (38671, 412442),
-(38672, 412442),
+(38672, 412442);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38673, 412442),
 (38674, 412442),
 (38675, NULL),
@@ -17081,7 +17633,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38738, 400402),
 (38739, 400402),
 (38740, 400402),
-(38744, 400402),
+(38744, 400402);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38745, 400402),
 (38746, 412400),
 (38748, 400402),
@@ -17111,7 +17664,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38781, NULL),
 (38782, NULL),
 (38801, 412442),
-(38802, NULL),
+(38802, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38803, NULL),
 (38804, 412442),
 (38820, NULL),
@@ -17141,7 +17695,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38855, 412442),
 (38856, 412442),
 (38857, 412442),
-(38858, 412442),
+(38858, 412442);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38859, 412442),
 (38860, 412442),
 (38862, 412442),
@@ -17171,7 +17726,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38917, 400402),
 (38920, 400402),
 (38921, 400402),
-(38922, 412442),
+(38922, 412442);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38923, 400402),
 (38924, 400402),
 (38925, 400402),
@@ -17201,7 +17757,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38959, 400402),
 (38960, NULL),
 (38961, 400402),
-(38962, 400402),
+(38962, 400402);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (38963, 400402),
 (38964, 400402),
 (38965, 412442),
@@ -17230,7 +17787,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39066, 400402),
 (39067, 400402),
 (39069, 400402),
-(39071, 412280),
+(39071, 412280);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39072, NULL),
 (39073, 412280),
 (39074, 412280),
@@ -17260,7 +17818,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39113, 400402),
 (39114, 412280),
 (39115, 400402),
-(39116, 412280),
+(39116, 412280);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39117, 412280),
 (39119, 412280),
 (39120, 400006),
@@ -17290,7 +17849,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39166, 400402),
 (39167, NULL),
 (39168, 412280),
-(39169, 400402),
+(39169, 400402);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39170, 412280),
 (39171, NULL),
 (39173, NULL),
@@ -17320,7 +17880,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39209, 412280),
 (39210, 412280),
 (39211, 412280),
-(39212, 412280),
+(39212, 412280);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39213, 412280),
 (39215, NULL),
 (39216, 412280),
@@ -17352,7 +17913,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39320, 412280),
 (39322, 400038),
 (39323, 412280),
-(39324, NULL),
+(39324, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39325, 412280),
 (39326, 412280),
 (39327, 412280),
@@ -17381,7 +17943,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39361, 412280),
 (39362, 400038),
 (39363, 412443),
-(39364, 412280),
+(39364, 412280);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39365, 412280),
 (39366, 412280),
 (39367, 400038),
@@ -17411,7 +17974,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39455, 412443),
 (39456, 412443),
 (39457, NULL),
-(39459, 412443),
+(39459, 412443);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39460, NULL),
 (39461, 412443),
 (39462, 412443),
@@ -17441,7 +18005,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39522, NULL),
 (39525, 412443),
 (39529, NULL),
-(39530, 412443),
+(39530, 412443);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39531, 412443),
 (39532, 412443),
 (39533, NULL),
@@ -17472,7 +18037,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39581, 412443),
 (39595, NULL),
 (39601, 412280),
-(39602, NULL),
+(39602, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39603, NULL),
 (39629, 412280),
 (39630, 412280),
@@ -17501,7 +18067,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39667, 412261),
 (39668, 412280),
 (39669, 412280),
-(39701, 412442),
+(39701, 412442);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39702, 412442),
 (39703, NULL),
 (39704, 412442),
@@ -17531,7 +18098,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39762, 412280),
 (39766, 412442),
 (39767, 400402),
-(39769, 412280),
+(39769, 412280);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (39771, 412442),
 (39772, 400402),
 (39773, 412280),
@@ -17561,7 +18129,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40033, 412278),
 (40036, 400633),
 (40037, 412278),
-(40040, 412278),
+(40040, 412278);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40041, NULL),
 (40045, 400633),
 (40046, 412278),
@@ -17591,7 +18160,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40076, 412278),
 (40077, 400633),
 (40078, 412278),
-(40104, 412278),
+(40104, 412278);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40107, 412278),
 (40108, 412278),
 (40109, 412278),
@@ -17621,7 +18191,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40164, 412278),
 (40165, 412278),
 (40170, 412278),
-(40171, 412278),
+(40171, 412278);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40175, 412278),
 (40176, 412278),
 (40177, 412278),
@@ -17651,7 +18222,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40223, 412211),
 (40224, NULL),
 (40225, NULL),
-(40228, 412278),
+(40228, 412278);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40229, 412278),
 (40231, NULL),
 (40232, NULL),
@@ -17683,7 +18255,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40287, NULL),
 (40289, NULL),
 (40290, NULL),
-(40291, 412278),
+(40291, 412278);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40292, NULL),
 (40293, NULL),
 (40294, NULL),
@@ -17714,7 +18287,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40346, 400633),
 (40347, 400442),
 (40348, 400633),
-(40350, 400633),
+(40350, 400633);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40351, 400633),
 (40353, 400633),
 (40355, 400633),
@@ -17744,7 +18318,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40392, NULL),
 (40402, 400340),
 (40403, 400340),
-(40404, NULL),
+(40404, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40405, NULL),
 (40409, 400340),
 (40410, NULL),
@@ -17774,7 +18349,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40476, NULL),
 (40481, 400340),
 (40484, 400431),
-(40486, 400340),
+(40486, 400340);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40488, 400340),
 (40489, 400431),
 (40492, NULL),
@@ -17805,7 +18381,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40546, NULL),
 (40550, NULL),
 (40555, NULL),
-(40574, NULL),
+(40574, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40575, NULL),
 (40576, NULL),
 (40577, NULL),
@@ -17838,7 +18415,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40621, NULL),
 (40622, NULL),
 (40701, 400340),
-(40702, NULL),
+(40702, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40724, NULL),
 (40729, 400340),
 (40730, 400340),
@@ -17868,7 +18446,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40816, 400340),
 (40818, 400340),
 (40819, 400340),
-(40820, 412485),
+(40820, 412485);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40823, 400340),
 (40824, 400340),
 (40826, 412485),
@@ -17897,7 +18476,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40902, 400340),
 (40903, 400340),
 (40906, 400340),
-(40913, 400340),
+(40913, 400340);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40914, 400340),
 (40915, 400340),
 (40921, 400340),
@@ -17927,7 +18507,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40981, NULL),
 (40982, 400340),
 (40983, 400340),
-(40988, 400340),
+(40988, 400340);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (40995, 400340),
 (40997, 400340),
 (40999, 400340),
@@ -17957,7 +18538,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41037, NULL),
 (41039, 400633),
 (41040, 400633),
-(41041, 400633),
+(41041, 400633);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41042, 400633),
 (41043, 400633),
 (41044, 400633),
@@ -17987,7 +18569,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41081, NULL),
 (41083, 400633),
 (41085, 400633),
-(41086, 400633),
+(41086, 400633);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41091, 400633),
 (41092, 400633),
 (41093, 400633),
@@ -18017,7 +18600,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41146, 400633),
 (41149, 400633),
 (41150, NULL),
-(41156, NULL),
+(41156, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41159, 400633),
 (41160, NULL),
 (41164, 400633),
@@ -18047,7 +18631,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41228, 400340),
 (41230, 400633),
 (41231, 400340),
-(41232, 400340),
+(41232, 400340);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41234, 400340),
 (41238, 400340),
 (41240, 400340),
@@ -18077,7 +18662,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41338, NULL),
 (41339, 400340),
 (41342, NULL),
-(41344, 400340),
+(41344, 400340);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41347, NULL),
 (41348, 400340),
 (41351, NULL),
@@ -18108,7 +18694,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41459, NULL),
 (41464, 400340),
 (41465, 400340),
-(41472, 400633),
+(41472, 400633);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41477, NULL),
 (41501, 400340),
 (41502, NULL),
@@ -18138,7 +18725,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41547, 412485),
 (41548, 400340),
 (41549, 400340),
-(41553, 400340),
+(41553, 400340);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41554, 400340),
 (41555, 400340),
 (41557, 400340),
@@ -18167,7 +18755,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41616, 400340),
 (41619, 400340),
 (41621, 400340),
-(41622, 400340),
+(41622, 400340);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41630, 400340),
 (41631, 400340),
 (41632, 400340),
@@ -18196,7 +18785,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41714, 400340),
 (41719, 400340),
 (41721, 400340),
-(41722, 400340),
+(41722, 400340);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41723, 400340),
 (41725, 400340),
 (41727, 400340),
@@ -18225,7 +18815,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41774, 400340),
 (41775, 400340),
 (41776, 400340),
-(41777, 400340),
+(41777, 400340);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41778, 400340),
 (41804, 400340),
 (41810, 400340),
@@ -18254,7 +18845,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41845, 400340),
 (41847, 400340),
 (41848, NULL),
-(41849, 400340),
+(41849, 400340);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (41855, 400340),
 (41858, 400340),
 (41859, 400340),
@@ -18284,7 +18876,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42035, 400431),
 (42036, 400431),
 (42037, NULL),
-(42038, 400431),
+(42038, 400431);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42039, 400431),
 (42040, 400431),
 (42041, 400431),
@@ -18313,7 +18906,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42078, 400431),
 (42079, 400431),
 (42081, 400431),
-(42082, 400431),
+(42082, 400431);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42083, 400431),
 (42084, 400431),
 (42085, 400431),
@@ -18343,7 +18937,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42151, 400431),
 (42152, NULL),
 (42153, 400431),
-(42154, 400431),
+(42154, 400431);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42156, NULL),
 (42157, 412278),
 (42159, 412278),
@@ -18373,7 +18968,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42223, 400431),
 (42232, 400431),
 (42234, 400431),
-(42235, NULL),
+(42235, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42236, 400431),
 (42240, 400431),
 (42241, NULL),
@@ -18403,7 +18999,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42302, NULL),
 (42303, 412278),
 (42304, NULL),
-(42320, 412278),
+(42320, 412278);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42321, 400431),
 (42322, NULL),
 (42323, 400431),
@@ -18433,7 +19030,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42356, NULL),
 (42361, 412278),
 (42364, NULL),
-(42365, 400431),
+(42365, 400431);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42366, 412278),
 (42367, NULL),
 (42368, 412278),
@@ -18463,7 +19061,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42440, 400431),
 (42441, 400431),
 (42442, 400431),
-(42444, 400431),
+(42444, 400431);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42445, 400431),
 (42450, 400431),
 (42451, 412278),
@@ -18493,7 +19092,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42553, 400340),
 (42558, NULL),
 (42564, NULL),
-(42565, 400431),
+(42565, 400431);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42566, 400431),
 (42567, 400431),
 (42602, 400431),
@@ -18522,7 +19122,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42720, NULL),
 (42721, 412278),
 (42722, 412278),
-(42724, 412278),
+(42724, 412278);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42726, 412278),
 (42728, 412278),
 (42729, 412278),
@@ -18552,7 +19153,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (42783, NULL),
 (42784, 412278),
 (42786, NULL),
-(42788, 412278),
+(42788, 412278);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43001, 400406),
 (43002, 400406),
 (43003, 400406),
@@ -18581,7 +19183,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43029, 412461),
 (43030, NULL),
 (43031, 400406),
-(43032, 400406),
+(43032, 400406);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43033, 400406),
 (43035, 400406),
 (43036, 412461),
@@ -18611,7 +19214,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43072, 412226),
 (43073, NULL),
 (43074, 400406),
-(43076, 412463),
+(43076, 412463);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43077, 412461),
 (43078, 412226),
 (43080, 400406),
@@ -18641,7 +19245,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43123, 412265),
 (43125, 412265),
 (43126, 412265),
-(43127, 412463),
+(43127, 412463);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43128, 412265),
 (43130, 412463),
 (43135, 412463),
@@ -18670,7 +19275,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43162, 412461),
 (43163, NULL),
 (43164, 412265),
-(43196, NULL),
+(43196, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43198, NULL),
 (43199, NULL),
 (43201, 400406),
@@ -18700,7 +19306,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43227, 400406),
 (43228, 412461),
 (43229, 400406),
-(43230, 400406),
+(43230, 400406);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43231, 400406),
 (43232, 400406),
 (43234, NULL),
@@ -18731,7 +19338,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43317, 412226),
 (43318, 412226),
 (43319, 412226),
-(43320, 412226),
+(43320, 412226);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43321, 412226),
 (43322, 412226),
 (43323, 412226),
@@ -18761,7 +19369,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43351, 412226),
 (43356, 400406),
 (43357, 412226),
-(43358, 412226),
+(43358, 412226);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43359, 412226),
 (43360, 412226),
 (43402, 412256),
@@ -18791,7 +19400,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43443, 412256),
 (43445, 400211),
 (43446, NULL),
-(43447, 400211),
+(43447, 400211);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43449, 400211),
 (43450, 412256),
 (43451, 412256),
@@ -18821,7 +19431,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43517, 412256),
 (43518, 412256),
 (43519, NULL),
-(43520, NULL),
+(43520, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43521, 412256),
 (43522, 412256),
 (43523, NULL),
@@ -18851,7 +19462,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43551, 412256),
 (43552, NULL),
 (43553, 412256),
-(43554, 412256),
+(43554, 412256);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43555, 412256),
 (43556, 412256),
 (43557, 412256),
@@ -18880,7 +19492,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43615, 400211),
 (43616, 400211),
 (43617, 400211),
-(43618, 400211),
+(43618, 400211);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43619, 400211),
 (43620, 400211),
 (43623, 400211),
@@ -18911,7 +19524,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43719, 412460),
 (43720, 412463),
 (43721, 412463),
-(43722, 412463),
+(43722, 412463);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43723, 412463),
 (43724, 412460),
 (43725, 412463),
@@ -18941,7 +19555,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43759, NULL),
 (43760, 412463),
 (43761, NULL),
-(43762, 412463),
+(43762, 412463);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43764, 412265),
 (43766, 412463),
 (43767, 412463),
@@ -18971,7 +19586,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43822, 412463),
 (43824, 412463),
 (43828, NULL),
-(43830, 412463),
+(43830, 412463);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43832, 412463),
 (43836, NULL),
 (43837, 412463),
@@ -19000,7 +19616,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43926, 412460),
 (43927, 412463),
 (43928, 412460),
-(43930, 412460),
+(43930, 412460);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43931, NULL),
 (43932, 412460),
 (43933, 412460),
@@ -19030,7 +19647,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43967, 412460),
 (43968, 412460),
 (43970, NULL),
-(43971, 412460),
+(43971, 412460);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (43972, 412463),
 (43973, 412460),
 (43974, 412463),
@@ -19060,7 +19678,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44030, 400235),
 (44032, 400235),
 (44033, NULL),
-(44035, 412228),
+(44035, 412228);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44036, NULL),
 (44039, 412228),
 (44040, 400235),
@@ -19090,7 +19709,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44073, NULL),
 (44074, 400211),
 (44076, 400235),
-(44077, 400235),
+(44077, 400235);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44080, 400235),
 (44081, 400235),
 (44082, 400235),
@@ -19120,7 +19740,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44110, 412327),
 (44111, 400227),
 (44112, 412327),
-(44113, 412327),
+(44113, 412327);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44114, 412327),
 (44115, 412327),
 (44116, 400227),
@@ -19149,7 +19770,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44139, 400235),
 (44140, 400227),
 (44141, 412228),
-(44142, 400227),
+(44142, 400227);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44143, 400235),
 (44144, 400227),
 (44145, 400227),
@@ -19181,7 +19803,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44211, NULL),
 (44212, 412228),
 (44214, 412462),
-(44215, 412462),
+(44215, 412462);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44216, 412228),
 (44217, 412462),
 (44221, 412228),
@@ -19211,7 +19834,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44260, 412462),
 (44262, 400235),
 (44264, 412228),
-(44265, NULL),
+(44265, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44266, 400352),
 (44270, 412462),
 (44272, 400352),
@@ -19241,7 +19865,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44312, 412228),
 (44313, 412228),
 (44314, 412228),
-(44315, NULL),
+(44315, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44316, NULL),
 (44317, NULL),
 (44319, 412228),
@@ -19272,7 +19897,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44413, 412460),
 (44415, NULL),
 (44416, NULL),
-(44417, 400235),
+(44417, 400235);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44418, 400235),
 (44420, 400352),
 (44422, NULL),
@@ -19302,7 +19928,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44452, 412460),
 (44453, NULL),
 (44454, 412460),
-(44455, 412460),
+(44455, 412460);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44460, 412460),
 (44470, 400352),
 (44471, 412460),
@@ -19332,7 +19959,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44512, 412460),
 (44513, NULL),
 (44514, 412460),
-(44515, 412460),
+(44515, 412460);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44555, NULL),
 (44598, NULL),
 (44599, NULL),
@@ -19362,7 +19990,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44630, NULL),
 (44631, NULL),
 (44632, 412462),
-(44633, 412463),
+(44633, 412463);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44634, 412460),
 (44636, NULL),
 (44637, 412463),
@@ -19392,7 +20021,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44666, 412462),
 (44667, 412462),
 (44669, 412462),
-(44670, 412462),
+(44670, 412462);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44671, 412463),
 (44672, 412460),
 (44675, 412463),
@@ -19421,7 +20051,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44705, 412462),
 (44706, 412462),
 (44707, 412462),
-(44708, 412462),
+(44708, 412462);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44709, 412462),
 (44710, 412462),
 (44711, NULL),
@@ -19451,7 +20082,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44816, 400211),
 (44817, 412226),
 (44818, 412256),
-(44820, 412226),
+(44820, 412226);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44822, 412462),
 (44824, 400211),
 (44825, 412256),
@@ -19480,7 +20112,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44854, 412256),
 (44855, 412256),
 (44856, 412256),
-(44857, 400211),
+(44857, 400211);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44859, 400211),
 (44860, 412256),
 (44861, 412256),
@@ -19510,7 +20143,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (44906, 412226),
 (44907, 412226),
 (44999, NULL),
-(45001, 400071),
+(45001, 400071);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45002, 400071),
 (45003, 400036),
 (45004, NULL),
@@ -19540,7 +20174,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45051, NULL),
 (45052, 400071),
 (45053, 400071),
-(45054, 400411),
+(45054, 400411);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45055, NULL),
 (45056, 400071),
 (45061, NULL),
@@ -19570,7 +20205,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45115, 412010),
 (45118, 400411),
 (45119, NULL),
-(45120, 400633),
+(45120, 400633);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45121, 400633),
 (45122, 412010),
 (45123, 400411),
@@ -19600,7 +20236,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45162, 412010),
 (45164, 400411),
 (45165, NULL),
-(45166, NULL),
+(45166, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45167, 400633),
 (45168, 412010),
 (45169, 400411),
@@ -19629,7 +20266,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45218, 400071),
 (45219, 400071),
 (45220, 400071),
-(45221, NULL),
+(45221, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45222, NULL),
 (45223, 400071),
 (45224, 400071),
@@ -19659,7 +20297,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45248, 400071),
 (45249, 400036),
 (45250, NULL),
-(45251, 400071),
+(45251, 400071);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45252, 400071),
 (45253, NULL),
 (45254, NULL),
@@ -19691,7 +20330,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45308, 400036),
 (45309, 400411),
 (45310, 400036),
-(45311, 400411),
+(45311, 400411);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45312, 412226),
 (45314, 412265),
 (45315, 400411),
@@ -19720,7 +20360,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45339, 400036),
 (45340, 412226),
 (45341, 412265),
-(45342, 400411),
+(45342, 400411);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45343, NULL),
 (45344, 412226),
 (45345, 400411),
@@ -19750,7 +20391,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45373, 400036),
 (45374, NULL),
 (45377, 400411),
-(45378, 400036),
+(45378, 400036);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45380, 412226),
 (45381, 400411),
 (45382, 400036),
@@ -19780,7 +20422,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45418, 400411),
 (45419, 400411),
 (45420, 400411),
-(45422, NULL),
+(45422, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45423, NULL),
 (45424, 400411),
 (45426, 400411),
@@ -19811,7 +20454,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45482, NULL),
 (45490, NULL),
 (45501, NULL),
-(45502, 412226),
+(45502, 412226);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45503, 412265),
 (45504, 412265),
 (45505, 412265),
@@ -19841,7 +20485,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45642, 412010),
 (45643, NULL),
 (45644, 412265),
-(45645, 412460),
+(45645, 412460);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45646, 412010),
 (45647, 412463),
 (45648, 412460),
@@ -19870,7 +20515,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45680, 412460),
 (45681, 412463),
 (45682, 412460),
-(45683, NULL),
+(45683, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45684, 400633),
 (45685, 412460),
 (45686, 412460),
@@ -19900,7 +20546,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45723, 412460),
 (45724, 412460),
 (45727, 412460),
-(45729, 412460),
+(45729, 412460);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45732, 412460),
 (45734, 412460),
 (45735, 412460),
@@ -19929,7 +20576,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45777, NULL),
 (45778, 412460),
 (45779, 400061),
-(45780, 412460),
+(45780, 412460);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45781, NULL),
 (45782, 412463),
 (45783, NULL),
@@ -19959,7 +20607,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45822, 412256),
 (45826, NULL),
 (45827, 412256),
-(45828, 412256),
+(45828, 412256);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45830, 412226),
 (45831, 412256),
 (45832, 412256),
@@ -19989,7 +20638,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45861, 412256),
 (45862, 412226),
 (45863, 412256),
-(45864, NULL),
+(45864, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45865, 412226),
 (45866, 400036),
 (45867, 412226),
@@ -20018,7 +20668,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45891, 412256),
 (45893, NULL),
 (45894, 412226),
-(45895, 412226),
+(45895, 412226);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (45896, 412226),
 (45897, 412226),
 (45898, 412256),
@@ -20048,7 +20699,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46044, 400315),
 (46045, 400055),
 (46046, NULL),
-(46047, 400055),
+(46047, 400055);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46048, 400315),
 (46049, 400055),
 (46050, 400055),
@@ -20077,7 +20729,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46102, 412426),
 (46103, 412426),
 (46104, 400055),
-(46105, 412427),
+(46105, 412427);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46106, 412426),
 (46107, 412258),
 (46110, 400055),
@@ -20106,7 +20759,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46142, 400055),
 (46143, 400055),
 (46144, 400055),
-(46146, NULL),
+(46146, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46147, 412426),
 (46148, 400055),
 (46149, 412426),
@@ -20135,7 +20789,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46180, 412427),
 (46181, 400315),
 (46182, 400055),
-(46183, NULL),
+(46183, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46184, 400055),
 (46186, 400055),
 (46201, 412258),
@@ -20165,7 +20820,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46229, 400055),
 (46230, NULL),
 (46231, 412426),
-(46234, 412426),
+(46234, 412426);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46235, 400055),
 (46236, 400055),
 (46237, 400055),
@@ -20196,7 +20852,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46285, NULL),
 (46290, 400055),
 (46291, NULL),
-(46295, NULL),
+(46295, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46296, NULL),
 (46298, NULL),
 (46301, 412205),
@@ -20226,7 +20883,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46349, 412421),
 (46350, 412205),
 (46352, NULL),
-(46355, NULL),
+(46355, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46356, 412421),
 (46360, 412205),
 (46361, NULL),
@@ -20256,7 +20914,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46402, 400417),
 (46403, 400417),
 (46404, 400417),
-(46405, 400417),
+(46405, 400417);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46406, 400417),
 (46407, 400417),
 (46408, 400417),
@@ -20285,7 +20944,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46532, 412205),
 (46534, 412205),
 (46536, 412205),
-(46537, 412205),
+(46537, 412205);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46538, 412392),
 (46539, 412392),
 (46540, 412392),
@@ -20314,7 +20974,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46580, 412392),
 (46581, NULL),
 (46582, 412392),
-(46590, 412392),
+(46590, 412392);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46595, 412205),
 (46601, 412205),
 (46604, NULL),
@@ -20345,7 +21006,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46710, 412392),
 (46711, 412256),
 (46713, NULL),
-(46714, 400055),
+(46714, 400055);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46720, NULL),
 (46721, 412256),
 (46723, 412392),
@@ -20374,7 +21036,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46765, 412392),
 (46766, 400055),
 (46767, 412392),
-(46769, NULL),
+(46769, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46770, 412392),
 (46771, NULL),
 (46772, 412256),
@@ -20404,7 +21067,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46798, 412392),
 (46799, 412392),
 (46801, NULL),
-(46802, 412392),
+(46802, 412392);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46803, 412392),
 (46804, 412392),
 (46805, 412392),
@@ -20435,7 +21099,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46862, NULL),
 (46863, NULL),
 (46864, NULL),
-(46865, NULL),
+(46865, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46866, NULL),
 (46867, NULL),
 (46868, NULL),
@@ -20466,7 +21131,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46926, 400055),
 (46928, 400055),
 (46929, 400055),
-(46930, 400055),
+(46930, 400055);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46931, 412205),
 (46932, 400055),
 (46933, 400055),
@@ -20496,7 +21162,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46967, NULL),
 (46968, 412205),
 (46970, 400055),
-(46971, NULL),
+(46971, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (46974, 400055),
 (46975, 400055),
 (46977, NULL),
@@ -20526,7 +21193,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47016, 400315),
 (47017, 412428),
 (47018, 412428),
-(47019, 412428),
+(47019, 412428);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47020, 400633),
 (47021, 412428),
 (47022, 400315),
@@ -20556,7 +21224,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47110, NULL),
 (47111, 400633),
 (47112, 412278),
-(47114, 412428),
+(47114, 412428);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47115, 412428),
 (47116, 412428),
 (47117, 412278),
@@ -20586,7 +21255,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47144, NULL),
 (47145, 412428),
 (47146, NULL),
-(47147, 400633),
+(47147, 400633);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47150, 412428),
 (47151, NULL),
 (47160, 412428),
@@ -20616,7 +21286,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47229, 412428),
 (47230, 412428),
 (47231, 412428),
-(47232, 412428),
+(47232, 412428);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47234, 400055),
 (47235, 412428),
 (47236, NULL),
@@ -20646,7 +21317,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47303, 400055),
 (47304, 400315),
 (47305, 400315),
-(47306, NULL),
+(47306, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47307, NULL),
 (47308, NULL),
 (47320, 400315),
@@ -20676,7 +21348,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47354, 400315),
 (47355, 400315),
 (47356, 400315),
-(47357, 400315),
+(47357, 400315);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47358, 400315),
 (47359, 400315),
 (47360, 400315),
@@ -20706,7 +21379,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47394, 400315),
 (47396, 400315),
 (47401, 412428),
-(47402, NULL),
+(47402, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47403, 412427),
 (47404, 412427),
 (47405, NULL),
@@ -20736,7 +21410,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47448, 400315),
 (47449, 412427),
 (47451, 412426),
-(47452, 412428),
+(47452, 412428);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47453, 412427),
 (47454, 412428),
 (47455, 412427),
@@ -20766,7 +21441,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47521, 412428),
 (47522, 412427),
 (47523, 412427),
-(47524, 412427),
+(47524, 412427);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47525, 412428),
 (47527, 412427),
 (47528, 412427),
@@ -20796,7 +21472,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47568, 412427),
 (47573, NULL),
 (47574, 412278),
-(47575, 412428),
+(47575, 412428);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47576, 412428),
 (47577, 412428),
 (47578, 412427),
@@ -20826,7 +21503,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47620, 400431),
 (47629, NULL),
 (47630, 400431),
-(47631, 412427),
+(47631, 412427);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47633, 412427),
 (47634, 412427),
 (47635, 412278),
@@ -20839,8 +21517,7 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47649, 412427),
 (47654, 412427),
 (47660, 412427),
-(47665, 412427);
-INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
+(47665, 412427),
 (47666, 412427),
 (47670, 412427),
 (47683, 412427),
@@ -20857,7 +21534,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47713, 400431),
 (47714, 412427),
 (47715, 400431),
-(47716, NULL),
+(47716, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47719, NULL),
 (47720, 412427),
 (47721, NULL),
@@ -20890,7 +21568,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47809, NULL),
 (47811, NULL),
 (47812, NULL),
-(47813, NULL),
+(47813, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47814, NULL),
 (47830, NULL),
 (47831, NULL),
@@ -20920,7 +21599,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47859, 412427),
 (47860, 412427),
 (47861, 412427),
-(47862, 412427),
+(47862, 412427);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47863, 412427),
 (47864, NULL),
 (47865, 412427),
@@ -20950,7 +21630,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47909, 412426),
 (47916, 412426),
 (47917, 412427),
-(47918, 412427),
+(47918, 412427);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47920, 412205),
 (47921, 412427),
 (47922, 400417),
@@ -20980,7 +21661,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47950, 412205),
 (47951, 400417),
 (47952, 412427),
-(47954, 412427),
+(47954, 412427);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47955, 412426),
 (47957, 412205),
 (47958, 412426),
@@ -21009,7 +21691,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47987, 412427),
 (47988, NULL),
 (47989, 412427),
-(47990, 412426),
+(47990, 412426);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (47991, 412427),
 (47992, 412427),
 (47993, 412427),
@@ -21039,7 +21722,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48030, 400238),
 (48032, 400276),
 (48034, 400260),
-(48035, 400276),
+(48035, 400276);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48036, 400276),
 (48037, NULL),
 (48038, 400276),
@@ -21069,7 +21753,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48068, NULL),
 (48069, 400238),
 (48070, 400238),
-(48071, 412305),
+(48071, 412305);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48072, 412305),
 (48073, 412305),
 (48074, 400276),
@@ -21099,7 +21784,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48103, 412213),
 (48104, 400110),
 (48105, 412213),
-(48106, NULL),
+(48106, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48107, NULL),
 (48108, 412213),
 (48109, 400110),
@@ -21129,7 +21815,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48136, NULL),
 (48137, 412213),
 (48138, 400080),
-(48139, 400342),
+(48139, 400342);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48140, 400110),
 (48141, 400260),
 (48143, 400342),
@@ -21159,7 +21846,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48176, 412213),
 (48177, NULL),
 (48178, 400260),
-(48179, 400110),
+(48179, 400110);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48180, 400110),
 (48182, 400110),
 (48183, 400110),
@@ -21188,7 +21876,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48211, 400080),
 (48212, 400080),
 (48213, 412440),
-(48214, 412440),
+(48214, 412440);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48215, 412440),
 (48216, 412440),
 (48217, 400080),
@@ -21218,7 +21907,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48242, 400110),
 (48243, NULL),
 (48244, NULL),
-(48255, NULL),
+(48255, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48260, NULL),
 (48264, NULL),
 (48265, NULL),
@@ -21249,7 +21939,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48316, 400276),
 (48317, 400276),
 (48318, NULL),
-(48320, 412305),
+(48320, 412305);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48321, NULL),
 (48322, 412305),
 (48323, 400260),
@@ -21279,7 +21970,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48357, 400260),
 (48359, 400342),
 (48360, 400342),
-(48361, NULL),
+(48361, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48362, 400342),
 (48363, 400342),
 (48366, NULL),
@@ -21309,7 +22001,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48414, 400342),
 (48415, 400216),
 (48416, 400276),
-(48417, 400058),
+(48417, 400058);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48418, 400216),
 (48419, 400276),
 (48420, 400216),
@@ -21338,7 +22031,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48449, 400216),
 (48450, 400276),
 (48451, 400216),
-(48453, 400216),
+(48453, 400216);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48454, 400276),
 (48455, 400216),
 (48456, 400276),
@@ -21367,7 +22061,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48505, 400216),
 (48506, 400216),
 (48507, 400216),
-(48509, 400216),
+(48509, 400216);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48519, 400216),
 (48529, 400216),
 (48531, NULL),
@@ -21398,7 +22093,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48615, 400058),
 (48616, 400058),
 (48617, 400058),
-(48618, 400058),
+(48618, 400058);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48619, 412436),
 (48620, 400058),
 (48621, 412436),
@@ -21427,7 +22123,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48651, 400058),
 (48652, 400058),
 (48653, 400058),
-(48654, 412436),
+(48654, 412436);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48655, 400058),
 (48656, 400058),
 (48657, 400058),
@@ -21457,7 +22154,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48727, 400216),
 (48728, 412436),
 (48729, 400216),
-(48730, 412436),
+(48730, 412436);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48731, 400276),
 (48732, 400216),
 (48733, 400216),
@@ -21486,7 +22184,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48759, 400216),
 (48760, 400216),
 (48761, 412436),
-(48762, 412436),
+(48762, 412436);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48763, 412436),
 (48764, NULL),
 (48765, 412436),
@@ -21516,7 +22215,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48821, 412213),
 (48822, 400342),
 (48823, 400342),
-(48824, 400342),
+(48824, 400342);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48825, NULL),
 (48826, NULL),
 (48827, 412213),
@@ -21546,7 +22246,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48853, 400342),
 (48854, 412213),
 (48856, 400058),
-(48857, 400342),
+(48857, 400342);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48858, 400058),
 (48859, NULL),
 (48860, 412438),
@@ -21576,7 +22277,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48886, 400058),
 (48887, NULL),
 (48888, 400058),
-(48889, 400058),
+(48889, 400058);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48890, 412213),
 (48891, 400058),
 (48892, 400342),
@@ -21607,7 +22309,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48933, 400342),
 (48937, NULL),
 (48950, NULL),
-(48951, NULL),
+(48951, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (48956, NULL),
 (48980, NULL),
 (49001, 400414),
@@ -21637,7 +22340,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49026, 400414),
 (49027, 400414),
 (49028, 412213),
-(49029, 412213),
+(49029, 412213);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49030, 412213),
 (49031, 400414),
 (49032, 400414),
@@ -21667,7 +22371,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49061, 400414),
 (49062, NULL),
 (49063, NULL),
-(49064, 400414),
+(49064, 400414);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49065, 400414),
 (49066, 412213),
 (49067, 400414),
@@ -21697,7 +22402,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49092, 412213),
 (49093, 400414),
 (49094, 412213),
-(49095, 400414),
+(49095, 400414);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49096, 412213),
 (49097, 400414),
 (49098, 400414),
@@ -21726,7 +22432,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49201, 412213),
 (49202, 412213),
 (49203, 412213),
-(49204, NULL),
+(49204, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49220, 412213),
 (49221, 412213),
 (49224, 412213),
@@ -21755,7 +22462,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49252, 412213),
 (49253, 412213),
 (49254, 412213),
-(49255, 412256),
+(49255, 412256);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49256, 412256),
 (49257, NULL),
 (49258, NULL),
@@ -21785,7 +22493,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49284, 412213),
 (49285, 412213),
 (49286, 412213),
-(49287, 412213),
+(49287, 412213);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49288, 412256),
 (49289, 412213),
 (49301, 412438),
@@ -21815,7 +22524,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49328, 400414),
 (49329, 400058),
 (49330, 412437),
-(49331, 412438),
+(49331, 412438);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49332, 400058),
 (49333, 400414),
 (49335, 400414),
@@ -21845,7 +22555,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49406, 412437),
 (49408, 400414),
 (49409, NULL),
-(49410, 412437),
+(49410, 412437);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49411, 412437),
 (49412, 412437),
 (49413, NULL),
@@ -21875,7 +22586,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49442, 412437),
 (49443, NULL),
 (49444, 412437),
-(49445, 412437),
+(49445, 412437);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49446, 412437),
 (49448, 412437),
 (49449, 412437),
@@ -21905,7 +22617,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49509, 412438),
 (49510, NULL),
 (49512, 412438),
-(49514, NULL),
+(49514, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49515, NULL),
 (49516, NULL),
 (49518, NULL),
@@ -21936,7 +22649,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49622, 412436),
 (49623, 400058),
 (49625, 400058),
-(49626, 412437),
+(49626, 412437);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49627, 412436),
 (49628, 412437),
 (49629, 412436),
@@ -21965,7 +22679,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49655, 400058),
 (49656, 400058),
 (49657, 400058),
-(49659, 400058),
+(49659, 400058);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49660, 412437),
 (49663, 400058),
 (49664, 400058),
@@ -21995,7 +22710,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49706, 412436),
 (49707, 412436),
 (49709, 412436),
-(49710, 412436),
+(49710, 412436);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49711, NULL),
 (49712, 412436),
 (49713, 412436),
@@ -22025,7 +22741,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49740, 412436),
 (49743, 412436),
 (49744, 412436),
-(49745, 412436),
+(49745, 412436);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49746, 412436),
 (49747, 412436),
 (49748, 412436),
@@ -22054,7 +22771,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49779, 412436),
 (49780, 412436),
 (49781, 412436),
-(49782, 412436),
+(49782, 412436);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49783, 412436),
 (49784, NULL),
 (49785, NULL),
@@ -22084,7 +22802,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49819, NULL),
 (49820, 412436),
 (49821, 412436),
-(49822, 412436),
+(49822, 412436);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49825, 412436),
 (49826, 412436),
 (49827, 412436),
@@ -22113,7 +22832,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49863, 412436),
 (49864, 412436),
 (49865, NULL),
-(49866, 412436),
+(49866, 412436);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49868, 412436),
 (49870, 412436),
 (49871, 412436),
@@ -22142,7 +22862,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49903, 412436),
 (49905, 412436),
 (49908, 412436),
-(49910, 412436),
+(49910, 412436);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49911, 412436),
 (49912, 412436),
 (49913, 412436),
@@ -22171,7 +22892,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49952, 412436),
 (49953, 412436),
 (49955, 412436),
-(49958, 412436),
+(49958, 412436);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (49959, 412436),
 (49960, 412436),
 (49961, 412436),
@@ -22201,7 +22923,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50020, 400220),
 (50021, 400042),
 (50022, 400220),
-(50025, 400220),
+(50025, 400220);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50026, 400220),
 (50027, 400042),
 (50028, 400042),
@@ -22230,7 +22953,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50054, 400042),
 (50055, 400042),
 (50056, 400234),
-(50057, 400042),
+(50057, 400042);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50058, 400220),
 (50059, 400234),
 (50060, 400158),
@@ -22259,7 +22983,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50106, 400042),
 (50107, 400234),
 (50108, 400220),
-(50109, 400042),
+(50109, 400042);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50110, 400220),
 (50111, 400042),
 (50112, 400042),
@@ -22288,7 +23013,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50138, 400042),
 (50139, 400042),
 (50140, 400158),
-(50141, 400042),
+(50141, 400042);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50142, 400042),
 (50143, 400042),
 (50144, 400220),
@@ -22317,7 +23043,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50168, 400042),
 (50169, 400042),
 (50170, 400042),
-(50171, 400042),
+(50171, 400042);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50173, 400042),
 (50174, 400220),
 (50177, NULL),
@@ -22346,7 +23073,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50229, 400234),
 (50230, 400234),
 (50231, 400234),
-(50232, 400042),
+(50232, 400042);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50233, 400220),
 (50234, 400042),
 (50235, 400234),
@@ -22375,7 +23103,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50261, 400234),
 (50262, 400220),
 (50263, 400234),
-(50264, 400220),
+(50264, 400220);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50265, 400042),
 (50266, 400042),
 (50268, 400042),
@@ -22405,7 +23134,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50315, 400042),
 (50316, 400042),
 (50317, 400042),
-(50318, NULL),
+(50318, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50319, NULL),
 (50320, 400042),
 (50321, 400042),
@@ -22438,7 +23168,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50369, NULL),
 (50380, NULL),
 (50381, NULL),
-(50391, NULL),
+(50391, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50392, NULL),
 (50393, NULL),
 (50394, NULL),
@@ -22468,7 +23199,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50441, 400234),
 (50444, 400234),
 (50446, 400234),
-(50447, 400234),
+(50447, 400234);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50448, 400234),
 (50449, 400234),
 (50450, 400234),
@@ -22497,7 +23229,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50476, 400234),
 (50477, 400234),
 (50478, 400234),
-(50479, 400234),
+(50479, 400234);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50480, 400234),
 (50481, NULL),
 (50482, 400234),
@@ -22526,7 +23259,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50531, 412214),
 (50532, 400234),
 (50533, 400234),
-(50535, 400220),
+(50535, 400220);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50536, 400234),
 (50538, 400234),
 (50539, 400234),
@@ -22555,7 +23289,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50568, 400220),
 (50569, 400234),
 (50570, 400234),
-(50571, 400234),
+(50571, 400234);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50573, 400234),
 (50574, 400234),
 (50575, 400234),
@@ -22584,7 +23319,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50604, 400042),
 (50605, 412208),
 (50606, 412208),
-(50607, 412208),
+(50607, 412208);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50608, NULL),
 (50609, 400042),
 (50611, 412208),
@@ -22613,7 +23349,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50638, 400042),
 (50641, 412208),
 (50642, 400042),
-(50643, 400042),
+(50643, 400042);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50644, 412208),
 (50645, 412208),
 (50647, 412208),
@@ -22642,7 +23379,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50672, 400042),
 (50673, 400042),
 (50674, 412208),
-(50675, 400042),
+(50675, 400042);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50676, 412208),
 (50677, 412208),
 (50680, 400042),
@@ -22672,7 +23410,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50847, 400220),
 (50848, 400220),
 (50849, 400220),
-(50851, 400220),
+(50851, 400220);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (50853, 400220),
 (50854, 400158),
 (50857, 400220),
@@ -22702,7 +23441,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51011, 400220),
 (51012, 400220),
 (51014, 400220),
-(51015, NULL),
+(51015, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51016, 400220),
 (51017, NULL),
 (51018, 400220),
@@ -22731,7 +23471,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51045, 400220),
 (51046, 400220),
 (51047, 400220),
-(51048, 400220),
+(51048, 400220);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51049, 400220),
 (51050, 400220),
 (51051, 400220),
@@ -22760,7 +23501,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51231, 400220),
 (51232, 400220),
 (51234, 400220),
-(51235, 400220),
+(51235, 400220);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51237, 400220),
 (51238, 400220),
 (51239, 400220),
@@ -22789,7 +23531,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51345, 412214),
 (51346, 400220),
 (51347, 412214),
-(51349, 400220),
+(51349, 400220);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51350, 400220),
 (51351, 400220),
 (51354, 400220),
@@ -22818,7 +23561,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51447, 400220),
 (51448, 400220),
 (51449, 400220),
-(51450, 400220),
+(51450, 400220);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51451, 400220),
 (51452, 400220),
 (51453, 400220),
@@ -22847,7 +23591,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51529, 400220),
 (51530, 400220),
 (51531, 400220),
-(51532, 400220),
+(51532, 400220);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51533, 400220),
 (51534, 400220),
 (51535, 400220),
@@ -22876,7 +23621,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51561, 400220),
 (51562, 400220),
 (51563, 400220),
-(51564, 400220),
+(51564, 400220);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51565, 400220),
 (51566, 400220),
 (51570, 400220),
@@ -22906,7 +23652,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51646, 400220),
 (51647, 400158),
 (51648, 400220),
-(51649, 400220),
+(51649, 400220);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (51650, 400220),
 (51651, NULL),
 (51652, 400220),
@@ -22935,7 +23682,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52046, 412208),
 (52047, 412208),
 (52048, 412208),
-(52049, 412208),
+(52049, 412208);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52050, 412208),
 (52052, 412208),
 (52053, 412208),
@@ -22964,7 +23712,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52132, 400234),
 (52133, 412208),
 (52134, 412214),
-(52135, 412208),
+(52135, 412208);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52136, 412214),
 (52140, 412214),
 (52141, 412208),
@@ -22993,7 +23742,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52171, 400234),
 (52172, 400234),
 (52175, 412208),
-(52201, 412209),
+(52201, 412209);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52202, 412209),
 (52203, 400042),
 (52204, NULL),
@@ -23022,7 +23772,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52227, 412209),
 (52228, 400042),
 (52229, 400042),
-(52231, 400042),
+(52231, 400042);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52232, 400042),
 (52233, 412209),
 (52235, 412209),
@@ -23051,7 +23802,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52307, 400042),
 (52308, 400042),
 (52309, 412208),
-(52310, 412209),
+(52310, 412209);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52312, 412208),
 (52313, 400042),
 (52314, 412209),
@@ -23080,7 +23832,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52338, 412209),
 (52339, 400042),
 (52340, 412209),
-(52341, 412209),
+(52341, 412209);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52342, 400042),
 (52344, NULL),
 (52345, 400042),
@@ -23110,7 +23863,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52409, NULL),
 (52410, NULL),
 (52411, 412209),
-(52497, NULL),
+(52497, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52498, NULL),
 (52499, NULL),
 (52501, 412209),
@@ -23140,7 +23894,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52561, 400042),
 (52562, 400042),
 (52563, 400042),
-(52565, 412209),
+(52565, 412209);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52566, 412209),
 (52567, 412209),
 (52568, 400042),
@@ -23169,7 +23924,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52620, 412292),
 (52621, 412209),
 (52623, 412209),
-(52624, 412209),
+(52624, 412209);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52625, 412209),
 (52626, 412292),
 (52627, 412209),
@@ -23198,7 +23954,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52656, 412209),
 (52657, NULL),
 (52658, 412209),
-(52659, 412209),
+(52659, 412209);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52660, 412209),
 (52701, 412208),
 (52720, 412209),
@@ -23227,7 +23984,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52752, 412209),
 (52753, 412208),
 (52754, 412209),
-(52755, 412209),
+(52755, 412209);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52756, 412208),
 (52757, 412208),
 (52758, 412208),
@@ -23257,7 +24015,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (52809, NULL),
 (53001, 400318),
 (53002, 400365),
-(53003, 400318),
+(53003, 400318);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53004, 400365),
 (53005, 400365),
 (53006, 400318),
@@ -23286,7 +24045,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53033, 400365),
 (53034, 400318),
 (53035, 400318),
-(53036, 400365),
+(53036, 400365);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53037, 400365),
 (53038, 400365),
 (53039, 400318),
@@ -23316,7 +24076,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53070, 400318),
 (53072, 400365),
 (53073, 400318),
-(53074, 400365),
+(53074, 400365);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53075, 400365),
 (53076, 400365),
 (53078, 400318),
@@ -23346,7 +24107,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53108, 400351),
 (53109, NULL),
 (53110, 400661),
-(53114, 400351),
+(53114, 400351);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53115, 400351),
 (53118, 400365),
 (53119, 400365),
@@ -23376,7 +24138,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53151, 400365),
 (53152, NULL),
 (53153, 400365),
-(53154, 400661),
+(53154, 400661);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53156, 400365),
 (53157, NULL),
 (53158, 412424),
@@ -23406,7 +24169,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53195, 400351),
 (53201, NULL),
 (53202, 400661),
-(53203, 400661),
+(53203, 400661);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53204, 400661),
 (53205, 400661),
 (53206, 400661),
@@ -23435,7 +24199,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53233, 400661),
 (53234, NULL),
 (53235, 400661),
-(53237, NULL),
+(53237, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53259, NULL),
 (53263, NULL),
 (53267, NULL),
@@ -23467,7 +24232,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53504, 400013),
 (53505, 400351),
 (53506, 400218),
-(53507, 400218),
+(53507, 400218);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53508, 400013),
 (53510, 400218),
 (53511, 400013),
@@ -23496,7 +24262,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53538, 400013),
 (53540, 400218),
 (53541, 400218),
-(53542, NULL),
+(53542, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53543, 400218),
 (53544, 400013),
 (53545, 400013),
@@ -23525,7 +24292,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53573, 400218),
 (53574, 400013),
 (53575, 400013),
-(53576, 400013),
+(53576, 400013);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53577, 400218),
 (53578, 400013),
 (53579, 400318),
@@ -23555,7 +24323,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53705, 400013),
 (53706, 400013),
 (53707, NULL),
-(53708, NULL),
+(53708, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53709, NULL),
 (53710, NULL),
 (53711, 400013),
@@ -23587,7 +24356,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53793, NULL),
 (53794, NULL),
 (53801, 412208),
-(53802, NULL),
+(53802, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53803, 400218),
 (53804, 400218),
 (53805, 400218),
@@ -23616,7 +24386,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53917, NULL),
 (53919, 400318),
 (53920, 400318),
-(53922, 400318),
+(53922, 400318);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53923, 400013),
 (53924, 400218),
 (53925, 400013),
@@ -23645,7 +24416,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53950, 400218),
 (53951, 400013),
 (53952, 400318),
-(53953, 400318),
+(53953, 400318);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (53954, 400013),
 (53955, 400013),
 (53956, 400013),
@@ -23674,7 +24446,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54013, 400218),
 (54014, 400218),
 (54015, 400218),
-(54016, 400218),
+(54016, 400218);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54017, 412488),
 (54020, 400218),
 (54021, 400218),
@@ -23703,7 +24476,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54121, 412436),
 (54123, 400318),
 (54124, 412489),
-(54125, 412489),
+(54125, 412489);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54126, 412489),
 (54127, 412489),
 (54128, 412489),
@@ -23732,7 +24506,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54161, 412489),
 (54162, 412489),
 (54165, 412489),
-(54166, 412489),
+(54166, 412489);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54169, 400318),
 (54170, 412489),
 (54171, 412489),
@@ -23762,7 +24537,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54221, NULL),
 (54226, NULL),
 (54227, 412489),
-(54228, 400318),
+(54228, 400318);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54229, 412489),
 (54230, 412489),
 (54232, 400318),
@@ -23792,7 +24568,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54405, 412488),
 (54406, 412488),
 (54407, 412488),
-(54408, 412488),
+(54408, 412488);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54409, 412488),
 (54410, 412488),
 (54411, 412488),
@@ -23822,7 +24599,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54437, 412488),
 (54439, NULL),
 (54440, 412488),
-(54441, 412488),
+(54441, 412488);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54442, 412488),
 (54443, 412488),
 (54444, NULL),
@@ -23852,7 +24630,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54472, NULL),
 (54473, 412488),
 (54474, 412488),
-(54475, 412488),
+(54475, 412488);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54476, 412488),
 (54479, 412488),
 (54480, 412488),
@@ -23881,7 +24660,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54519, 412489),
 (54520, 412489),
 (54521, 412489),
-(54524, 412488),
+(54524, 412488);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54525, 412488),
 (54526, 412488),
 (54527, 412488),
@@ -23910,7 +24690,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54557, 412488),
 (54558, 412489),
 (54559, 412488),
-(54560, 412489),
+(54560, 412489);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54561, 412489),
 (54562, 412489),
 (54563, 412488),
@@ -23939,7 +24720,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54626, 400218),
 (54627, 400218),
 (54628, 400218),
-(54629, 400218),
+(54629, 400218);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54630, 400218),
 (54631, 400218),
 (54632, 400218),
@@ -23968,7 +24750,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54657, 400218),
 (54658, 400218),
 (54659, 400218),
-(54660, 400218),
+(54660, 400218);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54661, 400218),
 (54662, NULL),
 (54664, 400218),
@@ -23997,7 +24780,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54734, 400218),
 (54735, NULL),
 (54736, 400218),
-(54737, 400218),
+(54737, 400218);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54738, 400218),
 (54739, 412488),
 (54740, 400218),
@@ -24027,7 +24811,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54766, 412488),
 (54767, 400218),
 (54768, 412488),
-(54769, 400218),
+(54769, 400218);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54770, 400218),
 (54771, 412488),
 (54772, 400218),
@@ -24056,7 +24841,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54832, 412488),
 (54834, 412488),
 (54835, 412488),
-(54836, 412488),
+(54836, 412488);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54837, 412488),
 (54838, 412488),
 (54839, 412488),
@@ -24085,7 +24871,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54865, 412488),
 (54867, 412488),
 (54868, 412488),
-(54870, 412488),
+(54870, 412488);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54871, 412488),
 (54872, 412488),
 (54873, 412488),
@@ -24115,7 +24902,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54921, 412488),
 (54922, 412489),
 (54923, 400318),
-(54926, NULL),
+(54926, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54927, 400318),
 (54928, 412489),
 (54929, 412489),
@@ -24145,7 +24933,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54960, 400318),
 (54961, 412489),
 (54962, 412489),
-(54963, 400318),
+(54963, 400318);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (54964, 400318),
 (54965, 412489),
 (54966, 412488),
@@ -24175,7 +24964,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55006, 412441),
 (55007, 412441),
 (55008, 412441),
-(55009, 400224),
+(55009, 400224);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55010, 400224),
 (55011, 412216),
 (55012, 412441),
@@ -24204,7 +24994,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55042, 412216),
 (55043, 412216),
 (55044, 400224),
-(55045, 412441),
+(55045, 412441);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55046, 400224),
 (55047, 412488),
 (55049, 400224),
@@ -24234,7 +25025,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55079, 412441),
 (55080, 412441),
 (55082, 400218),
-(55083, NULL),
+(55083, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55084, 412488),
 (55085, 400224),
 (55087, 400224),
@@ -24263,7 +25055,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55119, 412216),
 (55120, 400224),
 (55121, 400224),
-(55122, 400224),
+(55122, 400224);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55123, 400224),
 (55124, 400224),
 (55125, 412216),
@@ -24295,7 +25088,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55191, NULL),
 (55301, 412216),
 (55302, 412216),
-(55303, 412216),
+(55303, 412216);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55304, 412216),
 (55305, 412303),
 (55306, 400224),
@@ -24324,7 +25118,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55330, 412441),
 (55331, 412303),
 (55332, 400316),
-(55333, 400316),
+(55333, 400316);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55334, 400316),
 (55335, 400316),
 (55336, 400316),
@@ -24353,7 +25148,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55360, 400224),
 (55361, NULL),
 (55362, 412216),
-(55363, 412216),
+(55363, 412216);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55364, 412303),
 (55365, NULL),
 (55366, NULL),
@@ -24383,7 +25179,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55390, 412216),
 (55391, 412303),
 (55392, NULL),
-(55393, NULL),
+(55393, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55394, NULL),
 (55395, 400224),
 (55396, 400316),
@@ -24412,7 +25209,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55420, 412303),
 (55421, 400259),
 (55422, 412215),
-(55423, 412303),
+(55423, 412303);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55424, 412303),
 (55425, 412303),
 (55426, 412303),
@@ -24441,7 +25239,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55449, 412216),
 (55450, 400259),
 (55454, 412215),
-(55455, 412215),
+(55455, 412215);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55458, NULL),
 (55459, NULL),
 (55460, NULL),
@@ -24475,7 +25274,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55563, NULL),
 (55564, NULL),
 (55565, NULL),
-(55566, NULL),
+(55566, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55567, NULL),
 (55568, NULL),
 (55569, NULL),
@@ -24508,7 +25308,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55596, NULL),
 (55597, NULL),
 (55598, NULL),
-(55599, NULL),
+(55599, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55601, 412441),
 (55602, 412441),
 (55603, 412441),
@@ -24537,7 +25338,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55713, 412441),
 (55716, 412441),
 (55717, 412441),
-(55718, 412441),
+(55718, 412441);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55719, 412441),
 (55720, 412441),
 (55721, 412441),
@@ -24566,7 +25368,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55751, 412441),
 (55752, 412441),
 (55753, 412441),
-(55756, 412441),
+(55756, 412441);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55757, 412441),
 (55758, 412441),
 (55760, 412441),
@@ -24596,7 +25399,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55793, 412441),
 (55795, 412441),
 (55796, 412441),
-(55797, 412441),
+(55797, 412441);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55798, 412441),
 (55801, NULL),
 (55802, 412441),
@@ -24626,7 +25430,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55919, 412214),
 (55920, 412214),
 (55921, 412214),
-(55922, 412214),
+(55922, 412214);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55923, 412214),
 (55924, 412214),
 (55925, 412214),
@@ -24655,7 +25460,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55953, 412214),
 (55954, 412214),
 (55955, 412214),
-(55956, 400224),
+(55956, 400224);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55957, 412214),
 (55959, 400218),
 (55960, 412214),
@@ -24684,7 +25490,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (55988, 412214),
 (55990, 412214),
 (55991, 412214),
-(55992, 400224),
+(55992, 400224);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56001, 412214),
 (56002, NULL),
 (56003, 412214),
@@ -24713,7 +25520,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56032, 412214),
 (56033, 412214),
 (56034, 412214),
-(56035, 412214),
+(56035, 412214);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56036, 412214),
 (56037, 412214),
 (56039, 412214),
@@ -24742,7 +25550,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56069, 400224),
 (56071, 400224),
 (56072, 412214),
-(56073, 412214),
+(56073, 412214);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56074, 412214),
 (56075, 412214),
 (56076, 412214),
@@ -24771,7 +25580,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56116, 412214),
 (56117, 412214),
 (56118, 412214),
-(56119, 412214),
+(56119, 412214);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56120, 412214),
 (56121, 412214),
 (56122, 412214),
@@ -24800,7 +25610,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56151, 412214),
 (56152, 400316),
 (56153, 412214),
-(56155, 412214),
+(56155, 412214);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56156, 412214),
 (56157, 400316),
 (56158, 412214),
@@ -24829,7 +25640,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56185, 412214),
 (56186, 412214),
 (56187, 412214),
-(56201, 400316),
+(56201, 400316);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56207, 400316),
 (56208, 400316),
 (56209, 400316),
@@ -24858,7 +25670,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56236, 400316),
 (56237, 400316),
 (56239, 400316),
-(56240, 400316),
+(56240, 400316);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56241, 400316),
 (56243, 400316),
 (56244, 400316),
@@ -24887,7 +25700,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56276, 400316),
 (56277, 400316),
 (56278, 400316),
-(56279, 400316),
+(56279, 400316);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56280, 400316),
 (56281, 400316),
 (56282, 400316),
@@ -24916,7 +25730,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56312, 400316),
 (56313, 412441),
 (56314, 412441),
-(56315, 400316),
+(56315, 400316);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56316, 400316),
 (56317, NULL),
 (56318, 400316),
@@ -24946,7 +25761,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56344, NULL),
 (56345, 412441),
 (56347, 412441),
-(56349, 400316),
+(56349, 400316);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56350, 412441),
 (56352, 400316),
 (56353, 412441),
@@ -24975,7 +25791,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56379, 412216),
 (56381, 400316),
 (56382, 412441),
-(56384, 412441),
+(56384, 412441);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56385, 400316),
 (56386, 412441),
 (56387, 412216),
@@ -25005,7 +25822,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56446, 400316),
 (56447, 412441),
 (56448, 412441),
-(56449, 412441),
+(56449, 412441);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56450, 412441),
 (56452, 412441),
 (56453, 412441),
@@ -25034,7 +25852,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56501, 400316),
 (56502, NULL),
 (56510, 400316),
-(56511, 400316),
+(56511, 400316);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56513, 400316),
 (56514, 400316),
 (56515, 400316),
@@ -25063,7 +25882,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56542, 400316),
 (56543, 400316),
 (56544, 400316),
-(56545, 400316),
+(56545, 400316);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56546, 400316),
 (56547, 400316),
 (56548, 412458),
@@ -25093,7 +25913,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56576, 400316),
 (56577, NULL),
 (56578, 400316),
-(56579, 400316),
+(56579, 400316);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56580, 400316),
 (56581, 400316),
 (56583, 412458),
@@ -25123,7 +25944,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56636, 412441),
 (56637, 412441),
 (56639, 412441),
-(56641, 412441),
+(56641, 412441);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56644, 400316),
 (56646, 400316),
 (56647, 412441),
@@ -25152,7 +25974,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56676, 412441),
 (56678, 412441),
 (56679, NULL),
-(56680, 412441),
+(56680, 412441);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56681, 412441),
 (56682, NULL),
 (56683, 412441),
@@ -25181,7 +26004,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56729, 400316),
 (56731, 400316),
 (56732, 400316),
-(56733, 412458),
+(56733, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (56734, 400316),
 (56735, 400316),
 (56736, 400316),
@@ -25210,7 +26034,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57004, 412475),
 (57005, 412475),
 (57006, 412475),
-(57007, NULL),
+(57007, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57010, 412475),
 (57012, 412475),
 (57013, 400220),
@@ -25239,7 +26064,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57038, 412475),
 (57039, 412475),
 (57040, 412475),
-(57041, 412475),
+(57041, 412475);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57042, 412475),
 (57043, 412475),
 (57044, 412475),
@@ -25268,7 +26094,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57068, 412214),
 (57069, 412475),
 (57070, 412475),
-(57071, 412475),
+(57071, 412475);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57072, 412475),
 (57073, 412475),
 (57075, 412475),
@@ -25299,7 +26126,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57197, NULL),
 (57198, NULL),
 (57201, 412475),
-(57202, NULL),
+(57202, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57212, 412475),
 (57213, 400316),
 (57214, 412475),
@@ -25328,7 +26156,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57243, 412475),
 (57244, 412475),
 (57245, 412475),
-(57246, 412475),
+(57246, 412475);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57247, 412475),
 (57248, 412475),
 (57249, 412475),
@@ -25357,7 +26186,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57276, 400316),
 (57278, 412475),
 (57279, 400316),
-(57301, 412475),
+(57301, 412475);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57311, 412475),
 (57312, 412475),
 (57313, 412475),
@@ -25386,7 +26216,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57344, 412475),
 (57345, 412475),
 (57346, 412475),
-(57348, 412475),
+(57348, 412475);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57349, 412475),
 (57350, 412475),
 (57353, 412475),
@@ -25415,7 +26246,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57380, 412475),
 (57381, 412475),
 (57382, 412475),
-(57383, 412475),
+(57383, 412475);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57384, 412475),
 (57385, 412475),
 (57386, 412475),
@@ -25445,7 +26277,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57445, 412475),
 (57446, 412475),
 (57448, 412475),
-(57449, 412475),
+(57449, 412475);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57450, 412475),
 (57451, 412475),
 (57452, 412475),
@@ -25474,7 +26307,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57501, 412475),
 (57520, 412475),
 (57521, 412475),
-(57522, 412475),
+(57522, 412475);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57523, 412475),
 (57526, 412475),
 (57528, 412475),
@@ -25503,7 +26337,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57562, 412475),
 (57563, 412475),
 (57564, 412475),
-(57566, 412475),
+(57566, 412475);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57567, 412475),
 (57568, 412475),
 (57569, 412475),
@@ -25532,7 +26367,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57632, 412475),
 (57633, 412475),
 (57634, 412475),
-(57636, 412475),
+(57636, 412475);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57638, 412458),
 (57639, NULL),
 (57640, 412475),
@@ -25562,7 +26398,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57709, NULL),
 (57714, 412475),
 (57716, 412475),
-(57717, 412475),
+(57717, 412475);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57718, 412475),
 (57719, 412475),
 (57720, 412475),
@@ -25591,7 +26428,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57758, 412475),
 (57759, 412475),
 (57760, 412475),
-(57761, 412475),
+(57761, 412475);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57762, 412475),
 (57763, 412475),
 (57764, 412475),
@@ -25620,7 +26458,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (57793, 412475),
 (57794, 412475),
 (57799, 412475),
-(58001, 412458),
+(58001, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58002, NULL),
 (58004, 412458),
 (58005, 412458),
@@ -25649,7 +26488,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58039, 412458),
 (58040, 412458),
 (58041, 412475),
-(58042, 412458),
+(58042, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58043, 412475),
 (58045, 412458),
 (58046, 412458),
@@ -25678,7 +26518,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58074, NULL),
 (58075, 412458),
 (58076, NULL),
-(58077, 412458),
+(58077, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58078, 412458),
 (58079, 412458),
 (58081, 412458),
@@ -25709,7 +26550,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58213, 412458),
 (58214, 412458),
 (58216, 412458),
-(58218, 412458),
+(58218, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58219, 412458),
 (58220, 412458),
 (58222, 412458),
@@ -25738,7 +26580,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58255, 412458),
 (58256, 412458),
 (58257, 412458),
-(58258, 412458),
+(58258, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58259, 412458),
 (58260, 412458),
 (58261, 412458),
@@ -25767,7 +26610,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58318, 412458),
 (58319, NULL),
 (58320, NULL),
-(58321, 412458),
+(58321, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58323, 412458),
 (58324, 412458),
 (58325, 412458),
@@ -25796,7 +26640,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58361, 412458),
 (58362, 412458),
 (58363, 412458),
-(58365, 412458),
+(58365, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58366, 412458),
 (58367, 412458),
 (58368, 412458),
@@ -25825,7 +26670,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58423, 412458),
 (58424, 412458),
 (58425, 412458),
-(58426, 412458),
+(58426, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58428, 412458),
 (58429, 412458),
 (58430, 412458),
@@ -25854,7 +26700,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58464, 412458),
 (58466, 412458),
 (58467, 412458),
-(58472, 412458),
+(58472, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58474, 412475),
 (58475, 412458),
 (58476, 412458),
@@ -25884,7 +26731,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58506, NULL),
 (58507, NULL),
 (58520, 412458),
-(58521, 412458),
+(58521, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58523, 412458),
 (58524, 412458),
 (58528, 412458),
@@ -25913,7 +26761,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58564, 412458),
 (58565, 412458),
 (58566, 412458),
-(58568, 412458),
+(58568, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58569, 412458),
 (58570, 412458),
 (58571, 412458),
@@ -25942,7 +26791,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58638, 412458),
 (58639, 412458),
 (58640, 412458),
-(58641, 412458),
+(58641, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58642, 412458),
 (58643, 412458),
 (58644, NULL),
@@ -25972,7 +26822,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58721, 412458),
 (58722, 412458),
 (58723, 412458),
-(58725, 412458),
+(58725, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58727, 412458),
 (58730, 412458),
 (58731, 412458),
@@ -26001,7 +26852,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58765, 412458),
 (58768, 412458),
 (58769, 412458),
-(58770, 412458),
+(58770, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58771, 412458),
 (58772, 412458),
 (58773, 412458),
@@ -26030,7 +26882,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58835, 412458),
 (58838, 412458),
 (58843, 412458),
-(58844, 412458),
+(58844, 412458);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (58845, 412458),
 (58847, 412458),
 (58849, 412458),
@@ -26059,7 +26912,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59024, 400335),
 (59025, 412294),
 (59026, 400335),
-(59027, 400335),
+(59027, 400335);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59028, 400335),
 (59029, 400335),
 (59030, 400335),
@@ -26088,7 +26942,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59061, 400335),
 (59062, 412294),
 (59063, 400335),
-(59064, 400335),
+(59064, 400335);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59065, 400335),
 (59066, 400335),
 (59067, 400335),
@@ -26118,7 +26973,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59103, NULL),
 (59104, NULL),
 (59105, 400335),
-(59106, 400335),
+(59106, 400335);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59107, NULL),
 (59108, NULL),
 (59111, NULL),
@@ -26148,7 +27004,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59242, 400335),
 (59243, 400335),
 (59244, 400335),
-(59245, NULL),
+(59245, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59247, 400335),
 (59248, 400335),
 (59250, 400335),
@@ -26178,7 +27035,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59316, NULL),
 (59317, 400335),
 (59318, 400335),
-(59319, NULL),
+(59319, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59322, 400335),
 (59323, 400335),
 (59324, 412475),
@@ -26208,7 +27066,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59405, 400335),
 (59406, NULL),
 (59410, 400335),
-(59411, 400335),
+(59411, 400335);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59412, 400335),
 (59414, 400335),
 (59416, 400335),
@@ -26237,7 +27096,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59447, 400335),
 (59448, 400335),
 (59450, 400335),
-(59451, 400335),
+(59451, 400335);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59452, 400335),
 (59453, 400335),
 (59454, 400335),
@@ -26266,7 +27126,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59485, 400335),
 (59486, 400335),
 (59487, 400335),
-(59489, NULL),
+(59489, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59501, 400335),
 (59520, 400335),
 (59521, 400335),
@@ -26296,7 +27157,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59620, NULL),
 (59623, NULL),
 (59624, NULL),
-(59625, NULL),
+(59625, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59626, NULL),
 (59631, 400335),
 (59632, 400335),
@@ -26326,7 +27188,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59716, 400335),
 (59717, NULL),
 (59718, 400335),
-(59719, NULL),
+(59719, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59720, 400376),
 (59721, 400335),
 (59722, 400335),
@@ -26355,7 +27218,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59752, 400335),
 (59754, 400335),
 (59755, 400335),
-(59756, 400335),
+(59756, 400335);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59758, 400376),
 (59759, 400335),
 (59760, NULL),
@@ -26385,7 +27249,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59831, 400335),
 (59832, 400335),
 (59833, 412419),
-(59834, 400335),
+(59834, 400335);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59835, NULL),
 (59836, 400335),
 (59837, 400335),
@@ -26414,7 +27279,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59868, 400335),
 (59870, 412419),
 (59871, 400376),
-(59872, 412419),
+(59872, 412419);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59873, 400335),
 (59874, 400335),
 (59875, 412419),
@@ -26443,7 +27309,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59929, 400335),
 (59930, 400335),
 (59931, 400335),
-(59932, 400335),
+(59932, 400335);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (59933, 400335),
 (59934, 400335),
 (59935, 412419),
@@ -26473,7 +27340,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60025, 400360),
 (60026, NULL),
 (60029, 400360),
-(60030, 412424),
+(60030, 412424);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60031, 412424),
 (60033, 400252),
 (60034, 400252),
@@ -26503,7 +27371,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60065, NULL),
 (60067, 412424),
 (60068, 400360),
-(60069, 412420),
+(60069, 412420);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60070, 412420),
 (60071, 412424),
 (60072, 412424),
@@ -26533,7 +27402,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60096, 412424),
 (60097, 412424),
 (60098, 412424),
-(60099, 412424),
+(60099, 412424);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60101, 412202),
 (60102, 412422),
 (60103, 412424),
@@ -26563,7 +27433,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60130, 400093),
 (60131, 412331),
 (60132, NULL),
-(60133, NULL),
+(60133, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60134, 412422),
 (60135, 412422),
 (60136, 412422),
@@ -26593,7 +27464,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60162, 400163),
 (60163, 400093),
 (60164, 400163),
-(60165, 400093),
+(60165, 400093);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60168, NULL),
 (60170, NULL),
 (60171, 400163),
@@ -26623,7 +27495,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60195, 412424),
 (60196, NULL),
 (60197, NULL),
-(60199, NULL),
+(60199, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60201, 400360),
 (60202, 400360),
 (60203, 400360),
@@ -26653,7 +27526,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60421, 412421),
 (60422, 400198),
 (60423, 400350),
-(60424, 400207),
+(60424, 400207);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60425, 400198),
 (60426, 400350),
 (60429, 400198),
@@ -26682,7 +27556,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60452, 400350),
 (60453, 400630),
 (60454, NULL),
-(60455, 400630),
+(60455, 400630);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60456, 400630),
 (60457, 400630),
 (60458, 400630),
@@ -26711,7 +27586,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60481, 412421),
 (60482, 400630),
 (60490, 400027),
-(60499, NULL),
+(60499, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60501, 400630),
 (60504, 400027),
 (60505, 412422),
@@ -26740,7 +27616,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60534, 400630),
 (60536, 412422),
 (60537, 412422),
-(60538, 412422),
+(60538, 412422);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60539, 412422),
 (60540, 400027),
 (60541, 412422),
@@ -26770,7 +27647,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60567, NULL),
 (60568, NULL),
 (60570, NULL),
-(60572, NULL),
+(60572, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60597, NULL),
 (60598, NULL),
 (60599, NULL),
@@ -26799,7 +27677,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60623, 400093),
 (60624, 400093),
 (60625, 400163),
-(60626, 400360),
+(60626, 400360);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60628, 400350),
 (60629, 400630),
 (60630, 412331),
@@ -26828,7 +27707,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60657, 412331),
 (60659, 412331),
 (60660, 412331),
-(60661, 400093),
+(60661, 400093);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60663, NULL),
 (60664, NULL),
 (60665, NULL),
@@ -26861,7 +27741,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60699, NULL),
 (60701, NULL),
 (60706, 412331),
-(60707, 400093),
+(60707, 400093);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60712, 412331),
 (60714, 412331),
 (60803, 400630),
@@ -26890,7 +27771,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60930, 400207),
 (60931, 400207),
 (60932, 400207),
-(60933, 400207),
+(60933, 400207);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60934, 400207),
 (60935, 412421),
 (60936, 400207),
@@ -26919,7 +27801,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60963, 400207),
 (60964, 400207),
 (60966, 400207),
-(60967, 400207),
+(60967, 400207);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (60968, 400207),
 (60969, 412421),
 (60970, 400207),
@@ -26948,7 +27831,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61031, 412422),
 (61032, 400252),
 (61036, 400252),
-(61037, 412423),
+(61037, 412423);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61038, 400252),
 (61039, 400252),
 (61041, 412208),
@@ -26977,7 +27861,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61068, 412422),
 (61070, 400252),
 (61071, 412423),
-(61072, 400252),
+(61072, 400252);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61073, 400252),
 (61074, 412208),
 (61075, 400218),
@@ -27007,7 +27892,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61112, 400252),
 (61114, 400252),
 (61115, 400252),
-(61125, NULL),
+(61125, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61126, NULL),
 (61130, NULL),
 (61131, NULL),
@@ -27037,7 +27923,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61257, 412423),
 (61258, NULL),
 (61259, 412209),
-(61260, 412423),
+(61260, 412423);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61261, 412423),
 (61262, 412423),
 (61263, 412423),
@@ -27066,7 +27953,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61313, 400207),
 (61314, 412421),
 (61315, 412421),
-(61316, 412421),
+(61316, 412421);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61317, 412421),
 (61318, 412422),
 (61319, 400207),
@@ -27095,7 +27983,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61344, 412422),
 (61345, 412314),
 (61346, 412422),
-(61348, 412421),
+(61348, 412421);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61349, 412422),
 (61350, 412421),
 (61353, 412422),
@@ -27124,7 +28013,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61401, 412423),
 (61402, NULL),
 (61410, 412423),
-(61411, 412423),
+(61411, 412423);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61412, 412423),
 (61413, 412423),
 (61414, 412423),
@@ -27153,7 +28043,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61438, 412423),
 (61439, 412423),
 (61440, 412423),
-(61441, 412423),
+(61441, 412423);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61442, 412423),
 (61443, 412314),
 (61447, 412423),
@@ -27182,7 +28073,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61475, 412423),
 (61476, 412423),
 (61477, 412423),
-(61478, 412423),
+(61478, 412423);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61479, 412314),
 (61480, 412423),
 (61482, 412423),
@@ -27211,7 +28103,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61533, 412423),
 (61534, 412314),
 (61535, 412314),
-(61536, 412314),
+(61536, 412314);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61537, 412314),
 (61539, 412314),
 (61540, 412314),
@@ -27241,7 +28134,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61569, 412423),
 (61570, 412314),
 (61571, 412314),
-(61572, 412423),
+(61572, 412423);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61601, NULL),
 (61602, 412314),
 (61603, 412314),
@@ -27273,7 +28167,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61643, NULL),
 (61644, NULL),
 (61650, NULL),
-(61651, NULL),
+(61651, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61652, NULL),
 (61653, NULL),
 (61654, NULL),
@@ -27303,7 +28198,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61736, 400207),
 (61737, 400207),
 (61738, 412421),
-(61739, 400207),
+(61739, 400207);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61740, 400207),
 (61741, 400207),
 (61742, 412314),
@@ -27332,7 +28228,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61773, 400207),
 (61774, 412421),
 (61775, 400207),
-(61776, 400207),
+(61776, 400207);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61777, 400207),
 (61778, 400207),
 (61790, NULL),
@@ -27362,7 +28259,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61833, 400207),
 (61834, 400207),
 (61839, 400207),
-(61840, 400207),
+(61840, 400207);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61841, 400207),
 (61842, 400207),
 (61843, 400207),
@@ -27391,7 +28289,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61871, 400207),
 (61872, 400207),
 (61873, 400207),
-(61874, 400207),
+(61874, 400207);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61875, 400207),
 (61876, 400207),
 (61877, 400207),
@@ -27420,7 +28319,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61937, 400207),
 (61938, 400207),
 (61940, 400207),
-(61941, 400207),
+(61941, 400207);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (61942, 400207),
 (61943, 400207),
 (61944, 400207),
@@ -27449,7 +28349,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62023, 412423),
 (62024, 400082),
 (62025, 400082),
-(62026, NULL),
+(62026, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62027, 412423),
 (62028, 412423),
 (62030, 412423),
@@ -27478,7 +28379,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62060, 400082),
 (62061, 400373),
 (62062, 400373),
-(62063, 412423),
+(62063, 412423);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62065, 412423),
 (62067, 400373),
 (62069, 412423),
@@ -27507,7 +28409,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62094, 412423),
 (62095, 400082),
 (62097, 412423),
-(62098, NULL),
+(62098, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62201, 400638),
 (62202, NULL),
 (62203, 400082),
@@ -27536,7 +28439,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62234, 400082),
 (62236, 400638),
 (62237, 400082),
-(62238, 400082),
+(62238, 400082);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62239, 400082),
 (62240, 400638),
 (62241, 400082),
@@ -27566,14 +28470,14 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62266, 400373),
 (62268, 400082),
 (62269, 400082),
-(62271, 400373),
+(62271, 400373);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62272, 400082),
 (62273, 400373),
 (62274, 400082),
 (62275, 400373),
 (62277, 400082),
-(62278, 400082);
-INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
+(62278, 400082),
 (62279, 400082),
 (62280, 400082),
 (62281, 400082),
@@ -27597,7 +28501,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62311, 412423),
 (62312, 412423),
 (62313, 412423),
-(62314, 412314),
+(62314, 412314);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62316, 412423),
 (62318, 412423),
 (62319, 412314),
@@ -27626,7 +28531,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62352, 412314),
 (62353, 412314),
 (62354, 412209),
-(62355, 412423),
+(62355, 412423);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62356, 412423),
 (62357, 412314),
 (62358, 412423),
@@ -27655,7 +28561,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62417, 400207),
 (62418, 400373),
 (62419, 400373),
-(62420, 400207),
+(62420, 400207);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62421, 400207),
 (62422, 412423),
 (62423, 400207),
@@ -27684,7 +28591,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62449, 400207),
 (62450, 400373),
 (62451, 412427),
-(62452, 400373),
+(62452, 400373);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62454, 400207),
 (62458, 400373),
 (62459, 400373),
@@ -27713,7 +28621,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62511, 412423),
 (62512, 400207),
 (62513, 412423),
-(62514, 412423),
+(62514, 412423);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62515, 412423),
 (62517, 400373),
 (62518, 400207),
@@ -27742,7 +28651,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62544, 412423),
 (62545, 412423),
 (62546, 400373),
-(62547, 412423),
+(62547, 412423);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62548, 412314),
 (62549, 412423),
 (62550, 412423),
@@ -27771,7 +28681,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62613, 412314),
 (62615, 412423),
 (62617, 412314),
-(62618, 412314),
+(62618, 412314);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62621, 412314),
 (62622, NULL),
 (62624, 412423),
@@ -27801,7 +28712,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62661, 412423),
 (62662, NULL),
 (62663, 412314),
-(62664, 412314),
+(62664, 412314);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62665, 412314),
 (62666, 412314),
 (62667, 412423),
@@ -27830,7 +28742,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62701, 412423),
 (62702, 412423),
 (62703, 412423),
-(62704, 412423),
+(62704, 412423);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62705, NULL),
 (62706, NULL),
 (62707, 412423),
@@ -27863,7 +28776,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62777, NULL),
 (62781, NULL),
 (62786, NULL),
-(62791, NULL),
+(62791, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62794, NULL),
 (62796, NULL),
 (62801, 400373),
@@ -27892,7 +28806,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62828, 400082),
 (62829, 400373),
 (62830, 400373),
-(62831, 400082),
+(62831, 400082);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62832, 400082),
 (62833, 400207),
 (62834, NULL),
@@ -27922,7 +28837,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62858, 400373),
 (62859, 400373),
 (62860, 400082),
-(62861, 400207),
+(62861, 400207);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62862, 400373),
 (62863, 412427),
 (62864, 400373),
@@ -27951,7 +28867,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62888, 400082),
 (62889, 400373),
 (62890, 400082),
-(62891, 400082),
+(62891, 400082);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62892, 400373),
 (62893, 400373),
 (62894, 400082),
@@ -27981,7 +28898,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62921, 400082),
 (62922, 400082),
 (62923, 400082),
-(62924, 400082),
+(62924, 400082);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62926, 400082),
 (62927, 400082),
 (62928, 400373),
@@ -28010,7 +28928,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62955, NULL),
 (62956, 400082),
 (62957, 400082),
-(62958, 400082),
+(62958, 400082);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62959, 400082),
 (62960, 400431),
 (62961, NULL),
@@ -28040,7 +28959,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62991, 400373),
 (62992, 400082),
 (62993, 400082),
-(62994, 400082),
+(62994, 400082);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (62995, 400373),
 (62996, 400431),
 (62997, 400082),
@@ -28070,7 +28990,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63031, 400074),
 (63032, NULL),
 (63033, 400074),
-(63034, 400005),
+(63034, 400005);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63036, 400638),
 (63037, 412292),
 (63038, 400005),
@@ -28100,7 +29021,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63070, 400638),
 (63071, 400638),
 (63072, 400638),
-(63073, NULL),
+(63073, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63074, 400074),
 (63077, 412292),
 (63079, NULL),
@@ -28129,7 +29051,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63115, 400074),
 (63116, 400638),
 (63117, 400638),
-(63118, 400638),
+(63118, 400638);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63119, 400638),
 (63120, 400074),
 (63121, 400074),
@@ -28158,7 +29081,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63145, NULL),
 (63146, 400005),
 (63147, 400082),
-(63150, NULL),
+(63150, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63151, NULL),
 (63155, NULL),
 (63156, NULL),
@@ -28190,7 +29114,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63330, 400005),
 (63332, 412292),
 (63333, 400005),
-(63334, 400005),
+(63334, 400005);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63336, 412292),
 (63338, NULL),
 (63339, 412292),
@@ -28220,7 +29145,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63373, 412423),
 (63376, 400005),
 (63377, 400005),
-(63378, NULL),
+(63378, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63379, 400005),
 (63381, 400005),
 (63382, 412292),
@@ -28249,7 +29175,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63443, 412292),
 (63445, 412292),
 (63446, 412292),
-(63447, 412292),
+(63447, 412292);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63448, 412292),
 (63450, 412292),
 (63451, 412292),
@@ -28278,7 +29205,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63530, 412292),
 (63531, 412292),
 (63532, 412292),
-(63533, 412292),
+(63533, 412292);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63534, 412292),
 (63535, 400158),
 (63536, 400158),
@@ -28307,7 +29235,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63565, 400158),
 (63566, 400158),
 (63567, 400158),
-(63601, 400121),
+(63601, 400121);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63620, 400121),
 (63621, 400121),
 (63622, 400121),
@@ -28337,7 +29266,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63656, 400121),
 (63660, 400121),
 (63661, NULL),
-(63662, 400121),
+(63662, 400121);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63663, 400121),
 (63664, 400121),
 (63665, 400121),
@@ -28367,7 +29297,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63748, 400082),
 (63750, 400121),
 (63751, 400121),
-(63752, NULL),
+(63752, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63753, 400121),
 (63755, 400121),
 (63758, 400121),
@@ -28396,7 +29327,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63821, 400121),
 (63822, 400121),
 (63823, 400121),
-(63824, 400121),
+(63824, 400121);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63825, 400121),
 (63826, 400121),
 (63827, 400121),
@@ -28425,7 +29357,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63862, 400121),
 (63863, 400121),
 (63866, 400121),
-(63867, 400121),
+(63867, 400121);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63868, 400121),
 (63869, 400121),
 (63870, 400121),
@@ -28455,7 +29388,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63941, 400121),
 (63942, 400121),
 (63943, 400121),
-(63944, 400121),
+(63944, 400121);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (63945, 400121),
 (63947, 400121),
 (63950, NULL),
@@ -28484,7 +29418,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64017, 412444),
 (64018, 400158),
 (64019, 412444),
-(64020, 412444),
+(64020, 412444);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64021, 412444),
 (64022, 412444),
 (64024, 400158),
@@ -28513,7 +29448,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64064, 400158),
 (64065, NULL),
 (64066, 400158),
-(64067, 412444),
+(64067, 412444);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64068, 400158),
 (64069, NULL),
 (64070, 400639),
@@ -28543,7 +29479,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64097, 412444),
 (64098, 400158),
 (64101, 412430),
-(64102, 412430),
+(64102, 412430);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64105, 412430),
 (64106, 400639),
 (64108, 412430),
@@ -28572,7 +29509,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64133, 400639),
 (64134, 400639),
 (64136, 400639),
-(64137, 400639),
+(64137, 400639);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64138, 400639),
 (64139, 400639),
 (64141, NULL),
@@ -28602,7 +29540,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64168, NULL),
 (64170, NULL),
 (64171, NULL),
-(64172, NULL),
+(64172, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64173, NULL),
 (64179, NULL),
 (64180, NULL),
@@ -28634,7 +29573,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64428, 400158),
 (64429, 400158),
 (64430, 400158),
-(64431, 400158),
+(64431, 400158);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64432, 400158),
 (64433, 400158),
 (64434, 400158),
@@ -28663,7 +29603,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64461, 400158),
 (64463, 400158),
 (64465, 400158),
-(64466, 400158),
+(64466, 400158);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64467, 400158),
 (64468, 400158),
 (64469, 400158),
@@ -28692,7 +29633,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64494, 400158),
 (64496, 400158),
 (64497, 400158),
-(64498, 400158),
+(64498, 400158);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64499, 400158),
 (64501, 400158),
 (64502, NULL),
@@ -28721,7 +29663,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64640, 400158),
 (64641, 400158),
 (64642, 400158),
-(64643, 400158),
+(64643, 400158);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64644, 400158),
 (64645, 400158),
 (64646, 400158),
@@ -28750,7 +29693,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64674, 400158),
 (64676, 400158),
 (64679, 400158),
-(64680, NULL),
+(64680, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64681, 400158),
 (64682, 400158),
 (64683, 400158),
@@ -28779,7 +29723,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64744, 412444),
 (64745, 412444),
 (64746, 412444),
-(64747, 412444),
+(64747, 412444);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64748, 412445),
 (64750, 412444),
 (64751, 412444),
@@ -28809,7 +29754,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64789, NULL),
 (64790, 412444),
 (64801, 412445),
-(64802, NULL),
+(64802, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64803, NULL),
 (64804, 412445),
 (64830, 412445),
@@ -28838,7 +29784,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64861, 412445),
 (64862, 412445),
 (64863, 412445),
-(64864, NULL),
+(64864, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (64865, 412445),
 (64866, 412445),
 (64867, 412445),
@@ -28868,7 +29815,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65034, 412444),
 (65035, 412292),
 (65036, 412292),
-(65037, 412444),
+(65037, 412444);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65038, NULL),
 (65039, 412292),
 (65040, 412292),
@@ -28897,7 +29845,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65068, 400158),
 (65069, 412292),
 (65072, 412292),
-(65074, 412292),
+(65074, 412292);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65075, 412292),
 (65076, 412292),
 (65077, 412292),
@@ -28928,7 +29877,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65212, NULL),
 (65215, NULL),
 (65216, NULL),
-(65217, NULL),
+(65217, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65218, NULL),
 (65230, 400158),
 (65231, 412292),
@@ -28957,7 +29907,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65263, 412292),
 (65264, 412292),
 (65265, 412292),
-(65270, 412292),
+(65270, 412292);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65274, 400158),
 (65275, 412292),
 (65276, 400158),
@@ -28986,7 +29937,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65329, 412444),
 (65330, 400158),
 (65332, 412444),
-(65333, 412444),
+(65333, 412444);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65334, 412444),
 (65335, 412444),
 (65336, 412444),
@@ -29015,7 +29967,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65441, 412292),
 (65443, 412292),
 (65444, 400121),
-(65446, 412292),
+(65446, 412292);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65449, 412292),
 (65452, 412292),
 (65453, 412292),
@@ -29044,7 +29997,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65541, 400121),
 (65542, 400121),
 (65543, 400121),
-(65546, NULL),
+(65546, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65548, 400121),
 (65550, 412292),
 (65552, 412444),
@@ -29074,7 +30028,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65603, 412444),
 (65604, 412445),
 (65605, 412445),
-(65606, 400121),
+(65606, 400121);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65607, NULL),
 (65608, 412445),
 (65609, 400121),
@@ -29103,7 +30058,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65634, 412444),
 (65635, 412444),
 (65636, NULL),
-(65637, 400121),
+(65637, 400121);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65638, 400121),
 (65640, 412444),
 (65641, 412445),
@@ -29133,7 +30089,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65669, 412445),
 (65672, 412445),
 (65673, NULL),
-(65674, 412444),
+(65674, 412444);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65675, 412445),
 (65676, 400121),
 (65679, 400121),
@@ -29162,7 +30119,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65717, 400121),
 (65720, 412445),
 (65721, 412445),
-(65722, 412444),
+(65722, 412444);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65723, 412445),
 (65724, 412444),
 (65725, 412445),
@@ -29191,7 +30149,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65754, 412445),
 (65755, 400121),
 (65756, 412445),
-(65757, 412445),
+(65757, 412445);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65759, 412445),
 (65760, 400121),
 (65761, 412402),
@@ -29220,7 +30179,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65787, 412444),
 (65788, 400121),
 (65789, 400121),
-(65790, 400121),
+(65790, 400121);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (65791, 400121),
 (65793, 400121),
 (65801, NULL),
@@ -29250,7 +30210,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66016, 412284),
 (66017, 412284),
 (66018, 412284),
-(66019, 412430),
+(66019, 412430);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66020, 412284),
 (66021, 412284),
 (66023, 412284),
@@ -29280,7 +30241,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66052, 412284),
 (66053, 412284),
 (66054, 412284),
-(66056, 412284),
+(66056, 412284);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66058, 412284),
 (66060, 412284),
 (66061, 412430),
@@ -29309,7 +30271,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66092, 412284),
 (66093, 412284),
 (66094, 400158),
-(66095, 412284),
+(66095, 412284);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66097, 412284),
 (66101, 412430),
 (66102, 412430),
@@ -29339,7 +30302,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66210, 412430),
 (66211, 412430),
 (66212, 412430),
-(66213, 412430),
+(66213, 412430);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66214, 412430),
 (66215, 412430),
 (66216, 412430),
@@ -29369,7 +30333,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66406, 412429),
 (66407, 412429),
 (66408, 412429),
-(66409, 412284),
+(66409, 412284);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66411, 412429),
 (66412, 412429),
 (66413, 412429),
@@ -29398,7 +30363,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66441, 412429),
 (66442, 412429),
 (66449, 412429),
-(66450, 412284),
+(66450, 412284);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66451, 412284),
 (66501, 412429),
 (66502, 412429),
@@ -29427,7 +30393,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66532, 412284),
 (66533, 412429),
 (66534, 412284),
-(66535, 412284),
+(66535, 412284);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66536, 412429),
 (66537, 412284),
 (66538, 412284),
@@ -29456,7 +30423,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66609, 412284),
 (66610, 412429),
 (66611, 412284),
-(66612, 412284),
+(66612, 412284);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66614, 412429),
 (66615, 412429),
 (66616, 412284),
@@ -29488,7 +30456,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66699, NULL),
 (66701, 412284),
 (66710, 412284),
-(66711, 412284),
+(66711, 412284);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66712, 412284),
 (66713, 412284),
 (66714, 412284),
@@ -29517,7 +30486,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66753, 412284),
 (66754, 412284),
 (66755, 412284),
-(66756, 412284),
+(66756, 412284);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66757, 412284),
 (66758, 412284),
 (66759, 412284),
@@ -29546,7 +30516,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66834, 412429),
 (66835, 412429),
 (66838, 412429),
-(66839, 412284),
+(66839, 412284);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66840, 412429),
 (66842, 412429),
 (66843, 412429),
@@ -29575,7 +30546,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66870, 412429),
 (66871, 412284),
 (66872, 412429),
-(66873, NULL),
+(66873, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66901, 412429),
 (66930, 412429),
 (66932, 412429),
@@ -29604,7 +30576,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66960, 412429),
 (66961, NULL),
 (66962, 412429),
-(66963, 412429),
+(66963, 412429);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (66964, 412429),
 (66966, 412429),
 (66967, 412429),
@@ -29633,7 +30606,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67026, 412431),
 (67028, 412429),
 (67029, 400247),
-(67030, 412431),
+(67030, 412431);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67031, 412431),
 (67035, 412429),
 (67036, 412431),
@@ -29662,7 +30636,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67065, 412429),
 (67066, 412429),
 (67067, 412431),
-(67068, 412429),
+(67068, 412429);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67070, 400247),
 (67071, 412429),
 (67072, 412431),
@@ -29691,7 +30666,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67127, 412429),
 (67128, 412431),
 (67131, 412431),
-(67132, 412429),
+(67132, 412429);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67133, 412431),
 (67134, 412429),
 (67135, 412431),
@@ -29720,7 +30696,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67207, 412431),
 (67208, 412431),
 (67209, 412431),
-(67210, 412431),
+(67210, 412431);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67211, 412431),
 (67212, 412431),
 (67213, 412431),
@@ -29751,7 +30728,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67276, NULL),
 (67277, NULL),
 (67278, NULL),
-(67301, 412431),
+(67301, 412431);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67330, 412284),
 (67332, 412284),
 (67333, 400392),
@@ -29780,7 +30758,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67364, 412431),
 (67401, 412429),
 (67402, NULL),
-(67410, 412429),
+(67410, 412429);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67416, 412429),
 (67417, 412429),
 (67418, 412429),
@@ -29809,7 +30788,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67450, 412429),
 (67451, 412429),
 (67452, 412429),
-(67454, 412429),
+(67454, 412429);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67455, 412429),
 (67456, 412429),
 (67457, 412429),
@@ -29838,7 +30818,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67492, 412429),
 (67501, 412429),
 (67502, 412429),
-(67504, NULL),
+(67504, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67505, 412429),
 (67510, 412429),
 (67511, 412429),
@@ -29867,7 +30848,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67550, 412429),
 (67552, 412429),
 (67553, 412429),
-(67554, 412429),
+(67554, 412429);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67556, 412429),
 (67557, 412429),
 (67559, 412429),
@@ -29896,7 +30878,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67622, 412429),
 (67623, 412429),
 (67625, 412429),
-(67626, 412429),
+(67626, 412429);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67627, NULL),
 (67628, 412429),
 (67629, 412429),
@@ -29925,7 +30908,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67658, 412429),
 (67659, 412429),
 (67660, 412429),
-(67661, 412429),
+(67661, 412429);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67663, 412429),
 (67664, 412429),
 (67665, 412429),
@@ -29954,7 +30938,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67744, 412429),
 (67745, 412429),
 (67747, 412429),
-(67748, 412429),
+(67748, 412429);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67749, 412429),
 (67751, 412429),
 (67752, 412429),
@@ -29983,7 +30968,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67851, 412429),
 (67853, 412429),
 (67854, 412429),
-(67855, 412429),
+(67855, 412429);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67857, 412429),
 (67859, 412429),
 (67860, 412429),
@@ -30012,7 +30998,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (67954, 400247),
 (68001, 400640),
 (68002, 400400),
-(68003, 400640),
+(68003, 400640);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68004, 400640),
 (68005, 400400),
 (68007, 400400),
@@ -30041,7 +31028,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68037, 400640),
 (68038, 400640),
 (68039, 400220),
-(68040, 400640),
+(68040, 400640);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68041, 400640),
 (68042, 400640),
 (68044, 400640),
@@ -30071,7 +31059,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68073, 400400),
 (68101, NULL),
 (68102, 400400),
-(68103, NULL),
+(68103, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68104, 400400),
 (68105, 400400),
 (68106, 400400),
@@ -30100,7 +31089,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68134, 400400),
 (68135, 400400),
 (68136, 400400),
-(68137, 400400),
+(68137, 400400);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68138, 400400),
 (68139, NULL),
 (68142, 400400),
@@ -30131,7 +31121,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68309, 400640),
 (68310, 412217),
 (68313, 412217),
-(68314, 400640),
+(68314, 400640);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68315, 412217),
 (68316, 412217),
 (68317, 400640),
@@ -30160,7 +31151,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68341, 412217),
 (68342, 412217),
 (68343, 412217),
-(68344, 400640),
+(68344, 400640);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68345, 412429),
 (68346, 400640),
 (68347, 400640),
@@ -30189,7 +31181,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68376, 412429),
 (68377, 412217),
 (68378, 400640),
-(68380, 400640),
+(68380, 400640);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68381, 400640),
 (68382, NULL),
 (68401, 412217),
@@ -30218,7 +31211,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68430, 400640),
 (68431, 400158),
 (68433, 412284),
-(68434, 400640),
+(68434, 400640);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68436, 412217),
 (68437, 400158),
 (68438, NULL),
@@ -30247,7 +31241,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68464, 412217),
 (68465, 412217),
 (68466, 400640),
-(68467, 412217),
+(68467, 412217);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68501, NULL),
 (68502, 400640),
 (68503, 400640),
@@ -30277,7 +31272,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68583, NULL),
 (68588, NULL),
 (68601, 412217),
-(68602, NULL),
+(68602, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68620, 412217),
 (68621, 400640),
 (68622, 412217),
@@ -30306,7 +31302,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68651, 412217),
 (68652, 412217),
 (68653, 412217),
-(68654, 412217),
+(68654, 412217);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68655, 412217),
 (68658, 400640),
 (68659, 400640),
@@ -30335,7 +31332,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68723, 412217),
 (68724, 412217),
 (68725, 412217),
-(68726, 412217),
+(68726, 412217);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68727, 412217),
 (68728, 400640),
 (68729, 412217),
@@ -30364,7 +31362,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68755, 412217),
 (68756, 412217),
 (68757, 412475),
-(68758, 412217),
+(68758, 412217);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68759, 412217),
 (68760, 412475),
 (68761, 412217),
@@ -30393,7 +31392,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68787, 400640),
 (68788, 400640),
 (68789, 412217),
-(68790, 400640),
+(68790, 400640);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68791, 400640),
 (68792, 412475),
 (68801, 412217),
@@ -30422,7 +31422,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68833, 412217),
 (68834, 412217),
 (68835, 412217),
-(68836, 412217),
+(68836, 412217);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68837, 412217),
 (68838, 412217),
 (68840, 412217),
@@ -30451,7 +31452,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68865, 412217),
 (68866, 412217),
 (68869, 412217),
-(68870, 412217),
+(68870, 412217);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68871, 412217),
 (68872, 412217),
 (68873, 412217),
@@ -30480,7 +31482,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68933, 412217),
 (68934, 412217),
 (68935, 412217),
-(68936, 412217),
+(68936, 412217);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68937, 412217),
 (68938, 412217),
 (68939, 412217),
@@ -30509,7 +31512,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68966, 412429),
 (68967, 412217),
 (68969, NULL),
-(68970, 412217),
+(68970, 412217);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (68971, 412429),
 (68972, 412217),
 (68973, 412217),
@@ -30538,7 +31542,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (69032, 412217),
 (69033, 412217),
 (69034, 412217),
-(69036, 412429),
+(69036, 412429);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (69037, 412217),
 (69038, 412217),
 (69039, 412217),
@@ -30567,7 +31572,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (69135, 412217),
 (69138, 412217),
 (69140, 412217),
-(69141, 412217),
+(69141, 412217);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (69142, 412217),
 (69143, 412217),
 (69144, 412217),
@@ -30596,7 +31602,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (69170, 412217),
 (69171, NULL),
 (69190, NULL),
-(69201, 412475),
+(69201, 412475);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (69210, 412217),
 (69211, 412217),
 (69212, 412217),
@@ -30625,7 +31632,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (69349, 412217),
 (69350, 412217),
 (69351, 412217),
-(69352, 412217),
+(69352, 412217);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (69353, NULL),
 (69354, 412217),
 (69355, 412217),
@@ -30655,7 +31663,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70037, 412433),
 (70038, 412433),
 (70039, 412433),
-(70040, 412433),
+(70040, 412433);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70041, 412433),
 (70042, NULL),
 (70043, 412433),
@@ -30686,7 +31695,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70071, 412433),
 (70072, 412261),
 (70073, NULL),
-(70075, 412433),
+(70075, 412433);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70076, 412433),
 (70078, NULL),
 (70079, 412433),
@@ -30715,7 +31725,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70122, 412261),
 (70123, 412261),
 (70124, 412261),
-(70125, 412432),
+(70125, 412432);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70126, 412432),
 (70127, 412432),
 (70128, 412432),
@@ -30748,7 +31759,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70165, NULL),
 (70166, NULL),
 (70167, NULL),
-(70170, NULL),
+(70170, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70172, NULL),
 (70174, NULL),
 (70175, NULL),
@@ -30780,7 +31792,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70352, NULL),
 (70353, 412433),
 (70354, 412433),
-(70355, 412433),
+(70355, 412433);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70356, 412433),
 (70357, 412433),
 (70358, 412433),
@@ -30810,7 +31823,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70403, 412261),
 (70404, NULL),
 (70420, 412261),
-(70421, NULL),
+(70421, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70422, 412261),
 (70426, 412261),
 (70427, 412261),
@@ -30840,7 +31854,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70456, 412261),
 (70457, NULL),
 (70458, 412261),
-(70459, NULL),
+(70459, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70460, 412261),
 (70461, 412261),
 (70462, 412261),
@@ -30870,7 +31885,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70516, 400636),
 (70517, 412433),
 (70518, 412433),
-(70519, NULL),
+(70519, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70520, 412433),
 (70521, 412433),
 (70522, NULL),
@@ -30899,7 +31915,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70550, 400636),
 (70551, NULL),
 (70552, 412433),
-(70554, 400006),
+(70554, 400006);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70555, 400636),
 (70556, 400636),
 (70558, 400636),
@@ -30929,7 +31946,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70598, NULL),
 (70601, 400636),
 (70602, NULL),
-(70605, 400636),
+(70605, 400636);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70606, NULL),
 (70607, 400636),
 (70609, NULL),
@@ -30959,7 +31977,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70652, 412275),
 (70653, 400046),
 (70654, 400006),
-(70655, 400006),
+(70655, 400006);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70656, 400006),
 (70657, 400636),
 (70658, 412275),
@@ -30989,7 +32008,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70722, 412269),
 (70723, 412433),
 (70725, 412433),
-(70726, 412269),
+(70726, 412269);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70727, NULL),
 (70728, NULL),
 (70729, 400006),
@@ -31019,7 +32039,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70760, 400006),
 (70761, 412269),
 (70762, 412269),
-(70763, 412433),
+(70763, 412433);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70764, 412433),
 (70765, NULL),
 (70767, 400006),
@@ -31049,7 +32070,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70803, NULL),
 (70804, NULL),
 (70805, 412269),
-(70806, 412269),
+(70806, 412269);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70807, 412269),
 (70808, 412269),
 (70809, 412269),
@@ -31080,7 +32102,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70883, NULL),
 (70884, NULL),
 (70892, NULL),
-(70893, NULL),
+(70893, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (70894, NULL),
 (70895, NULL),
 (70896, NULL),
@@ -31110,7 +32133,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71034, 412275),
 (71036, NULL),
 (71037, 412275),
-(71038, 412275),
+(71038, 412275);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71039, 412275),
 (71040, 400006),
 (71043, 412275),
@@ -31139,7 +32163,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71072, 412275),
 (71073, 412275),
 (71075, 412275),
-(71078, 412275),
+(71078, 412275);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71079, 412275),
 (71080, NULL),
 (71082, 400651),
@@ -31170,7 +32195,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71138, NULL),
 (71148, NULL),
 (71149, NULL),
-(71151, NULL),
+(71151, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71152, NULL),
 (71153, NULL),
 (71154, NULL),
@@ -31202,7 +32228,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71225, 400006),
 (71226, 400006),
 (71227, 400006),
-(71229, 400006),
+(71229, 400006);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71230, NULL),
 (71232, 400006),
 (71233, NULL),
@@ -31232,7 +32259,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71269, 400006),
 (71270, 400006),
 (71272, NULL),
-(71273, NULL),
+(71273, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71275, 400006),
 (71276, 400006),
 (71277, 400006),
@@ -31262,7 +32290,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71326, 400006),
 (71327, 400006),
 (71328, 400006),
-(71329, NULL),
+(71329, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71330, 400006),
 (71331, 400006),
 (71333, 400006),
@@ -31292,7 +32321,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71365, NULL),
 (71366, 400006),
 (71367, 400006),
-(71368, 400006),
+(71368, 400006);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71369, 400006),
 (71371, 400006),
 (71373, 400006),
@@ -31321,7 +32351,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71426, 412275),
 (71427, 400006),
 (71428, NULL),
-(71429, 412275),
+(71429, 412275);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71430, 400006),
 (71431, NULL),
 (71432, 400006),
@@ -31351,7 +32382,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71462, 412275),
 (71463, 400006),
 (71465, 400006),
-(71466, 400006),
+(71466, 400006);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71467, 400006),
 (71468, 412275),
 (71469, 412275),
@@ -31381,7 +32413,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71638, 400345),
 (71639, 400345),
 (71640, 400006),
-(71642, 400345),
+(71642, 400345);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71643, 400345),
 (71644, 400345),
 (71646, 400006),
@@ -31411,7 +32444,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71676, 400006),
 (71677, 400345),
 (71678, NULL),
-(71701, 400345),
+(71701, 400345);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71711, NULL),
 (71720, 400345),
 (71721, NULL),
@@ -31441,7 +32475,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71763, 400345),
 (71764, 400345),
 (71765, 400006),
-(71766, 400345),
+(71766, 400345);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71767, NULL),
 (71768, NULL),
 (71769, NULL),
@@ -31471,7 +32506,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71844, NULL),
 (71845, 400345),
 (71846, 400345),
-(71847, 400345),
+(71847, 400345);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71851, 400345),
 (71852, 400345),
 (71853, 400165),
@@ -31501,7 +32537,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71932, NULL),
 (71933, 400345),
 (71935, 400345),
-(71937, 400645),
+(71937, 400645);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71940, 400345),
 (71941, 400345),
 (71942, NULL),
@@ -31531,7 +32568,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (71972, 400345),
 (71973, 400645),
 (71998, NULL),
-(71999, NULL),
+(71999, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72001, 412401),
 (72002, 412401),
 (72003, 412400),
@@ -31560,7 +32598,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72029, 412400),
 (72030, 412401),
 (72031, 412401),
-(72032, 412401),
+(72032, 412401);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72033, NULL),
 (72034, NULL),
 (72035, NULL),
@@ -31590,7 +32629,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72064, 412400),
 (72065, 400345),
 (72066, NULL),
-(72067, 412400),
+(72067, 412400);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72068, 412401),
 (72069, 412400),
 (72070, 412401),
@@ -31619,7 +32659,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72104, 400345),
 (72105, 400345),
 (72106, 412401),
-(72107, 412401),
+(72107, 412401);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72108, 412400),
 (72110, 412402),
 (72111, 412401),
@@ -31648,7 +32689,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72134, 412400),
 (72135, 412401),
 (72136, 412401),
-(72137, 412401),
+(72137, 412401);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72139, 412401),
 (72140, 412400),
 (72141, 412401),
@@ -31678,7 +32720,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72180, 412401),
 (72181, 412401),
 (72182, NULL),
-(72183, 412401),
+(72183, 412401);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72189, NULL),
 (72190, NULL),
 (72199, NULL),
@@ -31709,7 +32752,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72301, 412236),
 (72303, NULL),
 (72310, NULL),
-(72311, 412400),
+(72311, 412400);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72312, NULL),
 (72313, NULL),
 (72314, NULL),
@@ -31739,7 +32783,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72346, 412400),
 (72347, 412400),
 (72348, 412442),
-(72350, 412400),
+(72350, 412400);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72351, 412400),
 (72352, NULL),
 (72353, 412400),
@@ -31769,7 +32814,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72387, 412400),
 (72389, 412400),
 (72390, 412400),
-(72391, NULL),
+(72391, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72392, 412400),
 (72394, 412400),
 (72395, 412400),
@@ -31798,7 +32844,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72430, 412400),
 (72431, 412400),
 (72432, 412400),
-(72433, 412400),
+(72433, 412400);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72434, 412400),
 (72435, 412400),
 (72436, 412400),
@@ -31827,7 +32874,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72462, 412400),
 (72464, 400121),
 (72465, NULL),
-(72466, 412400),
+(72466, 412400);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72467, 412400),
 (72469, 412400),
 (72470, 400121),
@@ -31856,7 +32904,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72525, 412400),
 (72526, 412400),
 (72527, 412400),
-(72528, 412400),
+(72528, 412400);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72529, 412400),
 (72530, 412400),
 (72531, 412400),
@@ -31885,7 +32934,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72564, 412400),
 (72565, 412400),
 (72566, 412400),
-(72567, 412400),
+(72567, 412400);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72568, 412401),
 (72569, 412400),
 (72571, 412400),
@@ -31915,7 +32965,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72626, 412402),
 (72628, 412402),
 (72629, 412401),
-(72630, 412402),
+(72630, 412402);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72631, 412445),
 (72632, 412402),
 (72633, 412402),
@@ -31945,7 +32996,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72666, 412402),
 (72668, 412402),
 (72669, 412402),
-(72670, NULL),
+(72670, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72672, 412402),
 (72675, 412402),
 (72677, 412402),
@@ -31975,7 +33027,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72729, 400645),
 (72730, 412402),
 (72732, 412402),
-(72733, NULL),
+(72733, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72734, 400645),
 (72735, NULL),
 (72736, 400645),
@@ -32005,7 +33058,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72769, 400645),
 (72770, NULL),
 (72773, 412402),
-(72774, 412402),
+(72774, 412402);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72776, 412402),
 (72801, 412402),
 (72802, 412402),
@@ -32034,7 +33088,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72845, 412402),
 (72846, 412402),
 (72847, 412402),
-(72851, 400345),
+(72851, 400345);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72852, 412402),
 (72853, 412401),
 (72854, 412402),
@@ -32064,7 +33119,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72926, 400345),
 (72927, 400345),
 (72928, 400345),
-(72930, 412402),
+(72930, 412402);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (72932, 412402),
 (72933, 400345),
 (72934, 412402),
@@ -32093,7 +33149,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73002, 400077),
 (73003, 412464),
 (73004, 400077),
-(73005, 400247),
+(73005, 400247);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73006, 400247),
 (73007, 412464),
 (73008, 412464),
@@ -32122,7 +33179,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73032, 400077),
 (73033, 400247),
 (73034, 412464),
-(73036, 400247),
+(73036, 400247);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73038, 400247),
 (73040, 400247),
 (73041, 400247),
@@ -32151,7 +33209,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73066, 412464),
 (73067, 400077),
 (73068, 412464),
-(73069, 400077),
+(73069, 400077);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73070, NULL),
 (73071, 400077),
 (73072, 400077),
@@ -32181,7 +33240,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73102, 412464),
 (73103, 412464),
 (73104, 412464),
-(73105, 412464),
+(73105, 412464);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73106, 412464),
 (73107, 412464),
 (73108, 412464),
@@ -32211,7 +33271,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73132, 412464),
 (73134, 412464),
 (73135, 412464),
-(73136, NULL),
+(73136, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73137, NULL),
 (73139, 412464),
 (73140, NULL),
@@ -32242,7 +33303,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73169, 412464),
 (73170, 400077),
 (73172, NULL),
-(73173, 412464),
+(73173, 412464);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73177, NULL),
 (73178, NULL),
 (73179, 412464),
@@ -32274,7 +33336,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73438, 400077),
 (73439, 400077),
 (73440, 400077),
-(73441, 400077),
+(73441, 400077);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73442, 400077),
 (73443, 400077),
 (73444, 400077),
@@ -32304,7 +33367,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73507, 400077),
 (73520, 400077),
 (73521, 400247),
-(73522, NULL),
+(73522, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73523, NULL),
 (73526, 400247),
 (73527, 400077),
@@ -32333,7 +33397,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73552, 400247),
 (73553, 400077),
 (73554, 400247),
-(73555, 400077),
+(73555, 400077);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73556, 400247),
 (73557, 400077),
 (73558, NULL),
@@ -32362,7 +33427,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73628, 400247),
 (73632, 400247),
 (73638, 400247),
-(73639, 400247),
+(73639, 400247);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73641, 400247),
 (73642, 400247),
 (73644, 400247),
@@ -32392,7 +33458,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73705, NULL),
 (73706, NULL),
 (73716, 400247),
-(73717, 400247),
+(73717, 400247);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73718, 400247),
 (73719, 400247),
 (73720, 400247),
@@ -32421,7 +33488,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73750, 400247),
 (73753, 400247),
 (73754, 400247),
-(73755, 400247),
+(73755, 400247);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73756, 400247),
 (73757, 400247),
 (73758, 400247),
@@ -32450,7 +33518,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73844, 400247),
 (73847, 400247),
 (73848, 400247),
-(73851, 400247),
+(73851, 400247);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (73852, 400247),
 (73853, 400247),
 (73855, 400247),
@@ -32479,7 +33548,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74004, NULL),
 (74005, NULL),
 (74006, 400392),
-(74008, 400392),
+(74008, 400392);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74009, NULL),
 (74010, 400247),
 (74011, 400392),
@@ -32509,7 +33579,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74038, 400247),
 (74039, 400247),
 (74041, 400392),
-(74042, 400645),
+(74042, 400645);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74043, NULL),
 (74044, 400247),
 (74045, 400247),
@@ -32539,7 +33610,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74074, 400247),
 (74075, 400247),
 (74076, NULL),
-(74077, NULL),
+(74077, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74078, NULL),
 (74079, 400247),
 (74080, 400645),
@@ -32569,7 +33641,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74127, 400247),
 (74128, 400392),
 (74129, 400392),
-(74130, 400392),
+(74130, 400392);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74131, 400247),
 (74132, 400247),
 (74133, 400392),
@@ -32601,7 +33674,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74186, NULL),
 (74187, NULL),
 (74189, NULL),
-(74192, NULL),
+(74192, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74193, NULL),
 (74194, NULL),
 (74301, 400645),
@@ -32631,7 +33705,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74361, 400645),
 (74362, NULL),
 (74363, 400645),
-(74364, 400645),
+(74364, 400645);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74365, 400645),
 (74366, 400645),
 (74367, 400645),
@@ -32660,7 +33735,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74440, 400645),
 (74441, 400645),
 (74442, 400645),
-(74444, 400645),
+(74444, 400645);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74445, 400645),
 (74446, 400392),
 (74447, 400247),
@@ -32690,7 +33766,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74501, 400645),
 (74502, NULL),
 (74521, 400645),
-(74522, 400645),
+(74522, 400645);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74523, 400645),
 (74525, 400645),
 (74528, 400645),
@@ -32719,7 +33796,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74559, NULL),
 (74560, 400645),
 (74561, 400645),
-(74562, 400645),
+(74562, 400645);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74563, 400645),
 (74565, 400645),
 (74567, 400645),
@@ -32748,7 +33826,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74646, 400247),
 (74647, 400247),
 (74650, 400247),
-(74651, 400247),
+(74651, 400247);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74652, 400247),
 (74653, 400247),
 (74701, 400645),
@@ -32777,7 +33856,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74747, 400645),
 (74748, 400645),
 (74750, 400645),
-(74752, NULL),
+(74752, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74753, 400645),
 (74754, 400645),
 (74755, 400645),
@@ -32806,7 +33886,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74836, 400645),
 (74837, 412464),
 (74839, 400645),
-(74840, 412464),
+(74840, 412464);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74842, 400077),
 (74843, 400077),
 (74844, 412464),
@@ -32835,7 +33916,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74878, 412464),
 (74880, 400645),
 (74881, 400247),
-(74883, 400645),
+(74883, 400645);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74884, 412464),
 (74901, 400645),
 (74902, 400645),
@@ -32864,7 +33946,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74957, 400645),
 (74959, 400645),
 (74960, 400645),
-(74962, 400645),
+(74962, 400645);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (74963, 400645),
 (74964, 400645),
 (74965, 400645),
@@ -32894,7 +33977,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75028, 400052),
 (75029, NULL),
 (75030, NULL),
-(75032, 400175),
+(75032, 400175);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75034, 400206),
 (75035, 400165),
 (75037, NULL),
@@ -32924,7 +34008,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75063, 400367),
 (75065, 400052),
 (75067, 400052),
-(75068, 400052),
+(75068, 400052);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75069, 400165),
 (75070, 400165),
 (75071, NULL),
@@ -32954,7 +34039,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75102, 400018),
 (75103, 400175),
 (75104, 400018),
-(75105, 400175),
+(75105, 400175);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75106, NULL),
 (75109, NULL),
 (75110, 400018),
@@ -32984,7 +34070,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75146, 400018),
 (75147, 400175),
 (75148, 400175),
-(75149, 400175),
+(75149, 400175);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75150, 400175),
 (75151, NULL),
 (75152, 400018),
@@ -33014,7 +34101,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75201, 400204),
 (75202, 400204),
 (75203, 400367),
-(75204, 400204),
+(75204, 400204);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75205, 400367),
 (75206, 400367),
 (75207, 400204),
@@ -33043,7 +34131,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75231, 400175),
 (75232, 400204),
 (75233, 400367),
-(75234, 400367),
+(75234, 400367);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75235, 400204),
 (75236, 400367),
 (75237, 400204),
@@ -33074,7 +34163,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75266, NULL),
 (75267, NULL),
 (75270, 400204),
-(75275, NULL),
+(75275, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75277, NULL),
 (75283, NULL),
 (75284, NULL),
@@ -33107,7 +34197,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75367, NULL),
 (75368, NULL),
 (75370, NULL),
-(75371, NULL),
+(75371, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75372, NULL),
 (75373, NULL),
 (75374, NULL),
@@ -33139,7 +34230,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75410, 400175),
 (75411, 400165),
 (75412, 400165),
-(75413, 400165),
+(75413, 400165);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75414, 400165),
 (75415, 400165),
 (75416, 400165),
@@ -33168,7 +34260,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75442, 400165),
 (75443, NULL),
 (75444, 400175),
-(75446, 400165),
+(75446, 400165);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75447, 400165),
 (75448, 400165),
 (75449, 400165),
@@ -33197,7 +34290,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75477, 400165),
 (75478, 400165),
 (75479, 400165),
-(75480, 400165),
+(75480, 400165);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75481, 400165),
 (75482, 400175),
 (75483, NULL),
@@ -33227,7 +34321,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75558, 400165),
 (75559, 400165),
 (75560, 400165),
-(75561, 400165),
+(75561, 400165);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75562, 400651),
 (75563, 400651),
 (75564, 400651),
@@ -33257,7 +34352,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75636, 400165),
 (75637, NULL),
 (75638, 400165),
-(75639, 400651),
+(75639, 400651);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75640, 400651),
 (75641, 400651),
 (75642, NULL),
@@ -33287,7 +34383,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75672, 400651),
 (75680, 400651),
 (75681, 400651),
-(75682, NULL),
+(75682, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75683, 400651),
 (75684, 400651),
 (75685, NULL),
@@ -33317,7 +34414,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75752, NULL),
 (75754, 400175),
 (75755, 400175),
-(75756, 400175),
+(75756, 400175);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75757, 400175),
 (75758, 400175),
 (75759, 400175),
@@ -33347,7 +34445,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75799, NULL),
 (75801, 400175),
 (75802, NULL),
-(75803, NULL),
+(75803, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75831, 400018),
 (75832, NULL),
 (75833, 400018),
@@ -33377,7 +34476,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75880, NULL),
 (75882, NULL),
 (75884, NULL),
-(75886, NULL),
+(75886, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75901, 400651),
 (75902, NULL),
 (75903, NULL),
@@ -33407,7 +34507,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75949, 400651),
 (75951, 400046),
 (75954, 400651),
-(75956, 400046),
+(75956, 400046);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (75958, NULL),
 (75959, 400651),
 (75960, 400046),
@@ -33437,7 +34538,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76006, 400018),
 (76007, NULL),
 (76008, 400157),
-(76009, 400018),
+(76009, 400018);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76010, 400018),
 (76011, 400018),
 (76012, 400018),
@@ -33466,7 +34568,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76048, 412480),
 (76049, 412480),
 (76050, 400018),
-(76051, 400656),
+(76051, 400656);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76052, 400052),
 (76053, 400052),
 (76054, 400052),
@@ -33496,7 +34599,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76093, 412480),
 (76094, NULL),
 (76095, NULL),
-(76096, NULL),
+(76096, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76097, NULL),
 (76098, NULL),
 (76099, NULL),
@@ -33526,7 +34630,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76124, NULL),
 (76126, 400018),
 (76127, 400157),
-(76129, NULL),
+(76129, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76130, NULL),
 (76131, 400157),
 (76132, 400018),
@@ -33558,7 +34663,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76196, NULL),
 (76197, NULL),
 (76198, NULL),
-(76199, NULL),
+(76199, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76201, 400052),
 (76202, NULL),
 (76203, NULL),
@@ -33588,7 +34694,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76249, 400052),
 (76250, 400052),
 (76251, 400404),
-(76252, 400404),
+(76252, 400404);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76253, 400404),
 (76255, 400077),
 (76258, 400052),
@@ -33618,7 +34725,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76351, 400404),
 (76352, NULL),
 (76354, 400077),
-(76357, 400077),
+(76357, 400077);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76360, 400077),
 (76363, 400404),
 (76364, 400077),
@@ -33647,7 +34755,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76430, 400441),
 (76431, 400404),
 (76432, 400655),
-(76433, 400068),
+(76433, 400068);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76435, 400441),
 (76436, 400655),
 (76437, 400441),
@@ -33677,7 +34786,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76467, NULL),
 (76468, 400655),
 (76469, 400441),
-(76470, 400404),
+(76470, 400404);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76471, 400441),
 (76472, 400404),
 (76474, 400655),
@@ -33707,7 +34817,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76524, 400068),
 (76525, 400655),
 (76526, NULL),
-(76527, 400655),
+(76527, 400655);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76528, 400068),
 (76530, 400068),
 (76531, 400655),
@@ -33737,7 +34848,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76561, 400068),
 (76564, NULL),
 (76565, 400068),
-(76566, 400068),
+(76566, 400068);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76567, 400068),
 (76569, 400068),
 (76570, 400068),
@@ -33767,7 +34879,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76635, 400018),
 (76636, 412480),
 (76637, 400068),
-(76638, 400068),
+(76638, 400068);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76639, 400018),
 (76640, 412480),
 (76641, 400018),
@@ -33797,7 +34910,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76675, 400068),
 (76676, 412480),
 (76677, NULL),
-(76678, 412480),
+(76678, 412480);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76679, 400018),
 (76680, 400068),
 (76681, 400018),
@@ -33827,7 +34941,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76716, NULL),
 (76795, NULL),
 (76797, NULL),
-(76798, 412480),
+(76798, 412480);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76799, NULL),
 (76801, 400655),
 (76802, 400655),
@@ -33857,7 +34972,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76855, NULL),
 (76856, 400655),
 (76857, 400655),
-(76858, 400655),
+(76858, 400655);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76859, 400655),
 (76861, 400655),
 (76862, 400655),
@@ -33887,7 +35003,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76902, NULL),
 (76903, 400655),
 (76904, 400655),
-(76905, 400655),
+(76905, 400655);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (76906, NULL),
 (76908, NULL),
 (76909, NULL),
@@ -33917,7 +35034,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77005, 400653),
 (77006, 400089),
 (77007, 400089),
-(77008, 400199),
+(77008, 400199);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77009, 400160),
 (77010, 400199),
 (77011, 400160),
@@ -33946,7 +35064,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77034, 400160),
 (77035, 400653),
 (77036, 400653),
-(77037, 400160),
+(77037, 400160);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77038, 400160),
 (77039, 400160),
 (77040, 400654),
@@ -33975,7 +35094,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77063, 400089),
 (77064, 400652),
 (77065, 400654),
-(77066, 400652),
+(77066, 400652);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77067, 400160),
 (77068, 400652),
 (77069, 400652),
@@ -34004,7 +35124,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77092, 400199),
 (77093, 400160),
 (77094, 400654),
-(77095, 400089),
+(77095, 400089);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77096, 400653),
 (77097, NULL),
 (77098, 400089),
@@ -34037,7 +35158,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77228, NULL),
 (77229, NULL),
 (77230, NULL),
-(77231, NULL),
+(77231, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77233, NULL),
 (77234, NULL),
 (77235, NULL),
@@ -34071,7 +35193,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77269, NULL),
 (77270, NULL),
 (77271, NULL),
-(77272, NULL),
+(77272, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77273, NULL),
 (77274, NULL),
 (77275, NULL),
@@ -34103,7 +35226,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77320, 412480),
 (77325, NULL),
 (77326, 400046),
-(77327, 400652),
+(77327, 400652);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77328, NULL),
 (77331, 400046),
 (77332, NULL),
@@ -34134,7 +35258,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77358, 400046),
 (77359, 400046),
 (77360, 400046),
-(77362, 400046),
+(77362, 400046);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77363, 400046),
 (77364, 400046),
 (77365, 400652),
@@ -34164,7 +35289,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77393, NULL),
 (77396, 400652),
 (77399, NULL),
-(77401, 400089),
+(77401, 400089);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77402, NULL),
 (77404, NULL),
 (77406, NULL),
@@ -34194,7 +35320,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77440, 400311),
 (77441, 412302),
 (77442, 400111),
-(77443, 400311),
+(77443, 400311);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77444, 412302),
 (77445, 412480),
 (77446, 400654),
@@ -34224,7 +35351,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77470, 400111),
 (77471, 412302),
 (77473, 400654),
-(77474, 400311),
+(77474, 400311);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77475, 400111),
 (77476, 400311),
 (77477, 400653),
@@ -34254,7 +35382,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77506, 400160),
 (77507, 412302),
 (77508, NULL),
-(77510, 412302),
+(77510, 412302);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77511, 412302),
 (77512, NULL),
 (77514, 400311),
@@ -34284,7 +35413,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77550, 400311),
 (77551, 400311),
 (77552, NULL),
-(77553, 400311),
+(77553, 400311);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77554, 400311),
 (77555, NULL),
 (77560, 400652),
@@ -34314,7 +35444,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77590, 412302),
 (77591, 412302),
 (77592, NULL),
-(77597, 400652),
+(77597, 400652);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77598, 412302),
 (77611, 400046),
 (77612, 400046),
@@ -34338,14 +35469,14 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77640, 400652),
 (77641, NULL),
 (77642, 400652),
-(77643, NULL);
-INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
+(77643, NULL),
 (77650, 400311),
 (77651, 400652),
 (77655, 400636),
 (77656, 400046),
 (77657, 400652),
-(77659, 400652),
+(77659, 400652);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77660, 400046),
 (77661, NULL),
 (77662, 400652),
@@ -34375,7 +35506,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77807, 400068),
 (77808, 400068),
 (77830, 412480),
-(77831, 412480),
+(77831, 412480);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77833, 412480),
 (77834, NULL),
 (77835, 400654),
@@ -34406,7 +35538,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77868, 400046),
 (77869, NULL),
 (77870, 412480),
-(77871, 400018),
+(77871, 400018);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77872, 412480),
 (77873, 412480),
 (77875, NULL),
@@ -34436,7 +35569,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77970, 400311),
 (77971, 400311),
 (77972, NULL),
-(77973, 400179),
+(77973, 400179);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (77974, 400179),
 (77975, 400111),
 (77976, NULL),
@@ -34466,7 +35600,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78008, 400657),
 (78009, 412481),
 (78010, 400381),
-(78011, 400657),
+(78011, 400657);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78012, 400657),
 (78013, 400655),
 (78014, 400657),
@@ -34496,7 +35631,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78052, 400657),
 (78053, 400657),
 (78054, NULL),
-(78055, 400381),
+(78055, 400381);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78056, 412481),
 (78057, 412481),
 (78058, 400655),
@@ -34526,7 +35662,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78111, NULL),
 (78112, 400657),
 (78113, 400657),
-(78114, 400657),
+(78114, 400657);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78115, NULL),
 (78116, 400657),
 (78117, 400179),
@@ -34556,7 +35693,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78152, 400657),
 (78154, 400657),
 (78155, 400657),
-(78156, NULL),
+(78156, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78159, 400657),
 (78160, 400657),
 (78161, 400657),
@@ -34585,7 +35723,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78220, 412481),
 (78221, 412481),
 (78222, 400657),
-(78223, 400152),
+(78223, 400152);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78224, 412481),
 (78225, 400152),
 (78226, 412481),
@@ -34614,7 +35753,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78249, 412481),
 (78250, 412481),
 (78251, 412481),
-(78252, 412481),
+(78252, 412481);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78253, 412481),
 (78254, 412481),
 (78255, 412481),
@@ -34646,7 +35786,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78291, NULL),
 (78292, NULL),
 (78293, NULL),
-(78294, NULL),
+(78294, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78295, NULL),
 (78296, NULL),
 (78297, NULL),
@@ -34677,7 +35818,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78360, NULL),
 (78361, 400657),
 (78362, 412482),
-(78363, 412482),
+(78363, 412482);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78364, 412482),
 (78368, 412482),
 (78369, 400657),
@@ -34706,7 +35848,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78403, NULL),
 (78404, 412482),
 (78405, 412482),
-(78406, 412482),
+(78406, 412482);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78407, 412482),
 (78408, 412482),
 (78409, 412482),
@@ -34738,7 +35881,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78475, NULL),
 (78476, NULL),
 (78477, NULL),
-(78478, NULL),
+(78478, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78480, NULL),
 (78501, 400657),
 (78502, NULL),
@@ -34768,7 +35912,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78553, NULL),
 (78557, 400657),
 (78558, 400179),
-(78559, 412482),
+(78559, 412482);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78560, 400657),
 (78561, NULL),
 (78562, 400179),
@@ -34798,7 +35943,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78590, NULL),
 (78591, NULL),
 (78592, 412482),
-(78593, 412482),
+(78593, 412482);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78594, 412482),
 (78595, 400657),
 (78596, 400179),
@@ -34827,7 +35973,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78621, 400068),
 (78622, 400111),
 (78623, 400111),
-(78624, 400655),
+(78624, 400655);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78626, 400068),
 (78627, NULL),
 (78628, 400068),
@@ -34857,7 +36004,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78656, 400111),
 (78657, 400655),
 (78658, 400111),
-(78659, 400654),
+(78659, 400654);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78660, 400068),
 (78661, 400657),
 (78662, 400111),
@@ -34888,7 +36036,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78708, NULL),
 (78709, NULL),
 (78710, NULL),
-(78711, NULL),
+(78711, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78712, NULL),
 (78713, NULL),
 (78714, NULL),
@@ -34918,7 +36067,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78738, 400111),
 (78739, 400111),
 (78741, 400111),
-(78742, 400111),
+(78742, 400111);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78744, 400111),
 (78745, 400111),
 (78746, 400111),
@@ -34949,7 +36099,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78773, NULL),
 (78774, NULL),
 (78778, NULL),
-(78779, NULL),
+(78779, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78780, NULL),
 (78781, NULL),
 (78783, NULL),
@@ -34980,7 +36131,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78851, 412481),
 (78852, 412481),
 (78853, NULL),
-(78860, 412481),
+(78860, 412481);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78861, 412481),
 (78870, 412481),
 (78871, NULL),
@@ -35009,7 +36161,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78946, 400654),
 (78947, 400068),
 (78948, 400654),
-(78949, 400111),
+(78949, 400111);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (78950, 400654),
 (78951, NULL),
 (78952, NULL),
@@ -35039,7 +36192,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79018, 400404),
 (79019, 400404),
 (79021, 400441),
-(79022, 400247),
+(79022, 400247);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79024, 400404),
 (79025, 400404),
 (79027, 400441),
@@ -35068,7 +36222,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79059, 400404),
 (79061, 400404),
 (79062, 400404),
-(79063, 400441),
+(79063, 400441);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79064, 400441),
 (79065, 400404),
 (79066, NULL),
@@ -35098,7 +36253,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79098, 400404),
 (79101, 400404),
 (79102, 400404),
-(79103, 400404),
+(79103, 400404);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79104, 400404),
 (79105, NULL),
 (79106, 400404),
@@ -35130,7 +36286,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79175, NULL),
 (79178, NULL),
 (79180, NULL),
-(79181, NULL),
+(79181, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79182, NULL),
 (79184, NULL),
 (79185, NULL),
@@ -35160,7 +36317,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79240, 400404),
 (79241, 400404),
 (79243, 400404),
-(79244, 400404),
+(79244, 400404);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79245, 400404),
 (79247, 400247),
 (79248, 400404),
@@ -35189,7 +36347,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79331, 400655),
 (79336, 400441),
 (79338, NULL),
-(79339, 400441),
+(79339, 400441);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79342, 400655),
 (79343, 400404),
 (79344, 400441),
@@ -35218,7 +36377,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79377, 400655),
 (79378, 400441),
 (79379, 400441),
-(79380, 400441),
+(79380, 400441);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79381, 400441),
 (79382, 400441),
 (79383, 400441),
@@ -35249,7 +36409,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79491, NULL),
 (79493, NULL),
 (79499, NULL),
-(79501, 400404),
+(79501, 400404);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79502, 400404),
 (79503, 400404),
 (79504, 400441),
@@ -35278,7 +36439,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79536, 400404),
 (79537, 400441),
 (79538, 400655),
-(79539, 400404),
+(79539, 400404);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79540, 400404),
 (79541, 400655),
 (79543, 400441),
@@ -35308,7 +36470,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79608, NULL),
 (79697, NULL),
 (79698, NULL),
-(79699, NULL),
+(79699, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79701, 400655),
 (79702, NULL),
 (79703, 400655),
@@ -35338,7 +36501,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79742, 400655),
 (79743, 400655),
 (79744, 412481),
-(79745, 400655),
+(79745, 400655);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79748, 400655),
 (79749, 400655),
 (79752, 400655),
@@ -35368,7 +36532,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79783, 400655),
 (79785, 412481),
 (79786, NULL),
-(79788, 400655),
+(79788, 400655);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79789, 400655),
 (79821, 400337),
 (79830, 412481),
@@ -35397,7 +36562,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79902, 400337),
 (79903, 400337),
 (79904, 400337),
-(79905, 400337),
+(79905, 400337);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79906, 400337),
 (79907, 400337),
 (79908, 400337),
@@ -35428,7 +36594,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79937, NULL),
 (79938, 400337),
 (79940, NULL),
-(79941, NULL),
+(79941, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79942, NULL),
 (79943, NULL),
 (79944, NULL),
@@ -35462,7 +36629,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79986, NULL),
 (79987, NULL),
 (79988, NULL),
-(79989, NULL),
+(79989, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (79990, NULL),
 (79991, NULL),
 (79992, NULL),
@@ -35493,7 +36661,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80020, 412308),
 (80021, 412308),
 (80022, 412192),
-(80024, 412192),
+(80024, 412192);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80025, 412308),
 (80026, 412308),
 (80027, 412308),
@@ -35524,7 +36693,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80111, 412271),
 (80112, 412271),
 (80116, 412271),
-(80117, 412271),
+(80117, 412271);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80118, 412271),
 (80120, 412271),
 (80121, 412271),
@@ -35555,7 +36725,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80163, NULL),
 (80165, NULL),
 (80166, NULL),
-(80201, NULL),
+(80201, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80202, 400101),
 (80203, 400101),
 (80204, 412192),
@@ -35584,7 +36755,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80228, 412192),
 (80229, 412192),
 (80230, 412192),
-(80231, 412192),
+(80231, 412192);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80232, 412192),
 (80233, 412192),
 (80234, 412308),
@@ -35616,7 +36788,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80266, NULL),
 (80270, NULL),
 (80271, NULL),
-(80273, NULL),
+(80273, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80274, NULL),
 (80275, NULL),
 (80279, NULL),
@@ -35648,7 +36821,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80329, NULL),
 (80401, 412192),
 (80402, NULL),
-(80403, 412271),
+(80403, 412271);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80419, NULL),
 (80420, 412308),
 (80421, 412271),
@@ -35677,7 +36851,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80447, 412406),
 (80448, 412271),
 (80449, 412191),
-(80451, 412308),
+(80451, 412308);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80452, 412308),
 (80453, NULL),
 (80454, 412271),
@@ -35707,7 +36882,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80483, 412405),
 (80487, 412308),
 (80488, NULL),
-(80497, NULL),
+(80497, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80498, 412308),
 (80501, 412406),
 (80502, NULL),
@@ -35737,7 +36913,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80535, 412406),
 (80536, 412406),
 (80537, 412406),
-(80538, 412406),
+(80538, 412406);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80539, NULL),
 (80540, 412406),
 (80541, NULL),
@@ -35768,7 +36945,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80632, NULL),
 (80633, NULL),
 (80634, 412406),
-(80638, NULL),
+(80638, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80639, NULL),
 (80640, 412192),
 (80642, 412192),
@@ -35797,7 +36975,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80732, NULL),
 (80733, 412406),
 (80734, 412406),
-(80735, 412406),
+(80735, 412406);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80736, 412406),
 (80737, 412406),
 (80740, 412406),
@@ -35826,7 +37005,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80810, 412406),
 (80812, 412406),
 (80813, 412191),
-(80814, 412191),
+(80814, 412191);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80815, 412406),
 (80816, 412191),
 (80817, 412191),
@@ -35855,7 +37035,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80861, 412406),
 (80862, 412406),
 (80863, 412271),
-(80864, 412406),
+(80864, 412406);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80866, 412271),
 (80901, NULL),
 (80903, 412191),
@@ -35885,7 +37066,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80930, 412191),
 (80931, NULL),
 (80932, NULL),
-(80933, NULL),
+(80933, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (80934, NULL),
 (80935, NULL),
 (80936, NULL),
@@ -35918,7 +37100,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81010, NULL),
 (81011, NULL),
 (81012, NULL),
-(81013, NULL),
+(81013, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81014, NULL),
 (81015, NULL),
 (81019, NULL),
@@ -35948,7 +37131,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81050, 412406),
 (81052, 412406),
 (81054, 412406),
-(81055, 412405),
+(81055, 412405);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81057, 412406),
 (81058, 412406),
 (81059, 412405),
@@ -35977,7 +37161,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81121, 412405),
 (81122, 412405),
 (81123, 412405),
-(81124, 412405),
+(81124, 412405);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81125, 412405),
 (81126, 412405),
 (81127, 412405),
@@ -36007,7 +37192,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81155, 412405),
 (81157, NULL),
 (81201, 412191),
-(81210, 412191),
+(81210, 412191);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81211, 412191),
 (81212, 412191),
 (81215, NULL),
@@ -36037,7 +37223,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81247, NULL),
 (81248, 412191),
 (81251, 412191),
-(81252, 412191),
+(81252, 412191);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81253, 412191),
 (81290, NULL),
 (81301, 412405),
@@ -36067,7 +37254,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81416, 412405),
 (81418, 412405),
 (81419, 412405),
-(81420, NULL),
+(81420, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81421, NULL),
 (81422, 400255),
 (81423, 412405),
@@ -36096,7 +37284,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81524, 412405),
 (81525, 400255),
 (81526, 412405),
-(81527, 412405),
+(81527, 412405);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81601, 412308),
 (81602, NULL),
 (81610, 400255),
@@ -36126,7 +37315,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81646, 412405),
 (81647, 412405),
 (81648, 400255),
-(81649, 412308),
+(81649, 412308);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (81650, 412405),
 (81652, 412405),
 (81653, 412294),
@@ -36156,7 +37346,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (82061, 412294),
 (82063, 412406),
 (82070, 412406),
-(82071, NULL),
+(82071, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (82072, 412294),
 (82073, NULL),
 (82081, 412294),
@@ -36185,7 +37376,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (82243, 412294),
 (82244, 412294),
 (82301, 412294),
-(82310, 412294),
+(82310, 412294);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (82321, 412294),
 (82322, 412294),
 (82323, 412294),
@@ -36214,7 +37406,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (82431, 412294),
 (82432, 412294),
 (82433, 412294),
-(82434, 412294),
+(82434, 412294);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (82435, 412294),
 (82440, 412294),
 (82441, 412294),
@@ -36244,7 +37437,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (82635, 412294),
 (82636, 412294),
 (82637, 412294),
-(82638, NULL),
+(82638, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (82639, 412294),
 (82640, 412294),
 (82642, 412294),
@@ -36274,7 +37468,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (82732, 412294),
 (82801, 412294),
 (82831, 412294),
-(82832, 412294),
+(82832, 412294);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (82833, 412294),
 (82834, 412294),
 (82835, 412294),
@@ -36303,7 +37498,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (82938, 400255),
 (82939, 412294),
 (82941, 412294),
-(82942, 412294),
+(82942, 412294);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (82943, 412294),
 (82944, 400029),
 (82945, 412294),
@@ -36332,7 +37528,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83126, 412294),
 (83127, 412294),
 (83128, 412294),
-(83201, 400376),
+(83201, 400376);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83202, 400376),
 (83203, 400376),
 (83204, 400376),
@@ -36362,7 +37559,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83236, 400376),
 (83237, 400376),
 (83238, 400376),
-(83239, 400376),
+(83239, 400376);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83241, 400376),
 (83243, 400376),
 (83244, 400376),
@@ -36391,7 +37589,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83287, 400376),
 (83301, 400376),
 (83302, 400376),
-(83303, NULL),
+(83303, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83311, 400376),
 (83312, 400376),
 (83313, 400376),
@@ -36420,7 +37619,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83343, NULL),
 (83344, 400376),
 (83346, 400376),
-(83347, 400376),
+(83347, 400376);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83348, 400376),
 (83349, 400376),
 (83350, 400376),
@@ -36450,7 +37650,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83435, 400376),
 (83436, 400376),
 (83438, NULL),
-(83440, 400376),
+(83440, 400376);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83441, NULL),
 (83442, 400376),
 (83443, 400376),
@@ -36480,7 +37681,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83523, 412419),
 (83524, 412419),
 (83525, 412419),
-(83526, 412419),
+(83526, 412419);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83530, 412419),
 (83531, NULL),
 (83533, 412419),
@@ -36509,7 +37711,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83605, 412419),
 (83606, NULL),
 (83607, 412419),
-(83610, 400419),
+(83610, 400419);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83611, 400376),
 (83612, 400419),
 (83615, 412419),
@@ -36538,7 +37741,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83642, 412419),
 (83643, 412419),
 (83644, 412419),
-(83645, 412419),
+(83645, 412419);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83647, 400376),
 (83648, 400376),
 (83650, 412419),
@@ -36568,7 +37772,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83705, 400376),
 (83706, 400376),
 (83707, NULL),
-(83708, NULL),
+(83708, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83709, 400376),
 (83711, NULL),
 (83712, 400376),
@@ -36600,7 +37805,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83799, NULL),
 (83801, 412419),
 (83802, 412419),
-(83803, 412419),
+(83803, 412419);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83804, 400659),
 (83805, 412419),
 (83806, 412419),
@@ -36629,7 +37835,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83837, 412419),
 (83839, 412419),
 (83840, NULL),
-(83841, 412419),
+(83841, 412419);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83842, 412419),
 (83843, 400659),
 (83844, NULL),
@@ -36658,7 +37865,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83869, 400659),
 (83870, 400659),
 (83871, 412419),
-(83872, 400659),
+(83872, 400659);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (83873, 412419),
 (83874, 412419),
 (83876, 400659),
@@ -36688,7 +37896,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84026, 400255),
 (84027, 412270),
 (84028, 400029),
-(84029, 400029),
+(84029, 400029);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84030, NULL),
 (84031, 400029),
 (84032, 400029),
@@ -36717,7 +37926,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84057, 412270),
 (84058, 412270),
 (84059, NULL),
-(84060, 400029),
+(84060, 400029);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84061, 400029),
 (84062, 412270),
 (84063, 400255),
@@ -36747,7 +37957,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84089, NULL),
 (84090, NULL),
 (84091, NULL),
-(84092, 400255),
+(84092, 400255);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84093, 400255),
 (84094, 400255),
 (84095, 412270),
@@ -36777,7 +37988,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84122, NULL),
 (84123, 412270),
 (84124, 400255),
-(84125, NULL),
+(84125, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84126, NULL),
 (84127, NULL),
 (84128, 400029),
@@ -36810,7 +38022,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84180, 400029),
 (84184, NULL),
 (84189, NULL),
-(84190, NULL),
+(84190, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84193, NULL),
 (84194, NULL),
 (84195, NULL),
@@ -36840,7 +38053,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84322, NULL),
 (84323, NULL),
 (84324, 400029),
-(84325, 400029),
+(84325, 400029);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84326, 400029),
 (84327, 400029),
 (84328, 400029),
@@ -36870,7 +38084,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84415, NULL),
 (84501, 400255),
 (84510, 400255),
-(84511, 400255),
+(84511, 400255);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84512, 400255),
 (84513, 400255),
 (84515, NULL),
@@ -36900,7 +38115,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84602, NULL),
 (84603, NULL),
 (84604, 412270),
-(84605, NULL),
+(84605, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84606, 412270),
 (84620, 412270),
 (84621, 412270),
@@ -36929,7 +38145,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84646, 412270),
 (84647, 412270),
 (84648, 412270),
-(84649, 412270),
+(84649, 412270);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84650, 412270),
 (84651, 412270),
 (84652, 412270),
@@ -36958,7 +38175,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84720, 400255),
 (84721, NULL),
 (84722, 400255),
-(84723, 400255),
+(84723, 400255);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84724, 412270),
 (84725, 412500),
 (84726, 400255),
@@ -36987,7 +38205,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84751, 412270),
 (84752, 412270),
 (84753, 412500),
-(84754, 412270),
+(84754, 412270);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84755, 400255),
 (84756, NULL),
 (84757, 400255),
@@ -37017,7 +38236,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (84790, 400255),
 (84791, NULL),
 (85001, NULL),
-(85002, NULL),
+(85002, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85003, 400310),
 (85004, 400310),
 (85005, NULL),
@@ -37047,7 +38267,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85029, 400141),
 (85030, NULL),
 (85031, 400310),
-(85032, 412398),
+(85032, 412398);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85033, 400310),
 (85034, 400310),
 (85035, 400310),
@@ -37078,7 +38299,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85067, NULL),
 (85068, NULL),
 (85069, NULL),
-(85070, NULL),
+(85070, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85071, NULL),
 (85072, NULL),
 (85073, NULL),
@@ -37109,7 +38331,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85213, 412399),
 (85214, NULL),
 (85215, 412399),
-(85216, NULL),
+(85216, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85217, NULL),
 (85218, NULL),
 (85219, 412399),
@@ -37139,7 +38362,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85247, 400162),
 (85248, 400134),
 (85249, 400134),
-(85250, 412399),
+(85250, 412399);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85251, 412399),
 (85252, NULL),
 (85253, 412399),
@@ -37170,7 +38394,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85281, 400310),
 (85282, 400310),
 (85283, 400310),
-(85284, 412399),
+(85284, 412399);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85285, NULL),
 (85287, NULL),
 (85289, NULL),
@@ -37201,7 +38426,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85324, 412399),
 (85325, 400162),
 (85326, 400162),
-(85327, NULL),
+(85327, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85328, 400162),
 (85329, 400162),
 (85331, 412399),
@@ -37231,7 +38457,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85355, 400141),
 (85356, 400162),
 (85357, 400162),
-(85358, NULL),
+(85358, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85359, NULL),
 (85360, 412397),
 (85361, 400141),
@@ -37262,7 +38489,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85502, NULL),
 (85530, 412397),
 (85531, 412397),
-(85532, NULL),
+(85532, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85533, 400313),
 (85534, 412188),
 (85535, 412397),
@@ -37291,7 +38519,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85608, 400313),
 (85609, 412188),
 (85610, 412188),
-(85611, 412188),
+(85611, 412188);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85613, 412188),
 (85614, 400162),
 (85615, 412188),
@@ -37321,7 +38550,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85639, 400162),
 (85640, 400162),
 (85641, 412188),
-(85643, 412188),
+(85643, 412188);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85644, NULL),
 (85645, 400162),
 (85646, 400162),
@@ -37352,7 +38582,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85716, 400162),
 (85717, NULL),
 (85718, 412188),
-(85719, 400162),
+(85719, 400162);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85720, NULL),
 (85721, NULL),
 (85722, NULL),
@@ -37383,7 +38614,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85749, 412188),
 (85750, 412188),
 (85751, NULL),
-(85752, NULL),
+(85752, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85754, NULL),
 (85775, NULL),
 (85777, NULL),
@@ -37413,7 +38645,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (85940, 412397),
 (85941, 412397),
 (85942, 412397),
-(86001, 412397),
+(86001, 412397);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (86002, NULL),
 (86003, NULL),
 (86004, 412397),
@@ -37443,7 +38676,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (86042, 412397),
 (86043, 400141),
 (86044, 400255),
-(86045, 412397),
+(86045, 412397);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (86046, 412397),
 (86047, 412397),
 (86052, 412397),
@@ -37473,7 +38707,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (86334, 412397),
 (86335, 412397),
 (86336, 412397),
-(86337, 412397),
+(86337, 412397);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (86338, 412397),
 (86339, NULL),
 (86340, NULL),
@@ -37503,7 +38738,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (86437, 400141),
 (86438, 400141),
 (86439, NULL),
-(86440, 412446),
+(86440, 412446);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (86441, 400141),
 (86442, 412446),
 (86443, NULL),
@@ -37532,7 +38768,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (86549, 412397),
 (86556, 412397),
 (87001, 412293),
-(87002, 412281),
+(87002, 412281);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87004, 412293),
 (87005, 412293),
 (87006, 412281),
@@ -37561,7 +38798,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87031, 412281),
 (87032, 412281),
 (87034, 400313),
-(87035, 412281),
+(87035, 412281);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87036, 412281),
 (87037, 412293),
 (87038, 400313),
@@ -37591,7 +38829,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87072, 412293),
 (87083, 412293),
 (87101, NULL),
-(87102, 412281),
+(87102, 412281);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87103, NULL),
 (87104, 412281),
 (87105, 412281),
@@ -37622,7 +38861,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87174, NULL),
 (87176, NULL),
 (87181, NULL),
-(87184, NULL),
+(87184, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87185, NULL),
 (87187, NULL),
 (87190, NULL),
@@ -37653,7 +38893,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87323, 412293),
 (87325, 412293),
 (87326, 412293),
-(87327, 412293),
+(87327, 412293);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87328, 412397),
 (87347, 412293),
 (87357, 400313),
@@ -37683,7 +38924,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87505, 412293),
 (87506, NULL),
 (87507, NULL),
-(87508, NULL),
+(87508, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87509, NULL),
 (87510, 412293),
 (87511, 412293),
@@ -37712,7 +38954,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87537, 412293),
 (87538, NULL),
 (87539, 412293),
-(87540, 412293),
+(87540, 412293);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87543, 412293),
 (87544, 412293),
 (87545, NULL),
@@ -37742,7 +38985,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87579, 412293),
 (87580, 412293),
 (87581, 412293),
-(87582, 412293),
+(87582, 412293);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87583, 412293),
 (87592, NULL),
 (87594, NULL),
@@ -37772,7 +39016,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87745, 412293),
 (87746, NULL),
 (87747, 412293),
-(87749, NULL),
+(87749, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87750, 412293),
 (87752, 412293),
 (87753, 412293),
@@ -37801,7 +39046,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (87942, 400313),
 (87943, 400313),
 (88001, 400313),
-(88002, 400313),
+(88002, 400313);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88003, 400313),
 (88004, 400313),
 (88005, 400313),
@@ -37831,7 +39077,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88040, 400313),
 (88041, 400313),
 (88042, 400313),
-(88043, 400313),
+(88043, 400313);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88044, 400313),
 (88045, 400313),
 (88046, NULL),
@@ -37861,7 +39108,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88118, 412293),
 (88119, 412293),
 (88120, 412293),
-(88121, 412293),
+(88121, 412293);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88122, NULL),
 (88123, NULL),
 (88124, 412293),
@@ -37891,7 +39139,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88250, 400313),
 (88252, 400313),
 (88253, 400313),
-(88254, 400313),
+(88254, 400313);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88255, 400313),
 (88256, 400313),
 (88260, 400313),
@@ -37920,7 +39169,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88339, 400313),
 (88340, 400313),
 (88341, 400313),
-(88342, NULL),
+(88342, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88343, 400313),
 (88344, 400313),
 (88345, 400313),
@@ -37949,7 +39199,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88426, 400404),
 (88427, 412293),
 (88429, NULL),
-(88430, 400404),
+(88430, 400404);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88431, 412293),
 (88433, NULL),
 (88434, 400441),
@@ -37982,7 +39233,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88532, NULL),
 (88533, NULL),
 (88534, NULL),
-(88535, NULL),
+(88535, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88536, NULL),
 (88538, NULL),
 (88539, NULL),
@@ -38016,7 +39268,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88570, NULL),
 (88571, NULL),
 (88572, NULL),
-(88573, NULL),
+(88573, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (88574, NULL),
 (88575, NULL),
 (88576, NULL),
@@ -38048,7 +39301,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89010, 412500),
 (89011, 412446),
 (89012, 412500),
-(89013, 412500),
+(89013, 412500);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89014, 412446),
 (89015, 412500),
 (89016, NULL),
@@ -38078,7 +39332,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89045, NULL),
 (89046, 412500),
 (89047, 412500),
-(89048, 412500),
+(89048, 412500);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89049, 412500),
 (89052, 412500),
 (89053, NULL),
@@ -38109,7 +39364,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89119, 412446),
 (89120, 412446),
 (89121, 412446),
-(89122, 412446),
+(89122, 412446);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89123, 412500),
 (89124, 412500),
 (89125, NULL),
@@ -38140,7 +39396,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89152, NULL),
 (89153, NULL),
 (89154, NULL),
-(89155, NULL),
+(89155, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89156, 412500),
 (89159, NULL),
 (89160, NULL),
@@ -38171,7 +39428,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89406, 412500),
 (89407, NULL),
 (89408, 412500),
-(89409, 412500),
+(89409, 412500);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89410, 412500),
 (89411, 412500),
 (89412, NULL),
@@ -38201,7 +39459,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89439, 412295),
 (89440, 412500),
 (89442, 412500),
-(89444, 412500),
+(89444, 412500);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89445, 412500),
 (89446, NULL),
 (89447, 412500),
@@ -38232,7 +39491,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89570, NULL),
 (89595, NULL),
 (89599, NULL),
-(89701, 412500),
+(89701, 412500);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89702, NULL),
 (89703, 412500),
 (89704, 412500),
@@ -38262,7 +39522,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (89834, 412500),
 (89835, 412500),
 (89883, 412500),
-(90001, 400347),
+(90001, 400347);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90002, 412253),
 (90003, 400422),
 (90004, 412404),
@@ -38291,7 +39552,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90027, 412404),
 (90028, 400025),
 (90029, 412404),
-(90030, NULL),
+(90030, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90031, 400347),
 (90032, 400347),
 (90033, 400347),
@@ -38321,7 +39583,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90057, 400021),
 (90058, 400347),
 (90059, 412253),
-(90060, NULL),
+(90060, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90061, 412253),
 (90062, 412404),
 (90063, 412379),
@@ -38353,7 +39616,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90091, NULL),
 (90093, NULL),
 (90094, NULL),
-(90095, NULL),
+(90095, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90096, NULL),
 (90097, NULL),
 (90099, NULL),
@@ -38384,7 +39648,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90242, 400347),
 (90245, 412498),
 (90247, 412498),
-(90248, 412498),
+(90248, 412498);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90249, 412498),
 (90250, 412498),
 (90251, NULL),
@@ -38414,7 +39679,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90296, NULL),
 (90301, 400422),
 (90302, 400422),
-(90303, 400422),
+(90303, 400422);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90304, 412498),
 (90305, 400422),
 (90306, NULL),
@@ -38446,7 +39712,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90506, NULL),
 (90507, NULL),
 (90508, NULL),
-(90509, NULL),
+(90509, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90510, NULL),
 (90601, 400290),
 (90602, 400355),
@@ -38477,7 +39744,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90652, NULL),
 (90659, NULL),
 (90660, 400347),
-(90661, NULL),
+(90661, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90662, NULL),
 (90665, NULL),
 (90670, 400347),
@@ -38507,7 +39775,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90740, 400348),
 (90742, 400343),
 (90743, 400343),
-(90744, 412253),
+(90744, 412253);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90745, 412253),
 (90746, 412253),
 (90747, NULL),
@@ -38538,7 +39807,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90845, NULL),
 (90846, NULL),
 (90847, NULL),
-(90848, NULL),
+(90848, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (90853, NULL),
 (90888, NULL),
 (90899, NULL),
@@ -38570,7 +39840,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91077, NULL),
 (91101, 400361),
 (91102, NULL),
-(91103, 400361),
+(91103, 400361);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91104, 400361),
 (91105, 400361),
 (91106, 400361),
@@ -38602,7 +39873,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91201, 400361),
 (91202, 400361),
 (91203, 400361),
-(91204, 400361),
+(91204, 400361);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91205, 400361),
 (91206, 400115),
 (91207, 400361),
@@ -38633,7 +39905,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91320, 400144),
 (91321, 400267),
 (91322, NULL),
-(91324, 400371),
+(91324, 400371);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91325, 400371),
 (91326, 400371),
 (91327, NULL),
@@ -38664,7 +39937,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91359, NULL),
 (91360, 400144),
 (91361, 400144),
-(91362, 400144),
+(91362, 400144);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91363, NULL),
 (91364, 400371),
 (91365, NULL),
@@ -38696,7 +39970,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91405, 400371),
 (91406, 400371),
 (91407, NULL),
-(91408, NULL),
+(91408, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91409, NULL),
 (91410, NULL),
 (91411, 400371),
@@ -38728,7 +40003,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91601, 400371),
 (91602, 400025),
 (91603, NULL),
-(91604, 400025),
+(91604, 400025);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91605, 400371),
 (91606, 400371),
 (91607, 400025),
@@ -38759,7 +40035,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91730, 400009),
 (91731, 412379),
 (91732, 412379),
-(91733, 412379),
+(91733, 412379);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91734, NULL),
 (91735, NULL),
 (91737, 400115),
@@ -38789,7 +40066,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91767, 400115),
 (91768, 400277),
 (91769, NULL),
-(91770, 412379),
+(91770, 412379);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91771, NULL),
 (91772, NULL),
 (91773, 412379),
@@ -38820,7 +40098,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91901, 412283),
 (91902, 400133),
 (91903, NULL),
-(91905, 400133),
+(91905, 400133);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91906, 400133),
 (91908, NULL),
 (91909, NULL),
@@ -38851,7 +40130,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91962, 412283),
 (91963, 400133),
 (91976, NULL),
-(91977, 400097),
+(91977, 400097);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (91978, 400133),
 (91979, NULL),
 (91980, 400133),
@@ -38882,7 +40162,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92037, 400097),
 (92038, NULL),
 (92039, NULL),
-(92040, 412283),
+(92040, 412283);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92046, NULL),
 (92049, NULL),
 (92051, NULL),
@@ -38913,7 +40194,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92084, 400196),
 (92085, NULL),
 (92086, 400196),
-(92088, NULL),
+(92088, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92090, NULL),
 (92091, 400570),
 (92092, NULL),
@@ -38943,7 +40225,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92122, 400097),
 (92123, 400097),
 (92124, 412283),
-(92126, 400570),
+(92126, 400570);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92127, 400570),
 (92128, 400196),
 (92129, 400570),
@@ -38976,7 +40259,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92163, NULL),
 (92164, NULL),
 (92165, NULL),
-(92166, NULL),
+(92166, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92167, NULL),
 (92168, NULL),
 (92169, NULL),
@@ -39009,7 +40293,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92203, 400039),
 (92210, 400039),
 (92211, 400039),
-(92220, 400239),
+(92220, 400239);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92222, NULL),
 (92223, 400239),
 (92225, 400162),
@@ -39039,7 +40324,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92257, 400133),
 (92258, 400239),
 (92259, 400133),
-(92260, 400039),
+(92260, 400039);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92261, NULL),
 (92262, 400239),
 (92263, NULL),
@@ -39069,7 +40355,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92308, 400239),
 (92309, 400267),
 (92310, 400267),
-(92311, 400267),
+(92311, 400267);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92312, NULL),
 (92313, 400239),
 (92314, 400239),
@@ -39099,7 +40386,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92341, 400239),
 (92342, 400267),
 (92345, 400267),
-(92346, 400239),
+(92346, 400239);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92347, 400267),
 (92350, NULL),
 (92352, 400239),
@@ -39129,7 +40417,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92389, 400267),
 (92391, NULL),
 (92392, 400267),
-(92393, NULL),
+(92393, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92394, 400267),
 (92397, 400267),
 (92398, 400267),
@@ -39160,7 +40449,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92505, 400057),
 (92506, 400057),
 (92507, 400057),
-(92508, 400057),
+(92508, 400057);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92509, 400057),
 (92513, NULL),
 (92514, NULL),
@@ -39191,7 +40481,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92557, 400039),
 (92561, 400039),
 (92562, 400039),
-(92563, 400196),
+(92563, 400196);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92564, NULL),
 (92567, 400239),
 (92570, 400196),
@@ -39222,7 +40513,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92610, 412011),
 (92612, 412011),
 (92614, 412011),
-(92615, NULL),
+(92615, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92616, NULL),
 (92618, 412011),
 (92619, NULL),
@@ -39252,7 +40544,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92659, NULL),
 (92660, 412011),
 (92661, 412011),
-(92662, 412011),
+(92662, 412011);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92663, 412011),
 (92672, 412011),
 (92673, 412011),
@@ -39283,7 +40576,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92708, 400356),
 (92709, NULL),
 (92710, NULL),
-(92711, NULL),
+(92711, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92712, NULL),
 (92728, NULL),
 (92735, NULL),
@@ -39314,7 +40608,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92832, 400356),
 (92833, 400356),
 (92834, NULL),
-(92835, 400348),
+(92835, 400348);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92836, NULL),
 (92837, NULL),
 (92838, NULL),
@@ -39345,7 +40640,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92878, NULL),
 (92879, 400057),
 (92880, 400057),
-(92881, 400057),
+(92881, 400057);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (92882, 400057),
 (92883, 400196),
 (92885, NULL),
@@ -39376,7 +40672,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93031, NULL),
 (93032, NULL),
 (93033, 400144),
-(93034, NULL),
+(93034, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93035, 400062),
 (93040, 400267),
 (93041, 400144),
@@ -39407,7 +40704,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93116, NULL),
 (93117, 400144),
 (93118, NULL),
-(93120, NULL),
+(93120, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93121, NULL),
 (93130, NULL),
 (93140, NULL),
@@ -39437,7 +40735,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93225, 412190),
 (93226, 412190),
 (93227, NULL),
-(93230, 400297),
+(93230, 400297);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93232, NULL),
 (93234, 400618),
 (93235, 400297),
@@ -39467,7 +40766,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93263, 412190),
 (93265, 400297),
 (93266, 400618),
-(93267, 400297),
+(93267, 400297);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93268, 412190),
 (93270, 400297),
 (93271, 400297),
@@ -39497,7 +40797,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93309, 412190),
 (93311, 412190),
 (93312, 412190),
-(93313, 412190),
+(93313, 412190);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93380, NULL),
 (93381, NULL),
 (93382, NULL),
@@ -39529,7 +40830,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93428, 412190),
 (93429, 400144),
 (93430, 412190),
-(93432, 412190),
+(93432, 412190);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93433, 412190),
 (93434, 400144),
 (93435, 400062),
@@ -39559,7 +40861,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93461, 412190),
 (93463, 400144),
 (93464, NULL),
-(93465, 412190),
+(93465, 412190);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93483, NULL),
 (93501, 412190),
 (93502, NULL),
@@ -39589,7 +40892,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93536, 412190),
 (93539, NULL),
 (93541, 400267),
-(93542, NULL),
+(93542, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93543, 400267),
 (93544, 400267),
 (93545, 400267),
@@ -39619,7 +40923,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93602, 400297),
 (93603, 400297),
 (93604, 400297),
-(93605, 400297),
+(93605, 400297);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93606, 400065),
 (93607, NULL),
 (93608, 400618),
@@ -39649,7 +40954,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93637, 412403),
 (93638, 400297),
 (93639, NULL),
-(93640, 400618),
+(93640, 400618);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93641, 400297),
 (93642, NULL),
 (93643, 400297),
@@ -39679,7 +40985,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93673, 400297),
 (93675, 400297),
 (93701, 400618),
-(93702, 400297),
+(93702, 400297);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93703, 400618),
 (93704, 400618),
 (93705, 400618),
@@ -39711,7 +41018,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93747, NULL),
 (93750, NULL),
 (93755, NULL),
-(93760, NULL),
+(93760, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93761, NULL),
 (93762, NULL),
 (93764, NULL),
@@ -39744,7 +41052,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93912, NULL),
 (93915, NULL),
 (93920, 400129),
-(93921, 400129),
+(93921, 400129);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (93922, NULL),
 (93923, 400129),
 (93924, 400129),
@@ -39774,7 +41083,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94013, NULL),
 (94014, 412259),
 (94015, 412259),
-(94016, NULL),
+(94016, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94017, NULL),
 (94018, NULL),
 (94019, 412259),
@@ -39805,7 +41115,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94061, 412259),
 (94062, 412259),
 (94063, 400124),
-(94064, NULL),
+(94064, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94065, 412259),
 (94066, 412259),
 (94067, NULL),
@@ -39836,7 +41147,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94111, 400314),
 (94112, 412259),
 (94114, 412259),
-(94115, 400314),
+(94115, 400314);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94116, 412259),
 (94117, 412259),
 (94118, 400314),
@@ -39867,7 +41179,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94143, NULL),
 (94144, NULL),
 (94145, NULL),
-(94146, NULL),
+(94146, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94147, NULL),
 (94150, NULL),
 (94151, NULL),
@@ -39901,7 +41214,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94207, NULL),
 (94208, NULL),
 (94209, NULL),
-(94211, NULL),
+(94211, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94229, NULL),
 (94230, NULL),
 (94232, NULL),
@@ -39935,7 +41249,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94271, NULL),
 (94273, NULL),
 (94274, NULL),
-(94277, NULL),
+(94277, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94278, NULL),
 (94279, NULL),
 (94280, NULL),
@@ -39967,7 +41282,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94309, NULL),
 (94310, NULL),
 (94401, 412259),
-(94402, 412259),
+(94402, 412259);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94403, 412259),
 (94404, 412259),
 (94405, NULL),
@@ -39997,7 +41313,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94521, 412382),
 (94522, NULL),
 (94523, 412382),
-(94524, NULL),
+(94524, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94525, 400278),
 (94526, 412382),
 (94527, NULL),
@@ -40027,7 +41344,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94553, 412382),
 (94555, 400387),
 (94556, 412382),
-(94557, NULL),
+(94557, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94558, 400278),
 (94559, 400436),
 (94560, 400387),
@@ -40057,7 +41375,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94586, 412189),
 (94587, 400387),
 (94588, 400237),
-(94589, 400436),
+(94589, 400436);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94590, 400278),
 (94591, 400278),
 (94592, 400278),
@@ -40087,7 +41406,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94620, NULL),
 (94621, 400387),
 (94622, NULL),
-(94623, NULL),
+(94623, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94624, NULL),
 (94625, NULL),
 (94626, NULL),
@@ -40118,7 +41438,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94805, 400278),
 (94806, 400278),
 (94807, NULL),
-(94808, NULL),
+(94808, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94820, NULL),
 (94850, NULL),
 (94901, 400436),
@@ -40148,7 +41469,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94942, NULL),
 (94945, 400436),
 (94946, 400436),
-(94947, 400436),
+(94947, 400436);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (94948, NULL),
 (94949, 400436),
 (94950, 400436),
@@ -40179,7 +41501,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95001, NULL),
 (95002, 400387),
 (95003, 400124),
-(95004, 400129),
+(95004, 400129);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95005, 400124),
 (95006, 400124),
 (95007, 400124),
@@ -40210,7 +41533,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95039, 400129),
 (95041, 400124),
 (95042, NULL),
-(95043, 400129),
+(95043, 400129);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95044, NULL),
 (95045, 400185),
 (95046, 412189),
@@ -40241,7 +41565,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95106, NULL),
 (95108, NULL),
 (95109, NULL),
-(95110, 400185),
+(95110, 400185);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95111, 400245),
 (95112, 400245),
 (95113, 400245),
@@ -40270,7 +41595,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95136, 400245),
 (95137, NULL),
 (95138, 412189),
-(95139, 400245),
+(95139, 400245);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95140, 412189),
 (95141, NULL),
 (95142, NULL),
@@ -40303,7 +41629,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95203, 412189),
 (95204, 412189),
 (95205, 412189),
-(95206, 412189),
+(95206, 412189);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95207, 412189),
 (95208, NULL),
 (95209, 412189),
@@ -40333,7 +41660,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95240, 400617),
 (95241, NULL),
 (95242, 412189),
-(95245, 400617),
+(95245, 400617);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95246, 400617),
 (95247, 400617),
 (95248, NULL),
@@ -40364,7 +41692,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95312, 400065),
 (95313, 412403),
 (95314, NULL),
-(95315, 400065),
+(95315, 400065);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95316, 412403),
 (95317, 400065),
 (95318, 412403),
@@ -40394,7 +41723,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95345, 412403),
 (95346, 412403),
 (95347, NULL),
-(95348, 400065),
+(95348, 400065);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95350, 412403),
 (95351, 400065),
 (95352, NULL),
@@ -40424,7 +41754,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95379, 412403),
 (95380, 412403),
 (95381, NULL),
-(95382, 412403),
+(95382, 412403);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95383, 412403),
 (95385, 412403),
 (95386, 412403),
@@ -40454,7 +41785,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95421, 400436),
 (95422, 400403),
 (95423, 400403),
-(95424, 400403),
+(95424, 400403);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95425, 400403),
 (95426, 400403),
 (95427, 400403),
@@ -40483,7 +41815,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95454, 400403),
 (95456, 400403),
 (95457, 400403),
-(95458, 400403),
+(95458, 400403);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95459, 400403),
 (95460, 400403),
 (95461, 400403),
@@ -40512,7 +41845,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95494, 400403),
 (95497, 400436),
 (95501, 400403),
-(95502, 400403),
+(95502, 400403);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95503, 400403),
 (95511, 400403),
 (95514, 400403),
@@ -40542,7 +41876,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95551, 400403),
 (95552, 400403),
 (95553, 400403),
-(95554, 400403),
+(95554, 400403);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95555, 400403),
 (95556, 400403),
 (95558, 400403),
@@ -40571,7 +41906,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95607, 400403),
 (95608, 400663),
 (95609, NULL),
-(95610, 400617),
+(95610, 400617);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95611, NULL),
 (95612, 400663),
 (95613, 412295),
@@ -40600,7 +41936,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95637, 400176),
 (95638, 400617),
 (95639, 400617),
-(95640, 400617),
+(95640, 400617);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95641, 412382),
 (95642, 400617),
 (95644, NULL),
@@ -40630,7 +41967,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95671, NULL),
 (95672, 412295),
 (95673, 400663),
-(95674, 412295),
+(95674, 412295);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95675, 400617),
 (95676, 400176),
 (95677, 412295),
@@ -40660,7 +41998,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95703, 412295),
 (95709, 412295),
 (95712, NULL),
-(95713, 412295),
+(95713, 412295);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95714, 412295),
 (95715, 412295),
 (95717, 412295),
@@ -40690,7 +42029,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95814, 400663),
 (95815, 400663),
 (95816, 400663),
-(95817, 400663),
+(95817, 400663);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95818, 400663),
 (95819, 400663),
 (95820, 400663),
@@ -40720,7 +42060,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95852, NULL),
 (95853, NULL),
 (95857, NULL),
-(95860, NULL),
+(95860, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95864, 400663),
 (95865, NULL),
 (95866, NULL),
@@ -40751,7 +42092,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95929, NULL),
 (95930, 412295),
 (95931, NULL),
-(95932, 400176),
+(95932, 400176);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95934, 412295),
 (95935, 400176),
 (95936, 412295),
@@ -40780,7 +42122,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95960, 412295),
 (95961, 400176),
 (95962, 400176),
-(95963, 400176),
+(95963, 400176);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (95965, 412295),
 (95966, 412295),
 (95967, NULL),
@@ -40810,7 +42153,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96001, 400176),
 (96002, 400176),
 (96003, 400176),
-(96006, 412295),
+(96006, 412295);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96007, 400176),
 (96008, 400176),
 (96009, 412295),
@@ -40839,7 +42183,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96037, 400176),
 (96038, 400176),
 (96039, 400403),
-(96040, 400176),
+(96040, 400176);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96041, 400176),
 (96044, 400419),
 (96046, 400403),
@@ -40868,7 +42213,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96073, 400176),
 (96074, 400176),
 (96075, 400176),
-(96076, 400176),
+(96076, 400176);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96078, NULL),
 (96079, NULL),
 (96080, 400176),
@@ -40898,7 +42244,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96110, 412295),
 (96111, NULL),
 (96112, 412500),
-(96113, 412295),
+(96113, 412295);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96114, 412295),
 (96115, 412295),
 (96116, 412295),
@@ -40927,7 +42274,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96142, 412295),
 (96143, 412295),
 (96145, 412295),
-(96146, 412295),
+(96146, 412295);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96148, 412295),
 (96150, 412500),
 (96151, NULL),
@@ -40960,7 +42308,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96224, NULL),
 (96251, NULL),
 (96257, NULL),
-(96258, NULL),
+(96258, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96259, NULL),
 (96260, NULL),
 (96262, NULL),
@@ -40994,7 +42343,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96343, NULL),
 (96347, NULL),
 (96348, NULL),
-(96349, NULL),
+(96349, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96350, NULL),
 (96351, NULL),
 (96362, NULL),
@@ -41028,7 +42378,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96518, NULL),
 (96520, NULL),
 (96521, NULL),
-(96522, NULL),
+(96522, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96529, NULL),
 (96530, NULL),
 (96531, NULL),
@@ -41062,7 +42413,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96596, NULL),
 (96597, NULL),
 (96598, NULL),
-(96599, NULL),
+(96599, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96601, NULL),
 (96602, NULL),
 (96603, NULL),
@@ -41096,7 +42448,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96657, NULL),
 (96660, NULL),
 (96661, NULL),
-(96662, NULL),
+(96662, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96663, NULL),
 (96664, NULL),
 (96665, NULL),
@@ -41128,7 +42481,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96706, 412418),
 (96707, 412418),
 (96708, 412200),
-(96709, NULL),
+(96709, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96710, 412200),
 (96712, 412200),
 (96713, 412200),
@@ -41158,7 +42512,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96741, 412200),
 (96742, 412200),
 (96743, 412200),
-(96744, 412200),
+(96744, 412200);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96745, NULL),
 (96746, 412200),
 (96747, 412200),
@@ -41188,7 +42543,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96772, 412200),
 (96773, 412200),
 (96774, 412200),
-(96775, NULL),
+(96775, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96776, 412200),
 (96777, 412200),
 (96778, 412200),
@@ -41219,7 +42575,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96807, NULL),
 (96808, NULL),
 (96809, NULL),
-(96810, NULL),
+(96810, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96811, NULL),
 (96812, NULL),
 (96813, 412418),
@@ -41238,8 +42595,7 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96826, 412418),
 (96827, NULL),
 (96828, NULL),
-(96830, NULL);
-INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
+(96830, NULL),
 (96835, NULL),
 (96836, NULL),
 (96837, NULL),
@@ -41252,7 +42608,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96844, NULL),
 (96845, NULL),
 (96846, NULL),
-(96847, NULL),
+(96847, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96848, NULL),
 (96849, NULL),
 (96850, NULL),
@@ -41285,7 +42642,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96928, NULL),
 (96929, NULL),
 (96930, NULL),
-(96931, NULL),
+(96931, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (96932, NULL),
 (96940, NULL),
 (96941, NULL),
@@ -41316,7 +42674,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97019, 400033),
 (97020, 412315),
 (97021, 400419),
-(97022, 400033),
+(97022, 400033);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97023, 412315),
 (97024, 400033),
 (97026, 412315),
@@ -41346,7 +42705,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97054, NULL),
 (97055, 400033),
 (97056, 400033),
-(97057, NULL),
+(97057, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97058, 400419),
 (97060, 400033),
 (97062, 412315),
@@ -41377,7 +42737,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97115, NULL),
 (97116, NULL),
 (97117, 412315),
-(97118, 412315),
+(97118, 412315);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97119, NULL),
 (97121, NULL),
 (97122, 412315),
@@ -41407,7 +42768,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97201, 412315),
 (97202, 412315),
 (97203, 400033),
-(97204, 400033),
+(97204, 400033);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97205, 400033),
 (97206, 400033),
 (97207, NULL),
@@ -41437,7 +42799,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97232, 400033),
 (97233, 400033),
 (97236, 400033),
-(97238, NULL),
+(97238, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97240, NULL),
 (97242, NULL),
 (97251, NULL),
@@ -41470,7 +42833,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97302, 412315),
 (97303, 412315),
 (97304, 412315),
-(97305, 412315),
+(97305, 412315);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97306, 412315),
 (97307, NULL),
 (97308, NULL),
@@ -41501,7 +42865,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97346, 412315),
 (97347, 412315),
 (97348, 400100),
-(97350, 412315),
+(97350, 412315);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97351, 412315),
 (97352, 412315),
 (97355, 400100),
@@ -41531,7 +42896,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97383, 412315),
 (97384, NULL),
 (97385, 412315),
-(97386, 400100),
+(97386, 400100);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97388, NULL),
 (97389, 400100),
 (97390, 412315),
@@ -41560,7 +42926,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97420, 400100),
 (97423, 400100),
 (97424, 400100),
-(97425, 400419),
+(97425, 400419);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97426, 400100),
 (97427, 400100),
 (97428, 400100),
@@ -41589,7 +42956,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97453, 400100),
 (97454, 400100),
 (97455, 400100),
-(97456, 400100),
+(97456, 400100);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97457, 400100),
 (97458, 400100),
 (97459, 400100),
@@ -41619,7 +42987,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97489, 400100),
 (97490, 400100),
 (97491, NULL),
-(97492, 400100),
+(97492, 400100);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97493, 400100),
 (97494, NULL),
 (97495, NULL),
@@ -41649,7 +43018,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97537, 400419),
 (97538, 400100),
 (97539, 400419),
-(97540, 400419),
+(97540, 400419);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97541, 400419),
 (97543, 400100),
 (97544, 400419),
@@ -41678,7 +43048,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97641, 400419),
 (97701, 400419),
 (97702, 400419),
-(97707, 400419),
+(97707, 400419);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97708, NULL),
 (97709, NULL),
 (97710, 412500),
@@ -41707,7 +43078,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97756, 400419),
 (97758, 400419),
 (97759, 400419),
-(97760, 400419),
+(97760, 400419);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97761, 400419),
 (97801, 400419),
 (97810, 400419),
@@ -41736,7 +43108,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97839, 400419),
 (97840, 400419),
 (97841, 400419),
-(97842, 400419),
+(97842, 400419);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97843, 400419),
 (97844, 400419),
 (97845, 400419),
@@ -41765,7 +43138,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97883, 400419),
 (97884, 400419),
 (97885, 400419),
-(97886, 400419),
+(97886, 400419);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (97901, 412419),
 (97902, NULL),
 (97903, 400419),
@@ -41795,7 +43169,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98011, 400193),
 (98012, 400193),
 (98013, NULL),
-(98014, 400660),
+(98014, 400660);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98015, NULL),
 (98019, 400193),
 (98020, 400193),
@@ -41825,7 +43200,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98046, NULL),
 (98047, 400379),
 (98050, NULL),
-(98051, 400660),
+(98051, 400660);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98052, 400193),
 (98053, 400660),
 (98054, NULL),
@@ -41856,7 +43232,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98104, 400262),
 (98105, 400262),
 (98106, 400262),
-(98107, 400262),
+(98107, 400262);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98108, 400262),
 (98109, 400262),
 (98110, 400109),
@@ -41886,7 +43263,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98148, 400379),
 (98151, NULL),
 (98154, 400262),
-(98155, 400262),
+(98155, 400262);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98158, NULL),
 (98160, NULL),
 (98161, NULL),
@@ -41917,7 +43295,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98220, 400232),
 (98221, 400232),
 (98222, 400232),
-(98223, 400232),
+(98223, 400232);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98224, 400232),
 (98225, 400232),
 (98226, 400232),
@@ -41947,7 +43326,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98255, NULL),
 (98256, 400232),
 (98257, 400232),
-(98258, 400232),
+(98258, 400232);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98259, NULL),
 (98260, 400232),
 (98261, 400232),
@@ -41977,7 +43357,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98290, 400193),
 (98291, NULL),
 (98292, 400232),
-(98293, NULL),
+(98293, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98294, 400232),
 (98295, 400232),
 (98296, 400193),
@@ -42006,7 +43387,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98333, 400109),
 (98335, 400109),
 (98336, 412486),
-(98337, 400109),
+(98337, 400109);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98338, 400379),
 (98339, 400109),
 (98340, 400193),
@@ -42036,7 +43418,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98366, 400109),
 (98367, 400109),
 (98368, 400109),
-(98370, 400193),
+(98370, 400193);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98371, 400379),
 (98372, 400379),
 (98373, 400379),
@@ -42066,7 +43449,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98402, 400109),
 (98403, 400109),
 (98404, 400109),
-(98405, 400109),
+(98405, 400109);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98406, 400109),
 (98407, 400109),
 (98408, 400109),
@@ -42097,7 +43481,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98464, NULL),
 (98465, 400109),
 (98466, 400109),
-(98467, 400109),
+(98467, 400109);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98471, NULL),
 (98477, NULL),
 (98481, NULL),
@@ -42128,7 +43513,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98530, 412486),
 (98531, 412486),
 (98532, 412486),
-(98533, 412486),
+(98533, 412486);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98535, 400109),
 (98536, 400109),
 (98537, 400109),
@@ -42158,7 +43544,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98566, NULL),
 (98568, 400109),
 (98569, 400109),
-(98570, 412486),
+(98570, 412486);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98571, 400109),
 (98572, 412486),
 (98575, 400109),
@@ -42187,7 +43574,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98602, 400171),
 (98603, 412486),
 (98604, 412486),
-(98605, 400419),
+(98605, 400419);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98606, 412486),
 (98607, 412486),
 (98609, NULL),
@@ -42217,7 +43605,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98640, 412486),
 (98641, 412486),
 (98642, 412486),
-(98643, 412486),
+(98643, 412486);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98644, 412486),
 (98645, 412486),
 (98647, 412486),
@@ -42247,7 +43636,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98686, 412486),
 (98687, NULL),
 (98801, 400171),
-(98802, 400171),
+(98802, 400171);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98807, NULL),
 (98811, 400171),
 (98812, 400171),
@@ -42276,7 +43666,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98841, 400659),
 (98843, 400171),
 (98844, 400659),
-(98845, 400171),
+(98845, 400171);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98846, 400171),
 (98847, 400171),
 (98848, 400171),
@@ -42306,7 +43697,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98925, 400171),
 (98926, 400171),
 (98929, NULL),
-(98930, 400171),
+(98930, 400171);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (98932, 400171),
 (98933, 400171),
 (98934, 400171),
@@ -42335,7 +43727,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99008, 400659),
 (99009, 400659),
 (99011, 400659),
-(99012, 400659),
+(99012, 400659);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99013, 400659),
 (99014, NULL),
 (99015, NULL),
@@ -42365,7 +43758,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99103, 400171),
 (99104, NULL),
 (99105, 400659),
-(99107, NULL),
+(99107, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99109, 400659),
 (99110, 400659),
 (99111, 400659),
@@ -42394,7 +43788,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99137, 400659),
 (99138, 400659),
 (99139, 400659),
-(99140, 400659),
+(99140, 400659);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99141, 400659),
 (99143, 400171),
 (99144, NULL),
@@ -42424,7 +43819,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99171, 400659),
 (99173, 400659),
 (99174, NULL),
-(99176, 400659),
+(99176, 400659);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99179, 400659),
 (99180, 400659),
 (99181, 400659),
@@ -42455,7 +43851,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99251, NULL),
 (99252, NULL),
 (99256, NULL),
-(99258, NULL),
+(99258, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99260, NULL),
 (99299, NULL),
 (99301, 400171),
@@ -42485,7 +43882,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99348, 400171),
 (99349, 400171),
 (99350, 400171),
-(99352, 400171),
+(99352, 400171);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99353, 400171),
 (99356, 400419),
 (99357, 400171),
@@ -42515,7 +43913,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99515, 400440),
 (99516, 400440),
 (99517, 400440),
-(99518, 400440),
+(99518, 400440);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99519, NULL),
 (99520, NULL),
 (99521, NULL),
@@ -42545,7 +43944,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99567, 400440),
 (99568, 400440),
 (99569, 400440),
-(99571, 400440),
+(99571, 400440);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99572, 400440),
 (99573, 400440),
 (99574, 400440),
@@ -42574,7 +43974,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99607, 400440),
 (99608, 400440),
 (99609, 400440),
-(99610, 400440),
+(99610, 400440);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99611, 400440),
 (99612, 400440),
 (99613, 400440),
@@ -42603,7 +44004,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99641, 400440),
 (99643, 400440),
 (99644, 400440),
-(99645, 400440),
+(99645, 400440);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99647, 400440),
 (99648, 400440),
 (99649, 400440),
@@ -42632,7 +44034,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99672, 400440),
 (99674, 400440),
 (99675, 400440),
-(99676, 400440),
+(99676, 400440);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99677, 400440),
 (99678, 400440),
 (99679, 400440),
@@ -42662,7 +44065,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99707, NULL),
 (99708, NULL),
 (99709, 400440),
-(99710, NULL),
+(99710, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99711, NULL),
 (99712, 400440),
 (99714, 400440),
@@ -42691,7 +44095,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99744, 400440),
 (99745, 400440),
 (99746, 400440),
-(99747, 400440),
+(99747, 400440);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99748, 400440),
 (99749, 400440),
 (99750, 400440),
@@ -42720,7 +44125,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99773, 400440),
 (99774, 400440),
 (99775, 400440),
-(99776, 400440),
+(99776, 400440);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99777, 400440),
 (99778, 400440),
 (99779, 400440),
@@ -42750,7 +44156,8 @@ INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99832, 400440),
 (99833, 400440),
 (99835, 400440),
-(99836, NULL),
+(99836, NULL);
+INSERT INTO /*$wgDBprefix*/`cl_zip5` (`clz5_zip`, `clz5_rep_id`) VALUES
 (99840, 400440),
 (99841, 400440),
 (99850, 400440),
