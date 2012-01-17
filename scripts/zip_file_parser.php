@@ -1,5 +1,6 @@
 <?php
 die( "Dying for safety, because nobody should actually use this.\nIf you disagree, you'll need to uncomment line 2.\n" );
+//just don't commit it uncommented. >:[
 
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
@@ -18,8 +19,24 @@ class ZipFileParser extends Maintenance {
 		if ( !empty( $_SERVER['argv'][1] ) && is_numeric( $_SERVER['argv'][1] ) ){
 			$skip_up_to = $_SERVER['argv'][1];
 		}
+		$function = 'fillOutNulls';
+		if ( !empty( $_SERVER['argv'][1] ) && $_SERVER['argv'][1] === 'findSplits' ){
+			$function = 'findSplits';
+		}
 		
+		switch ( $function ){
+			case 'fillOutNulls':
+				$this->fill_out_nulls( $skip_up_to );
+				break;
+			case 'findSplits':
+				$this->find_split_zipcodes( $skip_up_to );
+				break;			
+		}
 		
+		echo "Done\n";
+	}
+	
+	function fill_out_nulls( $skip_up_to ){
 		//get the "missing" zipcodes
 		$missing_zips = $this->getMissingZipcodes();
 		
@@ -120,6 +137,53 @@ class ZipFileParser extends Maintenance {
 			echo "Time: " . $duration . "\n";
 		}
 		
+	}	
+	
+	
+	function find_split_zipcodes( $skip_up_to ){
+		//get the "missing" zipcodes
+		//$missing_zips = $this->getMissingZipcodes();
+		
+		//load the file
+		//Still a terrible way to do this. 
+		$zipfile = file( 'zipcode_map.txt', FILE_SKIP_EMPTY_LINES );
+		$zipmap = array();
+		foreach ( $zipfile as $line=>$val ){
+			$val = explode(' ', $val);
+			$zipgroup = $val[0];
+			$extended = '';
+			$exploded_zipgroup = explode( '-', $zipgroup );
+			$original_zipgroup = $zipgroup;
+			
+			if ( count( $exploded_zipgroup ) > 1 ){
+				$zipgroup = $exploded_zipgroup[0];
+				$extended = $exploded_zipgroup[1];
+			}
+			
+			$val_2 = explode('-', $val[1]);
+			
+			$state = $val_2[0];
+			$district = trim($val_2[1]);
+			
+			$zipmap[$zipgroup][$state . '-' . $district][] = $original_zipgroup;
+			//echo "Zipgroup = $zipgroup, State = $state, District = $district";
+		}
+		//echo print_r( $zipmap, true );
+		//die();
+		
+		$splits = array();
+		foreach ( $zipmap as $group => $districts ){
+			if (count($districts) > 1){
+				$splits[$group] = count($districts);
+			} else {
+				unset( $zipmap[$group] );
+			}
+		}
+		
+		echo print_r( $splits, true );
+		echo count( $splits ) . " split zipcodes found, out of... I don't know. 40 thousand or something.\n";
+		
+		die("Hurr!");
 	}
 	
 	function insert_rep( $zip, $rep_id ){
