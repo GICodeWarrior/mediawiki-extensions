@@ -1,7 +1,5 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die();
-}
+
 /**
  * Class file for the Blackout extension
  *
@@ -9,20 +7,39 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @license GPL
  */
 
-// Blackout
+/**
+ * Blackout class
+ */
 class Blackout {
 
 	/**
-	 * Function displaying banner
+	 * Override action hook. This is the show-stopper
 	 *
+	 * @param $output OutputPage
 	 * @param $article Article
+	 * @param $title Title
 	 * @param $user User
-	 * @param $summary
+	 * @param $request WebRequest
+	 * @param $wiki MediaWiki
 	 * @return bool
 	 */
-	public static function fnMyHook( OutputPage &$out, Skin &$skin ) {
-		global $wgBlackout, $wgOut;
-		$wgOut->addModules( 'ext.blackout' );
-	return true;
+	public static function overrideAction( $output, $article, $title, $user, $request, $wiki ) {
+		global $wgBlackout;
+
+		// You know what this does
+		if ( !$wgBlackout['Enable'] ) {
+			return true;
+		}
+
+		// Check the article whitelist
+		if ( in_array( $title->getPrefixedDBkey(), $wgBlackout['Whitelist'] ) ) {
+			return true;
+		}
+
+		$skinClass = "Skin{$wgBlackout['Skin']}";
+		$skin = new $skinClass();
+		$output->getContext()->setSkin( $skin );
+
+		return false;
 	}
 }

@@ -9,7 +9,6 @@
  * @license GPL
  *
  * Thank you to *** for feedback, bug reporting and cleaning up code
- * Thank you to Raymond and others mentioned in TweetANew.i18n.php for translation work
  *
  */
 
@@ -30,10 +29,23 @@
  * 			- Enables blackout message
  *			  Default is true
  *
+ * $wgBlackout['Skin']
+ * 			- Change the blackout skin
+ * 				* ProtestSopa (Default)
+ * 				* SopStrike
+ * 				* StopSopa
+ *
+ * $wgBlackout['Whitelist'][]
+ * 			- Add pages to the whitelist
+ *
  */
 
 $wgBlackout = array(
 	'Enable' => true,
+	'Skin' => 'ProtestSopa',
+	'Whitelist' => array(
+		'Special:Version',
+	),
 );
 
 /**
@@ -42,32 +54,26 @@ $wgBlackout = array(
  */
 
 $dir = dirname(__FILE__) . '/';
+
 $wgAutoloadClasses['Blackout'] = $dir . 'Blackout.body.php';
-$wgExtensionMessagesFiles['Blackout'] = $dir . 'Blackout.i18n.php';
 
-$wgResourceModules['ext.blackout'] = array(
-	'styles' => 'ext.blackout.css',
-	'scripts' => 'ext.blackout.js',
-	'localBasePath' => dirname(__FILE__) . '/modules',
-	'remoteExtPath' => 'Blackout/modules'
-);
+$skinDir = $dir . 'skins/';
+$wgAutoloadClasses['SkinProtestSopa'] = $skinDir . 'ProtestSopa.php';
+$wgAutoloadClasses['SkinStopSopa'] = $skinDir . 'StopSopa.php';
+$wgAutoloadClasses['SkinSopaStrike'] = $skinDir . 'SopaStrike.php';
 
-/**
+/*
  * Credits
- *
  */
-
  $wgExtensionCredits['other'][] = array(
 	'name'           => 'Blackout',
 	'version'        => '1.0.20120117',
-	'author'         => '[https://www.mediawiki.org/wiki/User:Varnent Gregory Varnum] utilizing work by [https://www.mediawiki.org/wiki/Extension:Blackout#Credits these fantastic MediaWiki developers]',
+	'author'         => array('[https://www.mediawiki.org/wiki/User:Varnent Gregory Varnum]', 'John Du Hart', '...'),
 	'description'    => 'For use during blackouts in protest to SOPA/PIPA and Internet censorship.',
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:Blackout',
 );
 
-/**
- * Call the hooks
- *
+/*
+ * Hooks
  */
-
-$wgHooks['BeforePageDisplay'][] = 'Blackout::BlackoutBanner';
+$wgHooks['MediaWikiPerformAction'][] = 'Blackout::overrideAction';
