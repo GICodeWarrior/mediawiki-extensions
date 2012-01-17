@@ -33,6 +33,13 @@ $messages['gl'] = array(
 	'windowsazuresdk-desc' => 'Proporciona o SDK [http://phpazure.codeplex.com/ PHPAzure] creado por [http://www.realdolmen.com/ REALDOLMEN]',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'windowsazuresdk-desc' => 'תמיכה בערכת הפיתוח [http://phpazure.codeplex.com/ PHPAzure] מאת [http://www.realdolmen.com/ REALDOLMEN]',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
