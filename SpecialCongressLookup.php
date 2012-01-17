@@ -63,28 +63,36 @@ body {
 	margin: 2em;
 	font-family: arial, sans-serif;
 	font-size: 15px;
+	background: black url('//upload.wikimedia.org/wikipedia/commons/0/0a/WP_SOPA_W_with_Gradient.png') no-repeat 0 0;
 }
 a:link, a:visited {
 	color: #28a6b1;
 }
 a:hover, a:active {
-	color: #55a73c;
+	color: #999999;
 }
-table#takeAction {
-	font-family: inherit;
-	font-size: inherit;
-	width: 100%;
+div#everything {
+	width: 920px;
+	margin: 0 auto;
 }
-table#takeAction td {
-	vertical-align: top;
-	padding: 0.2em;
+div#instructions {
+	float:left;
+	text-align: left;
+	width: 580px;
+	background-color: #202020;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	padding: 5px 20px 20px 20px;
+	filter:alpha(opacity=90);
+	-moz-opacity:0.90;
+	-khtml-opacity: 0.90;
+	opacity: 0.90;
 }
-table#takeAction td#instructions {
-	font-family: georgia, serif;
-	width: 60%;
-}
-table#takeAction td#contacts {
-	padding: 0.2em 2em;
+div#contacts {
+	float:left;
+	width: 259px;
+	padding: 5px 20px;
 }
 table.person {
 	margin-bottom: 1em;
@@ -95,44 +103,53 @@ table.person td.name {
 p {
 	margin: 1em 0;
 }
+p.quote {
+	font-family: georgia, serif;
+	font-size: 14px;
+	color: #CCCCCC;
+}
 h3 {
-	font-weight: bold;
-	font-size: 12px;
+	font-weight: normal;
+	font-size: 20px;
+}
+h4 {
+	font-weight: normal;
+	font-size: 17px;
 }
 </style>
 </head>
 <body>
-<table id="takeAction" border="0" cellspacing="0" cellpadding="0" style="border:none;">
-	<tr>
-		<td id="instructions">
-		<p>
-		For maximum impact, please consider calling your US Representative and US Senators and explain that you are a constituent and that you oppose these bills and similar future legislation.
-		</p>
-		
-		<h4>Things you may want to say to your Senator or Representative</h4>
-		<p>
-		“As one of your concerned constituents, I urge you to oppose SOPA and PIPA or any future bill that would censor free speech and damage the security of the Internet.”
-		</p>
-		
-		<h4>Regarding Censorship</h4>
-		<p>
-		“The Internet has become an important communications tool allowing the free flow of ideas. As introduced in the House and the Senate, SOPA and PIPA would give the Justice Department and courts tremendous power to shut down entire sites. These bills ignore the principles of the First Amendment that require tailored solutions in lieu of across-the-board censorship. Unfortunately these bills represent terrible precedents for the United States and the world.”
-		</p>
-		
-		<h4>Regarding Cybersecurity</h4>
-		<p>
-		“A safe and secure Web is vital to our privacy, our access to free knowledge, and to commerce. Hundreds of established authorities on the Internet believe that the required blocking of Internet sites in SOPA and PIPA is badly thought out and threatens Internet security.”
-		</p>
-		</td>
-		<td id="contacts">
-		<h4>Your Representatives:</h4>
+<div id="everything">
+<div id="instructions">
+	<h3>Take action to stop SOPA and PIPA, the internet blacklist bills</h3>
+	<p>
+	For maximum impact, please consider calling your US Representative and US Senators and explain that you are a constituent and that you oppose these bills and similar future legislation.
+	</p>
+	
+	<h4>Things you may want to say to your Senator or Representative</h4>
+	<p class="quote">
+	“As one of your concerned constituents, I urge you to oppose SOPA and PIPA or any future bill that would censor free speech and damage the security of the Internet.”
+	</p>
+	
+	<h4>Regarding Censorship</h4>
+	<p class="quote">
+	“The Internet has become an important communications tool allowing the free flow of ideas. As introduced in the House and the Senate, SOPA and PIPA would give the Justice Department and courts tremendous power to shut down entire sites. These bills ignore the principles of the First Amendment that require tailored solutions in lieu of across-the-board censorship. Unfortunately these bills represent terrible precedents for the United States and the world.”
+	</p>
+	
+	<h4>Regarding Cybersecurity</h4>
+	<p class="quote">
+	“A safe and secure Web is vital to our privacy, our access to free knowledge, and to commerce. Hundreds of established authorities on the Internet believe that the required blocking of Internet sites in SOPA and PIPA is badly thought out and threatens Internet security.”
+	</p>
+</div>
+<div id="contacts">
+	<h4>Your Representatives:</h4>
 HTML;
 		if ( $this->zip ) {
-			$htmlOut .= $this->getCongressTable();
+			$htmlOut .= $this->getCongressTables();
 		}
 		
 		// Output end of the page
-		$htmlOut .= "\n</td>\n</tr>\n</table>\n</body>\n</html>\n";
+		$htmlOut .= "\n</div>\n</div>\n</body>\n</html>\n";
 		
 		echo $htmlOut;
 		
@@ -143,7 +160,7 @@ HTML;
 	 * Get an HTML table of data for the user's congressional representatives
 	 * @return HTML for the table
 	 */
-	private function getCongressTable() {
+	private function getCongressTables() {
 		$myRepresentative = array();
 		$mySenators = array();
 		$myRepresentative = CongressLookupDB::getRepresentative( $this->zip );
