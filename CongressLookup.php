@@ -42,7 +42,7 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 // Configurable variables for caching the special page
-$wgCongressLookupSharedMaxAge = 900; // 15 minutes server-side
+$wgCongressLookupSharedMaxAge = 1200; // 20 minutes server-side
 $wgCongressLookupMaxAge = 600; // 10 minutes client-side
 
 $dir = dirname( __FILE__ ) . '/';

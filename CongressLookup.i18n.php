@@ -19,6 +19,7 @@ $messages['en'] = array(
 	'congresslookup-phone' => 'Phone: $1',
 	'congresslookup-fax' => 'Fax: $1',
 	'congresslookup-contact-form' => 'Contact form',
+	'congresslookup-your-reps' => 'Your Representatives:',
 );
 
 /** Message documentation (Message documentation)
@@ -32,4 +33,5 @@ $messages['qqq'] = array(
 	'congresslookup-phone' => 'Phone number listing. $1 is the phone number.',
 	'congresslookup-fax' => 'Fax number listing. $1 is the fax number.',
 	'congresslookup-contact-form' => "Label for a link to the representative's contact form",
+	'congresslookup-your-reps' => 'Label for data. Should be short.',
 );
