@@ -15,7 +15,7 @@
  *
  * This program is distributed WITHOUT ANY WARRANTY.
  */
- 
+
 /**
  * @file
  * @ingroup Extensions

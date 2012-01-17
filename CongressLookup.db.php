@@ -12,7 +12,7 @@ class CongressLookupDB {
 	public static function getRepresentative( $zip ) {
 		$repData = array();
 		$dbr = wfGetDB( DB_SLAVE );
-		 
+
 		$zip = self::trimZip( $zip, 5 ); // Trim it to 5 digit
 		$zip = intval( $zip ); // Convert into an integer
 
@@ -53,11 +53,10 @@ class CongressLookupDB {
 				);
 				$repData[] = $oneHouseRep;
 			}
-			//$repData = $row;
 		}
 		return $repData;
 	}
-	
+
 	/**
 	 * Given a zip code, return the data for that zip code's senators
 	 * @param $zip string
@@ -108,7 +107,7 @@ class CongressLookupDB {
 		}
 		return $senatorData;
 	}
-	
+
 	/**
 	 * Helper method. Trim a zip code, but leave it as a string.
 	 * @param $zip string: Raw zip code

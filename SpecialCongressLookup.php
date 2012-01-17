@@ -6,29 +6,28 @@
  */
 class SpecialCongressLookup extends UnlistedSpecialPage {
 	var $zip;
-	
+
 	public function __construct() {
 		// Register special page
 		parent::__construct( 'CongressLookup' );
 	}
-	
+
 	/**
 	 * Handle different types of page requests
 	 */
 	public function execute( $sub ) {
 		global $wgRequest, $wgOut;
-		
+
 		// Pull in query string parameters
 		$this->zip = $wgRequest->getVal( 'zip' );
-		
+
 		// Setup
 		$wgOut->disable();
 		$this->sendHeaders();
-		
+
 		$this->buildPage();
-		
 	}
-	
+
 	/**
 	 * Generate the HTTP response headers for the landing page
 	 */
@@ -44,9 +43,7 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 	 */
 	private function buildPage() {
 		$htmlOut = '';
-		
-		$dir = dirname( __FILE__ ) . '/';
-		
+
 		// Output beginning of the page
 		$htmlOut .= <<<HTML
 <!DOCTYPE html>
@@ -125,17 +122,17 @@ h4 {
 	<p>
 	For maximum impact, please consider calling your US Representative and US Senators and explain that you are a constituent and that you oppose these bills and similar future legislation.
 	</p>
-	
+
 	<h4>Things you may want to say to your Senator or Representative</h4>
 	<p class="quote">
 	“As one of your concerned constituents, I urge you to oppose SOPA (H.R.3261) and PIPA (S.968) or any future bill that would censor free speech and damage the security of the Internet.”
 	</p>
-	
+
 	<h4>Regarding Censorship</h4>
 	<p class="quote">
 	“The Internet has become an important communications tool allowing the free flow of ideas. As introduced in the House and the Senate, SOPA and PIPA would give the Justice Department and courts tremendous power to shut down entire sites. These bills ignore the principles of the First Amendment that require tailored solutions in lieu of across-the-board censorship. Unfortunately these bills represent terrible precedents for the United States and the world.”
 	</p>
-	
+
 	<h4>Regarding Cybersecurity</h4>
 	<p class="quote">
 	“A safe and secure Web is vital to our privacy, our access to free knowledge, and to commerce. Hundreds of established authorities on the Internet believe that the required blocking of Internet sites in SOPA and PIPA is badly thought out and threatens Internet security.”
@@ -147,12 +144,12 @@ HTML;
 		if ( $this->zip ) {
 			$htmlOut .= $this->getCongressTables();
 		}
-		
+
 		// Output end of the page
 		$htmlOut .= "\n</div>\n</div>\n</body>\n</html>\n";
-		
+
 		echo $htmlOut;
-		
+
 		return true;
 	}
 	
@@ -161,13 +158,11 @@ HTML;
 	 * @return HTML for the table
 	 */
 	private function getCongressTables() {
-		$myRepresentative = array();
-		$mySenators = array();
 		$myRepresentative = CongressLookupDB::getRepresentative( $this->zip );
 		$mySenators = CongressLookupDB::getSenators( $this->zip );
-		
+
 		$congressTable = '';
-		
+
 		if ( $myRepresentative ) {
 			$congressTable .= Html::openElement( 'table', array (
 				'class' => 'person', 'cellpadding' => 0, 'cellspacing' => 0, 'border' => 0
@@ -221,5 +216,5 @@ HTML;
 		
 		return $congressTable;
 	}
-	
+
 }
