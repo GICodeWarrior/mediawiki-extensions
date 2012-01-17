@@ -168,49 +168,50 @@ HTML;
 	private function getCongressTables() {
 		global $wgCongressLookupErrorPage;
 		
-		$myRepresentative = CongressLookupDB::getRepresentative( $this->zip );
+		$myRepresentatives = CongressLookupDB::getRepresentative( $this->zip );
 		$mySenators = CongressLookupDB::getSenators( $this->zip );
 
 		$congressTable = '';
 		
 		$congressTable .= Html::element( 'h4', array(), 'Your Representatives:' );
 
-		if ( $myRepresentative ) {
-
-			$congressTable .= "\n" . Html::openElement( 'table', array (
-				'class' => 'person',
-			) );
-
-			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
-				Html::element( 'td',  array ( 'class' => 'name' ), $myRepresentative[0]['name'] )
-		   	);
-
-			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
-				Html::element( 'td', array(), wfMsg( 'congresslookup-phone', $myRepresentative[0]['phone'] ) )
-		   	);
-
-			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
-				Html::element( 'td', array(), wfMsg( 'congresslookup-fax', $myRepresentative[0]['fax'] ) )
-			);
-			
-			if ( $myRepresentative[0]['twitter'] ) {
+		if ( $myRepresentatives ) {
+			foreach ( $myRepresentatives as $myRepresentative ) {
+				$congressTable .= "\n" . Html::openElement( 'table', array (
+					'class' => 'person',
+				) );
+	
 				$congressTable .= "\n" . Html::rawElement( 'tr', array(),
-					Html::element( 'td', array(), wfMsg( 'congresslookup-twitter', $myRepresentative[0]['twitter'] ) )
+					Html::element( 'td',  array ( 'class' => 'name' ), $myRepresentative['name'] )
+			   	);
+	
+				$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+					Html::element( 'td', array(), wfMsg( 'congresslookup-phone', $myRepresentative['phone'] ) )
+			   	);
+	
+				$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+					Html::element( 'td', array(), wfMsg( 'congresslookup-fax', $myRepresentative['fax'] ) )
 				);
-			}
-
-			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
-				Html::rawElement( 'td', array(),
-					Html::element( 'a', array (
-						'href' => $myRepresentative[0]['contactform'],
-						'target' => '_blank',
-						),
-						wfMsg( 'congresslookup-contact-form' )
+				
+				if ( $myRepresentative['twitter'] ) {
+					$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+						Html::element( 'td', array(), wfMsg( 'congresslookup-twitter', $myRepresentative['twitter'] ) )
+					);
+				}
+	
+				$congressTable .= "\n" . Html::rawElement( 'tr', array(),
+					Html::rawElement( 'td', array(),
+						Html::element( 'a', array (
+							'href' => $myRepresentative['contactform'],
+							'target' => '_blank',
+							),
+							wfMsg( 'congresslookup-contact-form' )
+						)
 					)
-				)
-			);
-
-			$congressTable .= "\n" . Html::closeElement( 'table' );
+				);
+	
+				$congressTable .= "\n" . Html::closeElement( 'table' );
+			}
 		} else {
 			$congressTable .= Html::element( 'p', array(), wfMsg( 'congresslookup-no-house-rep' ) );
 		}
