@@ -58,12 +58,11 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 <meta name="generator" content="MediaWiki 1.18wmf1" />
 <style type="text/css">
 body {
-	background-color: black;
 	color: white;
 	margin: 2em;
 	font-family: arial, sans-serif;
 	font-size: 15px;
-	background: black url('//upload.wikimedia.org/wikipedia/commons/0/0a/WP_SOPA_W_with_Gradient.png') no-repeat 0 0;
+	background: black url('//upload.wikimedia.org/wikipedia/commons/9/98/WP_SOPA_Splash_Full.jpg') no-repeat 0 0;
 }
 a:link, a:visited {
 	color: #28a6b1;
