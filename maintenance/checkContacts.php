@@ -44,7 +44,12 @@ class CheckCongressLinks extends Maintenance {
 	}
 
 	protected function checkContactLink( $name, $url, &$countOk ) {
-		$req = MWHttpRequest::factory( $url, array( 'method' => 'GET', 'timeout' => 6 ) );
+		$req = MWHttpRequest::factory( $url, array( 
+				'method'        => 'GET',
+				'timeout'       => 8,
+				'sslVerifyHost' => false, // just check if it can be reached
+				'sslVerifyCert' => false, // just check if it can be reached
+		) );
 		if ( $req->execute()->isOK() ) {
 			++$countOk;
 		} else {
