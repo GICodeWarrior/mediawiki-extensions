@@ -386,21 +386,21 @@ HTML;
     <div>
         <div class="sopaSocial">
             <a style="text-decoration: none;"
-                href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fexample.com%2F"
+                href="https://www.facebook.com/sharer.php?u=http://tinyurl.com/7vq4o8g"
                 target="wpblackout_Facebook_share"><img width="33"
                 height="33"
                 src=
                 "//upload.wikimedia.org/wikipedia/commons/2/2a/WP_SOPA_sm_icon_facebook_dedede.png"></a><br>
 
             <a style="text-decoration: none; color: rgb(222, 222, 222);"
-                href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fexample.com%2F"
+                href="https://www.facebook.com/sharer.php?u=http://tinyurl.com/7vq4o8g"
                 target="wpblackout_Facebook_share">Facebook</a>
         </div>
 
         <div class="sopaSocial">
             <a style="text-decoration: none;"
                 href=
-                "https://m.google.com/app/plus/x/?v=compose&amp;content=Google%20Plus%20Post%20Here%20http%3A%2F%2Fexample.com%2F">
+                "https://m.google.com/app/plus/x/?v=compose&amp;content=I%20support%20the%20January%2018th%20Wikipedia%20blackout%20to%20protest%20SOPA%20and%20PIPA.%20Show%20your%20support%20here%20%20http%3A%2F%2Ftinyurl.com%2F7vq4o8g">
                 <img width="33"
                 height="33"
                 src=
@@ -408,14 +408,14 @@ HTML;
 
             <a style="text-decoration: none;"
                 href=
-                "https://m.google.com/app/plus/x/?v=compose&amp;content=Google%20Plus%20Post%20Here%20http%3A%2F%2Fexample.com%2F">
+                "https://m.google.com/app/plus/x/?v=compose&amp;content=I%20support%20the%20January%2018th%20Wikipedia%20blackout%20to%20protest%20SOPA%20and%20PIPA.%20Show%20your%20support%20here%20%20http%3A%2F%2Ftinyurl.com%2F7vq4o8g">
                 Google+</a>
         </div>
 
         <div class="sopaSocial">
             <a style="text-decoration: none;"
                 href=
-                "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ftest.wikipedia.org%2Fwiki%2FMain_Page%3Fbanner%3Dblackout%26country%3DUK&amp;text=Tweet%20here%20%23WikipediaBlackout%20http%3A%2F%2Fexample.com%2F"
+                "https://twitter.com/intent/tweet?text=I%20support%20%23wikipediablackout!%20Show%20your%20support%20here%20http%3A%2F%2Ftinyurl.com%2F7vq4o8g"
                 target="wpblackout_Twitter_share"><img width="33"
                 height="33"
                 src=
@@ -423,7 +423,7 @@ HTML;
 
             <a style="text-decoration: none; color: rgb(222, 222, 222);"
                 href=
-                "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ftest.wikipedia.org%2Fwiki%2FMain_Page%3Fbanner%3Dblackout%26country%3DUK&amp;text=Tweet%20here%20%23WikipediaBlackout%20http%3A%2F%2Fexample.com%2F"
+                "https://twitter.com/intent/tweet?text=I%20support%20%23wikipediablackout!%20Show%20your%20support%20here%20http%3A%2F%2Ftinyurl.com%2F7vq4o8g"
                 target="wpblackout_Twitter_share">Twitter</a>
         </div>
     </div>
