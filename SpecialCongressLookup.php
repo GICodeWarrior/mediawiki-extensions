@@ -256,7 +256,7 @@ HTML;
 	 * @return string HTML for the link
 	 */
 	private function getTwitterHtml( $handle ) {
-		return Html::element( 'a', array( 'target' => '_blank', 'href' => 'http://twitter.com/!#/' . $handle ), '@' . $handle );
+		return Html::element( 'a', array( 'target' => '_blank', 'href' => 'http://twitter.com/#!/' . $handle ), '@' . $handle );
 	}	
 
 	/**
