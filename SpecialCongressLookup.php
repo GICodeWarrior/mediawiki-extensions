@@ -135,7 +135,7 @@ div#everything {
 div#instructions {
 	position: absolute;
 	top: 67px;
-	left: 500px;
+	left: 480px;
 	text-align: left;
 	width: 500px;
 	padding-bottom: 30px;
@@ -146,7 +146,7 @@ div#instructions p {
 div#contacts {
 	position: absolute;
 	top: 50px;
-	left: 110px;
+	left: 80px;
 	width: 320px;
 	background-color: #161616;
 	padding: 5px 20px 20px 20px;
@@ -221,7 +221,7 @@ h4 {
 	</p>
 	
 	<p>
-	In a post SOPA/PIPA world, Wikipedia --and many other useful informational sites-- cannot survive in a world where politicians regulate the Internet based on the influence of big money in Washington. It represents a framework for future restrictions and suppression. Congress says it's trying to protect the rights of copyright owners, but the "cure" that SOPA and PIPA represent is much more destructive than the disease they are trying to fix.
+	In a post SOPA/PIPA world, Wikipedia—and many other useful informational sites—cannot survive in a world where politicians regulate the Internet based on the influence of big money in Washington. It represents a framework for future restrictions and suppression. Congress says it's trying to protect the rights of copyright owners, but the "cure" that SOPA and PIPA represent is much more destructive than the disease they are trying to fix.
 	</p>
 	
 	<p>
