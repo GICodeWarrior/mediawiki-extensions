@@ -2,7 +2,7 @@
  * AJAX code for Special:MoodBarFeedback
  */
 jQuery( document ).ready( function ( $ ) {
-	var formState, filterType, $fbdFiltersCheck;
+	var formState, filterType, $fbdFiltersCheck, concurrencyState = [];
 
 	/**
 	 * Saved form state
@@ -413,7 +413,8 @@ jQuery( document ).ready( function ( $ ) {
 				$( '.fbd-response-preview, .fbd-response-submit' ).removeProp( 'disabled' );
 				$( this ).find( '.fbd-response-form' ).remove();
 			}
-			
+			//remove ConcurrencyToolTip if any
+			$( this ).find( '.fbd-tooltip-overlay-wrap').remove();
 		});
 	}
 
@@ -423,7 +424,7 @@ jQuery( document ).ready( function ( $ ) {
 	 * @param e {jQuery.Event}
 	 */
 	function showResponseForm( e ) {
-		var termsLink, ula, inlineForm, $item;
+		var termsLink, ula, inlineForm, $item, itemId;
 
 		if ( $(this).hasClass( 'responder-expanded' ) ) {
 
@@ -542,13 +543,16 @@ jQuery( document ).ready( function ( $ ) {
 				
 				//check for concurrency module.
 				if( typeof $.concurrency !== 'undefined') {
+					itemId = $item.data( 'mbccontinue' ).split( '|' )[1];
 					//concurrency module is here, attempt checkout
 					$.concurrency.check( {
 						ccaction: 'checkout',
 						resourcetype: 'moodbar-feedback-response',
-						record: $item.data( 'mbccontinue' ).split( '|' )[1]
+						record: itemId
 					}, function( result ){
-						if( result == 'failure' ) { //checkout failed, show tooltip
+						//if checkout failed, show tooltip if it hasn't been shown
+						if( result == 'failure' && $.inArray( itemId, concurrencyState ) === -1  ) { 
+							concurrencyState.push(itemId);
 							loadConcurrencyToolTip($item);
 						}
 					} );
