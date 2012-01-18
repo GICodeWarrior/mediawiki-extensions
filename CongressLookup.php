@@ -50,6 +50,10 @@ $wgCongressLookupErrorPage = '//meta.wikimedia.org/wiki/English_Wikipedia_SOPA_b
 
 $dir = dirname( __FILE__ ) . '/';
 
+//API
+$wgAutoloadClasses['ApiCongressLookup'] = $dir . 'ApiCongressLookup.php';
+$wgAPIModules['congresslookup'] = 'ApiCongressLookup';
+
 $wgAutoloadClasses['SpecialCongressLookup'] = $dir . 'SpecialCongressLookup.php';
 $wgAutoloadClasses['CongressLookupDB'] = $dir . 'CongressLookup.db.php';
 $wgExtensionMessagesFiles['CongressLookup'] = $dir . 'CongressLookup.i18n.php';
