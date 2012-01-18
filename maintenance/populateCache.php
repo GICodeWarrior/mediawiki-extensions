@@ -13,6 +13,7 @@ require_once( "$IP/maintenance/Maintenance.php" );
 class PopulateCache extends Maintenance {
 	public $isOK = 0;
 	public $isBad = 0;
+	protected $dbr;
 	
 	public function __construct() {
 		parent::__construct();
@@ -20,18 +21,31 @@ class PopulateCache extends Maintenance {
 
 		$this->addOption( 'url', 'The base URL for zipcode lookup.', true, true );
 		$this->addOption( 'limit', 'The amount of values to return during a db query.', false, false );
+		$this->addOption( 'cache_warmup', 'If this is used, the script will attempt to hit all of the possible URLs for you to warm up the cache.', false, false );
+		$this->addOption( 'path', 'The file path to output all possible zip code URLs. If this option is specified, this script will NOT attempt to hit the URLs for you.', false, false );
+		
 	}
 
 	public function execute() {
+		$this->dbr = wfGetDB( DB_SLAVE );
+		$path = $this->getOption( 'path', null );
+		if ( $path ) {
+			$this->writeUrlsToFile( $path );
+		}
+		if ( $this->getOption( 'cache_warmup', null )) {
+			$this->warmUpCache();
+		}
+	}
+	
+	public function warmUpCache() {
 		$this->output( "Populating caches...\n" );
-		$dbr = wfGetDB( DB_SLAVE );
 		
 		$limit = $this->getOption( 'limit', 1000 );
 		$offset = 0;
 		$keepGoing = true;
 		
 		while( $keepGoing ) {
-			$result = $dbr->select(
+			$result = $this->dbr->select(
 				'cl_zip5',
 				'clz5_zip',
 				array(),
@@ -42,7 +56,7 @@ class PopulateCache extends Maintenance {
 				)
 			);
 			
-			if ( !$result ) {
+			if ( !$result->numRows() ) {
 				$keepGoing = false;
 			}
 			
@@ -56,14 +70,44 @@ class PopulateCache extends Maintenance {
 			$this->output( "...Bad so far: " . $this->isBad . "\n" );
 			sleep( 1 ); // rate limit		
 		}
+		$this->ouput( "Done!\n" );
+	}
+	
+	public function writeUrlsToFile( $path ) {
+		$this->output( "Preparing to write URLs to file...\n" );
+		$limit = $this->getOption( 'limit', 1000 );
+		$offset = 0;
+		$keepGoing = true;
+		$fh = fopen( $path, 'w' );
+		
+		while( $keepGoing ) {
+			$result = $this->dbr->select(
+				'cl_zip5',
+				'clz5_zip',
+				array(),
+				__METHOD__,
+				array(
+					'LIMIT' => $limit,
+					'OFFSET' => $offset,
+				)
+			);
+
+			if ( !$result->numRows() ) {
+				$keepGoing = false;
+			}
+			
+			foreach ( $result as $row ) { 
+				$url = $this->makeUrl( $row->clz5_zip );
+				fwrite( $fh, $url ."\n" );
+			}
+			$offset += $limit;
+		}
+		fclose( $fh );
+		$this->output( "Done!\n" );
 	}
 	
 	public function hitUrl( $zip, $attempt=0 ) {
-		$zip = intval( $zip );
-		if ( $zip < 10000 ) { // make sure there are 5 digits
-			$zip = sprintf( "%05d", $zip );
-		}
-		$url = $this->getOption( 'url' ) . "?zip=" . $zip;
+		$url = $this->makeUrl( $zip );
 		//$this->output( "*Trying to hit $url\n" );
 		$req = MWHttpRequest::factory( $url, array( 
 				'method'        => 'GET',
@@ -82,6 +126,15 @@ class PopulateCache extends Maintenance {
 				$this->isBad++;
 			}
 		}
+	}
+	
+	public function makeUrl( $zip ) {
+		$zip = intval( $zip );
+		if ( $zip < 10000 ) { // make sure there are 5 digits
+			$zip = sprintf( "%05d", $zip );
+		}
+		$url = $this->getOption( 'url' ) . "?zip=" . $zip;
+		return $url;
 	}
 }
 
