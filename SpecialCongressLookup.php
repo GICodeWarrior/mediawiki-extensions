@@ -119,6 +119,10 @@ h4 {
 p.error {
 	color: red;
 }
+p.note {
+	font-size: 12px;
+	font-style: italic;
+}
 </style>
 </head>
 <body>
@@ -218,6 +222,9 @@ HTML;
 				);
 	
 				$congressTable .= "\n" . Html::closeElement( 'table' );
+			}
+			if ( count( $myRepresentatives ) > 1 ) {
+				$congressTable .= HTML::element( 'p', array( 'class' => 'note' ), wfMsg( 'congresslookup-multiple-house-reps' ));
 			}
 		} else {
 			$congressTable .= Html::element( 'p', array(), wfMsg( 'congresslookup-no-house-rep' ) );
