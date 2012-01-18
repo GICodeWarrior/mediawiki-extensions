@@ -43,6 +43,7 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 	 * @return true
 	 */
 	private function buildPage() {
+		global $wgScriptPath;
 		$htmlOut = '';
 
 		// Output beginning of the page
@@ -55,7 +56,9 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta name="generator" content="MediaWiki 1.18wmf1" />
 <script src="//geoiplookup.wikimedia.org/" type="text/javascript"></script>
-<script type="text/javascript" src="/w/load.php?lang=en&modules=jquery%2Cmediawiki&only=scripts&skin=vector&version=20111213T185322Z"> </script>
+HTML;
+		$htmlOut .= '<script type="text/javascript" src="' . $wgScriptPath . '/load.php?lang=en&modules=jquery%2Cmediawiki&only=scripts&skin=vector&version=20111213T185322Z"> </script>\n';
+		$htmlOut .= <<<HTML
 <script type="text/javascript">
 
 $(document).ready(function() {
