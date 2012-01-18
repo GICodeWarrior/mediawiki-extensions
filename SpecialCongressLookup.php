@@ -57,7 +57,7 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 <meta name="generator" content="MediaWiki 1.18wmf1" />
 <script src="//geoiplookup.wikimedia.org/" type="text/javascript"></script>
 HTML;
-		$htmlOut .= '<script type="text/javascript" src="' . $wgScriptPath . '/load.php?lang=en&modules=jquery%2Cmediawiki&only=scripts&skin=vector&version=20111213T185322Z"> </script>\n';
+		$htmlOut .= '<script type="text/javascript" src="' . $wgScriptPath . '/load.php?lang=en&modules=jquery%2Cmediawiki&only=scripts&skin=vector&version=20111213T185322Z"> </script>';
 		$htmlOut .= <<<HTML
 <script type="text/javascript">
 
@@ -135,7 +135,7 @@ div#everything {
 div#instructions {
 	position: absolute;
 	top: 67px;
-	left: 440px;
+	left: 500px;
 	text-align: left;
 	width: 500px;
 	padding-bottom: 30px;
@@ -145,9 +145,9 @@ div#instructions p {
 }
 div#contacts {
 	position: absolute;
-	top: 350px;
+	top: 50px;
 	left: 110px;
-	width: 260px;
+	width: 320px;
 	background-color: #161616;
 	padding: 5px 20px 20px 20px;
 	filter:alpha(opacity=90);
