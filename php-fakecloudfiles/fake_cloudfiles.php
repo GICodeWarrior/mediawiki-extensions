@@ -14,7 +14,7 @@ if ( file_exists( dirname( __FILE__ ) . "/../../../fake_cloudfiles.config.php" )
 } else {
 	die( "Nothing to see here.\n" );
 }
-require_once( dirname( __FILE__ ) . "/../php-cloudfiles/cloudfiles_exceptions.php" );
+require_once( dirname( __FILE__ ) . "/cloudfiles_exceptions.php" );
 define( "DEFAULT_CF_API_VERSION", 1 );
 define( "MAX_CONTAINER_NAME_LEN", 256 );
 define( "MAX_OBJECT_NAME_LEN", 1024 );
