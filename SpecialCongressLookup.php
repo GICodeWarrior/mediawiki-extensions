@@ -5,7 +5,7 @@
  * to the user.
  */
 class SpecialCongressLookup extends UnlistedSpecialPage {
-	var $zip;
+	protected $zip = null;
 
 	public function __construct() {
 		// Register special page
@@ -19,7 +19,7 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 		global $wgRequest, $wgOut;
 
 		// Pull in query string parameters
-		$this->zip = $wgRequest->getVal( 'zip' );
+		$this->setZip( $wgRequest->getVal( 'zip' ));
 
 		// Setup
 		$wgOut->disable();
@@ -147,7 +147,10 @@ h4 {
 <div id="contacts">
 	
 HTML;
-		if ( $this->zip ) {
+
+		if ( $this->getZip() === false ) {
+			$htmlOut .= $this->getZipFOrm( true );
+		} elseif ( !is_null( $this->getZip() )) {
 			$htmlOut .= $this->getCongressTables();
 		} else {
 			$htmlOut .= $this->getZipForm();
@@ -267,7 +270,7 @@ HTML;
 	 * Get HTML for a Zip Code form
 	 * @return string HTML
 	 */
-	private function getZipForm() {
+	private function getZipForm( $isError=false ) {
 		$htmlOut = <<<HTML
 <h4>Contact your representatives</h4>
 <div class="sopaActionDiv">
@@ -315,5 +318,43 @@ HTML;
 </div>
 HTML;
 		return $htmlOut;
+	}
+	
+	/**
+	 * 
+	 * Enter description here ...
+	 * @param $zip
+	 */
+	public function setZip( $zip ) {
+		if ( !$this->isValidZip( $zip )) {
+			$this->zip = false;
+		} else { 		
+			$this->zip = $zip;
+		}
+	}
+	
+	public function getZip() {
+		return $this->zip;
+	}
+	
+	/**
+	 * Make sure the zip code entered was valid-ish
+	 * @param $zip
+	 * @return bool
+	 */
+	public function isValidZip( $zip ) {
+		$zipPieces = explode( '-', $zip, 2 );
+		
+		if ( strlen( $zipPieces[0] ) < 5 || !is_numeric( $zipPieces[0] )) {
+			return false;
+		}
+		
+		if ( isset( $zipPieces[1] )) {
+			if ( strlen( $zipPieces[1] ) < 4 || !is_numeric( $zipPieces[1] )) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }
