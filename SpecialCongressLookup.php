@@ -330,8 +330,9 @@ HTML;
 	}
 	
 	/**
+	 * Setter for $this->zip
 	 * 
-	 * Enter description here ...
+	 * In the event that $zip is invalid, set the value of $this->zip to false.
 	 * @param $zip
 	 */
 	public function setZip( $zip ) {
