@@ -309,10 +309,13 @@ HTML;
 			$congressTable .= Html::element( 'p', array(), wfMsg( 'congresslookup-no-senators' ) );
 		}
 		
+		$errorPage = SpecialPage::getTitleFor( $wgCongressLookupErrorPage );
+		$errorUrl = $errorPage->getLocalURL( array( 'zip' => $wgRequest->getVal( 'zip' ) ) );
+
 		$congressTable .= Html::openElement( 'p' );
 		$congressTable .= Html::element( 
 			'a', 
-			array ( 'href' => $wgCongressLookupErrorPage . '?zip=' . $wgRequest->getVal( 'zip' )  ),
+			array ( 'href' => $errorUrl ),
 			wfMsg( 'congresslookup-report-errors' ) 
 		);
 		$congressTable .= Html::closeElement( 'p' );

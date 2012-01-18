@@ -45,8 +45,9 @@ $wgExtensionCredits['specialpage'][] = array(
 $wgCongressLookupSharedMaxAge = 1200; // 20 minutes server-side
 $wgCongressLookupMaxAge = 600; // 10 minutes client-side
 
-// Where to report errors
-$wgCongressLookupErrorPage = '/wiki/Special:CongressFail';
+// Where to report errors (special page)
+$wgCongressLookupErrorPage = 'CongressFail';
+
 
 $dir = dirname( __FILE__ ) . '/';
 
