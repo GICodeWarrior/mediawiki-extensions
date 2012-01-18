@@ -37,15 +37,17 @@ class SpecialCongressFail extends UnlistedSpecialPage {
 			$out->addHtml('Thank you!');
 			
 		} else {
-			$out->addHtml('<div>');
-			$out->addHtml('ZIP Code (will be recorded): ' . $zip);
-			$out->addHtml('</div>');
-
 			$out->addHtml('<form method=post action="/wiki/Special:CongressFail">');
-
 			$out->addHtml('<div>');
-			$out->addHtml('<input type=hidden name=zip value=' . $zip. '>');
-			$out->addHtml('Tell us what went wrong: <input type=text size=100 maxlength=255 name=comment>');
+			$out->addHtml('<div>');
+			if ( $zip != 0 ) {
+				$out->addHtml('ZIP Code (will be recorded): ' . $zip);
+				$out->addHtml('<input type=hidden name=zip value=' . $zip . '>');
+			} else {
+				$out->addHtml('ZIP code: <input name=zip>');
+			}
+			$out->addHtml('</div>');
+			$out->addHtml('Tell us what went wrong: <input type=text size=100 name=comment maxlength=255>');
 			$out->addHtml('</div>');
 
 			$out->addHtml('<div>');
