@@ -47,8 +47,6 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 
 		// Output beginning of the page
 		$htmlOut .= <<<HTML
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="client-nojs">
 <head>
@@ -56,6 +54,52 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta name="generator" content="MediaWiki 1.18wmf1" />
+<script src="//geoiplookup.wikimedia.org/" type="text/javascript"></script>
+<script type="text/javascript" src="/mediawiki/load.php?lang=en&modules=jquery%2Cmediawiki&only=scripts&skin=vector&version=20111213T185322Z"> </script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	var geoHasUsRep = [
+		'US', // USA
+		'PR', // Puerto Rico
+		'VI',  // Virgin Islands
+		'MP', // Northern Mariana Islands
+		'AS', // American Samoa
+		'GU'  // Guam
+		];
+
+	// Fake country from get param
+	// Parse out GET params from the URL
+	var urlParams = {};
+	(function () {
+		var e,
+			a = /\+/g,  
+			r = /([^&=]+)=?([^&]*)/g,
+			d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
+			q = window.location.search.substring(1);
+
+		while (e = r.exec(q)) {
+			urlParams[d(e[1])] = d(e[2]);
+		}
+	})();
+
+	// Defaults to the US, so if we can't determine location, show form
+	var country = 'US'; 
+	if ( urlParams.country ) {
+		country = urlParams.country;
+	} else if ( window.Geo && window.Geo.country ) {
+		country = window.Geo.country;
+	}
+
+	var hasUsRep = ( $.inArray( country, geoHasUsRep ) === 0 );
+	if( !hasUsRep ) {
+		$("#sopaShareOptions").show();
+		$("#sopaZipForm").hide();
+	}
+
+});
+</script>
 <style type="text/css">
 body {
 	color: #dedede;
@@ -98,9 +142,9 @@ div#instructions p {
 }
 div#contacts {
 	position: absolute;
-	top: 50px;
-	left: 50px;
-	width: 320px;
+	top: 350px;
+	left: 110px;
+	width: 260px;
 	background-color: #161616;
 	padding: 5px 20px 20px 20px;
 	filter:alpha(opacity=90);
@@ -144,6 +188,19 @@ h4 {
   font-size: 1.2em;
   margin-bottom: 0.2em;
 }
+.sopaSocial {
+  float: left;
+  text-align: center;
+  margin-right: 12px;
+  margin-bttom: 3px;
+  font-size: small;
+}
+.sopaActionHead {
+  font-weight: bold
+}
+#sopaShareOptions {
+  display: none;
+}
 </style>
 </head>
 <body>
@@ -179,6 +236,7 @@ HTML;
 			$htmlOut .= $this->getCongressTables();
 		} else {
 			$htmlOut .= $this->getZipForm();
+			$htmlOut .= $this->getSocialMedia();
 		}
 
 		// Output end of the page
@@ -300,8 +358,8 @@ HTML;
 	 */
 	private function getZipForm( $isError=false ) {
 		$htmlOut = <<<HTML
+<div id="sopaZipForm" class="sopaActionDiv">
 <h4>Contact your representatives</h4>
-<div class="sopaActionDiv">
 HTML;
 		if ( $isError ) {
 			$htmlOut .= Html::element( 'p', array( 'class' => 'error' ), wfMsg( 'congresslookup-zipcode-error' ));
@@ -322,32 +380,56 @@ HTML;
 	 * @return string HTML for social media links
 	 */
 	private function getSocialMedia() {
+		// Update links here. Currently pointing to example.com
 		$htmlOut = <<<HTML
-<div class="sopaActionDiv">
-	<div>
-		<div class="sopaSocial">
-			<a style="text-decoration: none;" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fexample.com%2F">
-			<img width="33" height="33" src="//upload.wikimedia.org/wikipedia/commons/2/2a/WP_SOPA_sm_icon_facebook_dedede.png">
-			</a>
-			<br/>
-			<a style="text-decoration: none;" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fexample.com%2F">Facebook</a>
-		</div>
-		<div class="sopaSocial">
-			<a style="text-decoration: none;" href="https://m.google.com/app/plus/x/?v=compose&content=Google%20Plus%20Post%20Here%20http%3A%2F%2Fexample.com%2F">
-			<img width="33" height="33" src="//upload.wikimedia.org/wikipedia/commons/0/08/WP_SOPA_sm_icon_gplus_dedede.png">
-			</a>
-			<br/>
-			<a style="text-decoration: none; color:" href="https://m.google.com/app/plus/x/?v=compose&content=Google%20Plus%20Post%20Here%20http%3A%2F%2Fexample.com%2F">Google+</a>
-		</div>
-		<div class="sopaSocial">
-			<a style="text-decoration: none;" href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ftest.wikipedia.org%2Fwiki%2FMain_Page%3Fbanner%3Dblackout&text=Tweet%20here%20%23WikipediaBlackout%20http%3A%2F%2Fexample.com%2F">
-			<img width="33" height="33" src="//upload.wikimedia.org/wikipedia/commons/4/45/WP_SOPA_sm_icon_twitter_dedede.png">
-			</a>
-			<br/>
-			<a style="text-decoration: none;" href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ftest.wikipedia.org%2Fwiki%2FMain_Page%3Fbanner%3Dblackout&text=Tweet%20here%20%23WikipediaBlackout%20http%3A%2F%2Fexample.com%2F">Twitter</a>
-		</div>
-	</div>
-	<div style="clear: both;"></div>
+<div id="sopaShareOptions" class="sopaActionDiv">
+<p class="sopaActionHead">Make your voice heard</p>
+    <div>
+        <div class="sopaSocial">
+            <a style="text-decoration: none;"
+                href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fexample.com%2F"
+                target="wpblackout_Facebook_share"><img width="33"
+                height="33"
+                src=
+                "//upload.wikimedia.org/wikipedia/commons/2/2a/WP_SOPA_sm_icon_facebook_dedede.png"></a><br>
+
+            <a style="text-decoration: none; color: rgb(222, 222, 222);"
+                href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fexample.com%2F"
+                target="wpblackout_Facebook_share">Facebook</a>
+        </div>
+
+        <div class="sopaSocial">
+            <a style="text-decoration: none;"
+                href=
+                "https://m.google.com/app/plus/x/?v=compose&amp;content=Google%20Plus%20Post%20Here%20http%3A%2F%2Fexample.com%2F">
+                <img width="33"
+                height="33"
+                src=
+                "//upload.wikimedia.org/wikipedia/commons/0/08/WP_SOPA_sm_icon_gplus_dedede.png"></a><br>
+
+            <a style="text-decoration: none;"
+                href=
+                "https://m.google.com/app/plus/x/?v=compose&amp;content=Google%20Plus%20Post%20Here%20http%3A%2F%2Fexample.com%2F">
+                Google+</a>
+        </div>
+
+        <div class="sopaSocial">
+            <a style="text-decoration: none;"
+                href=
+                "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ftest.wikipedia.org%2Fwiki%2FMain_Page%3Fbanner%3Dblackout%26country%3DUK&amp;text=Tweet%20here%20%23WikipediaBlackout%20http%3A%2F%2Fexample.com%2F"
+                target="wpblackout_Twitter_share"><img width="33"
+                height="33"
+                src=
+                "//upload.wikimedia.org/wikipedia/commons/4/45/WP_SOPA_sm_icon_twitter_dedede.png"></a><br>
+
+            <a style="text-decoration: none; color: rgb(222, 222, 222);"
+                href=
+                "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ftest.wikipedia.org%2Fwiki%2FMain_Page%3Fbanner%3Dblackout%26country%3DUK&amp;text=Tweet%20here%20%23WikipediaBlackout%20http%3A%2F%2Fexample.com%2F"
+                target="wpblackout_Twitter_share">Twitter</a>
+        </div>
+    </div>
+
+    <div style="clear: both;"></div>
 </div>
 HTML;
 		return $htmlOut;
