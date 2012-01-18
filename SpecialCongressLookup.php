@@ -215,20 +215,20 @@ h4 {
 	<div class="sopaBigHeadline">Call your elected officials.</div>
 	
 	<p>
-	Tell them you are their constituent, and you oppose SOPA and PIPA. 
+	Tell them you are their constituent, and you oppose SOPA and PIPA.
 	</p>
 	
 	<div class="sopaSectionHeadline">Why?</div>
 	<p>
-	SOPA and PIPA cripple the free and open internet. They put the onus on website owners to police user-contributed material and call for the blocking of entire sites, even if the links are not to infringing material. Small sites will not have the sufficient resources to mount a legal challenge. Without opposition, large media companies may seek to cut off funding sources for small competing foreign sites, even if big media are wrong. Foreign sites will be blacklisted, which means they won't show up in major search engines.
+	SOPA and PIPA put the burden on website owners to police user-contributed material and call for the unnecessary blocking of entire sites. Small sites won't have sufficient resources to defend themselves. Big media companies may seek to cut off funding sources for their foreign competitors, even if copyright isn't being infringed. Foreign sites will be blacklisted, which means they won't show up in major search engines. SOPA and PIPA build a framework for future restrictions and suppression.
 	</p>
 	
 	<p>
-	Wikipedia—and many other useful informational sites—cannot survive in a world where politicians regulate the Internet based on the influence of big money in Washington. It represents a framework for future restrictions and suppression. Congress says it's trying to protect the rights of copyright owners, but the "cure" that SOPA and PIPA represent is much more destructive than the disease they are trying to fix.
+	In a world in which politicians regulate the Internet based on the influence of big money, Wikipedia &mdash; and sites like it &mdash; cannot survive.
 	</p>
 	
 	<p>
-	If you'd like to learn even more about SOPA and PIPA, <a href="//en.wikipedia.org/wiki/Wikipedia:SOPA_initiative/Learn_more" target="_blank">click here</a>.
+	Congress says it's trying to protect the rights of copyright owners, but the "cure" that SOPA and PIPA represent is worse than the disease. SOPA and PIPA are not the answer: they will fatally damage the free and open Internet.
 	</p>
 </div>
 <div id="contacts">
