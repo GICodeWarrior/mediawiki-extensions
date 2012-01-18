@@ -52,7 +52,7 @@ class SopaStrikeTemplate extends QuickTemplate {
 
 		</form>
 
-		<h1><a href="/">Join The Strike!</a> and <a href="/#how-to-strike">add this to your site</a></h1>
+		<h1><a href="http://sopastrike.com/">Join The Strike!</a> and <a href="https://www.mediawiki.org/wiki/Extension:Blackout">add this to your site</a></h1>
 		<p><strong>Learn More:</strong>
 			<a href="http://fightforthefuture.org/pipa">Watch the video</a> &middot;
 			<a href="http://americancensorship.org/">American Censorship page</a> &middot;
