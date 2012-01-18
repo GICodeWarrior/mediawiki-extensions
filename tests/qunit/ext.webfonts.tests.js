@@ -7,7 +7,7 @@ test( '-- Initial check', function() {
 } );
 
 test( '-- Web font application to body', function() {
-	expect( 4 );
+	expect( 17 );
 
 	var invalidFont = 'NonExistingFont';
 	assertTrue( mw.webfonts.set( invalidFont ) === undefined, 'A non-existent font is not initialized' );
@@ -19,15 +19,35 @@ test( '-- Web font application to body', function() {
 		fontFamily: $body.css( 'font-family' ),
 		fontSize: $body.css( 'font-size' )
 	};
-	var teluguFont = mw.webfonts.config.languages.te[0]
+	var teluguFont = mw.webfonts.config.languages.te[0];
 	$body.attr( 'lang', 'te' );
 
+	ok( $( 'body' ).append( "<input class='webfonts-testing-element'>input content</input>"), 'An input element for testing was appended to body' );
+	$inputElement =  $( 'input.webfonts-testing-element' )
+	assertTrue( $inputElement !== [], 'The input test element is defined' );
+	ok( $( 'body' ).append( "<select class='webfonts-testing-element'>select content</select>"), 'A select element for testing was appended to body' );
+	$selectElement =  $( 'select.webfonts-testing-element' )
+	assertTrue( $selectElement !== [], 'The select test element is defined' );
+	ok( $( 'body' ).append( "<textarea class='webfonts-testing-element'>textarea content</textarea>"), 'A textarea element for testing was appended to body' );
+	$textareaElement =  $( 'textarea.webfonts-testing-element' )
+	assertTrue( $textareaElement !== [], 'The textarea test element is defined' );
+
 	ok( mw.webfonts.set( teluguFont ), 'Attempted to load a Telugu font for the whole page' );
+	var fallbackFonts = 'Helvetica,Arial,sans-serif';
 	deepEqual( oldConfig, mw.webfonts.oldconfig, 'Previous body css was saved properly' );
+
+	// Font application
+	equal( $body.css( 'font-family' ), '"' + teluguFont + '",' + fallbackFonts, 'The web font was applied to font-family of body' );
+	equal( $inputElement.css( 'font-family' ), '"' + teluguFont + '",' + fallbackFonts, 'The web font was applied to font-family of input' );
+	equal( $selectElement.css( 'font-family' ), '"' + teluguFont + '",' + fallbackFonts, 'The web font was applied to font-family of select' );
+	equal( $textareaElement.css( 'font-family' ), '"' + teluguFont + '",' + fallbackFonts, 'The web font was applied to font-family of textarea' );
 
 	// Restore <body>
 	$body.attr( 'lang', bodyLang );
 	ok( mw.webfonts.reset(), 'Reset body after testing font application' );
+	ok( $inputElement.remove(), 'The input test element was removed from body' );
+	ok( $selectElement.remove(), 'The select test element was removed from body' );
+	ok( $textareaElement.remove(), 'The textarea test element was removed from body' );
 } );
 
 test( '-- Dynamic font loading', function() {
