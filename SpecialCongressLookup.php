@@ -47,55 +47,69 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 
 		// Output beginning of the page
 		$htmlOut .= <<<HTML
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="client-nojs">
 <head>
 <title>Wikipedia, the free encyclopedia</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
 <meta name="generator" content="MediaWiki 1.18wmf1" />
 <style type="text/css">
 body {
-	color: white;
+	color: #dedede;
 	margin: 2em;
-	font-family: arial, sans-serif;
-	font-size: 15px;
+	font-family:Times New Roman;
 	background: black url('//upload.wikimedia.org/wikipedia/commons/9/98/WP_SOPA_Splash_Full.jpg') no-repeat 0 0;
 }
+h3{
+    font-size: 1.5em;
+    text-align:center;
+    margin-bottom: 0.5em;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+h4 { 
+  font-weight: bold;
+  color: #ffffff;
+}
 a:link, a:visited {
-	color: #28a6b1;
+	color: #dedede;
 }
 a:hover, a:active {
-	color: #999999;
+	color: #ffffff;
 }
 div#everything {
 	width: 920px;
 	margin: 0 auto;
 }
 div#instructions {
-	float:left;
+	position: absolute;
+	top: 67px;
+	left: 420px;
 	text-align: left;
-	width: 580px;
-	background-color: #202020;
-	padding: 5px 20px 20px 20px;
-	filter:alpha(opacity=90);
-	-moz-opacity:0.90;
-	-khtml-opacity: 0.90;
-	opacity: 0.90;
+	width: 500px;
+	padding-bottom: 30px;
+}
+div#instructions p {
+  text-align:justify;
 }
 div#contacts {
-	float:left;
-	width: 259px;
-	padding: 5px 20px;
+	position: absolute;
+	top: 400px;
+	left: 50px;
+	width: 330px;
+
 }
 table.person {
 	margin-bottom: 1em;
+	margin-left: 20px;
 	border: none;
-	border-collapse:collapse;
-	color: #CCCCCC;
 }
 table.person td.name {
 	font-weight: bold;
-	color: white;
 }
 p {
 	margin: 1em 0;
@@ -103,7 +117,8 @@ p {
 p.quote {
 	font-family: georgia, serif;
 	font-size: 14px;
-	color: #CCCCCC;
+	color: #cccccc;
+	margin-left: 20px;
 }
 h3 {
 	font-weight: normal;
@@ -113,41 +128,41 @@ h4 {
 	font-weight: normal;
 	font-size: 17px;
 }
-.sopaActionDiv {
-    margin-bottom: 1em;
+.sopaBigHeadline {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
 }
-p.error {
-	color: red;
-}
-p.note {
-	font-size: 12px;
-	font-style: italic;
+.sopaSectionHeadline {
+  font-size: 1.2em;
+  margin-bottom: 0.2em;
 }
 </style>
 </head>
 <body>
 <div id="everything">
 <div id="instructions">
-	<h3>Take action to stop SOPA and PIPA, the internet blacklist bills</h3>
+	<div class="sopaBigHeadline">Take action to stop SOPA and PIPA, the internet blacklist bills</div>
 	<p>
 	For maximum impact, please consider calling your US Representative and US Senators and explain that you are a constituent and that you oppose these bills and similar future legislation.
 	</p>
-
-	<h4>Things you may want to say to your Senator or Representative</h4>
+	
+	<div class="sopaSectionHeadline">Things you may want to say to your Senator or Representative</div>
 	<p class="quote">
-	“As one of your concerned constituents, I urge you to oppose SOPA (<a href="http://hdl.loc.gov/loc.uscongress/legislation.112hr3261">H.R.3261</a>) and PIPA (<a href="http://hdl.loc.gov/loc.uscongress/legislation.112s968">S.968</a>) or any future bill that would censor free speech and damage the security of the Internet.”
+	“As one of your concerned constituents, I urge you to oppose SOPA and PIPA or any future bill that would censor free speech and damage the security of the Internet.”
 	</p>
-
-	<h4>Regarding Censorship</h4>
+	
+	<div class="sopaSectionHeadline">Regarding Censorship</div>
 	<p class="quote">
 	“The Internet has become an important communications tool allowing the free flow of ideas. As introduced in the House and the Senate, SOPA and PIPA would give the Justice Department and courts tremendous power to shut down entire sites. These bills ignore the principles of the First Amendment that require tailored solutions in lieu of across-the-board censorship. Unfortunately these bills represent terrible precedents for the United States and the world.”
 	</p>
 	
-	<p>
-	If you'd like to learn even more about SOPA/PIPA, <a href="//en.wikipedia.org/wiki/Wikipedia:SOPA_initiative/Learn_more" target="_blank">click here</a>.
+	<div class="sopaSectionHeadline">Regarding Cybersecurity</div>
+	<p class="quote">
+	“A safe and secure Web is vital to our privacy, our access to free knowledge, and to commerce. Hundreds of established authorities on the Internet believe that the required blocking of Internet sites in SOPA and PIPA is badly thought out and threatens Internet security.”
 	</p>
 </div>
 <div id="contacts">
+
 	
 HTML;
 
