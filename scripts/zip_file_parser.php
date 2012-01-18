@@ -20,15 +20,60 @@ class ZipFileParser extends Maintenance {
 			$skip_up_to = $_SERVER['argv'][1];
 		}
 		$function = 'fillOutNulls';
-		if ( !empty( $_SERVER['argv'][1] ) && $_SERVER['argv'][1] === 'findSplits' ){
-			$function = 'findSplits';
+		if ( !empty( $_SERVER['argv'][1] ) && !is_numeric( $_SERVER['argv'][1] ) ){
+			$function = $_SERVER['argv'][1];
 		}
 		
 		switch ( $function ){
+			case 'associate':
+				//it should go zip, state, district for the next three params. 
+				
+				if ( !empty( $_SERVER['argv'][2] ) ){
+					$zip = $_SERVER['argv'][2];
+				} else {
+					die( "Missing parameter 2: 5-digit zip code." );
+				}
+				if ( !empty( $_SERVER['argv'][3] ) ){
+					$state = $_SERVER['argv'][3];
+				} else {
+					die( "Missing parameter 3: state code." );
+				}
+				if ( !empty( $_SERVER['argv'][4] ) ){
+					$district = $_SERVER['argv'][4];
+				} else {
+					die( "Missing parameter 4: district code." );
+				}
+				
+				$this->associate_zip5_reps( $zip, $state, $district );
+				
+				break;
+			case 'disassociate':
+				//it should go zip, state, district for the next three params. 
+				
+				if ( !empty( $_SERVER['argv'][2] ) ){
+					$zip = $_SERVER['argv'][2];
+				} else {
+					die( "Missing parameter 2: 5-digit zip code." );
+				}
+				if ( !empty( $_SERVER['argv'][3] ) ){
+					$state = $_SERVER['argv'][3];
+				} else {
+					die( "Missing parameter 3: state code." );
+				}
+				if ( !empty( $_SERVER['argv'][4] ) ){
+					$district = $_SERVER['argv'][4];
+				} else {
+					die( "Missing parameter 4: district code." );
+				}
+				
+				$this->disassociate_zip5_reps( $zip, $state, $district );
+				
+				break;
 			case 'fillOutNulls':
 				$this->fill_out_nulls( $skip_up_to );
 				break;
 			case 'findSplits':
+			default: 
 				$this->find_split_zipcodes( $skip_up_to );
 				break;			
 		}
@@ -121,7 +166,7 @@ class ZipFileParser extends Maintenance {
 						if ( is_array($reps) && count( $reps ) > 0 ){
 							foreach ( $reps as $rep_id ){
 								echo "$zip Rep ID: $rep_id\n";
-								$this->insert_rep( $zip, $rep_id );
+								$this->update_rep( $zip, $rep_id );
 							}
 						} else {
 							echo "We got no reps in a really odd way.\n";
@@ -188,7 +233,44 @@ class ZipFileParser extends Maintenance {
 
 	}
 	
-	function insert_rep( $zip, $rep_id ){
+	function associate_zip5_reps( $zip, $state, $district ){
+		//first, retrieve the state and district rep. 
+		$reps = $this->get_rep_ids( $state, $district );
+		if ( count( $reps ) !== 1 ){
+			if ( empty($reps) ){
+				die("No rep found in $state $district");
+			} else {
+				die("Something very funky happened just then...");
+			}
+		}
+		
+		$rep = $reps[0];
+		$this->insert_rep( $zip, $reps[0] );
+		
+		//if it's not already in there, it should put it in there. 
+		//if it is already in there, do nothing. 
+	}
+	
+	function disassociate_zip5_reps( $zip, $state, $district ){
+		//first, retrieve the state and district rep. 
+		$reps = $this->get_rep_ids( $state, $district );
+		if ( count( $reps ) !== 1 ){
+			if ( empty($reps) ){
+				die("No rep found in $state $district");
+			} else {
+				die("Something very funky happened just then...");
+			}
+		}
+		
+		$rep = $reps[0];
+		$this->remove_rep( $zip, $reps[0] );
+		
+		//if it's not already in there, it should put it in there. 
+		//if it is already in there, do nothing. 
+	}
+	
+	
+	function update_rep( $zip, $rep_id ){
 		$dbr = wfGetDB( DB_SLAVE );
 		$dbr->update( 'cl_zip5',
 			array( 
@@ -199,6 +281,46 @@ class ZipFileParser extends Maintenance {
 			)
 		);
 		echo "Updated $zip to include rep id $rep_id\n";
+	}
+	
+	
+	function remove_rep( $zip, $rep_id ){
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$dbr->delete( 'cl_zip5',
+			array( 
+				'clz5_rep_id' => $rep_id,
+				'clz5_zip' => $zip,
+			)
+		);
+		echo "Removed $rep_id from $zip\n";
+	}
+	
+	function insert_rep( $zip, $rep_id ){
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		$rowCheck = $dbr->selectRow( 'cl_zip5',
+			array( 
+				'clz5_rep_id',
+				'clz5_zip',
+			),
+			array( 
+				'clz5_rep_id' => $rep_id,
+				'clz5_zip' => $zip,
+			) 
+		);
+		
+		if ( $rowCheck ){
+			echo "Rep id $rep_id already found in $zip.";
+		} else {
+			$dbr->insert( 'cl_zip5',
+				array( 
+					'clz5_rep_id' => $rep_id,
+					'clz5_zip' => $zip,
+				)
+			);
+			echo "Updated $zip to include rep id $rep_id\n";
+		}
 	}
 	
 	function insert_reps_by_district( $zip, $districts ){
