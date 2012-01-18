@@ -28,12 +28,13 @@ class SpecialCongressFail extends UnlistedSpecialPage {
 				'cl_errors',
 				array(
 					'cle_zip' => $zip,
-					'cc_comment' => $wgRequest->getVal( 'comment' ),
+					'cle_comment' => $wgRequest->getVal( 'comment' ),
 				),
 				__METHOD__,
 				array()
 			);
 			
+			$out->addHtml('Thank you!');
 			
 		} else {
 			$out->addHtml('<div>');
@@ -44,7 +45,7 @@ class SpecialCongressFail extends UnlistedSpecialPage {
 
 			$out->addHtml('<div>');
 			$out->addHtml('<input type=hidden name=zip value=' . $zip. '>');
-			$out->addHtml('Tell us what went wrong: <input type=text size=100 name=comment>');
+			$out->addHtml('Tell us what went wrong: <input type=text size=100 maxlength=255 name=comment>');
 			$out->addHtml('</div>');
 
 			$out->addHtml('<div>');
