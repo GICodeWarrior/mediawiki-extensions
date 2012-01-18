@@ -101,7 +101,7 @@ div#contacts {
 	top: 50px;
 	left: 50px;
 	width: 320px;
-	background-color: #202020;
+	background-color: #161616;
 	padding: 5px 20px 20px 20px;
 	filter:alpha(opacity=90);
 	-moz-opacity:0.90;
