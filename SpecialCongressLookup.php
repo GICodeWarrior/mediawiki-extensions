@@ -275,10 +275,6 @@ HTML;
 					Html::element( 'td', array(), wfMsg( 'congresslookup-phone', $myRepresentative['phone'] ) )
 			   	);
 	
-				$congressTable .= "\n" . Html::rawElement( 'tr', array(),
-					Html::element( 'td', array(), wfMsg( 'congresslookup-fax', $myRepresentative['fax'] ) )
-				);
-				
 				if ( $myRepresentative['twitter'] ) {
 					$congressTable .= "\n" . Html::rawElement( 'tr', array(),
 						Html::element( 'td', array(), wfMsg( 'congresslookup-twitter', $myRepresentative['twitter'] ) )
