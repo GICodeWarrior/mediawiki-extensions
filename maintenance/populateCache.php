@@ -133,7 +133,7 @@ class PopulateCache extends Maintenance {
 		if ( $zip < 10000 ) { // make sure there are 5 digits
 			$zip = sprintf( "%05d", $zip );
 		}
-		$url = $this->getOption( 'url' ) . "?zip=" . $zip;
+		$url = $this->getOption( 'url' ) . "?zip=" . $zip . "&submit=Look+up";
 		return $url;
 	}
 }
