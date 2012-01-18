@@ -365,7 +365,7 @@ HTML;
 			),
 			array(
 				"url" => "https://twitter.com/intent/tweet?text=$1",
-				"img" => "//upload.wikimedia.org/wikipedia/commons/4/45/WP_SOPA_sm_icon_twitter_dedede.png",
+				"img" => "//upload.wikimedia.org/wikipedia/foundation/4/45/WP_SOPA_sm_icon_twitter_dedede.png",
 				"name" => "Twitter"
 			)
 		);	
