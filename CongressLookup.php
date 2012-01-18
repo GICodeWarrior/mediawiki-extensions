@@ -68,9 +68,12 @@ function congressLookupSchemaUpdate( $updater = null ) {
 	if ( $updater === null ) {
 		global $wgExtNewTables;
 		$wgExtNewTables[] = array( 'cl_senate', dirname( __FILE__ ) . '/patches/CongressLookup.sql' );
+		$wgExtNewTables[] = array( 'cl_errors', dirname( __FILE__ ) . '/patches/CongressDataErrors.sql' );
 	} else {
 		$updater->addExtensionUpdate( array( 'addTable', 'cl_senate',
 			dirname( __FILE__ ) . '/patches/CongressLookup.sql', true ) );
+		$updater->addExtensionUpdate( array( 'addTable', 'cl_errors',
+			dirname( __FILE__ ) . '/patches/CongressDataErrors.sql', true ) );
 	}
 	return true;
 }
