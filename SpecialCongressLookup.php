@@ -221,11 +221,11 @@ h4 {
 	</p>
 	
 	<p>
-	In a post SOPA/PIPA world, Wikipedia—and many other useful informational sites—cannot survive in a world where politicians regulate the Internet based on the influence of big money in Washington. It represents a framework for future restrictions and suppression. Congress says it's trying to protect the rights of copyright owners, but the "cure" that SOPA and PIPA represent is much more destructive than the disease they are trying to fix.
+	Wikipedia—and many other useful informational sites—cannot survive in a world where politicians regulate the Internet based on the influence of big money in Washington. It represents a framework for future restrictions and suppression. Congress says it's trying to protect the rights of copyright owners, but the "cure" that SOPA and PIPA represent is much more destructive than the disease they are trying to fix.
 	</p>
 	
 	<p>
-	If you'd like to learn even more about SOPA/PIPA, <a href="//en.wikipedia.org/wiki/Wikipedia:SOPA_initiative/Learn_more" target="_blank">click here</a>.
+	If you'd like to learn even more about SOPA and PIPA, <a href="//en.wikipedia.org/wiki/Wikipedia:SOPA_initiative/Learn_more" target="_blank">click here</a>.
 	</p>
 </div>
 <div id="contacts">
