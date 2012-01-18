@@ -11,4 +11,6 @@ $specialPageAliases = array();
 /** English (English) */
 $specialPageAliases['en'] = array(
 	'CongressLookup' => array( 'CongressLookup' ),
+	'CongressFail' => array( 'CongressFail' ),
 );
+

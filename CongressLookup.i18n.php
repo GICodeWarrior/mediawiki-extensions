@@ -26,6 +26,7 @@ $messages['en'] = array(
 	'congresslookup-report-errors' => 'Report an error',
 	'congresslookup-zipcode-error' => 'Please enter your zipcode in the format "12345" or "12345-1234".',
 	'congresslookup-multiple-house-reps' => 'Note: In some cases, there is more than one representative district assigned to a particular zip code. Please select the representative appropriate for your particular district.',
+	'congressfail' => 'CongressFail',
 );
 
 /** Message documentation (Message documentation)
@@ -46,4 +47,5 @@ $messages['qqq'] = array(
 	'congresslookup-report-errors' => 'Label for a link to the error reporting page',
 	'congresslookup-zipcode-error' => 'Error message for when an invalid zip code is entered to the form.',
 	'congresslookup-multiple-house-reps' => 'A note for people who see more than one representative listed for them. Many folks would find this unusual, but we are not looking up representatives at a granular-enough level to necessarily return their one specific rep. So in the event that there are more than one representatives returned to the user, we explain why.',
+	'congressfail' => 'Title of secondary special page where one can report data errors',
 );
