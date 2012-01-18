@@ -148,6 +148,7 @@ class ZipFileParser extends Maintenance {
 		//Still a terrible way to do this. 
 		$zipfile = file( 'zipcode_map.txt', FILE_SKIP_EMPTY_LINES );
 		$zipmap = array();
+		$zip5_reps = array();
 		foreach ( $zipfile as $line=>$val ){
 			$val = explode(' ', $val);
 			$zipgroup = $val[0];
@@ -166,6 +167,7 @@ class ZipFileParser extends Maintenance {
 			$district = trim($val_2[1]);
 			
 			$zipmap[$zipgroup][$state . '-' . $district][] = $original_zipgroup;
+			
 			//echo "Zipgroup = $zipgroup, State = $state, District = $district";
 		}
 		//echo print_r( $zipmap, true );
@@ -175,6 +177,7 @@ class ZipFileParser extends Maintenance {
 		foreach ( $zipmap as $group => $districts ){
 			if (count($districts) > 1){
 				$splits[$group] = count($districts);
+				$this->insert_reps_by_district($group, $districts);				
 			} else {
 				unset( $zipmap[$group] );
 			}
@@ -182,8 +185,7 @@ class ZipFileParser extends Maintenance {
 		
 		echo print_r( $splits, true );
 		echo count( $splits ) . " split zipcodes found, out of... I don't know. 40 thousand or something.\n";
-		
-		die("Hurr!");
+
 	}
 	
 	function insert_rep( $zip, $rep_id ){
@@ -199,6 +201,40 @@ class ZipFileParser extends Maintenance {
 		echo "Updated $zip to include rep id $rep_id\n";
 	}
 	
+	function insert_reps_by_district( $zip, $districts ){
+		$dbr = wfGetDB( DB_SLAVE );
+		echo "Zip: $zip\n";
+		echo "Districts: " . print_r( $districts, true );
+		
+		$rep_ids = array();
+		foreach ( $districts as $district => $z9 ){
+			$district = explode('-', $district);
+			$state = $district[0];
+			$district = $district[1];
+			$rep_ids[] = $this->get_rep_ids( $state, $district );
+		}
+		echo print_r( $rep_ids, true );
+		
+		//delete everything with the current zipcode. 
+		$dbr->delete( 'cl_zip5', array( 'clz5_zip' => $zip ) );
+		
+		foreach ( $rep_ids as $rep_id ){
+			echo " Count of Rep IDs: " . count( $rep_id ) . "\n";
+			if ( count( $rep_id ) === 1 ){
+				$rep_id = $rep_id[0];
+				$dbr->insert( 'cl_zip5',
+					array( 
+						'clz5_zip' => $zip,
+						'clz5_rep_id' => $rep_id,
+					)
+				);
+			} else {
+//				echo " Count of Rep IDs was NOT one for $zip.\n";
+			}
+			echo "Updated $zip to include rep id $rep_id\n";
+		}
+		
+	}
 	
 	function make_zip_string( $zip ){
 		$zip = (string)$zip;
