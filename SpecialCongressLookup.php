@@ -151,7 +151,7 @@ p.error {
 HTML;
 
 		if ( $this->getZip() === false ) {
-			$htmlOut .= $this->getZipFOrm( true );
+			$htmlOut .= $this->getZipForm( true );
 		} elseif ( !is_null( $this->getZip() )) {
 			$htmlOut .= $this->getCongressTables();
 		} else {
