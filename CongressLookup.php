@@ -46,7 +46,7 @@ $wgCongressLookupSharedMaxAge = 1200; // 20 minutes server-side
 $wgCongressLookupMaxAge = 600; // 10 minutes client-side
 
 // Where to report errors
-$wgCongressLookupErrorPage = '//meta.wikimedia.org/wiki/English_Wikipedia_SOPA_blackout/Congress_data';
+$wgCongressLookupErrorPage = '/wiki/Special:CongressFail';
 
 $dir = dirname( __FILE__ ) . '/';
 

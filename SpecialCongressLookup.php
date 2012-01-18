@@ -215,7 +215,7 @@ HTML;
 	 * @return string HTML for the table
 	 */
 	private function getCongressTables() {
-		global $wgCongressLookupErrorPage;
+		global $wgCongressLookupErrorPage, $wgRequest;
 		
 		$myRepresentatives = CongressLookupDB::getRepresentative( $this->zip );
 		$mySenators = CongressLookupDB::getSenators( $this->zip );
@@ -310,8 +310,11 @@ HTML;
 		}
 		
 		$congressTable .= Html::openElement( 'p' );
-		$congressTable .= Html::element( 'a', array ( 'href' => $wgCongressLookupErrorPage ),
-			wfMsg( 'congresslookup-report-errors' ) );
+		$congressTable .= Html::element( 
+			'a', 
+			array ( 'href' => $wgCongressLookupErrorPage . '?zip=' . $wgRequest->getVal( 'zip' )  ),
+			wfMsg( 'congresslookup-report-errors' ) 
+		);
 		$congressTable .= Html::closeElement( 'p' );
 		
 		return $congressTable;
