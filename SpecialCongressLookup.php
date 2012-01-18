@@ -345,12 +345,12 @@ HTML;
 	public function isValidZip( $zip ) {
 		$zipPieces = explode( '-', $zip, 2 );
 		
-		if ( strlen( $zipPieces[0] ) < 5 || !is_numeric( $zipPieces[0] )) {
+		if ( strlen( $zipPieces[0] ) == 5 || !is_numeric( $zipPieces[0] )) {
 			return false;
 		}
 		
 		if ( isset( $zipPieces[1] )) {
-			if ( strlen( $zipPieces[1] ) < 4 || !is_numeric( $zipPieces[1] )) {
+			if ( strlen( $zipPieces[1] ) == 4 || !is_numeric( $zipPieces[1] )) {
 				return false;
 			}
 		}
