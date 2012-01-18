@@ -249,7 +249,16 @@ HTML;
 
 		return true;
 	}
-	
+
+	/**
+	 * Given twitter handle, return an HTML link to the account. Make sure to use rawElement to wrap this.
+	 * @param string twitter handle, assumed to be in ascii, without leading at-sign
+	 * @return string HTML for the link
+	 */
+	private function getTwitterHtml( $handle ) {
+		return Html::element( 'a', array( 'target' => '_blank', 'href' => 'http://twitter.com/!#/' . $handle ), '@' . $handle );
+	}	
+
 	/**
 	 * Get an HTML table of data for the user's congressional representatives
 	 * @return string HTML for the table
@@ -280,7 +289,7 @@ HTML;
 	
 				if ( $myRepresentative['twitter'] ) {
 					$congressTable .= "\n" . Html::rawElement( 'tr', array(),
-						Html::element( 'td', array(), wfMsg( 'congresslookup-twitter', $myRepresentative['twitter'] ) )
+						Html::rawElement( 'td', array(), wfMsg( 'congresslookup-twitter', self::getTwitterHtml( $myRepresentative['twitter'] ) ) )
 					);
 				}
 	
@@ -322,7 +331,7 @@ HTML;
 			
 			if ( $senator['twitter'] ) {
 				$congressTable .= "\n" . Html::rawElement( 'tr', array(),
-					Html::element( 'td', array(), wfMsg( 'congresslookup-twitter', $senator['twitter'] ) )
+					Html::rawElement( 'td', array(), wfMsg( 'congresslookup-twitter', self::getTwitterHtml( $senator['twitter'] ) ) )
 				);
 			}
 
