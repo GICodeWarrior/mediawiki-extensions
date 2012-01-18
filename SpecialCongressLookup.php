@@ -88,7 +88,7 @@ div#everything {
 div#instructions {
 	position: absolute;
 	top: 67px;
-	left: 420px;
+	left: 440px;
 	text-align: left;
 	width: 500px;
 	padding-bottom: 30px;
@@ -98,10 +98,18 @@ div#instructions p {
 }
 div#contacts {
 	position: absolute;
-	top: 400px;
+	top: 50px;
 	left: 50px;
-	width: 330px;
-
+	width: 320px;
+	background-color: #202020;
+	padding: 5px 20px 20px 20px;
+	filter:alpha(opacity=90);
+	-moz-opacity:0.90;
+	-khtml-opacity: 0.90;
+	opacity: 0.90;
+}
+div#contacts form {
+	margin-bottom: 1em;
 }
 table.person {
 	margin-bottom: 1em;
@@ -141,24 +149,23 @@ h4 {
 <body>
 <div id="everything">
 <div id="instructions">
-	<div class="sopaBigHeadline">Take action to stop SOPA and PIPA, the internet blacklist bills</div>
+	<div class="sopaBigHeadline">Call your elected officials.</div>
+	
 	<p>
-	For maximum impact, please consider calling your US Representative and US Senators and explain that you are a constituent and that you oppose these bills and similar future legislation.
+	Tell them you are their constituent, and you oppose SOPA and PIPA. 
 	</p>
 	
-	<div class="sopaSectionHeadline">Things you may want to say to your Senator or Representative</div>
-	<p class="quote">
-	“As one of your concerned constituents, I urge you to oppose SOPA and PIPA or any future bill that would censor free speech and damage the security of the Internet.”
+	<div class="sopaSectionHeadline">Why?</div>
+	<p>
+	SOPA and PIPA cripple the free and open internet. They put the onus on website owners to police user-contributed material and call for the blocking of entire sites, even if the links are not to infringing material. Small sites will not have the sufficient resources to mount a legal challenge. Without opposition, large media companies may seek to cut off funding sources for small competing foreign sites, even if big media are wrong. Foreign sites will be blacklisted, which means they won't show up in major search engines.
 	</p>
 	
-	<div class="sopaSectionHeadline">Regarding Censorship</div>
-	<p class="quote">
-	“The Internet has become an important communications tool allowing the free flow of ideas. As introduced in the House and the Senate, SOPA and PIPA would give the Justice Department and courts tremendous power to shut down entire sites. These bills ignore the principles of the First Amendment that require tailored solutions in lieu of across-the-board censorship. Unfortunately these bills represent terrible precedents for the United States and the world.”
+	<p>
+	In a post SOPA/PIPA world, Wikipedia --and many other useful informational sites-- cannot survive in a world where politicians regulate the Internet based on the influence of big money in Washington. It represents a framework for future restrictions and suppression. Congress says it's trying to protect the rights of copyright owners, but the "cure" that SOPA and PIPA represent is much more destructive than the disease they are trying to fix.
 	</p>
 	
-	<div class="sopaSectionHeadline">Regarding Cybersecurity</div>
-	<p class="quote">
-	“A safe and secure Web is vital to our privacy, our access to free knowledge, and to commerce. Hundreds of established authorities on the Internet believe that the required blocking of Internet sites in SOPA and PIPA is badly thought out and threatens Internet security.”
+	<p>
+	If you'd like to learn even more about SOPA/PIPA, <a href="//en.wikipedia.org/wiki/Wikipedia:SOPA_initiative/Learn_more" target="_blank">click here</a>.
 	</p>
 </div>
 <div id="contacts">
