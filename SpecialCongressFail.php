@@ -9,7 +9,7 @@ class SpecialCongressFail extends UnlistedSpecialPage {
 	 * @param $par is everything in the URL after Special:CongressFail
 	 */
 	public function __construct( $request = null, $par = null ) {
-		parent::__construct( 'SpecialCongressFail' );
+		parent::__construct( 'CongressFail' );
 	}
 
 	public function execute( $subPage ) {
