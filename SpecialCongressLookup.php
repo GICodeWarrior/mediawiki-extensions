@@ -325,9 +325,11 @@ HTML;
 				Html::element( 'td', array(), wfMsg( 'congresslookup-phone', $senator['phone'] ) )
 			);
 
+			/*
 			$congressTable .= "\n" . Html::rawElement( 'tr', array(),
 				Html::element( 'td', array(), wfMsg( 'congresslookup-fax', $senator['fax'] ) )
 			);
+			*/
 			
 			if ( $senator['twitter'] ) {
 				$congressTable .= "\n" . Html::rawElement( 'tr', array(),
