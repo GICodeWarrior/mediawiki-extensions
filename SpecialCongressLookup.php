@@ -175,6 +175,9 @@ p.quote {
 	color: #cccccc;
 	margin-left: 20px;
 }
+p.note {
+	margin-top: 0;
+}
 h3 {
 	font-weight: normal;
 	font-size: 20px;
