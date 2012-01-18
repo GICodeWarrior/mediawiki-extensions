@@ -69,6 +69,17 @@ class ZipFileParser extends Maintenance {
 				$this->disassociate_zip5_reps( $zip, $state, $district );
 				
 				break;
+				
+			case 'writeSQLFile':
+				if ( !empty( $_SERVER['argv'][2] ) ){
+					$table = $_SERVER['argv'][2];
+				} else {
+					die( "Missing parameter 2: Table name" );
+				}
+				
+				$this->write_happy_table_dump( $table );
+				break;
+				
 			case 'fillOutNulls':
 				$this->fill_out_nulls( $skip_up_to );
 				break;
@@ -449,6 +460,92 @@ class ZipFileParser extends Maintenance {
 				return NULL;
 			}
 		}
+	}
+	
+	function write_happy_table_dump( $table ){
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		if ( !(strpos( $table, 'cl_' ) === 0) ){
+			die("Table $table is not recognized by CongressLookup");
+		}
+		
+		if (!$dbr->tableExists( $table ) ) {
+			die("Table $table does not exist.");
+		}
+		
+		$ignore_me = array(
+			'clz5_id',
+			'clz3_id',
+		);
+		
+		
+		$batch_size = 140;
+		$batch_start_line = null;
+		$batch_end_line = ";\n";
+		$current_count = 0;
+		
+		
+		//we're running locally, so just go for it.
+		$results = $dbr->select( $table, '*' );
+		if ( $results ){
+			$file = fopen("../data/$table.new.sql", 'w');
+			if ( !$file ){
+				die("No dice.");
+			}
+			foreach ( $results as $row ){
+				
+				$row = get_object_vars($row);
+				foreach ( $ignore_me as $key ){
+					unset( $row[$key] );
+				}
+
+				if ( $batch_start_line === null ){
+					$batch_start_line = 'REPLACE INTO /*$wgDBprefix*/' . $table . " ( ";
+					$keys = array();
+					foreach ( $row as $key => $data ){
+						$keys[] = '`' . $key . '`';
+					}
+					$batch_start_line .= implode( ', ', $keys );
+					$batch_start_line .= ") VALUES\n";
+				}
+				if ( $current_count === 0 ){
+					//echo "Writing $batch_start_line";
+					fwrite($file, $batch_start_line);
+				}
+				$line_data =  '( 501, 400031 ), ' . "\n";
+				foreach ( $row as $key=>$data ){
+					if ( !is_numeric($data) ){
+						$row[$key] = "'$data'";
+						if ( $row[$key] === "''" ){
+							$row[$key] = 'NULL';
+						}
+					}
+				}
+				
+				$line_data =  '( ' . implode( ', ', $row ) . ' )';
+				
+				++$current_count;
+				
+				if ( $current_count === $batch_size ){
+					$line_data .= $batch_end_line;
+					$current_count = 0;
+				} else {
+					$line_data .= ", \n";
+				}
+				
+				//echo "Writing $line_data";
+				fwrite($file, $line_data);
+			}
+			fwrite($file, ';');
+			
+			fclose($file);
+			
+		} else {
+			die("Nothing to export.");
+		}
+		
+		
+		
 	}
 	
 }
