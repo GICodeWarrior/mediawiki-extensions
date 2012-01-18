@@ -55,54 +55,6 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta name="generator" content="MediaWiki 1.18wmf1" />
-<script src="//geoiplookup.wikimedia.org/" type="text/javascript"></script>
-HTML;
-		$htmlOut .= '<script type="text/javascript" src="' . $wgScriptPath . '/load.php?lang=en&modules=jquery%2Cmediawiki&only=scripts&skin=vector&version=20111213T185322Z"> </script>';
-		$htmlOut .= <<<HTML
-<script type="text/javascript">
-
-$(document).ready(function() {
-
-	var geoHasUsRep = [
-		'US', // USA
-		'PR', // Puerto Rico
-		'VI',  // Virgin Islands
-		'MP', // Northern Mariana Islands
-		'AS', // American Samoa
-		'GU'  // Guam
-		];
-
-	// Fake country from get param
-	// Parse out GET params from the URL
-	var urlParams = {};
-	(function () {
-		var e,
-			a = /\+/g,  
-			r = /([^&=]+)=?([^&]*)/g,
-			d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
-			q = window.location.search.substring(1);
-
-		while (e = r.exec(q)) {
-			urlParams[d(e[1])] = d(e[2]);
-		}
-	})();
-
-	// Defaults to the US, so if we can't determine location, show form
-	var country = 'US'; 
-	if ( urlParams.country ) {
-		country = urlParams.country;
-	} else if ( window.Geo && window.Geo.country ) {
-		country = window.Geo.country;
-	}
-
-	var hasUsRep = ( $.inArray( country, geoHasUsRep ) === 0 );
-	if( !hasUsRep ) {
-		$("#sopaShareOptions").show();
-		$("#sopaZipForm").hide();
-	}
-
-});
-</script>
 <style type="text/css">
 body {
 	color: #dedede;
@@ -204,9 +156,6 @@ h4 {
 .sopaActionHead {
   font-weight: bold
 }
-#sopaShareOptions {
-  display: none;
-}
 </style>
 </head>
 <body>
@@ -242,7 +191,6 @@ HTML;
 			$htmlOut .= $this->getCongressTables();
 		} else {
 			$htmlOut .= $this->getZipForm();
-			$htmlOut .= $this->getSocialMedia();
 		}
 
 		// Output end of the page
@@ -307,6 +255,8 @@ HTML;
 					)
 				);
 	
+				$congressTable .= Html::rawElement( 'tr', array(), 
+				Html::rawElement( 'td', array(), $this->getSocialMedia( $myRepresentative ) ) );
 				$congressTable .= "\n" . Html::closeElement( 'table' );
 			}
 			if ( count( $myRepresentatives ) > 1 ) {
@@ -351,6 +301,8 @@ HTML;
 				)
 			);
 
+			$congressTable .= Html::rawElement( 'tr', array(), 
+				Html::rawElement( 'td', array(), $this->getSocialMedia( $senator ) ) );
 			$congressTable .= "\n" . Html::closeElement( 'table' );
 		}
 		if ( count( $mySenators ) == 0 ) {
@@ -392,62 +344,82 @@ HTML;
 	 * Get HTML for social media links
 	 * @return string HTML for social media links
 	 */
-	private function getSocialMedia() {
+	private function getSocialMedia( $senator ) {
 		// Update links here. Currently pointing to example.com
-		$htmlOut = <<<HTML
-<div id="sopaShareOptions" class="sopaActionDiv">
-<p class="sopaActionHead">Make your voice heard</p>
-    <div>
-        <div class="sopaSocial">
-            <a style="text-decoration: none;"
-                href="https://www.facebook.com/sharer.php?u=http://tinyurl.com/7vq4o8g"
-                target="wpblackout_Facebook_share"><img width="33"
-                height="33"
-                src=
-                "//upload.wikimedia.org/wikipedia/commons/2/2a/WP_SOPA_sm_icon_facebook_dedede.png"></a><br>
+		$shareOptions = array(
+			array(
+				"url" =>  "https://www.facebook.com/sharer.php?u=http://tinyurl.com/7vq4o8g&t=$1",
+				"img" => "//upload.wikimedia.org/wikipedia/commons/2/2a/WP_SOPA_sm_icon_facebook_dedede.png",
+				"name" => "Facebook"
+			),
+			array(
+				"url" => "https://m.google.com/app/plus/x/?v=compose&content=$1",
+				"img" => "//upload.wikimedia.org/wikipedia/commons/0/08/WP_SOPA_sm_icon_gplus_dedede.png",
+				"name" => "Google+"
+			),
+			array(
+				"url" => "https://twitter.com/intent/tweet?text=$1",
+				"img" => "//upload.wikimedia.org/wikipedia/commons/4/45/WP_SOPA_sm_icon_twitter_dedede.png",
+				"name" => "Twitter"
+			)
+		);	
 
-            <a style="text-decoration: none; color: rgb(222, 222, 222);"
-                href="https://www.facebook.com/sharer.php?u=http://tinyurl.com/7vq4o8g"
-                target="wpblackout_Facebook_share">Facebook</a>
-        </div>
+		$htmlShare = '';
+		foreach( $shareOptions as $option ) {
+			$htmlShare .= Html::rawElement( 'div',
+				array(
+					'class' => 'sopaSocial'
+				),
+				Html::rawElement( 'a',
+					array(
+						'href' => str_replace( '$1', $this->formatDoneText( $senator ), $option['url'] ),
+						'style' => 'text-decoration: none'
+					),
+					Html::rawElement( 'img',
+						array(
+							'src' => $option['img'],
+							'height' => '33',
+							'width' => '33'
+						),
+						''
+					) 
+				) .
+				Html::rawElement( 'br' ) .
+				Html::rawElement( 'a',
+					array(
+						'href' => $option['url'],
+						'style' => 'text-decoration: none'
+					),
+					$option['name']
+				)
+			);
+		}
+		$htmlOut = Html::rawElement( 'div',
+			array( 
+				'id' => 'sopaShareOptions',
+				'class' => 'sopaActionDiv'
+			),
+				Html::rawElement( 'p',
+					array(), 'Done? Tell the world!'
+				) . 
+				Html::rawElement( 'div', 
+					array(),
+					$htmlShare) .
+				Html::rawElement( 'div',
+					array(
+						'style' => 'clear: both;'
+					), ''
+				) . 
+				Html::rawElement( 'hr' )
+			);
 
-        <div class="sopaSocial">
-            <a style="text-decoration: none;"
-                href=
-                "https://m.google.com/app/plus/x/?v=compose&amp;content=I%20support%20the%20January%2018th%20Wikipedia%20blackout%20to%20protest%20SOPA%20and%20PIPA.%20Show%20your%20support%20here%20%20http%3A%2F%2Ftinyurl.com%2F7vq4o8g">
-                <img width="33"
-                height="33"
-                src=
-                "//upload.wikimedia.org/wikipedia/commons/0/08/WP_SOPA_sm_icon_gplus_dedede.png"></a><br>
-
-            <a style="text-decoration: none;"
-                href=
-                "https://m.google.com/app/plus/x/?v=compose&amp;content=I%20support%20the%20January%2018th%20Wikipedia%20blackout%20to%20protest%20SOPA%20and%20PIPA.%20Show%20your%20support%20here%20%20http%3A%2F%2Ftinyurl.com%2F7vq4o8g">
-                Google+</a>
-        </div>
-
-        <div class="sopaSocial">
-            <a style="text-decoration: none;"
-                href=
-                "https://twitter.com/intent/tweet?text=I%20support%20%23wikipediablackout!%20Show%20your%20support%20here%20http%3A%2F%2Ftinyurl.com%2F7vq4o8g"
-                target="wpblackout_Twitter_share"><img width="33"
-                height="33"
-                src=
-                "//upload.wikimedia.org/wikipedia/commons/4/45/WP_SOPA_sm_icon_twitter_dedede.png"></a><br>
-
-            <a style="text-decoration: none; color: rgb(222, 222, 222);"
-                href=
-                "https://twitter.com/intent/tweet?text=I%20support%20%23wikipediablackout!%20Show%20your%20support%20here%20http%3A%2F%2Ftinyurl.com%2F7vq4o8g"
-                target="wpblackout_Twitter_share">Twitter</a>
-        </div>
-    </div>
-
-    <div style="clear: both;"></div>
-</div>
-HTML;
 		return $htmlOut;
 	}
 	
+	private function formatDoneText( $rep ) {
+		$name = trim( preg_replace( '/\[.*\]/', '', $rep['name'] ) );
+		return urlencode( "I just contacted $name to oppose #SOPA/#PIPA - Join me! http://tinyurl.com/7vq4o8g #wikipediablackout" );
+	}	
 	/**
 	 * Setter for $this->zip
 	 * 
