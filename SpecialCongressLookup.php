@@ -142,14 +142,9 @@ p.note {
 	<p class="quote">
 	“The Internet has become an important communications tool allowing the free flow of ideas. As introduced in the House and the Senate, SOPA and PIPA would give the Justice Department and courts tremendous power to shut down entire sites. These bills ignore the principles of the First Amendment that require tailored solutions in lieu of across-the-board censorship. Unfortunately these bills represent terrible precedents for the United States and the world.”
 	</p>
-
-	<h4>Regarding Cybersecurity</h4>
-	<p class="quote">
-	“A safe and secure Web is vital to our privacy, our access to free knowledge, and to commerce. Hundreds of established authorities on the Internet believe that the required blocking of Internet sites in SOPA and PIPA is badly thought out and threatens Internet security.”
-	</p>
 	
 	<p>
-	If you'd like to learn even more about SOPA/PIPA, <a href="//wikimediafoundation.org/wiki/SOPA/Learn_more" target="_blank">click here</a>.
+	If you'd like to learn even more about SOPA/PIPA, <a href="//en.wikipedia.org/wiki/Wikipedia:SOPA_initiative/Learn_more" target="_blank">click here</a>.
 	</p>
 </div>
 <div id="contacts">
