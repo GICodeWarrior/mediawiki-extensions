@@ -5,10 +5,11 @@
  * https://www.mediawiki.org/wiki/Extension:Blackout
  *
  * @addtogroup Extensions
- * @author Gregory Varnum utilizing work by jorm and MediaWiki developers for the Wikimedia Foundation's SOPA/PIPA protest
+ * @author John Du Hart and Gregory Varnum utilizing work by jorm and MediaWiki developers for the Wikimedia Foundation's SOPA/PIPA protest
  * @license GPL
  *
  * Thank you to *** for feedback, bug reporting and cleaning up code
+ * Thank you to Raymond and others mentioned in TweetANew.i18n.php for translation work
  *
  */
 
@@ -32,7 +33,7 @@
  * $wgBlackout['Skin']
  * 			- Change the blackout skin
  * 				* ProtestSopa (Default)
- * 				* SopStrike
+ * 				* SopaStrike
  * 				* StopSopa
  *
  * $wgBlackout['Whitelist'][]
@@ -56,6 +57,7 @@ $wgBlackout = array(
 $dir = dirname(__FILE__) . '/';
 
 $wgAutoloadClasses['Blackout'] = $dir . 'Blackout.body.php';
+$wgExtensionMessagesFiles['Blackout'] = $dir . 'Blackout.i18n.php';
 
 $skinDir = $dir . 'skins/';
 $wgAutoloadClasses['SkinProtestSopa'] = $skinDir . 'ProtestSopa.php';
@@ -67,9 +69,9 @@ $wgAutoloadClasses['SkinSopaStrike'] = $skinDir . 'SopaStrike.php';
  */
  $wgExtensionCredits['other'][] = array(
 	'name'           => 'Blackout',
-	'version'        => '1.0.20120117',
-	'author'         => array('[https://www.mediawiki.org/wiki/User:Varnent Gregory Varnum]', 'John Du Hart', '...'),
-	'description'    => 'For use during blackouts in protest to SOPA/PIPA and Internet censorship.',
+	'version'        => '1.0.20120118',
+	'author'         => array('[https://www.mediawiki.org/wiki/User:Johnduhart John Du Hart]', '[https://www.mediawiki.org/wiki/User:Varnent Gregory Varnum]', '...'),
+	'descriptionmsg' => 'blackout-desc',
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:Blackout',
 );
 

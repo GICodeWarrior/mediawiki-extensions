@@ -12,6 +12,8 @@ class StopSopaTemplate extends QuickTemplate {
 	 * to show the actual HTML output
 	 */
 	public function execute() {
+		$header = wfMsgExt( 'blackout-stopsopa-header' );
+		$message = wfMsgExt( 'blackout-stopsopa-message' );		
 		?>
 
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -21,7 +23,7 @@ class StopSopaTemplate extends QuickTemplate {
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-		<title>STOP SOPA!</title>
+		<title><?php echo $header ?></title>
 
 		<style type="text/css" media="all">
 			html,
@@ -143,12 +145,12 @@ class StopSopaTemplate extends QuickTemplate {
 
 	<div id="text-shadow-box">
 		<div id="tsb-box"></div>
-		<p id="tsb-text">STOP SOPA!</p>
-		<p id="tsb-link"><a href="http://americancensorship.org/">STOP SOPA!</a></p>
+		<p id="tsb-text"><?php $header ?></p>
+		<p id="tsb-link"><a href="http://americancensorship.org/"><?php echo $header ?></a></p>
 		<div id="tsb-wall">
 			<div id="tsb-ie"></div>
 
-			<p>This site has gone dark today in protest of the U.S. Stop Online Piracy Act (SOPA) and PROTECT-IP Act (PIPA).  The U.S. Congress is about to censor the Internet, even though the vast majority of Americans are opposed. We need to kill these bills to protect our rights to free speech, privacy, and prosperity.  Learn more at <a href="http://americancensorship.org/">AmericanCensorship.org</a></p>
+			<p><?php echo $message ?>&nbsp;<a href="http://americancensorship.org/">AmericanCensorship.org</a></p>
 		</div>
 		<div id="tsb-spot"></div>
 	</div>

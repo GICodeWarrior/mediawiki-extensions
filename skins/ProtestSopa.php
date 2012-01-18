@@ -12,12 +12,20 @@ class ProtestSopaTemplate extends QuickTemplate {
 	 * to show the actual HTML output
 	 */
 	public function execute() {
+		$header = wfMsg( 'blackout-protestsopa-header' );
+		$message1 = wfMsg( 'blackout-protestsopa-message1' );
+		$message2 = wfMsg( 'blackout-protestsopa-message2' );
+		$message3 = wfMsg( 'blackout-protestsopa-message3' );
+		$action = wfMsg( 'blackout-protestsopa-action' );
+		$actionmsg = wfMsg( 'blackout-protestsopa-actionmsg' );
+		$join = wfMsg( 'blackout-protestsopa-join' );
 		?>
 
 	<html>
 	<head>
 		<link href='http://fonts.googleapis.com/css?family=Six+Caps' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Stint+Ultra+Condensed' rel='stylesheet' type='text/css'>
+       	<title><?php echo $header ?></title>
 		<style>
 			body {
 				color: #fff;
@@ -81,19 +89,17 @@ class ProtestSopaTemplate extends QuickTemplate {
 	<body>
 	<div>
 		<hr>
-		<p class="save">SAVE THE INTERNET.</p>
-		<p>This site has been taken down in protest of bills currently being considered in the US
-			House and Senate. Called <a class="bills" href="http://thomas.loc.gov/cgi-bin/bdquery/z?d112:h.r.3261:">SOPA</a> and
-			<a  class="bills" href="http://www.opencongress.org/bill/112-s968/show">PIPA</a>,<br /> these bills threaten
-			to destroy the Internet as we know it.</p>
-		<p>If either one passes, your favorite sites could disappear forever.</p>
+		<p class="save"><?php echo $header ?></p>
+		<p><?php echo $message1 ?>&nbsp;<a class="bills" href="http://thomas.loc.gov/cgi-bin/bdquery/z?d112:h.r.3261:">SOPA</a> &amp;
+			<a  class="bills" href="http://www.opencongress.org/bill/112-s968/show">PIPA</a>,<br />&nbsp;<?php echo $message2 ?></p>
+		<p><?php echo $message3 ?></p>
 		<hr>
 		<a href="http://americancensorship.org/modal/call-form-moz.html">
-			<p class="act">ACT NOW.</p>
+			<p class="act"><?php echo $action ?></p>
 		</a>
-		<p><span><a class="link" href="http://americancensorship.org/modal/call-form-moz.html">CALL YOUR SENATOR AND ASK THEM TO VOTE "NO" FOR PIPA</a></span>
+		<p><span><a class="link" href="http://americancensorship.org/modal/call-form-moz.html"><?php echo $actionmsg ?></a></span>
 
-			<span> <a class="link" href="https://github.com/SaraJo/SOPA-PIPA-Protest-Page">JOIN US</a></p>
+			<span> <a class="link" href="https://www.mediawiki.org/wiki/Extension:Blackout"><?php echo $join ?></a></p>
 
 		<div>
 	</body>
