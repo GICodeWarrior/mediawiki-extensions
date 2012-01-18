@@ -82,7 +82,7 @@ test( '-- Dynamic font loading based on lang attribute', function() {
 } );
 
 test( '-- Dynamic font loading based on font-family style attribute', function() {
-	expect( 14 )
+	expect( 14 );
 
 	mw.webfonts.fonts = [];
 	ok( $( 'body' ).append( "<p class='webfonts-testing-font-family-style'>Some content</p>" ), 'An element for testing font-family loading was appended to body' );
@@ -111,6 +111,25 @@ test( '-- Dynamic font loading based on font-family style attribute', function()
 	assertTrue( isFontFaceLoaded( malayalamFont ), 'New css rule added to the document for fallback font' );
 
 	ok( $testElement.remove() );
+} );
+
+test( '-- Build the menu', function() {
+	expect( 8 );
+	var oldFonts = mw.webfonts.fonts;
+	var fonts = [];
+	assertFalse( mw.webfonts.buildMenu( fonts ) , 'Build the menu with empty fonts list' );
+	fonts = mw.webfonts.config.languages.hi;
+	ok( mw.webfonts.buildMenu( fonts ) , 'Build the menu with hindi fonts list' );
+	equals( $( 'li#pt-webfont' ).length , 1, 'There should be one and only one menu at any time' );
+	ok( mw.webfonts.buildMenu( fonts ) , 'Build the menu with hindi fonts list again' );
+	equals( $( 'li#pt-webfont' ).length , 1, 'There should be one and only one menu at any time' );
+	equals( $( 'ul#webfonts-fontsmenu li' ).length ,  fonts.length + 2 , 'Number of menu items is number of availables fonts, a help link and reset item' );
+	equals ( $( 'li.webfont-help-item').length  , 1, 'Help link exists' );
+	if (oldFonts.length)
+		assertTrue( mw.webfonts.buildMenu( oldFonts ) , 'Restore the menu' );
+	else {
+		assertFalse( mw.webfonts.buildMenu( oldFonts ) , 'Restore the menu' );
+	}
 } );
 
 isFontFaceLoaded = function( fontFamilyName ) {

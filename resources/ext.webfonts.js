@@ -363,8 +363,14 @@
 		buildMenu: function( fonts ) {
 			var $menuItemsDiv = mw.webfonts.buildMenuItems( fonts );
 			if( $menuItemsDiv === null ) {
-				return;
+				return false;
 			}
+
+			if( $( 'li#pt-webfont' ).length > 0 ) {
+				$( 'li#pt-webfont' ).remove();
+				$( 'div#webfonts-menu' ).remove();
+			}
+			
 			var $menu = $( '<div>' )
 				.attr( 'id', 'webfonts-menu' )
 				.addClass( 'webfontMenu' )
@@ -435,6 +441,7 @@
 					$( '#searchform' ).css( { visibility: 'visible' } );
 				} );
 			}
+			return true;
 		}
 	};
 
