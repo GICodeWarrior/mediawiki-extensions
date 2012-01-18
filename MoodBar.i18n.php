@@ -182,14 +182,14 @@ Welcome to {{SITENAME}}, and thanks for your [$2 feedback]. Another {{SITENAME}}
 
      $4
 
-View this message on your [$5 talk page]
+View this message on your [$5 talk page].
 
-What’s a talk page?
-Your user talk page is the page that other {{SITENAME}} editors use to communicate with you.  You can respond by clicking “Edit”, moving the cursor below the comment, typing your response and four tildes (~~~~) to sign, and saving. All pages in {{SITENAME}} have talk pages, and they’re used for many different purposes. It takes a while to get the hang of it, but is pretty easy once you’re used to it.
+What\'s a talk page?
+Your user talk page is the page that other {{SITENAME}} editors use to communicate with you.  You can respond by clicking "Edit", moving the cursor below the comment, typing your response and four tildes (~~~~) to sign, and saving. All pages in {{SITENAME}} have talk pages, and they\'re used for many different purposes. It takes a while to get the hang of it, but is pretty easy once you\'re used to it.
 
-Still confused? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv This video] (watch on [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) gives you a step-by-step overview.
+Still confused? [http://en.wikipedia.org/wiki/File:Wikipedia_basics_-_Talk_pages.ogv This video] (watch on [http://www.youtube.com/watch?v=JdeDLRsB2Es YouTube]) gives you a step-by-step overview of how talk pages work.
 
-Have a nice day,
+Thanks for being part of the community.
 
 -- {{SITENAME}}',
 );

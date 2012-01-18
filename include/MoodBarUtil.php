@@ -92,8 +92,8 @@ class MoodBarUtil {
 			
 			$topResponders = iterator_to_array( $res );
 
-			// Cache the results in cache for 12 hour
-			$wgMemc->set( $key, $topResponders, 12 * 60 * 60 );
+			// Cache the results in cache for 2 hours
+			$wgMemc->set( $key, $topResponders, 2 * 60 * 60 );
 		}
 
 		return $topResponders;

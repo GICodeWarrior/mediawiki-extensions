@@ -157,13 +157,13 @@ class MoodBarHTMLEmailNotification {
 		$targetUserName	= $this->targetUser->getName();
 		$links = $this->buildEmailLink();
 			
-		//text version
+		//text version, no need to escape since client will interpret it as plain text
 		$textBody = wfMessage( 'moodbar-enotif-body' )->params( $targetUserName, 
 			$links['feedbackPageUrl'], 
 			$links['editorTalkPageUrl'],
 			$this->response,
 			$links['targetUserTalkPageUrl'],
-			$pageEditor )->escaped();
+			$pageEditor )->text();
 
 		//html version, this is a little bit ugly as we have to make wiki link clickable in emails
 		$action = $wgRequest->getVal( 'action' );
@@ -171,7 +171,7 @@ class MoodBarHTMLEmailNotification {
 		$htmlBody = wfMsgExt( 'moodbar-enotif-body', array( 'parse' ), $targetUserName, 
 			$links['feedbackPageUrl'], 
 			$links['editorTalkPageUrl'],
-			'<div style="margin-left:20px; margin-right:20px;">' .$this->response . '</div>',
+			'<div style="margin-left:20px; margin-right:20px;">"' .$this->response . '"</div>',
 			$links['targetUserTalkPageUrl'],
 			$pageEditor );
 		$wgRequest->setVal( 'action', $action );
