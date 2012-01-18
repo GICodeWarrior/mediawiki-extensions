@@ -24,6 +24,7 @@ $messages['en'] = array(
 	'congresslookup-no-house-rep' => 'No House representative was found for your zip code.',
 	'congresslookup-no-senators' => 'No senators were found for your zip code.',
 	'congresslookup-report-errors' => 'Report an error',
+	'congresslookup-zipcode-error' => 'Please enter your zipcode in the format "12345" or "12345-1234".',
 );
 
 /** Message documentation (Message documentation)
@@ -42,4 +43,5 @@ $messages['qqq'] = array(
 	'congresslookup-no-house-rep' => 'Error message for when no House representative is found',
 	'congresslookup-no-senators' => 'Error message for when no Senators are found',
 	'congresslookup-report-errors' => 'Label for a link to the error reporting page',
+	'congresslookup-zipcode-error' => 'Error message for when an invalid zip code is entered to the form.',
 );

@@ -19,8 +19,9 @@ class SpecialCongressLookup extends UnlistedSpecialPage {
 		global $wgRequest, $wgOut;
 
 		// Pull in query string parameters
-		$this->setZip( $wgRequest->getVal( 'zip' ));
-
+		$zip = $wgRequest->getVal( 'zip' );
+		if ( !is_null( $zip )) $this->setZip( $zip );
+		
 		// Setup
 		$wgOut->disable();
 		$this->sendHeaders();
@@ -116,6 +117,7 @@ h4 {
     margin-bottom: 1em;
 }
 p.error {
+	color: red;
 }
 </style>
 </head>
@@ -276,6 +278,11 @@ HTML;
 		$htmlOut = <<<HTML
 <h4>Contact your representatives</h4>
 <div class="sopaActionDiv">
+HTML;
+		if ( $isError ) {
+			$htmlOut .= Html::element( 'p', array( 'class' => 'error' ), wfMsg( 'congresslookup-zipcode-error' ));
+		}
+		$htmlOut .= <<<HTML
 	<form action="" method="GET">
 		<label for="zip">Your zip code:</label>
 		<input type="text" maxlength="10" size="5" name="zip" id="zip"/>
