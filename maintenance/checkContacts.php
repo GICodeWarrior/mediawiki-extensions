@@ -44,13 +44,30 @@ class CheckCongressLinks extends Maintenance {
 	}
 
 	protected function checkContactLink( $name, $url, &$countOk ) {
-		$req = MWHttpRequest::factory( $url, array( 
-				'method'        => 'GET',
-				'timeout'       => 8,
-				'sslVerifyHost' => false, // just check if it can be reached
-				'sslVerifyCert' => false, // just check if it can be reached
-		) );
-		if ( $req->execute()->isOK() ) {
+		global $wgVersion;
+
+		$ok = false;
+		if ( Sanitizer::validateEmail( $url ) ) {
+			$ok = true; // assume OK
+		} else {
+			$bits = wfParseUrl( $url );
+			if ( $bits && isset( $bits['scheme'] ) ) {
+				if ( $bits['scheme'] == 'mailto' ) {
+					$ok = true; // assume OK
+				} elseif ( in_array( $bits['scheme'], array( 'http', 'https' ) ) ) {
+					$req = MWHttpRequest::factory( $url, array( 
+							'method'        => 'GET',
+							'timeout'       => 8,
+							'sslVerifyHost' => false, // just check if it can be reached
+							'sslVerifyCert' => false, // just check if it can be reached
+					) );
+					$req->setUserAgent( "MediaWiki {$wgVersion}, CheckCongressLinks Checker" );
+					$ok = $req->execute()->isOK();
+				}
+			}
+		}
+
+		if ( $ok ) {
 			++$countOk;
 		} else {
 			$this->output( "Broken: [$name] [$url]\n" );
