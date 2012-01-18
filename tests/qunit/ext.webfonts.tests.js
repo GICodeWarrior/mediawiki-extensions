@@ -4,6 +4,7 @@ test( '-- Initial check', function() {
 	expect(1);
 
 	ok( mw.webfonts, 'mw.webfonts is defined' );
+	
 } );
 
 test( '-- Web font application to body', function() {
@@ -33,14 +34,14 @@ test( '-- Web font application to body', function() {
 	assertTrue( $textareaElement !== [], 'The textarea test element is defined' );
 
 	ok( mw.webfonts.set( teluguFont ), 'Attempted to load a Telugu font for the whole page' );
-	var fallbackFonts = 'Helvetica,Arial,sans-serif';
+	var fallbackFonts = 'Helvetica, Arial, sans-serif';
 	deepEqual( oldConfig, mw.webfonts.oldconfig, 'Previous body css was saved properly' );
 
 	// Font application
-	equal( $body.css( 'font-family' ), '"' + teluguFont + '",' + fallbackFonts, 'The web font was applied to font-family of body' );
-	equal( $inputElement.css( 'font-family' ), '"' + teluguFont + '",' + fallbackFonts, 'The web font was applied to font-family of input' );
-	equal( $selectElement.css( 'font-family' ), '"' + teluguFont + '",' + fallbackFonts, 'The web font was applied to font-family of select' );
-	equal( $textareaElement.css( 'font-family' ), '"' + teluguFont + '",' + fallbackFonts, 'The web font was applied to font-family of textarea' );
+	equal( $body.css( 'font-family' ), "'" + teluguFont + "', " + fallbackFonts, 'The web font was applied to font-family of body' );
+	equal( $inputElement.css( 'font-family' ), "'" + teluguFont + "', " + fallbackFonts, 'The web font was applied to font-family of input' );
+	equal( $selectElement.css( 'font-family' ), "'"  + teluguFont + "', " + fallbackFonts, 'The web font was applied to font-family of select' );
+	equal( $textareaElement.css( 'font-family' ), "'" '"' + teluguFont + "', " + fallbackFonts, 'The web font was applied to font-family of textarea' );
 
 	// Restore <body>
 	$body.attr( 'lang', bodyLang );
